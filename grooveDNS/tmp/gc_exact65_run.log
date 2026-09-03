@@ -1,0 +1,39 @@
+>>> /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns --geometry-only --RESOLUTION 48 --DOMAIN_LY 2.00000000e-08
+>>> mpirun -np 8 /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns --RESOLUTION 48 --BODY_FORCE_ACCEL 1e6 --DOMAIN_LY 2.00000000e-08
+
+dx = 5.00 nm  (Nx,Ny,Nz) = (121,5,20)
+  discrete wall = 120.000 nm (24 nodes), groove = 120.000 nm (24 nodes), height = 65.000 nm (14 nodes)  [exact65: True]
+  Qy=4.385029e-18 m^3/s  qy=1.124366e-04 m/s  u_avg=2.810916e-04 m/s  Re=2.370e-05
+  B_yy=1.124366e-16 m^2 = 112.4366 nm^2
+  qy==Qy/A_cell: True   B_yy==mu*qy/(rho*ay): True
+>>> /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns --geometry-only --RESOLUTION 96 --DOMAIN_LY 2.00000000e-08
+>>> mpirun -np 8 /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns --RESOLUTION 96 --BODY_FORCE_ACCEL 1e6 --DOMAIN_LY 2.00000000e-08
+
+dx = 2.50 nm  (Nx,Ny,Nz) = (241,9,33)
+  discrete wall = 120.000 nm (48 nodes), groove = 120.000 nm (48 nodes), height = 65.000 nm (27 nodes)  [exact65: True]
+  Qy=3.992528e-18 m^3/s  qy=1.023725e-04 m/s  u_avg=2.559313e-04 m/s  Re=2.158e-05
+  B_yy=1.023725e-16 m^2 = 102.3725 nm^2
+  qy==Qy/A_cell: True   B_yy==mu*qy/(rho*ay): True
+>>> /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns --geometry-only --RESOLUTION 192 --DOMAIN_LY 2.00000000e-08
+>>> mpirun -np 8 /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns --RESOLUTION 192 --BODY_FORCE_ACCEL 1e6 --DOMAIN_LY 2.00000000e-08
+
+dx = 1.25 nm  (Nx,Ny,Nz) = (481,17,59)
+  discrete wall = 120.000 nm (96 nodes), groove = 120.000 nm (96 nodes), height = 65.000 nm (53 nodes)  [exact65: True]
+  Qy=3.807041e-18 m^3/s  qy=9.761643e-05 m/s  u_avg=2.440411e-04 m/s  Re=2.058e-05
+  B_yy=9.761643e-17 m^2 = 97.6164 nm^2
+  qy==Qy/A_cell: True   B_yy==mu*qy/(rho*ay): True
+
+saved /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../tmp/grid_convergence_exact65.csv
+
+================================================================
+Grid-convergence (B_yy vs dx), reference = finest grid dx=1.25 nm
+  dx= 5.00 nm  B_yy=  112.4366 nm^2  error= 15.182 %
+  dx= 2.50 nm  B_yy=  102.3725 nm^2  error=  4.872 %
+  dx= 1.25 nm  B_yy=   97.6164 nm^2  error=  0.000 %  <-- finest
+  coarse(dx=5.0)    vs fine(dx=1.25): 15.182 %
+  medium(dx=2.5)    vs fine(dx=1.25): 4.872 %
+  B_yy stabilizes as dx -> 0: True
+================================================================
+saved /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../tmp/grid_convergence_exact65.png
+
+PASS: all three rows have discrete liquid height = 65.000 nm

@@ -1,0 +1,32 @@
+
+>>> running ['/home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns', '--BODY_FORCE_ACCEL', '1e+06']
+  converged at iT=3909  t=1.629e-08 s
+    Qy=4.385029e-18 m^3/s   qy=1.124366e-04 m/s   u_avg=2.810916e-04 m/s
+    Re=2.370e-05   B_yy=1.124366e-16 m^2 = 112.4366 nm^2
+    qy==Qy/A_cell: True   B_yy==mu*qy/(rho*ay): True
+
+>>> running ['/home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns', '--BODY_FORCE_ACCEL', '1e+07']
+  converged at iT=3909  t=1.629e-08 s
+    Qy=4.385029e-17 m^3/s   qy=1.124366e-03 m/s   u_avg=2.810916e-03 m/s
+    Re=2.370e-04   B_yy=1.124366e-16 m^2 = 112.4366 nm^2
+    qy==Qy/A_cell: True   B_yy==mu*qy/(rho*ay): True
+
+>>> running ['/home/dell/yuanyuanxu/SIM240/grooveDNS/post/../grooveDns', '--BODY_FORCE_ACCEL', '1e+08']
+  converged at iT=3909  t=1.629e-08 s
+    Qy=4.385029e-16 m^3/s   qy=1.124366e-02 m/s   u_avg=2.810916e-02 m/s
+    Re=2.370e-03   B_yy=1.124366e-16 m^2 = 112.4366 nm^2
+    qy==Qy/A_cell: True   B_yy==mu*qy/(rho*ay): True
+
+saved /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../tmp/force_linearity.csv
+
+================================================================
+B_yy constancy across a_y = {1e6, 1e7, 1e8} m/s^2
+  B_yy [nm^2] = ['112.4366', '112.4366', '112.4366']
+  spread (max-min)/mean = 0.0000 %
+  max/min ratio         = 1.000000
+  Re range              = [2.370e-05, 2.370e-03]
+  LINEAR (spread < 5 %) : True
+================================================================
+saved /home/dell/yuanyuanxu/SIM240/grooveDNS/post/../tmp/force_linearity.png
+
+CONCLUSION: B_yy spread < 5 %  =>  B_yy is a valid linear equivalent conductance parameter.
