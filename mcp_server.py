@@ -634,3 +634,29 @@ def compare_cases_table():
         )
 
     return "\n".join(table)
+@server.tool()
+def generate_case_summary_md():
+    """
+    自动生成 SIM240 CASE 状态汇总文件
+    """
+
+    table = compare_cases_table()
+
+    content = f"""# SIM240 CASE Status
+
+自动生成的 CASE 验证状态。
+
+## CASE Summary
+
+{table}
+
+"""
+
+    output = PROJECT_DIR / "SIM240_CASE_STATUS.md"
+
+    output.write_text(
+        content,
+        encoding="utf-8"
+    )
+
+    return f"Generated: {output}"
