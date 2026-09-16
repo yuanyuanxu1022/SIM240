@@ -424,6 +424,7 @@ SIM240 CASE01-R2 自动分析
 计算步数:
 {data.get('steps_completed')}
 
+
 边界:
 {data.get('wall_boundary')}
 
@@ -551,10 +552,11 @@ def compare_cases():
                     "Jy_m2_s",
                     "-"
                 ),
-                "error": data.get(
-                    "Jy_relative_error",
-                    "-"
-                ),
+                "Error": (
+                   f"{float(data.get('Jy_relative_error',0))*100:.3f}%"
+                   if "Jy_relative_error" in data
+                   else "-"
+                  ),
                 "Mach": data.get(
                     "max_Mach",
                     "-"
@@ -579,3 +581,56 @@ def compare_cases():
         )
 
     return report
+
+
+@server.tool()
+def compare_cases_table():
+    """
+    生成SIM240 CASE Markdown比较表
+    """
+
+    files = list(
+        (PROJECT_DIR / "CASE").rglob("result.txt")
+    )
+
+    rows = []
+
+    for f in files:
+        text = f.read_text(
+            encoding="utf-8",
+            errors="ignore"
+        )
+
+        if "Jy_m2_s" not in text:
+            continue
+        if "formal_simulation=true" not in text:
+            continue
+ 
+        data = {}
+        for line in text.splitlines():
+            if "=" in line:
+                k, v = line.split("=", 1)
+                data[k.strip()] = v.strip()
+
+        rows.append(
+            {
+                "Case": data.get("run_scope", f.parent.name),
+                "Jy": data.get("Jy_m2_s", "-"),
+                "Error": data.get("Jy_relative_error", "-"),
+                "Mach": data.get("max_Mach", "-"),
+                "PASS": data.get("PASS", "-"),
+            }
+        )
+
+    table = [
+        "| Case | Jy | Error | Mach | PASS |",
+        "|---|---|---|---|---|"
+    ]
+
+    for r in rows:
+        table.append(
+            f"| {r['Case']} | {r['Jy']} | "
+            f"{r['Error']} | {r['Mach']} | {r['PASS']} |"
+        )
+
+    return "\n".join(table)
