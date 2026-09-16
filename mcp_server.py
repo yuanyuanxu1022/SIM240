@@ -743,3 +743,146 @@ def generate_case_summary_md():
     )
 
     return f"Generated: {output}"
+@server.tool()
+def check_validation_gate():
+
+    """
+    自动检查 SIM240 CASE 验证门槛
+    """
+
+    files = list(
+        (PROJECT_DIR / "CASE").rglob("result.txt")
+    )
+
+    output = []
+
+    for f in files:
+
+        text = f.read_text(
+            encoding="utf-8",
+            errors="ignore"
+        )
+
+        if "Jy_relative_error" not in text:
+            continue
+
+        data = {}
+
+        for line in text.splitlines():
+
+            if "=" in line:
+
+                k, v = line.split("=", 1)
+                data[k.strip()] = v.strip()
+
+
+        case = data.get(
+            "run_scope",
+            f.parent.name
+        )
+
+
+        output.append(
+            f"CASE: {case}\n"
+        )
+
+
+        checks = []
+
+
+        checks.append(
+            (
+                "Converged",
+                data.get("converged") == "true"
+            )
+        )
+
+
+        checks.append(
+            (
+                "Mach < 0.05",
+                float(
+                    data.get(
+                        "max_Mach",
+                        "999"
+                    )
+                ) < 0.05
+            )
+        )
+
+
+        checks.append(
+            (
+                "Mass conservation",
+                float(
+                    data.get(
+                        "max_mass_abs_relative",
+                        "999"
+                    )
+                ) < 1e-12
+            )
+        )
+
+
+        checks.append(
+            (
+                "Jy error < 2%",
+                float(
+                    data.get(
+                        "Jy_relative_error",
+                        "999"
+                    )
+                ) < 0.02
+            )
+        )
+
+
+        checks.append(
+            (
+                "Velocity profile < 2%",
+                float(
+                    data.get(
+                        "velocity_profile_L2_relative_error",
+                        "999"
+                    )
+                ) < 0.02
+            )
+        )
+
+
+        passed = True
+
+
+        for name, ok in checks:
+
+            if ok:
+                output.append(
+                    "✓ " + name
+                )
+
+            else:
+
+                output.append(
+                    "✗ " + name
+                )
+
+                passed = False
+
+
+        output.append(
+            "\nFINAL: "
+            +
+            (
+                "PASS"
+                if passed
+                else
+                "FAIL"
+            )
+        )
+
+        output.append(
+            "\n"
+        )
+
+
+    return "\n".join(output)
