@@ -634,6 +634,89 @@ def compare_cases_table():
         )
 
     return "\n".join(table)
+
+@server.tool()
+def rank_cases():
+    """
+    按 Jy_relative_error 对 SIM240 CASE 排名
+    """
+
+    files = list(
+        (PROJECT_DIR / "CASE").rglob("result.txt")
+    )
+
+    cases = []
+
+    for f in files:
+
+        text = f.read_text(
+            encoding="utf-8",
+            errors="ignore"
+        )
+
+        if "Jy_relative_error" not in text:
+            continue
+
+        data = {}
+
+        for line in text.splitlines():
+            if "=" in line:
+                k, v = line.split("=", 1)
+                data[k.strip()] = v.strip()
+
+        try:
+            error = float(
+                data["Jy_relative_error"]
+            )
+        except:
+            continue
+
+        cases.append(
+            {
+                "Case": data.get(
+                    "run_scope",
+                    f.parent.name
+                ),
+                "Error": error,
+                "PASS": data.get(
+                    "PASS",
+                    "-"
+                )
+            }
+        )
+
+
+    cases.sort(
+        key=lambda x: x["Error"]
+    )
+
+
+    output = [
+        "SIM240 CASE Ranking",
+        ""
+    ]
+
+
+    for i, c in enumerate(
+        cases,
+        start=1
+    ):
+        output.append(
+            f"{i}. {c['Case']}"
+        )
+
+        output.append(
+            f"   Jy error = {c['Error']:.3%}"
+        )
+
+        output.append(
+            f"   PASS = {c['PASS']}"
+        )
+
+        output.append("")
+
+
+    return "\n".join(output)
 @server.tool()
 def generate_case_summary_md():
     """
