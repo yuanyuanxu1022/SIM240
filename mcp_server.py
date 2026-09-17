@@ -268,13 +268,46 @@ def diagnose_case_status():
 
     return "\n".join(report)
 
-if __name__ == "__main__":
-    server.run()
 @server.tool()
 def analyze_case_result():
     """
     自动总结最新CASE01-R2计算结果
     """
+
+    result_files = list(
+        (PROJECT_DIR / "CASE/Case01-R2/results").rglob("result.txt")
+    )
+
+    if not result_files:
+        return "没有找到result.txt"
+
+    latest = max(
+        result_files,
+        key=lambda x: x.stat().st_mtime
+    )
+
+    data = {}
+
+    for line in latest.read_text(
+        encoding="utf-8",
+        errors="ignore"
+    ).splitlines():
+        if "=" in line:
+            k, v = line.split("=", 1)
+            data[k.strip()] = v.strip()
+
+    return (
+        "SIM240 CASE01-R2 自动分析\n\n"
+        f"运行: {data.get('run_scope')}\n"
+        f"收敛: {data.get('converged')}\n"
+        f"步数: {data.get('steps_completed')}\n"
+        f"最大Mach: {data.get('max_Mach')}\n"
+        f"质量误差: {data.get('max_mass_abs_relative')}\n"
+        f"Jy: {data.get('Jy_m2_s')}\n"
+        f"Jy相对误差: {data.get('Jy_relative_error')}\n"
+        f"速度L2误差: {data.get('velocity_profile_L2_relative_error')}\n"
+        f"PASS: {data.get('PASS')}"
+    )
 @server.tool()
 def generate_validation_report():
     """
@@ -654,7 +687,11 @@ def rank_cases():
             errors="ignore"
         )
 
-        if "Jy_relative_error" not in text:
+        if (
+            "formal_simulation=true" not in text
+            or "Jy_relative_error" not in text
+            or "velocity_profile_L2_relative_error" not in text
+        ):
             continue
 
         data = {}
@@ -764,7 +801,11 @@ def check_validation_gate():
             errors="ignore"
         )
 
-        if "Jy_relative_error" not in text:
+        if (
+            "formal_simulation=true" not in text
+            or "Jy_relative_error" not in text
+            or "velocity_profile_L2_relative_error" not in text
+        ):
             continue
 
         data = {}
@@ -871,7 +912,7 @@ def check_validation_gate():
 
 
         output.append(
-            "\nFINAL: "
+            "\nNUMERICAL_GATE: "
             +
             (
                 "PASS"
@@ -882,8 +923,20 @@ def check_validation_gate():
         )
 
         output.append(
+            f"RESULT_PASS: {data.get('PASS', '-')}"
+        )
+
+        output.append(
+            f"geometry_PASS: {data.get('geometry_PASS', '-')}"
+        )
+
+        output.append(
             "\n"
         )
 
 
     return "\n".join(output)
+
+
+if __name__ == "__main__":
+    server.run()
