@@ -719,26 +719,6 @@ def rank_cases():
     return "\n".join(output)
 
 @server.tool()
-def generate_validation_markdown():
-    """
-    生成 SIM240 验证报告 Markdown
-    """
-
-    report = """
-# SIM240 Validation Report
-
-Generated automatically by MCP.
-"""
-
-    output = PROJECT_DIR / "SIM240_VALIDATION_REPORT.md"
-
-    output.write_text(
-        report,
-        encoding="utf-8"
-    )
-
-    return f"Generated: {output}"
-@server.tool()
 def generate_case_summary_md():
     """
     自动生成 SIM240 CASE 状态汇总文件
