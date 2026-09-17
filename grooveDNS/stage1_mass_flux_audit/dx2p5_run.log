@@ -1,0 +1,115 @@
+
+    ┃
+    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁
+    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲
+ ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱
+ ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱
+ ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱
+ ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>
+       ┗━━━━━┛
+
+[initialize] Version  : 5953d8a-dirty
+[initialize] Platform : CPU_SISD
+[initialize] Parallel : MPI
+[initialize] MPI      : 1 ranks
+[ThreadPool] Sucessfully initialized, numThreads=1
+[Directories] Directory ./output/dx2p5_formal_20260905/imageData/ created.
+[Directories] Directory ./output/dx2p5_formal_20260905/imageData/data/ created.
+[Directories] Directory ./output/dx2p5_formal_20260905/vtkData/data/ created.
+[Directories] Directory ./output/dx2p5_formal_20260905/gnuplotData/ created.
+[Directories] Directory ./output/dx2p5_formal_20260905/gnuplotData/data/ created.
+[Directories] Directory ./output/dx2p5_formal_20260905/introspectionData/ created.
+[Case] 
+[Case] -- OpenLB Case Components --
+[Case] names::NavierStokes = SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >
+[Case] 
+[Case] -- Parameters --
+[Case] PHYS_DELTA_X               = 2.5e-09
+[Case] PHYS_VTK_ITER_T            = 3e-08
+[Case] CONVERGENCE_PRECISION      = 1e-06
+[Case] MAX_PHYS_T                 = 3e-07
+[Case] OVERLAP                    = 3
+[Case] LATTICE_RELAXATION_TIME    = 1
+[Case] WALL_WIDTH                 = 1.2e-07
+[Case] PHYS_CHAR_DENSITY          = 1000
+[Case] GROOVE_WIDTH               = 1.2e-07
+[Case] INTERVAL_CONVERGENCE_CHECK = 1.2e-08
+[Case] CHANNEL_HEIGHT             = 6.5e-08
+[Case] DOMAIN_LY                  = 2.4e-07
+[Case] PHYS_CHAR_VELOCITY         = 1
+[Case] PHYS_CHAR_VISCOSITY        = 1e-06
+[Case] BODY_FORCE_ACCEL           = 1e+08
+[Case] BODY_FORCE_ACCEL_X         = 1e+06
+[Case] PHYS_CHAR_LENGTH           = 2.4e-07
+[Case] CHECK_BXX                  = 0
+[Case] NUM_GROOVES                = 2
+[Case] RESOLUTION                 = 96
+[Case] 
+[SuperGeometry3D] cleaned 0 inner boundary voxel(s)
+[SuperGeometryStatistics3D] updated
+[SuperGeometry3D] the model is correct!
+[CuboidDecomposition] -- Cuboid Structure Statistics --
+[CuboidDecomposition]  Number of Cuboids: 	1
+[CuboidDecomposition]  Delta       : 		2.5e-09
+[CuboidDecomposition]  Ratio  (min): 		0.136929
+[CuboidDecomposition]         (max): 		2.93939
+[CuboidDecomposition]  Nodes  (min): 		771441
+[CuboidDecomposition]         (max): 		771441
+[CuboidDecomposition]  Weight (min): 		771441
+[CuboidDecomposition]         (max): 		771441
+[CuboidDecomposition] ---------------------------------
+[SuperGeometryStatistics3D] materialNumber=1; count=251424; minPhysR=(1.2e-07,0,0); maxPhysR=(4.775e-07,2.4e-07,6.5e-08)
+[SuperGeometryStatistics3D] materialNumber=2; count=520017; minPhysR=(0,0,-7.5e-09); maxPhysR=(6e-07,2.4e-07,7.25e-08)
+[SuperGeometryStatistics3D] countTotal[1e6]=0.771441
+[prepareGeometry] Prepare Geometry ... OK
+[UnitConverter] ----------------- UnitConverter information -----------------
+[UnitConverter] -- Parameters:
+[UnitConverter] Resolution:                       N=              96
+[UnitConverter] Lattice velocity:                 latticeU=       0.000416667
+[UnitConverter] Lattice relaxation frequency:     omega=          1
+[UnitConverter] Lattice relaxation time:          tau=            1
+[UnitConverter] Characteristical length(m):       charL=          2.4e-07
+[UnitConverter] Characteristical speed(m/s):      charU=          1
+[UnitConverter] Phys. kinematic viscosity(m^2/s): charNu=         1e-06
+[UnitConverter] Phys. density(kg/m^d):            charRho=        1000
+[UnitConverter] Characteristical pressure(N/m^2): charPressure=   0
+[UnitConverter] Mach number:                      machNumber=     0.000721688
+[UnitConverter] Reynolds number:                  reynoldsNumber= 0.24
+[UnitConverter] Knudsen number:                   knudsenNumber=  0.00300703
+[UnitConverter] Characteristical CFL number:      charCFLnumber=  0.000416667
+[UnitConverter] 
+[UnitConverter] -- Conversion factors:
+[UnitConverter] Voxel length(m):                  physDeltaX=     2.5e-09
+[UnitConverter] Time step(s):                     physDeltaT=     1.04167e-12
+[UnitConverter] Velocity factor(m/s):             physVelocity=   2400
+[UnitConverter] Density factor(kg/m^3):           physDensity=    1000
+[UnitConverter] Mass factor(kg):                  physMass=       1.5625e-23
+[UnitConverter] Viscosity factor(m^2/s):          physViscosity=  6e-06
+[UnitConverter] Force factor(N):                  physForce=      3.6e-08
+[UnitConverter] Pressure factor(N/m^2):           physPressure=   5.76e+09
+[UnitConverter] -------------------------------------------------------------
+[prepareLattice] Prepare Lattice ... OK
+[getResults] iT=0 t=0  Qy=2.4987e-18 m^3/s  qy=6.40692e-05 m/s  uAvg=0.000160173 m/s  uMax=0.00015625 m/s  B_yy=6.40692e-19 m^2
+[getResults] iT=200 t=2.08333e-10  Qy=1.91413e-16 m^3/s  qy=0.00490803 m/s  uAvg=0.0122701 m/s  uMax=0.0196725 m/s  B_yy=4.90803e-17 m^2
+[getResults] iT=400 t=4.16667e-10  Qy=2.85549e-16 m^3/s  qy=0.00732177 m/s  uAvg=0.0183044 m/s  uMax=0.0327355 m/s  B_yy=7.32177e-17 m^2
+[getResults] iT=600 t=6.25e-10  Qy=3.36668e-16 m^3/s  qy=0.00863251 m/s  uAvg=0.0215813 m/s  uMax=0.0402955 m/s  B_yy=8.63251e-17 m^2
+[getResults] iT=800 t=8.33333e-10  Qy=3.64743e-16 m^3/s  qy=0.00935239 m/s  uAvg=0.023381 m/s  uMax=0.0445285 m/s  B_yy=9.35239e-17 m^2
+[getResults] iT=1000 t=1.04167e-09  Qy=3.80213e-16 m^3/s  qy=0.00974906 m/s  uAvg=0.0243726 m/s  uMax=0.0468753 m/s  B_yy=9.74906e-17 m^2
+[getResults] iT=1200 t=1.25e-09  Qy=3.88746e-16 m^3/s  qy=0.00996786 m/s  uAvg=0.0249196 m/s  uMax=0.0481723 m/s  B_yy=9.96786e-17 m^2
+[getResults] iT=1400 t=1.45833e-09  Qy=3.93455e-16 m^3/s  qy=0.0100886 m/s  uAvg=0.0252215 m/s  uMax=0.0488883 m/s  B_yy=1.00886e-16 m^2
+[getResults] iT=1600 t=1.66667e-09  Qy=3.96053e-16 m^3/s  qy=0.0101552 m/s  uAvg=0.025388 m/s  uMax=0.0492836 m/s  B_yy=1.01552e-16 m^2
+[getResults] iT=1800 t=1.875e-09  Qy=3.97487e-16 m^3/s  qy=0.010192 m/s  uAvg=0.0254799 m/s  uMax=0.0495017 m/s  B_yy=1.0192e-16 m^2
+[getResults] iT=2000 t=2.08333e-09  Qy=3.98278e-16 m^3/s  qy=0.0102123 m/s  uAvg=0.0255307 m/s  uMax=0.0496221 m/s  B_yy=1.02123e-16 m^2
+[getResults] iT=2200 t=2.29167e-09  Qy=3.98715e-16 m^3/s  qy=0.0102235 m/s  uAvg=0.0255587 m/s  uMax=0.0496885 m/s  B_yy=1.02235e-16 m^2
+[getResults] iT=2400 t=2.5e-09  Qy=3.98956e-16 m^3/s  qy=0.0102296 m/s  uAvg=0.0255741 m/s  uMax=0.0497252 m/s  B_yy=1.02296e-16 m^2
+[getResults] iT=2600 t=2.70833e-09  Qy=3.99089e-16 m^3/s  qy=0.0102331 m/s  uAvg=0.0255826 m/s  uMax=0.0497454 m/s  B_yy=1.02331e-16 m^2
+[getResults] iT=2800 t=2.91667e-09  Qy=3.99162e-16 m^3/s  qy=0.0102349 m/s  uAvg=0.0255873 m/s  uMax=0.0497566 m/s  B_yy=1.02349e-16 m^2
+[getResults] iT=3000 t=3.125e-09  Qy=3.99203e-16 m^3/s  qy=0.010236 m/s  uAvg=0.0255899 m/s  uMax=0.0497627 m/s  B_yy=1.0236e-16 m^2
+[getResults] iT=3200 t=3.33333e-09  Qy=3.99225e-16 m^3/s  qy=0.0102365 m/s  uAvg=0.0255914 m/s  uMax=0.0497661 m/s  B_yy=1.02365e-16 m^2
+[getResults] iT=3400 t=3.54167e-09  Qy=3.99238e-16 m^3/s  qy=0.0102369 m/s  uAvg=0.0255922 m/s  uMax=0.049768 m/s  B_yy=1.02369e-16 m^2
+[getResults] iT=3600 t=3.75e-09  Qy=3.99244e-16 m^3/s  qy=0.010237 m/s  uAvg=0.0255926 m/s  uMax=0.049769 m/s  B_yy=1.0237e-16 m^2
+[getResults] iT=3800 t=3.95833e-09  Qy=3.99248e-16 m^3/s  qy=0.0102371 m/s  uAvg=0.0255928 m/s  uMax=0.0497696 m/s  B_yy=1.02371e-16 m^2
+[getResults] iT=4000 t=4.16667e-09  Qy=3.9925e-16 m^3/s  qy=0.0102372 m/s  uAvg=0.025593 m/s  uMax=0.0497699 m/s  B_yy=1.02372e-16 m^2
+[getResults] iT=4200 t=4.375e-09  Qy=3.99251e-16 m^3/s  qy=0.0102372 m/s  uAvg=0.025593 m/s  uMax=0.0497701 m/s  B_yy=1.02372e-16 m^2
+[getResults] iT=4400 t=4.58333e-09  Qy=3.99252e-16 m^3/s  qy=0.0102372 m/s  uAvg=0.0255931 m/s  uMax=0.0497702 m/s  B_yy=1.02372e-16 m^2
+mpirun: Forwarding signal 18 to job

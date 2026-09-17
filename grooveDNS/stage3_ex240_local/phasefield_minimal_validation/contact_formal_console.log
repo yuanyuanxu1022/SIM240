@@ -1,0 +1,42 @@
+
+    ┃
+    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁
+    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲
+ ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱
+ ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱
+ ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱
+ ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>
+       ┗━━━━━┛
+
+[initialize] Version  : 5953d8a-dirty
+[initialize] Platform : CPU_SISD
+[initialize] Parallel : MPI
+[initialize] MPI      : 1 ranks
+[ThreadPool] Sucessfully initialized, numThreads=1
+[Directories] Directory output/phasefield_contact_theta100_R18_formal_20260910/imageData/ created.
+[Directories] Directory output/phasefield_contact_theta100_R18_formal_20260910/imageData/data/ created.
+[Directories] Directory output/phasefield_contact_theta100_R18_formal_20260910/vtkData/ created.
+[Directories] Directory output/phasefield_contact_theta100_R18_formal_20260910/vtkData/data/ created.
+[Directories] Directory output/phasefield_contact_theta100_R18_formal_20260910/gnuplotData/ created.
+[Directories] Directory output/phasefield_contact_theta100_R18_formal_20260910/gnuplotData/data/ created.
+[Directories] Directory output/phasefield_contact_theta100_R18_formal_20260910/introspectionData/ created.
+[Case] 
+[Case] -- OpenLB Case Components --
+[Case] names::NavierStokes = SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::RHO, olb::descriptors::NABLARHO, olb::descriptors::FORCE, olb::descriptors::EXTERNAL_FORCE, olb::descriptors::TAU_EFF> >
+[Case] names::Component1   = SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE, olb::descriptors::SOURCE, olb::descriptors::SOURCE_OLD, olb::descriptors::PHIWETTING, olb::descriptors::VELOCITY, olb::descriptors::OLD_PHIU, olb::descriptors::STATISTIC, olb::descriptors::CHEM_POTENTIAL, olb::descriptors::BOUNDARY> >
+[Case] 
+[Case] -- Parameters --
+[Case] 
+[SuperGeometry3D] cleaned 0 inner boundary voxel(s)
+phasefield_contact_theta100_R18_formal_20260910 PASS=0 step=6000
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[37718,1],0]
+  Exit code:    3
+--------------------------------------------------------------------------

@@ -1,0 +1,33 @@
+prediction_basis=explicit_piston_10nm.cpp::matAt/punch and coverNodes
+prediction_date=2026-09-08
+dx_nm=5
+dt_s=1e-11
+initial_piston_h_nm=75
+trajectory_steps_for_full_10nm=10000
+trajectory=h=75nm-10nm*(10*s^3-15*s^4+6*s^5),s=step/10000
+initial_nearest_fluid_center_under_land_z_nm=72.5
+next_solid_center_under_land_z_nm=77.5
+fluid_to_solid_rule=old material in {1,4,5} and matAt(position,new_h)==3
+continuous_first_conversion_threshold_h_nm=72.5
+threshold_displacement_nm=2.5
+last_integer_step_before_conversion=3594
+h_at_step_3594_nm=72.50057511724961
+predicted_first_conversion_step=3595
+predicted_first_conversion_time_s=3.595e-08
+h_at_first_conversion_step_nm=72.49898472482263
+displacement_at_first_conversion_step_nm=2.501015275177366
+wall_speed_at_first_conversion_step_m_s=-0.1590392436517845
+wall_speed_at_first_conversion_step_lattice=-0.000318078487303569
+planned_observation_final_step=2000
+planned_observation_final_time_s=2e-08
+planned_h_at_step_2000_nm=74.4208
+planned_displacement_at_step_2000_nm=0.5792000000000002
+planned_wall_speed_at_step_2000_m_s=-0.07677120030045004
+planned_wall_speed_at_step_2000_lattice=-0.00015354240060090006
+planned_minimum_h_margin_to_conversion_threshold_nm=1.9208
+stop_trajectory_required=false
+planned_moving_steps=2000
+planned_deceleration_steps=0
+planned_hold_steps=0
+material_conversion_enabled=false
+interpretation=Because predicted first conversion step 3595 is later than step 2000, the original smooth trajectory can remain active throughout this observation without freezing a crossed material field.

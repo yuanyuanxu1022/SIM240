@@ -1,0 +1,24 @@
+2026-09-06 independent OpenLB static lattice integration build record
+
+Attempt 1:
+  command: make static_lattice_integration
+  result: failed before linking; manually written C++17/include flags were incompatible with installed OpenLB (C++20 required; tinyxml2 path missing)
+  solver run: no
+
+Attempt 2:
+  command: make static_lattice_integration (after switching to /home/dell/openlb/default.mk)
+  result: link failed because default.mk intentionally collects every *.cpp and both preserved programs define main()
+  solver run: no
+
+Final build:
+  command: make openlb-static
+  expanded command: make static_lattice_integration CPP_FILES=static_lattice_integration.cpp OBJ_FILES=static_lattice_integration.o
+  compiler: mpic++, -std=c++20, installed OpenLB default.mk
+  OpenLB version macro: 5953d8a-dirty
+  result: success
+
+Final run:
+  command: ./static_lattice_integration
+  run-id: openlb_static_h65_dx5_10step_final
+  exit code: 0
+  exit reason: completed fixed 10 collideAndStream steps

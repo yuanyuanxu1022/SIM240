@@ -1,0 +1,400 @@
+
+    ┃
+    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁
+    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲
+ ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱
+ ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱
+ ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱
+ ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>
+       ┗━━━━━┛
+
+[initialize] Version  : 5953d8a-dirty
+[initialize] Platform : CPU_SISD
+[initialize] Parallel : MPI
+[initialize] MPI      : 1 ranks
+[ThreadPool] Sucessfully initialized, numThreads=1
+[Directories] Directory ./output/dx1p25_persistent_20260905/imageData/ created.
+[Directories] Directory ./output/dx1p25_persistent_20260905/imageData/data/ created.
+[Directories] Directory ./output/dx1p25_persistent_20260905/vtkData/data/ created.
+[Directories] Directory ./output/dx1p25_persistent_20260905/gnuplotData/ created.
+[Directories] Directory ./output/dx1p25_persistent_20260905/gnuplotData/data/ created.
+[Directories] Directory ./output/dx1p25_persistent_20260905/introspectionData/ created.
+[Case] 
+[Case] -- OpenLB Case Components --
+[Case] names::NavierStokes = SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >
+[Case] 
+[Case] -- Parameters --
+[Case] PHYS_DELTA_X               = 1.25e-09
+[Case] PHYS_VTK_ITER_T            = 3e-08
+[Case] CONVERGENCE_PRECISION      = 1e-06
+[Case] MAX_PHYS_T                 = 3e-07
+[Case] OVERLAP                    = 3
+[Case] LATTICE_RELAXATION_TIME    = 1
+[Case] WALL_WIDTH                 = 1.2e-07
+[Case] PHYS_CHAR_DENSITY          = 1000
+[Case] GROOVE_WIDTH               = 1.2e-07
+[Case] INTERVAL_CONVERGENCE_CHECK = 1.2e-08
+[Case] CHANNEL_HEIGHT             = 6.5e-08
+[Case] DOMAIN_LY                  = 2.4e-07
+[Case] PHYS_CHAR_VELOCITY         = 1
+[Case] PHYS_CHAR_VISCOSITY        = 1e-06
+[Case] BODY_FORCE_ACCEL           = 1e+08
+[Case] BODY_FORCE_ACCEL_X         = 1e+06
+[Case] PHYS_CHAR_LENGTH           = 2.4e-07
+[Case] CHECK_BXX                  = 0
+[Case] NUM_GROOVES                = 2
+[Case] RESOLUTION                 = 192
+[Case] 
+[SuperGeometry3D] cleaned 0 inner boundary voxel(s)
+[SuperGeometryStatistics3D] updated
+[SuperGeometry3D] the model is correct!
+[CuboidDecomposition] -- Cuboid Structure Statistics --
+[CuboidDecomposition]  Number of Cuboids: 	1
+[CuboidDecomposition]  Delta       : 		1.25e-09
+[CuboidDecomposition]  Ratio  (min): 		0.122661
+[CuboidDecomposition]         (max): 		3.27119
+[CuboidDecomposition]  Nodes  (min): 		5477147
+[CuboidDecomposition]         (max): 		5477147
+[CuboidDecomposition]  Weight (min): 		5477147
+[CuboidDecomposition]         (max): 		5477147
+[CuboidDecomposition] ---------------------------------
+[SuperGeometryStatistics3D] materialNumber=1; count=1963968; minPhysR=(1.2e-07,0,0); maxPhysR=(4.7875e-07,2.4e-07,6.5e-08)
+[SuperGeometryStatistics3D] materialNumber=2; count=3513179; minPhysR=(0,0,-3.75e-09); maxPhysR=(6e-07,2.4e-07,6.875e-08)
+[SuperGeometryStatistics3D] countTotal[1e6]=5.47715
+[prepareGeometry] Prepare Geometry ... OK
+[UnitConverter] ----------------- UnitConverter information -----------------
+[UnitConverter] -- Parameters:
+[UnitConverter] Resolution:                       N=              192
+[UnitConverter] Lattice velocity:                 latticeU=       0.000208333
+[UnitConverter] Lattice relaxation frequency:     omega=          1
+[UnitConverter] Lattice relaxation time:          tau=            1
+[UnitConverter] Characteristical length(m):       charL=          2.4e-07
+[UnitConverter] Characteristical speed(m/s):      charU=          1
+[UnitConverter] Phys. kinematic viscosity(m^2/s): charNu=         1e-06
+[UnitConverter] Phys. density(kg/m^d):            charRho=        1000
+[UnitConverter] Characteristical pressure(N/m^2): charPressure=   0
+[UnitConverter] Mach number:                      machNumber=     0.000360844
+[UnitConverter] Reynolds number:                  reynoldsNumber= 0.24
+[UnitConverter] Knudsen number:                   knudsenNumber=  0.00150352
+[UnitConverter] Characteristical CFL number:      charCFLnumber=  0.000208333
+[UnitConverter] 
+[UnitConverter] -- Conversion factors:
+[UnitConverter] Voxel length(m):                  physDeltaX=     1.25e-09
+[UnitConverter] Time step(s):                     physDeltaT=     2.60417e-13
+[UnitConverter] Velocity factor(m/s):             physVelocity=   4800
+[UnitConverter] Density factor(kg/m^3):           physDensity=    1000
+[UnitConverter] Mass factor(kg):                  physMass=       1.95312e-24
+[UnitConverter] Viscosity factor(m^2/s):          physViscosity=  6e-06
+[UnitConverter] Force factor(N):                  physForce=      3.6e-08
+[UnitConverter] Pressure factor(N/m^2):           physPressure=   2.304e+10
+[UnitConverter] -------------------------------------------------------------
+[prepareLattice] Prepare Lattice ... OK
+[getResults] iT=0 t=0  Qy=6.17052e-19 m^3/s  qy=1.58218e-05 m/s  uAvg=3.95546e-05 m/s  uMax=3.90625e-05 m/s  B_yy=1.58218e-19 m^2
+[getResults] iT=200 t=5.20833e-11  Qy=6.36068e-17 m^3/s  qy=0.00163094 m/s  uAvg=0.00407736 m/s  uMax=0.00524568 m/s  B_yy=1.63094e-17 m^2
+[getResults] iT=400 t=1.04167e-10  Qy=1.11992e-16 m^3/s  qy=0.00287159 m/s  uAvg=0.00717898 m/s  uMax=0.0103568 m/s  B_yy=2.87159e-17 m^2
+[getResults] iT=600 t=1.5625e-10  Qy=1.51796e-16 m^3/s  qy=0.00389221 m/s  uAvg=0.00973053 m/s  uMax=0.0151382 m/s  B_yy=3.89221e-17 m^2
+[getResults] iT=800 t=2.08333e-10  Qy=1.85194e-16 m^3/s  qy=0.00474857 m/s  uAvg=0.0118714 m/s  uMax=0.019466 m/s  B_yy=4.74857e-17 m^2
+[getResults] iT=1000 t=2.60417e-10  Qy=2.13469e-16 m^3/s  qy=0.00547355 m/s  uAvg=0.0136839 m/s  uMax=0.0233157 m/s  B_yy=5.47355e-17 m^2
+[getResults] iT=1200 t=3.125e-10  Qy=2.37518e-16 m^3/s  qy=0.00609021 m/s  uAvg=0.0152255 m/s  uMax=0.0267049 m/s  B_yy=6.09021e-17 m^2
+[getResults] iT=1400 t=3.64583e-10  Qy=2.5803e-16 m^3/s  qy=0.00661616 m/s  uAvg=0.0165404 m/s  uMax=0.0296679 m/s  B_yy=6.61616e-17 m^2
+[getResults] iT=1600 t=4.16667e-10  Qy=2.75555e-16 m^3/s  qy=0.00706552 m/s  uAvg=0.0176638 m/s  uMax=0.0322458 m/s  B_yy=7.06552e-17 m^2
+[getResults] iT=1800 t=4.6875e-10  Qy=2.90547e-16 m^3/s  qy=0.00744992 m/s  uAvg=0.0186248 m/s  uMax=0.0344808 m/s  B_yy=7.44992e-17 m^2
+[getResults] iT=2000 t=5.20833e-10  Qy=3.03382e-16 m^3/s  qy=0.00777903 m/s  uAvg=0.0194476 m/s  uMax=0.0364135 m/s  B_yy=7.77903e-17 m^2
+[getResults] iT=2200 t=5.72917e-10  Qy=3.14378e-16 m^3/s  qy=0.00806097 m/s  uAvg=0.0201524 m/s  uMax=0.0380816 m/s  B_yy=8.06097e-17 m^2
+[getResults] iT=2400 t=6.25e-10  Qy=3.23802e-16 m^3/s  qy=0.00830261 m/s  uAvg=0.0207565 m/s  uMax=0.0395193 m/s  B_yy=8.30261e-17 m^2
+[getResults] iT=2600 t=6.77083e-10  Qy=3.31882e-16 m^3/s  qy=0.00850979 m/s  uAvg=0.0212745 m/s  uMax=0.0407571 m/s  B_yy=8.50979e-17 m^2
+[getResults] iT=2800 t=7.29167e-10  Qy=3.38811e-16 m^3/s  qy=0.00868747 m/s  uAvg=0.0217187 m/s  uMax=0.041822 m/s  B_yy=8.68747e-17 m^2
+[getResults] iT=3000 t=7.8125e-10  Qy=3.44755e-16 m^3/s  qy=0.00883988 m/s  uAvg=0.0220997 m/s  uMax=0.0427376 m/s  B_yy=8.83988e-17 m^2
+[getResults] iT=3200 t=8.33333e-10  Qy=3.49854e-16 m^3/s  qy=0.00897063 m/s  uAvg=0.0224266 m/s  uMax=0.0435244 m/s  B_yy=8.97063e-17 m^2
+[getResults] iT=3400 t=8.85417e-10  Qy=3.54229e-16 m^3/s  qy=0.00908281 m/s  uAvg=0.022707 m/s  uMax=0.0442004 m/s  B_yy=9.08281e-17 m^2
+[getResults] iT=3600 t=9.375e-10  Qy=3.57983e-16 m^3/s  qy=0.00917906 m/s  uAvg=0.0229477 m/s  uMax=0.044781 m/s  B_yy=9.17906e-17 m^2
+[getResults] iT=3800 t=9.89583e-10  Qy=3.61205e-16 m^3/s  qy=0.00926166 m/s  uAvg=0.0231542 m/s  uMax=0.0452796 m/s  B_yy=9.26166e-17 m^2
+[getResults] iT=4000 t=1.04167e-09  Qy=3.63969e-16 m^3/s  qy=0.00933254 m/s  uAvg=0.0233314 m/s  uMax=0.0457078 m/s  B_yy=9.33254e-17 m^2
+[getResults] iT=4200 t=1.09375e-09  Qy=3.66342e-16 m^3/s  qy=0.00939337 m/s  uAvg=0.0234834 m/s  uMax=0.0460753 m/s  B_yy=9.39337e-17 m^2
+[getResults] iT=4400 t=1.14583e-09  Qy=3.68377e-16 m^3/s  qy=0.00944558 m/s  uAvg=0.0236139 m/s  uMax=0.0463909 m/s  B_yy=9.44558e-17 m^2
+[getResults] iT=4600 t=1.19792e-09  Qy=3.70125e-16 m^3/s  qy=0.00949038 m/s  uAvg=0.0237259 m/s  uMax=0.0466617 m/s  B_yy=9.49038e-17 m^2
+[getResults] iT=4800 t=1.25e-09  Qy=3.71624e-16 m^3/s  qy=0.00952883 m/s  uAvg=0.0238221 m/s  uMax=0.0468942 m/s  B_yy=9.52883e-17 m^2
+[getResults] iT=5000 t=1.30208e-09  Qy=3.72911e-16 m^3/s  qy=0.00956183 m/s  uAvg=0.0239046 m/s  uMax=0.0470938 m/s  B_yy=9.56183e-17 m^2
+[getResults] iT=5200 t=1.35417e-09  Qy=3.74016e-16 m^3/s  qy=0.00959015 m/s  uAvg=0.0239754 m/s  uMax=0.0472651 m/s  B_yy=9.59015e-17 m^2
+[getResults] iT=5400 t=1.40625e-09  Qy=3.74964e-16 m^3/s  qy=0.00961446 m/s  uAvg=0.0240361 m/s  uMax=0.0474121 m/s  B_yy=9.61446e-17 m^2
+[getResults] iT=5600 t=1.45833e-09  Qy=3.75777e-16 m^3/s  qy=0.00963532 m/s  uAvg=0.0240883 m/s  uMax=0.0475383 m/s  B_yy=9.63532e-17 m^2
+[getResults] iT=5800 t=1.51042e-09  Qy=3.76476e-16 m^3/s  qy=0.00965322 m/s  uAvg=0.0241331 m/s  uMax=0.0476467 m/s  B_yy=9.65322e-17 m^2
+[getResults] iT=6000 t=1.5625e-09  Qy=3.77075e-16 m^3/s  qy=0.00966859 m/s  uAvg=0.0241715 m/s  uMax=0.0477396 m/s  B_yy=9.66859e-17 m^2
+[getResults] iT=6200 t=1.61458e-09  Qy=3.77589e-16 m^3/s  qy=0.00968178 m/s  uAvg=0.0242044 m/s  uMax=0.0478194 m/s  B_yy=9.68178e-17 m^2
+[getResults] iT=6400 t=1.66667e-09  Qy=3.78031e-16 m^3/s  qy=0.0096931 m/s  uAvg=0.0242327 m/s  uMax=0.0478879 m/s  B_yy=9.6931e-17 m^2
+[getResults] iT=6600 t=1.71875e-09  Qy=3.7841e-16 m^3/s  qy=0.00970281 m/s  uAvg=0.024257 m/s  uMax=0.0479467 m/s  B_yy=9.70281e-17 m^2
+[getResults] iT=6800 t=1.77083e-09  Qy=3.78735e-16 m^3/s  qy=0.00971115 m/s  uAvg=0.0242779 m/s  uMax=0.0479971 m/s  B_yy=9.71115e-17 m^2
+[getResults] iT=7000 t=1.82292e-09  Qy=3.79014e-16 m^3/s  qy=0.00971831 m/s  uAvg=0.0242958 m/s  uMax=0.0480404 m/s  B_yy=9.71831e-17 m^2
+[getResults] iT=7200 t=1.875e-09  Qy=3.79254e-16 m^3/s  qy=0.00972445 m/s  uAvg=0.0243111 m/s  uMax=0.0480776 m/s  B_yy=9.72445e-17 m^2
+[getResults] iT=7400 t=1.92708e-09  Qy=3.79459e-16 m^3/s  qy=0.00972972 m/s  uAvg=0.0243243 m/s  uMax=0.0481095 m/s  B_yy=9.72972e-17 m^2
+[getResults] iT=7600 t=1.97917e-09  Qy=3.79636e-16 m^3/s  qy=0.00973425 m/s  uAvg=0.0243356 m/s  uMax=0.0481368 m/s  B_yy=9.73425e-17 m^2
+[getResults] iT=7800 t=2.03125e-09  Qy=3.79787e-16 m^3/s  qy=0.00973813 m/s  uAvg=0.0243453 m/s  uMax=0.0481603 m/s  B_yy=9.73813e-17 m^2
+[getResults] iT=8000 t=2.08333e-09  Qy=3.79917e-16 m^3/s  qy=0.00974146 m/s  uAvg=0.0243537 m/s  uMax=0.0481805 m/s  B_yy=9.74146e-17 m^2
+[getResults] iT=8200 t=2.13542e-09  Qy=3.80029e-16 m^3/s  qy=0.00974432 m/s  uAvg=0.0243608 m/s  uMax=0.0481978 m/s  B_yy=9.74432e-17 m^2
+[getResults] iT=8400 t=2.1875e-09  Qy=3.80124e-16 m^3/s  qy=0.00974678 m/s  uAvg=0.0243669 m/s  uMax=0.0482127 m/s  B_yy=9.74678e-17 m^2
+[getResults] iT=8600 t=2.23958e-09  Qy=3.80206e-16 m^3/s  qy=0.00974888 m/s  uAvg=0.0243722 m/s  uMax=0.0482254 m/s  B_yy=9.74888e-17 m^2
+[getResults] iT=8800 t=2.29167e-09  Qy=3.80277e-16 m^3/s  qy=0.00975069 m/s  uAvg=0.0243767 m/s  uMax=0.0482363 m/s  B_yy=9.75069e-17 m^2
+[getResults] iT=9000 t=2.34375e-09  Qy=3.80338e-16 m^3/s  qy=0.00975224 m/s  uAvg=0.0243806 m/s  uMax=0.0482457 m/s  B_yy=9.75224e-17 m^2
+[getResults] iT=9200 t=2.39583e-09  Qy=3.80389e-16 m^3/s  qy=0.00975358 m/s  uAvg=0.0243839 m/s  uMax=0.0482538 m/s  B_yy=9.75358e-17 m^2
+[getResults] iT=9400 t=2.44792e-09  Qy=3.80434e-16 m^3/s  qy=0.00975472 m/s  uAvg=0.0243868 m/s  uMax=0.0482607 m/s  B_yy=9.75472e-17 m^2
+[getResults] iT=9600 t=2.5e-09  Qy=3.80472e-16 m^3/s  qy=0.0097557 m/s  uAvg=0.0243893 m/s  uMax=0.0482666 m/s  B_yy=9.7557e-17 m^2
+[getResults] iT=9800 t=2.55208e-09  Qy=3.80505e-16 m^3/s  qy=0.00975654 m/s  uAvg=0.0243914 m/s  uMax=0.0482717 m/s  B_yy=9.75654e-17 m^2
+[getResults] iT=10000 t=2.60417e-09  Qy=3.80533e-16 m^3/s  qy=0.00975727 m/s  uAvg=0.0243932 m/s  uMax=0.0482761 m/s  B_yy=9.75727e-17 m^2
+[getResults] iT=10200 t=2.65625e-09  Qy=3.80558e-16 m^3/s  qy=0.00975789 m/s  uAvg=0.0243947 m/s  uMax=0.0482799 m/s  B_yy=9.75789e-17 m^2
+[getResults] iT=10400 t=2.70833e-09  Qy=3.80578e-16 m^3/s  qy=0.00975842 m/s  uAvg=0.024396 m/s  uMax=0.0482831 m/s  B_yy=9.75842e-17 m^2
+[getResults] iT=10600 t=2.76042e-09  Qy=3.80596e-16 m^3/s  qy=0.00975888 m/s  uAvg=0.0243972 m/s  uMax=0.0482859 m/s  B_yy=9.75888e-17 m^2
+[getResults] iT=10800 t=2.8125e-09  Qy=3.80611e-16 m^3/s  qy=0.00975927 m/s  uAvg=0.0243982 m/s  uMax=0.0482882 m/s  B_yy=9.75927e-17 m^2
+[getResults] iT=11000 t=2.86458e-09  Qy=3.80625e-16 m^3/s  qy=0.0097596 m/s  uAvg=0.024399 m/s  uMax=0.0482903 m/s  B_yy=9.7596e-17 m^2
+[getResults] iT=11200 t=2.91667e-09  Qy=3.80636e-16 m^3/s  qy=0.00975989 m/s  uAvg=0.0243997 m/s  uMax=0.048292 m/s  B_yy=9.75989e-17 m^2
+[getResults] iT=11400 t=2.96875e-09  Qy=3.80646e-16 m^3/s  qy=0.00976014 m/s  uAvg=0.0244004 m/s  uMax=0.0482935 m/s  B_yy=9.76014e-17 m^2
+[getResults] iT=11600 t=3.02083e-09  Qy=3.80654e-16 m^3/s  qy=0.00976035 m/s  uAvg=0.0244009 m/s  uMax=0.0482948 m/s  B_yy=9.76035e-17 m^2
+[getResults] iT=11800 t=3.07292e-09  Qy=3.80661e-16 m^3/s  qy=0.00976054 m/s  uAvg=0.0244013 m/s  uMax=0.0482959 m/s  B_yy=9.76054e-17 m^2
+[getResults] iT=12000 t=3.125e-09  Qy=3.80667e-16 m^3/s  qy=0.00976069 m/s  uAvg=0.0244017 m/s  uMax=0.0482969 m/s  B_yy=9.76069e-17 m^2
+[getResults] iT=12200 t=3.17708e-09  Qy=3.80672e-16 m^3/s  qy=0.00976083 m/s  uAvg=0.0244021 m/s  uMax=0.0482977 m/s  B_yy=9.76083e-17 m^2
+[getResults] iT=12400 t=3.22917e-09  Qy=3.80677e-16 m^3/s  qy=0.00976094 m/s  uAvg=0.0244024 m/s  uMax=0.0482984 m/s  B_yy=9.76094e-17 m^2
+[getResults] iT=12600 t=3.28125e-09  Qy=3.80681e-16 m^3/s  qy=0.00976104 m/s  uAvg=0.0244026 m/s  uMax=0.048299 m/s  B_yy=9.76104e-17 m^2
+[getResults] iT=12800 t=3.33333e-09  Qy=3.80684e-16 m^3/s  qy=0.00976113 m/s  uAvg=0.0244028 m/s  uMax=0.0482995 m/s  B_yy=9.76113e-17 m^2
+[getResults] iT=13000 t=3.38542e-09  Qy=3.80687e-16 m^3/s  qy=0.0097612 m/s  uAvg=0.024403 m/s  uMax=0.0482999 m/s  B_yy=9.7612e-17 m^2
+[getResults] iT=13200 t=3.4375e-09  Qy=3.80689e-16 m^3/s  qy=0.00976126 m/s  uAvg=0.0244032 m/s  uMax=0.0483003 m/s  B_yy=9.76126e-17 m^2
+[getResults] iT=13400 t=3.48958e-09  Qy=3.80691e-16 m^3/s  qy=0.00976132 m/s  uAvg=0.0244033 m/s  uMax=0.0483006 m/s  B_yy=9.76132e-17 m^2
+[getResults] iT=13600 t=3.54167e-09  Qy=3.80693e-16 m^3/s  qy=0.00976136 m/s  uAvg=0.0244034 m/s  uMax=0.0483009 m/s  B_yy=9.76136e-17 m^2
+[getResults] iT=13800 t=3.59375e-09  Qy=3.80695e-16 m^3/s  qy=0.0097614 m/s  uAvg=0.0244035 m/s  uMax=0.0483011 m/s  B_yy=9.7614e-17 m^2
+[getResults] iT=14000 t=3.64583e-09  Qy=3.80696e-16 m^3/s  qy=0.00976144 m/s  uAvg=0.0244036 m/s  uMax=0.0483013 m/s  B_yy=9.76144e-17 m^2
+[getResults] iT=14200 t=3.69792e-09  Qy=3.80697e-16 m^3/s  qy=0.00976147 m/s  uAvg=0.0244037 m/s  uMax=0.0483015 m/s  B_yy=9.76147e-17 m^2
+[getResults] iT=14400 t=3.75e-09  Qy=3.80698e-16 m^3/s  qy=0.00976149 m/s  uAvg=0.0244037 m/s  uMax=0.0483017 m/s  B_yy=9.76149e-17 m^2
+[getResults] iT=14600 t=3.80208e-09  Qy=3.80699e-16 m^3/s  qy=0.00976151 m/s  uAvg=0.0244038 m/s  uMax=0.0483018 m/s  B_yy=9.76151e-17 m^2
+[getResults] iT=14800 t=3.85417e-09  Qy=3.807e-16 m^3/s  qy=0.00976153 m/s  uAvg=0.0244038 m/s  uMax=0.0483019 m/s  B_yy=9.76153e-17 m^2
+[getResults] iT=15000 t=3.90625e-09  Qy=3.807e-16 m^3/s  qy=0.00976155 m/s  uAvg=0.0244039 m/s  uMax=0.048302 m/s  B_yy=9.76155e-17 m^2
+[getResults] iT=15200 t=3.95833e-09  Qy=3.80701e-16 m^3/s  qy=0.00976156 m/s  uAvg=0.0244039 m/s  uMax=0.0483021 m/s  B_yy=9.76156e-17 m^2
+[getResults] iT=15400 t=4.01042e-09  Qy=3.80701e-16 m^3/s  qy=0.00976157 m/s  uAvg=0.0244039 m/s  uMax=0.0483022 m/s  B_yy=9.76157e-17 m^2
+[getResults] iT=15600 t=4.0625e-09  Qy=3.80702e-16 m^3/s  qy=0.00976158 m/s  uAvg=0.024404 m/s  uMax=0.0483022 m/s  B_yy=9.76158e-17 m^2
+[getResults] iT=15800 t=4.11458e-09  Qy=3.80702e-16 m^3/s  qy=0.00976159 m/s  uAvg=0.024404 m/s  uMax=0.0483023 m/s  B_yy=9.76159e-17 m^2
+[getResults] iT=16000 t=4.16667e-09  Qy=3.80702e-16 m^3/s  qy=0.0097616 m/s  uAvg=0.024404 m/s  uMax=0.0483023 m/s  B_yy=9.7616e-17 m^2
+[getResults] iT=16200 t=4.21875e-09  Qy=3.80703e-16 m^3/s  qy=0.00976161 m/s  uAvg=0.024404 m/s  uMax=0.0483024 m/s  B_yy=9.76161e-17 m^2
+[getResults] iT=16400 t=4.27083e-09  Qy=3.80703e-16 m^3/s  qy=0.00976161 m/s  uAvg=0.024404 m/s  uMax=0.0483024 m/s  B_yy=9.76161e-17 m^2
+[getResults] iT=16600 t=4.32292e-09  Qy=3.80703e-16 m^3/s  qy=0.00976162 m/s  uAvg=0.024404 m/s  uMax=0.0483024 m/s  B_yy=9.76162e-17 m^2
+[getResults] iT=16800 t=4.375e-09  Qy=3.80703e-16 m^3/s  qy=0.00976162 m/s  uAvg=0.024404 m/s  uMax=0.0483024 m/s  B_yy=9.76162e-17 m^2
+[getResults] iT=17000 t=4.42708e-09  Qy=3.80703e-16 m^3/s  qy=0.00976162 m/s  uAvg=0.0244041 m/s  uMax=0.0483025 m/s  B_yy=9.76162e-17 m^2
+[getResults] iT=17200 t=4.47917e-09  Qy=3.80703e-16 m^3/s  qy=0.00976163 m/s  uAvg=0.0244041 m/s  uMax=0.0483025 m/s  B_yy=9.76163e-17 m^2
+[getResults] iT=17400 t=4.53125e-09  Qy=3.80703e-16 m^3/s  qy=0.00976163 m/s  uAvg=0.0244041 m/s  uMax=0.0483025 m/s  B_yy=9.76163e-17 m^2
+[getResults] iT=17600 t=4.58333e-09  Qy=3.80704e-16 m^3/s  qy=0.00976163 m/s  uAvg=0.0244041 m/s  uMax=0.0483025 m/s  B_yy=9.76163e-17 m^2
+[getResults] iT=17800 t=4.63542e-09  Qy=3.80704e-16 m^3/s  qy=0.00976163 m/s  uAvg=0.0244041 m/s  uMax=0.0483025 m/s  B_yy=9.76163e-17 m^2
+[getResults] iT=18000 t=4.6875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976163 m/s  uAvg=0.0244041 m/s  uMax=0.0483025 m/s  B_yy=9.76163e-17 m^2
+[getResults] iT=18200 t=4.73958e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483025 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=18400 t=4.79167e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=18600 t=4.84375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=18800 t=4.89583e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=19000 t=4.94792e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=19200 t=5e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=19400 t=5.05208e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=19600 t=5.10417e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=19800 t=5.15625e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=20000 t=5.20833e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=20200 t=5.26042e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=20400 t=5.3125e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=20600 t=5.36458e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=20800 t=5.41667e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=21000 t=5.46875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=21200 t=5.52083e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=21400 t=5.57292e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=21600 t=5.625e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=21800 t=5.67708e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=22000 t=5.72917e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=22200 t=5.78125e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=22400 t=5.83333e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=22600 t=5.88542e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=22800 t=5.9375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=23000 t=5.98958e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=23200 t=6.04167e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=23400 t=6.09375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=23600 t=6.14583e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=23800 t=6.19792e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=24000 t=6.25e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=24200 t=6.30208e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=24400 t=6.35417e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=24600 t=6.40625e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=24800 t=6.45833e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=25000 t=6.51042e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=25200 t=6.5625e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=25400 t=6.61458e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=25600 t=6.66667e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=25800 t=6.71875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=26000 t=6.77083e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=26200 t=6.82292e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=26400 t=6.875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=26600 t=6.92708e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=26800 t=6.97917e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=27000 t=7.03125e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=27200 t=7.08333e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=27400 t=7.13542e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=27600 t=7.1875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=27800 t=7.23958e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=28000 t=7.29167e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=28200 t=7.34375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=28400 t=7.39583e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=28600 t=7.44792e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=28800 t=7.5e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=29000 t=7.55208e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=29200 t=7.60417e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=29400 t=7.65625e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=29600 t=7.70833e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=29800 t=7.76042e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=30000 t=7.8125e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=30200 t=7.86458e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=30400 t=7.91667e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=30600 t=7.96875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=30800 t=8.02083e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=31000 t=8.07292e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=31200 t=8.125e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=31400 t=8.17708e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=31600 t=8.22917e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=31800 t=8.28125e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=32000 t=8.33333e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=32200 t=8.38542e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=32400 t=8.4375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=32600 t=8.48958e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=32800 t=8.54167e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=33000 t=8.59375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=33200 t=8.64583e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=33400 t=8.69792e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=33600 t=8.75e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=33800 t=8.80208e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=34000 t=8.85417e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=34200 t=8.90625e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=34400 t=8.95833e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=34600 t=9.01042e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=34800 t=9.0625e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=35000 t=9.11458e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=35200 t=9.16667e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=35400 t=9.21875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=35600 t=9.27083e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=35800 t=9.32292e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=36000 t=9.375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=36200 t=9.42708e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=36400 t=9.47917e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=36600 t=9.53125e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=36800 t=9.58333e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=37000 t=9.63542e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=37200 t=9.6875e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=37400 t=9.73958e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=37600 t=9.79167e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=37800 t=9.84375e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=38000 t=9.89583e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=38200 t=9.94792e-09  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=38400 t=1e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=38600 t=1.00521e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=38800 t=1.01042e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=39000 t=1.01562e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=39200 t=1.02083e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=39400 t=1.02604e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=39600 t=1.03125e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=39800 t=1.03646e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=40000 t=1.04167e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=40200 t=1.04687e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=40400 t=1.05208e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=40600 t=1.05729e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=40800 t=1.0625e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=41000 t=1.06771e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=41200 t=1.07292e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=41400 t=1.07812e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=41600 t=1.08333e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=41800 t=1.08854e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=42000 t=1.09375e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=42200 t=1.09896e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=42400 t=1.10417e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=42600 t=1.10937e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=42800 t=1.11458e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=43000 t=1.11979e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=43200 t=1.125e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=43400 t=1.13021e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=43600 t=1.13542e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=43800 t=1.14062e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=44000 t=1.14583e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=44200 t=1.15104e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=44400 t=1.15625e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=44600 t=1.16146e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=44800 t=1.16667e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=45000 t=1.17187e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=45200 t=1.17708e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=45400 t=1.18229e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=45600 t=1.1875e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=45800 t=1.19271e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=46000 t=1.19792e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=46200 t=1.20312e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=46400 t=1.20833e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=46600 t=1.21354e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=46800 t=1.21875e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=47000 t=1.22396e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=47200 t=1.22917e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=47400 t=1.23437e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=47600 t=1.23958e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=47800 t=1.24479e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=48000 t=1.25e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=48200 t=1.25521e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=48400 t=1.26042e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=48600 t=1.26562e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=48800 t=1.27083e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=49000 t=1.27604e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=49200 t=1.28125e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=49400 t=1.28646e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=49600 t=1.29167e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=49800 t=1.29687e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=50000 t=1.30208e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=50200 t=1.30729e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=50400 t=1.3125e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=50600 t=1.31771e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=50800 t=1.32292e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=51000 t=1.32812e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=51200 t=1.33333e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=51400 t=1.33854e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=51600 t=1.34375e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=51800 t=1.34896e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=52000 t=1.35417e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=52200 t=1.35937e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=52400 t=1.36458e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=52600 t=1.36979e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=52800 t=1.375e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=53000 t=1.38021e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=53200 t=1.38542e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=53400 t=1.39062e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=53600 t=1.39583e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=53800 t=1.40104e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=54000 t=1.40625e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=54200 t=1.41146e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=54400 t=1.41667e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=54600 t=1.42187e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=54800 t=1.42708e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=55000 t=1.43229e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=55200 t=1.4375e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=55400 t=1.44271e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=55600 t=1.44792e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=55800 t=1.45312e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=56000 t=1.45833e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=56200 t=1.46354e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=56400 t=1.46875e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=56600 t=1.47396e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=56800 t=1.47917e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=57000 t=1.48437e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=57200 t=1.48958e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=57400 t=1.49479e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=57600 t=1.5e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=57800 t=1.50521e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=58000 t=1.51042e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=58200 t=1.51562e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=58400 t=1.52083e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=58600 t=1.52604e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=58800 t=1.53125e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=59000 t=1.53646e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=59200 t=1.54167e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=59400 t=1.54687e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=59600 t=1.55208e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=59800 t=1.55729e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=60000 t=1.5625e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=60200 t=1.56771e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=60400 t=1.57292e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=60600 t=1.57812e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=60800 t=1.58333e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=61000 t=1.58854e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=61200 t=1.59375e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+[getResults] iT=61248 t=1.595e-08  Qy=3.80704e-16 m^3/s  qy=0.00976164 m/s  uAvg=0.0244041 m/s  uMax=0.0483026 m/s  B_yy=9.76164e-17 m^2
+integrated diagnostic written to ./output/dx1p25_persistent_20260905/mass_flux_diagnostic.csv

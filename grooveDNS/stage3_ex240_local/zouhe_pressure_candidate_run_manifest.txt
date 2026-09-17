@@ -1,0 +1,48 @@
+stage=SIM240_stage3_step4_third_pressure_candidate
+date=2026-09-08
+workdir=/home/dell/yuanyuanxu/SIM240/grooveDNS/stage3_ex240_local
+openlb_root=/home/dell/openlb
+openlb_version=5953d8a-dirty
+openlb_commit=882924a9cfc8dcdf82909e39530789cb6f5ebcc4
+openlb_library_modified_by_this_work=false
+mpi_ranks=1
+compiler_command=make openlb-zouhe-pressure-candidate
+final_candidate_source_sha256=3a6f4511ac99c0d60e003d5c4ff16be11fc75cb55c4bac6b7dbec7928cd80763
+final_candidate_executable_sha256=42ea652072eea38c4116fdd76181908b1e8de357a1e08a6a64a1e98bd80c085d
+postprocess_source_sha256=271f4fa08391d6ea24078bc50b77f4b00e1402af1c3c88bbe0a12745c6a7233d
+
+run_1=mpirun -np 1 ./explicit_piston_zouhe_pressure_candidate Z0
+run_1_id=zouhe_pressure_Z0_zero_fixed_650_20260908
+run_1_exit_code=0
+run_1_result_sha256=cefdcea25b04a5387337efc95c26dc6e77918ac7c4d9cefb578cbfcbdeec8dfe
+
+run_2=mpirun -np 1 ./explicit_piston_zouhe_pressure_candidate Z1
+run_2_id=zouhe_pressure_Z1_nonzero_fixed_650_20260908
+run_2_exit_code=0
+run_2_result_sha256=4603c6b9c75459b0cd61dea8982d9645d5a6b6ebc862d3485948747d175be0ec
+
+run_3=mpirun -np 1 ./explicit_piston_zouhe_pressure_candidate S
+run_3_id=zouhe_pressure_separated_moving_650_20260908
+run_3_exit_code=0
+run_3_result_sha256=625d868d0f4f7a7b909498aeb592a9a6f1fc2bc5796f13c3fb47ba7faa87807b
+
+run_4=mpirun -np 1 ./explicit_piston_zouhe_pressure_candidate Cpatch
+run_4_id=zouhe_pressure_Cpatch_650_20260908
+run_4_exit_code=0
+run_4_result_sha256=bf7180c692ccc8cf5b51941aedd2fbcf77e694cef81c34e89513c4d39c972763
+
+run_5=mpirun -np 1 ./explicit_piston_zouhe_pressure_candidate Cnopatch
+run_5_id=zouhe_pressure_Cnopatch_650_20260908
+run_5_exit_code=0
+run_5_result_sha256=fcde4724cecd0987af58fa8ea7a10d8cd27e8ae325d7e706fffdf8e0019c7f0b
+
+run_6=mpirun -np 1 ./explicit_piston_zouhe_pressure_candidate Z1LP
+run_6_id=localpressure_fixed_nonzero_profile_650_20260908
+run_6_exit_code=0
+run_6_result_sha256=b5a3a1bd1563d89269bf84039418237a136bb9fa8500e2fc4cb561f9e30ae4e8
+
+note=The four ZouHe gate runs and C ablation preceded a formatting-only warning cleanup and the later Z1LP comparison branch. Their simulation branches and constants were not changed. The final archived source hash therefore names the reviewed/recompiled source, while each immutable result hash names the actual saved output.
+forbidden_follow_on_run=false
+extended_2000_step_observation_run=false
+material_conversion_run=false
+full_10nm_run=false

@@ -1,0 +1,81 @@
+
+    ┃
+    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁
+    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲
+ ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱
+ ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱
+ ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱
+ ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>
+       ┗━━━━━┛
+
+[initialize] Version  : 5953d8a-dirty
+[initialize] Platform : CPU_SISD
+[initialize] Parallel : MPI
+[initialize] MPI      : 1 ranks
+[ThreadPool] Sucessfully initialized, numThreads=1
+[Directories] Directory output/sigma_0/imageData/ created.
+[Directories] Directory output/sigma_0/imageData/data/ created.
+[Directories] Directory output/sigma_0/vtkData/ created.
+[Directories] Directory output/sigma_0/vtkData/data/ created.
+[Directories] Directory output/sigma_0/gnuplotData/ created.
+[Directories] Directory output/sigma_0/gnuplotData/data/ created.
+[Directories] Directory output/sigma_0/introspectionData/ created.
+[Case] 
+[Case] -- OpenLB Case Components --
+[Case] names::NavierStokes = SuperLattice<double, olb::descriptors::D3Q27<olb::descriptors::FORCE, olb::FreeSurface::MASS, olb::FreeSurface::EPSILON, olb::FreeSurface::CELL_TYPE, olb::FreeSurface::CELL_FLAGS, olb::FreeSurface::TEMP_MASS_EXCHANGE, olb::FreeSurface::PREVIOUS_VELOCITY, olb::FreeSurface::HAS_INTERFACE_NBRS> >
+[Case] 
+[Case] -- Parameters --
+[Case] OVERLAP                 = 3
+[Case] LATTICE_RELAXATION_TIME = 1
+[Case] PHYS_CHAR_DENSITY       = 1000
+[Case] PHYS_DELTA_X            = 5e-09
+[Case] PHYS_CHAR_VELOCITY      = 1
+[Case] RESOLUTION              = 48
+[Case] PHYS_CHAR_VISCOSITY     = 1e-06
+[Case] SURFACE_TENSION         = 0
+[Case] DROPLET_RADIUS          = 6e-08
+[Case] PHYS_CHAR_LENGTH        = 2.4e-07
+[Case] DOMAIN_EXTENT           = [2.4e-07 2.4e-07 2e-07]
+[Case] 
+[SuperGeometry3D] cleaned 0 inner boundary voxel(s)
+[SuperGeometryStatistics3D] updated
+[SuperGeometry3D] the model is correct!
+[CuboidDecomposition] -- Cuboid Structure Statistics --
+[CuboidDecomposition]  Number of Cuboids: 	1
+[CuboidDecomposition]  Delta       : 		5e-09
+[CuboidDecomposition]  Ratio  (min): 		0.836735
+[CuboidDecomposition]         (max): 		1.19512
+[CuboidDecomposition]  Nodes  (min): 		98441
+[CuboidDecomposition]         (max): 		98441
+[CuboidDecomposition]  Weight (min): 		98441
+[CuboidDecomposition]         (max): 		98441
+[CuboidDecomposition] ---------------------------------
+[SuperGeometryStatistics3D] materialNumber=1; count=89817; minPhysR=(5e-09,0,5e-09); maxPhysR=(2.35e-07,2.4e-07,1.95e-07)
+[SuperGeometryStatistics3D] materialNumber=2; count=8624; minPhysR=(0,0,0); maxPhysR=(2.4e-07,2.4e-07,2e-07)
+[SuperGeometryStatistics3D] countTotal[1e6]=0.098441
+[UnitConverter] ----------------- UnitConverter information -----------------
+[UnitConverter] -- Parameters:
+[UnitConverter] Resolution:                       N=              48
+[UnitConverter] Lattice velocity:                 latticeU=       0.000833333
+[UnitConverter] Lattice relaxation frequency:     omega=          1
+[UnitConverter] Lattice relaxation time:          tau=            1
+[UnitConverter] Characteristical length(m):       charL=          2.4e-07
+[UnitConverter] Characteristical speed(m/s):      charU=          1
+[UnitConverter] Phys. kinematic viscosity(m^2/s): charNu=         1e-06
+[UnitConverter] Phys. density(kg/m^d):            charRho=        1000
+[UnitConverter] Characteristical pressure(N/m^2): charPressure=   0
+[UnitConverter] Mach number:                      machNumber=     0.00144338
+[UnitConverter] Reynolds number:                  reynoldsNumber= 0.24
+[UnitConverter] Knudsen number:                   knudsenNumber=  0.00601407
+[UnitConverter] Characteristical CFL number:      charCFLnumber=  0.000833333
+[UnitConverter] 
+[UnitConverter] -- Conversion factors:
+[UnitConverter] Voxel length(m):                  physDeltaX=     5e-09
+[UnitConverter] Time step(s):                     physDeltaT=     4.16667e-12
+[UnitConverter] Velocity factor(m/s):             physVelocity=   1200
+[UnitConverter] Density factor(kg/m^3):           physDensity=    1000
+[UnitConverter] Mass factor(kg):                  physMass=       1.25e-22
+[UnitConverter] Viscosity factor(m^2/s):          physViscosity=  6e-06
+[UnitConverter] Force factor(N):                  physForce=      3.6e-08
+[UnitConverter] Pressure factor(N/m^2):           physPressure=   1.44e+09
+[UnitConverter] -------------------------------------------------------------

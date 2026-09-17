@@ -1,0 +1,25 @@
+make -C /home/dell/openlb/external
+make[1]: Entering directory '/home/dell/openlb/external'
+make -C zlib
+make[2]: Entering directory '/home/dell/openlb/external/zlib'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/dell/openlb/external/zlib'
+cp zlib/build/libz.a lib/
+make -C tinyxml2
+make[2]: Entering directory '/home/dell/openlb/external/tinyxml2'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/dell/openlb/external/tinyxml2'
+cp tinyxml2/build/libtinyxml2.a lib/
+make -C gtest
+make[2]: Entering directory '/home/dell/openlb/external/gtest'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/dell/openlb/external/gtest'
+cp gtest/build/libgtest_main.a lib/
+cp gtest/build/libgtest.a lib/
+make[1]: Leaving directory '/home/dell/openlb/external'
+make -C /home/dell/openlb core
+make[1]: Entering directory '/home/dell/openlb'
+make[1]: Nothing to be done for 'core'.
+make[1]: Leaving directory '/home/dell/openlb'
+mpic++ -O3 -Wall -march=native -mtune=native -std=c++20 -DOLB_VERSION=\"5953d8a-dirty\" -pthread -DPARALLEL_MODE_MPI  -DPLATFORM_CPU_SISD -DDEFAULT_FLOATING_POINT_TYPE=double -I/home/dell/openlb/src -I/home/dell/openlb/external/zlib -I/home/dell/openlb/external/tinyxml2 -c -o stage3Minimal.o stage3Minimal.cpp
+mpic++ stage3Minimal.o -o stage3Minimal -lolbcore -L/home/dell/openlb/external/lib  -lpthread -lz -ltinyxml2 -L/home/dell/openlb/build/lib

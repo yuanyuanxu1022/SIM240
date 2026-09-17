@@ -1,0 +1,133 @@
+
+    ┃
+    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁
+    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲
+ ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱
+ ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱
+ ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱
+ ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>
+       ┗━━━━━┛
+
+[initialize] Version  : 5953d8a-dirty
+[initialize] Platform : CPU_SISD
+[initialize] Parallel : MPI
+[initialize] MPI      : 1 ranks
+[ThreadPool] Sucessfully initialized, numThreads=1
+[Directories] Directory runs/stage2_bxx_formal_20260906/imageData/ created.
+[Directories] Directory runs/stage2_bxx_formal_20260906/imageData/data/ created.
+[Directories] Directory runs/stage2_bxx_formal_20260906/vtkData/ created.
+[Directories] Directory runs/stage2_bxx_formal_20260906/vtkData/data/ created.
+[Directories] Directory runs/stage2_bxx_formal_20260906/gnuplotData/ created.
+[Directories] Directory runs/stage2_bxx_formal_20260906/gnuplotData/data/ created.
+[Directories] Directory runs/stage2_bxx_formal_20260906/introspectionData/ created.
+[Case] 
+[Case] -- OpenLB Case Components --
+[Case] names::NavierStokes = SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >
+[Case] 
+[Case] -- Parameters --
+[Case] PHYS_DELTA_X               = 5e-09
+[Case] PHYS_VTK_ITER_T            = 3e-08
+[Case] CONVERGENCE_PRECISION      = 1e-06
+[Case] MAX_PHYS_T                 = 3e-07
+[Case] OVERLAP                    = 3
+[Case] LATTICE_RELAXATION_TIME    = 1
+[Case] WALL_WIDTH                 = 1.2e-07
+[Case] PHYS_CHAR_DENSITY          = 1000
+[Case] GROOVE_WIDTH               = 1.2e-07
+[Case] INTERVAL_CONVERGENCE_CHECK = 1.2e-08
+[Case] CHANNEL_HEIGHT             = 6.5e-08
+[Case] DOMAIN_LY                  = 2.4e-07
+[Case] PHYS_CHAR_VELOCITY         = 1
+[Case] PHYS_CHAR_VISCOSITY        = 1e-06
+[Case] BODY_FORCE_ACCEL           = 1e+08
+[Case] BODY_FORCE_ACCEL_X         = 1e+06
+[Case] PHYS_CHAR_LENGTH           = 2.4e-07
+[Case] CHECK_BXX                  = 1
+[Case] NUM_GROOVES                = 2
+[Case] RESOLUTION                 = 48
+[Case] 
+[SuperGeometry3D] cleaned 0 inner boundary voxel(s)
+[SuperGeometryStatistics3D] updated
+[SuperGeometry3D] the model is correct!
+[CuboidDecomposition] -- Cuboid Structure Statistics --
+[CuboidDecomposition]  Number of Cuboids: 	1
+[CuboidDecomposition]  Delta       : 		5e-09
+[CuboidDecomposition]  Ratio  (min): 		0.165289
+[CuboidDecomposition]         (max): 		2.46939
+[CuboidDecomposition]  Nodes  (min): 		118580
+[CuboidDecomposition]         (max): 		118580
+[CuboidDecomposition]  Weight (min): 		118580
+[CuboidDecomposition]         (max): 		118580
+[CuboidDecomposition] ---------------------------------
+[SuperGeometryStatistics3D] materialNumber=1; count=32928; minPhysR=(1.2e-07,0,-8.27181e-25); maxPhysR=(4.75e-07,2.4e-07,6.5e-08)
+[SuperGeometryStatistics3D] materialNumber=2; count=85652; minPhysR=(0,0,-1.5e-08); maxPhysR=(6e-07,2.4e-07,8e-08)
+[SuperGeometryStatistics3D] countTotal[1e6]=0.11858
+[prepareGeometry] Prepare Geometry ... OK
+[UnitConverter] ----------------- UnitConverter information -----------------
+[UnitConverter] -- Parameters:
+[UnitConverter] Resolution:                       N=              48
+[UnitConverter] Lattice velocity:                 latticeU=       0.000833333
+[UnitConverter] Lattice relaxation frequency:     omega=          1
+[UnitConverter] Lattice relaxation time:          tau=            1
+[UnitConverter] Characteristical length(m):       charL=          2.4e-07
+[UnitConverter] Characteristical speed(m/s):      charU=          1
+[UnitConverter] Phys. kinematic viscosity(m^2/s): charNu=         1e-06
+[UnitConverter] Phys. density(kg/m^d):            charRho=        1000
+[UnitConverter] Characteristical pressure(N/m^2): charPressure=   0
+[UnitConverter] Mach number:                      machNumber=     0.00144338
+[UnitConverter] Reynolds number:                  reynoldsNumber= 0.24
+[UnitConverter] Knudsen number:                   knudsenNumber=  0.00601407
+[UnitConverter] Characteristical CFL number:      charCFLnumber=  0.000833333
+[UnitConverter] 
+[UnitConverter] -- Conversion factors:
+[UnitConverter] Voxel length(m):                  physDeltaX=     5e-09
+[UnitConverter] Time step(s):                     physDeltaT=     4.16667e-12
+[UnitConverter] Velocity factor(m/s):             physVelocity=   1200
+[UnitConverter] Density factor(kg/m^3):           physDensity=    1000
+[UnitConverter] Mass factor(kg):                  physMass=       1.25e-22
+[UnitConverter] Viscosity factor(m^2/s):          physViscosity=  6e-06
+[UnitConverter] Force factor(N):                  physForce=      3.6e-08
+[UnitConverter] Pressure factor(N/m^2):           physPressure=   1.44e+09
+[UnitConverter] -------------------------------------------------------------
+[prepareLattice] Prepare Lattice ... OK
+[stage2Audit] step=0 t=0 meanUx=5.98132e-06 maxAbsUx=6.25e-06 qxLegacy=2.57657e-06 nonfinite=0
+[stage2Audit] step=500 t=2.08333e-09 meanUx=7.94682e-08 maxAbsUx=2.76461e-07 qxLegacy=3.42325e-08 nonfinite=0
+[stage2Audit] step=1000 t=4.16667e-09 meanUx=-1.47731e-09 maxAbsUx=3.54878e-09 qxLegacy=-6.36378e-10 nonfinite=0
+[stage2Audit] step=1500 t=6.25e-09 meanUx=1.60057e-11 maxAbsUx=3.36498e-11 qxLegacy=6.89475e-12 nonfinite=0
+[stage2Audit] step=2000 t=8.33333e-09 meanUx=2.00287e-13 maxAbsUx=5.52014e-13 qxLegacy=8.62773e-14 nonfinite=0
+[stage2Audit] step=2500 t=1.04167e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=3000 t=1.25e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=3500 t=1.45833e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=4000 t=1.66667e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=4500 t=1.875e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=5000 t=2.08333e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=5500 t=2.29167e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=6000 t=2.5e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=6500 t=2.70833e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=7000 t=2.91667e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=7500 t=3.125e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=8000 t=3.33333e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=8500 t=3.54167e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=9000 t=3.75e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=9500 t=3.95833e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=10000 t=4.16667e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=10500 t=4.375e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=11000 t=4.58333e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=11500 t=4.79167e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=12000 t=5e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=12500 t=5.20833e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=13000 t=5.41667e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=13500 t=5.625e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=14000 t=5.83333e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=14500 t=6.04167e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=15000 t=6.25e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=15500 t=6.45833e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=16000 t=6.66667e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=16500 t=6.875e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=17000 t=7.08333e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=17500 t=7.29167e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=18000 t=7.5e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=18500 t=7.70833e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=19000 t=7.91667e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=19500 t=8.125e-08 meanUx=1.38726e-14 maxAbsUx=9.17916e-14 qxLegacy=5.9759e-15 nonfinite=0
+[stage2Audit] step=19999 t=8.33292e-08 meanUx=1.4137e-14 maxAbsUx=1.08896e-13 qxLegacy=6.08977e-15 nonfinite=0

@@ -1,0 +1,47 @@
+make -C /home/dell/openlb/external
+make -C /home/dell/openlb core
+make[1]: Entering directory '/home/dell/openlb'
+make[1]: Entering directory '/home/dell/openlb/external'
+make -C zlib
+make[2]: Entering directory '/home/dell/openlb/external'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/dell/openlb/external/zlib'
+cp zlib/build/libz.a lib/
+make -C tinyxml2
+make[2]: Entering directory '/home/dell/openlb/external'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/dell/openlb/external/tinyxml2'
+cp tinyxml2/build/libtinyxml2.a lib/
+make -C gtest
+make[2]: Entering directory '/home/dell/openlb/external'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/dell/openlb/external/gtest'
+cp gtest/build/libgtest_main.a lib/
+make[1]: Nothing to be done for 'core'.
+make[1]: Leaving directory '/home/dell/openlb'
+cp gtest/build/libgtest.a lib/
+make[1]: Leaving directory '/home/dell/openlb/external'
+mpic++ -O3 -Wall -march=native -mtune=native -std=c++20 -DOLB_VERSION=\"5953d8a-dirty\" -pthread -DPARALLEL_MODE_MPI  -DPLATFORM_CPU_SISD -DDEFAULT_FLOATING_POINT_TYPE=double -I/home/dell/openlb/src -I/home/dell/openlb/external/zlib -I/home/dell/openlb/external/tinyxml2 -c -o stage2BlockingAudit.o stage2BlockingAudit.cpp
+In file included from stage2BlockingAudit.cpp:2:
+../case.h: In function ‘void setInitialValues(MyCase&)’:
+../case.h:182:9: warning: typedef ‘using DESCRIPTOR = olb::ConcreteCase<olb::meta::plain_map<olb::meta::list<olb::names::NavierStokes>, olb::meta::list<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > > > >::descriptor_t_of<olb::names::NavierStokes>’ locally defined but not used [-Wunused-local-typedefs]
+  182 |   using DESCRIPTOR = MyCase::descriptor_t_of<NavierStokes>;
+      |         ^~~~~~~~~~
+../case.h: In function ‘olb::ConcreteCase<olb::meta::plain_map<olb::meta::list<olb::names::NavierStokes>, olb::meta::list<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > > > >::value_t getResults(MyCase&, std::size_t, std::ofstream&, olb::util::ValueTracer<double>&, olb::SuperLatticePhysVelocity3D<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperIntegral3D<double>&, olb::SuperMax3D<double>&)’:
+../case.h:223:9: warning: unused variable ‘geometry’ [-Wunused-variable]
+  223 |   auto& geometry   = myCase.getGeometry();
+      |         ^~~~~~~~
+../case.h:218:9: warning: typedef ‘using DESCRIPTOR = olb::ConcreteCase<olb::meta::plain_map<olb::meta::list<olb::names::NavierStokes>, olb::meta::list<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > > > >::descriptor_t_of<olb::names::NavierStokes>’ locally defined but not used [-Wunused-local-typedefs]
+  218 |   using DESCRIPTOR = MyCase::descriptor_t_of<NavierStokes>;
+      |         ^~~~~~~~~~
+stage2BlockingAudit.cpp: In function ‘int main(int, char**)’:
+stage2BlockingAudit.cpp:133:10: warning: variable ‘finalQxLegacy’ set but not used [-Wunused-but-set-variable]
+  133 |   double finalQxLegacy = 0., finalQxLegacySuperficial = 0., finalBxx = 0.;
+      |          ^~~~~~~~~~~~~
+stage2BlockingAudit.cpp:69:9: warning: typedef ‘using T = using olb::ConcreteCase<olb::meta::plain_map<olb::meta::list<olb::names::NavierStokes>, olb::meta::list<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > > > >::value_t = using olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >::value_t = double’ locally defined but not used [-Wunused-local-typedefs]
+   69 |   using T = MyCase::value_t;
+      |         ^
+mpic++ stage2BlockingAudit.o -o stage2BlockingAudit -lolbcore -L/home/dell/openlb/external/lib  -lpthread -lz -ltinyxml2 -L/home/dell/openlb/build/lib

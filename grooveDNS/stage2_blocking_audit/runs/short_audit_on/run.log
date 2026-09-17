@@ -1,0 +1,102 @@
+
+    ┃
+    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁
+    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲
+ ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱
+ ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱
+ ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱
+ ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>
+       ┗━━━━━┛
+
+[initialize] Version  : 5953d8a-dirty
+[initialize] Platform : CPU_SISD
+[initialize] Parallel : MPI
+[initialize] MPI      : 1 ranks
+[ThreadPool] Sucessfully initialized, numThreads=1
+[Directories] Directory ./tmp/ created.
+[Directories] Directory ./tmp/imageData/ created.
+[Directories] Directory ./tmp/imageData/data/ created.
+[Directories] Directory ./tmp/vtkData/ created.
+[Directories] Directory ./tmp/vtkData/data/ created.
+[Directories] Directory ./tmp/gnuplotData/ created.
+[Directories] Directory ./tmp/gnuplotData/data/ created.
+[Directories] Directory ./tmp/introspectionData/ created.
+[Directories] Directory runs/short_audit_on/imageData/ created.
+[Directories] Directory runs/short_audit_on/imageData/data/ created.
+[Directories] Directory runs/short_audit_on/vtkData/ created.
+[Directories] Directory runs/short_audit_on/vtkData/data/ created.
+[Directories] Directory runs/short_audit_on/gnuplotData/ created.
+[Directories] Directory runs/short_audit_on/gnuplotData/data/ created.
+[Directories] Directory runs/short_audit_on/introspectionData/ created.
+[Case] 
+[Case] -- OpenLB Case Components --
+[Case] names::NavierStokes = SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >
+[Case] 
+[Case] -- Parameters --
+[Case] PHYS_DELTA_X               = 5e-09
+[Case] PHYS_VTK_ITER_T            = 3e-08
+[Case] CONVERGENCE_PRECISION      = 1e-06
+[Case] MAX_PHYS_T                 = 3e-07
+[Case] OVERLAP                    = 3
+[Case] LATTICE_RELAXATION_TIME    = 1
+[Case] WALL_WIDTH                 = 1.2e-07
+[Case] PHYS_CHAR_DENSITY          = 1000
+[Case] GROOVE_WIDTH               = 1.2e-07
+[Case] INTERVAL_CONVERGENCE_CHECK = 1.2e-08
+[Case] CHANNEL_HEIGHT             = 6.5e-08
+[Case] DOMAIN_LY                  = 2.4e-07
+[Case] PHYS_CHAR_VELOCITY         = 1
+[Case] PHYS_CHAR_VISCOSITY        = 1e-06
+[Case] BODY_FORCE_ACCEL           = 1e+08
+[Case] BODY_FORCE_ACCEL_X         = 1e+06
+[Case] PHYS_CHAR_LENGTH           = 2.4e-07
+[Case] CHECK_BXX                  = 1
+[Case] NUM_GROOVES                = 2
+[Case] RESOLUTION                 = 48
+[Case] 
+[SuperGeometry3D] cleaned 0 inner boundary voxel(s)
+[SuperGeometryStatistics3D] updated
+[SuperGeometry3D] the model is correct!
+[CuboidDecomposition] -- Cuboid Structure Statistics --
+[CuboidDecomposition]  Number of Cuboids: 	1
+[CuboidDecomposition]  Delta       : 		5e-09
+[CuboidDecomposition]  Ratio  (min): 		0.165289
+[CuboidDecomposition]         (max): 		2.46939
+[CuboidDecomposition]  Nodes  (min): 		118580
+[CuboidDecomposition]         (max): 		118580
+[CuboidDecomposition]  Weight (min): 		118580
+[CuboidDecomposition]         (max): 		118580
+[CuboidDecomposition] ---------------------------------
+[SuperGeometryStatistics3D] materialNumber=1; count=32928; minPhysR=(1.2e-07,0,-8.27181e-25); maxPhysR=(4.75e-07,2.4e-07,6.5e-08)
+[SuperGeometryStatistics3D] materialNumber=2; count=85652; minPhysR=(0,0,-1.5e-08); maxPhysR=(6e-07,2.4e-07,8e-08)
+[SuperGeometryStatistics3D] countTotal[1e6]=0.11858
+[prepareGeometry] Prepare Geometry ... OK
+[UnitConverter] ----------------- UnitConverter information -----------------
+[UnitConverter] -- Parameters:
+[UnitConverter] Resolution:                       N=              48
+[UnitConverter] Lattice velocity:                 latticeU=       0.000833333
+[UnitConverter] Lattice relaxation frequency:     omega=          1
+[UnitConverter] Lattice relaxation time:          tau=            1
+[UnitConverter] Characteristical length(m):       charL=          2.4e-07
+[UnitConverter] Characteristical speed(m/s):      charU=          1
+[UnitConverter] Phys. kinematic viscosity(m^2/s): charNu=         1e-06
+[UnitConverter] Phys. density(kg/m^d):            charRho=        1000
+[UnitConverter] Characteristical pressure(N/m^2): charPressure=   0
+[UnitConverter] Mach number:                      machNumber=     0.00144338
+[UnitConverter] Reynolds number:                  reynoldsNumber= 0.24
+[UnitConverter] Knudsen number:                   knudsenNumber=  0.00601407
+[UnitConverter] Characteristical CFL number:      charCFLnumber=  0.000833333
+[UnitConverter] 
+[UnitConverter] -- Conversion factors:
+[UnitConverter] Voxel length(m):                  physDeltaX=     5e-09
+[UnitConverter] Time step(s):                     physDeltaT=     4.16667e-12
+[UnitConverter] Velocity factor(m/s):             physVelocity=   1200
+[UnitConverter] Density factor(kg/m^3):           physDensity=    1000
+[UnitConverter] Mass factor(kg):                  physMass=       1.25e-22
+[UnitConverter] Viscosity factor(m^2/s):          physViscosity=  6e-06
+[UnitConverter] Force factor(N):                  physForce=      3.6e-08
+[UnitConverter] Pressure factor(N/m^2):           physPressure=   1.44e+09
+[UnitConverter] -------------------------------------------------------------
+[prepareLattice] Prepare Lattice ... OK
+[stage2Audit] step=0 t=0 meanUx=5.98132e-06 maxAbsUx=6.25e-06 qxLegacy=2.57657e-06 nonfinite=0
+[stage2Audit] step=199 t=8.29167e-10 meanUx=5.84727e-06 maxAbsUx=1.08713e-05 qxLegacy=2.51883e-06 nonfinite=0

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+ <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8 4L0 0v8z" fill="#222"/></marker><pattern id="gas" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12L12 0" stroke="#d7dce2"/></pattern></defs>
+ <rect width="1200" height="720" fill="white"/><text x="600" y="42" text-anchor="middle" font-size="27" font-family="sans-serif" font-weight="bold">SIM-EC1XT240 局部显式压印：x–z 条件性截面</text>
+ <text x="600" y="72" text-anchor="middle" font-size="16" font-family="sans-serif" fill="#9b2c2c">条件：OAS矩形→凸台；d_g、h(t)及液气界面数值尚待确认</text>
+ <rect x="100" y="575" width="1000" height="80" fill="#777"/><text x="600" y="625" text-anchor="middle" fill="white" font-size="22" font-family="sans-serif">固定固体基底，表面 z=0</text>
+ <path d="M100 575H1100" stroke="#111" stroke-width="4"/>
+ <rect x="100" y="120" width="220" height="310" fill="#555"/><rect x="560" y="120" width="220" height="310" fill="#555"/><rect x="1020" y="120" width="80" height="310" fill="#555"/>
+ <rect x="320" y="120" width="240" height="170" fill="#555"/><rect x="780" y="120" width="240" height="170" fill="#555"/>
+ <rect x="100" y="430" width="1000" height="145" fill="#66b3d6" opacity=".85"/>
+ <path d="M100 485 C250 455 380 505 550 470 C720 435 865 500 1100 465 L1100 575H100Z" fill="#287fb8" opacity=".8"/>
+ <path d="M100 485 C250 455 380 505 550 470 C720 435 865 500 1100 465" stroke="#075985" stroke-width="4" fill="none"/>
+ <path d="M320 290H560V430H320Z M780 290H1020V430H780Z" fill="url(#gas)"/>
+ <text x="440" y="350" text-anchor="middle" font-size="22" font-family="sans-serif">气体</text><text x="670" y="205" text-anchor="middle" font-size="21" fill="white" font-family="sans-serif">压头固体</text><text x="600" y="535" text-anchor="middle" font-size="22" fill="white" font-family="sans-serif">液体（界面仅示意）</text>
+ <path d="M210 455V575" stroke="#222" marker-start="url(#a)" marker-end="url(#a)"/><text x="150" y="522" font-size="21" font-family="sans-serif">h(t)</text>
+ <path d="M440 290V430" stroke="#222" marker-start="url(#a)" marker-end="url(#a)"/><text x="455" y="368" font-size="20" font-family="sans-serif">d_g（待确认；既有假设100 nm）</text>
+ <path d="M112 430H305" stroke="#e65100" stroke-width="4"/><text x="110" y="415" font-size="19" font-family="sans-serif" fill="#b33b00">凸台底面 z=h(t)</text>
+ <path d="M325 290H555" stroke="#8b5cf6" stroke-width="4"/><text x="335" y="275" font-size="19" font-family="sans-serif" fill="#6d28d9">槽顶 z=h(t)+d_g</text>
+ <path d="M320 675H780" stroke="#222" marker-start="url(#a)" marker-end="url(#a)"/><text x="550" y="705" text-anchor="middle" font-size="19" font-family="sans-serif">内部图案周期 P=240 nm：图形120 nm + 空白120 nm</text>
+ <path d="M100 95V665M1100 95V665" stroke="#c026d3" stroke-width="3" stroke-dasharray="9 8"/><text x="105" y="108" font-size="16" fill="#a21caf" font-family="sans-serif">x周期边界（数值选择）</text><text x="1100" y="108" text-anchor="end" font-size="16" fill="#a21caf" font-family="sans-serif">不提供排气出口</text>
+</svg>

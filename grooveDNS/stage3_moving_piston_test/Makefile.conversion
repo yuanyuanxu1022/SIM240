@@ -1,0 +1,7 @@
+CXX ?= g++
+CXXFLAGS ?= -O2 -std=c++17 -Wall -Wextra
+all: movingPistonConversionUnit
+movingPistonConversionUnit: movingPistonConversionUnit.cpp movingPistonConversion.h movingPistonIndicator.h
+	$(CXX) $(CXXFLAGS) movingPistonConversionUnit.cpp -o $@
+clean:
+	rm -f movingPistonConversionUnit movingPistonConversion_unit.csv
