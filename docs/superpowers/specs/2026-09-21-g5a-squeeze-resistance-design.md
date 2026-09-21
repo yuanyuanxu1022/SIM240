@@ -35,7 +35,7 @@ z\text{ 向下压}
 - 在 \(h=50,75,125\ \mathrm{nm}\) 三个离散高度求解准静态压力；
 - 比较 Smooth、EX240 parallel 和 EX240 perpendicular；
 - 计算压力、出口流量、垂向载荷和归一化挤压阻抗；
-- 用解析解、质量闭合和三组介尺度网格验证求解器；
+- 用解析解和质量闭合验证单一 \(N=401\) 介尺度离散；
 - 保留输入数据的固定网格证据边界。
 
 ### 1.2 本设计不包含
@@ -71,7 +71,7 @@ z\text{ 向下压}
 | 动力黏度 | \(\mu\) | \(1.0\times10^{-3}\ \mathrm{Pa\,s}\) |
 | 参考下压速度 | \(V_p\) | \(75\times10^{-9}\ \mathrm{m/s}\) |
 | 出口表压 | \(p_{\mathrm{out}}\) | \(0\ \mathrm{Pa}\) |
-| 介尺度网格数 | \(N\) | 101、201、401 个控制体 |
+| 介尺度网格数 | \(N\) | 401 个控制体 |
 
 两个端面均为定压排液边界：
 
@@ -90,6 +90,14 @@ p(-L/2)=p(L/2)=p_{\mathrm{out}}.
 唯一 EX240 输入文件为：
 
 `transport_database/G3_height_resistance.csv`
+
+该文件中的 EX240 迁移率只采用微尺度 OpenLB 网格
+
+\[
+\Delta x=2.5\ \mathrm{nm}.
+\]
+
+本实验不读取或重新计算 \(\Delta x=5.0\ \mathrm{nm}\) 与 \(1.25\ \mathrm{nm}\) 数据。
 
 使用以下列：
 
@@ -122,7 +130,7 @@ K_{\mathrm{smooth}}(h)=\frac{h^3}{12}.
 | 75 nm | 运行 | 运行 | 运行 |
 | 125 nm | 运行 | 运行 | 运行 |
 
-每个主工况均在 \(N=101,201,401\) 上求解。401 网格作为主报告值，其他网格只用于介尺度离散收敛检查。
+每个主工况只在 \(N=401\) 上求解，并与解析解逐项比较。本实验不执行介尺度多分辨率检查，因此不声称 G5A 介尺度网格独立。
 
 ## 5. 控制方程与解析解
 
@@ -248,7 +256,6 @@ CASE/05_mesoscale/G5A_squeeze_resistance/
 - `input_manifest.json`：输入 CSV 路径与 SHA-256、配置、代码版本和运行时间；
 - `case_results.csv`：九个工况的 \(K,p_{\max},F_z,C_F,Q\) 及误差；
 - `pressure_profiles.csv`：401 网格压力和通量剖面；
-- `mesh_convergence.csv`：101/201/401 网格结果；
 - `validation_report.md`：逐门槛 PASS/FAIL；
 - `Figure_G5_pressure_profiles.png`；
 - `Figure_G5_squeeze_impedance_vs_h.png`；
@@ -296,9 +303,8 @@ Qout_m3_s,Qdisplaced_m3_s,mass_rel_error,status
 \frac{|Q_{\mathrm{out,total}}-WLV_p|}{WLV_p}.
 \]
 
-### 9.3 网格和线性门槛
+### 9.3 解析一致性和线性门槛
 
-- \(C_F\) 从 201 到 401 控制体的相对变化小于 \(10^{-4}\)；
 - 三个速度下 \(p_{\max}/V_p\) 和 \(F_z/V_p\) 的最大相对离散小于 \(10^{-10}\)；
 - 数值方向阻抗比与 \(K_{\parallel}/K_{\perp}\) 的相对差异小于 \(10^{-4}\)。
 
@@ -312,13 +318,12 @@ Qout_m3_s,Qdisplaced_m3_s,mass_rel_error,status
 - `NUMERICAL_GATE`；
 - `ANALYTIC_GATE`；
 - `MASS_GATE`；
-- `MESH_GATE`；
 - `LINEARITY_GATE`；
 - `RESULT_PASS`。
 
 只有九个工况全部生成、所有门槛通过、所有证据文件存在且可读取时，才能写：
 
-> G5A 离散高度准静态挤压阻抗实验在给定输入闭合下完成，并通过解析解、质量闭合、介尺度网格和线性响应验证。
+> G5A 离散高度准静态挤压阻抗实验在给定输入闭合下完成，并通过解析解、质量闭合和线性响应验证。
 
 但是当前 G3 数据仅来自固定 \(\Delta x=2.5\ \mathrm{nm}\) 的微尺度计算。即使 G5A 的 `RESULT_PASS=true`，也必须同时标注：
 
