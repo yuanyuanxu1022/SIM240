@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source_grid_dx_nm": 2.5,
+  "transport_database": "transport_database/G3_height_resistance.csv",
+  "heights_nm": [50.0, 75.0, 125.0],
+  "length_m": 0.001,
+  "width_m": 0.001,
+  "mu_pa_s": 0.001,
+  "vp_m_s": 7.5e-8,
+  "p_out_pa": 0.0,
+  "n_cells": 401,
+  "linearity_multipliers": [0.5, 1.0, 2.0],
+  "thresholds": {
+    "input_identity_relative": 1e-10,
+    "symmetry_relative": 1e-12,
+    "pmax_relative": 1e-6,
+    "load_relative": 1e-4,
+    "mass_relative": 1e-10,
+    "linearity_relative": 1e-10,
+    "direction_ratio_relative": 1e-4
+  }
+}
