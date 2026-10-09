@@ -30,7 +30,7 @@ def main() -> None:
         raise SystemExit("height-nm must be exactly represented at dx=2.5 nm")
 
     case_root = Path(__file__).resolve().parents[1]
-    frozen = case_root.parent / "G2_EX240_single_period_transport" / "src" / "g2_ex240_single_period_transport.cpp"
+    frozen = case_root.parents[2] / "CASE" / "02_geometry_transport" / "G2_EX240_single_period_transport" / "src" / "g2_ex240_single_period_transport.cpp"
     source = frozen.read_text()
     actual_sha = hashlib.sha256(source.encode()).hexdigest()
     if actual_sha != PINNED_G2_SHA256:

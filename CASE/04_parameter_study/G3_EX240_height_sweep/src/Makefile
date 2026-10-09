@@ -22,7 +22,7 @@ all: $(TARGET)
 
 generate: $(SOURCE)
 
-$(SOURCE): $(GENERATOR) ../../G2_EX240_single_period_transport/src/g2_ex240_single_period_transport.cpp
+$(SOURCE): $(GENERATOR) ../../../02_geometry_transport/G2_EX240_single_period_transport/src/g2_ex240_single_period_transport.cpp
 
 	python3 $(GENERATOR) --height-nm $(HEIGHT_NM) --output $(SOURCE)
 
