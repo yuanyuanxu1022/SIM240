@@ -33,7 +33,7 @@ Case04
 | Case | Case目的 | 科学问题 | 主要输出数据 | 对应论文章节 | 当前状态 |
 |---|---|---|---|---|---|
 | Case00 | 验证周期通信、材料overlap和壁面link实现 | 数值边界是否按预期安装，几何距离和周期接缝是否完整？ | candidate/installed links、q分布、fallback、异常link | 方法：边界实现与内部一致性 | **完成**：Bouzidi link审计通过 |
-| Case01 | 建立平板Poiseuille数值基准 | LBM能否在已知解析解下正确预测通量、阻力和速度剖面？ | $J_y$、$R_J$、解析误差、velocity profile、L2、质量和Mach | **LBM数值验证** | **进行中**：边界审计通过；冻结参数下Gate1精度未通过；refinement诊断完成 |
+| Case01 | 建立平板Poiseuille数值基准 | LBM能否在已知解析解下正确预测通量、阻力和速度剖面？ | $J_y$、$R_J$、解析误差、velocity profile、L2、质量和Mach | **LBM数值验证** | **完成（G1-v3）**：2.5 nm 三驱动力、三网格/GCI 通过；5 nm 历史基线 FAIL 保留 |
 | Case01a | 建立$H=175\,\mathrm{nm}$最大包络高度光滑参考 | EX240相对最大可用高度的阻力增量是多少？ | $R_{\mathrm{smooth},175}$、$J_y$、解析误差、剖面、阻力比 | **Smooth参考** | 未开始 |
 | Case01b | 建立$H=125\,\mathrm{nm}$等体积/等截面积光滑参考 | 面积变化与沟槽拓扑对阻力的贡献能否分离？ | $R_{\mathrm{smooth},125}$、$J_y$、解析误差、剖面、阻力比 | **Smooth参考** | 未开始 |
 | Case01c | 建立光滑薄膜LBM与经典润滑理论基准 | 光滑薄膜LBM结果是否与经典Reynolds润滑理论一致？ | $R_{\mathrm{LBM}}$、$R_{\mathrm{lub}}$、relative error、velocity profile、L2 error | **润滑理论验证** | 未开始；仅完成Case设计 |
@@ -85,7 +85,7 @@ Case04
 
 ## 科学与执行风险
 
-1. Case01尚未在Frozen Protocol参数下通过精度Gate，不能把refinement诊断自动视为协议变更。
+1. Case01 已在 G1-v3 独立冻结的 2.5 nm 协议下通过；5 nm 历史基线的 FAIL 必须保留，不能以状态更新抹除。
 2. Case01c不是Case01的重复：Case01验证局部Poiseuille数值解，Case01c验证薄膜渐近理论及其适用范围。
 3. Case03若只复制完全相同的严格周期单胞，$R_N$可能按构造保持不变，不能证明代表性尺度收敛。该Case必须明确研究有限阵列/入口效应、非周期边界或结构统计变化中的至少一种。
 4. Case04参数扫描必须在Case02的基准定义、网格策略和阻力归一化稳定后进行，否则响应规律会混入数值误差。
@@ -94,7 +94,7 @@ Case04
 
 ```text
 Case00  完成
-Case01  进行中：误差来源已诊断，协议层结论待定
+Case01  完成：G1-v3 通过；5 nm 基线 FAIL 已归档
 Case01a 未开始
 Case01b 未开始
 Case01c 未开始
