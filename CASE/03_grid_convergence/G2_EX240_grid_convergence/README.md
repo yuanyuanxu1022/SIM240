@@ -1,5 +1,36 @@
 # G2 EX240 grid convergence
 
+## Purpose
+
+Grid convergence verification for explicit EX240 nanogroove geometry.
+
+## Method
+
+- OpenLB LBM
+- D3Q19
+- Forced BGK
+- Bouzidi exact wall boundary
+
+## Grid
+
+- `dx=5 nm`
+- `dx=2.5 nm`
+- `dx=1.25 nm`
+
+## Production grid
+
+`dx=2.5 nm`
+
+## Reference
+
+Richardson extrapolation and GCI analysis.
+
+## Note
+
+The finest EX240 perpendicular case has `run_gate_PASS=false`, but mathematical
+convergence indicators remain valid. Further verification is required before
+using it as final reference.
+
 This isolated case implements SIM240 G2 Step 3 for the fixed single-phase,
 fixed-geometry EX240 RVE. It runs Smooth75, EX240 parallel, and EX240
 perpendicular transport at `dx = 5.0, 2.5, 1.25 nm`.
