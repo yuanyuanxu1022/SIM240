@@ -1,0 +1,160 @@
+#!/usr/bin/env bash
+# SIM240 常用终端入口。
+#
+# 用法：从仓库根目录运行 ./Allrun <子命令> [参数]。
+# 本脚本刻意不提供正式 OpenLB 计算的自动启动入口；长算例必须由用户
+# 根据已冻结的 protocol 使用单独的 tmux 命令启动，并保留 run_id、完整日志
+# 与独立 exit_code.txt。
+
+set -euo pipefail
+
+repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+die() {
+  printf '错误：%s\n' "$*" >&2
+  exit 2
+}
+
+require_directory() {
+  [[ -d "$1" ]] || die "目录不存在：${1#$repo_root/}"
+}
+
+usage() {
+  cat <<'EOF'
+SIM240 Allrun — 常用、安全的终端入口
+
+用法：
+  ./Allrun help
+      显示本帮助和每个入口的用途。
+
+  ./Allrun status
+      查看 Git 工作区改动、当前 tmux 会话，以及最新的退出码/结果证据文件。
+      只读：不会编译、不会启动计算。
+
+  ./Allrun build g1|g2-grid|g3 [height_nm]
+      编译指定 OpenLB CASE；不运行可执行文件。
+      g1       : G1 平板 Poiseuille/Bouzidi 验证。
+      g2-grid  : G2 三网格 EX240 输运程序。
+      g3       : G3 高度参数化程序；height_nm 省略时为 75。
+      示例：./Allrun build g3 75
+
+  ./Allrun precheck g3 <height_nm> <P|T>
+      运行 G3 零步几何/Bouzidi 预检查。它不调用 collideAndStream，
+      不是正式稳态计算。示例：./Allrun precheck g3 75 P
+
+  ./Allrun logs <run_directory> [lines]
+      显示某个已存在 run 目录的 run.log 最后几行（默认 80）。
+      示例：./Allrun logs CASE/04_parameter_study/G3_EX240_height_sweep/results/<run_id>
+
+  ./Allrun gate <run_directory>
+      原样显示该 run 目录中可用的 exit_code、result、summary 与边界审计文件。
+      这是证据查看，不会把单一文件自动解释为 CASE PASS。
+
+  ./Allrun postprocess g2
+      调用本地已有的 G2 后处理脚本；不重跑 OpenLB。要求 conda 环境
+      sim240-analysis 和 analysis/g2_postprocess/g2_postprocess.py 均已存在。
+
+  ./Allrun run
+      明确拒绝：本脚本不提供正式计算自动启动。请使用已审核的 tmux 命令。
+EOF
+}
+
+status() {
+  printf '%s\n' '== Git 工作区（只显示状态）=='
+  git -C "$repo_root" status --short
+
+  printf '\n%s\n' '== tmux 会话（若无则显示 none）=='
+  tmux list-sessions 2>/dev/null || printf '%s\n' 'none'
+
+  printf '\n%s\n' '== 最近的结果证据文件（最多 12 个）=='
+  # 先读完排序结果再截取，避免 `head` 提前关闭管道时与 pipefail 冲突。
+  local -a evidence_files=()
+  mapfile -t evidence_files < <(
+    find "$repo_root/CASE" -type f \( -name exit_code.txt -o -name result.txt -o -name result_summary.csv -o -name boundary_audit.txt \) \
+      -printf '%T@ %p\n' 2>/dev/null | sort -rn
+  )
+  local evidence
+  for evidence in "${evidence_files[@]:0:12}"; do
+    printf '%s\n' "${evidence#* }"
+  done
+}
+
+build_case() {
+  local case_name=${1:-}
+  local height_nm=${2:-75}
+  case "$case_name" in
+    g1)
+      make -C "$repo_root/CASE/00_validation/G1_Poiseuille_Bouzidi_Validation/src"
+      ;;
+    g2-grid)
+      make -C "$repo_root/CASE/03_grid_convergence/G2_EX240_grid_convergence/src"
+      ;;
+    g3)
+      [[ "$height_nm" =~ ^(25|50|75|100|125)$ ]] || die 'G3 height_nm 必须是 25、50、75、100 或 125。'
+      make -C "$repo_root/CASE/04_parameter_study/G3_EX240_height_sweep/src" HEIGHT_NM="$height_nm"
+      ;;
+    *)
+      die 'build 仅支持：g1、g2-grid、g3 [height_nm]。'
+      ;;
+  esac
+}
+
+precheck() {
+  [[ ${1:-} == g3 ]] || die 'precheck 当前仅支持：g3 <height_nm> <P|T>。'
+  [[ $# -eq 3 ]] || die '用法：./Allrun precheck g3 <height_nm> <P|T>。'
+  [[ "$2" =~ ^(25|50|75|100|125)$ ]] || die 'G3 height_nm 必须是 25、50、75、100 或 125。'
+  [[ "$3" == P || "$3" == T ]] || die 'G3 direction 必须是 P 或 T。'
+  bash "$repo_root/CASE/04_parameter_study/G3_EX240_height_sweep/scripts/run_precheck.sh" "$2" "$3"
+}
+
+show_logs() {
+  local run_directory=${1:-}
+  local lines=${2:-80}
+  [[ -n "$run_directory" ]] || die '用法：./Allrun logs <run_directory> [lines]。'
+  [[ "$lines" =~ ^[1-9][0-9]*$ ]] || die 'lines 必须是正整数。'
+  [[ "$run_directory" = /* ]] || run_directory="$repo_root/$run_directory"
+  require_directory "$run_directory"
+  [[ -f "$run_directory/run.log" ]] || die "未找到：$run_directory/run.log"
+  tail -n "$lines" "$run_directory/run.log"
+}
+
+show_gate_evidence() {
+  local run_directory=${1:-}
+  [[ -n "$run_directory" ]] || die '用法：./Allrun gate <run_directory>。'
+  [[ "$run_directory" = /* ]] || run_directory="$repo_root/$run_directory"
+  require_directory "$run_directory"
+
+  local found=false file
+  for file in exit_code.txt result.txt result_summary.csv boundary_audit.txt validation_report.md; do
+    if [[ -f "$run_directory/$file" ]]; then
+      found=true
+      printf '\n== %s ==\n' "$file"
+      sed -n '1,160p' "$run_directory/$file"
+    fi
+  done
+  "$found" || die '未找到已知证据文件；请传入包含正式 run 输出的目录。'
+}
+
+postprocess() {
+  [[ ${1:-} == g2 && $# -eq 1 ]] || die 'postprocess 当前仅支持：g2。'
+  local script="$repo_root/analysis/g2_postprocess/g2_postprocess.py"
+  [[ -f "$script" ]] || die '缺少 analysis/g2_postprocess/g2_postprocess.py；请先确认该本地分析脚本存在。'
+  (cd "$repo_root" && conda run --no-capture-output -n sim240-analysis python "$script")
+}
+
+command=${1:-help}
+shift || true
+case "$command" in
+  help|-h|--help) usage ;;
+  status) [[ $# -eq 0 ]] || die 'status 不接受参数。'; status ;;
+  build) build_case "$@" ;;
+  precheck) precheck "$@" ;;
+  logs) show_logs "$@" ;;
+  gate) show_gate_evidence "$@" ;;
+  postprocess) postprocess "$@" ;;
+  run)
+    printf '%s\n' 'Allrun 不提供正式计算自动启动；请使用已审核的 tmux 命令。' >&2
+    exit 2
+    ;;
+  *) die "未知子命令：$command。运行 ./Allrun help 查看用法。" ;;
+esac

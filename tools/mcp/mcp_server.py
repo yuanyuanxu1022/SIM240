@@ -6,6 +6,82 @@ PROJECT_DIR = Path("/home/dell/yuanyuanxu/SIM240")
 
 
 @server.tool()
+def analyze_g2_results():
+    """运行 G2 后处理模块并返回生成文件和 Markdown 摘要。"""
+    import subprocess
+
+    script = PROJECT_DIR / "analysis/g2_postprocess/g2_postprocess.py"
+    if not script.exists():
+        return f"G2 后处理脚本不存在: {script}"
+
+    command = [
+        "conda", "run", "--no-capture-output", "-n", "sim240-analysis",
+        "python", str(script),
+    ]
+    try:
+        result = subprocess.run(
+            command,
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True,
+            timeout=300,
+            check=False,
+        )
+    except Exception as error:
+        return f"G2 后处理执行异常: {error}"
+
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip()
+        return f"G2 后处理失败 (exit_code={result.returncode})\n{detail[-4000:]}"
+
+    output_dir = None
+    for line in result.stdout.splitlines():
+        if line.startswith("output="):
+            output_dir = Path(line.split("=", 1)[1].strip())
+            break
+    if output_dir is None:
+        return "G2 后处理完成但未解析到输出目录\n" + result.stdout[-2000:]
+    if not output_dir.is_absolute():
+        output_dir = PROJECT_DIR / output_dir
+    summary = output_dir / "G2_POSTPROCESS_SUMMARY.md"
+    if not summary.exists():
+        return f"G2 后处理输出目录: {output_dir}\n未找到摘要文件: {summary}"
+
+    return (
+        f"output_dir={output_dir}\n"
+        f"figures={output_dir / 'G2_K_convergence.png'},"
+        f"{output_dir / 'G2_anisotropy.png'},"
+        f"{output_dir / 'G2_GCI.png'}\n"
+        f"summary_path={summary}\n\n"
+        f"{summary.read_text(encoding='utf-8', errors='ignore')}"
+    )
+
+
+@server.tool()
+def analyze_latest_transport_results():
+    """自动发现最新 OpenLB results 并更新 SIM240 介尺度输运数据库。"""
+    import subprocess
+
+    script = PROJECT_DIR / "analysis/transport_parameter_extraction/extract_transport_parameters.py"
+    database = PROJECT_DIR / "analysis/transport_parameter_extraction/transport_database"
+    if not script.exists():
+        return f"输运参数提取脚本不存在: {script}"
+    command = [
+        "conda", "run", "--no-capture-output", "-n", "sim240-analysis",
+        "python", str(script), "--auto-latest", "--database-root", str(database),
+    ]
+    try:
+        result = subprocess.run(command, cwd=PROJECT_DIR, capture_output=True, text=True, timeout=300, check=False)
+    except Exception as error:
+        return f"输运数据库提取异常: {error}"
+    if result.returncode != 0:
+        return f"输运数据库提取失败 (exit_code={result.returncode})\n{(result.stderr or result.stdout)[-4000:]}"
+    summary = database / "reports" / "TRANSPORT_DATABASE_SUMMARY.md"
+    index = database / "transport_database.csv"
+    return f"{result.stdout.strip()}\ndatabase={database}\nindex={index}\nsummary={summary}\n\n{summary.read_text(encoding='utf-8', errors='ignore') if summary.exists() else 'summary missing'}"
+
+
+@server.tool()
 def read_sim240_context():
     """
     读取 SIM240 项目当前状态说明
