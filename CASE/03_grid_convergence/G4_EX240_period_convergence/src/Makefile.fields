@@ -1,0 +1,38 @@
+# Isolated Nx=2 output repair; never overwrites build/ used by active old runs.
+CASE_ROOT := ..
+OLB_ROOT := /home/dell/openlb
+BUILD := $(CASE_ROOT)/build_fields_v1
+GENERATOR := $(CASE_ROOT)/scripts/generate_period_source_fields.py
+BASE_GENERATOR := $(CASE_ROOT)/scripts/generate_period_source.py
+FROZEN := ../../../02_geometry_transport/G2_EX240_single_period_transport/src/g2_ex240_single_period_transport.cpp
+MODES := serial mpi
+A_TAGS := a5e4 a1e5 a2e5
+CXX := mpic++
+CXXFLAGS := -O3 -Wall -march=native -mtune=native -std=c++20 \
+  -DOLB_VERSION=\"5953d8a-dirty\" -pthread -DPARALLEL_MODE_MPI \
+  -DPLATFORM_CPU_SISD -DDEFAULT_FLOATING_POINT_TYPE=double
+INCLUDES := -I$(OLB_ROOT)/src -I$(OLB_ROOT)/external/zlib -I$(OLB_ROOT)/external/tinyxml2
+LIBS := -L$(OLB_ROOT)/build/lib -lolbcore -L$(OLB_ROOT)/external/lib -lz -ltinyxml2 -lpthread
+.SECONDARY:
+.PHONY: all
+all: $(BUILD)/g4_nx2_serial_a1e5 $(foreach tag,$(A_TAGS),$(BUILD)/g4_nx2_mpi_$(tag))
+
+$(BUILD)/generated/g4_nx2_%.cpp: $(GENERATOR) $(BASE_GENERATOR) $(FROZEN)
+	@mkdir -p $(dir $@)
+	python3 $(GENERATOR) --nx 2 --mode $* --output $@
+
+$(BUILD)/generated/g4_nx2_%_a5e4.cpp: $(BUILD)/generated/g4_nx2_%.cpp
+	sed 's/constexpr T acceleration = 1.0e5;/constexpr T acceleration = 5.0e4;/' $< > $@
+
+$(BUILD)/generated/g4_nx2_%_a2e5.cpp: $(BUILD)/generated/g4_nx2_%.cpp
+	sed 's/constexpr T acceleration = 1.0e5;/constexpr T acceleration = 2.0e5;/' $< > $@
+
+define BIN_RULE
+$(BUILD)/g4_nx2_$(1)_$(2): $(BUILD)/generated/$(3)
+	$$(CXX) $$(CXXFLAGS) $$(INCLUDES) -MMD -MP -MF $$@.d -c $$< -o $$@.o
+	$$(CXX) $$@.o -o $$@ $$(LIBS)
+endef
+$(foreach mode,$(MODES),\
+  $(eval $(call BIN_RULE,$(mode),a1e5,g4_nx2_$(mode).cpp))\
+  $(eval $(call BIN_RULE,$(mode),a5e4,g4_nx2_$(mode)_a5e4.cpp))\
+  $(eval $(call BIN_RULE,$(mode),a2e5,g4_nx2_$(mode)_a2e5.cpp)))
