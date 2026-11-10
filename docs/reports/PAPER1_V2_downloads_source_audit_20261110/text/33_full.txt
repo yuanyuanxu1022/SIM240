@@ -1,0 +1,1423 @@
+Engineering with Computers (2025) 41:4605–4623
+https://doi.org/10.1007/s00366-025-02217-w
+
+    ORIGINAL ARTICLE
+
+
+
+A hybrid Lattice-Boltzmann model for hydro-electrochemical
+modeling and sensitivity analysis of crystallization potential in
+nanoporous media. Part II: application to the identification and
+quantification of influencing factors of phosphate saturation
+Fedor Bukreev1,2 · Adrian Kummerländer1,3 · Julius Jeßberger1,3 · Dennis Teutscher1,2 · Shota Ito1,2 ·
+Stephan Simonis1,3 · Davide Dapelo4 · Mohaddeseh M. Nezhad4 · Hermann Nirschl2 · Mathias J. Krause1,2,3
+
+Received: 25 February 2025 / Accepted: 21 September 2025 / Published online: 13 October 2025
+© The Author(s) 2025
+
+
+Abstract
+This paper series considers the process of hydro-electrochemical saturation in nano-scale porous media. In Part I, we intro-
+duced a novel, synchronous, and integrated numerical model for hydro-electro-chemo-dynamics simulation and sensitivity
+analysis of nanoscale crystallization potential, and validated each of its components separately. In this Part II, we apply
+this methodology to perform the integrated simulations of complex 2D and 3D nanopore systems that exhibit electro-
+chemical, hydrodynamic, and crystallization phenomena, in pair with sensitivity analysis. The phenomenon chosen for this
+analysis is the formation of octa-calcium phosphate in the calcium silicate hydrate. A reactive Navier–Stokes–Poisson–
+Nernst–Planck equation system for three ions types in the moving fluid and in the presence of a dynamic electric field is
+discretized using lattice Boltzmann methods. Using automatic differentiation, simplified two-dimensional models of open
+and blind pores as well as a three-dimensional µCT scan of a porous rock are investigated with respect to the influences
+of electric surface potential, pore width and length, carrier fluid velocity and ion concentrations on octacalcium phosphate
+saturation. These simulations reveal new previously unknown insights into the crystallization process in nanopores—spe-
+cifically, that narrow long blind pores with higher surface electric potential promote saturation probability. Moreover, large
+geometries with bigger pore systems accumulate more ions in their center locally in comparison to the smaller systems.
+
+Keywords Nanoporous geometry · Phosphates crystallization · Saturation · Electro-chemistry · Lattice-Boltzmann
+method · Automatic differentiation
+
+
+                                                                           1 Introduction
+
+                                                                           The present Part II uses the integrated hydro-electro-chemo-
+     Fedor Bukreev                                                         dynamics sensitivity assessing solver we presented in Part
+     fedor.bukreev@kit.edu                                                 I, to perform comprehensive simulations of the phosphate
+                                                                           crystallization reaction—more specifically, to the octacal-
+1
+     Lattice Boltzmann Research Group (LBRG), Karlsruhe                    cium phosphate (OCP) saturation. This reaction is the main
+     Institute of Technology (KIT), Straße am Forum 8,
+     76131 Karlsruhe, Germany                                              part of the P-RoC process, which is designed for phosphorus
+2
+                                                                           recovery from wastewater for re-utilisation in agriculture
+     Institute of Mechanical Process Engineering and Mechanics
+     (MVM), Karlsruhe Institute of Technology (KIT), Straße am             and the chemical industry [1]. The P-RoC process has a high
+     Forum 8, 76131 Karlsruhe, Germany                                     potential for world economics and ecology protection due to
+3
+     Institute for Applied and Numerical Mathematics (IANM),               its simplicity. An additional crystallization reactor installed
+     Karlsruhe Institute of Technology (KIT), Englerstraße 2,              in the sewage treatment plant would continuously produce
+     76131 Karlsruhe, Germany                                              calcium silicate hydrate (CSH) particles enriched with phos-
+4
+     Department of Civil and Environmental Engineering, School             phates which can be used for further processing steps. In
+     of Engineering, University of Liverpool, Brownlow Hill,               wastewater, an average concentration of phosphates is about
+     Liverpool L69 3GH, UK
+
+
+                                                                                                                               13
+4606                                                                                Engineering with Computers (2025) 41:4605–4623
+
+
+13 M-% [2]. Unfortunately, state-of-the-art efficiency of the    et al. [11]. The nucleation and crystallization basics are
+process is around 15–25 % [3], which is insufficient for         explained in [12]. Ionic reaction with nucleation and crys-
+industrial applications [4, 5]. Current macro-level modeling     tallization on microscale on the example of calcium carbon-
+approaches face inherent limitations in further effectiveness    ate crystal growth was experimentally investigated by Kim
+improving of the process described above. Specifically, the      et al. [13].
+existing framework based on adsorption isotherm ansatzes             In the context of computational fluid dynamics (CFD)
+[6] employs empirically fitted functions to characterize         and the Lattice-Boltzmann method (LBM), the general min-
+reaction equilibrium [7], which restricts the conclusions that   eral precipitation in a porous domain with reactively chang-
+can be drawn about the underlying chemistry.                     ing porosity has been simulated by Ahkami et al. [14]. Due
+   Apart from the crystallization kinetics itself, another       to the reaction mechanism, the saturation product plays the
+important aspect is the transport of chemical species, which     main role in the process. Despite this body of research, until
+is by crystallization macro-modelling divided into diffusion     now, the sensitivity of the saturation product with respect
+from bulk to film around adsorbent micro-particles, film dif-    to design parameters, like pore size, carrier fluid velocity,
+fusion, surface and pore diffusion. They are described on        Helmholtz potential, and reacting ion concentrations, on the
+a macro-level by distinct diffusivity coefficients that repre-   pore level has not been analyzed.
+sent disparate behavior of transported species in the corre-         This work specifically addresses this knowledge gap. In
+sponding regions around and inside of the solid adsorbent.       the first part, a hydro-electrochemical simulation system
+These coefficients are usually derived empirically and do        for nanoporous geometries was developed and validated
+not allow us to investigate the crystallization processes in     against analytical solutions. Tests indicated that the inter-
+detail. Conversely, nano-level simulation of the phosphate       nal Poisson calculation loop can be omitted for stationary
+crystallization would allow to model the above-mentioned         or quasi-stationary scenarios, where changes in the Nernst–
+phenomena without empiricism. More in detail, the model-         Planck and Navier–Stokes equations are much slower than
+lable phenomena are (cfr. Part I):                               changes in electric potential. The system’s sensitivity analy-
+                                                                 sis, using forward automatic differentiation (AD) and finite
+1. Migration of reacting ions from bulk to the pore entrance     difference method (FDM), was validated. Accordingly, the
+   (diffusive, hydraulic and electric transport)                 model has demonstrated the ability to simulate surface ionic
+2. Migration of ions through pore volume (diffusive,             reactions at the nanoscale. In this work (Part II), we apply
+   hydraulic and electric transport)                             it to perform the integrated simulations of phosphate satura-
+3. Contact of ions with pore wall leading to dissolution of      tion, complemented by a sensitivity analysis to identify key
+   calcium cations                                               influencing factors and pore behavior.
+4. Saturation of reactants at the soil surface                       This work is structured as follows. First, 2D simulations
+5. Distinct nucleation of the adsorbate ion based crystal at     of simplified models are performed (Sect. 3). A two-dimen-
+   the point with most appropriate conditions (saturation        sional parameterized simplified simulation domain, which
+   product above one and low surface tension)                    represents a resolved nanoporous system, is analyzed with
+6. Layer-wise growth of the crystal.                             the AD-based sensitivity assessment solver developed in
+                                                                 Part I (Sect. 3.2). The following influence factors are investi-
+Nanoscale investigations of chemical processes have              gated: surface electric potential, pore dimensions, bulk con-
+already been documented in the literature. Experimental and      centrations, and carrier fluid inlet velocity. Two geometries,
+numerical (not CFD) studies demonstrated that the crystal-       respectively representing blind and open pores, are used
+lization reaction of phosphate starts with the dissolution of    (Sect. 3.3). Then, the same approach is applied to investi-
+calcium cations from the CSH pore surface [8, 9]. Concrete       gate a realistic three-dimensional porous system (Sect. 4).
+leaching (similar reaction to calcium dissolution in CSH) on     Special attention is paid to the electric surface potential, as
+multiple scales was simulated numerically by Su et al. [10].     it allows us to differentiate between pore types, and to the
+Considering crystallization on the nanoscale, the incorpora-     size of simulated geometry. The results of the 3D analysis
+tion of separate phosphate ions into the pore surface was        are tested by varying the simulation setup parameters in
+modelled using the extended triple level method by Fukushi       Sect. 4.5. Finally, the main conclusions are summarized in
+
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                          4607
+
+
+
+
+Fig. 1 Full Eulerian equation system for a hydro-electro-chemical simulation of an ionic supersaturation process and dissolution reactions in
+resolved nanopores (from Part I)
+
+
+the Sect. 5. All the simulations are implemented using the                 In the boundary cells around the solid surfaces, the dis-
+OpenLB open-source software library [15]. The numerical                 solution reaction of calcium cations and saturation reactions
+runs that apply AD are parallelized using OpenMPI; all the              of all considered ions happen in parallel.
+others, via an MPI-based Multi-GPU approach [16].
+                                                                        CSH + 1.66H + ⇆ 0.86Ca2+ , (1)
+
+2 Recap of the model                                                    8Ca2+ + 6P O43− + 2H + −−−−−−→ Ca8 H2 (P O4 )6 ↓ . (2)
+                                                                                                    saturation
+
+
+
+Within this work, we use the simulation model developed in              The reaction rates r for both reactions can be expressed with
+Part I (cf. Fig. 1).                                                    the same formula
+   The model uses the Eulerian approach for all transported
+variables considering the fluid and ions as a continuum. The                  ksr
+                                                                        r=        (Ω − 1)n , (3)
+carrier fluid is described with electrically forced Navier–                   △x
+Stokes equations. The electrically laden calcium Ca2+ and
+                                                                              (           )1/σT
+hydrogen H + cations, as well as phosphate P O43− anions,               Ω=      IAP/Ksp           , (4)
+are modelled with three reactive Nernst–Planck equations.
+The electric field, which has a high impact on the considered
+nano-level, is calculated with the Poisson equation. The                where ksr is the surface-specific reaction rate constant, Ω—
+gained reactive Navier–Stokes–Poisson–Nernst–Planck                     saturation product of the species, n—reaction order, IAP—
+equation (RNSPNPE) system is discretized using LBM for                  ionic activity product, Ksp —saturation point constant and
+each system part. The built-up algorithm uses the Strang                σT —Temkin coefficient.
+splitting assumption inside each global time step—variables                The simulation algorithm can be summarized as:
+computed in one equation are assumed to be constant by the
+computation of the further equations.
+
+
+
+
+                                                                                                                                 13
+4608                                                                              Engineering with Computers (2025) 41:4605–4623
+
+
+
+
+   Due to the existing steady state in the regarded applica-    closed, blind, and open pores, each with distinct geometrical
+tion, only one Poisson equation calculation step per global     shapes. Closed pores, being inaccessible to dissolved ions
+time step is performed. The chosen discretization, including    from outside, are excluded from the simulations. We will
+boundary treatments, exhibits first-order convergence, as       investigate the open and the blind pores separately, focusing
+demonstrated through validation tests in Part I on individual   on the following parameters: surface Helmholtz potential,
+system components and their combination against existing        pore dimensions, ion concentrations, and carrier fluid inlet
+analytical solutions. Forward AD for sensitivity computa-       velocity.
+tion is coupled to the LBM solver, whereby each calculated
+variable is extended to a vector, whose further components
+are derivatives of this variable with respect to the chosen     3 2D simulations
+operational parameters.
+   Each micro-particle has contact with the bulk on both        In this section, we resolve the geometry of single particles–
+outer and inner surfaces, necessitating the consideration of    each featuring either open or blind pores–in a simplified 2D
+both in our research. According to IUPAC [17], the inner        setup.
+surfaces or inter-particle pores can be categorized into
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                           4609
+
+
+3.1 Simulation setup and boundary conditions for                    and phosphate ions are each given fixed concentrations of
+2D pore geometries                                                  0.3 and 0.1 mol m−3 , respectively, while their concentra-
+                                                                    tions inside the domain are initialized to zero to capture the
+In the current research, ion accumulation at nano-scale on          diffusion of ions from the bulk to the pore openings and into
+solid walls in porous micro-systems is investigated. For            the pores. The concentration of calcium cations, on the other
+the two-dimensional investigations, two square domains              hand, is set to zero at the boundaries to avoid undesirable
+are chosen (Fig. 2). The geometry (a) represents an open            backflow of these ions and improve boundary stability.
+pore test case, whereby the option (b) is designed for blind           At the Helmholtz layer next to the solid surface (bound-
+pores investigation. The two options are simulated with             ary E), the electric potential is set to a constant value of
+coupled sensitivity analysis, starting by nanopores diameter        ± 0.01 V. Its impact is investigated in the current work as
+of 42.8 nm. The distance between the outer solid bodies             well. The transported ions are reflected at the solid walls,
+and the domain boundaries is set to 12 Debye lengths (one           whereby in the bulk cells touching the boundaries, their
+Debye length being the distance at which the electric poten-        concentration can ∑ be changed according to the correspond-
+tial ψ falls by 1e ) computed for 0.1 mol m−3 of phosphate          ing reaction term k Rk,i . In LBM this corresponds to the
+anion. Such distance is chosen in order to make sure that the
+electric potential at the domain boundaries remains negli-          Table 1 Simulation parameters and constants
+gible. At the small simulation scales, the cell size has influ-     Parameter                                   Value
+ence on the physical computation model. At higher Knudsen           Dielectric constant ϵ [CV−1 m−1 ]                6.95 · 10−10 [20]
+numbers:                                                            Faraday constant F [Cmol    −1
+                                                                                                     ]               96485.33
+                                                                    Boltzmann constant kB [VCK−1 ]                   1.38065 · 10−23
+         M
+Kn =             (5)                                               Elementary charge e [C]                          1.602177 · 10−19
+     ρNA πd2m △x
+                                                                    Surface potential ψ0 [V]                         −0.01
+                                                                    Inlet velocity ui [ms−1 ]                        0.2
+[18], the additional Knudsen diffusion and some other                                   2 −1
+                                                                    Fluid viscosity ν [m s ]                         10−6 [20]
+effects should be considered, which would complicate the
+                                                                    Water mean free path λH2O [m]                    1.26 · 10−10 [18]
+existing model much more and are not included in the cur-
+rent research. Here, dm is the molecule diameter, and M is          Avogadro number NA [mol ]    −1
+                                                                                                                     6.02 · 1023
+the molar mass of water, which is the specie with the high-         Hydrogen ion diffusion constant DH +             9.31 · 10−9 [21]
+                                                                    [m2 s−1 ]
+est concentration. Water is also the carrier fluid and has the
+                                                                    Phosphate ion diffusion constant DP O3−          0.612 · 10−9 [21]
+largest mean free path among all considered components              [m2 s−1 ]
+                                                                                                         4
+
+
+(Table 1) in the solution, and its concentration is incompa-        Calcium ion diffusion constant DCa2+             0.792 · 10−9 [21]
+rably higher than the other ones. The cell size △x is set to        [m2 s−1 ]
+0.09 · Kn. The solid body corner length is set to 60 cells.         OCP saturation constant Ksp,OCP                  10−48.86 [22]
+   The domain boundaries A, B, C, and D are treated                 [(mol m−3 )16 ]
+identically, with the electric potential set to zero. The car-      OCP Temkin coefficient σT,OCP                    1 [9]
+rier fluid is assigned a constant flow velocity in the posi-        CSH dissolution rate coefficient kCSH            3.1 · 10−11 [9]
+                                                                    [mol m−2 s−1 ]
+tive x-direction (A, B, C, D), and these outer boundaries
+                                                                    CSH saturation constant Ksp,CSH                  1011.15 [9]
+are handled uniformly to avoid any influence from differing         [(mol m−3 )x ]
+boundary conditions and to prevent instabilities. Hydrogen          CSH Temkin coefficient σT,CSH                    16 [23]
+                                                                    Phosphor acid concentration CH3 P O4             0.1
+                                                                    [(mol m−3 ]
+                                                                    Temperature T [K]                                298.15
+                                                                                                     √
+                                                                    Debye–Hückel coefficient A [         (m3 mol−1 )] 0.016102
+                                                                    Debye–Hückel
+                                                                     √             coefficient B                     1.0391 · 108
+                                                                    [ (m3 m−2 mol−1 )]
+                                                                    Molecular distance Ca-w [m]                      2.33 · 10−10 [24]
+                                                                    Knudsen number Kn                                0.09
+                                                                    Discretization parameters
+                                                                    Cell size △x [m]                                 1.40045 · 10−9
+       (a) Open pores                    (b) Blind pores
+                                                                    Time step Poisson lattice △tP E [s]              2.45159 · 10−19
+Fig. 2 Simulation domains. Open pores—42.8 nm wide, 84 nm length-   Time step momentum lattice △tN SE [s]            2.61503 · 10−13
+per-block. Blind pores—42.8 nm wide, 123.5 nm deep                  Time step ions lattice △tN P E [s]               4.80703 · 10−11
+
+
+
+                                                                                                                                 13
+4610                                                                                    Engineering with Computers (2025) 41:4605–4623
+
+
+bounce-back boundary condition together with a source                3.2.1 Saturation product development
+term applied in the boundary cells. At the Knudsen num-
+ber of 0.09, which is here the case, the free-slip regime for        Averaged and maximal saturation product development
+the carrier fluid velocity is considered [19]. It is a simpli-       are shown in Fig. 3a, b. The development of the saturation
+fication of reality, but this Knudsen number value belongs           product varies significantly between geometries (a) and (b).
+to the upper border of the slip regime, where we assume              Despite their shallower depth (for the same width), blind
+a slip factor striving to zero–zero-gradient velocity bound-         pores exhibit significantly higher saturation levels, which
+ary or free-slip. The electric velocity, whose influence is          do not reach equilibrium within the investigated time frame.
+much higher than the influence of the carrier fluid velocity,        Conversely, in the case of open pores, the Helmholtz surface
+is still considered at the boundary cells. Knudsen diffusion         potential has no significant impact on the saturation product
+and confinement effects near the wall are not considered in          value. However, in blind pores with a positive potential, the
+terms of this work. Knudsen diffusion is still much smaller          saturation of OCP is significantly enhanced.
+than the Fickian one in the slip regime.                                Figure 5 displays the spatial distribution of the satura-
+   The list of the setup parameters and constants is shown           tion product at time t=20 µs. It is evident that saturation
+in Table 1.                                                          within the pores is much higher than on the outer particle
+                                                                     surface. The maximal values of the saturation product are
+3.2 Investigation of saturation on the 2D porous                     located closer to the center of the geometry in the case of
+object                                                               open pores and at the ends of blind pores. Consequently,
+                                                                     further investigation focuses on the behavior of saturation
+Given the significant uncertainty surrounding the Helm-              within the pores.
+holtz electric potential at solid surfaces, we consider two             To conclude, saturation within the pores is significantly
+scenarios, with potentials being set at −0.01 and +0.01 V.           higher for both Helmholtz potentials compared to the outer
+We then investigate the sensitivities of the corresponding           particle surfaces; especially high it is in the blind pore dead
+parameters. The variables for which derivatives are calcu-           ends.
+lated include carrier fluid inlet velocity, pore width, initial
+concentrations of hydrogen and phosphate ions, and electric          3.2.2 Helmholtz potential influence
+potential at the block’s solid surface (boundary E).
+   The primary evaluation criterion for crystal formation is         Figure 3c, d show the influence of the surface electric poten-
+the saturation product Ω. If it is larger than one, nucleation       tial of solid blocks on the saturation product development.
+and crystallization on the surface are enabled. Of particular        For open pores, the sensitivities indicate that to increase the
+interest is the temporal development of the spatially aver-          average saturation product, the Helmholtz surface potential
+aged and maximal saturation products, along with their par-          should be set closer to zero. However, the maximal satura-
+tial derivatives. The spatially averaged values are computed         tion value is achieved at a slightly negative potential (cfr.
+as follows:                                                          Fig. 3b ). In contrast, for blind pores, a different behavior is
+                                                                     observed. To maximize the average saturation product, the
+                   1
+                             N∑
+                              node
+                                                                     potential should be slightly positive, as can be observed in
+Ω   L1   (t) =                            Ω(xi , t), (6)            further simulations with 0.02 V and 0.2 V as surface poten-
+                 Nnode
+                         xi =1,Ω(xi )>0
+                                                                     tial values. Moreover, increasing the positive potential value
+                                                                     at the point of maximum saturation within the pore enhances
+                         1
+                                   N∑
+                                    node
+                                                                     the probability of oversaturation.
+(∂ϕ Ω)L1 (t) =                                  ∂ϕ Ω(xi , t), (7)
+                       Nnode                                             In synthesis, a positive Helmholtz surface potential
+                               xi =1,Ω(xi )>0
+                                                                     enhances saturation at the point inside a pore where the
+                                                                     saturation product reaches its maximum.
+where ϕ represents the variable with respect to which the
+derivative is taken.                                                 3.2.3 Hydrogen cations concentration influence
+   Figures 3 and 4 illustrate the saturation products and their
+sensitivities for different Helmholtz potentials across geom-        The averaged and maximal sensitivities with respect to
+etries (a) and (b). The left column presents the spatially           hydrogen ion concentration are shown in Fig. 3e, f. In
+averaged values, while the right column shows the behavior           open pores, ion accumulation increases with rising hydro-
+of the maximal values.                                               gen concentration for both negative and positive surface
+                                                                     potentials. However, a positive potential leads to a higher
+                                                                     derivative with respect to the hydrogen ion concentration.
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                                                                      4611
+
+Fig. 3 Maximal and spatially aver-                                                         +0.01 V b)
+aged developments of saturation
+product Ω and its derivatives with
+                                                                                           +0.01 V a)
+respect to surface potential ψH ,                                                          -0.01 V b)
+hydrogen and phosphate concentra-                                                          -0.01 V a)
+                                                            ·10−2                                                                        ·10−2
+tions H + , P O43− , pore width and
+inlet carrier fluid velocity uinlet
+on the a) and b) geometries by                                                                                                   4
+                                                    4
+opposite Helmholtz potentials of
+±0.01 V. Part I/II
+
+
+
+
+                                                                                                                  max
+                                      L1
+                                                    2                                                                            2
+
+
+
+                                                    0                                                                            0
+                                                        0               0.5       1         1.5              2                       0               0.5       1        1.5              2
+                                                                               time [s]             −5
+                                                                                                  ·10                                                       time [s]          ·10   −5
+
+
+                                      (a) Spatially av. saturation product                                            (b) Maximal saturation product
+
+
+                                                    0.4                                                                          0.4
+
+
+
+
+                                                                                                                  ∂ψH (max )
+                                      (∂ψH )L1
+
+
+
+
+                                                    0.2                                                                          0.2
+
+
+                                                        0                                                                            0
+
+                                                            0            0.5       1        1.5              2                           0            0.5       1       1.5              2
+                                                                                time [s]          ·10   −5                                                   time [s]         ·10   −5
+
+
+                                      (c) Surf. potential influence on L1                                       (d) Surf. potential influence on  max
+
+                                                                ·10−2                                                                        ·10−2
+
+
+                                                        1                                                                            1
+                                                                                                                  ∂CH (max )
+                                      (∂C H )L1
+
+
+
+
+                                                        0                                                                            0
+
+
+                                                    −1                                                                           −1
+
+                                                            0            0.5       1        1.5              2                           0            0.5       1       1.5              2
+                                                                                time [s]          ·10   −5                                                   time [s]         ·10   −5
+
+                                                                    +                                                                          +
+                                                        (e) H            influence on L1                                        (f) H               influence on max
+
+
+This phenomenon can be explained by the fact that cations                                   the sensitivity is always negative, indicating that hydrogen
+are repelled from the surface, which is counterbalanced by                                  is attracted to the surface by the electric force, and this force
+diffusive transport. Higher concentrations enhance the dif-                                 is sufficient to achieve OCP oversaturation even at lower
+fusive transport of ions. In blind pores with a positive sur-                               concentrations.
+face potential, the sensitivity to hydrogen concentration is                                    Thus, because a positive surface potential is prefer-
+consistently positive. Conversely, with a negative potential,                               able based on the observations in the previous section, we
+
+
+
+                                                                                                                                                                         13
+4612                                                                                                                        Engineering with Computers (2025) 41:4605–4623
+
+Fig. 4 Maximal and spatially averaged
+developments of saturation product Ω and its
+                                                                     02                                                                           02
+derivatives with respect to surface potential
+
+
+
+
+                                                                                                                                C PO3 (max )
+ψH , hydrogen and phosphate concentrations
+
+
+
+
+                                                    (CPO3 )L1
+H + , P O43− , pore width and inlet carrier fluid
+
+
+
+
+                                                                4
+velocity uinlet on the a) and b) geometries by
+
+
+
+
+                                                                                                                                              4
+                                                                     01                                                                           01
+opposite Helmholtz potentials of ±0.01 V. Part
+II/II
+
+                                                                      0                                                                              0
+                                                                           0        05       1        15              2                                0         05       1        15              2
+                                                                                           time [s]          ·105                                                        time [s]          ·105
+                                                                    (a) P O43 influence on L1                                                   (b) P O43 influence on  max
+
+                                                                             ·105                                                                           ·105
+
+
+
+
+                                                                                                                                d pore (max )
+                                                                     0                                                                              0
+                                                    (d pore )L1
+
+
+
+
+                                                                    5                                                                             5
+
+                                                                         0          05       1        15              2                               0          05       1        15              2
+                                                                                           time [s]                5                                                     time [s]                5
+                                                                                                             ·10                                                                            ·10
+                                                           (c) Pore width influence on L1                                        (d) Pore width influence on  max
+
+                                                                      01                                                                           01
+
+
+                                                                     005                                                                          005
+                                                                                                                                uinlet (max )
+                                                    (uinlet )L1
+
+
+
+
+                                                                           0                                                                             0
+
+
+                                                                    005                                                                         005
+                                                                               0     05       1       15              2                                    0      05       1       15              2
+                                                                                            time [s]         ·105                                                         time [s]         ·105
+                                                      (e) Inlet velocity influence on L1                                       (f) Inlet velocity influence on  max
+
+
+recommend increasing hydrogen concentration whenever                                         3.2.5 Pore dimensions influence
+feasible.
+                                                                                             The pore dimensions deliver the highest impact on the satu-
+3.2.4 Phosphate anions concentration influence                                               ration product. In the 2D case, the parameters considered for
+                                                                                             sensitivity analysis are pore width and length.
+Figure 4a, b illustrate the impact of phosphate anions con-                                     Pore width: Figure 4c, d illustrate the influence of pore
+centration. In all cases, an increase in phosphate concentra-                                width over the saturation product. In all the considered sce-
+tion consistently promotes a rise in the saturation product.                                 narios, pore width consistently shows negative sensitivity
+As illustrated above, the sign of the surface potential influ-                               towards the end of the simulation. Initially, the derivative
+ences the sensitivity. For anions, diffusive transport must                                  curves increase until the maximum possible volume filling
+overcome the resistance of electric force in the case of a                                   of hydrogen and phosphate ions is achieved. The maxima
+negative Helmholtz potential, resulting in higher sensitivity.                               are significantly smaller for blind pores compared to open
+   As such, we recommend increasing the phosphate con-                                       ones due to geometric differences. In geometry (a), the total
+centration whenever feasible, irrespective of the value of the                               length of open pores is greater than the combined length of
+surface potential.                                                                           the blind ones, requiring more time to fill the open pores
+                                                                                             with ions from the bulk. This time can be determined from
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                                              4613
+
+
+                                  1.5             1.75               2                               Therefore, we recommend minimizing pore width.
+                                                                                                 Although this slows ion transport from the bulk, it leads to a
+                                                              ·10−2
+                                                                                                  higher saturation product.
+                                                                                                     Pore length: Figure 6 shows the saturation product deriv-
+                                                                                                  ative with respect to pore length, calculated for geometry
+                                                                                                  (b) with a positive Helmholtz potential, as this setup yields
+                                                                                                  the highest saturation among those tested. Initially, while
+                                                                                                  the pores have not yet reached the maximum possible con-
+                                                                                                  centration of incoming ions, the derivative is negative. After
+                                                                                                  this point, the derivative starts to increase and becomes
+                                                                                                  positive, resulting in a higher maximum achieved saturation
+                                                                                                  product.
+    (a) Geometry a) -0.01 V                              (b) Geometry a) +0.01 V                     Concluding, pores should be deeper to accumulate more
+                                                                                                  reacting ions inside them.
+
+                                                                                                  3.2.6 Influence of the inlet velocity
+
+                                                                                                  The sensitivity analysis with respect to inlet velocity is
+                                                                                                  shown in Fig. 4e, f. Depending on the pore type and its
+                                                                                                  specific arrangement within the geometry, the carrier fluid
+                                                                                                  velocity can influence saturation behavior in various ways.
+                                                                                                      Open pores: The impact of carrier fluid inlet velocity is
+    (c) Geometry b) -0.01 V                              (d) Geometry b) +0.01 V                  more pronounced in open pores compared to blind pores. An
+                                                                                                  analysis of the maximum of the derivative graph provides
+                                                                                                  insight into the time required to fill the pore volume with
+                                                                                               reacting ions, similarly to the case of the influence of pore
+                                                                   −2                            size. The carrier fluid, moving at a velocity determined by
+                                                              ·10
+                                                                                                  the choice of the boundary conditions, reduces the accumu-
+Fig. 5 Saturation product spatial distribution by geometries a) and b)                            lation of dissolved calcium ions in the boundary cells from
+by negative and positive Helmholtz potentials at the simulation final                             a certain moment onward. At the beginning, the carrier fluid
+(20 µs)                                                                                           fills the pore volume with ions, which is why the sensitivity
+                     ·105
+                                                                                                  is positive, but after that it sweeps the ions away and hinders
+                                                                                                  the rise of saturation product. This negative effect is more
+                                                                                                  pronounced in open pores, where the fluid can pass through
+             2
+                                                                                                  the entire geometry with less resistance. Figure 7 illustrates
+                                                                                                  the distribution of calcium cations in open pores for setups
+                                                                                                  with 0.2 ms−1 inlet velocity and without.
+l pore 
+
+
+
+
+             0                                                                                        It is clear that the absence of the carrier fluid movement
+                                                                                                  promotes accumulation of the ions and an increasing of the
+            2
+                                                                                                  saturation product.
+                                                                         l pore ( max )
+                                                                                                      Blind pores: For the blind pores (geometry b), we com-
+                                                                         (l pore )L1
+                                                                                                  pare the sensitivities and saturation products among the
+                 0          0.2       0.4   0.6   0.8     1     1.2      1.4     1.6        1.8   pore-end centers on the right, upper, left, and bottom sides,
+                                                   time [s]                     ·10−5             as illustrated in Fig. 8.
+                                                                                                      A dead zone forms leeward of the geometry, allow-
+Fig. 6 Development of the average and maximal saturation product
+                                                                                                  ing phosphate ions to accumulate and leading to the high-
+sensitivity with respect to pore depth by geometry b) and positive
+Helmholtz potential                                                                               est saturation product at point C. Towards the end of the
+                                                                                                  simulation, all derivatives with respect to the velocity tend
+the plot by reading the time where the curves cut the x-axis.                                     towards negative values or zero. At point C, the influence of
+After reaching the sensitivity maxima, the curves decline                                         surface potential also turns negative, unlike in other pores.
+to relatively constant negative values because narrow pores                                       The reduction of the size of the dead zone in geometries
+restrict the outflow of dissolved calcium cations.                                                with deeper and narrower pores can be attributed to spatial
+
+
+
+                                                                                                                                                      13
+4614                                                                                                        Engineering with Computers (2025) 41:4605–4623
+
+Fig. 7 Accumulation of the calcium
+cation concentration at 13.46 µs with
+0.2 ms−1 carrier fluid inlet velocity and                                                                                                        ·10−8
+without
+                                                                                                                                                           2
+
+
+
+
+                                                                                                                                                                     CCa2+ [mol m−3 ]
+                                                                                                                                                           1.5
+
+                                                                                                                                                           1
+
+                                                                                                                                                           0.5
+
+                                                                                                                                                           0
+                                               (a) With inlet velocity                             (b) W/o inlet velocity
+
+Fig. 8 Velocity influence on the satura-                                                                                     ·10−2
+tion product and its sensitivities at the
+ends of blind pores by geometry b)
+                                                                                                                     4
+
+
+
+
+                                                                                                              
+                                                                                                                     2                                          D
+                                                                                                                                                                C
+                                                                                                                                                                B
+                                                                                                                                                                A
+                                                                                                                     0
+                                                                                                                         0           0.5       1         1.5               2
+                                                                                                                                            time [s]           ·10   −5
+
+                                                          (a) Measurement points                                             (b) Saturation product
+
+                                                              ·10−2
+                                                                                                                     0.4
+                                                      6
+                                                                                                                     0.3
+                                                      4
+                                              ui 
+
+
+
+
+                                                                                                               H
+
+
+
+
+                                                                                                                     0.2
+                                                      2
+
+                                                                                                                     0.1
+                                                      0
+
+                                                                                                                         0
+                                                          0           0.5      1       1.5              2                    0        0.5       1        1.5               2
+                                                                            time [s]         ·10   −5                                        time [s]          ·10
+                                                                                                                                                                     −5
+
+
+                                            (c) Sensitivity with respect to velocity                        (d) Sensitivity with                        respect            to
+                                                                                                            Helmholtz potential
+
+
+interactions among ions in the dead zone. Calcium and                             calcium concentration is at the same time the cell with the
+hydrogen ions are compelled to exit the pore, leading to a                        highest saturation product. Therefore, to achieve oversatu-
+lower saturation product at point C. The development of the                       ration, conditions should be optimized for maximal accu-
+saturation product and spatial ion distribution at the end of                     mulation of calcium in the pores.
+the simulation is depicted in Fig. 9.                                                It can be deduced that a high inlet carrier fluid veloc-
+   In the current OCP stoichiometric formula, calcium cat-                        ity accelerates the filling of pores with reactants, but at the
+ions exert the largest influence on the saturation product                        same time reduces the overall saturation product in the
+(Fig. 9a, b ). The calcium spatial distribution plays the larg-                   entire domain for open pores. In blind pores, the carrier fluid
+est part in determining the spatial distribution of the satura-                   can redistribute ions such that saturation may increase in
+tion product despite its very low concentration compared                          shallower pores while decreasing in others.
+to hydrogen and phosphate; indeed, the cell with maximal
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                               4615
+
+Fig. 9 Comparison of the saturation                       ·10−2
+product behavior and ions concentrations          6
+at the calculation end by simulations with
+and without carrier fluid velocity. Veloc-                                                                                       0.5
+ity direction is from left to right               4
+
+
+
+
+                                                                                                                                                u [m s−1 ]
+                                              
+                                                  2                                                                              0.25
+                                                                                ui 0
+                                                                                ui  0
+                                                  0
+                                                      0       0.5        1     1.5       2                                       0
+                                                                      time [s]     ·10 −5
+
+
+                                             (a)  development at point C                    (b) Carrier fluid velocity
+
+
+
+
+                                                                                                                                         CCa2+ · 10−8 [mol m−3 ]
+                                                                                                                                     2
+
+
+                                                                                                                                     1
+
+
+                                                                                                                                     0
+                                                  (c) CCa2+ without ui                          (d) CCa2+ with ui
+
+
+                                                                                                                                 1
+
+
+
+
+                                                                                                                                           C PO34− [mol m−3 ]
+                                                                                                                                 0.5
+
+
+                                                                                                                                 0
+
+                                                  (e) CP O3            without ui               (f) CP O3   with ui
+                                                                  4                                     4
+
+
+
+
+                                                                                                                                 0.3
+
+                                                                                                                                             C H + [mol m−3 ]
+                                                                                                                                 0.2
+
+
+                                                                                                                                 0.1
+
+                                                   (g) CH + without ui                           (h) CH + with ui
+
+
+3.3 Validation of 2D analysis results on modified                               parameters are varied according to the sensitivities in
+geometries                                                                      Table 2.
+                                                                                   The temporal development of average and maximal satu-
+In order to test the generality of the observations traced                      ration products is shown in the Fig. 11.
+above, two parametrized simulations—with one open                                  The modified boundary parameters and pore shapes in the
+(a) and one blind pore (b)—are performed (Fig. 10). The                         modified 2D geometries lead to a much higher saturation.
+
+
+
+                                                                                                                                13
+4616                                                                                    Engineering with Computers (2025) 41:4605–4623
+
+                                                                     be considered. By the end of the simulation, the hydrogen
+                                                                     cation concentration is uniformly distributed throughout the
+                                                                     computational domain due to its relatively high diffusion
+                                                                     coefficient, which overcomes the influence of the electric
+                                                                     force. In contrast, phosphate anions are attracted to the solid
+                                                                     surface, resulting in higher concentrations at the boundary
+                                                                     cells compared to the bulk. The main difference between
+                                                                     the two considered geometries lies in the distribution of cal-
+                                                                     cium ion concentration. In an open pore, calcium ions flow
+       (a) Open pores - II                (b) Blind pores - II       out and accumulate only at the pore center, where the total
+                                                                     transport velocity ut,i = uf l + uel,i − Di ∇CCi approaches
+                                                                                                                      i
+
+Fig. 10 Simulation domains
+                                                                     zero. In a blind pore, the transport path is approximately
+Table 2 Parameter optimization                                       twice as long, and the calcium velocity remains low over a
+Setup                                   I                   II       greater distance. Since the outlet direction is singular, the
+dpore [nm]                              42.8                10.7     calcium removal rate is halved, allowing for more efficient
+ψH [V]                                  +0.01               +0.01    ion accumulation. The total velocity at the end of the simu-
+                                                                     lation is visualized in Fig. 13.
+       +
+C(H ) [(mol m       −3
+                         ]              0.3                 6
+                                                                        The step-wise parameter optimization of geometries
+C(P O43− ) [(mol m−3 ]                  0.1                 1
+                                                                     a) and b) is provided in the supplementary materials. The
+ui [ms   −1
+               ]                        0.2                 0        applied changes lead to oversaturation in the blind pore and
+                                                                     onset of crystallization, confirming the conclusions of the
+                   b:  max
+                                                                     sensitivity analysis.
+                   b: L1                                               It can also be stated that there is a minimal surface-area-
+    0.8
+                   a:  max                                          to-volume ratio (in 2D, perimeter-to-area) needed in order
+                    a: L1                                           to reach an oversaturated solution state after which pre-
+    0.6                                                              cipitation or crystallization can occur. Also, oversaturation
+                                                                     probability grows with this ratio. Increasing the Helmholtz
+
+
+
+
+
+                                                                     potential can increase this ratio to some degree. Considering
+    0.4
+                                                                     the phosphate binding to CSH, the probability of achiev-
+                                                                     ing oversaturation and following crystallization grows with
+    0.2                                                              the pH factor. In contrast, an increase in the carrier fluid
+                                                                     velocity hinders the accumulation of calcium cations at the
+                                                                     boundary cells above a certain threshold, and for this rea-
+       0
+           0       0.5        1   1.5       2     2.5      3         son, increasing this value is not advisable.
+                                   time [s]               ·10−4
+
+Fig. 11 Average and maximal saturation product development by mod-   4 Investigation of saturation on a realistic
+ified pore geometries (a—open pore, b—blind pore)
+                                                                     3D geometry
+
+The maximal saturation product observed in the blind pore            To investigate the saturation behavior of a real porous
+surpasses the value of 1 after 550 µs and induces nucle-             micro-system, a three-dimensional setup is employed using
+ation and crystallization in that lattice cell. The saturation       a scaled pore-level CT scan of an Estaillades carbonate
+in the open pore reaches a steady state twice as fast as in          microstructure [25]. This setup maintains the same cell size
+the blind-pore case due to the presence of two inlets that           and Knudsen number as the 2D simulation. A quarter of the
+allow hydrogen and phosphate to diffuse in while calcium
+ions diffuse out.                                                    microstructure file (α = VVµCT
+                                                                                                sim
+                                                                                                    = 25%), with a length of
+   Figure 12 depicts the saturation product and ion concen-          180 nanometers and resolved with 114 cells, is surrounded
+trations distributions at the end of simulation. In the open         by 50 pure fluid cells on each side. The same boundary
+pore, the maximum saturation product is observed at the              conditions as the previous 2D setup are applied. The new
+center, equidistant from both ends. In contrast, in the blind        boundary planes which have not existed in the 2D case are
+pore, the maximum occurs at the blind end. To understand             treated in the same way as the boundaries A, B, C, D. The
+these distributions, the individual ion concentrations must
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                    4617
+
+Fig. 12 Spatial distribution of satura-
+tion product Ω and ion concentrations
+H + , P O43− , Ca2+ by geometries a) and
+                                                                                                                    1
+b) at simulation final (345 µs)
+
+                                                                                                                    0.5
+
+
+
+
+                                                                                                                                
+                                                                                                                    0
+
+
+                                                 (a)  by geom. a)            (b)  by geom. b)
+
+                                                                                                                        6
+
+
+
+
+                                                                                                                            C H + [mol m−3 ]
+                                                                                                                        3
+
+
+                                                                                                                        0
+
+
+                                            (c) CH + by geom. a)            (d) CH + by geom. b)
+
+                                                                                                                    1
+
+
+
+
+                                                                                                                                     [mol m−3 ]
+                                                                                                                    0.5
+
+
+
+
+                                                                                                                              C PO3−
+                                                                                                                                  4
+                                                                                                                    0
+
+
+                                           (e) CP O3 by geom. a)         (f) CP O3 by geom. b)
+                                                      4                              4
+
+
+
+
+                                                                                                                                  CCa2+ · 10−6 [mol m−3 ]
+                                                                                                                   1.34
+
+
+                                                                                                                   0.6
+
+
+                                                                                                                   0
+
+                                           (g) CCa2+ by geom. a)          (h) CCa2+ by geom. b)
+
+geometry and pore size distribution of the system are shown      averaged saturation product sensitivities. Additionally, we
+in Fig. 14.                                                      examine the instantaneous spatial distributions of these sen-
+   To investigate the effects of surface Helmholtz potential,    sitivities, as shown in Figs. 15 and 16.
+ion concentrations, and carrier fluid inlet velocity on crys-
+tallization within the nanoporous microstructure, we ana-
+lyze the temporal evolution of both maximal and spatially
+
+
+
+                                                                                                                   13
+4618                                                                                      Engineering with Computers (2025) 41:4605–4623
+
+Fig. 13 Calcium cation total velocity distribution                                                                               10 − 1
+(ut,i = uf l + uel,i − Di ∇CCi ) at the simulation final (345 µs)
+                               i
+
+
+
+
+                                                                                                                                          [m s− 1 ]
+                                                                                                                                 10 − 2
+
+
+
+
+                                                                                                                                              2+
+                                                                                                                                 10 − 3
+
+                                                                                                                                 10 − 4
+                                                                      (a) Open pore a)              (b) Blind pore b)
+
+Fig. 14 3D geometry with porous body                                                    frequency
+
+and its pore size distribution [25]. The blue                                                0.11
+lines show the cut plane used for the further                                                 0.1
+evaluation                                                                                   0.09
+                                                                                             0.08
+                                                                                             0.07
+                                                                                             0.06
+                                                                                             0.05
+                                                                                             0.04
+                                                                                             0.03
+                                                                                             0.02
+                                                                                             0.01
+                                                                                               0
+
+
+
+
+                                                                                                     101
+                                                                                                     101
+                                                                                                     101
+                                                                                                     101
+                                                                                                     101
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                     102
+                                                                                                       1.8
+                                                                                                       3.6
+                                                                                                       5.4
+                                                                                                       7.2
+                                                                                                         9
+                                                                                                      1.08
+                                                                                                      1.26
+                                                                                                      1.44
+                                                                                                      1.62
+                                                                                                       1.8
+                                                                                                      1.98
+                                                                                                      2.16
+                                                                                                      2.34
+                                                                                                      2.52
+                                                                                                       2.7
+                                                                                                      2.88
+                                                                                                      3.06
+                                                                                                      3.24
+                                                                                                      3.42
+                                                                                                                pore size [nm]
+
+
+                                                        (a) 3D setup geometry                       (b) Pore size distribution
+
+                                                                       positive, indicating a contrasting effect. An examination
+4.1 Helmholtz potential influence                                      of the spatial distribution of this sensitivity reveals that in
+                                                                       pores with high saturation, the derivative tends to be posi-
+The sensitivity with respect to surface electric potential             tive. This phenomenon can be attributed to phosphate accu-
+(Fig. 15d, e) distinguishes between different types of pores           mulation in the dead zone leeway of, or inside the geometry.
+in the realistic geometry. Pores exhibiting a negative deriva-         This demonstrates that, whenever there is a sufficient con-
+tive are identified as open pores, while those with a positive         centration of phosphate to interact with the solid phase of
+sensitivity are classified as blind pores, which also exhibit          the porous system, the interaction becomes more dependent
+the highest saturation product. Given that the average sensi-          on the average pore flow rates.
+tivity is negative, most pores are of the open type, explain-             Higher inlet velocity enhances saturation in cells located
+ing the significant difference between average and maximal             favorably in convenient spots (pores opened to outer flow
+saturation products. This sensitivity also has the highest             dead zones where ions are gathering), but generally reduces
+norm among others, indicating that an increase in potential            saturation values at most blind cells, as it hinders the accu-
+can lead to stronger saturation.                                       mulation of ions at one position and enables the recovery
+   We can conclude that using sensitivity analysis with                of phosphate from the porous absorbents (see Fig. 17). Due
+respect to surface potential in a realistic geometry allows            to this behavior, especially as the temporal influence tends
+for categorizing pores according to their types.                       toward negative sensitivity values, the fluid injection rates
+                                                                       need to be optimized for effective trapping of phosphate.
+4.2 Influence of the inlet velocity                                    On the other hand, statistically, applying velocity to a large
+                                                                       number of micro-particles may increase crystallization
+The impact of the inlet velocity is presented in Fig. 15g,             probability at some particles.
+h. The average derivative of the saturation product with                  As such, due to the diminishing influence of the flow rate
+respect to carrier fluid inlet velocity remains negative, sim-         over time, optimizing the fluid injection rate is essential for
+ilarly to what was observed in the 2D simulations, given               effective crystallization in porous micro-particles. On the
+that most pores in the current geometry are open. However,             other side, increasing the flow rate (velocity) may enhance
+the derivative in cells with maximal saturation product is             the likelihood of crystallization in certain micro-particles.
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                                      4619
+
+Fig. 15 Temporal development of aver-
+age and maximal saturation product                 0.3                                                                                       0.3
+and its sensitivities (left) and spatial
+distribution of these values in a middle           0.2                                      max
+cut plane. Part I/II
+
+
+
+
+                                           
+                                                                                             1
+                                                                                             L
+                                                                                                                                             0.15
+
+
+
+
+                                                                                                                                                    
+                                                   0.1
+
+
+                                                     0
+                                                          0            0.5        1        1.5
+
+                                                                             time [s]      . 10 5
+                                                                                                                                             0
+
+                                                     (a)  development                                    (b)  at the 20 s
+
+                                                      4                                                                                      1
+                                             
+
+                                                      2
+
+
+
+
+                                                                                                                                                    H
+                                                 H
+
+
+
+                                                                                                                                             0
+                                             
+
+
+
+
+                                                      0
+
+
+                                                          0            0.5         1       1.5
+
+                                                                              time [s]     . 105
+                                                                                                                                             1
+
+                                           (c) Surf. pot. inflence on                                  (d)    H
+                                                                                                                     at the 20 s
+                                                                  . 10 2
+
+                                                                                                                                            0.2
+                                                         0
+                                            u 
+                                              i
+
+
+
+
+                                                                                                                                                     ui 
+                                                      5
+                                                                                                                                            0
+
+                                                              0         0.5           1     1.5
+
+                                                                              time [s]      . 10 5
+                                                                                                                                             0.2
+
+                                                   (e) ui inflence on                                   (f)  ui  at the 20 s
+
+4.3 Influence of hydrogen and phosphate ions                                              a larger portion of the porous rock CT scan results in higher
+concentration                                                                             local and average saturation product values that do not sta-
+                                                                                          bilize within the simulated time.
+These sensitivity trends (Fig. 16a, b, d, e) are generally weak                              As such, we can conclude that a larger geometry accumu-
+but consistently positive across all regions. Increasing ion                              lates more ions due to longer pores, whilst maintaining the
+concentrations, as anticipated, results in higher saturation—                             same pore size distribution.
+in particular, in blind pores. The derivative with respect to
+phosphate concentration is stronger than that with respect                                4.5 Verification of 3D sensitivities by setup
+to hydrogen concentration. The disparity between average                                  parameter variation
+and maximal values of these sensitivities is also substantial.
+                                                                                          To verify the sensitivity analysis results of the realis-
+4.4 Influence of the total porous geometry volume                                         tic porous geometry, we consider three different setups
+                                                                                          (Table 3).
+Considering the anisotropy of the pore structure taken in                                    The ions accumulate deeper in the pores when the sur-
+consideration, it is crucial to investigate the influence of the                          face electric potential is increased from Setup I to Setup II.
+total pore geometry volume. In the original setup, a quarter                              This results in a lower average saturation product, but at the
+of the Estaillades carbonate scan was simulated. Here, 45%                                same time, in an increase of the maximum saturation prod-
+of the scan’s volume is simulated under identical conditions.                             uct within the blind pores. Enlarging the geometry increases
+The comparison of these two geometries and their result-                                  the average saturation due to the prcence of deeper pores,
+ing saturation products is illustrated in Fig. 18. Simulating                             which in turn, require more time for diffusion processes to
+
+
+
+                                                                                                                                             13
+4620                                                                                                                     Engineering with Computers (2025) 41:4605–4623
+
+Fig. 16 Temporal development of aver-                             .10 3
+age and maximal saturation product and
+its sensitivities (left) and spatial distribu-
+                                                          3
+                                                                                                                                                              4
+tion of these values in a middle cut plane
+
+
+
+
+                                                                                                                                                                     CH +  10 3
+                                                          2
+
+
+
+
+                                                 
+                                                  H+
+                                                                                                                                                                          .
+                                                          1                                                                                                   2
+
+
+
+
+                                                 
+                                                          0
+
+                                                              0            0.5         1     1.5
+
+                                                                                 time [s]    . 10 5
+                                                                                                                                                              0
+
+                                                  (a) CH + influence on                                         (b)  H +  at the 20 s
+                                                                  .10 2
+
+
+                                                          4                                                                                                   2
+
+
+
+
+                                                                                                                                                                    CP O3  10 2
+                                                  3 
+
+
+
+
+                                                                                                                                                                        .
+                                                  PO4
+
+
+
+
+                                                          2
+                                                                                                                                                              1
+
+
+
+
+                                                                                                                                                                                4
+                                                          0
+
+                                                              0            0.5         1      1.5
+
+                                                                                 time [s]     . 10 5
+                                                                                                                                                              0
+
+                                                 (c) CP O3 influence on                                       (d)  P O3  at the 20 s
+                                                                    4                                                       4
+
+
+
+                                                                             0.4                    0.4           45%: max
+                                                                                                                   45%: L1
+                                                                                                                  25%: max
+                                                                             0.3                                   25%: L1
+                                                                                   
+
+
+
+                                                                                              
+
+
+
+
+                                                                                                    0.2
+
+
+
+                                                                             0.2                        0
+                       1                                                                                   0      0.5          1      1.5       2        2.5               3
+(a) With 0.2 m s        inlet (b) Without inlet velocity.
+velocity.  max = 0.455        max = 0.437                                                                                          time [s]                .10 −5
+
+Fig. 17 Saturation product with and without inlet velocity. Visualized                      (a) Temporal development of average and maximal saturation products
+                                                                                            by two geometry sizes
+are inner cells with Ω ≥ 0.2
+
+Table 3 Parameter optimization on a realistic geometry                                                                                                         0.4
+Setup                          I                II                           III
+                                                                                                                                                               0.3
+ψH [V]                         +0.01            +0.02                        +0.02
+C(H + ) [(mol m−3 ]                 6               6                        6                                                                                 0.2
+                                                                                                                                                                         
+
+
+C(P O43− ) [(mol m−3 ]              1               1                        1                                                                                 0.1
+
+ui [ms ]
+       −1                           0               0                        0                                                                                 0
+αgeom [%]                           45              45                       100                        (b)  = 25%                     (c)  = 45%
+
+                                                                                            Fig. 18 Influence of the porous geometry size on the saturation product
+plateau. This trend is observed in the temporal development                                 development
+of the maximum saturation product in Setup III. In terms
+of spatial distribution, the saturation product and calcium                                 research, we simulated a realistically porous particle with a
+ion concentration, which has the strongest influence on                                     side length of 0.72 µm. It can be assumed that simulating
+saturation, primarily accumulate towards the center of the                                  larger domains will yield higher saturation product values.
+geometry.                                                                                   Investigating this aspect will be part of our future research.
+   For phosphate saturation in CSH particles, the particle                                     It is observed that increasing the surface potential results
+size is typically several hundred micrometers. In our current                               in a lower average saturation product, while the maximum
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                           4621
+
+Fig. 19 Saturation products temporal
+development by Setups I, II and III on a           0.3                                                         1
+realistic geometry
+                                                   0.2
+
+
+
+
+                                                                                                    max
+                                             L1
+                                                                                                           05
+                                                   0.1                                 III                                              III
+                                                                                       II                                               II
+                                                                                        I                                                I
+                                                       0                                                       0
+                                                           0     0.5       1                 1.5                   0     0.5     1      1.5
+                                                                   time [s]           10 4                                 time [s]   10 4
+                                               (a) Average saturation product                         (b) Maximal saturation product
+
+Fig. 20 Distribution of calcium cation
+concentration and saturation product in
+the realistic 3D geometry by Setup III at
+the 170 µs in the middle cut plane
+
+
+
+
+                                                   0              0.5                  1                   0       0.2    0.4   0.6    0.8
+                                                           CCa2+ [mol m 3 ] 10 6                                         
+
+Fig. 21 Spatial distribution of calcium
+cation concentration and saturation prod-
+uct in the realistic 3D geometry by Setup
+III at the 170 µs
+
+
+
+
+                                                   0              0.5                  1               0.3                0.4          0.5
+                                                                          3          6
+                                                           CCa2+ [mol m        ] 10                                        
+
+
+
+
+                                                                                                                                       13
+4622                                                                                    Engineering with Computers (2025) 41:4605–4623
+
+
+value of Ω is slightly higher and is reached in a shorter time.   8. By using a larger geometry, the total pore length is
+This is due to stronger driving electric force based on the          increased, leading to a higher resulting average and
+potential gradient. The size of the geometry taken in con-           local saturation products.
+sideration produces the highest influence on the considered
+values, which grow twice by the Setup III in comparison           These findings underscore the complex interplay between
+to the Setup II (Fig. 19). As already investigated in the         geometry, surface potential, ion concentrations, and carrier
+Sect. 3.3, the highest saturation product is reached in the       fluid dynamics in determining phosphate saturation within
+cells with the highest values of calcium ion concentration,       porous CSH systems.
+as in the 3D simulations (Figs. 20, 21).                             By extending current model with crystallization reaction
+                                                                  and adding a new boundary condition which allows fluid
+                                                                  cells to become solid according to the formed crystal vol-
+5 Conclusion                                                      ume, the full crystallization process can be investigated.
+                                                                  This will be part of future work.
+The aim of the current research was to explore the depen-
+dencies of phosphate saturation in porous CSH particles.          Acknowledgements This work was performed on the HoreKa super-
+                                                                  computer funded by the Ministry of Science, Research and the Arts
+Two-dimensional parameterized simplified porous micro-            Baden-Württemberg and by the Federal Ministry of Education and
+systems representing open and blind pores were inves-             Research. The current research is a part of the DFG project number
+tigated using a validated RNSPNPE model (cf. Part I),             436212129 "Increase of efficiency in phosphate recovery by under-
+discretized with LBM and combined with forward AD sen-            standing the interaction of flow and loading processes with modeling
+                                                                  and simulation".
+sitivities computation. A µCT-scan of Estaillades carbonate
+was taken and scaled to the necessary size for a 3D simula-       Author contributions F. Bukreev: Methodology, Validation, Formal
+tion of phosphate saturation in a realistic porous geometry.      analysis, Investigation, Software, Data Curation, Writing - Original
+    The analysis revealed several key findings:                   Draft; A. Kummerländer: Software, Methodology, Writing - Review
+                                                                  & Editing; J. Jeßberger: Methodology, Software, Validation, Writing -
+                                                                  Review & Editing; D. Teutscher: Writing - Review & Editing; S. Ito:
+1. Saturation inside the porous body is significantly higher      Methodology, Writing - Review & Editing; S. Simonis: Formal analy-
+   than on the outer surfaces. In blind pore systems, sat-        sis, Data Curation, Writing - Review & Editing; Davide Dapelo: Writ-
+   uration increases towards the dead end as well as by           ing - Review & Editing; Mohaddeseh M. Nezhad: Writing - Review
+   open pores it grows towards the geometry center shifted        & Editing; H. Nirschl: Resources, Funding acquisition; M.J. Krause:
+                                                                  Software, Resources, Funding acquisition, Writing - Review & Edit-
+   along the carrier fluid movement direction.                    ing.
+2. Narrow pore width and large pore length promote over-
+   saturation of the ionic solution, whereby deeper pores         Funding Open Access funding enabled and organized by Projekt
+   extend diffusion times for ions from the bulk.                 DEAL.
+3. Increasing electric surface potential enhances saturation
+                                                                  Data availability No datasets were generated or analysed during the
+   at the end of blind pores but decreases it in open pores.
+                                                                  current study.
+4. Higher concentrations of hydrogen and phosphate
+   anions, combined with positive Helmholtz potential,
+                                                                  Declarations
+   consistently lead to higher saturation.
+5. Calcium concentration has the strongest impact on OCP          Conflict of interest The authors declare no Conflict of interest.
+   saturation, it can be investigated by observation of the
+   total ion velocity that consists of the carrier fluid veloc-   Declaration of generative AI and AI-assisted technologies in the writ-
+   ity, electric and diffusion velocities.                        ing process During the preparation of this work the authors used Chat-
+                                                                  GPT (OpenAI) in order to improve language. After using this tool,
+6. Carrier fluid velocity negatively influences saturation in     the authors reviewed and edited the content as needed and take full
+   open pores above a certain threshold, but can increase         responsibility for the content of the publication.
+   saturation in some blind pores if their inlets are located
+   in dead zones of the flow. However, it decreases satura-       Open Access This article is licensed under a Creative Commons
+   tion in other blind pores. By realistic porous systems         Attribution 4.0 International License, which permits use, sharing,
+                                                                  adaptation, distribution and reproduction in any medium or format,
+   it is impossible to predict which velocity direction and       as long as you give appropriate credit to the original author(s) and the
+   which velocity norm size at which pores will increase          source, provide a link to the Creative Commons licence, and indicate
+   saturation.                                                    if changes were made. The images or other third party material in this
+7. Across all pore types, carrier fluid velocity acceler-         article are included in the article’s Creative Commons licence, unless
+                                                                  indicated otherwise in a credit line to the material. If material is not
+   ates the filling of pore volumes with ions from the bulk       included in the article’s Creative Commons licence and your intended
+   solution.                                                      use is not permitted by statutory regulation or exceeds the permitted
+
+
+
+13
+Engineering with Computers (2025) 41:4605–4623                                                                                                                                                                                                                 4623
+
+use, you will need to obtain permission directly from the copyright                                                        359–399. Available from: ​h​t​t​p​​s​:​/​​/​w​w​w​​.​s​​c​i​e​​n​c​e​d​​i​r​e​​c​t​.​​c​o​m​​/​s​c​​i​e​n​c​​e​
+holder. To view a copy of this licence, visit ​h​t​t​p​​:​/​/​​c​r​e​a​​t​i​​v​e​c​​o​m​m​o​​n​s​.​​o​                     /​​a​r​t​​i​c​l​e​​/​p​i​​i​/​B​​9​7​8​0​4​4​4​5​6​3​6​9​9​0​0​0​0​8​3
+r​g​​/​l​i​c​e​n​s​e​s​/​b​y​/​4​.​0​/.                                                                              13.   Kim D, Mahabadi N, Jang J, van Paassen LA (2020) Assessing
+                                                                                                                           the kinetics and pore-scale characteristics of biological calcium
+                                                                                                                           carbonate precipitation in porous media using a microfluidic chip
+                                                                                                                           experiment. Water Resources Research. 56(2):e2019WR025420.
+References                                                                                                                 E2019WR025420 2019WR025420. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​2​9​​/​2​0​​1​9​
+                                                                                                                           W​R​0​2​5​4​2​0. ​h​t​t​p​​s​:​/​​/​a​r​x​​i​v​​.​o​r​​g​/​a​b​​s​/​h​​t​t​p​​s​:​/​​/​a​g​​u​p​u​b​​s​.​​o​n​l​​i​n​e​l​​i​b​r​​a​r​y​​.​w​i​​
+1.  Berg U, Knoll G, Kaschka E, Kreutzer V, Weidler PG, Nüesch                                                             l​e​y​​.​c​o​m​​/​d​​o​i​/​​p​d​f​/​​1​0​.​​1​0​2​​9​/​2​0​1​9​W​R​0​2​5​4​2​0
+    R (2007) P-roc - phosphorus recovery from wastewater by crys-                                                    14.   Ahkami M, Parmigiani A, Di Palma P, Saar M, Kong X (2020)
+    tallisation of calcium phosphate compounds. J Res Sci Technol                                                          A lattice-boltzmann study of permeability-porosity relationships
+    4(3):117–122                                                                                                           and mineral precipitation patterns in fractured porous media.
+2. Montag D, Everding W, Malms S, Pinnekamp J, Reinhardt                                                                   Comput Geosci 10:24. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​7​​/​s​1​​0​5​9​6​-​0​1​9​-​0​9​9​2​
+    J, Fehrenbach H, et al (2015) Bewertung konkreter Maßnah-                                                              6​-​4
+    men einer weitergehenden Phosphorrückgewinnung aus rel-                                                          15.   Krause MJ, Kummerländer A, Avis SJ, Kusumaatmaja H,
+    evanten Stoffströmen sowie zum effizienten Phosphoreinsatz.                                                            Dapelo D, Klemens F et al (2021) Openlb—open source lattice
+    Umweltbundesamt                                                                                                        Boltzmann code. Comput Math Appl 81:258–288. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​
+3. Egle L, Rechberger H, Zessner M (2014) Endbericht Phosphor-                                                             /​​1​0​.​1​​0​1​6​​/​J​.​​C​A​M​W​A​.​2​0​2​0​.​0​4​.​0​3​3
+    rückgewinnung aus dem Abwasser. Technische Universität Wien                                                      16.   Kummerländer A, Bukreev F, Berg S, Dorn M, Krause MJ (2024)
+4. Ehbrecht A, Fuderer T, Schönauer S, Schuhmann R (2013) Ver-                                                             Advances in Computational Process Engineering using Lattice
+    fahren zur p-rückgewinnung aus abwasser mittels kristallisation:                                                       Boltzmann Methods on High Performance Computers. In: High
+    bilanzierung der phosphorströme. KA - Korrespondenz Abwasser                                                           performance computing in science and engineering ’22. Springer
+    Abfall 60(12):1061–1066                                                                                          17.   Rouquerol J, Avnir D, Fairbridge CW, Everett DH, Haynes JM,
+5. Ehbrecht A, Schuhmann R (2015) Anwendungsreife erreicht. Das                                                            Pernicone N et al (1994) Recommendations for the character-
+    P-RoC-Verfahren ermöglicht die Phosphorrückgewinnung aus                                                               ization of porous solids (technical report). Pure Appl Chem
+    Abwässern von Kommunen, Landwirtschaft und Industrie. Ver-                                                             66(8):1739–1758. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​3​5​1​​/​p​a​​c​1​9​9​4​6​6​0​8​1​7​3​9
+    fahren zur P-Rückgewinnung aus Abwasser mittels Kristallisa-                                                     18.   Chen FF (2016) Diffusion and resistivity. Springer, Cham, pp
+    tion. ReSource. 28(2):37–45                                                                                            145–185
+6. Worch E (2021) Adsorption technology in water treatment: fun-                                                     19.   Li Z, Li J, Yan G, Galindo-Torres S, Scheuermann A, Li L (2021)
+    damentals, processes, and modeling, 2nd edn. De Gruyter, Berlin                                                        Mesoscopic model framework for liquid slip in a confined paral-
+7. Bukreev F, Raichle F, Nirschl H, Krause MJ (2023) Simulation                                                            lel-plate flow channel. Phys Rev Fluids 6:034203. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​
+    of adsorption processes on moving particles based on an Euler–                                                         1​0​.​1​​1​0​3​​/​P​h​​y​s​R​​e​v​F​​l​u​i​d​​s​.​​6​.​0​3​4​2​0​3
+    Euler description using a lattice Boltzmann discretization. Chem                                                 20.   Tian F, Li B, Kwok DY (2004) Lattice Boltzmann simulation
+    Eng Sci 270:118485. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​c​e​s​.​2​0​2​3​.​1​1​8​4​8​5         of electroosmotic flows in micro- and nanochannels. In: 2004
+8. Guan W, Ji F, Chen Q, Yan P, Pei L (2013) Synthesis and enhanced                                                        International conference on MEMS, NANO and smart systems
+    phosphate recovery property of porous calcium silicate hydrate                                                         (ICMENS’04); pp 294–299
+    using polyethyleneglycol as pore-generation agent. Materials                                                     21.   Marcus Y (1997) Ion properties / Yizhak Marcus. Marcel Dekker,
+    6(7):2846–2861. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​3​​3​9​0​​/​m​a​​6​0​7​2​8​4​6                             New York
+9. Trapote-Barreira A, Cama J, Soler JM (2014) Dissolution kinetics                                                  22.   Tung M, Eidelman N, Sieck B, Brown WE (1988) Octacalcium
+    of C–S–H gel: flow-through experiments. Physics and Chemistry                                                          phosphate solubility product from 4 to 37-degree-c. J Res Natl
+    of the Earth, Parts A/B/C. 70-71:17–31. Mechanisms and Model-                                                          Bur Stand 09(93):613. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​6​​0​2​8​​/​j​r​​e​s​.​0​9​3​.​1​5​3
+    ling of Waste-Cement and Cement-Host Rock Interactions. ​h​t​t​p​​s​:​                                           23.   Heughebaert J, Nancollas G (1984) Cheminform abstract: kinet-
+    /​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​p​c​e​.​2​0​1​3​.​1​1​.​0​0​3                                           ics of crystallization of octacalcium phosphate. Chemischer
+10. Su H, Hu J, Li H (2018) Multi-scale performance simulation and                                                         Informationsdienst 09:15. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​2​​/​c​h​​i​n​.​1​9​8​4​3​8​0​
+    effect analysis for hydraulic concrete submitted to leaching and                                                       0​4
+    frost. Eng Comput 34:821–842. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​7​​/​s​0​​0​3​6​6​-​0​          24.   Marcus Y (1988) Ionic radii in aqueous solutions. Chem Rev
+    1​8​-​0​5​7​5​-​9                                                                                                      88(8):1475–1498. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​2​1​​/​c​r​​0​0​0​9​0​a​0​0​3
+11. Fukushi K, Okuyama A, Takeda N, Kosugi S (2021) Param-                                                           25.   DyMAS (2017) A direct multi-scale pore-level simulation
+    eterization of adsorption onto minerals by extended triple layer                                                       approach. vol. Day 3 Tue, April 25, (2017) Of spe western
+    model. Appl Geochem 134:105087. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​a​p​g​​                   regional meeting; Available from. ​h​t​t​p​s​:​​​/​​/​d​o​​i​.​o​​r​​g​​/​​1​0​​.​2​1​​​1​8​/​​1​8​5​​7​2​
+    e​o​c​​h​e​m​.​​2​0​​2​1​.​1​0​5​0​8​7                                                                                 0​-​M​S
+12. Uwaha M (2015) 8—Growth kinetics: Basics of crystal growth
+    mechanisms. In: Nishinaga T, editor. Handbook of Crystal                                                         Publisher's Note Springer Nature remains neutral with regard to juris-
+    Growth (Second Edition). second edition ed. Boston: Elsevier; pp                                                 dictional claims in published maps and institutional affiliations.
+
+
+
+
+                                                                                                                                                                                                                                               13
+

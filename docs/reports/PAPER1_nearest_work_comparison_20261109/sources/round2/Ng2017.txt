@@ -1,0 +1,1874 @@
+Effective Slip for Stokes Flow Between Two Grooved
+                  Walls with an Arbitrary Phase Shift
+
+
+                                            Chiu-On Ng1
+
+            Department of Mechanical Engineering, The University of Hong Kong,
+                                     Pokfulam Road, Hong Kong
+
+
+
+                                                Abstract
+
+
+          This work aims to determine how the effective slip length for a wall-bounded flow
+      may depend on, among other geometrical parameters, the phase shift between patterns
+      on the two walls. An analytical model is developed for Stokes flow through a channel
+      bounded by walls patterned with a regular array of rectangular ribs and grooves, where
+      the patterns on the two walls can be misaligned by any phase shift. This study incor-
+      porates several previous studies as limiting or special cases. It is shown that the phase
+      shift can have qualitatively different effects on the flow rate and effective slip length,
+      depending on the flow direction. In a narrow channel, increasing the phase shift may
+      mildly decrease the flow rate and effective slip length for flow parallel to the grooves,
+      but can dramatically increase the flow rate and effective slip length for flow transverse
+      to the grooves. It is found that unless the channel height is much larger than the period
+      of the wall pattern, the effect due to wall confinement has to be taken into account on
+      evaluating the effective slip lengths.
+
+
+      Keywords: Effective slip length; grooved wall; lubricant infused surface; eigenfunction
+      expansions; wall confinement.
+
+
+
+
+1
+    Tel: (852) 2859 2622; Fax: (852) 2858 5415; E-mail address: cong@hku.hk (C.-O. Ng).
+1     Introduction
+
+It is a classical problem to determine the slip velocity above a structured surface, which
+can be an interface between fluid and a medium made up of a composite of fluid and solid.
+Classical works include, among others, Beavers and Joseph (1967) and Richardson (1971) for
+a boundary condition at an interface between fluid and a porous material, and also Philip
+(1972) for flow over a surface of mixed no-slip and no-shear conditions.
+
+    The growing demand for flow in ever smaller channels has prompted a renewed interest
+in studying flow over a micro-textured surface in recent years. The primary interest is to
+find out how much effective slip or drag reduction can be achieved on replacing a no-slip
+boundary by a boundary of mixed no-slip and slip conditions. Such micro-textured surfaces
+can be the so-called superhydrophobic surfaces (e.g. Choi et al. 2003, Ou et al. 2004), slippery
+liquid-infused porous surfaces (e.g. Wong et al. 2011) or lubricant-impregnated surfaces (e.g.
+Smith et al. 2013). Studies on these kinds of material surfaces abound in the literature.
+
+    One of the micro-structured surfaces that has been extensively studied is a corrugated
+surface with a regular array of parallel grooves (e.g. Luchini et al. 1991, Wang 2003, Maynes
+et al. 2007, Teo and Khoo 2009, Ng and Wang 2009, Teo and Khoo 2010, Ng et al. 2010,
+Mohammadi and Floryan 2013b). In particular, Wang (2003) presented a semi-analytical
+model, using eigenfunction expansions and matching, for Stokes flow over a surface with
+parallel rectangular grooves. Considering flow produced by boundary shear, Wang evaluated
+the effective slip lengths for flow both along and transverse to the grooves. Such effective
+slip lengths are applicable to a semi-infinite fluid flowing above the surface. Although he
+also considered flow in a channel with grooved walls, Wang did not look into how channel
+confinement might affect the slip lengths. When two grooved surfaces are brought in close
+proximity, the flow between them will be under the combined effects of both surfaces, and
+the resultant effective slip can be much different from that above a single surface (Cheng
+et al. 2009, Ng and Chen 2013). When channel wall confinement is considered significant,
+two parameters will become influential in the problem. One is the distance between the two
+walls, and another is the phase shift between the patterns on the two walls. The following
+questions can be asked. How far apart should the two walls be placed so that the effect of
+
+                                               2
+channel wall confinement on the effective slip may or may not be ignored? Also, how far
+apart should the two walls be separated so that the phase shift will or will not materially
+affect the effective slip? If the phase shift is influential, in what way will it affect the slip
+length as a function of the flow direction and other parameters? These questions remain
+largely unanswered to this date.
+
+   To provide answers to these questions, the present work aims to study Stokes flow between
+two grooved walls, where the flow can be along or transverse to the grooves, and there can
+be an arbitrary phase shift between the patterns on the two walls. The present problem
+incorporates several previous studies as limiting or special cases. When the distance between
+the walls is infinitely large, our problem reduces to that of Wang (2003). In the case of
+symmetric or staggered longitudinal ribs, our problem reduces to that of Wang (1994). In
+the case of symmetric or staggered transverse thin fins, our problem then reduces to that of
+Wang (1997). In Wang (1994, 1997), the focus was on the flow resistance, and the effective
+slip was not documented in these studies.
+
+   The present work models, for the first time, slip flow in a channel bounded by grooved
+walls, where the grooves on the two walls may be misaligned by any phase shift. As in Wang
+(1994, 1997, 2003), we shall use the method of domain decomposition and eigenfunction
+expansions to solve the problem. Because of the arbitrary phase shift, our problem is more
+complicated in formulation than the previous problems. The problem formulation is described
+in detail in Section 2, where we introduce the basic solutions in terms of Fourier series for the
+longitudinal and transverse flows. Low-Reynolds-number flow is considered so that inertia
+of the flow can be ignored. The domain is decomposed into two regions: one for the clear
+fluid between the two walls, and one for the fluid in a groove. The Fourier coefficients are
+determined, on making use of the orthogonality of the eigenfunctions, by matching velocity,
+stress or pressure on the interface between the two domains, as well as the no-slip conditions
+on the bottom and side walls of the groove. In Section 3, results are presented to reveal the
+dependence of the flow and the effective slip length on the flow direction, the phase shift, the
+channel height, as well as the depth and width of a groove. For some limiting or particular
+cases, our results can be checked to agree with those available in the literature. We shall
+show how the phase shift may have qualitatively different effects on the longitudinal and
+
+                                               3
+transverse flow rates and effective slip lengths. We shall also show that the phase effect will
+have appreciable effect on the slip lengths only when the channel height is not larger than
+one period of the wall pattern. In sharp contrast, the effect of channel wall confinement on
+the slip lengths may persist until the channel height is several orders of magnitude larger
+than the period of the wall pattern.
+
+
+
+2     Problem Formulation
+
+We consider pressure-driven flow through a channel bounded by two walls that are each
+patterned with evenly spaced rectangular ribs and grooves. The applied pressure gradient
+can be in a direction parallel or normal to the grooves. Figure 1(a) shows a representative
+cross section of the channel, where the length dimensions have been normalized by half the
+period of the grooves, L. The normalized period length is therefore 2. Each groove has a
+normalized width of 2a, and a normalized depth of b, where 0 ≤ a ≤ 1 can be interpreted
+as the surface area fraction of the wall being occupied by grooves. Each solid rib has a
+normalized thickness of 2(1 − a). Note that at the upper limit of a = 1, the ribs do not
+vanish but they reduce to thin fins, as shown in figure 1(c). At the lower limit of a = 0, the
+grooves disappear and the channel will reduce to a slit channel of height 2h. The two walls
+are separated by a normalized distance of 2h apart, and can be misaligned such that there
+is a phase shift of 0 ≤ φ ≤ 1 between the two patterns. The two wall patterns are in phase
+when φ = 0, and half a period out of phase when φ = 1, corresponding to the symmetric and
+staggered configurations, respectively.
+
+    For convenience of analysis, two Cartesian coordinate systems are introduced as shown in
+figure 1. The origin of (x, y) is placed at a point on the centerline of channel that is halfway
+between the centerlines of Ribs 2 and 3. The origin of (x0 , y 0) is located at a point on the
+envelope of the lower wall that is halfway between the centerlines of Ribs 1 and 3. We shall
+use the coordinates (x, y) for the layer of clear fluid between the two walls −h ≤ y ≤ h, called
+Region I. The coordinates (x0, y 0) are used for the fluid in the groove between Ribs 1 and 3
+(−a ≤ x0 ≤ a, −b ≤ y 0 ≤ 0), called Region II. In other words, Region I is the clear fluid layer
+of height 2h, while Region II is the cavity between two ribs; see figure 1(b). The envelope of
+
+                                               4
+        (a)
+
+
+
+                                                Rib 2                                              Rib 4                     Rib 6
+                                          φ                                                                b
+
+                                                                 y
+                                 x0            x1                              x                                   Centerline of channel
+                                                                                               (I)         2h
+                                                       y′
+                                                                     x′
+
+                               Rib 1                    (II)                   Rib 3                       b     Rib 5
+
+
+
+                                                            2a
+                                                             2
+
+              (b)                                                                                          (c)
+
+                                Rib 2                        Rib 4                         Rib 6
+
+
+
+                                        (I)                               2h
+
+                       Rib 1                        Rib 3                      Rib 5
+
+                                        (II)                              b                                              2
+
+
+
+
+Figure 1: (a) Cross section of a channel bounded by two structured walls with a regular array
+of rectangular grooves of width 2a and depth b, where the lengths are normalized by half
+the period of the grooves. The two walls are separated by a clear distance of 2h apart, and
+opposite ribs can be misaligned by a phase shift φ. Coordinates (x, y) are for flow in Region
+I, and coordinates (x0, y 0) are for flow in Region II. As shown in (b), Region I is the clear fluid
+layer between the two grooved walls, and Region II is the groove between Ribs 1 and 3. The
+interface between Regions I and II is the envelope of the lower grooved wall. The limiting
+case of a = 1, or ribs reducing to thin fins, is shown in (c).
+
+
+
+
+                                                                                       5
+the lower grooved wall is the interface between Regions I and II. The two coordinate systems
+are related to each other by
+                                         x0 = x + φ/2,      y 0 = y + h.                                      (1)
+
+
+
+2.1     Longitudinal flow
+
+We first consider flow driven by a pressure gradient Kz ≡ −dp/dz that is directed parallel to
+the grooves, and the resultant flow is in the z-direction (i.e. normal to the x-y plane). The
+governing equation is
+                                             ∂ 2w ∂ 2 w
+                                                 +      = −1,                                                 (2)
+                                             ∂x2   ∂y 2
+where w is the velocity normalized by Kz L2 /µ, in which µ is the fluid viscosity.
+
+    In Region I, the flow has polar symmetry, i.e. wI (x, y) = wI (−x, −y) and wI (x, −y) =
+wI (−x, y). The general solution for Region I that satisfies such symmetry and periodicity in
+the x-direction can be written as
+                                                            ∞
+                                      1 2                                 cosh(αn y)
+                                        h − y 2 + A0 +
+                                                           X
+                    wI (x, y) =                                An cos(αn x)
+                                      2                    n=1              cosh(αn h)
+                                         ∞
+                                        X                sinh(αn y)
+                                      +     Bn sin(αn x)            ,                                         (3)
+                                        n=1              sinh(αn h)
+where A0 , An and Bn are undetermined coefficients, and αn = nπ. In the above solution, the
+first term is the particular solution, corresponding to the classical parabolic velocity profile
+for Poiseuille flow through a no-slip parallel-plate channel. The constant A0 is to account
+for the effective slip arising from the grooved walls. The two infinite series are eigenfunction
+expansions to describe how the flow will change as a periodic function of x with a period of
+2/n, for n = 1, 2, · · ·.
+
+    The general solution for Region II that satisfies no-slip at y 0 = −b is
+                                           ∞
+                            1  02                        h     0         0
+                                                                                 i
+      wII (x0, y 0) = −        y + by 0 +     Cn cos(βn x0) eβn y − e−βn (y +2b)
+                                          X
+                            2             n=1
+                            ∞                                              ∞
+                                               h    0           0
+                                                                    i                 cosh(σn x0)
+                                  Dn sin(γn x0) eγn y − e−γn (y +2b) +                            sin(σn y 0), (4)
+                            X                                              X
+                        +                                                        En
+                            n=1                                            n=1        cosh(σn a)
+where Cn , Dn and En are undetermined coefficients, βn = (n − 1/2)π/a, γn = nπ/a, and
+σn = nπ/b. Here, the first term is the particular solution satisfying no-slip at the bottom.
+
+                                                        6
+The other terms are eigenfunction expansions in the form of Fourier series satisfying no-slip
+at the lateral and/or the bottom boundaries.
+
+   Let us truncate the series to finite terms: An and Bn each to M terms, Cn and Dn each
+to N terms, and En to P terms, such that N ≈ Integer[aM] and P ≈ Integer[bM]. These
+coefficients are to be determined using the following matching and boundary conditions.
+
+   The no-slip condition on the two side walls of the groove requires wII (x0 = ±a) = 0, which
+amounts to
+                                    P
+                                                                 1  02     
+                                          En sin(σn y 0 ) =         y + by 0 .
+                                    X
+                                                                                                                   (5)
+                                    n=1                          2
+Multiplying this equation by sin(σm y 0) and integrating with respect to y 0 from −b to 0 gives
+                                        2 [1 + (−1)m+1 ]
+                               Em =             3 b
+                                                         ,            m = 1, · · · , P.                            (6)
+                                              σm
+
+   The matching conditions for the continuity of velocity and shear stress on y = −h or
+y 0 = 0 are                        
+                                    wII
+                                   
+                                             for − a < x0 < a
+                            wI =                                                          ,                        (7)
+                                    0       for − 1 ≤ x0 < −a, a < x0 ≤ 1
+                                   
+
+and
+                                       ∂wI   ∂wII
+                                           =             for − a < x0 < a.                                         (8)
+                                       ∂y    ∂y 0
+
+   Integrating equation (7) with respect to x from −1 − φ/2 to 1 − φ/2 (or with respect to
+x0 from −1 to 1) gives
+                                           N
+                                             (−1)n+1                       
+                                                                 1 − e−2βn b Cn .
+                                           X
+                                   A0 =                                                                            (9)
+                                           n=1      βn
+On multiplying equation (7) by cos(αm x), followed by integration with respect to x from
+−1 − φ/2 to 1 − φ/2, we get
+              N                            N                         
+                     (1)
+                         1 − e−2βn b Cn −           (2)
+                                                        1 − e−2γn b Dn = 0,
+              X                              X
+      Am −          Imn                            Imn                                        m = 1, · · · , M,   (10)
+              n=1                            n=1
+
+where                                                                      
+                                           sin[(αm−βn )a] + sin[(αm +βn )a]
+                                          
+                                                                                     for αm 6= βn
+                (1)                                αm −βn              αm +βn
+               Imn  = cos(αm φ/2) ×                                                                      ,        (11)
+                                           a
+                                          
+                                                                                     for αm = βn
+                                                                            
+                                           sin[(αm −γn )a] − sin[(αm +γn )a]
+                                          
+                                                                                     for αm 6= γn
+                (2)                                αm −γn              αm +γn
+               Imn  = sin(αm φ/2) ×                                                                      .        (12)
+                                           a
+                                          
+                                                                                     for αm = γn
+
+                                                             7
+On multiplying equation (7) by sin(αm x), followed by integration with respect to x from
+−1 − φ/2 to 1 − φ/2, we get
+              N                                     N                        
+                     (3)
+                         1 − e−2βn b Cn +                    (4)
+                                                                 1 − e−2γn b Dn = 0,
+              X                                       X
+    Bm +            Imn                                     Imn                                   m = 1, · · · , M,     (13)
+              n=1                                     n=1
+
+where                                                                             
+                                                  sin[(αm−βn )a] + sin[(αm +βn )a]
+                                                 
+                                                                                              for αm 6= βn
+                (3)                                          αm −βn             αm +βn
+               Imn  = − sin(αm φ/2) ×                                                                            ,      (14)
+                                                  a
+                                                 
+                                                                                              for αm = βn
+                                                                                 
+                                                 sin[(αm −γn )a] − sin[(αm+γn )a]
+                                                
+                                                                                             for αm 6= γn
+                 (4)                                        αm −γn             αm +γn
+                Imn  = cos(αm φ/2) ×                                                                         .          (15)
+                                                 a
+                                                
+                                                                                             for αm = γn
+
+   On multiplying equation (8) by cos(βm x0), followed by integration with respect to x0 from
+−a to a, we get after substituting equation (6) for Em
+        M                                     M                                                        
+               (1)                                   (3)
+                                                         αn coth(αn h)Bn + βma 1 + e−2βmb Cm
+        X                                     X
+              Inm  αn tanh(αn h)An −                Inm
+        n=1                                   n=1
+                                              P
+                                                 (−1)m+1 4 [1 + (−1)n+1 ] βm
+                               !
+                           b       sin(βma) X
+              =2 h+                        −                                 ,                      m = 1, · · · , N,   (16)
+                           2          βm     n=1      σn2 b (βm
+                                                              2 + σ2 )
+                                                                   n
+
+On multiplying equation (8) by sin(γm x0), followed by integration with respect to x0 from −a
+to a, we get
+                           M                                          M
+                                    (2)                                     (4)
+                           X                                          X
+                                   Inm  αn tanh(αn h)An −                  Inm  αn coth(αn h)Bn
+                           n=1                                       n=1
+                                                               
+                                                       −2γm b
+                                   + γm a 1 + e                     Dm = 0,         m = 1, · · · , N.                   (17)
+
+
+   Equations (10), (13), (16) and (17) constitute a system of 2(M + N) equations that can be
+solved for the same number of unknown coefficients: A1,···,M , B1,···,M , C1,···,N and D1,···,N . In
+this work, we have chosen to use the routine IMSL-DLSARG to solve the system of equations.
+
+   The rate of volume flow per unit width of the channel is given by the sum of those in
+Regions I and II:
+                                                        qk = qIk + 2qIIk ,                                              (18)
+
+where the factor of 2 is to account for grooves on the upper and lower walls, and
+
+                                          1                                2h3
+                                                Z h Z 1
+                                    qIk =                   wI dxdy =          + 2hA0,                                  (19)
+                                          2      −h    −1                   3
+
+                                                                    8
+              1 0 a
+                  Z   Z
+       qIIk =         wII dx0dy 0
+              2 −b −a
+                      N                         P
+              ab3                 Cn     2       tanh(σn a) h          n+1 2
+                                                                            i
+                  + 2 (−1)n+1 2 1 − e−βn b − 4
+                     X                         X
+            =                                                   1 + (−1)       .            (20)
+               6     n=1          βn           n=1    σn5 b
+
+If we consider that the flow in the grooves (Region II) serves to lubricate the flow in the
+clear fluid layer (Region I), we may compare qIk to q = 2h3 /3 + 2λh2 , which is the flow rate
+through a channel of height of 2h bounded by walls of equal slip length λ (see Appendix I).
+Thereby, the effective slip length for the longitudinal flow can be evaluated as follows:
+
+                                         qIk − 2h3 /3   A0
+                                    λk =        2
+                                                      =    .                                (21)
+                                             2h         h
+
+Note that the effective slip length defined above is the boundary slip length of an equivalent
+uniform channel of height 2h such that, under the same pressure forcing, the flow rate through
+the equivalent channel is the same as that through a clear fluid layer of height 2h bounded
+by walls with longitudinal grooves. The effective slip length defined this way is always non-
+negative, simply because the baseline for this slip length is the envelope of the grooved wall.
+The flow below this baseline can only lubricate the flow above it. Also note that the flow rate
+below this baseline, qIIk, is excluded in the definition above. A positive effective slip length
+here means an enhanced flow rate when compared with that through a uniform channel of
+height 2h bounded by no-slip walls.
+
+   For illustration, we show in table 1 how the computed value of λk may converge as the
+number of terms M increases. Typically, a four-digit accuracy can be attained when M is
+about 50, which is consistent with that reported by Wang (2003).
+
+                   Table 1: Convergence of λk when a = 0.9, h = 1, φ = 0.
+
+                            M       20        50       100        150
+                          b = 0.1 0.08216   0.08223   0.08224   0.08224
+                          b=1     0.4191    0.4193    0.4193    0.4193
+
+
+
+
+                                               9
+2.2    Transverse flow
+
+We next consider Stokes flow driven by a pressure gradient Kx ≡ −dp0 /dx that is normal to
+the grooves, where p0 is the externally applied pressure. The resultant flow is two dimensional
+as a function of x and y, with the x-direction being the principal direction of flow. The
+governing equations are
+                                                  ∂u ∂v
+                                                    +   = 0,                                                      (22)
+                                                  ∂x ∂y
+                                             ∂ 2u ∂ 2u       ∂p
+                                                2
+                                                  + 2 = −1 +    ,                                                 (23)
+                                             ∂x    ∂y        ∂x
+                                                ∂ 2v ∂ 2v   ∂p
+                                                    +     =    ,                                                  (24)
+                                                ∂x2 ∂y 2    ∂y
+where (u, v) are the x- and y-components of velocity normalized by Kx L2 /µ, and p is the
+internally induced pressure.
+
+   For Region I, the general solutions for the velocity components that satisfy polar symmetry
+and periodicity in the x-direction are as follows:
+                                    ∞
+                  1 2                 cos(αn x)
+                    h − y 2 + A0 +
+                                   X
+ uI (x, y) =                                      [(An + Bn ) cosh(αn y) + Bn αn y sinh(αn y)]
+                  2                n=1 cosh(αn h)
+                        ∞
+                        X    sin(αn x)
+                  −                    [(Cn + Dn ) sinh(αn y) + Dn αn y cosh(αn y)] ,                             (25)
+                        n=1 cosh(αn h)
+
+
+                                    ∞
+                                    X   sin(αn x)
+                vI (x, y) =                        [An sinh(αn y) + Bn αn y cosh(αn y)]
+                                   n=1 cosh(αn h)
+                                       ∞
+                                      X    cos(αn x)
+                                    +                [Cn cosh(αn y) + Dn αn y sinh(αn y)] ,                       (26)
+                                      n=1 cosh(αn h)
+
+where A0, An , Bn , Cn , Dn are coefficients to be determined, and αn = nπ. The first term
+in equation (25) is the particular solution, corresponding to the classical parabolic velocity
+profile for Poiseuille flow through a no-slip slit channel. The constant A0 is to account for the
+effective slip arising from the grooved walls. The other terms are eigenfunction expansions
+to describe the periodicity of the solution in the x-direction.
+
+   For Region II, the general solutions for the velocity components can be expressed in terms
+of eigenfunction expansions as follows:
+                        ∞                             ∞                             ∞
+      uII (x0, y 0) =         cos(βn x0)U1n (y 0) +         sin(γn x0)U2n (y 0) +         cos(σn y 0)U3n (x0 ),
+                        X                             X                             X
+                                                                                                                  (27)
+                        n=1                           n=1                           n=1
+
+
+                                                             10
+                          ∞                                       ∞                                     ∞
+        vII (x0, y 0) =         sin(βn x0 )V1n (y 0) +                  cos(γn x0 )V2n (y 0) +                sin(σn y 0)V3n (x0),
+                          X                                       X                                     X
+                                                                                                                                     (28)
+                          n=1                                     n=1                                   n=1
+
+where βn = (n − 1/2)π/a, γn = nπ/a, σn = nπ/b. To satisfy uII(x0 = ±a) = 0 and
+vII (y 0 = −b) = 0, we may deduce that
+                                          h           0                 0
+                                                                                    i                                           0
+                 U1n (y 0) = En eβn y + e−βn (y +2b) + Fn [1 + βn (y 0 + b)] eβn y
+
+                                      + Gn [1 − βn (y 0 + b)] e−βn (y +b) ,
+                                                                                                    0
+                                                                                                                                     (29)
+
+                                              h           0                 0
+                                                                                            i                       0
+                         V1n (y 0) = En eβny − e−βn (y +2b) + Fn βn (y 0 + b) eβn y
+                                                                                            0
+                                          + Gn βn (y 0 + b) e−βn (y +b) ,                                                            (30)
+
+                                          h           0                 0
+                                                                                    i                                           0
+                 U2n (y 0) = Hn eγn y + e−γn (y +2b) + Kn [1 + γn (y 0 + b)] eγn y
+                                                                                                0
+                                      + Ln [1 − γn (y 0 + b)] e−γn (y +b) ,                                                          (31)
+
+                                                  h           0                 0
+                                                                                            i                           0
+                    V2n (y 0) = −Hn eγn y − e−γn (y +2b) − Kn γn (y 0 + b) eγn y
+
+                                         − Ln γn (y 0 + b) e−γn (y +b) ,
+                                                                                        0
+                                                                                                                                     (32)
+
+
+                                           cosh(σn x0) x0 sinh(σn x0)
+                                                          "                                              #
+                            U3n (x0 ) = Qn              −
+                                           cosh(σn a)     a sinh(σn a)
+                                               sinh(σn x ) x0 cosh(σn x0 )
+                                                        0
+                                             "                             #
+                                        + Rn              −                  ,                                                       (33)
+                                               sinh(σn a)    a cosh(σn a)
+
+
+                             sinh(σn x0)     sinh(σn x0)       x0 cosh(σn x0 )
+                                     "                                                                                      #
+                     0
+             V3n (x ) = Qn −             +                  +
+                             cosh(σn a) σn a sinh(σn a)         a sinh(σn a)
+                                         0                0
+                                                                   x0 sinh(σn x0 )
+                            "                                                      #
+                                cosh(σn x )     cosh(σn x )
+                        + Rn −              +                   +                    ,                                               (34)
+                                sinh(σn a)     σn a cosh(σn a)      a cosh(σn a)
+
+where En , Fn , Gn , Hn , Kn , Ln , Qn , Rn are coefficients to be determined.
+
+   Let us truncate the infinite series to finite terms: An , · · · , Dn each to M terms, En , · · · , Ln
+each to N terms, and Qn and Rn each to P terms, such that N ≈ Integer[aM] and
+P ≈ Integer[bM]. These coefficients are to be determined using the following matching
+and boundary conditions.
+
+
+
+                                                                    11
+   The matching conditions for the continuity of velocity, shear stress and pressure on y = −h
+or y 0 = 0 are as follows:
+                                    
+                                     uII
+                                    
+                                              for − a < x0 < a
+                             uI =                                                ,                   (35)
+                                     0                          0        0
+                                              for − 1 ≤ x < −a, a < x ≤ 1
+                                    
+
+                                    
+                                     vII
+                                    
+                                              for − a < x0 < a
+                             vI =                                                ,                   (36)
+                                     0       for − 1 ≤ x0 < −a, a < x0 ≤ 1
+                                    
+
+                                      ∂uI   ∂uII
+                                          =             for − a < x0 < a,                            (37)
+                                      ∂y    ∂y 0
+                                     ∂ 2 uI   ∂ 2uII
+                                            =            for − a < x0 < a.                           (38)
+                                     ∂y 2     ∂y 02
+The no-slip conditions on the bottom and side walls of the groove further require
+
+                                  uII = 0       for − a < x0 < a, y 0 = −b,                          (39)
+
+                                  vII = 0        for x0 = ±a, −b < y 0 < 0.                          (40)
+
+Equations for the coefficients can be derived from these matching and boundary conditions,
+using the orthogonality of the eigenfunctions as in the case of longitudinal flow. The derivation
+and the equations are provided in Appendix II.
+
+   The rate of volume flow per unit spanwise width of the channel is given by
+                               
+                                h
+                                    −h uI |x=x0 dy                     if φ ≤ 1 − a
+                                R
+                        q⊥ =                                                          ,              (41)
+                                h
+                                                        R x1
+                                    −h uI |x=x0 dy − x0 vI|y=h dx      if φ > 1 − a
+                                R
+
+
+where x0 = −1 − φ/2, x1 = φ/2 + a − 2 (see figure 1), and
+                                              M
+                              2h3                cos(αn x0)
+           Z h                               X
+                uI |x=x0 dy =     + 2hA0 + 2                [tanh(αn h)An + αn hBn ] ,               (42)
+             −h                3             n=1     αn
+
+
+                                    M
+                                      cos(αn x1 ) − cos(αn x0 )
+             Z x1                   X
+         −          vI|y=h dx =                                      [tanh(αn h)An + αn hBn ]
+              x0                    n=1                αn
+                                        M
+                                        X sin(αn x1) − sin(αn x0 )
+                                    −                                  [Cn + αn h tanh(αn h)Dn ] .   (43)
+                                        n=1                 αn
+
+
+
+
+                                                         12
+Again, if we compare this flow rate to q = 2h3 /3 + 2λh2 , which is the flow rate through a
+channel of height 2h bounded by walls of constant slip length λ (see Appendix I), we may
+evaluate the effective slip length for the transverse flow as follows:
+
+                                              q⊥ − 2h3 /3
+                                       λ⊥ =               .                                (44)
+                                                 2h2
+
+Again, this effective slip length corresponds to the boundary slip length of an equivalent
+uniform channel of height 2h such that, under the same pressure gradient, the rate of flow
+through the equivalent uniform channel is the same as that through a clear fluid layer of
+height 2h bounded by walls with transverse grooves. As the baseline is the envelope of the
+grooved wall, this effective slip length is non-negative. A positive effective slip length means
+flow enhancement when compared with the flow through a channel of height 2h bounded by
+no-slip walls.
+
+    We show in table 2 some computed values of λ⊥ to illustrate the convergence of the
+solution as M is increased. To attain a three-digit accuracy, M ≈ 200 is usually sufficient.
+
+                     Table 2: Convergence of λ⊥ when a = 0.9, h = 1, φ = 0.
+
+                 M         50       100       150        200       250      300
+             b = 0.1 0.07403      0.07382   0.07375    0.07371   0.07368   0.07366
+                 b=1     0.1648   0.1638    0.1635     0.1634    0.1633    0.1633
+
+
+
+
+3     Results and Discussion
+
+We first examine how the flow rate q is differently affected by the pattern phase shift φ,
+depending on the flow direction. Figure 2 shows qk and q⊥ as functions of φ for various
+values of a and h. The following observations can be made. For the same wall pattern,
+the longitudinal flow rate is maximum at φ = 0 (i.e. when the patterns are symmetric),
+and is minimum at φ = 1 (i.e. when the patterns are staggered). The opposite is true for
+the transverse flow rate: maximum at φ = 1, and minimum at φ = 0. These trends are
+
+                                               13
+consistent with the findings previously reported by Wang (1976, 1979) for flow between two
+corrugated plates, and by Ng and Zhou (2012) for electroosmotic flow through a thin channel
+with gradually varying slip lengths on the two walls. Similar observations have also been
+made by Mohammadi and Floryan (2012, 2013b, 2013a, 2015) who studied drag reduction in
+grooved or corrugated channels. We further note that the phase shift will have larger effect
+on the flow rate for thicker ribs in the case of longitudinal flow, but for thinner ribs in the
+case of transverse flow; see figures 2(a, b). It is interesting to find that, for thin fins (a = 1)
+in a very narrow channel (h = 0.05), variation of φ from 0 to 1 can only modestly change
+qk by a few percent, but will significantly change q⊥ by a factor of several times. This is
+because, in the limit of thin fins, the phase shift has little effect on the longitudinal flow
+resistance. Transverse flow resistance, on the contrary, can be a strong function of the phase
+shift, especially in a narrow channel; see further discussion below and figure 4. For transverse
+thin fins, the flow rate changes with the phase shift largely within the range 0 < φ < 0.4; the
+change is much milder for 0.4 < φ < 1. It is also important to note that, for any wall pattern
+and flow direction, the effect of the phase shift on the flow will diminish as the distance
+between the two walls increases. Figures 2(e, f) reveal that when h = O(1), the flow rate, for
+either flow direction, is virtually unaffected by the phase shift.
+
+   For the same values of the parameters a, b, h, φ, the longitudinal flow rate is always
+larger than the transverse flow rate, qk > q⊥ . This concurs with the well-known fact that, for
+a two-dimensional wall pattern, the flow resistance is always smaller parallel to the pattern
+than that normal to the pattern. In figures 2(a, c, e), we also show the agreement between
+our results with those (symbols) computed by Wang (1994), who considered Stokes flow in a
+channel with longitudinal ribs in a symmetric or staggered configuration.
+
+   To illustrate how the flow is affected by the phase shift, we show in figures 3 and 4 the
+longitudinal and transverse flow fields for φ = 0, 0.5, 1, where a = 0.9, and b = h = 0.5.
+Constant velocity lines are shown in figure 3, while streamlines are shown in figure 4. The
+stream function is found by integrating u with respect to y 0 or y, where the stream function
+is set to be zero on the lower wall. When the wall patterns are in phase, φ = 0, the grooves
+and ribs on one wall are aligned exactly with those on the other wall. Whether or not the
+grooves/ribs are aligned will have different effects on the longitudinal and transverse flows.
+
+                                                14
+                       (a) Longitudinal flow b = 0.2, h = 0.05                       (b) Transverse flow b = 0.2, h = 0.05
+                0.01                                                        0.01
+
+                                            a=1
+            0.008                                                          0.008
+                                            0.9
+            0.006                                                          0.006                          a=1
+          q||                               0.7                           q⊥                              0.9
+            0.004                                                          0.004
+
+                                            0.5
+            0.002                                                          0.002
+                                                                                                          0.7
+                                                                                                                          0.5
+                  0                                                             0
+                       0      0.2     0.4       0.6   0.8        1                   0      0.2     0.4       0.6   0.8         1
+                                            φ                                                             φ
+                       (c) Longitudinal flow b = 0.2, h = 0.3                        (d) Transverse flow b = 0.2, h = 0.3
+                0.08                                                        0.08
+
+                                            a=1
+
+                                            0.9
+                0.06                                                        0.06                          a=1
+
+                                            0.7                                                           0.9
+          q||                                                             q⊥
+                0.04                                                        0.04                          0.7
+                                            0.5
+
+                                                                                                          0.5
+
+                0.02                                                        0.02
+                       0      0.2     0.4       0.6   0.8        1                   0      0.2     0.4       0.6   0.8         1
+                                            φ                                                             φ
+                       (e) Longitudinal flow b = 0.2, h = 0.8                        (f) Transverse flow b = 0.2, h = 0.8
+                0.65                                                        0.65
+
+                                            a=1
+                 0.6                                                           0.6
+                                            0.9
+                0.55                                                        0.55                          a=1
+
+                                            0.7                                                           0.9
+          q|| 0.5                                                         q⊥ 0.5
+                0.45                        0.5                             0.45                          0.7
+
+                 0.4                                                           0.4                        0.5
+
+                0.35                                                        0.35
+                       0      0.2     0.4       0.6   0.8        1                   0      0.2     0.4       0.6   0.8         1
+                                            φ                                                             φ
+
+Figure 2: Longitudinal and transverse flow rates, qk and q⊥ , as functions of the phase shift
+φ, for various values of a, where b = 0.2, and h = 0.05, 0.3, 0.8. The symbols are from Wang
+(1994).
+
+
+
+
+                                                                     15
+                         (a) Longitudinal flow φ = 0
+                   1                                                                0.02                                                                                                         0.02
+                                                                                                                  0.06
+                                                                                                                                                                                                                 0.1
+                                                         0.1                                  0.14
+
+                                                                                                                                  0.1
+                 0.5                                           0.22                      0.26                                        8
+
+
+                                                                                                                     0 .3
+                                                                                         0.34
+
+             y
+
+
+
+
+                                                                                                                                                                    6
+                   0
+
+
+
+
+                                                                                                                                                                 0.2
+                         0.06                           0.2                                                                                                    0.06
+                 -0.5                                      2
+                                                 0.1
+                                                    4                                                                                                                                                                                  0.22
+
+
+
+
+                                                                                                                                                                       0.02
+                                                                                                0.18                                     0 .1                                                           0.14
+                                0.02
+
+
+
+
+                  -1
+                        -1                               -0.5                             0                                 0.5                                1                                   1.5                                   2
+                                                                                                                            x
+                         (b) Longitudinal flow φ = 0.5
+                   1
+                             0.06                                                                                                                                0.06
+                                                                                                                                                                        0.1
+
+
+
+
+                                                                                                                                                                                         0.02
+                                     0 .1                                            8
+                 0.5                        4           0.02                    0 .1
+                                                                                                                                                                                                                                     2
+                                                                                                                                                                                                0.14                              0.2
+                                                 0.22                          0.26
+                                                                                                                                                  0.3
+                                                                                                              0.33
+             y     0
+                                                                                                                                                                                                                 0.
+                                                                                                                                                                                                                      3
+
+
+                                                                                                                                                              0.18
+                                                                                                                                       2
+                                                                              0.26                                                  0.2                 0.1
+                 -0.5
+                                0 .0
+
+
+
+
+                                                                                                                                              4
+                                                                                                                                                                         0 .0
+
+
+
+                                                                                                                                           0.1
+                                    6
+
+
+
+
+                                                                                                                                                                              6
+
+
+
+
+                  -1                                                                                                            0.02
+                                            -1                        -0.5                               0                                   0.5                                  1                                       1.5
+                                                                                                                            x
+                         (c) Longitudinal flow φ = 1
+                   1
+                                                                                                     2
+                                                                                                  0.0
+                                                                      0.
+
+
+
+
+                                    0.22
+                                                                      1
+
+
+
+
+                                                                                                                                                                                                                            0.
+                                                                             0.0
+
+
+
+
+                                                                                                                                                                                                                                0.0
+
+
+
+
+                 0.5                                                                                                                                                 0.26                                                     1
+                                                                                6
+
+
+
+
+                                                                                                                                                                                                                                   6
+
+
+
+
+                                                                             0.14                             8
+                                                                                                         0.1                                                                                                          0.22
+
+
+                                                                                                                                                                                                           0.3
+             y     0                                                                                                                                                              0.3
+
+
+                                                 0.22                                                                             0.26
+                                                                                                                                                                              0 .1
+                 -0.5                                                                                                                                                                4
+                                                                                                                             0.18                                                                                                      0.22
+
+
+                                                                                      0.1                                              0.06
+                  -1                                                                                   0.02                                                                                                      0.02
+                    -1.5                                      -1                      -0.5                                  0                                 0.5                                      1                                 1.5
+                                                                                                                            x
+
+
+Figure 3: Constant velocity lines for longitudinal flow, with phase shift (a) φ = 0, (b) φ = 0.5,
+(c) φ = 1, where a = 0.9, and b = h = 0.5.
+
+
+
+
+                                                                                                                    16
+                        (a) Transverse flow φ = 0
+                  1                                                                                                              0 .1
+                                                                                                                                        78
+                                                                             0.177                                                           7
+
+
+
+                0.5
+                                          0.17
+                                                                                                                                                                                0.15
+                                             0.13
+                                                                                                                                                           0.11
+            y     0                                                                                                                                                                                 0.09
+                                                                                                                                                                                                           0.07
+                                                                                                       0.05
+                                                                                                                       0.03                         0.01
+                -0.5
+
+
+
+
+                                                                                                                                                               -3E-05
+                                                                       0.001
+                 -1
+                       -1                                -0.5                          0                           0.5                                1                                       1.5                                       2
+                                                                                                                       x
+                        (b) Transverse flow φ = 0.5
+                  1
+
+
+
+
+                                                                                                                                                                                                                                62
+                                                                  0.19362
+
+
+
+
+                                                                                                                                                                                                                            93
+                                                                                                                                                                                                                       0.1
+                                0 .1                                                                                                                                    0 .1
+                                     93                                                                                                                                        93
+                            0.1
+                               9
+                                                                                                                                                                               0.1
+                0.5                                                                                                                                                               9
+                                                                                                                                                            0.17
+
+                                           0.15
+                                                           0.13                                       0.11
+            y     0                                                                                             0.09
+                                                                                                                                                                                0.07
+                                                                                                                                                                                       0.05
+                                                                                                                 0.03
+                -0.5                         0 .0
+                                                    1
+                                                                                                                                         -2.3E-05
+
+
+
+
+                                                                  0.001                                                                                                                                                         0.001
+                 -1
+                                     -1                                     -0.5                       0                        0.5                                        1                                      1.5
+                                                                                                                       x
+                        (c) Transverse flow φ = 1
+                  1                                                                                                                                                                                        0 .2
+                                                                                                                                                                                                                  09
+                                                        0.208                                              05                                                                                  0.208                   00
+                                                                                                       0                                                                                                                    5
+                                                                                                    09
+                                                                                             0 .2
+                                                                  0.2
+                0.5
+                                                                      0.18
+                                                                                                                       0.16
+
+                                                        0.12                                 0.14
+            y     0                                                                                                             0.08
+                                                                                                                                                                                                                  0.1
+
+
+                                                                     0.04                                                                                                       0.02
+                -0.5
+
+                                                                               0.01
+                                                                                                                                                            -1E-05
+
+
+
+
+                                                                                                                        0.001
+                 -1
+                   -1.5                                   -1                          -0.5                             0                             0.5                                      1                                         1.5
+                                                                                                                       x
+
+
+Figure 4: Streamlines for transverse flow, with phase shift (a) φ = 0, (b) φ = 0.5, (c) φ = 1,
+where a = 0.9, and b = h = 0.5. The stream function is set to be zero on the lower wall.
+
+
+
+
+                                                                                                                17
+   For longitudinal flow, the alignment of grooves means the formation of the widest possible
+rectangular cross-sectional region without a rib in one period width of the channel; see figure
+3(a). This widest possible region without a rib, which has the dimensions of 2a by 2(h + b),
+allows the flow to attain a peak velocity at its center. It is because, under this symmetric
+configuration, the interior of this region is subject to the least possible boundary friction due
+to the neighboring ribs. When the phase shift increases to φ = 0.5 (figure 3(b)), not only is
+this region smaller in extent, but also the peak velocity is smaller in magnitude. When the
+two patterns are completely out of phase, φ = 1 (figure 3(c)), this region with a center peak
+velocity will lose its identity after merging with the adjacent ones, forming a nearly uniform
+flow along the centerline of the channel. In this example, one can see that the peak velocity
+reduces by more than 10% as φ varies from 0 to 1. Some of these flow features have been
+reported previously by Mohammadi and Floryan (2013b, 2013a, 2015).
+
+   For transverse flow, the alignment of ribs means the formation of the narrowest possible
+cross section of the channel; see figure 4(a). This of course amounts to the largest possible flow
+resistance for the same wall pattern. Opposite to the case of longitudinal flow, the transverse
+flow along the centerline of the channel attains the maximum velocity at the point between the
+centers of opposite ribs, and the minimum velocity between the centers of opposite grooves.
+The narrow cross section between opposite ribs will widen up as the phase shift increases to
+an extent where the ribs are no longer directly opposite to each other. As a consequence,
+the flow rate will increase as the phase shift increases for flow transverse to the pattern; see
+figures 4(b, c). In this example, one can get from the topmost stream function value that
+the flow rate q⊥ increases by some 18% as φ varies from 0 to 1. While most of the flow goes
+forward in the grooves, recirculation occurs in the corners between the groove base and the
+ribs. In shallow grooves, these corner eddies are small in extent and weak in strength. In
+deeper grooves, the recirculation zone may grow in extent such that a string of Moffatt eddies
+of alternate sense and decreasing strength is formed (Wang 2003).
+
+   We further show in figure 5 how the effective slip lengths λk and λ⊥ may vary with the
+phase shift for various values of a, where b = 0.5 and h = 0.5, 0.05. Again, we see that
+the effective longitudinal slip length will decrease as the phase shift varies from 0 to 1. In
+contrast, the effective transverse slip length, especially for thin ribs, will appreciably increase
+
+                                                18
+                    (a) Longitudinal flow b = 0.5, h = 0.05                       (b) Transverse flow b = 0.5, h = 0.05
+               2                                                             7
+
+                                         a=1
+                                                                             6
+
+              1.5
+                                                                             5
+                                         0.9                                                  a=1
+                                                                             4
+                                                                                                       0.9
+        λ||    1                                                       λ⊥
+                                                                             3
+                                         0.7
+                                                                             2
+              0.5
+                                                                                                                 0.7
+                                         0.5                                 1
+
+                                                                                                                        0.5
+               0                                                             0
+                    0      0.2     0.4       0.6   0.8        1                   0     0.2      0.4       0.6    0.8         1
+
+                                         φ                                                             φ
+                    (c) Longitudinal flow b = h = 0.5                             (d) Transverse flow b = h = 0.5
+              0.6
+
+                                                                                                       a=1
+              0.5                                                           0.3
+                                         a=1
+
+              0.4                                                                                      0.9
+                                         0.9
+                                                                            0.2
+        λ|| 0.3                                                        λ⊥
+                                         0.7
+              0.2                                                                                      0.7
+                                                                            0.1
+                                         0.5
+              0.1                                                                                      0.5
+
+
+               0                                                             0
+                    0      0.2     0.4       0.6   0.8        1                   0     0.2      0.4       0.6    0.8         1
+
+                                         φ                                                             φ
+
+
+Figure 5: Effective slip lengths, λk and λ⊥ , as functions of the phase shift φ, for various values
+of a and b = 0.5, where h = 0.05 in (a, b), and h = 0.5 in (c, d).
+
+
+
+
+                                                                  19
+as the phase shift changes from 0 to 1. These changes are much more pronounced in the
+case of a narrow channel. The results further confirm that, for thin ribs in a narrow channel,
+transverse flow is much more sensitive to the phase shift than longitudinal flow.
+
+      We next show in figure 6 the effect of the groove depth b on the effective slip lengths.
+The slip lengths will increase monotonically with the groove depth, but such increase will
+gradually diminish as the grooves become sufficiently deep. This is manifested by the leveling
+off of the curves shown in the figure. For longitudinal thin fins in a narrow channel h = 0.5,
+a large groove depth b ∼ 10 is needed in order to reach the deep-groove limit; see figure 6(a).
+For transverse ribs, thin or thick, and a narrow channel, a much shallower groove depth b ∼ 1
+is needed in order to attain the deep-groove limit; see figure 6(b). In a thicker channel h = 2,
+the deep-groove limits can be practically reached when b ∼ 2 in all cases; see figure 6(c, d).
+In the limiting case of an infinitely thick channel h  1, our problem reduces to the one
+studied by Wang (2003), i.e. flow over a grooved surface. Figure 6(e) shows λk as a function
+of a and b for h = ∞. These results for the longitudinal slip length can be checked to agree
+exactly with those presented in figure 4 of Wang (2003). In this case, the deep-groove limit
+can be computed using the analytical formula deduced by Richardson (1971):
+                           (1 − a) ln(1 − a) + (1 + a) ln(1 + a)
+                    λk →                                              as b, h → ∞.          (45)
+                                             π
+These limits can be practically attained when b ∼ 2, as shown in figure 6(e).
+
+      We also show in figure 6(f) the transverse slip length λ⊥ as a function of a and b for h →
+∞. Wang (2003) presented a similar plot in his figure 5, which, however, needs correction.
+The correction arises from an error in expressing one of the coefficients.2 Some corrections
+that should be made to Wang (2003) are noted in Appendix III. Our results show that the
+transverse slip length λ⊥ for thin fins, a = 1, can practically attain the deep-groove limit of
+0.1772 (Jeong 2001) when b ∼ 2. Wang (2003) failed to obtain results that could tend to this
+asymptotic value. Our figure 6(f) should supersede figure 5 of Wang (2003).
+
+      Finally, we show in figure 7 the effect of the channel height h on the slip lengths. In all
+cases, the effective slip lengths, λk and λ⊥ , will basically decrease as the distance between
+the two walls increases (except for very small h and φ = 0 where λ⊥ may slightly increase
+  2
+      Private communication between Professor C.Y. Wang and the author.
+
+                                                   20
+                   (a) Longitudinal flow h = 0.5                             (b) Transverse flow h = 0.5
+              1                                                        0.4
+
+
+                                       a=1                                                      a=1
+             0.8
+                                                                       0.3
+
+
+             0.6                          0.9                                                       0.9
+       λ||                                                        λ⊥ 0.2
+             0.4
+                                          0.7
+                                                                       0.1
+                                                                                                    0.7
+             0.2
+                                          0.5                                                       0.5
+
+              0                                                         0
+                   0        0.5       1            1.5   2                   0       0.5        1          1.5   2
+                                      b                                                         b
+                   (c) Longitudinal flow h = 2                               (d) Transverse flow h = 2
+             0.6
+
+                                       a=1                             0.2                      a=1
+
+
+             0.4                          0.9                                                       0.9
+
+       λ||                                                        λ⊥
+                                                                       0.1
+                                          0.7                                                       0.7
+             0.2
+
+                                          0.5                                                       0.5
+
+
+              0                                                         0
+                   0        0.5       1            1.5   2                   0       0.5        1          1.5   2
+                                      b                                                         b
+                   (e) Longitudinal flow h = ∞                               (f) Transverse flow h = ∞
+                                                                       0.2
+
+                                       a=1                                                      a=1
+             0.4
+
+
+                                          0.9                                                       0.9
+
+       λ||                                                        λ⊥ 0.1
+             0.2
+                                          0.7                                                       0.7
+
+
+                                          0.5                                                       0.5
+
+
+              0                                                         0
+                   0        0.5       1            1.5   2                   0       0.5        1          1.5   2
+                                      b                                                         b
+
+Figure 6: Effective slip lengths, λk and λ⊥ , as functions of the groove depth b for various
+values of a, where h = 0.5, 2, ∞. The solid and dashed lines are for φ = 0, 1, respectively.
+The dotted lines in (e) are from equation (45). The dotted line in (f) is from Jeong (2001).
+
+
+
+
+                                                             21
+                    (a) Longitudinal flow b = 0.5                                  (b) Transverse flow b = 0.5
+               1                                                              1
+
+
+
+              0.8                                                            0.8
+
+
+
+              0.6                                                            0.6
+
+        λ||                                                             λ⊥
+              0.4                          a=1                               0.4
+                                           0.9
+                                                                                                          a=1
+              0.2                          0.7                               0.2
+                                                                                                          0.9
+                                           0.5                                                            0.7
+                                                                                                          0.5
+               0                                                              0
+                           0.5         1            1.5        2                          0.5         1              1.5      2
+
+                                        h                                                              h
+                    (c) Longitudinal flow b = 2                                    (d) Transverse flow b = 2
+               3                                                             1.5
+
+
+
+
+               2                                                              1
+
+
+
+        λ||                                                             λ⊥
+                                  a = 0.9 (slip-stick walls)                                     a = 0.9 (slip-stick walls)
+               1                                                             0.5
+
+                                           a=1
+                                           0.9                                                               a=1
+                                           0.7                                                                 0.9
+                                           0.5                                                             0.7
+               0                                                              0
+                                                                                                               0.5
+                           0.5         1            1.5        2                          0.5         1              1.5      2
+
+                                        h                                                              h
+
+
+Figure 7: Effective slip lengths, λk and λ⊥ , as functions of the channel height h for various
+values of a, where b = 0.5, 2. The solid and dashed lines are for φ = 0, 1, respectively.
+The dotted lines are the asymptotes for h → ∞. In (c, d), the effective slip lengths for flow
+through a channel bounded by superhydrophobic slip–stick walls of area fraction of perfect
+slip a = 0.9 are presented.
+
+
+
+
+                                                                   22
+as h increases). In other words, the channel confinement may have a favorable effect on
+both λk and λ⊥ , irrespective of the phase shift. These trends are somewhat different from
+those that have been observed for superhydrophobic surfaces. In a channel bounded by slip–
+stick superhydrophobic walls, increasing the channel confinement (i.e. decreasing the channel
+height) may increase the longitudinal slip length but decrease the transverse slip length when
+the patterns are in phase. The opposite is true when the patterns are half a period out of
+phase (except for very small h) (Cheng et al. 2009, Ng and Chen 2013).
+
+   In figure 7, it is clearly seen that the phase shift will have significant effect on the flow,
+irrespective of the flow direction and other geometrical parameters, only when h < 1, i.e. when
+the distance between the two walls is smaller than one period length of the wall pattern. This
+figure also confirms our earlier observation that, in a narrow channel, the phase shift can have
+much more significant effect on the transverse flow than on the longitudinal flow. Here, we
+see that, for h < 0.5, λ⊥ can dramatically increase by several multiples when φ changes
+from 0 to 1. Nevertheless, under the same condition, the effective slip length is in general
+larger in the longitudinal direction than in the transverse direction. This is expected since
+longitudinal flow is in general subject to smaller resistance than transverse flow. In this
+figure, we also show the asymptotic slip lengths for h  1, corresponding to the limiting
+values when the effect due to channel wall confinement vanishes or the effective slip lengths
+for flow over a grooved surface, as has been considered by Wang (2003). We have found that
+these thick-channel (or single-surface) limits will not be attained until the channel height is
+sufficiently large, which can range from O(10) to O(103 ), depending on a and b. The larger
+a and b, the thicker the channel is needed for the wall confinement effect to be negligible. In
+other words, the effective slip lengths for flow bounded by grooved walls, where the grooves
+are deep and wide, do not get close to those for flow over a single grooved surface until the
+walls are separated by a distance that is several orders of magnitude larger than the period
+length of the grooves. This suggests that in practice channel wall confinement should be
+taken into account when evaluating the effective slip length for a patterned surface. We
+also show in figure 7(c, d) the effective slip lengths for flow through a channel bounded by
+superhydrophobic slip–stick walls, as has been considered by Ng and Chen (2013). Except
+when h is very small, the effective slip length for flow bounded by slip–stick walls can be
+
+
+                                              23
+several times larger than the corresponding slip length for flow bounded by grooved walls.
+
+
+
+
+4    Concluding remarks
+
+We have shown that, for Stokes flow between two grooved surfaces, the phase difference
+between grooves on the two surfaces may have opposite effects on the effective slip length
+for parallel and cross flows. For parallel flow, increasing the phase shift may decrease the
+flow rate and effective slip length, but such change is relatively mild. In sharp contrast, for
+cross flow, increasing the phase shift may increase the flow rate and effective slip length, and
+such change can be very dramatic. In a channel with thin ribs, flow parallel to the grooves is
+rate-controlled by flow in the widest cross sectional region without a rib, while flow transverse
+to the grooves is rate-limited by the narrowest cross sectional region between opposite ribs.
+In all cases, the significance of the phase shift is, however, limited to narrow channels, where
+the channel height is not larger than the period of the wall pattern. On the other hand,
+the effective slip lengths for wall-bounded flow are in general larger than the thick-channel
+asymptotic limits corresponding to slip lengths for flow over a single grooved surface. These
+thick-channel limiting values are not practically attained until the channel height is much
+larger, as large as three orders of magnitude, than the wall pattern period length. These
+results suggest that, in a channel where the ratio of channel height to period length is only
+moderately large, the effect due to the phase shift is probably negligible, but that due to the
+wall confinement has to be taken into account when the effective slip lengths are evaluated.
+The last statement is valid especially for surfaces with deep and wide grooves.
+
+
+
+
+Acknowledgements
+
+Financial support was given by the Research Grants Council of the Hong Kong Special
+Administrative Region, China, through General Research Fund Project No. 17206615.
+
+
+
+
+                                               24
+Appendix I: Flow through an equivalent uniform channel
+with boundary slip
+
+Poiseuille flow through a slit channel of height 2h and constant slip length λ at the walls, as
+depicted in figure 8, has the following velocity profile:
+
+                                          h2
+                                                  "     2          #
+                                                y                 2λ
+                                   u(y) =    1−                 +    ,                   (A 1)
+                                          2     h                  h
+
+which satisfies the partial slip condition at the upper/lower walls:
+
+                                              du
+                                    u = ∓λ                 at y = ±h.                    (A 2)
+                                              dy
+
+The flow rate per unit spanwise width of the channel is therefore
+
+                                                           2h3
+                                        Z h
+                                   q=         udy =            + 2λh2 .                  (A 3)
+                                         −h                 3
+
+
+
+
+                                   Upper wall: y = h, slip length = λ
+
+
+                               y                       Axial velocity u(y)
+                                              x
+
+
+
+                                   Lower wall: y = -h, slip length = λ
+
+
+             Figure 8: Flow through a slit channel with partial slip at the walls.
+
+
+
+
+                                                      25
+Appendix II: Equations for the coefficients in the case
+of transverse flow
+
+On integrating equation (35) with respect to x from −1 − φ/2 to 1 − φ/2 (or x0 from −1 to
+1), we get
+                  N
+                    (−1)n+1 h                                                                       i
+                                          1 + e−2βn b En + (1 + βn b)Fn + (1 − βn b)e−βnb Gn
+                  X
+         A0 =
+                 n=1        βn
+                      P
+                      X 1 − 2σn a csch(2σn a)
+                  +                                           Qn .                                        (A 4)
+                      n=1                 σn2 a
+
+Multiplying equation (35) by cos(αm x), followed by integration with respect to x from −1 −
+φ/2 to 1 − φ/2, we get
+
+             Am + [1 + αm h tanh(αm h)] Bm
+                     N            h                                                             i
+                            (1)
+                                       1 + e−2βn b En + (1 + βn b)Fn + (1 − βn b)e−βnb Gn
+                     X
+                 −         Imn
+                     n=1
+                      N           h                                                             i
+                            (2)
+                                       1 + e−2γn b Hn + (1 + γn b)Kn + (1 − γn b)e−γn b Ln
+                     X
+                 −         Imn
+                     n=1
+                      P h                             i
+                             (1)       (2)
+                     X
+                 −          Jmn  Qn + Jmn  Rn = 0,                    m = 1, · · · , M,                   (A 5)
+                     n=1
+
+       (1)      (2)
+where Imn  and Imn  are given by equations (11) and (12), and
+
+               (1)         2 cos(αm φ/2) n
+              Jmn  =                       2αm σn coth(σn a) sin(αm a)
+                           a (α2m + σn2 )2
+                              h                                                         i   o
+                            − α2m − σn2 + 2σn a α2m + σn2 csch(2σn a) cos(αm a) ,                         (A 6)
+
+
+         (2)     2 sin(αm φ/2) nh 2       2
+                                                    
+                                                      2    2
+                                                                       i
+        Jmn  =                  2 −αm + σ n + 2σ n a αm + σn csch(2σn a) sin(αm a)
+                 a (α2m + σn2 )
+                                                                  o
+                  − 2αm σn tanh(σn a) cos(αm a) .                                                         (A 7)
+
+
+   Multiplying equation (35) by sin(αm x), followed by integration with respect to x from
+−1 − φ/2 to 1 − φ/2, we get
+
+             tanh(αm h)Cm + [αm h + tanh(αm h)] Dm
+                     N            h                                                             i
+                            (3)
+                                       1 + e−2βn b En + (1 + βn b)Fn + (1 − βn b)e−βnb Gn
+                     X
+                 −         Imn
+                     n=1
+
+
+                                                              26
+                         N              h                                                                   i
+                                  (4)
+                                             1 + e−2γn b Hn + (1 + γn b)Kn + (1 − γn b)e−γn b Ln
+                         X
+                     −           Imn
+                         n=1
+                          P h                               i
+                                   (3)       (4)
+                         X
+                     −            Jmn  Qn + Jmn  Rn = 0,                 m = 1, · · · , M,                         (A 8)
+                         n=1
+
+       (3)      (4)
+where Imn  and Imn  are given by equations (14) and (15), and
+
+                (3)              2 sin(αm φ/2) n
+               Jmn  =                            − 2αm σn coth(σn a) sin(αm a)
+                                 a (α2m + σn2 )2
+                                    h                                                      i        o
+                                  + α2m − σn2 + 2σn a α2m + σn2 csch(2σn a) cos(αm a) ,                            (A 9)
+
+
+          (4)        2 cos(αm φ/2) nh 2      2
+                                                        
+                                                          2     2
+                                                                                i
+         Jmn  =                      −αm + σ n + 2σ n a  αm + σ n   csch(2σ n a)   sin(αm a)
+                     a (α2m + σn2 )2
+                                                                     o
+                      − 2αm σn tanh(σn a) cos(αm a) .                                                             (A 10)
+
+
+   Multiplying equation (36) by sin(αm x), followed by integration with respect to x from
+−1 − φ/2 to 1 − φ/2, we get
+
+        tanh(αm h)Am + αm hBm
+               N            h                                                    i
+                      (5)
+                                 1 − e−2βn b En + βn bFn + βn be−βn b Gn
+               X
+           +         Imn
+               n=1
+                N           h                                                    i
+                      (6)
+                                 1 − e−2γn b Hn + γn bKn + γn be−γn b Ln = 0,
+               X
+           −         Imn                                                                         m = 1, · · · , M, (A 11)
+               n=1
+
+where
+                                                                               
+                                               sin[(αm−βn )a] − sin[(αm +βn )a]
+                                              
+                                                                                       for αm 6= βn
+           (5)                                       αm −βn              αm +βn
+          Imn  = cos(αm φ/2) ×                                                                        ,           (A 12)
+                                               a
+                                              
+                                                                                       for αm = βn
+                                                                               
+                                                sin[(αm−γn )a] + sin[(αm+γn )a]
+                                               
+                                                                                       for αm 6= γn
+          (6)                                          αm −γn             αm +γn
+         Imn  = − sin(αm φ/2) ×                                                                           .       (A 13)
+                                                a
+                                               
+                                                                                       for αm = γn
+
+   Multiplying equation (36) by cos(αm x), followed by integration with respect to x from
+−1 − φ/2 to 1 − φ/2, we get
+
+        Cm + αm h tanh(αm h)Dm
+               N            h                                                    i
+                      (7)
+                                 1 − e−2βn b En + βn bFn + βn be−βn b Gn
+               X
+           −         Imn
+               n=1
+                N           h                                                    i
+                      (8)
+                                 1 − e−2γn b Hn + γn bKn + γn be−γn b Ln = 0,
+               X
+           +         Imn                                                                         m = 1, · · · , M, (A 14)
+               n=1
+
+
+                                                                    27
+where                                                                      
+                                           sin[(αm−βn )a] − sin[(αm +βn )a]
+                                          
+                                                                                  for αm 6= βn
+             (7)                                   αm −βn          αm +βn
+            Imn  = sin(αm φ/2) ×                                                                 ,   (A 15)
+                                           a
+                                          
+                                                                                  for αm = βn
+                                                                            
+                                           sin[(αm −γn )a] + sin[(αm +γn )a]
+                                          
+                                                                                  for αm 6= γn
+             (8)                                   αm −γn          αm +γn
+            Imn  = cos(αm φ/2) ×                                                                 .   (A 16)
+                                           a
+                                          
+                                                                                  for αm = γn
+
+   Multiplying equation (37) by cos(βmx0 ), followed by integration with respect to x0 from
+−a to a, we get
+            M
+                   (1)
+            X
+                  Inm  αn {An + [αn h + 2 tanh(αn h)]Bn }
+            n=1
+                      M
+                             (3)
+                      X
+                  +         Inm  αn {Cn + [2 + αn h tanh(αn h)]Dn }
+                      n=1
+                            n                                                                  o
+                  + βm a         1 − e−2βm b Em + (2 + βm b)Fm − (2 − βm b)e−βm b Gm
+                                   2h
+                  = (−1)m+1           ,      m = 1, · · · , N.                                       (A 17)
+                                   βm
+
+   Multiplying equation (37) by sin(γm x0 ), followed by integration with respect to x0 from
+−a to a, we get
+            M
+                   (2)
+            X
+                  Inm  αn {An + [αn h + 2 tanh(αn h)]Bn }
+            n=1
+                      M
+                             (4)
+                      X
+                  +         Inm  αn {Cn + [2 + αn h tanh(αn h)]Dn }
+                      n=1
+                            n                                                                  o
+                  + γm a         1 − e−2γm b Hm + (2 + γm b)Km − (2 − γm b)e−γm b Lm
+
+                  = 0,         m = 1, · · · , N.                                                     (A 18)
+
+
+   Multiplying equation (38) by cos(βmx0 ), followed by integration with respect to x0 from
+−a to a, we get
+            M
+                   (1) 2
+            X
+                  Inm αn {An + [3 + αn h tanh(αn h)]Bn }
+            n=1
+                      M
+                             (3) 2
+                      X
+                  +         Inm αn {Cn + [αn h + 3 tanh(αn h)]Dn }
+                      n=1
+                             n                                                                 o
+                     2
+                  − βm a          1 + e−2βm b Em + (3 + βm b)Fm + (3 − βm b)e−βm b Gm
+                      P
+                             (5) 2                      2
+                                σn Qn = (−1)m+1
+                      X
+                  +         Jmn                           ,      m = 1, · · · , N,                   (A 19)
+                      n=1                              βm
+
+                                                        28
+where
+                                         (5)               4βm σn coth(σn a)
+                                        Jmn  = (−1)m+1           2 + σ 2 )2
+                                                                             .                         (A 20)
+                                                             a (βm    n
+
+   Multiplying equation (38) by sin(γm x0 ), followed by integration with respect to x0 from
+−a to a, we get
+                M
+                       (2) 2
+                X
+                      Inm αn {An + [3 + αn h tanh(αn h)]Bn }
+                n=1
+                          M
+                                 (4) 2
+                          X
+                      +         Inm αn {Cn + [αn h + 3 tanh(αn h)]Dn }
+                          n=1
+                                n                                                           o
+                         2
+                      − γm a         1 + e−2γm b Hm + (3 + γm b)Km + (3 − γm b)e−γm b Lm
+                          P
+                                 (6) 2
+                          X
+                      +         Jmn σn Rn = 0,       m = 1, · · · , N,                                 (A 21)
+                          n=1
+
+where
+                                         (6)               4γm σn tanh(σn a)
+                                        Jmn  = (−1)m+1           2 + σ 2 )2
+                                                                             .                         (A 22)
+                                                             a (γm    n
+
+   Multiplying equation (39) by cos(βmx0 ), followed by integration with respect to x0 from
+−a to a, we get
+                                                   P
+        a 2e−βm b Em + e−βm b Fm + Gm +                     (5)
+                                                                (−1)n Qn = 0,
+                                                     X
+                                                           Jmn                   m = 1, · · · , N.     (A 23)
+                                                     n=1
+
+
+   Multiplying equation (39) by sin(γm x0 ), followed by integration with respect to x0 from
+−a to a, we get
+                                                   P
+        a 2e−γm b Hm + e−γm b Km + Lm +                     (6)
+                                                                (−1)n Rn = 0,
+                                                     X
+                                                           Jmn                   m = 1, · · · , N.     (A 24)
+                                                     n=1
+
+
+   Multiplying equation (40) by sin(σm y 0 ), followed by integration with respect to y 0 from
+−b to 0, we get
+          N                h                                    i
+                         (1)       (2)       (3)
+                (−1)n+1 Kmn
+          X
+                             En + Kmn  Fn + Kmn  Gn
+          n=1
+                      b
+                 +      [− tanh(σm a) + coth(σm a) + 1/(σm a)] Qm = 0,             m = 1, · · · , P,   (A 25)
+                      2
+
+          N                h                                    i
+                         (4)       (5)       (6)
+                (−1)n+1 Kmn
+          X
+                             Hn + Kmn  Kn + Kmn  Ln
+          n=1
+                      b
+                 +      [− coth(σm a) + tanh(σm a) + 1/(σm a)] Rm = 0,             m = 1, · · · , P,   (A 26)
+                      2
+
+                                                           29
+where                                                                       
+                                             (1)
+                                                       σm e−2βnb − 1
+                                            Kmn  =            2 + β2
+                                                                                 ,                                     (A 27)
+                                                             σm    n
+                                        h                                                    i
+                                                2
+                         (2)
+                                  σm βn 2βn − (σm + βn2 ) b + (−1)m+1 2βn e−βn b
+                        Kmn  =                                                                   ,                     (A 28)
+                                                              2 + β 2 )2
+                                                            (σm    n
+                                        n                                                    o
+                                                       2
+                         (3)
+                                  σm βn (−1)m 2βn − [(σm + βn2 ) b + 2βn ] e−βn b
+                        Kmn  =                                2 + β 2)   2                       ,                     (A 29)
+                                                            (σm    n
+                                                                            
+                                             (4)
+                                                       σm e−2γn b − 1
+                                            Kmn  =            2 + γ2
+                                                                                 ,                                     (A 30)
+                                                             σm    n
+                                        h                                                    i
+                                                2
+                         (5)
+                                  σm γn 2γn − (σm + γn2 ) b + (−1)m+1 2γn e−γn b
+                        Kmn  =                                2 + γ 2 )2
+                                                                                                 ,                     (A 31)
+                                                            (σm    n
+                                        n                                                    o
+                                                       2
+                         (6)
+                                  σm γn (−1)m 2γn − [(σm + γn2 ) b + 2γn ] e−γn b
+                        Kmn  =                                                                   .                     (A 32)
+                                                              2 + γ 2 )2
+                                                            (σm    n
+Equations (A 5), (A 8), (A 11), (A 14), (A 17), (A 18), (A 19), (A 21), (A 23), (A 24), (A 25)
+and (A 26) constitute a system of 4M + 6N + 2P equations that can be solved for the same
+number of unknown coefficients: A1,···,M , B1,···,M , C1,···,M , D1,···,M , E1,···,N , F1,···,N , G1,···,N ,
+H1,···,N , K1,···,N , L1,···,N , Q1,···,P , and R1,···,P . We have again used the routine IMSL-DLSARG
+to solve the system of equations.
+
+
+
+
+Appendix III: Corrections for Wang (2003)
+
+The following equation numbers and notations are those in Wang (2003). Equation (32)
+should read
+                                              2                 h                              
+         Jmn =       2βn γm 1 + e−2βn a              sin(aγm ) +        βn2 − γm
+                                                                               2
+                                                                                      1 − e−4βna
+                                                      i               o                               2 
+                     − 4βn a βn2 + γm
+                                    2
+                                      e−2βn a cos(aγm ) / a 1 − e−2βna                           βn2 + γm
+                                                                                                        2
+                                                                                                                   .
+
+In equation (21), e−2βn should read e−2βn a , while in equations (27) and (28), Cn be−2αnb should
+read Cn be−αnb .
+
+
+
+
+                                                            30
+References
+
+Beavers, G. S. and Joseph, D. D. (1967). Boundary conditions at a naturally permeable wall,
+    J. Fluid Mech. 30(01): 197–207.
+
+Cheng, Y. P., Teo, C. J. and Khoo, B. C. (2009). Microchannel flows with superhydrophobic
+    surfaces: Effects of Reynolds number and pattern width to channel height ratio, Phys.
+    Fluids 21(12): 122004.
+
+Choi, C.-H., Westin, K. J. A. and Breuer, K. S. (2003). Apparent slip flows in hydrophilic
+    and hydrophobic microchannels, Phys. Fluids 15(10): 2897–2902.
+
+Jeong, J.-T. (2001). Slip boundary condition on an idealized porous wall, Phys. Fluids
+    13(7): 1884–1890.
+
+Luchini, P., Manzo, F. and Pozzi, A. (1991). Resistance of a grooved surface to parallel flow
+    and cross-flow, J. Fluid Mech. 228: 87–109.
+
+Maynes, D., Jeffs, K., Woolford, B. and Webb, B. (2007). Laminar flow in a microchannel
+    with hydrophobic surface patterned microribs oriented parallel to the flow direction,
+    Phys. Fluids 19(9): 093603.
+
+Mohammadi, A. and Floryan, J. M. (2012). Mechanism of drag generation by surface corru-
+    gation, Phys. Fluids 24(1): 013602.
+
+Mohammadi, A. and Floryan, J. M. (2013a). Groove optimization for drag reduction, Phys.
+    Fluids 25(11): 113601.
+
+Mohammadi, A. and Floryan, J. M. (2013b). Pressure losses in grooved channels, J. Fluid
+    Mech. 725: 23–54.
+
+Mohammadi, A. and Floryan, J. M. (2015). Numerical analysis of laminar-drag-reducing
+    grooves, ASME J. Fluids Eng. 137(4): 041201.
+
+Ng, C.-O. and Chen, B. (2013). Microchannel flows with superhydrophobic surfaces: Effects of
+    phase shift of wall patterns, Proceedings of the 14th Asian Congress of Fluid Mechanics,
+    pp. 1037–1041.
+
+                                             31
+Ng, C.-O., Chu, H. C. and Wang, C.-Y. (2010). On the effects of liquid-gas interfacial shear
+    on slip flow through a parallel-plate channel with superhydrophobic grooved walls, Phys.
+    Fluids 22(10): 102002.
+
+Ng, C.-O. and Wang, C.-Y. (2009). Stokes shear flow over a grating: Implications for super-
+    hydrophobic slip, Phys. Fluids 21(1): 013602.
+
+Ng, C.-O. and Zhou, Q. (2012). Electro-osmotic flow through a thin channel with gradually
+    varying wall potential and hydrodynamic slippage, Fluid Dyn. Res. 44(5): 055507.
+
+Ou, J., Perot, B. and Rothstein, J. P. (2004). Laminar drag reduction in microchannels using
+    ultrahydrophobic surfaces, Phys. Fluids 16(12): 4635–4643.
+
+Philip, J. R. (1972).    Flows satisfying mixed no-slip and no-shear conditions, ZAMP
+    23(3): 353–372.
+
+Richardson, S. (1971). A model for the boundary condition of a porous material. part 2, J.
+    Fluid Mech. 49(02): 327–336.
+
+Smith, J. D., Dhiman, R., Anand, S., Reza-Garduno, E., Cohen, R. E., McKinley, G. H. and
+    Varanasi, K. K. (2013). Droplet mobility on lubricant-impregnated surfaces, Soft Matter
+    9(6): 1772–1780.
+
+Teo, C. J. and Khoo, B. C. (2009). Analysis of Stokes flow in microchannels with superhy-
+    drophobic surfaces containing a periodic array of micro-grooves, Microfluid. Nanofluid.
+    7(3): 353–382.
+
+Teo, C. J. and Khoo, B. C. (2010). Flow past superhydrophobic surfaces containing longitu-
+    dinal grooves: effects of interface curvature, Microfluid. Nanofluid. 9(2-3): 499–511.
+
+Wang, C.-Y. (1976). Parallel flow between corrugated plates, ASCE J. Eng. Mech. Div.
+    102(6): 1088–1090.
+
+Wang, C.-Y. (1979). On stokes flow between corrugated plates, ASME J. Appl. Mech.
+    46(2): 462–464.
+
+
+
+
+                                             32
+Wang, C.-Y. (1994).     Flow in a channel with longitudinal ribs, ASME J. Fluids Eng.
+    116(2): 233–237.
+
+Wang, C.-Y. (1997). Stokes flow through a transversely finned channel, ASME J. Fluids Eng.
+    119(1): 110–114.
+
+Wang, C.-Y. (2003). Flow over a surface with parallel grooves, Phys. Fluids 15(5): 1114–1121.
+
+Wong, T.-S., Kang, S. H., Tang, S. K., Smythe, E. J., Hatton, B. D., Grinthal, A. and
+    Aizenberg, J. (2011). Bioinspired self-repairing slippery surfaces with pressure-stable
+    omniphobicity, Nature 477(7365): 443–447.
+
+
+
+
+                                             33
+

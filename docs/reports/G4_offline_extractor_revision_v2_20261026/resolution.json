@@ -1,0 +1,43 @@
+{
+  "status": "FOUR_PREPARATION_FINDINGS_ADDRESSED",
+  "items": [
+    {
+      "id": "B01",
+      "status": "IMPLEMENTED_AND_SYNTHETICALLY_VERIFIED_REAL_EXECUTION_CLOSED",
+      "evidence": [
+        "real_N8_binding_DRAFT.json",
+        "real_N8_trust_anchor_DRAFT.json",
+        "real_binding_static_check.json",
+        "replacement-inventory/certificate/index rejection fixtures"
+      ]
+    },
+    {
+      "id": "B02",
+      "status": "IMPLEMENTED_AND_SYNTHETICALLY_VERIFIED_REAL_EXECUTION_CLOSED",
+      "evidence": [
+        "N8-format 48-file synthetic record with 8+17 arrays",
+        "success and required corruption/schema/identity/mid-read-change fixtures"
+      ]
+    },
+    {
+      "id": "C01",
+      "status": "IMPLEMENTED_AND_SYNTHETICALLY_VERIFIED_REAL_EXECUTION_CLOSED",
+      "evidence": [
+        "nonzero_L2_closed_form_with_pressure_offset_and_permutation"
+      ]
+    },
+    {
+      "id": "C02",
+      "status": "IMPLEMENTED_AND_SYNTHETICALLY_VERIFIED_REAL_EXECUTION_CLOSED",
+      "evidence": [
+        "ANALYSIS_SPEC.md",
+        "independent_success/",
+        "independent_failure/",
+        "near-threshold, missing, nonfinite and overwrite rejection fixtures"
+      ]
+    }
+  ],
+  "real_extraction_permission": false,
+  "solver_permission": false,
+  "scientific_thresholds_activated": false
+}

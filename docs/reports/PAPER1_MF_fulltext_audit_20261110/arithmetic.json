@@ -1,0 +1,64 @@
+{
+  "scope": "Saved scalar arithmetic only; no solver or field processing",
+  "geometries": 18,
+  "ranges": {
+    "d_over_h": [
+      0.2,
+      4.0
+    ],
+    "S_A": [
+      0.4,
+      8.0
+    ],
+    "S_B": [
+      0.36363636363636365,
+      2.6666666666666665
+    ],
+    "S_C_maximum_gap_reference": [
+      0.3333333333333333,
+      1.6
+    ],
+    "alpha_A": [
+      0.3272492347489368,
+      1.6362461737446838
+    ],
+    "alpha_B": [
+      0.4908738521234052,
+      2.421644337142132
+    ]
+  },
+  "source_counterexample": {
+    "figure": "MF Figure 6(b), printed page 34, PDF page 12",
+    "S_value": 0.08,
+    "claim_Smax_0p06": false,
+    "claim_Smax_0p08": "Not asserted; one larger counterexample is sufficient"
+  },
+  "normalization": "For reference full height H0: S=2d/H0; Save=2-2(h+d/2)/H0; alpha=pi*H0/P. Reference conventions must transform together.",
+  "reference_geometry_examples": [
+    {
+      "direction": "P",
+      "h_nm": 75,
+      "d_nm": 100,
+      "H_ref_nm": 125,
+      "K_LB_m3": 9.834075958643652e-23,
+      "K_LCL_m3": 2.4088541666666665e-22,
+      "H_hyd_from_K_LB_nm": 105.67484062283602,
+      "R_LCL_over_R_LB": 0.4082470452020716,
+      "K_LCL_over_K_LB": 2.449497214376717,
+      "L_m3": 3.515625e-23
+    },
+    {
+      "direction": "T",
+      "h_nm": 75,
+      "d_nm": 100,
+      "H_ref_nm": 125,
+      "K_LB_m3": 4.4490220210459354e-23,
+      "K_LCL_m3": 6.518158783783784e-23,
+      "H_hyd_from_K_LB_nm": 81.12385880007231,
+      "R_LCL_over_R_LB": 0.682558091728978,
+      "K_LCL_over_K_LB": 1.4650767636010504,
+      "L_m3": 3.515625e-23
+    }
+  ],
+  "MF_pdf_info": "Title:           doi:\nSubject:         \nKeywords:        \nAuthor:          \nCreator:         \nProducer:        pdfTeX-1.40.10\nCreationDate:    Sat May  4 15:44:36 2013 CST\nModDate:         Sat May  4 15:44:36 2013 CST\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            AcroForm\nJavaScript:      yes\nPages:           32\nEncrypted:       no\nPage size:       493.228 x 700.157 pts\nPage rot:        0\nFile size:       2612366 bytes\nOptimized:       no\nPDF version:     1.4\n"
+}

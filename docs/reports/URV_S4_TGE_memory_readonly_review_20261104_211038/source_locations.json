@@ -1,0 +1,155 @@
+{
+  "native_flow": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/src/urv_reference.cpp",
+    "matches": [
+      {
+        "line": 704,
+        "text": "  const T domainTop = mesaGap + grooveDepth + 4.0 * dx;"
+      },
+      {
+        "line": 732,
+        "text": "  SuperLattice<T, DESCRIPTOR> lattice(converter, cuboids, loadBalancer);"
+      },
+      {
+        "line": 736,
+        "text": "  setBouzidiBoundary<T, DESCRIPTOR, BouzidiPostProcessor>("
+      },
+      {
+        "line": 738,
+        "text": "  setBouzidiBoundary<T, DESCRIPTOR, BouzidiPostProcessor>("
+      },
+      {
+        "line": 748,
+        "text": "  if (p.mode == \"precheck\") {"
+      }
+    ]
+  },
+  "population_and_force_allocation": {
+    "path": "/home/dell/openlb/src/core/blockLattice.hh",
+    "matches": [
+      {
+        "line": 395,
+        "text": "ConcreteBlockLattice<T,DESCRIPTOR,PLATFORM>::ConcreteBlockLattice(Vector<int,DESCRIPTOR::d> size,"
+      },
+      {
+        "line": 405,
+        "text": "    auto& fieldArray = _data.template allocate<field_type>(this->getNcells());"
+      },
+      {
+        "line": 443,
+        "text": "    auto& data = _data.template allocate<FIELD_TYPE>(this->getNcells());"
+      }
+    ]
+  },
+  "dense_columns": {
+    "path": "/home/dell/openlb/src/core/platform/cpu/sisd/column.h",
+    "matches": [
+      {
+        "line": 53,
+        "text": "  Column(std::size_t count):"
+      },
+      {
+        "line": 55,
+        "text": "    _data(new T[count] {})"
+      },
+      {
+        "line": 142,
+        "text": "  CyclicColumn(std::size_t count):"
+      },
+      {
+        "line": 144,
+        "text": "    _data(new T[count] {}),"
+      }
+    ]
+  },
+  "bouzidi_q": {
+    "path": "/home/dell/openlb/src/boundary/bouzidiFields.h",
+    "matches": [
+      {
+        "line": 32,
+        "text": "struct BOUZIDI_DISTANCE : public descriptors::FIELD_BASE<0,0,1> {"
+      }
+    ]
+  },
+  "pointer_maps": {
+    "path": "/home/dell/openlb/src/core/blockDynamicsMap.h",
+    "matches": [
+      {
+        "line": 308,
+        "text": "    _dynamicsOfCells(new Dynamics<T,DESCRIPTOR>*                [_lattice.getNcells()] { nullptr }),"
+      },
+      {
+        "line": 309,
+        "text": "    _operatorOfCells(new BlockCollisionO<T,DESCRIPTOR,PLATFORM>*[_lattice.getNcells()] { nullptr }),"
+      }
+    ]
+  },
+  "cpu_pointer_field": {
+    "path": "/home/dell/openlb/src/core/platform/cpu/sisd/operator.h",
+    "matches": [
+      {
+        "line": 314,
+        "text": "    _dynamicsOfCells = block.template getField<cpu::DYNAMICS<T,DESCRIPTOR,Platform::CPU_SISD>>()[0].data();"
+      }
+    ]
+  },
+  "old_resource_wrapper": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/scripts/audit_zero_tge.py",
+    "matches": [
+      {
+        "line": 24,
+        "text": "def limits():"
+      },
+      {
+        "line": 25,
+        "text": "    resource.setrlimit(resource.RLIMIT_AS,(8*1024**3,8*1024**3));resource.setrlimit(resource.RLIMIT_CORE,(0,0))"
+      },
+      {
+        "line": 36,
+        "text": "        child=subprocess.Popen(command,cwd=CASE,stdout=stream,stderr=subprocess.STDOUT,"
+      },
+      {
+        "line": 44,
+        "text": "                size=sum(p.stat().st_size for p in output.rglob('*') if p.is_file())"
+      },
+      {
+        "line": 83,
+        "text": "            proc=bounded_process(cmd,log,env,folder)"
+      }
+    ]
+  },
+  "parent_checker": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/check_results.py",
+    "matches": [
+      {
+        "line": 226,
+        "text": "    raw=rows(run/'diagnostics.csv');data={key:np.array([float(row[key]) for row in raw]) for key in raw[0]}"
+      },
+      {
+        "line": 247,
+        "text": "        proc=subprocess.run(['/usr/bin/pvpython','--force-offscreen-rendering','-B',str(CASE/'analysis/read_fields.py'),"
+      }
+    ]
+  },
+  "field_reader": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/read_fields.py",
+    "matches": [
+      {
+        "line": 41,
+        "text": "    diagnostics={} if cfg['mode']=='initialize' else {int(r['step']):r for r in rows(run/'diagnostics.csv')}"
+      },
+      {
+        "line": 62,
+        "text": "            iz,iy,ix=np.nonzero(mask)"
+      },
+      {
+        "line": 81,
+        "text": "        ids=np.concatenate(ids)"
+      },
+      {
+        "line": 82,
+        "text": "        need(len(ids)==p['nodes'] and len(np.unique(ids))==p['nodes'], 'missing or duplicated core fluid')"
+      }
+    ]
+  }
+}

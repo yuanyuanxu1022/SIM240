@@ -1,0 +1,29 @@
+{
+  "syntax": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "reject_wrapper": {
+    "exit_code": 2,
+    "stdout": "",
+    "stderr": "Usage: start_from_project.sh [--check|--execute]\n"
+  },
+  "reject_batch": {
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "only the fixed grid_mid6 batch ID is accepted\n"
+  },
+  "reject_accept_old_batch": {
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_grid_mid6_20261024/accept_batch.py\", line 41, in <module>\n    if __name__=='__main__':main()\n                            ~~~~^^\n  File \"/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_grid_mid6_20261024/accept_batch.py\", line 11, in main\n    if batch!=CASE/'results/development_grid_mid6_20261024_v1':raise ValueError('only completed GRID_MID6 batch')\n                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: only completed GRID_MID6 batch\n"
+  },
+  "compare_coarse_only": {
+    "exit_code": 0,
+    "stdout": "{\"arithmetic_completed\": true, \"GRID_SENSITIVITY_TARGET\": \"INCOMPLETE_OR_REFERENCE_INVALID\", \"narrow_two_geometry_gate\": \"NOT_PASS\", \"prediction_released\": false}\n",
+    "stderr": ""
+  },
+  "ok": true,
+  "formal_steady_started": false
+}

@@ -1,0 +1,72 @@
+{
+  "classification": "source-derived simultaneous payload subtotal, not measured RSS/VSZ or complete peak",
+  "sizeof_pointer_current_inspector": 8,
+  "basis": "source T=double; D3Q19 FORCE; single full cuboid with z=(h+d)/dx+5; overlap3; no native calls",
+  "rows": [
+    {
+      "dx_nm": 1.25,
+      "nx": 192,
+      "ny": 192,
+      "core_nz_static": 93,
+      "core_cells_static": 3428352,
+      "allocated_cells_static": 3881196,
+      "fluid_nodes_static": 2064384,
+      "components_bytes": {
+        "population_19_double": 589941792,
+        "force_3_double": 93148704,
+        "bouzidi_distance_19_double": 589941792,
+        "two_dynamics_map_pointer_arrays": 62099136,
+        "cpu_dynamics_field_pointer_array": 31049568
+      },
+      "three_double_fields_subtotal_bytes": 1273032288,
+      "five_components_subtotal_bytes": 1366180992,
+      "components_GiB": {
+        "population_19_double": 0.5494261085987091,
+        "force_3_double": 0.08675149083137512,
+        "bouzidi_distance_19_double": 0.5494261085987091,
+        "two_dynamics_map_pointer_arrays": 0.05783432722091675,
+        "cpu_dynamics_field_pointer_array": 0.028917163610458374
+      },
+      "three_double_fields_subtotal_GiB": 1.1856037080287933,
+      "five_components_subtotal_GiB": 1.2723551988601685
+    },
+    {
+      "dx_nm": 0.625,
+      "nx": 384,
+      "ny": 384,
+      "core_nz_static": 181,
+      "core_cells_static": 26689536,
+      "allocated_cells_static": 28442700,
+      "fluid_nodes_static": 16515072,
+      "components_bytes": {
+        "population_19_double": 4323290400,
+        "force_3_double": 682624800,
+        "bouzidi_distance_19_double": 4323290400,
+        "two_dynamics_map_pointer_arrays": 455083200,
+        "cpu_dynamics_field_pointer_array": 227541600
+      },
+      "three_double_fields_subtotal_bytes": 9329205600,
+      "five_components_subtotal_bytes": 10011830400,
+      "components_GiB": {
+        "population_19_double": 4.026377946138382,
+        "force_3_double": 0.6357438862323761,
+        "bouzidi_distance_19_double": 4.026377946138382,
+        "two_dynamics_map_pointer_arrays": 0.42382925748825073,
+        "cpu_dynamics_field_pointer_array": 0.21191462874412537
+      },
+      "three_double_fields_subtotal_GiB": 8.68849977850914,
+      "five_components_subtotal_GiB": 9.324243664741516
+    }
+  ],
+  "excluded": [
+    "material arrays",
+    "masks",
+    "communication arrays",
+    "postprocessors",
+    "allocator rounding",
+    "library/stack mappings",
+    "VTK export",
+    "reader arrays",
+    "controller/checker objects"
+  ]
+}

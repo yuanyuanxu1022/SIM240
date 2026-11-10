@@ -1,0 +1,329 @@
+{
+  "kind": "EXISTING_BASELINES_AND_ANALYTIC_EXPECTATIONS_NOT_NEW_GDI_RESULTS",
+  "cases": [
+    {
+      "planned_case": "GDI01",
+      "baseline_case": "C01",
+      "baseline_run_id": "SDI_C01_v1_20261030_01",
+      "baseline_run_dir": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01",
+      "analysis_path": "docs/reports/SDI_C01_results_20261030/interface_analysis_geometry_v1_1.json",
+      "family": "V2_published_rounded",
+      "orientation": "groove_along_long_y",
+      "coefficient_source_row": {
+        "input_id": "V2_published_rounded",
+        "orientation_id": "groove_along_long_y",
+        "K_parallel_m3": 1.0414014079511954e-22,
+        "K_perpendicular_m3": 4.5537951695675916e-23,
+        "K_global_m3": [
+          [
+            4.5537951695675916e-23,
+            0.0
+          ],
+          [
+            0.0,
+            1.0414014079511954e-22
+          ]
+        ],
+        "kappa_global_m2_conditional": [
+          [
+            3.6430361356540735e-16,
+            0.0
+          ],
+          [
+            0.0,
+            8.331211263609564e-16
+          ]
+        ],
+        "D_global_m_minus2_conditional_total_drag": [
+          [
+            2744963164688618.5,
+            0.0
+          ],
+          [
+            0.0,
+            1200305655874992.2
+          ]
+        ],
+        "in_plane_resistance_mu_over_K_Pa_s_per_m3": [
+          2.195970531750895e+19,
+          9.60244524699994e+18
+        ],
+        "arithmetic_example_only": true,
+        "openfoam_dictionary_ready": false,
+        "independent_squeeze_reference": false
+      },
+      "analytic_expectation": {
+        "Kxx_m3": 4.5537951695675916e-23,
+        "Kyy_m3": 1.0414014079511954e-22,
+        "Dxx_m_minus2": 2744963164688618.5,
+        "Dyy_m_minus2": 1200305655874992.2,
+        "Ux_m_s": 3.643036135654074e-07,
+        "Jx_m2_s": 4.553795169567592e-14,
+        "Q_m3_s": 2.185821681392444e-18,
+        "R_Q_Pa_s_m_minus3": 1.0979852658754474e+19,
+        "power_W": 5.2459720353418654e-17
+      },
+      "existing_observed": {
+        "two_dimensional": {
+          "mean_Ux_m_s": 3.6430361356540733e-07,
+          "mean_Jx_m2_s": 4.553795169567592e-14,
+          "Q_m3_s": 2.1858216813930507e-18,
+          "R_Q_Pa_s_m_minus3": 1.0979852658751427e+19,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        },
+        "openfoam": {
+          "mean_Ux_m_s": 3.643036135654074e-07,
+          "mean_Jx_m2_s": 4.5537951695675926e-14,
+          "Q_m3_s": 2.185821681392935e-18,
+          "R_Q_Pa_s_m_minus3": 1.0979852658752006e+19,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        }
+      },
+      "planned_new_run_id": null,
+      "new_result": null
+    },
+    {
+      "planned_case": "GDI02",
+      "baseline_case": "C02",
+      "baseline_run_id": "SDI_C02_v1_1_20261030_01",
+      "baseline_run_dir": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01",
+      "analysis_path": "docs/reports/SDI_C02_results_20261030/interface_analysis.json",
+      "family": "V2_published_rounded",
+      "orientation": "groove_along_short_x",
+      "coefficient_source_row": {
+        "input_id": "V2_published_rounded",
+        "orientation_id": "groove_along_short_x",
+        "K_parallel_m3": 1.0414014079511954e-22,
+        "K_perpendicular_m3": 4.5537951695675916e-23,
+        "K_global_m3": [
+          [
+            1.0414014079511954e-22,
+            0.0
+          ],
+          [
+            0.0,
+            4.5537951695675916e-23
+          ]
+        ],
+        "kappa_global_m2_conditional": [
+          [
+            8.331211263609564e-16,
+            0.0
+          ],
+          [
+            0.0,
+            3.6430361356540735e-16
+          ]
+        ],
+        "D_global_m_minus2_conditional_total_drag": [
+          [
+            1200305655874992.2,
+            0.0
+          ],
+          [
+            0.0,
+            2744963164688618.5
+          ]
+        ],
+        "in_plane_resistance_mu_over_K_Pa_s_per_m3": [
+          9.60244524699994e+18,
+          2.195970531750895e+19
+        ],
+        "arithmetic_example_only": true,
+        "openfoam_dictionary_ready": false,
+        "independent_squeeze_reference": false
+      },
+      "analytic_expectation": {
+        "Kxx_m3": 1.0414014079511954e-22,
+        "Kyy_m3": 4.5537951695675916e-23,
+        "Dxx_m_minus2": 1200305655874992.2,
+        "Dyy_m_minus2": 2744963164688618.5,
+        "Ux_m_s": 8.331211263609563e-07,
+        "Jx_m2_s": 1.0414014079511954e-13,
+        "Q_m3_s": 4.998726758165738e-18,
+        "R_Q_Pa_s_m_minus3": 4.80122262349997e+18,
+        "power_W": 1.199694421959777e-16
+      },
+      "existing_observed": {
+        "two_dimensional": {
+          "mean_Ux_m_s": 8.331211263609563e-07,
+          "mean_Jx_m2_s": 1.0414014079511954e-13,
+          "Q_m3_s": 4.998726758166358e-18,
+          "R_Q_Pa_s_m_minus3": 4.801222623499374e+18,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        },
+        "openfoam": {
+          "mean_Ux_m_s": 8.331211263609565e-07,
+          "mean_Jx_m2_s": 1.0414014079511957e-13,
+          "Q_m3_s": 4.998726758167961e-18,
+          "R_Q_Pa_s_m_minus3": 4.801222623497833e+18,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        }
+      },
+      "planned_new_run_id": null,
+      "new_result": null
+    },
+    {
+      "planned_case": "GDI03",
+      "baseline_case": "C03",
+      "baseline_run_id": "SDI_C03_v1_2_20261030_01",
+      "baseline_run_dir": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01",
+      "analysis_path": "docs/reports/SDI_C03_results_20261030/interface_analysis.json",
+      "family": "original_local_cubic",
+      "orientation": "groove_along_long_y",
+      "coefficient_source_row": {
+        "input_id": "original_local_cubic",
+        "orientation_id": "groove_along_long_y",
+        "K_parallel_m3": 2.4088541666666665e-22,
+        "K_perpendicular_m3": 6.518158783783783e-23,
+        "K_global_m3": [
+          [
+            6.518158783783783e-23,
+            0.0
+          ],
+          [
+            0.0,
+            2.4088541666666665e-22
+          ]
+        ],
+        "kappa_global_m2_conditional": [
+          [
+            5.214527027027027e-16,
+            0.0
+          ],
+          [
+            0.0,
+            1.9270833333333333e-15
+          ]
+        ],
+        "D_global_m_minus2_conditional_total_drag": [
+          [
+            1917719468739877.0,
+            0.0
+          ],
+          [
+            0.0,
+            518918918918918.94
+          ]
+        ],
+        "in_plane_resistance_mu_over_K_Pa_s_per_m3": [
+          1.5341755749919017e+19,
+          4.151351351351352e+18
+        ],
+        "arithmetic_example_only": true,
+        "openfoam_dictionary_ready": false,
+        "independent_squeeze_reference": false
+      },
+      "analytic_expectation": {
+        "Kxx_m3": 6.518158783783783e-23,
+        "Kyy_m3": 2.4088541666666665e-22,
+        "Dxx_m_minus2": 1917719468739877.0,
+        "Dyy_m_minus2": 518918918918918.94,
+        "Ux_m_s": 5.214527027027027e-07,
+        "Jx_m2_s": 6.518158783783784e-14,
+        "Q_m3_s": 3.1287162162162162e-18,
+        "R_Q_Pa_s_m_minus3": 7.670877874959507e+18,
+        "power_W": 7.508918918918918e-17
+      },
+      "existing_observed": {
+        "two_dimensional": {
+          "mean_Ux_m_s": 5.214527027027026e-07,
+          "mean_Jx_m2_s": 6.518158783783782e-14,
+          "Q_m3_s": 3.1287162162167147e-18,
+          "R_Q_Pa_s_m_minus3": 7.670877874958286e+18,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        },
+        "openfoam": {
+          "mean_Ux_m_s": 5.214527027027027e-07,
+          "mean_Jx_m2_s": 6.518158783783785e-14,
+          "Q_m3_s": 3.1287162162165995e-18,
+          "R_Q_Pa_s_m_minus3": 7.670877874958568e+18,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        }
+      },
+      "planned_new_run_id": null,
+      "new_result": null
+    },
+    {
+      "planned_case": "GDI04",
+      "baseline_case": "C04",
+      "baseline_run_id": "SDI_C04_v1_3_20261030_01",
+      "baseline_run_dir": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01",
+      "analysis_path": "docs/reports/SDI_C04_results_20261030/interface_analysis.json",
+      "family": "original_local_cubic",
+      "orientation": "groove_along_short_x",
+      "coefficient_source_row": {
+        "input_id": "original_local_cubic",
+        "orientation_id": "groove_along_short_x",
+        "K_parallel_m3": 2.4088541666666665e-22,
+        "K_perpendicular_m3": 6.518158783783783e-23,
+        "K_global_m3": [
+          [
+            2.4088541666666665e-22,
+            0.0
+          ],
+          [
+            0.0,
+            6.518158783783783e-23
+          ]
+        ],
+        "kappa_global_m2_conditional": [
+          [
+            1.9270833333333333e-15,
+            0.0
+          ],
+          [
+            0.0,
+            5.214527027027027e-16
+          ]
+        ],
+        "D_global_m_minus2_conditional_total_drag": [
+          [
+            518918918918918.94,
+            0.0
+          ],
+          [
+            0.0,
+            1917719468739877.0
+          ]
+        ],
+        "in_plane_resistance_mu_over_K_Pa_s_per_m3": [
+          4.151351351351352e+18,
+          1.5341755749919017e+19
+        ],
+        "arithmetic_example_only": true,
+        "openfoam_dictionary_ready": false,
+        "independent_squeeze_reference": false
+      },
+      "analytic_expectation": {
+        "Kxx_m3": 2.4088541666666665e-22,
+        "Kyy_m3": 6.518158783783783e-23,
+        "Dxx_m_minus2": 518918918918918.94,
+        "Dyy_m_minus2": 1917719468739877.0,
+        "Ux_m_s": 1.927083333333333e-06,
+        "Jx_m2_s": 2.4088541666666664e-13,
+        "Q_m3_s": 1.1562499999999998e-17,
+        "R_Q_Pa_s_m_minus3": 2.075675675675676e+18,
+        "power_W": 2.774999999999999e-16
+      },
+      "existing_observed": {
+        "two_dimensional": {
+          "mean_Ux_m_s": 1.927083333333333e-06,
+          "mean_Jx_m2_s": 2.4088541666666664e-13,
+          "Q_m3_s": 1.1562499999999605e-17,
+          "R_Q_Pa_s_m_minus3": 2.0756756756757466e+18,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        },
+        "openfoam": {
+          "mean_Ux_m_s": 1.9270833333333334e-06,
+          "mean_Jx_m2_s": 2.408854166666667e-13,
+          "Q_m3_s": 1.1562500000001498e-17,
+          "R_Q_Pa_s_m_minus3": 2.0756756756754068e+18,
+          "provenance": "recomputed_from_existing_CSV_not_new_flow_result"
+        }
+      },
+      "planned_new_run_id": null,
+      "new_result": null
+    }
+  ]
+}

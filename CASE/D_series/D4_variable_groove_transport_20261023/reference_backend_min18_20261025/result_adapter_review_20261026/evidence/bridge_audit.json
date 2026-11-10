@@ -1,0 +1,118 @@
+{
+  "status": "PASS_REAL_MESH_SYNTHETIC_FIELD_ONLY",
+  "cases": [
+    {
+      "planned_id": "B0MIN_FLAT_T_d5",
+      "mixed_dofs": 6798,
+      "velocity_scalar_dofs": 6014,
+      "velocity_nodes": 3007,
+      "pressure_dofs": 784,
+      "periodic_pairs": 74,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 440400,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d2p5",
+      "mixed_dofs": 26553,
+      "velocity_scalar_dofs": 23546,
+      "velocity_nodes": 11773,
+      "pressure_dofs": 3007,
+      "periodic_pairs": 149,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 1707984,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d1p25",
+      "mixed_dofs": 104943,
+      "velocity_scalar_dofs": 93170,
+      "velocity_nodes": 46585,
+      "pressure_dofs": 11773,
+      "periodic_pairs": 299,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 6731472,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N8",
+      "mixed_dofs": 1275,
+      "velocity_scalar_dofs": 1122,
+      "velocity_nodes": 561,
+      "pressure_dofs": 153,
+      "periodic_pairs": 39,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 84944,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N16",
+      "mixed_dofs": 4851,
+      "velocity_scalar_dofs": 4290,
+      "velocity_nodes": 2145,
+      "pressure_dofs": 561,
+      "periodic_pairs": 79,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 315088,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32",
+      "mixed_dofs": 18915,
+      "velocity_scalar_dofs": 16770,
+      "velocity_nodes": 8385,
+      "pressure_dofs": 2145,
+      "periodic_pairs": 159,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 1217744,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d1p25_ALG",
+      "mixed_dofs": 104943,
+      "velocity_scalar_dofs": 93170,
+      "velocity_nodes": 46585,
+      "pressure_dofs": 11773,
+      "periodic_pairs": 299,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 6731472,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32_ALG",
+      "mixed_dofs": 18915,
+      "velocity_scalar_dofs": 16770,
+      "velocity_nodes": 8385,
+      "pressure_dofs": 2145,
+      "periodic_pairs": 159,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 1217744,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32_QUAD",
+      "mixed_dofs": 18915,
+      "velocity_scalar_dofs": 16770,
+      "velocity_nodes": 8385,
+      "pressure_dofs": 2145,
+      "periodic_pairs": 159,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 1217744,
+      "artificial_field_only": true
+    }
+  ],
+  "candidate_result_adapter_structurally_compatible": true,
+  "real_solver_output_tested": false,
+  "ksp_created": false,
+  "solver_called": false,
+  "formal_run_id": null,
+  "source_sha256": {
+    "mesh_periodic_pressure_20261025/interface.py": "5bff1dcc4946e655ade9cc865474dd4a953551c45fe7a5ce29efd54608d88c90",
+    "solver_result_review_20261025/candidate_solver.py": "e4c1da9080e97b897caf4165845518647c4d7071d4e1b0c0e6f5603e272f5dcd",
+    "raw_capture_review_20261025/raw_writer.py": "dd1544754c632a0570cb1147f987fe02480f6d85a2b5282039ebdf7c319b615a",
+    "protocol/benchmarks18.csv": "fb784710590acdbdc1ac5abdc33cdc542d3643bd4df28d49a85cb12902e85aee"
+  },
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null
+}

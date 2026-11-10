@@ -1,0 +1,1214 @@
+[
+  {
+    "source_block": 0,
+    "translated": true,
+    "source": "# 有限间隙矩形沟槽中局部立方律的方向性输运偏差：相对于5 nm离散数值参考的比较",
+    "english": "# Directional transport discrepancies of the local cubic law in confined rectangular grooves: comparison against 5 nm discrete numerical references"
+  },
+  {
+    "source_block": 1,
+    "translated": true,
+    "source": "## 摘要",
+    "english": "## Abstract"
+  },
+  {
+    "source_block": 2,
+    "translated": true,
+    "source": "纳米压印的降阶模型通常用局部立方律估算残膜与沟槽的等效输运系数。本文以格子玻尔兹曼方法显式计算平面基底与周期矩形沟槽之间的稳态全充液流动，直接检验这一近似。",
+    "english": "Reduced models of nanoimprint flow commonly use a local cubic law to estimate effective transport through the residual film and grooves. We assess this approximation with lattice Boltzmann calculations of steady, fully filled flow between a planar substrate and a periodically grooved wall."
+  },
+  {
+    "source_block": 3,
+    "translated": true,
+    "source": "几何取周期 240 nm、槽宽 120 nm，18 种组合覆盖 25—125 nm 间隙与 25—120 nm 槽深；每种几何分别施加沿槽（$y$）与跨槽（$x$）驱动，共 36 个主方向样点。",
+    "english": "The period and groove width are 240 and 120 nm. 18 geometries span gaps of 25–125 nm and groove depths of 25–120 nm. Along-groove ($y$) and across-groove ($x$) forcing is applied separately, giving 36 principal-direction samples."
+  },
+  {
+    "source_block": 4,
+    "translated": true,
+    "source": "结果有三点。",
+    "english": "Three results emerge."
+  },
+  {
+    "source_block": 5,
+    "translated": true,
+    "source": "**其一，在5 nm离散数值结果中，槽深对两个方向的作用不同。** 间隙 50 nm 时，槽深由 25 增至 120 nm，沿槽系数 $K_{yy}$ 增至 3.55 倍，跨槽系数 $K_{xx}$ 仅增至 1.034 倍。在共同覆盖该槽深区间的50、75、125 nm三档间隙中，沿槽相对增益随间隙增大而减弱；在125 nm间隙下仍约为39.2%。",
+    "english": "**First, the 5 nm discrete results show different depth responses in the two directions.** At a gap of 50 nm, increasing depth from 25 to 120 nm multiplies the along-groove coefficient $K_{yy}$ by 3.55, but the across-groove coefficient $K_{xx}$ by only 1.034. Among the gaps of 50, 75 and 125 nm that cover this depth interval, the relative along-groove gain decreases with gap, but remains approximately 39.2% at 125 nm."
+  },
+  {
+    "source_block": 6,
+    "translated": true,
+    "source": "**其二，以5 nm网格的离散数值结果为参考，局部立方律在全部36个主方向样点上均高估输运系数。** 沿槽高估 +10.30% 至 +204.85%，跨槽高估 +8.11% 至 +54.19%。高估不是个别样点的偏差，而是这一近似在本文几何与分辨率下的系统行为。",
+    "english": "**Second, the local cubic law overestimates transport at all 36 principal-direction samples relative to the 5 nm discrete references.** The overestimates range from +10.30% to +204.85% along the grooves and from +8.11% to +54.19% across them. This is a systematic pattern within the sampled geometries and resolution, rather than a discrepancy confined to a few samples."
+  },
+  {
+    "source_block": 7,
+    "translated": true,
+    "source": "**其三，相对于5 nm数值主值，基准几何的各向异性与重建流向均存在偏差。** 基准几何（$h=75$ nm、$d=100$ nm）的数值各向异性为 2.21，模型给出 3.70，高估约 67%；在同一线性张量描述下，45°驱动时两组主值重建的通量方向相差9.20°。",
+    "english": "**Third, the reference geometry shows discrepancies in both anisotropy and reconstructed flow direction relative to the 5 nm principal values.** At $h=75$ nm and $d=100$ nm, the numerical anisotropy is 2.21, whereas the model gives 3.70, approximately 67% higher. Under the same linear tensor description, the flux directions reconstructed from the two sets of principal values differ by 9.20° for forcing at 45°."
+  },
+  {
+    "source_block": 8,
+    "translated": true,
+    "source": "相对于5 nm离散参考，按已公布舍入系数作回顾性评价，经验修正后的最大绝对残差为沿槽18点10.5%、跨槽18点18.7%；其中 $h\\ge50$ nm的15个跨槽点为6.9%。在 $(h,d)=(25,100)$ nm跨槽点，5 nm参考下的偏差由+16.36%变为−18.71%，绝对偏差反而增大。修正仅以 $d/w$ 为自变量，剩余残差仍随间隙变化，其来源尚未分解。",
+    "english": "Retrospective evaluation against the 5 nm references, using the published rounded coefficients, gives maximum absolute corrected residuals of 10.5% for the 18 along-groove samples and 18.7% for the 18 across-groove samples. The 15 across-groove samples with $h\\ge50$ have a maximum of 6.9%. At the across-groove sample $(h,d)=(25,100)$ nm against the 5 nm reference, the signed discrepancy changes from +16.36% to −18.71%, increasing its absolute value. The correction depends only on $d/w$; the residuals still vary with gap, and their sources have not been separated."
+  },
+  {
+    "source_block": 9,
+    "translated": true,
+    "source": "上述偏差幅度及修正残差限定于本文样点与5 nm离散参考，不能作为连续解误差界或新几何预测精度。附录E另由能量恒等式和截面耗散不等式说明：在固定几何、全充液、无滑移、周期直槽的理想Stokes模型下，局部立方律是两个主导度的上界。这一理论结果不确定偏差幅度或各向异性偏差的符号。本文的定量结果在于给出已采样条件下的方向差异及回顾性修正的局限；模型评价需同时报告 $K_{xx}$、$K_{yy}$、其比值及数值参考的可信范围。",
+    "english": "These discrepancy magnitudes and correction residuals are specific to the sampled conditions and 5 nm references; they are neither continuous-solution error bounds nor prediction accuracies for new geometries. Separately, Appendix E uses an energy identity and sectional dissipation inequalities to show that the local cubic law bounds both principal conductances from above in the ideal Stokes model of fixed, fully filled, no-slip periodic straight grooves. This result determines neither the discrepancy magnitudes nor the sign of the anisotropy discrepancy. The quantitative contribution is the sampled directional comparison and the limits of retrospective correction. Model assessment must report $K_{xx}$, $K_{yy}$, their ratio and the scope of the numerical reference evidence together."
+  },
+  {
+    "source_block": 10,
+    "translated": true,
+    "source": "**关键词：** 纳米压印；矩形沟槽；各向异性输运；格子玻尔兹曼方法；局部立方律；模型偏差",
+    "english": "**Keywords:** nanoimprint lithography; rectangular grooves; anisotropic transport; lattice Boltzmann method; local cubic law; model discrepancy"
+  },
+  {
+    "source_block": 11,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  },
+  {
+    "source_block": 12,
+    "translated": true,
+    "source": "## 1 引言",
+    "english": "## 1 Introduction"
+  },
+  {
+    "source_block": 13,
+    "translated": true,
+    "source": "### 1.1 问题从哪来",
+    "english": "### 1.1 Motivation"
+  },
+  {
+    "source_block": 14,
+    "translated": true,
+    "source": "纳米压印中，液体要在基底与图案化模具之间重新分布。大面积压印不可能逐条解析每一个沟槽，工程模型因此普遍采用等效输运系数——把一段图案化表面替换成一块\"等效的\"均匀间隙，让它在同样的压差下给出同样的流量。",
+    "english": "During nanoimprinting, liquid redistributes between a substrate and a patterned mold. Resolving every groove over a large imprint field is impractical. Engineering models therefore use effective transport coefficients, replacing a patterned region with an equivalent uniform gap that carries the same flow under the same pressure difference."
+  },
+  {
+    "source_block": 15,
+    "translated": true,
+    "source": "对平行线槽，最常用的做法是局部立方律：把每一处局部高度当作一段独立的平行平板通道，其导度按 $h^3/12$ 计算；沿槽方向把深槽与浅凸台的导度作算术平均，跨槽方向作调和平均。这一处理简洁、无需拟合、只依赖几何，因而被广泛采用。",
+    "english": "For parallel grooves, a common construction is the local cubic law. Each local height is treated as an independent parallel-plate channel with conductance $h^3/12$; deep and shallow regions are combined by an arithmetic average along the grooves and a harmonic average across them. This construction requires only geometry and no fitted parameters."
+  },
+  {
+    "source_block": 16,
+    "translated": true,
+    "source": "问题在于，这一局部平板组合未显式解析侧壁附近的横向速度耦合和深浅区域连接处的流动。在槽深与槽宽相近、凸台下仍有连通液层的几何中，该近似能否准确给出整体输运，需要直接检验。",
+    "english": "The construction does not explicitly resolve transverse velocity coupling near sidewalls or flow through the connections between deep and shallow regions. Its overall transport accuracy requires direct assessment when groove depth is comparable to groove width and a connected liquid layer remains beneath the ribs."
+  },
+  {
+    "source_block": 17,
+    "translated": true,
+    "source": "### 1.2 这件事和已有工作的关系",
+    "english": "### 1.2 Relation to previous work"
+  },
+  {
+    "source_block": 18,
+    "translated": true,
+    "source": "以等效输运系数描述未解析图案，在压印建模中已是常规做法：Jain 等将各向异性输运用于图案化模板下的液体流动计算，后续压印模型也沿用这一处理 [1–3]。Patir 与 Cheng 的平均流模型给出了流量因子的来源，其条纹平均关系正是本文比较的对象之一 [4]。",
+    "english": "Effective transport coefficients for unresolved patterns are established in imprint modeling. Jain et al. used anisotropic transport for flow beneath patterned templates, and subsequent models retained this treatment [1–3]. The average-flow model of Patir and Cheng provides a flow-factor framework whose stripe averages are among the relations examined here [4]."
+  },
+  {
+    "source_block": 19,
+    "translated": true,
+    "source": "受限沟槽的有效输运张量本身已有解析与数值研究。Dewangan 与 Datta 采用谱分析结合区域摄动，建立了张量关系并对代表形貌作了数值评价 [5]；同一作者还研究了一面正弦起伏壁与一面平壁之间的沿槽流动，其完整谱方法不以小振幅为前提，并另行给出受相应极限条件约束的渐近近似 [6]。这些工作说明\"沟槽带来各向异性输运\"本身不是新发现。",
+    "english": "Effective transport tensors in confined grooves have also been studied analytically and numerically. Dewangan and Datta combined spectral analysis with domain perturbation to establish tensor relations and evaluate representative topographies [5]. The same authors studied along-groove flow between a sinusoidal wall and a planar wall. Their full spectral method does not assume small amplitude; separate asymptotic approximations have their own limiting conditions [6]. Groove-induced transport anisotropy is therefore not itself a new finding."
+  },
+  {
+    "source_block": 20,
+    "translated": true,
+    "source": "本文比较局部立方律与显式数值主值的偏差幅度及方向差异，并检查经验修正的剩余残差。理想Stokes模型中的主导度上界另见附录E；本文不把正偏差本身作为新颖性的充分依据。当前比较以5 nm离散结果为参考，为评价降阶模型提供数值证据，尚不能据此认定其已具备工艺预测精度。",
+    "english": "We compare the magnitudes and directional differences of local-cubic-law discrepancies against explicitly resolved numerical principal values, and examine the remaining residuals of an empirical correction. The ideal-Stokes upper bounds are established separately in Appendix E. Positive discrepancy alone is not treated as sufficient evidence of novelty. The comparison uses 5 nm discrete references and informs assessment of a reduced model; it does not establish process-prediction accuracy."
+  },
+  {
+    "source_block": 21,
+    "translated": true,
+    "source": "### 1.3 本文做了什么",
+    "english": "### 1.3 Scope of this study"
+  },
+  {
+    "source_block": 22,
+    "translated": true,
+    "source": "在固定周期、固定槽宽的矩形沟槽中，分别施加沿槽与跨槽驱动，以5 nm网格得到的两个主值为离散参考，在相同几何、通量定义与物性下比较局部立方律，并回顾性评价V2经验修正的剩余残差。四个几何的加密结果用于报告参考敏感性，不构成全地图连续解精度证书。",
+    "english": "For rectangular grooves of fixed period and width, we apply along-groove and across-groove forcing separately. The principal values obtained on a 5 nm grid serve as discrete references for the local cubic law under common geometry, flux definitions and fluid properties. We retrospectively evaluate the V2 correction. Refinements at four geometries characterize reference sensitivity, rather than certifying continuous-solution accuracy across the map."
+  },
+  {
+    "source_block": 23,
+    "translated": true,
+    "source": "研究限定于固定间隙、全充液、牛顿液体、无滑移壁面。**不涉及自由表面、润湿、困气、真实胶流变或移动模具**；这些内容需要另外的模型与证据，本文不对其作任何断言。",
+    "english": "The study concerns fixed gaps, fully filled Newtonian liquid and no-slip walls. **Free surfaces, wetting, trapped gas, real-resist rheology and moving molds are outside its scope.** These require separate models and evidence."
+  },
+  {
+    "source_block": 24,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  },
+  {
+    "source_block": 25,
+    "translated": true,
+    "source": "## 2 研究对象与比较方法",
+    "english": "## 2 Configuration and comparison methods"
+  },
+  {
+    "source_block": 26,
+    "translated": true,
+    "source": "### 2.1 几何与计算条件",
+    "english": "### 2.1 Geometry and calculation conditions"
+  },
+  {
+    "source_block": 27,
+    "translated": true,
+    "source": "计算域取周期线槽的一个单胞。图案沿 $x$ 方向重复，沟槽沿 $y$ 方向延伸，因此沿槽输运记作 $\\parallel$（对应 $K_{yy}$），跨槽输运记作 $\\perp$（对应 $K_{xx}$）。",
+    "english": "The computational domain is one unit cell of periodic straight grooves. The pattern repeats in $x$, and the grooves extend along $y$. Along-groove transport is denoted by $\\parallel$, corresponding to $K_{yy}$; across-groove transport is denoted by $\\perp$, corresponding to $K_{xx}$."
+  },
+  {
+    "source_block": 28,
+    "translated": true,
+    "source": "周期 $P=240$ nm、槽宽 $w=120$ nm，槽与凸台等宽。凸台底面距平面基底为 $h$（残余间隙），槽顶距基底为 $h+d$（$d$ 为槽深）。全部可用空间由液体充满。",
+    "english": "The period is $P=240$ nm and groove width is $w=120$ nm, with equal groove and rib widths. The rib-to-substrate residual gap is $h$, and the groove roof is at height $h+d$, where $d$ is the groove depth. Liquid fills the entire available volume."
+  },
+  {
+    "source_block": 29,
+    "translated": true,
+    "source": "![图1：工艺示意与全充液计算单胞](../../figures/paper/Fig1_device_and_unitcell.png)",
+    "english": "![Figure 1: process context and fully filled computational unit cell](../../figures/paper/Fig1_device_and_unitcell.png)"
+  },
+  {
+    "source_block": 30,
+    "translated": true,
+    "source": "**图 1**　压印工艺与计算单胞的几何。(a) 工艺三阶段：滴胶→下压填充→固化脱模；(b) 单胞横截面，槽宽 $w$、槽深 $d$、间隙 $h$、周期 $P$，计算域为全充液、无自由液面；(c) 俯视图与坐标约定，槽沿 $y$ 延伸，故 $K_{yy}$ 为沿槽、$K_{xx}$ 为跨槽。",
+    "english": "**Figure 1.** Imprint-process context and computational unit-cell geometry. (a) Process stages: drop dispensing, pressing and filling, then curing and demolding. (b) Unit-cell cross-section, with groove width $w$, depth $d$, gap $h$ and period $P$; the computational domain is fully filled and has no free surface. (c) Plan view and coordinates: grooves extend along $y$, so $K_{yy}$ is along-groove and $K_{xx}$ is across-groove conductance."
+  },
+  {
+    "source_block": 31,
+    "translated": true,
+    "source": "采样矩阵见表 1。**参数组合未完全覆盖**：在 $h=25$ nm 时仅计算 $d=25$、$50$、$100$ nm，未计算 $d=75$ 与 $120$ nm。",
+    "english": "Table 1 lists the sampled matrix. **The parameter combinations do not form a complete matrix:** at $h=25$ nm, only $d=25$, $50$ and $100$ nm were computed; $d=75$ and $120$ nm were not."
+  },
+  {
+    "source_block": 32,
+    "translated": true,
+    "source": "> 此处\"覆盖\"指参数组合的取样范围，与后文 5 nm 的计算网格无关，二者不可混用。",
+    "english": "> Here, coverage refers to sampling of parameter combinations, not the 5 nm computational grid."
+  },
+  {
+    "source_block": 33,
+    "translated": true,
+    "source": "**表 1　采样几何与样点数**",
+    "english": "**Table 1. Sampled geometries and principal-direction samples.**"
+  },
+  {
+    "source_block": 34,
+    "translated": true,
+    "source": "| 间隙 $h$ (nm) | 已算槽深 $d$ (nm) | 几何数 | 主方向样点 |\n|---|---|---:|---:|\n| 25 | 25, 50, 100 | 3 | 6 |\n| 50 | 25, 50, 75, 100, 120 | 5 | 10 |\n| 75 | 25, 50, 75, 100, 120 | 5 | 10 |\n| 125 | 25, 50, 75, 100, 120 | 5 | 10 |\n| **合计** | — | **18** | **36** |",
+    "english": "| Gap $h$ (nm) | Computed depth $d$ (nm) | Geometries | Principal-direction samples |\n|---|---|---:|---:|\n| 25 | 25, 50, 100 | 3 | 6 |\n| 50 | 25, 50, 75, 100, 120 | 5 | 10 |\n| 75 | 25, 50, 75, 100, 120 | 5 | 10 |\n| 125 | 25, 50, 75, 100, 120 | 5 | 10 |\n| **Total** | — | **18** | **36** |"
+  },
+  {
+    "source_block": 35,
+    "translated": true,
+    "source": "求解采用 OpenLB [7] 的 D3Q19 速度集、带体力修正的单松弛时间 BGK 模型，松弛参数 $\\tau=1$；体力项采用 Guo 方案 [9]。固壁使用 Bouzidi–Firdaouss–Lallemand 插值反弹，壁面交点由解析几何给出 [7,8]。",
+    "english": "Calculations use the OpenLB [7] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\\tau=1$. The force term uses the Guo scheme [9]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with wall intersections obtained from the analytical geometry [7,8]."
+  },
+  {
+    "source_block": 36,
+    "translated": true,
+    "source": "计算域平面尺寸 $L_x=L_y=240$ nm，即恰好一个图案周期；$x$、$y$ 双向周期，基底与模具表面无滑移。驱动以均匀体积力施加，加速度 $a=1\\times10^{5}$ m s⁻²，主地图全部算例取同一幅值（该幅值的基准几何检查见 §2.4）。宏观速度通过 OpenLB 的 `computeU` 提取，包含与所用 Guo 体力方案一致的半时间步力修正。稳态判据取连续 1000 步的通量窗口：主通量相对标准差 $\\le10^{-6}$、相对极差 $\\le5\\times10^{-6}$，主轴驱动另要求横向通量 $\\le10^{-12}$ m²/s 的绝对值。该判据的性质与限度（它是停止条件而非独立验收指标）见 §3.1。现存运行清单保存了二进制哈希，参数、结果与日志可按[补充材料表 S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s1)定位；部分历史运行的源码、编译配置及 OpenLB 依赖版本绑定尚未完整核实，作为来源限制保留（见[补充材料 S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s10)）。",
+    "english": "The in-plane dimensions are $L_x=L_y=240$ nm, exactly one pattern period. Boundaries are periodic in $x$ and $y$, with no slip at the substrate and mold. A uniform volume force is imposed with acceleration $a=1\\times10^{5}$ m s⁻². The same amplitude is used throughout the main map; the reference-geometry check is described in §2.4. OpenLB `computeU` supplies the macroscopic velocity, including the half-time-step force correction consistent with the Guo scheme. The stopping rule uses a 1000-step flux window: main-flux relative standard deviation $\\le10^{-6}$, relative range $\\le5\\times10^{-6}$, and, for principal-axis forcing, absolute cross-flux $\\le10^{-12}$ m²/s. Its scope as a stopping rule, rather than an independent acceptance metric, is discussed in §3.1. Saved manifests contain binary hashes; parameters, results and logs are indexed in [Supplementary Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s1). Binding to historical application source, compiler configuration and OpenLB dependencies remains incomplete for some runs; this provenance limitation is retained in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10)."
+  },
+  {
+    "source_block": 37,
+    "translated": true,
+    "source": "**采用单胞的前提是图案严格重复。** 对理想、严格周期的图案内部，一个周期单胞即可表示重复区域的流动，这正是单胞缩减计算量的依据。该前提**不涵盖**完整模具边缘、图案接缝处的过渡区，也不涵盖实际供液条件；本文未对这些情形作任何验证。",
+    "english": "**The unit-cell reduction assumes an exactly repeating pattern.** One period represents the interior of the ideal periodic pattern and reduces the computational domain. This assumption does not cover mold edges, pattern junctions or actual supply conditions; those configurations have not been verified here."
+  },
+  {
+    "source_block": 38,
+    "translated": true,
+    "source": "**物理黏度先行设定，时间步由物性与离散参数共同确定。** 取 $\\tau=1$，格子运动黏度为",
+    "english": "**Physical viscosity is specified first; physical properties and discretization together determine the time step.** With $\\tau=1$, the lattice kinematic viscosity is"
+  },
+  {
+    "source_block": 39,
+    "translated": false,
+    "source": "$$\n\\nu^*=c_s^2\\left(\\tau-\\tfrac12\\right)=\\frac{1}{3}\\cdot\\frac{1}{2}=\\frac{1}{6}.\n$$",
+    "english": "$$\n\\nu^*=c_s^2\\left(\\tau-\\tfrac12\\right)=\\frac{1}{3}\\cdot\\frac{1}{2}=\\frac{1}{6}.\n$$"
+  },
+  {
+    "source_block": 40,
+    "translated": true,
+    "source": "物理运动黏度取 $\\nu=1.0\\times10^{-6}$ m²/s、网格 $\\Delta x=5$ nm，则时间步由",
+    "english": "For physical kinematic viscosity $\\nu=1.0\\times10^{-6}$ m²/s and spacing $\\Delta x=5$ nm, the time step is uniquely determined by"
+  },
+  {
+    "source_block": 41,
+    "translated": false,
+    "source": "$$\n\\Delta t=\\frac{\\left(\\tau-\\tfrac12\\right)\\Delta x^{2}}{3\\nu}=4.1667\\times10^{-12}\\ \\mathrm{s}\n\\tag{1}\n$$",
+    "english": "$$\n\\Delta t=\\frac{\\left(\\tau-\\tfrac12\\right)\\Delta x^{2}}{3\\nu}=4.1667\\times10^{-12}\\ \\mathrm{s}\n\\tag{1}\n$$"
+  },
+  {
+    "source_block": 42,
+    "translated": true,
+    "source": "唯一确定；再取 $\\rho=1000$ kg m⁻³，动力黏度即为 $\\mu=\\rho\\nu=1.0\\times10^{-3}$ Pa·s。",
+    "english": "Taking $\\rho=1000$ kg m⁻³ then gives dynamic viscosity $\\mu=\\rho\\nu=1.0\\times10^{-3}$ Pa·s."
+  },
+  {
+    "source_block": 43,
+    "translated": true,
+    "source": "本文先设定液体密度与物理运动黏度，由 $\\mu=\\rho\\nu$ 得到动力黏度；在此物性下选取 $\\tau=1$ 与 $\\Delta x=5$ nm，再由式 (1) 确定时间步。网格加密时按式 (1) 调整时间步，以保持物理黏度与松弛参数不变。本文未做 $\\tau$ 敏感性扫描，故不声称结果与松弛参数无关。",
+    "english": "Density and physical kinematic viscosity are specified first, giving dynamic viscosity through $\\mu=\\rho\\nu$. At those properties, $\\tau=1$ and $\\Delta x=5$ nm are selected, and Eq. (1) determines the time step. On refinement, the time step follows Eq. (1) to preserve physical viscosity and relaxation parameter. No $\\tau$ sensitivity sweep was performed, so relaxation-parameter independence is not claimed."
+  },
+  {
+    "source_block": 44,
+    "translated": true,
+    "source": "主地图采用 $\\Delta x=5$ nm，最小间隙 $h=25$ nm 对应 $h/\\Delta x=5$，其分辨率需要特别关注。在 $(h,d)=(25,100)$ nm 处，加密至 2.5 nm 后，沿槽与跨槽输运系数分别变化约 −0.386% 与 −4.431%，变化率以 5 nm 结果为分母。因此，本文将 5 nm 结果作为指定分辨率下的离散参考，并单独报告最薄间隙的加密敏感性；现有双网格比较不能确定观测收敛阶，也不能证明全图网格无关，详见 §3.3。",
+    "english": "The main map uses $\\Delta x=5$ nm. The smallest gap, $h=25$ nm, has $h/\\Delta x=5$, requiring particular attention to resolution. Refining $(h,d)=(25,100)$ nm to 2.5 nm changes the along-groove and across-groove coefficients by approximately −0.386% and −4.431%, normalized by the 5 nm values. We therefore retain 5 nm results as references at a specified discrete resolution and report thin-gap refinement sensitivity separately. Two grids neither determine observed convergence order nor establish grid independence of the full map (§3.3)."
+  },
+  {
+    "source_block": 45,
+    "translated": true,
+    "source": "壁面分数距离由几何解析给出并逐一核对：全部 46 个已分析算例（36 个主地图 + 8 个细网格 + 2 个黏度对照）满足 $q_{\\min}=q_{\\max}=0.5$（容差 $10^{-10}$），无一例外。这表明解析壁面交点位于相邻格点连线的中点，所用 Bouzidi 规则对应半程反弹情形。该几何一致性检查不能单独证明边界处理无误差。第 3 章平壁基准的收敛行为反映整个离散计算与通量提取过程的综合误差，本文不据此分解各项误差来源，也不将该结果推广到任意分数距离壁面。",
+    "english": "Fractional wall distances are determined analytically and checked individually. All 46 analyzed cases (36 main-map, 8 refinement and 2 viscosity checks) satisfy $q_{\\min}=q_{\\max}=0.5$ within tolerance $10^{-10}$. Wall intersections therefore lie at the midpoints of neighboring-node links, so the Bouzidi rule reduces to its half-way case. This geometry-consistency check alone does not establish zero boundary error. The flat-wall convergence in Section 3 reflects the combined discretization and flux-extraction error; it does not separate those sources or establish accuracy at arbitrary fractional wall distances."
+  },
+  {
+    "source_block": 46,
+    "translated": true,
+    "source": "各算例的最大 Mach 数介于 $5.7\\times10^{-10}$ 与 $4.1\\times10^{-7}$ 之间，比 0.05 的可压缩性判据低约五个数量级，流动处于不可压缩区间。",
+    "english": "Maximum Mach numbers range from $5.7\\times10^{-10}$ to $4.1\\times10^{-7}$, about five orders of magnitude below the 0.05 compressibility criterion, placing the flow in an effectively incompressible regime."
+  },
+  {
+    "source_block": 47,
+    "translated": true,
+    "source": "另有两个 $\\mu=15$ mPa·s 的黏度对照工况，物性与主地图分列。用于 D2/D3 主地图与附加检查的运行清单共 52 项，包括 36 个主方向样点、8 次加密、2 次黏度对照和 6 次斜向驱动（[补充材料 S1、表 S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s1)）；**运行数不等于几何数**。周期复制与多力检查、历史平板与三网格基准分别列于[补充材料 S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s8)和[S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s9)，不计入这 52 项。历史构建来源的核实范围见[S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s10)。",
+    "english": "Two additional viscosity checks use $\\mu=15$ mPa·s and are recorded separately from the main-map properties. The D2/D3 inventory contains 52 runs: 36 principal-direction samples, 8 refinements, 2 viscosity checks and 6 oblique-forcing runs ([S1 and Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s1)). **Run count is not geometry count.** Periodic-replication and multi-force checks are in [S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s8); historical flat-wall and three-grid benchmarks are in [S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s9). These are not part of the 52-run inventory. Historical-build provenance is discussed in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10)."
+  },
+  {
+    "source_block": 48,
+    "translated": true,
+    "source": "本章支持资料按 S1—S11 编号；[补充材料总目录](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-index)及附录 B 给出正文位置与数据表的对应关系。",
+    "english": "Supporting methods are numbered S1–S11. The [supplementary index](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-index) and the source manuscript Appendix B map text locations to supporting tables."
+  },
+  {
+    "source_block": 49,
+    "translated": true,
+    "source": "### 2.2 输运系数怎么定",
+    "english": "### 2.2 Definition of the transport coefficients"
+  },
+  {
+    "source_block": 50,
+    "translated": true,
+    "source": "令 $A_{\\rm plan}$ 为单胞平面面积，$\\Omega$ 为流体区域。沿驱动方向的深度积分通量与系数由",
+    "english": "Let $A_{\\rm plan}$ be the unit-cell plan area and $\\Omega$ the fluid region. The depth-integrated flux and coefficient in the forcing direction are"
+  },
+  {
+    "source_block": 51,
+    "translated": false,
+    "source": "$$\nJ_i=\\frac{1}{A_{\\rm plan}}\\int_\\Omega u_i\\,\\mathrm dV,\n\\qquad\nK_i=\\frac{\\mu J_i}{G_i},\n\\qquad G_i=\\rho a_i\n\\tag{2}\n$$",
+    "english": "$$\nJ_i=\\frac{1}{A_{\\rm plan}}\\int_\\Omega u_i\\,\\mathrm dV,\n\\qquad\nK_i=\\frac{\\mu J_i}{G_i},\n\\qquad G_i=\\rho a_i\n\\tag{2}\n$$"
+  },
+  {
+    "source_block": 52,
+    "translated": true,
+    "source": "计算分三步，单位由此确定。",
+    "english": "The three steps establish the units."
+  },
+  {
+    "source_block": 53,
+    "translated": true,
+    "source": "**第一步**，在流体区域 $\\Omega$ 内对沿驱动方向的速度作体积分 $\\int_\\Omega u_i\\,\\mathrm dV$。\n**第二步**，除以单胞平面面积 $A_{\\rm plan}$ 归一化，得到单位平面面积上的通量 $J_i$，单位为 **m²/s**。\n**第三步**，乘以动力黏度 $\\mu$ 并除以等效驱动强度 $G_i=\\rho a_i$，得到输运系数 $K_i$，单位为 **m³**。",
+    "english": "First, integrate the driven velocity component over the fluid region $\\Omega$ to obtain $\\int_\\Omega u_i\\,\\mathrm dV$. Second, divide by plan area $A_{\\rm plan}$, obtaining flux $J_i$ per unit plan area, in **m²/s**. Third, multiply by dynamic viscosity $\\mu$ and divide by equivalent driving gradient $G_i=\\rho a_i$, obtaining coefficient $K_i$ in **m³**."
+  },
+  {
+    "source_block": 54,
+    "translated": true,
+    "source": "$K_i$ 是**深度积分导度**，不是渗透率。在线性输运关系下，同一黏度、同一驱动时，$K_i$ 越大表示通流能力越强。",
+    "english": "Here, $K_i$ is a **depth-integrated conductance**, rather than permeability. Under linear transport at the same viscosity and forcing, larger $K_i$ means greater flow capacity."
+  },
+  {
+    "source_block": 55,
+    "translated": true,
+    "source": "两种定义可以互相换算，但必须同时统一平均速度与参考高度的口径：",
+    "english": "Conversion between the two definitions requires consistent mean-velocity and reference-height conventions:"
+  },
+  {
+    "source_block": 56,
+    "translated": false,
+    "source": "$$\nJ_i=H_{\\rm ref}\\langle u_i\\rangle_\\Omega,\n\\qquad\nK_i=H_{\\rm ref}\\,\\kappa_i,\n\\qquad\nH_{\\rm ref}=h+d/2,\n$$",
+    "english": "$$\nJ_i=H_{\\rm ref}\\langle u_i\\rangle_\\Omega,\n\\qquad\nK_i=H_{\\rm ref}\\,\\kappa_i,\n\\qquad\nH_{\\rm ref}=h+d/2,\n$$"
+  },
+  {
+    "source_block": 57,
+    "translated": true,
+    "source": "其中 $\\langle u_i\\rangle_\\Omega$ 为流体体积平均速度，$\\kappa_i$ 为通常的渗透率（单位 m²）。**本文统一用 $K_i$ 比较**，避免参考截面不同引入额外差异；引用文献数据或换算为 m² 时，须核对对方用的是哪一种高度定义。",
+    "english": "Here, $\\langle u_i\\rangle_\\Omega$ is the fluid-volume-averaged velocity and $\\kappa_i$ is conventional permeability in m². **All comparisons here use $K_i$** to avoid additional differences from reference sections. Literature comparisons or conversions to m² must check the other study’s height definition."
+  },
+  {
+    "source_block": 58,
+    "translated": true,
+    "source": "### 2.3 局部立方律与误差定义",
+    "english": "### 2.3 Local cubic law and discrepancy definitions"
+  },
+  {
+    "source_block": 59,
+    "translated": true,
+    "source": "对等宽条纹，局部立方律给出",
+    "english": "For equal-width stripes, the local cubic law gives"
+  },
+  {
+    "source_block": 60,
+    "translated": false,
+    "source": "$$\nK_{yy}^{\\rm mod}=\\frac{1}{24}\\left[(h+d)^3+h^3\\right],\n\\qquad\nK_{xx}^{\\rm mod}=\\frac{1}{6}\\,\\frac{(h+d)^3\\,h^3}{(h+d)^3+h^3}.\n\\tag{3}\n$$",
+    "english": "$$\nK_{yy}^{\\rm mod}=\\frac{1}{24}\\left[(h+d)^3+h^3\\right],\n\\qquad\nK_{xx}^{\\rm mod}=\\frac{1}{6}\\,\\frac{(h+d)^3\\,h^3}{(h+d)^3+h^3}.\n\\tag{3}\n$$"
+  },
+  {
+    "source_block": 61,
+    "translated": true,
+    "source": "其构造如下。设深区与浅区的局部平板导度分别为",
+    "english": "To construct it, define the shallow- and deep-region parallel-plate conductances as"
+  },
+  {
+    "source_block": 62,
+    "translated": false,
+    "source": "$$\nk_{\\rm shallow}=\\frac{h^{3}}{12},\n\\qquad\nk_{\\rm deep}=\\frac{(h+d)^{3}}{12} .\n$$",
+    "english": "$$\nk_{\\rm shallow}=\\frac{h^{3}}{12},\n\\qquad\nk_{\\rm deep}=\\frac{(h+d)^{3}}{12} .\n$$"
+  },
+  {
+    "source_block": 63,
+    "translated": true,
+    "source": "等宽条纹沿槽取算术平均、跨槽取调和平均，即得式 (3)。令 $d=0$，两式均退化为平行平板的 $h^{3}/12$，这一基本一致性成立。在共同的局部深度、边界与平均定义下，二者与一维 Reynolds 单胞关系一致 [4]。",
+    "english": "For equal widths, their arithmetic average along the grooves and harmonic average across them give Eq. (3). At $d=0$, both recover the parallel-plate value $h^{3}/12$. With common local heights, boundaries and averaging definitions, these are the one-dimensional Reynolds cell relations [4]."
+  },
+  {
+    "source_block": 64,
+    "translated": true,
+    "source": "**这一模型之所以只是待检验的近似，在于它把深区与浅区分别当作独立的局部平行平板，再组合两者的导度。** 实际沟槽还包含侧壁及深浅区域之间的连接段。相邻区域的横向黏性作用和台阶附近的流动重分布，均未被局部平板组合显式解析。本文未分解这些因素对整体输运的贡献。",
+    "english": "**The construction remains an approximation to be assessed because it treats deep and shallow regions as independent local parallel-plate channels before combining their conductances.** The actual geometry also includes sidewalls and connections between the regions. Transverse viscous interactions and flow redistribution near steps are not explicitly resolved by this combination. Their respective contributions to overall transport have not been separated."
+  },
+  {
+    "source_block": 65,
+    "translated": true,
+    "source": "在附录E所列的理想Stokes假设下，式（3）还给出两个主导度的上界；这一性质不提供具体偏差值，也不替代沟槽数值参考的空间精度检查。因此本文比较的是这一局部平板组合相对于指定离散参考的偏差幅度。 侧壁剪切与台阶附近流动重分布各自贡献多少，需要局部流场或耗散分解才能定量，本文未作该分解，故不在本章预先认定主导机制。",
+    "english": "Under the ideal-Stokes assumptions in Appendix E, Eq. (3) also bounds both principal conductances from above. This supplies neither discrepancy magnitudes nor the spatial-accuracy evidence needed for groove-flow references. We compare the local-plate construction against specified discrete references. Quantifying sidewall-shear and step-redistribution contributions requires local-field or dissipation decomposition, which has not been performed; no dominant mechanism is assigned here."
+  },
+  {
+    "source_block": 66,
+    "translated": true,
+    "source": "相对误差与修正后残差定义为",
+    "english": "Define relative discrepancy and corrected residual by"
+  },
+  {
+    "source_block": 67,
+    "translated": false,
+    "source": "$$\nE_i=\\frac{K_i^{\\rm mod}}{K_i^{\\rm ref}}-1,\n\\qquad\nr_i=\\frac{F_iK_i^{\\rm mod}}{K_i^{\\rm ref}}-1,\n\\tag{4}\n$$",
+    "english": "$$\nE_i=\\frac{K_i^{\\rm mod}}{K_i^{\\rm ref}}-1,\n\\qquad\nr_i=\\frac{F_iK_i^{\\rm mod}}{K_i^{\\rm ref}}-1,\n\\tag{4}\n$$"
+  },
+  {
+    "source_block": 68,
+    "translated": true,
+    "source": "其中 $K_i^{\\rm ref}$ 是同几何、同方向、同网格的离散**数值参考值**，$F_i$ 为乘性修正因子。**正值表示高估，负值表示低估。** 该参考值自身的可靠性（网格、停止条件、实现方式）由第 3 章另行检查；故由式 (4) 得到的是**相对于该数值参考**的偏差，不等同于相对于真实物理的全部误差。",
+    "english": "Here, $K_i^{\\rm ref}$ is the discrete **numerical reference** for the same geometry, direction and grid, and $F_i$ is a multiplicative correction. **Positive values indicate overestimation; negative values indicate underestimation.** Reference reliability, including grid, stopping rules and implementation, is examined separately in Section 3. Equation (4) gives discrepancies relative to that numerical reference, rather than total errors relative to physical reality."
+  },
+  {
+    "source_block": 69,
+    "translated": true,
+    "source": "**误差本身带参考网格依赖，必须先界定。** 由式 (4)，$E_i$ 以 $K_i^{\\rm ref}$ 为分母，而后者本身含离散误差，故同一几何换用不同参考网格会得到不同误差。对同时具备两种网格的四个几何，该影响为：",
+    "english": "**Reference-grid dependence must be specified.** Equation (4) uses $E_i$ with denominator $K_i^{\\rm ref}$, which contains discretization error. Changing the reference grid can therefore change the reported discrepancy at the same geometry. For four geometries with two grids, this effect is:"
+  },
+  {
+    "source_block": 70,
+    "translated": true,
+    "source": "**表 2　误差对参考网格的敏感性**",
+    "english": "**Table 2. Sensitivity of model discrepancy to the reference grid.**"
+  },
+  {
+    "source_block": 71,
+    "translated": true,
+    "source": "| 几何 $(h,d)$ (nm) | 方向 | $E$（5 nm 参考） | $E$（2.5 nm 参考） | 差值（百分点） |\n|---|---|---:|---:|---:|\n| (25, 100) | 沿槽 | 139.14% | 140.07% | +0.93 |\n| (25, 100) | 跨槽 | 16.36% | **21.76%** | **+5.39** |\n| (50, 100) | 沿槽 | 154.24% | 155.57% | +1.33 |\n| (50, 100) | 跨槽 | 37.14% | 40.10% | +2.96 |\n| (125, 25) | 沿槽 | 10.30% | 10.67% | +0.37 |\n| (125, 25) | 跨槽 | 11.68% | 12.48% | +0.80 |\n| (125, 120) | 沿槽 | 147.77% | 148.78% | +1.01 |\n| (125, 120) | 跨槽 | 54.19% | 55.46% | +1.27 |",
+    "english": "| Geometry $(h,d)$ (nm) | Direction | $E$ (5 nm reference) | $E$ (2.5 nm reference) | Change (percentage points) |\n|---|---|---:|---:|---:|\n| (25, 100) | Along | 139.14% | 140.07% | +0.93 |\n| (25, 100) | Across | 16.36% | **21.76%** | **+5.39** |\n| (50, 100) | Along | 154.24% | 155.57% | +1.33 |\n| (50, 100) | Across | 37.14% | 40.10% | +2.96 |\n| (125, 25) | Along | 10.30% | 10.67% | +0.37 |\n| (125, 25) | Across | 11.68% | 12.48% | +0.80 |\n| (125, 120) | Along | 147.77% | 148.78% | +1.01 |\n| (125, 120) | Across | 54.19% | 55.46% | +1.27 |"
+  },
+  {
+    "source_block": 72,
+    "translated": true,
+    "source": "> **注**：基准几何 (75,100) 的三网格归档结果见第 3 章，不在本表内。",
+    "english": "> **Note:** the three-grid historical reference geometry (75,100) is discussed in Section 3 and is not included here."
+  },
+  {
+    "source_block": 73,
+    "translated": true,
+    "source": "表 2 对应的未取整数值与变化定义见[补充材料 S7、表 S2](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s2)。",
+    "english": "Unrounded values and change definitions for Table 2 are in [S7 and Table S2](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s2)."
+  },
+  {
+    "source_block": 74,
+    "translated": true,
+    "source": "最坏情形出现在 $(h,d)=(25,100)$ 的跨槽分量：误差由 16.36% 变为 21.76%，相差 5.39 个百分点，相对变化 33%。该最大变化发生在最薄间隙的跨槽方向。在这四个已检查几何中，沿槽偏差对参考网格的变化较小（≤1.33 个百分点）；这一观察不外推至其余未加密几何。",
+    "english": "The largest change is in the across-groove component at $(h,d)=(25,100)$: from 16.36% to 21.76%, a difference of 5.39 percentage points, or 33% relative change. It occurs at the thinnest gap. Among these four checked geometries, the along-groove discrepancy changes less with reference grid (≤1.33 percentage points). This observation is not extended to unrefined geometries."
+  },
+  {
+    "source_block": 75,
+    "translated": true,
+    "source": "因此全文报告的误差区间应理解为**\"以 5 nm 生产网格为参考\"这一口径下**给出的值。对有双网格的四个几何，模型偏差随参考网格改变而变化 0.37—5.39 个百分点。该范围描述已检查条件下的网格敏感性，不作为离散误差界或不确定度估计，也不能据此推断未做双网格的其余 14 个几何具有同等网格敏感性。",
+    "english": "The reported discrepancy intervals therefore use **the 5 nm production grid as reference**. For the four two-grid geometries, reference-grid changes alter model discrepancies by 0.37–5.39 percentage points. This describes sensitivity at the checked conditions, rather than a discretization-error bound or uncertainty estimate. It does not establish comparable sensitivity for the other 14 geometries."
+  },
+  {
+    "source_block": 76,
+    "translated": true,
+    "source": "### 2.4 离散实现的一致性检查",
+    "english": "### 2.4 Numerical implementation consistency"
+  },
+  {
+    "source_block": 77,
+    "translated": true,
+    "source": "单胞周期假设与线性响应这两条前提与模型比较无关，但若不成立，后文全部结果都失去意义。本文分别检查。",
+    "english": "Unit-cell periodicity and linear response are prerequisites for the subsequent comparison. We check them separately from model discrepancy."
+  },
+  {
+    "source_block": 78,
+    "translated": true,
+    "source": "**横向周期复制的数值不变性。** 将基准几何 $(h,d)=(75,100)$ nm 沿 $x$ 方向复制为 $N_x=2$、4、8 个周期（$N_y=1$），在相同物性、网格与驱动下比较水力阻力 $R$。三档驱动力（$5\\times10^4$、$1\\times10^5$、$2\\times10^5$ m s⁻²）与两个主方向全部通过预设门禁。阻力相对差为：$2\\to4$ 周期，沿槽与跨槽均为 **0（逐位相同）**；$4\\to8$ 周期，沿槽 $8.7\\times10^{-14}$、跨槽 $3.8\\times10^{-14}$。",
+    "english": "**Invariance under transverse periodic replication.** The reference geometry $(h,d)=(75,100)$ nm is replicated along $x$ to $N_x=2$, 4 and 8 periods ($N_y=1$). Hydraulic resistance $R$ is compared at common properties, grid and forcing. Both principal directions and all three forcing levels ($5\\times10^4$, $1\\times10^5$ and $2\\times10^5$ m s⁻²) meet the preset gates. Relative resistance differences are **0, identical to recorded precision**, for both directions from $2\\to4$ periods; from $4\\to8$ periods, they are $8.7\\times10^{-14}$ along and $3.8\\times10^{-14}$ across the grooves."
+  },
+  {
+    "source_block": 79,
+    "translated": true,
+    "source": "**这条检查的适用边界必须写明，否则会被误读。** 在双向周期边界与周期体积力驱动下，$N_x$ 个严格周期的解按构造即为单周期解的复制，阻力与 $N_x$ 无关是数学必然。因此该检查验证的是**周期接缝的数值完整性与大域质量审计**——实现没有在复制时引入误差；它**不构成物理代表性尺度或 RVE 收敛证据**。换言之，\"单胞够用\"在这里指的是数值一致性，不是指 240 nm 的单胞足以代表真实器件的尺度。",
+    "english": "**This check has a limited interpretation.** With periodic boundaries and a periodic volume force, a solution over $N_x$ identical periods is a replication of the single-period solution by construction; resistance is mathematically independent of $N_x$. The check therefore tests **periodic-seam implementation and mass auditing in the enlarged domain**. It is not evidence of physical representative-volume convergence. A sufficient numerical unit cell here does not establish that a 240 nm cell represents a real device."
+  },
+  {
+    "source_block": 80,
+    "translated": true,
+    "source": "**驱动力线性。** 上述同一组算例在驱动力相差四倍的三个档位下给出同一系数，最大相对偏差 $3.7\\times10^{-8}$（沿槽 $2.5\\times10^{-8}$、跨槽 $3.7\\times10^{-8}$）。这支持基准几何 $(h,d)=(75,100)$ nm、2.5 nm 网格在被检力范围内的线性响应；本文未对全部 36 个 5 nm 主地图样点逐一做多力检查，不据此声称已逐点验证其驱动力独立性。逐项数据见[补充材料 S8、表 S3](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s3)。",
+    "english": "**Linearity with forcing.** The same cases give common coefficients over three forcing levels spanning a factor of four, with maximum relative differences $3.7\\times10^{-8}$ ($2.5\\times10^{-8}$ along and $3.7\\times10^{-8}$ across the grooves). This supports linear response for the reference geometry $(h,d)=(75,100)$ nm on the 2.5 nm grid over the checked force range. Multi-force tests were not performed at all 36 main-map samples on the 5 nm grid; force independence is not claimed to have been verified sample by sample. See [S8 and Table S3](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s3)."
+  },
+  {
+    "source_block": 81,
+    "translated": true,
+    "source": "**与主地图的交叉核对。** $N_x=2$ 在 2.5 nm 网格、$1\\times10^5$ m s⁻² 下给出 $K_{yy}=9.7824236970\\times10^{-23}$ m³，与归档三网格分析中 2.5 nm 网格的基准值高度一致（相对差 $6.9\\times10^{-14}$）。这一比较支持该基准点的批次间结果一致性，不据此外推全部工况的来源一致性。",
+    "english": "**Cross-check with the main-map reference.** At $N_x=2$, 2.5 nm spacing and $1\\times10^5$ m s⁻², the result is $K_{yy}=9.7824236970\\times10^{-23}$ m³, agreeing with the archived three-grid baseline at 2.5 nm to relative difference $6.9\\times10^{-14}$. This supports agreement between batches at that point, rather than common provenance for every condition."
+  },
+  {
+    "source_block": 82,
+    "translated": true,
+    "source": "**术语界定。** 本文报告的是**数值验证（verification）**检查——检查离散实现及数值解与所设定方程的一致性，包括解析基准、网格敏感性与周期一致性；各项检查的覆盖范围和限制分别报告。独立求解器对照属于数值交叉核验，不能单独建立物理验证；本文尚未完成同几何的独立求解器对照。本文**不涉及物理验证（validation）**——尚未与目标物理系统的实验测量等证据作比较。除明确写作\"物理验证\"外，文中\"验证\"均指数值验证。因此本文的结论限于\"在这个数值模型内，局部立方律偏差有多大\"，不涉及该模型对真实压印过程的保真度。",
+    "english": "**Terminology.** We report **numerical verification** of consistency between the implementation, computed solutions and prescribed equations, including analytical benchmarks, grid sensitivity and periodic consistency. Each check has its own coverage and limits. An independent-solver comparison would be a numerical cross-check and would not alone establish physical validation; no such same-geometry comparison has been completed. **Physical validation is outside this study:** the model has not been compared with experimental measurements of the target system. Unless explicitly qualified as physical validation, verification here concerns numerical checks. Conclusions describe discrepancies within this numerical model, rather than its fidelity to real imprint processes."
+  },
+  {
+    "source_block": 83,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  },
+  {
+    "source_block": 84,
+    "translated": true,
+    "source": "## 3 数值参考的可信范围",
+    "english": "## 3 Scope of confidence in the numerical references"
+  },
+  {
+    "source_block": 85,
+    "translated": true,
+    "source": "讨论误差之前必须先确定参照本身可信。本章只陈述已完成的检查及其边界，不把任一检查当作整体不确定性预算。",
+    "english": "Discrepancy assessment requires an assessment of the reference. This section reports completed checks and their boundaries; no single check is treated as a complete uncertainty budget."
+  },
+  {
+    "source_block": 86,
+    "translated": true,
+    "source": "### 3.1 收敛与守恒判据",
+    "english": "### 3.1 Convergence and conservation criteria"
+  },
+  {
+    "source_block": 87,
+    "translated": true,
+    "source": "各工况采用连续 1000 步的通量窗口判断稳态：主通量相对标准差不超过 $10^{-6}$，相对极差不超过 $5\\times10^{-6}$；主轴驱动工况另要求横向通量绝对值不超过 $10^{-12}$ m²/s。斜向驱动存在真实横向通量，改用相对标准差判据。质量、密度、Mach 数与边界连线检查与通量收敛分别记录。",
+    "english": "Steady state is assessed over 1000 consecutive flux samples: main-flux relative standard deviation ≤$10^{-6}$ and relative range ≤$5\\times10^{-6}$. Principal-axis forcing also requires absolute cross-flux ≤$10^{-12}$ m²/s. Oblique forcing generates a physical cross-flux, so a relative-standard-deviation criterion is used instead. Mass, density, Mach number and boundary-link diagnostics are recorded separately from flux convergence."
+  },
+  {
+    "source_block": 88,
+    "translated": true,
+    "source": "36 个主方向样点全部满足上述门槛。**但这里必须说清一件事：该门槛是计算停止条件，不是独立验收指标。** 程序在窗口统计量首次落入门槛时即退出，因此\"全部满足\"在构造上必然成立。",
+    "english": "All 36 principal-direction samples meet those thresholds. **They are stopping criteria, rather than independent acceptance metrics.** The program exits at the first window satisfying them, so satisfaction at termination follows from the stopping construction."
+  },
+  {
+    "source_block": 89,
+    "translated": true,
+    "source": "定义相对余量 $m=1-\\mathrm{rel\\_std}/10^{-6}$。实测 36 个样点的窗口相对标准差介于 $3.87\\times10^{-7}$ 与 $1.000\\times10^{-6}$ 之间，其中 **27 个距门槛的余量不足 1%**，9 个不足 0.1%（最小余量 $2.1\\times10^{-5}$）。这一分布与\"首次达标即停\"的停止方式相符。",
+    "english": "Define relative margin $m=1-\\mathrm{rel\\_std}/10^{-6}$. Window relative standard deviations for the 36 samples range from $3.87\\times10^{-7}$ to $1.000\\times10^{-6}$. **27 samples are within 1% of the threshold**, and 9 within 0.1%, with minimum margin $2.1\\times10^{-5}$. This is consistent with termination at the first qualifying window."
+  },
+  {
+    "source_block": 90,
+    "translated": true,
+    "source": "需要强调的是：**停止量靠近阈值这一事实，本身既不能证明结果不可信，也不能证明误差很小。** 它只说明程序按预定规则终止。数值结果有多准确，须结合解析基准（§3.2）、网格加密（§3.3）与边界连线审计另行判断——这些才是本文的独立证据。",
+    "english": "**Proximity of a stopping statistic to its threshold establishes neither unreliability nor small numerical error.** It shows termination according to the prescribed rule. Accuracy requires separate evidence from the analytical benchmark (§3.2), refinement (§3.3) and boundary-link audits."
+  },
+  {
+    "source_block": 91,
+    "translated": true,
+    "source": "### 3.2 平壁解析基准",
+    "english": "### 3.2 Analytical flat-wall benchmark"
+  },
+  {
+    "source_block": 92,
+    "translated": true,
+    "source": "在间隙 75 nm 的平行平板中，数值系数应恢复 $K_0=h^3/12$。三套网格的结果见表 3；原始结果定位及历史横槽失败记录见[补充材料 S9、表 S4](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s4)。",
+    "english": "For parallel plates separated by 75 nm, the coefficient should recover $K_0=h^3/12$. Table 3 reports three grids. Original results and the historical transverse-flow failure are indexed in [S9 and Table S4](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s4)."
+  },
+  {
+    "source_block": 93,
+    "translated": true,
+    "source": "**表 3　平壁解析基准（$h=75$ nm）**",
+    "english": "**Table 3. Flat-wall analytical benchmark ($h=75$ nm).**"
+  },
+  {
+    "source_block": 94,
+    "translated": true,
+    "source": "| 网格 $\\Delta x$ (nm) | 数值 $K$ (m³) | 解析 $h^3/12$ (m³) | 相对误差 |\n|---:|---:|---:|---:|\n| 5 | $3.531250\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.444% |\n| 2.5 | $3.519529\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.111% |\n| 1.25 | $3.516580\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.0272% |",
+    "english": "| Grid $\\Delta x$ (nm) | Numerical $K$ (m³) | Analytical $h^3/12$ (m³) | Relative error |\n|---:|---:|---:|---:|\n| 5 | $3.531250\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.444% |\n| 2.5 | $3.519529\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.111% |\n| 1.25 | $3.516580\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.0272% |"
+  },
+  {
+    "source_block": 95,
+    "translated": true,
+    "source": "网格每加密一倍误差约降至四分之一。这一结果检验的是平直壁配置下的总积分输运误差，其中包含速度离散与求积等影响，**不能全部归因于体相或边界处理**；它也不说明插值反弹格式对任意分数距离壁面都是二阶，本文计算只用到 $q=1/2$ 这一情形。",
+    "english": "Halving the spacing reduces the error by approximately a factor of four. This tests total integrated-transport error in the planar configuration, including velocity discretization and quadrature. **It cannot be attributed entirely to bulk or boundary treatment.** Nor does it establish second-order accuracy of interpolated bounce-back at arbitrary fractional wall distances: these calculations use only $q=1/2$."
+  },
+  {
+    "source_block": 96,
+    "translated": true,
+    "source": "### 3.3 网格分辨率：沟槽几何",
+    "english": "### 3.3 Grid resolution in grooved geometries"
+  },
+  {
+    "source_block": 97,
+    "translated": true,
+    "source": "平壁基准不能代替沟槽几何的分辨率检查。四个几何做了 5 nm 与 2.5 nm 的双网格对比，结果见表 4。",
+    "english": "The flat-wall benchmark cannot replace resolution checks for grooves. Four geometries were compared on 5 and 2.5 nm grids (Table 4)."
+  },
+  {
+    "source_block": 98,
+    "translated": true,
+    "source": "**表 4　网格加密一倍后的系数变化（以 5 nm 值为分母）**",
+    "english": "**Table 4. Coefficient changes on halving the spacing, normalized by the 5 nm values.**"
+  },
+  {
+    "source_block": 99,
+    "translated": true,
+    "source": "| 几何 $(h,d)$ (nm) | $K_{yy}$ 变化 | $K_{xx}$ 变化 |\n|---|---:|---:|\n| (50, 100) | −0.52% | −2.11% |\n| (125, 25) | −0.33% | −0.71% |\n| (25, 100) | −0.39% | **−4.43%** |\n| (125, 120) | −0.41% | −0.82% |",
+    "english": "| Geometry $(h,d)$ (nm) | $K_{yy}$ change | $K_{xx}$ change |\n|---|---:|---:|\n| (50, 100) | −0.52% | −2.11% |\n| (125, 25) | −0.33% | −0.71% |\n| (25, 100) | −0.39% | **−4.43%** |\n| (125, 120) | −0.41% | −0.82% |"
+  },
+  {
+    "source_block": 100,
+    "translated": true,
+    "source": "在这四个已检查几何中，沿槽分量的双网格变化幅度均 < 0.6%；跨槽变化幅度更大，最大为最薄间隙处的−4.43%。这些是已查几何的敏感性记录，不表示全图均具有相同的网格响应。",
+    "english": "For these four checked geometries, along-groove changes are all <0.6% in magnitude. Across-groove changes are larger, reaching −4.43% at the thinnest gap. These sensitivity records do not establish the same grid response across the full map."
+  },
+  {
+    "source_block": 101,
+    "translated": true,
+    "source": "对间隙125 nm的槽深25→120 nm配对，两端均有加密结果：跨槽增幅由5 nm参考下的0.9405%变为2.5 nm参考下的0.8335%，沿槽对应39.1978%与39.0928%。两级比较支持该配对趋势在已检查分辨率上的一致性，但仍不能给出连续解误差界。",
+    "english": "At a gap of 125 nm, refinements exist at both depths 25 and 120 nm. The across-groove gain changes from 0.9405% with the 5 nm reference to 0.8335% with the 2.5 nm reference; the along-groove gains are 39.1978% and 39.0928%. This supports consistency of the paired trend at the checked resolutions, without providing a continuous-solution error bound."
+  },
+  {
+    "source_block": 102,
+    "translated": true,
+    "source": "两级网格比较仅表征已查几何的分辨率敏感性。h=75 nm、d=100 nm基准另有5、2.5、1.25 nm三网格历史数据，其按观测阶计算的条件性Richardson外推与GCI及运行限制见[补充材料 S9、表 S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s5)，方法参照 [10]。其中1.25 nm横槽记录未通过冻结质量门；本研究不以该表确认渐近区，不将细网格估计外推至全部生产网格样点。",
+    "english": "Two-grid comparisons characterize resolution sensitivity only for the checked geometries. Historical data at h=75 nm and d=100 nm also use 5, 2.5 and 1.25 nm grids. Conditional Richardson extrapolation and GCI based on observed order, together with run limitations, are reported in [S9 and Table S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s5), following [10]. The 1.25 nm transverse record failed the frozen mass gate. We do not use the table to confirm an asymptotic range or extend its fine-grid estimates to every production sample."
+  },
+  {
+    "source_block": 103,
+    "translated": true,
+    "source": "### 3.4 已知限制",
+    "english": "### 3.4 Known limitations"
+  },
+  {
+    "source_block": 104,
+    "translated": true,
+    "source": "既有输出审查对保存的通量、质量、密度、收敛及边界诊断作了复核，原 48 次审查与后增 4 次加密分别记录。历史细跨槽运行的质量 FAIL 仍保留；后续方案 C 存在通过的输出，但所引用独立放行报告的路径缺口与历史构建来源绑定尚未完全闭合。**本文没有同几何的独立求解器或实验参照**，现有证据支持对所存离散结果作比较，不支持宣称每个样点都已空间收敛。",
+    "english": "Existing output audits checked saved flux, mass, density, convergence and boundary diagnostics. The original 48-run audit and 4 later refinements are recorded separately. The historical finest transverse mass FAIL is retained. Scheme C has saved passing outputs, but the cited independent-release-report path and historical-build binding remain incomplete. **No same-geometry independent-solver or experimental reference is available here.** The evidence supports comparison of saved discrete results, rather than spatial convergence at every sample."
+  },
+  {
+    "source_block": 105,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  },
+  {
+    "source_block": 106,
+    "translated": true,
+    "source": "## 4 结果",
+    "english": "## 4 Results"
+  },
+  {
+    "source_block": 107,
+    "translated": true,
+    "source": "### 4.1 槽深对两个主方向的作用不同",
+    "english": "### 4.1 Groove depth affects the two principal directions differently"
+  },
+  {
+    "source_block": 108,
+    "translated": true,
+    "source": "先考察显式数值参考中的几何响应。在固定间隙下，增加槽深带来的通流收益具有方向差异。表5比较槽深由25增至120 nm时两个主系数的变化。",
+    "english": "We first examine geometry responses in the resolved numerical references. At fixed gap, deepening the grooves produces different transport gains in the two directions. Table 5 compares coefficients at depths of 25 and 120 nm."
+  },
+  {
+    "source_block": 109,
+    "translated": true,
+    "source": "**表 5　槽深由25增至120 nm时的系数倍率**",
+    "english": "**Table 5. Coefficient ratios for depth increasing from 25 to 120 nm.**"
+  },
+  {
+    "source_block": 110,
+    "translated": true,
+    "source": "| 间隙 $h$ (nm) | 沿槽 $K_{yy}$ | 跨槽 $K_{xx}$ |\n|---:|---:|---:|\n| 50 | 3.55 | 1.034 |\n| 75 | 2.13 | 1.021 |\n| 125 | 1.39 | 1.009 |",
+    "english": "| Gap $h$ (nm) | Along $K_{yy}$ | Across $K_{xx}$ |\n|---:|---:|---:|\n| 50 | 3.55 | 1.034 |\n| 75 | 2.13 | 1.021 |\n| 125 | 1.39 | 1.009 |"
+  },
+  {
+    "source_block": 111,
+    "translated": true,
+    "source": "在这三档间隙中，沿槽相对增益随间隙增大而减弱，但在 $h=125$ nm 时仍约为39.2%。跨槽增幅分别约为3.39%、2.14%与0.94%，远小于对应沿槽增幅。最薄的25 nm间隙没有计算120 nm槽深；在已覆盖的25—100 nm槽深范围内，跨槽系数的最大值与最小值之比为1.037。因此，增深所增加的流体容积没有带来两个方向相同的通流收益。",
+    "english": "Among these three gaps, the relative along-groove gain decreases with gap but remains approximately 39.2% at $h=125$ nm. Across-groove gains are approximately 3.39%, 2.14% and 0.94%, much smaller than their along-groove counterparts. The thinnest, 25 nm gap was not computed at 120 nm depth. Over its sampled 25–100 nm depth range, the maximum-to-minimum across-groove coefficient ratio is 1.037. Additional groove volume therefore does not produce equal transport gains in the two directions."
+  },
+  {
+    "source_block": 112,
+    "translated": true,
+    "source": "局部模型中的并联与串联关系可提供定性理解：沿槽深区和浅区共同承载通量，跨槽液体则依次通过交替区域。但这些图像不能单独证明显式流动的阻力集中位置。本文未独立分解侧壁剪切与台阶附近流动重分布的贡献，不将上述弱响应归因于已证实的单一机制。",
+    "english": "Parallel and series constructions offer a qualitative picture: along-groove flow uses deep and shallow regions together, whereas across-groove flow passes through alternating regions. These pictures alone do not locate resistance in the resolved flow. Sidewall-shear and step-redistribution contributions have not been separated, so the weak transverse response is not attributed to a demonstrated single mechanism."
+  },
+  {
+    "source_block": 113,
+    "translated": true,
+    "source": "![图2：5 nm离散参考的主导度与各向异性](../../figures/paper/Fig4_K_and_anisotropy.png)",
+    "english": "![Figure 2: principal conductances and anisotropy of the 5 nm discrete references](../../figures/paper/Fig4_K_and_anisotropy.png)"
+  },
+  {
+    "source_block": 114,
+    "translated": true,
+    "source": "**图 2**　矩形沟槽阵列在5 nm离散参考下的输运系数与各向异性。(a) $K_{yy}$（实心）与 $K_{xx}$（空心）随槽深的**变化**，四个间隙各一组；$K_{xx}$ 在各间隙已采样槽深上的变化小于4%，该范围不包含未计算几何。$h=25$ nm时仅采样 $d=25$、50、100 nm。(b) 各向异性比 $A=K_{yy}/K_{xx}$，对数纵轴，点线为 $A=1$。",
+    "english": "**Figure 2.** Transport coefficients and anisotropy of the rectangular groove array using 5 nm discrete references. (a) $K_{yy}$ (filled symbols) and $K_{xx}$ (open symbols) against depth, grouped by four gaps. Across the sampled depths at each gap, $K_{xx}$ varies by less than 4%; uncomputed geometries are excluded. At $h=25$ nm, only $d=25$, 50 and 100 nm were sampled. (b) Anisotropy $A=K_{yy}/K_{xx}$ on a logarithmic ordinate; the dotted line marks $A=1$."
+  },
+  {
+    "source_block": 115,
+    "translated": true,
+    "source": "### 4.2 局部立方律在全部36个样点上均高估",
+    "english": "### 4.2 The local cubic law overestimates all 36 samples"
+  },
+  {
+    "source_block": 116,
+    "translated": true,
+    "source": "将式（3）与5 nm生产网格的显式数值参考逐点比较，18种几何的两个主方向相对偏差均为正，范围见表6。这一结果限定于本文采样条件及参考分辨率。",
+    "english": "Pointwise comparison of Eq. (3) against the 5 nm production-grid references gives positive relative discrepancies in both directions at all 18 geometries (Table 6). This result is specific to the sampled conditions and reference resolution."
+  },
+  {
+    "source_block": 117,
+    "translated": true,
+    "source": "**表 6　局部立方律的相对偏差范围**",
+    "english": "**Table 6. Ranges of local-cubic-law relative discrepancy.**"
+  },
+  {
+    "source_block": 118,
+    "translated": true,
+    "source": "| 量 | 沿槽 $K_{yy}$ | 跨槽 $K_{xx}$ |\n|---|---:|---:|\n| 偏差范围 | +10.30%至+204.85% | +8.11%至+54.19% |\n| 最大偏差位置 | $h=50,d=120$ nm | $h=125,d=120$ nm |\n| 最小偏差位置 | $h=125,d=25$ nm | $h=25,d=25$ nm |\n| 高估样点数 | 18/18 | 18/18 |",
+    "english": "| Quantity | Along $K_{yy}$ | Across $K_{xx}$ |\n|---|---:|---:|\n| Discrepancy range | +10.30% to +204.85% | +8.11% to +54.19% |\n| Maximum location | $h=50,d=120$ nm | $h=125,d=120$ nm |\n| Minimum location | $h=125,d=25$ nm | $h=25,d=25$ nm |\n| Overestimated samples | 18/18 | 18/18 |"
+  },
+  {
+    "source_block": 119,
+    "translated": true,
+    "source": "沿槽最大偏差出现在 $(h,d)=(50,120)$ nm：模型值约为数值参考值的3.05倍，即相对高估约204.85%。沿槽最大偏差约为最小偏差的20倍，其范围宽于跨槽方向。",
+    "english": "The largest along-groove discrepancy occurs at $(h,d)=(50,120)$ nm: the model coefficient is approximately 3.05 times the reference, an overestimate of approximately 204.85%. The largest along-groove discrepancy is about 20 times its smallest, giving a wider range than across the grooves."
+  },
+  {
+    "source_block": 120,
+    "translated": true,
+    "source": "在固定间隙的已采样槽深序列中，沿槽偏差随 $d/w$ 增大而增大。在 $h=50$、75、125 nm三档间隙中，固定槽深的沿槽偏差随间隙增大而减小；但加入 $h=25$ nm后，并非所有槽深都保持单调。例如，$d=100$ nm时，沿槽偏差由 $h=25$ nm的139.14%上升至 $h=50$ nm的154.24%，随后在 $h=75$、125 nm降至144.95%与108.38%。这些数据支持偏差具有参数依赖，尚不能据此确定唯一机制或排除离散误差的影响。",
+    "english": "Within sampled depth sequences at fixed gap, the along-groove discrepancy increases with $d/w$. At gaps $h=50$, 75 and 125 nm, it decreases with gap at fixed depth. Including $h=25$ nm removes monotonicity at some depths. For example, at $d=100$ nm it rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm, before falling to 144.95% and 108.38% at $h=75$ and 125 nm. These data support parameter dependence, but establish neither a unique mechanism nor the exclusion of discretization effects."
+  },
+  {
+    "source_block": 121,
+    "translated": true,
+    "source": "![图3：局部立方律偏差随间隙变化](../../figures/paper/Fig7_error_vs_gap.png)",
+    "english": "![Figure 3: local-cubic-law discrepancy against gap](../../figures/paper/Fig7_error_vs_gap.png)"
+  },
+  {
+    "source_block": 122,
+    "translated": true,
+    "source": "**图 3**　相对于5 nm离散参考，局部立方律的偏差随间隙变化（按槽深分组）。局部立方律见式（3），误差定义见式（4）；两面板纵轴均为对数且范围不同。用于说明误差的参数依赖。",
+    "english": "**Figure 3.** Local-cubic-law discrepancy against gap, grouped by groove depth, relative to 5 nm discrete references. The model and discrepancy definitions are Eqs. (3) and (4). Both ordinates are logarithmic, with different ranges. The figure describes parameter dependence of the discrepancy."
+  },
+  {
+    "source_block": 123,
+    "translated": true,
+    "source": "![图4：已采样几何的偏差热图与未采样标记](../../figures/paper/Fig8_error_map.png)",
+    "english": "![Figure 4: discrepancy map and explicit unsampled cells](../../figures/paper/Fig8_error_map.png)"
+  },
+  {
+    "source_block": 124,
+    "translated": true,
+    "source": "**图 4**　相对于5 nm离散参考，局部立方律偏差的 $d$–$h$ 分布。两面板采用各自的色标，颜色深浅不能跨面板直接比较。斜线格为未计算几何，**不得填补或插值**。",
+    "english": "**Figure 4.** Local-cubic-law discrepancy over the $d$–$h$ matrix, relative to 5 nm discrete references. Each panel uses its own color scale; color intensity cannot be compared directly between panels. Hatched cells were not computed and **must not be filled or interpolated**."
+  },
+  {
+    "source_block": 125,
+    "translated": true,
+    "source": "### 4.3 两方向的偏差改变各向异性与预测流向",
+    "english": "### 4.3 Unequal directional discrepancies alter anisotropy and reconstructed flow direction"
+  },
+  {
+    "source_block": 126,
+    "translated": true,
+    "source": "相对于基准几何的5 nm数值主值，局部模型给出的各向异性与同一线性张量关系下重建的通量方向存在偏差。表7报告这一基准比较，不代表实验测得的流向误差。",
+    "english": "Relative to the reference geometry’s 5 nm principal values, the local model gives different anisotropy and flux direction reconstructed under the same linear tensor relation. Table 7 presents that comparison, rather than experimentally measured flow-direction error."
+  },
+  {
+    "source_block": 127,
+    "translated": true,
+    "source": "**表 7　基准几何（$h=75$ nm，$d=100$ nm）的各向异性与预测流向**",
+    "english": "**Table 7. Anisotropy and reconstructed flow direction at the reference geometry ($h=75$ nm, $d=100$ nm).**"
+  },
+  {
+    "source_block": 128,
+    "translated": true,
+    "source": "| 项 | 由显式数值主值计算 | 由局部立方律主值计算 | 差异 |\n|---|---:|---:|---:|\n| 各向异性 $A=K_{yy}/K_{xx}$ | 2.21 | 3.70 | 模型高估约67% |\n| 45°驱动下的流向角 $\\beta$ | 24.34° | 15.14° | −9.20° |",
+    "english": "| Quantity | From numerical principal values | From local-model principal values | Difference |\n|---|---:|---:|---:|\n| Anisotropy $A=K_{yy}/K_{xx}$ | 2.21 | 3.70 | Model overestimate ≈67% |\n| Flux angle under 45° forcing $\\beta$ | 24.34° | 15.14° | −9.20° |"
+  },
+  {
+    "source_block": 129,
+    "translated": true,
+    "source": "若驱动角 $\\theta$ 与通量角 $\\beta$ 均从槽轴量起，在线性张量描述下",
+    "english": "When forcing angle $\\theta$ and flux angle $\\beta$ are both measured from the groove axis, the linear tensor description gives"
+  },
+  {
+    "source_block": 130,
+    "translated": false,
+    "source": "$$\n\\tan\\beta=\\frac{K_{xx}}{K_{yy}}\\tan\\theta .\n\\tag{5}\n$$",
+    "english": "$$\n\\tan\\beta=\\frac{K_{xx}}{K_{yy}}\\tan\\theta .\n\\tag{5}\n$$"
+  },
+  {
+    "source_block": 131,
+    "translated": true,
+    "source": "在 $\\theta=45^\\circ$ 时，两组主值重建的通量方向相差−9.20°。因此，即使某一驱动角下的总通量接近，仅比较总量也不足以保证方向准确；需同时检查两个主值及其比值。",
+    "english": "At $\\theta=45^\\circ$, the directions reconstructed from the two sets of principal values differ by −9.20°. Agreement in total flux at one forcing angle therefore does not guarantee directional accuracy; both principal values and their ratio must be checked."
+  },
+  {
+    "source_block": 132,
+    "translated": true,
+    "source": "现有30°、45°与60°斜向驱动结果检查的是同一数值模型主值用于张量预测的内部自洽性，不构成对局部立方律主值准确性的验证。",
+    "english": "Existing oblique-forcing results at 30°, 45° and 60° test internal consistency of tensor predictions using principal values from the same numerical model. They do not verify the accuracy of the local-cubic-law principal values."
+  },
+  {
+    "source_block": 133,
+    "translated": true,
+    "source": "### 4.4 经验修正的改善与局部失效",
+    "english": "### 4.4 Improvement and local deterioration under empirical correction"
+  },
+  {
+    "source_block": 134,
+    "translated": true,
+    "source": "采用乘性因子 $F_i$ 修正式（3）。当前V2关系的公布舍入表达为",
+    "english": "We apply multiplicative factors $F_i$ to Eq. (3). The published rounded form of V2 is"
+  },
+  {
+    "source_block": 135,
+    "translated": false,
+    "source": "$$\nF_{yy}^{\\rm V2}=\\frac{1}{1+1.7685(d/w)^{1.6331}},\n\\qquad\nF_{xx}^{\\rm V2}=\\frac{1}{1+0.4900(d/w)^{0.6990}}.\n\\tag{6}\n$$",
+    "english": "$$\nF_{yy}^{\\rm V2}=\\frac{1}{1+1.7685(d/w)^{1.6331}},\n\\qquad\nF_{xx}^{\\rm V2}=\\frac{1}{1+0.4900(d/w)^{0.6990}}.\n\\tag{6}\n$$"
+  },
+  {
+    "source_block": 136,
+    "translated": true,
+    "source": "按公布系数直接计算，沿槽全18点的最大绝对残差为10.5%；跨槽全18点为18.7%，其中 $h\\ge50$ nm的15点为6.9%。表8在相同样点范围内比较修正前后的最大绝对偏差。",
+    "english": "Evaluation using the published coefficients gives a maximum absolute residual of 10.5% over all 18 along-groove samples and 18.7% over all 18 across-groove samples. The 15 across-groove samples with $h\\ge50$ give 6.9%. Table 8 compares maxima over matched sample sets."
+  },
+  {
+    "source_block": 137,
+    "translated": true,
+    "source": "**表 8　修正前后的偏差比较（5 nm参考）**",
+    "english": "**Table 8. Discrepancies before and after correction, relative to the 5 nm references.**"
+  },
+  {
+    "source_block": 138,
+    "translated": true,
+    "source": "| 方向及样点范围 | 原始最大绝对偏差 | V2最大绝对残差 |\n|---|---:|---:|\n| 沿槽，全部18点 | 204.85% | 10.5% |\n| 跨槽，全部18点 | 54.19% | 18.7% |\n| 跨槽，$h\\ge50$ nm，15点 | 54.19% | 6.9% |",
+    "english": "| Direction and samples | Original maximum absolute discrepancy | V2 maximum absolute residual |\n|---|---:|---:|\n| Along, all 18 | 204.85% | 10.5% |\n| Across, all 18 | 54.19% | 18.7% |\n| Across, $h\\ge50$ nm，15 samples | 54.19% | 6.9% |"
+  },
+  {
+    "source_block": 139,
+    "translated": true,
+    "source": "整体最坏偏差下降，并不意味着每个点均得到改善。在 $(h,d)=(25,100)$ nm跨槽点，原始有符号偏差为+16.36%，修正后为−18.71%，其绝对偏差反而增大约2.34个百分点。这是5 nm主地图中唯一绝对偏差增大的主方向样点。改用2.5 nm参考时，同一点的原始偏差为+21.76%、修正后为−14.94%，局部改善判断也受参考网格影响。因此，不能把修正精度与数值参考精度混为一谈。",
+    "english": "A reduction in the overall maximum does not imply improvement at every sample. At the across-groove sample $(h,d)=(25,100)$ nm, the signed discrepancy changes from +16.36% to −18.71%, increasing its absolute value by approximately 2.34 percentage points. This is the only principal-direction sample in the 5 nm main map whose absolute discrepancy increases. With the 2.5 nm reference, the corresponding values are +21.76% and −14.94%. The assessment of local improvement therefore depends on the reference grid; correction accuracy and reference accuracy must be distinguished."
+  },
+  {
+    "source_block": 140,
+    "translated": true,
+    "source": "V2只使用 $d/w$，而残差仍随间隙变化，提示这一变量选择尚不足以覆盖已采样的间隙响应；本文未进一步分解模型形式、参数估计与离散参考对剩余残差的贡献。",
+    "english": "V2 depends only on $d/w$, whereas residuals still vary with gap. This variable choice does not capture the full sampled gap response. Contributions from model form, parameter estimation and discrete references have not been separated."
+  },
+  {
+    "source_block": 141,
+    "translated": true,
+    "source": "当前拟合的9个标定几何与9个扩展几何分别对应两组不同二进制SHA，几何分组与程序身份完全重合。扩展数据中，d=75 nm位于标定槽深范围内，d=120 nm与h=25 nm分别超出标定的槽深与间隙范围。由于缺少同条件跨这两组程序的对照，现有记录不能分离潜在构建差异与几何、模型及数值参考因素对残差的贡献。扩展数据在模型形式选择时已经可见，因此这些残差继续作为回顾性描述，不作为独立预测精度证明。V1、各数据组残差与拟合记录另存支持资料，不与V2混用。",
+    "english": "The 9 calibration geometries and 9 extension geometries correspond to two different binary-SHA groups: geometry grouping and program identity coincide completely. Among extension data, d=75 nm lies within the calibration depth range, whereas d=120 nm and h=25 nm extend beyond the calibration depth and gap ranges. Without same-condition comparisons across the two program identities, potential build effects cannot be separated from geometry, model and reference effects on residuals. Extension data were already visible during model-form selection. These residuals therefore remain retrospective descriptions, rather than independent prediction evidence. V1, group-specific residuals and fitting records are retained separately in supporting files and are not mixed with V2."
+  },
+  {
+    "source_block": 142,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  },
+  {
+    "source_block": 143,
+    "translated": true,
+    "source": "## 5 讨论",
+    "english": "## 5 Discussion"
+  },
+  {
+    "source_block": 144,
+    "translated": true,
+    "source": "### 5.1 局部平板组合的局限与候选机制",
+    "english": "### 5.1 Limits of local-plate averaging and candidate mechanisms"
+  },
+  {
+    "source_block": 145,
+    "translated": true,
+    "source": "本文在全部采样主方向上观察到相对于离散数值参考的正偏差，且两方向偏差幅度不同。这表明局部立方律在所检查条件下高估通流能力，但仅凭全局系数不能确定偏差由哪一部分流动主导。",
+    "english": "All sampled principal directions show positive discrepancy relative to the discrete references, with different magnitudes in the two directions. The local cubic law therefore overestimates flow capacity under the checked conditions. Global coefficients alone cannot identify which part of the flow dominates the discrepancy."
+  },
+  {
+    "source_block": 146,
+    "translated": true,
+    "source": "沿槽局部模型将深区与浅区的平板导度作算术平均，没有显式解析相邻区域的横向黏性耦合及侧壁附近的速度变化。侧壁剪切和深浅区域间的动量交换可作为后续检查的候选因素；本文未量化它们对总通量或耗散的贡献，不能据现有结果认定某种“拖拽”已经解释全部高估。",
+    "english": "The along-groove construction averages deep- and shallow-region parallel-plate conductances arithmetically, without resolving transverse viscous coupling or sidewall velocity changes. Sidewall shear and momentum exchange between regions are candidates for further investigation. Their flux or dissipation contributions have not been quantified; the present data do not establish a single drag mechanism explaining the entire overestimate."
+  },
+  {
+    "source_block": 147,
+    "translated": true,
+    "source": "跨槽模型将局部平板阻力按一维串联关系组合，而显式流动还需通过台阶连接区域。台阶附近的速度重分布及黏性耗散可能影响整体阻力，但本文没有独立测量局部阻力份额，也未证明阻力必由最窄处控制。",
+    "english": "The across-groove construction combines local plate resistances in one-dimensional series, while the resolved flow also traverses step connections. Velocity redistribution and viscous dissipation there may affect total resistance. No independent local resistance fractions were measured, and dominance by the narrowest region has not been proved."
+  },
+  {
+    "source_block": 148,
+    "translated": true,
+    "source": "参数趋势也需要限定。固定间隙的已采样槽深序列中，沿槽偏差随 $d/w$ 增大；但加入25 nm间隙后，沿槽偏差不再对所有槽深都随间隙增大而单调减小。特别是 $d=100$ nm时，偏差从 $h=25$ nm的139.14%上升至 $h=50$ nm的154.24%。因此，不能把“间隙越薄，某一机制越强”作为已验证的机制规律。",
+    "english": "Parameter trends also require qualification. In sampled depth sequences at fixed gap, along-groove discrepancy increases with $d/w$. Including the 25 nm gap, however, removes a monotonically decreasing gap dependence at some depths. At $d=100$ nm, the discrepancy rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm. A general rule that a particular mechanism strengthens as the gap narrows is therefore not established."
+  },
+  {
+    "source_block": 149,
+    "translated": true,
+    "source": "以上机制仍需独立耗散分解或适用条件一致的参考解检验。相关矩形线栅挤压研究已报告简单润滑模型的局限 [11]，但其加载方式、填充状态与比较基线不同，不能把其力比直接用于解释本文固定间隙下的系数偏差。",
+    "english": "These mechanisms require an independent dissipation decomposition or reference solutions under matching applicability conditions. Related squeeze-flow work on rectangular line gratings reports limitations of simple lubrication models [11], but its loading, filling state and comparison baseline differ. Its force ratios cannot directly explain the present fixed-gap coefficient discrepancies."
+  },
+  {
+    "source_block": 150,
+    "translated": true,
+    "source": "### 5.2 对降阶挤压模型的含义",
+    "english": "### 5.2 Implications for reduced squeeze-flow models"
+  },
+  {
+    "source_block": 151,
+    "translated": true,
+    "source": "固定间隙系数可以作为降阶挤压模型的候选局部输入。对方形场，在同一时刻取空间均匀的主系数、常黏度和给定闭合速度 $V=-\\dot h>0$，并采用沿槽与跨槽主轴坐标及给定边缘压力，深度积分质量守恒给出",
+    "english": "Fixed-gap coefficients are candidate local inputs to a reduced squeeze-flow model. For a square field at one instant, assume spatially uniform principal coefficients, constant viscosity, prescribed closure speed $V=-\\dot h>0$, principal-axis coordinates and specified edge pressure. Depth-integrated mass conservation gives"
+  },
+  {
+    "source_block": 152,
+    "translated": false,
+    "source": "$$\nK_{yy}\\,p_{\\xi\\xi}+K_{xx}\\,p_{\\eta\\eta}=-\\mu V,\n\\tag{7}\n$$",
+    "english": "$$\nK_{yy}\\,p_{\\xi\\xi}+K_{xx}\\,p_{\\eta\\eta}=-\\mu V,\n\\tag{7}\n$$"
+  },
+  {
+    "source_block": 153,
+    "translated": true,
+    "source": "其中 $\\xi$、$\\eta$ 分别沿槽与跨槽。保持相同几何、闭合速度和常环境边缘压力 $p_b$ 时，若两个系数按同一倍率变化，过压 $p-p_b$ 及其面积积分得到的净荷载按该倍率的倒数缩放。若两方向倍率不同，一般还会改变压力分布。因此主值误差与各向异性误差都可能影响降阶预测；本节属于模型含义讨论，尚未验证动态挤压过程。",
+    "english": "Coordinates $\\xi$ and $\\eta$ run along and across the grooves. At common geometry, closure speed and constant ambient edge pressure $p_b$, multiplying both coefficients by the same factor divides the overpressure $p-p_b$ and its area-integrated net load by that factor. Different directional factors generally also change the pressure distribution. Both principal-value and anisotropy discrepancies may therefore affect reduced predictions. This is a conditional model implication; dynamic squeeze flow has not been validated."
+  },
+  {
+    "source_block": 154,
+    "translated": true,
+    "source": "恒速与恒载还对应不同输出：恒速下行程时间由运动条件确定，系数误差主要反映在压力与荷载；恒载下闭合速率依赖阻力，时间需沿变化间隙积分。**不能把单一固定间隙的误差直接当作整个行程的时间误差。**",
+    "english": "Prescribed speed and prescribed load give different outputs. At fixed speed, motion sets the stroke time and coefficient errors primarily affect pressure and load. At fixed load, closure rate depends on resistance and time must be integrated over the changing gap. **A discrepancy at one fixed gap cannot be treated directly as the time error for an entire stroke.**"
+  },
+  {
+    "source_block": 155,
+    "translated": true,
+    "source": "### 5.3 适用范围与未验证内容",
+    "english": "### 5.3 Applicability and unverified conditions"
+  },
+  {
+    "source_block": 156,
+    "translated": true,
+    "source": "本研究的响应与误差范围来自固定周期 240 nm、固定槽宽 120 nm、等宽槽/凸台的18种几何、36个主方向样点。它们**没有覆盖**其他占空比、其他槽宽、图案交界或任意连续参数组合。",
+    "english": "Responses and discrepancy ranges come from 18 geometries and 36 principal-direction samples at period 240 nm, width 120 nm and equal groove/rib widths. They do not cover other area fractions, groove widths, pattern junctions or arbitrary continuous parameter combinations."
+  },
+  {
+    "source_block": 157,
+    "translated": true,
+    "source": "本文报告的倍率、参数趋势及各向异性来自已保存的5 nm离散运行记录。各几何的沿槽与跨槽结果使用相同二进制，但不同几何分属两组程序身份；同程序配对不保证两个方向的误差抵消，跨几何趋势也尚未排除构建差异的影响。",
+    "english": "Reported ratios, trends and anisotropy derive from saved 5 nm discrete records. Along-groove and across-groove results at each geometry share a binary, but different geometries belong to two program-identity groups. Pairing within one program does not guarantee cancellation of directional errors, and cross-geometry trends have not excluded build effects."
+  },
+  {
+    "source_block": 158,
+    "translated": true,
+    "source": "在四个已检查加密几何中，最薄间隙 $(h,d)=(25,100)$ nm的跨槽分量网格敏感性最大（−4.43%，以5 nm结果为分母）；现有几何特定加密尚不能转化为全地图不确定度上界。",
+    "english": "Among the four refined geometries, the transverse component at the thinnest gap, $(h,d)=(25,100)$ nm, has the largest grid sensitivity (−4.43%, normalized by the 5 nm value). Geometry-specific refinements cannot yet establish a map-wide uncertainty bound."
+  },
+  {
+    "source_block": 159,
+    "translated": true,
+    "source": "修正效果同样需要按样点范围与参考网格分别报告。跨槽全18点的最大绝对残差为18.7%，6.9%只适用于 $h\\ge50$ nm的15点子集。最薄间隙 $d=100$ nm跨槽点在5 nm参考下的绝对偏差由16.36%增至18.71%；换成2.5 nm参考后，则由21.76%降至14.94%。因此，整体最坏偏差下降不能替代逐点评价，局部改善判断还受到数值参考分辨率影响。V2未显式包含间隙，且剩余残差随间隙变化；这提示其表征范围受限，但不能单独证明间隙缺项是残差的唯一来源。",
+    "english": "Correction performance must specify sample set and reference grid. The maximum absolute transverse residual is 18.7% over all 18 samples; 6.9% applies only to the 15 with $h\\ge50$. At the thinnest gap and $d=100$ nm, the absolute transverse discrepancy increases from 16.36% to 18.71% against the 5 nm reference, but decreases from 21.76% to 14.94% against the 2.5 nm reference. Overall maxima cannot replace pointwise assessment, and local improvement depends on reference resolution. V2 does not explicitly include gap, although residuals vary with gap. This limits its representation, but does not establish omission of gap as the sole residual source."
+  },
+  {
+    "source_block": 160,
+    "translated": true,
+    "source": "经验关系的限制与数值参考的限制应分别评价：前者需要在模型与适用范围冻结后用未参与选择的条件检验，后者需要与所声称精度匹配的网格或独立参考。**目前两者均未在整个参数范围内完成。**",
+    "english": "The empirical relation and numerical reference have separate limitations. The former requires conditions unused in model selection after the model and scope are frozen. The latter requires grid or independent-reference evidence commensurate with the claimed accuracy. **Neither has been completed over the entire parameter range.**"
+  },
+  {
+    "source_block": 161,
+    "translated": true,
+    "source": "本稿亦未验证自由表面、润湿、困气、真实胶流变或移动模具；固定间隙结果用于这些问题时需要另行建立模型与证据。",
+    "english": "Free surfaces, wetting, trapped gas, real-resist rheology and moving molds have not been validated. Applying fixed-gap results to those problems requires separate models and evidence."
+  },
+  {
+    "source_block": 162,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  },
+  {
+    "source_block": 163,
+    "translated": true,
+    "source": "## 6 结论",
+    "english": "## 6 Conclusions"
+  },
+  {
+    "source_block": 164,
+    "translated": true,
+    "source": "**一、** 在本文采样的全充液矩形沟槽的5 nm离散数值结果中，增加槽深对沿槽与跨槽输运的影响明显不同。间隙50 nm时槽深由25增至120 nm，$K_{yy}$ 增至3.55倍，$K_{xx}$ 仅增至1.034倍。在共同覆盖该槽深区间的50、75、125 nm三档间隙中，沿槽相对增益随间隙增大而减弱，但在125 nm时仍约为39.2%。",
+    "english": "**1.** In the sampled 5 nm discrete results for fully filled rectangular grooves, deepening the grooves affects along-groove and across-groove transport differently. At a 50 nm gap, increasing depth from 25 to 120 nm multiplies $K_{yy}$ by 3.55 and $K_{xx}$ by only 1.034. Among gaps of 50, 75 and 125 nm covering that interval, the relative along-groove gain decreases with gap but remains approximately 39.2% at 125 nm."
+  },
+  {
+    "source_block": 165,
+    "translated": true,
+    "source": "**二、** 以5 nm离散数值结果为参考，局部立方律在全部36个主方向样点上均高估输运系数：$K_{yy}$ 高估+10.30%至+204.85%，$K_{xx}$ 高估+8.11%至+54.19%。沿槽偏差在固定间隙的已采样序列中随槽深增大，但不对全部槽深都随间隙增大而单调减小。这些偏差幅度与参数趋势不构成连续参数域上的精度保证，也未确定单一主导机制。理想Stokes模型中局部立方律的主导度上界由附录E单独给出，不能由该上界推出上述百分比。",
+    "english": "**2.** Relative to the 5 nm discrete references, the local cubic law overestimates all 36 principal-direction samples: +10.30% to +204.85% for $K_{yy}$ and +8.11% to +54.19% for $K_{xx}$. Along-groove discrepancy increases with depth in sampled fixed-gap sequences, but does not decrease monotonically with gap at every depth. These magnitudes and trends are not continuous-domain accuracy guarantees and identify no single dominant mechanism. Appendix E separately proves ideal-Stokes principal-conductance upper bounds, which do not determine these percentages."
+  },
+  {
+    "source_block": 166,
+    "translated": true,
+    "source": "**三、** 相对于基准几何的5 nm数值主值，局部模型给出的各向异性被高估约 67%；在同一线性张量描述下，45°驱动时由两组主值重建的通量方向相差9.20°。这些数值不代表已经实验验证或已确定连续解精度的流向误差。评价此类模型需同时检验两个主值及其比值。",
+    "english": "**3.** Relative to the reference geometry’s 5 nm principal values, the model overestimates anisotropy by approximately 67%. Under the same linear tensor description, flux directions reconstructed from the two sets of principal values differ by 9.20° for forcing at 45°. These are not experimentally validated or continuous-solution-certified flow-direction errors. Both principal values and their ratio require assessment."
+  },
+  {
+    "source_block": 167,
+    "translated": true,
+    "source": "**四、** 相对于5 nm离散参考，按公布系数回顾性评价，V2修正后的最大绝对残差为沿槽18点10.5%、跨槽18点18.7%，其中 $h\\ge50$ nm的15个跨槽点为6.9%。在 $(25,100)$ nm跨槽点，5 nm参考下的绝对偏差反而增大，局部改善判断也依赖参考网格。修正未消除残差的间隙依赖，评价需同时报告样点范围、参考网格与数据使用历史，不能推广为任意几何或动态压印过程的预测关系。",
+    "english": "**4.** Retrospective evaluation using published V2 coefficients against 5 nm references gives maximum absolute residuals of 10.5% for 18 along-groove samples and 18.7% for 18 across-groove samples; the 15 transverse samples with $h\\ge50$ give 6.9%. At the transverse sample $(25,100)$ nm, the absolute discrepancy increases against the 5 nm reference, and local improvement depends on the reference grid. Residual gap dependence remains. Evaluation must report sample coverage, reference grid and data-use history; the relation cannot be extended as a prediction relation for arbitrary geometries or dynamic imprinting."
+  },
+  {
+    "source_block": 168,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  },
+  {
+    "source_block": 169,
+    "translated": true,
+    "source": "\n## 附录 E　理想Stokes模型下局部立方律的上界性质",
+    "english": "## Appendix E. Upper-bound property of the local cubic law in the ideal Stokes model"
+  },
+  {
+    "source_block": 170,
+    "translated": true,
+    "source": "设一个周期的截面为 $\\Omega=\\{(x,z):0<x<P,\\,0<z<H(x)\\}$，其中 $H(x)$ 在浅区为 $h$、槽内为 $h+d$，且 $h>0$。沟槽沿 $y$ 方向平移不变。假设液体全充满、不可压缩、牛顿且黏度恒定，固壁静止无滑移，周期面成对匹配；只施加一次均匀驱动 $G\\mathbf e_i$，其中 $G>0$，流动满足Stokes方程。沿槽方向 $i=y$ 可用单向标量场，跨槽方向 $i=x$ 用二维不可压缩速度场。",
+    "english": "Let the cross-section over one period be $\\Omega=\\{(x,z):0<x<P,\\,0<z<H(x)\\}$, with $H(x)$ equal to $h$ in the shallow region and $h+d$ inside the groove, where $h>0$. The geometry is invariant along $y$. Assume fully filled, incompressible Newtonian liquid of constant viscosity, stationary no-slip solid walls and matched periodic faces. Apply a single uniform driving gradient $G\\mathbf e_i$, with $G>0$, and impose the Stokes equations. Along-groove forcing, $i=y$, admits a unidirectional scalar field; across-groove forcing, $i=x$, requires a two-dimensional incompressible velocity field."
+  },
+  {
+    "source_block": 171,
+    "translated": true,
+    "source": "这里的截面按水平壁与台阶竖壁围成的开流体域理解，周期面作成对识别；$H$在有限跳点处的取值不改变积分定义。速度取固壁零迹、周期匹配的$H^1$弱解，跨槽场在弱意义下不可压缩，压力扰动为周期函数。该表述允许台阶角点的有限能量解，不要求角点处具有经典二阶导数。",
+    "english": "The cross-section is the open fluid domain bounded by horizontal walls and vertical step walls, with periodic faces identified in pairs. Values of $H$ at the finitely many jumps do not affect the integrals. Velocity is a periodic $H^1$ weak solution with zero solid-wall trace; the across-groove field is weakly incompressible and the pressure perturbation is periodic. Finite-energy solutions at step corners are allowed; classical second derivatives at the corners are not required."
+  },
+  {
+    "source_block": 172,
+    "translated": true,
+    "source": "令 $\\mathbf U=\\mu\\mathbf u/G$、$\\Pi=p'/G$，其中 $p'$ 为周期压力扰动。此处 $\\mathbf U$ 为有量纲的缩放速度，单位m²，与式（7）的闭合速度 $V$ 不同。则",
+    "english": "Set $\\mathbf U=\\mu\\mathbf u/G$ and $\\Pi=p'/G$, where $p'$ is the periodic pressure perturbation. Here, $\\mathbf U$ is a dimensional scaled velocity in m², distinct from closure speed $V$ in Eq. (7). Then"
+  },
+  {
+    "source_block": 173,
+    "translated": false,
+    "source": "$$\n-\\Delta\\mathbf U+\\nabla\\Pi=\\mathbf e_i,\n\\qquad\\nabla\\cdot\\mathbf U=0,\n\\qquad K_i=\\frac1P\\int_\\Omega U_i\\,\\mathrm dA.\n\\tag{E1}\n$$",
+    "english": "$$\n-\\Delta\\mathbf U+\\nabla\\Pi=\\mathbf e_i,\n\\qquad\\nabla\\cdot\\mathbf U=0,\n\\qquad K_i=\\frac1P\\int_\\Omega U_i\\,\\mathrm dA.\n\\tag{E1}\n$$"
+  },
+  {
+    "source_block": 174,
+    "translated": true,
+    "source": "弱式取速度本身为测试函数，固壁边界项为零，周期面相互抵消，压力功由不可压缩条件消去，得到",
+    "english": "Testing the weak formulation with velocity itself eliminates solid-wall boundary terms, cancels periodic terms and removes pressure work through incompressibility, giving"
+  },
+  {
+    "source_block": 175,
+    "translated": false,
+    "source": "$$\n\\mathcal D:=\\int_\\Omega|\\nabla\\mathbf U|^2\\,\\mathrm dA\n=\\int_\\Omega U_i\\,\\mathrm dA=P K_i.\n\\tag{E2}\n$$",
+    "english": "$$\n\\mathcal D:=\\int_\\Omega|\\nabla\\mathbf U|^2\\,\\mathrm dA\n=\\int_\\Omega U_i\\,\\mathrm dA=P K_i.\n\\tag{E2}\n$$"
+  },
+  {
+    "source_block": 176,
+    "translated": true,
+    "source": "在这些边界与不可压缩条件下，$\\int_\\Omega|\\nabla\\mathbf U|^2\\,\\mathrm dA=2\\int_\\Omega\\mathbf D(\\mathbf U):\\mathbf D(\\mathbf U)\\,\\mathrm dA$，其中$\\mathbf D(\\mathbf U)=(\\nabla\\mathbf U+\\nabla\\mathbf U^T)/2$；这是积分恒等式，不是逐点耗散分解。",
+    "english": "Under these boundary and incompressibility conditions, $\\int_\\Omega|\\nabla\\mathbf U|^2\\,\\mathrm dA=2\\int_\\Omega\\mathbf D(\\mathbf U):\\mathbf D(\\mathbf U)\\,\\mathrm dA$, where $\\mathbf D(\\mathbf U)=(\\nabla\\mathbf U+\\nabla\\mathbf U^T)/2$. This is an integral identity, rather than a pointwise dissipation decomposition."
+  },
+  {
+    "source_block": 177,
+    "translated": true,
+    "source": "对几乎每个 $x$，定义截面积分 $q_i(x)=\\int_0^{H(x)}U_i\\,\\mathrm dz$。两端零壁迹及辅助函数 $\\psi=z[H(x)-z]/2$ 给出 $q_i=\\int_0^{H(x)}\\psi'\\partial_zU_i\\,\\mathrm dz$。由Cauchy–Schwarz不等式及 $\\int_0^{H(x)}(\\psi')^2\\,\\mathrm dz=H(x)^3/12$，",
+    "english": "For almost every $x$, define sectional integral $q_i(x)=\\int_0^{H(x)}U_i\\,\\mathrm dz$. Zero traces at both ends and the auxiliary function $\\psi=z[H(x)-z]/2$ give $q_i=\\int_0^{H(x)}\\psi'\\partial_zU_i\\,\\mathrm dz$. The Cauchy–Schwarz inequality and $\\int_0^{H(x)}(\\psi')^2\\,\\mathrm dz=H(x)^3/12$ imply"
+  },
+  {
+    "source_block": 178,
+    "translated": false,
+    "source": "$$\n\\int_0^{H(x)}|\\partial_zU_i|^2\\,\\mathrm dz\n\\ge\\frac{12q_i(x)^2}{H(x)^3}.\n\\tag{E3}\n$$",
+    "english": "$$\n\\int_0^{H(x)}|\\partial_zU_i|^2\\,\\mathrm dz\n\\ge\\frac{12q_i(x)^2}{H(x)^3}.\n\\tag{E3}\n$$"
+  },
+  {
+    "source_block": 179,
+    "translated": true,
+    "source": "台阶竖壁位于有限个 $x$ 位置，不影响该几乎处处成立的截面不等式；完整场仍满足竖壁无滑移条件。",
+    "english": "Vertical step walls occupy finitely many $x$ locations and do not affect this almost-everywhere sectional inequality. The complete field still satisfies no slip on those walls."
+  },
+  {
+    "source_block": 180,
+    "translated": true,
+    "source": "能量恒等式给出$K_i\\ge0$；由于$h>0$提供贯穿周期的流体层，可用支撑于$0<z<h$的非零无散度测试场排除零解，故$K_i>0$。",
+    "english": "The energy identity gives $K_i\\ge0$. Since $h>0$ provides a fluid layer connected through the period, a nonzero divergence-free test field supported in $0<z<h$ rules out the zero solution, so $K_i>0$."
+  },
+  {
+    "source_block": 181,
+    "translated": true,
+    "source": "沿槽的 $q_y$ 可随 $x$ 改变。对式（E3）积分，并再用加权Cauchy–Schwarz不等式，",
+    "english": "Along the grooves, $q_y$ may depend on $x$. Integrating Eq. (E3) and applying weighted Cauchy–Schwarz again gives"
+  },
+  {
+    "source_block": 182,
+    "translated": false,
+    "source": "$$\nP K_\\parallel=\\mathcal D\n\\ge\\frac{12\\left(\\int_0^Pq_y\\,\\mathrm dx\\right)^2}\n{\\int_0^PH^3\\,\\mathrm dx}\n=\\frac{12(PK_\\parallel)^2}{\\int_0^PH^3\\,\\mathrm dx},\n\\qquad\nK_\\parallel\\le\\frac{\\langle H^3\\rangle}{12}.\n\\tag{E4}\n$$",
+    "english": "$$\nP K_\\parallel=\\mathcal D\n\\ge\\frac{12\\left(\\int_0^Pq_y\\,\\mathrm dx\\right)^2}\n{\\int_0^PH^3\\,\\mathrm dx}\n=\\frac{12(PK_\\parallel)^2}{\\int_0^PH^3\\,\\mathrm dx},\n\\qquad\nK_\\parallel\\le\\frac{\\langle H^3\\rangle}{12}.\n\\tag{E4}\n$$"
+  },
+  {
+    "source_block": 183,
+    "translated": true,
+    "source": "将速度在实体内延零至固定高度的周期带，固壁零迹与弱不可压缩性保证延拓场的分布散度为零，因而截面积分$q_x$对$x$的分布导数为零。故包括台阶及周期接缝在内，$q_x$为常数，由式（E1）有$q_x=K_\\perp$。因此",
+    "english": "Extend velocity by zero inside the solid to a periodic strip of fixed height. Zero wall trace and weak incompressibility give a distributionally divergence-free extension. The distributional derivative of sectional integral $q_x$ with respect to $x$ is therefore zero. Thus $q_x$ is constant across steps and the periodic seam, and Eq. (E1) gives $q_x=K_\\perp$. Consequently,"
+  },
+  {
+    "source_block": 184,
+    "translated": false,
+    "source": "$$\nP K_\\perp=\\mathcal D\\ge12K_\\perp^2\\int_0^PH^{-3}\\,\\mathrm dx,\n\\qquad\nK_\\perp\\le\\frac{1}{12\\langle H^{-3}\\rangle},\n\\tag{E5}\n$$",
+    "english": "$$\nP K_\\perp=\\mathcal D\\ge12K_\\perp^2\\int_0^PH^{-3}\\,\\mathrm dx,\n\\qquad\nK_\\perp\\le\\frac{1}{12\\langle H^{-3}\\rangle},\n\\tag{E5}\n$$"
+  },
+  {
+    "source_block": 185,
+    "translated": true,
+    "source": "其中 $\\langle f\\rangle=P^{-1}\\int_0^P f(x)\\,\\mathrm dx$。对本文等宽槽/凸台，式（E4）和式（E5）的右端分别为正文式（3）的两个局部立方律导度，故",
+    "english": "Here, $\\langle f\\rangle=P^{-1}\\int_0^P f(x)\\,\\mathrm dx$. For the equal-width grooves and ribs considered here, the right-hand sides of Eqs. (E4) and (E5) are exactly the two local-cubic-law conductances in Eq. (3), hence"
+  },
+  {
+    "source_block": 186,
+    "translated": false,
+    "source": "$$\nK_{yy}\\le K_{yy}^{\\rm mod},\n\\qquad K_{xx}\\le K_{xx}^{\\rm mod}.\n\\tag{E6}\n$$",
+    "english": "$$\nK_{yy}\\le K_{yy}^{\\rm mod},\n\\qquad K_{xx}\\le K_{xx}^{\\rm mod}.\n\\tag{E6}\n$$"
+  },
+  {
+    "source_block": 187,
+    "translated": true,
+    "source": "以上保留非严格上界；无槽平板 $d=0$ 时可取等号。该结论解释了所列理想模型中的主值偏差方向，不提供具体偏差幅度，也不确定 $K_{yy}/K_{xx}$ 的模型偏差符号。本文5 nm数据相对于连续解的误差仍须由独立的数值参考证据判断。上界不构成局部耗散机制份额、V2预测精度或真实压印过程保真度的证明。",
+    "english": "These are non-strict upper bounds: the ungrooved parallel-plate case $d=0$ attains equality. They establish the principal-value discrepancy direction within the stated ideal model, but provide neither discrepancy magnitudes nor the sign of the model discrepancy in $K_{yy}/K_{xx}$. Errors of the 5 nm values relative to the continuous solution still require independent numerical-reference evidence. The bounds do not certify local dissipation fractions, V2 prediction accuracy or real-imprint fidelity."
+  },
+  {
+    "source_block": 188,
+    "translated": true,
+    "source": "\n## 参考文献",
+    "english": "## References"
+  },
+  {
+    "source_block": 189,
+    "translated": false,
+    "source": "[1] Jain A., Spann A., Cochrane A., Schunk P.R., Bonnecaze R.T. Fluid flow in UV nanoimprint lithography with patterned templates. *Microelectron. Eng.*, 2017, **173**: 62–70. DOI: 10.1016/j.mee.2017.04.001",
+    "english": "[1] Jain A., Spann A., Cochrane A., Schunk P.R., Bonnecaze R.T. Fluid flow in UV nanoimprint lithography with patterned templates. *Microelectron. Eng.*, 2017, **173**: 62–70. DOI: 10.1016/j.mee.2017.04.001"
+  },
+  {
+    "source_block": 190,
+    "translated": false,
+    "source": "[2] Ban Y.H., Bonnecaze R.T. Optimal placement of droplets for UV nanoimprint lithography. *J. Vac. Sci. Technol. B*, 2020, **38**(2): 022601. DOI: 10.1116/6.0000030",
+    "english": "[2] Ban Y.H., Bonnecaze R.T. Optimal placement of droplets for UV nanoimprint lithography. *J. Vac. Sci. Technol. B*, 2020, **38**(2): 022601. DOI: 10.1116/6.0000030"
+  },
+  {
+    "source_block": 191,
+    "translated": false,
+    "source": "[3] Ban Y.H., Bonnecaze R.T. Minimizing filling time for ultraviolet nanoimprint lithography with templates with multiple structures. *J. Vac. Sci. Technol. B*, 2021, **39**(1): 012601. DOI: 10.1116/6.0000648",
+    "english": "[3] Ban Y.H., Bonnecaze R.T. Minimizing filling time for ultraviolet nanoimprint lithography with templates with multiple structures. *J. Vac. Sci. Technol. B*, 2021, **39**(1): 012601. DOI: 10.1116/6.0000648"
+  },
+  {
+    "source_block": 192,
+    "translated": false,
+    "source": "[4] Patir N., Cheng H.S. An average flow model for determining effects of three-dimensional roughness on partial hydrodynamic lubrication. *J. Lubr. Technol.*, 1978, **100**(1): 12–17. DOI: 10.1115/1.3453103",
+    "english": "[4] Patir N., Cheng H.S. An average flow model for determining effects of three-dimensional roughness on partial hydrodynamic lubrication. *J. Lubr. Technol.*, 1978, **100**(1): 12–17. DOI: 10.1115/1.3453103"
+  },
+  {
+    "source_block": 193,
+    "translated": false,
+    "source": "[5] Dewangan M.K., Datta S. Effective permeability tensor of confined flows with wall grooves of arbitrary shape. *J. Fluid Mech.*, 2020, **891**: A12. DOI: 10.1017/jfm.2020.134",
+    "english": "[5] Dewangan M.K., Datta S. Effective permeability tensor of confined flows with wall grooves of arbitrary shape. *J. Fluid Mech.*, 2020, **891**: A12. DOI: 10.1017/jfm.2020.134"
+  },
+  {
+    "source_block": 194,
+    "translated": false,
+    "source": "[6] Dewangan M.K., Datta S. Flow through microchannels with topographically patterned wall: A spectral theory for arbitrary groove depths. *Eur. J. Mech. B/Fluids*, 2018, **70**: 73–84. DOI: 10.1016/j.euromechflu.2018.02.004",
+    "english": "[6] Dewangan M.K., Datta S. Flow through microchannels with topographically patterned wall: A spectral theory for arbitrary groove depths. *Eur. J. Mech. B/Fluids*, 2018, **70**: 73–84. DOI: 10.1016/j.euromechflu.2018.02.004"
+  },
+  {
+    "source_block": 195,
+    "translated": false,
+    "source": "[7] Krause M.J., Kummerländer A., Avis S.J., et al. OpenLB — Open source lattice Boltzmann code. *Comput. Math. Appl.*, 2021, **81**: 258–288. DOI: 10.1016/j.camwa.2020.04.033",
+    "english": "[7] Krause M.J., Kummerländer A., Avis S.J., et al. OpenLB — Open source lattice Boltzmann code. *Comput. Math. Appl.*, 2021, **81**: 258–288. DOI: 10.1016/j.camwa.2020.04.033"
+  },
+  {
+    "source_block": 196,
+    "translated": false,
+    "source": "[8] Bouzidi M., Firdaouss M., Lallemand P. Momentum transfer of a Boltzmann-lattice fluid with boundaries. *Phys. Fluids*, 2001, **13**(11): 3452–3459. DOI: 10.1063/1.1399290",
+    "english": "[8] Bouzidi M., Firdaouss M., Lallemand P. Momentum transfer of a Boltzmann-lattice fluid with boundaries. *Phys. Fluids*, 2001, **13**(11): 3452–3459. DOI: 10.1063/1.1399290"
+  },
+  {
+    "source_block": 197,
+    "translated": false,
+    "source": "[9] Guo Z., Zheng C., Shi B. Discrete lattice effects on the forcing term in the lattice Boltzmann method. *Phys. Rev. E*, 2002, **65**(4): 046308. DOI: 10.1103/PhysRevE.65.046308",
+    "english": "[9] Guo Z., Zheng C., Shi B. Discrete lattice effects on the forcing term in the lattice Boltzmann method. *Phys. Rev. E*, 2002, **65**(4): 046308. DOI: 10.1103/PhysRevE.65.046308"
+  },
+  {
+    "source_block": 198,
+    "translated": false,
+    "source": "[10] Celik I.B., Ghia U., Roache P.J., et al. Procedure for estimation and reporting of uncertainty due to discretization in CFD applications. *J. Fluids Eng.*, 2008, **130**(7): 078001. DOI: 10.1115/1.2960953",
+    "english": "[10] Celik I.B., Ghia U., Roache P.J., et al. Procedure for estimation and reporting of uncertainty due to discretization in CFD applications. *J. Fluids Eng.*, 2008, **130**(7): 078001. DOI: 10.1115/1.2960953"
+  },
+  {
+    "source_block": 199,
+    "translated": false,
+    "source": "[11] Teyssèdre H., Gilormini P., Régnier G. Limitations of simple flow models for the simulation of nanoimprint. *Int. Polym. Process.*, 2013, **28**(1): 72–78. DOI: 10.3139/217.2673",
+    "english": "[11] Teyssèdre H., Gilormini P., Régnier G. Limitations of simple flow models for the simulation of nanoimprint. *Int. Polym. Process.*, 2013, **28**(1): 72–78. DOI: 10.3139/217.2673"
+  },
+  {
+    "source_block": 200,
+    "translated": true,
+    "source": "> **注**：[6]的正式题名、作者、年份、卷号、页码与DOI已核对；2026-10-28另取得其完整接收稿，已核几何、沿槽方向、主问题无滑移边界、幅度条件及目标量定义。完整谱方法与小振幅等渐近近似须区分；该文不直接验证本文矩形槽跨槽流动的数值精度。所收版本为接收稿，尚未与期刊最终排版版逐页对应，核对定位及剩余限制见补充材料S11。",
+    "english": "> **Reference-version note:** the title, authors, year, volume, pages and DOI of [6] have been checked. Its complete accepted manuscript was received on 2026-10-28 and checked for geometry, along-groove direction, no-slip conditions in the main problem, amplitude conditions and quantity definitions. The full spectral method must be distinguished from small-amplitude and other asymptotic approximations. This paper does not directly verify numerical accuracy for transverse flow in the present rectangular grooves. The received accepted manuscript has not been matched page by page to the journal version of record. Locators and remaining limits are in S11."
+  },
+  {
+    "source_block": 201,
+    "translated": false,
+    "source": "---",
+    "english": "---"
+  }
+]

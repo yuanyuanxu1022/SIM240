@@ -1,0 +1,47 @@
+{
+  "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+  "status": "STATIC_INTERFACE_ONLY_NOT_A_REFERENCE_CONTRACT",
+  "source_draft_id": "D4_REFERENCE_CONSTRAINT_BUDGET_MINIMUM_20261025_DRAFT_v2",
+  "pressure_equation": "-laplace(u)+grad(pi)=f; div(u)=0",
+  "symmetric_weak_block": "[K,-B^T;-B,0]; B(q,u)=integral(q*div(u))",
+  "pressure_gauge": "one constant nullspace; check A*n=0 and n^T*b=0; integral-weighted mean removal after solve",
+  "driving": "explicit uniform body acceleration OR equivalent pressure drop, never both",
+  "periodic": "x=P to x=0 in 0<z<H; P2 edge midpoints included; Dirichlet velocity endpoints take priority; pressure endpoints paired",
+  "basis": "P2 scalar / P2 vector with P1 pressure",
+  "dimensionless_scaling": {
+    "length": "h",
+    "velocity": "a*h^2/nu",
+    "kinematic_pressure": "a*h",
+    "K_m3": "h^3*J_hat",
+    "J_m2_s": "a*h^3/nu*J_hat",
+    "R_Pa_s_m3": "rho*a/J"
+  },
+  "physical_units_only_for_flat75": true,
+  "MMS_J_not_uniform_force_mobility": true,
+  "energy_work": "integral(f*scalar) or integral(dot(f,u)); use once, MMS f is not ex",
+  "candidate_thresholds_not_activated": {
+    "flat_K_relative": 0.0005,
+    "flat_velocity_L2_relative": 0.001,
+    "flat_A_absolute_difference_from_1": 1e-06,
+    "MMS_finest_velocity_L2_relative": 0.001,
+    "MMS_pressure_L2_relative": 0.005,
+    "MMS_J_absolute": 0.0001,
+    "true_relative_residual": 1e-10,
+    "algebraic_Q_change_relative": 0.0001,
+    "quadrature_Q_change_relative": 0.0001,
+    "trace_relative_error": 1e-10
+  },
+  "budget_proposal_validated": false,
+  "prediction_permission": "HOLD",
+  "deferred": [
+    "actual mesh and MPC application",
+    "matrix assembly",
+    "pressure nullspace runtime checks",
+    "linear solves",
+    "all grooves",
+    "NS",
+    "OpenLB changes",
+    "new fit",
+    "predictions"
+  ]
+}

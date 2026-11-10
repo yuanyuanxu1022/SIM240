@@ -1,0 +1,348 @@
+{
+  "snapshot_at": "2026-11-02T22:44:50.581475+08:00",
+  "hostname": "dell-OptiPlex-Tower-Plus-7010",
+  "session": "urv_s2_formal_lrp_v1_20261102_02",
+  "release_sha256": "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+  "tmux": {
+    "exit_code": 0,
+    "stdout": "urv_s2_formal_lrp_v1_20261102_02\n",
+    "stderr": "",
+    "target_present": true
+  },
+  "processes": [
+    {
+      "pid": 780296,
+      "args": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_S2.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/S2_formal_launch_release_LRP_v1_20261102_02.json",
+        "--release-sha256",
+        "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+        "--execute"
+      ]
+    },
+    {
+      "pid": 781184,
+      "args": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/run_config.txt"
+      ]
+    }
+  ],
+  "controller_log": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/S2_formal_controller_LRP_v1_20261102_02.log",
+    "exists": true,
+    "size": 0,
+    "tail": ""
+  },
+  "attempt_directory_exists": true,
+  "attempt_files": {
+    "URV_S2_P_dx5_reuse_v1_20261102_01_checker.log": "",
+    "URV_S2_T_dx5_reuse_v1_20261102_01_checker.log": ""
+  },
+  "runs": [
+    {
+      "run_id": "URV_S2_P_dx5_reuse_v1_20261102_01",
+      "files": [
+        "boundary_audit.txt",
+        "completion.json",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "frame_schedule.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "result.txt",
+        "result_summary.csv",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "run.log": "\n    ┃\n    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁\n    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲\n ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱\n ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱\n ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱\n ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>\n       ┗━━━━━┛\n\n[initialize] Version  : 882924a9cfc8\n[initialize] Platform : CPU_SISD\n[initialize] Parallel : MPI\n[initialize] MPI      : 1 ranks\n[ThreadPool] Sucessfully initialized, numThreads=1\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx5_reuse_v1_20261102_01/steady/imageData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx5_reuse_v1_20261102_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx5_reuse_v1_20261102_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx5_reuse_v1_20261102_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx5_reuse_v1_20261102_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx5_reuse_v1_20261102_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx5_reuse_v1_20261102_01/steady/introspectionData/ created.\ncase=URV_S2_P_dx5_reuse_v1_20261102_01 PASS=true step=3328 J=5.9544318335806187e-12 Keff=5.9544318335806184e-23\n",
+      "exit_code.txt": "0\n",
+      "result.txt": "case=URV_S2_P_dx5_reuse_v1_20261102_01\ndirection=parallel\nrun_id=URV_S2_P_dx5_reuse_v1_20261102_01\nformal_simulation=true\ngeometry_PASS=true\nNUMERICAL_GATE=PASS\nRESULT_PASS=false\nPASS=true\nframes_written=10\nwindow_steps=648\nmaximum_steps=37632\nconverged=true\nsteps_completed=3328\nLx_m=2.4000000000000003e-07\nLy_m=2.4000000000000003e-07\nmesa_gap_m=6.0000000000000008e-08\ngroove_depth_m=8.0000000000000002e-08\ngroove_width_m=1.2000000000000002e-07\nH_ref_m=1.0000000000000001e-07\ndx_m=5.0000000000000001e-09\ndt_s=4.1666666666666668e-12\ntau=1\ndescriptor=D3Q19_FORCE\ncollision=ForcedBGK\nwall_boundary=Bouzidi_zero_velocity_exact_EX240\nperiodicity=x_y\nacceleration_m_s2=100000\nrho_phys_kg_m3=1000\nnu_phys_m2_s=9.9999999999999995e-07\nmu_phys_Pa_s=0.001\nforce_lattice=0,3.4722222222222225e-10,0\nfluid_nodes=46080\nfluid_volume_m3=5.7599999999966609e-21\nnominal_volume_m3=5.7600000000000019e-21\ncandidate_links=30528\ninstalled_links=30528\nq_min=0.5\nq_max=0.5\nfallback_count=0\nunresolved_links=0\nmass_gate_statistic=Neumaier_physical_mass\nmax_mass_abs_relative=1.069961080215131e-15\nlegacy_max_mass_abs_relative=0\nlegacy_mass_gate_PASS=true\nmax_delta_mass_abs_relative=1.1394820272532987e-15\nmax_mass_ledger_agreement=1.6179596613461112e-16\nall_measurements_finite=true\nmax_density_deviation=1.3322676295501878e-15\nmax_Mach=1.9335779313920102e-07\npressure_range_Pa=-5.8619775700208265e-07,-4.7961634663806763e-07\nJ_vector_m2_s=6.3722175547255723e-22,5.9544318335806187e-12,-4.0257910595401966e-23\nJ_main_m2_s=5.9544318335806187e-12\nKeff_m3=5.9544318335806184e-23\nK0_smooth_h_m3=1.8000000000000008e-23\nKeff_over_K0=3.3080176853225645\nR_eff_Pa_s_per_m3=1.6794213586599467e+19\nQ_sections_m3_s=1.4290636400593117e-18,1.4290636400593117e-18\nsection_relative_difference=0\nwindow_main_rel_std=9.9797273303996587e-07\nwindow_main_rel_span=3.6767460970956856e-06\nwindow_cross_abs_max=8.9473181942065273e-22\nmaterial_unchanged=true\nfinite=true\nexit_code=0\n",
+      "diagnostics": {
+        "bytes": 1522125,
+        "last_complete_line": "3328,5.9544318335806187e-12,1,1.9335779313920102e-07,5.7599999999949712e-18,1.3866666666666667e-08,0,1.2212453270876722e-15,6.3722175547255723e-22,5.9544318335806187e-12,-4.0257910595401966e-23,1.4290636400593117e-18,1.4290636400593117e-18,0,-5.8619775700208265e-07,-4.7961634663806763e-07,9.9797273303996587e-07,3.6767460970956856e-06,8.9473181942065273e-22,1,5.759999999999994e-18,-1.069961080215131e-15,-1.1377473037773219e-15,6.7786223562190907e-17,-5.2427395758058992e-11",
+        "last_complete_values": {
+          "step": "3328",
+          "J": "5.9544318335806187e-12",
+          "rho": "1",
+          "Mach": "1.9335779313920102e-07",
+          "mass": "5.7599999999949712e-18",
+          "time_s": "1.3866666666666667e-08",
+          "mass_error": "0",
+          "max_density_deviation": "1.2212453270876722e-15",
+          "Jx": "6.3722175547255723e-22",
+          "Jy": "5.9544318335806187e-12",
+          "Jz": "-4.0257910595401966e-23",
+          "Q_section1": "1.4290636400593117e-18",
+          "Q_section2": "1.4290636400593117e-18",
+          "section_relative_difference": "0",
+          "pressure_min": "-5.8619775700208265e-07",
+          "pressure_max": "-4.7961634663806763e-07",
+          "window_rel_std": "9.9797273303996587e-07",
+          "window_rel_span": "3.6767460970956856e-06",
+          "window_cross_abs_max": "8.9473181942065273e-22",
+          "finite": "1",
+          "corrected_mass": "5.759999999999994e-18",
+          "corrected_mass_error": "-1.069961080215131e-15",
+          "delta_mass_error": "-1.1377473037773219e-15",
+          "mass_ledger_agreement": "6.7786223562190907e-17",
+          "density_delta": "-5.2427395758058992e-11"
+        }
+      },
+      "completion.json": {
+        "protocol_id": "URV-v1",
+        "release_sha256": "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+        "run_id": "URV_S2_P_dx5_reuse_v1_20261102_01",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "inputs_unchanged": true,
+        "density_capture": "NOT_APPLICABLE_S0_ONLY",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 27.2722030839941,
+        "solver_wall_cap_seconds": 3600
+      },
+      "acceptance.json": {
+        "protocol_id": "URV-v1",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "run_id": "URV_S2_P_dx5_reuse_v1_20261102_01",
+        "family": "U_REG",
+        "stage": "S2_REG_GRID",
+        "direction": "P",
+        "dx_nm": 5.0,
+        "acceleration_m_s2": 100000.0,
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "REFERENCE_QUALIFIED_FOR_CASE": false,
+        "MODEL_COMPARISON": "NOT_EVALUATED",
+        "physical_validation": "NOT_EVALUATED",
+        "scalar": {
+          "K_m3": 5.954431833580618e-23,
+          "J_main_m2_s": 5.954431833580619e-12,
+          "diagnostic_rows": 3329,
+          "all_full_windows_recomputed": 2682,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 1.069961080215131e-15,
+          "legacy_mass_max": 0.0,
+          "ledger_agreement_max": 1.6179596613461112e-16,
+          "final_span": 3.676746097095686e-06,
+          "Re_H": 1.8754709218363383e-05
+        },
+        "smooth": null,
+        "regression": null,
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        },
+        "release_sha256": "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+        "completion_sha256": "56f639563541d205d9f39b3b8b2907b4d58db7cf4e5db6b621439a451cb07d65",
+        "independent_exit_code": 0
+      }
+    },
+    {
+      "run_id": "URV_S2_T_dx5_reuse_v1_20261102_01",
+      "files": [
+        "boundary_audit.txt",
+        "completion.json",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "frame_schedule.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "result.txt",
+        "result_summary.csv",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "run.log": "\n    ┃\n    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁\n    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲\n ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱\n ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱\n ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱\n ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>\n       ┗━━━━━┛\n\n[initialize] Version  : 882924a9cfc8\n[initialize] Platform : CPU_SISD\n[initialize] Parallel : MPI\n[initialize] MPI      : 1 ranks\n[ThreadPool] Sucessfully initialized, numThreads=1\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_T_dx5_reuse_v1_20261102_01/steady/imageData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_T_dx5_reuse_v1_20261102_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_T_dx5_reuse_v1_20261102_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_T_dx5_reuse_v1_20261102_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_T_dx5_reuse_v1_20261102_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_T_dx5_reuse_v1_20261102_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_T_dx5_reuse_v1_20261102_01/steady/introspectionData/ created.\ncase=URV_S2_T_dx5_reuse_v1_20261102_01 PASS=true step=1940 J=2.409256324244804e-12 Keff=2.409256324244804e-23\n",
+      "exit_code.txt": "0\n",
+      "result.txt": "case=URV_S2_T_dx5_reuse_v1_20261102_01\ndirection=perpendicular\nrun_id=URV_S2_T_dx5_reuse_v1_20261102_01\nformal_simulation=true\ngeometry_PASS=true\nNUMERICAL_GATE=PASS\nRESULT_PASS=false\nPASS=true\nframes_written=10\nwindow_steps=648\nmaximum_steps=37632\nconverged=true\nsteps_completed=1940\nLx_m=2.4000000000000003e-07\nLy_m=2.4000000000000003e-07\nmesa_gap_m=6.0000000000000008e-08\ngroove_depth_m=8.0000000000000002e-08\ngroove_width_m=1.2000000000000002e-07\nH_ref_m=1.0000000000000001e-07\ndx_m=5.0000000000000001e-09\ndt_s=4.1666666666666668e-12\ntau=1\ndescriptor=D3Q19_FORCE\ncollision=ForcedBGK\nwall_boundary=Bouzidi_zero_velocity_exact_EX240\nperiodicity=x_y\nacceleration_m_s2=100000\nrho_phys_kg_m3=1000\nnu_phys_m2_s=9.9999999999999995e-07\nmu_phys_Pa_s=0.001\nforce_lattice=3.4722222222222225e-10,0,0\nfluid_nodes=46080\nfluid_volume_m3=5.7599999999966609e-21\nnominal_volume_m3=5.7600000000000019e-21\ncandidate_links=30528\ninstalled_links=30528\nq_min=0.5\nq_max=0.5\nfallback_count=0\nunresolved_links=0\nmass_gate_statistic=Neumaier_physical_mass\nmax_mass_abs_relative=1.069961080215131e-15\nlegacy_max_mass_abs_relative=1.0037572383776962e-12\nlegacy_mass_gate_PASS=true\nmax_delta_mass_abs_relative=1.0373646386341306e-15\nmax_mass_ledger_agreement=1.0547936722307167e-16\nall_measurements_finite=true\nmax_density_deviation=1.8173226035145262e-08\nmax_Mach=8.6004947418460006e-08\npressure_range_Pa=-7.4743198830162783,7.4743186573300591\nJ_vector_m2_s=2.409256324244804e-12,1.9660198976942865e-23,-1.3316024163706748e-22\nJ_main_m2_s=2.409256324244804e-12\nKeff_m3=2.409256324244804e-23\nK0_smooth_h_m3=1.8000000000000008e-23\nKeff_over_K0=1.3384757356915573\nR_eff_Pa_s_per_m3=4.1506584000083763e+19\nQ_sections_m3_s=5.7822151085807239e-19,5.7822153269515145e-19\nsection_relative_difference=3.776593887410763e-08\nwindow_main_rel_std=9.1836036333052842e-07\nwindow_main_rel_span=4.9950250504882303e-06\nwindow_cross_abs_max=3.6236446390894898e-23\nmaterial_unchanged=true\nfinite=true\nexit_code=0\n",
+      "diagnostics": {
+        "bytes": 971298,
+        "last_complete_line": "1940,2.409256324244804e-12,1.0000000000005758,8.6004942018251862e-08,5.7600000000001989e-18,8.0833333333333329e-09,9.0759448629327732e-13,1.5571499756283913e-08,2.409256324244804e-12,1.9660198976942865e-23,-1.3316024163706748e-22,5.7822151085807239e-19,5.7822153269515145e-19,3.776593887410763e-08,-7.4743198830162783,7.4743186573300591,9.1836036333052842e-07,4.9950250504882303e-06,3.6236446390894898e-23,1,5.7599999999999963e-18,-6.6872567513445692e-16,-7.4720322521907674e-16,7.847755008461982e-17,-3.4431124618095055e-11",
+        "last_complete_values": {
+          "step": "1940",
+          "J": "2.409256324244804e-12",
+          "rho": "1.0000000000005758",
+          "Mach": "8.6004942018251862e-08",
+          "mass": "5.7600000000001989e-18",
+          "time_s": "8.0833333333333329e-09",
+          "mass_error": "9.0759448629327732e-13",
+          "max_density_deviation": "1.5571499756283913e-08",
+          "Jx": "2.409256324244804e-12",
+          "Jy": "1.9660198976942865e-23",
+          "Jz": "-1.3316024163706748e-22",
+          "Q_section1": "5.7822151085807239e-19",
+          "Q_section2": "5.7822153269515145e-19",
+          "section_relative_difference": "3.776593887410763e-08",
+          "pressure_min": "-7.4743198830162783",
+          "pressure_max": "7.4743186573300591",
+          "window_rel_std": "9.1836036333052842e-07",
+          "window_rel_span": "4.9950250504882303e-06",
+          "window_cross_abs_max": "3.6236446390894898e-23",
+          "finite": "1",
+          "corrected_mass": "5.7599999999999963e-18",
+          "corrected_mass_error": "-6.6872567513445692e-16",
+          "delta_mass_error": "-7.4720322521907674e-16",
+          "mass_ledger_agreement": "7.847755008461982e-17",
+          "density_delta": "-3.4431124618095055e-11"
+        }
+      },
+      "completion.json": {
+        "protocol_id": "URV-v1",
+        "release_sha256": "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+        "run_id": "URV_S2_T_dx5_reuse_v1_20261102_01",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "inputs_unchanged": true,
+        "density_capture": "NOT_APPLICABLE_S0_ONLY",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 16.471245937005733,
+        "solver_wall_cap_seconds": 3600
+      },
+      "acceptance.json": {
+        "protocol_id": "URV-v1",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "run_id": "URV_S2_T_dx5_reuse_v1_20261102_01",
+        "family": "U_REG",
+        "stage": "S2_REG_GRID",
+        "direction": "T",
+        "dx_nm": 5.0,
+        "acceleration_m_s2": 100000.0,
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "REFERENCE_QUALIFIED_FOR_CASE": false,
+        "MODEL_COMPARISON": "NOT_EVALUATED",
+        "physical_validation": "NOT_EVALUATED",
+        "scalar": {
+          "K_m3": 2.409256324244804e-23,
+          "J_main_m2_s": 2.409256324244804e-12,
+          "diagnostic_rows": 1941,
+          "all_full_windows_recomputed": 1294,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 1.069961080215131e-15,
+          "legacy_mass_max": 1.0037572383776962e-12,
+          "ledger_agreement_max": 1.0547936722307167e-16,
+          "final_span": 4.995025050488238e-06,
+          "Re_H": 8.3420365633395e-06
+        },
+        "smooth": null,
+        "regression": null,
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        },
+        "release_sha256": "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+        "completion_sha256": "990584d9a910d9e68ebf9de46c96fb3a48c93e6b7026081e74dbed0370afc510",
+        "independent_exit_code": 0
+      }
+    },
+    {
+      "run_id": "URV_S2_P_dx2p5_reuse_v1_20261102_01",
+      "files": [
+        "boundary_audit.txt",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "run.log": "\n    ┃\n    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁\n    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲\n ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱\n ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱\n ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱\n ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>\n       ┗━━━━━┛\n\n[initialize] Version  : 882924a9cfc8\n[initialize] Platform : CPU_SISD\n[initialize] Parallel : MPI\n[initialize] MPI      : 1 ranks\n[ThreadPool] Sucessfully initialized, numThreads=1\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/imageData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx2p5_reuse_v1_20261102_01/steady/introspectionData/ created.\n",
+      "diagnostics": {
+        "bytes": 163969,
+        "last_complete_line": "460,2.7741732094285115e-12,1,3.3563763146375402e-08,5.7600000000297481e-18,4.7916666666666672e-10,0,6.6613381477509392e-16,6.6131513875417381e-22,2.7741732094285115e-12,-1.2143043226447943e-21,6.6580157026278214e-19,6.6580157026278214e-19,0,-1.2789769243681803e-06,-2.1316282072803006e-07,-1,-1,-1,1,5.7599999999999971e-18,-5.3498054010756549e-16,-4.6901140378826276e-16,6.5969136319302735e-17,-1.7289636389250518e-10",
+        "last_complete_values": {
+          "step": "460",
+          "J": "2.7741732094285115e-12",
+          "rho": "1",
+          "Mach": "3.3563763146375402e-08",
+          "mass": "5.7600000000297481e-18",
+          "time_s": "4.7916666666666672e-10",
+          "mass_error": "0",
+          "max_density_deviation": "6.6613381477509392e-16",
+          "Jx": "6.6131513875417381e-22",
+          "Jy": "2.7741732094285115e-12",
+          "Jz": "-1.2143043226447943e-21",
+          "Q_section1": "6.6580157026278214e-19",
+          "Q_section2": "6.6580157026278214e-19",
+          "section_relative_difference": "0",
+          "pressure_min": "-1.2789769243681803e-06",
+          "pressure_max": "-2.1316282072803006e-07",
+          "window_rel_std": "-1",
+          "window_rel_span": "-1",
+          "window_cross_abs_max": "-1",
+          "finite": "1",
+          "corrected_mass": "5.7599999999999971e-18",
+          "corrected_mass_error": "-5.3498054010756549e-16",
+          "delta_mass_error": "-4.6901140378826276e-16",
+          "mass_ledger_agreement": "6.5969136319302735e-17",
+          "density_delta": "-1.7289636389250518e-10"
+        }
+      }
+    },
+    {
+      "run_id": "URV_S2_T_dx2p5_reuse_v1_20261102_01",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    },
+    {
+      "run_id": "URV_S2_P_dx1p25_reuse_v1_20261102_01",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    },
+    {
+      "run_id": "URV_S2_T_dx1p25_reuse_v1_20261102_01",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    }
+  ]
+}

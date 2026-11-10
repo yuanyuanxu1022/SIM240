@@ -1,0 +1,45 @@
+{
+  "frozen_resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_run_free_disk_GiB": 8,
+    "output_budget_GiB_per_case": 4,
+    "solver_wall_cap_seconds_by_dx_nm": {
+      "2.5": 14400
+    }
+  },
+  "current_snapshot": {
+    "checked_at": "2026-11-03T15:39:26.211187+08:00",
+    "MemAvailable_bytes": 20158038016,
+    "disk_free_bytes": 341058416640,
+    "dynamic_libraries_verified": 15,
+    "relevant_processes": [],
+    "tmux_panes": [],
+    "tmux_query_exit_code": 1,
+    "tmux_query_stderr": "no server running on /tmp/tmux-1000/default\n",
+    "interpretation": "Current snapshot only; repeat prebinding and at actual launch. No resource reservation."
+  },
+  "total_solver_cap_seconds": 57600,
+  "total_checker_wait_cap_seconds": 14400,
+  "total_is_not_batch_hard_wall_limit": true,
+  "new_performance_advance_required": false,
+  "performance_decision_basis": "Same mid-grid/geometry/ELF has completed S2 evidence; S3 four configurations passed zero audit.",
+  "inherited_outer_checker_timeout": [
+    {
+      "line": 132,
+      "timeout": 3600
+    }
+  ],
+  "inherited_reader_timeout": [
+    {
+      "line": 247,
+      "timeout": 3600
+    }
+  ],
+  "timeout_scope": "Outer check process wait is bounded; no claim of whole process-tree cleanup or strict 20 h batch cap."
+}

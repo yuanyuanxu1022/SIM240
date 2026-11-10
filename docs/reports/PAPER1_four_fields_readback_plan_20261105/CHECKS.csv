@@ -1,0 +1,14 @@
+check_id,category,purpose,criterion,on_failure,status
+R01,identity,核SHA/结果末步/PVD-VTM闭包,与绑定值一致,停止，保留来源变化记录,NOT_EXECUTED
+R02,reader,PointData/material/velocity分量、有限核心点,元数据、分量数、有效点有限,停止，不插值或换字段,NOT_EXECUTED
+R03,coordinates,物理坐标/步长/去重/halo剔除,原生格点与解析单胞相符,停止，不移动坐标或平均重复点,NOT_EXECUTED
+R04,geometry,材料掩膜与解析几何逐点比较,F/G/C/C0/Cplus计数与集合关系,停止，不用解析掩膜覆盖错误材料,NOT_EXECUTED
+R05,anchor,"原生y=122.5nm与CSV按x,z逐点匹配",速度正确Float32转换逐点一致,停止，不搜索最像切面,NOT_EXECUTED
+R06,J,独立体积离散积分对result/末diagnostics,记录差值与导出/浮点预算,超预算停止，未建预算则NOT_EVALUATED,NOT_EXECUTED
+R07,Q,P两y截面/T两x截面对原Q记录,法向速度积分，按导出/浮点预算,超预算停止，不放宽物理阈值,NOT_EXECUTED
+R08,full_sections,每例48个截面Q及G/C部分,仅报告沿程变化，不设新物理PASS线,缺面则停；变化如实报告,NOT_EXECUTED
+R09,algebra,平均截面Q与J恒等式,仅容许内部积和舍入,不一致则停积分代码,NOT_EXECUTED
+R10,partition,JG+JC=J及浅深G/C0/Cplus增量和,同一数组同一权重的自洽,不一致则停分区比较,NOT_EXECUTED
+R11,signed,符号/反向通量/近零分母,保留负值；区间含0不报比例,禁止裁剪负值或宣称死区,NOT_EXECUTED
+R12,provenance,全部读入输入前后哈希/输出独立目录,0输入变化，保存脚本/环境/日志,变化或越界即停止,NOT_EXECUTED
+R13,software,非对称轴/halo/台阶/Float32合成夹具,预定闭式及结构期望,夹具不合格不读实际场,NOT_EXECUTED

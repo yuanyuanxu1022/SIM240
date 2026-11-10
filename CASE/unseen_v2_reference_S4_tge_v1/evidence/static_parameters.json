@@ -1,0 +1,49 @@
+{
+  "parameters": {
+    "h": 3e-08,
+    "d": 8e-08,
+    "w": 1.2e-07,
+    "P": 2.4e-07,
+    "Ly": 2.4e-07,
+    "H": 7e-08,
+    "dx": 6.25e-10,
+    "nu": 1e-06,
+    "a": 100000.0,
+    "dt": 6.510416666666667e-14,
+    "nodes": 16515072,
+    "window": 10368,
+    "cap": 1486848,
+    "nx": 384,
+    "ny": 384,
+    "nh": 48,
+    "nd": 128
+  },
+  "geometry_prediction": {
+    "fluid_nodes": 16515072,
+    "candidate_links": 1964544,
+    "q_min": 0.5,
+    "q_max": 0.5000000000000142,
+    "material_0": 0,
+    "material_1": 16515072,
+    "material_2": 147456,
+    "material_3": 10027008
+  },
+  "volume_arithmetic": {
+    "dx_nm": 0.625,
+    "core_fluid_nodes": 16515072,
+    "cell_volume_term": 2.4414062500000003e-28,
+    "repeated_binary64_volume": 4.032000000063864e-21,
+    "relative_to_native_nominal": 1.5839107803117258e-11,
+    "relative_to_exact_nominal": 1.5839551892327108e-11,
+    "absolute_relative_pass_1e_10": true,
+    "dt_s": 6.510416666666667e-14,
+    "window_steps": 10368,
+    "maximum_steps": 1486848,
+    "one_population_set_fluid_only_bytes": 2510290944,
+    "native_execution_performed": false
+  },
+  "evidence_kind": "SOFTWARE_ARITHMETIC_NOT_NATIVE_AUDIT",
+  "geometry_PASS": null,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false
+}

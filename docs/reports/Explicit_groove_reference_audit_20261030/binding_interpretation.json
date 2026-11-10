@@ -1,0 +1,22 @@
+{
+  "initial_binding_records": 5597,
+  "initial_mismatch_records": 52,
+  "unique_mismatch_paths": 29,
+  "mismatch_by_label": {
+    "recorded_binary_D2_D3_S1": 24,
+    "scheme_C_historical_inputs": 26,
+    "scheme_C_dynamic_libraries": 2
+  },
+  "scheme_C_binary": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/build/fine_T_statfix_C",
+    "exists": true,
+    "expected_sha256": "f4cfbc7a0a8a36787549e79922e696b4490282dc4044664a1926953c073b2a94",
+    "actual_sha256": "f4cfbc7a0a8a36787549e79922e696b4490282dc4044664a1926953c073b2a94",
+    "matches": true
+  },
+  "D4_selected_bindings_all_match": true,
+  "C_original_outputs_all_match": true,
+  "C_source_entries_all_match": true,
+  "no_raw_data_corruption_inferred": true,
+  "interpretation": "The 24 D2 binary mismatch records repeat a replaced executable path; 26 C historical-input issues concern changed rules/missing reports; two C runtime libraries changed. These do not mean 52 damaged simulation outputs. mtime or current Makefile alone cannot reconstruct missing historical source-to-binary binding."
+}

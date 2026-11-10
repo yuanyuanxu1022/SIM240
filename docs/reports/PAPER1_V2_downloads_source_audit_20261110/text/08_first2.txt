@@ -1,0 +1,119 @@
+                                                                           Journal of Photopolymer Science and Technology
+                                                                           Volume 32, Number 5 (2019) 753－757 Ⓒ 2019SPST
+
+      Review
+
+
+
+
+                 The Status of Nanoimprint Lithography for High
+                     Volume Semiconductor Manufacturing
+
+                                         Jin Choi* and Douglas J. Resnick
+
+                                        Canon Nanotechnologies Inc.,
+                           1807 West Braker Lane, Bldg. C-300 Austin, TX 78758, USA
+                                            *jchoi@cnt.canon.com
+
+
+                  Imprint lithography is an effective and well known technique for replication of nano-scale
+               features. For the purpose of semiconductor device fabrication, nanoimprint lithography (NIL)
+               manufacturing equipment utilizes a patterning technology that involves the field-by-field
+               deposition and exposure of a low viscosity resist deposited by jetting technology onto the
+               substrate. In this paper we describe the latest performance update of the equipment, and to
+               discuss the alignment system and overlay methods needed to yield advanced semiconductor
+               devices. Throughputs of up to 90 wafers per hour have been achieved using a cluster system
+               approach. On tests wafers a mix and match overlay of 3.2 nm is demonstrated. Additionally,
+               a Drop Pattern Compensation (DPC) method is introduced as an additional means for
+               improving overlay. Finally, to address cost of ownership, a mask lifetime of over 300 wafer
+               lots has been demonstrated.
+               Keywords: Nanoimprint lithography, NIL, Throughput, Overlay, Mask life, Drop
+               pattern compensation
+
+
+1. Introduction                                                    This paper introduces the latest performance
+   Imprint lithography is an effective and well                  update of the equipment. Specifically, we describe
+known technique for replication of nano-scale                    progress on throughput, overlay and mask life.
+features [1,2]. For the purpose of semiconductor
+device fabrication, nanoimprint lithography (NIL)                2. Throughput
+manufacturing equipment utilizes a patterning                       Throughput is one of the key contributors to cost
+technology that involves the field-by-field                      of ownership. In this section, we discuss how
+deposition and exposure of a low viscosity resist                throughput was enhanced to 90 wafers per hour.
+deposited by jetting technology onto the substrate               Canon uses a multi-module approach to achieve
+[3-9]. The patterned mask is lowered into the fluid              high throughput. The NZ2C cluster tool typically is
+which then quickly flows into the relief patterns in             configured with four imprint modules or stations.
+the mask by capillary action. Following this filling                Previous papers have discussed throughput
+step, the resist is crosslinked under UV radiation,              breakdown in detail [10]. Overheads to the imprint
+and then the mask is removed, leaving a patterned                TAKT time have been reduced by applying a multi-
+resist on the substrate. The technology faithfully               field dispense strategy, as opposed to dispensing and
+reproduces patterns with a higher resolution and                 imprinting in a sequential fashion (see Fig. 1). The
+greater uniformity compared to those produced by                 reduction in overhead is on the order of 0.24
+photolithography equipment. Additionally, as this                seconds, resulting in an increase in throughput to 90
+technology does not require an array of wide-                    wafers per hour. Figure 2 shows that non-fill
+diameter lenses and the expensive light sources                  defectivity is nominally the same for the multi-field
+necessary      for    advanced     photolithography              approach.
+equipment, NIL equipment achieves a simpler, more
+compact design, allowing for multiple units to be                3. Alignment and overlay
+clustered together for increased productivity.                     The NZ2C system employs a Through The Mask
+ Received   May       21, 2019
+ Accepted   May       27, 2019
+                                                                                                                            753
+                                          J. Photopolym. Sci. Technol., Vol. 32, No. 5, 2019
+
+
+
+
+                                                                        1. Mag actuator, which applies force using an
+                                                                           array of piezo actuators
+                                                                        2. Heat input to correct distortion on a field by
+                                                                           field basis
+
+                                                                         Heat input on a field by field basis is realized
+                                                                      through the use of DMD array which imparts heat
+                                                                      through the mask onto a stepper field of a wafer. The
+                                                                      basic operation of the system, along with initial
+                                                                      results has been described in previous publications
+                                                                      [11,12]. The system is shown schematically in Fig.
+                                                                      3.
+
+
+
+      Fig. 1. By continuously dispensing, overhead times are
+      reduced by 0.24 seconds per field, thereby enhancing
+      throughput to 90 wafers per hour.
+
+
+
+
+                                                                      Fig. 3. Schematic illustration of the HODC system used
+                                                                      to correct in-field distortions.
+
+                                                                         The TTM and HODC systems were applied to
+                                                                      test wafers and the results are reported in Figs. 4 and
+                                                                      5. Figure 4 depicts Cross Matched Machine Overlay
+                                                                      (XMMO) on an existing level patterned with an
+      Fig. 2. Defect inspection result comparison. The multi-         ASML 1950 ArF immersion tool. A total of 84 fields
+      field dispense results are comparable in defectivity to the     were measured, including twelve points per field.
+      sequential imprinting method.                                   The results are an average across 23 wafers. XMMO
+                                                                      of 2.9 nm and 3.2 nm mean plus three sigma was
+                                                                      achieved in x and y, respectively.
+       (TTM) alignment system. First order terms are
+      passed through Moiré marks on the mask and wafer
+      with a sensitivity on the order of 1nm. On device
+      wafers, it is possible to enhance the align signal and
+      avoid blooming by using multiple wavelengths, and
+      controlling the intensity of each wavelength. The
+      method aids in controlling signal variations,
+      resulting in reduced measurement errors.
+         It is important to note the difference in overlay
+      approaches between an optical scanner and an
+      imprint step and repeat tool. In an optical scanner,
+      Shot Shape High Order Compensation (SSHOC) is
+      done by manipulating both the stage and lens during
+      the exposure process. A different approach is
+      required for the imprint tool in order to do high
+      order distortion controls (HODC). HODC for NIL                  Fig. 4. Cross matched machine overlay of 3.2 nm, 3
+      can be enabled by combining two approaches:                     sigma has been demonstrated on test wafers.
+
+754
+

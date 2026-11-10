@@ -1,0 +1,287 @@
+{
+  "release_version": "1.2.0",
+  "checker_version": "1.2.0",
+  "protocol_id": "SDI-v1",
+  "case_id": "C03",
+  "date": "2026-10-30",
+  "status": "PREPARED_NOT_RUN",
+  "launch_ready": true,
+  "flow_run_authorized_by_preparation": false,
+  "actual_run_id": null,
+  "planned_run_id": "SDI_C03_v1_2_20261030_01",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "8c38ac98aa3598e710e6ad2ea6890987b51ebdca70538ffe4dd46f4c3f75732d"
+    },
+    {
+      "path": "README.md",
+      "sha256": "29737684876544254a170a5f34a9fe10a416ee92d0700904d6a9aa80a3985f10"
+    },
+    {
+      "path": "analysis/check_results.py",
+      "sha256": "3e1155f16ae6b11266333695eb4452fc5b11e69f024b68577e3e3b32ea3b1cf7"
+    },
+    {
+      "path": "build/bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "build/bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    },
+    {
+      "path": "common/C03.json",
+      "sha256": "3e5b08b9b8c61ed7e1e16a3ff33764ed4084f88170d0412e43ee1b80ba786180"
+    },
+    {
+      "path": "common/C03_2d.txt",
+      "sha256": "f69ef53995de95d51e0d73ef99cc3a4a70e48f54c4036d989e837b1449e66373"
+    },
+    {
+      "path": "common/C03_SPEC.md",
+      "sha256": "ecc8b111d3976453f4bad86796fffff0fc835e71cec1b02adb45d9bed98e2b8b"
+    },
+    {
+      "path": "common/C03_expected.json",
+      "sha256": "15f2b26fbf36645f47549ab1b951c998151b887c07c28feea3a3635cc71a650d"
+    },
+    {
+      "path": "common/CHECKER_CHANGELOG.md",
+      "sha256": "d2e33c8d8f484101abc2804579f4703e652920f4c3c7bcbf95f552d250bcee80"
+    },
+    {
+      "path": "common/PROTOCOL.md",
+      "sha256": "b024ba4bb5122ec022b460114d8fe7b967138d93a7ff28c84f2d5aa1c065a779"
+    },
+    {
+      "path": "common/protocol.json",
+      "sha256": "697d67730d7da28a96b879cb2de8fe2c6edaa1b16dff260d9bf0e3abf5b2c44d"
+    },
+    {
+      "path": "openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "openfoam/cases/C03/0/p",
+      "sha256": "3b75c99f3b4ac0c8375344ac0c5f9eb01cc9e22d6ec389f410cbeb2faeaf68dd"
+    },
+    {
+      "path": "openfoam/cases/C03/constant/darcyProperties",
+      "sha256": "c6c198b47d481f90b3d6bca289f8ae9535ade758951ede7592689de884c92a45"
+    },
+    {
+      "path": "openfoam/cases/C03/constant/polyMesh/boundary",
+      "sha256": "be36a8711caf00604db0f3483e15897d79829da8ac14f2e866a89ff44c6bf2fd"
+    },
+    {
+      "path": "openfoam/cases/C03/constant/polyMesh/faces",
+      "sha256": "a30d6bca5e45df39dcb1cb9abd740e37a63bcd5cde98f51fd6b2735034ddad59"
+    },
+    {
+      "path": "openfoam/cases/C03/constant/polyMesh/neighbour",
+      "sha256": "d578a4b242da6d2f711726b47c4d7f7f133b2d576f05a1558f6d4b5e76a5ac4d"
+    },
+    {
+      "path": "openfoam/cases/C03/constant/polyMesh/owner",
+      "sha256": "c39c56d1124e90a4d5eafb10352a5173cdb7fcce84c25077204881c3c82e14b5"
+    },
+    {
+      "path": "openfoam/cases/C03/constant/polyMesh/points",
+      "sha256": "f0f77ed0a3b9759cbce1e5559eb157f4c9fcede6b6108c7bcf033adf874d786e"
+    },
+    {
+      "path": "openfoam/cases/C03/system/blockMeshDict",
+      "sha256": "42132a1164882368e5c13a8f730fef96f669093c6a865213c0f6afcf59c031fa"
+    },
+    {
+      "path": "openfoam/cases/C03/system/controlDict",
+      "sha256": "8448a8bb885a2d7c9539a4f2e6fd9ad5df83ac560e1492d9b1705675473b8426"
+    },
+    {
+      "path": "openfoam/cases/C03/system/fvSchemes",
+      "sha256": "7207f840baa389e593d99ecafbb6d2da6e25e077132d50eb2beb41b0a178ab63"
+    },
+    {
+      "path": "openfoam/cases/C03/system/fvSolution",
+      "sha256": "7d75d3d56a9067a0bebffa22d681202db74665366fee43d527cfb2a40d7bc086"
+    },
+    {
+      "path": "reports/audit_2d.log",
+      "sha256": "5321af03c8a57e900a05a17dd57e0188c98f2aaaf4b8712a6d02f3cae666ff74"
+    },
+    {
+      "path": "reports/audit_commands.json",
+      "sha256": "a53305c54492a15a41d03ed5fb93cceba87ff9f1a8cf7d1514c9497fe51b5e36"
+    },
+    {
+      "path": "reports/audit_openfoam.log",
+      "sha256": "00b9c183e75e17bb10328f8ef760c566dbebdd4699ad9189a28d3fbba1792dc0"
+    },
+    {
+      "path": "reports/checkMesh.log",
+      "sha256": "3d912152bd71e175bf08c78b890b796904965073ad6cc3ae7298dc756b29b766"
+    },
+    {
+      "path": "reports/functional_tests.json",
+      "sha256": "afe4f9ef6f8b4d1052dc47d35f52a7b40fff1f3962fe4c2fa980fb31c29610e0"
+    },
+    {
+      "path": "reports/inherited_C01_preparation.json",
+      "sha256": "486f3cc47b3aa02d24e42a10fac0baf5cda7ce369fc514e451a9b3c7e9869a45"
+    },
+    {
+      "path": "reports/inherited_C01_release_manifest.json",
+      "sha256": "471e333de82ccd8e015eb84f2468d1da1f3efb9c9451426ed39c16389e9479dc"
+    },
+    {
+      "path": "reports/ldd_darcy2d.log",
+      "sha256": "f37ce96a5d39914c1f45808dada2a21121811846a883a01f22715e878ec75ac5"
+    },
+    {
+      "path": "reports/ldd_depthAveragedDarcyFoam.log",
+      "sha256": "963e04c5454c4529e7da3c2f789b4237f85089be537e254ffc1a2f95bcb5234f"
+    },
+    {
+      "path": "reports/preparation.json",
+      "sha256": "c9665460eac976b925f9c2457f68a2cdef03e01497d8ba180ef987b5f25c9d49"
+    },
+    {
+      "path": "reports/solver_reuse.json",
+      "sha256": "946fb66f2940a3e5ac040a49f3fe3cda039542bca495aa94d99e843a6180fa5d"
+    },
+    {
+      "path": "scripts/audit_c03.py",
+      "sha256": "87b2225267cc78784678defe1a4cfff5fbee235058b256f02dcfc6b74e4009d3"
+    },
+    {
+      "path": "scripts/prepare_c03.py",
+      "sha256": "e4ca18b049f35c5914392d22c71d9eb3d191716a9e6a456b411c6a259473a050"
+    },
+    {
+      "path": "scripts/run_c03.py",
+      "sha256": "e6d95f7291e54ee44250c6950836cafa0c22043b06e25ebba3e4717120fdd5a9"
+    },
+    {
+      "path": "scripts/seal_release.py",
+      "sha256": "507a44add19024c5e2c76f09779c87a9304eef7dca621efee7c4cf944bf8b9bf"
+    },
+    {
+      "path": "tests/test_checker.py",
+      "sha256": "0062cdbc0942d74c9423b2fd20575f4ac1c9f8181b44a228e91f9013ed2f78b1"
+    },
+    {
+      "path": "tests/test_geometry_release.py",
+      "sha256": "1e14979455af84108550d78ab1d1cb0ae8c992d20588da894d2c0c8cf7208cb3"
+    },
+    {
+      "path": "two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    }
+  ],
+  "libraries": [
+    {
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so",
+      "sha256": "1903c3223c7f3c08b9dd1bd16e7e431aa3e085dc815dadb51415f29190cb7d30"
+    },
+    {
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/libfileFormats.so",
+      "sha256": "4e897f9425c7a0d0ccb16019eb48c8911064c6d5df18d991911452e0e875a6ca"
+    },
+    {
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/libfiniteVolume.so",
+      "sha256": "2b2a777975eb2e06b3fd5a3c03f4629999f5e3f043127eaa7cbf6cc289614008"
+    },
+    {
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/libmeshTools.so",
+      "sha256": "3a218104c581752c89f3352599fe06883715b3ca18c43a43c178f31dc3247dca"
+    },
+    {
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/libsurfMesh.so",
+      "sha256": "fd7dbdb1755ae176c96bfa01d51f51329a4486a2cf8ea8cef34b47ea984aaee0"
+    },
+    {
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/libtriSurface.so",
+      "sha256": "33e425d5fd16229c8f20cf5d9a783e82ce36cbe5d99d8a14737826f8caa7ee39"
+    },
+    {
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/openmpi-system/libPstream.so",
+      "sha256": "7ede697a24c24022db2a921994962a16fe896957d2438c1bc3dbef8cea7b0ddf"
+    },
+    {
+      "path": "/lib64/ld-linux-x86-64.so.2",
+      "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2",
+      "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7",
+      "sha256": "7fa4592ebaec38a7c1ce665c29244fbaae249cab6c1dbdd5024418dcdfd4898e"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7",
+      "sha256": "e386329c9c16032b489bebbd545750f35eafc0f50ab88ef0c986a31acb4b47a2"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libhwloc.so.15",
+      "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+      "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libmpi.so.40",
+      "sha256": "9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libopen-pal.so.40",
+      "sha256": "59c4d9b111cd3ec326a4df475a338daae050496087c67e86956187056fdc3051"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libopen-rte.so.40",
+      "sha256": "26467e1da428d31dab924ddbc50bc6ade75da47dbb82c77498a5f127a5466ba7"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+      "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libudev.so.1",
+      "sha256": "0d6934adafb2ef3c640382440c14d6bd60f391e688c000796ffcea0c72849269"
+    },
+    {
+      "path": "/usr/lib/x86_64-linux-gnu/libz.so.1",
+      "sha256": "f61677c7bdb7c2aa2a243ea781bfd16afcb361cede7b4ef76127a9d8eb9a5242"
+    }
+  ],
+  "openfoam_environment": {
+    "WM_PROJECT_DIR": "/home/dell/OpenFOAM/OpenFOAM-13",
+    "WM_PROJECT_VERSION": "13",
+    "WM_OPTIONS": "linux64GccDPInt32Opt",
+    "FOAM_LIBBIN": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib",
+    "FOAM_INST_DIR": "/home/dell/OpenFOAM"
+  },
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": true,
+  "geometry_scope": "synthetic_average_domain_only"
+}

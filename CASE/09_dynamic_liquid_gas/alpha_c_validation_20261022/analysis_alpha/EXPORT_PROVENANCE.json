@@ -1,0 +1,16 @@
+{
+  "published_utc": "2026-10-23T10:37:17.620513+00:00",
+  "scope": "Existing completed alpha acceptance only; no solver or C stage launched",
+  "original_frozen_analyzer_exit_code": 2,
+  "original_failure_log": "../analysis_20261023/frozen_analysis.log",
+  "original_failure": "numpy.bool JSON serialization, after analysis and before verdict write",
+  "adaptation": "JSONEncoder.default converts 10 numpy.bool to Python bool only; frozen source/formulas/thresholds unmodified",
+  "adapted_analyzer_exit_code": 0,
+  "independent_recalculation_exit_code": 0,
+  "copied_from": "../analysis_20261023/frozen_export_adapted/verdict.json",
+  "verdict_sha256": "018467d378507ce4b90f467d39acb3e00cd5748c2b328173e3780db6520fdfa9",
+  "independent_review_sha256": "696e6a311f7f1f0b6df7950d4780b2d5cd68fe9205b831ea8cd8002667b5825f",
+  "bound_inputs_rechecked": 3401,
+  "raw_files_rechecked": 392,
+  "C_run_authorized": false
+}

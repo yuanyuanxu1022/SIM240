@@ -1,0 +1,46 @@
+{
+  "reference_mesh_largest_stokes_dofs_before_constraints": 514391,
+  "largest_sparse_storage_scenario_GiB": 4.066009283065796,
+  "reference_FE_time_measured": false,
+  "reference_FE_candidate_RAM_budget_GiB_per_process": 8,
+  "reference_FE_candidate_disk_budget_GiB_total": 20,
+  "FE_trial_time_caps_hours": {
+    "B0_benchmarks": 2,
+    "B1_two_narrow_anchors": 4,
+    "B2_remaining_coverage": 12
+  },
+  "FE_trial_time_caps_are_allocations_not_predictions": true,
+  "linear_reference_solve_counts": {
+    "flat3x2x3": 18,
+    "MMS2x3": 6,
+    "geometry10x2x3": 60,
+    "total_before_audit_repeats": 84
+  },
+  "conditional_inertia_nonlinear_problem_count": 3,
+  "algebraic_and_quadrature_and_alternate_mesh_audits_excluded_from_84": true,
+  "stop_comparison_proposed_new_runs": 6,
+  "stop_constant_cost_per_step_scenario_total_hours": 16.824664987196467,
+  "stop_candidate_available_RAM_GiB": {
+    "G01_G02_dx1p25": 4,
+    "G04_dx2p5": 6
+  },
+  "stop_candidate_disk_GiB_total": 25,
+  "lbm_dx0p625_option": {
+    "proposed_direction_runs": 4,
+    "same_physical_time_node_step_work_factor": 32,
+    "old_four_elapsed_seconds": 21133.26,
+    "constant_work_cost_scenario_hours": 187.85119999999998,
+    "would_preserve_old_dx5_FAIL": true,
+    "selected_or_released": false
+  },
+  "wide_dx1p25_option": {
+    "old_available_RAM_requirement_GiB": 22,
+    "old_multiday_scenario_only": true,
+    "released": false
+  },
+  "automatic_batch_progression": false,
+  "resource_caps_require_explicit_review_before_use": true,
+  "matched_scale_audit_extra_direction_solves": 4,
+  "core_plus_matched_scale_linear_solves": 88,
+  "quadrature_algebraic_and_alternate_mesh_repeats_still_extra": true
+}

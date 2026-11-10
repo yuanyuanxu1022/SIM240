@@ -1,0 +1,45 @@
+{
+  "first_fixture_execution": {
+    "tests": 15,
+    "errors": 4,
+    "exit_code": 1,
+    "cause": "NumPy 2.5.3 np.cross rejects two-dimensional vectors",
+    "fix": "explicit 2D determinant",
+    "complete_original_log_file_saved": false
+  },
+  "second_fixture_execution": {
+    "tests": 15,
+    "exit_code": 0,
+    "log": "fixtures_run2.log"
+  },
+  "third_fixture_execution": {
+    "tests": 17,
+    "exit_code": 0,
+    "log": "fixtures_run3.log"
+  },
+  "fourth_fixture_execution": {
+    "tests": 17,
+    "exit_code": 0,
+    "log": "fixtures_run4.log"
+  },
+  "first_persistence_wrapper": {
+    "exit_code": 1,
+    "cause": "repo parent index pointed at CASE; final log destination did not exist",
+    "fix": "source.parents[4]",
+    "complete_original_log_file_saved": false
+  },
+  "final_validation": {
+    "tests": 17,
+    "exit_code": 0,
+    "record": "fixture_results.json",
+    "log": "fixtures_final.log"
+  },
+  "physical_or_old_N8_failure": false,
+  "thresholds_relaxed_to_pass": false,
+  "first_static_delivery_audit": {
+    "exit_code": 1,
+    "cause": "checked link to verification.json before writing that output",
+    "fix": "defer only self-output existence check until after write",
+    "physical_result_affected": false
+  }
+}

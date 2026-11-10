@@ -1,0 +1,81 @@
+{
+  "per_run": {
+    "compensated_mass_relative_strict": 1e-10,
+    "ledger_agreement_max": 1e-13,
+    "density_deviation_max": 1e-06,
+    "Mach_strict": 0.05,
+    "section_relative_max": 1e-05,
+    "window_relative_sample_std_max": 1e-06,
+    "window_relative_span_max": 5e-06,
+    "cross_flux_abs_m2_s_max": 1e-12,
+    "q_absolute_tolerance": 1e-10,
+    "volume_relative_tolerance": 1e-10,
+    "fallback": 0,
+    "unresolved": 0,
+    "positive_main_flux": true,
+    "finite_all": true,
+    "independent_exit": 0
+  },
+  "smooth": {
+    "K_relative_strict": 0.02,
+    "profile_L2_relative_strict": 0.02
+  },
+  "statistics_port_regression": {
+    "K_relative_max": 0.0001,
+    "all_common_legacy_diagnostics_compare_and_report": true
+  },
+  "new_physics_guards": {
+    "Re_H_max": 0.01,
+    "three_force_K_span_over_mean_max": 0.001,
+    "linearity_grid_nm": 2.5,
+    "linearity_accelerations_m_s2": [
+      50000,
+      100000,
+      200000
+    ]
+  },
+  "reference": {
+    "grid_nm": [
+      5,
+      2.5,
+      1.25
+    ],
+    "r": 2,
+    "Fs": 1.25,
+    "eligible_requires_monotonic_positive_finite_p": true,
+    "relative_difference_floor": 1e-14,
+    "fine_GCI_estimate_max": 0.01,
+    "medium_fine_relative_change_max": 0.01,
+    "estimate_u": "max(GCI_fine,abs(K_medium/K_fine-1),final_window_relative_span)",
+    "strict_error_bound": false,
+    "independent_asymptotic_evidence": false,
+    "legacy_GCI_ratio_not_used_as_qualification_evidence": true
+  },
+  "comparison": {
+    "primary_family": "U_REG",
+    "thin_family_role": "predeclared risk check; transverse h<50 outside narrower recommended domain",
+    "signed_error": "K_model/K_reference-1",
+    "absolute_error": "abs(K_model/K_reference-1)",
+    "improvement_delta": "abs(E_V2)-abs(E_original)",
+    "sensitivity_band": "K_fine*(1+-u); numerical sensitivity only, not confidence interval or rigorous bound",
+    "classify_by_delta_range": {
+      "IMPROVED": "max(delta)<-1e-12",
+      "DEGRADED": "min(delta)>1e-12",
+      "INCONCLUSIVE": "otherwise"
+    },
+    "evaluate_band_at": "both endpoints plus K_original/K_V2 breakpoints inside the band",
+    "reference_invalid": "NOT_EVALUATED; do not score formula accuracy",
+    "requires_all_conditions_to_improve": false,
+    "do_not_refit_on_test": true,
+    "minimum_practical_improvement_absolute_error": 0.02,
+    "practical_primary_support": "both U_REG directions have max(delta)<=-0.02 over the estimated sensitivity band"
+  },
+  "status_fields_separate": [
+    "NUMERICAL_GATE",
+    "RESULT_PASS",
+    "geometry_PASS",
+    "REFERENCE_QUALIFIED_FOR_CASE",
+    "MODEL_COMPARISON",
+    "physical_validation"
+  ]
+}

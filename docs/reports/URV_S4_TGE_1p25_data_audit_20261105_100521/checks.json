@@ -1,0 +1,208 @@
+[
+  {
+    "check": "package_manifest",
+    "PASS": true,
+    "observed": 89,
+    "expected": "all payload hashes unchanged",
+    "source": "05_inventory/MANIFEST.json"
+  },
+  {
+    "check": "raw_outputs",
+    "PASS": true,
+    "observed": 37,
+    "expected": 37,
+    "source": "completion.json:output_sha256"
+  },
+  {
+    "check": "release_digest",
+    "PASS": true,
+    "observed": "758f13deecec0a26ae309e982cbcadfb1aa9bf198e58513292bd2114df49631d",
+    "expected": "758f13deecec0a26ae309e982cbcadfb1aa9bf198e58513292bd2114df49631d",
+    "source": "03_provenance/server_evidence/S4_TGE_SERVER_formal_launch_release_v1_20261104_01.json"
+  },
+  {
+    "check": "input_before_after",
+    "PASS": true,
+    "observed": 1437,
+    "expected": 1437,
+    "source": "completion.json and release input maps"
+  },
+  {
+    "check": "source_read_fields.py",
+    "PASS": true,
+    "observed": "658801fa02a9afc630124b1605c0659d409b4bce1081e68bd5433e0a70a2346c",
+    "expected": "658801fa02a9afc630124b1605c0659d409b4bce1081e68bd5433e0a70a2346c",
+    "source": "CASE/unseen_v2_reference_checker_S4_tge_server_v1/analysis/read_fields.py"
+  },
+  {
+    "check": "source_evidence.py",
+    "PASS": true,
+    "observed": "2a38a4669c425cc75ce525106202da781833fb7787ffb56f2329bcb9dcf5fd53",
+    "expected": "2a38a4669c425cc75ce525106202da781833fb7787ffb56f2329bcb9dcf5fd53",
+    "source": "CASE/unseen_v2_reference_checker_S4_tge_server_v1/analysis/evidence.py"
+  },
+  {
+    "check": "source_check_formal_server.py",
+    "PASS": true,
+    "observed": "1a19c4962c261ed84fef4053c5840fcdd721eee2099982af00071b14327fe6ff",
+    "expected": "1a19c4962c261ed84fef4053c5840fcdd721eee2099982af00071b14327fe6ff",
+    "source": "CASE/unseen_v2_reference_checker_S4_tge_server_v1/analysis/check_formal_server.py"
+  },
+  {
+    "check": "source_server_stage.py",
+    "PASS": true,
+    "observed": "dff0e00fc0f2e2289c10673ea8e1fecb395193a63edc6643ae4da58bfd890347",
+    "expected": "dff0e00fc0f2e2289c10673ea8e1fecb395193a63edc6643ae4da58bfd890347",
+    "source": "CASE/unseen_v2_reference_checker_S4_tge_server_v1/analysis/server_stage.py"
+  },
+  {
+    "check": "scalar_receipt_match",
+    "PASS": true,
+    "observed": {
+      "K_m3": 3.471791836744987e-24,
+      "J_main_m2_s": 3.4717918367449866e-13,
+      "steps": 12537,
+      "window_steps": 2592,
+      "diagnostic_rows": 12538,
+      "final_window_std": 8.277215726150058e-07,
+      "final_window_span": 4.987652165446628e-06,
+      "corrected_mass_max": 4.394483008026431e-15,
+      "ledger_agreement_max": 1.7752391338696864e-16,
+      "max_density_deviation": 1.2731204979132826e-09,
+      "max_Mach": 6.2651511933297235e-09,
+      "Re_H": 1.909874592374824e-06,
+      "predicted_nodes": 2064384
+    },
+    "expected": {
+      "K_m3": 3.471791836744987e-24,
+      "J_main_m2_s": 3.4717918367449866e-13,
+      "steps": 12537,
+      "window_steps": 2592,
+      "diagnostic_rows": 12538,
+      "final_window_std": 8.277215726150058e-07,
+      "final_window_span": 4.987652165446628e-06,
+      "corrected_mass_max": 4.394483008026431e-15,
+      "ledger_agreement_max": 1.7752391338696864e-16,
+      "max_density_deviation": 1.2731204979132826e-09,
+      "max_Mach": 6.2651511933297235e-09,
+      "Re_H": 1.909874592374824e-06,
+      "predicted_nodes": 2064384
+    },
+    "source": "frozen scalars vs acceptance.json"
+  },
+  {
+    "check": "geometry_receipt_match",
+    "PASS": true,
+    "observed": {
+      "fluid_nodes": 2064384,
+      "candidate_links": 490752,
+      "q_min": 0.5,
+      "q_max": 0.5000000000000071,
+      "material_0": 0,
+      "material_1": 2064384,
+      "material_2": 36864,
+      "material_3": 1327104
+    },
+    "expected": {
+      "fluid_nodes": 2064384,
+      "candidate_links": 490752,
+      "q_min": 0.5,
+      "q_max": 0.5000000000000071,
+      "material_0": 0,
+      "material_1": 2064384,
+      "material_2": 36864,
+      "material_3": 1327104
+    },
+    "source": "analytic geometry vs acceptance.json"
+  },
+  {
+    "check": "completion_digest",
+    "PASS": true,
+    "observed": "e8017379ec2842a2c742fde39fad40725af35c9161d61fda917658c1a7a006ce",
+    "expected": "e8017379ec2842a2c742fde39fad40725af35c9161d61fda917658c1a7a006ce",
+    "source": "acceptance.json"
+  },
+  {
+    "check": "independent_exit",
+    "PASS": true,
+    "observed": 0,
+    "expected": 0,
+    "source": "exit_code.txt and completion.json"
+  },
+  {
+    "check": "no_timeout_or_resource_stop",
+    "PASS": true,
+    "observed": [
+      false,
+      null
+    ],
+    "expected": [
+      false,
+      null
+    ],
+    "source": "completion.json"
+  },
+  {
+    "check": "independent_K",
+    "PASS": true,
+    "observed": 3.471791836744987e-24,
+    "expected": 3.471791836744987e-24,
+    "source": "raw last Jx and config"
+  },
+  {
+    "check": "window_sample_std",
+    "PASS": true,
+    "observed": 8.277215726150058e-07,
+    "expected": 8.277215726150058e-07,
+    "source": "raw final window, ddof=1"
+  },
+  {
+    "check": "window_span",
+    "PASS": true,
+    "observed": 4.987652165446628e-06,
+    "expected": 4.987652165446628e-06,
+    "source": "raw final window"
+  },
+  {
+    "check": "stop_is_convergence_not_cap",
+    "PASS": true,
+    "observed": {
+      "steps": 12537,
+      "maximum_steps": 371712,
+      "converged": "true"
+    },
+    "expected": "first acceptable window before maximum_steps",
+    "source": "result.txt + full windows recomputation"
+  },
+  {
+    "check": "build_equivalence",
+    "PASS": true,
+    "observed": 0.0,
+    "expected": "abs(relative)<=1e-6",
+    "source": "local_1p25_acceptance.json"
+  },
+  {
+    "check": "local_trajectory_schema_shape",
+    "PASS": true,
+    "observed": [
+      12538,
+      12538
+    ],
+    "expected": "matching columns and all 12538 rows",
+    "source": "saved local diagnostics.csv"
+  },
+  {
+    "check": "peak_RSS",
+    "PASS": true,
+    "observed": 1638121472,
+    "expected": 1638121472,
+    "source": "run.log time-v and completion.json"
+  },
+  {
+    "check": "throughput",
+    "PASS": true,
+    "observed": 1.65496968501999,
+    "expected": 1.65496968501999,
+    "source": "steps/elapsed"
+  }
+]

@@ -1,0 +1,138 @@
+{
+  "package_files_verified": 1443,
+  "source_files": 1438,
+  "file_integrity_ok": true,
+  "D2_scalar_records_recomputed": 48,
+  "old_main_records": 36,
+  "old_refined_records": 8,
+  "new_gap_records": 2,
+  "build_repeat_records": 2,
+  "comparison46_below_LC": true,
+  "h100": {
+    "directions": {
+      "Kyy": {
+        "run": "h100_d100_dx5_P",
+        "component": "Kyy",
+        "K_LB_m3": 1.6547640830780774e-22,
+        "K_LC_m3": 3.750000000000001e-22,
+        "K_V2_m3": 1.6212086783240237e-22,
+        "original_bias_percent": 126.61840671719867,
+        "V2_bias_percent": -2.0278059632305,
+        "binary_sha256": "57611b21584c8f32dabd5d4ff240616c65f245930b00a1a40dae5f8d3169f2d6",
+        "LB_below_LC": true
+      },
+      "Kxx": {
+        "run": "h100_d100_dx5_T",
+        "component": "Kxx",
+        "K_LB_m3": 9.914424305164164e-23,
+        "K_LC_m3": 1.481481481481482e-22,
+        "K_V2_m3": 1.0350105663209937e-22,
+        "original_bias_percent": 49.426879048319215,
+        "V2_bias_percent": 4.394419127481131,
+        "binary_sha256": "57611b21584c8f32dabd5d4ff240616c65f245930b00a1a40dae5f8d3169f2d6",
+        "LB_below_LC": true
+      }
+    },
+    "A_LB": 1.669047069345372,
+    "A_V2": 1.5663692053760436,
+    "A_bias_percent": -6.1518854593837435
+  },
+  "old_main_V2_MAE_percent": {
+    "Kxx": 4.420581024424561,
+    "Kyy": 6.401105519730146
+  },
+  "saved_diagnostic_rechecks": [
+    {
+      "run": "h100_d100_dx5_P",
+      "steps": 5362,
+      "saved_diagnostic_conditions_satisfied": true
+    },
+    {
+      "run": "h100_d100_dx5_T",
+      "steps": 4356,
+      "saved_diagnostic_conditions_satisfied": true
+    },
+    {
+      "run": "h75_d100_dx5_buildB_P",
+      "steps": 4329,
+      "saved_diagnostic_conditions_satisfied": true
+    },
+    {
+      "run": "h75_d100_dx5_buildB_T",
+      "steps": 2940,
+      "saved_diagnostic_conditions_satisfied": true
+    },
+    {
+      "run": "h75_d100_dx5_P",
+      "steps": 4329,
+      "saved_diagnostic_conditions_satisfied": true
+    },
+    {
+      "run": "h75_d100_dx5_T",
+      "steps": 2940,
+      "saved_diagnostic_conditions_satisfied": true
+    }
+  ],
+  "h75_build_comparisons": [
+    {
+      "component": "Kxx",
+      "difference_percent": 0.0
+    },
+    {
+      "component": "Kyy",
+      "difference_percent": 0.0
+    }
+  ],
+  "outlet_faces_recomputed": [
+    {
+      "case_id": "C01",
+      "endpoint": "two_dimensional",
+      "Q_m3_s": 2.1858216813930507e-18
+    },
+    {
+      "case_id": "C01",
+      "endpoint": "openfoam",
+      "Q_m3_s": 2.185821681392935e-18
+    },
+    {
+      "case_id": "C02",
+      "endpoint": "two_dimensional",
+      "Q_m3_s": 4.998726758166358e-18
+    },
+    {
+      "case_id": "C02",
+      "endpoint": "openfoam",
+      "Q_m3_s": 4.998726758167961e-18
+    },
+    {
+      "case_id": "C03",
+      "endpoint": "two_dimensional",
+      "Q_m3_s": 3.1287162162167147e-18
+    },
+    {
+      "case_id": "C03",
+      "endpoint": "openfoam",
+      "Q_m3_s": 3.1287162162165995e-18
+    },
+    {
+      "case_id": "C04",
+      "endpoint": "two_dimensional",
+      "Q_m3_s": 1.1562499999999605e-17
+    },
+    {
+      "case_id": "C04",
+      "endpoint": "openfoam",
+      "Q_m3_s": 1.1562500000001498e-17
+    },
+    {
+      "case_id": "GDI01",
+      "endpoint": "openfoam",
+      "Q_m3_s": 2.1858216813610298e-18
+    }
+  ],
+  "new_simulations": 0,
+  "new_fits": 0,
+  "scientific_gate_advanced": false,
+  "reference_qualified": false,
+  "strict_blind_test_certified": false
+}

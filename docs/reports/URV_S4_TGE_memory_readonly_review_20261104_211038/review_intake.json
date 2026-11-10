@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "review_id": "URV-S4-TGE-MEMORY-READONLY-20261104",
+  "material": {
+    "status": "unpublished_confidential",
+    "contains_personal_or_sensitive_data": false
+  },
+  "authorization": {
+    "basis": "author_request",
+    "documented": true,
+    "local_processing_authorized": true,
+    "external_processing_authorized": true
+  },
+  "reviewer": {
+    "capacity": "author_requested_reader",
+    "human_accountable": true,
+    "competence_areas": [
+      "cfd",
+      "evidence_integrity",
+      "software_provenance"
+    ],
+    "competence_limits": [
+      "AI-assisted internal computational audit; author remains accountable; not human scientific final review, experimental validation, or editorial peer review"
+    ],
+    "conflict_status": "none_identified",
+    "conflicts": []
+  },
+  "venue_policy": {
+    "checked": true,
+    "peer_review_model": "open",
+    "confidential_editor_notes_supported": false
+  },
+  "ai_use": {
+    "policy": "permitted_with_disclosure",
+    "planned": "approved_ai_assistance",
+    "permission_confirmed": true,
+    "disclosure_planned": true
+  },
+  "handling": {
+    "local_only": true,
+    "external_service_use": false,
+    "data_reuse_permitted": false,
+    "retention_rule": "retain_per_venue_policy",
+    "deletion_or_retention_record_planned": true
+  },
+  "scope": {
+    "manuscript_type": "author_owned_CFD_resource_and_implementation_internal_review",
+    "requested_focus": [
+      "existing_failure_evidence",
+      "source_memory_allocation_path",
+      "static_component_accounting",
+      "resource_revision_scope"
+    ],
+    "out_of_scope": [
+      "CASE_edits",
+      "build",
+      "solver_execution",
+      "VTK_execution",
+      "retry",
+      "resource_limit_changes",
+      "execution_contracts",
+      "PERF",
+      "formal",
+      "S5",
+      "final_root_cause_adjudication"
+    ],
+    "specialist_review_needed": []
+  }
+}

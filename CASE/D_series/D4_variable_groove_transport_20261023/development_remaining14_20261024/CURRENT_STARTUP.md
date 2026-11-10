@@ -1,0 +1,11 @@
+# 当前启动说明：使用更正后的命令
+
+2026-10-24。原NEXT_COMMAND.txt将工作目录切换到D4，导致release内47项相对路径无法按项目根目录定位，程序在正式批次创建前退出。原命令/许可/准备证据保持原字节，实际报错与修复核对见项目根目录docs/reports/D4_startup_diagnosis_20261024/REPORT.md。
+
+当前使用NEXT_COMMAND_CORRECTED.txt。新增start_from_project.sh自动确定并切换到SIM240项目根目录；默认--check只检查，用户明确--execute后才调用原冻结入口。该脚本不更改原14项白名单、配置、数值门槛或G4锁，不自动进入网格/预测。
+
+修正后从D4或/tmp调用只检查均通过；tmux直接参数方式的--check也通过，2611原绑定一致。没有运行steady或创建正式batch。原release SHA保持9606906a7ea18c5ec47f1728eeb7d9af48990e17955167f79019c6ec1e3358c9。新wrapper及命令独立保存SHA，不重新写入原release。
+
+启动后的控制台报错/摘要会追加到evidence/startup_console.log，避免早期退出后信息丢失。正式输出仍为父目录results/development_remaining14_20261024_v1；若已存在批次则原入口拒绝重跑。不要把后台会话消失当成运行或验收成功。
+
+本说明更新“如何启动”；原README、PREPARATION_STATUS、NEXT_COMMAND和evidence中运行前记录属于历史快照，按项目当前状态及本说明接续。完成后按原冻结协议独立验收，原RESULT_PASS=false保留。

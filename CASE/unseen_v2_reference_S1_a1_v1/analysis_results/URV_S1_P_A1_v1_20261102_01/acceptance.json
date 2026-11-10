@@ -1,0 +1,46 @@
+{
+  "protocol_id": "URV-v1",
+  "planned_case_id": "URV1_SMOOTH_H30_P_dx1p25_a100000",
+  "run_id": "URV_S1_P_A1_v1_20261102_01",
+  "family": "SMOOTH_H30",
+  "stage": "S1_SMOOTH_THIN",
+  "direction": "P",
+  "dx_nm": 1.25,
+  "acceleration_m_s2": 100000.0,
+  "NUMERICAL_GATE": "PASS",
+  "geometry_PASS": true,
+  "RESULT_PASS": true,
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "scalar": {
+    "K_m3": 2.253901994740854e-24,
+    "J_main_m2_s": 2.2539019947408542e-13,
+    "diagnostic_rows": 6754,
+    "all_full_windows_recomputed": 4163,
+    "first_accepted_window_is_final": true,
+    "corrected_mass_max": 0.0,
+    "legacy_mass_max": 0.0,
+    "ledger_agreement_max": 0.0,
+    "final_span": 4.9888426744352835e-06,
+    "Re_H": 3.3710876339496314e-07
+  },
+  "smooth": {
+    "K_relative_error": 0.0017342198848242507,
+    "profile_L2_relative": 0.0007906955168062046
+  },
+  "regression": null,
+  "geometry": {
+    "fluid_nodes": 884736,
+    "candidate_links": 368640,
+    "q_min": 0.5,
+    "q_max": 0.5,
+    "material_0": 0,
+    "material_1": 884736,
+    "material_2": 36864,
+    "material_3": 147456
+  },
+  "release_sha256": "d15d044729fe398afcd6996346d7b260dd22a0930037da653d98e76ed5966d68",
+  "completion_sha256": "1a474559350dee6e3877264c15310a77e0e20dcfee8f6118a35f16e79a9148d2",
+  "independent_exit_code": 0
+}

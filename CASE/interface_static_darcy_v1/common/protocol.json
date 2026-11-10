@@ -1,0 +1,234 @@
+{
+  "protocol_id": "SDI-v1",
+  "date": "2026-10-30",
+  "status": "DESIGN_SPECIFIED_NOT_IMPLEMENTED_NOT_RUN",
+  "launch_ready": false,
+  "simulation_authorized": false,
+  "first_case_only": "C01",
+  "interface": "intrinsic_fluid_volume_average_total_Darcy",
+  "source_K_unit": "m3",
+  "D_unit": "m-2",
+  "velocity_definition": "U=J/H",
+  "pressure_definition": "physical_gauge_Pa",
+  "solver_design": "custom_OpenFOAM_Foundation_13_pressure_Darcy_application",
+  "native_DarcyForchheimer_tested": false,
+  "H_m": 1.25e-07,
+  "L_m": [
+    2.4e-05,
+    4.8e-05,
+    1.25e-07
+  ],
+  "mu_Pa_s": 0.001,
+  "rho_kg_m3": 1000,
+  "nu_m2_s": 1e-06,
+  "geometry_inputs_m": {
+    "h": 7.5e-08,
+    "groove_depth": 1e-07,
+    "groove_width": 1.2e-07,
+    "period": 2.4e-07
+  },
+  "Dzz": null,
+  "Mzz_computational_embedding": 0,
+  "z_model": "one_cell_empty_not_physical_wall",
+  "porosity_factor": null,
+  "resolved_wall_shear": false,
+  "inertia": false,
+  "extra_Darcy_source": false,
+  "V_m_s": 0,
+  "coefficient_source": "docs/reports/Shared_transport_interface_20261030/coefficient_examples.json",
+  "coefficient_source_sha256": "9616842003a7a014ef4875b7a2e07f594b8c95a4633416e477ee0fa69ca917d1",
+  "planned_cases": [
+    {
+      "case_id": "C01",
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_long_y",
+      "drive_axis": 0,
+      "G_Pa_per_m": 1000000.0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C02",
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_short_x",
+      "drive_axis": 0,
+      "G_Pa_per_m": 1000000.0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C03",
+      "input_id": "original_local_cubic",
+      "orientation_id": "groove_along_long_y",
+      "drive_axis": 0,
+      "G_Pa_per_m": 1000000.0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C04",
+      "input_id": "original_local_cubic",
+      "orientation_id": "groove_along_short_x",
+      "drive_axis": 0,
+      "G_Pa_per_m": 1000000.0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C05",
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_long_y",
+      "drive_axis": 1,
+      "G_Pa_per_m": 1000000.0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C06",
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_long_y",
+      "drive_axis": 0,
+      "G_Pa_per_m": -1000000.0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C07",
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_long_y",
+      "drive_axis": 0,
+      "G_Pa_per_m": 0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C08",
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_long_y",
+      "drive_axis": 0,
+      "G_Pa_per_m": 2000000.0,
+      "mesh_cells": [
+        16,
+        32,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    },
+    {
+      "case_id": "C01-R",
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_long_y",
+      "drive_axis": 0,
+      "G_Pa_per_m": 1000000.0,
+      "mesh_cells": [
+        32,
+        64,
+        1
+      ],
+      "run_id": null,
+      "run_authorized": false,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": null,
+      "geometry_PASS": null
+    }
+  ],
+  "thresholds": {
+    "pressure_relative_rms_and_max": 0.001,
+    "main_velocity_flux_relative_L2_and_mean": 0.001,
+    "transverse_and_z_relative_max": 1e-08,
+    "Q_relative": 0.001,
+    "recovered_K_relative": 0.001,
+    "global_mass_relative": 1e-08,
+    "sum_absolute_cell_mass_relative": 1e-08,
+    "side_leakage_relative": 1e-08,
+    "face_flux_consistency_relative": 0.001,
+    "power_dissipation_relative": 0.001,
+    "cross_implementation_relative": 0.001,
+    "control_ratio_relative": 0.001,
+    "two_mesh_J_Q_relative": 0.001,
+    "zero_pressure_max_Pa": 1e-09,
+    "zero_velocity_max_m_s": 1e-12,
+    "zero_each_boundary_Q_and_net_m3_s": 1e-24
+  },
+  "linear_solver": {
+    "candidate": "PCG_DIC",
+    "normalized_absolute_tolerance": 1e-12,
+    "relTol": 0,
+    "maxIter": 2000
+  },
+  "resource_caps_design_only": {
+    "processes": 1,
+    "wall_seconds_per_solver_case": 300,
+    "memory_GiB": 2
+  },
+  "stage_evidence": {
+    "source_prepared": false,
+    "compile_checked": false,
+    "mesh_checked": false,
+    "run_completed": false,
+    "interface_checks": "NOT_EVALUATED",
+    "independent_human_review": false
+  },
+  "physical_validation": "NOT_EVALUATED",
+  "squeeze_inputs_frozen": false
+}

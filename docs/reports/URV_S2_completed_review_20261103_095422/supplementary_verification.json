@@ -1,0 +1,83 @@
+{
+  "runs": [
+    {
+      "run_id": "URV_S2_P_dx5_reuse_v1_20261102_01",
+      "resources_before": {
+        "MemAvailable_bytes": 20089516032,
+        "disk_free_bytes": 341461741568
+      },
+      "native_elapsed_under_cap": true,
+      "completion_bound_by_original_acceptance": true,
+      "all_full_windows_recomputed": 2682,
+      "completed_file_mtime": "2026-11-02T22:43:57.441036+08:00"
+    },
+    {
+      "run_id": "URV_S2_T_dx5_reuse_v1_20261102_01",
+      "resources_before": {
+        "MemAvailable_bytes": 19950551040,
+        "disk_free_bytes": 341456859136
+      },
+      "native_elapsed_under_cap": true,
+      "completion_bound_by_original_acceptance": true,
+      "all_full_windows_recomputed": 1294,
+      "completed_file_mtime": "2026-11-02T22:44:15.737312+08:00"
+    },
+    {
+      "run_id": "URV_S2_P_dx2p5_reuse_v1_20261102_01",
+      "resources_before": {
+        "MemAvailable_bytes": 19940229120,
+        "disk_free_bytes": 341453856768
+      },
+      "native_elapsed_under_cap": true,
+      "completion_bound_by_original_acceptance": true,
+      "all_full_windows_recomputed": 10698,
+      "completed_file_mtime": "2026-11-02T22:58:21.451777+08:00"
+    },
+    {
+      "run_id": "URV_S2_T_dx2p5_reuse_v1_20261102_01",
+      "resources_before": {
+        "MemAvailable_bytes": 20590657536,
+        "disk_free_bytes": 341430525952
+      },
+      "native_elapsed_under_cap": true,
+      "completion_bound_by_original_acceptance": true,
+      "all_full_windows_recomputed": 5074,
+      "completed_file_mtime": "2026-11-02T23:06:23.806322+08:00"
+    },
+    {
+      "run_id": "URV_S2_P_dx1p25_reuse_v1_20261102_01",
+      "resources_before": {
+        "MemAvailable_bytes": 20467306496,
+        "disk_free_bytes": 341429039104
+      },
+      "native_elapsed_under_cap": true,
+      "completion_bound_by_original_acceptance": true,
+      "all_full_windows_recomputed": 42369,
+      "completed_file_mtime": "2026-11-03T05:38:43.861206+08:00"
+    },
+    {
+      "run_id": "URV_S2_T_dx1p25_reuse_v1_20261102_01",
+      "resources_before": {
+        "MemAvailable_bytes": 20281036800,
+        "disk_free_bytes": 341370077184
+      },
+      "native_elapsed_under_cap": true,
+      "completion_bound_by_original_acceptance": true,
+      "all_full_windows_recomputed": 20109,
+      "completed_file_mtime": "2026-11-03T09:24:07.119370+08:00"
+    }
+  ],
+  "total_full_windows_recomputed": 82226,
+  "batch_completion": {
+    "stage": "S2_REG_GRID",
+    "solver_runs": 6,
+    "next_stage_started": false,
+    "reference_qualified": false,
+    "MODEL_COMPARISON": "NOT_EVALUATED"
+  },
+  "batch_record_mtime": "2026-11-03T09:24:13.897801+08:00",
+  "native_and_checker_exit_evidence": "Six per-run process exits and original/new checker exits are zero; controller parent exit was not recorded separately, S2_completed records successful loop completion.",
+  "formal_controller_log_bytes": 0,
+  "formal_controller_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "resource_boundary": "Pre-run memory/disk snapshots and elapsed/output budgets verified; no continuous RSS/available-memory safety claim for formal solver."
+}

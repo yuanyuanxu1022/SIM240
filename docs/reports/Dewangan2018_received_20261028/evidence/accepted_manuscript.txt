@@ -1,0 +1,1533 @@
+Accepted Manuscript
+
+Flow through microchannels with topographically patterned wall: A
+spectral theory for arbitrary groove depths
+
+Mainendra Kumar Dewangan, Subhra Datta
+
+
+PII:             S0997-7546(17)30501-0
+DOI:             https://doi.org/10.1016/j.euromechflu.2018.02.004
+Reference:       EJMFLU 3265
+
+To appear in:    European Journal of Mechanics / B Fluids
+
+Received date : 7 September 2017
+Revised date : 22 February 2018
+Accepted date : 23 February 2018
+
+
+Please cite this article as: M.K. Dewangan, S. Datta, Flow through microchannels with
+topographically patterned wall: A spectral theory for arbitrary groove depths, European Journal of
+Mechanics / B Fluids (2018), https://doi.org/10.1016/j.euromechflu.2018.02.004
+
+
+This is a PDF file of an unedited manuscript that has been accepted for publication. As a service to
+our customers we are providing this early version of the manuscript. The manuscript will undergo
+copyediting, typesetting, and review of the resulting proof before it is published in its final form.
+Please note that during the production process errors may be discovered which could affect the
+content, and all legal disclaimers that apply to the journal pertain.
+   Flow through microchannels with topographically
+  patterned wall: a spectral theory for arbitrary groove
+                         depths
+                 Mainendra Kumar Dewangan, Subhra Datta
+Department of Mechanical Engineering, IIT Delhi, Hauz Khas, New Delhi 110016, India
+
+
+
+
+Abstract
+Current technology allows us to build microfluidic channels, which are so
+thin that incidental and/or surface topographical features engineered for
+applications such as microfluidic mixing/separations can present significant
+constrictions and dilatations to the flow passage. Considering such situa-
+tions, pressure-driven laminar incompressible flow through an infinitely wide
+channel, one of whose walls has sinusoidal grooves running along the flow
+direction, is investigated through an accurate semi-analytical and grid-free
+spectral approach, without placing any restrictions on the pattern amplitude.
+In the special limits of small pattern amplitude, thick and thin channels , the
+spectral model recovers asymptotic predictions earlier reported in the liter-
+ature. The spectral model is also used to provide new closed-form estimates
+for permeability and effective slip at an order of asymptotic accuracy higher
+than those currently available from the literature. The effect of unequal de-
+grees of intrinsic hydrodynamic slippage on the corrugated and plane walls is
+also studied asymptotically. The predictions from the spectral model, which
+are obtainable with very low computational expense, are also cross-validated
+against finite-element-method based simulations. In the thick channel limit,
+the predictions from the spectral model are quantitatively consistent with
+results from recent molecular dynamic (MD) simulations conducted by Guo
+et al. [1, Physical Review Fluids, 1(7), 074102, 2016]. The newly proposed
+and existing closed-form asymptotic predictions are also assessed numeri-
+cally against the spectral model. In the long-wave limit, the permeability of
+
+   Email address: subhra.datta@mech.iitd.ac.in (Subhra Datta)
+
+
+
+Preprint submitted to European Journal of Mechanics - B/Fluids    February 24, 2018
+the channel increases on increasing the depth of grooves, while in the short
+wave limit, the permeability decreases. Certain predictions from the spectral
+model are beyond the resolution of currently available asymptotic theories;
+e.g. the existence of a finite pattern amplitude for medium-wave patterns,
+at which the permeability of the channel is minimized.
+Keywords: microfluidics, micro-patterning, internal flows, permeability,
+effective boundary conditions, mathematical methods
+
+
+1. Introduction
+    Topographically patterned surfaces have numerous practical applications
+to microfluidics, such as microfluidic mixing [2], pumping and flow detection
+[3], control of dispersion of analytes [4] and surface capture of bioparticles
+such as circulating tumor cells [5, 6]. In many such applications, fluid motion
+near the patterned surface play a critical role. With continued progress in
+miniaturization from microfluidics to nanofluidics [7], it is now quite proba-
+ble that the passage for microfluidic flows will be obstructed by either engi-
+neered topographic patterns or unintentional irregularities in fabricated sur-
+faces such as waviness and roughness. Therefore, theoretical understanding
+of confined flows with surface topographical patterns deserve attention
+    Early theoretical approaches on pressure-driven/electrokinetic confined
+flow problems often use approximations based on relative magnitude of these
+three length scales The assumption of the depth of patterned grooves being
+much smaller than the channel size is used by [8, 9]. The studies by [10–12]
+employ the asymptotic approximation that the amplitude of the pattern is
+much smaller than the pattern pitch. Apart from [8, 9], earlier work have
+ignored confinement effects by focusing on shear flows [10–18]. Such a flow
+field is termed ‘shear flow’. However, it can be noted that [11, 12, 17, 18]
+allow for intrinsic wall slip, which introduces another length scale to the
+problem.
+    From the standpoint of applications such as microfluidic mixing discussed
+above, grooves obliquely oriented to the flow are important. Crucially, flow
+fields altered by oblique groove patterns, can be rendered tractable by utiliz-
+ing the tensorial effective-slip [11] and effective permeability [3] formalisms,
+with the latter more appropriate for confined flows. These tensorial ap-
+proaches reveal that, to represent confined/unconfined flow over oblique pat-
+terns, it is sufficient to solve for the flow field along the two principal di-
+
+                                       2
+rections, viz. along and across the grooves of the pattern. The works of
+[13–15, 17, 18] on shear flows furnish flow fields across the pattern, whereas
+the other studies referenced above [8–12] explore both flows along and across
+the pattern .
+    Studies on flows with patterned topographies may also be classified based
+on the geometrical shape of the patterns studied. Richardson [13] studies a
+one-parameter family of surfaces that facilitate his conformal map, but does
+not allow for independent adjustment of the pitch and amplitude of the pat-
+terns. Sinusoidal surface topographies characterized by an amplitude and
+wavelength are studied by [8–10, 12, 14, 17, 18], with the crucial formalism
+for synthesis of flow transverse to more complex patterns being established
+through Fourier analysis from sinusoids established from the in [17]. Rectan-
+gular grooves, which are easy to fabricate, have been modelled by [10, 14, 19].
+It can be noted that [10, 14] study both sinusoidal and rectangular grooves.
+    Methodologies employed for modelling the local and effective properties
+of flow in channels with patterned walls wetted by the liquid include experi-
+mental [9, 20] approaches; molecular dynamics simulations [1]; finite-element
+[1, 21], point collocation method [10, 19], finite-volume method [22–24], fi-
+nite difference method [25] and Lattice-Boltzmann method [26]. In situations
+where patterns are not necessarily wetted by the liquid leading to the Cassie
+[27] rather than the Wenzel state relevant to the current study, dissipative
+particle dynamics [28], phase-field method combined with a stochastic adap-
+tation to the Navier-Stokes system [29], and a spectral approach [30, 31] have
+also been used. There are physically distinct applications of surface topogra-
+phies outside the domain of microfluidics, such as in the study of turbulent
+boundary layers [32], which are excluded from consideration here, wherein
+the flows cannot be modelled as steady, laminar and possessing zero inertia,
+as in all the works referred to above.
+    In this study, a confined flow along a sinusoidal pattern of wall topogra-
+phy is modelled. Taking advantage of the periodic nature of the flow field,
+a grid free spectral approach is employed. Grid-based approaches that use
+algebraic interpolation (or Taylor series approximations) such as finite differ-
+ence, finite volume, finite element and point collocation methods are subject
+to truncation errors that decay algebraically on grid refinement. Unlike these
+methods, the spectral model is subject to exponentially fast decay of trunca-
+tion errors on progressive addition of modes; further there is no aliasing error
+due to absence of a grid [33]. Under the situations studied, the computa-
+tional expense of the spectral method were found to be negligible compared
+
+                                       3
+to finite element method which was used for cross-validation. In addition, a
+crucial advantage of a spectral approach to the current problem and a key
+theme of the current study is analytical reductibility to closed form results
+in special limits.
+    The pattern amplitude can be as large as physically admissible, thus
+allowing establishment of solid-solid contact between opposing walls. In ad-
+dition, the model places no restrictions on the relative magnitudes of the
+pattern pitch and the channel height. One wall of the channel is patterned,
+whereas the other wall is flat. This flow configuration is similar to [9], thereby
+facilitating assessment of the numerical significance of the small-amplitude
+restriction in [9]. In practice too, the requirements of optical access to the
+microchannel and correct alignment between walls can necessitate at least
+one wall of a microchannel to be flat [34]. Closed form results from the liter-
+ature in the shear-flow (or thick channel) limit and small amplitude limit are
+shown to arise as special cases. The spectral method also offers a framework
+to extend these approximations to higher orders of asymptotic accuracy, as
+demonstrated with the small amplitude approximation.
+    In Section 2, the spectral approach is discussed in detail, and useful an-
+alytically tractable limits are derived, which either corroborate or extend
+existing asymptotic analyses from the literature.New asymptotic predictions
+on the effect of hydrodynamic slippage are also presented in this section. Pre-
+dictions from the spectral model, corroborated against finite element simula-
+tions and contrasted against asymptotic predictions are discussed in Section
+3. Formal justification for certain asymptotic estimates made in this section
+are provided in the Appendices. In Section 4, the significant conclusions from
+the current study and the scope for future work are outlined. Methodologi-
+cal aspects of the spectral and finite element simulations are discussed in the
+Appendices.
+
+2. Theoretical Model
+    Steady incompressible, pressure-driven flow of a Newtonian fluid of vis-
+cosity µ through a long and wide channel of variable cross-section is con-
+sidered. The flow geometry and the co-ordinate system is shown in Fig.
+1. The channel has an undulating wall specified by the periodic function
+y = a cos(2πx/L), and a flat wall at y = h. Here, a and L are the amplitude
+and pitch of the topographic pattern, which is completely penetrated by the
+flowing fluid. The period-averaged (mean) height of the channel is h. In Fig.
+
+                                        4
+1, the flow cross-section lies on the y − z plane, and the mean flow velocity is
+along the z direction (the channel axis). Because of periodicity, one periodic
+cell of the channel, as shown on the Fig. 1, is sufficient for analysis.
+    The flow is considered to be already fully-developed in the z direction,
+after the initial entrance effects. Therefore, the streamlines are parallel and
+the only non-zero component of velocity is the axial velocity w in the z direc-
+tion. The axial pressure-gradient pz is a prescribed negative-valued constant;
+px and py are zero. The flow velocity w(x, y) is governed by the balance of
+
+
+
+
+                                                                        h
+                              y
+                                        z
+
+                                                                                    2a
+                              0     x
+                              L
+Fig. 1. An infinitely wide channel with sinusoidally patterned lower wall and flat top
+wall is shown. The lower wall has a sinusoidal pattern of grooves given by the function
+y = a cos x. The co-ordinate system is so chosen that the plane y = 0 corresponds to the
+mean (undulation averaged) position of the lower wall. The pattern wavelength is L and
+the amplitude is a = αh. One periodic cell of the channel is under analysis, as shown by
+the dash-dotted lines. The pitch-averaged height of the channel is denoted by h; the flat
+top wall is at y = h. The grooves are aligned in the z− direction, along which a constant
+pressure gradient of magnitude −pz is applied to cause the flow.
+
+
+
+viscous and pressure forces in the following form:
+
+                                  µ(wxx + wyy ) = pz                                 (1)
+
+The no-slip boundary conditions at the top and bottom walls are respectively
+                                                  
+                                               2πx
+              w(x, h) = 0,        w(x, a cos        )=0                  (2)
+                                                L
+
+                                            5
+Choosing L/2π as distance units in the x and y directions, the dimensionless
+independent variables X and Y can be introduced. Since the unconfined
+shear flow past a wavy surface is also of interest as a special case, the non-
+dimensionalizing scale for w can be motivated from the wall force balance
+−pz h ∼ τ , where τ is a wall shear stress scale. If τ = µW0 /(L/2π), then
+w0 = −pz hL/(2πµ) becomes the scale for w. The dimensionless governing
+equation becomes
+                                               1
+                            WXX + WY Y = −                                 (3)
+                                               H
+, where H = 2πh
+              L
+                 = 2πλ
+                       , where λ = L/h is the ratio of pattern wavelength to
+the mean channel height. The dimensionless location of the topographically
+patterned wall is located at Y =  cos(X), where  = 2πa L
+                                                            is the product of
+amplitude and wave-number of the pattern.
+   Eq. (3) is required to be solved subjected to the following boundary
+conditions.
+
+                             W (X, Y = H) = 0                            (4a)
+                          W (X, Y =  cos(X)) = 0                        (4b)
+
+
+2.1. Spectral Method
+    The velocity field can be expanded in a Fourier series of the form
+                                         ∞
+                                         X
+                 W (X, Y ) = F0 (Y ) +         Cn Fn (Y ) cos(nX)         (5)
+                                         n=1
+
+Eq. (5) is substituted into Eq. (3), and the coefficients of cos (mX) (m ≥ 0)
+may be collected and equated to zero to get differential equations for F0 (Y )
+and Fn (Y ). Satisfaction of the no-slip boundary condition at Y = H given
+by Eq. (4a) would require that F0 (H) = 0 and Fn (H) = 0. The resultant
+problem can be solved to obtain:
+                                                   
+                                   H −Y       Y
+                       F0 (Y ) =                + C0                     (6a)
+                                     H        2
+
+                         Fn (Y ) = e−nY − e−2nH enY                      (6b)
+
+
+
+                                         6
+Eq. (5) along with Eq. (6a) and Eq. (6b) also has to satisfy the no-slip
+boundary condition on the undulating surface (Eq.(4b)), which gives after
+trigonometric simplifications
+                   2    2                              
+             C0 −     −     cos(2X) − C0 cos(X) + cos(X)
+                  4H 4H                    H              2                      (7)
+                 ∞
+                 X                                    
+               +     Cn e−n cos(X) − e−2nH en cos(X) cos(nX) = 0
+                 n =1
+
+Either sides of equality in Eq. (7) is multiplied by cos(mX) where m is a non-
+negative integer, simplified using trigonometric sum/difference identities and
+the resultant expressions integrated between −π and π. Noting  Rπ     that the mod-
+ified Bessel function of the first kind is given by In (z) = π1 0 ez cos(θ) cos(nθ)dθ
+and collecting the coefficients of cos mx and setting them to zero, a series of
+equations are obtained. For each non-negative integer m, the corresponding
+member of this equation system can be summarized as:
+                  X   ∞
+                             Cn                                         
+C0 δm0 −        δm1 +            (Im−n (n) + Im+n (n)) (−1)m−n − e−2nH
+            2H          n =1
+                              2                                              (8)
+       2                  2
+                       
+  =      δm0 − δm1 +         δm2
+     4H         4       8H
+Here, δpq is the Kronecker delta function, which is unity if p = q and zero
+otherwise. The appearance of δm0 , δm1 , δm2 in Eq. (8) implies that the first
+three equations ordered by values of m have a different character, in terms
+of the right hand side and coefficients of C0 .
+    A numerical solution of the equation system in Eq. (8) was conducted
+through matrix inversion by truncating the number of equations in the system
+to M + 1 equations, and correspondingly truncating the summation in Eq.
+(8) to N = M terms. Because the velocity field is infinitely differentiable, the
+error from this truncation procedure decays at an exponentially fast rate for
+sufficiently large N [33]. Further details on the numerical procedure appear
+in Appendix D
+2.1.1. Calculation of Discharge
+    The dimensionless flow rate through one periodic cell of the channel de-
+noted by Q is given by
+                           Z π    Z H
+                      Q=                     W dY dX                     (9)
+                            X=−π Y = cos(X)
+
+                                         7
+which evaluates to:
+                                                 ∞
+                                                                                 !
+             H 2 2              H    2           X Cn
+ Q = (2π)       − + C0             +           +           In (n)((−1)n + e−2nH )
+             12  8               2   4H            n=1
+                                                       n
+                                                                         (10)
+                  2
+Now, Q0 = 2πH /12 signifies the flow rate through the same cell, if the
+channel had no topographic patterns. Therefore, the ratio Q/Q0 can be con-
+sidered as a dimensionless measure of the hydraulic permeability of the chan-
+nel. Further, an alternate form of dimensionless amplitude α = a/h = /H
+can be introduced for the purpose of studying confined flows; an identical
+and similarly named parameter was used by [9] to conduct perturbation ex-
+pansions through the domain perturbation procedure. On introducing these
+definitions, and evaluating the integral in Eq. (9), the following expression
+for the permeability is obtained.
+
+                            ∞
+ Q      3α2    C0       12 X  Cn
+    =1−     +3       2
+                  2+α + 2         In (nαH) ((−1)n + e−2nH ) (11)
+ Q0      2     H         H n=1 n
+
+This expression for the scaled permeability of the channel places no restric-
+tions on α and H, but the coefficients Cn need to be evaluated numerically
+by solving Eq. (8). However, closed form asymptotic approximations of the
+coefficients, Eqs. (10) and (11) (and the flow field) are possible in certain
+limits, as demonstrated next.
+
+2.1.2. Useful asymptotic forms
+Small . Here, the small  behavior of the flow rate obtained from Eq. (10),
+on solving Eq. (8) will be investigated. Intuitively, only the few modes
+of Eq. (5) should make significant contribution to the flow rate given by
+Eq. (10) in the small  limit, since the small  asymptotic form of In (n) is
+(n/2)n /n!. Also all coefficients should be o(1), since Eq. (5) should reduce
+to the Poiseuille flow profile W = Y (H − Y )/2 for  = 0. More formally,
+as shown in Appendix A, the set of matrix coefficients possess the following
+asymptotic behavior, if  is small.
+  1. The coefficients {C0 , C1 , C2 , C3 , . . . Cn , . . .} are O(n ) where n ≥ 1
+  2. The coefficients C0 = O(2 ),C1 = O(), C2 = O(2 ) and C3 = O(3 )
+  3. If the matrix is truncated at M = N = 2, the flow rate calculated from
+     Eq. (10) will be of O(2 ) accuracy.
+
+                                        8
+  4. If the matrix is truncated at M = N = 3, the flow rate calculated from
+     Eq. (10) will be of O(4 ) accuracy.
+Therefore, solving Eq. (8) truncated to a 2 × 2 system will give an O(2 )
+accurate flow rate.
+    However, for comparison of limiting cases with existing literature and for
+obtaining a spectral approach for extension of the corresponding results to
+higher asymptotic orders, it is desirable to have an approximation that will
+reminisce the popular domain perturbation method [9–12, 35, 36], in the
+sense that the flow field, flow rate and therefore the coefficients Cn should
+be expressible as an asymptotic power series in . To obtain such asymp-
+totic power series from the spectral approach, the coefficients Cn obtained
+by matrix inversion are required to be replaced by Taylor series approxima-
+tions at the appropriate order of accuracy (formally, Taylor polynomials of
+appropriate order).
+    Applying the Taylor series procedure described above to the truncated
+2 × 2 system obtained from Eq. (8) gives
+                                             
+                            2 1
+                      C0 =          − coth (H) + O(4 )                  (12a)
+                             4 H
+                                
+                       C1 = − (1 + coth(H)) + O(3 )                    (12b)
+                                4
+The corresponding asymptotic approximation of Eq. (11) includes only one
+term from the summation and takes the form
+                                 
+                 Q            2   3
+                     =1−α           (H coth(H) − 2) + O(α4 )              (13)
+                 Q0               2
+    Consulting [9] and adapting their results to the current notation and scal-
+ings, it can be verified that Eq. (6) of that study is completely equivalent to
+Eq. (13), although [9] uses the different approach of domain perturbations
+[36, 37] to arrive at the same asymptotic conclusion. The domain pertur-
+bation approach involves transferring, using a Taylor series truncated in the
+desired order of accuracy in the small parameter , the boundary condition
+on the sinusoidally curved surface to the adjacent planar surface y = 0, and
+solving the resultant problem using regular perturbation expansions of the
+form W = W0 + W1 + 2 W2 + O(3 ). Therefore, for a slightly wavy surface,
+an O(2 )−accurate truncation of the spectral method recovers the results
+of Ref. [9]. It should be noted, there are less general asymptotic solutions
+
+                                      9
+(limited to large H, as discussed below) for flow over sinusoidally corrugated
+surfaces using approaches similar to [9] from other authors [10, 11].
+    Currently, O(4 ) prediction on the flow along sinusoidal stripes is unavail-
+able, although, in principle, the domain perturbation approach of Ref. [9]
+can be extended with more tedious algebra. Below, by studying the asymp-
+totic behavior of the spectral predictions, a new O(4 ) prediction is derived.
+A formally O(4 ) accurate estimate of flow rate can be obtained with the
+coefficients C0 = C01 2 + C02 4 + O(6 ), C1 = C11  + C12 3 + O(5 ) and
+C2 = C21 2 + O(4 ), solved from 3 × 3 truncation of the equation system in
+Eq.(8). The values of C01 , C02 , C11 , C12 , C21 are given in Appendix B. The
+final expression for flow rate is
+                           
+             Q          2  3
+                =1−α           (H coth(H) − 2) + α4 F (H) + O(α6 )          (14)
+            Q0             2
+where the function F (H) is reported in Appendix B.
+
+Large H: shear flow over a corrugated surface. On setting H → ∞ in
+Eqs.(1)-(10), the equations governing shear flow over a corrugated surface are
+obtained. The drag-reducing effect of the corrugation pattern is characterized
+by its effective slip length defined as the distance Y = Zef f at which hW i = 0
+[9–11]. On X-averaging Eq. (5) at constant Y and setting hW i = 0,
+
+                              Yef f = lim (−2C0 )                           (15)
+                                     H→∞
+
+For small , closed-form predictions of Yef f can be obtained from the spectral
+method. Here, a new O(4 )-accurate expression for Yef f will be derived
+spectrally using the three largest modes. The available estimates from the
+literature have a lower order of asymptotic accuracy (O(2 )) [10, 11, 15] and
+are obtained from the domain perturbation method. Observing the large H
+limit of C0 = C01 + 2 C02 with C01 given by Eq.(B.2) and C02 given by Eq.
+(B.4),
+                          Yef f = 2 /2 − 4 /8 + O(6 )                   (16)
+The leading term in the right hand side of Eq. (16) recovers the predictions
+from [10, 11, 15]. The two-term and one-term approximations of Eqn. (16)
+will be assessed against spectrally resolved results at a sufficiently large H
+later in the article.
+
+
+
+                                       10
+Small H: the lubrication limit. The scales appropriate for lubrication
+theory [38] which studies the opposite limit (H → 0) are different from the
+scalings used here. Accordingly scaled distances and velocities are defined
+Y = ηH, W = W H. In this limit of the spectral model, the two largest
+spectral coefficients become
+
+                                      α2 H 3
+                             C0 = −          + O(H 5 )                       (17a)
+                                       12
+                                        α
+                               C1 = −     + O(H)                             (17b)
+                                        4
+   and the flow field becomes
+                           (1 − η)
+                     W =           (η − α cos(X)) + O(H 2 )                   (18)
+                              2
+to which only C1 contributes. The dimensionless flowrate is given by
+                            QLub      3
+                                 = 1 + α2 + O(α2 )                            (19)
+                             Q0       2
+in accordance with expressions derived from classical application of lubrica-
+tion theory [39].
+
+2.1.3. Effect of hydrodynamic slippage
+    It is of interest to technological objectives such as reduction of liquid-solid
+friction [40] and to the understanding of flow through nanochannels [41] and
+molecular simulations of fluid flow [42] to study the effect of hydrodynamic
+slippage in confined flow with corrugated interfaces. To understand how slip
+alters such flows,a slip length B1 measured in units of L/2π on the bottom
+corrugated wall, and analogously a slip length B2 on the top flat wall can
+thereby be formulated into the wall boundary conditions as follows.
+                                                   ∂W
+                           W (X, Y = H) = −B2                                (20a)
+                                                   ∂Y
+                                                ∂W
+                        W (X, Y =  cos(X)) = B1                    (20b)
+                                                ∂n
+Here, n is a coordinate along the normal to the surface Y =  cos (X). By
+closely following the procedure discussed above, but only including terms
+
+
+                                        11
+that contribute at O(2 ) or above to the flowrate, the following asymptotic
+estimate of flowrate is obtained
+                 π2 [R(H, B1 , B2 ) cosh (H) + S(H, B1 , B2 ) sinh (H)]
+Q = Q0 +                       2
+                                                                            + O(4 )
+           8H (B1 + B2 + H) ((B1 B2 + 1) sinh(H) + (B1 + B2 ) cosh(H))
+                                                                         (21a)
+                        πH(4B1 (3B2 + H) + H(4B2 + H))
+                  Q0 =                                                   (21b)
+                                   6(B1 + B2 + H)
+where the functions R and S are reported in Appendix C, as also the asymp-
+totic forms of the spectral coefficients and the corresponding velocity field.
+    Two important special cases of this equation relevant to confined flows
+correspond to perfect slip on the corrugated wall (B1 → ∞) and the flat wall
+(B2 → ∞) respectively, as studied by Eqs. (22) and (23). The hydraulic
+permeability in units of permeability of a channel with no corrugations, but
+equal degree of slippage on corresponding walls becomes
+                        Q        3α2 tanh (H)
+                           =1+                + O(α4 )                       (22)
+                       Q0         2      H
+for perfect slip on the corrugated wall, and
+                      Q          3α2
+                         =1+         (1 − H tanh H) + O(α4 )                 (23)
+                     Q0           2
+for perfect slip on the flat wall, respectively. Analytical predictions on the ef-
+fect of slippage which are available from the literature cover only special cases
+of the above analysis. For example, the findings on shear-flow of Wang [12]
+are recovered from the current analysis with H → ∞, whereas predictions
+on pressure-driven flow with equal slippage on walls of a channel of thickness
+2H by Werner [43] are recovered with B2 → ∞, Moreover, the lubrication
+limit studied by [34] and [39] correspond to H → 0. Some important char-
+acteristics of the effect of slippage on the corrugated and uncorrugated walls
+will be discussed in Sec. 3.
+    In the following section, the effect of depth and pitch of the grooves will
+be studied for confined and unconfined flows. The local and global predic-
+tions of spectral model will be cross-validated against finite element simu-
+lations.The asymptotic estimate of permeability (Eq. (13)) first proposed
+using the method of domain perturbations by [9] will be assessed against
+the spectral model predictions, which are not subject to the small ampli-
+tude restriction. In addition to the spectral model, the extended asymptotic
+estimates Eq. (14) and (16) are newly proposed in the current study.
+
+                                       12
+3. Results and discussion
+    The asymptotic results from the literature [9, 10] and the new asymptotic
+results proposed here are strictly limited to “small” values of their gauge
+functions, e.g. α → 0 in Eqs. (13) and (14). Formally, the spectral model
+should circumvent this limitation of the asymptotic theories. It is therefore
+important to numerically assess if this is true.
+    The six panes of Fig. 2 shows the variation of the dimensionless perme-
+ability with the dimensionless amplitude α for various values of dimensionless
+pattern pitches . Corresponding predictions from finite-element simulations
+(labeled as ‘Numerical’ in the legends), obtained using the software Comsol
+Multiphysics R , are used to cross-validate the predictions from the spectral
+model, as shown on panes (a)-(e). Further details on the finite-element sim-
+ulations are available in Appendix D.
+    Panes (a)-(e) of Fig. 2 demonstrate excellent agreement between predic-
+tions from finite-element and the spectral method. The spectral model was
+used to identify distinct short-wave (λ < 1.92), intermediate-wave (1.92 <
+λ < 3.28) and long-wave (λ > 3.28) regimes in the behavior of permeability
+with the groove depth.
+    For shorter wavelengths (λ < 1.92) such as λ = 1 shown in pane (a), the
+permeability, decreases monotonically with increasing pattern amplitude. At
+intermediate wavelengths in the range 1.92 < λ < 3.28, the permeability
+passes through a minimum, as evident from pane (b) for λ = 3 and its inset.
+The reason for the appearance of this minimum is discussed later in the
+section, after certain other closely related observations are reported.
+    At longer wavelengths ( λ > 3.28), permeability monotonically increases
+with α, as evident from panes (c),(d) and (e) for λ = 5, 7, 10. Pane (f) shows,
+that the minimum gets shallower but moves to smaller α as the wavelength
+is decreased. In this regime, the location of the minimum moves from higher
+to lower α. Numerically, a sample dimensional estimate can also be obtained
+from the data in pane (f), say for the curve with the deepest minimum,
+for which λ = 2.5. For example, the effect of changing the pattern pitch
+in a channel of thickness 100 µm may be considered. If the pattern pitch
+is chosen to be 250 µm with a pattern amplitude of 72.8 µm, the flow rate
+reaches a minimum of 86.4% of the flow rate of a plane channel with the same
+pattern-averaged channel spacing. In this microchannel, either increasing or
+decreasing the pattern amplitude from 72.8 µm, should result in a larger flow
+rate.
+
+                                      13
+        2
+                                                                                       Numerical
+                                                                 1.1
+                                                                                       Spectral Method
+        0                                                                              Eq. (13), Ref. [9]
+                                                                      1
+
+
+
+
+                                                              Q/Q0
+ Q/Q0
+
+
+
+
+       -2                                                                                            Numerical
+                                                                 0.9
+                                                                                       1             Spectral Method
+
+
+
+
+                                                                                Q/Q0
+       -4   Numerical
+                                                                 0.8
+            Spectral Method                                                     0.98
+                                                                                           0     0.2
+            Eq. (13), Ref. [9]                                                                         α 0.4     0.6
+       -6                                                        0.7
+          0     0.2      0.4             0.6   0.8   1                    0                    0.2        0.4 α 0.6          0.8   1
+                                     α
+
+                           (a) λ = 1                                                                    (b) λ = 3
+   1.8                                                               2.5
+                Numerical                                                         Numerical
+                Spectral Method                                                   Spectral Method
+   1.6          Eq. (13), Ref. [9]
+                                                                      2           Eq. (13), Ref. [9]
+                                                               Q/Q0
+Q/Q0
+
+
+
+
+   1.4
+                                                                     1.5
+   1.2
+
+        1                                                             1
+                                                                           0                   0.2        0.4
+            0       0.2      0.4
+                                     α
+                                         0.6   0.8   1
+                                                                                                                 α 0.6       0.8   1
+
+                           (c) λ = 5                                                                    (d) λ = 7
+   2.5
+                Numerical                                             1.1
+                Spectral Method
+                                                                     1.05
+                Eq. (13), Ref. [9]
+        2
+                                                                       1
+Q/Q0
+
+
+
+
+                                                              Q/Q0
+
+
+
+
+                                                                     0.95
+   1.5
+                                                                      0.9
+                                                                                       λ = 2.5, 2.75, 3
+                                                                     0.85
+        1                                                                   0                  0.2         0.4         0.6   0.8   1
+            0       0.2      0.4         0.6   0.8   1
+                                     α                                                                            α
+                          (e) λ = 10                                                           (f ) λ = 2.5, 2.75, 3
+
+Fig. 2. Variation of the scaled permeability of the channel with dimensionless pattern
+amplitude (α) for different dimensionless wavelengths (λ). The symbols in panes (a)-
+(e) correspond to results from numerical simulations conducted using the finite-element-
+method. The solid curves in panes (a)-(e) indicate predictions from the spectral method
+obtained using Eq. (11), while the dashed curves indicate asymptotic predictions from Eq.
+(13). Pane (f) shows the appearance of a minimum in the scaled permeability predicted
+by the spectral model for selected intermediate magnitudes of wavelengths, namely λ =
+2.5, 2.75, 3.
+
+
+
+
+                                                         14
+    Flow rate in a patterned channel can be either smaller or larger in magni-
+tude than the flow rate in a channel of equal period averaged thickness. Para-
+metric studies with the spectral solution revealed that for 2.8 < λ < 3.28,
+the flow rate crosses over at a certain α from being sub-Poiseuille (Q < Q0 )
+to supra-Poiseuille (Q > Q0 ). Between 1.92 < λ < 2.8, despite the presence
+of a minimum, Q/Q0 cannot exceed unity.
+    For a given α, the asymptotic predictions are more accurate at large
+wavelengths. The range of α over which the asymptotic theory represents
+the spectral results with an acceptable level of accuracy, increases as the
+wavelength is increased, as seen on panes (a) to (e) of Fig. 2. Unacceptable
+levels of quantitative and qualitative inaccuracies can be seen, when α is
+not small, especially at small to intermediate wavelengths. For example,
+unphysical negative permeability is seen in pane (a) for α > 0.4 for λ = 1. In
+pane (b), at an intermediate wavelength of λ = 3, the asymptotic prediction
+of Ref.[9] is unable to show the existence of a minimum in flow rate as α is
+decreased. Instead, a monotonic decrease in permeability, as α is increased,
+is incorrectly predicted. In general, at small wavelengths, the asymptotic
+prediction of Ref. [9] overestimates the frictional resistance of the channel,
+whereas for large wavelengths the frictional resistance is underestimated.
+    A curious prediction of Eq. (13) can be found by setting the coefficient
+of α2 in Eq. (13) to zero and numerically finding the root λ∗ which equates
+to 3.2810. For a wavelength of λ∗ = 3.2810, the dimensionless flow rate pre-
+dicted by Eq. (13) (and [9]) is unity for all α, although with an O(α4 ) error.
+This asymptotic prediction can be assessed against the spectral predictions.
+The spectral predictions reveal that the asymptotic prediction Q ≃ Q0 is
+valid with less than 1.1% error up to α < 0.4, although with a three-digit
+accurate numerically calculated slope of 0.101 at α = 0.4, in place of the
+asymptotically predicted zero slope. For large values of α, the spectral pre-
+dictions rise steeply as α is increased, making the asymptotic estimate
+Q = Q0 inadequate; e.g at α = 0.9, Q is 14.3% larger than Q0 . However, λ∗
+was found to estimate with reasonable accuracy, the beginning of the regime
+of wavelengths (λ > 3.28) over which the spectrally predicted permeability
+is monotonic increasing (with no minimum).
+    The observed trends in Fig. 2 and the above discussion of effects of
+pattern amplitude and wavelength can be rationalized as follows. Rougher
+the patterns (or larger the value of α), larger is the additional area on the
+lower wall (Fig. 1) over which viscous forces can act to enforce no slip, in
+comparison to a channel with a plane lower wall at Y=0. For short pattern
+
+                                      15
+wavelengths, the most significant gradients in the flow are those near the
+lower wall, which scale inversely with the wavelength, accentuating the role of
+the viscous forces acting on the lower surface. This effect causes permeability
+to decrease with α at short pattern wavelengths. Thus, for short waves, the
+grooves act as drag enhancing roughness elements.
+    In the long-wave limit, the x-gradients in the flow, which are controlled by
+the wave-length become much less significant than the y-gradients controlled
+by the local channel thickness. As a result, the channel may be considered
+to consist of several constant x lamellae, where viscous forces between the
+lamellae are much less significant than viscous forces between elements at
+various y levels of the lamellae. Therefore, the lamellae behave like series-
+connected hydraulic resistors, where Poiseuille Law applies determines the
+scaling 1/(h30 (1 − α)3 ) and 1/(h30 (1 + α)3 ) for the hydraulic resistance of
+the thinnest and thickest lamellae at the peak and trough of the bottom
+topography. Thus, the equivalent hydralic conductance (or permeability) of
+these two lamellae is h30 [(1 − α)3 + (1 + α)3 ∼ h30 [1 + O(α2 )]; this scaling
+behavior is found to be consistent with the equivalent conductance of all
+lamellae given by Eq. (19) and found by the more rigorous approach of
+taking the ‘lubrication limit’ of the spectral theory. Qualitatively, in the long
+wave limit, the increased conductance of dilated sectors overcompensate the
+reduced conductance of constricted sectors. This causes the permeability
+to increase monotonically with α at large enough wavelengths, as increasing
+α increases the size of the dilatations. For long waves, the above-discussed
+confinement effect becomes dominant.
+    At moderate wavelengths, initially at small values of α, grooves act as
+friction enhancing roughness elements leading to a negative slope in the per-
+meability versus amplitude curve, as seen on Fig. 2b. However, as α is
+increased, a transition through a minimum, as seen on the inset of the same
+figure, toward a long-wave like positive slope in the permeability versus α
+curve occurs, since the progressively narrower constrictions created on in-
+creasing α enhance the relative significance of the y−gradients in compari-
+son to x−gradients. As discussed above, this transition is possible only when
+1.92 < λ < 3.28.
+    For a patterned bottom plate in Fig. 1 of fixed amplitude and pitch, if the
+top plate is brought closer from a large distance, initially the grooves behave
+as drag-enhancing roughness elements. At a critical height, the permeability
+scaled relative to that of an unpatterned channel of same average thickness
+passes through a minimum and confinement effects set in and the larger
+
+                                       16
+             2
+
+            1.8
+
+            1.6                                                 ǫ = 1, 3
+            1.4
+     Q/Q0
+
+
+
+
+            1.2
+
+             1
+
+            0.8
+
+            0.6
+
+            0.4
+              10-3       10-2           10-1        h−a   100              101        102
+                                                     L
+
+Fig. 3. Variation of dimensionless hydraulic permeability with a scaled minimum spacing
+between patterned and unpatterned plates for two patterns with different amplitude to
+pitch ratios ( = 1 & 3). Logarithmic scale is used for the independent variable to visually
+resolve the low-channel height regime and the minimum in each curve.
+
+
+
+conductance ∝ h3 (1 + α)3 dilated sectors relative to the constricted sectors
+with conductance ∝ h3 (1 − α)3 begin to control the channel resistance .
+From this point onward, the scaled permeability will increase with reduction
+in height. The small-H behavior of the scaled permeability may be supra-
+Poiseuille, if the grooves are deep enough (i.e.  is large enough). This
+behavior of the scaled permeability can be seen in Fig. 3, where a scaled
+minimum spacing (h − a), rather than the mean spacing h between the walls
+of the channel is used in the independent variable to focus uniformly on the
+low wall-spacing regime for the two pattern sizes studied. Dimensionally, as
+per the curve for  = 3, for patterns with L = 10 µm and a = 4.75 µm, the
+scaled permeability reaches a minimum of 45.5% of the permeability of the
+plane channel flow with the same h, when h is 30.6 µm. Either smaller and
+larger channel sizes than h = 30.6 µm will result in larger permeation in ratio
+to the plane channel flow with same h.
+    Fig. 4 shows the variation of permeability with pattern pitch for a fixed
+and reasonably large amplitude to channel size ratio of α = 0.9, a fairly
+extreme situation of confinement, where the thinnest part of the channel is
+19 times larger than the thinnest portion. Smaller wavelengths accentuate
+
+
+                                               17
+                                           α = 0.9
+             3
+                                                               Numerical
+                                                               Spectral method
+            2.5
+                                                               Eq. (13), Ref. [9]
+                                                               Eq. (14)
+             2
+        0
+      Q/Q
+
+
+
+
+            1.5
+
+
+             1
+
+
+            0.5
+
+
+             0
+             2.5   3   3.5    4    4.5    5       5.5   6    6.5    7      7.5      8
+                                              λ
+
+Fig. 4. Variation of permeability with dimensionless pattern wavelength, showing com-
+parison between spectral model predictions, predictions from O(2 ) (Eq. (13) and [9]) and
+O(4 ) asymptotic analysis (Eq.(14)) for α = 0.9.
+
+
+
+the roughening effects of grooves, whereas larger wavelengths lead to supra-
+Poiseuille confined flow. Predictions from the O(4 ) accurate model given by
+Eq. (14) and the O(2 ) model given by Eq. (13) are superimposed. Both
+models perform reasonably at large wavelengths, despite the large α. While
+for large wavelengths, inclusion of one more term in the asymptotic expansion
+of the permeability produces more accurate results, the same is not neces-
+sarily beneficial at short wavelengths. This behavior can be anticipated from
+observing that shorter wavelengths (larger H), a fixed α would correspond
+to a larger value of the actual perturbation parameter  = αH, as a result
+a stronger O(H 4 ) divergence at large H is produced in Eq. (B.1a) than the
+O(H 2 ) divergence in Eq. (12a), given that C01 and C02 approach finite values
+−1/4 and 1/16, as per Eq. (B.2) (or (12a)) and Eq. (B.4). At smaller α
+values, Eq. (14) was found to provide more accurate predictions than Eq.
+(13) over a larger range of wavelengths.
+    As discussed in Section 2, the effective slip length Yef f = −2C0 is the
+appropriate global measure for studying effect of grooves in shear flows, which
+correspond to large H. The left pane of Fig. 5 shows the variation of the
+effective slip length for a large enough channel size (H/2π = 20) follows the
+prediction of asymptotic theory of Ref. [10] for shear flows, for small . For
+
+
+                                           18
+       0.6                                           0.5
+                   Spectral model                                  Spectral model
+
+       0.5         Ref. [10]                                       MD (Ref. [1])
+                                                     0.4
+                   Eq. (16)
+       0.4
+                                                     0.3
+Yeff
+
+
+
+
+                                                  Yeff
+       0.3
+                                                     0.2
+       0.2
+
+                                                     0.1
+       0.1
+
+        0                                                0
+             0   0.2   0.4       0.6   0.8   1               0   0.2 0.4 0.6 0.8          1
+                             ϵ                                            ϵ
+Fig. 5. The left pane shows the variation of effective slip length with the amplitude to
+wavelength ratio (), comparing predictions from small-amplitude analysis of shear flow
+by [10], the O(4 ) accurate extension given by Eq. (16), and the spectral model for a large
+                   H
+channel height ( 2π   = 20).The right pane shows comparison of the spectral predictions
+with molecular dynamics simulation (MD) predictions from [1].
+
+
+
+moderate to large groove depths, the theory of Ref. [10] significantly over-
+predicts the effective slip length, and therefore the friction. Numerically, for
+ > 0.42 the relative error of over-prediction by a one-term approximation
+of Eq. (16) in Yef f exceeds 5%. The newly proposed closed form expression
+given by Eq. (16) is able to improve the accuracy of asymptotic prediction
+substantially, with 5% relative error occurring at  = 0.88, although it tends
+to over-correct the effective slip length downward at large .
+     Molecular dynamics simulations (MD) of shear flows on sinusoidal sur-
+faces for flow along (and across) grooves have been performed by [1]. How-
+ever, molecular interactions resolved by MD result in a friction-reducing in-
+trinsic slip length [41] even for no corrugation. According to the small 
+theory of slipping shear flows developed by [11, 12], the intrinsic slip length
+is linearly additive to the effective slip (negative of Yef f in the current nota-
+
+                                             19
+tion); see e.g. Eq. (15) of Ref. [1]. The raw MD data for ‘Type I/II’ ‘bent’
+sinusoidal surfaces surfaces interacting with the fluid through parameter set
+A, as given within Table 1 of Guo et al. [1] was consulted. This data is
+characterized by a large depth-of-potential-well parameter in wall fluid inter-
+action and also by the lowest intrinsic slip among other data reported in Ref.
+[1]. The effective slip length, measured in scales relevant to MD simulations
+is given on Fig. 5 of Ref. [1]. Because of the low intrinsic slip, it is antici-
+pated that this data may have qualitative similarities with continuum-scale
+predictions employing no-slip walls, as in the current study. If the intrinsic
+slip for plane surface is subtracted from the aforesaid data using the under-
+standing on additivity discussed above, and appropriately scaled to fit the
+non-dimensionalizing variables of the current work, it is found that spectral
+model predictions are in reasonable agreement with the MD predictions of
+Ref. [1], as shown on the right pane of Fig. 5. This comparison serves to
+reassure not only the validity of the spectral predictions in case of shear flow,
+but also the validity of the underlying continuum-scale physical model.
+
+                                      λ=3                                                            λ=6
+                1                                                             3.5
+
+               0.9
+                                                                               3
+               0.8
+
+               0.7                                                            2.5                X = 0 (SM)
+                                                                                                 X = 0 (Num)
+               0.6                                                                               X = -π/2 (SM)
+                                                                               2                 X = -π/2 (Num)
+       WA/Q0
+
+
+
+
+                                                                      WA/Q0
+
+
+
+
+               0.5                                                                               X = -π/ (SM)
+                                                                                                 X = -π/ (Num)
+                                                                              1.5
+               0.4
+
+               0.3                    X = 0 (SM)
+                                                                               1
+                                      X = 0 (Num)
+                                      X = -π/2 (SM)
+               0.2
+                                      X = -π/2 (Num)
+                                      X = -π/ (SM)                            0.5
+               0.1
+                                      X = -π/ (Num)
+
+                0                                                              0
+                     0   0.2    0.4         0.6        0.8   1                      0   0.2    0.4         0.6    0.8   1
+                               1-Y/(H-ǫcos(X))                                                1-Y/(H-ǫcos(X))
+
+
+
+Fig. 6. Figures changed: Depth-wise variation of the scaled velocity W A/Q0 for mi-
+crochannels with two different pitch-averaged channel heights, corresponding to same
+ = π/5 at three transverse (X) locations calculated using spectral method (SM) and
+numerical simulations (Num). The location X = 0, X − π/2 and the X = −π correspond
+to the smallest gap, average of the smallest and largest gaps, and the largest gap between
+the walls, respectively.
+
+
+
+    The spectral model, via Eq. (5) not only predicts global parameters like
+
+                                                                 20
+permeability of a channel and effective slip length of a surface, but also lo-
+cally resolves all flow features, such as the depth-wise variation of velocity at
+different transverse locations within the flow cross-section, as shown on Fig.
+6. The dependent variable is the velocity normalized by the mean flow ve-
+locity Q0 /A of an unpatterned channel. Here, A = 2πH is the dimensionless
+cross-sectional area of one periodic cell of the channel. The cross-sections
+shown in Fig. 6 lie at the thinnest part of channel (X = 0) , a quarter pe-
+riod away from it, where the wall function inflexes (X = −π/2), and at the
+widest part of the channel (X = −π). The velocity profiles on the two panes
+share a common /2π = α/λ = 0.1 and can therefore represent channels
+differing only in the average depth. A normalized Y co-ordinate has been
+used for unified representation of velocity profiles. Good agreement can be
+found with finite element simulations for the two different pitch-amplitude
+sets studied on the two panes of Fig. 6. From left to right pane, on decreas-
+ing depth the peak and depth-averaged velocity through the wider parts of
+the cross-section increase and thinner parts of the cross-section decrease.
+    Some important aspects of the effect of hydrodynamic slippage on the
+corrugated and/or the planar walls can be inferred from studying the H de-
+pendence of the coefficients of α2 in Eqs.(22) and (23). First, among all
+two-dimensional channels of with sinusoidally modulated cross-section con-
+structed with one no-slip and one perfect-slip surface having a given average
+dimensionless thickness H, if the perfect slip resides on the corrugated sur-
+face,a larger flow will obtained than when perfect slip resides on the planar
+surface. This is because, for all values of H, Q/Q0 predicted by Eq.(22) ex-
+ceeds Q/Q0 predicted by Eq.(23). Another important implication of Eqs.(22)
+and (23) is that for sufficiently thick channels, permeability of a channel with
+perfect slip on planar walls can decrease with amplitude, in a manner similar
+to no-slip channels, for there is a zero of the coefficient of α2 near H ≃ 1.2.
+On the other hand, the permeability of a channel with perfect slip on the
+corrugated walls is always larger than that of a planar channel (Q > Q0 from
+Eq.(22)). The overall qualitative conclusion is that the fluidic resistance is
+more sensitive to friction or lack there of on the corrugated wall than on the
+planar wall.
+    Formally, through Fourier analysis it may be possible to extend the cur-
+rent study to other periodic corrugation shapes, as suggested for shear flow
+across corrugations by [17]. However, with more general corrugation profiles,
+if spectrally accurate results are desired, numerical evaluation of the discrete
+Fourier transform may be necessary. On the other hand, if asymptotically
+
+                                       21
+accurate results are desired, the procedure shown in Section 2 can be followed
+closely. In fact, Eq. (5) is equally valid for any periodic corrugation shape, al-
+though with a different set of values for the constants Cn . However, if the cor-
+rugation is non-smooth, as in the case of easily realizable rectangular/square
+grooves, the exponentially fast decay of the spectral method with the number
+of terms may be lost [33]. Rectangular (or ‘parallel’) grooves may also be
+analyzable by a matching approach combined with Eq. (5), as demonstrated
+by [12] for shear flow along corrugations. Qualitatively correct predictions
+are possible for square grooves by tightly inscribing a sinusoidal shape, as
+shown in the experimental comparisons of Ref. [9]. Consideration of viscous
+effects of the discontinuities in the surface profile and scaling consequences
+of the two flat zones occurring per pattern period qualitatively suggest that,
+with rectangular grooves, the short-wave-limit decay of permeability as well
+as the long-wave-limit enhancement of permeability on increasing the groove
+depth may be stronger effects than observed with sinusoidal grooves. It is
+difficult to characterize realistic roughness profiles, e.g. those found in rock
+fractures, which have fractal characteristics, with a single length scale such
+as L used here. However, in rock fractures, as discussed by [39], longer waves
+correspond to larger r.m.s. roughness heights (proportional to amplitude a),
+and larger the fractal dimension of the rock walls, steeper is the decay of
+the r.m.s. roughness with spatial frequency. It can thus be argued that the
+longest wave has the most dominant contribution to the hydraulic perme-
+ability. Recognizing that rock fractures are typically rather thin compared
+to their length, the small  and small H limits of the current study assume
+significance, even though the ‘roughness profile’ used here is a sinusoid of
+single wavelength. In fact, the small H limit permeability predictions shown
+here are independent of the “dominant wavelength”, which may be difficult
+to measure [44].
+
+4. Conclusions
+    The flow through an infinitely wide channel, one of whose walls has sinu-
+soidal grooves/corrugations running along the direction of an applied pressure
+differential is studied using a semi-analytical and grid-free spectral approach.
+The corrugation amplitude is allowed to be large enough to alter significantly
+the shape of the cross-section of the flow directed along the corrugations, and
+can even create contact with the planar surface forming the other channel
+wall. The spectral predictions on hydraulic permeability, which are cross-
+
+                                       22
+validated against finite element simulations, show qualitative characteristics
+not obtainable from asymptotic predictions available in the literature [9–
+11]. For example, the spectral approach reveals that there is an intermediate
+range of wavelengths, when the variation of permeability with amplitude
+can be non-monotonic, demonstrating a mimimum. Similarly, as the spac-
+ing between the corrugated and flat plates forming the channel is decreased a
+minimum appears in the permeability of the patterned channel scaled relative
+to that of an unpatterned channel with same pitch-averaged spacing between
+the walls. Dimensional estimates of the minimum corrugation amplitude and
+minimum height, as relevant to typical microfluidic configurations have been
+provided in Section 3.
+    The closed-form expressions for permeability appearing in [9] and effective
+slip length appearing in [10] are shown to correspond to be formal asymp-
+totic approximations of the spectral predictions, where only one mode in the
+spectral representation of the flow-field contributes to the permeability. A
+new spectrally-derived small-amplitude estimate of permeability (Eq.(14))
+of a higher asymptotic order, is also provided. The limit of large channel
+spacing, which under the scales chosen becomes equivalent to shear flow is
+also explored and a new asymptotic prediction (Eq. (16)) is proposed, which
+is more accurate for larger amplitude patterns than the predictions available
+from Refs. [10, 11, 15].
+    The spectral and finite-element predictions accurately match each other
+closely, for all situations studied. The accuracy of asymptotic prediction of
+Ref. [9] degrades significantly with increase in the amplitude and decrease in
+the wavelength. Higher order asymptotic predictions derived in the current
+study improve the numerical accuracy for moderately long and long wave-
+lengths, but not for short wavelengths. Recent molecular dynamics results [1]
+are also shown to be in close agreement with spectral results on shear flow,
+if particular data sets from [1] with strong wall fluid interactions and sinu-
+soidally ‘bent’ arrangement of atoms are chosen, and a correction inspired
+by effective slip predictions in [11, 12] is made for intrinsic slip.
+    New asymptotic relations on the effect of hydrodynamic slippage, such
+as Eqs. (21a), Eqs. (22) and (23) are derived, which may be of relevance to
+nanofluidic applications. A practically significant consequence of the anal-
+ysis of slippage effects is that, if perfect slip is to be realized by complete
+lubrication of one of the channel walls with a gas layer [40, 41], providing
+lubrication on the wavier of the two walls may be advantageous from the
+point of view of reduction of the channel hydraulic resistance. The formula-
+
+                                      23
+        tion is more general than past studies, since it allows for dissimilar degrees of
+        slippage on the bounding walls. This aspect may be relevant to validation of
+        future molecular dynamic simulations, where the extent of macroscopically
+        averaged slippage depends both on the difference between the solid-liquid
+        and liquid-solid inter-molecular potentials and the atomic configuration used
+        to form the corrugations [45, 46].
+            In the future work, a flow configuration where the flow occurs across the
+        corrugations may be studied, which, when combined with the current results,
+        will allow applications to mixing devices by virtue of the tensorial formal-
+        ism of Refs. [3, 11]. It is anticipated that that the behaviour of hydraulic
+        permeability explained here will useful on surface-texture and microchannel
+        design for various applications e.g. passive mixers, pumps, flow detectors and
+        separation devices for microfluidics [47–49], enhanced surface capture of bio-
+        particles [6]. Naturally rough surfaces have more uneven shapes, whereas
+        engineered surfaces commonly have corrugations composed of planar seg-
+        ments. Therefore, generalizing the current work through Fourier analysis to
+        more general shapes of corrugation than a sinusoid will be useful.
+
+        Appendix A. Asymptotic behaviour of the spectral coefficients
+           To understand the small  behaviour, the asymptotic form Ip (n) =
+        (n/2)n /p! for non-negative integers p and n can be used in Eq. (8). On
+        truncation of the system to M + 1 equations in M + 1 unknowns, the resul-
+        tant system of equations in matrix form becomes:
+                                                                         2 
+   1      O()      O(2 )    O(3 ) . . . O(n ) . . .      O(N )        C0         
+                                                                                     4H
+ 2      O(1)       O()     O(2 ) . . . O(n−1 ) . . . O(N −1 )     C1         
+ 2H                                                                             42 
+0                                     . . . O(n−2 ) . . . O(N −2 )              
+         O()      O(1)      O()                                      C2   − 8H 
+0       O( ) 2
+                     O()     O(1)                n−3
+                                       . . . O( ) . . . O(    N −3   
+                                                                     )   C3  
+                                                                                       
+                                                                                  0 
+ .        ..           ..      ..       ..     ..      ..      ..      .  =  . 
+ ..        .            .       .        .      .       .       .       ..   .. 
+                                                                                    
+0      O(m−1 ) O(m−2 ) O(m−3 ) . . .      O(1)    . . . O(|m−n| )   C      0 
+                                                                        n           
+ ..        ..         ..        ..       ..     ..      ..      ..      ..   .. 
+ .          .          .         .        .      .       .       .        .      . 
+    0   O(N −1 ) O(N −2 ) O(N −3 ) . . . O(N −n ) . . .   O(1)        CM          0
+                                                                                 (A.1)
+        which can be abbreviated as AC = b, where A is (M + 1) × (M + 1) and B is
+        the column vector of length (M + 1) to the right of equality. In each matrix
+        element, the order symbols specify the leading order of an asymptotic power
+
+
+                                               24
+series representation in integral powers of . The above equation system, as
+per Cramer’s rule has the following solution for spectral coefficent Cn , where
+n is an integer between 0 and M .
+
+                                      det (An+1 )
+                               Cn =                                        (A.2)
+                                       det (A)
+
+Here, An+1 is the matrix formed by replacing the (n + 1)th column vector
+of matrix A~ by the ~b. Observing the elements of the matrix A in Eq.(A.1)
+and Eq. (A.2), it can be concluded Cn (s) must be expressible as asymptotic
+power series in integral powers of . In the following, the leading order of such
+a series will be estimated for the spectral coefficients. Since  is a factor of
+b, Eq. (A.2) reveals,  is also a factor of An+1 , for all non-negative integers
+n. Also, since the diagonal elements of matrix A are all O(1) and non-
+zero, det (A), which contains the product of these elements must be O(1).
+Therefore, evaluating the right hand side of Eq. (A.2), all coefficients must
+O() or smaller.
+    To estimate C0 , det (A1 ) can be factorized as follows. A factor  emerges
+from column 1 of det A1 . Another factor  emerges from row 1 of det (A1 ).
+Therefore, 2 is a factor of det A1 . Further, the diagonal elements of matrix
+A1 /2 are all O(1) and non-zero. Therefore, the coefficient C0 is O(2 ).
+In a similar manner, C2 (but not C1 ) can be shown to be O(2 ) using the
+factorization of det (A3 ).
+    To estimate C1 , the following can be noted. When  is factored out from
+column 2 of A2 , the resultant matrix A2 / will have diagonal elements of
+O(1) magnitude and no further factorization of any power of  is possible.
+Therefore, the coefficient C1 is O().
+    To estimate C3 , det (A4 ) can be factorized as follows. A factor  emerges
+from column 4 of det A4 . Another factor  emerges from row 4 of det A4 .
+Therefore, 2 is a factor of det A4 . However, the diagonal element at the
+position (4, 4) (shown in boldface in Eq. (A.3)) of the matrix A4 /2 is zero,
+and it is possible that C2 is o(2 ) and further factorizable in powers of .
+The structure of the matrix A4 /2 near (4, 4) may be understood from the
+following submatrix:
+                                        
+                                                          
+                            . . . O(1) 8H    O(2 ) . . .
+                         . . . O(1) 0 O(1) . . .                          (A.3)
+                            . . . O(2 ) 0 O(1) . . .
+
+
+                                       25
+Here, the elements indicated by . . . are either zero or have  as a factor, and
+the diagonal element (4,4) is shown in bold. Note that only rows 3, 4 and 5
+are shown. It is clear that there will exist O(1) real numbers p and q, such
+that when p times the top row, followed by q times the last row is subtracted
+from the central row, the elements (3,4) and (3,5) of the resultant matrix
+possess no O(1) term, and instead have  as a factor.These row operations
+should not alter the value of det (A4 )/2 . Specifically, the sub-matrix in Eq.
+(A.3) takes the following shape near the diagonal element (4, 4), after these
+two row operations:
+                                                2
+                                                            
+                         . . . O(1)     8H
+                                              O(   ) . . .
+                       . . . O(2 ) O() O(2 ) . . .                    (A.4)
+                                  2
+                         . . . O( )     0    O(1) . . .
+As seen from the row containing the boldface element in the sub-matrix of
+Eq. (A.4), a factor  can now be taken out of row 4 of det (A4 )/2 . The
+resultant matrix will have all diagonal entries non-zero and O(1). It can,
+therefore, be concluded that 3 is a factor of det (A4 ). Since, in Eq. (A.2)
+det (A) is O(1), C3 is O(3 ).
+
+Appendix B. Coefficients for the discharge calculated by the fourth-
+            order accurate asymptotic model
+    Two-term Taylor series approximations of first two coefficients C0 , C1 and
+a single term approximation of the coefficient C2 are required to obtain an
+O(4 ) accurate closed-form estimate of the discharge. Introducing
+                         C0 = C01 2 + C02 4 + O(6 )                   (B.1a)
+                          C1 = C11  + C12 3 + O(5 )                   (B.1b)
+                                         2      4
+                             C2 = C21  + O( )                          (B.1c)
+where                                          
+                                1  1
+                          C01 =      − coth (H)                           (B.2)
+                                4 H
+                                 1
+                         C11 = − (1 + coth(H))                            (B.3)
+                                 4
+                    −(2 + 5H ) cosh(H) + (2 + H 2 ) cosh(3H)+
+                             2
+
+                               2H(sinh(H) − sinh(3H))
+              C02 =                                                       (B.4)
+                                 64H 2 sinh(H)3
+
+                                        26
+                       (cosh(H) + sinh(H))
+             C12 = −                         (4 + 7H 2 ) cosh(H)
+                          128H 2 sinh3 (H)                         (B.5)
+                                           2
+                                                                 
+                                + (−4 + H ) cosh(3H) + 8H sinh(H)
+
+                            (1 + tanh(H))2 (H − tanh(H))
+                  C21 = −                                              (B.6)
+                                    16H tanh(H)2
+   It can be confirmed from that C0 and C1 given by Eq. (12a) and (12b)
+equal 2 C01 and C1 up to O(2 ) accuracy.
+   The function F (H) appearing in Eq. (14) is given by
+F (H)
+    3 (−6H − 5H 3 − 4H(H 2 − 1) cosh(2H) + H(H 2 + 2) cosh(4H)
+    +4 sinh(2H) + 4H 2 sinh(2H) − 2 sinh(4H) − 2H 2 sinh(4H))
+ =
+                            64 sinh3 (H) cosh(H)
+    + O(6 )
+                                                                       (B.7)
+
+To avoid tedium, the required analytical matrix inversions and Taylor series
+expansions were accomplished using the computer algebra package Mathematica R .
+
+Appendix C. Functions for studying effect of hydrodynamic slip-
+            page
+   The velocity field of the slipping flow in Sec. 2.1.3 can be obtained from
+the following equations:
+
+
+                  W = F0 (Y ) + C1 F1 (Y ) cos (X) + O(2 )           (C.1a)
+                                                      
+                   Y2   Y      H + 2B2              Y
+       F0 (Y ) = −    +                  + C0 1 −                     (C.1b)
+                   2H   2      H + B2             H + B2
+                                             
+                                       1 − B2 −2H+Y
+                     F1 (Y ) = e−Y −            e                     (C.1c)
+                                       1 + B2
+The asymptotic forms of the spectral coefficients C0 and C1 are as follows:
+
+                          C0 = C01 + 2 C02 + O(4 )                  (C.2a)
+
+                                     27
+                                C1 = C11 + O(3 )                             (C.2b)
+                                   B1 (2B2 + H)
+                             C01 =                                   (C.2c)
+                                 2 (B1 + B2 + H)
+                   P (H, B1 , B2 ) cosh(H) + T (H, B1 , B2 ) sinh(H)
+C02 =
+      8H (B1 + B2 + H) 2 (B2 cosh(H) + B1 (B2 sinh(H) + cosh(H)) + sinh(H))
+                                                                     (C.2d)
+                (B2 + 1) (2 (B1 + B2 ) (B1 + H) + H 2 ) (sinh(H) + cosh(H))
+C11 = −
+          4H (B1 + B2 + H) (B1 B2 sinh(H) + B1 cosh(H) + B2 cosh(H) + sinh(H))
+                                                                       (C.2e)
+All other spectral coefficients (Cn for n > 1) are of higher asymptotic order
+( o(2 )). The constants in Eqs. (21a), (C.2d) and (C.3) can be found from
+the following equation and Table C.1
+
+       Coefficient                         Value
+          P0                   −2B2 (B1 − B2 ) (B1 + B2 )
+          P1                    −2B1 (B1 + B2 ) (B22 + 1)
+          P2                −3B2 B12 − 3B22 B1 − 2B1 − 4B2
+          P3                        −B12 − B2 B1 − 2
+          T0                   −2B2 (B1 + B2 ) (B1 B2 − 1)
+          T1       −2 (B12 B23 + 2B23 + 3B1 B22 + B12 B2 − 2B2 − B1 )
+          T2                  −3B12 B22 − 6B22 − 5B1 B2 + 2
+          T3                      −B2 B12 − B1 − 2B2
+          R0                       8B1 B2 (B1 + B2 ) 2
+          R1                         8B2 (B1 + B2 ) 2
+          R2                −4 (B1 + B2 ) (B1 B22 − B2 + B1 )
+          R3                    −4 (B1 + B2 ) (B1 B2 + 1)
+          R4                        −B12 − B2 B1 − 2
+          S0                         8B1 (B1 + B2 ) 2
+          S1               −8 (B1 + B2 ) (B1 B22 − B2 − 2B1 )
+          S2       −4 (B12 B23 + 2B23 + 4B1 B22 + B12 B2 − 3B2 − 3B1 )
+          S3                 −4 (B12 B22 + 2B22 + 2B1 B2 − 1)
+          S4                      −B2 B12 − B1 − 2B2
+
+           Table C.1. Table of coefficients for Eqs. (21a), (C.2d) and (C.3)
+
+
+                         P = P0 + P1 H + P2 H 2 + P 3 H 3                      (C.3a)
+
+                                          28
+                       T = T0 + T1 H + T2 H 2 + T3 H 3                  (C.3b)
+                  R = R0 + R1 H + R2 H 2 + R3 H 3 + R4 H 4              (C.3c)
+                   S = S0 + S1 H + S2 H 2 + S3 H 3 + S4 H 4             (C.3d)
+The computer algebra package Mathematica R was used for algebra simplifi-
+cation.
+
+Appendix D. Additional details on numerical methods
+    The finite element simulations were conducted in the commercial finite
+element software COMSOL Multiphysics R . Grid independence up to three
+decimal places in the predicted dimensionless permeabilities were assured all
+over the parameter space explored in Section 3, which required a uniformly
+sized triangular elements of size 0.02 times the average channel size. The ma-
+trix inversion procedure was performed using the built-in function‘mldivide’
+of the software Matlab R . Truncation of the equation system in Eq. (8) to
+6 − 15 terms were sufficient to achieve three digit accuracy in permeability
+predictions of the spectral method. In obtaining the permeability predictions
+for 100 points between α = 0 and α = 1, the spectral solution was about
+250-300 times faster than the finite-element-method simulation on a work-
+station with 3.40 GHz processor. The root finding required for solving Eq.
+(13) when the right hand side is unity, as discussed in Section 3 used the
+built in function ‘fzero’ of Matlab R .
+
+References
+ [1] L. Guo, S. Chen, M. O. Robbins, Effective slip boundary conditions for
+     sinusoidally corrugated surfaces, Physical Review Fluids 1 (7) (2016)
+     074102.
+
+ [2] A. D. Stroock, S. K. Dertinger, A. Ajdari, I. Mezić, H. A. Stone, G. M.
+     Whitesides, Chaotic mixer for microchannels, Science 295 (5555) (2002)
+     647–651.
+
+ [3] A. Ajdari, Transverse electrokinetic and microfluidic effects in micropat-
+     terned channels: Lubrication analysis for slab geometries, Physical Re-
+     view E 65 (1) (2001) 016301.
+
+
+                                      29
+ [4] A. D. Stroock, G. M. Whitesides, Controlling flows in microchannels
+     with patterned surface charge and topography, Accounts of chemical
+     research 36 (8) (2003) 597–604.
+
+ [5] S. L. Stott, C.-H. Hsu, D. I. Tsukrov, M. Yu, D. T. Miyamoto, B. A.
+     Waltman, S. M. Rothenberg, A. M. Shah, M. E. Smas, G. K. Korir,
+     et al., Isolation of circulating tumor cells using a microvortex-generating
+     herringbone-chip, Proceedings of the National Academy of Sciences
+     107 (43) (2010) 18392–18397.
+
+ [6] Y. Dong, A. M. Skelley, K. D. Merdek, K. M. Sprott, C. Jiang, W. E.
+     Pierceall, J. Lin, M. Stocum, W. P. Carney, D. A. Smirnov, Microfluidics
+     and circulating tumor cells, The Journal of Molecular Diagnostics 15 (2)
+     (2013) 149–157.
+
+ [7] R. Schoch, J. Han, P. Renaud, Transport phenomena in nanofluidics,
+     Reviews of modern physics 80 (3) (2008) 839.
+
+ [8] A. Ajdari, Generation of transverse fluid currents and forces by an elec-
+     tric field: Electro-osmosis on charge-modulated and undulated surfaces,
+     Physical Review E 53 (5) (1996) 4996.
+
+ [9] A. D. Stroock, S. K. Dertinger, G. M. Whitesides, A. Ajdari, Patterning
+     flows using grooved surfaces, Analytical Chemistry 74 (20) (2002) 5306–
+     5312.
+
+[10] C. Wang, Flow over a surface with parallel grooves, Physics of Fluids
+     15 (5) (2003) 1114–1121.
+
+[11] K. Kamrin, M. Z. Bazant, H. A. Stone, Effective slip boundary condi-
+     tions for arbitrary periodic surfaces: the surface mobility tensor, Journal
+     of Fluid Mechanics 658 (2010) 409–437.
+
+[12] C. Wang, Shear flow over a wavy surface with partial slip, Journal of
+     Fluids Engineering 132 (8) (2010) 084503.
+
+[13] S. Richardson, On the no-slip boundary condition, J. Fluid Mech 59 (4)
+     (1973) 707–719.
+
+[14] L. M. Hocking, A moving fluid interface on a rough surface, Journal of
+     Fluid Mechanics 76 (1976) 801–817.
+
+                                      30
+[15] E. Tuck, A. Kouzoubov, A laminar roughness boundary condition, Jour-
+     nal of Fluid Mechanics 300 (1995) 59–70.
+
+[16] M. J. Miksis, S. H. Davis, Slip over rough and coated surfaces, Journal
+     of Fluid Mechanics 273 (1994) 125–139.
+
+[17] D. Einzel, P. Panzer, M. Liu, Boundary condition for fluid flow: Curved
+     or rough surfaces, Phys. Rev. Lett. 64 (1990) 2269–2272.
+
+[18] P. Panzer, M. Liu, D. Einzel, The effects of boundary curvature on hy-
+     drodynamic fluid flow: calculation of slip lengths, International Journal
+     of Modern Physics B 6 (20) (1992) 3251–3278.
+
+[19] H. Wang, P. Iovenitti, E. Harvey, S. Masood, Numerical investigation of
+     mixing in microchannels with patterned grooves, Journal of Microme-
+     chanics and Microengineering 13 (6) (2003) 801.
+
+[20] G. t. Taylor, A model for the boundary condition of a porous material.
+     part 1, Journal of Fluid Mechanics 49 (2) (1971) 319–326.
+
+[21] R. Choudhary, T. Bhakat, R. K. Singh, A. Ghubade, S. Mandal,
+     A. Ghosh, A. Rammohan, A. Sharma, S. Bhattacharya, Bilayer stag-
+     gered herringbone micro-mixers with symmetric and asymmetric geome-
+     tries, Microfluidics and nanofluidics 10 (2) (2011) 271–286.
+
+[22] Y. Asako, M. Faghri, Finite-volume solutions for laminar flow and heat
+     transfer in a corrugated duct, Journal of Heat Transfer 109 (3) (1987)
+     627–634.
+
+[23] F. Schönfeld, S. Hardt, Simulation of helical flows in microchannels,
+     AIChE Journal 50 (4) (2004) 771–778.
+
+[24] H. Annepu, J. Sarkar, S. Basu, Pattern formation in soft elastic films cast
+     on periodically corrugated surfacesa linear stability and finite element
+     analysis, Modelling and Simulation in Materials Science and Engineering
+     22 (5) (2014) 055003.
+
+[25] A. Yutaka, N. Hiroshi, M. Faghri, Heat transfer and pressure drop
+     characteristics in a corrugated duct with rounded corners, International
+     Journal of Heat and Mass Transfer 31 (6) (1988) 1237–1245.
+
+
+                                      31
+[26] C. Li, T. Chen, Simulation and optimization of chaotic micromixer using
+     lattice boltzmann method, Sensors and Actuators B: Chemical 106 (2)
+     (2005) 871–877.
+[27] B. A. Vinogradova O.I., Wetting, roughness and flow boundary condi-
+     tions, J Phys: Condens Matter 23 (18) (2011) 184104.
+[28] E. S. Asmolov, J. Zhou, F. Schmid, O. I. Vinogradova, Effective slip-
+     length tensor for a flow over weakly slipping stripes, Phys. Rev. E 88
+     (2013) 023004.
+[29] S. Chakraborty, Towards a generalized representation of surface effects
+     on pressure-driven liquid flow in microchannels, Applied physics letters
+     90 (3) (2007) 034108.
+[30] A. Kumar, S. Datta, D. Kalyanasundaram, Permeability and effective
+     slip in confined flows transverse to wall slippage patterns, Physics of
+     Fluids 28 (8) (2016) 082002.
+[31] A. Kumar, S. Datta, D. Kalyanasundaram, Liquid slippage in confined
+     flows: Effect of periodic micropatterns of arbitrary pitch and amplitude,
+     To appear in Journal of Heat Transfer.
+[32] M. P. Schultz, K. A. Flack, Turbulent boundary layers on a systemati-
+     cally varied rough wall, Physics of Fluids 21 (1) (2009) 015104.
+[33] C. Canuto, M. Hussaini, A. Quarteroni, T. Zang, Spectral Methods in
+     Fluid Dynamics (Scientific Computation), Springer-Verlag, New York-
+     Heidelberg-Berlin, 1987.
+[34] F. Feuillebois, M. Z. Bazant, O. I. Vinogradova, Effective slip over su-
+     perhydrophobic surfaces in thin channels, Phys. Rev. Lett. 102 (2009)
+     026001.
+[35] M. Sbragaglia, A. Prosperetti, A note on the effective slip properties for
+     microchannel flows with ultrahydrophobic surfaces, Physics of Fluids
+     19 (4) (2007) 043603.
+[36] E. J. Hinch, Perturbation methods, Cambridge university press, 1991.
+[37] L. Leal, Laminar flow and convective transport processes: scaling prin-
+     ciples and asymptotic analysis, Butterworth-Heinemann Boston:, 1992.
+
+                                      32
+[38] M. Van Dyke, Slow variations in continuum mechanics, Advances in
+     applied mechanics 25 (1987) 1–45.
+
+[39] R. Zimmerman, S. Kumar, G. Bodvarsson, Lubrication theory analysis
+     of the permeability of rough-walled fractures, International journal of
+     rock mechanics and mining sciences & geomechanics abstracts 28 (4)
+     (1991) 325–331.
+
+[40] E. Karatay, A. S. Haase, C. W. Visser, C. Sun, D. Lohse, P. A. Tsai,
+     R. G. Lammertink, Control of slippage with tunable bubble mattresses,
+     Proceedings of the National Academy of Sciences 110 (21) (2013) 8422–
+     8426.
+
+[41] E. Lauga, M. Brenner, H. A. Stone, Microfludics: The no-slip boundary
+     condition, in: C. Tropea, A. Yarin, J. F. Fouss (Eds.), Handbook of
+     Experimental Fluid Mechanics, Springer, New York, 2007, Ch. 19, pp.
+     1219 – 1240.
+
+[42] L. Joly, C. Ybert, E. Trizac, L. Bocquet, Hydrodynamics within the
+     electric double layer on slipping surfaces, Physical review letters 93 (25)
+     (2004) 257805.
+
+[43] K. H. W. Chu, Slip flow over rough wavy wall, ZAMM-Journal of Ap-
+     plied Mathematics and Mechanics/Zeitschrift für Angewandte Mathe-
+     matik und Mechanik 76 (6) (1996) 363–364.
+
+[44] B. Berkowitz, Characterizing flow and transport in fractured geological
+     media: A review, Advances in water resources 25 (8) (2002) 861–884.
+
+[45] C. Ybert, C. Barentin, C. Cottin-Bizonne, P. Joseph, L. Bocquet,
+     Achieving large slip with superhydrophobic surfaces: Scaling laws for
+     generic geometries, Physics of Fluids (1994-present) 19 (12) (2007) –.
+
+[46] L. Guo, S. Chen, M. O. Robbins, Slip boundary conditions over curved
+     surfaces, Physical Review E 93 (1) (2016) 013105.
+
+[47] A. D. Stroock, G. J. McGraw, Investigation of the staggered herringbone
+     mixer with a simple analytical model, Philosophical Transactions of the
+     Royal Society of London A: Mathematical, Physical and Engineering
+     Sciences 362 (1818) (2004) 971–986.
+
+
+                                      33
+[48] D. Desai, M. Zaman, Continuous flow microfluidic solution for quanti-
+     tative analysis of active pharmaceutical ingredient content and kinetic
+     release, Analytical Methods 7 (5) (2015) 1914–1923.
+
+[49] T. J. Kwak, Y. G. Nam, M. A. Najera, S. W. Lee, J. R. Strickler, W.-J.
+     Chang, Convex grooves in staggered herringbone mixer improve mix-
+     ing efficiency of laminar flow in microchannel, PloS one 11 (11) (2016)
+     e0166068.
+
+
+
+
+                                    34
+

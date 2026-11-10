@@ -1,0 +1,102 @@
+                                                 Effective slip boundary conditions for arbitrary periodic surfaces: The surface
+                                                                                 mobility tensor
+
+                                                                                  Ken Kamrina,∗, Martin Z. Bazantb , Howard A. Stonec
+                                                                 a School of Engineering and Applied Sciences, Harvard University, Cambridge, MA 01238, USA
+                                                           b Department of Chemical Engineering, Massachusetts Institute of Technology, Cambridge, MA 02139, USA
+                                                            c Department of Mechanical and Aerospace Engineering, Princeton University, Princeton, NJ 08544, USA
+arXiv:0911.1328v2 [physics.flu-dyn] 2 Jan 2010
+
+
+
+
+                                                 Abstract
+                                                 In a variety of applications, most notably microfluidic design, slip-based boundary conditions have been sought
+                                                 to characterize fluid flow over patterned surfaces. We focus on laminar shear flows over surfaces with periodic
+                                                 height fluctuations and/or fluctuating Navier scalar slip properties. We derive a general formula for the “effective
+                                                 slip”, which describes equivalent fluid motion at the mean surface as depicted by the linear velocity profile that
+                                                 arises far from it. We show that the slip and the applied stress are related linearly through a tensorial mobility
+                                                 matrix, and the method of domain perturbation is then used to derive an approximate formula for the mobility
+                                                 law directly in terms of surface properties. The specific accuracy of the approximation is detailed, and the
+                                                 mobility relation is then utilized to address several questions, such as the determination of optimal surface
+                                                 shapes and the effect of random surface fluctuations on fluid slip.
+
+
+                                                 1. Introduction
+
+                                                    With recent progress in the study and fabrication of mirofluidic devices, new interest has arisen in determining
+                                                 generalized forms of hydrodynamic boundary conditions (Stone et al., 2004; Bazant and Vinogradova, 2008).
+                                                 Advances in lithography to pattern substrates at the micrometer and nanometer length scales have raised
+                                                 several questions in the modeling of fluid motions over these surfaces. For example, rather than trying to solve
+                                                 equations of motion for the flow at the scale of the individual corrugations of the pattern, it is appropriate to
+                                                 consider the bulk fluid motion (on length scales much larger than the pattern wavelength) by utilizing effective
+                                                 boundary conditions that characterize the flow at the surface. For fluid being sheared horizontally over a
+                                                 textured surface, a basic aim is to derive a local boundary condition that can be applied along the smooth
+                                                 mean surface, which mimics the effects of the actual condition along the true surface. These effective conditions
+                                                 can be used in place of the no-slip condition to solve for macro-scale flow without the tedium of enforcing a
+                                                 boundary condition on a rough boundary geometry.
+                                                    A standard phenomenological approach for flow over a patterned surface is to assume a Navier slip boundary
+                                                 condition
+                                                                                                             ∂u
+                                                                                           us = U − u = b                                                  (1)
+                                                                                                             ∂n
+                                                 which relates the fluid velocity u at the surface, the velocity of the surface U, and the shear strain rate normal
+                                                 to the mean surface, ∂u/∂n, via the slip-length b. This approach has been studied extensively in experiments,
+
+
+                                                   ∗ Corresponding author.
+
+                                                     Email address: kkamrin@seas.harvard.edu (Ken Kamrin)
+                                                     URL: http://people.seas.harvard.edu/∼kkamrin/ (Ken Kamrin)
+
+
+                                                 Preprint submitted to Elsevier                                                                           October 31, 2018
+theoretical calculations, and simulations (for recent discussion and results see Vinogradova (1999); Lauga et al.
+(2007); Bocquet and Barrat (2007); Davis and Lauga (2009)).
+   The above relationship avoids the possibility of transverse flow over a grooved no-slip surface, perpendicular
+to an applied shear stress, which has been analyzed and observed in a number of studies (see Stroock et al.
+(2002a); Ajdari (2002); Wang (2003); Stroock et al. (2002b)). Such phenomena have motivated a tensorial
+version of Eq 1, as discussed in Stroock et al. (2002a) and Stone et al. (2004), which replaces the scalar slip-
+length b with a rank-2 tensor b characterizing the surface anisotropy:
+
+                                                  us = b · (n̂ · ∇u)                                               (2)
+
+where n̂ is the unit normal (directed into the fluid). Bazant and Vinogradova (2008) proposed to express
+the tensorial slip condition in the convenient form of a mobility law, where the mean surface normal traction
+τ = T · n̂ (for T the Cauchy stress tensor) and some mobility tensor M are used instead of the velocity gradient
+and tensorial slip-length, i.e.
+                                                     us = M · τ                                                    (3)
+
+and discussed general physical constraints on M for different types of fluids and surfaces.
+   The work herein analyzes and quantifies this proposed relationship for the case of Stokes flow over a broad
+class of weakly textured surfaces. We focus on horizontally sheared fluid over surfaces with arbitrary periodic
+height fluctuations, and continue the analysis later (Section 8) to surfaces that also have non-uniform hydropho-
+bicity. To rigorously evaluate the properties of us , our approach is to construct the flow from a family of
+analytical solutions to the equations of motion, which are superposed as needed to satisfy the order-by-order
+boundary conditions on a topographically complex surface. Section 2 defines the problem and proves the valid-
+ity of Eq 3 by deriving the relationship directly from the Stokes equations for a no-slip surface with arbitrary
+periodic height fluctuations. We then proceed in Section 3 with the crucial and natural question of how to relate
+the details of the surface topography to the mobility tensor. This is considered for the case of arbitrary, small,
+periodic surface corrugations, where a second-order approximate formula for M is constructed from a family
+of Fourier series solutions to the Stokes equations and carrying out a domain-level perturbation analysis up to
+second-order. This result is then used to derive/compute a number of consequential results: analytical results
+in the case of grooved surfaces (Section 5), flow optimization over surfaces of fixed heterogeneity (Section 6),
+and statistical results for random surfaces (Section 7). The limitations of our approximation are also deduced
+and quantified through an in-depth error analysis in Section 4 that carries over to the appendix.
+
+
+2. Problem setup and basics
+
+   Consider a rigid, periodic surface with height z = H(x, y), with period 2Lx in the x direction, and period
+2Ly in the y direction. Let z = 0 correspond to the bottom of the surface, so that H(x, y) ≥ 0. Above the
+surface is a layer of fluid (of viscosity η) satisfying the no-slip boundary condition along the surface. It is sheared
+from above, at z → ∞, by a horizontal shear traction τ = (τx , τy , 0), which induces a steady flow u(x, y, z) with
+pressure p(x, y, z). As a convention in this paper, we interchangeably represent horizontal vectors with 2 or 3
+components depending on context — for example τ can also represent (τx , τy ) in planar operations.
+   Before continuing any further, let us non-dimensionalize the problem to scale η out of the analysis. Let T
+and L be arbitrary, fixed units of time and length respectively. Let the unit of stress be η/T . With these units,
+
+
+
+                                                          2
+

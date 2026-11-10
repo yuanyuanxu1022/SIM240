@@ -1,0 +1,65 @@
+{
+  "checked_utc": "2026-10-26T00:21:20.707609+00:00",
+  "status": "STATIC_REVIEW_EVIDENCE_CONSISTENT",
+  "review_verdict": "HOLD_NO_RUN_PERMISSION",
+  "protected_paths_checked": 4233,
+  "protected_changed": [],
+  "execution_source_hashes_checked": 7,
+  "execution_source_changed": [],
+  "review_inputs_bound": 138,
+  "frozen_csv_false_rows": 18,
+  "new_runtime_denial_tests": 0,
+  "new_synthetic_process_tests": 0,
+  "new_backend_imports_meshes_assemblies_solves": 0,
+  "incompatible_execution_flags_confirmed_by_source": true,
+  "dormant_solve_source_lines": [
+    99
+  ],
+  "current_raw_array_keys": [
+    "algebraic_solution_before_backsub",
+    "mesh_coordinates_hat",
+    "mesh_triangles",
+    "periodic_master_dofs",
+    "periodic_slave_dofs",
+    "pressure_area_weights_hat2",
+    "pressure_coordinates_hat",
+    "pressure_raw_P1",
+    "pressure_reconstructed_dof_indices",
+    "pressure_zero_mean_P1",
+    "reconstructed_solution",
+    "velocity_dof_components",
+    "velocity_dof_coordinates_hat",
+    "velocity_reconstructed_dof_indices",
+    "velocity_reconstructed_values",
+    "wall_velocity_dof_indices"
+  ],
+  "historical_pilot_mesh_records_not_new_runs": [
+    {
+      "planned_id": "B0MIN_FLAT_T_d5",
+      "mixed_dofs": 6798,
+      "velocity_scalar_dofs": 6014,
+      "velocity_nodes": 3007,
+      "pressure_dofs": 784,
+      "periodic_pairs": 74,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 440400,
+      "artificial_field_only": true
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N8",
+      "mixed_dofs": 1275,
+      "velocity_scalar_dofs": 1122,
+      "velocity_nodes": 561,
+      "pressure_dofs": 153,
+      "periodic_pairs": 39,
+      "raw_files_readback": 16,
+      "raw_file_bytes": 84944,
+      "artificial_field_only": true
+    }
+  ],
+  "formal_run_id": null,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null,
+  "prediction_permission": "HOLD"
+}

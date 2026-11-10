@@ -1,0 +1,32 @@
+{
+  "kind": "USER_RESOURCE_DECISION_EVIDENCE",
+  "recorded_at": "2026-11-04T16:56:04.775536+08:00",
+  "stage": "S4_T_TRANSVERSE_GRID_SUPPLEMENT",
+  "revision": "S4-TGE-PREP-v1",
+  "audit_id": "URV_S4_TGE_ZERO_v1_20261104_01",
+  "user_explicitly_authorized": true,
+  "user_instruction_verbatim": "现在授权3＋1并采用上述限制；生成合同和命令，由我手动启动",
+  "resource_decision_accepted": true,
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_call_free_disk_GiB": 8,
+    "output_budget_GiB_per_call": 4,
+    "native_call_cap_seconds": 300,
+    "field_reader_cap_seconds": 300
+  },
+  "resource_scope": "ONE_LIMITED_FAIL_STOP_ZERO_AUDIT_ATTEMPT_ONLY",
+  "limits_are_not_results": [
+    "per_process_address_space_8GiB is RLIMIT_AS, not measured RSS or whole-tree total",
+    "300s are per-call wait budgets; termination/cleanup/hash/file checks excluded",
+    "4x300s is not a whole-batch completion promise",
+    "no claim that 16515072 nodes plus the initial field read fit inside 8GiB"
+  ],
+  "automatic_adaptation_authorized": false,
+  "note": "Adopted verbatim from the user answer; any change of limit requires a new explicit user decision."
+}

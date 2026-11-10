@@ -1,0 +1,61 @@
+{
+  "protocol_id": "URV-S4T-SUP-v0.1-DRAFT",
+  "kind": "DRAFT_RULES_NOT_EXECUTION_CONTRACT",
+  "adopted": false,
+  "original_spec_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/common/acceptance_spec.json",
+  "original_spec_sha256": "ee7a3212d097be699c0d53d3cdcf4e1c558829bfcacb7c4309bd9d0f932f04a8",
+  "original_spec_unchanged": true,
+  "original_grid_nm": [
+    5,
+    2.5,
+    1.25
+  ],
+  "supplement_grid_nm": [
+    2.5,
+    1.25,
+    0.625
+  ],
+  "original_S4_STAGE_ACCEPTED": false,
+  "original_failure_preserved": true,
+  "monotonic_positive_finite_order_required": true,
+  "relative_difference_floor": 1e-14,
+  "r": 2,
+  "Fs": 1.25,
+  "medium_fine_relative_change_max": 0.01,
+  "GCI_fine_estimate_max": 0.01,
+  "grid_result_field": "SUPPLEMENT_GRID_PASS",
+  "invalid_point_result": "NOT_EVALUABLE",
+  "passing_grid_does_not_qualify_reference": true,
+  "strict_error_bound_established": false,
+  "supplemental_new_formal_points": 1,
+  "actual_run_ids": [],
+  "approved_run_ids": [],
+  "implementation_authorized": false,
+  "simulation_authorized": false,
+  "all_native_execution_authority_closed": true,
+  "new_grid_config_created": false,
+  "S5_authorized": false,
+  "resource_proposal": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "proposed_address_space_GiB": 16,
+    "required_MemAvailable_GiB": 20,
+    "required_initial_disk_GiB": 100,
+    "required_before_each_child_disk_GiB": 32,
+    "output_budget_GiB_per_identity": 16,
+    "native_zero_caps_seconds": {
+      "describe": 120,
+      "precheck": 1800,
+      "initialize": 3600
+    },
+    "initial_field_readback_cap_seconds": 3600,
+    "PERF_wall_cap_seconds": 7200,
+    "PERF_first_observed_target_step": 1024,
+    "formal_wall_cap_seconds_candidate": 172800,
+    "formal_checker_cap_seconds_candidate": 14400,
+    "caps_are_unadopted_not_authority": true
+  },
+  "current_resource_snapshot_is_not_launch_approval": true
+}

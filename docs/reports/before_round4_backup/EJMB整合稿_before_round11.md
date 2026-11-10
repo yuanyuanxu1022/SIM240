@@ -1,0 +1,595 @@
+# EJMB 英文整合工作稿（2026-10-19）
+
+**作者与导师审阅稿；submission_ready=false。** 当前按用户授权的推荐，以European Journal of Mechanics – B/Fluids为写作主目标，常规Research Article。2025公开资料列工程技术大类三区，校方最终口径待核。选择依据见同日选刊报告顶部更新。
+
+本文件把现有五章的英文正文整合为一份连续工作稿，补摘要与结论；原章、原始结果、V2和证据台账保持。沿用已有科学结论，不将整合操作当重新数值验收。正文的罗马章节、方程/表号及参考文献编号沿用原章，尚未声称符合EJMB现行格式；该刊作者指南本轮访问受403限制。文献元数据沿用原台账，作者仍需核准。
+
+**当前待完成**：图件尚未嵌入并逐一核准；第V.C节的图9/10数据链与主链/敏感性标签仍待独立检查，不纳入本版摘要的定量承诺；历史构建来源绑定、全域数值不确定度及经验关系的独立预测检验仍有已披露限制。作者、单位、基金、贡献、利益冲突、数据可用性及AI使用声明须据实补齐。未投稿或联系期刊。
+
+以下英文为候选主稿；本页中文说明、来源记录和验证待办不进入投稿正文。
+
+---
+
+# Directional transport in confined rectangular grooves: errors and empirical correction of a local cubic-law closure
+
+## Abstract
+
+Reduced models of flow through patterned gaps require transport coefficients that retain the directional effects of unresolved grooves. We assess an arithmetic–harmonic local cubic-law closure using lattice Boltzmann calculations of steady, fully filled Newtonian flow between a planar wall and a periodically grooved wall. The groove period and width are 240 and 120 nm, respectively. Eighteen sampled geometries span gaps of 25–125 nm and groove depths of 25–120 nm. Relative to the discrete numerical references, the closure overestimates depth-integrated transport by 10.30–204.85% along the grooves and 8.11–54.19% across them. At a representative geometry, unequal errors in the principal coefficients produce a 9.20° discrepancy in the predicted flux direction under forcing at 45° to the grooves. A data-informed empirical correction reduces the maximum absolute residual to 10.5% over the 18 parallel-flow samples and 6.9% over the 15 transverse-flow samples with gaps of at least 50 nm. At a 25 nm gap and 100 nm groove depth, the transverse residual changes from −18.7% to −14.9% upon refinement from 5 to 2.5 nm. These two grids do not determine the convergence order, and no uncertainty bound is established for the full map. The correction is evaluated retrospectively rather than by independent prediction tests. The results quantify sampled directional closure discrepancies and delimit the evidence supporting the correction; they do not validate dynamic filling or transfer to real-resist behavior.
+
+## I. INTRODUCTION
+
+
+
+Jet-and-flash imprint lithography (J-FIL) forms nanoscale patterns by dispensing picoliter resist droplets onto a substrate, pressing a relief-patterned, UV-transparent template into them, letting the resist fill the features by capillary and viscous action, and curing under UV light [1]. Because features are reproduced by mechanical molding rather than optical imaging, resolution is set by the template and is largely independent of field size [1]. The step that limits throughput is not the patterning but the filling: a competitive process must close a field in roughly one second, and filling consumes the largest share of the throughput budget [1].
+
+Filling takes place at two very different length scales. Laterally, a drop pattern spans millimetres to centimetres; vertically, the gap between mold protrusions and substrate closes from micrometres to a few tens of nanometres while the grooves remain partly unfilled. Flow therefore occurs simultaneously in a thin film under the protrusions and in the deeper grooves between them, and the two paths offer very different resistance. Because the grooves run in one direction, that resistance is strongly directional: the resist spreads readily along the grooves and much more slowly across them, which controls where the front arrives first, how drops merge, and where gas is trapped — the origin of the void defects that limit yield [1,2].
+
+
+Simulating the flow at the scale of a full field while resolving each nanometre feature is neither feasible nor necessary: the lateral scale is five orders of magnitude larger than the gap, so the lubrication approximation applies [2,3]. The template pattern is then represented not by resolved geometry but by an effective permeability tensor $\mathbf{K}$ that maps the macroscopic pressure gradient to the depth-integrated flux,
+$$
+\mathbf{q} = -\frac{\mathbf{K}}{\mu}\nabla_\parallel p , \qquad
+\frac{\partial h}{\partial t} + \nabla_\parallel\!\cdot\mathbf{q} = 0 ,
+$$
+where $\mu$ is the resist viscosity and $\nabla_\parallel$ is the in-plane gradient [2,4]. For a line-and-space pattern the two principal components follow from two elementary rules: along the grooves the pressure gradient is common and the fluxes add, giving an arithmetic average of the cubic conductances; across them the flux is common and the pressure drops add, giving a harmonic average. For an equal-width line-and-space pattern ($w/P=1/2$) of period $P$, groove width $w$ and groove depth $d$, with a residual gap $h$ under the protrusions,
+
+$$
+K_\parallel^{\rm mod}=\frac{1}{24}\left[(h+d)^3+h^3\right],
+\qquad
+K_\perp^{\rm mod}=\frac{1}{6}\,\frac{(h+d)^3\,h^3}{(h+d)^3+h^3},
+\tag{1}
+$$
+
+as the transport coefficients per unit width. Equation (1) is the arithmetic–harmonic ("stripe") average, which is mathematically identical to the local cubic law routinely used for patterned channels [3]; the form employed in imprint modeling follows the same construction [2,4].
+
+Equation (1) is closed-form and needs no computation, but it is a one-dimensional construction applied to a two-dimensional cross-section, and it discards two things. The arithmetic average treats each stripe as an independent parallel-plate channel and omits the shear on a groove's vertical side walls; the harmonic average treats protrusion and groove as two resistors in series and omits the extra dissipation where the flow contracts into and expands out of the groove. These omissions are candidate explanations for the closure bias; the present comparisons do not separate their contributions.
+
+
+Ban and Bonnecaze [4] retained the effective-permeability description and added a structure-dependent capillary-pressure boundary condition from Surface Evolver calculations; their Eqs. (9) and (10) prescribe the directional permeability, whereas their Fig. 7 tests the capillary-pressure approximation. A later study [5] used the framework for droplet placement beneath templates with different pattern regions, including orthogonal line-and-space patterns whose principal components are simply interchanged — an application, not a validation, of directional coefficients for the fully filled cell considered here.
+
+These studies distinguish hydraulic transport from capillary driving. Droplet spreading depends on both, so agreement in front shape alone does not isolate the accuracy of the permeability closure; the present fixed-gap, fully filled calculations address that narrower hydraulic question without a moving interface. The literature search remains incomplete, and this is not a claim that no earlier resolved-flow comparison exists, nor that tensor transformations are a new physical result.
+
+The closure itself is not peculiar to imprint modeling. For a one-dimensional profile it is not merely analogous to the pressure flow factor of the average flow model of Patir and Cheng [12]: under a common definition of the variables, the two expressions are algebraically identical, and for a square wave the identity is exact. Whether the underlying Reynolds approximation is physically adequate for the present geometry is a separate question, examined in Sec. II and quantified in Sec. III. The resolved calculations evaluate the same functional — mean flux over mean gradient — under a different operator, Stokes rather than Reynolds, so the difference between the two is a property of the approximation and not of the averaging.
+
+The accuracy of that model has been examined in tribology for four decades, and the studies divide by their reference solution. Where the reference is the Reynolds equation itself — as in the original flow-factor determination [12] and in the comparison of averaging schemes for textured contacts [13] — the comparison measures the upscaling error alone, holding fixed the inability of that equation to represent the flow at a sharp corner. Where the reference is a resolved Stokes or Navier–Stokes solution the two errors are measured together, as for longitudinal and transverse roughness in elastohydrodynamic contacts [14], a single surface defect [6] and Gaussian random roughness [7].
+
+For rectangular grooves a resolved comparison exists, but it is stated as a force rather than a transport coefficient. Teyssèdre et al. [15] solved the Stokes problem by finite elements on a rectangular line grating — the present geometry — for shape ratios up to $h/L=2.4$ spanning the range used here, and found the imprint force to exceed the lubrication estimate by a factor of two to eighty, rising as the gap opens; they concluded that simplified models cannot be used above $h/L=0.1$, and the same work simulated capillary filling with a moving contact line. That ratio and the one reported below are not the same measurement — theirs is a squeeze flow in which the polymer must turn into the cavity, ours a pressure-driven conductance at fixed geometry. Both are consistent with the corner flow that the lubrication approximation omits, but neither isolates it: a global force or conductance cannot localise the source of the discrepancy. What the study does not report is the transport tensor itself: neither principal value, nor their ratio.
+
+Anisotropic filling of rectangular cavities has been observed directly [16], the front advancing faster along the cavity than across it, but it yields no coefficient. Models carrying an anisotropic $\mathbf{K}$ do exist [2,4,5], yet none examines the values of $k_{xx}$ and $k_{yy}$ themselves; one handles a 90° change of pattern orientation by interchanging the two components [5], an operation that presumes the tensor transformation law rather than testing it. What is absent, therefore, is not the practice of checking an averaged model against a resolved solution, nor the recognition that the averaged model fails at these gaps, but a separately quantified error for each of the two principal coefficients on a sharp-edged geometry at finite gap, and how that error propagates into the squeeze-film pressure and the drainage it drives. An error in the anisotropy ratio alone does not answer that question, because the two components enter the lubrication flux with separate weights along and across the pattern.
+
+This is not a criticism of the strategy: replacing several thousand sub-resolution features by an effective tensor is the only tractable route, and it has been productive. The contribution sought here is therefore not the comparison methodology but the error law for this geometry, at the gaps traversed during filling, and its correction.
+
+
+One might expect the gap to be filled analytically instead. For smoothly undulating walls it is: spectral and domain-perturbation treatments give closed-form permeability tensors for grooves of arbitrary depth [8,9] and recover the classical thin- and thick-channel limits. They rest, however, on a Fourier representation of the wall shape, which the rectangular profile does not admit in a usable way: its coefficients decay only as $1/n$, so every spectral sum weighted by a single power of $n$ fails to converge, including $S_1=\sum_n n\coth(nH)\,|g_n|^2$ on which the leading correction depends [8] ($H$ the channel half-gap, $g_n$ the wall Fourier coefficients). Dewangan and Datta state accordingly that their approach "does not specialize meaningfully to the rectangular topography, because of its jump discontinuity" [8]. The difficulty is general: in a second-order domain-perturbation analysis of periodic surfaces an ideal square-groove profile gives coefficients decaying as $1/m$, two diagonal entries of the mobility tensor diverge, the predicted slip becomes unbounded, and the authors conclude that the mobility formula "should not be used for surfaces with corners or vertical slopes", sharpening this to the requirement that the surface be twice continuously differentiable [10].
+
+This is a statement about a class of asymptotic methods, not a claim that a rectangular groove admits no analytical description: very shallow corrugations, or the thin-film limit in which the groove merely adds a slip length, remain accessible. It does mean that for the present geometry — groove depth comparable to groove width, under a residual gap of the same order — the cited smooth-profile approximations do not establish the accuracy of the closure; explicit-geometry numerical solutions are one route to assessing it, and others are not excluded. The slender-gap premise fails as well: with $h/P\approx0.31$ at the representative fixed gap and $d/w$ of order unity, neither asymptote applies.
+
+
+This paper evaluates the depth-integrated transport tensor for steady, fully filled flow in explicitly represented periodic rectangular grooves of period $P=240$ nm and width $w=120$ nm. Eighteen sampled geometries span $h=25$–$125$ nm and $d=25$–$120$ nm without forming a complete grid; the error map contains 36 principal-direction calculations. The case inventory, the refinement and viscosity checks, and the audit of existing output are given in Secs. II and III.
+
+Three conclusions follow within this scope.
+
+(i) *The original closure overestimates both transport components at every sampled geometry.* Relative to the computed coefficients, its errors range from +10.30% to +204.85% along the grooves and from +8.11% to +54.19% across them. At $h=75$ nm and $d=100$ nm, it predicts an anisotropy ratio of 3.70, compared with 2.21 from the resolved calculation. These are observed sample discrepancies, not universal bounds over a continuous parameter domain; the numerical reference retains geometry-dependent discretization uncertainty.
+
+(ii) *Unequal errors in the principal values also affect oblique flow direction.* With the driving angle $\theta$ and flux angle $\beta$ both measured from the groove axis, the linear tensor prediction is $\tan\beta=(K_\perp/K_\parallel)\tan\theta$. At $\theta=45^\circ$ for the reference geometry, the DNS principal values predict $\beta=24.3424^\circ$, whereas the original closure predicts $15.1412^\circ$, a difference of $-9.2012^\circ$. The six oblique-drive simulations test the tensor relation using DNS principal values. They do not validate the original closure values, rotated-wall discretizations, or a moving liquid front.
+
+(iii) *A data-informed empirical revision reduces sampled residuals, without establishing a continuous-domain prediction guarantee.* The original correction was fitted on nine geometries, $h\in\{50,75,125\}$ nm and $d\in\{25,50,100\}$ nm,
+$$
+F_\parallel^{\rm V1}=\frac{1}{1+1.7207(d/H_{\rm ref})^{1.8046}},
+\qquad
+F_\perp^{\rm V1}=\frac{1}{1+0.5276(d/w)^{0.8259}},
+\quad H_{\rm ref}=h+d/2.
+\tag{2a}
+$$
+At the withheld depth $d=75$ nm its maximum absolute residuals were about 17% parallel and 4% perpendicular, but the parallel residual reaches +28.09% at the calibration point $h=125$, $d=100$ nm and +38.58% at $h=125$, $d=120$ nm, so a continuous-domain ±20% claim is unsupported.
+
+The current relation adopted for this manuscript is the revised model V2,
+$$
+F_\parallel^{\rm V2}=\frac{1}{1+1.7685(d/w)^{1.6331}},
+\qquad
+F_\perp^{\rm V2}=\frac{1}{1+0.4900(d/w)^{0.6990}}.
+\tag{2b}
+$$
+The accompanying implementation minimizes the maximum absolute relative transport residual on the original nine calibration geometries. It also reports a least-squares sensitivity comparison. Evaluation of the rounded coefficients in Eq. (2b) gives maximum absolute residuals of 10.505% across the 18 sampled parallel geometries and 6.921% across the 15 sampled perpendicular geometries with $h\ge50$ nm. The excluded perpendicular point at $h=25$, $d=100$ nm has a residual of −18.705% on the $5$ nm main map and −14.936% on a $2.5$ nm refinement of the same geometry. Exclusion is a reported limitation, not evidence of validated accuracy below that gap.
+
+The depth $d=75$ nm is excluded from coefficient estimation, but its results were available during model selection; its V2 residuals, approximately −8.45% to +9.33% parallel and −1.19% to +3.86% perpendicular, are therefore retrospective withheld-from-fit checks, not independent final tests. The variable, the fitting objective and the proposed scope were all chosen with extension data available, so V2 is a data-informed revision even though it is now the adopted formula. The residuals retain a dependence on $h$ — a one-variable fit is not evidence that $h$ has no physical influence — so the reported maxima describe discrete samples and do not support extrapolation beyond the sampled gaps, depths, widths or duty cycles. Side-wall shear and redistribution near steps remain plausible mechanisms for the directional differences, but the fits and field images do not separate their contributions.
+
+
+All results concern a continuous, incompressible, Newtonian liquid with no-slip walls in a fixed, fully filled, ideal periodic geometry. The viscosity independence of the extracted coefficients is checked in Sec. III; it is a consistency check of the assumed linear transport law, not a validation for all resists.
+
+Fixed-gap coefficients may supply local inputs to a future slowly varying squeeze-flow model, provided its scale separation, conservation law and boundary conditions are independently justified. The present calculations do not validate dynamic filling, free surfaces, wetting, trapped gas, real-resist slip or rheology, pattern junctions, or other geometries. The single-phase restriction is not cosmetic: once a gas phase occupies part of the void, saturation enters as an independent variable, the coefficient ceases to be a property of the geometry alone and becomes a relative permeability requiring calibration against a saturation curve [11], and a viscosity ratio and capillary number enter that this comparison does not contain. No independent same-geometry solver or experimental comparison is claimed.
+
+The remainder of the paper defines the model and extraction procedure, reports numerical verification and its provenance limits, presents the sampled discrepancies, and evaluates the correction. Mechanistic interpretation is offered as a hypothesis, not a completed dissipation decomposition.
+
+
+## II. PROBLEM STATEMENT AND METHODS
+
+### A. Geometry and scope
+
+The computational domain is one period of an infinite line-and-space pattern, shown in FIG. 1(b) and 1(c). A rigid mold carries rectangular ribs of width $P-w$ separated by grooves of width $w$; the ribs stand a distance $h$ above a flat, rigid substrate, so the groove depth measured from the rib face is $d$. The pattern repeats with period $P$ along $x$, and the grooves extend without bound along $y$. The resist is treated as a Newtonian liquid of density $\rho$ and dynamic viscosity $\mu$ that completely fills the available volume — the film of thickness $h$ beneath the ribs and the groove volume of depth $h+d$ — so that the calculation contains no gas phase and no free surface.
+
+The geometry is non-dimensionalized internally by the period, and two ratios fix the problem: the dimensionless gap $h/P$ and the groove aspect ratio $d/w$. All results are reported for the imprint-relevant period $P=240$ nm and groove width $w=120$ nm (so the duty cycle is $w/P=0.5$), with $h$ and $d$ varied over the ranges given in Sec. II E. The reference geometry used for illustration throughout the paper is $h=75$ nm, $d=100$ nm, for which $h/P=0.3125$.
+
+The calculations target low-inertia, low-compressibility flow. Reynolds number and lattice Mach number address different issues: low Mach number alone does not establish negligible inertia. The fixed-gap cell problem supplies transport coefficients; it does not by itself validate a quasi-static approximation to a moving imprint process.
+
+### B. Governing equations and the quasi-static decomposition
+
+At the scale of a printed field, the resist film obeys the Reynolds lubrication equation with an effective permeability tensor. Writing $H$ for the local gap, $\mathbf{q}$ for the depth-integrated flux per unit width and $\nabla_\parallel$ for the in-plane gradient,
+
+$$
+\frac{\partial H}{\partial t} + \nabla_\parallel\cdot\mathbf{q} = 0,
+\qquad
+\mathbf{q} = -\frac{\mathbf{K}}{\mu}\,\nabla_\parallel p ,
+\tag{3}
+$$
+
+which is the form used in imprint modeling [2,4] and is the two-scale reduction of the Stokes equations for a thin film.
+
+Equation (3) separates the problem into two parts. The tensor $\mathbf{K}(h,d)$ depends only on the local cross-section, while the evolution of the gap $H(t)$ and of the pressure field is set by the imposed closing motion and the boundary conditions at the liquid front. The present work determines $\mathbf{K}$ and nothing else: $h$ and $d$ are held fixed, the flow is driven by a uniform body force, and the steady state is computed. Using these coefficients in a transient lubrication solver [2,4,5] additionally requires appropriate scale separation, conservation and macroscopic boundary conditions; that coupled reduction is not validated here. A direct simulation of the closing gap would require resolving a moving boundary and a free surface, and would not separate the geometric error of $\mathbf{K}$ from the errors of the moving-boundary treatment.
+
+In the calculations the pressure gradient is imposed as a body force. A uniform acceleration $\mathbf{a}$ acting on a liquid of density $\rho$ is equivalent to a pressure gradient $\mathbf{G}=\rho\mathbf{a}$, so that
+
+$$
+\mathbf{J} = \frac{\mathbf{K}}{\mu}\,\mathbf{G}
+\quad\Longrightarrow\quad
+K = \frac{\mu\,J}{G} = \frac{\mu\,J}{\rho\,|\mathbf{a}|},
+\tag{4}
+$$
+
+where $\mathbf{J}$ is the flux per unit width obtained by integrating the velocity over the fluid volume and dividing by the plan area. With $\rho=1000$ kg m⁻³ and $|\mathbf{a}|=10^{5}$ m s⁻², the imposed gradient is $G=10^{8}$ Pa m⁻¹, which produces gap-averaged velocities of order $10^{-4}$ m s⁻¹ and keeps the lattice Mach number far below its stability limit. Since $\mathbf{K}$ is extracted from a linear constitutive relation, its value is independent of the magnitude of $\mathbf{G}$ provided the flow remains in the Stokes regime; the available consistency checks and their limits are reported in Sec. III E.
+
+### C. Lattice Boltzmann formulation
+
+The fixed-gap cell flow used to determine the coefficients in Eq. (3) is solved in the resolved geometry with the lattice Boltzmann method (LBM), using OpenLB [17], at the checked-out commit `882924a9cfc8dcdf82909e39530789cb6f5ebcc4` (the tree self-identifies as v1.9.0 in its CITATION.cff and carries no release tag; a label "1.8r1" cannot be confirmed from the present tree). The historical build binding of each earlier run to this commit is not fully proven and is reported as a source-provenance limitation. The D3Q19 velocity set with the force term is used, and the collision operator is the single-relaxation-time BGK model with a body-force correction (ForcedBGK). The evolution equation for the distribution function $f_i$ is
+
+$$
+f_i(\mathbf{x}+\mathbf{c}_i\Delta t,\, t+\Delta t)
+= f_i(\mathbf{x},t)
+- \frac{1}{\tau}\left[f_i(\mathbf{x},t)-f_i^{\rm eq}(\mathbf{x},t)\right]
++ \Delta t\,F_i ,
+\tag{5}
+$$
+
+where $\tau$ is the relaxation time, $f_i^{\rm eq}$ the equilibrium distribution and $F_i$ the forcing term accounting for $\mathbf{a}$. The kinematic viscosity follows from the relaxation time as
+
+$$
+\nu = c_s^2\left(\tau-\tfrac12\right)\Delta t ,
+\qquad c_s^2=\tfrac13\frac{\Delta x^2}{\Delta t^2},
+\tag{6}
+$$
+
+so that with the grid spacing $\Delta x$ fixed by the geometry, $\Delta t$ and $\tau$ are tied by the kinematic viscosity. The relaxation parameter $\tau=1$ (dimensionless) is used throughout: it places the solution away from the stability boundary at $\tau\to\tfrac12$. The present work does not separately quantify the bulk and boundary contributions to the numerical error. The main map runs at $\nu=10^{-6}$ m² s⁻¹ ($\mu=1$ mPa·s at $\rho=1000$ kg m⁻³), for which $\Delta x=5$ nm gives $\Delta t=4.1667\times10^{-12}$ s and a lattice viscosity $\nu^\ast=\nu\Delta t/\Delta x^2=1/6$. The refinement batches keep $\nu=10^{-6}$ m² s⁻¹ with $\Delta t=1.0417\times10^{-12}$ s; the two viscosity-check cases use $\nu=1.5\times10^{-5}$ m² s⁻¹ ($\mu=15$ mPa·s) with $\Delta t=2.7778\times10^{-13}$ s.
+
+Solid walls are treated with the interpolated bounce-back scheme of Bouzidi, Firdaouss and Lallemand [18], as implemented in OpenLB. The wall position is supplied analytically: the fluid indicator computes the intersection of every lattice link with the exact groove profile, rather than rasterizing the geometry onto the grid.
+
+This matters here for a quantitative reason. The grid spacing $\Delta x=5$ nm divides every value of $h$ and $d$ used in this study, so in every computed case each wall lies exactly halfway between a fluid node and a solid node — a fractional distance $q=1/2$ from the fluid node. The code enforces this by snapping round-off-sized deviations of the computed intersection to exactly $q=1/2$, so that OpenLB selects the same branch of the interpolated scheme in every cell. At $q=1/2$ the scheme reduces to the elementary half-way bounce-back, which reproduces a planar, axis-aligned no-slip wall without displacing it.
+
+Consider a geometric discretization or wall-placement strategy under which the normal position of a surface is displaced by as much as $\Delta x/2=2.5$ nm. At that displacement the error would be 3.3% in $h$ and 2.5% in $d$ for the reference geometry, and 10% for the thinnest gap computed, $h=25$ nm. A specific voxel implementation and its actual displacement are not analysed here; the figures are the worst-case arithmetic of such a displacement. An error of that size in the geometry is comparable to the closure error the paper sets out to measure at the shallow end of the matrix, and it would enter as a systematic bias correlated with $h$ — precisely the variable whose effect is being quantified. The combination of analytic wall location and $q=1/2$ landing therefore does not improve the order of accuracy; its benefit is to keep a geometric bias of this magnitude from entering the comparison. That the bias is actually of this size in a specific voxel implementation is not demonstrated here, so this is an argument about the wall-location strategy, not a measured comparison between the two discretizations.
+
+### D. Domain, discretization, and boundary conditions
+
+The domain is one period in $x$ and $y$, discretized with $\Delta x=5$ nm, giving $48\times48$ nodes per period and a working resolution of $h/\Delta x=15$ at the reference geometry. The number of periods is therefore one in each direction, which is legitimate because the pattern is periodic and the flow is driven uniformly: a single period with periodic boundary conditions is an exact representation, not an approximation. Periodicity is imposed on all three velocity components and on the density at the $x$ and $y$ faces. The substrate and the mold surfaces are no-slip, imposed with the interpolated bounce-back scheme described above. In the $z$ direction the domain is closed by the substrate at $z=0$ and by the mold surface at $z=h$ over the ribs and $z=h+d$ over the grooves; there is no free surface and no inflow or outflow boundary, since the driving is volumetric.
+
+The production grid is 5 nm, with 15 cells across the reference gap and 20 across its groove depth. At the added h=25 nm samples, only five grid intervals span the gap. Existing refinement evidence is reported in Sec. III for specific geometries; local corner-field convergence and a full-map error bound have not been established.
+
+Steady state is declared when the flux has converged in a window of 1000 consecutive steps. For the principal-direction (P/T) cases, the relative standard deviation of the main flux must fall below $10^{-6}$ and its relative span below $5\times10^{-6}$, with the absolute cross-stream flux bounded by $10^{-12}$ m²/s. For the oblique-drive (D3) cases, which carry a genuine cross-stream flow, the same two requirements on the main flux apply (relative standard deviation $\le10^{-6}$, relative span $\le5\times10^{-6}$), but the cross-stream flux is judged by its **relative standard deviation** $\le10^{-6}$ instead of by an absolute bound. A run is stopped at 60 000 steps if the criterion is not reached. In practice all reported cases converged well within the limit.
+
+### E. Parameter matrix
+
+The 52 existing formal runs comprise 36 principal-direction map cases at 18 geometries, eight refinement runs, two viscosity checks and six oblique-drive checks. The map is not a complete grid over its enclosing parameter ranges. The nine calibration geometries belong to the original V1 model development. The d=75 nm batch provides the original V1 withheld-depth check; d=120 nm and h=25 nm provide extension checks. V2 is now the adopted empirical formula; these already visible batches remain retrospective evaluation data, not independent final tests. Selected output checks are documented in Sec. III F for the original 48 runs and in Sec. III G2 for the four added refinement runs; they do not establish complete source/build provenance.
+
+**TABLE I.** Existing calculations at P=240 nm and w=120 nm. Counts are runs, not geometries. The grid is 5 nm except in the refinement batch. P and T denote parallel and perpendicular driving; oblique cases instead change the driving vector with the groove fixed.
+
+| Batch | Geometry (h,d in nm) | Runs | Role |
+|---|---|---:|---|
+| V1 calibration | h={50,75,125}, d={25,50,100} | 18 | Nine geometries, P/T |
+| Original V1 holdout | h={50,75,125}, d=75 | 6 | Three withheld-depth geometries, P/T |
+| Depth extension | h={50,75,125}, d=120 | 6 | Three extension geometries, P/T |
+| Gap extension | h=25, d={25,50,100} | 6 | Three extension geometries, P/T |
+| Refinement | (h,d)=(50,100) and (125,25) | 4 | 2.5 nm, P/T; not new geometries |
+| Refinement (added) | (h,d)=(25,100) and (125,120) | 4 | 2.5 nm, P/T; grid-sensitivity only, not new geometries |
+| Oblique driving | h={50,75}, d=100 | 6 | Driving angles 30°,45°,60° from Y |
+| Viscosity | h=75, d=100 | 2 | μ=15 mPa s, P/T |
+| Total | | 52 | |
+
+### F. Verification scope
+
+Verification is reported in Sec. III. The analytic limit, geometry-specific refinement, tensor/viscosity consistency and output audit are distinct checks. Neither steady-state convergence nor agreement of internal consistency relations establishes a universal spatial-error bound or physical validation. For reference, TABLE II retains the archived fine-grid estimates, conditional on the batch-provenance reconciliation in Sec. III D3; they must not be assigned to the 5 nm production grid.
+
+**TABLE II.** Archived three-grid estimates at h=75 nm, d=100 nm. Fine grid: 1.25 nm, not 5 nm.
+
+| Quantity | Observed order | Fine-grid GCI (%) |
+|---|---:|---:|
+| Parallel K | 1.513 | 0.125 |
+| Perpendicular K | 1.256 | 0.551 |
+| Anisotropy ratio | 1.098 | 0.465 |
+
+### G. From coefficients to the closure comparison
+
+**Relation to the flow factor of the average flow model.** Before the normalization is fixed, the object being compared has to be identified. The closure of Eq. (1) is not merely analogous to the pressure flow factor of Patir and Cheng [12]: under a common definition it is the same quantity, by algebraic identity.
+
+The flow factor is defined as the ratio of the mean unit flow over a rough element to that of a smooth element at the same mean pressure gradient,
+$$\phi_x=\frac{\langle q_x\rangle}{q_{\rm smooth}},\qquad q_{\rm smooth}=-\frac{h^3}{12\mu}\frac{\partial \bar p}{\partial x}.$$
+Writing it as a permeability per unit width in the form of Eq. (3), $K^{\rm PC}_x\equiv \phi_x h^3/12$, the two general relations of that model are
+$$
+\phi_x=\frac{E(h_T^3)}{h^3}\ \ \text{(longitudinal)},\qquad
+\phi_x=\frac{1}{h^3E\!\left(1/h_T^3\right)}\ \ \text{(transverse)} .
+$$
+For a square wave of equal land and groove, $h_T=h$ over half the period and $h_T=h+d$ over the other half, so that
+$E(h_T^3)=\tfrac12[h^3+(h+d)^3]$ and $E(1/h_T^3)=\tfrac12[h^{-3}+(h+d)^{-3}]$. Substitution gives
+$$
+K^{\rm PC}_\parallel=\frac{1}{12}\cdot\frac{h^3+(h+d)^3}{2},
+\qquad
+K^{\rm PC}_\perp=\frac{1}{12}\cdot\frac{2}{h^{-3}+(h+d)^{-3}},
+$$
+which are algebraically the two entries of Eq. (1). The identity was also verified numerically on twelve of the sampled geometries: substituting the tabulated $h$ and $d$ gives a relative difference of zero to double precision.
+
+**What the identity does and does not require.** The equality above is an algebraic identity between the arithmetic–harmonic local-cubic expressions and Eq. (1); it needs no physical assumption beyond the common definition of the variables. It therefore does not, by itself, establish that the underlying Reynolds approximation is physically adequate for the present geometry, nor does it locate where that approximation fails.
+
+The derivation of both sides does, however, presuppose a common modelling setting: (i) a one-dimensional topography, so that the two principal directions decouple; (ii) the Reynolds cell model itself; (iii) a single Newtonian phase with no slip and no free surface; and (iv) the same reference height and per-unit-width normalization on both sides. Conditions (i), (iii) and (iv) are properties of this study's problem statement and definitions. Condition (ii) is a physical approximation whose adequacy for a geometry with sharp steps is exactly what the resolved calculations probe: Eq. (8) quantifies the departure of the Reynolds-derived flow factor from the resolved flow, and does not presuppose that the departure is zero anywhere, nor attribute it to a particular location.
+
+**What the resolved calculations add.** Because Eq. (1) equals $K^{\rm PC}$, and because $K^{\rm DNS}$ is obtained from the same functional — mean flux divided by mean gradient — but under a different operator, the relative error of Eq. (8) measures the departure of the Reynolds-derived flow factor from the Stokes solution, with the upscaling step held fixed. It is therefore not a re-expression of a known coefficient. It is a second evaluation of that coefficient with a more faithful operator, and it isolates the error that the coefficient carries in this geometry.
+
+Two normalization choices must be stated explicitly, because the comparison with Eq. (1) is only meaningful if both sides are defined the same way.
+
+First, the volume-equivalent height. For a partly grooved cross-section the natural reference height is not the gap $h$ but the height of the uniform film holding the same liquid volume per unit plan area,
+
+$$
+H_{\rm ref} = \frac{V}{A_{\rm plan}} = h + \varphi d ,
+\qquad \varphi=\frac{w}{P},
+\tag{7}
+$$
+
+with $\varphi=0.5$ for the present geometry. $H_{\rm ref}$ therefore varies with each geometry — from $37.5$ nm to $185$ nm across the matrix — and is computed pointwise rather than fixed at the reference value of $125$ nm.
+
+Second, the closure of Eq. (1) is evaluated with the same $h$ and $d$ as the simulation and compared to the computed $K$ through the relative error
+
+$$
+E=\frac{K^{\rm mod}-K^{\rm DNS}}{K^{\rm DNS}},
+\tag{8}
+$$
+
+reported separately for each principal direction. Because both $K^{\rm mod}$ and $K^{\rm DNS}$ are computed for the same geometry, the same driving and the same normalization, $E$ measures the discrepancy relative to the discrete numerical reference; interpreting it as closure error also requires accounting for the uncertainty of that reference. It absorbs neither a difference in the definition of $K$ nor a difference in the reference height, and it does not depend on the viscosity (Sec. III E).
+
+Equation (1) is reproduced here in the form used for comparison, with $\varphi=1/2$ evaluated explicitly:
+
+$$
+K_\parallel^{\rm mod}=\frac{1}{24}\left[(h+d)^3+h^3\right],
+\qquad
+K_\perp^{\rm mod}=\frac{1}{6}\,\frac{(h+d)^3h^3}{(h+d)^3+h^3}.
+\tag{9}
+$$
+
+The two expressions are the arithmetic and harmonic averages of the cubic conductance over the period, and the prefactors $1/24$ and $1/6$ follow from the parallel-plate conductance $h^3/12$ combined with the $1/2$ weighting of the two halves of the period. They are the same construction as the closed forms used in imprint modeling [2,4], written per unit width.
+
+## III. NUMERICAL VERIFICATION AND LIMITATIONS
+
+### A. Verification strategy
+
+Verification is separated into an analytic-limit check, geometry-specific discretization checks, internal tensor/viscosity consistency checks and an existing-output audit. The parallel-plate benchmark is not a nonzero-groove reference solution. Spot refinement does not establish a full-map error bound. Tensor predictions use principal coefficients obtained with the same solver and therefore are not independent external validation. The audit checks recorded outputs, not a complete historical source/build/environment chain.
+
+The archived fine transverse run failed its mass gate. A later scheme-C run has passing raw output, but its historically cited independent release document is currently unavailable at the recorded path (Sec. III D3). Neither record is silently substituted for the other. No same-geometry cross-solver or experimental comparison has been performed.
+
+### B. Test configurations
+
+Three configurations are used, chosen so that each isolates one aspect of the numerical error.
+
+**Smooth75** is the parallel-plate limit: the groove is removed ($d=0$), leaving two flat plates separated by $h=75$ nm. The exact mobility is $K_0=h^3/12=3.515625\times10^{-23}$ m³, so this case tests the bulk solver and the wall treatment against a closed-form answer with no geometric complication.
+
+**EX240_parallel and EX240_perpendicular** are the reference patterned geometry ($h=75$ nm, $d=100$ nm) driven along and across the grooves. These include corners and steps absent from the planar benchmark and therefore require separate refinement evidence.
+
+All three are computed on the same three grids, $\Delta x=5$, $2.5$ and $1.25$ nm. The nominal physical volume is held consistent by the analytic geometry indicator while the fluid-node count changes with refinement, so that the grid sequence compares discretizations of the same physical domain rather than slightly different ones.
+
+### C. Layer I: the analytic limit
+
+On Smooth75 the computed mobility is, at the three grids,
+
+| $\Delta x$ (nm) | $K$ (m³) | $K_0$ (m³) | Relative error | Error ratio |
+|---:|---:|---:|---:|---:|
+| 5 | $3.531250\times10^{-23}$ | $3.515625\times10^{-23}$ | $0.444\%$ | — |
+| 2.5 | $3.519529\times10^{-23}$ | $3.515625\times10^{-23}$ | $0.111\%$ | 4.00 |
+| 1.25 | $3.516580\times10^{-23}$ | $3.515625\times10^{-23}$ | $0.0272\%$ | 4.08 |
+
+The error falls by a factor of four for each halving of the grid, which is the signature of a second-order scheme. This result deserves a precise interpretation, because it is easy to over-claim from it.
+
+The second-order behaviour here is the behaviour of the *bulk* discretization applied to a parabolic velocity profile, together with a wall that lies exactly halfway between nodes ($q=1/2$, section 2.3). At $q=1/2$ the interpolated bounce-back reduces to the elementary half-way bounce-back, which introduces no wall displacement. The integrated transport error is, however, not attributable to the interior scheme alone: of the total $0.4444\%$ at $\Delta x=5$ nm, about $0.2222\%$ ($=1/(2n^2)$ with $n=h/\Delta x=15$) comes from evaluating the flux integral by the mid-point rule on an exact parabola, and the remainder is the departure of the sampled velocity field from the exact profile. Placing the wall correctly is not the same as having zero boundary-discretization error. The remainder is not further decomposed here into bulk and boundary contributions; what is established is the observed order of the total integrated transport error in this configuration, not a completed attribution of its sources. It does **not** mean that the interpolated bounce-back scheme is globally second order for walls at arbitrary fractional distances — OpenLB documents its linear-interpolation variant as first order, and nothing in the present calculations depends on that capability (section 2.3). The conclusion we draw is therefore narrow and defensible: for a straight, axis-aligned wall at $q=1/2$, the code reproduces the closed-form mobility to $0.44\%$ at the production grid and converges at second order under refinement.
+
+### D. Layer II: grid convergence and numerical uncertainty
+#### 1. Three-grid results
+
+TABLE III preserves the archived three-grid numerical values, subject to the provenance limits in Sec. III D3. Here $\Gamma_i=K_i/K_{\rm smooth}$ compares with the numerically computed flat gap of height h; it is not the equal-volume efficiency $\eta_i=K_i/(H_{\rm ref}^3/12)$. Monotonic changes support extrapolation checks but do not alone prove asymptotic convergence.
+
+**TABLE III.** Transport coefficients at three grids, reference geometry.
+
+| $\Delta x$ (nm) | $K_{\rm smooth}$ (m³) | $K_\parallel$ (m³) | $K_\perp$ (m³) | $\Gamma_\parallel$ | $\Gamma_\perp$ | $K_\parallel/K_\perp$ |
+|---:|---:|---:|---:|---:|---:|---:|
+| 5 | $3.531250\times10^{-23}$ | $9.834076\times10^{-23}$ | $4.449022\times10^{-23}$ | 2.78487 | 1.25990 | 2.21039 |
+| 2.5 | $3.519529\times10^{-23}$ | $9.782424\times10^{-23}$ | $4.385294\times10^{-23}$ | 2.77947 | 1.24599 | 2.23073 |
+| 1.25 | $3.516580\times10^{-23}$ | $9.764326\times10^{-23}$ | $4.358613\times10^{-23}$ | 2.77665 | 1.23945 | 2.24024 |
+
+#### 2. Richardson extrapolation and GCI
+
+Apparent orders and Grid Convergence Indices [21] are given in TABLE IV, computed with the standard three-grid expressions using a refinement ratio of two.
+
+**TABLE IV.** Observed order of convergence and GCI.
+
+| Quantity | Apparent order $p$ | Extrapolated value | ${\rm GCI}_{\rm fine}$ | ${\rm GCI}_{\rm medium}$ | Asymptotic ratio |
+|---|---:|---:|---:|---:|---:|
+| $K_{\rm smooth}$ | 1.991 | $3.515588\times10^{-23}$ | 0.035% | 0.140% | 0.9992 |
+| $K_\parallel$ | 1.513 | $9.754564\times10^{-23}$ | 0.125% | 0.356% | 0.9981 |
+| $K_\perp$ | 1.256 | $4.339400\times10^{-23}$ | 0.551% | 1.308% | 0.9939 |
+| $\Gamma_\parallel$ | 0.940 | 2.77359 | 0.138% | 0.265% | 0.9990 |
+| $\Gamma_\perp$ | 1.088 | 1.23364 | 0.586% | 1.239% | 0.9947 |
+| $K_\parallel/K_\perp$ | 1.098 | 2.24857 | 0.465% | 0.999% | 1.0043 |
+
+The archived asymptotic-ratio checks are near unity. These estimates apply to the reference geometry and depend on the accepted grid sequence. Fine and medium denote 1.25 and 2.5 nm, respectively, not the production grid. Applying the same fitted orders and safety factor of 1.25 gives conditional coarse-grid (5 nm) GCI estimates of approximately 1.01% for parallel K and 3.08% for perpendicular K. These are arithmetic estimates, not a new release or a bound for other geometries.
+
+The observed orders below two may reflect corner regularity, boundary treatment or other discretization effects. No local error decomposition establishes which contribution dominates. A boundary corner must not be labeled an established interior singularity merely from the observed integral convergence order.
+
+#### 3. Fine transverse reference: distinct evidence states
+
+The original EX240_perpendicular run at 1.25 nm remains a historical FAIL: its recorded maximum relative mass drift was $1.1967043900362632\times10^{-10}$ against a $10^{-10}$ threshold. More time steps and accumulated round-off are not, by themselves, a demonstrated root cause.
+
+The later scheme-C run, fine_t_C_20261014T151036+0800, has result PASS=true, independent exit code 0, revised-statistic maximum mass drift $2.2041198252431699\times10^{-14}$, legacy-ledger drift $1.1967043900362632\times10^{-10}$ and $K_\perp=4.3586133688217411\times10^{-23}$ m³. This establishes what those existing outputs report; it does not retroactively pass the old run.
+
+Project records cite an independent scheme-C release, but CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md is currently missing. The run's earlier completion record says formal_reference_accepted=false and scientific_review_required=true; it cannot override a later historical review, nor can an absent review be treated as reverified. A later environment hash mismatch is a third, separate status. Until the release record and exact input bindings are reconciled, TABLES III–IV remain archived, conditional estimates, not a newly accepted grid sequence. Perpendicular K, its smooth-reference gain and the anisotropy ratio all depend on the fine transverse input.
+
+#### 4. Independent refinement check
+
+Because the three-grid study is confined to one geometry, two further geometries were recomputed at $\Delta x=2.5$ nm: ($h=50$, $d=100$ nm) and ($h=125$, $d=25$ nm), which were extremes of the original calibration set but do not cover the later h=25 nm or d=120 nm extensions.
+
+**TABLE V.** Effect of halving the grid on the reported coefficients, two geometries.
+
+| Geometry | $K_\parallel$ change | $K_\perp$ change |
+|---|---:|---:|
+| $h=50$, $d=100$ nm | 0.52% | 2.16% |
+| $h=125$, $d=25$ nm | 0.33% | 0.72% |
+
+At these two geometries the perpendicular coefficient changes more than the parallel coefficient. The changes in TABLE V use the finer-grid value as denominator. They are two-grid sensitivities, not total discretization uncertainties, and their maximum cannot be assigned to every map point. Large closure discrepancies remain informative, but smaller differences and accuracy claims for a corrected model require geometry-matched uncertainty evidence.
+
+### E. Layer III: internal consistency
+
+**Oblique driving.** The D3 tests keep grooves aligned with Y and vary the force components as $a_x=a\sin\theta$, $a_y=a\cos\theta$. With $\theta$ and the flux angle $\beta$ measured from Y, the principal-coefficient prediction is $K_{\rm drive}=K_\parallel\cos^2\theta+K_\perp\sin^2\theta$ and $\tan\beta=(K_\perp/K_\parallel)\tan\theta$. Six runs at two geometries agree with the DNS-principal-value predictions within the reported $10^{-4}$% tolerance. This checks superposition and extraction within the same numerical model, not the Jain coefficients. At h=75 nm, d=100 nm and θ=45°, DNS principal values predict β=24.3424°; Jain predicts 15.1412°. Thus a correct tensor transformation does not imply a correct predicted flow direction. No rotated-wall or multi-pattern-junction test is claimed.
+
+**Viscosity.** At h=75 nm, d=100 nm, increasing μ from 1 to 15 mPa s changes K by −0.0006444% parallel and −0.0002832% perpendicular; the original-to-high-viscosity flux ratios are 15.0000967 and 15.0000425. This supports the expected scaling under the stated Newtonian, no-slip, low-inertia assumptions. It is not validation of arbitrary real-resist rheology, and the μ=1 field images must retain their actual physical labels.
+
+**Linearity and symmetry.** Low Mach number limits compressibility effects but does not establish negligible inertia or force–flux linearity. A small cross-component response under principal-axis forcing tests symmetry, not the slope over multiple force amplitudes. No full-map force-amplitude validation is inferred from these checks.
+
+### F. Layer IV: existing-output audit
+
+The earlier 120-quantity crosscheck concerned the original map subset and selected derived quantities, not all current reported quantities. The later audit reads per-run results, independent exit codes, manifests and diagnostics without calling the original analysis scripts. It covers 48 formal runs (dated 2026-10-18) and scans 228211 diagnostic rows. Selected checks found no violations of finite-value, mass, density, Mach, final convergence-window, section-consistency, geometry/q and fallback/unresolved-link requirements. It independently recomputes the closure comparison over all 36 map-direction cases and evaluates the published rounded correction formulas. It does not reproduce the later minimax optimization or establish complete historical source/build/environment binding.
+
+**TABLE VI.** Scope of the existing-output audit (historical, 2026-10-18; the four added refinement runs postdate it and are reported separately in Sec. III G2).
+
+| Group | Runs | Scope |
+|---|---:|---|
+| Error map | 36 | 18 geometries, two principal directions; closure/residual arithmetic |
+| Refinement | 4 | Two repeated geometries, 2.5 nm |
+| Viscosity | 2 | Reference geometry, μ=15 mPa s |
+| Oblique drive | 6 | Two geometries, three angles |
+| Total | 48 | Recorded results/exits/selected diagnostics, not new solver runs |
+
+### G. Remaining limits
+
+No independent solver or published nonzero-groove reference has been reproduced for the present geometry. The available checks support numerical credibility within their stated configurations, not proof that every map point is spatially converged. Refinement at $\Delta x=2.5$ nm now covers two additional geometries — (h,d)=(25,100) and (125,120) — reported as a grid-sensitivity comparison in Sec. III G2; the remaining extension points still lack geometry-matched refinement. Historical build/source provenance and the missing scheme-C release record remain unresolved.
+
+The correction-model evidence has a separate hierarchy: calibration residuals, the original V1 withheld-depth test, retrospective V2 evaluation, grouped internal cross-validation, and genuinely unseen-condition testing are not interchangeable. The latter two have not been completed in this revision. Neither a sample maximum nor a post hoc tolerance is a guaranteed continuous-domain prediction bound.
+
+### H. Numerical evidence summary
+
+**TABLE VII.** Available checks and their limits; not an additive uncertainty budget.
+
+| Check | Parallel K | Perpendicular K | Scope |
+|---|---:|---:|---|
+| 5→2.5 nm sensitivity | 0.33–0.52% | 0.72–2.16% | Only h50/d100 and h125/d25; finer-value denominator |
+| Archived fine-grid GCI | 0.125% | 0.551% | h75/d100, 1.25 nm; D3 provenance limitation |
+| Conditional coarse-grid GCI | ≈1.01% | ≈3.08% | h75/d100, 5 nm; same archived fit, not new release |
+| Iterative/operational gates | Selected checks passed | Selected checks passed | 48 existing formal runs; not spatial uncertainty |
+| Closure discrepancy | +10.30–+204.85% | +8.11–+54.19% | 18 sampled geometries, production grid |
+
+No combined full-map uncertainty is estimated from these heterogeneous checks. Wall-location auditing does not remove every boundary-discretization error, and Mach/mass diagnostics are not direct percentage error bars on K.
+
+### G2. Added geometry-specific refinement checks
+
+Four added formal runs refine $\Delta x$ from $5$ nm to $2.5$ nm at two geometries previously lacking matched refinement — (h,d)=(25,100) and (125,120) — one parallel and one perpendicular each. They are grid-sensitivity checks of already-computed geometries: they add runs, not new geometries, and do not enter the V2 fit (whose input remains the $5$ nm main map).
+
+| Geometry, direction | $K_{2.5}$ (m³) | $\Delta K = 100(K_{2.5}/K_5-1)$ |
+|---|---|---|
+| (25,100), parallel | $3.41697939\times10^{-23}$ | −0.3861 % |
+| (25,100), perpendicular | $2.12183696\times10^{-24}$ | −4.4307 % |
+| (125,120), parallel | $2.79020885\times10^{-22}$ | −0.4054 % |
+| (125,120), perpendicular | $1.84846080\times10^{-22}$ | −0.8182 % |
+
+All four saved time series pass the rechecked numerical gates (independent exit code 0): maximum relative mass drift $1.2185\times10^{-11}$, maximum Mach $2.0276\times10^{-7}$, maximum local density deviation $8.1980\times10^{-9}$, maximum final two-section relative difference $2.9444\times10^{-7}$, all below the thresholds of Sec. II. Recomputing $K=\nu J/a$ from the saved fluxes agrees to within $2.23\times10^{-16}$. On the $2.5$ nm grid, $\eta_\perp$ at (25,100) is $0.060354$ and the anisotropy is $A=16.1039$, versus $0.063153$ and $15.4500$ on the $5$ nm main map.
+
+A two-level comparison cannot measure the observed order of convergence, confirm the asymptotic regime, or yield a full-map error bound. The reported $-18.705\%$ residual at (25,100) perpendicular remains a $5$ nm main-map value; the $2.5$ nm value is $-14.936\%$. These two computed residuals are the quantities reported here. If a conditional extrapolation is quoted for orientation only, it must carry its assumption explicitly: $K_0(p)=K_{2.5}+(K_{2.5}-K_5)/(2^{p}-1)$ gives residuals of $-10.80\%$ ($p=1.00$), $-12.01\%$ ($p=1.26$), $-12.75\%$ ($p=1.51$) and $-13.60\%$ ($p=2.00$). Two grids cannot determine $p$, and none of these is a verified true value or an uncertainty bound.
+
+Evidence status: NUMERICAL_GATE — the saved diagnostics checked here pass. RESULT_PASS — insufficient (no independent solver or nonzero-groove reference). geometry_PASS — not independently re-verified (nominal dimensions and drive agree between grids; full material field and boundary links not rebuilt).
+
+## IV. DIRECTIONAL TRANSPORT IN THE RESOLVED GEOMETRY
+
+### A. What the solved flow gives
+
+We report first the resolved coefficients themselves, before any comparison with a closure. Two quantities are needed, $K_\parallel$ (transport along the grooves, driven along $y$) and $K_\perp$ (transport across the grooves, driven along $x$), obtained from Eq. (4) at steady state for the eighteen geometries of TABLE I, each in two principal directions (thirty-six runs). Both are quoted as $K$ in m³, consistent with the per-unit-width definition of Sec. II G. The volume-averaged velocity is $\bar u=V^{-1}\int_V u\,dV=J/H_{\rm ref}$, so conversion to the three-dimensional permeability used in porous-media and heat-pipe practice requires division by the equivalent-volume height, $K^{[\mathrm{m^2}]}=K^{[\mathrm{m^3}]}/H_{\rm ref}$, $H_{\rm ref}=h+\varphi d$ with $\varphi=w/P$; a period-averaged apparent velocity would require a separate declaration and is not used here.
+
+**FIG. 4** shows the result. Panel (a) gives $K_\parallel$ and $K_\perp$ against groove depth $d$ for each of the four gaps investigated; panel (b) gives their ratio.
+
+### B. The two components depend on different variables
+
+The most useful observation from FIG. 4 is not the magnitude of either coefficient but the distinct way each responds to the geometry.
+
+**The across-groove coefficient is dominated by the gap.** Over the sampled depth range $d=25$–$120$ nm, at fixed gap, $K_\perp$ varies only weakly with $d$: 1.037× at $h=25$ nm, 1.034× at 50 nm, 1.021× at 75 nm and 1.009× at 125 nm — the thinnest gap retains the largest (but still small) depth sensitivity. Within the sampled range, what controls $K_\perp$ is the gap $h$, and it does so strongly: $K_\perp$ rises by a factor of $87$ from $2.14\times10^{-24}$ m³ at $h=25$ nm to $1.86\times10^{-22}$ m³ at $h=125$ nm.
+
+**The along-groove coefficient depends on both.** $K_\parallel$ rises with $d$ at fixed $h$, and the rise is itself gap-dependent: from $d=25$ to $120$ nm at $h=50$ nm it grows by a factor of $3.55$, at $h=75$ nm by $2.13$, and at $h=125$ nm by only $1.39$. So the groove adds transport capacity along its axis chiefly when the gap above it is thin.
+
+This asymmetry admits a physical reading, which we state as a candidate interpretation rather than an established mechanism, because it organises what follows. One candidate is that **transport across the grooves must pass the groove mouth**, where the flow contracts into the groove on one side and expands out of it on the other; the resistance of such a contraction–expansion pair would belong to the mouth rather than to the volume behind it, so that a deeper groove would not widen the mouth. **Transport along the grooves runs inside the groove**, so its conductance would be set by the groove cross-section and would grow with $d$. The resolved coefficients reported above are spatially integrated quantities: they are consistent with this reading but cannot localise where the resistance lies, and they do not exclude competing explanations such as wall shear at the side walls or redistribution of the velocity field near the steps.
+
+### C. The anisotropy is dominated by the gap, with a depth contribution that grows at thin gaps
+
+Panel (b) renders the same statement as a ratio. Across the eighteen geometries the anisotropy spans $A=1.090$ to $15.45$ ($5$ nm production-grid maximum), a factor of fourteen. The gap is the dominant control: at fixed $d=100$ nm, $A$ falls from $15.45$ at $h=25$ nm to $2.210$ at $h=75$ nm and $1.432$ at $h=125$ nm. The depth is not ineffective, however: at fixed $h=125$ nm, $A$ rises from $1.090$ to $1.503$ as $d$ goes from 25 to 120 nm ($1.4\times$), while at fixed $h=25$ nm it rises from $2.282$ to $15.45$ as $d$ goes from 25 to 100 nm ($6.8\times$; $d=75$ and $d=120$ nm were not computed at this gap). Within the sampled range, gap and depth jointly set the anisotropy, and the depth contribution strengthens as the gap thins.
+
+Two limits bound the family of curves, and both are physically meaningful.
+
+- **$A\to1$ as $d\to0$.** With no groove the cross-section is a plane channel and the two directions are equivalent. The data approach this limit from above as $d$ becomes small at large gap: $A=1.090$ at $(h,d)=(125,25)$ nm.
+- **$A$ increases steadily as the gap thins within the sampled range.** The trend in panel (b) steepens as $h$ decreases within the sampled range, and the smallest gap computed, $h=25$ nm with $d=100$ nm, already gives $A=15.45$ on the $5$ nm production grid ($16.10$ at $\Delta x=2.5$ nm, Sec. III G2). We did not compute below 25 nm; whether $A$ diverges as $h\to0$ is not established and no extrapolation is made.
+
+The practical consequence is the one that matters for process design: **the directionality of transport in an imprint groove is controlled primarily by how thin the residual layer is, and the depth contribution strengthens as the gap thins.** A designer who wants to reduce directionality — to make the resist flow more evenly in both in-plane directions — reaches first for $h$; the depth is a secondary lever whose effect is largest in the thin-gap regime.
+
+### D. Equivalent-volume efficiency
+
+A quantity that makes the second point quantitative is the efficiency with which a given volume of groove contributes to transport. Let $H_{\rm ref}=h+\varphi d$ be the volume-equivalent height, Eq. (7), with $\varphi=w/P=0.5$. A plane channel of that height would have conductance $H_{\rm ref}^3/12$. The ratio
+
+$$
+\eta_{\alpha}=\frac{K_{\alpha}^{[\mathrm{m^3}]}}{H_{\rm ref}^{3}/12},\qquad \alpha=\parallel,\perp
+\tag{10}
+$$
+
+measures how much of the transport capacity implied by the volume is actually delivered. These are discrete numerical results for the conductance relative to an equal-volume plane channel; $\eta$ can exceed $1$ (a conductance ratio above the reference) and must not be read as a volume fraction.
+
+Over the eighteen sampled geometries, $\eta_\parallel$ ranges from $0.531$ to $1.147$ — at $h=25$ nm with $d=25$ and $50$ nm the grooved conductance exceeds that of the equal-volume plane channel ($1.112$ and $1.147$; at $d=100$ nm it falls back to $0.976$) — while $\eta_\perp$ collapses from $0.852$ at $(h,d)=(125,25)$ nm down to $0.063$ at $(25,100)$ nm, a factor of $13.5$. At the most extreme sampled point, the cross-groove conductance is only about $6\%$ of the equal-volume plane-channel reference.
+
+> **TABLE VIII.** Equivalent-volume efficiency, Eq. (10), at each of the eighteen computed geometries, from the $5$ nm production-grid main map. $\varphi=w/P=0.5$. Entries "$-$" denote geometries not computed; they must not be filled or interpolated.
+
+| $h$ (nm) | $d=25$ | $d=50$ | $d=75$ | $d=100$ | $d=120$ |
+|---|---|---|---|---|---|
+| | | **$\eta_\parallel$** | | | |
+| 25 | 1.112 | 1.147 | $-$ | 0.976 | $-$ |
+| 50 | 0.953 | 0.871 | 0.779 | 0.688 | 0.621 |
+| 75 | 0.927 | 0.811 | 0.700 | 0.604 | 0.539 |
+| 125 | 0.929 | 0.810 | 0.696 | 0.597 | 0.531 |
+| | | **$\eta_\perp$** | | | |
+| 25 | 0.487 | 0.212 | $-$ | 0.063 | $-$ |
+| 50 | 0.696 | 0.416 | 0.262 | 0.176 | 0.132 |
+| 75 | 0.780 | 0.533 | 0.375 | 0.273 | 0.217 |
+| 125 | 0.852 | 0.662 | 0.521 | 0.417 | 0.353 |
+
+At fixed $d$, $\eta_\parallel$ varies with $h$ by up to a factor of $1.6$ once the $h=25$ nm row is included, so it is not $h$-independent; the gap sensitivity is nevertheless stronger for $\eta_\perp$. At $d=100$ nm, for example, $\eta_\parallel$ varies by a factor of $1.63$ over the sampled gaps while $\eta_\perp$ varies by $6.61$; at no single depth does $\eta_\perp$ vary by more than a factor of $6.7$ over the sampled gaps. This is the same asymmetry as in Sec. IV B, expressed as a volume efficiency rather than a coefficient.
+
+### E. Summary of this section
+
+Three statements carry forward to the comparison with the closure.
+
+1. $K_\perp$ is dominated by $h$ and varies only weakly with $d$ within the sampled range (up to $1.037\times$ at $h=25$ nm, under $1.04\times$ elsewhere).
+2. $K_\parallel$ depends on both, and the contribution of groove depth is largest when the gap is thin.
+3. Consequently the anisotropy $A$ is dominated by the gap, with a depth contribution that strengthens at thin gaps: at $d=100$ nm it changes by a factor of $11$ as $h$ goes from 25 to 125 nm, whereas over the sampled depth range it changes by $1.4\times$ at $h=125$ nm ($d$ from 25 to 120 nm) and by $6.8\times$ at $h=25$ nm ($d$ from 25 to 100 nm).
+
+These are properties of the resolved flow and are established independently of any closure. Section V asks what a one-dimensional closure predicts for the same geometries, and why the two differ.
+
+
+## V. CLOSURE DISCREPANCIES, EMPIRICAL CORRECTION AND MODEL IMPLICATIONS
+
+### A. The Reynolds closure and the explicitly resolved cross-section
+
+The closure tested here is not an approximation adopted for convenience. For a one-dimensional profile it is an identity of the Reynolds approximation: Patir and Cheng obtained the arithmetic average along the flow and the harmonic average across it by comparing the stochastic Reynolds equation with the averaged one [12], and for a square wave the two reduce to the conductance pair of Eqs. (1). Within that approximation, and for this geometry, the averaging step therefore adds nothing of its own; Eqs. (1) state the exact conductance of a locally parallel flow.
+
+The resolved calculations and the Reynolds closure use the same definition of transport coefficient: viscosity times mean depth-integrated flux divided by the imposed gradient. Their relative discrepancy is $E_i=K_i^{\rm mod}/K_i^{\rm ref}-1$, where $K_i^{\rm ref}$ denotes the discrete numerical reference. The arithmetic–harmonic averaging step is exact within the stated one-dimensional Reynolds cell model; the comparison therefore tests that local closure against explicitly resolved flow. It does not remove the discretization uncertainty of the numerical reference or locate the discrepancy within the fluid domain.
+
+A global coefficient discrepancy does not identify its spatial origin. For the ideal fully developed Stokes flow along the grooves, $\mathbf u=(0,v(x,z),0)$ and $\mu(v_{xx}+v_{zz})=-G$. The local parallel-plate expression $v=Gz[H(x)-z]/(2\mu)$ drops $v_{xx}$; substitution into the full equation leaves a residual $GzH''(x)/2$. Wherever $H''(x)\ne0$, that expression is not a solution, even if the wall is smooth. This derivation illustrates why a local-cubic-law error need not require a corner. It neither measures the contribution of a particular term in the existing numerical fields nor provides a spatial dissipation budget.
+
+Mechanistic explanations remain hypotheses. The closure overestimates the conductance at every sampled geometry in both directions, but this sign does not identify where the discrepancy arises. Teyssèdre's related rectangular-grating squeeze-flow study [15] reported force ratios of two to eighty relative to its own Stefan-type lubrication estimate, with changes during filling and contact. Those ratios are neither measured relative to Eq. (1) nor obtained from the present fixed, fully filled cell. They establish relevant prior evidence of lubrication-model limitations, rather than a decomposition of the present error into corner, side-wall and velocity-redistribution contributions. Redistribution itself can change resistance, so it is not an alternative to added resistance.
+
+The adopted V2 relation is an empirical correction of the local cubic law. Its dependence on $d/w$ was selected with the extension data available, even though those data were excluded from coefficient estimation. Its reported residuals characterize the stated discrete samples; they are not bounds over a continuous domain or independent final-test results. The fit does not establish that the correction represents a corner contribution or that the physical dependence on $h$ has disappeared.
+
+### B. Why the stripe average is the primary comparison object
+
+The primary comparator is the arithmetic–harmonic closure used in the imprint models examined here [2,4,5]. It is an explicit baseline with the same geometric variables and transport definition after conversion. Other reductions are not excluded, but a quantitative comparison requires their geometry, fill state, boundary conditions and normalization to be matched.
+
+**The stripe average.** The arithmetic and harmonic averages of the cubic conductance, Eqs. (1), are built from $h^3$ over the land and $(h+d)^3$ over the groove. The gap appears in both, at the third power. This is the closure used for line-and-space patterns in imprint modelling [2,4,5].
+
+**Open-groove correlations.** A resistance correlation for an open, partially filled or capillary-fed groove cannot be transferred to a fully filled groove connected to a finite liquid layer merely because both cross-sections are rectangular. The original velocity basis, reference section, porosity, friction-factor convention and interface conditions must be established first. Those definitions have not been verified for the proposed heat-pipe comparator, so no calibrated error or representative friction–Reynolds value is quoted here.
+
+A specified correlation that contains only groove width and depth cannot describe all gap dependence if its remaining inputs are held fixed. That is an applicability and parameter-dependence issue, not a dimensional inconsistency: both expressions may have correct units. It does not prove that the correlation is accurate in its original setting or that no other closure can include the residual gap.
+
+The normalization also requires a definition, not just a change of units. With $J=Q/W$, $\bar U=Q/A_{\rm ref}$ and $J=KG/\mu$, the permeability based on $\bar U$ is $\kappa=K/L_{\rm ref}$, where $L_{\rm ref}=A_{\rm ref}/W$. The fluid-volume average used here gives $L_{\rm ref}=H_{\rm ref}=h+d/2$. Dividing by $P$ would instead define a reference section $WP$; that section is not automatically the available fluid section of this cell. Both sides of any comparison must use the same definition.
+
+For illustration, for the **parallel (along-groove) component** the archived diagnostic at $d=25$ nm gives a fixed-depth spread of approximately 41.2 when normalized with $P$, and 11.2 with $H_{\rm ref}$; at $d=120$ nm the corresponding spreads are approximately 4.1 and 2.4. These are normalization-dependent transformations of the present coefficients, not measured friction factors or calibrated errors of a heat-pipe model. The $d=75$ and $120$ nm groups have sampled gaps of 50, 75 and 125 nm, and do not include 25 nm. The existing fRe plot is therefore excluded from quantitative model validation pending definition and caption reconciliation.
+
+The stripe average is retained because it has a directly documented imprint-model application and a reproducible definition for the present equal-width pattern. The error map evaluates that baseline under the stated conditions; it does not establish that it is the only possible one-dimensional reduction or that all such reductions fail.
+
+An error of either sign can be removed algebraically by a factor $1/(1+e)$ when $e>-1$. The scientific task is to predict an appropriate factor from geometry with adequate validation. The observed positive closure errors imply factors below unity at those samples; they do not by themselves establish monotonic dependence on any geometric variable.
+
+A final remark bears on the expected discrepancy, not on its derivation. The stripe average applies a local parallel-plate law within each stripe; it does not model the groove as a closed duct with four no-slip walls, and it does not resolve the vertical side walls or the coupling between the axial velocity and the cross-section. The groove mouth opens into a connected layer of thickness $h$, where neither a no-slip nor a free-surface condition applies. Writing the geometry as a duct would be a different model, and the difference between the two is one reason to expect a discrepancy here. It is not evidence about its size.
+
+### C. What the coefficient error does to the process prediction
+
+The application consequence is evaluated by inserting the paired conductances from each geometry and gap into the same reduced squeeze-film model. Each reference prediction uses both principal values from that same discrete cell calculation. Throughout this section $K_\parallel=K_{yy}$ and $K_\perp=K_{xx}$ follow the project coordinates. The propagation scripts rename the along-groove axis as $x$; their variables are mapped to parallel/perpendicular labels here. This coordinate relabelling is not a simulation of rotated groove walls.
+
+Two reduced models are used. Model A is a circular-field calculation with load proportional to $1/(K_\parallel+K_\perp)$. Model B uses a square field and $p=0$ at its perimeter. With positive closing speed $V=-\dot h>0$, its positive-pressure convention is $K_\parallel p_{\xi\xi}+K_\perp p_{\eta\eta}=-\mu V$, where $\xi$ and $\eta$ run along and across the grooves. The archived implementation solves the opposite signed-pressure equation and reports the absolute load; this leaves the magnitude ratios unchanged. The sampled median load ratios are 0.6105 for A and 0.6121 for B, a difference of approximately 0.15 percentage points. Their proximity is an internal comparison, not validation of either physical reduction; model B supplies the results below.
+
+**Uniform closing velocity.** The problem is linear in $V$ and homogeneous of degree $-1$ in $\mathbf{K}$ taken jointly; it is not linear in $1/K_\parallel$ and $1/K_\perp$ separately. A common scaling of both conductances rescales pressure and load by the inverse factor. Unequal changes generally alter the pressure-field shape, and the peak-pressure ratio can then depart from the load ratio by up to $0.024$, that is 2.4 percentage points, over the sampled geometries. Over the eighteen geometries the load ratio relative to the discrete reference coefficients ranges from 0.371 to 0.901, a median error of $-38.8\%$. The worst case is $h=50$ nm, $d=120$ nm, where $K_\parallel$ is overestimated by $204.8\%$ and the predicted load retains $37\%$ of the reference value. The closure overestimates the conductance at every sampled point, so the sign of the load error is uniform; as noted above, that is a statement about the sign, not about the mechanism.
+
+**Constant load.** With the load imposed the closing rate follows from the resistance, $V(h)=F/S[\mathbf{K}(h)]$ where $S$ is the load per unit rate, and the drainage time becomes
+$$
+t=\frac{1}{F}\int_{h_f}^{h_0} S\!\left[\mathbf{K}(h)\right]\mathrm{d}h .
+$$
+A single-gap ratio is generally insufficient. For the common stroke $h_0=125$ nm to $h_f=50$ nm, the model-B ratio $S_{\rm mod}/S_{\rm ref}$ ranges from 0.371464 to 0.477857 at $d=120$ nm. Across the five depths, the integrated uncorrected time ratio ranges from 0.404987 to 0.874690. Freezing the model-B ratio at 125 nm instead gives a relative difference from its integrated ratio of approximately 3.03% at $d=25$ nm and 17.99% at $d=120$ nm.
+
+The primary time calculation interpolates each reference conductance $K_i(h)$ in log–log coordinates with shape-preserving cubic interpolation, using all available gaps at that depth, and then evaluates $S[K_\parallel(h),K_\perp(h)]$ at 400 points over 125–50 nm. The adopted V2 factors multiply the model conductances before evaluation of the load. A concurrent supplementary table instead interpolates the already evaluated $S(h)$ using knots restricted to that stroke. It gives corrected time ratios of 0.962185–1.005938, whereas the primary chain gives 0.960996–1.004658; the largest paired difference is approximately 0.00162, or 0.162 percentage points. These different interpolation objects and knot choices are kept separate. Neither spread bounds interpolation uncertainty or the uncertainty in the reference conductances.
+
+**The two loading conditions.** At imposed velocity the time to traverse a given stroke is $(h_0-h_f)/V$ and is exact by construction, whatever the coefficients; the error appears entirely in the pressure and the load. Reporting a time error under imposed velocity would understate the problem, because it is identically zero. Under a constant load the time is the integral above, and its error is a separate quantity.
+
+**Where the load error comes from.** Because the load is homogeneous of degree $-1$ in $\mathbf{K}$, it factorises exactly:
+$$
+\frac{F_{\rm mod}}{F_{\rm ref}}
+=\underbrace{\frac{\hat h(A_{\rm mod})}{\hat h(A_{\rm ref})}}_{\text{anisotropy}}\cdot
+\underbrace{\frac{1}{\sqrt{(1+e_\parallel)(1+e_\perp)}}}_{\text{mean conductance}},
+$$
+with $A=K_\parallel/K_\perp$ and $\hat h$ a function of $A$ alone. The product reproduces the computed ratio to machine precision. The mean-conductance term lies between 0.48 and 0.90 and the anisotropy term between 0.74 and 1.00. This is an algebraic identity within the reduced model. It is not a budget of dissipation, it does not identify which part of the geometry produces the error, and the dominance of the mean term does not show that a one-variable geometric correction is sufficient in general.
+
+**Which component matters.** Homogeneity fixes $w_\parallel+w_\perp=1$, with $w_i=-\partial\ln F/\partial\ln K_i$. For the square field, the weights are equal at $A=1$; at $A=4$ the along-groove weight is approximately 0.78 and the across-groove weight 0.22; at $A=15.5$ they are approximately 0.90 and 0.10. Thus the along-groove component has the larger weight for the sampled square-field cases. Applying V2 only to the model's along-groove coefficient leaves a median load residual of −12.2%; applying it only across the grooves leaves −32.9%. These are partial-correction diagnostics. They are distinct from replacing only one model coefficient while retaining the other reference coefficient, and neither comparison ranks microscopic mechanisms.
+
+The weights are not properties of the coefficients. They depend on the field through the single parameter $\Lambda=(L_\parallel/L_\perp)^2(K_\perp/K_\parallel)$, with $L_\parallel$ measured along the grooves. For a field elongated along the grooves the liquid must drain across them and $w_\parallel\to0$; for one elongated across, $w_\parallel\to1$. For a near-square field ($0.8\lesssim L_\parallel/L_\perp\lesssim1.3$) the two orientations differ by at most 0.22 in $w_\parallel$ at $A\approx1$, and by 0.06 at $A\approx15$. Any statement that one component matters more is therefore conditional on the field, and it inverts for a field whose long side runs along the grooves.
+
+**After the correction.** Applying the adopted V2 relation in Eq. (2b) to the model conductances gives load ratios of 0.937291–1.050836 over the 18 sampled geometries: residuals of approximately −6.27% to +5.08%, with a signed median of −2.12%. For the primary 125–50 nm time chain, the corrected ratio is 0.960996–1.004658, or approximately −3.90% to +0.47%; it crosses unity. These are retrospective reduced-model results, not independent final tests or continuous-domain guarantees. The perpendicular correction has no declared accuracy below $h=50$ nm. Results involving the $h=25$ nm cells therefore remain outside that two-component claim; the archived aspect-ratio example reaches about 23% load residual for a sufficiently elongated field. All reference predictions also retain conductance discretization and interpolation uncertainty.
+
+**What this does and does not establish.** This calculation measures how coefficient discrepancies propagate inside a specified Reynolds-type model. It does not test that reduction against a directly resolved closing film, and it contains no gas phase, capillary front or moving contact line. Within this model and these samples, the original closure gives loads approximately 37%–90% of the predictions based on discrete reference conductances, while V2 reduces the sampled load discrepancy to approximately −6.27% to +5.08%. Engineering adequacy requires an application-specific tolerance and independent evidence; it is not established by these residuals alone.
+
+
+## VI. CONCLUSIONS
+
+Within the sampled ideal rectangular-groove geometries, the arithmetic–harmonic local cubic-law closure overestimates both principal depth-integrated transport coefficients. The unequal discrepancies affect the anisotropy and the predicted direction of oblique flux as well as its magnitude. The adopted empirical correction improves the reported sample residuals, but retains gap dependence and a larger transverse discrepancy at the smallest examined gap. Geometry-specific refinement helps qualify these comparisons without establishing a full-domain numerical uncertainty bound. The correction should therefore be reported as a data-informed relation evaluated on available samples. Further predictive use requires a separately defined test and a numerical reference adequate for its claimed accuracy.
+
+## REFERENCES
+
+[1] Sreenivasan S.V., *Nanoimprint lithography steppers for volume fabrication of leading-edge semiconductor integrated circuits*, Microsyst. Nanoeng. **3**, 17075 (2017). DOI: 10.1038/micronano.2017.75
+
+[2] Jain A., Spann A., Cochrane A., Schunk P.R., Bonnecaze R.T., *Fluid flow in UV nanoimprint lithography with patterned templates*, Microelectron. Eng. **173**, 62–70 (2017). DOI: 10.1016/j.mee.2017.04.001
+
+[3] Tavakol B., et al., *Extended lubrication theory…*, Proc. R. Soc. A **473**, 20170234 (2017). DOI: 10.1098/rspa.2017.0234
+
+[4] Ban Y.H., Bonnecaze R.T., *Optimal placement of droplets for UV nanoimprint lithography*, J. Vac. Sci. Technol. B **38**(2), 022601 (2020). DOI: 10.1116/6.0000030
+
+[5] Ban Y.H., Bonnecaze R.T., *Minimizing filling time for ultraviolet nanoimprint lithography with templates with multiple structures*, J. Vac. Sci. Technol. B **39**(1), 012601 (2021). DOI: 10.1116/6.0000648
+
+[6] Brenner G., Al-Zoubi A., Mukinovic M., Schwarze H., Swoboda S., *Numerical simulation of surface roughness effects in laminar lubrication using the lattice-Boltzmann method*, J. Tribol. **129**, 603–610 (2007). DOI: 10.1115/1.2736452
+
+[7] Pusterhofer M., et al., *A novel approach for modeling surface effects in hydrodynamic lubrication*, Lubricants **6**, 27 (2018). DOI: 10.3390/lubricants6010027
+
+[8] Dewangan M.K., Datta S., *Effective permeability tensor of confined flows with wall grooves of arbitrary shape*, J. Fluid Mech. **891**, A12 (2020). DOI: 10.1017/jfm.2020.134
+
+[9] Dewangan M.K., Datta S., *Flow through microchannels with topographically patterned wall: a spectral theory for arbitrary groove depths*, Eur. J. Mech. B/Fluids **70**, 73–84 (2018). DOI: 10.1016/j.euromechflu.2018.02.004
+
+[10] Kamrin K., Bazant M.Z., Stone H.A., *Effective slip boundary conditions for arbitrary periodic surfaces: the surface mobility tensor*, J. Fluid Mech. **658**, 409–437 (2010). DOI: 10.1017/s0022112010001801
+
+[11] Cochrane A., Tjiptowidjojo K., Bonnecaze R.T., Schunk P.R., *Multiphase model for nanoimprint lithography*, Int. J. Multiphase Flow **104**, 9–19 (2018). DOI: 10.1016/j.ijmultiphaseflow.2018.03.014
+
+[12] Patir N., Cheng H.S., *An average flow model for determining effects of three-dimensional roughness on partial hydrodynamic lubrication*, J. Lubr. Technol. **100**(1), 12–17 (1978). DOI: 10.1115/1.3453103
+
+[13] Rom M., König F., Müller S., Jacobs G., *Why homogenization should be the averaging method of choice in hydrodynamic lubrication*, Appl. Eng. Sci. **7**, 100055 (2021). DOI: 10.1016/j.apples.2021.100055
+
+[14] Lubrecht A.A., ten Napel W.E., Bosma R., *The influence of longitudinal and transverse roughness on the elastohydrodynamic lubrication of circular contacts*, J. Tribol. **110**(3), 421–426 (1988). DOI: 10.1115/1.3261645
+
+[15] Teyssèdre H., Gilormini P., Régnier G., *Limitations of simple flow models for the simulation of nanoimprint*, Int. Polym. Process. **28**(1), 72–78 (2013). DOI: 10.3139/217.2673
+
+[16] Wang Q., Hiroshima H., *Anisotropic filling phenomenon of cavities in UV nanoimprint lithography*, J. Vac. Sci. Technol. B **29**(6), 06FC19 (2011). DOI: 10.1116/1.3662889
+
+[17] Krause M.J., Kummerländer A., Avis S.J., et al., *OpenLB — Open source lattice Boltzmann code*, Comput. Math. Appl. **81**, 258–288 (2021). DOI: 10.1016/j.camwa.2020.04.033
+
+[18] Bouzidi M., Firdaouss M., **Lallemand P.**, *Momentum transfer of a Boltzmann-lattice fluid with boundaries*, Phys. Fluids **13**(11), 3452–3459 (2001). DOI: 10.1063/1.1399290
+
+[19] Guo Z., Zheng C., Shi B., *Discrete lattice effects on the forcing term in the lattice Boltzmann method*, Phys. Rev. E **65**(4), 046308 (2002). DOI: 10.1103/PhysRevE.65.046308
+
+[20] Roache P.J., *Verification and Validation in Computational Science and Engineering*, Hermosa Publishers, **Albuquerque, NM** (1998).
+
+[21] Celik I.B., Ghia U., Roache P.J., Freitas C.J., Coleman H., Raad P.E., *Procedure for estimation and reporting of uncertainty due to discretization in CFD applications*, J. Fluids Eng. **130**(7), 078001 (2008). DOI: 10.1115/1.2960953
+
+[22] Ladd A.J.C., *Numerical simulations of particulate suspensions via a discretized Boltzmann equation. Part 1. Theoretical foundation*, J. Fluid Mech. **271**, **285–309** (1994). DOI: 10.1017/S0022112094001771

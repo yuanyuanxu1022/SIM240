@@ -1,0 +1,15 @@
+{
+  "initial_attempt_exit_code": 1,
+  "reason": "An added diagnostic assertion required exact equality of all trajectory values; 3 columns differ. This requirement was not a frozen acceptance criterion.",
+  "unchanged_frozen_acceptance_criterion": "abs(K_server/K_local-1)<=1e-6",
+  "exact_matching_columns": 22,
+  "total_columns": 25,
+  "differing_columns": [
+    "Q_section1",
+    "Q_section2",
+    "section_relative_difference"
+  ],
+  "discrepancy_retained": true,
+  "original_solver_or_checker_failure": false,
+  "source_before_correction": "audit_saved_data_first_attempt.py"
+}

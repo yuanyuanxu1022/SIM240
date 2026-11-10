@@ -1,0 +1,27 @@
+{
+  "actual_run_id": null,
+  "approved_contract_valid": true,
+  "preparation_note": "First preparation exit1 was an overly broad no-NumPy assertion after packet creation; runner imports records/NumPy. PDE backends never imported. Assertion corrected; existing packet independently revalidated without overwriting or running it.",
+  "real_solver_called": false,
+  "resources": {
+    "MemAvailable_bytes": 17453268992,
+    "record_disk_available_bytes": 361665683456,
+    "record_volume": {
+      "available_bytes": 361665683456,
+      "identity": {
+        "device": "259:2",
+        "filesystem": "ext4",
+        "mount_id": "33",
+        "mount_point": "/",
+        "st_dev": 66306
+      },
+      "persistence_scope": "local filesystem and fsync; not a power-loss or hardware guarantee"
+    },
+    "work_volume": {
+      "capacity_bytes": 536870912,
+      "mechanism": "preexisting_dedicated_tmpfs",
+      "note": "kernel filesystem capacity; inode/metadata exhaustion may fail earlier"
+    }
+  },
+  "status": "APPROVED_PREPARED_NOT_STARTED"
+}

@@ -1,0 +1,64 @@
+{
+  "at": "2026-11-03T20:39:01.971496+08:00",
+  "tests_run": 120,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "allowed_Python_CLI_subprocesses": [
+    {
+      "executable": "/home/dell/miniconda3/bin/python3",
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/check_results.py",
+        "--run",
+        "/tmp/tmp79qbs8jl/raw",
+        "--release",
+        "/tmp/tmp79qbs8jl/SYNTHETIC_NOT_AN_EXECUTION_RELEASE.json",
+        "--release-sha256",
+        "91a966605d25701da5e5ab64e7f5692e0024aea3e80242c71de7dd0af59ca283",
+        "--out",
+        "/tmp/tmp79qbs8jl/baseline/analysis_malformed"
+      ],
+      "role": "Python checker CLI on synthetic packet"
+    },
+    {
+      "executable": "/home/dell/miniconda3/bin/python3",
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/check_results.py",
+        "--batch-index",
+        "/tmp/tmpenb79hqp/index.json",
+        "--release",
+        "/tmp/tmpenb79hqp/SYNTHETIC_NOT_AN_EXECUTION_RELEASE.json",
+        "--release-sha256",
+        "b6cfe54fe4bffbc3a3dd80242b9297a82c7e8c14cecd8503ab27277d4ceab0a0",
+        "--out",
+        "/tmp/tmpenb79hqp/baseline/analysis_malformed"
+      ],
+      "role": "Python checker CLI on synthetic packet"
+    },
+    {
+      "executable": "/home/dell/miniconda3/bin/python3",
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/check_results.py",
+        "--run",
+        "/tmp/tmpjkynbb9m/raw",
+        "--release",
+        "/tmp/tmpjkynbb9m/SYNTHETIC.json",
+        "--release-sha256",
+        "659323243fd2fd8dfddc3c4db9622ebcb9db81a7fb1e6d23835e588f865acc79",
+        "--out",
+        "/tmp/tmpjkynbb9m/otherwise_safe_output"
+      ],
+      "role": "Python checker CLI on synthetic packet"
+    }
+  ],
+  "native_invocations": 0,
+  "VTK_invocations": 0,
+  "build_invocations": 0,
+  "fixtures": "labelled SYNTHETIC; temp directories only; no real field or numerical acceptance"
+}

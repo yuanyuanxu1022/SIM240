@@ -1,0 +1,132 @@
+{
+  "checked_at_local": "2026-11-01T19:02:00.631128+08:00",
+  "kind": "ONE_TIME_READONLY_STARTUP_SNAPSHOT",
+  "launch_release_sha256": "eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a",
+  "tmux_has_session_exit": 0,
+  "tmux_session_present": true,
+  "tmux_stderr": "",
+  "matching_processes": [
+    {
+      "pid": 115751,
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_S0.py",
+        "--release",
+        "evidence/S0_launch_release_20261101_01.json",
+        "--release-sha256",
+        "eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a",
+        "--execute"
+      ]
+    },
+    {
+      "pid": 116149,
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/run_config.txt"
+      ]
+    }
+  ],
+  "process_snapshot": "    PID    PPID     ELAPSED %CPU STAT COMMAND\n 115751  115745       01:03  5.0 Ss+  /home/dell/miniconda3/bin/python3 -B scripts/run_S0.py --release evidence/S0_launch_release_20261101_01.json --release-sha256 eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a --execute\n 116149  115751       00:18 98.7 Rsl  /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/build/urv_reference /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/run_config.txt\n",
+  "launch_attempt_exists": true,
+  "launch_attempt_files": [
+    "URV_S0_P_v1_2_20261101_01_checker.log"
+  ],
+  "launcher_console_tail": "",
+  "runs": [
+    {
+      "run_id": "URV_S0_P_v1_2_20261101_01",
+      "directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_P_v1_2_20261101_01/steady",
+      "files_present": [
+        "boundary_audit.txt",
+        "completion.json",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "frame_schedule.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "result.txt",
+        "result_summary.csv",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "exit_code": "0",
+      "native_result": {
+        "formal_simulation": "true",
+        "run_id": "URV_S0_P_v1_2_20261101_01",
+        "steps_completed": "4342",
+        "converged": "true",
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": "false",
+        "geometry_PASS": "true",
+        "PASS": "true",
+        "exit_code": "0"
+      },
+      "execution_audit": {
+        "preparation_only_build": "0",
+        "collide_and_stream_calls": "4342"
+      },
+      "run_log_tail": "created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_P_v1_2_20261101_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_P_v1_2_20261101_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_P_v1_2_20261101_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_P_v1_2_20261101_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_P_v1_2_20261101_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_P_v1_2_20261101_01/steady/introspectionData/ created.\ncase=URV_S0_P_v1_2_20261101_01 PASS=true step=4342 J=9.8340760032162032e-12 Keff=9.8340760032162041e-23\n",
+      "completion": {
+        "run_id": "URV_S0_P_v1_2_20261101_01",
+        "planned_case_id": "URV1_H75_P_dx5_a100000",
+        "release_sha256": "eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 42.8370787799995,
+        "inputs_unchanged": true,
+        "output_file_count": 37
+      },
+      "acceptance.json": {
+        "RESULT_PASS": true,
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "independent_exit_code": 0
+      },
+      "regression_comparison.json": {
+        "K_gate_PASS": true,
+        "legacy_gate_PASS": true,
+        "relative_K_change": 1.1102230246251565e-16
+      },
+      "last_diagnostic_step_snapshot": 4342,
+      "diagnostics_bytes": 1967658
+    },
+    {
+      "run_id": "URV_S0_T_v1_2_20261101_01",
+      "directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady",
+      "files_present": [
+        "boundary_audit.txt",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "exit_code": null,
+      "native_result": null,
+      "execution_audit": null,
+      "run_log_tail": "ell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/imageData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/runs/URV_S0_T_v1_2_20261101_01/steady/introspectionData/ created.\n",
+      "last_diagnostic_step_snapshot": 1834,
+      "diagnostics_bytes": 877582
+    }
+  ],
+  "solver_started_by_agent": false,
+  "solver_restarted_by_agent": false,
+  "polling": false,
+  "formal_result_acceptance_performed_this_turn": false
+}

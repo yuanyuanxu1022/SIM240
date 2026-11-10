@@ -1,0 +1,170 @@
+                                          PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+                 Mesoscopic method to study water flow in nanochannels with different wettability
+                        Tao Zhang,1,2,* Farzam Javadpour,2,† Xiangfang Li,1 Keliu Wu,1,3 Jing Li,3 and Ying Yin4
+        1
+            Key Laboratory for Petroleum Engineering of the Ministry of Education, China University of Petroleum, Beijing 102249, China
+                2
+                  Bureau of Economic Geology, Jackson School of Geosciences, The University of Texas at Austin, University Station,
+                                                         Box X, Austin, Texas 78713, USA
+                     3
+                       The Department of Chemical and Petroleum Engineering, University of Calgary, Alberta, Canada T2N1N4
+                    4
+                      MOE Key Laboratory of Thermo-Fluid Science and Engineering, School of Energy and Power Engineering,
+                                                 Xi’an Jiaotong University, Xi’an 710049, China
+
+                               (Received 9 April 2020; revised 9 June 2020; accepted 15 June 2020; published 9 July 2020)
+
+                      Molecular dynamics (MD) simulations is currently the most popular and credible tool to model water flow
+                   in nanoscale where the conventional continuum equations break down due to the dominance of fluid-surface
+                   interactions. However, current MD simulations are computationally challenging for the water flow in complex
+                   tube geometries or a network of nanopores, e.g., membrane, shale matrix, and aquaporins. We present a novel
+                   mesoscopic lattice Boltzmann method (LBM) for capturing fluctuated density distribution and a nonparabolic
+                   velocity profile of water flow through nanochannels. We incorporated molecular interactions between water
+                   and the solid inner wall into LBM formulations. Details of the molecular interactions were translated into true
+                   and apparent slippage, which were both correlated to the surface wettability, e.g., contact angle. Our proposed
+                   LBM was tested against 47 published cases of water flow through infinite-length nanochannels made of different
+                   materials and dimensions–flow rates as high as seven orders of magnitude when compared with predictions
+                   of the classical no-slip Hagen-Poiseuille (HP) flow. Using the developed LBM model, we also studied water
+                   flow through finite-length nanochannels with tube entrance and exit effects. Results were found to be in good
+                   agreement with 44 published finite-length cases in the literature. The proposed LBM model is nearly as accurate
+                   as MD simulations for a nanochannel, while being computationally efficient enough to allow implications for
+                   much larger and more complex geometrical nanostructures.
+
+                   DOI: 10.1103/PhysRevE.102.013306
+
+
+                          I. INTRODUCTION                                   tions (mainly van der Waals and Coulomb-type interactive
+                                                                            forces), mass density distribution is structured and layered in
+   Water flow at the nanoscale, which is relevant to multiple
+                                                                            both hydrophilic and hydrophobic systems, resulting in spa-
+scientific disciplines, has tremendous implications in diverse
+                                                                            tially varying shear-stress fields and density-dependent fluid-
+technological applications, including water desalination [1],
+                                                                            velocity distributions [10,13,14]. Moreover, different kinds
+energy harvesting and conversion [2], development of bio-
+                                                                            of boundary conditions, such as slip, no-slip, or even stick,
+chemical nanosensors [3], drug delivery across biological cell
+                                                                            are all possible at the water-solid interface, which depends
+membranes [4], and hydraulic fracturing of unconventional
+                                                                            on the strength of the interactions between water molecules
+shale gas and tight oil reservoirs [5,6]. Perturbed by the
+                                                                            and solid surfaces [15–19]. As a result, huge differences and
+interactions between water and solids, the transport behavior
+                                                                            contradictions, from flow reduction to flow enhancement with
+of water molecules in nanoscale geometries differs signifi-
+                                                                            several orders of magnitude over continuum fluid theory, are
+cantly from that observed in the pipe flow [7,8]. From the
+                                                                            commonly found in the literature [9]. A conventional macro-
+early 2000s, intense research has been implemented both
+                                                                            scopic method, which is based on Navier-Stokes equations
+experimentally and theoretically by researchers to explain
+                                                                            with a no-slip boundary, seems to be inadequate to model
+and characterize the structural, thermodynamic, and trans-
+                                                                            water flow in such situations [20,21].
+port properties of water confined in nanoscale geometries.
+                                                                                In addition to experiments, MD simulations are widely
+However, the robust modeling of the process in complex
+                                                                            used to model water confined flow [22]. Not only does MD
+geometrical nanostructures at laboratory or prototype scales
+                                                                            provide instantaneous calculation results, but it can also help
+remain out of reach.
+                                                                            to perform sensitivity studies of the controlling parameters
+   Dominated by the high ratio of wall surface area to vol-
+                                                                            hardly feasible by experiments. MD simulation has the ad-
+ume, many investigations indicate that properties of nanocon-
+                                                                            vantages of accuracy and popularity, and extensive fluid flow
+fined water differ significantly from those of bulk water
+                                                                            investigations using MD have thus been conducted on a
+[7–12]. Because of the presence of wall-force-field interac-
+                                                                            single nanochannel [23–28] or networks of interconnected
+                                                                            nanopores [29–34]. However, the scales of these MD simu-
+                                                                            lations are usually below 100 nm, and the huge computational
+ *
+     tobiascheuing@163.com                                                  requirements of MD simulation make it impractical for many
+ †
+     farzam.javadpour@beg.utexas.edu                                        engineering applications. For example, membranes that have
+
+2470-0045/2020/102(1)/013306(17)                                      013306-1                                ©2020 American Physical Society
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                                  PHYSICAL REVIEW E 102, 013306 (2020)
+
+a micrometer to millimeter thickness scale are too large to be                where wi is the weighting factor. Here, w0 = 4/9 for i = 0,
+treated by MD simulations [4,35]. Even using a supercom-                      wi = 1/9 for i = 1−4, and wi = 1/36 for i = 5−8.
+puter having thousands of processors, researchers require sev-                   Accordingly, macroscopic fluid density ρ and velocity u
+eral weeks to run the simulations, presenting challenges to an                are determined by
+engineering fabrication of commercial membranes [22,36,37].
+    Here, we present a novel LBM for confined water flow,                                   ρ=          fi ,   and   ρu =       fi ei .      (5)
+a mesoscopic method lying between microscopic (molecule)                                           i                        i
+and macroscopic (continuum) scales. Far from being a mere
+technicality, this method creates an opportunity for simulating                    The external force F is incorporated into the LB frame by
+confined water flow in large space and timescales with less                   adding velocity increment δu = τ F/ρ to macroscopic veloc-
+computational demand, easily applicable complex systems                       ity u. Each time iteration of these governing equations pro-
+such as biological membrane and tight oil and shale gas reser-                ceeds in three steps: first, particle distributions stream to nodes
+voirs. With this method, the interactions between water-solid                  fi (x, t ). Second, macroscopic parameters such as density and
+and water-water molecules can be modeled by utilizing the                     velocity are obtained by these new distribution functions.
+forces balance between group of molecules, rather than track-                 Finally, the equilibrium distribution function is calculated and
+ing individual molecules. We show how powerful this method                    particle distribution undergoes collision. The program then
+can be by simulating water flow through nanochannels of                       goes into the next loop for a new fi (x + ei t, t + t ).
+infinite length (periodic boundary conditions) and finite length
+(with entrance and exit effects), and we show how our results
+are in accord with most cases in different investigations.                                                III. RESULTS
+The method cannot be applied to simulate water transport in
+nanochannels having dimensions smaller than 1.6 nm, where                              A. LBM for water flow through nanochannels
+momentum-transport is controlled by individual molecules                         The body of work indicating that conventional no-slip
+rather than a group of molecules [38,39].                                     Poiseuille flow is not suitable for use in confined water flow
+                                                                              for both hydrophobic and hydrophilic cases is considerable
+                         II. METHODS                                          [35,42,43]. The reason lies in the relative strength of water-
+                                                                              solid interactions and water-water interactions, which makes
+   The evolution equation in the lattice Boltzmann frame, a                   the no-slip boundary condition unacceptable. Generally, for
+minimally discrete version of the Boltzmann equation, can be                  confined water in hydrophilic nanochannels, the attraction
+expressed as [40]                                                             force between water-solid molecules is much stronger than
+                                            1                               that of water-water interactions, and a substantial epitaxial or-
+ fi (x + ei t, t + t ) − fi (x, t ) = −      fi (x, t ) − fieq (x, t ) ,    dering of water molecules must be induced [44]. This ordering
+                                            τ                                 brings about a notable increase in the density and viscosity of
+                                                                        (1)
+                                                                              the near-wall water, in which a solidlike state exists instead
+where fi (x, t ) is the probability density function, indicating              of a viscous, liquidlike state for the bulk water, reducing
+a particle with velocity ei at position x and time t. The left                effective pore size [45]. The phenomenon is called multi-
+side of the equation represents stream, whereas the right side                layer sticking, in which no slip is observed [46] [Fig. 1(a)].
+stands for collisional interactions; t is a time step, f eq (x, t )          In contrast, in the hydrophobic nanochannel, the attraction
+is the equilibrium distribution function, and τ is the mean                   force between water-solid molecules is smaller than that of
+collision time, written as                                                    water-water interactions. It is entropically unfavorable for the
+                              υe                                              hydrophobic surface to bind water molecules by hydrogen
+                        τ= 2       + 0.5,                      (2)            bonds, and a depletion region having low density and viscosity
+                             cs t
+                                                                              can be found approaching the wall surface, as in a liquid-vapor
+  √ υe is kinematic viscosity, cs is sound speed, and cs =
+where                                                                         interface [47]. Additionally, water molecules can move/slide
+1/ 3 for the D2Q9 lattice model. In this work, the most                       directly along wall surfaces (velocity jump at walls), giving
+widely used D2Q9 lattice model for 2D space was adopted                       rise to a positive slip length [48]. The assumption of a no-slip
+for its simplicity and efficiency. The D3Q19 lattice model can                boundary is invalid, displaying low friction of water inside the
+be used to easily extend the simulation into 3D space [41].                   channel [Fig. 1(c)]. Between these two situations, a transition
+Lattice discrete velocity ei is related to the particular velocity            status exists [Fig. 1(b)], in which the no-slip boundary remains
+model. The D2Q9 lattice model is given by                                     valid, although the density and viscosity of water near walls is
+      ⎧                                                                       decreased slightly.
+      ⎪
+      ⎨0,                                             i=0                      The true slip length ls,t , also called partial slip length
+                              (i−1)π 
+ei = cos       (i−1)π
+                        , sin             ,             i = 1 ∼ 4.            [Fig. 1(c)], is defined by the ratio of slip velocity to strain
+      ⎪
+      ⎩√   (i−5)π
+                  2
+                               π
+                                  2      (i−5)π   π
+                                                                             rate in the position of the effective hydrodynamic boundary
+           2 cos      2
+                            + 4 , sin         2
+                                                  + 4 , i=5∼8
+                                                               (3)            [9,49]. In addition, the influences of radially varied density
+   In the standard D2Q9 pattern, the equilibrium distribution                 and viscosity on the flow are further represented by the so-
+function f eq is defined as                                                   called apparent slip length ls,a [50]. More details on the flow
+                                                                              mechanisms can be found in our previous study (Wu et al.
+                     1               1                 1 2                    [51]). The key to modeling confined water flow accurately
+  fieq = ωi ρ 1 +        (ei · u) +       (ei · u)2 −       u , (4)
+                    cs 2            2cs 4             2cs 4                   involves characterization of the two parameters reliably.
+
+                                                                        013306-2
+

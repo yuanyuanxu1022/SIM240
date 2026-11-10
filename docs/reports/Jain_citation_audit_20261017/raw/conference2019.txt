@@ -1,0 +1,60 @@
+            Optimizing Filling of Anisotropic Templates in
+                   UV Nanoimprint Lithography
+                             Yang H. Ban and Roger T. Bonnecaze *
+
+         McKetta Department of Chemical Engineering, The University of Texas at Austin,
+                              Austin, Texas 78712, United States
+
+                                  E-mail: harinban@utexas.edu
+Abstract:
+
+        A key to the successful deployment of UV nanoimprint lithography (UV-NIL) to
+integrated circuit (IC) manufacturing will need to break the bottleneck of UVNIL. There are
+several experimental observations and analysis which indicates template fluid filling, the
+bottleneck, is strongly related to the structure of a template and the configuration of droplet
+placement. Therefore, through the insights gained from a comprehensive model which
+captures major physics involved with fluid flow, rational design of a template or a droplet
+pattern could be employed in the future to achieve a low defectivity and high throughput
+UVNIL process. Thus, our research problem is finding an optimal UVNIL process setting
+which run at the shortest fluid filling time that leads to an acceptable defect density.
+        From experimental observations, it is found that the optimized droplet placement can
+significantly reduce defect density while not compromising the throughput of UVNIL. The
+challenge is to optimally place the droplets on the substrate under the template. This is
+particularly challenging for anisotropic templates, such as lines and spaces, where the filling
+process is highly directional. Currently, these optimized droplet placement is found by trial
+and error which is expensive and laborious. Our ultimate research goal is development of
+computer simulations which is a faster and inexpensive means to find optimizing droplet
+placements.
+        Simulation of UVNIL using a template with line and space patterns with nine droplets
+dispensed in a square arrangement is shown in Fig. 1. It was founded that the droplets are
+stretched when UVNIL is carried out with templates having line and space patterns. The non-
+circular shape is a result of the difference in flow permeability in x and y directions 1. The
+higher permeability in y-direction compare to x-direction leads to the droplet spreading faster
+in the y-direction compared to the x-direction and forming straight channels (Fig. 1).
+However, the simulation result shown in Fig. 1 is not completely satisfactory because straight
+channels of unfilled regions was not observed in simulation. We believe the discrepancy
+exists between the experimental result and simulation can be mitigated by considering more
+accurate capillary pressure boundary condition.
+        Here we present a theory and simulation for fluid filling for anisotropic templates.
+The theory includes an anisotropic permeability to account for the variation in flow resistance
+parallel to the template. It also includes a varying capillary pressure (Fig. 2) that depends on
+the position of the gas-liquid interface relative to the orientation of the template. This theory
+is integrated into a simulation of template filling and droplet motion and merging for up to
+1000 droplets to optimize droplet positions under different anisotropic templates.
+
+Reference:
+
+[1] Jain, A.; Spann, A.; Cochrane, A.; Schunk, P. R.; Bonnecaze, R. T., Fluid flow in UV
+nanoimprint lithography with patterned templates. Microelectronic Engineering 2017, 173,
+62-70.
+Figure 1. Fluid spreading with a patterned template with vertical grating. In experiment, straight
+channels of fluid and unfilled cavity formed (left figure). Simulation result also shows an
+anisotropic flow (right figure), qualitatively similar to the experimental result1
+
+
+
+
+Figure 2. Capillary pressure calculated under various configuration created by vertical grating
+template. The comment next to legend present the range of height where stable interface existed in
+Surface Evolver simulation.
+

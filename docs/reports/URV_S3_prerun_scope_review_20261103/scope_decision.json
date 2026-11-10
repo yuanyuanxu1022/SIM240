@@ -1,0 +1,33 @@
+{
+  "protocol_id": "S3-PR-v1",
+  "reviewed_at": "2026-11-03T10:07:27.722361+08:00",
+  "status": "READ_ONLY_REVIEW_COMPLETE_NOT_IMPLEMENTATION",
+  "new_formal_cases": 4,
+  "reused_S2_baselines": 2,
+  "linearity_metric": "(max(K_50000,K_100000,K_200000)-min(...))/mean(...)",
+  "linearity_limit": 0.001,
+  "proposed_order": [
+    "URV1_U_REG_P_dx2p5_a50000",
+    "URV1_U_REG_T_dx2p5_a50000",
+    "URV1_U_REG_P_dx2p5_a200000",
+    "URV1_U_REG_T_dx2p5_a200000"
+  ],
+  "proposed_zero_calls": 12,
+  "proposed_initial_field_reads": 4,
+  "proposed_solver_hours_budget": 16,
+  "checker_budget_hours_additional": 4,
+  "actual_run_ids": [],
+  "simulation_authorized": false,
+  "native_zero_step_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "formal_simulation_authorized": false,
+  "builds": 0,
+  "native_calls": 0,
+  "VTK_reads": 0,
+  "software_tests_run": 0,
+  "S3_started": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false
+}

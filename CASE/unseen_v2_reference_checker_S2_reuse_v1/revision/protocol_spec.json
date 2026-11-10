@@ -1,0 +1,209 @@
+{
+  "protocol_id": "URV-MRP-v1",
+  "base_protocol_id": "URV-v1",
+  "status": "PROTOCOL_REVIEWED_IMPLEMENTATION_UNVERIFIED",
+  "date": "2026-11-01",
+  "authorization": {
+    "scope": "protocol_preparation_only",
+    "implementation_authorized": false,
+    "build_authorized": false,
+    "native_zero_step_authorized": false,
+    "diagnostic_run_authorized": false,
+    "simulation_authorized": false,
+    "approved_run_ids": [],
+    "launch_command_delivered": false,
+    "S1_authorized": false
+  },
+  "current_disposition": {
+    "S0": "HOLD",
+    "P_previous_RESULT_PASS": true,
+    "T_previous_RESULT_PASS": false,
+    "historical_exclusive_attribution": "NOT_ESTABLISHED",
+    "reference_qualified": false,
+    "strict_error_bound_established": false,
+    "submission_ready": false
+  },
+  "future_native_revision_sha256": null,
+  "future_binary_sha256": null,
+  "future_release_sha256": null,
+  "preserved_limits": {
+    "per_run": {
+      "compensated_mass_relative_strict": 1e-10,
+      "ledger_agreement_max": 1e-13,
+      "density_deviation_max": 1e-06,
+      "Mach_strict": 0.05,
+      "section_relative_max": 1e-05,
+      "window_relative_sample_std_max": 1e-06,
+      "window_relative_span_max": 5e-06,
+      "cross_flux_abs_m2_s_max": 1e-12,
+      "q_absolute_tolerance": 1e-10,
+      "volume_relative_tolerance": 1e-10,
+      "fallback": 0,
+      "unresolved": 0,
+      "positive_main_flux": true,
+      "finite_all": true,
+      "independent_exit": 0
+    },
+    "smooth": {
+      "K_relative_strict": 0.02,
+      "profile_L2_relative_strict": 0.02
+    },
+    "statistics_port_regression": {
+      "K_relative_max": 0.0001,
+      "all_common_legacy_diagnostics_compare_and_report": true
+    },
+    "new_physics_guards": {
+      "Re_H_max": 0.01,
+      "three_force_K_span_over_mean_max": 0.001,
+      "linearity_grid_nm": 2.5,
+      "linearity_accelerations_m_s2": [
+        50000,
+        100000,
+        200000
+      ]
+    },
+    "reference": {
+      "grid_nm": [
+        5,
+        2.5,
+        1.25
+      ],
+      "r": 2,
+      "Fs": 1.25,
+      "eligible_requires_monotonic_positive_finite_p": true,
+      "relative_difference_floor": 1e-14,
+      "fine_GCI_estimate_max": 0.01,
+      "medium_fine_relative_change_max": 0.01,
+      "estimate_u": "max(GCI_fine,abs(K_medium/K_fine-1),final_window_relative_span)",
+      "strict_error_bound": false,
+      "independent_asymptotic_evidence": false,
+      "legacy_GCI_ratio_not_used_as_qualification_evidence": true
+    },
+    "comparison": {
+      "primary_family": "U_REG",
+      "thin_family_role": "predeclared risk check; transverse h<50 outside narrower recommended domain",
+      "signed_error": "K_model/K_reference-1",
+      "absolute_error": "abs(K_model/K_reference-1)",
+      "improvement_delta": "abs(E_V2)-abs(E_original)",
+      "sensitivity_band": "K_fine*(1+-u); numerical sensitivity only, not confidence interval or rigorous bound",
+      "classify_by_delta_range": {
+        "IMPROVED": "max(delta)<-1e-12",
+        "DEGRADED": "min(delta)>1e-12",
+        "INCONCLUSIVE": "otherwise"
+      },
+      "evaluate_band_at": "both endpoints plus K_original/K_V2 breakpoints inside the band",
+      "reference_invalid": "NOT_EVALUATED; do not score formula accuracy",
+      "requires_all_conditions_to_improve": false,
+      "do_not_refit_on_test": true,
+      "minimum_practical_improvement_absolute_error": 0.02,
+      "practical_primary_support": "both U_REG directions have max(delta)<=-0.02 over the estimated sensitivity band"
+    },
+    "status_fields_separate": [
+      "NUMERICAL_GATE",
+      "RESULT_PASS",
+      "geometry_PASS",
+      "REFERENCE_QUALIFIED_FOR_CASE",
+      "MODEL_COMPARISON",
+      "physical_validation"
+    ]
+  },
+  "limits_source": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_v1_2/common/acceptance_spec.json",
+    "sha256": "ee7a3212d097be699c0d53d3cdcf4e1c558829bfcacb7c4309bd9d0f932f04a8"
+  },
+  "legacy_exact_comparator": {
+    "source": {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_v1_2/analysis/check_results.py",
+      "sha256": "6246053428e99ce4d6e10cf1029930007abad94691c5f80ffd94a741d38c49fe"
+    },
+    "semantics": "complete row count and all 20 common columns; numpy.array_equal after float parsing; no added tolerance"
+  },
+  "mass_operation": {
+    "dtype": "IEEE754 binary64",
+    "rounding": "nearest_ties_to_even",
+    "accumulator_initial_hex64": "0000000000000000",
+    "each_measure_resets": true,
+    "term_order": [
+      "p1=RN(rho*rho_phys)",
+      "p2=RN(p1*dx)",
+      "p3=RN(p2*dx)"
+    ],
+    "legacy": "RN_exact(p3*dx+M)",
+    "split_replay": "RN(M+RN(p3*dx))",
+    "constants_from_actual_binary64_bits": true,
+    "global_FP_flag_changes_allowed": false,
+    "lattice_mutation_allowed": false,
+    "compensated_ledger_unchanged": true
+  },
+  "density_capture_schedule": {
+    "path": "density_capture_schedule.json",
+    "sha256": "dc0b56de8a057cc699907e067231147dedc0f4c511ae9909d66f8569f0016f1c"
+  },
+  "density_format": {
+    "dtype": "little-endian binary64",
+    "nodes": 57600,
+    "bytes_per_snapshot": 460800,
+    "expected_total_snapshots": 212,
+    "expected_total_rho_bytes": 97689600,
+    "map_fields": [
+      "ordinal",
+      "cuboid",
+      "iX",
+      "iY",
+      "iZ",
+      "material"
+    ],
+    "phase_names": [
+      "initial_reference",
+      "diagnostic"
+    ],
+    "capture_existing_rho_without_recompute": true,
+    "actual_final_capture_required": true,
+    "do_not_extend_for_missing_capture": true
+  },
+  "future_sequence": [
+    "isolated_implementation_and_build_if_authorized",
+    "software_arithmetic_and_instruction_audit",
+    "native_zero_step_if_authorized",
+    "separate_real_user_release_binding",
+    "user_run_P_then_original_and_supplementary_acceptance",
+    "only_if_P_pass_user_bound_T_then_original_and_supplementary_acceptance",
+    "explicit_new_revision_disposition_no_S1_autostart"
+  ],
+  "future_run_count": 2,
+  "candidate_order": [
+    "P",
+    "T"
+  ],
+  "original_row_counts": {
+    "P": 4343,
+    "T": 2954
+  },
+  "prospective_required_evidence": [
+    "SOURCE_REVISION_AUDIT",
+    "URV_NUMERICAL_GATE",
+    "geometry_PASS",
+    "URV_RESULT_PASS",
+    "MASS_CAPTURE_INTEGRITY",
+    "SAME_INPUT_REPLAY",
+    "LEGACY_EXACT_REGRESSION",
+    "CORRECTED_LEDGER_UNCHANGED",
+    "PHYSICAL_OUTPUT_GUARD"
+  ],
+  "historical_inputs_not_recovered_by_new_runs": true,
+  "old_FAIL_must_remain": true,
+  "repair_acceptance_does_not_claim_historical_unique_cause": true,
+  "future_resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "wall_cap_s_per_case": 3600,
+    "address_space_GiB": 8,
+    "initial_available_RAM_GiB": 12,
+    "initial_free_disk_GiB": 100,
+    "before_each_free_disk_GiB": 8,
+    "planned_output_budget_GiB_per_case": 4,
+    "measured_overhead_available": false
+  }
+}

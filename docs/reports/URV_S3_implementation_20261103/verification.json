@@ -1,0 +1,52 @@
+{
+  "preparation_A_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1/evidence/preparation_A.json",
+  "preparation_A_sha256": "5d4e70d85d586b3cdf1ebca09f82f1f4abf90166642c34f1a5f4663cdeb4f02d",
+  "inputs": 2339,
+  "syntax_files": 22,
+  "native_binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+  "formal_identities": 4,
+  "zero_identities": 12,
+  "planned_initial_reads": 4,
+  "entry_checks": {
+    "formal_default": {
+      "exit_code": 0,
+      "stdout": "{\"PREPARATION_BINDING_CHECK\": true, \"solver_executed\": false, \"simulation_authorized\": false, \"prepared_run_ids\": [\"URV_S3_P_a50000_reuse_v1_20261103_01\", \"URV_S3_T_a50000_reuse_v1_20261103_01\", \"URV_S3_P_a200000_reuse_v1_20261103_01\", \"URV_S3_T_a200000_reuse_v1_20261103_01\"], \"zero_audit_status\": \"NOT_EXECUTED\", \"resources_snapshot\": {\"MemAvailable_bytes\": 19793444864, \"disk_free_bytes\": 341240606720}}\n",
+      "stderr": ""
+    },
+    "zero_default": {
+      "exit_code": 0,
+      "stdout": "{\"ZERO_PLAN_BINDING_CHECK\": true, \"solver_executed\": false, \"planned_native_calls\": 12, \"planned_initial_field_reads\": 4, \"native_zero_step_authorized\": false}\n",
+      "stderr": ""
+    },
+    "formal_execute_refused": {
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "EvidenceError: current package authorizes zero-step preparation only\n"
+    },
+    "zero_execute_refused": {
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "EvidenceError: separate zero-only release required\n"
+    },
+    "finalize_without_audit": {
+      "refused": true,
+      "error": "real zero audit missing; cannot finalize B"
+    }
+  },
+  "software_tests_S3": 57,
+  "software_tests_base": 42,
+  "source_provenance": "PASS_EXACT_EXISTING_ELF",
+  "old_protected_files_unchanged": 2468,
+  "all_execution_permissions_closed": true,
+  "actual_native_calls": 0,
+  "actual_VTK_reads": 0,
+  "actual_time_steps": 0,
+  "builds": 0,
+  "no_attempt_directories": true,
+  "zero_audit_status": "NOT_EXECUTED",
+  "formal_status": "NOT_STARTED",
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false
+}

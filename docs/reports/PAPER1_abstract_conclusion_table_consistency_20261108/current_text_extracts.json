@@ -1,0 +1,2714 @@
+{
+  "cn": {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "abstract": [
+      {
+        "line": 9,
+        "text": "## 摘要"
+      },
+      {
+        "line": 10,
+        "text": ""
+      },
+      {
+        "line": 11,
+        "text": "局部立方律常用于纳米压印降阶模型，但其沿槽与横槽导度需要分别评价。本文采用格子玻尔兹曼方法，计算平面基底与周期矩形沟槽之间的稳态输运，假设间隙固定、牛顿液体完全充满且壁面无滑移。沟槽周期为240 nm，槽与凸台等宽；主数据包含18种几何的36个主方向导度结果，网格间距为5 nm，其中4种几何另以2.5 nm网格检查敏感性。"
+      },
+      {
+        "line": 12,
+        "text": ""
+      },
+      {
+        "line": 13,
+        "text": "相对于5 nm离散参考，局部立方律在全部主方向结果上高估导度，沿槽和横槽最大相对偏差分别为+204.85%和+54.19%。在基准几何下，原公式与离散参考的各向异性比分别为3.70和2.21；以同一线性张量关系重建相对槽轴45°驱动下的平均通量方向，角差为9.20°。既定经验修正（V2）的回顾性评价将沿槽和横槽的最大绝对偏差分别降至10.50%和18.71%，但一个薄隙横槽点的改善判断随参考网格改变。在一个新增间隙的两方向比较中，保持V2系数不变也减小了相对偏差绝对值。"
+      },
+      {
+        "line": 14,
+        "text": ""
+      },
+      {
+        "line": 15,
+        "text": "理论推导表明，局部立方律给出所述周期Stokes模型中两主方向连续导度的上界，但不确定偏差幅度或V2准确度。上述定量结果限于采样几何与指定离散参考，尚未建立连续参数范围或实际压印过程的精度保证；结果提示，评价此类降阶模型时，应同时考察两主导度、其比值和参考敏感性。"
+      },
+      {
+        "line": 16,
+        "text": ""
+      },
+      {
+        "line": 17,
+        "text": "**关键词：** 纳米压印；矩形沟槽；各向异性输运；格子玻尔兹曼方法；局部立方律；模型偏差"
+      },
+      {
+        "line": 18,
+        "text": ""
+      },
+      {
+        "line": 19,
+        "text": "---"
+      },
+      {
+        "line": 20,
+        "text": ""
+      }
+    ],
+    "conclusions": [
+      {
+        "line": 456,
+        "text": "## 6 结论"
+      },
+      {
+        "line": 457,
+        "text": ""
+      },
+      {
+        "line": 458,
+        "text": "**一、** 相对于18种几何的36条5 nm主方向结果，局部立方律的沿槽偏差为+10.30%至+204.85%，横槽为+8.11%至+54.19%。理想连续Stokes问题中的两主导度上界由附录E单独证明，不确定这些百分比。已有8条加密及2条新增记录同样位于公式值下方，合计19种几何、46条比较记录；这些数值相容性不构成全图连续精度认证。"
+      },
+      {
+        "line": 459,
+        "text": ""
+      },
+      {
+        "line": 460,
+        "text": "**二、** 两个方向的几何响应及公式偏差不同。间隙50 nm时，槽深从25增至120 nm，5 nm结果的Kyy增至3.55倍，Kxx增至1.034倍；间隙125 nm时沿槽增幅仍约39.2%，该配对两端已有加密结果支持趋势。基准几何的公式各向异性相对5 nm参考高约67%，45°驱动时同一线性张量关系重建的平均通量方向相差9.20°。这些结果说明模型比较需要同时检查两主值及其比值，尚未确定单一耗散机制或实际布胶误差。"
+      },
+      {
+        "line": 461,
+        "text": ""
+      },
+      {
+        "line": 462,
+        "text": "**三、** 使用公布V2系数回顾性比较同一主集合，沿槽平均绝对偏差由88.85%降至6.40%，横槽由30.63%降至4.42%，合计35/36条绝对偏差减小；最大绝对残差分别为10.50%与18.71%。h=25 nm、d=100 nm横槽条件的改善判断随5/2.5 nm参考改变，h≥50 nm子集的6.9%不是连续适用范围承诺。V2残差的间隙依赖仍需与模型选择、参数估计和参考误差分别评价。"
+      },
+      {
+        "line": 463,
+        "text": ""
+      },
+      {
+        "line": 464,
+        "text": "**四、** 保持V2系数不变，在h=100 nm、d=100 nm新增几何的横槽、沿槽及方向比上，相对5 nm参考的偏差分别为+4.39%、−2.03%和−6.15%。这是一个新增间隙的固定公式补充比较，未建立普遍预测精度。静态平均模型中的OpenFOAM接入检查支持已测单位、方向和通量一致性，不构成显式导度或动态压印过程准确性的独立验证。"
+      },
+      {
+        "line": 465,
+        "text": ""
+      },
+      {
+        "line": 466,
+        "text": "---"
+      },
+      {
+        "line": 467,
+        "text": ""
+      }
+    ],
+    "tables": [
+      {
+        "caption_line": 67,
+        "caption": "**表 1　采样几何与样点数**",
+        "context": [
+          {
+            "line": 65,
+            "text": "> 此处\"覆盖\"指参数组合的取样范围，与后文 5 nm 的计算网格无关，二者不可混用。"
+          },
+          {
+            "line": 66,
+            "text": ""
+          },
+          {
+            "line": 67,
+            "text": "**表 1　采样几何与样点数**"
+          },
+          {
+            "line": 68,
+            "text": ""
+          },
+          {
+            "line": 69,
+            "text": "| 间隙 $h$ (nm) | 已算槽深 $d$ (nm) | 几何数 | 主方向样点 |"
+          },
+          {
+            "line": 70,
+            "text": "|---|---|---:|---:|"
+          },
+          {
+            "line": 71,
+            "text": "| 25 | 25, 50, 100 | 3 | 6 |"
+          },
+          {
+            "line": 72,
+            "text": "| 50 | 25, 50, 75, 100, 120 | 5 | 10 |"
+          },
+          {
+            "line": 73,
+            "text": "| 75 | 25, 50, 75, 100, 120 | 5 | 10 |"
+          },
+          {
+            "line": 74,
+            "text": "| 125 | 25, 50, 75, 100, 120 | 5 | 10 |"
+          },
+          {
+            "line": 75,
+            "text": "| **合计** | — | **18** | **36** |"
+          },
+          {
+            "line": 76,
+            "text": ""
+          },
+          {
+            "line": 77,
+            "text": "求解采用 OpenLB [7] 的 D3Q19 速度集、带体力修正的单松弛时间 BGK 模型，松弛参数 $\\tau=1$；体力项采用 Guo 方案 [9]。固壁使用 Bouzidi–Firdaouss–Lallemand 插值反弹，壁面交点由解析几何给出 [7,8]；该格式针对任意分数壁面距离提出，以在曲线及离格壁面处保持边界动量传递精度 [8]，OpenLB 项目另以解析基准用例与自动回归测试维护其实现的正确性 [7]。"
+          },
+          {
+            "line": 78,
+            "text": ""
+          },
+          {
+            "line": 79,
+            "text": "计算域平面尺寸 $L_x=L_y=240$ nm，即恰好一个图案周期；$x$、$y$ 双向周期，基底与模具表面无滑移。驱动以均匀体积力施加，加速度 $a=1\\times10^{5}$ m s⁻²，主地图全部算例取同一幅值（该幅值的基准几何检查见 §2.4）。宏观速度通过 OpenLB 的 `computeU` 提取，包含与所用 Guo 体力方案一致的半时间步力修正。稳态判据取连续 1000 步的通量窗口：主通量相对标准差 $\\le10^{-6}$、相对极差 $\\le5\\times10^{-6}$，主轴驱动另要求横向通量 $\\le10^{-12}$ m²/s 的绝对值。该判据的性质与限度（它是停止条件而非独立验收指标）见 §3.1。现存运行清单保存了二进制哈希，参数、结果与日志可按[补充材料表 S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s1)定位；部分历史运行的源码、编译配置及 OpenLB 依赖版本绑定尚未完整核实，作为来源限制保留（见[补充材料 S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s10)）。"
+          },
+          {
+            "line": 80,
+            "text": ""
+          },
+          {
+            "line": 81,
+            "text": "**采用单胞的前提是图案严格重复。** 对理想、严格周期的图案内部，一个周期单胞即可表示重复区域的流动，这正是单胞缩减计算量的依据。该前提**不涵盖**完整模具边缘、图案接缝处的过渡区，也不涵盖实际供液条件；本文未对这些情形作任何验证。"
+          },
+          {
+            "line": 82,
+            "text": ""
+          },
+          {
+            "line": 83,
+            "text": "**物理黏度先行设定，时间步由物性与离散参数共同确定。** 取 $\\tau=1$，格子运动黏度为"
+          },
+          {
+            "line": 84,
+            "text": ""
+          },
+          {
+            "line": 85,
+            "text": "$$"
+          },
+          {
+            "line": 86,
+            "text": "\\nu^*=c_s^2\\left(\\tau-\\tfrac12\\right)=\\frac{1}{3}\\cdot\\frac{1}{2}=\\frac{1}{6}."
+          },
+          {
+            "line": 87,
+            "text": "$$"
+          },
+          {
+            "line": 88,
+            "text": ""
+          },
+          {
+            "line": 89,
+            "text": "物理运动黏度取 $\\nu=1.0\\times10^{-6}$ m²/s、网格 $\\Delta x=5$ nm，则时间步由"
+          },
+          {
+            "line": 90,
+            "text": ""
+          },
+          {
+            "line": 91,
+            "text": "$$"
+          },
+          {
+            "line": 92,
+            "text": "\\Delta t=\\frac{\\left(\\tau-\\tfrac12\\right)\\Delta x^{2}}{3\\nu}=4.1667\\times10^{-12}\\ \\mathrm{s}"
+          },
+          {
+            "line": 93,
+            "text": "\\tag{1}"
+          },
+          {
+            "line": 94,
+            "text": "$$"
+          },
+          {
+            "line": 95,
+            "text": ""
+          },
+          {
+            "line": 96,
+            "text": "唯一确定；再取 $\\rho=1000$ kg m⁻³，动力黏度即为 $\\mu=\\rho\\nu=1.0\\times10^{-3}$ Pa·s。"
+          },
+          {
+            "line": 97,
+            "text": ""
+          },
+          {
+            "line": 98,
+            "text": "本文先设定液体密度与物理运动黏度，由 $\\mu=\\rho\\nu$ 得到动力黏度；在此物性下选取 $\\tau=1$ 与 $\\Delta x=5$ nm，再由式 (1) 确定时间步。网格加密时按式 (1) 调整时间步，以保持物理黏度与松弛参数不变。本文未做 $\\tau$ 敏感性扫描，故不声称结果与松弛参数无关。"
+          },
+          {
+            "line": 99,
+            "text": ""
+          },
+          {
+            "line": 100,
+            "text": "主地图采用 $\\Delta x=5$ nm，最小间隙 $h=25$ nm 对应 $h/\\Delta x=5$，其分辨率需要特别关注。在 $(h,d)=(25,100)$ nm 处，加密至 2.5 nm 后，沿槽与跨槽输运系数分别变化约 −0.386% 与 −4.431%，变化率以 5 nm 结果为分母。因此，本文将 5 nm 结果作为指定分辨率下的离散参考，并单独报告最薄间隙的加密敏感性；现有双网格比较不能确定观测收敛阶，也不能证明全图网格无关，详见 §3.3。"
+          },
+          {
+            "line": 101,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 192,
+        "caption": "**表 2　误差对参考网格的敏感性**",
+        "context": [
+          {
+            "line": 190,
+            "text": "**误差本身带参考网格依赖，必须先界定。** 由式 (4)，$E_i$ 以 $K_i^{\\rm ref}$ 为分母，而后者本身含离散误差，故同一几何换用不同参考网格会得到不同误差。对同时具备两种网格的四个几何，该影响为："
+          },
+          {
+            "line": 191,
+            "text": ""
+          },
+          {
+            "line": 192,
+            "text": "**表 2　误差对参考网格的敏感性**"
+          },
+          {
+            "line": 193,
+            "text": ""
+          },
+          {
+            "line": 194,
+            "text": "| 几何 $(h,d)$ (nm) | 方向 | $E$（5 nm 参考） | $E$（2.5 nm 参考） | 差值（百分点） |"
+          },
+          {
+            "line": 195,
+            "text": "|---|---|---:|---:|---:|"
+          },
+          {
+            "line": 196,
+            "text": "| (25, 100) | 沿槽 | 139.14% | 140.07% | +0.93 |"
+          },
+          {
+            "line": 197,
+            "text": "| (25, 100) | 跨槽 | 16.36% | **21.76%** | **+5.39** |"
+          },
+          {
+            "line": 198,
+            "text": "| (50, 100) | 沿槽 | 154.24% | 155.57% | +1.33 |"
+          },
+          {
+            "line": 199,
+            "text": "| (50, 100) | 跨槽 | 37.14% | 40.10% | +2.96 |"
+          },
+          {
+            "line": 200,
+            "text": "| (125, 25) | 沿槽 | 10.30% | 10.67% | +0.37 |"
+          },
+          {
+            "line": 201,
+            "text": "| (125, 25) | 跨槽 | 11.68% | 12.48% | +0.80 |"
+          },
+          {
+            "line": 202,
+            "text": "| (125, 120) | 沿槽 | 147.77% | 148.78% | +1.01 |"
+          },
+          {
+            "line": 203,
+            "text": "| (125, 120) | 跨槽 | 54.19% | 55.46% | +1.27 |"
+          },
+          {
+            "line": 204,
+            "text": ""
+          },
+          {
+            "line": 205,
+            "text": "> **注**：基准几何 (75,100) 的三网格归档结果见第 3 章，不在本表内。"
+          },
+          {
+            "line": 206,
+            "text": ""
+          },
+          {
+            "line": 207,
+            "text": "表 2 对应的未取整数值与变化定义见[补充材料 S7、表 S2](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s2)。"
+          },
+          {
+            "line": 208,
+            "text": ""
+          },
+          {
+            "line": 209,
+            "text": "最坏情形出现在 $(h,d)=(25,100)$ 的跨槽分量：误差由 16.36% 变为 21.76%，相差 5.39 个百分点，相对变化 33%。该最大变化发生在最薄间隙的跨槽方向。在这四个已检查几何中，沿槽偏差对参考网格的变化较小（≤1.33 个百分点）；这一观察不外推至其余未加密几何。"
+          },
+          {
+            "line": 210,
+            "text": ""
+          },
+          {
+            "line": 211,
+            "text": "因此全文报告的误差区间应理解为**\"以 5 nm 生产网格为参考\"这一口径下**给出的值。对有双网格的四个几何，模型偏差随参考网格改变而变化 0.37—5.39 个百分点。该范围描述已检查条件下的网格敏感性，不作为离散误差界或不确定度估计，也不能据此推断未做双网格的其余 14 个几何具有同等网格敏感性。"
+          },
+          {
+            "line": 212,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 247,
+        "caption": "**表 3　平壁解析基准（$h=75$ nm）**",
+        "context": [
+          {
+            "line": 245,
+            "text": "在间隙 75 nm 的平行平板中，数值系数应恢复 $K_0=h^3/12$。三套网格的结果见表 3；原始结果定位及历史横槽失败记录见[补充材料 S9、表 S4](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s4)。"
+          },
+          {
+            "line": 246,
+            "text": ""
+          },
+          {
+            "line": 247,
+            "text": "**表 3　平壁解析基准（$h=75$ nm）**"
+          },
+          {
+            "line": 248,
+            "text": ""
+          },
+          {
+            "line": 249,
+            "text": "| 网格 $\\Delta x$ (nm) | 数值 $K$ (m³) | 解析 $h^3/12$ (m³) | 相对误差 |"
+          },
+          {
+            "line": 250,
+            "text": "|---:|---:|---:|---:|"
+          },
+          {
+            "line": 251,
+            "text": "| 5 | $3.531250\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.444% |"
+          },
+          {
+            "line": 252,
+            "text": "| 2.5 | $3.519529\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.111% |"
+          },
+          {
+            "line": 253,
+            "text": "| 1.25 | $3.516580\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.0272% |"
+          },
+          {
+            "line": 254,
+            "text": ""
+          },
+          {
+            "line": 255,
+            "text": "网格每加密一倍误差约降至四分之一。这一\"解析对照—加密序列—误差约按四分之一递减\"的验证结构与 OpenLB 官方基准用例（Poiseuille 解析对照与自动回归测试）一致 [7]，区别在误差度量：官方为速度场 L2 范数，本文为总积分输运系数。这一结果检验的是平直壁配置下的总积分输运误差，其中包含速度离散与求积等影响，**不能全部归因于体相或边界处理**；它也不说明插值反弹格式对任意分数距离壁面都是二阶，本文计算只用到 $q=1/2$ 这一情形。"
+          },
+          {
+            "line": 256,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 261,
+        "caption": "**表 4　网格加密一倍后的系数变化（以 5 nm 值为分母）**",
+        "context": [
+          {
+            "line": 259,
+            "text": "平壁基准不能代替沟槽几何的分辨率检查。四个几何做了 5 nm 与 2.5 nm 的双网格对比，结果见表 4。"
+          },
+          {
+            "line": 260,
+            "text": ""
+          },
+          {
+            "line": 261,
+            "text": "**表 4　网格加密一倍后的系数变化（以 5 nm 值为分母）**"
+          },
+          {
+            "line": 262,
+            "text": ""
+          },
+          {
+            "line": 263,
+            "text": "| 几何 $(h,d)$ (nm) | $K_{yy}$ 变化 | $K_{xx}$ 变化 |"
+          },
+          {
+            "line": 264,
+            "text": "|---|---:|---:|"
+          },
+          {
+            "line": 265,
+            "text": "| (50, 100) | −0.52% | −2.11% |"
+          },
+          {
+            "line": 266,
+            "text": "| (125, 25) | −0.33% | −0.71% |"
+          },
+          {
+            "line": 267,
+            "text": "| (25, 100) | −0.39% | **−4.43%** |"
+          },
+          {
+            "line": 268,
+            "text": "| (125, 120) | −0.41% | −0.82% |"
+          },
+          {
+            "line": 269,
+            "text": ""
+          },
+          {
+            "line": 270,
+            "text": "在这四个已检查几何中，沿槽分量的双网格变化幅度均 < 0.6%；跨槽变化幅度更大，最大为最薄间隙处的−4.43%。这些是已查几何的敏感性记录，不表示全图均具有相同的网格响应。"
+          },
+          {
+            "line": 271,
+            "text": ""
+          },
+          {
+            "line": 272,
+            "text": "对间隙125 nm的槽深25→120 nm配对，两端均有加密结果：跨槽增幅由5 nm参考下的0.9405%变为2.5 nm参考下的0.8335%，沿槽对应39.1978%与39.0928%。两级比较支持该配对趋势在已检查分辨率上的一致性，但仍不能给出连续解误差界。"
+          },
+          {
+            "line": 273,
+            "text": ""
+          },
+          {
+            "line": 274,
+            "text": "两级网格比较仅表征已查几何的分辨率敏感性。h=75 nm、d=100 nm基准另有5、2.5、1.25 nm三网格历史数据，其按观测阶计算的条件性Richardson外推与GCI及运行限制见[补充材料 S9、表 S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s5)，方法参照 [10]。其中1.25 nm横槽记录未通过冻结质量门；本研究不以该表确认渐近区，不将细网格估计外推至全部生产网格样点。"
+          },
+          {
+            "line": 275,
+            "text": ""
+          },
+          {
+            "line": 276,
+            "text": "补充材料[S12、表S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s12)另列S0–S4控制链：S0检查h=75 nm、d=100 nm基准几何的实现与统计修订回归，S1检查平板解析解；后续包括常规几何h=60 nm、d=80 nm的网格与驱动力检查，以及薄隙h=30 nm、d=80 nm的网格检查。薄隙横槽中细变化1.328387035%超过原1%判据，S4阶段仍为FAIL；这与上文h=75 nm、d=100 nm历史细网格的质量FAIL是不同记录。控制几何不并入主比较集合，其他几何的网格差不能作为主地图误差条。"
+          },
+          {
+            "line": 277,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 292,
+        "caption": "**表 5　槽深由25增至120 nm时的系数倍率**",
+        "context": [
+          {
+            "line": 290,
+            "text": "先考察显式数值参考中的几何响应。在固定间隙下，增加槽深带来的通流收益具有方向差异。表5比较槽深由25增至120 nm时两个主系数的变化。"
+          },
+          {
+            "line": 291,
+            "text": ""
+          },
+          {
+            "line": 292,
+            "text": "**表 5　槽深由25增至120 nm时的系数倍率**"
+          },
+          {
+            "line": 293,
+            "text": ""
+          },
+          {
+            "line": 294,
+            "text": "| 间隙 $h$ (nm) | 沿槽 $K_{yy}$ | 跨槽 $K_{xx}$ |"
+          },
+          {
+            "line": 295,
+            "text": "|---:|---:|---:|"
+          },
+          {
+            "line": 296,
+            "text": "| 50 | 3.55 | 1.034 |"
+          },
+          {
+            "line": 297,
+            "text": "| 75 | 2.13 | 1.021 |"
+          },
+          {
+            "line": 298,
+            "text": "| 125 | 1.39 | 1.009 |"
+          },
+          {
+            "line": 299,
+            "text": ""
+          },
+          {
+            "line": 300,
+            "text": "在这三档间隙中，沿槽相对增益随间隙增大而减弱，但在 $h=125$ nm 时仍约为39.2%。跨槽增幅分别约为3.39%、2.14%与0.94%，远小于对应沿槽增幅。最薄的25 nm间隙没有计算120 nm槽深；在已覆盖的25—100 nm槽深范围内，跨槽系数的最大值与最小值之比为1.037。因此，增深所增加的流体容积没有带来两个方向相同的通流收益。"
+          },
+          {
+            "line": 301,
+            "text": ""
+          },
+          {
+            "line": 302,
+            "text": "局部模型中的并联与串联关系可提供定性理解：沿槽深区和浅区共同承载通量，跨槽液体则依次通过交替区域。但这些图像不能单独证明显式流动的阻力集中位置。本文未独立分解侧壁剪切与台阶附近流动重分布的贡献，不将上述弱响应归因于已证实的单一机制。"
+          },
+          {
+            "line": 303,
+            "text": ""
+          },
+          {
+            "line": 304,
+            "text": "![图2：5 nm离散参考的主导度与各向异性](../../figures/paper/Fig4_K_and_anisotropy.png)"
+          },
+          {
+            "line": 305,
+            "text": ""
+          },
+          {
+            "line": 306,
+            "text": "**图 2**　矩形沟槽阵列在5 nm离散参考下的输运系数与各向异性。(a) $K_{yy}$（实心）与 $K_{xx}$（空心）随槽深的**变化**，四个间隙各一组；$K_{xx}$ 在各间隙已采样槽深上的变化小于4%，该范围不包含未计算几何。$h=25$ nm时仅采样 $d=25$、50、100 nm。(b) 各向异性比 $A=K_{yy}/K_{xx}$，对数纵轴，点线为 $A=1$。"
+          },
+          {
+            "line": 307,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 312,
+        "caption": "**表 6　局部立方律的相对偏差范围**",
+        "context": [
+          {
+            "line": 310,
+            "text": "将式（3）与5 nm生产网格的显式数值参考逐点比较，18种几何的两个主方向相对偏差均为正，范围见表6。这一结果限定于本文采样条件及参考分辨率。"
+          },
+          {
+            "line": 311,
+            "text": ""
+          },
+          {
+            "line": 312,
+            "text": "**表 6　局部立方律的相对偏差范围**"
+          },
+          {
+            "line": 313,
+            "text": ""
+          },
+          {
+            "line": 314,
+            "text": "| 量 | 沿槽 $K_{yy}$ | 跨槽 $K_{xx}$ |"
+          },
+          {
+            "line": 315,
+            "text": "|---|---:|---:|"
+          },
+          {
+            "line": 316,
+            "text": "| 偏差范围 | +10.30%至+204.85% | +8.11%至+54.19% |"
+          },
+          {
+            "line": 317,
+            "text": "| 最大偏差位置 | $h=50,d=120$ nm | $h=125,d=120$ nm |"
+          },
+          {
+            "line": 318,
+            "text": "| 最小偏差位置 | $h=125,d=25$ nm | $h=25,d=25$ nm |"
+          },
+          {
+            "line": 319,
+            "text": "| 高估样点数 | 18/18 | 18/18 |"
+          },
+          {
+            "line": 320,
+            "text": ""
+          },
+          {
+            "line": 321,
+            "text": "沿槽最大偏差出现在 $(h,d)=(50,120)$ nm：模型值约为数值参考值的3.05倍，即相对高估约204.85%。沿槽最大偏差约为最小偏差的20倍，其范围宽于跨槽方向。"
+          },
+          {
+            "line": 322,
+            "text": ""
+          },
+          {
+            "line": 323,
+            "text": "上述 36 条 5 nm 主记录之外，其中 4 种几何另有 8 条 2.5 nm 加密记录（§3.3 表 4），另有 §4.4 末新增的 $h=100$ nm 两主方向结果；三类合计 19 种几何的 46 条离散记录均低于对应局部立方律值，与附录 E 连续模型上界的方向一致。加密与新增记录单列，不并入表 6 的统计口径。"
+          },
+          {
+            "line": 324,
+            "text": ""
+          },
+          {
+            "line": 325,
+            "text": "附录E约束的是相同理想边值问题的连续解K*，不是离散K_LB。上述46条数值记录与上界方向相容，不是46个独立物理条件，也不建立全图连续解误差界；上界本身不确定偏差幅度、方向比偏差符号或V2准确度。"
+          },
+          {
+            "line": 326,
+            "text": ""
+          },
+          {
+            "line": 327,
+            "text": "在固定间隙的已采样槽深序列中，沿槽偏差随 $d/w$ 增大而增大。在 $h=50$、75、125 nm三档间隙中，固定槽深的沿槽偏差随间隙增大而减小；但加入 $h=25$ nm后，并非所有槽深都保持单调。例如，$d=100$ nm时，沿槽偏差由 $h=25$ nm的139.14%上升至 $h=50$ nm的154.24%，随后在 $h=75$、125 nm降至144.95%与108.38%。这些数据支持偏差具有参数依赖，尚不能据此确定唯一机制或排除离散误差的影响。"
+          },
+          {
+            "line": 328,
+            "text": ""
+          },
+          {
+            "line": 329,
+            "text": "![图3：局部立方律偏差随间隙变化](../../figures/paper/Fig7_error_vs_gap.png)"
+          },
+          {
+            "line": 330,
+            "text": ""
+          },
+          {
+            "line": 331,
+            "text": "**图 3**　相对于5 nm离散参考，局部立方律的偏差随间隙变化（按槽深分组）。局部立方律见式（3），误差定义见式（4）；两面板纵轴均为对数且范围不同。用于说明误差的参数依赖。"
+          },
+          {
+            "line": 332,
+            "text": ""
+          },
+          {
+            "line": 333,
+            "text": "![图4：已采样几何的偏差热图与未采样标记](../../figures/paper/Fig8_error_map.png)"
+          },
+          {
+            "line": 334,
+            "text": ""
+          },
+          {
+            "line": 335,
+            "text": "**图 4**　相对于5 nm离散参考，局部立方律偏差的 $d$–$h$ 分布。两面板采用各自的色标，颜色深浅不能跨面板直接比较。斜线格为未计算几何，**不得填补或插值**。"
+          },
+          {
+            "line": 336,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 341,
+        "caption": "**表 7　基准几何（$h=75$ nm，$d=100$ nm）的各向异性与预测流向**",
+        "context": [
+          {
+            "line": 339,
+            "text": "相对于基准几何的5 nm数值主值，局部模型给出的各向异性与同一线性张量关系下重建的通量方向存在偏差。表7报告这一基准比较，不代表实验测得的流向误差。"
+          },
+          {
+            "line": 340,
+            "text": ""
+          },
+          {
+            "line": 341,
+            "text": "**表 7　基准几何（$h=75$ nm，$d=100$ nm）的各向异性与预测流向**"
+          },
+          {
+            "line": 342,
+            "text": ""
+          },
+          {
+            "line": 343,
+            "text": "| 项 | 由显式数值主值计算 | 由局部立方律主值计算 | 差异 |"
+          },
+          {
+            "line": 344,
+            "text": "|---|---:|---:|---:|"
+          },
+          {
+            "line": 345,
+            "text": "| 各向异性 $A=K_{yy}/K_{xx}$ | 2.21 | 3.70 | 模型高估约67% |"
+          },
+          {
+            "line": 346,
+            "text": "| 45°驱动下的流向角 $\\beta$ | 24.34° | 15.14° | −9.20° |"
+          },
+          {
+            "line": 347,
+            "text": ""
+          },
+          {
+            "line": 348,
+            "text": "若驱动角 $\\theta$ 与通量角 $\\beta$ 均从槽轴量起，在线性张量描述下"
+          },
+          {
+            "line": 349,
+            "text": ""
+          },
+          {
+            "line": 350,
+            "text": "$$"
+          },
+          {
+            "line": 351,
+            "text": "\\tan\\beta=\\frac{K_{xx}}{K_{yy}}\\tan\\theta ."
+          },
+          {
+            "line": 352,
+            "text": "\\tag{5}"
+          },
+          {
+            "line": 353,
+            "text": "$$"
+          },
+          {
+            "line": 354,
+            "text": ""
+          },
+          {
+            "line": 355,
+            "text": "在 $\\theta=45^\\circ$ 时，两组主值重建的通量方向相差−9.20°。因此，即使某一驱动角下的总通量接近，仅比较总量也不足以保证方向准确；需同时检查两个主值及其比值。"
+          },
+          {
+            "line": 356,
+            "text": ""
+          },
+          {
+            "line": 357,
+            "text": "现有30°、45°与60°斜向驱动结果检查的是同一数值模型主值用于张量预测的内部自洽性，不构成对局部立方律主值准确性的验证。"
+          },
+          {
+            "line": 358,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 374,
+        "caption": "**表 8　修正前后的偏差比较（5 nm参考）**",
+        "context": [
+          {
+            "line": 372,
+            "text": "按公布系数直接计算，沿槽全18点的最大绝对残差为10.5%；跨槽全18点为18.7%，其中 $h\\ge50$ nm的15点为6.9%。表8在相同样点范围内比较修正前后的最大、平均绝对偏差及改善条数。"
+          },
+          {
+            "line": 373,
+            "text": ""
+          },
+          {
+            "line": 374,
+            "text": "**表 8　修正前后的偏差比较（5 nm参考）**"
+          },
+          {
+            "line": 375,
+            "text": ""
+          },
+          {
+            "line": 376,
+            "text": "| 方向及样点范围 | 原始最大绝对偏差 | V2最大绝对残差 | 原始平均绝对偏差 | V2平均绝对偏差 | 绝对偏差减小 |"
+          },
+          {
+            "line": 377,
+            "text": "|---|---:|---:|---:|---:|---:|"
+          },
+          {
+            "line": 378,
+            "text": "| 沿槽，全部18点 | 204.85% | 10.50% | 88.85% | 6.40% | 18/18 |"
+          },
+          {
+            "line": 379,
+            "text": "| 跨槽，全部18点 | 54.19% | 18.71% | 30.63% | 4.42% | 17/18 |"
+          },
+          {
+            "line": 380,
+            "text": "| 跨槽，$h\\ge50$ nm，15点 | 54.19% | 6.9% | — | — | — |"
+          },
+          {
+            "line": 381,
+            "text": ""
+          },
+          {
+            "line": 382,
+            "text": "平均绝对偏差为该方向18个主样点绝对百分比偏差的算术平均，不是有符号偏差均值；两个方向合计35/36条改善。15点子集用于定位薄隙影响，不能据此承诺所有h≥50 nm条件满足6.9%。"
+          },
+          {
+            "line": 383,
+            "text": ""
+          },
+          {
+            "line": 384,
+            "text": "整体最坏偏差下降，并不意味着每个点均得到改善。在 $(h,d)=(25,100)$ nm跨槽点，原始有符号偏差为+16.36%，修正后为−18.71%，其绝对偏差反而增大约2.34个百分点。这是5 nm主地图中唯一绝对偏差增大的主方向样点。改用2.5 nm参考时，同一点的原始偏差为+21.76%、修正后为−14.94%，局部改善判断也受参考网格影响。因此，不能把修正精度与数值参考精度混为一谈；两档原公式/V2偏差并列见补充表S7。"
+          },
+          {
+            "line": 385,
+            "text": ""
+          },
+          {
+            "line": 386,
+            "text": "V2 的乘性修正因子仅以 $d/w$ 为自变量（完整公式 $K_i^{V2}=F_i(d/w)\\,K_i^{LC}(h,d)$ 仍含间隙 $h$），而残差仍随间隙变化，提示这一变量选择尚不足以覆盖已采样的间隙响应；本文未进一步分解模型形式、参数估计与离散参考对剩余残差的贡献。"
+          },
+          {
+            "line": 387,
+            "text": ""
+          },
+          {
+            "line": 388,
+            "text": "当前拟合的9个标定几何与9个扩展几何分别对应两组不同二进制SHA，几何分组与程序身份完全重合。扩展数据中，d=75 nm位于标定槽深范围内，d=120 nm与h=25 nm分别超出标定的槽深与间隙范围。除 $h=75$ nm、$d=100$ nm 的单几何同条件复算（§3.4，两构建结果一致）外，尚无跨这两组程序的进一步同条件对照；现有记录仍不能完全分离潜在构建差异与几何、模型及数值参考因素对残差的贡献。扩展数据在模型形式选择时已经可见，因此这些残差继续作为回顾性描述，不作为独立预测精度证明。V1、各数据组残差与拟合记录另存支持资料，不与V2混用。"
+          },
+          {
+            "line": 389,
+            "text": ""
+          },
+          {
+            "line": 390,
+            "text": "**新增间隙的固定公式对照（$h=100$ nm）。** 为考察既定经验修正在新增间隙下的表现，保持槽宽 $w=120$ nm、周期 $P=240$ nm 与槽深 $d=100$ nm，补充了 $h=100$ nm 的两主方向计算，网格间距为 5 nm。该间隙未包含在原九种标定几何的系数标定集中；本次比较使用原先公布的 V2 系数，未据新增结果重新拟合。横槽与沿槽的 OpenLB 深度积分导度分别为 $9.914424\\times10^{-23}$ m³ 与 $1.654764\\times10^{-22}$ m³。以同条件 OpenLB 离散值为分母，原公式的相对偏差分别为 +49.43% 与 +126.62%，V2 的偏差为 +4.39% 与 −2.03%。方向比 $A=K_{yy}/K_{xx}$ 的 OpenLB 值为 1.6690，V2 预测为 1.5664，按与主值一致的\"公式/参考−1\"口径其相对偏差为 −6.15%。这组结果为固定 V2 在一个新增间隙下的表现提供了补充数值证据；其精度比较限于所用 5 nm 网格，不构成连续参数范围的精度保证，现有记录亦不据以认证严格盲测身份。"
+          },
+          {
+            "line": 391,
+            "text": ""
+          },
+          {
+            "line": 392,
+            "text": "保持 $d/w$ 不变时，沿槽 V2 残差由 $h=75$ nm 的 +5.90% 变为 $h=100$ nm 的 −2.03%，相差 7.93 个百分点；横槽对应变化为 2.04 个百分点。沿槽变化未满足该批次记录的 5 个百分点结构筛查条件。结果提示应继续考察乘性修正因子的间隙依赖，但尚不能将残差唯一归因于缺少间隙变量，或据此确定新的修正形式。"
+          },
+          {
+            "line": 393,
+            "text": ""
+          },
+          {
+            "line": 394,
+            "text": "---"
+          },
+          {
+            "line": 395,
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "abstract": [
+      {
+        "line": 5,
+        "text": "## Abstract"
+      },
+      {
+        "line": 6,
+        "text": ""
+      },
+      {
+        "line": 7,
+        "text": "The local cubic law is commonly used in reduced nanoimprint models, but its along- and across-groove conductances require separate assessment. Using the lattice Boltzmann method, we compute steady transport between a planar substrate and a periodically grooved wall, assuming a fixed gap, a fully filled Newtonian liquid domain and no-slip walls. The period is 240 nm, with equal groove and rib widths. The main dataset comprises 18 geometries and 36 principal-direction conductances on a 5 nm grid; four geometries also have 2.5 nm refinements to assess grid sensitivity."
+      },
+      {
+        "line": 8,
+        "text": ""
+      },
+      {
+        "line": 9,
+        "text": "Relative to the 5 nm discrete references, the local cubic law overestimates all main principal-direction results, with maximum relative discrepancies of +204.85% along and +54.19% across the grooves. At the reference geometry, anisotropy ratios from the original law and the discrete reference are 3.70 and 2.21, respectively. Reconstructing mean flux directions under the same linear tensor relation for forcing at 45° to the groove axis gives a difference of 9.20°. Retrospective evaluation of the fixed empirical correction (V2) reduces the maximum absolute discrepancies to 10.50% along and 18.71% across the grooves, although the improvement assessment at one thin-gap transverse point changes with reference grid. A comparison in both directions at one additional gap also reduces absolute relative discrepancy with V2 coefficients unchanged."
+      },
+      {
+        "line": 10,
+        "text": ""
+      },
+      {
+        "line": 11,
+        "text": "Theoretical analysis establishes local-cubic-law upper bounds on both continuous principal conductances in the stated periodic Stokes model, without determining discrepancy magnitudes or V2 accuracy. Quantitative results concern the sampled geometries and specified discrete references, without establishing continuous-domain or real-imprint accuracy guarantees. The findings support assessing both principal conductances, their ratio and reference sensitivity together in such reduced models."
+      },
+      {
+        "line": 12,
+        "text": ""
+      },
+      {
+        "line": 13,
+        "text": "**Keywords:** nanoimprint lithography; rectangular grooves; anisotropic transport; lattice Boltzmann method; local cubic law; model discrepancy"
+      },
+      {
+        "line": 14,
+        "text": ""
+      },
+      {
+        "line": 15,
+        "text": "---"
+      },
+      {
+        "line": 16,
+        "text": ""
+      }
+    ],
+    "conclusions": [
+      {
+        "line": 448,
+        "text": "## 6 Conclusions"
+      },
+      {
+        "line": 449,
+        "text": ""
+      },
+      {
+        "line": 450,
+        "text": "**1.** Against the 36 main principal-direction records for 18 geometries at 5 nm, local-law discrepancies range from +10.30% to +204.85% along and from +8.11% to +54.19% across the grooves. Appendix E separately establishes upper bounds for the ideal continuous Stokes problem, without determining these percentages. Eight refinement and two additional-gap records also lie below the model values, giving 46 comparison records for 19 geometries; this compatibility does not certify map-wide continuous-solution accuracy."
+      },
+      {
+        "line": 451,
+        "text": ""
+      },
+      {
+        "line": 452,
+        "text": "**2.** Geometry responses and model discrepancies differ by direction. At a 50 nm gap, deepening from 25 to 120 nm multiplies the 5 nm Kyy by 3.55 and Kxx by 1.034. At 125 nm gap, the along-groove gain remains about 39.2%, with refinements at both endpoints supporting the paired trend. At the reference geometry, the model anisotropy is about 67% higher than the 5 nm reference, and mean flux directions reconstructed under the same linear tensor relation differ by 9.20° for 45° forcing. Both principal values and their ratio require assessment; no unique dissipation mechanism or real dispensing error has been established."
+      },
+      {
+        "line": 453,
+        "text": ""
+      },
+      {
+        "line": 454,
+        "text": "**3.** Retrospective comparison using the published V2 coefficients reduces the along-groove mean absolute discrepancy from 88.85% to 6.40% and the transverse value from 30.63% to 4.42%, improving 35/36 main records. Maximum absolute residuals are 10.50% and 18.71%, respectively. At h=25 nm, d=100 nm, the local transverse improvement assessment changes between 5 and 2.5 nm references. The 6.9% maximum in the h≥50 nm subset is not a continuous applicability guarantee. Residual gap dependence must be assessed separately from model selection, parameter estimation and reference error."
+      },
+      {
+        "line": 455,
+        "text": ""
+      },
+      {
+        "line": 456,
+        "text": "**4.** With V2 coefficients fixed, the added h=100 nm, d=100 nm geometry gives transverse, longitudinal and anisotropy discrepancies of +4.39%, −2.03% and −6.15% against the 5 nm references. This fixed-form supplementary comparison does not establish general prediction accuracy. OpenFOAM interface checks in a static averaged model support tested units, directions and flux consistency, rather than independently validating resolved conductances or dynamic imprinting accuracy."
+      },
+      {
+        "line": 457,
+        "text": ""
+      },
+      {
+        "line": 458,
+        "text": "---"
+      },
+      {
+        "line": 459,
+        "text": ""
+      }
+    ],
+    "tables": [
+      {
+        "caption_line": 63,
+        "caption": "**Table 1. Sampled geometries and principal-direction samples.**",
+        "context": [
+          {
+            "line": 61,
+            "text": "> Here, coverage refers to sampling of parameter combinations, not the 5 nm computational grid."
+          },
+          {
+            "line": 62,
+            "text": ""
+          },
+          {
+            "line": 63,
+            "text": "**Table 1. Sampled geometries and principal-direction samples.**"
+          },
+          {
+            "line": 64,
+            "text": ""
+          },
+          {
+            "line": 65,
+            "text": "| Gap $h$ (nm) | Computed depth $d$ (nm) | Geometries | Principal-direction samples |"
+          },
+          {
+            "line": 66,
+            "text": "|---|---|---:|---:|"
+          },
+          {
+            "line": 67,
+            "text": "| 25 | 25, 50, 100 | 3 | 6 |"
+          },
+          {
+            "line": 68,
+            "text": "| 50 | 25, 50, 75, 100, 120 | 5 | 10 |"
+          },
+          {
+            "line": 69,
+            "text": "| 75 | 25, 50, 75, 100, 120 | 5 | 10 |"
+          },
+          {
+            "line": 70,
+            "text": "| 125 | 25, 50, 75, 100, 120 | 5 | 10 |"
+          },
+          {
+            "line": 71,
+            "text": "| **Total** | — | **18** | **36** |"
+          },
+          {
+            "line": 72,
+            "text": ""
+          },
+          {
+            "line": 73,
+            "text": "Calculations use the OpenLB [7] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\\tau=1$. The force term uses the Guo scheme [9]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with intersections obtained from the analytical geometry [7,8]. The scheme was formulated for fractional wall distances [8]; OpenLB also maintains implementation checks through analytical benchmarks and automated regression tests [7]."
+          },
+          {
+            "line": 74,
+            "text": ""
+          },
+          {
+            "line": 75,
+            "text": "The in-plane dimensions are $L_x=L_y=240$ nm, exactly one pattern period. Boundaries are periodic in $x$ and $y$, with no slip at the substrate and mold. A uniform volume force is imposed with acceleration $a=1\\times10^{5}$ m s⁻². The same amplitude is used throughout the main map; the reference-geometry check is described in §2.4. OpenLB `computeU` supplies the macroscopic velocity, including the half-time-step force correction consistent with the Guo scheme. The stopping rule uses a 1000-step flux window: main-flux relative standard deviation $\\le10^{-6}$, relative range $\\le5\\times10^{-6}$, and, for principal-axis forcing, absolute cross-flux $\\le10^{-12}$ m²/s. Its scope as a stopping rule, rather than an independent acceptance metric, is discussed in §3.1. Saved manifests contain binary hashes; parameters, results and logs are indexed in [Supplementary Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s1). Binding to historical application source, compiler configuration and OpenLB dependencies remains incomplete for some runs; this provenance limitation is retained in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10)."
+          },
+          {
+            "line": 76,
+            "text": ""
+          },
+          {
+            "line": 77,
+            "text": "**The unit-cell reduction assumes an exactly repeating pattern.** One period represents the interior of the ideal periodic pattern and reduces the computational domain. This assumption does not cover mold edges, pattern junctions or actual supply conditions; those configurations have not been verified here."
+          },
+          {
+            "line": 78,
+            "text": ""
+          },
+          {
+            "line": 79,
+            "text": "**Physical viscosity is specified first; physical properties and discretization together determine the time step.** With $\\tau=1$, the lattice kinematic viscosity is"
+          },
+          {
+            "line": 80,
+            "text": ""
+          },
+          {
+            "line": 81,
+            "text": "$$"
+          },
+          {
+            "line": 82,
+            "text": "\\nu^*=c_s^2\\left(\\tau-\\tfrac12\\right)=\\frac{1}{3}\\cdot\\frac{1}{2}=\\frac{1}{6}."
+          },
+          {
+            "line": 83,
+            "text": "$$"
+          },
+          {
+            "line": 84,
+            "text": ""
+          },
+          {
+            "line": 85,
+            "text": "For physical kinematic viscosity $\\nu=1.0\\times10^{-6}$ m²/s and spacing $\\Delta x=5$ nm, the time step is uniquely determined by"
+          },
+          {
+            "line": 86,
+            "text": ""
+          },
+          {
+            "line": 87,
+            "text": "$$"
+          },
+          {
+            "line": 88,
+            "text": "\\Delta t=\\frac{\\left(\\tau-\\tfrac12\\right)\\Delta x^{2}}{3\\nu}=4.1667\\times10^{-12}\\ \\mathrm{s}"
+          },
+          {
+            "line": 89,
+            "text": "\\tag{1}"
+          },
+          {
+            "line": 90,
+            "text": "$$"
+          },
+          {
+            "line": 91,
+            "text": ""
+          },
+          {
+            "line": 92,
+            "text": "Taking $\\rho=1000$ kg m⁻³ then gives dynamic viscosity $\\mu=\\rho\\nu=1.0\\times10^{-3}$ Pa·s."
+          },
+          {
+            "line": 93,
+            "text": ""
+          },
+          {
+            "line": 94,
+            "text": "Density and physical kinematic viscosity are specified first, giving dynamic viscosity through $\\mu=\\rho\\nu$. At those properties, $\\tau=1$ and $\\Delta x=5$ nm are selected, and Eq. (1) determines the time step. On refinement, the time step follows Eq. (1) to preserve physical viscosity and relaxation parameter. No $\\tau$ sensitivity sweep was performed, so relaxation-parameter independence is not claimed."
+          },
+          {
+            "line": 95,
+            "text": ""
+          },
+          {
+            "line": 96,
+            "text": "The main map uses $\\Delta x=5$ nm. The smallest gap, $h=25$ nm, has $h/\\Delta x=5$, requiring particular attention to resolution. Refining $(h,d)=(25,100)$ nm to 2.5 nm changes the along-groove and across-groove coefficients by approximately −0.386% and −4.431%, normalized by the 5 nm values. We therefore retain 5 nm results as references at a specified discrete resolution and report thin-gap refinement sensitivity separately. Two grids neither determine observed convergence order nor establish grid independence of the full map (§3.3)."
+          },
+          {
+            "line": 97,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 186,
+        "caption": "**Table 2. Sensitivity of model discrepancy to the reference grid.**",
+        "context": [
+          {
+            "line": 184,
+            "text": "**Reference-grid dependence must be specified.** Equation (4) uses $E_i$ with denominator $K_i^{\\rm ref}$, which contains discretization error. Changing the reference grid can therefore change the reported discrepancy at the same geometry. For four geometries with two grids, this effect is:"
+          },
+          {
+            "line": 185,
+            "text": ""
+          },
+          {
+            "line": 186,
+            "text": "**Table 2. Sensitivity of model discrepancy to the reference grid.**"
+          },
+          {
+            "line": 187,
+            "text": ""
+          },
+          {
+            "line": 188,
+            "text": "| Geometry $(h,d)$ (nm) | Direction | $E$ (5 nm reference) | $E$ (2.5 nm reference) | Change (percentage points) |"
+          },
+          {
+            "line": 189,
+            "text": "|---|---|---:|---:|---:|"
+          },
+          {
+            "line": 190,
+            "text": "| (25, 100) | Along | 139.14% | 140.07% | +0.93 |"
+          },
+          {
+            "line": 191,
+            "text": "| (25, 100) | Across | 16.36% | **21.76%** | **+5.39** |"
+          },
+          {
+            "line": 192,
+            "text": "| (50, 100) | Along | 154.24% | 155.57% | +1.33 |"
+          },
+          {
+            "line": 193,
+            "text": "| (50, 100) | Across | 37.14% | 40.10% | +2.96 |"
+          },
+          {
+            "line": 194,
+            "text": "| (125, 25) | Along | 10.30% | 10.67% | +0.37 |"
+          },
+          {
+            "line": 195,
+            "text": "| (125, 25) | Across | 11.68% | 12.48% | +0.80 |"
+          },
+          {
+            "line": 196,
+            "text": "| (125, 120) | Along | 147.77% | 148.78% | +1.01 |"
+          },
+          {
+            "line": 197,
+            "text": "| (125, 120) | Across | 54.19% | 55.46% | +1.27 |"
+          },
+          {
+            "line": 198,
+            "text": ""
+          },
+          {
+            "line": 199,
+            "text": "> **Note:** the three-grid historical reference geometry (75,100) is discussed in Section 3 and is not included here."
+          },
+          {
+            "line": 200,
+            "text": ""
+          },
+          {
+            "line": 201,
+            "text": "Unrounded values and change definitions for Table 2 are in [S7 and Table S2](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s2)."
+          },
+          {
+            "line": 202,
+            "text": ""
+          },
+          {
+            "line": 203,
+            "text": "The largest change is in the across-groove component at $(h,d)=(25,100)$: from 16.36% to 21.76%, a difference of 5.39 percentage points, or 33% relative change. It occurs at the thinnest gap. Among these four checked geometries, the along-groove discrepancy changes less with reference grid (≤1.33 percentage points). This observation is not extended to unrefined geometries."
+          },
+          {
+            "line": 204,
+            "text": ""
+          },
+          {
+            "line": 205,
+            "text": "The reported discrepancy intervals therefore use **the 5 nm production grid as reference**. For the four two-grid geometries, reference-grid changes alter model discrepancies by 0.37–5.39 percentage points. This describes sensitivity at the checked conditions, rather than a discretization-error bound or uncertainty estimate. It does not establish comparable sensitivity for the other 14 geometries."
+          },
+          {
+            "line": 206,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 241,
+        "caption": "**Table 3. Flat-wall analytical benchmark ($h=75$ nm).**",
+        "context": [
+          {
+            "line": 239,
+            "text": "For parallel plates separated by 75 nm, the coefficient should recover $K_0=h^3/12$. Table 3 reports three grids. Original results and the historical transverse-flow failure are indexed in [S9 and Table S4](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s4)."
+          },
+          {
+            "line": 240,
+            "text": ""
+          },
+          {
+            "line": 241,
+            "text": "**Table 3. Flat-wall analytical benchmark ($h=75$ nm).**"
+          },
+          {
+            "line": 242,
+            "text": ""
+          },
+          {
+            "line": 243,
+            "text": "| Grid $\\Delta x$ (nm) | Numerical $K$ (m³) | Analytical $h^3/12$ (m³) | Relative error |"
+          },
+          {
+            "line": 244,
+            "text": "|---:|---:|---:|---:|"
+          },
+          {
+            "line": 245,
+            "text": "| 5 | $3.531250\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.444% |"
+          },
+          {
+            "line": 246,
+            "text": "| 2.5 | $3.519529\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.111% |"
+          },
+          {
+            "line": 247,
+            "text": "| 1.25 | $3.516580\\times10^{-23}$ | $3.515625\\times10^{-23}$ | 0.0272% |"
+          },
+          {
+            "line": 248,
+            "text": ""
+          },
+          {
+            "line": 249,
+            "text": "Halving the spacing reduces the error by approximately a factor of four. The analytical-comparison/refinement structure is consistent with OpenLB Poiseuille benchmarks and regression tests [7], although the metric here is integrated conductance rather than a velocity-field L2 norm. This tests total integrated-transport error in the planar configuration, including velocity discretization and quadrature. **It cannot be attributed entirely to bulk or boundary treatment.** Nor does it establish second-order accuracy of interpolated bounce-back at arbitrary fractional wall distances: these calculations use only $q=1/2$."
+          },
+          {
+            "line": 250,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 255,
+        "caption": "**Table 4. Coefficient changes on halving the spacing, normalized by the 5 nm values.**",
+        "context": [
+          {
+            "line": 253,
+            "text": "The flat-wall benchmark cannot replace resolution checks for grooves. Four geometries were compared on 5 and 2.5 nm grids (Table 4)."
+          },
+          {
+            "line": 254,
+            "text": ""
+          },
+          {
+            "line": 255,
+            "text": "**Table 4. Coefficient changes on halving the spacing, normalized by the 5 nm values.**"
+          },
+          {
+            "line": 256,
+            "text": ""
+          },
+          {
+            "line": 257,
+            "text": "| Geometry $(h,d)$ (nm) | $K_{yy}$ change | $K_{xx}$ change |"
+          },
+          {
+            "line": 258,
+            "text": "|---|---:|---:|"
+          },
+          {
+            "line": 259,
+            "text": "| (50, 100) | −0.52% | −2.11% |"
+          },
+          {
+            "line": 260,
+            "text": "| (125, 25) | −0.33% | −0.71% |"
+          },
+          {
+            "line": 261,
+            "text": "| (25, 100) | −0.39% | **−4.43%** |"
+          },
+          {
+            "line": 262,
+            "text": "| (125, 120) | −0.41% | −0.82% |"
+          },
+          {
+            "line": 263,
+            "text": ""
+          },
+          {
+            "line": 264,
+            "text": "For these four checked geometries, along-groove changes are all <0.6% in magnitude. Across-groove changes are larger, reaching −4.43% at the thinnest gap. These sensitivity records do not establish the same grid response across the full map."
+          },
+          {
+            "line": 265,
+            "text": ""
+          },
+          {
+            "line": 266,
+            "text": "At a gap of 125 nm, refinements exist at both depths 25 and 120 nm. The across-groove gain changes from 0.9405% with the 5 nm reference to 0.8335% with the 2.5 nm reference; the along-groove gains are 39.1978% and 39.0928%. This supports consistency of the paired trend at the checked resolutions, without providing a continuous-solution error bound."
+          },
+          {
+            "line": 267,
+            "text": ""
+          },
+          {
+            "line": 268,
+            "text": "Two-grid comparisons characterize resolution sensitivity only for the checked geometries. Historical data at h=75 nm and d=100 nm also use 5, 2.5 and 1.25 nm grids. Conditional Richardson extrapolation and GCI based on observed order, together with run limitations, are reported in [S9 and Table S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s5), following [10]. The 1.25 nm transverse record failed the frozen mass gate. We do not use the table to confirm an asymptotic range or extend its fine-grid estimates to every production sample."
+          },
+          {
+            "line": 269,
+            "text": ""
+          },
+          {
+            "line": 270,
+            "text": "The S0–S4 control chain is indexed separately in [S12 and Table S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s12): S0 implementation/statistic regression at h=75 nm, d=100 nm, S1 analytical plate checks, grid and forcing checks at h=60 nm, d=80 nm, and grid checks at h=30 nm, d=80 nm. The thin-gap transverse medium-to-fine change is 1.328387035%, exceeding its original 1% criterion, so stage S4 remains FAIL. This differs from the historical mass failure at h=75 nm, d=100 nm. Control geometries are excluded from the main comparison set, and their grid changes are not error bars for other geometries."
+          },
+          {
+            "line": 271,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 286,
+        "caption": "**Table 5. Coefficient ratios for depth increasing from 25 to 120 nm.**",
+        "context": [
+          {
+            "line": 284,
+            "text": "We first examine geometry responses in the resolved numerical references. At fixed gap, deepening the grooves produces different transport gains in the two directions. Table 5 compares coefficients at depths of 25 and 120 nm."
+          },
+          {
+            "line": 285,
+            "text": ""
+          },
+          {
+            "line": 286,
+            "text": "**Table 5. Coefficient ratios for depth increasing from 25 to 120 nm.**"
+          },
+          {
+            "line": 287,
+            "text": ""
+          },
+          {
+            "line": 288,
+            "text": "| Gap $h$ (nm) | Along $K_{yy}$ | Across $K_{xx}$ |"
+          },
+          {
+            "line": 289,
+            "text": "|---:|---:|---:|"
+          },
+          {
+            "line": 290,
+            "text": "| 50 | 3.55 | 1.034 |"
+          },
+          {
+            "line": 291,
+            "text": "| 75 | 2.13 | 1.021 |"
+          },
+          {
+            "line": 292,
+            "text": "| 125 | 1.39 | 1.009 |"
+          },
+          {
+            "line": 293,
+            "text": ""
+          },
+          {
+            "line": 294,
+            "text": "Among these three gaps, the relative along-groove gain decreases with gap but remains approximately 39.2% at $h=125$ nm. Across-groove gains are approximately 3.39%, 2.14% and 0.94%, much smaller than their along-groove counterparts. The thinnest, 25 nm gap was not computed at 120 nm depth. Over its sampled 25–100 nm depth range, the maximum-to-minimum across-groove coefficient ratio is 1.037. Additional groove volume therefore does not produce equal transport gains in the two directions."
+          },
+          {
+            "line": 295,
+            "text": ""
+          },
+          {
+            "line": 296,
+            "text": "Parallel and series constructions offer a qualitative picture: along-groove flow uses deep and shallow regions together, whereas across-groove flow passes through alternating regions. These pictures alone do not locate resistance in the resolved flow. Sidewall-shear and step-redistribution contributions have not been separated, so the weak transverse response is not attributed to a demonstrated single mechanism."
+          },
+          {
+            "line": 297,
+            "text": ""
+          },
+          {
+            "line": 298,
+            "text": "![Figure 2: principal conductances and anisotropy of the 5 nm discrete references](../../figures/paper/Fig4_K_and_anisotropy.png)"
+          },
+          {
+            "line": 299,
+            "text": ""
+          },
+          {
+            "line": 300,
+            "text": "**Figure 2.** Transport coefficients and anisotropy of the rectangular groove array using 5 nm discrete references. (a) $K_{yy}$ (filled symbols) and $K_{xx}$ (open symbols) against depth, grouped by four gaps. Across the sampled depths at each gap, $K_{xx}$ varies by less than 4%; uncomputed geometries are excluded. At $h=25$ nm, only $d=25$, 50 and 100 nm were sampled. (b) Anisotropy $A=K_{yy}/K_{xx}$ on a logarithmic ordinate; the dotted line marks $A=1$."
+          },
+          {
+            "line": 301,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 306,
+        "caption": "**Table 6. Ranges of local-cubic-law relative discrepancy.**",
+        "context": [
+          {
+            "line": 304,
+            "text": "Pointwise comparison of Eq. (3) against the 5 nm production-grid references gives positive relative discrepancies in both directions at all 18 geometries (Table 6). This result is specific to the sampled conditions and reference resolution."
+          },
+          {
+            "line": 305,
+            "text": ""
+          },
+          {
+            "line": 306,
+            "text": "**Table 6. Ranges of local-cubic-law relative discrepancy.**"
+          },
+          {
+            "line": 307,
+            "text": ""
+          },
+          {
+            "line": 308,
+            "text": "| Quantity | Along $K_{yy}$ | Across $K_{xx}$ |"
+          },
+          {
+            "line": 309,
+            "text": "|---|---:|---:|"
+          },
+          {
+            "line": 310,
+            "text": "| Discrepancy range | +10.30% to +204.85% | +8.11% to +54.19% |"
+          },
+          {
+            "line": 311,
+            "text": "| Maximum location | $h=50,d=120$ nm | $h=125,d=120$ nm |"
+          },
+          {
+            "line": 312,
+            "text": "| Minimum location | $h=125,d=25$ nm | $h=25,d=25$ nm |"
+          },
+          {
+            "line": 313,
+            "text": "| Overestimated samples | 18/18 | 18/18 |"
+          },
+          {
+            "line": 314,
+            "text": ""
+          },
+          {
+            "line": 315,
+            "text": "The largest along-groove discrepancy occurs at $(h,d)=(50,120)$ nm: the model coefficient is approximately 3.05 times the reference, an overestimate of approximately 204.85%. The largest along-groove discrepancy is about 20 times its smallest, giving a wider range than across the grooves."
+          },
+          {
+            "line": 316,
+            "text": ""
+          },
+          {
+            "line": 317,
+            "text": "In addition to the 36 main records, four existing geometries have eight 2.5 nm records (§3.3), and §4.4 adds two principal-direction records at h=100 nm. All 46 comparison records for 19 geometries lie below the corresponding local-cubic-law values. Refinements and added-gap comparisons are reported separately and are excluded from the original 36-record statistics. Appendix E constrains the continuous solution K*, not discrete K_LB. These observations are compatible with the upper bounds; they are neither 46 independent physical conditions nor a map-wide continuous-error bound. The bounds determine neither discrepancy magnitudes, the sign of the ratio discrepancy nor V2 accuracy."
+          },
+          {
+            "line": 318,
+            "text": ""
+          },
+          {
+            "line": 319,
+            "text": "Within sampled depth sequences at fixed gap, the along-groove discrepancy increases with $d/w$. At gaps $h=50$, 75 and 125 nm, it decreases with gap at fixed depth. Including $h=25$ nm removes monotonicity at some depths. For example, at $d=100$ nm it rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm, before falling to 144.95% and 108.38% at $h=75$ and 125 nm. These data support parameter dependence, but establish neither a unique mechanism nor the exclusion of discretization effects."
+          },
+          {
+            "line": 320,
+            "text": ""
+          },
+          {
+            "line": 321,
+            "text": "![Figure 3: local-cubic-law discrepancy against gap](../../figures/paper/Fig7_error_vs_gap.png)"
+          },
+          {
+            "line": 322,
+            "text": ""
+          },
+          {
+            "line": 323,
+            "text": "**Figure 3.** Local-cubic-law discrepancy against gap, grouped by groove depth, relative to 5 nm discrete references. The model and discrepancy definitions are Eqs. (3) and (4). Both ordinates are logarithmic, with different ranges. The figure describes parameter dependence of the discrepancy."
+          },
+          {
+            "line": 324,
+            "text": ""
+          },
+          {
+            "line": 325,
+            "text": "![Figure 4: discrepancy map and explicit unsampled cells](../../figures/paper/Fig8_error_map.png)"
+          },
+          {
+            "line": 326,
+            "text": ""
+          },
+          {
+            "line": 327,
+            "text": "**Figure 4.** Local-cubic-law discrepancy over the $d$–$h$ matrix, relative to 5 nm discrete references. Each panel uses its own color scale; color intensity cannot be compared directly between panels. Hatched cells were not computed and **must not be filled or interpolated**."
+          },
+          {
+            "line": 328,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 333,
+        "caption": "**Table 7. Anisotropy and reconstructed flow direction at the reference geometry ($h=75$ nm, $d=100$ nm).**",
+        "context": [
+          {
+            "line": 331,
+            "text": "Relative to the reference geometry’s 5 nm principal values, the local model gives different anisotropy and flux direction reconstructed under the same linear tensor relation. Table 7 presents that comparison, rather than experimentally measured flow-direction error."
+          },
+          {
+            "line": 332,
+            "text": ""
+          },
+          {
+            "line": 333,
+            "text": "**Table 7. Anisotropy and reconstructed flow direction at the reference geometry ($h=75$ nm, $d=100$ nm).**"
+          },
+          {
+            "line": 334,
+            "text": ""
+          },
+          {
+            "line": 335,
+            "text": "| Quantity | From numerical principal values | From local-model principal values | Difference |"
+          },
+          {
+            "line": 336,
+            "text": "|---|---:|---:|---:|"
+          },
+          {
+            "line": 337,
+            "text": "| Anisotropy $A=K_{yy}/K_{xx}$ | 2.21 | 3.70 | Model overestimate ≈67% |"
+          },
+          {
+            "line": 338,
+            "text": "| Flux angle under 45° forcing $\\beta$ | 24.34° | 15.14° | −9.20° |"
+          },
+          {
+            "line": 339,
+            "text": ""
+          },
+          {
+            "line": 340,
+            "text": "When forcing angle $\\theta$ and flux angle $\\beta$ are both measured from the groove axis, the linear tensor description gives"
+          },
+          {
+            "line": 341,
+            "text": ""
+          },
+          {
+            "line": 342,
+            "text": "$$"
+          },
+          {
+            "line": 343,
+            "text": "\\tan\\beta=\\frac{K_{xx}}{K_{yy}}\\tan\\theta ."
+          },
+          {
+            "line": 344,
+            "text": "\\tag{5}"
+          },
+          {
+            "line": 345,
+            "text": "$$"
+          },
+          {
+            "line": 346,
+            "text": ""
+          },
+          {
+            "line": 347,
+            "text": "At $\\theta=45^\\circ$, the directions reconstructed from the two sets of principal values differ by −9.20°. Agreement in total flux at one forcing angle therefore does not guarantee directional accuracy; both principal values and their ratio must be checked."
+          },
+          {
+            "line": 348,
+            "text": ""
+          },
+          {
+            "line": 349,
+            "text": "Existing oblique-forcing results at 30°, 45° and 60° test internal consistency of tensor predictions using principal values from the same numerical model. They do not verify the accuracy of the local-cubic-law principal values."
+          },
+          {
+            "line": 350,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 366,
+        "caption": "**Table 8. Discrepancies before and after correction, relative to the 5 nm references.**",
+        "context": [
+          {
+            "line": 364,
+            "text": "Evaluation using the published coefficients gives a maximum absolute residual of 10.5% over all 18 along-groove samples and 18.7% over all 18 across-groove samples. The 15 across-groove samples with $h\\ge50$ give 6.9%. Table 8 compares maxima, means and improvement counts over matched sample sets."
+          },
+          {
+            "line": 365,
+            "text": ""
+          },
+          {
+            "line": 366,
+            "text": "**Table 8. Discrepancies before and after correction, relative to the 5 nm references.**"
+          },
+          {
+            "line": 367,
+            "text": ""
+          },
+          {
+            "line": 368,
+            "text": "| Direction and samples | Original maximum absolute discrepancy | V2 maximum absolute residual | Original mean absolute discrepancy | V2 mean absolute discrepancy | Absolute discrepancy reduced |"
+          },
+          {
+            "line": 369,
+            "text": "|---|---:|---:|---:|---:|---:|"
+          },
+          {
+            "line": 370,
+            "text": "| Along, all 18 | 204.85% | 10.50% | 88.85% | 6.40% | 18/18 |"
+          },
+          {
+            "line": 371,
+            "text": "| Across, all 18 | 54.19% | 18.71% | 30.63% | 4.42% | 17/18 |"
+          },
+          {
+            "line": 372,
+            "text": "| Across, $h\\ge50$ nm, 15 samples | 54.19% | 6.9% | — | — | — |"
+          },
+          {
+            "line": 373,
+            "text": ""
+          },
+          {
+            "line": 374,
+            "text": "Mean absolute discrepancy is the arithmetic mean of absolute percentage discrepancies over the 18 main samples in each direction, not a signed mean. Across both directions, 35/36 records improve. The 15-sample subset identifies the thin-gap contribution; it does not guarantee a 6.9% maximum for every condition with h≥50 nm."
+          },
+          {
+            "line": 375,
+            "text": ""
+          },
+          {
+            "line": 376,
+            "text": "A reduction in the overall maximum does not imply improvement at every sample. At the across-groove sample $(h,d)=(25,100)$ nm, the signed discrepancy changes from +16.36% to −18.71%, increasing its absolute value by approximately 2.34 percentage points. This is the only principal-direction sample in the 5 nm main map whose absolute discrepancy increases. With the 2.5 nm reference, the corresponding values are +21.76% and −14.94%. The assessment of local improvement therefore depends on the reference grid; correction accuracy and reference accuracy must be distinguished (Supplementary Table S7)."
+          },
+          {
+            "line": 377,
+            "text": ""
+          },
+          {
+            "line": 378,
+            "text": "The V2 multiplicative factor depends only on $d/w$, while the complete formula $K_i^{V2}=F_i(d/w)K_i^{LC}(h,d)$ still contains gap $h$. Residuals still vary with gap. This variable choice does not capture the full sampled gap response. Contributions from model form, parameter estimation and discrete references have not been separated."
+          },
+          {
+            "line": 379,
+            "text": ""
+          },
+          {
+            "line": 380,
+            "text": "The 9 calibration geometries and 9 extension geometries correspond to two different binary-SHA groups: geometry grouping and program identity coincide completely. Among extension data, d=75 nm lies within the calibration depth range, whereas d=120 nm and h=25 nm extend beyond the calibration depth and gap ranges. Apart from the matched reproduction at h=75 nm, d=100 nm (§3.4), no further same-condition comparisons across the two program identities are available. Potential build effects therefore remain incompletely separated from geometry, model and reference effects on residuals. Extension data were already visible during model-form selection. These residuals therefore remain retrospective descriptions, rather than independent prediction evidence. V1, group-specific residuals and fitting records are retained separately in supporting files and are not mixed with V2."
+          },
+          {
+            "line": 381,
+            "text": ""
+          },
+          {
+            "line": 382,
+            "text": "**Fixed-form comparison at an additional gap ($h=100$ nm).** At fixed groove width $w=120$ nm, period $P=240$ nm and depth $d=100$ nm, two principal-direction calculations were added on the 5 nm grid. This gap was absent from the original nine-geometry coefficient-calibration set. The comparison uses the previously published V2 coefficients without refitting. Across- and along-groove OpenLB conductances are $9.914424\\times10^{-23}$ m³ and $1.654764\\times10^{-22}$ m³. With the matched OpenLB discrete values as denominators, local-law discrepancies are +49.43% and +126.62%, and V2 residuals are +4.39% and −2.03%. The OpenLB ratio $A=K_{yy}/K_{xx}$ is 1.6690, compared with 1.5664 from V2; its discrepancy, using the same model/reference−1 convention, is −6.15%. These results provide supplementary evidence for the fixed V2 relation at one added gap. Comparison is restricted to the 5 nm references and provides neither a continuous-domain accuracy guarantee nor certification of a strictly blinded test."
+          },
+          {
+            "line": 383,
+            "text": ""
+          },
+          {
+            "line": 384,
+            "text": "At fixed $d/w$, the along-groove V2 residual changes from +5.90% at $h=75$ nm to −2.03% at $h=100$ nm, a difference of 7.93 percentage points; the transverse difference is 2.04 percentage points. The along-groove change fails the batch's recorded five-percentage-point structural screen. This motivates examining gap dependence of the multiplicative factor, but does not uniquely identify omission of gap as the cause or determine a replacement form. Supplementary Tables S6 and S7 index the added comparisons and the thin-gap two-grid assessment."
+          },
+          {
+            "line": 385,
+            "text": ""
+          },
+          {
+            "line": 386,
+            "text": "---"
+          },
+          {
+            "line": 387,
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "supp_cn": {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "abstract": [],
+    "conclusions": [],
+    "tables": [
+      {
+        "caption_line": 37,
+        "caption": "**表 S1　D2/D3地图与附加检查逐运行清单（52项）**",
+        "context": [
+          {
+            "line": 35,
+            "text": "<a id=\"table-s1\"></a>"
+          },
+          {
+            "line": 36,
+            "text": ""
+          },
+          {
+            "line": 37,
+            "text": "**表 S1　D2/D3地图与附加检查逐运行清单（52项）**"
+          },
+          {
+            "line": 38,
+            "text": ""
+          },
+          {
+            "line": 39,
+            "text": "完整表：[Table_S1_run_inventory.csv](Table_S1_run_inventory.csv)。其中主地图36项、加密8项、黏度对照2项、斜向6项。表中逐行给出几何、方向、网格、K、原始结果路径、运行清单、日志、二进制哈希及独立退出码。"
+          },
+          {
+            "line": 40,
+            "text": ""
+          },
+          {
+            "line": 41,
+            "text": "这52项不包含S8的周期复制/多力检查或S9的历史平板/三网格基准。不同证据清单可能复用同一物理基准，不能把文件条数相加称为独立新运行数。"
+          },
+          {
+            "line": 42,
+            "text": ""
+          },
+          {
+            "line": 43,
+            "text": "**新增比较与数据使用角色。** 主比较36条、加密8条与h=100 nm新增2条合计19种几何的46条比较记录；与S3的36＋8＋2黏度边界审计集合不同。原52行表S1不扩写、不改历史分母。"
+          },
+          {
+            "line": 44,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 47,
+        "caption": "**表 S6　新增间隙与单几何构建对照（6条记录）**",
+        "context": [
+          {
+            "line": 45,
+            "text": "<a id=\"table-s6\"></a>"
+          },
+          {
+            "line": 46,
+            "text": ""
+          },
+          {
+            "line": 47,
+            "text": "**表 S6　新增间隙与单几何构建对照（6条记录）**"
+          },
+          {
+            "line": 48,
+            "text": ""
+          },
+          {
+            "line": 49,
+            "text": "数值表：[Table_S6_added_gap_build_comparison.csv](Table_S6_added_gap_build_comparison.csv)，采用已核比较表的原字节副本。四条新增记录为h100两方向与h75构建B两方向，另有h75两条历史对照；只有h100增加一个比较几何。原目录及manifest标签由[四例验收报告](../PAPER1_new_four_cases_acceptance_20261107/REPORT.md)定位，`A_blind`原标签不作为盲测认证。A偏差统一为100(A_model/A_LB−1)%，h100 V2为−6.15%。"
+          },
+          {
+            "line": 50,
+            "text": ""
+          },
+          {
+            "line": 51,
+            "text": "| 数据组 | 几何与用途 | 数据使用与身份边界 |"
+          },
+          {
+            "line": 52,
+            "text": "|---|---|---|"
+          },
+          {
+            "line": 53,
+            "text": "| 9个系数标定几何 | h=50/75/125 nm × d=25/50/100 nm；w=120 nm | 原拟合目标函数使用；主地图二进制285f67a0… |"
+          },
+          {
+            "line": 54,
+            "text": "| 9个扩展几何 | 主地图余下几何 | 形式选择时已可见，非独立预测；主地图二进制57611b21… |"
+          },
+          {
+            "line": 55,
+            "text": "| h100新增几何 | d=100 nm，两方向，5 nm | 固定公布系数，未重新拟合；不认证严格盲测 |"
+          },
+          {
+            "line": 56,
+            "text": "| h75构建复现 | d=100 nm，两方向，5 nm | 两构建K、停止步数、逐步主通量相同；不是全图构建等价 |"
+          },
+          {
+            "line": 57,
+            "text": ""
+          },
+          {
+            "line": 58,
+            "text": "完整两组二进制SHA及拟合角色来源见[主张终审报告](../PAPER1_claim_final_review_20261105/REPORT.md)与S10；表中缩写仅便于识别，不替代运行清单。"
+          },
+          {
+            "line": 59,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 106,
+        "caption": "**表 S2　四种几何、两个方向的双网格比较（8行）**",
+        "context": [
+          {
+            "line": 104,
+            "text": "<a id=\"table-s2\"></a>"
+          },
+          {
+            "line": 105,
+            "text": ""
+          },
+          {
+            "line": 106,
+            "text": "**表 S2　四种几何、两个方向的双网格比较（8行）**"
+          },
+          {
+            "line": 107,
+            "text": ""
+          },
+          {
+            "line": 108,
+            "text": "完整表：[Table_S2_refinement.csv](Table_S2_refinement.csv)。几何为(25,100)、(50,100)、(125,25)、(125,120) nm；每行列K5、K2.5、系数变化、两种参考网格的模型偏差及百分点差。K变化定义为100(K2.5/K5−1)，以5 nm值为分母；模型偏差变化为E2.5−E5。"
+          },
+          {
+            "line": 109,
+            "text": ""
+          },
+          {
+            "line": 110,
+            "text": "最薄跨槽K变化为−4.43073188%，模型偏差变化为+5.39475470个百分点。两个网格只给出已查条件下的敏感性，不能确定观测阶、GCI或连续参数域误差界。"
+          },
+          {
+            "line": 111,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 114,
+        "caption": "**表 S7　h=25 nm、d=100 nm横槽的原公式/V2两网格对照**",
+        "context": [
+          {
+            "line": 112,
+            "text": "<a id=\"table-s7\"></a>"
+          },
+          {
+            "line": 113,
+            "text": ""
+          },
+          {
+            "line": 114,
+            "text": "**表 S7　h=25 nm、d=100 nm横槽的原公式/V2两网格对照**"
+          },
+          {
+            "line": 115,
+            "text": ""
+          },
+          {
+            "line": 116,
+            "text": "完整表：[Table_S7_thin_gap_correction.csv](Table_S7_thin_gap_correction.csv)。同一几何的原公式和固定V2均以相应网格K为分母。"
+          },
+          {
+            "line": 117,
+            "text": ""
+          },
+          {
+            "line": 118,
+            "text": "| 参考网格 | 原公式偏差 | V2偏差 | 绝对偏差变化的判断 |"
+          },
+          {
+            "line": 119,
+            "text": "|---|---:|---:|---|"
+          },
+          {
+            "line": 120,
+            "text": "| 5 nm | +16.36% | −18.71% | 增大 |"
+          },
+          {
+            "line": 121,
+            "text": "| 2.5 nm | +21.76% | −14.94% | 减小 |"
+          },
+          {
+            "line": 122,
+            "text": ""
+          },
+          {
+            "line": 123,
+            "text": "局部改善判断受参考分辨率影响，不能从5 nm反例推出连续解上同样恶化。已有h125/d25与d120两端加密对照支持所报配对趋势；该薄隙点也不否定全部参数趋势。h100尚无同几何加密参考，本轮未追加计算。"
+          },
+          {
+            "line": 124,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 131,
+        "caption": "**表 S3　基准几何的周期复制与多力原始记录（18行）**",
+        "context": [
+          {
+            "line": 129,
+            "text": "<a id=\"table-s3\"></a>"
+          },
+          {
+            "line": 130,
+            "text": ""
+          },
+          {
+            "line": 131,
+            "text": "**表 S3　基准几何的周期复制与多力原始记录（18行）**"
+          },
+          {
+            "line": 132,
+            "text": ""
+          },
+          {
+            "line": 133,
+            "text": "完整表：[Table_S3_periodic_checks.csv](Table_S3_periodic_checks.csv)。三个批次分别为`g4_period_nx2_fields_v1_20261012T001316+0800`、`g4_period_nx4_fields_v1_20261012T105719+0800`、`g4_period_nx8_fields_v1_20261012T163341+0800`；每批Nx固定，含P/T两方向及a=5×10⁴、10⁵、2×10⁵ m/s²。"
+          },
+          {
+            "line": 134,
+            "text": ""
+          },
+          {
+            "line": 135,
+            "text": "冻结条件见[周期域协议](/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G4_EX240_period_convergence/PERIOD_CONVERGENCE_PROTOCOL.md)：h=75 nm、d=100 nm、dx=2.5 nm。a=10⁵时两方向R的2→4相对差均0，4→8分别8.71496562e−14、3.80797839e−14。每级K的跨度除以均值，沿槽最大2.47850560e−8、跨槽最大3.66006070e−8。Nx2沿槽K与历史同网格基准的相对差为6.89448e−14。"
+          },
+          {
+            "line": 136,
+            "text": ""
+          },
+          {
+            "line": 137,
+            "text": "这些证据支持该基准几何在所检力范围内的线性响应和周期复制数值一致性，不表示全部36个5 nm样点各自做过多力检查，也不是物理RVE收敛证明。编号工作没有重做全部原数值门禁或人工质量轨迹放行。"
+          },
+          {
+            "line": 138,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 145,
+        "caption": "**表 S4　历史三网格基准原始值与原记录状态（9行）**",
+        "context": [
+          {
+            "line": 143,
+            "text": "<a id=\"table-s4\"></a>"
+          },
+          {
+            "line": 144,
+            "text": ""
+          },
+          {
+            "line": 145,
+            "text": "**表 S4　历史三网格基准原始值与原记录状态（9行）**"
+          },
+          {
+            "line": 146,
+            "text": ""
+          },
+          {
+            "line": 147,
+            "text": "完整表：[Table_S4_grid_archive.csv](Table_S4_grid_archive.csv)。每个网格5/2.5/1.25 nm包含Smooth75、EX240_parallel、EX240_perpendicular；目录见[历史归档](/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800)。"
+          },
+          {
+            "line": 148,
+            "text": ""
+          },
+          {
+            "line": 149,
+            "text": "平板积分K相对h³/12的误差依次为0.44444079%、0.11103511%、0.02715688%。历史1.25 nm横槽原记录PASS=false、独立exit3；该失败原样保留，可计算GCI不能使其自动通过。"
+          },
+          {
+            "line": 150,
+            "text": ""
+          },
+          {
+            "line": 151,
+            "text": "后续方案C保存有PASS=true与独立exit0，但其初始manifest中formal_reference_accepted=false；本材料不替代未恢复的正式放行记录。历史基准的使用范围与源码/构建来源仍分别判断。"
+          },
+          {
+            "line": 152,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 155,
+        "caption": "**表 S5　历史基准的条件性 Richardson/GCI 估计（6项）**",
+        "context": [
+          {
+            "line": 153,
+            "text": "<a id=\"table-s5\"></a>"
+          },
+          {
+            "line": 154,
+            "text": ""
+          },
+          {
+            "line": 155,
+            "text": "**表 S5　历史基准的条件性 Richardson/GCI 估计（6项）**"
+          },
+          {
+            "line": 156,
+            "text": ""
+          },
+          {
+            "line": 157,
+            "text": "完整数值表：[Table_S5_conditional_gci.csv](Table_S5_conditional_gci.csv)。原始三格值与原记录状态另见表 S4。细、中、粗网格分别为1.25、2.5、5 nm，$r_{21}=r_{32}=2$，$F_s=1.25$。平板间隙为75 nm；沟槽基准为$h=75$ nm、$d=100$ nm、周期240 nm、槽宽120 nm。沿用原协议的$\\rho=1000$ kg/m³、$\\mu=1$ mPa·s、$a=10^5$ m/s²与$\\tau=1$；[原协议](/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_grid_convergence/STEP3_PROTOCOL.md)保存完整几何及参数。K单位m³；eta方向为该方向K除以同网格平板K，anisotropy为沿槽K除以横槽K，两者无量纲。方法参照配套正文[10]，原文版本核实范围见S11。"
+          },
+          {
+            "line": 158,
+            "text": ""
+          },
+          {
+            "line": 159,
+            "text": "| 指标 | p | 外推值 | ea (%) | e_ext (%) | GCI_fine (%) | 依赖历史细T失败点 |"
+          },
+          {
+            "line": 160,
+            "text": "|---|---:|---:|---:|---:|---:|---|"
+          },
+          {
+            "line": 161,
+            "text": "| K_smooth | 1.990910 | 3.515588485e-23 | 0.083855 | 0.028196 | 0.035235 | 否 |"
+          },
+          {
+            "line": 162,
+            "text": "| K_parallel | 1.512988 | 9.754563861e-23 | 0.185350 | 0.100073 | 0.124966 | 否 |"
+          },
+          {
+            "line": 163,
+            "text": "| K_perpendicular | 1.256172 | 4.339399834e-23 | 0.612125 | 0.442769 | 0.551022 | 是，FAIL/exit3 |"
+          },
+          {
+            "line": 164,
+            "text": "| eta_parallel | 0.939763 | 2.773587499 | 0.101409 | 0.110564 | 0.138053 | 否 |"
+          },
+          {
+            "line": 165,
+            "text": "| eta_perpendicular | 1.088414 | 1.233638776 | 0.527826 | 0.470801 | 0.585744 | 是，FAIL/exit3 |"
+          },
+          {
+            "line": 166,
+            "text": "| anisotropy | 1.098181 | 2.248566102 | 0.424178 | 0.370433 | 0.464763 | 是，FAIL/exit3 |"
+          },
+          {
+            "line": 167,
+            "text": ""
+          },
+          {
+            "line": 168,
+            "text": "令$\\phi_1$、$\\phi_2$分别为细格和中格结果，采用统一符号定义外推值$\\phi_{\\mathrm{ext}}=\\phi_1+(\\phi_1-\\phi_2)/(r^p-1)$，$e_a=|(\\phi_1-\\phi_2)/\\phi_1|$，$e_{\\mathrm{ext}}=|(\\phi_{\\mathrm{ext}}-\\phi_1)/\\phi_{\\mathrm{ext}}|$，$GCI_{\\mathrm{fine}}=F_s e_a/(r^p-1)$。表中误差与GCI列均以百分数报告；CSV保留原始三格值与完整精度。"
+          },
+          {
+            "line": 169,
+            "text": ""
+          },
+          {
+            "line": 170,
+            "text": "**失败记录随表披露：** 历史1.25 nm横槽运行相对质量指标为$1.1967043900362632\\times10^{-10}$，超过冻结阈值$10^{-10}$，独立退出码3。K_perpendicular、eta_perpendicular与anisotropy均依赖该失败点。可计算的GCI不赋予该记录合格参考资格，不改变历史G2 Step 3的FAIL/INCONCLUSIVE判定。所列估计不外推其他几何，也不构成全参数域严格误差界。"
+          },
+          {
+            "line": 171,
+            "text": ""
+          },
+          {
+            "line": 172,
+            "text": "沿槽与横槽观测阶分别为1.513和1.256。观测阶低于形式阶本身不足以判定计算不合格，也不能确认渐近性。使用同组三点拟合p后，归档相邻GCI比化为细中结果之比，因此历史“asymptotic range confirmed”标签不作为独立渐近区证据。所报GCI为该三格链的条件性估计。"
+          },
+          {
+            "line": 173,
+            "text": ""
+          },
+          {
+            "line": 174,
+            "text": "对同一平板基准，细格积分K相对解析值的偏差为0.0271569%。将解析偏差与GCI统一以细格值归一，二者分别为0.0271495%与0.0352348%，估计幅度约为解析偏差的1.298倍。该比较仅支持此平板配置和积分量，不证明沟槽或其他几何具有相同的误差覆盖。"
+          },
+          {
+            "line": 175,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 213,
+        "caption": "**表 S8　控制证据索引（不与19几何46条比较集合相加）**",
+        "context": [
+          {
+            "line": 211,
+            "text": "<a id=\"table-s8\"></a>"
+          },
+          {
+            "line": 212,
+            "text": ""
+          },
+          {
+            "line": 213,
+            "text": "**表 S8　控制证据索引（不与19几何46条比较集合相加）**"
+          },
+          {
+            "line": 214,
+            "text": ""
+          },
+          {
+            "line": 215,
+            "text": "机器可读来源索引：[Table_S8_control_evidence.csv](Table_S8_control_evidence.csv)。各控制的接受、失败和范围分别记录；以下为已有验收结果的汇编，本轮没有重放轨迹或重新签发阶段接受。"
+          },
+          {
+            "line": 216,
+            "text": ""
+          },
+          {
+            "line": 217,
+            "text": "| 检查 | 几何与网格 | 已有证据及状态 | 对本文的限度 |"
+          },
+          {
+            "line": 218,
+            "text": "|---|---|---|---|"
+          },
+          {
+            "line": 219,
+            "text": "| 历史平板解析核验 | h75，5/2.5/1.25 nm | K偏差0.44444079/0.11103511/0.02715688%，见S9 | 只检平壁积分量 |"
+          },
+          {
+            "line": 220,
+            "text": "| S0实现回归（A1修订） | h75/d100，5 nm，两方向 | 新A1两例接受；既有主通量、导度及原统计列回归通过，质量统计补证通过；旧v1.2横槽失败保留 | 核实现/统计修订，不是新几何预测或全图精度认证 |"
+          },
+          {
+            "line": 221,
+            "text": "| S1平板控制 | h30、d0，1.25 nm | 已有接受，K相对解析偏差约0.173% | 不替代沟槽网格精度 |"
+          },
+          {
+            "line": 222,
+            "text": "| S2常规几何网格 | h60/d80，5/2.5/1.25 nm | 沿/横槽中细变化0.203234%/0.744252%，原网格检查通过 | 特定控制几何，不是全图误差界 |"
+          },
+          {
+            "line": 223,
+            "text": "| S3驱动力控制 | h60/d80，原三档驱动力 | 已有阶段接受 | 不作为V2预测检验 |"
+          },
+          {
+            "line": 224,
+            "text": "| S4薄隙网格 | h30/d80，5/2.5/1.25 nm | 六条单例检查通过；横槽中细变化1.328387035%>1%，原S4阶段FAIL；GCI约0.912232592%不补偿前项失败 | 不并入主统计，不改变阈值或参考资格 |"
+          },
+          {
+            "line": 225,
+            "text": "| 历史细横槽质量失败 | h75/d100，1.25 nm | 质量相对指标1.1967043900362632×10⁻¹⁰>10⁻¹⁰，原FAIL/exit3，见S9 | 与h30/d80网格FAIL分开 |"
+          },
+          {
+            "line": 226,
+            "text": "| S4服务器构建复现 | h30/d80横槽，1.25 nm | 同条件K复现与保存数据核对成立 | 不使原S4网格FAIL转为PASS |"
+          },
+          {
+            "line": 227,
+            "text": ""
+          },
+          {
+            "line": 228,
+            "text": "S4中细变化按100|K_medium/K_fine−1|%，与主地图双网格表按K5归一的变化定义不同。两者均不构成已知连续解误差上界，不能与其他几何的最小公式偏差相除建立“安全倍数”。S5未执行，严格参考资格、全图连续误差界和物理验证未建立。本稿对现有指定离散参考作模型比较，不将此控制链包装为全部精度通过。"
+          },
+          {
+            "line": 229,
+            "text": ""
+          }
+        ]
+      }
+    ]
+  },
+  "supp_en": {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "abstract": [],
+    "conclusions": [],
+    "tables": [
+      {
+        "caption_line": 37,
+        "caption": "**Table S1. Run inventory for the D2/D3 map and additional checks (52 runs).**",
+        "context": [
+          {
+            "line": 35,
+            "text": "<a id=\"table-s1\"></a>"
+          },
+          {
+            "line": 36,
+            "text": ""
+          },
+          {
+            "line": 37,
+            "text": "**Table S1. Run inventory for the D2/D3 map and additional checks (52 runs).**"
+          },
+          {
+            "line": 38,
+            "text": ""
+          },
+          {
+            "line": 39,
+            "text": "Complete table: [Table_S1_run_inventory.csv](Table_S1_run_inventory.csv). It contains 36 main-map runs, 8 refinements, 2 viscosity checks and 6 oblique cases. Each row gives geometry, direction, grid, K, original-result path, manifest, log, binary hash and independent exit code."
+          },
+          {
+            "line": 40,
+            "text": ""
+          },
+          {
+            "line": 41,
+            "text": "The 52 runs exclude the periodic-replication/multi-force checks in S8 and the historical flat-wall/three-grid benchmarks in S9. Different evidence inventories can reuse the same physical benchmark; file counts must not be summed as independent new runs."
+          },
+          {
+            "line": 42,
+            "text": ""
+          },
+          {
+            "line": 43,
+            "text": "**Added comparisons and data-use roles.** The main 36, refinement 8 and added-gap 2 records form a 46-record comparison set for 19 geometries. This differs from the 36+8+2 viscosity boundary-audit set in S3. The original 52-row Table S1 and its historical denominator are unchanged."
+          },
+          {
+            "line": 44,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 47,
+        "caption": "**Table S6. Added-gap and single-geometry build comparisons (6 records).**",
+        "context": [
+          {
+            "line": 45,
+            "text": "<a id=\"table-s6\"></a>"
+          },
+          {
+            "line": 46,
+            "text": ""
+          },
+          {
+            "line": 47,
+            "text": "**Table S6. Added-gap and single-geometry build comparisons (6 records).**"
+          },
+          {
+            "line": 48,
+            "text": ""
+          },
+          {
+            "line": 49,
+            "text": "The [numerical table](Table_S6_added_gap_build_comparison.csv) is a byte-preserving copy of the audited comparison CSV. Four added records comprise two h100 directions and two h75 build-B directions; the other two are historical h75 controls. Only h100 adds a comparison geometry. Original directories and manifest labels are indexed in the [four-case audit](../PAPER1_new_four_cases_acceptance_20261107/REPORT.md); the original `A_blind` label is not blinding certification. Ratio discrepancy uses 100(A_model/A_LB−1)%, giving −6.15% for V2 at h100."
+          },
+          {
+            "line": 50,
+            "text": ""
+          },
+          {
+            "line": 51,
+            "text": "| Data group | Geometry and role | Data-use and identity limits |"
+          },
+          {
+            "line": 52,
+            "text": "|---|---|---|"
+          },
+          {
+            "line": 53,
+            "text": "| 9 coefficient-calibration geometries | h=50/75/125 nm × d=25/50/100 nm; w=120 nm | Used in the coefficient objective; main-map binary 285f67a0… |"
+          },
+          {
+            "line": 54,
+            "text": "| 9 extension geometries | Remaining main-map geometries | Visible during form selection, not independent prediction; main-map binary 57611b21… |"
+          },
+          {
+            "line": 55,
+            "text": "| Added h100 geometry | d=100 nm, two directions, 5 nm | Fixed published coefficients without refitting; not certified strictly blinded |"
+          },
+          {
+            "line": 56,
+            "text": "| h75 build reproduction | d=100 nm, two directions, 5 nm | Matching K, stopping steps and stepwise main flux; not map-wide build equivalence |"
+          },
+          {
+            "line": 57,
+            "text": ""
+          },
+          {
+            "line": 58,
+            "text": "Full binary hashes and fitting-role sources are in the [claim audit](../PAPER1_claim_final_review_20261105/REPORT.md) and S10. Abbreviations identify groups but do not replace manifests."
+          },
+          {
+            "line": 59,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 106,
+        "caption": "**Table S2. Two-grid comparisons for four geometries and two directions (8 rows).**",
+        "context": [
+          {
+            "line": 104,
+            "text": "<a id=\"table-s2\"></a>"
+          },
+          {
+            "line": 105,
+            "text": ""
+          },
+          {
+            "line": 106,
+            "text": "**Table S2. Two-grid comparisons for four geometries and two directions (8 rows).**"
+          },
+          {
+            "line": 107,
+            "text": ""
+          },
+          {
+            "line": 108,
+            "text": "Complete table: [Table_S2_refinement.csv](Table_S2_refinement.csv). Geometries are (25,100), (50,100), (125,25) and (125,120) nm. Each row gives K5, K2.5, coefficient change, model discrepancies on both reference grids and their percentage-point difference. Coefficient change is 100(K2.5/K5−1), normalized by the 5 nm value; discrepancy change is E2.5−E5."
+          },
+          {
+            "line": 109,
+            "text": ""
+          },
+          {
+            "line": 110,
+            "text": "The thinnest transverse case changes K by −4.43073188% and model discrepancy by +5.39475470 percentage points. Two grids characterize sensitivity only at checked conditions; they do not determine observed order, GCI or a continuous-domain error bound."
+          },
+          {
+            "line": 111,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 114,
+        "caption": "**Table S7. Two-grid local-law/V2 comparison for transverse flow at h=25 nm, d=100 nm.**",
+        "context": [
+          {
+            "line": 112,
+            "text": "<a id=\"table-s7\"></a>"
+          },
+          {
+            "line": 113,
+            "text": ""
+          },
+          {
+            "line": 114,
+            "text": "**Table S7. Two-grid local-law/V2 comparison for transverse flow at h=25 nm, d=100 nm.**"
+          },
+          {
+            "line": 115,
+            "text": ""
+          },
+          {
+            "line": 116,
+            "text": "The [complete table](Table_S7_thin_gap_correction.csv) uses the corresponding grid's K as denominator for both the local law and fixed V2."
+          },
+          {
+            "line": 117,
+            "text": ""
+          },
+          {
+            "line": 118,
+            "text": "| Reference grid | Local-law discrepancy | V2 residual | Change in absolute discrepancy |"
+          },
+          {
+            "line": 119,
+            "text": "|---|---:|---:|---|"
+          },
+          {
+            "line": 120,
+            "text": "| 5 nm | +16.36% | −18.71% | Increase |"
+          },
+          {
+            "line": 121,
+            "text": "| 2.5 nm | +21.76% | −14.94% | Decrease |"
+          },
+          {
+            "line": 122,
+            "text": ""
+          },
+          {
+            "line": 123,
+            "text": "The local improvement assessment depends on reference resolution; deterioration against the 5 nm reference is not established for the continuous solution. Paired refinements at h125/d25 and d120 support the reported paired trend, so this thin-gap example does not invalidate all parameter trends. A matched refinement at h100 is unavailable; no calculation was added in this revision."
+          },
+          {
+            "line": 124,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 131,
+        "caption": "**Table S3. Original periodic-replication and multi-force records at the reference geometry (18 rows).**",
+        "context": [
+          {
+            "line": 129,
+            "text": "<a id=\"table-s3\"></a>"
+          },
+          {
+            "line": 130,
+            "text": ""
+          },
+          {
+            "line": 131,
+            "text": "**Table S3. Original periodic-replication and multi-force records at the reference geometry (18 rows).**"
+          },
+          {
+            "line": 132,
+            "text": ""
+          },
+          {
+            "line": 133,
+            "text": "Complete table: [Table_S3_periodic_checks.csv](Table_S3_periodic_checks.csv). Batches are `g4_period_nx2_fields_v1_20261012T001316+0800`, `g4_period_nx4_fields_v1_20261012T105719+0800` and `g4_period_nx8_fields_v1_20261012T163341+0800`. Each fixes Nx and includes P/T forcing at a=5×10⁴, 10⁵ and 2×10⁵ m/s²."
+          },
+          {
+            "line": 134,
+            "text": ""
+          },
+          {
+            "line": 135,
+            "text": "Frozen conditions in the [periodic-domain protocol](/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G4_EX240_period_convergence/PERIOD_CONVERGENCE_PROTOCOL.md) are h=75 nm, d=100 nm and dx=2.5 nm. At a=10⁵, the relative R differences from 2→4 periods are 0 in both directions; from 4→8 they are 8.71496562e−14 and 3.80797839e−14. The largest within-level K range divided by mean is 2.47850560e−8 along and 3.66006070e−8 across the grooves. The Nx2 along-groove K differs from the historical same-grid baseline by 6.89448e−14 relatively."
+          },
+          {
+            "line": 136,
+            "text": ""
+          },
+          {
+            "line": 137,
+            "text": "These results support linear response over the checked force range and numerical consistency of periodic replication at this reference geometry. They neither establish individual multi-force checks for all 36 main-map samples at 5 nm nor prove physical RVE convergence. Supplementary numbering did not repeat all original numerical gates or manual mass-trajectory acceptance."
+          },
+          {
+            "line": 138,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 145,
+        "caption": "**Table S4. Original three-grid benchmark values and recorded statuses (9 rows).**",
+        "context": [
+          {
+            "line": 143,
+            "text": "<a id=\"table-s4\"></a>"
+          },
+          {
+            "line": 144,
+            "text": ""
+          },
+          {
+            "line": 145,
+            "text": "**Table S4. Original three-grid benchmark values and recorded statuses (9 rows).**"
+          },
+          {
+            "line": 146,
+            "text": ""
+          },
+          {
+            "line": 147,
+            "text": "Complete table: [Table_S4_grid_archive.csv](Table_S4_grid_archive.csv). Each grid, 5/2.5/1.25 nm, contains Smooth75, EX240_parallel and EX240_perpendicular; see the [historical archive](/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800)."
+          },
+          {
+            "line": 148,
+            "text": ""
+          },
+          {
+            "line": 149,
+            "text": "Flat-wall integrated-K errors relative to h³/12 are 0.44444079%, 0.11103511% and 0.02715688%, respectively. The historical 1.25 nm transverse record has PASS=false and independent exit3. This failure is retained; a calculable GCI does not confer acceptance."
+          },
+          {
+            "line": 150,
+            "text": ""
+          },
+          {
+            "line": 151,
+            "text": "Later Scheme C has saved PASS=true and independent exit0, but its initial manifest has formal_reference_accepted=false. This material does not replace the unrecovered formal-release record. Applicability of historical benchmarks and source/build provenance are judged separately."
+          },
+          {
+            "line": 152,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 155,
+        "caption": "**Table S5. Conditional Richardson/GCI estimates for the historical benchmark (6 quantities).**",
+        "context": [
+          {
+            "line": 153,
+            "text": "<a id=\"table-s5\"></a>"
+          },
+          {
+            "line": 154,
+            "text": ""
+          },
+          {
+            "line": 155,
+            "text": "**Table S5. Conditional Richardson/GCI estimates for the historical benchmark (6 quantities).**"
+          },
+          {
+            "line": 156,
+            "text": ""
+          },
+          {
+            "line": 157,
+            "text": "Complete table: [Table_S5_conditional_gci.csv](Table_S5_conditional_gci.csv). Original three-grid values and statuses are in Table S4. Fine, medium and coarse spacings are 1.25, 2.5 and 5 nm, with $r_{21}=r_{32}=2$ and $F_s=1.25$. The flat-wall gap is 75 nm; the groove reference has $h=75$ nm, $d=100$ nm, period 240 nm and width 120 nm. The original properties are $\\rho=1000$ kg/m³, $\\mu=1$ mPa·s, $a=10^5$ m/s² and $\\tau=1$. The [original protocol](/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_grid_convergence/STEP3_PROTOCOL.md) contains the complete geometry and parameters. K is in m³. Each eta is directional K divided by same-grid flat-wall K; anisotropy is along-groove K divided by across-groove K. Both are dimensionless. The method follows manuscript reference [10]; original-version checks are bounded in S11."
+          },
+          {
+            "line": 158,
+            "text": ""
+          },
+          {
+            "line": 159,
+            "text": "| Quantity | p | Extrapolated | ea (%) | e_ext (%) | GCI_fine (%) | Depends on failed finest T |"
+          },
+          {
+            "line": 160,
+            "text": "|---|---:|---:|---:|---:|---:|---|"
+          },
+          {
+            "line": 161,
+            "text": "| K_smooth | 1.990910 | 3.515588485e-23 | 0.083855 | 0.028196 | 0.035235 | No |"
+          },
+          {
+            "line": 162,
+            "text": "| K_parallel | 1.512988 | 9.754563861e-23 | 0.185350 | 0.100073 | 0.124966 | No |"
+          },
+          {
+            "line": 163,
+            "text": "| K_perpendicular | 1.256172 | 4.339399834e-23 | 0.612125 | 0.442769 | 0.551022 | Yes, FAIL/exit3 |"
+          },
+          {
+            "line": 164,
+            "text": "| eta_parallel | 0.939763 | 2.773587499 | 0.101409 | 0.110564 | 0.138053 | No |"
+          },
+          {
+            "line": 165,
+            "text": "| eta_perpendicular | 1.088414 | 1.233638776 | 0.527826 | 0.470801 | 0.585744 | Yes, FAIL/exit3 |"
+          },
+          {
+            "line": 166,
+            "text": "| anisotropy | 1.098181 | 2.248566102 | 0.424178 | 0.370433 | 0.464763 | Yes, FAIL/exit3 |"
+          },
+          {
+            "line": 167,
+            "text": ""
+          },
+          {
+            "line": 168,
+            "text": "Let $\\phi_1$ and $\\phi_2$ denote the fine and medium results. Using common notation, define extrapolation $\\phi_{\\mathrm{ext}}=\\phi_1+(\\phi_1-\\phi_2)/(r^p-1)$, $e_a=|(\\phi_1-\\phi_2)/\\phi_1|$, $e_{\\mathrm{ext}}=|(\\phi_{\\mathrm{ext}}-\\phi_1)/\\phi_{\\mathrm{ext}}|$ and $GCI_{\\mathrm{fine}}=F_s e_a/(r^p-1)$. Error and GCI columns are percentages; the CSV retains original three-grid values and full precision."
+          },
+          {
+            "line": 169,
+            "text": ""
+          },
+          {
+            "line": 170,
+            "text": "**Failure disclosed with the estimates:** the historical 1.25 nm transverse relative mass metric is $1.1967043900362632\\times10^{-10}$, above frozen threshold $10^{-10}$, with independent exit code 3. K_perpendicular, eta_perpendicular and anisotropy all depend on that failed record. Calculable GCI does not qualify it as an accepted reference or change the historical G2 Step 3 FAIL/INCONCLUSIVE. These estimates neither extend to other geometries nor establish strict full-domain error bounds."
+          },
+          {
+            "line": 171,
+            "text": ""
+          },
+          {
+            "line": 172,
+            "text": "Along-groove and across-groove observed orders are 1.513 and 1.256. An order below the formal order alone establishes neither failure nor an asymptotic range. Once p is fitted from the same three values, the archived adjacent-GCI ratio reduces to the fine/medium result ratio. The historical “asymptotic range confirmed” label is therefore not independent asymptotic-range evidence. Reported GCI values remain conditional estimates for this three-grid chain."
+          },
+          {
+            "line": 173,
+            "text": ""
+          },
+          {
+            "line": 174,
+            "text": "For the same flat-wall benchmark, fine-grid integrated K differs from the analytical value by 0.0271569%. Normalizing both the analytical discrepancy and GCI by the fine-grid value gives 0.0271495% and 0.0352348%, respectively, a ratio of approximately 1.298. This supports only that planar configuration and integrated quantity; it does not establish comparable coverage for grooves or other geometries."
+          },
+          {
+            "line": 175,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "caption_line": 213,
+        "caption": "**Table S8. Control-evidence index (not added to the 19-geometry, 46-record comparison set).**",
+        "context": [
+          {
+            "line": 211,
+            "text": "<a id=\"table-s8\"></a>"
+          },
+          {
+            "line": 212,
+            "text": ""
+          },
+          {
+            "line": 213,
+            "text": "**Table S8. Control-evidence index (not added to the 19-geometry, 46-record comparison set).**"
+          },
+          {
+            "line": 214,
+            "text": ""
+          },
+          {
+            "line": 215,
+            "text": "The [machine-readable index](Table_S8_control_evidence.csv) binds sources and scopes. This compiles existing acceptance results without replaying trajectories or issuing new stage acceptance."
+          },
+          {
+            "line": 216,
+            "text": ""
+          },
+          {
+            "line": 217,
+            "text": "| Check | Geometry and grids | Existing evidence and status | Limit for this study |"
+          },
+          {
+            "line": 218,
+            "text": "|---|---|---|---|"
+          },
+          {
+            "line": 219,
+            "text": "| Historical analytical plates | h75, 5/2.5/1.25 nm | K errors 0.44444079/0.11103511/0.02715688%, S9 | Planar integrated quantity only |"
+          },
+          {
+            "line": 220,
+            "text": "| S0 implementation regression (A1 revision) | h75/d100, 5 nm, both directions | New A1 pair accepted; main flux, conductance and legacy-statistic regression checks pass, with mass-statistic supporting evidence; old v1.2 transverse failure retained | Implementation/statistic revision check, not new-geometry prediction or map-wide accuracy |"
+          },
+          {
+            "line": 221,
+            "text": "| S1 plate control | h30, d0, 1.25 nm | Previously accepted; K error about 0.173% | Not groove-resolution evidence |"
+          },
+          {
+            "line": 222,
+            "text": "| S2 regular-geometry grids | h60/d80, 5/2.5/1.25 nm | Along/across medium-to-fine changes 0.203234%/0.744252%; original grid checks pass | Specific control, not a map-wide error bound |"
+          },
+          {
+            "line": 223,
+            "text": "| S3 forcing control | h60/d80, three original force levels | Previously accepted stage | Not a V2 prediction test |"
+          },
+          {
+            "line": 224,
+            "text": "| S4 thin-gap grids | h30/d80, 5/2.5/1.25 nm | Six per-run checks pass; transverse change 1.328387035%>1%, so original S4 stage FAIL; GCI about 0.912232592% does not compensate | Excluded from main statistics; criteria and reference status unchanged |"
+          },
+          {
+            "line": 225,
+            "text": "| Historical fine transverse mass failure | h75/d100, 1.25 nm | Relative mass metric 1.1967043900362632×10⁻¹⁰>10⁻¹⁰, original FAIL/exit3, S9 | Distinct from h30/d80 grid FAIL |"
+          },
+          {
+            "line": 226,
+            "text": "| S4 server build reproduction | h30/d80 transverse, 1.25 nm | Matched K reproduction and saved-data checks support agreement | Does not turn the original S4 grid FAIL into PASS |"
+          },
+          {
+            "line": 227,
+            "text": ""
+          },
+          {
+            "line": 228,
+            "text": "S4 medium-to-fine change uses 100|K_medium/K_fine−1|%, distinct from the K5-normalized change in the main-map two-grid table. Neither is a known continuous-solution error bound; division by another geometry's minimum model discrepancy cannot establish a safety factor. S5 has not been executed. Strict reference qualification, map-wide continuous-error bounds and physical validation have not been established. This manuscript compares models against specified discrete records without presenting the control chain as universally passing accuracy evidence."
+          },
+          {
+            "line": 229,
+            "text": ""
+          }
+        ]
+      }
+    ]
+  }
+}

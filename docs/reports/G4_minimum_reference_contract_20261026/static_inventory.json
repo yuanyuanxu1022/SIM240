@@ -1,0 +1,152 @@
+{
+  "N8_manifest_arrays": {
+    "solution": {
+      "algebraic_solution_before_backsub.npy": [
+        1275
+      ],
+      "mesh_coordinates_hat.npy": [
+        153,
+        2
+      ],
+      "mesh_triangles.npy": [
+        256,
+        3
+      ],
+      "periodic_coefficients.npy": [
+        39
+      ],
+      "periodic_master_dofs.npy": [
+        39
+      ],
+      "periodic_slave_dofs.npy": [
+        39
+      ],
+      "pressure_area_weights_hat2.npy": [
+        153
+      ],
+      "pressure_coordinates_hat.npy": [
+        153,
+        2
+      ],
+      "pressure_raw_P1.npy": [
+        153
+      ],
+      "pressure_reconstructed_dof_indices.npy": [
+        153
+      ],
+      "pressure_zero_mean_P1.npy": [
+        153
+      ],
+      "reconstructed_solution.npy": [
+        1275
+      ],
+      "velocity_dof_components.npy": [
+        1122
+      ],
+      "velocity_dof_coordinates_hat.npy": [
+        1122,
+        2
+      ],
+      "velocity_reconstructed_dof_indices.npy": [
+        1122
+      ],
+      "velocity_reconstructed_values.npy": [
+        1122
+      ],
+      "wall_velocity_dof_indices.npy": [
+        132
+      ]
+    },
+    "system": {
+      "cell_pressure_mixed_dofs.npy": [
+        256,
+        3
+      ],
+      "cell_velocity_mixed_dofs.npy": [
+        256,
+        12
+      ],
+      "csr_indices.npy": [
+        37277
+      ],
+      "csr_indptr.npy": [
+        1276
+      ],
+      "csr_values.npy": [
+        37277
+      ],
+      "pressure_null_vector.npy": [
+        1275
+      ],
+      "rhs_after.npy": [
+        1275
+      ],
+      "rhs_before.npy": [
+        1275
+      ]
+    }
+  },
+  "field_arrays_loaded": false,
+  "independent_field_extractor_qualified": false,
+  "reviewed_implementation_limit": "Current rectangle interface and N8-only v3.1 worker/readback; other unreviewed code is not assumed absent",
+  "source_code_locations": {
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/mesh_periodic_pressure_20261025/interface.py": [
+      {
+        "line": 215,
+        "text": "def build_interface(planned_id):"
+      },
+      {
+        "line": 225,
+        "text": "domain = mesh.create_rectangle(MPI.COMM_SELF, [[0., 0.], [period, height]],"
+      }
+    ],
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_1_20261026/assembly.py": [
+      {
+        "line": 27,
+        "text": "def prepare_bound_mixed_system(contract):"
+      },
+      {
+        "line": 43,
+        "text": "raise Rejected(\"MIXED_PRESSURE_CASE_REQUIRED\")"
+      }
+    ],
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_1_20261026/common.py": [
+      {
+        "line": 14,
+        "text": "FIRST = \"B0MIN_MMS_mixed_N8\""
+      },
+      {
+        "line": 135,
+        "text": "raise Rejected(\"DIAGNOSTIC_RUN_NOT_AUTHORIZED\")"
+      }
+    ],
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_1_20261026/readback.py": [
+      {
+        "line": 138,
+        "text": "field_accuracy_energy_flux=\"NOT_EVALUATED\", NUMERICAL_GATE=\"NOT_EVALUATED\","
+      },
+      {
+        "line": 271,
+        "text": "def check_required_records(record,work,c,started,capture,result):"
+      },
+      {
+        "line": 339,
+        "text": "def check_cell_maps(system,raw):"
+      }
+    ],
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_1_20261026/worker.py": [
+      {
+        "line": 62,
+        "text": "from solver import DiagnosticGMRES,solve_prepared_mixed_system"
+      },
+      {
+        "line": 72,
+        "text": "stage(work,'ASSEMBLY')"
+      },
+      {
+        "line": 102,
+        "text": "arrays(work/'solution',bundle,dict(record_kind='REAL_DIAGNOSTIC_UNVERIFIED',contract_sha256=digest(c)))"
+      }
+    ]
+  }
+}

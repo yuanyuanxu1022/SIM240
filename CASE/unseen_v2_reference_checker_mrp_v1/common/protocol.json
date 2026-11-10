@@ -1,0 +1,97 @@
+{
+  "protocol_id": "URV-v1",
+  "date": "2026-11-01",
+  "status": "CONCRETE_DRAFT_STATICALLY_CHECKED_NOT_EXECUTION_FROZEN",
+  "scope": "fixed_gap_fully_filled_single_phase_periodic_explicit_groove_reference_for_frozen_V2",
+  "physical": {
+    "period_nm": 240,
+    "width_nm": 120,
+    "duty_fraction": 0.5,
+    "rho_kg_m3": 1000,
+    "nu_m2_s": 1e-06,
+    "mu_Pa_s": 0.001,
+    "tau": 1,
+    "drive_P": "+y",
+    "drive_T": "+x",
+    "periodicity": "x_y",
+    "walls": "stationary_no_slip_Bouzidi",
+    "collision": "D3Q19_FORCE_ForcedBGK",
+    "average": "J=sum(u_phys*dx^3)/plan_area; K=mu*J/(rho*a); H=h+d/2"
+  },
+  "coefficient_model": {
+    "name": "V2_published_rounded",
+    "parallel": [
+      1.7685,
+      1.6331
+    ],
+    "perpendicular": [
+      0.49,
+      0.699
+    ],
+    "original": "local cubic arithmetic/harmonic equal-duty law",
+    "refit_allowed": false
+  },
+  "stages": [
+    "S0_REGRESSION",
+    "S1_SMOOTH_THIN",
+    "S2_REG_GRID",
+    "S3_REG_LINEARITY",
+    "S4_THIN_GRID",
+    "S5_THIN_LINEARITY"
+  ],
+  "directional_calculations": 24,
+  "reference_grid_calculations": 12,
+  "statistics_port_regressions": 2,
+  "thin_smooth_controls": 2,
+  "linearity_additional_calculations": 8,
+  "h75_new_fine_grid_calculations_required": 0,
+  "time": {
+    "window_tstar": 0.75,
+    "max_time_H_diffusion": 8,
+    "steps": "ceil(exact_value); native roundoff subtraction 1e-9 must match",
+    "frame_tstar": [
+      0,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.5,
+      1,
+      2,
+      4,
+      8
+    ],
+    "no_extra_time_to_fill_frames": true
+  },
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_run_free_disk_GiB": 8,
+    "planned_output_budget_GiB_per_case": 4,
+    "aggregate_wall_caps_hours": 110.0,
+    "resource_caps_are_not_measured_runtime_or_peak_memory": true
+  },
+  "preparation": {
+    "protocol_materials_prepared": true,
+    "backend_source_port_implemented": false,
+    "backend_compiled_this_round": false,
+    "native_zero_step_prechecks_run": false,
+    "independent_acceptance_checker_implemented": false,
+    "new_solver_run_started": false
+  },
+  "authorization": {
+    "simulation_authorized": false,
+    "approved_run_id": null,
+    "launch_command_delivered": false,
+    "new_stage_requires_separate_user_launch_and_completed_result_review": true
+  },
+  "old_D4_prediction_gate_unchanged": "HOLD",
+  "reference_qualified_global": false,
+  "physical_validation": "NOT_EVALUATED",
+  "independent_human_acceptance": false
+}

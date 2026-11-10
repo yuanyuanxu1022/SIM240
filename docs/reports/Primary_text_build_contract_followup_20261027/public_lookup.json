@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-27",
+  "web_queries": [
+    "\"Momentum transfer of a Boltzmann-lattice fluid\" download pdf Bouzidi original",
+    "\"Discrete lattice effects\" Guo fulltext pdf file",
+    "\"Celik\" \"078001\" pdf original 2008",
+    "\"Guo\" \"046308\" \"pdf\" \"Zheng\" -site:scribd.com -site:scispace.com -site:researchgate.net -site:core.ac.uk -site:scirp.org",
+    "\"Bouzidi\" \"1.1399290\" \"pdf\" \"download\"",
+    "\"Celik\" \"078001\" \"Preliminaries\" pdf -site:scribd.com -site:scispace.com",
+    "\"Procedure for Estimation and Reporting\" \"pdf\" Celik Ghia original -site:scribd.com -site:scispace.com -site:core.ac.uk -site:researchgate.net",
+    "\"Momentum transfer of a Boltzmann-lattice\" \"filetype:pdf\" -site:scribd.com",
+    "\"Discrete lattice effects\" Guo \"pdf\" site:semanticscholar.org",
+    "\"10.1063/1.1399290\" \"fulltext\" filetype:pdf",
+    "\"10.1103/PhysRevE.65.046308\" \"Guo\" filetype:pdf -site:scribd.com -site:scispace.com -site:core.ac.uk",
+    "\"10.1115/1.2960953\" \"078001\" filetype:pdf -site:scribd.com -site:scispace.com -site:core.ac.uk"
+  ],
+  "web_results": "No new acceptable original PDF; returned mainly bibliographies/metadata and previously known blocked publisher links. Search snippets not accepted as fulltext.",
+  "requests": [
+    {
+      "url": "https://literatelb.org/",
+      "status": 200,
+      "file": "evidence/literatelb.html",
+      "finding": "Bouzidi bibliography entry points to DOI; no paper attachment found",
+      "response_sha256": "7d2db371fe3355eae287f877dc2fd5ba4ae7858d7195ab23d369db804ce03913"
+    },
+    {
+      "url": "https://archive.org/wayback/available",
+      "params": {
+        "url": "http://fluidsengineering.asmedigitalcollection.asme.org/data/Journals/JFEGA4/27324/078001_1.pdf",
+        "timestamp": "20180101"
+      },
+      "status": 429,
+      "file": "evidence/ref10_wayback_429.html",
+      "content_shape": "HTML error, not JSON data",
+      "retry": false,
+      "response_sha256": "ae138caf8767f7be2fe6f47f1663b0e2e28d903264707aa9b6f73bb7b223902c"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.00065",
+      "status": 200,
+      "file": "evidence/skill_method_arxiv.html",
+      "response_sha256": "87e5d6378d900a1a9299aaf8c9e13ea37db5de5bebd0c7f7af29255b457402d7"
+    }
+  ],
+  "github_queries": [
+    {
+      "query": "\"1.2960953\" extension:pdf",
+      "result_count": 0,
+      "file": null,
+      "provenance": "Observed gh stdout in current tool call"
+    },
+    {
+      "query": "bouzidi extension:pdf",
+      "file": "evidence/ref8_github_search.json",
+      "result_count": 0
+    },
+    {
+      "query": "guo forcing extension:pdf",
+      "file": "evidence/ref9_github_search.json",
+      "finding": "Irrelevant titles; rejected without downloading"
+    }
+  ]
+}

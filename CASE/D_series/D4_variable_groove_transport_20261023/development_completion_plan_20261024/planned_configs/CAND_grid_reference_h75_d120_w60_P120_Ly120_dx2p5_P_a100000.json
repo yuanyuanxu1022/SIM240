@@ -1,0 +1,39 @@
+{
+  "status": "PLANNED_ONLY_NOT_A_RUN",
+  "planned_case_id": "CAND_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_P_a100000",
+  "planned_batch_id": "development_grid_mid6_20261024_v1",
+  "run_id_template": "D4_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_P_a100000_development_grid_mid6_20261024_v1",
+  "solver_parameters": {
+    "mode": "steady",
+    "direction": "P",
+    "dx_nm": "2.5",
+    "h_nm": "75",
+    "d_nm": "120",
+    "w_nm": "60",
+    "period_nm": "120",
+    "Ly_nm": "120",
+    "nu_m2_s": "1e-06",
+    "acceleration_m_s2": "100000",
+    "window_tstar": 0.75,
+    "max_time_H_diffusion": 8,
+    "frame_tstar": [
+      0,
+      0.01,
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.5,
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "rho_kg_m3": 1000,
+  "tau": 1,
+  "expected_window_steps": 4050,
+  "expected_maximum_steps": 292032,
+  "expected_fluid_nodes": 124416,
+  "execution_released": false
+}

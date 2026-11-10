@@ -1,0 +1,65 @@
+{
+  "schema_version": "2.0",
+  "review_id": "URV-S0-RESULTS-20261101",
+  "material": {
+    "status": "unpublished_confidential",
+    "contains_personal_or_sensitive_data": false
+  },
+  "authorization": {
+    "basis": "author_request",
+    "documented": true,
+    "local_processing_authorized": true,
+    "external_processing_authorized": true
+  },
+  "reviewer": {
+    "capacity": "author_requested_reader",
+    "human_accountable": true,
+    "competence_areas": [
+      "numerical_protocol",
+      "software_provenance",
+      "deterministic_CFD"
+    ],
+    "competence_limits": [
+      "AI review of own project code, not independent human validation",
+      "No new solver runs",
+      "No causal attribution of floating point differences without sufficient evidence"
+    ],
+    "conflict_status": "none_identified",
+    "conflicts": []
+  },
+  "venue_policy": {
+    "checked": true,
+    "peer_review_model": "open",
+    "confidential_editor_notes_supported": false
+  },
+  "ai_use": {
+    "policy": "permitted_with_disclosure",
+    "planned": "approved_ai_assistance",
+    "permission_confirmed": true,
+    "disclosure_planned": true
+  },
+  "handling": {
+    "local_only": true,
+    "external_service_use": false,
+    "data_reuse_permitted": false,
+    "retention_rule": "retain_per_venue_policy",
+    "deletion_or_retention_record_planned": true
+  },
+  "scope": {
+    "manuscript_type": "own_project_completed_results_review",
+    "requested_focus": [
+      "completed_P_T_raw_provenance",
+      "frozen_URV_v1_numerics_geometry",
+      "full_legacy_regression",
+      "saved_field_readback"
+    ],
+    "out_of_scope": [
+      "solver_execution",
+      "code_changes",
+      "threshold_changes",
+      "stage_S1_execution",
+      "journal_submission"
+    ],
+    "specialist_review_needed": []
+  }
+}

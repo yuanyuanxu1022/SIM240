@@ -1,0 +1,77 @@
+{
+  "id": "G4_REFERENCE_CRITERIA_REVIEW_20261026_v2",
+  "status": "REVIEWED_RECOMMENDATION_NOT_ACTIVATED_NOT_EXECUTABLE",
+  "approval": null,
+  "candidate_thresholds_activated": false,
+  "solver_execution_authorized": false,
+  "offline_extraction_execution_authorized": false,
+  "reference_qualified": false,
+  "strict_error_bound_established": false,
+  "new_actual_run_id": null,
+  "prediction_permission": "HOLD",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null,
+  "F01": "DEFINITION_AND_APPLICABILITY_RESOLVED_AS_RECOMMENDATION_EVIDENCE_PENDING",
+  "F03": "BUDGET_OBJECT_AND_PROPAGATION_RESOLVED_AS_RECOMMENDATION_EVIDENCE_PENDING",
+  "remaining": [
+    "F02_EXTRACTOR_IMPLEMENTATION_AND_TOLERANCE_QUALIFICATION",
+    "F04_OTHER_CASE_EXECUTION_SUPPORT",
+    "F05_RESOURCES_AND_PERMISSION",
+    "F06_MODEL_STOP_AND_DOMAIN_EVIDENCE"
+  ],
+  "weak_continuity": {
+    "denominator": "nonzero full unscaled dimensionless rhs L2 norm",
+    "numerator": "independent physical pressure rows of b-Ax",
+    "candidate_max": 1e-10,
+    "MPC_basis_and_row_scaling_must_match": true
+  },
+  "strong_divergence": {
+    "metric": "L2(div u)/L2(grad u)",
+    "uniform_hard_threshold": null,
+    "mandatory_diagnostic": true
+  },
+  "section_flux": {
+    "candidate_max": 1e-06,
+    "scope": "mixed N32, all flat T, delivered finest groove T and finest controls",
+    "scalar_transverse_slices": "NOT_APPLICABLE",
+    "all_sections_guaranteed": false
+  },
+  "energy": {
+    "normalization": "max(D,abs(W)); D>0,W>0",
+    "independent_residuals": [
+      "abs(D-Pdiv-W)/S",
+      "abs(Pdiv)/S",
+      "abs(D-W)/S"
+    ],
+    "candidate_max_each": 1e-06,
+    "scalar_pressure_term": "NOT_APPLICABLE",
+    "scope": "all future method and groove records; old N8 analysis only",
+    "symmetric_gradient_identity": "Dsym-D=integral(div(u)^2)",
+    "identity_boundary_scope": "stationary no-slip walls and paired periodic faces, H1 conforming"
+  },
+  "reference_budget": {
+    "target": "case-specific continuous Stokes K",
+    "fractional_components": {
+      "space": 0.0012,
+      "assembly": 0.0001,
+      "algebra": 0.0001,
+      "extraction": 1e-06
+    },
+    "direction_target": 0.0015,
+    "anisotropy_target": 0.0031,
+    "space_GCI_target_normalized_proxy_max": 0.0012,
+    "space_raw_GCI_max": 0.0011985617259288853,
+    "topology_sensitivity_screen": 0.0012,
+    "medium_fine_screen": 0.0025,
+    "A_direct_screen_each": 0.0025,
+    "NS_model_and_LBM_stopping_included": false,
+    "conditional_estimate_is_strict_bound": false
+  },
+  "postprocess_quadrature_candidate_normalized_change": 1e-08,
+  "old_N8_acceptance_changed": false,
+  "old_LBM_thresholds_changed": false,
+  "G4_model_lock_changed": false,
+  "old_FAIL_preserved": true,
+  "next_action": "Prepare independent extractor and fixtures only; no new solves needed for preparation"
+}

@@ -1,0 +1,19 @@
+{
+  "initial_static_test_fixture": {
+    "passed": false,
+    "reason": "test symlink fixture parent directory missing; corrected test setup, not solver behavior",
+    "raw_terminal_output_retained_in_conversation": true
+  },
+  "initial_symbolic_API_test": {
+    "passed": false,
+    "reason": "UFL evaluate requires StackDict for symbolic indices, not ordinary dict",
+    "raw_evidence": "first_attempt_symbolic_ufl_check.stderr.txt"
+  },
+  "historical_simulation_FAILs_changed": false,
+  "standalone_ldd_snapshot": {
+    "initial_check_passed": false,
+    "reason": "standalone ldd without isolated LD_LIBRARY_PATH could not resolve numerical libraries despite successful Python import; repeated with explicit per-process prefix/lib and bound actual /proc/self/maps core libraries",
+    "original_evidence": "first_attempt_backend_linkage.json",
+    "global_environment_modified": false
+  }
+}

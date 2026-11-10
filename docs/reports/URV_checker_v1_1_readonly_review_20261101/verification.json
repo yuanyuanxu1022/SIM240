@@ -1,0 +1,64 @@
+{
+  "readonly_review_completed": true,
+  "review_id": "URV-v1.1-READONLY-20261101",
+  "protected_existing_files_unchanged": 2606,
+  "seals": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_v1/evidence/preparation_seal.json": {
+      "sha256": "e0eb9a54c1c1168d25483a085e70462d04cfa76aeb4922dddbea17b07b1811cb",
+      "input_count": 1432
+    },
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_v1_1/evidence/revision_seal.json": {
+      "sha256": "df3003c57560576548e9b0988507bc2f7a63982522988d5a284cc75fdd0f35ce",
+      "input_count": 21
+    }
+  },
+  "existing_tests_rerun": 70,
+  "existing_tests_passed": true,
+  "new_synthetic_probes": 2,
+  "F01": "RESIDUAL_R1_MALFORMED_METADATA",
+  "F02": "CONFIRMED_WITHIN_REVIEW_SCOPE",
+  "F03": "RESIDUAL_R2_SPLIT_MACRO_CAPTURE",
+  "F04": "OPEN_PREVIOUSLY_KNOWN",
+  "unchanged_numerical_functions": {
+    "check_results.py:diagnostics": true,
+    "check_results.py:check_slice": true,
+    "check_results.py:compare_legacy": true,
+    "check_results.py:aggregate": true,
+    "read_fields.py:payloads": true,
+    "read_fields.py:leaves": true,
+    "read_fields.py:audit": true
+  },
+  "F02_saved_examples": [
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_checker_v1_1_revision_20261101/validation_examples/existing_h75_P_self_comparison/regression_comparison.json",
+      "sha256": "7004e539cbcd9ebaaf6d0136c1d04b10f16b271c28a3ac0c87d565bdd343c4eb",
+      "columns": 20,
+      "legacy_gate_PASS": true
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_checker_v1_1_revision_20261101/validation_examples/existing_h75_T_self_comparison/regression_comparison.json",
+      "sha256": "a38b5e3eb89563c57c6fd316e44ca2fb6dd16a4e6adc84fde9cf4ef80a4a8bfd",
+      "columns": 20,
+      "legacy_gate_PASS": true
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_checker_v1_1_revision_20261101/validation_examples/SYNTHETIC_h75_changed_trajectory/analysis/regression_comparison.json",
+      "sha256": "6853352b3947cbe971a6ae4fef942830eb190a7bd3e6138ec83cecac8b399740",
+      "columns": 20,
+      "legacy_gate_PASS": false
+    }
+  ],
+  "source_or_threshold_edits": false,
+  "native_compiler_calls": 0,
+  "solver_calls": 0,
+  "actual_VTK_data_reader_calls": 0,
+  "formal_execution_ready": false,
+  "effective_S0_binding": false,
+  "S0_started": false,
+  "formal_NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null,
+  "reference_qualified": false,
+  "strict_error_bound_established": false,
+  "submission_ready": false
+}

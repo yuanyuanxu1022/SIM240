@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-01",
+  "revision_id": "URV-CHECKER-v1.2-S0-PREP-20261101",
+  "R1": "ADDRESSED_AND_TESTED",
+  "R2": "ADDRESSED_AND_TESTED",
+  "F04": "OPEN_OUT_OF_SCOPE",
+  "checker_test_methods_passed": 77,
+  "runner_artificial_tests_passed": 6,
+  "initial_checker_test_failures_preserved": 3,
+  "initial_failures_reason": "old missing-release fixtures stopped at new mandatory path-declaration parsing; adapted artificial fixtures without relaxing physical assertions",
+  "native_compile_exit": 0,
+  "native_physical_sources_byte_identical": true,
+  "native_recipe_change_only": "-DURV_PREPARATION_ONLY=1 -> 0 in isolated S0 copy",
+  "compiler_dependency_count": 1390,
+  "linked_static_library_count": 3,
+  "captured_dynamic_library_count": 15,
+  "native_describe_calls": 2,
+  "native_precheck_calls": 2,
+  "native_initialize_calls": 0,
+  "actual_time_steps": 0,
+  "actual_field_data_reads": 0,
+  "new_native_steady_runs": 0,
+  "prepared_binding_sha256": "a836c5f4368ed5d80d1a585abde3a353848d4555094ba2556b14fd3d883cb846",
+  "binding_input_count": 1568,
+  "binding_input_mismatches": [],
+  "protected_files_checked": 2410,
+  "protected_file_mismatches": [],
+  "historical_manifest_reverification_file": "historical_manifest_reverification.json",
+  "old_seals": {
+    "CASE/unseen_v2_reference_v1/evidence/preparation_seal.json": {
+      "sha256": "e0eb9a54c1c1168d25483a085e70462d04cfa76aeb4922dddbea17b07b1811cb",
+      "input_bindings": 1432
+    },
+    "CASE/unseen_v2_reference_checker_v1_1/evidence/revision_seal.json": {
+      "sha256": "df3003c57560576548e9b0988507bc2f7a63982522988d5a284cc75fdd0f35ce",
+      "input_bindings": 21
+    }
+  },
+  "read_only_binding_check_exit": 0,
+  "inactive_execute_negative_check_exit": 2,
+  "negative_check_wrote_package_files": false,
+  "simulation_authorized": false,
+  "approved_run_ids": [],
+  "prepared_run_ids": [
+    "URV_S0_P_v1_2_20261101_01",
+    "URV_S0_T_v1_2_20261101_01"
+  ],
+  "actual_formal_run_ids": [],
+  "S0_started": false,
+  "formal_NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null,
+  "reference_qualified": false,
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false,
+  "git_commit_or_push": false,
+  "AI_self_review_not_independent_human_acceptance": true
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "label": "checkMesh",
+    "argv": [
+      "checkMesh",
+      "-case",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/openfoam/cases/C04",
+      "-allGeometry",
+      "-allTopology"
+    ],
+    "exit_code": 0,
+    "seconds": 0.03181600570678711,
+    "log": "reports/checkMesh.log"
+  },
+  {
+    "label": "audit_2d",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/build/bin/darcy2d",
+      "--input",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/common/C04_2d.txt",
+      "--audit-only"
+    ],
+    "exit_code": 0,
+    "seconds": 0.0014138221740722656,
+    "log": "reports/audit_2d.log"
+  },
+  {
+    "label": "audit_openfoam",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/build/bin/depthAveragedDarcyFoam",
+      "-case",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/openfoam/cases/C04",
+      "-auditOnly"
+    ],
+    "exit_code": 0,
+    "seconds": 0.03156423568725586,
+    "log": "reports/audit_openfoam.log"
+  }
+]

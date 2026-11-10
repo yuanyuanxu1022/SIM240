@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-11-04T21:15:35.041061+08:00",
+  "scope": "single current assistant-visible snapshot; not failed-process peak or execution admission",
+  "memory": {
+    "MemTotal_bytes": 33320763392,
+    "MemAvailable_bytes": 16220262400,
+    "SwapTotal_bytes": 8589930496,
+    "SwapFree_bytes": 8557027328,
+    "CommitLimit_bytes": 25250312192,
+    "Committed_AS_bytes": 58113015808
+  },
+  "disk_free_bytes": 339213897728,
+  "current_inspector_RLIMIT_AS": [
+    -1,
+    -1
+  ],
+  "controls": {
+    "/proc/self/cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-3715.scope",
+    "/proc/sys/vm/overcommit_memory": "0",
+    "/proc/sys/vm/overcommit_ratio": "50",
+    "/proc/sys/vm/max_map_count": "1048576",
+    "/sys/fs/cgroup/cgroup.controllers": "cpuset cpu io memory hugetlb pids rdma misc dmem",
+    "/sys/fs/cgroup/cgroup.subtree_control": "cpuset cpu io memory pids",
+    "/sys/fs/cgroup/memory.max": {
+      "unavailable": "[Errno 2] No such file or directory: '/sys/fs/cgroup/memory.max'"
+    },
+    "/sys/fs/cgroup/memory.high": {
+      "unavailable": "[Errno 2] No such file or directory: '/sys/fs/cgroup/memory.high'"
+    },
+    "/sys/fs/cgroup/memory.swap.max": {
+      "unavailable": "[Errno 2] No such file or directory: '/sys/fs/cgroup/memory.swap.max'"
+    },
+    "/sys/fs/cgroup/memory.current": {
+      "unavailable": "[Errno 2] No such file or directory: '/sys/fs/cgroup/memory.current'"
+    },
+    "/sys/fs/cgroup/memory.peak": {
+      "unavailable": "[Errno 2] No such file or directory: '/sys/fs/cgroup/memory.peak'"
+    },
+    "/sys/fs/cgroup/memory.events": {
+      "unavailable": "[Errno 2] No such file or directory: '/sys/fs/cgroup/memory.events'"
+    }
+  },
+  "cgroup_root_writable_advisory_only": false
+}

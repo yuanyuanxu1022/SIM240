@@ -1,0 +1,354 @@
+{
+  "snapshot_at": "2026-11-03T16:38:31.657167+08:00",
+  "report_directory": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S3_batch_review_20261103_163831",
+  "release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/S3_formal_launch_release_v1_1_20261103_01.json",
+  "expected_release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+  "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+  "target_processes": [
+    {
+      "pid": 1276519,
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_S3.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/S3_formal_launch_release_v1_1_20261103_01.json",
+        "--release-sha256",
+        "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "--execute"
+      ],
+      "state": "State:\tS (sleeping)"
+    },
+    {
+      "pid": 1309494,
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady/run_config.txt"
+      ],
+      "state": "State:\tR (running)"
+    }
+  ],
+  "tmux_panes": [
+    "urv_s3_formal_v1_1_20261103_01|1276519|python3"
+  ],
+  "tmux_query_exit_code": 0,
+  "tmux_query_stderr": "",
+  "runs": [
+    {
+      "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+      "files": [
+        "boundary_audit.txt",
+        "completion.json",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "frame_schedule.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "result.txt",
+        "result_summary.csv",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "completion_present": true,
+      "acceptance_present": true,
+      "completion_summary": {
+        "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a50000",
+        "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 833.2980244609935,
+        "inputs_unchanged": true
+      },
+      "acceptance_summary": {
+        "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "scalar": {
+          "K_m3": 5.919336794569472e-23,
+          "J_main_m2_s": 2.9596683972847364e-12,
+          "diagnostic_rows": 13276,
+          "all_full_windows_recomputed": 10685,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 4.012354050806741e-16,
+          "legacy_mass_max": 0.0,
+          "ledger_agreement_max": 1.0934131316056382e-16,
+          "final_span": 3.6806958698739804e-06,
+          "Re_H": 9.37035151603585e-06
+        }
+      },
+      "failure": null,
+      "last_complete_diagnostic": {
+        "step": "13275",
+        "time_s": "1.3828125e-08",
+        "Jx": "-6.7943336080652381e-22",
+        "Jy": "2.9596683972847364e-12",
+        "Jz": "-2.0373254127990518e-22"
+      },
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": true,
+        "size": 873169,
+        "mtime": "2026-11-03T16:14:18.646586+08:00"
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_P_a50000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": true,
+        "size": 1344,
+        "mtime": "2026-11-03T16:14:21.894026+08:00"
+      }
+    },
+    {
+      "run_id": "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+      "files": [
+        "boundary_audit.txt",
+        "completion.json",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "frame_schedule.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "result.txt",
+        "result_summary.csv",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "completion_present": true,
+      "acceptance_present": true,
+      "completion_summary": {
+        "run_id": "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a50000",
+        "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 477.111975857988,
+        "inputs_unchanged": true
+      },
+      "acceptance_summary": {
+        "run_id": "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "scalar": {
+          "K_m3": 2.3663885894734337e-23,
+          "J_main_m2_s": 1.183194294736717e-12,
+          "diagnostic_rows": 7660,
+          "all_full_windows_recomputed": 5069,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 6.419766481290786e-15,
+          "legacy_mass_max": 6.027090764820706e-12,
+          "ledger_agreement_max": 1.3299342152063475e-16,
+          "final_span": 4.1891290181177e-06,
+          "Re_H": 4.131334489806726e-06
+        }
+      },
+      "failure": null,
+      "last_complete_diagnostic": {
+        "step": "7659",
+        "time_s": "7.9781250000000005e-09",
+        "Jx": "1.183194294736717e-12",
+        "Jy": "6.9388935769949654e-24",
+        "Jz": "-1.1457033681428537e-20"
+      },
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a50000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": true,
+        "size": 873273,
+        "mtime": "2026-11-03T16:22:19.308968+08:00"
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_T_a50000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": true,
+        "size": 1358,
+        "mtime": "2026-11-03T16:22:22.333686+08:00"
+      }
+    },
+    {
+      "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+      "files": [
+        "boundary_audit.txt",
+        "completion.json",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "frame_schedule.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "result.txt",
+        "result_summary.csv",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "completion_present": true,
+      "acceptance_present": true,
+      "completion_summary": {
+        "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a200000",
+        "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 805.5459572930122,
+        "inputs_unchanged": true
+      },
+      "acceptance_summary": {
+        "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "scalar": {
+          "K_m3": 5.919337286143088e-23,
+          "J_main_m2_s": 1.1838674572286177e-11,
+          "diagnostic_rows": 13293,
+          "all_full_windows_recomputed": 10702,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 9.362159451882396e-16,
+          "legacy_mass_max": 0.0,
+          "ledger_agreement_max": 1.5925988492019357e-16,
+          "final_span": 3.6921453085868547e-06,
+          "Re_H": 3.748140728686901e-05
+        }
+      },
+      "failure": null,
+      "last_complete_diagnostic": {
+        "step": "13292",
+        "time_s": "1.3845833333333334e-08",
+        "Jx": "-3.2107804074759921e-21",
+        "Jy": "1.1838674572286177e-11",
+        "Jz": "3.2853909953373559e-21"
+      },
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a200000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": true,
+        "size": 873171,
+        "mtime": "2026-11-03T16:35:48.220845+08:00"
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_P_a200000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": true,
+        "size": 1348,
+        "mtime": "2026-11-03T16:35:51.491192+08:00"
+      }
+    },
+    {
+      "run_id": "URV_S3_T_a200000_reuse_v1_1_20261103_01",
+      "files": [
+        "boundary_audit.txt",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "completion_present": false,
+      "acceptance_present": false,
+      "completion_summary": null,
+      "acceptance_summary": null,
+      "failure": null,
+      "last_complete_diagnostic": {
+        "step": "2415",
+        "time_s": "2.515625e-09",
+        "Jx": "4.7201066332438042e-12",
+        "Jy": "4.2404351297071644e-23",
+        "Jz": "1.2840027582493112e-20"
+      },
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": false
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_T_a200000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": false
+      }
+    }
+  ],
+  "batch_completed": null,
+  "batch_completed_file": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/launch_attempts/04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574/S3_completed.json",
+    "exists": false
+  },
+  "linearity_reports": {
+    "P": {
+      "direction": "P",
+      "accelerations_m_s2": [
+        50000,
+        100000,
+        200000
+      ],
+      "K_m3": [
+        5.919336794569472e-23,
+        5.919337058277595e-23,
+        5.919337286143088e-23
+      ],
+      "S2_midpoint_run_id": "URV_S2_P_dx2p5_reuse_v1_20261102_01",
+      "S2_release_sha256": "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+      "S3_points": [
+        {
+          "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+          "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+          "completion_sha256": "9e8d8b7369c15009c501f091796bdefc92e796b7fc10f6c71c7a3d51bbb77861"
+        },
+        {
+          "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+          "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+          "completion_sha256": "35ce3d900225da7bbd8a47b424cfb2495e382360214b1c254fc272137d5825d7"
+        }
+      ],
+      "REFERENCE_QUALIFIED_FOR_CASE": false,
+      "MODEL_COMPARISON": "NOT_EVALUATED",
+      "physical_validation": "NOT_EVALUATED",
+      "K_span_over_mean": 8.304538367142662e-08,
+      "limit": 0.001,
+      "CONTROL_PASS": true
+    },
+    "T": null
+  },
+  "controller_log": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/S3_formal_controller_v1_1_20261103_01.log",
+    "exists": true,
+    "size": 0,
+    "mtime": "2026-11-03T16:00:23.020271+08:00"
+  },
+  "controller_log_tail": "",
+  "completed_and_inactive": false,
+  "independent_full_analysis_started": false,
+  "snapshot_count": 1,
+  "no_solver_or_reader_called": true
+}

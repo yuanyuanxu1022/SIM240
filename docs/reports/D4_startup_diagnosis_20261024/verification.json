@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "root_cause": "relative binding paths interpreted from D4 CWD instead of project CWD",
+  "relative_binding_entries": 47,
+  "example_relative_binding": "CASE/D_series/D4_variable_groove_transport_20261023/development_completion_plan_20261024/case_budget26.csv",
+  "old_release_sha256": "9606906a7ea18c5ec47f1728eeb7d9af48990e17955167f79019c6ec1e3358c9",
+  "wrapper_sha256": "08f270d9fd93b4c6de883dedbbdc4bf5032df9f78ec95c929ff14032bc2e572c",
+  "checks": [
+    {
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023",
+      "exit_code": 0,
+      "will_run": false
+    },
+    {
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "will_run": false
+    }
+  ],
+  "tmux_corrected_check_pass": true,
+  "tmux_check_exit_code": 0,
+  "bound_inputs_verified": 2611,
+  "formal_solver_runs": 0,
+  "formal_batch_exists": false,
+  "old_source_runner_release_protocol_model_unchanged": true,
+  "startup_log_when_executed": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/evidence/startup_console.log",
+  "exact_tmux_direct_arguments_check": true,
+  "unknown_argument_rejected": true,
+  "tmux_safe_check_command": [
+    "tmux",
+    "-L",
+    "codex-d4-direct-check-20261024",
+    "new-session",
+    "-d",
+    "-s",
+    "dry-check",
+    "/bin/bash",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/start_from_project.sh",
+    "--check"
+  ]
+}

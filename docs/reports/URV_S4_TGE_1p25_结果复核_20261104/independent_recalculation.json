@@ -1,0 +1,131 @@
+{
+  "run_id": "URV_S4_T_dx1p25_TGESRV_v1_20261104_01",
+  "independent_recalculation": {
+    "K_from_last_step_m3": 3.471791836744987e-24,
+    "K_from_window_mean_m3": 3.4717925644017105e-24,
+    "J_last_m2_s": 3.4717918367449866e-13,
+    "J_window_mean_m2_s": 3.471792564401711e-13,
+    "window_steps": 2592,
+    "window_rel_std": 8.277215726150058e-07,
+    "window_rel_span": 4.987652165446628e-06,
+    "formula": "K = J * mu / (rho * a)",
+    "mu": 0.001,
+    "rho": 1000.0,
+    "a": 100000.0
+  },
+  "reported": {
+    "K_m3": 3.471791836744987e-24,
+    "J_m2_s": 3.4717918367449866e-13,
+    "steps": 12537,
+    "window_rel_std": 8.277215726150058e-07,
+    "window_rel_span": 4.987652165446628e-06
+  },
+  "build_equivalence": {
+    "reference_local_K_m3": 3.471791836744987e-24,
+    "independent_relative_difference": 0.0,
+    "tolerance": 1e-06,
+    "acceptance_relative_difference": 0.0
+  },
+  "measured_performance": {
+    "elapsed_hms": "2:06:15",
+    "peak_rss_bytes": 1638121472,
+    "peak_rss_GiB": 1.5256,
+    "acceptance_peak_rss_bytes": 1638121472,
+    "acceptance_elapsed_seconds": 7575.365345648956,
+    "steps_per_second": 1.65496968501999,
+    "wall_cap_seconds": 21600
+  },
+  "checks": [
+    {
+      "item": "独立复算 K 与 result.txt 一致（相对差<1e-12）",
+      "pass_": true,
+      "detail": "recalc=3.47179183674498684e-24  result=3.47179183674498684e-24  rel=0.000e+00"
+    },
+    {
+      "item": "独立复算 J 与 result.txt 一致",
+      "pass_": true,
+      "detail": "recalc=3.47179183674498660e-13  result=3.47179183674498660e-13"
+    },
+    {
+      "item": "统计窗步数 = 2592",
+      "pass_": true,
+      "detail": "len(win)=2592"
+    },
+    {
+      "item": "诊断行数 = 步数+1",
+      "pass_": true,
+      "detail": "rows=12538  steps=12537"
+    },
+    {
+      "item": "窗口相对标准差与 acceptance.json 一致（rtol=1e-5，与检查器自身容差相同）",
+      "pass_": true,
+      "detail": "recalc(ddof=1)=8.2772157262e-07  acceptance=8.2772157262e-07"
+    },
+    {
+      "item": "窗口相对标准差与原始诊断末行一致（rtol=1e-5）",
+      "pass_": true,
+      "detail": "recalc=8.2772157262e-07  diagnostics=8.2772157261500504e-07"
+    },
+    {
+      "item": "窗口相对极差与 acceptance.json 一致",
+      "pass_": true,
+      "detail": "recalc=4.9876521654e-06  acceptance=4.9876521654e-06"
+    },
+    {
+      "item": "几何 fluid_nodes = 2064384",
+      "pass_": true,
+      "detail": "2064384"
+    },
+    {
+      "item": "边界 q 全部 = 0.5",
+      "pass_": true,
+      "detail": "q_min=0.5  installed_q_max=0.5"
+    },
+    {
+      "item": "无回退/无未解析链接",
+      "pass_": true,
+      "detail": "fallback=0  unresolved=0"
+    },
+    {
+      "item": "质量守恒 max < 1e-12",
+      "pass_": true,
+      "detail": "4.3944830080264308e-15"
+    },
+    {
+      "item": "Mach < 0.05",
+      "pass_": true,
+      "detail": "6.2651511933297235e-09"
+    },
+    {
+      "item": "exit_code = 0 / 收敛 / 非超时 / 非资源停止",
+      "pass_": true,
+      "detail": "exit=0 converged=true timed_out=False resource_stop=None"
+    },
+    {
+      "item": "输入闭包运行前后未变",
+      "pass_": true,
+      "detail": "True"
+    },
+    {
+      "item": "构建等价 PASS（acceptance）",
+      "pass_": true,
+      "detail": "True"
+    },
+    {
+      "item": "独立复算 K 与本机参照相对差 <= 1e-6",
+      "pass_": true,
+      "detail": "|recalc - local|/local = 0.000000e+00  (门槛 1e-06)"
+    },
+    {
+      "item": "正式回执 BUILD_EQUIVALENCE_PASS",
+      "pass_": true,
+      "detail": "True"
+    },
+    {
+      "item": "未把构建等价误写为 S4 阶段接受",
+      "pass_": true,
+      "detail": "original_S4_stage_accepted=False  RESULT_PASS=False"
+    }
+  ],
+  "all_checks_pass": true
+}

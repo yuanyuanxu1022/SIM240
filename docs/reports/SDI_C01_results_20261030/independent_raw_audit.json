@@ -1,0 +1,124 @@
+{
+  "run_id": "SDI_C01_v1_20261030_01",
+  "kind": "INDEPENDENT_LOCAL_ARITHMETIC_NOT_INDEPENDENT_HUMAN_REVIEW",
+  "raw_run_files_verified": 25,
+  "changed_bound_files": [],
+  "derived": {
+    "two_dimensional": {
+      "cells": 512,
+      "active_faces": 1072,
+      "Umean_m_s": 3.6430361356540733e-07,
+      "Q_m3_s": {
+        "xLow": -2.1858216813924467e-18,
+        "xHigh": 2.1858216813930507e-18,
+        "yLow": 0.0,
+        "yHigh": 0.0
+      },
+      "analytic_U_m_s": 3.6430361356540733e-07,
+      "analytic_Q_m3_s": 2.185821681392444e-18,
+      "recovered_K_from_U_m3": 4.5537951695675916e-23,
+      "recovered_K_from_Q_m3": 4.553795169568856e-23,
+      "pressure_relative_max": 1.5691152081368878e-13,
+      "local_mass_relative": 2.3831203506594778e-11,
+      "global_mass_relative": 2.763133130672793e-13,
+      "pressure_power_W": 5.2459720353433217e-17,
+      "dissipation_W": 5.2459720353418666e-17,
+      "energy_relative": 2.773337115513641e-13,
+      "p_cell_min_Pa": 0.749999999999467,
+      "p_cell_max_Pa": 23.250000000001094
+    },
+    "openfoam": {
+      "cells": 512,
+      "active_faces": 1072,
+      "Umean_m_s": 3.643036135654074e-07,
+      "Q_m3_s": {
+        "xLow": -2.1858216813924456e-18,
+        "xHigh": 2.185821681392935e-18,
+        "yLow": 0.0,
+        "yHigh": 3.176831036701168e-33
+      },
+      "analytic_U_m_s": 3.6430361356540733e-07,
+      "analytic_Q_m3_s": 2.185821681392444e-18,
+      "recovered_K_from_U_m3": 4.553795169567592e-23,
+      "recovered_K_from_Q_m3": 4.553795169568615e-23,
+      "pressure_relative_max": 1.375381290339798e-13,
+      "local_mass_relative": 1.1812261968628068e-11,
+      "global_mass_relative": 2.2542928688768374e-13,
+      "pressure_power_W": 5.2459720353430443e-17,
+      "dissipation_W": 5.245972035341866e-17,
+      "energy_relative": 2.2459811788166917e-13,
+      "p_cell_min_Pa": 0.7499999999988964,
+      "p_cell_max_Pa": 23.25000000000073
+    }
+  },
+  "native_field_readback": {
+    "p": {
+      "values": 512,
+      "dimensions": [
+        1,
+        -1,
+        -2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_absolute_difference_from_csv": 0.0
+    },
+    "U": {
+      "values": 1536,
+      "dimensions": [
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_absolute_difference_from_csv": 0.0
+    },
+    "J": {
+      "values": 1536,
+      "dimensions": [
+        0,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_absolute_difference_from_csv": 0.0
+    },
+    "phi": {
+      "values": 1072,
+      "dimensions": [
+        0,
+        3,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_absolute_difference_from_csv": 0.0
+    },
+    "phi_U": {
+      "values": 1072,
+      "dimensions": [
+        0,
+        3,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_absolute_difference_from_csv": 0.0
+    }
+  },
+  "scientific_thresholds_changed": false,
+  "raw_data_modified": false,
+  "solver_run": false
+}

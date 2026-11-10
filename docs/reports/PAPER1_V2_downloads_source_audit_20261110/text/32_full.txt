@@ -1,0 +1,1042 @@
+Engineering with Computers (2025) 41:4587–4603
+https://doi.org/10.1007/s00366-025-02216-x
+
+    ORIGINAL ARTICLE
+
+
+
+A hybrid Lattice-Boltzmann model for hydro-electrochemical
+modeling and sensitivity analysis of crystallization potential in
+nanoporous media. Part I: simulation model
+Fedor Bukreev1,2 · Adrian Kummerländer1,3 · Julius Jeßberger1,3 · Dennis Teutscher1,2 · Shota Ito1,2 ·
+Stephan Simonis1,3 · Davide Dapelo4 · Mohaddeseh M. Nezhad4 · Hermann Nirschl1,2 · Mathias J. Krause1,2,3
+
+Received: 24 February 2025 / Accepted: 21 September 2025 / Published online: 11 October 2025
+© The Author(s), under exclusive licence to Springer-Verlag London Ltd., part of Springer Nature 2025
+
+
+Abstract
+This is the first in a two paper series investigating the process of hydro-electrochemical crystallization in nano-scale
+porous media at the supersaturation stage. In Part I, the synchronous numerical model for integrated hydro-electro-
+chemo-dynamics simulation, and sensitivity analysis of nano-scale crystallization potential, is developed within the Lat-
+tice-Boltzmann framework using the open-source software library OpenLB. The present work makes use of a reactive
+Navier-Stokes-Poisson-Nernst-Planck (RNSPNPE) Equation system for three types of ions in the moving carrier fluid and
+in the presence of a dynamic electric field. We propose a time-adaptive splitting approach to decouple the system, using
+Lattice-Boltzmann method (LBM) for the discretization of the equations. We apply an algorithmic differentiation approach
+for calculation of the parameters’ sensitivities. The complete solver is validated with analytical solutions, on the basis of
+a first-order convergence criterion. The sensitivity approach is validated by comparison to predictions achieved from a
+sensitivity analysis performed with finite difference method, enabling a meaningful analysis of crystallization potential on
+the nanopore level. The work integrates the RNSPNPE system into a framework specifically designed for the supersatu-
+ration process investigations of the crystallizing species within nanoporous geometries. This work proposes a model that
+couples fluid flow, electric potential, and ion transport in a reactive setting. A novel aspect of this work lies in the seam-
+less integration of sensitivity analysis algorithms into the Lattice-Boltzmann physicochemical solver, extending the LBM
+beyond its conventional role as a fluid-flow solver and employing it as a tool for sensitivity analysis. This solver can be
+applied to other nanoscopic and microscopic chemical electro-hydrodynamics processes as well.
+
+Keywords Nanoporous geometry · Phosphates crystallization · Saturation · Nano-scale · Electro-hydrodynamics ·
+Lattice-Boltzmann method · Automatic differentiation
+
+
+
+                                                                              1 Introduction
+     Fedor Bukreev
+     fedor.bukreev@kit.edu                                                    The investigation of chemical processes and surface reac-
+                                                                              tions can be conducted across various scales, ranging from
+1
+     Lattice Boltzmann Research Group (LBRG), Karlsruhe                       the nanoscopic to the microscopic. These scales define the
+     Institute of Technology (KIT), Straße am Forum 8,
+     Karlsruhe 76131, Germany                                                 size of the control volume where the reaction is analyzed.
+2
+                                                                              In heterogeneous porous systems, reactions occur at mul-
+     Institute of Mechanical Process Engineering and Mechanics
+     (MVM), Karlsruhe Institute of Technology (KIT), Straße am                tiple scales depending on the pore size distribution. Exten-
+     Forum 8, Karlsruhe 76131, Germany                                        sive research has been conducted at both the macroscopic
+3
+     Institute for Applied and Numerical Mathematics (IANM),                  scale, where the entire reactor volume is considered, and the
+     Karlsruhe Institute of Technology (KIT), Englerstraße 2,                 microscopic scale, focusing on individual pore structures.
+     Karlsruhe 76131, Germany                                                 However, this study primarily focuses on the nanoscale,
+4
+     Department of Civil and Environmental Engineering, School                where reactions occur at the finest level of pore confinement.
+     of Engineering, University of Liverpool, Brownlow Hill,
+     Liverpool L69 3GH, UK
+
+
+                                                                                                                                 13
+4588                                                                                Engineering with Computers (2025) 41:4587–4603
+
+
+   In the present work, we focus on the numerical approach        crystallization also belongs to, can be divided into the fol-
+in the nanoscopic scale, and the relevant lengths are com-        lowing general steps:
+prised between around 40 nanometers (most frequent pore
+diameters of the calcium silicate hydrate (CSH) micro-parti-      1. migration of reacting ions from bulk to the pore entrance
+cles CIRCOSIL). An experimentally fitted reaction kinetics           (diffusive, hydraulic and electric transport)
+equation is often sufficient for simulation of large industrial   2. migration of ions through pore volume (diffusive,
+reactors and has the advantage of covering large scales with         hydraulic and electric transport)
+minimal computational effort [1]. Unfortunately, in most          3. contact of ions with pore wall leading to dissolution of
+cases such macroscopic full reactor simulations can not              calcium cations
+lead to a complete understanding of the detailed processes,       4. saturation of reactants at the soil surface
+when the interaction between chemical species is firmly           5. distinct nucleation of the adsorbate ion based crystal at
+prescribed by an empirically constructed polynomial [2].             the point with most appropriate conditions (saturation
+To recover small-scale process information, finer measures           product above one and low surface tension)
+must be taken, which require more expensive experiments           6. layer-wise growth of the crystal.
+and apparatus or more complex computational techniques.
+   A suitable example to represent the different abstrac-         On example of the phosphate crystallization in the CSH
+tion levels is phosphate adsorption from waste water using        pores, these steps are schematically presented in Fig. 1.
+porous micro-CSH particles as adsorbent. Investigating                The present work considers the first four steps without
+this process on the macroscopic scale allows one to find          pore volume change due to dissolution and crystallization
+the overall mass of adsorbed phosphate assuming standard          processes, assuming very small timescales regarded here.
+linear, Langmuir, or Freundlich sorption isotherms together       To do so, the chemical species are modeled as ions that are
+with multiple diffusion mechanisms, namely film and pore          influenced by fluid motion and an electric field. Previously,
+diffusion (see for example [3] and references therein). As        Kler et al. [4] have investigated the electrodynamic sys-
+mentioned above, simulations of this type are based on            tem on a microfluidic chip with the finite elements method
+experimentally fitted adsorption data and do not provide          (FEM), using a free-slip boundary condition for the carrier
+insight on the separate process steps and the respective          fluid motion. Barnett et al. [5] discretized the pore-scale
+dynamics. In contrast to that, modeling on the pore-scale         electrochemical ionic flow, described by the Stokes-Pois-
+level where the actual reaction occurs promises to provide a      son-Nernst-Planck equation system, using the finite volume
+deeper understanding of the process details like electrically     method. Fuel cells with multiphase (water/air) flow and dis-
+driven movement of dissolved ions in the pores, desorption        solved ions have been modeled with the LBM by Ryan et
+of bounding metal ions, and their reaction with adsorbate         al. [6]. An LBM discretization of a full set of formulations
+ions. In the present work, the adsorption in the pore-scale       describing an electro-reactive system with chemical-reac-
+is considered as nanoscopic. Thus, chemical adsorption is         tion-driven phase change has been presented by Zhang and
+mainly characterized by a crystallization reaction on the         Wang [7] and used to model for precipitation and dissolution
+pore surface. The numerical simulation of this phenomenon         cases. Notably, the use of LBM has become popular in bat-
+is typically based on a crystallization model, a system of        tery modeling [8, 9]. The electro-kinetic system discretized
+equations describing the species dynamics in the surround-        with LBM was analytically also validated by Tian et al. [10].
+ing liquid, and its numerical discretization. Adsorption as an    The principles of electric double layer (EDL) theory rel-
+example of a standard pore-scale chemical process, where          evant to surface reactions at the nano- and micro-levels can
+                                                                  be found in [11]. Nevertheless, these surface reactions have
+Fig. 1 General pore-scale multiphase
+fluid-solid chemical process with chemi-
+cal species considered as solved ions in a
+carrier fluid
+
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603                                                                               4589
+
+
+not yet been investigated numerically on the pore level con-     macro-simulation of complete phosphate crystallization
+sidering the full system complexity, i.e. hydro-, electro- and   reactors.
+chemo-dynamics. This work intends to fill this research gap
+by presenting an integrated model within the LBM frame-
+work. As LBM is well-suited for modeling nano- and micro-        2 Methodology
+level multiphysics problems [12–15] due to its capability to
+efficiently simulate such systems, leveraging its paralleliz-    2.1 Governing conservation equations
+ability and the simplicity of its algorithm [16, 17].
+   In the current work, in its first part, the integrated        The present model is developed by first selecting a global
+dynamic hydro-electrochemical model with LBM discreti-           approach, which, in this case, is the Eulerian ansatz with
+zation and automatic sensitivity assessment for a nanoscale      bidirectional coupling and a Strang splitting assumption.
+porous geometry is proposed. Model equations are pre-            This assumption implies that, within a single time step, the
+sented in Sect. 2. The model is discretized with LBM and         variables from other equations remain constant while the
+coupled to the automatic differentiation (AD) algorithm in       current equation is solved. The model equations and con-
+the C++ based open-source software library OpenLB [18,           nections between them are presented in Fig. 2. There is only
+19] (https://www.openlb.net, Sect. 3). In Sect. 4 the system     one liquid phase with three solved ionic components, and
+components are validated step-wise on analytical solutions.      no explicit interface is modeled. Each ion is indicated by i.
+Starting with the Poisson equation solver validation, going      Its concentration, Ci , is governed by diffusion—described
+through the Poisson-Nernst-Planck system, and ending with        by the diffusion coefficient Di —and by advection, which
+the electro-osmosis analytical example computed using the        comprises movement induced by the carrier fluid uﬂ and
+Navier–Stokes-Poisson-Nernst-Planck equation system.             by the electric field uel,i . In the boundary cells, the ion con-
+Section 5 presents the validation of the AD sensitivity cal-     centration is updated by summing over the reaction terms
+culation approach against a set of results achieved from the     Rk,i = ϑk,i rk , where k is the reaction index, ϑk,i —stoi-
+finite differences method (FDM). To the best of the authors’     chiometric coefficient of the species i in the reaction k and
+knowledge, there is no tool for automatic sensitivity analy-     rk —the corresponding reaction rate:
+sis of supersaturating reaction systems on the pore level.                  ( (            ))            ∑
+In the second part of the research, the solver is applied for    ∂t Ci + ∇ · Ci uﬂ + uel,i    = Di ∆Ci +   Rk,i . (1)
+sensitivity analysis of simplified two-dimensional nanopo-                                                    k
+
+rous geometries representing open and blind pores. Subse-
+quently, a realistic three-dimensional resolved nanoporous       The equation above is called reactive Nernst-Planck equa-
+geometry is simulated, and sensitivity analysis is conducted     tion (RNPE).
+using the integrated automatic sensitivity analysis algo-           The carrier fluid velocity is determined from the usual
+rithms. Finally, conclusions about the influence of factors      incompressible Navier–Stokes mass and momentum con-
+such as pore width and length, surface Helmholtz potential,      servation equations forced by the electric term F el as well
+carrier fluid velocity, and reactants bulk concentrations are
+drawn with an outlook for a full crystallization simulation      ∇ · u = 0, (2)
+and derivation of a macro-model which can be used for the
+
+
+Fig. 2 Full Eulerian equation sys-
+tem for a hydro-electro-chemical
+simulation of an ionic supersatura-
+tion process and dissolution reac-
+tions in resolved nanopores
+
+
+
+
+                                                                                                                      13
+4590                                                                                Engineering with Computers (2025) 41:4587–4603
+
+                 1           F el                                Here, ksr is the surface specific reaction rate constant
+∂t u + (u · ∇)u + ∇p = ν∆u +      . (3)                                                                         (         )1/σT
+                 ρ            ρ
+                                                                 [mol m−3 s−1 ], the saturation product Ω = IAP/Ksp
+                                                                                                         ∏
+                                                                 with ionic activity product IAP = i aϑi i and saturation
+Here, ρ, ν and p are the carrier fluid density, kinematic vis-
+cosity and pressure, respectively. The concentrations of the     point constant Ksp . n is the order of crystallization; in case
+ions are assumed to be small enough to leave the liquid’s        of dissolution, it is just one. The parameters ksr and Ksp can
+density and viscosity unaltered.                                 be defined experimentally, by molecular dynamics simula-
+   The electric field is computed from the potential ψ , which   tion, or special chemical software like PHREEQC [23]. σT
+is assumed to obey the Poisson’s equation (PE)                   is the Temkin coefficient taken for the saturation product
+                                                                 estimation. The ion activity ai is calculated by the Debye-
+         F ∑                                                     Hückel extended theory [24].
+∆ψ = −       zi Ci ,(4)
+         ϵ i
+                                                                 ai = γi Ci , (10)
+
+where F is the Faraday constant, ϵ is the total carrier fluid                         √
+                                                                                       I
+permittivity and zi the ion valence. The coupling terms uel,i    log γi = −Azi2          √ , (11)
+and Fel can be determined from the electric potential as                          1 + Ba0 I
+follows:
+                                                                      1∑ 2
+                                                                 I=       z Ci . (12)
+               zi e                                                   2 i i
+uel,i = −Di         ∇ψ, (5)
+              kB T
+                 ∑                                               The γi is the ion activity coefficient, which is computed
+F el = −(∇ψ)F          zi Ci . (6)                              with ionic strength I, smallest distance between interacting
+                   i
+                                                                 ions a0 and case-specific constants A and B, which can be
+                                                                 found in sum with all other used parameters in Table  1.
+The e is an elementary charge, and the kB T term is the prod-
+uct of the Boltzmann constant and temperature.
+   The total resulting system is called reactive Navier–         3 Discretization
+Stokes-Poisson-Nernst-Planck          equation        system
+(RNSPNPE).                                                       3.1 Lattice-Boltzmann method (LBM)
+
+2.2 Reaction system                                              To enable an efficient computation of large resolved realis-
+                                                                 tic porous domains on CPU-GPU HPC clusters, the built-
+In the present work, two parallel processes are considered as    up RNSPNPE system is approximated with LBM, which
+an example application: the dissolution of calcium cations       draws inspiration from microscopic gas kinetic theory [31].
+from the pore surface (7), and the saturation of phosphate,      In this framework, molecules are treated as hard spheres
+hydrogen, and calcium ions, which enables the formation of       that undergo elastic collisions and motion. The probability
+octacalcium phosphate (OCP) there (8). The reaction sys-         density function (PDF) f (x, ξ, t) is defined as the prob-
+tem can be written in ionic form as follows:                     ability of finding a particle within the elementary element
+                                                                 [x, x + dx] × [ξ, ξ + dξ] × [t, t + dt] of the phase and time
+CSH + 1.66H+ ⇆ 0.86Ca2+ , (7)                                   spaces. It is discretized by allowing only a discrete number
+                                                                 of equally spaced lattice points for x, and a fixed number of
+           4 + 2H −−−−−−→ Ca8 H2 (PO4 )6 ↓ . (8)
+8Ca2+ + 6PO3−    + saturation                                    molecular velocities ξ j . Notationally, the discretized PDF is
+                                                                 represented by a set of functions fj (x, t) whereby the index
+The stoichiometric dissolution coefficients are set according    j means that the function refers to the discretized molecular
+to [20]. More information about OCP and its further conver-      velocity ξ j . The discretized fj obeys the Lattice-Boltzmann
+sion to hydroxyapatite can be found in [21].                     equation [32]:
+   The common form for the crystallization and dissolution                                               (        )
+reaction rates used in this work is [20, 22]                     fj (x + ξ j △t, t + △t) − fj (x, t) = △t ΩC
+                                                                                                           j + Ωj .(13)
+                                                                                                                S
+
+
+       ksr                                                       This equation accounts for the change in the distribution
+r=         (Ω − 1)n .(9)
+       △x                                                        function due to convection on the left-hand side, while the
+                                                                 right-hand side incorporates the collision operator ΩC
+                                                                                                                      j and a
+
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603                                                                                               4591
+
+
+Table 1 Simulation parameters and physical constants used for simula-
+tions in the Section 5 and the part II of the current work
+Parameter                                               Value
+Dielectric constant ϵ [CV −1 m−1 ]                        6.95 · 10−10
+                                                          [25]
+Faraday constant F [C mol−1 ]                             96485.33
+Boltzmann constant kB [V CK−1 ]                           1.38065 · 10−23
+Elementary charge e [C]                                   1.602177 · 10−19
+Surface potential ψ0 [V]                                  −0.01
+Inlet velocity ui [ms−1 ]                                 0.2
+                    2 −1
+Fluid viscosity ν [m s ]                                  10−6 [25]
+Water mean free path λH2O [m]                             1.26 · 10−10
+                                                          [26]
+Avogadro number NA [mol−1 ]                               6.02 · 1023
+Hydrogen ion diffusion constant DH+ [m2 s−1 ]             9.31 · 10−9        Fig. 3 Schematic view of the D3Q19 discrete velocity set. The dis-
+                                                          [27]               crete velocities are depicted as arrows
+Phosphate ion diffusion constant DPO3− [m2 s−1 ]          0.612 · 10−9
+                                        4
+                                                          [27]               standard case, a second-order
+                                                                                                       ( equilibrium distribution in LBM
+                                                                                                                                     )
+                                                                                                                      (ξj ξj −δαβ c2s ):uu
+                                                                             is written as fjeq = wj ρ 1 +      c2s +
+                                                                                                               ξj ·u
+Calcium ion diffusion constant DCa2+ [m2 s−1 ]            0.792 · 10−9                                                        2c4s           . In
+                                                          [27]
+                                                                             general, when approximating partial differential equations
+OCP saturation constant Ksp,OCP [(mol m−3 )16 ]           10−48.86 [28]
+                                                                             (PDE) systems with the LBM, the relaxation time τ defines
+OCP Temkin coefficient σT,OCP                             1 [20]
+                                                                             the rate of the PDFs’ adjustment towards the equilibrium
+CSH dissolution rate coefficient kCSH                     3.1 · 10−11
+[mol m−2 s−1 ]
+                                                                             distribution. The BGK collision operator adds only a small
+                                                          [20]
+                                                                             amount of numerical diffusion [34] and remains stable in the
+CSH saturation constant Ksp,CSH [(mol m−3 )x ]            1011.15 [20]
+                                                                             current operating conditions due to the low velocities that
+CSH Temkin coefficient σT,CSH                             16 [29]            occur and the relatively high relaxation times chosen.
+Phosphor acid concentration CH3 PO4 [mol m       −3
+                                                      ]   0.1
+Temperature T [K]                                         298.15                The equilibrium functions and the source terms accord-
+                              √                           0.016102
+Debye-Hückel coefficent A [       (m3 mol−1 )]                               ing to Guo et al. [35] for different equations are shown in
+                              √                                              Table 2.
+Debye-Hückel coefficent B [       (m3 m−2 mol−1 )]        1.0391 · 108
+                                                                                The wj are the integration weighting coefficients (Table
+Molecular distance Ca-w [m]                                                           √
+                                                          2.33 · 10−10       5), cs = 1/3 is the discrete speed of sound and SPE/RNPE
+                                                          [30]
+                                                                             the source, which is the reaction rate in RNPE and the right
+Knudsen number Kn                                         0.09
+Discretization parameters
+                                                                             equation side in PE.
+Cell size △x [m]                                          1.40045 · 10−9
+                                                                                In PE there is no diffusion coefficient and time derivative
+Time step Poisson lattice △tPE [s]                        2.45159 · 10−19    of potential, which is why in the case of LBM discretization
+Time step momentum lattice △tNSE [s]                      2.61503 · 10−13    the diffusion coefficient is set to one and the apparent time
+Time step ions lattice △tNPE [s]                          4.80703 · 10−11    derivative is eliminated by reaching the converged state.
+                                                                                The macro-variables are recovered through the moments
+sourcing term ΩSj . The motion of molecules is defined by a                  of PDFs (Table 3).
+                                                                                Pressure is included using the second order moment, but
+set of discrete directions j (Fig. 3) and corresponding nor-
+                                                                             can be computed with the zeroth one [32]:
+malized lattice velocities ξ j (Table 5).
+  For all system equations, the Bhatnagar-Gross-Krook                        p = ρc2s .(15)
+(BGK) collision operator is employed [33]:
+                                                                             The diffusion and viscosity coefficients in the mentioned
+           fjeq (x, t) − fj (x, t)                                           macroscopic equations are connected to the lattice relax-
+ΩBGK =                             ,(14)
+ j
+                      τ                                                      ation times in the LBEs in the way shown in Table 4.
+                                                                                The lattice stencil utilized is D3Q19, meaning three
+where fjeq (x, t) is an approximation of the equilibrium dis-
+                                                                             spatial dimensions and 19 discrete microscopic velocities,
+tribution function based on the Maxwell-Boltzmann equa-                      inclusive of the zero (Fig. 3 and Table 5). This choice allows
+tion and discretized with Gauss-Hermite quadrature. In the
+
+
+                                                                                                                                    13
+4592                                                                                                        Engineering with Computers (2025) 41:4587–4603
+
+
+Table 2 Used LBM collision and source terms
+Equation                          fjeq (x, t)                                                                    ΩS
+                                                                                                                  j (x, t)
+                                                                                                                 (           )
+PE                                       wj ψ
+                                                                                                                     1 − △t
+                                                                                                                         2τ wj SPE
+                                                (                             )                                  (           )
+RNPE                                                     ξj ·(uﬂ +uel )
+                                         wj Ci 1 +             c2s
+                                                                                                                     1 − △t
+                                                                                                                         2τ wj SRNPE
+                                              (                                         )                        (           )   (                             )
+NSE                                                     ξj ·u  (ξ ξ −δ c2 ):uu                                                            (ξ ξ −δ c2 )·u
+                                         wj ρ 1 +             + j j 2cαβ4 s                                          1 − △t              + j j c4αβ s
+                                                                                                                                     ξj
+                                                         c2s                                                             2τ wj       c2s
+                                                                                                                                                                    ·F
+                                                                       s                                                                         s
+
+
+
+
+Table 3 Lattice Boltzmann PDFs moments
+Equation                                                  0th order                                                      1st order
+                                                                  ∑                                                                                 ∑
+PE                                                        ψ=            f     + 12 SPE                                   ∇ψ = − τ           1
+                                                                                                                                                         ξj fj,PE
+                                                                       j j,PE                                                                2
+                                                                                                                                         PE cs △x    j
+                                                                  ∑
+RNPE                                                      Ci =                fj,RNPE + 12 SRNPE                         –
+                                                                          j
+                                                               ∑                                                                 ∑
+NSE                                                       ρ=              fj,NSE                                         u=              ξj fj,NSE + 12 F
+                                                                      j                                                              j
+
+
+
+Table 4 Diffusion parameters conversion to relaxation times for equa-
+tions used in the current simulation model                                               because it describes the change of the dimensionalized or
+Equation                               Diffusion parameter in LBM                        nondimensionalized quantity in time, which is in lattice
+                                            (          )
+PE
+                                       D = τPE − 12 c2s △x
+                                                              2                          units. So, we multiply the source term of each ADE with the
+                                                            △t = 1
+                                                                                         time conversion factor.
+                                                    (                     )
+RNPE                                                                              2
+                                           Di = τRNPE − 12 c2s △x
+                                                               △t
+                                                  (               )
+                                                                                         3.2 Boundary conditions in LBM
+NSE                                                                          2
+                                           ν=         τNSE − 12       c2s △x
+                                                                          △t
+                                                                                         3.2.1 NSE boundary conditions
+
+Table 5 Lattice discretization parameters                                                In LBM, boundary conditions are usually applied to the
+Directions j Normalized lattice velocity ξ j                   Lattice                   PDFs rather than to the macroscopic variables, which makes
+                                                               weights wj
+                                                                                         the entire procedure more complex. For Dirichlet-type
+0                  (0, 0)                                      1/3
+                                                                                         boundary conditions from the LBM point of view, the wet-
+1, 2, . . . , 6    (±1, 0, 0), (0, ±1, 0), (0, 0, ±1)          1/18
+                                                                                         node non-equilibrium approach is used [36]. Thereby, popu-
+7, 8, . . . , 18   (±1, ±1, 0), (±1, 0, ±1), (0, ±1, ±1) 1/36                            lations at the boundary lattice points (xp ) are constructed
+                                                                                         from both equilibrium fjeq and non-equilibrium populations
+                                                                                         fjneq . If the velocity is fixed and the pressure is treated with
+us to minimize memory and computational power require-                                   the Neumann boundary condition, the following scheme is
+ments while achieving a sufficiently high accuracy when                                  applied: in the equilibrium part, the velocity is prescribed
+calculating potential gradients.                                                         from the macro-level and density ρrec is reconstructed from
+   Classical LBM deals with nondimensionalized quanti-                                   incoming populations. The non-equilibrium part is com-
+ties in so-called lattice units, which are in our case calcu-                            puted from stress tensor components received through finite
+lated in a way, so that △x = △t = 1 in lattice units. The                                differences in neighbor fluid cells Sαβ FD
+                                                                                                                                    :
+physical values of cell size and time step size are used as
+conversion factors and can be found in Table 1. The other                                                eq
+                                                                                         fj,NSE (xp ) = fj,NSE                      neq
+                                                                                                               (ρrec , un (xp )) + fj,N SE (Sαβ ), (16)
+                                                                                                                                             FD
+conversion factors are combinations of these two and the
+density conversion factor, which is in our case water density                                        1
+1000 kgm−3 . The NSE approximation with LBM is per-                                      ρrec =          (ρ0 + 2ρ+ ) , (17)
+                                                                                                   1−n·u
+formed in the classical way using the described units con-
+version method. For the PE and NPE, conversion is realized                                      along ∑
+                                                                                                      boundary
+only partially. The transport (advection–diffusion) equation                             ρ0 =                    fj,NSE , (18)
+(ADE) can be used for arbitrary dimensionalized or nondi-                                             j
+mensionalized scalars, which is why we let the concentra-
+tions and electric potential have SI dimensions. The only
+term which needs special conversion is the source term,
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603                                                                                        4593
+
+       towards∑
+              boundary
+                                                                        At the walls, bounce-back is applied as the zero-gradient
+ρ+ =                       fj,NSE , (19)
+                                                                        boundary condition.
+                  j
+                                                                          More information on methods for boundary conditions in
+                                                                        LBM is provided in [32] and references therein.
+ neq                    (ξj,α ξj,β − c2s δαβ ) FD
+fj,NSE (Sαβ
+         FD
+            ) = wj                            Sαβ . (20)
+                                 2c4s
+                                                                        3.3 Automatic differentiation (AD) with operator
+                                                                        overloading
+At the walls, no-slip boundary condition can be applied,
+which is realized through the full-way bounce-back of                   The goal of the current work is to determine the influence
+incoming populations at the wall [37]:                                  of the model parameters, and to understand which particle
+                                                                        and which process settings lead to the highest crystallization
+fj̄ (xp , t + △t) = fj,pre-stream (xp , t), (21)                       potential—highest saturation product. Several approaches
+                                                                        are available for the numerical computation of the sensitivi-
+ξ j̄ = −ξj . (22)                                                      ties db
+                                                                             dJ
+                                                                                 , d = 1, . . . , D, of a quantity J with respect to design
+                                                                               d
+
+                                                                        variables b1 , ..., bd (in this context called control variables).
+In our case, by microfluidics, free-slip boundary condition             Here, we briefly recapitulate them. For a concise introduc-
+is assumed, which is similar to bounce-back but considers               tion, we refer to [40].
+the local wall normal. The specular reflection is applied,
+                                                                        ● The simplest method is the computation of forward dif-
+where, depending on the discrete normal, the populations
+                                                                          ference quotients, where the derivative db
+                                                                                                                  dJ
+                                                                                                                      is approxi-
+are reflected in the mirrored direction [38].                                                                       d
+
+   The zero-gradient boundary condition in LBM is realized                  mated as
+by copying the averaged PDF along the lattice direction:
+                                                                        dJ    J(b + µ|bd |vd ) − J(b)
+                                                                            ≈                         (26)
+fj,post-stream (xp ) = fj,post-stream (xp − ξ j △t).(23)               dbd             µ
+
+                                                                         for d = 1, . . . , D, respectively. Here, vd denotes the dth unit
+3.2.2 ADE boundary conditions                                           vector and µ is the stencil step width. The optimal choice
+                                                                        for the step width is µ ≈ η 1/2 , where η is the machine pre-
+At the mesoscopic level by ADE, the velocity is always                  cision, balancing truncation and cancellation errors. The
+known from the precomputed NSE. So, by the Dirichlet                    scheme results is executing the primal simulation D times.
+boundary condition, the transported scalar is fixed and is
+thus put in the PDFs with a moment-based approach [39]:                 ● Computation of central difference quotients is a more
+                                        ∑                                 accurate, but also more expensive variant of the one de-
+fj,ADE,unknown (xp ) = s(xp ) −                  fj,ADE .                 scribed above. Here, we use the approximation
+                                                         (24)
+                                       j,known
+                                                                        dJ    J(b + µ|bd |vd ) − J(b − µ|bd |vd )
+                                                                            ≈                                     (27)
+Known populations are here those that come from neighbor-               dbd                   2µ
+ing fluid cells. The unknown is the population that comes
+from the wall. By the Neumann boundary condition, an                    for d = 1, . . . , D with µ ≈ η 1/3 , which results in executing
+average value of two neighboring cell populations in the                2D times the primal simulation.
+current lattice direction is taken:                                     ● Forward automatic differentiation (AD) treats each
+                                                                                                [ ∂X                 ]
+                 1                                                        variable X as a vector X, ∂b 1
+                                                                                                                ∂X
+                                                                                                         , ..., ∂b     ∈ RD+1 , which
+fj,ADE (xp ) =     (fj,ADE (x − ξj · n) + fj,ADE (x − 2ξj · n)).(25)
+                                                                                                                   d
+
+                 2                                                          contains the value as well as the sensitivities with re-
+                                                                            spect to the control variables. For initialization, the sen-
+                                                                            sitivity of a control parameter bd with respect to another
+
+
+
+
+                                                                                                                               13
+4594                                                                                      Engineering with Computers (2025) 41:4587–4603
+
+    control bd′ , d, d′ = 1, . . . , D, is δd,d′ . The derivative          The approach is less generic, e.g., for different boundary
+    components are then processed according to the deriva-                 conditions, a new adjoint system needs to be deduced.
+    tion combination rules during all mathematical opera-                  Moreover, since the adjoint system evolves backwards
+    tions. E.g., the product Z of two variables X, Y is                    in time, complex and costly checkpointing methods
+                                                                           have to be employed in order to treat time-dependent
+[                  ]   [                                     ]
+    ∂Z         ∂Z             ∂Y     ∂X           ∂Y     ∂X                problems.
+ Z,     , ...,       := XY, X     +Y     , ..., X     +Y       .
+    ∂b1        ∂bd            ∂b1    ∂b1          ∂bd    ∂bd
+                                                                       ● Reverse automatic differentiation can be interpreted as
+The whole program is executed similar to the standard pro-               an automatic variant to the operation of deriving an ad-
+gram. At the end, one arrives to the quantity of interest J              joint system and solving it for the sensitivites. It is fully
+and its sensitivities db
+                      dJ
+                          , d = 1, . . . , D. The computational          generic, but inherits the problems that adjoint methods
+                        d
+                                                                         have with time-dependent problems.
+costs grow proportionally to D and, in contrast to finite dif-
+ference methods, optimal accuracy at machine precision is
+                                                                       Keeping in mind the requirements of time dependence and
+observed. Similarly to the above methods, this method is
+                                                                       accuracy (Sect. 5.3), we employ forward AD in this work.
+generic and well-suited for time-dependent problems, cou-
+                                                                       To do so, it needs to be guaranteed that each single math-
+pled problems and nonstandard boundary conditions. For
+                                                                       ematical operation used in the program is differentiable (at
+both numerical and computational performance evaluation
+                                                                       least in a subdifferential sense). In OpenLB, forward AD is
+of AD in the context of (LBM) fluid flow problems, we refer
+                                                                       then implemented via C++ operator overloading by a data
+to [41–44].
+                                                                       type ADf<T,D> which stores for any quantity X its value
+● Adjoint methods solve the adjoint PDE system in order                as well as its n sensitivities with respect to the controls. For
+  to compute the sensitivities db
+                               dJ
+                                 d
+                                   from the adjoint solu-              example, the overloading multiplication operator for vari-
+    tion. Unlike the above approaches, solving one adjoint             ables of type ADf<double,n> looks like
+    system allows to compute arbitrarily many sensitivities.
+    Hence, the computational effort is independent from D.
+
+
+
+
+                 1   // template with precision T and number of derivatives D as arguments
+                 2   template < class T , unsigned D >
+                 3   inline constexpr ADf <T ,D >& ADf <T ,D >:: operator *= ( const ADf <T ,D >& Y ) {
+                 4     // _v stores the value , _d stores the derivative vector
+                 5     // multiplication rule by calculating derivative
+                 6     _d = _d * Y . _v + _v * Y . _d ;
+                 7     _v *= Y . _v ;
+                 8     return * this ;
+                 9   }
+
+
+
+
+Fig. 4 Convergence plot of the dis-
+cretized Poisson equation by two differ-
+ent relaxation times. Evaluation criterion
+is the relative error norms of the electric
+potential by comparison with analytical
+solution [45]
+
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603                                                                            4595
+
+
+   Therefore, the data type used for floating-point variables   4 Step-wise validation and analysis of the
+in the entire code basis is employed as a template param-       electric hydrodynamic LBM model
+eter. This allows compilation run of the same function with
+both IEEE double precision (for primal simulation) and          Due to the complexity of the described model, its parts are
+ADf<double,D> (for derivative computation) type vari-           validated separately against analytical solutions. All the test
+ables. The result is a generic method, which reuses the same    cases are one-dimensional, but they are solved on three-
+setup for both the primal simulation and the sensitivity        dimensional lattices with periodic boundaries in the other
+analysis.                                                       directions. All the examples are computed until conver-
+                                                                gence of the spatially averaged electric potential is achieved
+3.4 Simulation algorithm for RNSPNPE on example                 based on the following criterion:
+of OCP supersaturation with coupled AD                               ∑Nt            ∑N
+                                                                1
+                                                                           (ψavg,l − mt ψavg,m )2
+                                                                                                  < 10−9 (28)
+                                                                Nt    l
+Below, the simulation algorithm with AD with respect to a                   ∑Nt
+                                                                               m ψavg,m
+variable α performed at each lattice point is presented.
+
+
+
+
+                                                                                                                    13
+4596                                                                                   Engineering with Computers (2025) 41:4587–4603
+
+
+where Nt is the number of time steps at which the conver-                           max       |ψa − ψn |
+                                                                               c=1,..,Nnode
+gence of PE was checked. All the cases are steady-state            rel (ψ) =
+                                                                  L∞                                       , (35)
+                                                                                       max         |ψa |
+without time dependence, so that there is no need for an                            c=1,..,Nnode
+
+internal PE simulation loop. All the discretized equations
+are calculated once per time step.                                It can be seen that the lines have a slope of approximately
+                                                                  one, independent of the chosen relaxation time τ . Accord-
+4.1 Poisson equation                                              ing to these results, the simulation ansatz is considered to
+                                                                  be convergent.
+The PE for validation test, which is taken from [45], is
+defined as                                                        4.2 Poisson-Nernst-Planck equation system
+
+∆ψ = h2 ψ,(29)                                                   The ideal case for the PNPE system is the analytically-
+                                                                  solvable Poisson-Boltzmann equation, which describes the
+with according boundaries                                         Gouy-Chapman model for ionic solutions close to a charged
+                                                                  surface [11]. The PNPE system can be written for monova-
+ψx=0 = ψx=1 = 1, (30)                                            lent cations and anions as:
+
+h = 27.79 (31)                                                          F
+                                                                  ∆ψ +     (C+ − C− ) = 0, (36)
+                                                                         ϵ
+and analytical solution                                                     ( De      )
+                                                                  ∂t C+ −           ∇ψ ∇C+ = D∆C+ , (37)
+          eh − 1 −hx    1 − e−h hx                                           kB T
+ψ(x) =            e  +          e (32)
+         eh − e−h      eh − e−h                                             ( De      )
+                                                                  ∂t C− +           ∇ψ ∇C− = D∆C− , (38)
+                                                                             kB T
+The convergence behavior of the discretized PE is shown
+in Fig. 4. Three different relative error norms (L1 , L2 , L∞ )
+between the analytical ψa and numerical solutions ψn of the       whereas the boundary conditions are described as:
+Eq. 29 are shown.
+                                                                  ψx=0 = −0.02V           ψx=L = 0V, (39)
+              ∑Nnode
+                c=1 |ψa − ψn |
+L1rel (ψ) =     ∑Nnode         ,    (33)                         ∇C±,x=0 = 0 (bounce-back)          C±,x=L = 0.01mol m−3 (40)
+                   c=1 |ψa |
+
+            
+             Nnode                                              The diffusion constant D is set to 10−8 m2 s−1 , temperature
+                              2
+L2rel (ψ) =  c=1
+                     |ψa − ψn |
+                                 , (34)                          T to 298 K, dielectric constant ϵ to 6.95 · 10−10 CV−1 m−1 .
+               Nnode      2
+                  c=1 |ψa |
+                                                                  The Faraday constant F is 9.649 · 104 C mol−1 4, the ele-
+                                                                  mentary charge e equals 1.602 · 10−19 C. The computation
+                                                                  domain length L is set to 13 Debye lengths λD , which is
+
+Fig. 5 Comparison of the electric
+potential and concentration profiles
+computed with discretized PNPE system
+and derived from the Poisson-Boltzmann
+equation [11]
+
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603    4597
+
+Fig. 6 Convergence plot of the PNPE
+system based on the analytical solution
+of the Poisson-Boltzmann equation for
+the Gouy-Chapman model [11]
+
+
+
+
+Fig. 7 Comparison of the electric
+potential and concentration profiles
+computed with discretized PNPE system
+and derived from the Poisson-Boltzmann
+equation for the 3D case with a sphere
+
+
+
+
+                                                 13
+4598                                                                                Engineering with Computers (2025) 41:4587–4603
+
+Fig. 8 Convergence plot of the PNPE
+system based on the analytical solution
+of the Poisson-Boltzmann equation for
+the Gouy-Chapman model for a 3D
+sphere test
+
+
+
+
+       √
+               ϵkB T                                            4.2.1 Three-dimensional PNPE test
+λD =                   .(41)
+           2e2 Cx=L NA
+                                                                Now, we construct a three-dimensional test with an analyti-
+This characteristic length represents the distance at which     cal solution for the given PNPE system. For that, a sphere
+the electric potential ψ falls by 1e . The Avogadro number      with a radius of 3λD is placed into a center (0, 0, 0) of a box
+NA is defined as 6.02 · 1023 1/mol. The λD and L for this       with a side length of 32λD . The boundary conditions are
+simulation are 2.98 and 35.8 µm respectively.                   similar to the previous case:
+   The analytical solution for this setup is the solution for
+the Poisson-Boltzmann equation [11]:                            ψr=Rsphere = −0.02V         ψr=∞ = 0V, (44)
+               ( x )
+ψ(x) = ψx=0 exp −    , (42)                                    ∇C±,r=Rsphere = 0 (bounce-back)   C±,r=∞ = 0.01mol m−3 .   (45)
+                  λD
+                   ( eψ(x) )                                    The analytical solution for the Poisson-Boltzmann equation
+C± (x) = C±,x=L exp ∓                     (43)                 looks a bit different [46]:
+                      kB T
+                                                                                     Rsphere    ( r−R        )
+                                                                                                      sphere
+                                                                ψ(x) = ψr=Rsphere            exp −             , (46)
+A comparison of the analytical solutions above with the                                r            λD
+simulation results is shown in Fig. 5.                                                 ( eψ(r) )
+   This plot shows an agreement of simulated and analytical     C± (r = ∞) = C±,r=∞ exp ∓        (47)
+solutions of both counter-ions concentrations and the poten-                              kB T
+tial along the surface normal. The convergence orders of
+error norms can be found in Fig. 6, demonstrating approxi-      A comparison of the analytical solutions above with the
+mately first order convergence of the system.                   simulation results for this 3D case is given in Fig. 7.
+                                                                   This plot shows as well an agreement of simulated and
+                                                                analytical solutions of both counter-ions concentrations and
+                                                                the potential along the surface normal. The convergence
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603                                                                                                  4599
+
+Fig. 9 Validation of the NSPNPE model
+LBM discretization using analytical solu-
+tion for electro-osmosis [25]
+
+
+
+
+                                                                           To check the convergence behavior of the complete
+                                                                         NSPNPE system, the steady-state one-dimensional electro-
+                                                                         osmotic flow is reproduced.
+
+                                                                                  F
+                                                                         ∆ψ +       (C+ − C− ) = 0, (48)
+                                                                                  ϵ
+                                                                                    ( De        )
+                                                                         ∂t C+ −              ∇ψ ∇C+ = D∆C+ , (49)
+                                                                                       kB T
+                                                                                    ( De        )
+                                                                         ∂t C− +              ∇ψ ∇C− = D∆C− , (50)
+                                                                                       kB T
+
+                                                                                                      1                             Fel,y
+                                                                         ∂t uy + ux ∂y uy + uy ∂x uy + ∂y p = ν(∂x2 uy + ∂y2 uy ) +
+                                                                                                      ρ                              ρ
+                                                                                                                                          .   (51)
+Fig. 10 Simulation domain for sensitivity algorithm evaluation.
+Cuboids in the center (E) represent porous solid particle, where cal-
+cium ions dissolve and the OCP saturation occurs in the boundary         The boundary conditions are similar to the previous case
+cells. A–D Are the outer domain boundaries that are considered as bulk   (Eqs. 44, 45). For the carrier fluid, the velocity on the wall
+with dissolved phosphate and hydrogen ions                               is set to zero (bounce-back condition), whereby in the bulk
+                                                                         boundary opposite to the wall it is set as zero-gradient.
+orders of error norms can be found in Fig. 8, demonstrating              Instead of the internal electric field based on the potential
+as well approximately first-order convergence of the system.             gradients, a constant external field is applied in the y-direc-
+                                                                         tion, parallel to the wall. The only force acting within the
+4.3 Navier–Stokes-Poisson-Nernst-Planck equation                         system is also directed towards the y direction:
+system                                                                                     ∑
+                                                                         Fel,y = Ey F             zi Ci .(52)
+The full electro-dynamic system for two monovalent coun-                                      i
+ter-ions is the same as in the previous example, with the
+addition of equations (2) and (3). The reference solution                In the current case, Ey = 250 V m−1 . The analytical solu-
+is also the Poisson-Boltzmann equation. The electric force               tion for carrier fluid velocity in the normal-to-wall direction
+present in the momentum equation is much smaller than the                is [25]:
+advection term in the Nernst-Planck equations, and there-
+                                                                                                            2L−x
+fore the influence of the carrier fluid without an external                         ϵψx=0 Ey (    e λD + e λD )
+                                                                                                     x
+
+
+electric field in the Gouy-Chapman model is assumed to be                uy (x) = −            1−          2L    .(53)
+                                                                                       νρ            1 + e λD
+negligible. The convergence order in the system remains the
+same as above.
+
+
+
+
+                                                                                                                                              13
+4600                                                                                    Engineering with Computers (2025) 41:4587–4603
+
+
+                                                                     cuboid has a side length of 84 nm and the distance from the
+                                                                     outer domain boundary to the closest cuboid is 140 nm. The
+                                                                     cell size △x is set to 1.4 nm. The domain boundaries A, B,
+                                                                     C and D are treated identically. The electric potential in the
+                                                                     fluid at the initial time step is zero. The domain boundar-
+                                                                     ies A, B, C, and D are treated identically, with the electric
+                                                                     potential set to zero. The carrier fluid is assigned a constant
+                                                                     flow velocity of 0.2 m s−1 in the positive x-direction (A,
+                                                                     B, C, D), and these outer boundaries are handled uniformly
+                                                                     to avoid any influence from differing boundary conditions
+                                                                     and to prevent instabilities. Hydrogen and phosphate ions
+                                                                     are each given fixed concentrations of 0.3 and 0.1 mol m−3 ,
+                                                                     respectively, while their concentrations inside the domain
+Fig. 11 Temporal development of the saturation product ΩOCP with
+                                                                     are initialized to zero to capture the diffusion of ions from
+and without PE full convergence per global time step
+                                                                     the outer bulk to the pore openings and into the pores. The
+                                                                     concentration of calcium cations, on the other hand, is set
+                                                                     to zero at the boundaries to avoid undesirable backflow
+                                                                     of these ions and improve boundary stability. The NPE is
+                                                                     solved for each of the three ions.
+                                                                        At the Helmholtz layer next to the solid surface (bound-
+                                                                     ary E), the electric potential is set to a constant value of
+                                                                     −0.01 V. Its impact is investigated in the current work as
+                                                                     well. The transported ions are reflected at the solid walls,
+                                                                     whereby in the fluid cells touching the boundaries their
+                                                                     concentration can ∑  be changed according to the correspond-
+                                                                     ing reaction term k Rk,i . In LBM this corresponds to the
+                                                                     bounce-back boundary condition together with a source
+Fig. 12 Temporal development of the saturation product sensitivity
+                                                                     term applied in the boundary cells. At the Knudsen number
+with respect to the inlet velocity calculated using FD and AD        of 0.09, which is here the case, the free-slip regime for the
+                                                                     carrier fluid velocity is considered [47]. It is a simplifica-
+The convergence plot of the velocity error norms is shown            tion of reality but this Knudsen number value belongs to the
+below (Fig. 9).                                                      upper border of the slip regime, where we assume a slip fac-
+    The velocity shows a convergent behavior as well, and            tor striving to zero–zero-gradient velocity boundary or free-
+therefore the full NSPNPE system can be now held for vali-           slip. The electric velocity, whose influence is much higher
+dated. All the system components and all variables show              than the influence of the carrier fluid velocity, is still consid-
+first-order convergence, and therefore the full system is            ered at the boundary cells. Knudsen diffusion and confine-
+considered as a consistent model for a crystallization poten-        ment effects near the wall are not considered in terms of
+tial assessing electro-dynamic simulation. Such an order of          this work. Knudsen diffusion is still much smaller than the
+convergence is caused by the boundary conditions, which              Fickian one in the slip regime.
+reduce the second-order convergence of BGK collision,                   The list of the setup parameters and constants is shown
+down to the first order. In future works, the boundary condi-        in Table 1.
+tions will be enhanced in order to achieve a global second-
+order convergence.                                                   5.2 Necessity of internal Poisson equation loop
+
+                                                                     To improve simulation efficiency, only one PE step per
+5 Sensitivity assessing algorithm test                               global time step is performed instead of iterating through
+                                                                     the entire loop. This is permissible because changes in
+5.1 Simulation setup                                                 local ion concentrations during a single global time step are
+                                                                     minimal. The Poisson Lattice-Boltzmann equation quickly
+We start by validating the AD sensitivity calculation on FDM         adapts to new ion configurations in response to changes in
+results using the two-dimensional simulation domain shown            the source term, due to its short reaction time. This immedi-
+in Fig. 10. The gaps between cuboids E are of 42.8 nm. Each          ate adaptation is demonstrated in Fig. 11, which compares
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603                                                                                             4601
+
+Fig. 13 Spatial distribution of the satura-
+tion products difference (left) and the
+calcium cation concentration (right) at
+the 3 µs
+
+
+
+
+the averaged saturation products calculated with and with-                      the spatial distribution of the calcium cation to ensure the
+out the full Poisson convergence loop.                                          presence of the reactants by the time of 3 rmus(Fig. 13).
+                                                                                As we can see in the left sub-figure, the saturation prod-
+5.3 Validation of AD with FDM applied to OCP                                    ucts difference is negative, as plotted in Fig. 12. The right
+saturation                                                                      sub-figure shows how the carrier fluid velocity forces the
+                                                                                dissolved calcium cations to leave the simulation domain in
+In addition to OpenLB’s extensive unit test suite [18], we                      the direction of the fluid motion. More details can be found
+assess the correctness of the AD algorithm in the current                       in the Part II.
+simulation setup. Figure 12 shows a comparison of the
+spatially averaged saturation product sensitivity to the car-
+rier fluid inlet velocity uin calculated using both the cen-                    6 Conclusions
+tral finite difference (FD) method with a step size of 10−6
+and the AD algorithm. The values associated to FD analysis                      In the present Part I of our two part series, a novel hydro-
+have been computed in the following way:                                        electrochemical simulation system for nanoporous resolved
+                      (                    )        (                )          geometries is established and validated on analytical solu-
+                   ΩL1 t, uin + 10−6 · uin − ΩL1 t, uin − 10−6 · uin
+(∂uin Ω)L1 (t) =                                                       .(54)   tions. The performed tests show the possibility of omit-
+                                      2 · 10−6 · uin
+                                                                                ting the internal Poisson calculation loop in the cases in
+                                                                                which the final result is stationary or quasi-stationary, as the
+Both the curves presented in Fig. 12 have similar behavior                      changes of Nernst-Planck and Navier–Stokes equations per
+and overlapping values, and therefore, the AD algorithm                         one time step are much slower than the changes of electric
+can be considered as validated. These curves indicate a                         potential. The coupled forward automatic differentiation
+negative falling sensitivity of the average saturation product                  algorithm used for sensitivity analysis is validated using the
+with respect to the inlet carrier fluid velocity. Firstly, this                 finite differences method. The resulting simulative investi-
+means that the system has not yet reached a steady state                        gation tool can be used for predicting different surface ionic
+within the observed time frame. Secondly, the negative sen-                     reactions of liquids through nano-scale porous systems. In
+sitivity highlights the need to reduce the inlet velocity to                    Part II of our research, this system will be applied to the
+achieve a higher saturation product. In the case of an open-                    phosphate crystallization reaction for the estimation of the
+pores setup, this can be explained by the fact that higher                      influence factors’ strength and detailed behavior analysis of
+fluid velocities cause ions to be swept away, preventing                        distinct pore types. The investigation will be performed on
+their accumulation at a single point, which is essential for                    simplified two-dimensional and realistic three-dimensional
+maximizing the supersaturation probability.                                     pore structures. Sensitivity analysis results will be discussed
+    For an optical validation of the plotted behavior of the                    and tested by variation of chosen parameters in direction of
+averaged saturation product derivative, we present here the                     calculated sensitivities.
+spatial distribution of the subtracted saturation products
+ (                )   (                )
+Ω uin + 10−6 · uin − Ω uin − 10−6 · uin , together with
+
+
+
+                                                                                                                                     13
+4602                                                                                                                                                             Engineering with Computers (2025) 41:4587–4603
+
+Acknowledgements This work was performed on the HoreKa super-                                                                 1​​0​0​2​​/​2​0​​1​4​J​B​0​1​1​8​1​2 (​h​t​t​p​​s​:​/​​/​a​g​u​​p​u​​b​s​.​​o​n​l​i​​n​e​l​​i​b​r​​a​r​y​​.​w​i​​l​e​y​.​​c​o​​m​/​d​​o​
+computer funded by the Ministry of Science, Research and the Arts                                                             i​/​p​​d​f​/​​1​0​.​​1​0​0​2​/​2​0​1​4​J​B​0​1​1​8​1​2)
+Baden-Württemberg and by the Federal Ministry of Education and                                                          8.    He X, Li N (2000) Lattice Boltzmann simulation of electrochemi-
+Research. The current research is a part of the DFG project number                                                            cal systems. Comput Phys Commun 129(1):158–166. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​
+436212129 “Increase of efficiency in phosphate recovery by under-                                                             o​​r​g​/​​1​0​.​1​​0​1​6​​/​S​0​​0​1​0​-​4​6​5​5​(​0​0​)​0​0​1​0​3​-​X
+standing the interaction of flow and loading processes with modeling                                                    9.    Zhang D, Liu W, Wu CY, Cai Q (2022) The development of a
+and simulation”. This work has received funding from the European                                                             3d pore-scale lattice Boltzmann model for 3d microstructure
+Union’s Horizon Europe research and innovation program under grant                                                            modeling and design of li-ion battery electrodes. Energ Technol
+agreement No 101182847.                                                                                                       10(7):2200080. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​2​​/​e​n​​t​e​.​2​0​2​2​0​0​0​8​0 (​h​t​t​p​​s​:​/​​/​
+                                                                                                                              o​n​l​​i​n​​e​l​i​​b​r​a​r​​y​.​w​​i​l​e​​y​.​c​​o​m​/​​d​o​i​/​​p​d​​f​/​1​​0​.​1​0​​0​2​/​​e​n​t​​e​.​2​0​2​2​0​0​0​8​0)
+Author contributions F. Bukreev: methodology, validation, formal                                                        10.   ICMENS ’04 (2004) Proceedings of the 2004 International Con-
+analysis, investigation, software, data curation, writing—original                                                            ference on MEMS, NANO and Smart Systems. USA: IEEE Com-
+draft; A. Kummerländer: software, methodology, writing—review and                                                             puter Society
+editing; J. Jeßberger: methodology, software, validation, writing—                                                      11.   Hunter RJ (2001) Foundations of colloid science. Oxford Univer-
+review & editing; D. Teutscher: writing—review and editing; S. Ito:                                                           sity Press. Available from: ​h​t​t​p​​s​:​/​​/​b​o​o​​k​s​​.​g​o​​o​g​l​e​​.​d​e​​/​b​o​​o​k​s​​?​i​d​​=​-​U​
+methodology, writing—review and editing; S. Simonis: formal analy-                                                            V​​C​A​​Q​A​A​I​A​A​J
+sis, data curation, writing—review and editing; Davide Dapelo: writ-                                                    12.   Ross-Jones J, Gaedtke M, Sonnick S, Rädle M, Nirschl H,
+ing—review and editing; Mohaddeseh M. Nezhad: writing—review                                                                  Krause MJ (2019) Conjugate heat transfer through nano scale
+and editing; H. Nirschl: resources, funding acquisition; M.J. Krause:                                                         porous media to optimize vacuum insulation panels with lattice
+software, resources, funding acquisition, writing—review and editing.                                                         boltzmann methods. Comput Math Appl 77(1):209–221. ​h​t​t​p​​s​:​/​​/​d​
+                                                                                                                              o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​c​a​m​w​a​.​2​0​1​8​.​0​9​.​0​2​3
+                                                                                                                        13.   Ross-Jones J, Gaedtke M, Sonnick S, Meier M, Rädle M, Nirschl
+Data availability No datasets were generated or analysed during the
+                                                                                                                              H et al (2021) Pore-scale conjugate heat transfer simulations
+current study.
+                                                                                                                              using lattice Boltzmann methods for industrial applications. Appl
+                                                                                                                              Therm Eng 182:116073. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​a​p​p​​l​t​h​​e​r​m​a​​l​e​​n​
+Declarations                                                                                                                  g​.​2​0​2​0​.​1​1​6​0​7​3
+                                                                                                                        14.   Selmi A, Bhapkar S, Nagel C, Kummerländer A, Krause MJ
+Conflict of interest The authors declare no conflict of interest.                                                             (2023) Simulation of temperature driven microflows using a Lat-
+                                                                                                                              tice Boltzmann method in slip and moderate transition regimes.
+Generative AI and AI-assisted technologies in the writing process Dur-                                                        In: 2023 24th International Conference on Thermal, Mechanical
+ing the preparation of this work the authors used ChatGPT (OpenAI) in                                                         and Multi-Physics Simulation and Experiments in Microelectron-
+order to improve language. After using this tool, the authors reviewed                                                        ics and Microsystems (EuroSimE); pp 1–6
+and edited the content as needed and take full responsibility for the                                                   15.   Fu J, Wang M, Chen B et al (2023) A data-driven framework for
+content of the publication.                                                                                                   permeability prediction of natural porous rocks via microstruc-
+                                                                                                                              tural characterization and pore-scale simulation. Eng Comput
+                                                                                                                              39:3895–3926. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​7​​/​s​0​​0​3​6​6​-​0​2​3​-​0​1​8​4​1​-​8
+                                                                                                                        16.   Kummerländer A, Dorn M, Frank M, Krause MJ (2023) Implicit
+References                                                                                                                    propagation of directly addressed grids in lattice Boltzmann
+                                                                                                                              methods. Concurrency Comput Pract Exp 35(8):e7509. ​h​t​t​p​​s​:​/​​/​d​
+1.     Jareteg A, Maggiolo D, Sasic S, Ström H (2020) Finite-volume                                                           o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​2​​/​c​p​​e​.​7​5​0​9 (​h​t​t​p​​s​:​/​​/​o​n​l​​i​n​​e​l​i​​b​r​a​r​​y​.​w​​i​l​e​​y​.​c​​o​m​/​​d​o​i​/​​p​d​​f​
+       method for industrial-scale temperature-swing adsorption simula-                                                       /​1​0​.​1​0​0​2​/​c​p​e​.​7​5​0​9)
+       tions. Comput Chem Eng 138:106852. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​c​               17.   Kummerländer A, Bukreev F, Berg S, Dorn M, Krause MJ
+       o​m​​p​c​h​​e​m​e​n​​g​.​​2​0​2​0​.​1​0​6​8​5​2                                                                        (2024) Advances in computational process engineering using
+2.     Qiu H, Lv L, cai Pan B, jian Zhang Q, ming Zhang W, xing Zhang                                                         Lattice Boltzmann methods on high performance computers. In:
+       Q (2009) Critical review in adsorption kinetic models. J Zhejiang                                                      High Performance Computing in Science and Engineering ’22.
+       Univ-Sci A 10(5):716–724. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​6​3​1​​/​j​z​​u​s​.​A​0​8​2​0​5​              Springer
+       2​4                                                                                                              18.   Krause MJ, Kummerländer A, Avis SJ, Kusumaatmaja H, Dapelo
+3.     Bukreev F, Raichle F, Nirschl H, Krause MJ (2023) Simulation                                                           D, Klemens F et al (2021) Openlb–open source lattice Boltzmann
+       of adsorption processes on moving particles based on an Euler–                                                         code. Comput Math Appl 81:258–288. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​J​.​​
+       Euler description using a lattice Boltzmann discretization. Chem                                                       C​A​M​W​A​.​2​0​2​0​.​0​4​.​0​3​3
+       Eng Sci 270:118485. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​c​e​s​.​2​0​2​3​.​1​1​8​4​8​5   19.   Kummerländer A, Avis S, Kusumaatmaja H, Bukreev F, Cro-
+4.     Kler PA, López EJ, Dalcín LD, Guarnieri FA, Storti MA (2009)                                                           coll M, Dapelo D, et al.: OpenLB release 1.6: open ource lattice
+       High performance simulations of electrokinetic flow and trans-                                                         Boltzmann code. Zenodo. Available from: ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​5​​2​8​
+       port in microfluidic chips. Comput Methods Appl Mech Eng                                                               1​​/​z​e​​n​o​d​o​.​7​7​7​3​4​9​7
+       198(30):2360–2367. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​c​m​a​.​2​0​0​9​.​0​2​.​0​2​8    20.   Trapote-Barreira A, Cama J, Soler JM (2014) Dissolution kinet-
+5.     Barnett R, Municchi F, King J et al (2023) Electrochemical trans-                                                      ics of C–S–H gel: flow-through experiments. Phys Chem Earth
+       port modelling and open-source simulation of pore-scale solid–                                                         Parts A/B/C 70-71:17–31. Mechanisms and Modelling of Waste-
+       liquid systems. Eng Comput 39:4129–4152. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​                             Cement and Cement-Host Rock Interactions. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​
+       0​7​​/​s​0​​0​3​6​6​-​0​2​3​-​0​1​8​2​8​-​5                                                                            0​1​6​​/​j​.​​p​c​e​.​2​0​1​3​.​1​1​.​0​0​3
+6.     Ryan EM, Mukherjee (2019) Mesoscale modeling in electro-                                                         21.   Graham S, Brown PW (1996) Reactions of octacalcium phos-
+       chemical devices—a critical perspective. Prog Energy Combust                                                           phate to form hydroxyapatite. J Cryst Growth 165(1):106–115. ​h​
+       Sci 71:118–142. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​p​e​c​s​.​2​0​1​8​.​1​1​.​0​0​2           t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​0​0​​2​2​-​0​2​4​8​(​9​5​)​0​0​9​9​4​-​9
+7.     Zhang L, Wang M (2015) Modeling of electrokinetic reactive                                                       22.   Kim D, Mahabadi N, Jang J, van Paassen LA(2020) Assessing
+       transport in micropore using a coupled lattice Boltzmann method.                                                       the kinetics and pore-scale characteristics of biological calcium
+       J Geophys Res Solid Earth 120(5):2877–2890. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​                               carbonate precipitation in porous media using a microfluidic
+                                                                                                                              chip experiment. Water Resour Res 56(2):e2019WR025420.
+
+
+
+13
+Engineering with Computers (2025) 41:4587–4603                                                                                                                                                                                                                                  4603
+
+      E2019WR025420 2019WR025420. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​2​9​​/​2​0​​1​                                                    38. Succi S (2002) Mesoscopic modeling of slip motion at fluid-
+      9​W​R​0​2​5​4​2​0. ​h​t​t​p​​s​:​/​​/​a​g​u​​p​u​​b​s​.​​o​n​l​i​​n​e​l​​i​b​r​​a​r​y​​.​w​i​​l​e​y​.​​c​o​​m​/​d​​o​i​/​p​​d​f​/​​1​0​            solid interfaces with heterogeneous catalysis. Phys Rev Lett
+      .​​1​0​2​9​/​2​0​1​9​W​R​0​2​5​4​2​0                                                                                                               89:064502. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​1​0​3​​/​P​h​​y​s​R​​e​v​L​​e​t​t​.​​8​9​​.​0​6​4​5​0​2
+23.   Parkhurst DL, Appelo CAJ Description of input and examples for                                                                                 39. Allen R, Reis T (2016) Moment-based boundary conditions for
+      PHREEQC version 3–A computer program for speciation, batch-                                                                                        lattice Boltzmann simulations of natural convection in cavities.
+      reaction, one-dimensional transport, and inverse geochemical                                                                                       Progress Comput Fluid Dyn Int J 16(4):216–231. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​
+      calculations. U.S. Geological Survey. Available from: ​h​t​t​p​​:​/​/​​p​u​b​s​​                                                                   1​0​.​1​​5​0​4​​/​P​C​​F​D​.​2​0​1​6​.​0​7​7​2​9​6 (​h​t​t​p​​s​:​/​​/​w​w​w​​.​i​​n​d​e​​r​s​c​i​​e​n​c​​e​o​n​​l​i​n​​e​.​c​​o​
+      .​u​​s​g​s​​.​g​o​v​​/​t​m​​/​0​6​​/​a​4​3                                                                                                         m​/​d​​o​i​​/​p​d​​f​/​1​0​​.​1​5​​0​4​/​​P​C​F​D​.​2​0​1​6​.​0​7​7​2​9​6)
+24.   Holtzer AM (1954) The collected papers of Peter J. W. Debye.                                                                                   40. Griewank A, Walther A (2008) Evaluating derivatives. 2nd edn.
+      Interscience, New York-London, 1954. xxi + 700 pp., \$9.50. J                                                                                      Society for Industrial and Applied Mathematics (SIAM), Phila-
+      Polym Sci 13(72):548–548. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​2​​/​p​o​​l​.​1​9​5​4​.​1​2​                                          delphia, PA. Available from: ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​1​3​7​​/​1​.​​9​7​8​0​8​9​8​7​
+      0​1​3​7​2​0​3. ​h​t​t​p​​s​:​/​​/​o​n​l​​i​n​​e​l​i​​b​r​a​r​​y​.​w​​i​l​e​​y​.​c​​o​m​/​​d​o​i​/​​p​d​​f​/​1​​0​.​1​0​​0​2​/​​p​o​l​​.​1​9​       1​7​7​6​1
+      5​4​.​1​2​0​1​3​7​2​0​3                                                                                                                        41. Gunzburger MD (2002) Perspectives in flow control and optimi-
+25.   Tian F, Li B, Kwok DY (2004) Lattice Boltzmann simulation                                                                                          zation. Society for Industrial and Applied Mathematics. Available
+      of electroosmotic flows in micro- and nanochannels. In: 2004                                                                                       from: ​h​t​t​p​​s​:​/​​/​e​p​u​​b​s​​.​s​i​​a​m​.​o​​r​g​/​​d​o​i​​/​a​b​​s​/​1​​0​.​1​1​​3​7​​/​1​.​9​7​8​0​8​9​8​7​1​8​7​2​0
+      International Conference on MEMS, NANO and Smart Systems                                                                                       42. Krause MJ, Heuveline V (2013) Parallel fluid flow control and
+      (ICMENS’04), pp 294–299                                                                                                                            optimisation with lattice Boltzmann methods and automatic dif-
+26.   Chen FF (2016) In: Diffusion and resistivity. Springer Interna-                                                                                    ferentiation. Comput Fluids 07(80):28–36. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​
+      tional Publishing, Cham, pp 145–185                                                                                                                6​​/​j​.​​c​o​m​​p​f​l​​u​i​d​.​​2​0​​1​2​.​0​7​.​0​2​6
+27.   Marcus Y (1997) Ion properties/Yizhak Marcus. Marcel Dekker,                                                                                   43. Jeßberger J, Marquardt JE, Heim L, Mangold J, Bukreev F,
+      New York                                                                                                                                           Krause MJ (2022) Optimization of a micromixer with automatic
+28.   Tung M, Eidelman N, Sieck B, Brown WE (1988) Octacalcium                                                                                           differentiation. Fluids. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​3​​3​9​0​​/​f​l​​u​i​d​s​7​0​5​0​1​4​4
+      phosphate solubility product from 4 to 37-degree-c. J Res Natl                                                                                 44. Ito S, Jeßberger J, Simonis S, Bukreev F, Kummerländer A, Zim-
+      Bur Stand 09(93):613. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​6​​0​2​8​​/​j​r​​e​s​.​0​9​3​.​1​5​3                                             mermann A et al (2024) Identification of reaction rate parameters
+29.   Heughebaert J, Nancollas G (1984) Cheminform abstract: kinet-                                                                                      from uncertain spatially distributed concentration data using
+      ics of crystallization of octacalcium phosphate. Chemischer                                                                                        gradient-based pde constrained optimization. Comput Math Appl
+      Informationsdienst 09:15. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​0​2​​/​c​h​​i​n​.​1​9​8​4​3​8​0​                                        167:249–263. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​c​a​m​w​a​.​2​0​2​4​.​0​5​.​0​2​6
+      0​4                                                                                                                                            45. Chai Z, Shi B (2008) A novel lattice Boltzmann model for the
+30.   Marcus Y (1988) Ionic radii in aqueous solutions. Chem Rev                                                                                         poission equation. Appl Math Model 32(10):2050–2058. ​h​t​t​p​​s​:​/​​/​d​
+      88(8):1475–1498. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​2​1​​/​c​r​​0​0​0​9​0​a​0​0​3                                                    o​i​​.​o​​r​g​/​​1​0​.​1​​0​1​6​​/​j​.​​a​p​m​.​2​0​0​7​.​0​6​.​0​3​3
+31.   Hänel D (2004) Molekulare Gasdynamik: Einführung in die                                                                                        46. Verwey EJW, Overbeek JTG, Nes Kv (1948) Theory of the stabil-
+      kinetische Theorie der Gase und Lattice-Boltzmann-Methoden.                                                                                        ity of lyophobic colloids; the interaction of sol particles having
+      Springer, Berlin                                                                                                                                   an electric double layer. E. J. W. Verwey and J. Th. G. Overbeek,
+32.   Krüger T, Kusumaatmaja H, Kuzmin A, Shardt O, Silva G, Vig-                                                                                        with the collaboration of K. van Nes. New York: Elsevier Pub. Co
+      gen EM (2016) The Lattice Boltzmann method - principles and                                                                                    47. Li Z, Li J, Yan G, Galindo-Torres S, Scheuermann A, Li L (2021)
+      practice. Springer, Cham                                                                                                                           Mesoscopic model framework for liquid slip in a confined paral-
+33.   Bhatnagar PL, Gross EP, Krook M (1954) A model for collision                                                                                       lel-plate flow channel. Phys Rev Fluids 6:034203. ​h​t​t​p​s​:​​​/​​/​d​o​​i​.​o​​r​​g​​/​​
+      processes in gases. I. Small amplitude processes in charged and                                                                                    1​0​​.​1​1​​​0​3​/​​P​h​y​​s​R​e​​v​F​l​u​​​i​d​​​s​.​6​.​0​3​4​2​0​3
+      neutral one-component systems. Phys Rev 94:511–525. ​h​t​t​p​​s​:​/​​/​d​
+      o​i​​.​o​​r​g​/​​1​0​.​1​​1​0​3​​/​P​h​​y​s​R​e​v​.​9​4​.​5​1​1                                                                                Publisher's Note Springer Nature remains neutral with regard to juris-
+34.   Simonis S, Frank M, Krause MJ (2020) On relaxation systems                                                                                     dictional claims in published maps and institutional affiliations.
+      and their relation to discrete velocity Boltzmann models for scalar
+      advection-diffusion equations. Phil Trans R Soc A 378:20190400.​                                                                               Springer Nature or its licensor (e.g. a society or other partner) holds
+      h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​9​8​​/​r​s​​t​a​.​2​0​1​9​.​0​4​0​0                                                            exclusive rights to this article under a publishing agreement with the
+35.   Guo Z, Zheng C, Shi B (2002) Discrete lattice effects on the forc-                                                                             author(s) or other rightsholder(s); author self-archiving of the accepted
+      ing term in the lattice Boltzmann method. Phys Rev E 65:046308.​                                                                               manuscript version of this article is solely governed by the terms of
+      h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​1​0​3​​/​P​h​​y​s​R​e​v​E​.​6​5​.​0​4​6​3​0​8                                                    such publishing agreement and applicable law.
+36.   Latt J, Chopard B, Malaspinas O, Deville M, Michler A (2008)
+      Straight velocity boundaries in the lattice Boltzmann method.
+      Phys Rev E 77:056703. ​h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​1​0​3​​/​P​h​​y​s​R​e​v​E​.​7​7​.​0​5​
+      6​7​0​3
+37.   He X, Luo LS (1997) Lattice Boltzmann model for the incom-
+      pressible Navier-Stokes equation. J Stat Phys 88(3–4):927–944.​
+      h​t​t​p​​s​:​/​​/​d​o​i​​.​o​​r​g​/​​1​0​.​1​​0​2​3​​/​B​:​​J​O​S​​S​.​0​​0​0​0​0​​1​5​​1​7​9​.​1​2​6​8​9​.​e​4
+
+
+
+
+                                                                                                                                                                                                                                                                   13
+

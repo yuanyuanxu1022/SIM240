@@ -1,0 +1,11 @@
+claim_id,location,claim_type,claim_summary,evidence_ids,support_level,alignment_issue,limitation,requested_action
+N001,REPORT:1,methods,Recorded K and flux extraction reproduce independently,E-RUNS48;E-SUMMARY,supported,none,,
+N002,REPORT:2,diagnostic,All 48 recorded numerical gates and exits reproduce,E-RUNS48;E-SUMMARY,supported,none,,
+N003,REPORT:3,generalization,Full map spatial error is bounded by representative refinement,E-MAP36;E-HISTORICAL,unsupported,uncertainty,Two geometries only and no h25 refinement,Narrow scope or add separately authorized matched-geometry evidence
+N004,REPORT:R04,methods,All cases use a relative standard deviation gate for cross flux,E-SOURCE-D2;E-SOURCE-D3,unsupported,other,D2 uses an absolute dimensional threshold,Correct the manuscript stopping conditions
+N005,REPORT:R05,mechanistic,All smooth benchmark flux error comes from interior discretization,E-HISTORICAL,unsupported,causal_language,Midpoint quadrature alone produces half the 5 nm error,Remove exclusive attribution and report the measured decomposition
+N006,REPORT:R06a,diagnostic,The maximum section difference in the 22-run batch is 2.7e-10,E-RUNS48,unsupported,magnitude,Raw refined T value is 1.266069e-6,Correct the old audit range without changing run gates
+N007,REPORT:R03b,methods,All historical cases have proven OpenLB 1.8r1 bindings,E-MANIFESTS;E-OPENLB,not_assessed,scope,Current checkout identifies 1.9.0 while logs contain a hardcoded older label,Recover historical source and build bindings or disclose missing provenance
+N008,REPORT:R08,methods,The fitted three-grid asymptotic ratio provides independent confirmation,E-HISTORICAL;E-POSTPROCESS,unsupported,other,The ratio reduces algebraically to Kfine over Kmedium,Report the ratio as a conditional consistency check
+N009,REPORT:6,primary_outcome,All 36 saved discrete map samples show positive model bias,E-MAP36,supported,none,,
+N010,REPORT:3,diagnostic,Scheme C preserves original trajectory and improves mass summation,E-HISTORICAL,supported,none,,

@@ -1,0 +1,99 @@
+{
+  "phase": "mounted",
+  "started_at_Asia_Shanghai": "2026-10-26T16:09:11.703275+08:00",
+  "kind": "FILESYSTEM_PROBE_NOT_PDE",
+  "probe_source_sha256": "016e8e9f2e5a80483bcaf503aec0ba0029a431be6b6a33df1d412bf754450ef0",
+  "authorized_to_solve": false,
+  "real_solver_called": false,
+  "actual_run_id": null,
+  "layout_before": {
+    "exit_code": 0,
+    "stdout": "{\n  \"status\": \"LAYOUT_CHECK_PASS_ONLY\",\n  \"checks\": {\n    \"work_exists\": true,\n    \"record_exists\": true,\n    \"work_exact_tmpfs_mount\": true,\n    \"work_canonical_directory\": true,\n    \"work_empty\": true,\n    \"work_owner_mode\": true,\n    \"work_options\": true,\n    \"work_capacity\": true,\n    \"work_writable\": true,\n    \"record_canonical_directory\": true,\n    \"record_persistent\": true,\n    \"record_owner_mode\": true,\n    \"record_capacity\": true,\n    \"record_writable\": true,\n    \"separate_devices\": true,\n    \"memory_available\": true,\n    \"delegated_memory_pids\": true,\n    \"run_paths_unused\": true\n  },\n  \"work\": {\n    \"path\": \"/run/user/1000/sim240_pilot_n8_work_20261026\",\n    \"exists\": true,\n    \"canonical\": true,\n    \"is_directory\": true,\n    \"uid\": 1000,\n    \"gid\": 1000,\n    \"mode\": \"0o700\",\n    \"st_dev\": 87,\n    \"writable\": true,\n    \"mount\": {\n      \"point\": \"/run/user/1000/sim240_pilot_n8_work_20261026\",\n      \"filesystem\": \"tmpfs\",\n      \"mount_id\": \"9170\",\n      \"device\": \"0:87\",\n      \"options\": [\n        \"rw\",\n        \"nosuid\",\n        \"nodev\",\n        \"relatime\"\n      ],\n      \"super_options\": [\n        \"rw\",\n        \"size=524288k\",\n        \"mode=700\",\n        \"uid=1000\",\n        \"gid=1000\",\n        \"inode64\"\n      ]\n    },\n    \"capacity_bytes\": 536870912,\n    \"available_bytes\": 536870912,\n    \"available_inodes\": 4067473,\n    \"empty\": true\n  },\n  \"record\": {\n    \"path\": \"/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026\",\n    \"exists\": true,\n    \"canonical\": true,\n    \"is_directory\": true,\n    \"uid\": 1000,\n    \"gid\": 1000,\n    \"mode\": \"0o700\",\n    \"st_dev\": 66306,\n    \"writable\": true,\n    \"mount\": {\n      \"point\": \"/\",\n      \"filesystem\": \"ext4\",\n      \"mount_id\": \"33\",\n      \"device\": \"259:2\",\n      \"options\": [\n        \"rw\",\n        \"relatime\"\n      ],\n      \"super_options\": [\n        \"rw\"\n      ]\n    },\n    \"capacity_bytes\": 501809635328,\n    \"available_bytes\": 361699827712,\n    \"available_inodes\": 29877798,\n    \"empty\": false\n  },\n  \"MemAvailable_bytes\": 15546900480,\n  \"authorization\": false,\n  \"real_solver_called\": false,\n  \"limitations\": [\n    \"No write/fsync/ENOSPC/dynamic-library-load probe performed\",\n    \"Not a run permit\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  "persistent": {
+    "status": "PERSISTENT_SMALL_FILE_PASS",
+    "kind": "FILESYSTEM_PROBE_NOT_PDE",
+    "directory": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026/volume_probe_persistent_da991c89d576",
+    "file": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026/volume_probe_persistent_da991c89d576/known_bytes.bin",
+    "bytes": 1048576,
+    "sha256": "ab9ea1977c54f8aaa51e656f6ffacbe758d268141da0857eebdbf7fb58946539",
+    "identity": {
+      "mount_id": "33",
+      "device": "259:2",
+      "mount_point": "/",
+      "filesystem": "ext4",
+      "st_dev": 66306
+    },
+    "available_bytes_before": 361699823616
+  },
+  "cache": {
+    "status": "CACHE_LOAD_PASS",
+    "compiler_argv": [
+      "/usr/bin/cc",
+      "-shared",
+      "-fPIC",
+      "-O0",
+      "/run/user/1000/sim240_pilot_n8_work_20261026/volume_probe_cache_3d298c4deec2/constant.c",
+      "-o",
+      "/run/user/1000/sim240_pilot_n8_work_20261026/volume_probe_cache_3d298c4deec2/cache/constant.so"
+    ],
+    "compiler_exit": 0,
+    "loader_exit": 0,
+    "source_sha256": "346e7076a855258e4a02194d0361a53808398502f0f50e69b1c317df29ef4694",
+    "library_sha256": "c41c33efc411b729704995657899250cd451bbf60454fcbcbcd3ce53bfee3c93"
+  },
+  "capacity": {
+    "status": "CAPACITY_ENOSPC_PASS",
+    "successful_write_bytes": 536870912,
+    "errno": 28,
+    "fill_sha256": "63439370ba23ee5be94de8f16722ae130a722bc4ad3ad82fc3ed7b269ff9b1c6",
+    "available_bytes_when_full": 0,
+    "free_inodes_when_full": 4067470,
+    "full_volume_child_exit": 28,
+    "record_disk_exit_written_while_full": true
+  },
+  "archives": [
+    {
+      "mode": "success",
+      "record_dir": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026/VOLUME_PROBE_success_a741409d5373",
+      "independent_exit_code": 0,
+      "archive_integrity": {
+        "status": "ARCHIVE_INTEGRITY_PASS",
+        "kind": "SYNTHETIC_PROCESS_NOT_PDE",
+        "independent_exit_code": 0,
+        "stopped_reason": null,
+        "all_work_files_hashed": 22,
+        "numerical_acceptance": "NOT_EVALUATED",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      },
+      "synthetic_source_removed_after_hash_verification": true
+    },
+    {
+      "mode": "failure",
+      "record_dir": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026/VOLUME_PROBE_failure_e26dedcc7bd7",
+      "independent_exit_code": 7,
+      "archive_integrity": {
+        "status": "ARCHIVE_INTEGRITY_PASS",
+        "kind": "SYNTHETIC_PROCESS_NOT_PDE",
+        "independent_exit_code": 7,
+        "stopped_reason": null,
+        "all_work_files_hashed": 3,
+        "numerical_acceptance": "NOT_EVALUATED",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      },
+      "synthetic_source_removed_after_hash_verification": true
+    }
+  ],
+  "layout_after": {
+    "exit_code": 0,
+    "stdout": "{\n  \"status\": \"LAYOUT_CHECK_PASS_ONLY\",\n  \"checks\": {\n    \"work_exists\": true,\n    \"record_exists\": true,\n    \"work_exact_tmpfs_mount\": true,\n    \"work_canonical_directory\": true,\n    \"work_empty\": true,\n    \"work_owner_mode\": true,\n    \"work_options\": true,\n    \"work_capacity\": true,\n    \"work_writable\": true,\n    \"record_canonical_directory\": true,\n    \"record_persistent\": true,\n    \"record_owner_mode\": true,\n    \"record_capacity\": true,\n    \"record_writable\": true,\n    \"separate_devices\": true,\n    \"memory_available\": true,\n    \"delegated_memory_pids\": true,\n    \"run_paths_unused\": true\n  },\n  \"work\": {\n    \"path\": \"/run/user/1000/sim240_pilot_n8_work_20261026\",\n    \"exists\": true,\n    \"canonical\": true,\n    \"is_directory\": true,\n    \"uid\": 1000,\n    \"gid\": 1000,\n    \"mode\": \"0o700\",\n    \"st_dev\": 87,\n    \"writable\": true,\n    \"mount\": {\n      \"point\": \"/run/user/1000/sim240_pilot_n8_work_20261026\",\n      \"filesystem\": \"tmpfs\",\n      \"mount_id\": \"9170\",\n      \"device\": \"0:87\",\n      \"options\": [\n        \"rw\",\n        \"nosuid\",\n        \"nodev\",\n        \"relatime\"\n      ],\n      \"super_options\": [\n        \"rw\",\n        \"size=524288k\",\n        \"mode=700\",\n        \"uid=1000\",\n        \"gid=1000\",\n        \"inode64\"\n      ]\n    },\n    \"capacity_bytes\": 536870912,\n    \"available_bytes\": 536870912,\n    \"available_inodes\": 4067473,\n    \"empty\": true\n  },\n  \"record\": {\n    \"path\": \"/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026\",\n    \"exists\": true,\n    \"canonical\": true,\n    \"is_directory\": true,\n    \"uid\": 1000,\n    \"gid\": 1000,\n    \"mode\": \"0o700\",\n    \"st_dev\": 66306,\n    \"writable\": true,\n    \"mount\": {\n      \"point\": \"/\",\n      \"filesystem\": \"ext4\",\n      \"mount_id\": \"33\",\n      \"device\": \"259:2\",\n      \"options\": [\n        \"rw\",\n        \"relatime\"\n      ],\n      \"super_options\": [\n        \"rw\"\n      ]\n    },\n    \"capacity_bytes\": 501809635328,\n    \"available_bytes\": 361697898496,\n    \"available_inodes\": 29877733,\n    \"empty\": false\n  },\n  \"MemAvailable_bytes\": 15465492480,\n  \"authorization\": false,\n  \"real_solver_called\": false,\n  \"limitations\": [\n    \"No write/fsync/ENOSPC/dynamic-library-load probe performed\",\n    \"Not a run permit\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  "status": "BOUNDED_VOLUME_PROBES_PASS_ONLY",
+  "forbidden_backend_modules_loaded": []
+}

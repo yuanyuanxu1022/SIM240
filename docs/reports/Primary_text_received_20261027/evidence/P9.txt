@@ -1,0 +1,478 @@
+                                                     PHYSICAL REVIEW E, VOLUME 65, 046308
+
+                   Discrete lattice effects on the forcing term in the lattice Boltzmann method
+                                               Zhaoli Guo,1 Chuguang Zheng,1 and Baochang Shi2
+1
+ National Laboratory of Coal Combustion, Huazhong University of Science and Technology, Wuhan 430074, People’s Republic of China
+      2
+        Department of Mathematics, Huazhong University of Science and Technology, Wuhan 430074, People’s Republic of China
+                                     共Received 13 September 2001; published 10 April 2002兲
+                    We show that discrete lattice effects must be considered in the introduction of a force into the lattice
+                 Boltzmann equation. A representation of the forcing term is then proposed. With the representation, the
+                 Navier-Stokes equation is derived from the lattice Boltzmann equation through the Chapman-Enskog expan-
+                 sion. Several other existing force treatments are also examined.
+
+                 DOI: 10.1103/PhysRevE.65.046308                                                                    PACS number共s兲: 47.11.⫹j
+
+
+   The rapidly developing lattice Boltzmann method 共LBM兲,                          with ␻ 0 ⫽4/9, ␻ i ⫽1/9 for i⫽1 –4, and ␻ i ⫽1/36 for i
+a technique for modeling complex fluid systems, has at-                            ⫽5 –8. c s ⫽c/ 冑3 is the sound speed of the model. A two-
+tracted much attention in a variety of fields 关1,2兴. There is a                    scale analysis in time will lead to the Navier-Stokes equa-
+wide range of fluid problems in which an external or internal                      tion.
+force is involved, such as water waves and multiphase or                              In the presence of a body force density F⫽ ␳ g, where g is
+multicomponent fluids. To design lattice Boltzmann models                          the acceleration due to F, the LBE must be modified to ac-
+for these systems, the force must be treated appropriately in                      count for the force. We do this by adding an additional term
+order to obtain the correct hydrodynamics. In this paper a                         to the LBE:
+representation of the forcing term is proposed in which dis-
+crete lattice effects are considered. Several other existing                                                                  1
+methods are also examined.                                                                f i 共 x⫹ei ⌬t,t⫹⌬ 兲 ⫺ f i 共 x,t 兲 ⫽⫺ 关 f i 共 x,t 兲 ⫺ f (eq) 共 x,t 兲兴
+   The lattice Boltzmann equation 共LBE兲 without a force can                                                                   ␶                  i
+
+be expressed as                                                                                                               ⫹⌬tF i ,                           共4兲
+
+                                                                                   where the EDF f (eq)
+                                                                                                   i    is defined by
+                                         1
+    f i 共 x⫹ei ⌬t,t⫹⌬t 兲 ⫺ f i 共 x,t 兲 ⫽⫺ 关 f i 共 x,t 兲 ⫺ f (eq) 共 x,t 兲兴 ,
+                                         ␶                  i
+
+                                                                           共1兲              f (eq)
+                                                                                              i    ⫽E i 共 ␳ ,u* 兲     with   ␳ u* ⬅   兺i ei f i ⫹mF⌬t.           共5兲
+
+where f i (x,t) is the distribution function 共DF兲 for particles
+                                                                                   Here m is a constant to be determined.
+with velocity ei at position x and time t, and ⌬t is the time
+                                                                                      The forcing term F i can be written in a power series in the
+increment. f (eq)   is the equilibrium distribution function
+               i                                                                   particle velocity 关4兴,
+共EDF兲 and ␶ is the nondimensional relaxation time. The fluid
+
+
+                                                                                                              冋                                     册
+density ␳ and velocity u are determined by the DF,
+                                                                                                                      B•ei    C: 共 ei ei ⫺c s2 I兲
+                                                                                                     F i ⫽ ␻ i A⫹       2
+                                                                                                                          ⫹                             ,        共6兲
+                                                                                                                       cs           2c s4
+                     ␳⫽   兺i f i ,     ␳ u⫽   兺i ei f i .                   共2兲
+                                                                                   where A, B, and C are functions of F to be determined by
+                                                                                   requiring that the moments of F i are consistent with the hy-
+The EDF f (eq)
+             i    in Eq. 共1兲 must be chosen such that the mass                     drodynamic equations. After some calculation, we can obtain
+and momentum are conserved and some symmetry require-                              the zeroth to second moments of F i ,
+ments are satisfied in order that the resulting macroscopic
+equations describe the correct hydrodynamics of the fluid                                                                                                   1
+being simulated. For example, in the D2Q9 关3兴 model, the                           兺i F i ⫽A, 兺i ei F i ⫽B, 兺i ei ei F i ⫽c s2 AI⫹ 2 关 C⫹CT 兴 .
+particle velocities are defined by e0 ⫽(0,0), ei ⫽„cos关␲(i                                                                                                       共7兲
+⫺1)/2兴 ,sin关␲(i⫺1)/2兴 …c for i⫽1 –4, and ei ⫽ 冑2„cos关␲(i
+⫺9/2)/2兴 ,sin关␲(i⫺9/2)/2兴 …c for i⫽5 –8. Here c⫽⌬x/⌬t,                                The macrodynamic behavior arising from the LBE 共5兲 can
+and ⌬x is the lattice spacing. The EDFs of D2Q9 are chosen                         be found from a multiscaling analysis using an expansion
+to be f (eq)
+        i    ⫽E i ( ␳ ,u), where                                                   parameter ⑀ , which is proportional to the ratio of the lattice
+                                                                                   spacing to a characteristic macroscopic length. To do this, the
+
+
+                              冋                                     册
+                                                                                   following expansions are introduced 关5兴:
+                                     e•u     uu: 共 ei ei ⫺c s2 I兲
+            E i 共 ␳ ,u兲 ⫽ ␻ i ␳ 1⫹       ⫹                              ,   共3兲
+                                                                                                                 i ⫹ ⑀ f i ⫹ ⑀ f i ⫹•••,
+                                                                                                         f i ⫽ f (0)                                            共8a兲
+                                       2
+                                     cs             2c s4                                                                (1)  2 (2)
+
+
+
+1063-651X/2002/65共4兲/046308共6兲/$20.00                                       65 046308-1                               ©2002 The American Physical Society
+ZHAOLI GUO, CHUGUANG ZHENG, AND BAOCHANG SHI                                                                           PHYSICAL REVIEW E 65 046308
+
+                  ⳵      ⳵       ⳵                                              ity and the force are modified due to discrete lattice effects.
+                     ⫽⑀     ⫹⑀2     ,           “⫽ ⑀ “ 1 ,           共8b兲       These corrections are from the t 2 ⫽ ⑀ 2 t time scale.
+                  ⳵t    ⳵t1     ⳵t2
+                                                                                   The macroscopic equations on the t 2 ⫽ ⑀ 2 t time scale are
+                                                                                derived by taking moments of Eq. 共9c兲. With the aid of Eqs.
+          F⫽ ⑀ F1 ,        A⫽ ⑀ A 1 ,     B⫽ ⑀ B1 ,     C⫽ ⑀ C1 .    共8c兲
+                                                                                共10兲 and 共11兲, the final equations can be written as
+   Expanding f i (x⫹ei ⌬t,t⫹⌬t) in Eq. 共4兲 about x and t,
+and applying the above multiscaling expansions to the result-
+ing continuous equation, we can obtain the following equa-
+                                                                                                     ⳵␳
+                                                                                                     ⳵t2
+                                                                                                               1
+                                                                                                                   冉 冊
+                                                                                                         ⫽⌬t m⫺ “ 1 •F1 ,
+                                                                                                               2
+                                                                                                                                                共13a兲
+tions in consecutive order of the parameter ⑀ :
+
+                           O共 ⑀0兲:         i ⫽fi
+                                         f (0) (eq)
+                                                    ,                共9a兲
+                                                                                               ⳵ 共 ␳ u* 兲
+                                                                                                   ⳵t2
+                                                                                                          ⫽⌬t m⫺  冉 冊
+                                                                                                                 1 ⳵ F1
+                                                                                                                 2 ⳵t1
+                                                                                                                        ⫹“ 1 • ␴1               共13b兲
+
+                                                1 (1)                           where the stress tensor ␴1 is now given by
+                O共 ⑀1兲:             i ⫽⫺
+                             D 1i f (0)           f ⫹F 1i ,          共9b兲
+                                              ␶ ⌬t i
+
+O共 ⑀2兲:                                                                         ␴1 ␣␤ ⫽⫺ 1⫺冉      1
+                                                                                                         冊    ⌬t
+                                                                                                    “ •⌸ (1) ⫺ 共 C1 ␣␤ ⫹C1 ␤␣ 兲
+                                                                                                 2 ␶ 1 ␣␤ 4
+   ⳵ f (0)
+    ⳵t2
+       i
+            冉
+           ⫹ 1⫺
+                1
+                2␶     冊  i ⫽⫺
+                   D 1i f (1)
+                                 1 (2) ⌬t
+                                   f ⫺ D 1i F 1i ,
+                               ␶ ⌬t i  2
+                                                                     共9c兲               冉 冊
+                                                                                      ⫽ ␶⫺
+                                                                                               1 2
+                                                                                                 c ⌬t ␳ 共 “ ␣ u␤* ⫹“ 1 ␤ u␣* 兲
+                                                                                               2 s
+where D 1i ⫽ ⳵ / ⳵ t 1 ⫹ei •“ 1 .
+   Taking moments of Eq. 共9b兲, we can obtain the following
+macroscopic equations on the t 1 ⫽ ⑀ t time scale and x1 ⫽ ⑀ x
+                                                                                          冋冉 冊
+                                                                                        ⫹⌬t      ␶⫺
+                                                                                                         1
+                                                                                                         2
+                                                                                                                                   ␶
+                                                                                                                                                    册
+                                                                                                           共 u␣* F1 ␤ ⫹u␤* F1 ␣ 兲 ⫺ 共 C1 ␣␤ ⫹C1 ␤␣ 兲 .
+                                                                                                                                   2
+
+space scale:                                                                                                                                      共14兲
+
+                                                                                Clearly, there are additional contributions to the viscous
+                          ⳵␳
+                              ⫹“ 1 • 共 ␳ u* 兲 ⫽A 1 ,                共10a兲       stress due to the discrete lattice effects and the presence of
+                          ⳵t1                                                   the body force. It is well known that the artifact due to the
+
+
+                                               冉 冊
+                                                                                lattice effect can be absorbed into a redefined viscosity,
+                 ⳵ 共 ␳ u* 兲                  m
+
+                                                                                                                  冉 冊
+                            ⫹“ 1 •⌸ (0) ⫽ n⫹   F ,                  共10b兲
+                     ⳵t1                     ␶ 1                                                                        1 2
+                                                                                                             ␯⫽ ␶⫺        c ⌬t.                   共15兲
+                                                                                                                        2 s
+where we assume that B1 ⫽nF1 , and n is a constant to be
+determined. ⌸ (0) is the zeroth-order momentum flux tensor                      The contribution to the stress due to the force can also be
+given by ⌸ ␣␤                     i ⫽c s ␳ ␦ ␣␤ ⫹ ␳ u␣
+                ⫽ 兺 i ei ␣ ei ␤ f (0)
+            (0)                        2
+                                                     * u␤* . To recover         canceled by choosing a proper definition of C. One suitable
+the Euler equations from Eqs. 共10兲, we must choose                              choice is taking
+
+                            A⫽0,         n⫹
+                                              m
+                                              ␶
+                                                ⫽1.                  共11兲
+                                                                                       冉
+                                                                                     C⫽ 1⫺
+                                                                                               1
+                                                                                               2␶冊2u* F           or        冉
+                                                                                                                        C⫽ 1⫺
+                                                                                                                                  1
+                                                                                                                                  2␶ 冊
+                                                                                                                                     共 u* F⫹Fu* 兲 .
+                                                                                                                                                 共16兲
+The first-order momentum flux ⌸ (1) ⬅ 兺 i ei ei f (1)
+                                                  i   can be sim-
+plified using Eq. 共10兲 with the constraint Eq. 共11兲. After some                 Equations 共13兲 also indicate that the spatial and temporal
+standard algebra, we obtain that                                                derivatives influence the density and momentum changes,
+
+                   冋
+                                                                                respectively, on the t 2 time scale. To eliminate these unex-
+  ⌸ ␣␤
+    (1)
+        ⫽⫺ ␶ ⌬t 共 u␣* F1 ␤ ⫹u␤* F1 ␣ 兲 ⫹c s2 ␳ 共 “ 1 ␣ u␤* ⫹“ 1 ␤ u␣* 兲         pected effects, one must take
+
+
+                                     册
+                                                                                                     1                               ⌬t
+            1
+           ⫺ 共 C1 ␣␤ ⫹C1 ␤␣ 兲                                        共12兲
+                                                                                               m⫽
+                                                                                                     2
+                                                                                                             or   ␳ u* ⫽   兺i ei f i ⫹ 2 F.       共17兲
+            2
+
+where the terms of order O(u 3 ) or higher have been ne-                           Combining the results on the t 1 and t 2 time scales, Eqs.
+glected. If we take C⫽2uF1 or C⫽uF1 ⫹F1 u, then the mo-                         共10兲 and 共11兲 together with Eqs. 共11兲, 共16兲, and 共17兲, we now
+mentum flux reduces to the Navier-Stokes expression for the                     obtain the final macroscopic equations:
+viscous stresses, i.e., ⌸ ␣␤(1)
+                                ⫽ ␴1 ␣␤ ⬅ ␯ (“ 1 ␣ u␤* ⫹“ 1 ␤ u␣* ),
+where the kinematic viscosity ␯ is given by ␯ ⫽c s2 ␶ ⌬t. This                                                ⳵␳
+                                                                                                                 ⫹“• ␳ v⫽0                      共18a兲
+is the expression for C given in Refs. 关6 – 8兴, and the kine-                                                 ⳵t
+matic viscosity is the same as in the solution of the continu-
+ous Boltzmann equation. For the LBE, however, the viscos-                       and
+
+                                                                          046308-2
+DISCRETE LATTICE EFFECTS ON THE FORCING . . .                                                     PHYSICAL REVIEW E 65 046308
+
+  ⳵                                                                 fluid velocity v are defined by ␳ v⫽ ␳ u* ⫽ 兺 i ei f i . In this
+     共 ␳ v兲 ⫹“• 共 ␳ vv兲 ⫽⫺“p⫹ ␯ “• 关 ␳ 共 “v⫹ 共 “v兲 T 兲兴 ⫹F,         treatment, the contribution of the external force to the mo-
+  ⳵t
+                                                         共18b兲      mentum flux is considered. Unfortunately, the discrete lattice
+                                                                    effect is not taken into account. The corresponding macro-
+where p⫽c s2 ␳ is the pressure, the shear viscosity ␯ is given      scopic equations are
+by Eq. 共15兲, and v is the fluid velocity defined by
+                                                                                       ⳵␳              ⌬t
+                                          ⌬t                                              ⫹“• 共 ␳ v兲 ⫽⫺ “•F,                   共22a兲
+                      ␳ v⫽   兺i   ei f i ⫹ F.
+                                          2
+                                                            共19兲                       ⳵t              2
+
+As seen, Eqs. 共18兲 are just the Navier-Stokes equations with             ⳵ 共 ␳ v兲
+a body force.                                                                     ⫹“• 共 ␳ vv兲 ⫽⫺“p⫹ ␯ “• 关 ␳ 共 “v⫹ 共 “v兲 T 兲兴 ⫹F
+                                                                            ⳵t
+   From the above discussions, we can conclude that in order
+to match the correct Navier-Stokes equations, the forcing                                        ⌬t ⳵ F ⌬t
+term should satisfy the constraints Eqs. 共11兲 and 共16兲 to-                                   ⫺     ⑀   ⫹ “• 共 vF⫹Fv兲 . 共22b兲
+                                                                                                 2 ⳵t1  2
+gether with Eq. 共17兲, which gives
+
+
+                冉          冊冋                   册                   The additional terms in Eqs. 共22兲 are similar to those in Eqs.
+                     1   ei ⫺v 共 ei •v兲
+           F i ⫽ 1⫺    ␻       ⫹        ei •F,              共20兲    共21兲, and the arguments for method 1 also apply to method 2.
+                    2 ␶ i c s2    c s4                                 Two improved versions of method 2 were proposed by
+                                                                    Ladd and Verberg 关4兴. The first improvement 共method 2a兲
+and the equilibrium velocity u* and the fluid velocity v            uses a redefined C, C⫽(1⫺1/2␶ )(Fu* ⫹u* F), and the
+should be given by Eqs. 共17兲 and 共19兲, respectively.                other parameters and the definitions of u * and v are the same
+    Now we examine some other existing treatments for the           as in method 2. With this redefined C, the contribution to the
+body force in the LBM. The usually used method 共referred to         momentum flux due to the body force, i.e., the term relative
+as method 1兲 关9兴 takes m⫽0, A⫽0, B⫽F, and C⫽0, i.e.,                to u* F⫹Fu* , is canceled. However, the influences of spatial
+F i ⫽ ␻ i ei •F/c s2 , and the equilibrium velocity u* and fluid    and temporal variations of the force are still not considered.
+velocity v are defined by ␳ v⫽ ␳ u* ⫽ 兺 i ei f i . This method      In fact, Ladd and Verberg assumed that the force F is time
+satisfies the constraint Eq. 共11兲, and thus obeys the Euler         independent, and that F is spatial uniform or the acceleration
+equations on the t 1 time scale. However, neither the contri-       g is uniform 关4兴. The macroscopic equations of this method
+butions to the momentum due to the body force, nor the              are
+influences on the density and momentum due to the spatial
+and temporal variations of the force, are considered in this
+treatment. The final macroscopic equations corresponding to                           ⳵␳              ⌬t
+                                                                                         ⫹“• 共 ␳ v兲 ⫽⫺ “•F,                    共23a兲
+this method are                                                                       ⳵t              2
+
+                    ⳵␳              ⌬t
+                       ⫹“• 共 ␳ v兲 ⫽⫺ “•F,                  共21a兲     ⳵ 共 ␳ u* 兲
+                    ⳵t              2                                           ⫹“• 共 ␳ u* u* 兲 ⫽⫺“p⫹ ␯ “• 关 ␳ 共 “u* ⫹ 共 “u* 兲 T 兲兴
+                                                                         ⳵t
+ ⳵ 共 ␳ v兲                                                                                              ⌬t ⳵ F
+          ⫹“• 共 ␳ vv兲 ⫽⫺“p⫹ ␯ “• 关 ␳ 共 “v⫹ 共 “v兲 T 兲兴 ⫹F                                         ⫹F⫺     ⑀    .               共23b兲
+    ⳵t                                                                                                 2 ⳵t1
+
+                       ⫺
+                           ⌬t ⳵ F
+                             ⑀
+                           2 ⳵t1       冉 冊
+                                       1
+                                  ⫹ ␶ ⫺ ⌬t“• 共 vF⫹Fv兲 .
+                                       2
+                                                                    Clearly, errors in the momentum equation due to the pres-
+                                                                    ence of an external force are efficiently reduced. In fact, if F
+                                                          共21b兲     is a constant, Eqs. 共23兲 will match the correct hydrodynamic
+                                                                    equations.
+As can be seen, to match the Navier-Stokes equations, the               Another improved version proposed by Ladd and Verberg
+spatial and temporal changes of the body force F should vary        共method 2b兲 uses the same representation of F i and the defi-
+slightly, and the last term in Eq. 共18b兲 must be negligible. In     nition of u * as used in method 2, but the fluid velocity is
+practical applications, this method is mainly used for flows        redefined as ␳ v⫽ 兺 i ei f i ⫹(⌬t/2)F. In this treatment the in-
+exposed to a constant body force. However, this last term           fluence on the density due to the spatial variation of the force
+may not be small as F is a nonzero constant due to the              is considered, but the discrete lattice effects on the momen-
+velocity gradient.                                                  tum flux are ignored. As a result, the macroscopic equations
+    A recent representation of the forcing term was proposed        become
+by two groups independently starting from kinetic equations
+共referred to as method 2兲 关6 – 8兴, which uses m⫽0, A⫽0,
+B⫽F, and C⫽2Fu* , namely, F i ⫽ ␻ i 关 (ei ⫺u* )/c s2                                       ⳵␳
+                                                                                              ⫹“• 共 ␳ v兲 ⫽0,                   共24a兲
+⫹(ei •u* )ei /c s4 兴 •F, and the equilibrium velocity u* and                               ⳵t
+
+                                                              046308-3
+ZHAOLI GUO, CHUGUANG ZHENG, AND BAOCHANG SHI                                                             PHYSICAL REVIEW E 65 046308
+
+
+
+
+                                                                              FIG. 2. Numerical velocity u(0,y) at time t⫽t c and 2t c for
+                                                                           Taylor vortex flow. Solid lines are the analytical solutions.
+
+                                                                                                  ⳵␳
+                                                                                                     ⫹“• 共 ␳ v兲 ⫽0,                  共25a兲
+                                                                                                  ⳵t
+
+                                                                                ⳵ 共 ␳ v兲
+                                                                                         ⫹“• 共 ␳ vv兲 ⫽⫺“p⫹ ␯ “• 关 ␳ 共 “v⫹ 共 “v兲 T 兲兴 ⫹F
+                                                                                   ⳵t
+
+                                                                                                      冉 冊
+                                                                                                    ⫹ ␶⫺
+                                                                                                            1
+                                                                                                            2
+                                                                                                              ⌬t“• 共 vF⫹Fv兲 .       共25b兲
+
+                                                                           Obviously, this work takes account of the fact that in order to
+                                                                           obtain the correct hydrodynamic equations a redefinition of
+                                                                           the fluid velocity is needed to take account of the spatial and
+                                                                           temporal variations of the body force. The discrete lattice
+                                                                           effects are also considered in this treatment. Unfortunately,
+   FIG. 1. Relative error differences between other methods and            the contributions of the force to the momentum flux are not
+the present method for the Poiseuille flow. E 0 , present; E x , others.   considered, and the momentum equation differs from the true
+                                                                           Navier-Stokes equation by an additional term of order
+   ⳵ 共 ␳ v兲                                                                ⌬t“•(u* F⫹Fu* ). This result is different from what has
+            ⫹“• 共 ␳ vv兲 ⫽⫺“p⫹ ␯ “• 关 ␳ 共 “v⫹ 共 “v兲 T 兲兴 ⫹F                 been obtained in 关5兴, and it should be pointed out that the
+      ⳵t
+                                                                           momentum equation derived in Ref. 关5兴 is incorrect.
+                               ⌬t 2 ⳵ F 3⌬t 2                                 From the discussion above, we can see that none of the
+                           ⫹     ⑀      ⫺     “• 共 ␳ gg兲                   five related methods considered can model the general
+                               2    ⳵t2   4
+                                                                           Navier-Stokes equations correctly. Method 1, method 2, and
+                               ⌬t                                          method 2a lead to a continuity equation with an additional
+                           ⫺      ␯ “• 关 ␳ 共 “g⫹ 共 “g兲 T 兲兴 .    共24b兲     term of order ⌬t“•F, and although method 2b and method 3
+                               2
+                                                                           both give the correct continuity equation, neither produces
+                                                                           the true momentum equation. It is demonstrated that in order
+As seen, the continuity equation is already correct. But some              to obtain the correct continuity equation, the fluid velocity
+additional terms still appear in the momentum equation. The                must be defined such that the effect of the external force is
+term (⌬t/2) ⑀ 2 ⳵ F/ ⳵ t 2 is negligible since ⑀ and ⌬t are small          included, and to obtain the correct momentum equation, the
+parameters. But the terms of order ⌬t 2 “•( ␳ gg) and                      contributions of the force to the momentum flux must be
+⌬t“•( ␳ “g) may be large for spatially varying forces.                     canceled. The method proposed in this paper matches both
+   The last method 共method 3兲 considered in this paper was                 conditions, and gives the correct equations of hydrodynam-
+proposed by Buick and Greated 关5兴; it uses the same param-                 ics.
+eters and definitions of v and u* as used in the method                       It is noted that there exist some other methods in which
+proposed in this work except for taking C⫽0, i.e., F i                     the body force is not included into the LBM by adding a
+⫽ ␻ i (1⫺1/2␶ )(ei •F)/c s2 . The resulting macroscopic equa-              forcing term into the LBE. The recent work 关5兴 reviewed
+tions derived from this method are                                         several such methods. It is also noticed that in the method
+
+                                                                     046308-4
+DISCRETE LATTICE EFFECTS ON THE FORCING . . .                                                               PHYSICAL REVIEW E 65 046308
+
+                                                                      ary conditions. The pressure gradient and the body force are
+                                                                      set to be equal, or G 1 ⫽G 2 ⫽G/2. The lattice size is fixed at
+                                                                      Nx⫻Ny⫽34⫻18. A set of runs is carried out with different
+                                                                      values of G. In each case, the flow reaches its steady state
+                                                                      after a number of iterations. The relative global errors are
+                                                                      measured at the steady state between the LBM solution and
+                                                                      the analytical solution given by Eq. 共26兲; the error is defined
+                                                                      by
+
+
+                                                                                                      冑兺         共 u⫺u a 兲 2
+                                                                                                                                                     共27兲
+                                                                                                       冑兺
+                                                                                                E⫽
+                                                                                                                      u 2a
+
+                                                                      where u is the numerical solution, and the summation is
+                                                                      taken over the entire system. It is found that the numerical
+                                                                      results of the present forcing term are the most accurate in all
+                                                                      cases considered. In Fig. 1, the relative differences between
+                                                                      the errors of the other five methods and that of the present
+                                                                      method, (E x ⫺E 0 )/E 0 , are plotted against the total accelera-
+                                                                      tion G. Here E 0 represents the error of the present method,
+                                                                      and E x represents the error of any one of the other five meth-
+                                                                      ods. One can observe that the errors produced by methods
+                                                                      1–3 are more or less larger than that of the present method.
+                                                                      More specifically, method 1, method 2, and method 2a,
+                                                                      which do not satisfy the continuity equation, demonstrate
+                                                                      similar behaviors and always produce larger errors than the
+                                                                      other two methods, in which the continuity equation is satis-
+                                                                      fied. It is also noted that the differences increase as G in-
+                                                                      creases. This is because when G is small the macroscopic
+                                                                      equations of these six methods are nearly identical. But as G
+                                                                      becomes larger, the discrete lattice effects cannot be ne-
+                                                                      glected any more.
+                                                                         A simulation for unsteady flow where the force depends
+   FIG. 3. Relative error differences between other methods and       on both space and time was also carried out. The test prob-
+the present method for the Taylor vortex flow. E 0 , present; E x ,
+                                                                      lem is the two-dimensional Taylor vortex flow in a square
+others.
+                                                                      box, which has the following analytical solution:
+proposed by He et al. 关10兴 the force is explicitly included in
+the EDF, and a forcing term is added into the LBE without                    u a ⫽⫺u 0 cos共 k 1 x 兲 sin共 k 2 y 兲 exp关 ⫺ ␯ 共 k 21 ⫹k 22 兲 t 兴 ,
+rigorous proof. However, both the redefined EDF and the
+forcing term contain terms of order u 3 , which is inconsistent                         k1
+with the whole system.                                                       v a ⫽u 0      sin共 k 1 x 兲 cos共 k 2 y 兲 exp关 ⫺ ␯ 共 k 21 ⫹k 22 兲 t 兴 ,   共28兲
+                                                                                        k2
+   To verify the arguments mentioned above, we first applied
+the present method and the other five methods to steady Poi-          and the body force F⫽(F x ,F y ) is given by F x ⫽
+seuille flow driven by a pressure gradient ⳵ p/ ⳵ x⫽⫺ ␳ G 1           ⫺( ␳ k 1 G/2)sin(2k1x)exp关⫺2␯(k21⫹k22)t兴,         F y ⫽⫺( ␳ k 21 G/
+together with a body force ␳ G 2 , where G 1 and G 2 are two          2k 2 )sin(2k2y)exp关⫺2␯(k1⫹k2)t兴, where G⫽u 0 is the ampli-
+                                                                                                2  2                   2
+constants. The Poiseuille flow in a channel of width 2L has           tude of the force. In simulation, the flow is confined in the
+the following steady analytical solution:                             domain ⫺ ␲ /2⭐x,y⭐ ␲ /2, which is covered by a lattice of
+
+
+                          冉 冊
+                                                                      size Nx⫻Ny⫽65⫻65. The wave numbers are set to be k 1
+                                 y2                                   ⫽k 2 ⫽1.0, and the amplitude of the force is chosen to be
+                   u a ⫽u 0 1⫺        ,   v ⫽0,               共26兲
+                                 L2                                   G⫽0.001 so that the compressibility of the fluid is negli-
+                                                                      gible. The shear viscosity ␯ is set to be 0.005. The flow is
+where u 0 ⫽GL 2 /2␯ is the peak velocity, and G⫽G 1 ⫹G 2 is           initialized by evaluating the analytical solution at t⫽0, and
+the total acceleration.                                               the extrapolation scheme 关11兴 is again applied to the four
+   In simulations, the extrapolation scheme 关11兴 is applied to        boundaries for velocity boundary conditions. Numerical so-
+the upper and bottom walls of the channel for no-slip bound-          lutions at t⫽t c and t⫽2t c are plotted in Fig. 2 together with
+ary conditions, and to the inlet and exit for pressure bound-         the analytical solutions, where t c ⫽ln 2/关␯(k21⫹k22)兴 is the time
+
+                                                                046308-5
+ZHAOLI GUO, CHUGUANG ZHENG, AND BAOCHANG SHI                                                                     PHYSICAL REVIEW E 65 046308
+
+when the amplitude of vortex is halved. One can see that the                      method 2, and method 2a demonstrate similar behaviors for
+agreement between the numerical and analytical solutions is                       this flow, and produce larger errors than the other two meth-
+excellent.                                                                        ods 共method 2b and method 3兲 which satisfy the continuity
+   We also applied the other five methods to Taylor vortex                        equation. From these observations, we can see that discrete
+flow under the same conditions. The relative global errors in                     lattice effects do have influences on the behavior of the
+velocity field produced by each method were measured and                          LBM, and should be considered in modeling fluids involving
+compared with that by the present method. Here the relative                       external or internal forces.
+global error is defined by                                                            In summary, we have presented a method to include the
+                                                                                  body force into the LBM, in which the discrete lattice effect
+
+                 冑兺
+                                                                                  and the contributions of the body force to the momentum
+                       关 u 共 t 兲 ⫺u a 共 t 兲兴 2 ⫹ 关v共 t 兲 ⫺ v a 共 t 兲兴 2           flux are both considered. The LBE with the proposed forcing
+                                                                                  term can lead to the exact Navier-Stokes equations. Some
+       E共 t 兲⫽                                                            共29兲
+                         冑兺
+                                                                                  related methods were also examined. It is found that none of
+                                   关 u 共 t 兲 ⫺u a 共 t 兲兴 2                        these methods match the Navier-Stokes equations in the gen-
+                                                                                  eral case. Therefore, the present work should be of benefit in
+                                                                                  designing lattice Boltzmann models for fluids exposed to ex-
+where the summation is taken over the whole system. In Fig.                       ternal and/or internal forces.
+3, the relative differences between the error obtained by each
+of the five methods and that by the present method are plot-                         This work was subsidized by the Special Funds for Major
+ted as time proceeds. It is seen that the present method is the                   State Basic Research Projects 共Grant No. G1999022207兲 and
+most accurate for this unsteady flow where the force changes                      the National Natural Science Fundation of China 共Grant No.
+in both space and time. It is again observed that method 1,                       6073044兲.
+
+
+
+
+ 关1兴 Y. Qian, S. Succi, and S.A. Orszag, Annu. Rev. Comput. Phys.                  关6兴 N.S. Martys, X. Shan, and H. Chen, Phys. Rev. E 58, 6855
+     3, 195 共1995兲.                                                                    共1998兲.
+ 关2兴 S. Chen and G.D. Doolen, Annu. Rev. Fluid Mech. 30, 329                       关7兴 L.-S. Luo, Phys. Rev. Lett. 81, 1618 共1998兲.
+     共1998兲.                                                                       关8兴 L.-S. Luo, Phys. Rev. E 62, 4982 共2000兲.
+ 关3兴 Y. Qian, D. d’Humiéres, and P. Lallemand, Europhys. Lett. 17,                关9兴 X. He, Q. Zou, and L.-S. Luo, J. Stat. Phys. 87, 115 共1997兲.
+     479 共1992兲.                                                                  关10兴 X. He, X. Shan, and G.D. Doolen, Phys. Rev. E 57, R13
+ 关4兴 A.J.C. Ladd and R. Verberg, J. Stat. Phys. 104, 1191 共2001兲.                      共1998兲.
+ 关5兴 J.M. Buick and C.A. Greated, Phys. Rev. E 61, 5307 共2000兲.                   关11兴 S. Chen, D. Martinez, and R. Mei, Phys. Fluids 8, 2527 共1996兲.
+
+
+
+
+                                                                            046308-6
+

@@ -1,0 +1,48 @@
+{
+  "reviewed_at": "2026-11-03T10:42:04.265781+08:00",
+  "preparation_A_sha256": "5d4e70d85d586b3cdf1ebca09f82f1f4abf90166642c34f1a5f4663cdeb4f02d",
+  "inputs_verified": 2339,
+  "protected_files_unchanged": 2362,
+  "prior_report_manifest_verified": true,
+  "scientific_files_byte_identical": 13,
+  "baseline_K": {
+    "P": 5.919337058277595e-23,
+    "T": 2.3663885892433063e-23
+  },
+  "formal_records": 4,
+  "zero_records": 12,
+  "closed_permissions": true,
+  "entry_readonly_checks": {
+    "formal_default": {
+      "exit_code": 0,
+      "stdout": "{\"PREPARATION_BINDING_CHECK\": true, \"solver_executed\": false, \"simulation_authorized\": false, \"prepared_run_ids\": [\"URV_S3_P_a50000_reuse_v1_20261103_01\", \"URV_S3_T_a50000_reuse_v1_20261103_01\", \"URV_S3_P_a200000_reuse_v1_20261103_01\", \"URV_S3_T_a200000_reuse_v1_20261103_01\"], \"zero_audit_status\": \"NOT_EXECUTED\", \"resources_snapshot\": {\"MemAvailable_bytes\": 19611803648, \"disk_free_bytes\": 341237661696}}\n",
+      "stderr": ""
+    },
+    "zero_default": {
+      "exit_code": 0,
+      "stdout": "{\"ZERO_PLAN_BINDING_CHECK\": true, \"solver_executed\": false, \"planned_native_calls\": 12, \"planned_initial_field_reads\": 4, \"native_zero_step_authorized\": false}\n",
+      "stderr": ""
+    }
+  },
+  "BINDING_INTEGRITY_PASS": true,
+  "SCOPE_REVIEW_PASS": false,
+  "EXECUTION_BINDING_READY": false,
+  "disposition": "HOLD_FOR_R1_R2_MINIMAL_ISOLATED_REVISION",
+  "unresolved": [
+    "R1 effective output physics/zero-mode cross-check",
+    "R2 per-configuration zero readback and raw record association"
+  ],
+  "native_calls": 0,
+  "VTK_reads": 0,
+  "builds": 0,
+  "CASE_writes": 0,
+  "new_authorization_received": false,
+  "new_execution_release_created": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "geometry_PASS": null,
+  "RESULT_PASS": false,
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false
+}

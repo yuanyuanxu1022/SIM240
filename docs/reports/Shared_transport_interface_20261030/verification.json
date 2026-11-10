@@ -1,0 +1,39 @@
+{
+  "scope": "INPUT_AND_ALGEBRA_ONLY_NOT_FLOW_VALIDATION",
+  "checks_completed": [
+    "raw_direction_geometry_H_and_viscosity_resistance_consistency",
+    "nominal_vs_measured_volume_height",
+    "original_formula_two_equivalent_forms",
+    "published_V2_arithmetic_against_prior_comparison_object",
+    "principal_axis_swap_0_90_deg",
+    "K_kappa_D_reciprocal_and_unit_gradient_flux_identities",
+    "positive_coefficients",
+    "flat_endpoint_original_model"
+  ],
+  "all_arithmetic_checks_satisfied": true,
+  "arithmetic_relative_tolerance": 2e-12,
+  "scientific_acceptance_tolerance_set": false,
+  "coefficient_rows": 6,
+  "source_files_unchanged": true,
+  "new_fit": false,
+  "solver_execution": false,
+  "launch_ready": false,
+  "launch_blockers": [
+    "absolute_Lx_Ly_and_period_count",
+    "closing_speed_or_static_pressure_gradient",
+    "physical_properties_adoption",
+    "wall_dissipation_route_and_OpenFOAM_source_definition",
+    "mesh_or_volume_source_coupling",
+    "pressure_and_force_boundary_equivalence",
+    "numerical_resolution_solver_controls_and_resource_budget",
+    "predeclared_acceptance_criteria",
+    "final_scientific_interface_review"
+  ],
+  "formal_gates": {
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": null,
+    "geometry_PASS": null,
+    "reference_qualified": false,
+    "submission_ready": false
+  }
+}

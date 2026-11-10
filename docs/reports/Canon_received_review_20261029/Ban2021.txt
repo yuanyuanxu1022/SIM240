@@ -1,0 +1,670 @@
+Minimizing filling time for ultraviolet
+nanoimprint lithography with templates with
+multiple structures
+Cite as: J. Vac. Sci. Technol. B 39, 012601 (2021); https://doi.org/10.1116/6.0000648
+Submitted: 19 September 2020 . Accepted: 10 November 2020 . Published Online: 16 December 2020
+
+  Yang H. Ban, and       Roger T. Bonnecaze
+
+COLLECTIONS
+
+
+    This paper was selected as an Editor’s Pick
+
+
+
+
+J. Vac. Sci. Technol. B 39, 012601 (2021); https://doi.org/10.1116/6.0000648              39, 012601
+
+© 2020 Author(s).
+                                                                                                   ARTICLE            avs.scitation.org/journal/jvb
+
+
+
+
+    Minimizing filling time for ultraviolet nanoimprint
+    lithography with templates with multiple
+    structures
+    Cite as: J. Vac. Sci. Technol. B 39, 012601 (2021); doi: 10.1116/6.0000648
+    Submitted: 19 September 2020 · Accepted: 10 November 2020 ·                                                          View Online   Export Citation    CrossMark
+    Published Online: 16 December 2020
+
+    Yang H. Ban            and Roger T. Bonnecazea)
+
+    AFFILIATIONS
+    McKetta Department of Chemical Engineering, The University of Texas at Austin, Austin, Texas 78712
+
+    a)
+      Electronic mail: rtb@che.utexas.edu
+
+
+    ABSTRACT
+    Optimizing the locations and sizes of droplets is the key to reducing defects and increasing throughput of ultraviolet nanoimprint lithogra-
+    phy. In practice the templates are composed of regions with different structures. The interface between structures will generate complicated
+    fluid flow behavior that will slow the filling time. Here, we explore several strategies through simulations to distribute resist material accord-
+    ing to a nonuniform pattern to reduce filling time and ultimately increase throughput. In order to mimic the complexity of a template, the
+    interface between different pairs of template structures is considered and the spreading and merging of droplets are simulated. From these
+    simulations, it is found that the volume and arrangement of droplets underneath strongly affect the imprint time. By distributing the correct
+    amount of resist underneath the template, one can remove the unnecessary fluid transferring step in droplet spreading and reduce the total
+    filling time. Furthermore, by optimally placing the resist droplets, one can delay merging events and accelerate the spreading speed. Finally,
+    the advantage of hexagonal arrangements is explored.
+
+    Published under license by AVS. https://doi.org/10.1116/6.0000648
+
+
+    I. INTRODUCTION                                                            and defects caused by gas trapping. About 70% of the throughput
+          While research in nanopatterning explores a range of pattern-        budget is utilized by the fluid filling step (Fig. 1). In order to be a
+    ing techniques, there are currently only two technologies consid-          competitive manufacturing process, UVNIL should reduce the time
+    ered for manufacturing of next generation integrated circuits: UV          required to complete the fluid filling step.1 It is possible to increase
+    nanoimprint lithography (UVNIL) and extreme ultraviolet lithogra-          the throughput by shortening the filling step. This may increase the
+    phy.1 UVNIL is a promising high-resolution molding process.                number for wafers produced per hour, but at the same time,
+    UVNIL exceeds the patterning limits of 193 nm lithography, the             defects in the imprinted pattern increase because of incomplete
+    current dominant technology.1 UVNIL has a high resolution, and             filling. Thus, in UVNIL, defectivity and throughput are related to
+    the resolution is largely unaffected by the field size being pat-          each other and both must be addressed simultaneously. The chal-
+    terned.2,3 UVNIL is distinct from other lithography processes as it        lenge is finding the shortest time required to achieve complete
+    avoids the use of costly optical systems for traditional photolithog-      filling. There is a need to understand the optimal droplet arrange-
+    raphy and uses an inkjet system to dispense resist materials. When         ment because optimizing the locations and sizes of droplets is the
+    compared to immersion based self-aligned quadruple patterning,             key to reduce defects and increase the throughput of UVNIL.1
+    the cost of ownership for UVNIL is ∼40% lower.4 The use of an              Thus, fluid management is an important issue in enhancing the
+    inkjet system allows us to print complex patterns with pattern             UVNIL process.
+    density variations, because an inkjet system can distribute resist               A typical process of UVNIL is shown in Fig. 1. An inkjet dis-
+    material according to a nonuniform pattern in the template.1               penser is used to dispense droplets of low viscosity photocurable
+    Because the resist volume deposited is matched to the mask pattern         imprint material on the substrate. These droplets are a few picoli-
+    density, resist is not wasted.5 The ability of UVNIL to cheaply and        ters in volume. A UV-transparent template with micro- or nanofea-
+    reliably replicate nanoscale features is degraded by low throughput        tures is lowered on the substrate. As the template is pressed into
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                       39, 012601-1
+Published under license by AVS.
+                                                                                                            ARTICLE            avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                              There are several studies that tried to optimize the fluid filling
+                                                                                        step, but mostly in respect of a uniform patterned template.11–13 In
+                                                                                        practice, the nanopatterning template is composed of regions with
+                                                                                        different structures and densities. Thus, studies with uniform pat-
+                                                                                        terns may not give a full practical insight, which can be used in the
+                                                                                        manufacturing process. This complex structure will generate a com-
+                                                                                        plicated fluid flow behavior that obscures the optimal arrangement
+                                                                                        to meet the tight throughput budget. In order to mimic the com-
+                                                                                        plexity of a template, two different template structures were com-
+                                                                                        bined and the spreading and merging of droplets were simulated
+                                                                                        using a previously developed simulation base.14 In this study, the
+                                                                                        advantage the inkjet dispenser is fully explored by dispensing resist
+                                                                                        droplets in various arrangements and volumes. The objective is to
+                                                                                        find a practical arrangement that can be used for a template with
+                                                                                        two different structures. Furthermore, we present the general
+                                                                                        approach that can be taken when the optimal droplet arrangement
+                                                                                        is not obvious for a specific template.
+
+                                                                                        II. SIMULATION METHOD
+                                                                                        A. Simulation of resist spreading in complex template
+                                                                                        structures
+                                                                                              A commercially viable nanopatterning process involves a tem-
+                                                                                        plate with arbitrary pattern complexity and nonuniform pattern
+                                                                                        density. This study aims to find optimal droplet placement to meet
+                                                                                        the limited throughput budget. Figure 2 is a schematic representa-
+                                                                                        tion of three different templates used in the simulation. Each tem-
+                                                                                        plate is composed of two different regions with the same area
+                                                                                        (L2 /2), and each region has a different structure. There are three
+                                                                                        different template structures: a flat structure, a line and space
+      FIG. 1. Schematic of the main steps for pattern replication in UVNIL and          pattern with feature height ΔH, and a line and space pattern with
+      throughput budget of UVNIL process. Reproduced with permission from Yang          feature height ΔH/2. The line and space structure orients either
+      et al., J. Vac. Sci. Technol. B 38, 022601 (2020). Copyright 2020, the American   horizontally or vertically. The lines and spaces are evenly distribu-
+      Vacuum Society.                                                                   ted and the width is d. The minimum gap between the substrate
+                                                                                        and template is H at any random instance. The total volume of
+                                                                                        resist Q required to fill each region for each template is summarized
+                                                                                        in Table I, where L is the width of the square template and Hf is
+    resists, the droplets merge together and fill the gap to form a                     the final resist thickness. The total volume required to fill the whole
+    uniform film. When the desired gap is reached, UV light irradiates                  gap at the end of the UVNIL process is the sum of the two.
+    the imprinted film, which photopolymerizes to form a solid resist                         As the template approaches the substrate, the liquid-air inter-
+    layer with features replicated from the template. The template is                   face of the droplet results in a pressure gradient that propels the
+    then peeled from the resist with a controlled mechanism complet-                    spreading and causes an attractive capillary force on the template.
+    ing the patterning process. This pattern can then be used for                       The attractive capillary force arises from the surface tension and
+    further processing such as reactive ion etching. UV nanoimprint                     the wetting nature of resist on both the template and substrate sur-
+    lithography effectively transfers high-resolution micro- and nano-                  faces. The interfacial tension γ of the gas-liquid interface is
+    features from templates onto substrates and is deployed in hard                     assumed constant. The interface has two different contact angles,
+    disk industry and photonics applications.1,4                                        θ1 and θ2, made by the imprint material with the template and the
+          However, the process development of UVNIL has been slow.                      substrate, respectively. These two contact angles are also assumed
+    In order to monitor the filling process and find the exact filling                  to be constant due to the small capillary number. The ﬂuid ﬂow in
+    time, it is necessary to perform the same experiment several times                  the gap results in a viscous force that balances the capillary force
+    or have real-time observation.6 The complexity and the large                        and any externally applied force. Gravity is neglected in this simu-
+    number of parameters involved with UVNIL makes designing and                        lation. It is a reasonable assumption for small drops.15
+    conducting experiments expensive.7 Metrology and inspection tech-                         The size of the resist droplets are many orders of magnitude
+    niques are being developed, but significant challenges still remain                 larger than the template patterns, and each resist droplet converts
+    for real-time monitoring of UVNIL processes having nanoscale fea-                   into hundreds or thousands of individual structures. The gap H
+    tures. Modeling and simulation tools are helpful to understand the                  ranges from a few micrometers to finally a few nanometers, and the
+    fundamentals of the filling steps the UVNIL process.6,8–10                          droplet radius ranges from a few millimeters to centimeters. Due to
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                      39, 012601-2
+Published under license by AVS.
+                                                                                                                 ARTICLE                avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                            where P is the pressure in the droplet, U is the vertically averaged
+                                                                                            fluid velocity, and μ is the viscosity of the imprint resist. The pres-
+                                                                                            sure distribution in the ﬂuid is calculated using Eq. (1), and the
+                                                                                            spreading velocity is calculated using Eq. (2) by using the pressure
+                                                                                            field calculated from Eq. (1). The governing Eqs. (1) and (2) can be
+                                                                                            nondimensionalized using the characteristic values of pressure, gap
+                                                                                            thickness, time, and velocity. These values are given by Pc ¼ 2γ/H0 ,
+                                                                                            Hc ¼ H0 , Tc ¼ 6μL2 /γH0 , Vc ¼ γH02 /6μL2 , Kc ¼ H02 /12, and
+                                                                                            Uc ¼ γH0 /6μL. γ is the surface tension of the resist material.
+                                                                                            Characteristic variables contain two disparate length scales; H0 is the
+                                                                                            initial gap height and L is the size of the template, the transverse
+                                                                                            length scale. The dimensionless governing equations are given by
+
+                                                                                                                        v ¼ ∇  ((k  ∇p)h),                           (3)
+
+                                                                                                                            u ¼ k  ∇p,                                (4)
+
+                                                                                            where h ¼ H/H0 , t ¼ T/Tc , v ¼ V/Vc ¼ @h/@t, p ¼ P/Pc ,
+                                                                                            k ¼ K/Kc , and u ¼ U/Uc . v is the dimensionless template velocity.
+                                                                                                 The dimensionless governing Eqs. (3) and (4) can be written
+                                                                                            in the Cartesian coordinate system as
+                                                                                                                                                    
+                                                                                                                 @             @p     @             @p
+                                                                                                         v ¼         kxx havg      þ      kyy havg     ,               (5)
+                                                                                                                 @x            @x     @y            @y
+
+                                                                                                                           ux ¼ kxx ∇p,                                (6)
+
+      FIG. 2. Schematic of various shapes of templates used in simulations. (a) Top
+                                                                                            and
+      and side views of the flat (region 1) and line and space (region 2) template. The
+      horizontal lines show the direction of patterns (not to scale). (b) Top and side                                     uy ¼ kyy ∇p:                                (7)
+      views of the horizontal (region 1) and vertical (region 2) line and space tem-
+      plate. (c) Top and side views of the smaller feature (region 1) and larger feature          For vertical line and space patterns, havg , kxx , and kyy are given
+      (region 2) vertical line and space template.
+                                                                                            by
+                                                                                                                                              
+    this size difference, it is practical to describe the resistance to flow as                                                  1 þ (1 þ Δh/h)
+                                                                                                                     havg ¼ h                    ,                      (8)
+    an effective permeability tensor K and is possible to use a lubrication                                                             2
+    analysis. The governing equations describing the pressure and veloc-
+    ity fields in the resist fluid using Reynolds’ lubrication theory are                                                                                
+                                                                                                                             2                      2
+                                                                                                      kxx ¼ h2                                               ,          (9)
+                                                                                                                   1 þ (1 þ Δh/h)3        1 þ (1 þ Δh/h)
+                               @H        ∇P
+                                  ¼∇ K    H ,                                       (1)
+                               @T         μ                                                 and
+
+                                                 ∇P                                                                              1 þ (1 þ Δh/h)3
+                                      U ¼ K        ,                                 (2)                             kyy ¼ h2                   ,                  (10)
+                                                  μ                                                                              1 þ (1 þ Δh/h)
+
+                                                                                            where Δh ¼ ΔH/Hc . For horizontal line and space patterns, kxx and
+    TABLE I. Volume of resist Q required to fill each region in Fig. 2.                     kyy are reversed; for the line and space pattern with feature size
+                                                                                            ΔH/2, Δh is replaced with Δh/2. The x and y components of aniso-
+    Template type (Fig. 2)                  Region 1                   Region 2
+                                                                                            tropic permeabilities were derived by considering volume conserva-
+                                              L2 H                        2       
+    Template a                              Q¼ 2f                   Q ¼ L2 Hf þ ΔH
+                                                                                 2
+                                                                                            tion and average flow. The complete details of a droplet spreading
+                                             2                          2               in UVNIL, including discussion of effect of droplet size, placement,
+    Template b                         Q ¼ L2 Hf þ ΔH
+                                                    2               Q ¼ L2 Hf þ ΔH
+                                                                                 2          and gas dissolution, have been presented by Jain et al.12,13 The flat
+                                             2                          2       
+    Template c                         Q ¼ L2 Hf þ ΔH
+                                                    4               Q ¼ L2 Hf þ ΔH
+                                                                                 2
+                                                                                            template has isotropic permeability; thus, kxx and kyy are the same.
+                                                                                            For the vertical line and space structure, the capillary pressure
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                               39, 012601-3
+Published under license by AVS.
+                                                                                                      ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+    boundary condition, Pinterface , for Eq. (1) is
+
+                          ΔH cos(θ1 ) þ D(cos(θ 1 ) þ cos(θ2 )) 2
+          Pinterface ¼ 2γ                                     Ny
+                                      D(ΔH þ 2H)
+                        γ(cos(θ1 ) þ cos(θ 2 )) 2
+                                              Nx ,                      (11)
+                                Havg
+
+    where Nx is the x-component of the unit normal vector, Ny is the
+    y-component of the unit normal vector, D is the feature width, and
+    Havg is average height with that equals H þ ΔH/2. For the horizon-
+    tal case, the pressure term in front of normal vector term is
+    reversed. For the template with feature size ΔH/2, ΔH is replaced
+    with ΔH/2. For the flat template, the boundary condition is
+
+                                         γ(cos(θ1 ) þ cos(θ2 ))
+                        Pinterface ¼                           :        (12)
+                                                 Havg
+
+         Imprint material in UVNIL is highly wetting, and the two
+    contact angles are assumed to be zero throughout simulations. The
+    dimensionless equations for Eqs. (11) and (12) are
+
+                                        Δh þ 2d       1 2
+                      pinterface ¼              N2    N                (13)
+                                       d(Δh þ 2h) y havg x
+
+    and
+                                                    1
+                                  pinterface ¼         ,                (14)
+                                                   havg
+
+    where pinterface ¼ Pinterface /Pc , d ¼ D/Hc , and havg ¼ Havg /Hc . These
+    pressure boundary conditions are derived from numerically simu-
+    lated liquid-air interfaces using Surface Evolver.16 The shapes of
+    the surfaces are used to estimate the pressure boundary conditions.
+    The full derivation of capillary pressure estimation is discussed by
+    Ban and Bonnecaze.14
+         Complete fluid filling is achieved only when all the voids have          FIG. 3. Schematic showing the top view of droplets dispensed on a substrate.
+    disappeared, and the challenge is finding the shortest time required          The droplets are dispensed in (a) square, (b), hexagonal, and (c) combination
+    to achieve complete filling. Small features fill rapidly due to gas dis-      of square and hexagonal arrangements. The value of Dv /Dh is 2 and the value
+    solution and capillary forces.17–20 These filling times are relatively        of lh /lb is 0.5.
+    short compared to the lateral filling of space between droplets. For
+    nanoscale imprint, the defects come from this lateral filling. Here,
+    we report times where that filling is complete and hence there are
+    no filling defects.                                                          difference in the spreading speed in the line and space template.
+                                                                                 When the feature size, Δh, is equal to 0.1, a droplet spreads twice
+                                                                                 faster in the direction parallel to the line and space structure.14 It is
+    B. Simulation of resist spreading in various                                 also important to note that, in the hexagonal arrangement, the
+    configurations                                                               diagonal distance among droplets is equal. This can be seen as a
+         Simulations of droplet spreading in UVNIL were carried out              square rotated 45°. The third arrangement [Fig. 3(c)] is a combina-
+    in three major configurations: square, hexagonal, and a combina-             tion of square and hexagonal arrangements. This arrangement is
+    tion of square and hexagonal arrangements. Figure 3(a) shows                 designed for the template with the flat and line and space structure
+    droplets dispensed in a square arrangement, which might be the               (type a). The square arrangement is the optimal placement for the
+    most naïve arrangement that one can try in any type of template.             flat structure, and the hexagonal arrangement is optimal for the
+    Figure 3(b) shows droplets dispensed in a hexagonal arrangement              line and space structure.
+    where lb /lh ¼ 2. This hexagonal
+                               pﬃﬃﬃ    shape is different from a regular               It is known that the imprinting time decreased with the use of
+    hexagon, where lb /lh ¼ 2/ 3. In this elongated hexagonal arrange-           increasing number of droplets.11,12 Thus, for all arrangements, a
+    ment, the initial vertical distance between two droplets is equal to         similar number of droplets (either 144 or 145 droplets) are dis-
+    Dv ¼ 2lh , and the initial horizontal distance between two droplets          pensed in order to focus on the effect of droplet pattern. In all the
+    is equal to Dh ¼ 0:5lb . This distance ratio is chosen because of the        simulations, the gap between the substrate and the template closes
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                      39, 012601-4
+Published under license by AVS.
+                                                                                                                    ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+      FIG. 4. Nondimesionalized pressure fields of 144 or 145 droplets spreading on a substrate. The template has a flat template on the left side and a horizontal line and
+      space pattern on the right side. (a) Square arrangement with equal volume droplets. (b) Square arrangement with droplets with distributed volume according to the tem-
+      plate structure. (c) Hexagonal arrangement with droplets with distributed volume according to the template structure. Pressure is nondimensionalized using the constants
+      defined in the simulation method (Pc ¼ 2γ/H0 ).
+
+
+
+    from a gap of h = 1 to a final gap of h = 0.01. The total volume of                      with the same volume. The second method is varying the volume
+    droplets in all arrangements is equal to the volume required to fill                     according to the volume required to fill each section. The volume
+    the gap between the template and the substrate to a desired final                        required to fill each section of as template is summarized in
+    gap of h = hf = 0.01. Since the three types of templates are not                         Table I. The droplet volume is distributed by dividing the volume
+    uniform, the volume of drops is also varied in order to study the                        of each section by the number of droplets placed in each section.
+    effects varying the volume along with the arrangement. The
+    volume of droplets is determined by two different schemes. First,
+    the volume of drops is assigned by dividing the total volume                             III. RESULTS AND DISCUSSION
+    required to fill the entire template when the final height is reached                         The filling of UVNIL from the gap height from h = 1 to
+    by the total number of droplets. Therefore, each droplet is assigned                     h = 0.01 is simulated for droplets under various templates and is
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                                     39, 012601-5
+Published under license by AVS.
+                                                                                                                  ARTICLE            avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                              Figure 4 shows the simulation result of droplets spreading and
+                                                                                              merging under the flat and horizontal line and space template with
+                                                                                              a feature height Δh = 0.10, which is equal to 100 nm. The perme-
+                                                                                              ability and capillary pressure in regions 1 and 2 [Fig. 2(a)] are dif-
+                                                                                              ferent, and two different fluid flow behaviors are observed in one
+                                                                                              template. Three different arrangements were explored in this study.
+                                                                                              In the first arrangement [Fig. 4(a)], droplets are arranged in a
+                                                                                              square pattern, and each droplet has equal volume. Thus, excess
+                                                                                              volume is assigned in region 1 and insufficient volume is assigned
+                                                                                              in region 2. The total number of droplets is 144, and 72 drops are
+                                                                                              placed in each region. The second arrangement [Fig. 4(b)] is also a
+                                                                                              square arrangement; however, the droplet volume is distributed
+                                                                                              such that the total volume of the droplets in each region is suffi-
+                                                                                              cient to fill each region. Thus, optimal volume of resist is assigned
+                                                                                              in each region. The total number of droplets is 144, and 72 droplets
+      FIG. 5. Figure graphs the height change as a function of time. The graph com-           are placed in each region. The third arrangement [Fig. 4(c)] is a
+      pares the spreading pattern of different volume distributions and different droplet     hexagonal arrangement, and the droplet volume is distributed
+      arrangements under a flat and horizontal line and space patterned template.             according to the volume required to fill each region. The total
+      The filling time of equal volume drops with the square arrangement took the             number of droplets is 145, 68 drops are placed in each region, and
+      longest time to fill and distributed volume drops with hexagonal arrangement            9 are drops placed in the middle. Each droplet of these nine drops
+      took the shortest time. Height and time are nondimensionalized using the con-           has a volume that is an average of a droplet in each region. In all
+      stants defined in the simulation method (Hc ¼ H0 and Tc ¼ 6μL2 /γH0 ).
+                                                                                              cases, the total volume of droplets is sufficient to fill the entire tem-
+                                                                                              plate when h ¼ hf .
+                                                                                                    Figure 5 shows a graph of height as a function of time for
+    dispensed in various arrangements. If the initial height Ho is equal
+                                                                                              three different cases in Fig. 4. Initially, all three cases have similar
+    to 1 μm, the final gap height is equal to 100 nm. Because of a high
+                                                                                              spreading speed. However, early merging happens in the flat tem-
+    density of pattern, an average permeability K was used to describe
+                                                                                              plate region, which impedes spreading. The early merging appears
+    the effect of a large number of line and space patterns. The aniso-
+                                                                                              as a slope decrease in the height graph (Fig. 5). The filling time for
+    tropic capillary pressure boundary condition used in the simulation
+                                                                                              the equal volume case is two times larger than the square arrange-
+    has been described in Sec. II A. Using these two analyzed parameters,
+                                                                                              ment with the distributed volume case [Fig. 4(b)] and five times
+    Eqs. (3) and (4) are solved using the volume of fluid method.11,21
+                                                                                              larger than the hexagonal arrangement with the distributed volume
+    Multipatterned templates have varying flow permeability in dif-
+                                                                                              case [Fig. 4(c)]. For the equal volume case [Fig. 4(a)], the volume
+    ferent parts of the template, which can exhibit interesting fluid
+                                                                                              required to fill region 1 is L2 Hf /2 and region 2 is L2 /2(Hf þ ΔH/2),
+    flow behavior. This interesting behavior, optimal droplet arrange-
+                                                                                              but L2 /2(Hf þ ΔH/4) is assigned to each region. Thus, an excess of
+    ments, and the overall filing time of multipatterned templates are
+                                                                                              L2 ΔH/8 in region 1 and deficit of L2 ΔH/8 in region 2. This excess
+    discussed in Secs. III A–III D.
+                                                                                              fluid in region 1 flows to region 2 to fill the deficit. The transfer of
+                                                                                              resist fluid from region 1 to region 2 increases the overall filling
+    A. Importance of volume distribution                                                      time.
+          The first template simulated in this study is a flat and horizon-                         For the square arrangement with distributed volume, exact
+    tal line and space template. The template has no external force                           volume required to fill each region was assigned. Thus, unlike the
+    acting on it and is driven by the capillary forces in resist droplets.                    equal volume case, distributed volume of droplets provides a
+
+    TABLE II. Time required to fill the entire template for each case.
+
+    Case description                                                                                                                                      Filling time
+    Template                                                                                Volume                         Arrangement                        (t/tc)
+    Flat and horizontal line space template                                          Equally distributed                   Square                             5.80
+                                                                                    Optimally distributed                  Square                             2.36
+                                                                                    Optimally distributed                Hexagonal                            1.15
+                                                                                    Optimally distributed    Combination of square and hexagonal              1.14
+    Vertical line space template with two different feature sizes                    Equally distributed                   Square                             6.90
+                                                                                    Optimally distributed                  Square                             1.80
+                                                                                    Optimally distributed                Hexagonal                            0.91
+    Horizontal and vertical line space template                                      Equally distributed                   Square                             1.40
+                                                                                     Equally distributed                 Hexagonal                            1.16
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                             39, 012601-6
+Published under license by AVS.
+                                                                                                                    ARTICLE                avs.scitation.org/journal/jvb
+
+
+
+
+      FIG. 6. Nondimensionalized pressure fields of 145 droplets spreading on a substrate. The template has a flat template on the left side and a horizontal line and space
+      pattern parallel on the right side. The figure is a simulation result with the combination of square and hexagonal arrangement, and each droplet has a distributed volume
+      according to the template structure. Pressure is nondimensionalized using the constants defined in the simulation method (Pc ¼ 2γ/H0 ).
+
+
+
+    sufficient amount of fluid in each section and reduces the overall                       B. Advantage of hexagonal arrangement
+    filling time. In this aspect of the whole UVNIL process, this                                  Figure 6 shows the simulation result of droplet spreading and
+    volume distribution case [Fig. 4(b)] can be thought as dispensing                        merging under the flat and horizontal line template, which has the
+    adequate amount of resist material using an inkjet system to reduce
+                                                                                             same specification as Sec. III A. In Fig. 6, a combination of square
+    unnecessary fluid transfer, which reduced the total filling time.
+                                                                                             and hexagonal arrangements [Fig. 3(c)] is used and the volume is
+    Although there was a significant improvement in the filling time,                        distributed according to the template structures. This arrangement
+    the square arrangement with distributed volume was not the best                          is used for several reasons. The square arrangement is known to
+    arrangement, because early merging happens at region 2 (line and                         the optimal arrangement for flat template, and the hexagonal
+    space). Finally, the hexagonal arrangement with the distributed
+                                                                                             arrangement is known to be the optimal arrangement for the line
+    volume case was tested, because the hexagonal pattern is known to                        and space template.14 Thus, optimal arrangement for each local
+    be the optimal arrangement for the line and space template.4 The                         template structure is used for each region. Thus, this arrangement
+    hexagonal arrangement with distributed volume reduced the total                          was expected to be the optimal arrangement. In this arrangement,
+    filling time by half from the square arrangement with the distribu-
+                                                                                             50 drops are assigned in region 1, 86 drops are assigned in region
+    ted volume case. The total filling time for each case is summarized
+                                                                                             2, and 9 drops are assigned in the middle. The volume of each
+    in Table II. Full advantage of the hexagonal arrangement with dis-                       droplet is distributed similar to the hexagonal arrangement.
+    tributed volume is discussed in Sec. III B.                                                    The combination of square and hexagonal arrangements was
+                                                                                             indeed the optimal arrangement. Figure 7 shows graphs of height
+                                                                                             as function for time for the hexagonal arrangement with distribu-
+                                                                                             ted volume and the combination arrangement with distributed
+                                                                                             volume. The combination arrangement was slightly faster than the
+                                                                                             hexagonal arrangement, but the time difference was only 0.01. This
+                                                                                             slight difference in the total filling time demonstrates the advantage
+                                                                                             of the hexagonal arrangement. The hexagonal arrangement can be
+                                                                                             seen as a square arranged mend rotated 45°. The hexagonal
+                                                                                             arrangement is optimal not only for the line and space pattern but
+                                                                                             also for the isotropic pattern. Thus, the hexagonal arrangement is
+                                                                                             suitable for both flat and line and space templates. The hexagonal
+                                                                                             arrangement delayed the merging event as much as possible and
+                                                                                             removed unnecessary merging events just like the combination
+                                                                                             arrangement. The slight difference in the filling time was caused by
+                                                                                             the time droplets reached the wall.
+
+
+                                                                                             C. Different template orientations
+      FIG. 7. Figure graphs the height change as a function of time. The graph com-
+      pares the spreading pattern of the combination arrangement (optimal distribu-               A template composed of two regions with orthogonal line
+      tion) and hexagonal arrangement under a flat and horizontal line and space             space patterns was also examined. Figure 8 shows the simulation
+      patterned template. The time difference is negligible. Height and time are nondi-      result of droplet spreading and merging under the vertical and hor-
+      mensionalized using the constants defined in simulation method (Hc ¼ H0 ,
+      Tc ¼ 6μL2 /γH0 ).
+                                                                                             izontal line and space template with feature height Δh = 0.10 which
+                                                                                             is equal to 100 nm. In this template, the fluid flow in region 1 is
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                                      39, 012601-7
+Published under license by AVS.
+                                                                                                                      ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+      FIG. 8. Nondimesionalized pressure fields of 144 or 145 droplets spreading on a substrate. The template has a vertical line and space pattern on the left side and horizon-
+      tal line and space pattern on the right side. (a) Square arrangement with equal volume droplets. (b) Hexagonal arrangement with equal volume droplets. Pressure is nondi-
+      mensionalized using the constants defined in the simulation method (Pc ¼ 2γ/H0 ).
+
+
+
+    perpendicular to region 2 and vice versa. Since both templates have                             The second arrangement is the hexagonal arrangement
+    the same feature size, volume variation was not necessary in this                         [Fig. 8(b)]. It has been shown that when the feature size, Δh, is
+    study, and only two different arrangements, square and hexagonal,                         equal to 0.1, droplets spread twice faster in the direction paral-
+    were compared. In the square arrangement [Fig. 8(a)], the first                           lel to the line and space structure.14 The hexagonal arrangement
+    early merge occurred in the y-direction in region 1 and in the                            is optimal for the vertical line and space template, because Dv is
+    x-direction in region 2. This early merging manifested as a sudden                        twice larger than Dh [Fig. 3(b)]. The same logic applies to the hor-
+    slope change in the graph of square equal volume case (Fig. 9).                           izontal line and space template, because lb is twice larger than lh .
+                                                                                              Thus, this single hexagonal arrangement can be used for two dif-
+                                                                                              ferent template structures. This is quite remarkable because the
+                                                                                              direction of fluid flow is perpendicular to each other. The graph
+                                                                                              of the hexagonal equal volume case (Fig. 9) was faster than the
+                                                                                              square equal volume case. The hexagonal arrangement followed
+                                                                                              the general rule of thumb discussed by Ban and Bonnecaze.14 In
+                                                                                              the hexagonal arrangement, unnecessary vertical and horizontal
+                                                                                              merging shown in the square merge is removed, and single merge
+                                                                                              was delayed as much as possible. The hexagonal arrangement
+                                                                                              showed about 20% improvement in the filling time compare to the
+                                                                                              square arrangement.
+
+
+                                                                                              D. Different feature sizes
+                                                                                                   The last template simulated in this study had two different
+                                                                                              feature sizes. Figure 10 shows the simulation result of
+                                                                                              droplet spreading and merging under the vertical line and space
+                                                                                              template with feature height Δh = 0.05 in region 1 and Δh = 0.10
+      FIG. 9. Figure graphs the height change as a function of time. The graph com-           in region 2. The permeability and capillary pressure in regions 1
+      pares the spreading pattern of square arrangement and hexagonal arrangement             and 2 [Fig. 2(c)] are different. The spreading speed in the
+      under a template with a two different directional patterns. Height and time are         y-direction is twice faster than in the x-direction in region 2, but
+      nondimensionalized using the constants defined in the simulation method
+      (Hc ¼ H0 , Tc ¼ 6μL2 /γH0 ).
+                                                                                              region 1 has different spreading speed ratios. Unlike above cases,
+                                                                                              optimal arrangement for this template is not obvious nor studied
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                                        39, 012601-8
+Published under license by AVS.
+                                                                                                                     ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+      FIG. 10. Nondimesionalized pressure fields of 144 or 145 droplets spreading on a substrate. The template has a smaller feature on the left side and a larger one on the
+      right side. Both features are aligned vertically. (a) Square arrangement with equal volume droplets. The unfilled region is not clear from the pressure field, so an extra
+      figure which shows the filling fraction is added. (b) Square arrangement with droplets with distributed volume according to the template structure. (c) Hexagonal arrange-
+      ment with droplets with distributed volume according to the template structure. Pressure is nondimensionalized using the constants defined in the simulation method
+      (Pc ¼ 2γ/H0 ).
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                                       39, 012601-9
+Published under license by AVS.
+                                                                                                               ARTICLE            avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                            distributed volume was more than seven times faster than the
+                                                                                            square arrangement with equal volume case. These simulations
+                                                                                            demonstrated the versatility of the hexagonal arrangement with dis-
+                                                                                            tributed volume. The hexagonal arrangement with volume distribu-
+                                                                                            tion was the best arrangement in several template structures, and it
+                                                                                            was an optimal arrangement for isotropic templates.
+
+
+                                                                                            IV. SUMMARY AND CONCLUSIONS
+                                                                                                  The fluid filling of UVNIL under various template structures
+                                                                                            has been simulated. The foundation of the simulation is lubrication
+                                                                                            theory and the Young–Laplace equation, and the volume of fluid
+                                                                                            method is used to track the merging fluid interface. The key
+                                                                                            finding of this work is that it is necessary to distribute the initial
+                                                                                            amount of resists in the form of droplets according to the template
+      FIG. 11. Figure graphs the height change as a function of time. The graph com-
+                                                                                            structure and density. In practice, a template is composed of
+      pares spreading the pattern of different volume distributions and different droplet   various regions with different structures. The volume and arrange-
+      arrangements under a template with two different feature sizes. The filling time      ment of droplets underneath such a complex template strongly
+      of equal volume drops with the square arrangement took the longest time to fill       affect the imprint time. This study demonstrated the advantage of
+      and distributed volume drops with the hexagonal arrangement took the shortest         the inkjet system used in UVNIL. By distributing the correct
+      time. Height and time are nondimensionalized using the constants defined in           amount of resist underneath the template, one can remove the
+      simulation method (Hc ¼ H0 , Tc ¼ 6μL2 /γH0 ).
+                                                                                            unnecessary fluid transferring step in droplet spreading and reduce
+                                                                                            the total filling time.
+                                                                                                  The capillary pressure and permeability propel anisotropic
+    in previous studies. Thus, three obvious arrangements were simu-                        flow in the UVNIL process that arises from the template struc-
+    lated. In the first arrangement [Fig. 10(a)], droplets are arranged                     ture.14 Thus, when two or more structures are mixed in a template,
+    in a square pattern, and each droplet has equal volume. The                             different fluid flow patterns arise from a single template. In this
+    second arrangement [Fig. 10(b)] is a square arrangement with                            study, three different template patterns were studied: flat and line
+    distributed volume. The third arrangement [Fig. 10(c)] is a hex-                        and space, orthogonal line and space, and line and space with dif-
+    agonal arrangement with distributed volume. These arrange-                              ferent feature sizes. The mix of structures in templates causes a
+    ments are the same as the arrangement used is important for                             regionally varied fluid flow. For the flat region, the droplets spread
+    volume distribution.                                                                    isotopically, and for the line and space region, the droplets spread
+         Clearly, the square arrangement with equal volume is the                           faster in the direction parallel to the patterns due to higher perme-
+    worst choice out of the three, but it was simulated in order to                         ability and pressure gradient in the direction parallel to the pat-
+    see the improvement in the filling time. The square arrangement                         terns. In order to deal with multiple fluid flow patterns, the droplet
+    with equal volume assigns excess volume in region 1 but insuffi-                        placement was regionally optimized. The optimized droplet
+    cient volume in region 2. For the equal volume case [Fig. 10(a)],                       arrangement further reduced the total filling time, and the impor-
+    the volume required to fill region 1 is L2 /2(Hf þ ΔH/4) and                            tance of droplet arrangements was demonstrated. However, the
+    region 2 is L2 /2(Hf þ ΔH/2), but L2 /2(Hf þ 3ΔH/8) is assigned                         regional optimization strategy cannot be applied because the
+    to each region. Thus, an excess of L2 ΔH/16 in region 1 and                             optimal arrangement is not known or because of constraints. In
+    deficit of L2 ΔH/16 in region 2. It is interesting that this case                       this study, regional optimization cannot be applied to a template
+    [Fig. 10(a)] requires less volume to transfer than the case shown                       with two different feature sizes because of droplet number con-
+    in Fig. 4(a), which requires L2 ΔH/8 to transfer, but it talks                          straints. When comparing the hexagonal arrangement with the
+    longer time (6.9) to completely fill the template than the case                         square arrangement, the filling time of the hexagonal arrangement
+    shown in Fig. 4(a) (5.8). This is because of the low permeability                       was only a half of the square arrangement. This improvement in
+    in the x-direction caused by the vertical line and space pattern.                       filling time is caused by the versatility of the hexagonal arrange-
+    Figure 10(a) shows a transfer of excess fluid from region 1 to                          ment. The square arrangement can only handle isotropic cases, but
+    region 2. Compared to the best case found in this study, the                            the hexagonal arrangement can handle both isotropic and aniso-
+    square arrangement with equal volume requires a filling time                            tropic templates.
+    that is seven times larger (Fig. 11).                                                         In practice, the regional optimization cannot be applied
+         The square arrangement with distributed volume was about                           because the optimal placement is not known. In such a case, the
+    four times faster than the equal volume case (Fig. 11). The distribu-                   hexagonal arrangement is a good starting point, because the hexag-
+    ted volume removed the unnecessary fluid transfer from region 1                         onal arrangement is versatile and possesses several advantages. The
+    to region 2. However, because of anisotropic flow, early merge                          hexagonal arrangement can handle both isotropic and anisotropic
+    happens in the y-direction, which impedes the spreading. The                            templates. Furthermore, a single hexagonal arrangement can
+    shortest filling time was achieved in the hexagonal arrangement                         handle both horizontal and vertical line and space templates simul-
+    with distributed volume. The hexagonal arrangement with                                 taneously, shown in the orthogonal line and space pattern case.
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                        39, 012601-10
+Published under license by AVS.
+                                                                                                              ARTICLE              avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                        5
+    Thus, a generally good starting point for optimized droplet place-                    T. Ito, K. Emoto, T. Takashima, K. Sakai, W. J. Liu, J. DeYoung, Z. M. Ye, and
+    ment is a hexagonal arrangement of droplets with the total volume                   D. LaBrake, J. Photopolym. Sci. Technol. 29, 2 (2016).
+                                                                                        6
+    required to fill their region of the template.                                        L. Heyderman, H. Schift, C. David, J. Gobrecht, and T. Schweizer,
+                                                                                        Microelectron. Eng. 54, 3 (2000).
+                                                                                        7
+                                                                                          A. Jain, Simulation of UV Nanoimprint Lithography on Rigid and Flexible
+    ACKNOWLEDGMENTS                                                                     Substrates (The University of Texas at Austin, Austin, TX, 2016).
+                                                                                        8
+         The authors acknowledge the Texas Advanced Computing                             V. Sirotkin, A. Svintsov, H. Schift, and S. Zaitsev, Microelectron. Eng. 84, 5
+                                                                                        (2007).
+    Center (TACC) at The University of Texas at Austin for providing                    9
+                                                                                          V. Sirotkin, A. Svintsov, S. Zaitsev, and H. Schift, Microelectron. Eng. 83, 4
+    High Performance Computing resources that have contributed to                       (2006).
+    the research results reported within this paper. Funding for this                   10
+                                                                                           M. Colburn, B. J. Choi, S. Sreenivasan, R. T. Bonnecaze, and C. G. Willson,
+    project was provided by the NASCENT Engineering Research                            Microelectron. Eng. 75, 3 (2004).
+    Center supported by the National Science Foundation under                           11
+                                                                                           S. Reddy and R. T. Bonnecaze, Microelectron. Eng. 82, 1 (2005).
+                                                                                        12
+    Cooperative Agreement No. EEC-1160494.                                                 A. Jain, A. Spann, and R. T. Bonnecaze, J. Vac. Sci. Technol. B 35, 011602
+                                                                                        (2017).
+                                                                                        13
+    DATA AVAILABILITY                                                                      A. Jain, A. Spann, A. Cochrane, P. R. Schunk, and R. T. Bonnecaze,
+                                                                                        Microelectron. Eng. 173, 5 (2017).
+                                                                                        14
+         The data that support the findings of this study are available                    Y. H. Ban and R. T. Bonnecaze, J. Vac. Sci. Technol. B 38, 2 (2020).
+                                                                                        15
+    within the article.                                                                    J. Berthier, K. A. Brakke, and E. Berthier, Open Microfluidics (Wiley,
+                                                                                        New York, 2016).
+                                                                                        16
+                                                                                           K. A. Brakke, Exp. Math. 1, 2 (1992).
+    REFERENCES                                                                          17
+                                                                                           S. Reddy, P. R. Schunk, and R. T. Bonnecaze, Phys. Fluids 17, 12 (2005).
+    1                                                                                   18
+      S. V. Sreenivasan, Microsyst. Nanoeng. 3, 17075 (2017).                              D. Morihara, Y. Nagaoka, H. Hiroshima, and Y. Hirai, J. Vac. Sci. Technol. B
+    2
+      D. Lentz, G. Doyle, M. Miller, G. Schmidt, M. Ganapathisuramanian, X. Lu,         27, 6 (2009).
+                                                                                        19
+    D. Resnick, and D. L. LaBrake, Proc. SPIE 6517, 65172F (2007).                         Y. Nagaoka, D. Morihara, H. Hiroshima, and Y. Hirai, J. Photopolym. Sci.
+    3
+      F. Hua et al., Nano Lett. 4, 12 (2004).                                           Technol. 22, 2 (2009).
+    4                                                                                   20
+      S. H. Ahn, S. Yang, M. Miller, M. Ganapathisubramanian, M. Menezes,                  S. Chauhan, F. Palmieri, R. T. Bonnecaze, and C. G. Willson, J. Vac. Sci.
+    J. H. Choi, F. Y. Xu, D. J. Resnick, and S. Sreenivasan, J. Micro/Nanolithography   Technol. B 27, 1926 (2009).
+                                                                                        21
+    MEMS MOEMS 12, 3 (2013).                                                               C. W. Hirt and B. D. Nichols, J. Comput. Phys. 39, 1 (1981).
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                            39, 012601-11
+Published under license by AVS.
+

@@ -1,0 +1,6 @@
+﻿component,limit_relative,limit_percent,ratio_definition,evidence_type
+spatial,0.0012,0.12,Q_space/Q_Stokes_exact - 1,"conditional estimator, not established bound"
+algebraic,0.0001,0.01,successive numerical reference ratio minus one,"tightened solve comparison, not yet run"
+quadrature,0.0001,0.01,successive numerical reference ratio minus one,"increased quadrature comparison, not yet run"
+Stokes_to_NS,0.0005,0.05,Q_NS/Q_Stokes - 1,"model-gap comparison, unavailable in minimal scope"
+LBM_stop,0.0005,0.05,Q_late/Q_old - 1,"same-grid time comparison, deferred"

@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-11-02T20:23:16.198526+08:00",
+  "authorization_source": "reply_to_async_question",
+  "question_item_id": "[\"request_user_input_async\",\"call_f02c82b439174d8e88811c959f7b4bb8\",0]",
+  "question_verbatim": "是否现在授权 S2 的沿槽 P、横槽 T 两条 1.25 nm 有限性能推进：每条启动起最多 1800 秒，或首次观察到完整诊断 step≥2048 即停止，以先到者为准；P 证据不足或异常时不进入 T？本次只让我生成正式绑定合同和一条命令，由你本人手动启动，不包含正式 S2 计算。",
+  "answer_verbatim": "现在授权两条有限性能推进；生成合同和命令，由我手动启动",
+  "user_instruction_verbatim": "现在授权两条有限性能推进；生成合同和命令，由我手动启动",
+  "verbatim_recorded_from_typed_sentence": false,
+  "user_explicitly_authorized": true,
+  "performance_time_stepping_authorized": true,
+  "formal_simulation_authorized": false,
+  "approved_benchmark_run_ids": [
+    "URV_S2_PERF_P_dx1p25_v1_20261102_01",
+    "URV_S2_PERF_T_dx1p25_v1_20261102_01"
+  ],
+  "AI_may_start_native": false,
+  "user_manually_starts": true,
+  "automatic_retry_authorized": false,
+  "budget": {
+    "wall_cap_seconds_per_case": 1800,
+    "observed_complete_diagnostic_target_step": 2048,
+    "stop_when": "first of complete diagnostic step >=2048 or 1800s since process start",
+    "monitor_sample_seconds": 1,
+    "SIGTERM_grace_seconds": 10,
+    "SIGKILL_after_grace": true,
+    "automatic_retry": false,
+    "automatic_extension": false
+  },
+  "purpose": "S2_PERFORMANCE_NOT_REFERENCE"
+}

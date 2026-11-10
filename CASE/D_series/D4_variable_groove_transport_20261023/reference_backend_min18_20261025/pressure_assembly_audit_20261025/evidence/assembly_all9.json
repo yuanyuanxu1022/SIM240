@@ -1,0 +1,495 @@
+{
+  "schema": "D4_MIXED_ASSEMBLY_AUDIT_v1",
+  "status": "COMPLETE",
+  "planned_ids": [
+    "B0MIN_FLAT_T_d5",
+    "B0MIN_FLAT_T_d2p5",
+    "B0MIN_FLAT_T_d1p25",
+    "B0MIN_MMS_mixed_N8",
+    "B0MIN_MMS_mixed_N16",
+    "B0MIN_MMS_mixed_N32",
+    "B0MIN_FLAT_T_d1p25_ALG",
+    "B0MIN_MMS_mixed_N32_ALG",
+    "B0MIN_MMS_mixed_N32_QUAD"
+  ],
+  "records": [
+    {
+      "planned_id": "B0MIN_FLAT_T_d5",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_FLAT_T_d5"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.624432070995681,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_FLAT_T_d5",
+        "quadrature_degree": 8,
+        "mesh_sha256": "2f7bc358a0512c91eda130bf09af93b9024120b8ac790e73d39c8027b9a32b26",
+        "periodic_mapping_sha256": "b35f8ae2a2bf71f5be74e8e92603edf67007197e0b15e6d82ccfcd854a7de88f",
+        "periodic_slave_count": 74,
+        "matrix_shape": [
+          6798,
+          6798
+        ],
+        "matrix_nnz": 199124,
+        "matrix_csr_sha256": "b8f5782ed2400acd963f54b96e8c3d3113a9a24025234c595b90a910fd614a64",
+        "rhs_sha256_before_projection": "e4377b65443c1373f655acd75e10042ed730ba104bb3e00932dbfb7e79a18c10",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 426.15593390218504,
+        "rhs_L2": 0.06808370544045071,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 784,
+        "pressure_slave_dofs": 16,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.14285714285714282,
+          "An_max": 0.035714285714285705,
+          "An_over_A_Frobenius": 0.00033522270017230976,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 1.2258139079467956e-17,
+          "An_max": 5.421010862427522e-19,
+          "An_over_A_Frobenius": 2.8764445369148725e-20,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d2p5",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_FLAT_T_d2p5"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.7275631639640778,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_FLAT_T_d2p5",
+        "quadrature_degree": 8,
+        "mesh_sha256": "1de069478dd5c4fdd4bb59f346ace1df3b8e168cdb356569f0848c545e8e7eb4",
+        "periodic_mapping_sha256": "0e2d22db226d613115dffd50bf590344112f4d06156e4b669211f1323a881334",
+        "periodic_slave_count": 149,
+        "matrix_shape": [
+          26553,
+          26553
+        ],
+        "matrix_nnz": 782819,
+        "matrix_csr_sha256": "4f06ebd7c3ac16bce373aa5647dbf30ede2fbbfd41d1976015e42de135ad1cf6",
+        "rhs_sha256_before_projection": "9ac7491ea4afe8f32611e241b7b4e9fc7c52276e670dfeca2d343e62a2b850b3",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 859.2143413857402,
+        "rhs_L2": 0.03423472595049288,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 3007,
+        "pressure_slave_dofs": 31,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.10153461651336192,
+          "An_max": 0.018236155465055134,
+          "An_over_A_Frobenius": 0.00011817146388595769,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 7.174996995447603e-18,
+          "An_max": 1.3661750847769757e-19,
+          "An_over_A_Frobenius": 8.350648551647513e-21,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d1p25",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_FLAT_T_d1p25"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 1.1268054019892588,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_FLAT_T_d1p25",
+        "quadrature_degree": 8,
+        "mesh_sha256": "626546ccc84f1268f8d5e4d72d865f072f638ac74364fd4e946560dd4f5aaea9",
+        "periodic_mapping_sha256": "1188292119c76c4437ec64e5f92ddd0049a6097c78e4d442c81d511dfcd0e29e",
+        "periodic_slave_count": 299,
+        "matrix_shape": [
+          104943,
+          104943
+        ],
+        "matrix_nnz": 3103649,
+        "matrix_csr_sha256": "fa8d9e39895acdba1addaf2f3f1949d14b9d24e3ce6428319503e7b54fead3a5",
+        "rhs_sha256_before_projection": "20b8ae76a7efe1e06e5fb3f733c6f1f176c169f3a88f8d621d12a24ad03a92e2",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 1725.2970720038243,
+        "rhs_L2": 0.01716537811297255,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 11773,
+        "pressure_slave_dofs": 61,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.07198157507486946,
+          "An_max": 0.0092162962852418,
+          "An_over_A_Frobenius": 4.172126426393768e-05,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 3.795026793474948e-18,
+          "An_max": 3.4433192987405674e-20,
+          "An_over_A_Frobenius": 2.1996367205719898e-21,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N8",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_MMS_mixed_N8"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.6168217859813012,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_MMS_mixed_N8",
+        "quadrature_degree": 8,
+        "mesh_sha256": "3699d077604054967143fdac200d108bba7878ccd1d61e5f26daa9edbb30b4ab",
+        "periodic_mapping_sha256": "c1cb265727e8a0a923d8ba6eb12ef0fb0341ec78ee28994970e883bd0252658f",
+        "periodic_slave_count": 39,
+        "matrix_shape": [
+          1275,
+          1275
+        ],
+        "matrix_nnz": 37277,
+        "matrix_csr_sha256": "eac8083d785fcf2c0a432b6ca2824ab85bbb321f470184863054a9c45ce655dc",
+        "rhs_sha256_before_projection": "f59ae748bc15258510012708fa3c5e51328ab17b1ca5aeaaf24ba1b8b0f11bfc",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 177.15827825860165,
+        "rhs_L2": 0.20718792305725453,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 153,
+        "pressure_slave_dofs": 9,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.24253562503633302,
+          "An_max": 0.08084520834544434,
+          "An_over_A_Frobenius": 0.00136903354119472,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 3.02790620852495e-17,
+          "An_max": 1.734723475976807e-18,
+          "An_over_A_Frobenius": 1.7091531021232052e-19,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N16",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_MMS_mixed_N16"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.6306728139752522,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_MMS_mixed_N16",
+        "quadrature_degree": 8,
+        "mesh_sha256": "def4cc2e96402fee982e96e26ccba01ad81417a3dd89b1a671bb4bb7ebb61105",
+        "periodic_mapping_sha256": "7239ea84d77de169aef3dfc29e152e0fadf638c0a5a708f730515da15901a4b7",
+        "periodic_slave_count": 79,
+        "matrix_shape": [
+          4851,
+          4851
+        ],
+        "matrix_nnz": 142997,
+        "matrix_csr_sha256": "31c6349cbf7116d1e954fb3855c8d618339b969047f8fc48f6588f78bea2fe56",
+        "rhs_sha256_before_projection": "598e41ab6ced16b00f06efb20247eaa199dfd061cc67daebf891e84ef0536856",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 359.7743505773023,
+        "rhs_L2": 0.10483800574008201,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 561,
+        "pressure_slave_dofs": 17,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.17407765595569782,
+          "An_max": 0.0422200330920749,
+          "An_over_A_Frobenius": 0.00048385232487076625,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 1.7136391894288573e-17,
+          "An_max": 4.87890977618477e-19,
+          "An_over_A_Frobenius": 4.763094385909145e-20,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_MMS_mixed_N32"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.6994015079690143,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_MMS_mixed_N32",
+        "quadrature_degree": 8,
+        "mesh_sha256": "a064e750ac8d83a93bd34d8d86aafbdaf1df2098ff5c3ca45bf53cd9ab04890b",
+        "periodic_mapping_sha256": "dbf006c724bf74034aff2a3c8ffa7069335780d7da219690baccddf6c25ea7b4",
+        "periodic_slave_count": 159,
+        "matrix_shape": [
+          18915,
+          18915
+        ],
+        "matrix_nnz": 559493,
+        "matrix_csr_sha256": "92745f942ff6b0a530ce39d6923f3d4e83b8dcaf78cd6b92f33890592acfc528",
+        "rhs_sha256_before_projection": "33f82b0bec8421aac28d7a9bd418c4f0ebe7324ec3bf00b59021b51ae2fb83b7",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 724.9578244436583,
+        "rhs_L2": 0.052721568495730835,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 2145,
+        "pressure_slave_dofs": 33,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.12403473458920843,
+          "An_max": 0.021591675854376522,
+          "An_over_A_Frobenius": 0.00017109234552285056,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 8.666333896229953e-18,
+          "An_max": 1.2197274440461925e-19,
+          "An_over_A_Frobenius": 1.1954259412098362e-20,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d1p25_ALG",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_FLAT_T_d1p25_ALG"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 1.136821781983599,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_FLAT_T_d1p25_ALG",
+        "quadrature_degree": 8,
+        "mesh_sha256": "626546ccc84f1268f8d5e4d72d865f072f638ac74364fd4e946560dd4f5aaea9",
+        "periodic_mapping_sha256": "1188292119c76c4437ec64e5f92ddd0049a6097c78e4d442c81d511dfcd0e29e",
+        "periodic_slave_count": 299,
+        "matrix_shape": [
+          104943,
+          104943
+        ],
+        "matrix_nnz": 3103649,
+        "matrix_csr_sha256": "fa8d9e39895acdba1addaf2f3f1949d14b9d24e3ce6428319503e7b54fead3a5",
+        "rhs_sha256_before_projection": "20b8ae76a7efe1e06e5fb3f733c6f1f176c169f3a88f8d621d12a24ad03a92e2",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 1725.2970720038243,
+        "rhs_L2": 0.01716537811297255,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 11773,
+        "pressure_slave_dofs": 61,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.07198157507486946,
+          "An_max": 0.0092162962852418,
+          "An_over_A_Frobenius": 4.172126426393768e-05,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 3.795026793474948e-18,
+          "An_max": 3.4433192987405674e-20,
+          "An_over_A_Frobenius": 2.1996367205719898e-21,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32_ALG",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_MMS_mixed_N32_ALG"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.6941619599820115,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_MMS_mixed_N32_ALG",
+        "quadrature_degree": 8,
+        "mesh_sha256": "a064e750ac8d83a93bd34d8d86aafbdaf1df2098ff5c3ca45bf53cd9ab04890b",
+        "periodic_mapping_sha256": "dbf006c724bf74034aff2a3c8ffa7069335780d7da219690baccddf6c25ea7b4",
+        "periodic_slave_count": 159,
+        "matrix_shape": [
+          18915,
+          18915
+        ],
+        "matrix_nnz": 559493,
+        "matrix_csr_sha256": "92745f942ff6b0a530ce39d6923f3d4e83b8dcaf78cd6b92f33890592acfc528",
+        "rhs_sha256_before_projection": "33f82b0bec8421aac28d7a9bd418c4f0ebe7324ec3bf00b59021b51ae2fb83b7",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 724.9578244436583,
+        "rhs_L2": 0.052721568495730835,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 2145,
+        "pressure_slave_dofs": 33,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.12403473458920843,
+          "An_max": 0.021591675854376522,
+          "An_over_A_Frobenius": 0.00017109234552285056,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 8.666333896229953e-18,
+          "An_max": 1.2197274440461925e-19,
+          "An_over_A_Frobenius": 1.1954259412098362e-20,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32_QUAD",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pressure_assembly_audit_20261025/probe.py",
+        "B0MIN_MMS_mixed_N32_QUAD"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.7153114230022766,
+      "stderr": "",
+      "result": {
+        "planned_id": "B0MIN_MMS_mixed_N32_QUAD",
+        "quadrature_degree": 12,
+        "mesh_sha256": "a064e750ac8d83a93bd34d8d86aafbdaf1df2098ff5c3ca45bf53cd9ab04890b",
+        "periodic_mapping_sha256": "dbf006c724bf74034aff2a3c8ffa7069335780d7da219690baccddf6c25ea7b4",
+        "periodic_slave_count": 159,
+        "matrix_shape": [
+          18915,
+          18915
+        ],
+        "matrix_nnz": 559493,
+        "matrix_csr_sha256": "798a393589b8b330c62808f44e067dc2d24ed91472db86f5b81994754f329136",
+        "rhs_sha256_before_projection": "408487f94d7eb1e2db796e1aff3d55d32fd90aee861cff7aaf6fcd2b3b668d16",
+        "matrix_values_finite": true,
+        "rhs_values_finite": true,
+        "matrix_symmetric_1e-11": true,
+        "matrix_Frobenius": 724.9578244436583,
+        "rhs_L2": 0.05272156849573083,
+        "pressure_rhs_max_abs": 0.0,
+        "pressure_dofs": 2145,
+        "pressure_slave_dofs": 33,
+        "original_full_pressure_candidate": {
+          "An_L2": 0.12403473458920843,
+          "An_max": 0.021591675854376522,
+          "An_over_A_Frobenius": 0.00017109234552285056,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "reduced_pressure_candidate": {
+          "An_L2": 1.0867116688171126e-17,
+          "An_max": 1.3552527156068805e-19,
+          "An_over_A_Frobenius": 1.498999848234025e-20,
+          "n_dot_b": 0.0,
+          "n_dot_b_over_b_L2": 0.0
+        },
+        "petsc_nullspace_test_reduced": true,
+        "rhs_projection_change_L2": 0.0,
+        "solver_called": false,
+        "field_computed": false
+      }
+    }
+  ],
+  "solver_called": false,
+  "input_sha256": {
+    "protocol/benchmarks18.csv": "fb784710590acdbdc1ac5abdc33cdc542d3643bd4df28d49a85cb12902e85aee",
+    "protocol/method_contract.json": "4914b7c701ff97ac8ba1eeab26569ab3ca07a44cf76ad407eb8df5c24b3aacc9",
+    "src/symbolic_forms.py": "8992ee7879a65c9d289356b5d01a2f8038b962dfc70188f091e2cb5012a7e27f",
+    "src/contract.py": "3d10b8b683dd3901e61de18116697877738256d8d4ef11d6ad5abc8a05231dad",
+    "mesh_periodic_pressure_20261025/interface.py": "5bff1dcc4946e655ade9cc865474dd4a953551c45fe7a5ce29efd54608d88c90",
+    "pressure_assembly_audit_20261025/probe.py": "22ec744c124039ab456d051a0a808915230f3fb49f36151422f99de50300e3d9",
+    "pressure_assembly_audit_20261025/run_audit.py": "9f9bb9f6a08e334f3e06993583ebe567c13d9f5ce572da17697d898cbd5a62a4"
+  }
+}

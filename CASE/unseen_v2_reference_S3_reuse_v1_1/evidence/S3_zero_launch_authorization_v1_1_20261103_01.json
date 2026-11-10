@@ -1,0 +1,80 @@
+{
+  "kind": "USER_AUTHORIZATION_EVIDENCE",
+  "recorded_at": "2026-11-03T13:24:36.396257+08:00",
+  "authorization_source": "user_reply_to_request_user_input_async",
+  "question_item_id": "[\"request_user_input_async\",\"call_35f755d5d0174f219e23b0e27d7a515f\",0]",
+  "user_explicitly_authorized": true,
+  "user_instruction_verbatim": "现在授权上述12＋4；生成合同和命令，由我手动启动",
+  "authorization_question_verbatim": "是否现在授权 S3 v1.1 的12次原生零步调用（四配置各 describe/precheck/initialize，推进0步）及4次初态场读取，失败即停、不重试？本次仅让我在复核封存与资源后生成独立执行合同和一条命令，由你本人手动启动；不包含性能推进或正式计算。",
+  "selected_answer_verbatim": "现在授权上述12＋4；生成合同和命令，由我手动启动",
+  "verbatim_recorded_from_typed_sentence": false,
+  "authorization_recording_note": "Actual selected answer recorded verbatim; scope is supplied by the complete question and answer together.",
+  "stage": "S3_REG_LINEARITY",
+  "addendum_id": "URV-S3-S1-ELF-REUSE-v1.1",
+  "audit_id": "URV_S3_ZERO_v1_1_20261103_01",
+  "preparation_A_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/preparation_A.json",
+  "preparation_A_sha256": "7f6ca19de96949a537802f92804c787cf092e8de0eb10c681ed279736a2d3695",
+  "native_zero_step_authorized": true,
+  "initial_field_readback_authorized": true,
+  "native_calls_authorized": 12,
+  "initial_field_reads_authorized": 4,
+  "allowed_native_modes": [
+    "describe",
+    "precheck",
+    "initialize"
+  ],
+  "actual_time_steps_authorized": 0,
+  "native_call_wall_cap_seconds": 300,
+  "field_read_wall_cap_seconds": 300,
+  "approved_audit_run_ids": [
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a50000_describe",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a50000_precheck",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a50000_initialize",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a50000_describe",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a50000_precheck",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a50000_initialize",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a200000_describe",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a200000_precheck",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a200000_initialize",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a200000_describe",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a200000_precheck",
+    "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a200000_initialize"
+  ],
+  "approved_initial_field_reads": [
+    {
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a50000",
+      "initialization_run_id": "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a50000_initialize",
+      "initialization_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/URV1_U_REG_P_dx2p5_a50000/initialize",
+      "field_readback_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/field_readback_URV1_U_REG_P_dx2p5_a50000.json"
+    },
+    {
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a50000",
+      "initialization_run_id": "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a50000_initialize",
+      "initialization_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/URV1_U_REG_T_dx2p5_a50000/initialize",
+      "field_readback_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/field_readback_URV1_U_REG_T_dx2p5_a50000.json"
+    },
+    {
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a200000",
+      "initialization_run_id": "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_P_dx2p5_a200000_initialize",
+      "initialization_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/URV1_U_REG_P_dx2p5_a200000/initialize",
+      "field_readback_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/field_readback_URV1_U_REG_P_dx2p5_a200000.json"
+    },
+    {
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a200000",
+      "initialization_run_id": "ZERO_URV_S3_ZERO_v1_1_20261103_01_URV1_U_REG_T_dx2p5_a200000_initialize",
+      "initialization_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/URV1_U_REG_T_dx2p5_a200000/initialize",
+      "field_readback_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/audits/URV_S3_ZERO_v1_1_20261103_01/field_readback_URV1_U_REG_T_dx2p5_a200000.json"
+    }
+  ],
+  "approved_run_ids": [],
+  "simulation_authorized": false,
+  "formal_simulation_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "AI_may_start_solver": false,
+  "user_manually_starts": true,
+  "automatic_retry_authorized": false,
+  "automatic_extension_authorized": false,
+  "failure_policy": "STOP_WITHOUT_RETRY",
+  "S4_authorized": false,
+  "S5_authorized": false
+}

@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-10-29T18:05:23.343283+00:00",
+  "run_id": "SDI_C02_v1_1_20261030_01",
+  "execution_status": "completed",
+  "start_time_local": "2026-10-30T02:02:08.085390+08:00",
+  "end_time_local": "2026-10-30T02:02:08.128443+08:00",
+  "steps": [
+    {
+      "label": "two_dimensional",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/bin/darcy2d",
+        "--input",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/common/C02_2d.txt",
+        "--output",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional"
+      ],
+      "exit_code": 0,
+      "seconds": 0.009219169616699219,
+      "timed_out": false
+    },
+    {
+      "label": "openfoam",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/bin/depthAveragedDarcyFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam"
+      ],
+      "exit_code": 0,
+      "seconds": 0.033237457275390625,
+      "timed_out": false
+    }
+  ],
+  "tmux_check_exit_code": 1,
+  "tmux_check_message": "no server running on /tmp/tmux-1000/default",
+  "completion_evidence": "execution.json, two independent exit codes and complete outputs, not tmux absence alone",
+  "solver_started_or_rerun_by_analysis": false
+}

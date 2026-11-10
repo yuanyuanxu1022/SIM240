@@ -1,0 +1,672 @@
+
+/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/build/urv_reference:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+000000000003fbf0 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0>:
+   3fbf0:	push   rbp
+   3fbf1:	vpxor  xmm0,xmm0,xmm0
+   3fbf5:	mov    rbp,rsp
+   3fbf8:	push   r15
+   3fbfa:	mov    r15,rcx
+   3fbfd:	push   r14
+   3fbff:	mov    r14,rdi
+   3fc02:	push   r13
+   3fc04:	push   r12
+   3fc06:	mov    r12,rdx
+   3fc09:	push   rbx
+   3fc0a:	mov    rbx,rsi
+   3fc0d:	sub    rsp,0x148
+   3fc14:	mov    rax,QWORD PTR fs:0x28
+   3fc1d:	mov    QWORD PTR [rsp+0x138],rax
+   3fc25:	xor    eax,eax
+   3fc27:	vmovdqu YMMWORD PTR [rdi+0x40],ymm0
+   3fc2c:	test   r8d,r8d
+   3fc2f:	vmovdqu XMMWORD PTR [rdi+0xa0],xmm0
+   3fc37:	vmovdqu YMMWORD PTR [rdi],ymm0
+   3fc3b:	vmovdqu YMMWORD PTR [rdi+0x20],ymm0
+   3fc40:	vmovdqu YMMWORD PTR [rdi+0x60],ymm0
+   3fc45:	vmovdqu YMMWORD PTR [rdi+0x80],ymm0
+   3fc4d:	vmovapd xmm0,XMMWORD PTR [rip+0xa42eb]        # e3f40 <_ZSt19piecewise_construct+0x438>
+   3fc55:	mov    BYTE PTR [rdi+0xa8],0x1
+   3fc5c:	vmovupd XMMWORD PTR [rdi+0x40],xmm0
+   3fc61:	jne    4022e <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x63e>
+   3fc67:	mov    eax,DWORD PTR [rip+0xd23bf]        # 11202c <_ZN12_GLOBAL__N_12nxE>
+   3fc6d:	mov    rdi,rsi
+   3fc70:	test   eax,eax
+   3fc72:	lea    edx,[rax+0x7]
+   3fc75:	cmovns edx,eax
+   3fc78:	sar    edx,0x3
+   3fc7b:	mov    DWORD PTR [rsp+0x40],edx
+   3fc7f:	mov    edx,eax
+   3fc81:	shr    edx,0x1f
+   3fc84:	add    eax,edx
+   3fc86:	sar    eax,1
+   3fc88:	mov    DWORD PTR [rsp+0x24],eax
+   3fc8c:	vzeroupper
+   3fc8f:	call   3ebb0 <_ZN3olb12SuperLatticeIdNS_11descriptors5D3Q19IJNS1_5FORCEEEEEE20setProcessingContextENS_17ProcessingContextE.constprop.0>
+   3fc94:	mov    rax,QWORD PTR [r12+0x10]
+   3fc99:	vxorpd xmm5,xmm5,xmm5
+   3fc9d:	vmovapd XMMWORD PTR [rsp+0x60],xmm5
+   3fca3:	mov    ecx,DWORD PTR [rax+0x38]
+   3fca6:	xor    eax,eax
+   3fca8:	vmovapd XMMWORD PTR [rsp+0x50],xmm5
+   3fcae:	test   ecx,ecx
+   3fcb0:	jle    4089a <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xcaa>
+   3fcb6:	mov    rsi,rbx
+   3fcb9:	mov    rbx,rax
+   3fcbc:	mov    rax,r15
+   3fcbf:	mov    r15,r14
+   3fcc2:	mov    r14,rax
+   3fcc5:	mov    rdx,QWORD PTR [rsi+0x200]
+   3fccc:	mov    rdi,QWORD PTR [r12+0x1f8]
+   3fcd4:	mov    r8,QWORD PTR [rdx+rbx*8]
+   3fcd8:	mov    rax,QWORD PTR [rdi+rbx*8]
+   3fcdc:	mov    BYTE PTR [r12+0x228],0x1
+   3fce5:	mov    edi,DWORD PTR [r8+0x8]
+   3fce9:	mov    QWORD PTR [rsp+0x28],rax
+   3fcee:	test   edi,edi
+   3fcf0:	jle    4014f <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x55f>
+   3fcf6:	mov    DWORD PTR [rsp+0x44],0x0
+   3fcfe:	mov    ecx,DWORD PTR [r8+0xc]
+   3fd02:	mov    QWORD PTR [rsp+0x38],r8
+   3fd07:	mov    QWORD PTR [rsp+0x18],rbx
+   3fd0c:	mov    QWORD PTR [rsp+0x10],rsi
+   3fd11:	mov    QWORD PTR [rsp+0x8],r12
+   3fd16:	mov    r12,r15
+   3fd19:	test   ecx,ecx
+   3fd1b:	jle    40124 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x534>
+   3fd21:	mov    rax,QWORD PTR [rsp+0x38]
+   3fd26:	mov    r13d,DWORD PTR [rax+0x10]
+   3fd2a:	xor    eax,eax
+   3fd2c:	nop    DWORD PTR [rax+0x0]
+   3fd30:	vmovd  xmm6,DWORD PTR [rsp+0x44]
+   3fd36:	test   r13d,r13d
+   3fd39:	vpinsrd xmm10,xmm6,eax,0x1
+   3fd3f:	jle    4011c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x52c>
+   3fd45:	mov    DWORD PTR [rsp+0x20],eax
+   3fd49:	xor    ebx,ebx
+   3fd4b:	lea    r15,[rsp+0x90]
+   3fd53:	vmovq  QWORD PTR [rsp+0x48],xmm10
+   3fd59:	jmp    3fd6c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x17c>
+   3fd5b:	nop    DWORD PTR [rax+rax*1+0x0]
+   3fd60:	add    ebx,0x1
+   3fd63:	cmp    ebx,r13d
+   3fd66:	jge    40105 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x515>
+   3fd6c:	mov    rax,QWORD PTR [rsp+0x48]
+   3fd71:	mov    rdi,QWORD PTR [rsp+0x28]
+   3fd76:	mov    rsi,r15
+   3fd79:	mov    DWORD PTR [rsp+0x98],ebx
+   3fd80:	mov    QWORD PTR [rsp+0x90],rax
+   3fd88:	call   639a0 <_ZNK3olb13BlockGeometryIdLj3EE11getMaterialENS_6VectorIiLj3EEE>
+   3fd8d:	cmp    eax,0x1
+   3fd90:	jne    3fd60 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x170>
+   3fd92:	mov    rax,QWORD PTR [rsp+0x48]
+   3fd97:	mov    rsi,QWORD PTR [rsp+0x38]
+   3fd9c:	lea    rdx,[rsp+0x70]
+   3fda1:	mov    rdi,r15
+   3fda4:	mov    QWORD PTR [rsp+0x30],rdx
+   3fda9:	lea    r13,[rip+0x7ae0]        # 47890 <_ZN3olb20ConcreteBlockLatticeIdNS_11descriptors5D3Q19IJNS1_5FORCEEEEELNS_8PlatformE0EE11getDynamicsEj>
+   3fdb0:	mov    QWORD PTR [rsp+0x70],rax
+   3fdb5:	mov    DWORD PTR [rsp+0x78],ebx
+   3fdb9:	call   63db0 <_ZN3olb12BlockLatticeIdNS_11descriptors5D3Q19IJNS1_5FORCEEEEEE3getENS_6VectorIiLj3EEE>
+   3fdbe:	vpxor  xmm0,xmm0,xmm0
+   3fdc2:	mov    rdx,QWORD PTR [rsp+0x30]
+   3fdc7:	mov    rdi,QWORD PTR [rsp+0x98]
+   3fdcf:	mov    rsi,QWORD PTR [rsp+0x90]
+   3fdd7:	vmovdqa XMMWORD PTR [rsp+0x70],xmm0
+   3fddd:	mov    QWORD PTR [rsp+0x80],0x0
+   3fde9:	mov    rax,QWORD PTR [rdi]
+   3fdec:	mov    rax,QWORD PTR [rax+0x58]
+   3fdf0:	cmp    rax,r13
+   3fdf3:	jne    40878 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc88>
+   3fdf9:	mov    rax,QWORD PTR [rdi+0x148]
+   3fe00:	mov    esi,esi
+   3fe02:	mov    rdi,QWORD PTR [rax+rsi*8]
+   3fe06:	mov    rax,QWORD PTR [rdi]
+   3fe09:	mov    rsi,r15
+   3fe0c:	call   QWORD PTR [rax+0x40]
+   3fe0f:	mov    rdi,QWORD PTR [rsp+0x98]
+   3fe17:	mov    rsi,QWORD PTR [rsp+0x90]
+   3fe1f:	mov    rax,QWORD PTR [rdi]
+   3fe22:	mov    rax,QWORD PTR [rax+0x58]
+   3fe26:	cmp    rax,r13
+   3fe29:	jne    40868 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc78>
+   3fe2f:	mov    rax,QWORD PTR [rdi+0x148]
+   3fe36:	mov    esi,esi
+   3fe38:	mov    rdi,QWORD PTR [rax+rsi*8]
+   3fe3c:	mov    rax,QWORD PTR [rdi]
+   3fe3f:	mov    rsi,r15
+   3fe42:	call   QWORD PTR [rax+0x38]
+   3fe45:	vmovsd xmm7,QWORD PTR [rsp+0x78]
+   3fe4b:	vmovsd xmm5,QWORD PTR [rsp+0x70]
+   3fe51:	vmovsd xmm6,QWORD PTR [rsp+0x80]
+   3fe5a:	cmp    BYTE PTR [r14+0xa0],0x0
+   3fe62:	vmovsd xmm3,xmm0,xmm0
+   3fe66:	vmulsd xmm1,xmm7,xmm7
+   3fe6a:	vsubsd xmm8,xmm0,QWORD PTR [rip+0xa404e]        # e3ec0 <_ZSt19piecewise_construct+0x3b8>
+   3fe72:	vdivsd xmm4,xmm8,QWORD PTR [rip+0xa3d46]        # e3bc0 <_ZSt19piecewise_construct+0xb8>
+   3fe7a:	vfmadd231sd xmm1,xmm5,xmm5
+   3fe7f:	vfmadd231sd xmm1,xmm6,xmm6
+   3fe84:	vsqrtsd xmm1,xmm1,xmm1
+   3fe88:	je     1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>
+   3fe8e:	cmp    BYTE PTR [r14+0xf0],0x0
+   3fe96:	vmulsd xmm4,xmm4,QWORD PTR [r14+0x98]
+   3fe9f:	je     1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>
+   3fea5:	vmulsd xmm0,xmm0,QWORD PTR [rip+0xa3ea3]        # e3d50 <_ZSt19piecewise_construct+0x248>
+   3fead:	vmovsd xmm2,QWORD PTR [rip+0xd21bb]        # 112070 <_ZN12_GLOBAL__N_12dxE>
+   3feb5:	vmovsd xmm9,QWORD PTR [rsp+0x50]
+   3febb:	vandpd xmm13,xmm9,XMMWORD PTR [rip+0xa3c4d]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3fec3:	vmovddup xmm11,xmm2
+   3fec7:	add    QWORD PTR [r12],0x1
+   3fecc:	vaddsd xmm4,xmm4,QWORD PTR [r14+0xe8]
+   3fed5:	vmovsd xmm10,QWORD PTR [rsp+0x60]
+   3fedb:	vmulsd xmm0,xmm0,xmm2
+   3fedf:	vunpcklpd xmm0,xmm2,xmm0
+   3fee3:	vmulpd xmm0,xmm0,xmm11
+   3fee8:	vmulpd xmm0,xmm0,xmm11
+   3feed:	vunpckhpd xmm12,xmm0,xmm0
+   3fef1:	vaddpd xmm0,xmm0,XMMWORD PTR [r12+0x8]
+   3fef8:	vaddsd xmm11,xmm12,xmm9
+   3fefd:	vmovupd XMMWORD PTR [r12+0x8],xmm0
+   3ff04:	vandpd xmm0,xmm12,XMMWORD PTR [rip+0xa3c04]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3ff0c:	vcomisd xmm13,xmm0
+   3ff10:	jb     407f8 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc08>
+   3ff16:	vsubsd xmm9,xmm9,xmm11
+   3ff1b:	vaddsd xmm9,xmm9,xmm12
+   3ff20:	vaddsd xmm10,xmm9,xmm10
+   3ff25:	vmovsd xmm9,QWORD PTR [rsp+0x68]
+   3ff2b:	vandpd xmm13,xmm9,XMMWORD PTR [rip+0xa3bdd]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3ff33:	vmovsd xmm12,QWORD PTR [rsp+0x58]
+   3ff39:	vaddsd xmm0,xmm8,xmm9
+   3ff3e:	vunpcklpd xmm15,xmm10,xmm0
+   3ff42:	vandpd xmm10,xmm8,XMMWORD PTR [rip+0xa3bc6]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3ff4a:	vmovapd XMMWORD PTR [rsp+0x60],xmm15
+   3ff50:	vcomisd xmm13,xmm10
+   3ff55:	jb     407e0 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xbf0>
+   3ff5b:	vsubsd xmm9,xmm9,xmm0
+   3ff5f:	vaddsd xmm9,xmm9,xmm8
+   3ff64:	vaddsd xmm12,xmm9,xmm12
+   3ff69:	vunpcklpd xmm0,xmm11,xmm12
+   3ff6e:	vmaxsd xmm10,xmm10,QWORD PTR [r12+0x30]
+   3ff75:	movzx  eax,BYTE PTR [r14+0x40]
+   3ff7a:	cmp    BYTE PTR [r12+0xa8],0x0
+   3ff83:	vmovapd XMMWORD PTR [rsp+0x50],xmm0
+   3ff89:	vmulsd xmm0,xmm3,xmm2
+   3ff8d:	vmovsd QWORD PTR [r12+0x30],xmm10
+   3ff94:	vmulsd xmm0,xmm0,xmm2
+   3ff98:	vfmadd213sd xmm0,xmm2,QWORD PTR [r12+0x28]
+   3ff9f:	vmovsd QWORD PTR [r12+0x28],xmm0
+   3ffa6:	vmaxsd xmm0,xmm1,QWORD PTR [r12+0x38]
+   3ffad:	vmovsd QWORD PTR [r12+0x38],xmm0
+   3ffb4:	vminsd xmm0,xmm4,QWORD PTR [r12+0x40]
+   3ffbb:	vmovsd QWORD PTR [r12+0x40],xmm0
+   3ffc2:	vmaxsd xmm0,xmm4,QWORD PTR [r12+0x48]
+   3ffc9:	vmovsd QWORD PTR [r12+0x48],xmm0
+   3ffd0:	je     40720 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb30>
+   3ffd6:	vandpd xmm3,xmm3,XMMWORD PTR [rip+0xa3b32]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3ffde:	vmovsd xmm8,QWORD PTR [rip+0xa3c7a]        # e3c60 <_ZSt19piecewise_construct+0x158>
+   3ffe6:	vucomisd xmm8,xmm3
+   3ffea:	jb     40720 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb30>
+   3fff0:	vandpd xmm1,xmm1,XMMWORD PTR [rip+0xa3b18]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3fff8:	vucomisd xmm8,xmm1
+   3fffc:	jb     40720 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb30>
+   40002:	test   al,al
+   40004:	vandpd xmm4,xmm4,XMMWORD PTR [rip+0xa3b04]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   4000c:	je     1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>
+   40012:	vmovsd xmm3,QWORD PTR [r14+0x38]
+   40018:	vmovsd xmm1,xmm2,xmm2
+   4001c:	vucomisd xmm8,xmm4
+   40020:	vmovsd xmm9,QWORD PTR [r12+0x58]
+   40027:	vmulsd xmm5,xmm5,xmm3
+   4002b:	vmulsd xmm6,xmm6,xmm3
+   4002f:	vmulsd xmm0,xmm2,xmm5
+   40033:	vmulsd xmm0,xmm0,xmm2
+   40037:	vfmadd213sd xmm1,xmm0,QWORD PTR [r12+0x50]
+   4003e:	vmovsd QWORD PTR [r12+0x50],xmm1
+   40045:	vmulsd xmm1,xmm2,xmm6
+   40049:	vmulsd xmm1,xmm1,xmm2
+   4004d:	vfmadd213sd xmm1,xmm2,QWORD PTR [r12+0x60]
+   40054:	jb     40750 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb60>
+   4005a:	vmulsd xmm3,xmm7,xmm3
+   4005e:	vmulsd xmm4,xmm2,xmm3
+   40062:	vmulsd xmm4,xmm4,xmm2
+   40066:	vfmadd132sd xmm4,xmm9,xmm2
+   4006b:	vandpd xmm2,xmm5,XMMWORD PTR [rip+0xa3a9d]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40073:	vucomisd xmm8,xmm2
+   40077:	vmovsd QWORD PTR [r12+0x58],xmm4
+   4007e:	jb     4088c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc9c>
+   40084:	vandpd xmm3,xmm3,XMMWORD PTR [rip+0xa3a84]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   4008c:	vucomisd xmm8,xmm3
+   40090:	jb     4088c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc9c>
+   40096:	vandpd xmm6,xmm6,XMMWORD PTR [rip+0xa3a72]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   4009e:	vucomisd xmm8,xmm6
+   400a2:	setae  al
+   400a5:	mov    ecx,DWORD PTR [rsp+0x44]
+   400a9:	cmp    DWORD PTR [rsp+0x40],ecx
+   400ad:	mov    BYTE PTR [r12+0xa8],al
+   400b5:	vmovsd QWORD PTR [r12+0x60],xmm1
+   400bc:	jne    400d2 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x4e2>
+   400be:	vaddsd xmm1,xmm0,QWORD PTR [r12+0x98]
+   400c8:	vmovsd QWORD PTR [r12+0x98],xmm1
+   400d2:	mov    ecx,DWORD PTR [rsp+0x44]
+   400d6:	cmp    DWORD PTR [rsp+0x24],ecx
+   400da:	jne    400f0 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x500>
+   400dc:	vaddsd xmm0,xmm0,QWORD PTR [r12+0xa0]
+   400e6:	vmovsd QWORD PTR [r12+0xa0],xmm0
+   400f0:	mov    rax,QWORD PTR [rsp+0x38]
+   400f5:	add    ebx,0x1
+   400f8:	mov    r13d,DWORD PTR [rax+0x10]
+   400fc:	cmp    ebx,r13d
+   400ff:	jl     3fd6c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x17c>
+   40105:	mov    rcx,QWORD PTR [rsp+0x38]
+   4010a:	mov    eax,DWORD PTR [rsp+0x20]
+   4010e:	mov    ecx,DWORD PTR [rcx+0xc]
+   40111:	add    eax,0x1
+   40114:	cmp    ecx,eax
+   40116:	jg     3fd30 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x140>
+   4011c:	mov    rax,QWORD PTR [rsp+0x38]
+   40121:	mov    edi,DWORD PTR [rax+0x8]
+   40124:	add    DWORD PTR [rsp+0x44],0x1
+   40129:	mov    eax,DWORD PTR [rsp+0x44]
+   4012d:	cmp    eax,edi
+   4012f:	jl     3fd19 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x129>
+   40135:	mov    r15,r12
+   40138:	mov    r12,QWORD PTR [rsp+0x8]
+   4013d:	mov    rbx,QWORD PTR [rsp+0x18]
+   40142:	mov    rsi,QWORD PTR [rsp+0x10]
+   40147:	mov    rdx,QWORD PTR [r12+0x10]
+   4014c:	mov    ecx,DWORD PTR [rdx+0x38]
+   4014f:	add    rbx,0x1
+   40153:	cmp    ecx,ebx
+   40155:	jg     3fcc5 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xd5>
+   4015b:	vmovapd xmm5,XMMWORD PTR [rsp+0x60]
+   40161:	movzx  eax,BYTE PTR [r15+0xa8]
+   40169:	mov    r14,r15
+   4016c:	vaddpd xmm0,xmm5,XMMWORD PTR [rsp+0x50]
+   40172:	vmovsd xmm1,QWORD PTR [r15+0x8]
+   40178:	test   al,al
+   4017a:	vmovupd XMMWORD PTR [r15+0x18],xmm0
+   40180:	je     401b1 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x5c1>
+   40182:	vmovq  xmm4,QWORD PTR [rip+0xa3986]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   4018a:	vmovsd xmm3,QWORD PTR [rip+0xa3ace]        # e3c60 <_ZSt19piecewise_construct+0x158>
+   40192:	vmovsd xmm2,xmm0,xmm0
+   40196:	xor    eax,eax
+   40198:	vandpd xmm2,xmm2,xmm4
+   4019c:	vucomisd xmm3,xmm2
+   401a0:	jb     401b1 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x5c1>
+   401a2:	vunpckhpd xmm0,xmm0,xmm0
+   401a6:	vandpd xmm0,xmm0,xmm4
+   401aa:	vucomisd xmm3,xmm0
+   401ae:	setae  al
+   401b1:	vmovupd xmm0,XMMWORD PTR [r14+0x50]
+   401b7:	vmovddup xmm2,xmm1
+   401bb:	vmovsd xmm3,QWORD PTR [rip+0xd4455]        # 114618 <_ZN12_GLOBAL__N_18areaPlanE>
+   401c3:	mov    BYTE PTR [r14+0xa8],al
+   401ca:	vdivpd xmm2,xmm0,xmm2
+   401ce:	vmovupd XMMWORD PTR [r14+0x68],xmm2
+   401d4:	vmovddup xmm2,xmm3
+   401d8:	vdivpd xmm0,xmm0,xmm2
+   401dc:	vmovupd XMMWORD PTR [r14+0x80],xmm0
+   401e5:	vmovsd xmm0,QWORD PTR [r14+0x60]
+   401eb:	vdivsd xmm1,xmm0,xmm1
+   401ef:	vdivsd xmm0,xmm0,xmm3
+   401f3:	vmovsd QWORD PTR [r14+0x78],xmm1
+   401f9:	vmovsd QWORD PTR [r14+0x90],xmm0
+   40202:	mov    rax,QWORD PTR [rsp+0x138]
+   4020a:	sub    rax,QWORD PTR fs:0x28
+   40213:	jne    408a8 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xcb8>
+   40219:	add    rsp,0x148
+   40220:	mov    rax,r14
+   40223:	pop    rbx
+   40224:	pop    r12
+   40226:	pop    r13
+   40228:	pop    r14
+   4022a:	pop    r15
+   4022c:	pop    rbp
+   4022d:	ret
+   4022e:	mov    eax,DWORD PTR [rip+0xd1df4]        # 112028 <_ZN12_GLOBAL__N_12nyE>
+   40234:	mov    rdi,rsi
+   40237:	test   eax,eax
+   40239:	lea    edx,[rax+0x3]
+   4023c:	cmovns edx,eax
+   4023f:	sar    edx,0x2
+   40242:	mov    DWORD PTR [rsp+0x40],edx
+   40246:	lea    edx,[rax+rax*2]
+   40249:	test   edx,edx
+   4024b:	lea    eax,[rdx+0x3]
+   4024e:	cmovns eax,edx
+   40251:	sar    eax,0x2
+   40254:	mov    DWORD PTR [rsp+0x24],eax
+   40258:	vzeroupper
+   4025b:	call   3ebb0 <_ZN3olb12SuperLatticeIdNS_11descriptors5D3Q19IJNS1_5FORCEEEEEE20setProcessingContextENS_17ProcessingContextE.constprop.0>
+   40260:	mov    rax,QWORD PTR [r12+0x10]
+   40265:	mov    esi,DWORD PTR [rax+0x38]
+   40268:	test   esi,esi
+   4026a:	jle    4089a <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xcaa>
+   40270:	xor    eax,eax
+   40272:	vxorpd xmm5,xmm5,xmm5
+   40276:	mov    rdx,rbx
+   40279:	mov    rbx,rax
+   4027c:	mov    rax,r15
+   4027f:	mov    r15,r14
+   40282:	vmovapd XMMWORD PTR [rsp+0x60],xmm5
+   40288:	vmovapd XMMWORD PTR [rsp+0x50],xmm5
+   4028e:	mov    r14,rax
+   40291:	mov    rdi,QWORD PTR [rdx+0x200]
+   40298:	mov    r10,QWORD PTR [rdi+rbx*8]
+   4029c:	mov    rdi,QWORD PTR [r12+0x1f8]
+   402a4:	mov    BYTE PTR [r12+0x228],0x1
+   402ad:	mov    rax,QWORD PTR [rdi+rbx*8]
+   402b1:	mov    edi,DWORD PTR [r10+0x8]
+   402b5:	test   edi,edi
+   402b7:	mov    QWORD PTR [rsp+0x28],rax
+   402bc:	jle    40709 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb19>
+   402c2:	mov    DWORD PTR [rsp+0x20],0x0
+   402ca:	mov    esi,DWORD PTR [r10+0xc]
+   402ce:	mov    QWORD PTR [rsp+0x18],rbx
+   402d3:	mov    QWORD PTR [rsp+0x38],r10
+   402d8:	mov    QWORD PTR [rsp+0x10],rdx
+   402dd:	mov    QWORD PTR [rsp+0x8],r12
+   402e2:	test   esi,esi
+   402e4:	jle    406e1 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xaf1>
+   402ea:	mov    rax,QWORD PTR [rsp+0x38]
+   402ef:	xor    ecx,ecx
+   402f1:	mov    r13d,DWORD PTR [rax+0x10]
+   402f5:	nop    DWORD PTR [rax]
+   402f8:	vmovd  xmm5,DWORD PTR [rsp+0x20]
+   402fe:	test   r13d,r13d
+   40301:	vpinsrd xmm10,xmm5,ecx,0x1
+   40307:	jle    406d9 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xae9>
+   4030d:	mov    rax,r15
+   40310:	mov    DWORD PTR [rsp+0x44],ecx
+   40314:	xor    ebx,ebx
+   40316:	mov    r15d,r13d
+   40319:	lea    r12,[rsp+0x90]
+   40321:	vmovq  QWORD PTR [rsp+0x48],xmm10
+   40327:	mov    r13,rax
+   4032a:	jmp    4033c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x74c>
+   4032c:	nop    DWORD PTR [rax+0x0]
+   40330:	add    ebx,0x1
+   40333:	cmp    ebx,r15d
+   40336:	jge    406b9 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xac9>
+   4033c:	mov    rax,QWORD PTR [rsp+0x48]
+   40341:	mov    rdi,QWORD PTR [rsp+0x28]
+   40346:	mov    rsi,r12
+   40349:	mov    DWORD PTR [rsp+0x98],ebx
+   40350:	mov    QWORD PTR [rsp+0x90],rax
+   40358:	call   639a0 <_ZNK3olb13BlockGeometryIdLj3EE11getMaterialENS_6VectorIiLj3EEE>
+   4035d:	cmp    eax,0x1
+   40360:	jne    40330 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x740>
+   40362:	mov    rax,QWORD PTR [rsp+0x48]
+   40367:	mov    rsi,QWORD PTR [rsp+0x38]
+   4036c:	lea    rdx,[rsp+0x70]
+   40371:	mov    rdi,r12
+   40374:	mov    QWORD PTR [rsp+0x30],rdx
+   40379:	lea    r15,[rip+0x7510]        # 47890 <_ZN3olb20ConcreteBlockLatticeIdNS_11descriptors5D3Q19IJNS1_5FORCEEEEELNS_8PlatformE0EE11getDynamicsEj>
+   40380:	mov    QWORD PTR [rsp+0x70],rax
+   40385:	mov    DWORD PTR [rsp+0x78],ebx
+   40389:	call   63db0 <_ZN3olb12BlockLatticeIdNS_11descriptors5D3Q19IJNS1_5FORCEEEEEE3getENS_6VectorIiLj3EEE>
+   4038e:	vpxor  xmm0,xmm0,xmm0
+   40392:	mov    rdx,QWORD PTR [rsp+0x30]
+   40397:	mov    rdi,QWORD PTR [rsp+0x98]
+   4039f:	mov    rsi,QWORD PTR [rsp+0x90]
+   403a7:	vmovdqa XMMWORD PTR [rsp+0x70],xmm0
+   403ad:	mov    QWORD PTR [rsp+0x80],0x0
+   403b9:	mov    rax,QWORD PTR [rdi]
+   403bc:	mov    rax,QWORD PTR [rax+0x58]
+   403c0:	cmp    rax,r15
+   403c3:	jne    40850 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc60>
+   403c9:	mov    rax,QWORD PTR [rdi+0x148]
+   403d0:	mov    esi,esi
+   403d2:	mov    rdi,QWORD PTR [rax+rsi*8]
+   403d6:	mov    rax,QWORD PTR [rdi]
+   403d9:	mov    rsi,r12
+   403dc:	call   QWORD PTR [rax+0x40]
+   403df:	mov    rdi,QWORD PTR [rsp+0x98]
+   403e7:	mov    rsi,QWORD PTR [rsp+0x90]
+   403ef:	mov    rax,QWORD PTR [rdi]
+   403f2:	mov    rax,QWORD PTR [rax+0x58]
+   403f6:	cmp    rax,r15
+   403f9:	jne    40840 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc50>
+   403ff:	mov    rax,QWORD PTR [rdi+0x148]
+   40406:	mov    esi,esi
+   40408:	mov    rdi,QWORD PTR [rax+rsi*8]
+   4040c:	mov    rax,QWORD PTR [rdi]
+   4040f:	mov    rsi,r12
+   40412:	call   QWORD PTR [rax+0x38]
+   40415:	vmovsd xmm4,QWORD PTR [rsp+0x78]
+   4041b:	vmovsd xmm5,QWORD PTR [rsp+0x70]
+   40421:	vmovsd xmm6,QWORD PTR [rsp+0x80]
+   4042a:	cmp    BYTE PTR [r14+0xa0],0x0
+   40432:	vmovsd xmm3,xmm0,xmm0
+   40436:	vmulsd xmm1,xmm4,xmm4
+   4043a:	vsubsd xmm9,xmm0,QWORD PTR [rip+0xa3a7e]        # e3ec0 <_ZSt19piecewise_construct+0x3b8>
+   40442:	vdivsd xmm2,xmm9,QWORD PTR [rip+0xa3776]        # e3bc0 <_ZSt19piecewise_construct+0xb8>
+   4044a:	vfmadd231sd xmm1,xmm5,xmm5
+   4044f:	vfmadd231sd xmm1,xmm6,xmm6
+   40454:	vsqrtsd xmm1,xmm1,xmm1
+   40458:	je     1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>
+   4045e:	cmp    BYTE PTR [r14+0xf0],0x0
+   40466:	vmulsd xmm2,xmm2,QWORD PTR [r14+0x98]
+   4046f:	je     1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>
+   40475:	vmulsd xmm0,xmm0,QWORD PTR [rip+0xa38d3]        # e3d50 <_ZSt19piecewise_construct+0x248>
+   4047d:	vmovsd xmm7,QWORD PTR [rip+0xd1beb]        # 112070 <_ZN12_GLOBAL__N_12dxE>
+   40485:	vmovsd xmm8,QWORD PTR [rsp+0x50]
+   4048b:	vandpd xmm13,xmm8,XMMWORD PTR [rip+0xa367d]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40493:	vmovddup xmm11,xmm7
+   40497:	add    QWORD PTR [r13+0x0],0x1
+   4049c:	vaddsd xmm2,xmm2,QWORD PTR [r14+0xe8]
+   404a5:	vmovsd xmm10,QWORD PTR [rsp+0x60]
+   404ab:	vmulsd xmm0,xmm0,xmm7
+   404af:	vunpcklpd xmm0,xmm7,xmm0
+   404b3:	vmulpd xmm0,xmm0,xmm11
+   404b8:	vmulpd xmm0,xmm0,xmm11
+   404bd:	vunpckhpd xmm11,xmm0,xmm0
+   404c1:	vaddpd xmm0,xmm0,XMMWORD PTR [r13+0x8]
+   404c7:	vaddsd xmm12,xmm8,xmm11
+   404cc:	vmovupd XMMWORD PTR [r13+0x8],xmm0
+   404d2:	vandpd xmm0,xmm11,XMMWORD PTR [rip+0xa3636]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   404da:	vcomisd xmm13,xmm0
+   404de:	jb     40828 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc38>
+   404e4:	vsubsd xmm8,xmm8,xmm12
+   404e9:	vaddsd xmm8,xmm8,xmm11
+   404ee:	vaddsd xmm10,xmm8,xmm10
+   404f3:	vmovsd xmm8,QWORD PTR [rsp+0x68]
+   404f9:	vandpd xmm13,xmm8,XMMWORD PTR [rip+0xa360f]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40501:	vmovsd xmm0,QWORD PTR [rsp+0x58]
+   40507:	vaddsd xmm11,xmm9,xmm8
+   4050c:	vunpcklpd xmm14,xmm10,xmm11
+   40511:	vandpd xmm10,xmm9,XMMWORD PTR [rip+0xa35f7]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40519:	vmovapd XMMWORD PTR [rsp+0x60],xmm14
+   4051f:	vcomisd xmm13,xmm10
+   40524:	jb     40810 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc20>
+   4052a:	vsubsd xmm8,xmm8,xmm11
+   4052f:	vaddsd xmm8,xmm8,xmm9
+   40534:	vaddsd xmm0,xmm8,xmm0
+   40538:	vunpcklpd xmm0,xmm12,xmm0
+   4053c:	vmaxsd xmm10,xmm10,QWORD PTR [r13+0x30]
+   40542:	movzx  eax,BYTE PTR [r14+0x40]
+   40547:	vmovapd XMMWORD PTR [rsp+0x50],xmm0
+   4054d:	vmulsd xmm0,xmm3,xmm7
+   40551:	cmp    BYTE PTR [r13+0xa8],0x0
+   40559:	vmovsd QWORD PTR [r13+0x30],xmm10
+   4055f:	vmulsd xmm0,xmm0,xmm7
+   40563:	vfmadd213sd xmm0,xmm7,QWORD PTR [r13+0x28]
+   40569:	vmovsd QWORD PTR [r13+0x28],xmm0
+   4056f:	vmaxsd xmm0,xmm1,QWORD PTR [r13+0x38]
+   40575:	vmovsd QWORD PTR [r13+0x38],xmm0
+   4057b:	vminsd xmm0,xmm2,QWORD PTR [r13+0x40]
+   40581:	vmovsd QWORD PTR [r13+0x40],xmm0
+   40587:	vmaxsd xmm0,xmm2,QWORD PTR [r13+0x48]
+   4058d:	vmovsd QWORD PTR [r13+0x48],xmm0
+   40593:	je     40780 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb90>
+   40599:	vandpd xmm3,xmm3,XMMWORD PTR [rip+0xa356f]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   405a1:	vmovsd xmm8,QWORD PTR [rip+0xa36b7]        # e3c60 <_ZSt19piecewise_construct+0x158>
+   405a9:	vucomisd xmm8,xmm3
+   405ad:	jb     40780 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb90>
+   405b3:	vandpd xmm1,xmm1,XMMWORD PTR [rip+0xa3555]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   405bb:	vucomisd xmm8,xmm1
+   405bf:	jb     40780 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xb90>
+   405c5:	test   al,al
+   405c7:	vandpd xmm2,xmm2,XMMWORD PTR [rip+0xa3541]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   405cf:	je     1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>
+   405d5:	vmovsd xmm0,QWORD PTR [r14+0x38]
+   405db:	vucomisd xmm8,xmm2
+   405df:	vmovsd xmm3,QWORD PTR [r13+0x58]
+   405e5:	vmulsd xmm5,xmm5,xmm0
+   405e9:	vmulsd xmm6,xmm6,xmm0
+   405ed:	vmulsd xmm1,xmm7,xmm5
+   405f1:	vmulsd xmm1,xmm1,xmm7
+   405f5:	vfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x50]
+   405fb:	vmovsd QWORD PTR [r13+0x50],xmm1
+   40601:	vmulsd xmm1,xmm7,xmm6
+   40605:	vmulsd xmm1,xmm1,xmm7
+   40609:	vfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x60]
+   4060f:	jb     407aa <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xbba>
+   40615:	vmulsd xmm2,xmm4,xmm0
+   40619:	vandpd xmm5,xmm5,XMMWORD PTR [rip+0xa34ef]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40621:	vucomisd xmm8,xmm5
+   40625:	vmulsd xmm0,xmm7,xmm2
+   40629:	vmulsd xmm0,xmm0,xmm7
+   4062d:	vfmadd231sd xmm3,xmm7,xmm0
+   40632:	vmovsd QWORD PTR [r13+0x58],xmm3
+   40638:	jb     40893 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xca3>
+   4063e:	vandpd xmm2,xmm2,XMMWORD PTR [rip+0xa34ca]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40646:	vucomisd xmm8,xmm2
+   4064a:	jb     40893 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xca3>
+   40650:	vandpd xmm6,xmm6,XMMWORD PTR [rip+0xa34b8]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40658:	vucomisd xmm8,xmm6
+   4065c:	setae  al
+   4065f:	mov    ecx,DWORD PTR [rsp+0x44]
+   40663:	cmp    DWORD PTR [rsp+0x40],ecx
+   40667:	mov    BYTE PTR [r13+0xa8],al
+   4066e:	vmovsd QWORD PTR [r13+0x60],xmm1
+   40674:	jne    40688 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xa98>
+   40676:	vaddsd xmm1,xmm0,QWORD PTR [r13+0x98]
+   4067f:	vmovsd QWORD PTR [r13+0x98],xmm1
+   40688:	mov    ecx,DWORD PTR [rsp+0x44]
+   4068c:	cmp    DWORD PTR [rsp+0x24],ecx
+   40690:	jne    406a4 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xab4>
+   40692:	vaddsd xmm0,xmm0,QWORD PTR [r13+0xa0]
+   4069b:	vmovsd QWORD PTR [r13+0xa0],xmm0
+   406a4:	mov    rax,QWORD PTR [rsp+0x38]
+   406a9:	add    ebx,0x1
+   406ac:	mov    r15d,DWORD PTR [rax+0x10]
+   406b0:	cmp    ebx,r15d
+   406b3:	jl     4033c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x74c>
+   406b9:	mov    rax,r13
+   406bc:	mov    r13d,r15d
+   406bf:	mov    ecx,DWORD PTR [rsp+0x44]
+   406c3:	mov    r15,rax
+   406c6:	mov    rax,QWORD PTR [rsp+0x38]
+   406cb:	add    ecx,0x1
+   406ce:	mov    esi,DWORD PTR [rax+0xc]
+   406d1:	cmp    esi,ecx
+   406d3:	jg     402f8 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x708>
+   406d9:	mov    rax,QWORD PTR [rsp+0x38]
+   406de:	mov    edi,DWORD PTR [rax+0x8]
+   406e1:	add    DWORD PTR [rsp+0x20],0x1
+   406e6:	mov    eax,DWORD PTR [rsp+0x20]
+   406ea:	cmp    edi,eax
+   406ec:	jg     402e2 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x6f2>
+   406f2:	mov    r12,QWORD PTR [rsp+0x8]
+   406f7:	mov    rbx,QWORD PTR [rsp+0x18]
+   406fc:	mov    rdx,QWORD PTR [rsp+0x10]
+   40701:	mov    rsi,QWORD PTR [r12+0x10]
+   40706:	mov    esi,DWORD PTR [rsi+0x38]
+   40709:	add    rbx,0x1
+   4070d:	cmp    esi,ebx
+   4070f:	jg     40291 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x6a1>
+   40715:	jmp    4015b <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x56b>
+   4071a:	nop    WORD PTR [rax+rax*1+0x0]
+   40720:	test   al,al
+   40722:	je     408ad <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xcbd>
+   40728:	vmovsd xmm3,QWORD PTR [r14+0x38]
+   4072e:	vmovsd xmm1,xmm2,xmm2
+   40732:	vmulsd xmm0,xmm5,xmm3
+   40736:	vmulsd xmm6,xmm6,xmm3
+   4073a:	vmulsd xmm0,xmm0,xmm2
+   4073e:	vmulsd xmm0,xmm0,xmm2
+   40742:	vfmadd213sd xmm1,xmm0,QWORD PTR [r12+0x50]
+   40749:	vmovsd QWORD PTR [r12+0x50],xmm1
+   40750:	vmulsd xmm1,xmm7,xmm3
+   40754:	xor    eax,eax
+   40756:	vmulsd xmm1,xmm1,xmm2
+   4075a:	vmulsd xmm1,xmm1,xmm2
+   4075e:	vfmadd213sd xmm1,xmm2,QWORD PTR [r12+0x58]
+   40765:	vmovsd QWORD PTR [r12+0x58],xmm1
+   4076c:	vmulsd xmm1,xmm6,xmm2
+   40770:	vmulsd xmm1,xmm1,xmm2
+   40774:	vfmadd213sd xmm1,xmm2,QWORD PTR [r12+0x60]
+   4077b:	jmp    400a5 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x4b5>
+   40780:	test   al,al
+   40782:	je     1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>
+   40788:	vmovsd xmm0,QWORD PTR [r14+0x38]
+   4078e:	vmulsd xmm1,xmm5,xmm0
+   40792:	vmulsd xmm6,xmm6,xmm0
+   40796:	vmulsd xmm1,xmm1,xmm7
+   4079a:	vmulsd xmm1,xmm1,xmm7
+   4079e:	vfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x50]
+   407a4:	vmovsd QWORD PTR [r13+0x50],xmm1
+   407aa:	vmulsd xmm0,xmm4,xmm0
+   407ae:	vmovsd xmm1,xmm7,xmm7
+   407b2:	xor    eax,eax
+   407b4:	vmulsd xmm0,xmm0,xmm7
+   407b8:	vmulsd xmm0,xmm0,xmm7
+   407bc:	vfmadd213sd xmm1,xmm0,QWORD PTR [r13+0x58]
+   407c2:	vmovsd QWORD PTR [r13+0x58],xmm1
+   407c8:	vmulsd xmm1,xmm6,xmm7
+   407cc:	vmulsd xmm1,xmm1,xmm7
+   407d0:	vfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x60]
+   407d6:	jmp    4065f <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xa6f>
+   407db:	nop    DWORD PTR [rax+rax*1+0x0]
+   407e0:	vsubsd xmm0,xmm8,xmm0
+   407e4:	vaddsd xmm0,xmm0,xmm9
+   407e9:	vaddsd xmm12,xmm0,xmm12
+   407ee:	jmp    3ff69 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x379>
+   407f3:	nop    DWORD PTR [rax+rax*1+0x0]
+   407f8:	vsubsd xmm12,xmm12,xmm11
+   407fd:	vaddsd xmm12,xmm12,xmm9
+   40802:	vaddsd xmm10,xmm12,xmm10
+   40807:	jmp    3ff25 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x335>
+   4080c:	nop    DWORD PTR [rax+0x0]
+   40810:	vsubsd xmm11,xmm9,xmm11
+   40815:	vaddsd xmm11,xmm11,xmm8
+   4081a:	vaddsd xmm0,xmm11,xmm0
+   4081e:	jmp    40538 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x948>
+   40823:	nop    DWORD PTR [rax+rax*1+0x0]
+   40828:	vsubsd xmm11,xmm11,xmm12
+   4082d:	vaddsd xmm11,xmm11,xmm8
+   40832:	vaddsd xmm10,xmm11,xmm10
+   40837:	jmp    404f3 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x903>
+   4083c:	nop    DWORD PTR [rax+0x0]
+   40840:	call   rax
+   40842:	mov    rdi,rax
+   40845:	jmp    4040c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x81c>
+   4084a:	nop    WORD PTR [rax+rax*1+0x0]
+   40850:	mov    QWORD PTR [rsp+0x30],rdx
+   40855:	call   rax
+   40857:	mov    rdx,QWORD PTR [rsp+0x30]
+   4085c:	mov    rdi,rax
+   4085f:	jmp    403d6 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x7e6>
+   40864:	nop    DWORD PTR [rax+0x0]
+   40868:	call   rax
+   4086a:	mov    rdi,rax
+   4086d:	jmp    3fe3c <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x24c>
+   40872:	nop    WORD PTR [rax+rax*1+0x0]
+   40878:	mov    QWORD PTR [rsp+0x30],rdx
+   4087d:	call   rax
+   4087f:	mov    rdx,QWORD PTR [rsp+0x30]
+   40884:	mov    rdi,rax
+   40887:	jmp    3fe06 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x216>
+   4088c:	xor    eax,eax
+   4088e:	jmp    400a5 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x4b5>
+   40893:	xor    eax,eax
+   40895:	jmp    4065f <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xa6f>
+   4089a:	vxorpd xmm1,xmm1,xmm1
+   4089e:	mov    eax,0x1
+   408a3:	jmp    401b1 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0x5c1>
+   408a8:	call   1c090 <__stack_chk_fail@plt>
+   408ad:	jmp    1f2af <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0.cold>

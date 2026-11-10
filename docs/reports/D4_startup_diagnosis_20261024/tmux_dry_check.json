@@ -1,0 +1,18 @@
+{
+  "test": "tmux exact shell form with --execute removed",
+  "command": "cd /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023 && exec /usr/bin/python3 development_remaining14_20261024/run_remaining.py --batch-id development_remaining14_20261024_v1 > /home/dell/yuanyuanxu/SIM240/docs/reports/D4_startup_diagnosis_20261024/tmux_dry_check.log 2>&1",
+  "tmux_exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "log_exists": true,
+  "log_text": "Traceback (most recent call last):\n  File \"/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py\", line 119, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py\", line 114, in main\n    selected,batch,resources=validate_ready(a.batch_id,release)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py\", line 66, in validate_ready\n    selected=validate_table();validate_binding(release);runtime_environment(release)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py\", line 47, in validate_binding\n    if not Path(p).is_file() or sha(p)!=h:raise RuntimeError('bound input changed: '+p)\n                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: bound input changed: CASE/D_series/D4_variable_groove_transport_20261023/development_completion_plan_20261024/case_budget26.csv\n",
+  "formal_solver_started": false,
+  "selected_environment": {
+    "SHELL": "/bin/bash",
+    "BASH_ENV": null,
+    "TMUX_TMPDIR": null,
+    "PYTHONHOME": null,
+    "LD_LIBRARY_PATH": "/home/dell/OpenFOAM/ThirdParty-13/platforms/linux64Gcc/gperftools-svn/lib:/usr/lib/x86_64-linux-gnu:/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/paraview-5.11:/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/openmpi-system:/home/dell/OpenFOAM/ThirdParty-13/platforms/linux64GccDPInt32/lib/openmpi-system:/usr/lib/x86_64-linux-gnu/openmpi/lib:/home/dell/OpenFOAM/dell-13/platforms/linux64GccDPInt32Opt/lib:/home/dell/OpenFOAM/site/13/platforms/linux64GccDPInt32Opt/lib:/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib:/home/dell/OpenFOAM/ThirdParty-13/platforms/linux64GccDPInt32/lib:/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/lib/dummy",
+    "LD_PRELOAD": null
+  }
+}

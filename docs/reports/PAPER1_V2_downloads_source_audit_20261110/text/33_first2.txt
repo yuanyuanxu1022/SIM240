@@ -1,0 +1,118 @@
+Engineering with Computers (2025) 41:4605–4623
+https://doi.org/10.1007/s00366-025-02217-w
+
+    ORIGINAL ARTICLE
+
+
+
+A hybrid Lattice-Boltzmann model for hydro-electrochemical
+modeling and sensitivity analysis of crystallization potential in
+nanoporous media. Part II: application to the identification and
+quantification of influencing factors of phosphate saturation
+Fedor Bukreev1,2 · Adrian Kummerländer1,3 · Julius Jeßberger1,3 · Dennis Teutscher1,2 · Shota Ito1,2 ·
+Stephan Simonis1,3 · Davide Dapelo4 · Mohaddeseh M. Nezhad4 · Hermann Nirschl2 · Mathias J. Krause1,2,3
+
+Received: 25 February 2025 / Accepted: 21 September 2025 / Published online: 13 October 2025
+© The Author(s) 2025
+
+
+Abstract
+This paper series considers the process of hydro-electrochemical saturation in nano-scale porous media. In Part I, we intro-
+duced a novel, synchronous, and integrated numerical model for hydro-electro-chemo-dynamics simulation and sensitivity
+analysis of nanoscale crystallization potential, and validated each of its components separately. In this Part II, we apply
+this methodology to perform the integrated simulations of complex 2D and 3D nanopore systems that exhibit electro-
+chemical, hydrodynamic, and crystallization phenomena, in pair with sensitivity analysis. The phenomenon chosen for this
+analysis is the formation of octa-calcium phosphate in the calcium silicate hydrate. A reactive Navier–Stokes–Poisson–
+Nernst–Planck equation system for three ions types in the moving fluid and in the presence of a dynamic electric field is
+discretized using lattice Boltzmann methods. Using automatic differentiation, simplified two-dimensional models of open
+and blind pores as well as a three-dimensional µCT scan of a porous rock are investigated with respect to the influences
+of electric surface potential, pore width and length, carrier fluid velocity and ion concentrations on octacalcium phosphate
+saturation. These simulations reveal new previously unknown insights into the crystallization process in nanopores—spe-
+cifically, that narrow long blind pores with higher surface electric potential promote saturation probability. Moreover, large
+geometries with bigger pore systems accumulate more ions in their center locally in comparison to the smaller systems.
+
+Keywords Nanoporous geometry · Phosphates crystallization · Saturation · Electro-chemistry · Lattice-Boltzmann
+method · Automatic differentiation
+
+
+                                                                           1 Introduction
+
+                                                                           The present Part II uses the integrated hydro-electro-chemo-
+     Fedor Bukreev                                                         dynamics sensitivity assessing solver we presented in Part
+     fedor.bukreev@kit.edu                                                 I, to perform comprehensive simulations of the phosphate
+                                                                           crystallization reaction—more specifically, to the octacal-
+1
+     Lattice Boltzmann Research Group (LBRG), Karlsruhe                    cium phosphate (OCP) saturation. This reaction is the main
+     Institute of Technology (KIT), Straße am Forum 8,
+     76131 Karlsruhe, Germany                                              part of the P-RoC process, which is designed for phosphorus
+2
+                                                                           recovery from wastewater for re-utilisation in agriculture
+     Institute of Mechanical Process Engineering and Mechanics
+     (MVM), Karlsruhe Institute of Technology (KIT), Straße am             and the chemical industry [1]. The P-RoC process has a high
+     Forum 8, 76131 Karlsruhe, Germany                                     potential for world economics and ecology protection due to
+3
+     Institute for Applied and Numerical Mathematics (IANM),               its simplicity. An additional crystallization reactor installed
+     Karlsruhe Institute of Technology (KIT), Englerstraße 2,              in the sewage treatment plant would continuously produce
+     76131 Karlsruhe, Germany                                              calcium silicate hydrate (CSH) particles enriched with phos-
+4
+     Department of Civil and Environmental Engineering, School             phates which can be used for further processing steps. In
+     of Engineering, University of Liverpool, Brownlow Hill,               wastewater, an average concentration of phosphates is about
+     Liverpool L69 3GH, UK
+
+
+                                                                                                                               13
+4606                                                                                Engineering with Computers (2025) 41:4605–4623
+
+
+13 M-% [2]. Unfortunately, state-of-the-art efficiency of the    et al. [11]. The nucleation and crystallization basics are
+process is around 15–25 % [3], which is insufficient for         explained in [12]. Ionic reaction with nucleation and crys-
+industrial applications [4, 5]. Current macro-level modeling     tallization on microscale on the example of calcium carbon-
+approaches face inherent limitations in further effectiveness    ate crystal growth was experimentally investigated by Kim
+improving of the process described above. Specifically, the      et al. [13].
+existing framework based on adsorption isotherm ansatzes             In the context of computational fluid dynamics (CFD)
+[6] employs empirically fitted functions to characterize         and the Lattice-Boltzmann method (LBM), the general min-
+reaction equilibrium [7], which restricts the conclusions that   eral precipitation in a porous domain with reactively chang-
+can be drawn about the underlying chemistry.                     ing porosity has been simulated by Ahkami et al. [14]. Due
+   Apart from the crystallization kinetics itself, another       to the reaction mechanism, the saturation product plays the
+important aspect is the transport of chemical species, which     main role in the process. Despite this body of research, until
+is by crystallization macro-modelling divided into diffusion     now, the sensitivity of the saturation product with respect
+from bulk to film around adsorbent micro-particles, film dif-    to design parameters, like pore size, carrier fluid velocity,
+fusion, surface and pore diffusion. They are described on        Helmholtz potential, and reacting ion concentrations, on the
+a macro-level by distinct diffusivity coefficients that repre-   pore level has not been analyzed.
+sent disparate behavior of transported species in the corre-         This work specifically addresses this knowledge gap. In
+sponding regions around and inside of the solid adsorbent.       the first part, a hydro-electrochemical simulation system
+These coefficients are usually derived empirically and do        for nanoporous geometries was developed and validated
+not allow us to investigate the crystallization processes in     against analytical solutions. Tests indicated that the inter-
+detail. Conversely, nano-level simulation of the phosphate       nal Poisson calculation loop can be omitted for stationary
+crystallization would allow to model the above-mentioned         or quasi-stationary scenarios, where changes in the Nernst–
+phenomena without empiricism. More in detail, the model-         Planck and Navier–Stokes equations are much slower than
+lable phenomena are (cfr. Part I):                               changes in electric potential. The system’s sensitivity analy-
+                                                                 sis, using forward automatic differentiation (AD) and finite
+1. Migration of reacting ions from bulk to the pore entrance     difference method (FDM), was validated. Accordingly, the
+   (diffusive, hydraulic and electric transport)                 model has demonstrated the ability to simulate surface ionic
+2. Migration of ions through pore volume (diffusive,             reactions at the nanoscale. In this work (Part II), we apply
+   hydraulic and electric transport)                             it to perform the integrated simulations of phosphate satura-
+3. Contact of ions with pore wall leading to dissolution of      tion, complemented by a sensitivity analysis to identify key
+   calcium cations                                               influencing factors and pore behavior.
+4. Saturation of reactants at the soil surface                       This work is structured as follows. First, 2D simulations
+5. Distinct nucleation of the adsorbate ion based crystal at     of simplified models are performed (Sect. 3). A two-dimen-
+   the point with most appropriate conditions (saturation        sional parameterized simplified simulation domain, which
+   product above one and low surface tension)                    represents a resolved nanoporous system, is analyzed with
+6. Layer-wise growth of the crystal.                             the AD-based sensitivity assessment solver developed in
+                                                                 Part I (Sect. 3.2). The following influence factors are investi-
+Nanoscale investigations of chemical processes have              gated: surface electric potential, pore dimensions, bulk con-
+already been documented in the literature. Experimental and      centrations, and carrier fluid inlet velocity. Two geometries,
+numerical (not CFD) studies demonstrated that the crystal-       respectively representing blind and open pores, are used
+lization reaction of phosphate starts with the dissolution of    (Sect. 3.3). Then, the same approach is applied to investi-
+calcium cations from the CSH pore surface [8, 9]. Concrete       gate a realistic three-dimensional porous system (Sect. 4).
+leaching (similar reaction to calcium dissolution in CSH) on     Special attention is paid to the electric surface potential, as
+multiple scales was simulated numerically by Su et al. [10].     it allows us to differentiate between pore types, and to the
+Considering crystallization on the nanoscale, the incorpora-     size of simulated geometry. The results of the 3D analysis
+tion of separate phosphate ions into the pore surface was        are tested by varying the simulation setup parameters in
+modelled using the extended triple level method by Fukushi       Sect. 4.5. Finally, the main conclusions are summarized in
+
+
+
+
+13
+

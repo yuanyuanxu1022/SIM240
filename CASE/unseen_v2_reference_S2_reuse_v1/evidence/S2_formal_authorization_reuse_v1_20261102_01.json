@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-11-02T22:07:28.050917+08:00",
+  "authorization_source": "reply_to_async_question",
+  "question_item_id": "[\"request_user_input_async\",\"call_20478990c1e340edac12dd55467c2e24\",0]",
+  "question_verbatim": "是否现在采用 S2-FRD-v1 并授权完整六条正式 S2：按 5/2.5/1.25 nm、每档 P→T 顺序，单条时限各为 1/4/12 小时，验收通过才继续，失败即停？这表示第四条通过后会自动进入细网格，接受细网格可能在 12 小时内未完成的风险；求解预算合计 34 小时，检查和文件处理另计。本次只让我生成合同和一条命令，由你手动启动，不授权自动重跑或 S3。",
+  "answer_verbatim": "现在采用并授权正式六条；生成合同和命令，由我手动启动",
+  "user_instruction_verbatim": "现在采用并授权正式六条；生成合同和命令，由我手动启动",
+  "verbatim_recorded_from_typed_sentence": false,
+  "user_explicitly_authorized": true,
+  "stage": "S2_REG_GRID",
+  "adopted_resource_protocol": "S2-FRD-v1",
+  "formal_simulation_authorized": true,
+  "approved_run_ids": [
+    "URV_S2_P_dx5_reuse_v1_20261102_01",
+    "URV_S2_T_dx5_reuse_v1_20261102_01",
+    "URV_S2_P_dx2p5_reuse_v1_20261102_01",
+    "URV_S2_T_dx2p5_reuse_v1_20261102_01",
+    "URV_S2_P_dx1p25_reuse_v1_20261102_01",
+    "URV_S2_T_dx1p25_reuse_v1_20261102_01"
+  ],
+  "AI_may_start_solver": false,
+  "user_manually_starts": true,
+  "automatic_retry_authorized": false,
+  "automatic_extension_authorized": false,
+  "S3_authorized": false,
+  "fourth_to_fifth_automatic_on_acceptance_understood": true,
+  "fine_12h_completion_not_guaranteed_understood": true,
+  "solver_budget_hours": 34,
+  "checker_and_IO_additional": true
+}

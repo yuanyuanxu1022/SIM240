@@ -1,0 +1,62 @@
+{
+  "reviewed_at": "2026-11-03T12:31:37.032496+08:00",
+  "preparation_A_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/preparation_A.json",
+  "preparation_A_sha256": "7f6ca19de96949a537802f92804c787cf092e8de0eb10c681ed279736a2d3695",
+  "inputs_verified": 2437,
+  "original_A_and_2339_inputs_preserved": true,
+  "scientific_files_byte_identical": 13,
+  "prior_report_manifest_verified": true,
+  "prior_postseal_tests_verified": 130,
+  "full_suite_rerun_this_review": false,
+  "protected_files_unchanged": 2464,
+  "baseline_K": {
+    "P": 5.919337058277595e-23,
+    "T": 2.3663885892433063e-23
+  },
+  "read_only_entries": {
+    "formal_default": {
+      "exit_code": 0,
+      "stdout": "{\"PREPARATION_BINDING_CHECK\": true, \"solver_executed\": false, \"simulation_authorized\": false, \"prepared_run_ids\": [\"URV_S3_P_a50000_reuse_v1_1_20261103_01\", \"URV_S3_T_a50000_reuse_v1_1_20261103_01\", \"URV_S3_P_a200000_reuse_v1_1_20261103_01\", \"URV_S3_T_a200000_reuse_v1_1_20261103_01\"], \"zero_audit_status\": \"NOT_EXECUTED\", \"resources_snapshot\": {\"MemAvailable_bytes\": 19626168320, \"disk_free_bytes\": 341208391680}}\n",
+      "stderr": ""
+    },
+    "zero_default": {
+      "exit_code": 0,
+      "stdout": "{\"ZERO_PLAN_BINDING_CHECK\": true, \"solver_executed\": false, \"planned_native_calls\": 12, \"planned_initial_field_reads\": 4, \"native_zero_step_authorized\": false}\n",
+      "stderr": ""
+    }
+  },
+  "closed_A_authority_rejections": [
+    {
+      "name": "zero_authority",
+      "rejected": true,
+      "error": "separate zero-only release required"
+    },
+    {
+      "name": "formal_authority",
+      "rejected": true,
+      "error": "formal S3 release required"
+    }
+  ],
+  "targeted_software_probes": 11,
+  "positive_probe_passed": true,
+  "ten_negative_probes_rejected": true,
+  "R1_R2_SCOPE_REVIEW_PASS": true,
+  "BINDING_INTEGRITY_PASS": true,
+  "preparation_review": "PASS_WITH_NATIVE_AUDIT_PENDING",
+  "new_native_authorization_received": false,
+  "all_execution_permissions_closed": true,
+  "new_execution_release_created": false,
+  "start_command_delivered": false,
+  "native_calls": 0,
+  "VTK_reader_invocations": 0,
+  "time_steps": 0,
+  "builds": 0,
+  "CASE_writes": 0,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "geometry_PASS": null,
+  "RESULT_PASS": false,
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false
+}

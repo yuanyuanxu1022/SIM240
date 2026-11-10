@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-18",
+  "purpose": "Author-requested claim/evidence audit; no editorial assignment; not a new numerical gate",
+  "authorization": "User explicitly asked this assistant to check own chapter5; existing project authorization covers source reads and state maintenance",
+  "handling": "No manuscript text sent to search or another service/tool; hosted assistant was explicitly requested; public literature metadata only in browser queries",
+  "venue_policy": "No submitted-review assignment; journal review-channel checklist not applicable to this author self-review. Future submission policy not assessed in this task.",
+  "human_accountability": "Author final review pending; no human sign-off recorded",
+  "skills": [
+    "peer-review 2.4",
+    "scientific-critical-thinking 1.5",
+    "PDF read-only source inspection"
+  ],
+  "conflicts": "No editorial reviewer role or conflict clearance claimed; AI limits and prior involvement in project drafting disclosed by current context",
+  "retention": "Keep project audit and evidence per existing user instruction; no deletion/move operations",
+  "script_executions": [
+    {
+      "command": "sim240-analysis/bin/python check_existing.py (first version)",
+      "exit_code": 1,
+      "reason": "SciPy not installed; no input files changed"
+    },
+    {
+      "command": "/home/dell/miniconda3/envs/sim240-analysis/bin/python docs/reports/Chapter5_mechanism_audit_20261018/check_existing.py",
+      "exit_code": 0,
+      "reason": "Standalone shape-preserving Hermite interpolation; original time table matched; no SciPy installation"
+    }
+  ],
+  "raw_claims": "20 draft claim evaluations; human confirmation pending",
+  "protected_inputs_before_after_identical": true,
+  "extra_source_hashes": {
+    "docs/reports/Jain_citation_audit_20261017/raw/patir1978_JLubrTech_100_12-17.pdf": "36651a0ed61c74dabf00e49fed4372935c9903c049849b3ab59a9465f442189b",
+    "docs/reports/Jain_citation_audit_20261017/raw/teyssedre2013_PhD_ArtsetMetiers.pdf": "cf1b55a5178e37b67f10665e0fdb8cd74ac6eb17d71ab93ae2e6f93001a7e21a",
+    "CASE/plans/SIM240_几何与单位口径冻结_20261016.md": "c60984013c2ac007647c82c16d1ed52edf6a191e050bd657d38c80c8398f9dec",
+    "CASE/plans/SIM240_第一篇范围重定位_纯液体单相_20261016.md": "e9000b7088c11bbac4a1906df04574843fcb05458df3418ccebcaca947bc3857",
+    "docs/reports/SIM240_manuscript_revision_20261018/CORE_CLAIMS.md": "52dbb82cd2287ec98b1149b9a7cf304a8bfcf40639036e784d23e0c7380c9d4c"
+  },
+  "online_sources": [
+    {
+      "url": "https://link.springer.com/article/10.1007/s00162-023-00679-6",
+      "level": "publisher abstract and previews; full parameter body not obtained"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.00065",
+      "level": "current official abstract metadata for workflow-only citation"
+    }
+  ],
+  "visually_checked_pdf_pages": {
+    "patir1978": [
+      4
+    ],
+    "teyssedre2013_thesis": [
+      44,
+      45
+    ]
+  },
+  "submission_ready": false,
+  "no_new_OpenLB_run": true,
+  "run_id": null,
+  "claim_matrix_structure_check": {
+    "exit_code": 0,
+    "status": "VALID_WITH_ALIGNMENT_GAPS",
+    "support_counts": {
+      "partly_supported": 3,
+      "supported": 2,
+      "unsupported": 15
+    },
+    "not_scientific_verification": true
+  },
+  "report_sha256": "11ddc2fe87e4da8eefe2f6a6f4008031b7b0b485316ed89635ac3961985ff79e"
+}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/home/dell/miniconda3/bin/conda",
+    "create",
+    "--prefix",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend",
+    "--override-channels",
+    "--channel",
+    "conda-forge",
+    "--strict-channel-priority",
+    "--solver",
+    "libmamba",
+    "python=3.12",
+    "fenics-dolfinx=0.11.0",
+    "dolfinx_mpc=0.11.0",
+    "petsc=*=real_*",
+    "mpich",
+    "--dry-run",
+    "--json"
+  ],
+  "exit_code": 0,
+  "utc": "2026-10-25T06:13:18.155171+00:00"
+}

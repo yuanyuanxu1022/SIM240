@@ -1,0 +1,161 @@
+{
+  "scope": "selected normalized floating instructions/register dataflow/call symbols only; relocation and offset normalization is not full addressing equivalence",
+  "comparisons": [
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >::collideAndStream()",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeJ(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeRho(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeRhoU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double&, double*)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeJ(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeRho(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeRhoU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double&, double*)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    },
+    {
+      "symbol": "void olb::dynamics::set<olb::ForcedBGKdynamics, double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>::d>&, int)",
+      "equal": true,
+      "previous": null,
+      "A1": null
+    }
+  ]
+}

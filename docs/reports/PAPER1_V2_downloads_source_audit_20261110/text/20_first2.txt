@@ -1,0 +1,193 @@
+  Procedure for Estimation and Reporting of Uncertainty Due to Discretization
+                             in CFD Applications
+Since 1990, the Fluids Engineering Division of ASME has pursued activities concerning the detection, estimation and control of
+numerical uncertainty and/or error in computational fluid dynamics (CFD) studies. The first quality-control measures in this area were
+issued in 1986 (1986, “Editorial Policy Statement on Control of Numerical Accuracy,” ASME J. Fluids Eng., 108, p. 2) and revised in
+1993 (1993, “Journal of Fluids Engineering Editorial Policy Statement on the Control of Numerical Accuracy,” ASME J. Fluids Eng.,
+115, pp. 339–340). Given the continued increase in CFD related publications, and the many significant advancements in computational
+techniques and computer technology, it has become necessary to revisit the issue and formulate a more detailed policy to further
+improve the quality of publications in this area. This brief note provides specific guidelines for prospective authors for calculation and
+reporting of discretization error estimates in CFD simulations where experimental data may or may not be available for comparison.
+The underlying perspective is that CFD-related studies will eventually aim to predict the outcome of a physical event for which
+
+
+
+
+                                                                                                                                               Downloaded from asmedigitalcollection.​asme.​org/​fluidsengineering/​article-pdf/​130/​7/​078001/​5491455/​078001_1.​pdf?utm_source=chatgpt.​com by guest on 27 October 2026
+experimental data is not available. It should be emphasized that the requirements outlined in this note do not preclude those already
+published in the previous two policy statements. It is also important to keep in mind that the procedure recommended in this note cannot
+possibly encompass all possible scenarios or applications. 关DOI: 10.1115/1.2960953兴
+
+
+Preliminaries
+   The computer code used for an application must be fully referenced, and previous code verification studies must be briefly described
+or cited. The word “verification” is used in this note in its broadest sense, meaning that the computer code is capable of solving a system
+of coupled differential or integral equations with a properly posed set of initial and/or boundary conditions correctly, and reproduces the
+exact solution to these equations when sufficiently fine grid resolution 共both in time and space兲 is employed. The formal order of
+accuracy in time and space for each equation solved should be also stated clearly, with proper references where this information is
+accessible to the readers. Before any discretization error estimation is calculated, it must be shown that iterative convergence is
+achieved with at least three 共preferably four兲 orders of magnitude decrease in the normalized residuals for each equation solved. 共This
+commonly used criterion does not always ensure adequate convergence; see Appendix兲 For time-dependent problems, iterative conver-
+gence at every time step should be checked, and sample convergence trends should be documented for selected, critically important,
+variables. A possible method for assessment of iteration errors is outlined in the Appendix.
+   It should also be recognized that uncertainty in inlet flow boundary conditions could be a significant contributor to the overall
+uncertainty. Here we recommend that the degree of sensitivity of the presented solution to small perturbations in the inlet conditions be
+studied and reported.
+   The recommended method for discretization error estimation is the Richardson extrapolation 共RE兲 method. Since its first elegant
+application by its originator 关1,2兴, this method has been studied by many authors. Its intricacies, shortcomings, and generalization have
+been widely investigated. A short list of references given in the bibliography 关3–12,15兴 is selected for the direct relevance of these
+references to the subject and for brevity. The limitations of the RE method are well known. The local RE values of the predicted
+variables may not exhibit a smooth monotonic dependence on grid resolution, and in a time-dependent calculation, this nonsmooth
+response will also be a function of time and space. Nonetheless, it is currently the most reliable method available for the prediction of
+numerical uncertainty. Prospective authors can find many examples in the above references. As new and more reliable methods emerge,
+the present policy statement will be reassessed and modified as needed.
+   The Grid Convergence Method 共GCI兲 method 共and is based on RE兲 described herein is an acceptable and a recommended method that
+has been evaluated over several hundred CFD cases 关19,14,2,10,7兴. If authors choose to use it, the method per se will not be challenged
+in the paper review process. If authors choose to use another method, the adequacy of their method will be judged in the review process.
+This policy is not meant to discourage further development of new methods. in fact, JFE encourages the development and statistically
+significant evaluation of alternative methods of estimation of error and uncertainty. Rather, this policy is meant to facilitate CFD
+publication by providing practitioners with a method that is straightforward to apply, is fairly well justified and accepted, and will avoid
+possible review bottlenecks, especially when the CFD paper is an application paper rather than one concerned with new CFD meth-
+odology.
+
+Recommended Procedure for Estimation of Discretization Error
+  Step 1. Define a representative cell, mesh, or grid size h. For example, for three-dimensional calculations,
+
+                                                           h=   冋兺 册
+                                                                 1
+                                                                    N
+
+
+                                                                 N i=1
+                                                                       共⌬Vi兲
+                                                                               1/3
+
+                                                                                                                                        共1兲
+
+For two dimensions,
+
+                                                           h=   冋兺 册
+                                                                 1
+                                                                    N
+
+
+                                                                 N i=1
+                                                                       共⌬Ai兲
+                                                                               1/2
+
+                                                                                                                                        共2兲
+
+where ⌬Vi is the volume, ⌬Ai is the area of the ith cell, and N is the total number of cells used for the computations. Equations 共1兲 and
+共2兲 are to be used when integral quantities, e.g., drag coefficient, are considered. For field variables, the local cell size can be used.
+Clearly, if an observed global variable is used, it is then appropriate to use also an average “global” cell size. The area should be
+interpreted strictly according to the mesh being used, i.e., the mesh is either 2D 共consisting of areas兲 or 3D 共consisting of volumes兲
+irrespective of the problem being solved.
+   Step 2. Select three significantly different sets of grids and run simulations to determine the values of key variables important to the
+objective of the simulation study, for example, a variable ␾ critical to the conclusions being reported. It is desirable that the grid
+refinement factor r = hcoarse / hfine be greater than 1.3. This value of 1.3 is based on experience and not on formal derivation. The grid
+
+Journal of Fluids Engineering                        Copyright © 2008 by ASME                        JULY 2008, Vol. 130 / 078001-1
+                                            Table 1 Sample calculations of discretization error
+
+                                      ␾ = dimensionless                                                                       ␾ = axial velocity at
+                                     reattachment length                                    ␾ = axial velocity at             x / H = 8, y = 0.0526
+                                       共with monotonic                                      x / H = 8, y = 0.0526              共with oscillatory
+                                        convergence兲                                               共p ⬍ 1兲                        convergence兲
+
+N 1, N 2, N 3                        18,000, 8000, 4500                                     18,000, 4500, 980                 18,000, 4500, 980
+r21                                  1.5                                                    2.0                               2.0
+r32                                  1.333                                                  2.143                             2.143
+␾1                                   6.063                                                  10.7880                           6.0042
+␾2                                   5.972                                                  10.7250                           5.9624
+␾3                                   5.863                                                  10.6050                           6.0909
+p                                    1.53                                                   0.75                              1.51
+␾ext
+  21                                 6.1685                                                 10.8801                           6.0269
+
+
+
+
+                                                                                                                                                      Downloaded from asmedigitalcollection.​asme.​org/​fluidsengineering/​article-pdf/​130/​7/​078001/​5491455/​078001_1.​pdf?utm_source=chatgpt.​com by guest on 27 October 2026
+e21
+ a
+                                     1.5%                                                   0.6%                              0.7%
+ 21                                  1.7%                                                   0.9%                              0.4%
+eext
+     21                              2.2%                                                   1.1%                              0.5%
+GCIfine
+
+
+
+
+refinement should, however, be done systematically, that is, the refinement itself should be structured even if the grid is unstructured.
+Use of geometrically similar cells is preferable.
+   Step 3. Let h1 ⬍ h2 ⬍ h3 and r21 = h2 / h1, r32 = h3 / h2, and calculate the apparent order p of the method using the expression
+                                                                   1
+                                                           p=           兩ln兩␧32/␧21兩 + q共p兲兩                                                 共3a兲
+                                                                ln共r21兲
+
+                                                                 q共p兲 = ln     冉 冊
+                                                                                 p
+                                                                                r21
+                                                                                 p
+                                                                                r32
+                                                                                    −s
+                                                                                    −s
+                                                                                                                                             共3b兲
+
+                                                                 s = 1 · sgn共␧32/␧21兲                                                         共3c兲
+where ␧32 = ␾3 − ␾2, ␧21 = ␾2 − ␾1, and ␾k denotes the solution on the kth grid. Note that q共p兲 = 0 for r = const. Equation 共3兲 can be solved
+using fixed-point iteration, with the initial guess equal to the first term. The absolute value in Eq. 共3a兲 is necessary to ensure
+extrapolation toward h = 0 共Celik and Karatekin 关4兴兲. Negative values of ␧32 / ␧21 ⬍ 0 are an indication of oscillatory convergence. If
+possible, the percentage occurrence of oscillatory convergence should also be reported. The agreement of the observed apparent order
+with the formal order of the scheme used can be taken as a good indication of the grids being in the asymptotic range; the converse
+should not necessarily be taken as a sign of unsatisfactory calculations. It should be noted that if either ␧32 = ␾3 − ␾2 or ␧21 = ␾2 − ␾1 is
+“very close” to zero, the above procedure does not work. This might be an indication of oscillatory convergence or, in rare situations,
+it may indicate that the “exact” solution has been attained. In such cases, if possible, calculations with additional grid refinement should
+be performed; if not, the results may be reported as such.
+   Step 4. Calculate the extrapolated values from
+                                                           ␾ext
+                                                            21
+                                                                = 共r21
+                                                                    p
+                                                                       ␾1 − ␾2兲/共r21
+                                                                                  p
+                                                                                     − 1兲                                                      共4兲
+similarly, calculate ␾32
+                      ext.
+   Step 5. Calculate and report the following error estimates, along with the apparent order p.
+   In approximate relative error,
+
+                                                                  e21
+                                                                   a =    冏   ␾1 − ␾2
+                                                                                ␾1
+                                                                                        冏                                                      共5兲
+
+   In extrapolated relative error,
+
+                                                                  21
+                                                                 eext =   冏   ␾ext
+                                                                               12
+                                                                                   − ␾1
+                                                                                ␾ext
+                                                                                   12     冏                                                    共6兲
+
+   In the fine-grid convergence index,
+                                                                                1.25e21
+                                                                                     a
+                                                                     21
+                                                                  GCIfine =       p                                                            共7兲
+                                                                                 r21 −1
+   Table 1 illustrates this calculation procedure for three selected grids. The data used are taken from Ref. 关4兴, where the turbulent
+two-dimensional flow over a backward facing step was simulated on nonuniform structured grids with total number of cells N1, N2, and
+N3. Hence, according to Table 1, the numerical uncertainty in the fine-grid solution for the reattachment length should be reported as
+2.2%. Note that this does not account for modeling errors.
+
+Discretization Error Bars
+  When computed profiles of a certain variable are presented, it is recommended that numerical uncertainty be indicated by error bars
+on the profile, analogous to the experimental uncertainty. It is further recommended that this be done using the GCI in conjunction with
+an average value of p = pave as a measure of the global order of accuracy. This is illustrated in Figs. 1 and 2.
+  Figure 1 共data taken from Ref. 关4兴兲 presents an axial velocity profile along the y-axis at an axial location of x / H = 8.0 for a turbulent
+
+078001-2 / Vol. 130, JULY 2008                                                                                      Transactions of the ASME
+

@@ -1,0 +1,722 @@
+                                                     Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138
+
+
+
+                                                                 Contents lists available at ScienceDirect
+
+
+                                Journal of the Taiwan Institute of Chemical Engineers
+                                                           journal homepage: www.elsevier.com/locate/jtice
+
+
+
+
+Simulation of liquid ﬂow transport in nanoscale porous media using
+lattice Boltzmann method
+Wendong Wanga,b, Han Wanga,b,*, Yuliang Sua,b,*, Meirong Tangc, Jilong Xua,b, Qi Zhangd
+a
+  Key Laboratory of Unconventional Oil & Gas Development (China University of Petroleum (East China)), Ministry of Education, Qingdao 266580, China
+b
+  School of Petroleum Engineering, China University of Petroleum (East China), Qingdao, 266580, China
+c
+  Research Institute of Oil & Gas Technology, PetroChina Changqing Oilﬁeld Company, Xi’an, 710021, China
+d
+  School of Earth Resources, China University of Geosciences, Wuhan 430074, China
+
+
+
+
+A R T I C L E         I N F O                             A B S T R A C T
+
+Article History:                                          Clarifying the conﬁned liquid ﬂow in nanoscale porous media is crucial for many science and engineering
+Received 28 January 2021                                  applications, such as shale/tight oil recovery. However, most of the investigations are focused on the single
+Revised 7 March 2021                                      pore and the uniform wet, and there are few effective nanoscale pore-scale simulation methods. In this
+Accepted 27 March 2021
+                                                          paper, we comprehensively study the conﬁned water ﬂow in shale porous media from the theoretical analy-
+Available online 7 April 2021
+                                                          sis to a new nanoscale lattice Boltzmann method (LBM). The nanoscale effects of the slip boundary and the
+Keywords:                                                 varying interfacial water viscosity caused by the solid-liquid molecular interactions are considered. Addition-
+Nanoscale porous media                                    ally, the water ﬂowing in shale porous media coupling different transport mechanisms in the water-wetting
+Shale/tight oil                                           inorganic and oil-wetting organic media is simulated and discussed. The results show that the water ﬂow
+Lattice Boltzmann method                                  behaviors obtained by (LB) simulations ﬁt well with that calculated by the theoretical analysis. Then, the con-
+Slip boundary                                             trollable nanoscale effects are successfully brought into LB simulation. Additionally, the nanoscale effects of
+Enhancement factor                                        the slip boundary and the interfacial ﬂuid viscosity have a great impact on the water ﬂow capacity, and the
+                                                          conﬁned water ﬂow behaviors are sensitive to heterogeneous wettability and pore size.
+                                                                           © 2021 Taiwan Institute of Chemical Engineers. Published by Elsevier B.V. All rights reserved.
+
+
+
+
+1. Introduction                                                                               media by considering the nanoscale effects, heterogeneous wettabil-
+                                                                                              ity, and pore size.
+    Understanding and clarifying the liquid ﬂow behaviors in nano-                                Compared with the liquid ﬂow in microscopic pores, the liquid ﬂow
+scale porous media is crucial for many science and engineering appli-                         in nanoscale pores strongly depends on the wall wettability. The wetta-
+cations, such as shale/tight oil/gas recovery [16], water puriﬁcation                        bility reﬂects the strength of solid-liquid molecular interactions and can
+[7] and catalysis in fuel cells [8]. The liquid ﬂow behaviors in nano-                        be quantitatively characterized by the contact angle of the liquid drop-
+scale pores are strongly affected by the solid-liquid molecular inter-                        let on the pore wall. In nanoscale pores, the solid-liquid molecular
+actions. The solid-liquid molecular interactions can result in the                            interactions result in the non-zero boundary velocity and the varying
+nanoscale effects of the slip boundary and the varying interfacial vis-                       interfacial liquid viscosity [17,18]. The non-zero boundary velocity is
+cosity. Usually, considering these effects, the liquid ﬂow in single                          linearly related to the slip length and interfacial shear rate [19,20]. The
+pores can be characterized by the theoretical formula [911]. How-                            slip length can be obtained by experiments, molecular dynamics simu-
+ever, due to the complex wall wettability, pore size, and pore struc-                         lation (MDS), and theory [11,17,18,21]. For theory, the slip length can
+ture in the natural porous media [10,1214], the ﬂow behaviors will                           be calculated by a function of the contact angle, based on Huang’s
+be more complex. For example, in shale reservoirs, the shale oil/gas                          model [19], Wu et al. [11] obtained the slip length formula of water by
+storage space is composed of water-wetting inorganic pores and oil-                           ﬁtting the data obtained from MDS. From this formula, with a contact
+wetting organic pores, and with strong heterogeneity of pore size                             angle ranging 0150°, the slip length can vary from 0.1 nm to 22.8 nm.
+[15,16]. All of which complicate the microscopic ﬂow mechanisms in                            In addition to the nanoscale effect of slip length, the viscosity of the
+the porous media. Then, a simple single-pore model will fail to cap-                          interfacial liquid also affects the liquid ﬂow capacity. From MDS, there
+ture the rich ﬂow behaviors arising from these complexities. There-                           are about two molecular layers that are strongly affected by wall force.
+fore, there is an urgent need to study the ﬂow behaviors in porous                            For the water and oil phase, the thickness of the interfacial region is
+                                                                                              about 0.7 nm and 0.96 nm respectively [2224]. Due to the water-wet-
+                                                                                              ting wall, the interfacial liquid viscosity is larger than the bulk water
+  * Corresponding authors.
+                                                                                              viscosity, which can weaken the water ﬂow capacity. When the pore
+     E-mail addresses: wanghan.petro@gmail.com (H. Wang), suyuliang@upc.edu.cn
+(Y. Su).
+                                                                                              wall is oil-wetting, the interfacial water viscosity is smaller than the
+
+https://doi.org/10.1016/j.jtice.2021.03.044
+1876-1070/© 2021 Taiwan Institute of Chemical Engineers. Published by Elsevier B.V. All rights reserved.
+                                             W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138                                       129
+
+
+bulk water viscosity which can enhance the liquid ﬂow capacity. By ﬁt-                      limitations of experiments, PNM and MDS, the mesoscopic method of
+ting the results from experiments and MDS, Wu et al. [11] obtained the                      lattice Boltzmann method (LBM) has been developed into an efﬁcient
+interfacial water viscosity formula which is related to the bulk water                      tool to simulate the liquid ﬂow in porous media because of its ease in
+viscosity and the contact angle. At present, the liquid ﬂow capacity in                     handling complex structures, reducing computational resources
+nanoscale pores can be characterized through enhancement factor                             through parallel computing and the algorithm simplicity [3739].
+which is deﬁned as the ratio of the total volume ﬂux calculated by the                      Moreover, the LB simulation can consider the nanoscale effects by
+Hagen-Poiseuille (HP) equation considering nanoscale effects to that                        solving the Navier-Stokes (N-S) equation supplemented with the slip
+calculated by no-slip HP equation [10,25,26]. Also, the apparent perme-                     length and the varying interfacial liquid viscosity [14,40].
+ability is also be used [4]. Based on the theoretical study of water ﬂow                        It has been recognized that the proper boundary conditions are
+in single pores, Wu’s studies indicated the enhancement factor is about                     critical to ensure that the LB simulation results are consistent with the
+101102 times compared to the classical no-slip ﬂow predictions                            actual situation. In recent years, researchers have done many works
+with contact angle ranging 0150° [11]. For shale reservoirs, Zhang                         for the nanoscale effect of the slip boundary. The slip format in LB sim-
+et al. [4] and Cui et al. [27] have studied the shale oil ﬂow in the pores                  ulation includes bounce back (BB), specular reﬂection (SR), and diffu-
+and calculated the apparent permeability considering the nanoscale                          sive Maxwell’s reﬂection (DM) [41]. Nie et al. [42] ﬁrstly found the
+effects. Although the conﬁned liquid ﬂow behaviors in a single nano-                        velocity slip at the pore wall when they employed the BB boundary
+scale pore have been widely investigated by theory, experiment and                          condition to simulate liquid ﬂow in a microchannel, however, later
+MDS, the liquid ﬂow behaviors in a single pore cannot truly reﬂect that                     researchers found the slip velocity is the numerical artifact [43]. Mean-
+in the nanoscale porous media [9,11,17]. Wang et al. [28] and Zhang                         while, Lim et al. [44] applied the SR boundary condition to simulate
+et al. [24] used the capillary bundle model to represent porous media                       liquid ﬂow, however, the slip velocity was not in agreement with
+to study the liquid ﬂow behaviors based on the single-pore theory                           some analytical results. Ansumali et al. [45] proposed the DM bound-
+model. However, the capillary bundle model cannot reﬂect the proper-                        ary condition based on kinetic theory, however, when the MD scheme
+ties of the true porous media like the complex pore connectivity and                        is used to simulate the Poiseuille slip ﬂow, it overpredicted the slip
+structures. Therefore, for the accurate ﬂow characteristics in natural                      velocity. To overcome the above limitations, the combined methods of
+porous media, it is necessary to study the liquid ﬂow in the nanoscale                      BB-SR (BSR) [46], DM-SR (DSR) [47,48], and DM-BB (DBB) boundary
+porous media considering the nanoscale effects. Zhao et al. [14]. have                      conditions [49,50] were proposed, then, the slip velocity can be
+studied the liquid ﬂow characteristics in nanoporous media considering                      changed by choosing different combination parameter r. Although the
+the slip length and the effective viscosity, however, the nanoporous                        hybrid schemes of BSR and DSR are suitable for the straight walls, they
+media used in their simulation is ideally composed of the regular solid                     will bring some difﬁculties for curved boundaries because the SR part
+media. Besides, the effect of the varying interfacial liquid viscosity is                   involved in these hybrid schemes is not computed locally [51]. On the
+characterized by the local effective viscosity, however, that may bring                     other hand, the curved slip boundary based on the hybrid scheme of
+some error in LB simulation by ignoring the relationship between the                        DBB has good performance in simulating the liquid ﬂow in porous
+slip velocity and interfacial liquid viscosity [10,14].                                     media with complex boundaries [52]. Therefore, it is necessary and
+    Although the liquid ﬂow in the nanoscale porous media can be                            feasible to study the liquid ﬂow in porous media using LB simulation.
+studied by core ﬂow experiments, the experiments have inevitable                                In this paper, we apply the theoretical analysis and LB simulations
+shortcomings such as being expensive and time-consuming due to                              with the combination of Maxwellian diffuse reﬂection and half-way
+the low-permeability. Therefore, numerical simulation attracts grow-                        bounce back (HDBB) boundary condition to simulate the water ﬂow
+ing attention. There are two types of approaches for modeling liquid                        in nanoscale porous media. The nanoscale effects of the slip boundary
+transport in porous media, i.e., direct simulation and pore network                         and the varying interfacial water viscosity are considered. Then, the
+modeling (PNM) [2931,61]. PNM is extremely efﬁcient and has                                effects of the wettability, pore size and total organic carbon (TOC) on
+been extensively used to study the liquid ﬂow in porous media, how-                         the water ﬂow capacity in porous media are discussed.
+ever, the complex pore-space geometry is simpliﬁed into the combi-
+nation of spherical pores connected by cylindrical capillaries [32,33].                     2. Analytical and lattice Boltzmann models for water ﬂow
+Additionally, the ﬂow processes are based on the law of mass conser-
+vation and the known characteristics of the Poiseuille ﬂow in cylin-                        2.1. Analytical model in nanoscale pores
+drical capillaries [34]. The direct simulation method of MDS can also
+be used to simulate the liquid ﬂow in porous media, like the oil trans-                        The liquid ﬂow mechanisms in nanoscale pores strongly depend
+port in kerogen porous media [35,36]. Although MDS can capture the                          on the solid-liquid molecular interactions which result in the slip
+microscopic molecular interactions, the porous media model size is                          boundary and the varying interfacial liquid viscosity. Fig. 1A shows
+small and the simulations consume too many resources to meet the                            that the water is conﬁned in the nanoscale pore, due to the solid-liq-
+macroscopic scales of engineering interest. To overcome the                                 uid molecular interactions, the interfacial water viscosity is different
+
+                           A                                                                B
+                                                                                δ
+                                                                    H      h
+                                                                                                                                             j=2
+                                                                                                             6      2       5
+
+                                                                                                             3      0       1                j=1
+                            y
+                                                                                                                                             j = 0.5
+                                                                                                             7      4       8
+                                      x                                                                                                      j=0
+
+                                    Bulk region             Interfacial region                        Solid node             Liquid node
+
+Fig. 1. Schematic diagram of the distribution of bulk water and interfacial water in a nanoscale pore, and boundary grids for the half-way method in the D2Q9 model. Note: There
+are about two layers of molecules that are strongly affected by the wall force, and the single layer of water molecules is about 0.35nm from MDS, therefore, the thickness of the
+interfacial water d = 0.7nm is used in this study.
+130                                              W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138
+
+
+from bulk water viscosity. Then, the relation between the viscosities                              The velocity of interfacial water:
+of the bulk water and the interfacial water regions can be linked by                                                                
+                                                                                                               1                ls H   DP
+the contact angle [11].                                                                         uwall ðyÞ ¼         yðH  yÞ þ            ; 0y d and H
+                                                                                                             2mwall            2mwall L
+mwall ¼ ð0:018u þ 3:25Þmbulk                                                         ð1Þ
+                                                                                                                        dy H                                                                                    ð8Þ
+where mwall and mbulk are the viscosities of interfacial water and bulk
+water; u is the contact angle of water droplet on the pore wall, in this                        The velocity of bulk water:
+                                                                                                                                                                           
+paper, the contact angle is not real, but only used to characterize the                                             1                 1         2
+                                                                                                                                                      1         2
+                                                                                                                                                                      ls H   DP
+                                                                                                ubulk ðyÞ ¼              yðH  yÞ þ        Hd  d          Hd  d þ             ; dyH  d
+strength of the liquid-solid interaction at the pore wall, u = 30o repre-                                         2mbulk            2mwall           2mbulk           2mwall L
+sents strong water-wetting, u = 60o represents water-wetting, u = 90o                                                                                                                                              ð9Þ
+represents neutral-wetting, u = 120o represents oil-wetting, u = 150o
+                                                                                                    The water ﬂow capacity considering the nanoscale effects can be
+represents strong oil-wetting. From the ﬁtting data [11], when the
+                                                                                                measured by the ﬂow enhancement factor which is deﬁned by the
+contact angle equals 0°, Eq. (1) failed to represent the relation
+                                                                                                ratio of the total volume ﬂux considering nanoscale effects Eqs. (8)
+between the viscosities of the bulk water and the interfacial water.
+                                                                                                and ((9)) to that calculated by no-slip HP equation (Eq. (3)). The total
+The reason is that when the spreading parameter S = g SV  g SL  g VL
+                                                                                                volume ﬂux considering the nanoscale effects can be obtained by the
+> 0, the contact angle will always be zero, in that case, the solid-liq-
+                                                                                                velocity integration.
+uid molecular interactions have no impact on the viscosity according
+to Eq. (1). Therefore, Eq. (1) is suitable for S = g SV  g SL  g VL  0.                               Zd                        Zh
+                                                                                                Qt ¼ 2           uwall ðyÞdy þ 2        ubulk ðyÞdy
+Where S is spreading parameter, g SV, g SL and g VL are the solid-vapor,
+                                                                                                         0
+solid-liquid and vapor-liquid surface tensions. Note: in the future,                                                               d                        !                                                  !
+                                                                                                                                                                     1                                          DP
+                                                                                                                                                        3
+                                                                                                             1            2               2h3 2d                                       2   3     
+the interfacial liquid viscosity which is obtained by MD simulations                              ¼                  2hd  2h2 d þ                             þ           2h2 d  3hd þ d þ 2ls h2  hd
+                                                                                                       mbulk                               3   3                    mwall                                          L
+or experiments can replace Eq. (1) based on our model and can be
+                                                                                                                                                                                                               ð10Þ
+directly used for further studies.
+    For the boundary slip length at the pore wall, Huang et al. [19].                              Based on the no-slip HP equation of Eq. (3), the total volume ﬂux
+proposed a slip length formula that depends on the contact angle.                               can be integrated as:
+            C                                                                                                         Zh
+ls ¼                2
+                                                                                      ð2Þ                                                   2h3 DP
+       ð1 þ cosu Þ                                                                              Qnoslip ¼ 2               uðyÞdy ¼                                                                            ð11Þ
+                                                                                                                                           3mbulk L
+                                                                                                                      0
+where C is a constant that can be obtained by ﬁtting the results from
+MDS or experiments, and C = 0.41nm for water is used in this study                                 From Eqs. (10) and (11), the ﬂow enhancement factor can be
+[11].                                                                                           expressed as:
+   The velocity proﬁle of water ﬂow in the pore without considering
+                                                                                                        Qt
+nanoscale effects can be expressed by HP equation.                                              e¼
+                                                                                                      Qnoslip
+            1             DP                                                                                                                    !                                              !!
+                                                                                                                           2                3
+uðyÞ ¼           yðH  yÞ                                                             ð3Þ                             3d   3d d                         mbulk 3d 3d2 d3 3ls
+          2mbulk           L                                                                      ¼           1þ                                  þ              þ þ                                        ð12Þ
+                                                                                                                      h2   h h3                         mwall h h2 h3 h
+where H is the width of the pore; y is the distance from the bottom
+wall; DLP is the pressure gradient.
+   Based on Eq. (3), the analytical velocity proﬁles of interfacial water
+and bulk water ﬂow can be expressed respectively, which are shown                               2.2. Lattice Boltzmann model
+below.
+   The velocity of the interfacial water:                                                          The LBM is a mesoscopic method that is derived from a continu-
+                1                  DP                                                           ous medium, and that is especially suitable for microscopic ﬂow. The
+uwall ðyÞ ¼             yðH  yÞ        þ C1 ;   0y d and H  dy H                ð4Þ       evolution equation of the single-relaxation-time LB model is given
+              2mwall               L
+                                                                                                below [53,54]
+The velocity of the bulk water:
+                                                                                                                                                                1
+                                                                                                fa ðx þ ea dt ; t þ dt Þ  fa ðx; t Þ ¼                          fa ðx; t Þ  faeq ðx; t Þ þ dt Fa            ð13Þ
+                1                  DP                                                                                                                           t
+ubulk ðyÞ ¼             yðH  yÞ        þ C2 ;    dyH  d                           ð5Þ
+              2mbulk               L                                                            where fa(x,t) is the density distribution function at a direction, x
+where C1 and C2 are the parameters which are related to the slip                                position and time t, and a = 0, 1, 2, 3, 4, 5, 6, 7, 8 represents
+length and interfacial water viscosity.                                                         nine directions of D2Q9 model which is shown in Fig. 1B; ea is the
+   The boundary conditions can guarantee continuity of the velocity                             velocity at a direction; dt is the time step; t is the relaxation time; faeq
+and the shear stress, and the mass conservation between interfacial                             is the equilibrium density distribution at a direction; Fa is an external
+water and bulk water regions. That is given by                                                  forcing term associated with the acceleration a [53], and that is deter-
+                                                                                                mined by
+     @uwall                                                                                                                            
+ls          j ¼ uwall jy¼0                                                            ð6Þ
+      @y y¼0                                                                                                     1    ea  u ea ¢ u
+                                                                                                Fa ¼ wa r 1                  þ       e a   ¢a                        ð14Þ
+                                                                                                                 2t     cs2       cs4
+uwall jy¼d ¼ ubulk jy¼d                                                               ð7Þ
+                                                                                                where wa is the weight coefﬁcients of a direction; u is the liquid
+                                                                                                                      P
+   According to Eqs. (6) and (7) of boundary conditions, the parame-                            velocity, and u ¼ a ea fa =r þ 0:5dt a, r is the liquid density, and
+                                                                                                     P
+ters C1 and C2 can be calculated. Then, the velocities of interfacial                           r ¼ a fa ; cs ¼ pcﬃﬃ3 is the sound speed, c ¼ ddxt is the lattice speed, dx is
+water and bulk water can be rewritten below                                                     the space step, and dx = dt = 1 in this study.
+                                            W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138                                  131
+
+                                                                                                                                                                  2
+  The relaxation time t is determined by liquid viscosity in LB                            Where uj is the velocity at location j; yj = (j  0.5)dx; umax ¼ aH8v is the
+model, which is given by                                                                   maximum velocity with no-slip boundary, a is the acceleration, and
+       v                                                                                   a = 105 is used in this study; us is the slip velocity at the wall, and for
+t ¼ 2 þ 0:5                                                                    ð15Þ        liquid ﬂow, the Navier’s slip model is given below [20]
+   cs dt
+                                                                                                     @uj                  ls H
+     For the standard D2Q9 LB model, the equilibrium distribution                          us ¼ ls       j              ¼      a                                      ð23Þ
+function faeq can be expressed as [55]                                                               @yj yj ¼H or yj ¼0   2v
+           "                             #                                                    Substituting Eqs. (22) and (23) into Eq. (21), the relation between
+                 ea ¢ u ðea ¢ uÞ2   u2
+faeq ¼ wa r 1 þ 2 þ                                         ð16Þ                          the combination parameter and the slip length can be derived by [50]
+                  cs      2cs4      2cs2
+                                                                                                           2
+   The discrete velocity ea and weight coefﬁcient wa of nine direc-                        r¼               6H ð2t 1Þ
+                                                                                                                                                                      ð24Þ
+                                                                                                1þ
+tions can be expressed as                                                                             12ls H4ð2t 1Þ2 þ3
+
+
+       ð0; 0Þ                                                                                  From the relation of the relaxation time and the bulk liquid viscos-
+                                     
+             ða  1Þp       ða  1Þp                          a¼0                          ity of Eq. (15), the liquid kinematic viscosity without considering
+         cos          ; sin             c                                                  interfacial water can be rewritten as
+ea ¼ f           2              2                             a ¼ 1; 2; 3; 4
+                                          
+       pﬃﬃﬃ     ð2a  1Þp        ð2a  1Þp                    a ¼ 5; 6; 7; 8
+         2 cos             ; sin             c                                             vbulk ¼ cs2 dt ðt bulk  0:5Þ                                              ð25Þ
+                    4                4
+                                                                               ð17Þ           Similar to Eq. (25), the relation of the relaxation time and the
+                                                                                           interfacial water viscosity can be expressed as
+       4                                                                                   vwall ¼ cs2 dt ðt wall  0:5Þ                                              ð26Þ
+       9               a¼0
+       1                                                                                      The difference of kinematic viscosity between bulk water and
+wa ¼ f                 a ¼ 1; 2; 3; 4                                          ð18Þ
+       9                                                                                   interfacial water can be expressed by Eq. (1), then based on Eqs. (25)
+        1              a ¼ 5; 6; 7; 8                                                      and (26), the relation between the relaxation time of the bulk water
+       36                                                                                  and the interfacial water can be derived by
+                                                                                           t wall ¼ ðt bulk  0:5Þð0:018u þ 3:25Þ þ 0:5                              ð27Þ
+                                                                                              Therefore, from Eqs. (24) and (27), the nanoscale effects of slip
+2.3. Nanoscale effects in LB model                                                         boundary and the varying interfacial water viscosity can be incorpo-
+                                                                                           rated into the LB simulation.
+    In this paper, the HDBB is used to represent the slip boundary in
+LB model. After the collision and streaming step of Eq. (13), the den-
+sity distribution functions moving from the liquid region can be cal-
+                                                                                           3. Validation
+culated, however, the density distribution functions moving from the
+solid wall are unknown and they need to be calculated by the bound-
+                                                                                               In LB simulation, the water ﬂow in the nanoscale pores is driven
+ary condition of HDBB scheme. As shown in Fig. 1B, the unknown
+                                                                                           by an external acceleration of a = 105 in x-direction and the periodic
+density distribution functions of f2, f5 and f6 after collision and
+                                                                                           boundary condition is adopted. Additionally, the different pore sizes
+streaming, step can be calculated by the HDBB scheme
+8                                                                                          or porous media sizes can be changed by changing the mesh number
+                        eq
+< f2 ¼ ð1  r Þ f4 þrf2 ðuwall Þ
+>                                                                                          and length scale. In this study, the length scale (L0) varies from
+   f5 ¼ ð1  r Þ f7 þrf5eq ðuwall Þ                               ð19Þ                     1 £ 1010 m to 7 £ 1010 m. The physical pore length (Lphysics) can be
+>
+:
+   f6 ¼ ð1  r Þ f8 þrf6eq ðuwall Þ                                                        calculated by Lphysics = L0 £ Llattice, where Llattice is the lattice length in
+                                                                                           LB simulation. The          physical viscosity (vphysics) can be calculated by
+where f4 , f7 and f8 are the post-collision density distribution func-                                         L2
+                                                                                           vphysics ¼ vlattice T00 , where vlattice and T0 are the lattice viscosity and
+tions after collision step, uwall is the solid wall velocity, and uwall = 0                time scale. The physical density (rphysics) can be calculated by
+in this study.                                                                             rphysics ¼ rlattice ML30 , where rlattice and M0 are the lattice density and
+    For the water ﬂow in porous media with complex geometry, the                           mass scale.
+                                                                                                                   0
+
+
+unknown density distribution function fa can be expressed as
+                                                                                           3.1. Velocity proﬁles in the pore
+fa ¼ ð1  r Þ f a þrfaeq ðuwall Þ                                              ð20Þ
+
+where f a is the post-collision density distribution function at a                             Fig. 2 shows the comparison of the dimensionless velocity proﬁles
+direction, and a is the inverse direction of a.                                            which are obtained by Eqs. (8-9) and LB simulation under 3 nm pore
+    The relation between the velocities at the location j = 1 and j = 2 in                 and different wettability. From Fig. 2A, due to the high interfacial
+Fig. 1B can been derived as [50]                                                           water viscosity which is caused by the strong water-wall molecular
+                                                                                           interactions, the velocity of interfacial water can weaken the water
+       1  2t þ ð2  r Þðt  2Þ
+u2 ¼                            u1                                                         ﬂow capacity. From Fig. 2D, due to the small viscosity of interfacial
+       1  2t þ ð2  r Þðt  1Þ
+                                                                                         water, the velocity of interfacial water can enhance the ﬂow capacity
+               6ð2t  1Þ þ 0:5ð2  r Þ 8t 2  20t þ 11                                     of water. Additionally, when the wall wettability tends to be oil-wet-
+           þ                                             dt a                  ð21Þ
+                  ð2t  1Þ½1  2t þ ð2  r Þðt  1Þ                                       ting, the velocity at the pore wall increases because of the increasing
+Where u1 and u2 are the velocities at location j = 1 and j = 2; r is the                   slip length, and the slip length can be obtained by the tangent to the
+combination parameter.                                                                     velocity proﬁle of the interfacial water.
+    For the HP ﬂow in the pore in LB simulation, the ﬁnite-difference                          The dimensionless velocity proﬁles obtained by the theoretical
+equation can be expressed as                                                               formula ﬁt well with those obtained by LB simulation. Therefore, the
+                                                                                           nanoscale effects of the slip boundary and the varying interfacial
+           yj     yj 
+uj ¼ 4umax      1      þ us                                        ð22Þ                   water viscosity are incorporated into the LB simulation successfully,
+           H       H                                                                       and the slip length will be discussed in detail in next part.
+132                                          W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138
+
+                     0.7                                                                                 1.1
+                              (A)                          Theory (water-wetting)
+                                                                                                                  (B)
+                                                           LBM (water-wetting)                           1.0
+                     0.6
+
+                                                                                                         0.9
+                     0.5
+
+                                                                                                         0.8
+         ux / umax
+
+
+
+
+                     0.4                                                                                                       Theory (Neutral-wetting)
+
+
+
+
+                                                                                         ux / umax
+                                                                                                         0.7                   LBM (Neutral-wetting)
+                     0.3
+                                                   3nm                                                   0.6                             3nm
+                     0.2
+                                                                                                         0.5
+
+                     0.1
+                                                                                                         0.4
+
+                     0.0                                                                                 0.3
+                        0.0         0.2     0.4            0.6          0.8           1.0                   0.0         0.2        0.4           0.6           0.8           1.0
+                                                  y/H                                                                                    y/H
+                     3.0                                                                                57.0
+                              (C)                                                                                 (D)
+                                                                                                        56.7
+                     2.8
+
+
+                                            Theory (Oil-wetting)                                        56.4                  Theory (Strong oil-wetting)
+
+
+
+                                                                                            ux / umax
+                     2.6                    LBM (Oil-wetting)                                                                 LBM (Strong oil-wetting)
+         ux / umax
+
+
+
+
+                                                                                                        56.1
+
+                     2.4                             3nm                                                                                         3nm
+                                                                                                        55.8
+
+                     2.2
+                                                                                                        55.5
+
+
+                     2.0                                                                                55.2
+                        0.0         0.2     0.4            0.6          0.8           1.0                   0.0         0.2        0.4           0.6           0.8           1.0
+                                                  y/H                                                                                    y/H
+Fig. 2. The dimensionless velocity proﬁles that are obtained by theory and LBM with different wettability, and the width of the pore is 3 nm. umax is the maximum velocity at the
+wall without considering the slip boundary.
+
+
+
+3.2. Slip length and combination parameter                                                        Therefore, in the porous media, we can approximately use the combi-
+                                                                                                  nation parameter with a constant pore size to represent the slip
+    According to Eq. (24), the combination parameter r depends on                                 length under different pore sizes. In the discussion part, the combina-
+the slip length and pore size, and the combination parameter used in                              tion parameter with a constant pore size equaling 3 nm (30 lattice
+LB simulation varies from 0 to 2 which represents the no-slip bound-                              units for length scale equaling 1 £ 1010m) is used.
+ary and full-slip boundary respectively. As shown in Fig. 3, for a given
+slip length formula of Eq. (1), the slip length increases with an                                 3.3. Enhancement factor in a single pore
+increasing contact angle. Additionally, the combination parameter r
+increases with the increase of the contact angle and gradually tends                                 The enhancement factor is calculated in a pore by the theoretical
+to 2. When the contact angle is smaller than about 50°, the combina-                              formula of Eq. (12) and LB simulation results. As shown in Fig. 5, the
+tion parameter increases with increasing pore size. When the combi-                               enhancement factor calculated by LB simulation ﬁts well with that
+nation parameter is taken into LB simulation, the simulation slip
+length can be obtained by the tangent to the velocity proﬁle as shown
+in Fig. 2. From Fig. 3, the slip length obtained from the LB simulation
+ﬁts well with that calculated by the theoretical formula of Eq. (1),
+therefore, from Eq. (24), the controllable slip boundary is successfully
+brought into LB simulation.
+    According to Eq. (1) and LB simulation, the slip length is indepen-
+dent of pore size. Although the combination parameter increases
+with an increasing pore size when the contact angle is in a small
+value. Due to the slip length varies within a small value which can be
+equivalent to be constant, then with different pore sizes, the slip
+length obtained by LB simulation with different combination parame-
+ters is approximately equal. We choose a contact angle of 10° to study
+the velocity proﬁles with the same combination parameter formula
+which only depends on the slip length and the pore size. As shown in
+Fig. 4, the velocity obtained by the LB simulation ﬁts well with that
+calculated by the theoretical formula of Eqs. (8) and (9). According to
+the same velocity proﬁles, the slip length which is obtained by the
+tangent to the boundary velocity is the same as that calculated by the                            Fig. 3. The slip length and combination parameter vary with the contact angle and
+theoretical formula of Eq. (1) under the contact angle equaling 10°.                              pore width. (The contact angle is used to characterize the wettability of the pore wall).
+                                              W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138                                       133
+
+
+
+
+Fig. 4. The dimensionless velocity proﬁles that are obtained by theory and LBM with
+different pore size, and the pore size used in Eq. (24) is a constant which equals 3 nm.
+                                                                                             Fig. 6. The dimensionless velocity proﬁles in 1.5 nm and 2 nm pore, and the pore wall
+                                                                                             is water-wetting.
+calculated by the theoretical formula. When the wettability of the
+pore wall is neutral-wetting and oil-wetting, with the pore size
+increasing, the enhancement factor decreases and gradually tends                             by the proposed model and Zhao’s model. When the nanoscale
+to 1, which indicates the nanoscale effects (the great slip length                           effects are signiﬁcant, the enhancement factor obtained by Zhao’s
+and the small interfacial viscosity) on the water ﬂow capacity                               model will have a great error. From Fig. 7B and C, when the pore
+decrease with increasing pore size. When the pore wall is water                              wall is strong water-wetting and the pore width equals 10 nm,
+wetting, the enhancement factor decreases ﬁrst and then                                      Zhao’s model will cause a 7.5% error. From Fig. 7B and D, when
+increases to near 1. The reason for the decreasing enhancement                               the pore wall is strong oil-wetting and the pore width equals
+factor under small pore size is that the decreasing slip length                              10 nm, Zhao’s model will cause a 57.4% error. Therefore, the pro-
+effects dominate the water ﬂow compared with the interfacial                                 posed model is more accurate than Zhao’s model, especially
+water viscosity. From the dimensionless velocity of water ﬂow in                             when the nanoscale effects have a great impact (the strong
+1.5 nm and 2.5 nm pores that are shown in Fig. 6, the dimension-                             water-wetting or the strong oil-wetting).
+less velocity in 2 nm pore is smaller than that in 1.5 nm pore
+because of the decreasing effect of the slip length, then the                                4. Discussion
+enhancement factor decreases.
+                                                                                                 The nanoscale porous media model is shown in Fig. 8. The
+3.4. Viscosity of interfacial water                                                          black region is the solid media, the blue region is bulk water and
+                                                                                             the yellow region is the interfacial water with thickness equaling
+    In Zhao’s work [14], the difference between bulk water and                               0.7 nm. As shown in Fig. 8A and 8B, the width of the porous
+interfacial water viscosity is characterized by an effective viscos-                         media is 30 nm and 50 nm respectively, and the model length is
+ity in LB simulation. However, from the deﬁnition of slip velocity,                          1.5 times the width. With different porous media model sizes,
+the slip velocity depends on the interfacial viscosity. Therefore,                           the pore size is different in this part and the proportion of inter-
+the effective viscosity will bring some errors, especially under                             facial water region is different.
+strong nanoscale effects. In this study, the bulk water and interfa-
+cial water are treated respectively in LB simulation. Fig. 7 shows                           4.1. Effect of wettability and pore size
+the enhancement factor and the dimensionless velocity obtained
+                                                                                                 Fig. 9 shows the dimensionless velocity (which is calculated
+                                                                                                  u
+                                                                                             by umax , and umax is the maximum velocity at the central axis of this
+                                                                                             model without considering nanoscale effects) distribution of water
+                                                                                             ﬂow in the 30 nm width porous media with the water-wetting and
+                                                                                             oil-wetting pore walls. Due to the nanoscale effects of the great slip
+                                                                                             length and the small interfacial water viscosity, the velocity in the
+                                                                                             oil-wetting pore is greater than that in the water-wetting pore. The
+                                                                                             dimensionless velocity proﬁles with different conditions are shown
+                                                                                             in Fig. 10. When the pore wall is water-wetting, the dimensionless
+                                                                                             velocity is smaller than that without considering nanoscale effects.
+                                                                                             The reason is that the interfacial water viscosity is greater than bulk
+                                                                                             water viscosity, and the slip length is very small under the small
+                                                                                             water-wall molecular interactions. When the pore wall is oil-wet-
+                                                                                             ting, due to the decreasing interfacial water viscosity and the
+                                                                                             increasing slip length, the dimensionless velocity is greater than
+                                                                                             that without considering nanoscale effects.
+                                                                                                 Fig. 11 shows the enhancement factor of water ﬂow in porous
+                                                                                             media with different porous media sizes and the wettability. During
+                                                                                             the calculation of the enhancement factor, the volume ﬂux is calcu-
+Fig. 5. The dependence of the enhancement factor on pore size and wettability, calcu-        lated by the integration of the velocity in Fig. 10. The enhancement
+lated by Eq. (12) and LB simulation.                                                         factor of the water ﬂow in oil-wetting pore is great than that in the
+134                                           W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138
+
+
+
+
+                                          Fig. 7. The comparison of enhancement factor between the proposed model and Zhao’s model.
+
+
+
+
+Fig. 8. The schematic diagram of the bulk and interfacial water regions in nanoscale porous media. A: The model size is 30 nm £ 45 nm; B: The model size is 50 nm £ 75 nm. The red
+line is the central axis of this model.
+
+
+
+
+Fig. 9. The dimensionless velocity distribution of water in the nanoscale porous media with different wettability (A: water-wetting; B: oil-wetting), and with 30 nm width of porous
+media.
+                                             W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138                                       135
+
+
+
+
+Fig. 10. The dimensionless velocity proﬁles of water in the nanoscale porous media with different wettability, and with 30 nm width of porous media. umax is the maximum velocity
+at the central axis of this model, and that is obtained without considering nanoscale effects.
+
+
+
+
+water-wetting pore because of the decreasing interfacial water vis-                         nanopores, the water ﬂow in inorganic pores and organic pores
+cosity and the increasing slip length. Additionally, based on the                           has different slip lengths, and the viscosities of interfacial water
+porous media model with the same solid media distribution, as the                           are also different. In this part, based on the properties of shale
+porous media size increases, the pore size will gradually increase.                         media, the water ﬂow in the nanoscale porous media with het-
+Then, when the pore wall is neutral-wetting and oil-wetting, the                            erogeneous wettability and pore size is studied.
+enhancement factor decreases and gradually tends to 1 with the                                  In shale reservoirs, the organic media mainly consists of the
+increase of the porous media size. When the pore wall is water-wet-                         kerogen which is mainly the carbon, therefore, the TOC can be
+ting, due to the different effects of the great interfacial water viscosity                 used to represent the content of the organic pores. In this paper,
+and the small slip length, the enhancement factor decreases ﬁrst and                        the TOC in the porous media is deﬁned as the ratio of the area of
+then increases to near 1, and the detailed reason has been shown in                         the oil-wetting media to the total area. As shown in Fig. 13, based
+Section 3.3. Therefore, due to the nanoscale effects, the wettability                       on the Scanning Electron Microscope (SEM) images of shale
+and the porous media size have a signiﬁcant inﬂuence on the water                           media (Fig. 12), we have established the porous media models for
+ﬂow capacity.                                                                               different distributions of the organic and inorganic media in shale
+                                                                                            reservoirs. From Fig. 13, the blue region is the bulk water in
+4.2. Effect of heterogeneous wettability                                                    organic and inorganic pores, the yellow region is the interfacial
+                                                                                            water on the water-wetting solid wall, and the red region is the
+   There are many heterogeneous wetting porous media in                                     interfacial water on the oil-wetting solid wall respectively. In LB
+nature. For example, in shale reservoirs, the nanoscale porous                              simulation, the slip length and the interfacial water viscosity on
+media consists of the water-wetting inorganic pores and oil-wet-                            the water-wetting and oil-wetting solid wall are different, and
+ting organic pores, and the size of organic pores is generally                              that can be realized by the combination factor of Eq. (24) and the
+much smaller than that of inorganic pores [56,57]. Also, because                            relaxation time of Eq. (27).
+the fracturing liquid can be imbibed into the inorganic pores                                   Fig. 14 shows the enhancement factor varies with different
+through the capillary force during hydraulic fracturing and there                           TOC and the properties of the solid wall (with different wettabil-
+is also primary water in the inorganic pores [58,59], then the                              ity). When the nanoscale effects are not considered in LB simula-
+water ﬂow in shale media has a great effect on the enhanced oil                             tion, the enhancement factor equals 1. When the oil-wetting
+recovery. Due to the heterogeneous wettability of shale                                     media is ignored, the wettability of the porous media is water-
+                                                                                            wetting, then due to the small slip length and the great interfa-
+                                                                                            cial water viscosity, the enhancement factor is smaller than 1, as
+                                                                                            shown in Fig. 15, the velocity is smaller than that without consid-
+                                                                                            ering the nanoscale effects. When the water-wetting media is
+                                                                                            ignored, the enhancement factor is greater than 1 because of the
+                                                                                            great slip length and the small interfacial water viscosity. The
+                                                                                            velocity is greater than that without considering nanoscale effects
+                                                                                            from Fig. 15. For the heterogeneous wettability in the porous
+                                                                                            media, the enhancement factor increases with an increasing TOC,
+                                                                                            the reason is that the capacity of water ﬂow in organic pores can
+                                                                                            be enhanced due to the increasing slip length and the decreasing
+                                                                                            interfacial water viscosity. Fig. 16 shows the velocity distribution
+                                                                                            of water ﬂow in porous media with heterogeneous wettability
+                                                                                            and the TOC equals 0.071 and 0.278 respectively. Fig. 17 shows
+                                                                                            the dimensionless velocity proﬁles of water ﬂow at the central
+                                                                                            axis of this model. From Figs. 16 and 17, the dimensionless veloc-
+                                                                                            ity with TOC equaling 0.278 is greater than that with TOC equal-
+                                                                                            ing 0.071. Therefore, in shale reservoirs, with the increase of TOC,
+                                                                                            the capacity of water ﬂow in nanoscale porous media increases
+Fig. 11. The dependence of the enhancement factor on pore size and wettability in the
+                                                                                            because of the nanoscale effects.
+pore, that is obtained by Eq. (12) and LB simulation.
+136                                         W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138
+
+
+
+
+                                                Fig. 12. SEM images of shale media [60]. (a) Inorganic media, (b) organic media.
+
+
+
+
+Fig. 13. The schematic diagrams of the nanoscale porous media with heterogeneous wettability and pore size. A: TOC equals 0.071; B: TOC equals 0.165; C: TOC equals 0.195; D:
+TOC equals 0.278.
+
+
+
+
+                                     Fig. 14. The dependence of the enhancement factor on the TOC with considering different wettability.
+                                              W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138                                              137
+
+
+
+
+                         Fig. 15. The schematic diagrams of dimensionless velocity proﬁles with considering different wettability, and TOC equals 0.278.
+
+
+
+
+         Fig. 16. The schematic diagrams of dimensionless velocity distribution with heterogeneous wettability and pore size. A: TOC equals 0.071; B: TOC equals 0.278.
+
+
+
+
+   Fig. 17. The velocity proﬁles (at the central axis are shown in Fig. 12 in red line) with heterogeneous wettability and pore size, and TOC equals 0.071 and 0.278 respectively.
+
+
+5. Conclusions                                                                                   Based on the new nanoscale LBM, the LB simulation results show
+                                                                                             that in porous media, with the increase of porous media size, the
+    In this paper, we study the conﬁned water ﬂow in nanoscale                               enhancement factor decreases and gradually tends to 1 with the
+porous media considering nanoscale effects from theoretical analysis                         stronger oil wettability because of the decreasing nanoscale effects.
+to a new nanoscale LBM. The nanoscale effects of the slip boundary                           When the pore wall is water wetting and with the increasing porous
+and the varying interfacial water viscosity caused by the different                          media size, the enhancement factor decreases ﬁrst due to the differ-
+solid-liquid molecular interactions are considered. Additionally, the                        ent effects of the slip boundary and the varying interfacial viscosity,
+water ﬂowing in shale porous media coupling different transport                              and the effect of the slip length dominates the water ﬂow. Then, the
+mechanisms in the water-wetting inorganic and oil-wetting organic                            enhancement factor gradually increases to near 1 because of the
+media is simulated and discussed. Through the validation, the veloc-                         small nanoscale effects. Based on the pore properties in shale media,
+ity proﬁles, the slip length, the enhancement and effects of the inter-                      the porous media model with heterogeneous wettability and pore
+facial water viscosity obtained by LB simulations ﬁt well with                               size is established. The LB simulation results show that with
+theoretical analysis and published results. Then, the controllable                           the increasing TOC, the enhancement factor increases due to the
+nanoscale effects have successfully been incorporated into the LB                            nanoscale effects of the great slip length and small interfacial water
+simulation.                                                                                  viscosity.
+138                                             W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138
+
+
+   Our work can guide for accurately studying the fracturing water                             [27] Cui J, Sang Q, Li Y, et al. Liquid permeability of organic nanopores in shale: calcula-
+or oil ﬂow in shale/tight reservoirs and calculating the apparent per-                              tion and analysis. Fuel 2017;202:426–34.
+                                                                                               [28] Wang H, Su Y, Zhao Z, et al. Apparent permeability model for shale oil transport
+meability, or investigating other liquids ﬂow in nanoscale porous                                   through elliptic nanopores considering wall-oil interaction. J Petrol Sci Eng
+media. Additionally, it can also provide research ideas for oil-water                               2019;176:1041–52.
+two-phase ﬂows in nanoporous media.                                                            [29] Rabbani A, Mostaghimi P, Armstrong RT. Pore network extraction using geometri-
+                                                                                                    cal domain decomposition. Adv Water Resour 2019;123:70–83.
+                                                                                               [30] Xie C, Raeini AQ, Wang Y, et al. An improved pore-network model including vis-
+Declaration of Competing Interest                                                                   cous coupling effects using direct simulation by the lattice Boltzmann method.
+                                                                                                    Adv Water Resour 2017;100:26–34.
+                                                                                               [31] Zhang L, Jing W, Yang Y, et al. The investigation of permeability calculation using
+   The authors declare that they have no known competing ﬁnancial                                   digital core simulation technology. Energies 2019;12(17):3273.
+interests or personal relationships that could have appeared to inﬂu-                          [32] Baychev TG, Jivkov AP, Rabbani A, et al. Reliability of algorithms interpreting
+                                                                                                    topological and geometric properties of porous media for pore network model-
+ence the work reported in this paper.
+                                                                                                    ling. Transp Porous Media 2019;128(1):271–301.
+                                                                                               [33] Yi Z, Lin M, Jiang W, et al. Pore network extraction from pore space images of var-
+                                                                                                    ious porous media systems. Water Resour Res 2017;53(4):3424–45.
+Acknowledgments
+                                                                                               [34] Zakirov T, Galeev A. Absolute permeability calculations in micro-computed
+                                                                                                    tomography models of sandstones by Navier-Stokes and lattice Boltzmann equa-
+   This study was supported by the National Natural Science Founda-                                 tions. Int J Heat Mass Transf 2019;129:415–26.
+tion of China (51804328, 51974348, 51904324), The National Science                             [35] Feng F, Akkutlu IY. A simple molecular kerogen pore-network model for transport
+                                                                                                    simulation in condensed phase digital source-rock physics. Transp Porous Media
+and Technology Major Project of China (ZD2019183007), and                                         2019;126(2):295–315.
+Graduate Innovative Engineering project (YCX2020023) .                                         [36] He J, Ju Y, Lammers L, et al. Tortuosity of kerogen pore structure to gas diffusion at
+                                                                                                    molecular-and nano-scales: a molecular dynamics simulation. Chem Eng Sci
+                                                                                                    2020;215:115460.
+References                                                                                     [37] Liu X, Zhu Y, Gong B, et al. From molecular dynamics to lattice Boltzmann: a new
+                                                                                                    approach for pore-scale modeling of multi-phase ﬂow. Pet Sci 2015;12(2):282–
+ [1] Wang H, Su YL, Wang WD, et al. Relative permeability model of oil-water ﬂow in                 92.
+     nanoporous media considering multi-mechanisms. J Petrol Sci Eng                           [38] Yu Y, Liang Liu H. Lattice Boltzmann simulation of immiscible three-phase ﬂows
+     2019;183:106361.                                                                               with contact-line dynamics. Phys Rev E 2019;99(1):013308.
+ [2] Feng Q, Xu S, Xing X. Advances and challenges in shale oil development: a critical        [39] Zachariah GT, Panda D, Surasani VK. Lattice Boltzmann simulations for invasion
+     review. Adv Geo-Energy Res 2020;4(4):406–18.                                                   patterns during drying of capillary porous media. Chem Eng Sci 2019;196:310–
+ [3] Zeng F, Zhang Q, Guo J, et al. Capillary imbibition of conﬁned water in nanopores.             23.
+     Capillarity 2020;3(1):8–15.                                                               [40] Zhang X, Xiao L, al Guo Let. Investigation of shale gas microﬂow with the Lattice
+ [4] Zhang Q, Su Y, Wang W, et al. Apparent permeability for liquid transport in nano-              Boltzmann method. Pet Sci 2015;12(1):96–103.
+     pores of shale reservoirs: coupling ﬂow enhancement and near wall ﬂow. Int J              [41] Wang K, Chai Z, Hou G, et al. Slip boundary condition for lattice Boltzmann
+     Heat Mass Transf 2017;115:224–34.                                                              modeling of liquid ﬂows. Comput Fluids 2018;161:60–73.
+ [5] Zhang Q, Wang W, Kade Y, et al. Analysis of gas transport behavior in organic and         [42] Nie X, Doolen GD, Chen S. Lattice-Boltzmann simulations of ﬂuid ﬂows in MEMS. J
+     inorganic nanopores based on a uniﬁed apparent gas permeability model. Pet Sci                 Stat Phys 2002;107(12):279–89.
+     2020;17(1):168–81.                                                                        [43] Verhaeghe F, Luo LS, Blanpain B. Lattice Boltzmann modeling of microchannel
+ [6] Li L, Sheng J J. Nanopore conﬁnement effects on phase behavior and capillary                   ﬂow in slip ﬂow regime. J Comput Phys 2009;228(1):147–57.
+     pressure in a Wolfcamp shale reservoir. J Taiwan Inst Chem Eng 2017;78:317–28.            [44] Lim C, Shu C, Niu X, et al. Application of lattice Boltzmann method to simulate
+ [7] Das R, Ali ME, Hamid SBA, et al. Carbon nanotube membranes for water puriﬁca-                  microchannel ﬂows. Phys Fluids 2002;14(7):2299–308.
+     tion: a bright future in water desalination. Desalination 2014;336:97–109.                [45] Ansumali S, Karlin IV. Kinetic boundary conditions in the lattice Boltzmann
+ [8] Shin S, Kim AR, Um S. Computational prediction of nanoscale transport character-               method. Phys Rev E 2002;66(2):026311.
+     istics and catalyst utilization in fuel cell catalyst layers by the lattice Boltzmann     [46] Succi S. Mesoscopic modeling of slip motion at ﬂuid-solid interfaces with hetero-
+     method. Electrochim. Acta 2018;275:87–99.                                                      geneous catalysis. Phys. Rev. Lett. 2002;89(6):064502.
+ [9] Mattia D, Calabro  F. Explaining high ﬂow rate of water in carbon nanotubes via          [47] Szalmas L. Slip-ﬂow boundary condition for straight walls in the lattice Boltz-
+     solidliquid molecular interactions. Microﬂuid Nanoﬂuidics 2012;13(1):125–30.                  mann model. Phys Rev E 2006;73(6):066710.
+[10] Wang H, Su YL, Wang WD. Enhanced water ﬂow and apparent viscosity model                   [48] Tang G, Tao W, He Y. Lattice Boltzmann method for gaseous microﬂows using
+     considering wettability and shape effects. Fuel 2019;253:1351–60.                              kinetic theory boundary conditions. Phys Fluids 2005;17(5):058101.
+[11] Wu K, Chen Z, Li J, et al. Wettability effect on nanoconﬁned water ﬂow. Proc Natl         [49] Guo Z, Shi B, Zheng C. Velocity inversion of micro cylindrical Couette ﬂow: a lat-
+     Acad Sci 2017;114(13):3358–63.                                                                 tice Boltzmann study. Comput Math Appl 2011;61(12):3519–27.
+[12] Sheng G, Su Y, Zhao H, et al. A uniﬁed apparent porosity/permeability model of            [50] Yang L, Yu Y, Hou G, et al. Boundary conditions with adjustable slip length for the
+     organic porous media: coupling complex pore structure and multi-migration                      lattice Boltzmann simulation of liquid ﬂow. Comput Fluids 2018;174:200–12.
+     mechanism. Adv Geo-Energy Res 2020;4(2):115–25.                                           [51] Tao S, Guo Z. Boundary condition for lattice Boltzmann modeling of micro-
+[13] Thomas JA, McGaughey AJ. Reassessing fast water transport through carbon                       scale gas ﬂows with curved walls in the slip regime. Phys Rev E 2015;91
+     nanotubes. Nano Lett. 2008;8(9):2788–93.                                                       (4):043305.
+[14] Zhao J, Kang Q, Yao J, et al. Lattice Boltzmann simulation of liquid ﬂow in nanopo-       [52] Tao S, Zhang H, Guo Z. Drag correlation for micro spherical particles at ﬁnite Rey-
+     rous media. Int J Heat Mass Transf 2018;125:1131–43.                                           nolds and Knudsen numbers by lattice Boltzmann simulations. J Aerosol Sci
+[15] Sheng G, Zhao H, Su Y, et al. An analytical model to couple gas storage and trans-             2017;103:105–16.
+     port capacity in organic matter with noncircular pores. Fuel 2020;268:117288.             [53] Guo Z, Zheng C, Shi B. Discrete lattice effects on the forcing term in the lattice
+[16] Zolfaghari A, Dehghanpour H, Xu M. Water sorption behaviour of gas shales: II.                 Boltzmann method. Phys Rev E 2002;65(4):046308.
+     Pore size distribution. Int J Coal Geol 2017;179:187–95.                                  [54] He X, Luo LS. A priori derivation of the lattice Boltzmann equation. Phys Rev E
+[17] Secchi E, Marbach S, Nigues A, et al. Massive radius-dependent ﬂow slippage in                 1997;55(6):R6333.
+     carbon nanotubes. Nature 2016;537(7619):210–3.                                            [55] He X, Zou Q, Luo LS, et al. Analytic solutions of simple ﬂows and analysis of non-
+[18] Wang S, Javadpour F, Feng Q. Fast mass transport of oil and supercritical carbon               slip boundary conditions for the lattice Boltzmann BGK model. J Stat Phys
+     dioxide through organic nanopores in shale. Fuel 2016;181:741–58.                              1997;87(12):115–36.
+[19] Huang DM, Sendner C, Horinek D, et al. Water slippage versus contact angle: a             [56] Lu M, Pan Z, Connell LD, et al. A coupled, non-isothermal gas shale ﬂow model:
+     quasiuniversal relationship. Phys Rev Lett 2008;101(22):226101.                                application to evaluation of gas-in-place in shale with core samples. J Petrol Sci
+[20] Navier C. Me   moire sur les lois du mouvement des ﬂuides. Me             moires de          Eng 2017;158:361–79.
+     l’Academie Royale des Sciences de l’Institut de France 1823;6(1823):389–440.             [57] Saraji S, Piri M. The representative sample size in shale oil rocks and nano-scale
+[21] Neek-Amal M, Peeters FM, Grigorieva IV. Commensurability effects in viscosity of               characterization of transport properties. Int J Coal Geol 2015;146:42–54.
+     nanoconﬁned water. ACS Nano 2016;10(3):3685–92.                                           [58] Li J, Li X, Wu K, et al. Thickness and stability of water ﬁlm conﬁned inside nano-
+[22] Tocci G, Joly L, Michaelides A. Friction of water on graphene and hexagonal boron              slits and nanocapillaries of shale and clay. Int J Coal Geol 2017;179:253–68.
+     nitride from ab initio methods: very different slippage despite very similar inter-       [59] Roychaudhuri B, Tsotsis TT, Jessen K. An experimental investigation of spontane-
+     face structures. Nano Lett. 2014;14(12):6872–7.                                                ous imbibition in gas shales. J Petrol Sci Eng 2013;111:87–97.
+[23] Wang S, Javadpour F, Feng Q. Molecular dynamics simulations of oil transport              [60] Shao X, Pang X, Li Q, et al. Pore structure and fractal characteristics of organic-rich
+     through inorganic nanopores in shale. Fuel 2016;171:74–86.                                     shales: a case study of the lower Silurian Longmaxi shales in the Sichuan Basin,
+[24] Zhang T, Li X, Sun Z, et al. An analytical model for relative permeability in water-           SW China. Mar Pet Geol 2017;80:192–202.
+     wet nanoporous media. Chem Eng Sci 2017;174:1–12.                                         [61] Golparvar A, Zhou Y, Wu K, et al. A comprehensive review of pore scale modeling
+[25] Calabro  F, Lee KP, Mattia D. Modelling ﬂow enhancement in nanochannels: vis-                 methodologies for multiphase ﬂow in porous media. Advances in Geo-Energy
+     cosity and slippage. Appl Math Lett 2013;26(10):991–4.                                         Research 2018;2(4):418–40.
+[26] Kannam SK, Daivis PJ, Todd B. Modeling slip and ﬂow enhancement of water in
+     carbon nanotubes. MRS Bull 2017;42(4):283–8.
+

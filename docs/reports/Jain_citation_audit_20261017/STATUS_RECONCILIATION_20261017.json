@@ -1,0 +1,130 @@
+{
+  "audit_id": "sim240_novelty_status_reconciliation_20261017",
+  "date_local": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "checked_at_utc": "2026-10-17 14:30:33 UTC",
+  "scope": "Reconcile A/B/C/D state, inspect existing normalized search summaries, check publisher Fig.1; do not rerun previous searches or numerical simulations.",
+  "skills_used": [
+    "literature-review",
+    "scientific-critical-thinking"
+  ],
+  "source_status": {
+    "A": "Existing public-index screening; Scholar list and some full texts outstanding.",
+    "B": "18 searches reported as executed; only 5 normalized result sets archived; 13 unarchived. Not independently rerun.",
+    "C": "Not executed; requires forward-citation AND independent topic searches.",
+    "D": "Not executed; no Asta report available."
+  },
+  "task_b_existing_summary": {
+    "path": "docs/reports/Jain_citation_audit_20261017/raw/taskB_openalex_batch1.json",
+    "sha256": "4e5cb4e5728b84a81df1b36a0031a4b6adc6f711670dfdb9a2dc945c4808ebea",
+    "provider_response_complete": false,
+    "archived_query_count": 5,
+    "reported_query_count": 18,
+    "unarchived_query_count": 13,
+    "queries": [
+      {
+        "key": "q1_perm_tensor_rect",
+        "total_hits": 11,
+        "archived_hits": 11
+      },
+      {
+        "key": "q2_lcl_error",
+        "total_hits": 126,
+        "archived_hits": 25
+      },
+      {
+        "key": "q3_riblet_lam",
+        "total_hits": 8,
+        "archived_hits": 8
+      },
+      {
+        "key": "q4_nil_perm",
+        "total_hits": 302,
+        "archived_hits": 25
+      },
+      {
+        "key": "q5_lub_breakdown",
+        "total_hits": 0,
+        "archived_hits": 0
+      }
+    ],
+    "archived_record_count_before_deduplication": 69,
+    "screening_not_repeated": true
+  },
+  "new_primary_check": {
+    "doi": "10.1007/s00162-023-00679-6",
+    "publisher_page": "https://link.springer.com/article/10.1007/s00162-023-00679-6",
+    "figure_1_url": "https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs00162-023-00679-6/MediaObjects/162_2023_679_Fig1_HTML.png",
+    "archived_image": "docs/reports/Jain_citation_audit_20261017/raw/dewangan2024_fig1_verified_20261017.png",
+    "image_sha256": "1a029a7ca4d5eb8bf55302f3fa32159145d22b5aeb9c17c75bcdaf88300ded74",
+    "visual_check": "Figure 1 shows a continuously smooth wavy wall. Public Appendix A1 has cosine topography terms.",
+    "abstract_check": "Confined transverse pressure-driven flow, no-slip walls, theoretical permeability models compared with finite-element numerical results.",
+    "boundary": "Figure 1 geometry check closed. Subscription main text and all cases/closures were not obtained or fully screened; retain as near-neighbor prior art."
+  },
+  "fulltext_state": {
+    "file_signatures_checked_only": true,
+    "independent_formula_rereview_this_turn": false,
+    "existing_pdf_paths": [
+      "raw/ban2020_JVSTB_38_022601.pdf",
+      "raw/ban2021_JVSTB_39_012601.pdf",
+      "raw/cochrane2018_IJMF_104_9.pdf",
+      "raw/dewangan2020_JFM_891_A12.pdf"
+    ],
+    "note": "Paths relative to this directory. Existing absorption reports record prior review; file availability alone does not validate their claims."
+  },
+  "original_document_sha256": {
+    "docs/reports/SIM240_AI_CONTEXT.md": "e5225de83e5e76d9dd153d503d6ade80293c963b8c9429dbdef058e2907fcede",
+    "docs/reports/AI_HANDOFF_20261015.md": "9065b931bc34694c5c0309991ef0f01337b73443ca79b2826f160df29043c2dc",
+    "docs/reports/Jain_citation_audit_20261017/STATUS_20261017.md": "94b2488e570232da29c1c1bd1afc157e22ebb6b06116b1407a8a219c65080b0f",
+    "docs/reports/Jain_citation_audit_20261017/TASK_B_REPORT.md": "6d318b05362eb2949a64cf0e315653cfa0dad46294b4b82e92c9139ef06895ca",
+    "CASE/plans/SIM240_查新续查指令_20261016.md": "9fae2b4c456807ca319e6eea97db94a1bcdef52fa1193e06519fa80ffe6fb213"
+  },
+  "updated_document_sha256": {
+    "docs/reports/SIM240_AI_CONTEXT.md": "cd21e56d0415dd639987a0a17e24c9ac3f505e6b339e2925f230af20b04e0590",
+    "docs/reports/AI_HANDOFF_20261015.md": "ff3632f3c9a29d39eba1d5c30b86f6610b569ffeba61e47f6145f84b68f53ce1",
+    "docs/reports/Jain_citation_audit_20261017/STATUS_20261017.md": "2088a669fc927816d19fde06b8c50d2ebb7bace3934b8e43d0f890a7a95669e4",
+    "docs/reports/Jain_citation_audit_20261017/TASK_B_REPORT.md": "56108a33cb3700920b1d819f62bbed0d350cdc1e943e5b4539b090f27a06ec49",
+    "CASE/plans/SIM240_查新续查指令_20261016.md": "45f7da2cd3086143b42dd155faa277c970b96f15a2b60cf57dc38290ed4219cf"
+  },
+  "original_document_temporary_snapshot": "/tmp/sim240-novelty-audit-KtNLIO",
+  "note_on_snapshot": "Temporary local recovery copies only; current status and provenance are recorded here. Original raw JSON/PDF and numerical results were not edited.",
+  "concurrent_change_note": "The shared context also received an unrelated Figure 4 GUI update from another workflow after the initial snapshot. That content was already present when this task patched its literature sections and was preserved. Whole-file hashes are a time-specific snapshot, not exclusive authorship of every diff hunk.",
+  "final_document_checks": {
+    "local_relative_links_checked": 6,
+    "missing_links": 0,
+    "updated_document_hashes_matched": 5,
+    "context_and_handoff_literature_sections_equal": true,
+    "whitespace_checked_documents": 5,
+    "whitespace_errors": 0,
+    "numerical_tests_applicable": false
+  },
+  "next_actions": [
+    "Obtain WoS or Scopus exports for both Jain forward citations and independent topic queries, with screening metadata.",
+    "Obtain Scholar list separately if accessible; do not relabel another index export as Scholar.",
+    "Obtain independent Asta output without supplying A/B conclusions, then verify candidates.",
+    "Keep 13-query archiving gaps, Chinese/early literature coverage and missing candidate full texts explicit."
+  ],
+  "numerical_scope": {
+    "run_id": null,
+    "new_openlb_runs": 0,
+    "compilation": false,
+    "new_numerical_validation": false,
+    "gate_release": false,
+    "new_long_run_authorization": false
+  },
+  "workflow_reference": {
+    "title": "Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents",
+    "authors": [
+      "Timothy Kassis",
+      "Vinayak Agarwal",
+      "Yuhuan He",
+      "Darshil Patel",
+      "Aubrey M. Brueckner"
+    ],
+    "year": 2026,
+    "doi": "10.48550/arXiv.2609.00065",
+    "record": "https://arxiv.org/abs/2609.00065",
+    "record_checked_live": true,
+    "role": "Procedural support only, not fluid-physics or novelty evidence."
+  }
+}

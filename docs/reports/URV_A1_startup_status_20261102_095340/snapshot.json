@@ -1,0 +1,543 @@
+{
+  "observed_at_utc": "2026-11-02T01:53:40.409511+00:00",
+  "release_sha256": "cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148",
+  "simulation_authorized": true,
+  "approved_run_ids": [
+    "URV_S0_P_A1_20261102_01",
+    "URV_S0_T_A1_20261102_01"
+  ],
+  "case": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1",
+  "native_or_control_processes": [
+    {
+      "pid": 454293,
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_S0_A1.py",
+        "--release",
+        "evidence/S0_launch_release_A1_20261102_01.json",
+        "--release-sha256",
+        "cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148",
+        "--execute"
+      ]
+    },
+    {
+      "pid": 454722,
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/run_config.txt"
+      ]
+    }
+  ],
+  "process_permission_denied": 0,
+  "runs": {
+    "URV_S0_P_A1_20261102_01": {
+      "directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady",
+      "files": [
+        "boundary_audit.txt",
+        "completion.json",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "frame_schedule.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "mass_capture",
+        "pressure_profile.csv",
+        "result.txt",
+        "result_summary.csv",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "exit_code.txt": "0\n",
+      "result.txt": "case=URV_S0_P_A1_20261102_01\ndirection=parallel\nrun_id=URV_S0_P_A1_20261102_01\nformal_simulation=true\ngeometry_PASS=true\nNUMERICAL_GATE=PASS\nRESULT_PASS=false\nPASS=true\nframes_written=10\nwindow_steps=1013\nmaximum_steps=58800\nconverged=true\nsteps_completed=4342\nLx_m=2.4000000000000003e-07\nLy_m=2.4000000000000003e-07\nmesa_gap_m=7.500000000000001e-08\ngroove_depth_m=1.0000000000000001e-07\ngroove_width_m=1.2000000000000002e-07\nH_ref_m=1.2500000000000002e-07\ndx_m=5.0000000000000001e-09\ndt_s=4.1666666666666668e-12\ntau=1\ndescriptor=D3Q19_FORCE\ncollision=ForcedBGK\nwall_boundary=Bouzidi_zero_velocity_exact_EX240\nperiodicity=x_y\nacceleration_m_s2=100000\nrho_phys_kg_m3=1000\nnu_phys_m2_s=9.9999999999999995e-07\nmu_phys_Pa_s=0.001\nforce_lattice=0,3.4722222222222225e-10,0\nfluid_nodes=57600\nfluid_volume_m3=7.1999999999982183e-21\nnominal_volume_m3=7.2000000000000028e-21\ncandidate_links=32448\ninstalled_links=32448\nq_min=0.5\nq_max=0.5\nfallback_count=0\nunresolved_links=0\nmass_gate_statistic=Neumaier_physical_mass\nmax_mass_abs_relative=6.4197664812907855e-16\nlegacy_max_mass_abs_relative=0\nlegacy_mass_gate_PASS=true\nmax_delta_mass_abs_relative=6.952771691715043e-16\nmax_mass_ledger_agreement=2.2833914068471326e-16\nall_measurements_finite=true\nmax_density_deviation=8.8817841970012523e-16\nmax_Mach=2.3918562039092821e-07\npressure_range_Pa=-1.5987211554602254e-07,0\nJ_vector_m2_s=-9.6566273128644514e-22,9.8340760032162032e-12,1.4173499807153881e-21\nJ_main_m2_s=9.8340760032162032e-12\nKeff_m3=9.8340760032162041e-23\nK0_smooth_h_m3=3.5156250000000009e-23\nKeff_over_K0=2.7972482853592751\nR_eff_Pa_s_per_m3=1.0168723524944826e+19\nQ_sections_m3_s=2.3601782407720313e-18,2.3601782407720313e-18\nsection_relative_difference=0\nwindow_main_rel_std=9.9790938890842184e-07\nwindow_main_rel_span=3.7988324396191823e-06\nwindow_cross_abs_max=2.8449465009564607e-21\nmaterial_unchanged=true\nfinite=true\nexit_code=0\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=4342\n",
+      "run_log_tail": "\n    ┃\n    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁\n    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲\n ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱\n ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱\n ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱\n ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>\n       ┗━━━━━┛\n\n[initialize] Version  : 882924a9cfc8\n[initialize] Platform : CPU_SISD\n[initialize] Parallel : MPI\n[initialize] MPI      : 1 ranks\n[ThreadPool] Sucessfully initialized, numThreads=1\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/imageData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/introspectionData/ created.\ncase=URV_S0_P_A1_20261102_01 PASS=true step=4342 J=9.8340760032162032e-12 Keff=9.8340760032162041e-23",
+      "run_log_size": 1999,
+      "completion.json": {
+        "run_id": "URV_S0_P_A1_20261102_01",
+        "planned_case_id": "URV1_H75_P_dx5_a100000",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 43.14275936699414,
+        "inputs_unchanged": true,
+        "capture_finalization_error": null
+      },
+      "analysis/mass_repair_review.json": {
+        "protocol_id": "URV-MRP-v1",
+        "run_id": "URV_S0_P_A1_20261102_01",
+        "direction": "P",
+        "MASS_CAPTURE_INTEGRITY": true,
+        "SAME_INPUT_REPLAY": true,
+        "CORRECTED_LEDGER_UNCHANGED": true,
+        "PHYSICAL_OUTPUT_GUARD": true,
+        "URV_RESULT_PASS": true,
+        "S0_REVISION_DISPOSITION": "DIRECTION_ACCEPTED",
+        "RESULT_PASS": true,
+        "HISTORICAL_EXCLUSIVE_ATTRIBUTION": "NOT_ESTABLISHED",
+        "corrected_differences": [],
+        "native_replay_differences": [],
+        "history_reproduction_differences": [],
+        "physical_output_differences": [],
+        "replays": [
+          {
+            "phase": "initial_reference",
+            "step": 0,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.2e-18,
+            "density_delta": 0.0,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d681",
+              "density_delta": "0000000000000000"
+            },
+            "spatial_prefix_differences": 3441,
+            "maximum_prefix_ULP": 26,
+            "first_spatial_prefix_difference": {
+              "ordinal": 28,
+              "rho_hex64": "3ff0000000000000",
+              "partial_hex64": "3d1c25c268497683",
+              "fused_input_hex64": "3bb0873d88ccc7e6",
+              "split_input_hex64": "3bb0873d88ccc7e6",
+              "fused_output_hex64": "3bb11e5b291d3cc1",
+              "split_output_hex64": "3bb11e5b291d3cc0"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 0,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.2e-18,
+            "density_delta": 0.0,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d681",
+              "density_delta": "0000000000000000"
+            },
+            "spatial_prefix_differences": 3441,
+            "maximum_prefix_ULP": 26,
+            "first_spatial_prefix_difference": {
+              "ordinal": 28,
+              "rho_hex64": "3ff0000000000000",
+              "partial_hex64": "3d1c25c268497683",
+              "fused_input_hex64": "3bb0873d88ccc7e6",
+              "split_input_hex64": "3bb0873d88ccc7e6",
+              "fused_output_hex64": "3bb11e5b291d3cc1",
+              "split_output_hex64": "3bb11e5b291d3cc0"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 14,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.2e-18,
+            "density_delta": 0.0,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d681",
+              "density_delta": "0000000000000000"
+            },
+            "spatial_prefix_differences": 3441,
+            "maximum_prefix_ULP": 26,
+            "first_spatial_prefix_difference": {
+              "ordinal": 28,
+              "rho_hex64": "3ff0000000000000",
+              "partial_hex64": "3d1c25c268497683",
+              "fused_input_hex64": "3bb0873d88ccc7e6",
+              "split_input_hex64": "3bb0873d88ccc7e6",
+              "fused_output_hex64": "3bb11e5b291d3cc1",
+              "split_output_hex64": "3bb11e5b291d3cc0"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 27,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.2e-18,
+            "density_delta": -8.206768598029157e-13,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d681",
+              "density_delta": "bd6ce00000000000"
+            },
+            "spatial_prefix_differences": 3441,
+            "maximum_prefix_ULP": 26,
+            "first_spatial_prefix_difference": {
+              "ordinal": 28,
+              "rho_hex64": "3ff0000000000000",
+              "partial_hex64": "3d1c25c268497683",
+              "fused_input_hex64": "3bb0873d88ccc7e6",
+              "split_input_hex64": "3bb0873d88ccc7e6",
+              "fused_output_hex64": "3bb11e5b291d3cc1",
+              "split_output_hex64": "3bb11e5b291d3cc0"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 68,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.2e-18,
+            "density_delta": -5.126565838509123e-12,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d681",
+              "density_delta": "bd968c0000000000"
+            },
+            "spatial_prefix_differences": 3441,
+            "maximum_prefix_ULP": 17,
+            "first_spatial_prefix_difference": {
+              "ordinal": 28,
+              "rho_hex64": "3ff0000000000000",
+              "partial_hex64": "3d1c25c268497683",
+              "fused_input_hex64": "3bb0873d88ccc7e6",
+              "split_input_hex64": "3bb0873d88ccc7e6",
+              "fused_output_hex64": "3bb11e5b291d3cc1",
+              "split_output_hex64": "3bb11e5b291d3cc0"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 135,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.2e-18,
+            "density_delta": -5.877964781575429e-12,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d681",
+              "density_delta": "bd99da0000000000"
+            },
+            "spatial_prefix_differences": 399,
+            "maximum_prefix_ULP": 9,
+            "first_spatial_prefix_difference": {
+              "ordinal": 2,
+              "rho_hex64": "3fefffffffffffff",
+              "partial_hex64": "3d1c25c268497681",
+              "fused_input_hex64": "3b72e3b40a0e9b4f",
+              "split_input_hex64": "3b72e3b40a0e9b4f",
+              "fused_output_hex64": "3b7c558e0f15e8f7",
+              "split_output_hex64": "3b7c558e0f15e8f6"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 270,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.199999999999999e-18,
+            "density_delta": -1.4223289213077805e-11,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d680",
+              "density_delta": "bdaf470000000000"
+            },
+            "spatial_prefix_differences": 0,
+            "maximum_prefix_ULP": 0,
+            "first_spatial_prefix_difference": null
+          },
+          {
+            "phase": "diagnostic",
+            "step": 675,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.199999999999996e-18,
+            "density_delta": -3.219291500045074e-11,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d67e",
+              "density_delta": "bdc1b2c000000000"
+            },
+            "spatial_prefix_differences": 7,
+            "maximum_prefix_ULP": 1,
+            "first_spatial_prefix_difference": {
+              "ordinal": 6,
+              "rho_hex64": "3feffffffffffffb",
+              "partial_hex64": "3d1c25c26849767d",
+              "fused_input_hex64": "3b8c558e0f15e8f2",
+              "split_input_hex64": "3b8c558e0f15e8f2",
+              "fused_output_hex64": "3b90873d88ccc7e3",
+              "split_output_hex64": "3b90873d88ccc7e2"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 1350,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.199999999999996e-18,
+            "density_delta": -3.9035441545820504e-11,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d67e",
+              "density_delta": "bdc575c000000000"
+            },
+            "spatial_prefix_differences": 7,
+            "maximum_prefix_ULP": 1,
+            "first_spatial_prefix_difference": {
+              "ordinal": 6,
+              "rho_hex64": "3feffffffffffffa",
+              "partial_hex64": "3d1c25c26849767d",
+              "fused_input_hex64": "3b8c558e0f15e8f2",
+              "split_input_hex64": "3b8c558e0f15e8f2",
+              "fused_output_hex64": "3b90873d88ccc7e3",
+              "split_output_hex64": "3b90873d88ccc7e2"
+            }
+          },
+          {
+            "phase": "diagnostic",
+            "step": 2700,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.199999999999999e-18,
+            "density_delta": -2.2366108964888554e-11,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d680",
+              "density_delta": "bdb8978000000000"
+            },
+            "spatial_prefix_differences": 0,
+            "maximum_prefix_ULP": 0,
+            "first_spatial_prefix_difference": null
+          },
+          {
+            "phase": "diagnostic",
+            "step": 4342,
+            "fused_mass": 7.199999999994686e-18,
+            "split_mass": 7.199999999994686e-18,
+            "corrected_mass": 7.199999999999999e-18,
+            "density_delta": -8.760991931922035e-12,
+            "hex64": {
+              "fused_mass": "3c609a213cd6c908",
+              "split_mass": "3c609a213cd6c908",
+              "corrected_mass": "3c609a213cd6d680",
+              "density_delta": "bda3440000000000"
+            },
+            "spatial_prefix_differences": 1,
+            "maximum_prefix_ULP": 1,
+            "first_spatial_prefix_difference": {
+              "ordinal": 2,
+              "rho_hex64": "3fefffffffffffff",
+              "partial_hex64": "3d1c25c268497681",
+              "fused_input_hex64": "3b72e3b40a0e9b4f",
+              "split_input_hex64": "3b72e3b40a0e9b4f",
+              "fused_output_hex64": "3b7c558e0f15e8f7",
+              "split_output_hex64": "3b7c558e0f15e8f6"
+            }
+          }
+        ],
+        "arithmetic_oracle": {
+          "constructed_not_historical": true,
+          "fma_hex64": "3bb11e5b291d3cc1",
+          "split_hex64": "3bb11e5b291d3cc0"
+        },
+        "reference_qualified": false,
+        "next_stage_started": false
+      },
+      "analysis/original_urv/acceptance.json": {
+        "protocol_id": "URV-v1",
+        "planned_case_id": "URV1_H75_P_dx5_a100000",
+        "run_id": "URV_S0_P_A1_20261102_01",
+        "family": "H75",
+        "stage": "S0_REGRESSION",
+        "direction": "P",
+        "dx_nm": 5.0,
+        "acceleration_m_s2": 100000.0,
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "REFERENCE_QUALIFIED_FOR_CASE": false,
+        "MODEL_COMPARISON": "NOT_EVALUATED",
+        "physical_validation": "NOT_EVALUATED",
+        "scalar": {
+          "K_m3": 9.834076003216203e-23,
+          "J_main_m2_s": 9.834076003216203e-12,
+          "diagnostic_rows": 4343,
+          "all_full_windows_recomputed": 3331,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 6.419766481290786e-16,
+          "legacy_mass_max": 0.0,
+          "ledger_agreement_max": 2.2833914068471326e-16,
+          "final_span": 3.7988324396191794e-06,
+          "Re_H": 2.8999715286987916e-05
+        },
+        "smooth": null,
+        "regression": {
+          "relative_K_change": 1.1102230246251565e-16,
+          "legacy": {
+            "all_common_columns": {
+              "J": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "Jx": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "Jy": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "Jz": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "Mach": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "Q_section1": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "Q_section2": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "finite": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "mass": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "mass_error": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "max_density_deviation": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "pressure_max": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "pressure_min": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "rho": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "section_relative_difference": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "step": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "time_s": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "window_cross_abs_max": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "window_rel_span": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              },
+              "window_rel_std": {
+                "exact": true,
+                "max_absolute_difference": 0.0
+              }
+            },
+            "old_rows": 4343,
+            "new_rows": 4343,
+            "common_rows_compared": 4343,
+            "all_exact": true,
+            "unexplained_differences_stop": false
+          }
+        },
+        "geometry": {
+          "fluid_nodes": 57600,
+          "candidate_links": 32448,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 57600,
+          "material_2": 2304,
+          "material_3": 32256
+        },
+        "release_sha256": "cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148",
+        "completion_sha256": "d0b8684277fb166cc4f2a43c31f4290b9213200e7ed7af1ac4aed9b526f72c05",
+        "independent_exit_code": 0
+      },
+      "diagnostics_header": "step,J,rho,Mach,mass,time_s,mass_error,max_density_deviation,Jx,Jy,Jz,Q_section1,Q_section2,section_relative_difference,pressure_min,pressure_max,window_rel_std,window_rel_span,window_cross_abs_max,finite,corrected_mass,corrected_mass_error,delta_mass_error,mass_ledger_agreement,density_delta",
+      "diagnostics_last_line": "4342,9.8340760032162032e-12,1,2.3918562039092821e-07,7.1999999999946862e-18,1.8091666666666668e-08,0,3.3306690738754696e-16,-9.6566273128644514e-22,9.8340760032162032e-12,1.4173499807153881e-21,2.3601782407720313e-18,2.3601782407720313e-18,0,-1.5987211554602254e-07,0,9.9790938890842184e-07,3.7988324396191823e-06,2.8449465009564607e-21,1,7.1999999999999987e-18,-2.1399221604302619e-16,-1.5210055437364646e-16,6.1891661669379734e-17,-8.7609919319220353e-12",
+      "diagnostics_size": 1967658
+    },
+    "URV_S0_T_A1_20261102_01": {
+      "directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady",
+      "files": [
+        "boundary_audit.txt",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "mass_capture",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "run_log_tail": "\n    ┃\n    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁\n    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲\n ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱\n ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱\n ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱\n ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>\n       ┗━━━━━┛\n\n[initialize] Version  : 882924a9cfc8\n[initialize] Platform : CPU_SISD\n[initialize] Parallel : MPI\n[initialize] MPI      : 1 ranks\n[ThreadPool] Sucessfully initialized, numThreads=1\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/imageData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/introspectionData/ created.",
+      "run_log_size": 1897,
+      "diagnostics_header": "step,J,rho,Mach,mass,time_s,mass_error,max_density_deviation,Jx,Jy,Jz,Q_section1,Q_section2,section_relative_difference,pressure_min,pressure_max,window_rel_std,window_rel_span,window_cross_abs_max,finite,corrected_mass,corrected_mass_error,delta_mass_error,mass_ledger_agreement,density_delta",
+      "diagnostics_last_line": "950,4.4387877838112921e-12,1.0000000000002336,1.2778886802970466e-07,7.2000000000002698e-18,3.9583333333333332e-09,7.7550779094049936e-13,1.7753136849485429e-08,4.4387877838112921e-12,3.3537989508403276e-23,7.1815822666729727e-22,1.0653159080221163e-18,1.0652992561997547e-18,1.5630877410357119e-05,-8.521505687753006,8.5215053147180697",
+      "diagnostics_size": 434680
+    }
+  },
+  "receipt_sha256": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/evidence/S0_launch_release_A1_20261102_01.json": "cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/exit_code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/result.txt": "15f5e763a06a3d4978a295316df7e1846c1c7cb70d99ffb1b4ff9141b7896ad8",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/execution_audit.txt": "e09d71205c99a01fb22e192f656792a36731f4a366f07bc802230dc44c1393d4",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/completion.json": "d0b8684277fb166cc4f2a43c31f4290b9213200e7ed7af1ac4aed9b526f72c05",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/analysis_results/URV_S0_P_A1_20261102_01/mass_repair_review.json": "7cfad5ac3497c8469764d194ca7277fb41702c46efc594f2e18482e5baef1927",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/analysis_results/URV_S0_P_A1_20261102_01/original_urv/acceptance.json": "50524f0c4ab902245983ce60238d553d4cd8b9d279453fe571696f08e7312d7d"
+  },
+  "launch_attempt_directories": [
+    {
+      "name": "cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148",
+      "files": [
+        "URV_S0_P_A1_20261102_01_checker.log"
+      ],
+      "URV_S0_P_A1_20261102_01_checker.log": ""
+    }
+  ],
+  "tmux": {
+    "exit": 0,
+    "stdout": "urv_s0_a1_20261102_01: 1 windows\n",
+    "stderr": ""
+  }
+}

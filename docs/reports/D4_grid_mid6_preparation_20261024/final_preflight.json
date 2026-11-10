@@ -1,0 +1,102 @@
+{
+  "ok": true,
+  "checked_at_utc": "2026-10-24T04:32:46.381942+00:00",
+  "cases": 6,
+  "release_sha256": "47ce5341af53768f2f0f2ab9627d4ae80bc47af2a89046410335c0ba0adc2f74",
+  "bound_inputs": 3397,
+  "old_protected_paths_unchanged": 3156,
+  "checks": [
+    {
+      "cwd": "/home/dell/yuanyuanxu/SIM240",
+      "exit_code": 0,
+      "check": {
+        "ok": true,
+        "cases": 6,
+        "batch_id": "development_grid_mid6_20261024_v1",
+        "will_run": false,
+        "result_directory_created": false,
+        "resources": {
+          "MemAvailable_bytes": 17779585024,
+          "disk_free_bytes": 365007581184
+        },
+        "case_ids": [
+          "CAND_grid_reference_h75_d25_w60_P120_Ly120_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d25_w60_P120_Ly120_dx2p5_T_a100000",
+          "CAND_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_T_a100000",
+          "CAND_grid_reference_h75_d120_w240_P480_Ly480_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d120_w240_P480_Ly480_dx2p5_T_a100000"
+        ]
+      }
+    },
+    {
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023",
+      "exit_code": 0,
+      "check": {
+        "ok": true,
+        "cases": 6,
+        "batch_id": "development_grid_mid6_20261024_v1",
+        "will_run": false,
+        "result_directory_created": false,
+        "resources": {
+          "MemAvailable_bytes": 17776877568,
+          "disk_free_bytes": 365007581184
+        },
+        "case_ids": [
+          "CAND_grid_reference_h75_d25_w60_P120_Ly120_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d25_w60_P120_Ly120_dx2p5_T_a100000",
+          "CAND_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_T_a100000",
+          "CAND_grid_reference_h75_d120_w240_P480_Ly480_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d120_w240_P480_Ly480_dx2p5_T_a100000"
+        ]
+      }
+    },
+    {
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "check": {
+        "ok": true,
+        "cases": 6,
+        "batch_id": "development_grid_mid6_20261024_v1",
+        "will_run": false,
+        "result_directory_created": false,
+        "resources": {
+          "MemAvailable_bytes": 17772883968,
+          "disk_free_bytes": 365007581184
+        },
+        "case_ids": [
+          "CAND_grid_reference_h75_d25_w60_P120_Ly120_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d25_w60_P120_Ly120_dx2p5_T_a100000",
+          "CAND_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d120_w60_P120_Ly120_dx2p5_T_a100000",
+          "CAND_grid_reference_h75_d120_w240_P480_Ly480_dx2p5_P_a100000",
+          "CAND_grid_reference_h75_d120_w240_P480_Ly480_dx2p5_T_a100000"
+        ]
+      }
+    },
+    {
+      "tmux_command": [
+        "tmux",
+        "-L",
+        "mid6_final_1792816365",
+        "-f",
+        "/dev/null",
+        "new-session",
+        "-d",
+        "-s",
+        "check",
+        "/bin/bash",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_grid_mid6_20261024/start_from_project.sh",
+        "--check"
+      ],
+      "pane_target": "check:0.0",
+      "pane_exit_status": 0,
+      "mode": "check only",
+      "isolated_server": true
+    }
+  ],
+  "formal_batch_exists": false,
+  "steady_started": false,
+  "next_stage_started": false
+}

@@ -1,0 +1,62 @@
+{
+  "round": 2,
+  "date": "2026-11-09",
+  "note": "第二轮独立复核的取件记录。与第一轮 retrieval_log.json 并存，不改其内容。",
+  "items": [
+    {
+      "file": "sources/round2/Ng2017_accepted.pdf",
+      "url": "https://hub.hku.hk/bitstream/10722/231998/1/Content.pdf",
+      "status": "retrieved",
+      "http_status": 200,
+      "bytes": 412323,
+      "sha256": "c1b8a09c98f692861c0dc9e88920a36bac209a991e7c8fef1e645dd2b4761f5b",
+      "content_type": "application/pdf",
+      "method": "curl -sSL, 默认 UA, 单次请求",
+      "supersedes": "第一轮 retrieval_log.json 中同一 URL 记为 HTTP 403 / not_retrieved；本轮同一 URL 直接返回 200，说明当时为出口或请求方式差异，非文件不可得"
+    },
+    {
+      "file": "sources/round2/Ng2017.txt",
+      "derived_from": "sources/round2/Ng2017_accepted.pdf",
+      "method": "pdftotext -layout",
+      "bytes": 115507,
+      "sha256": "c7f2124071e1c131459f4cab282de8d65e940c3309ef0291b3a4414cb7309d33",
+      "note": "由 sources/round2/Ng2017_accepted.pdf 经 pdftotext -layout 生成"
+    },
+    {
+      "file": "sources/Mohammadi2013_landing.html",
+      "status": "reused_from_round1",
+      "bytes": 906841,
+      "sha256_prefix": "f5e28c6471b9a913",
+      "note": "本轮未重新下载，直接复用第一轮文件；摘要原文已逐句提取核对"
+    },
+    {
+      "file": "Stroock2002",
+      "status": "not_retrieved",
+      "attempts": [
+        {
+          "method": "curl 默认 UA",
+          "result": "HTTP 403"
+        },
+        {
+          "method": "curl 浏览器 UA + Accept + Referer",
+          "result": "HTTP 403"
+        },
+        {
+          "method": "网页抓取工具",
+          "result": "Access Denied（Akamai）"
+        },
+        {
+          "method": "OpenAlex api/works/doi:10.1021/ac0257389",
+          "result": "oa_status=closed, any_repository_has_fulltext=false"
+        }
+      ],
+      "conclusion": "全文不可得；本轮到出版社摘要级。第一轮所述页级细节（pp5307—5309、式(1)—(16)、振幅记号）本轮无法复核，稿件不得依据这些细节。"
+    },
+    {
+      "file": "Wang2003",
+      "doi": "10.1063/1.1560925",
+      "status": "not_retrieved",
+      "note": "本轮只作为 Ng 的转述引用：Wang 给出矩形槽面半解析等效滑移（半无限流体），亦考虑过带槽壁通道但未研究壁距影响。未读原文，不提升为已核同条件解。"
+    }
+  ]
+}

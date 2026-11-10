@@ -1,0 +1,80 @@
+"""Offline full acceptance replay and independent S2 arithmetic. No solver calls."""
+from pathlib import Path
+import json,hashlib,subprocess,os,sys,datetime,csv,math,resource
+from zoneinfo import ZoneInfo
+import numpy as np
+ROOT=Path('/home/dell/yuanyuanxu/SIM240');OUT=Path(__file__).resolve().parent
+CASE=ROOT/'CASE/unseen_v2_reference_S2_reuse_v1';CHECK=ROOT/'CASE/unseen_v2_reference_checker_S2_reuse_v1'
+RELEASE=CASE/'evidence/S2_formal_launch_release_LRP_v1_20261102_02.json'
+EXPECTED='d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd'
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+load=lambda p:json.loads(Path(p).read_text())
+def save(name,obj):
+ with (OUT/name).open('x') as f:json.dump(obj,f,ensure_ascii=False,indent=2);f.write('\n')
+def limits():
+ resource.setrlimit(resource.RLIMIT_AS,(8*1024**3,8*1024**3))
+ resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+def main():
+ assert sha(RELEASE)==EXPECTED
+ bound=load(RELEASE); protected={p:sha(p) for p in bound['inputs_sha256']}
+ assert protected==bound['inputs_sha256']
+ for tree in [CASE/'runs',CASE/'analysis_results',CASE/'launch_attempts',CASE/'evidence',ROOT/'docs/reports/URV_S2_LRP_launch_release_20261102',ROOT/'docs/reports/URV_S2_log_recovery_protocol_20261102']:
+  for p in tree.rglob('*'):
+   if p.is_file():protected[str(p)]=sha(p)
+ 
+ if (OUT/'protected_inputs_and_outputs.json').exists():assert load(OUT/'protected_inputs_and_outputs.json')==protected
+ else:save('protected_inputs_and_outputs.json',protected)
+ sys.path.insert(0,str(CHECK/'analysis'));import stage_s2,evidence
+ stage_s2.verify_seal(RELEASE,EXPECTED);stage_s2.validate_formal_authority(bound)
+ batch=load(CASE/'launch_attempts'/EXPECTED/'S2_completed.json')
+ assert batch['solver_runs']==6 and batch['next_stage_started'] is False
+ env=dict(os.environ,OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',QT_QPA_PLATFORM='offscreen',PYTHONDONTWRITEBYTECODE='1');env.pop('LD_LIBRARY_PATH',None);env.pop('LD_PRELOAD',None)
+ reviews=[];replay_exits=[]
+ for i,rec in enumerate(bound['prepared_runs']):
+  run=Path(rec['output_directory']);rid=rec['run_id'];target=OUT/('replay_'+rid)
+  if (target/'acceptance.json').exists():
+   code=load(OUT/('checker_progress_'+str(i+1)+'.json'))[-1]['exit_code']
+  else:
+   with (OUT/(rid+'_checker.log')).open('x') as log:
+    proc=subprocess.run(['/home/dell/miniconda3/bin/python3','-B',str(CHECK/'analysis/check_results.py'),'--run',str(run),'--release',str(RELEASE),'--release-sha256',EXPECTED,'--out',str(target)],stdout=log,stderr=subprocess.STDOUT,env=env,timeout=3600,preexec_fn=limits)
+   code=proc.returncode
+  replay_exits.append(dict(run_id=rid,exit_code=code))
+  if not (OUT/('checker_progress_'+str(i+1)+'.json')).exists():save('checker_progress_'+str(i+1)+'.json',replay_exits)
+  assert code==0,(rid,code)
+  a=load(target/'acceptance.json');old=load(CASE/'analysis_results'/rid/'acceptance.json');assert a==old
+  fields=load(target/'fields.json');assert fields['PASS'] and fields['actual_reader']
+  oldfields=load(CASE/'analysis_results'/rid/'fields.json');assert fields==oldfields
+  comp=load(run/'completion.json');assert comp['inputs_before_sha256']==comp['inputs_after_sha256']==bound['inputs_sha256']
+  assert comp['inputs_unchanged'] and comp['release_sha256']==EXPECTED and not comp['timed_out'] and comp['resource_stop_reason'] is None
+  actual_raw={str(p.relative_to(run)):sha(p) for p in run.rglob('*') if p.is_file() and p.name!='completion.json'};assert actual_raw==comp['output_sha256']
+  cfg=evidence.kv(run/'run_config.txt');r=evidence.kv(run/'result.txt');p=evidence.exact_parameters(cfg)
+  with (run/'diagnostics.csv').open() as f:rows=list(csv.DictReader(f))
+  x={k:np.array([float(v[k]) for v in rows]) for k in rows[0]}
+  assert np.array_equal(x['step'],np.arange(len(rows))) and all(np.isfinite(v).all() for v in x.values())
+  assert len(rows)==int(r['steps_completed'])+1
+  J=float(x['J'][-1]);K=p['nu']*J/p['a'];assert math.isclose(K,a['scalar']['K_m3'],rel_tol=2e-15)
+  mass=(x['corrected_mass']-x['corrected_mass'][0])/x['corrected_mass'][0];delta=(x['density_delta']-x['density_delta'][0])/(p['nodes']+x['density_delta'][0]);ledger=np.abs(mass-delta)
+  legacy=(x['mass']-x['mass'][0])/x['mass'][0]
+  n=p['window'];last=x['J'][-n:];std=float(np.std(last,ddof=1)/abs(np.mean(last)));span=float(np.ptp(last)/abs(np.mean(last)))
+  if len(rows)>n:
+   prev=x['J'][-n-1:-1];prevstd=float(np.std(prev,ddof=1)/abs(np.mean(prev)));prevspan=float(np.ptp(prev)/abs(np.mean(prev)))
+  rho=float(x['max_density_deviation'].max());mach=float(x['Mach'].max());Re=mach/math.sqrt(3)*p['dx']/p['dt']*(p['h']+p['d'])/p['nu']
+  q1=x['Q_section1'];q2=x['Q_section2'];den=np.maximum(np.abs(q1),np.abs(q2));section=np.divide(abs(q1-q2),den,out=np.zeros_like(den),where=den>0)
+  vv=dict(run_id=rid,direction=cfg['direction'],dx_nm=float(cfg['dx_nm']),steps=len(rows)-1,diagnostic_rows=len(rows),solver_seconds=comp['elapsed_seconds'],solver_cap_seconds=comp['solver_wall_cap_seconds'],K_m3=K,J_m2_s=J,U_mean_m_s=J/p['H'],R_Pa_s_per_m3=.001/K,window_steps=n,window_std=std,window_span=span,previous_window_std=prevstd,previous_window_span=prevspan,corrected_mass_max=float(abs(mass).max()),legacy_mass_max=float(abs(legacy).max()),ledger_max=float(ledger.max()),density_deviation_max=rho,Mach_max=mach,Re_H_max=Re,section_final=float(section[-1]),core_fluid_nodes=p['nodes'],installed_links=int(r['installed_links']),fallback=int(r['fallback_count']),unresolved=int(r['unresolved_links']),volume_relative_error=float(r['fluid_volume_m3'])/(p['P']*p['Ly']*p['H'])-1,field_frames=len(fields['frames']),raw_files=len(actual_raw),raw_bytes=sum((run/f).stat().st_size for f in actual_raw),independent_checker_exit=code,acceptance_exact_replay=True,fields_exact_replay=True,NUMERICAL_GATE=a['NUMERICAL_GATE'],geometry_PASS=a['geometry_PASS'],RESULT_PASS=a['RESULT_PASS'],REFERENCE_QUALIFIED_FOR_CASE=False)
+  assert abs(mass).max()<1e-10 and ledger.max()<=1e-13 and rho<=1e-6 and mach<.05 and Re<=.01
+  assert std<=1e-6 and span<=5e-6 and section[-1]<=1e-5
+  reviews.append(vv);print(json.dumps(dict(done=rid,steps=vv['steps'],K=K,frames=vv['field_frames'])),flush=True)
+ grids=[]
+ for direction in ['P','T']:
+  g=[v for v in reviews if v['direction']==direction];k0,k1,k2=[v['K_m3'] for v in g];a0=k0-k1;a1=k1-k2;order=math.log(abs(a0/a1),2);change=abs(k1/k2-1);gci=1.25*change/(2**order-1);extra=k2+(k2-k1)/(2**order-1)
+  estimate=evidence.grid_estimate(k0,k1,k2,g[-1]['window_span'])
+  assert a0*a1>0 and order>0 and math.isclose(order,estimate['p'],rel_tol=1e-14) and math.isclose(gci,estimate['GCI_fine_estimate'],rel_tol=1e-14)
+  grids.append(dict(direction=direction,K_by_grid_m3=[k0,k1,k2],observed_order=order,medium_fine_relative_change=change,GCI_fine_estimate=gci,extrapolated_K_m3=extra,grid_checks_pass=bool(estimate['REFERENCE_QUALIFIED_FOR_CASE']),estimated_u=estimate['u'],strict_error_bound=False,independent_asymptotic_evidence=False,REFERENCE_QUALIFIED_FOR_CASE=False,linearity_controls='NOT_EVALUATED_S3_NOT_RUN'))
+ anisotropy=[dict(dx_nm=dx,K_parallel_over_K_perpendicular=next(v['K_m3'] for v in reviews if v['direction']=='P' and v['dx_nm']==dx)/next(v['K_m3'] for v in reviews if v['direction']=='T' and v['dx_nm']==dx)) for dx in [5.,2.5,1.25]]
+ assert all(sha(p)==h for p,h in protected.items()),'protected evidence drift'
+ result=dict(reviewed_at=datetime.datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),protocols=['URV-v1','MRP','A1','S2-MIP-v1','S2-FRD-v1','S2-LRP-v1'],release_sha256=EXPECTED,inputs_verified=len(bound['inputs_sha256']),protected_files_unchanged=len(protected),six_full_checker_replays_exact=True,actual_VTK_reader_invocations=6,total_field_frames_read=sum(v['field_frames'] for v in reviews),solver_calls=0,builds=0,retries=0,extensions=0,S3_started=False,S2_SIX_RUN_ACCEPTANCE=True,runs=reviews,grid_analysis=grids,anisotropy=anisotropy,formal_solver_total_seconds=sum(v['solver_seconds'] for v in reviews),REFERENCE_QUALIFIED_FOR_CASE=False,MODEL_COMPARISON='NOT_EVALUATED',physical_validation='NOT_EVALUATED',strict_error_bound_established=False,submission_ready=False)
+ save('independent_review.json',result)
+ with (OUT/'run_summary.csv').open('x') as f:
+  w=csv.DictWriter(f,fieldnames=list(reviews[0]));w.writeheader();w.writerows(reviews)
+ print('REVIEW_COMPLETE '+str(OUT),flush=True)
+if __name__=='__main__':main()

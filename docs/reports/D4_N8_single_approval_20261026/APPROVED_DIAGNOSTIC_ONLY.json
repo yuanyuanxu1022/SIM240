@@ -1,0 +1,113 @@
+{
+  "approval": {
+    "authorization_text": "\u4f60\u7684\u8868\u8ff0\u662f\u201c\u6536\u5230\u660e\u786e\u8fd0\u884c\u6388\u6743\u540e\u201d\u3002\u4e3a\u907f\u514d\u628a\u51c6\u5907\u8bf7\u6c42\u8bef\u8bb0\u4e3a\u8fd0\u884c\u6279\u51c6\uff0c\u8bf7\u786e\u8ba4\uff1a\u662f\u5426\u6279\u51c6\u4ec5\u8fd0\u884c\u9996\u9879 B0MIN_MMS_mixed_N8\uff0c\u91c7\u7528\u5df2\u5ba1\u67e5\u7684600\u79d2\u5de5\u4f5c\u8fdb\u7a0b\u9650\u65f6\uff08\u53e6\u52a05\u79d2\u7ec8\u6b62\u5bbd\u9650\uff09\u30014GiB\u5185\u5b58\u3001512MiB\u5de5\u4f5c\u5377\u3001\u6700\u591a2000\u6b21\u8fed\u4ee3\uff0c\u5931\u8d25\u5373\u505c\u3001\u4e0d\u91cd\u8bd5\u3001\u4e0d\u8fd0\u884c\u7b2c\u4e8c\u9879\uff0c\u5e76\u7531\u4f60\u4eb2\u81ea\u6267\u884c\u540e\u53f0\u542f\u52a8\u547d\u4ee4\uff1f\n\u7528\u6237\u660e\u786e\u7b54\u590d\uff1a\u660e\u786e\u6279\u51c6\u4e0a\u8ff0\u552f\u4e00\u9996\u9879\u548c\u56fa\u5b9a\u9884\u7b97\uff0c\u7531\u6211\u542f\u52a8",
+    "protocol_sha256": "c4f99a73a3252bf532b7f34e0e2b0759b45e576cbebf7e6fab394efe4f1c4a93"
+  },
+  "argv": [
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+    "-B",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_1_20261026/worker.py",
+    "--record-dir",
+    "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026/D4_N8_diag_v3_1_20261026_v1"
+  ],
+  "authorized_to_execute": true,
+  "cgroup_parent": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice",
+  "environment": {
+    "HOME": "/home/dell",
+    "LD_LIBRARY_PATH": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/lib",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PATH": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin:/usr/bin:/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/run/user/1000/sim240_pilot_n8_work_20261026/D4_N8_diag_v3_1_20261026_v1/tmp",
+    "XDG_CACHE_HOME": "/run/user/1000/sim240_pilot_n8_work_20261026/D4_N8_diag_v3_1_20261026_v1/cache",
+    "XDG_CONFIG_HOME": "/run/user/1000/sim240_pilot_n8_work_20261026/D4_N8_diag_v3_1_20261026_v1/config"
+  },
+  "physical_plan": {
+    "actual_run_id": null,
+    "analytic_expectation": {
+      "J_hat_exact": 0.16666666666666666,
+      "physical_K": "NOT_APPLICABLE"
+    },
+    "analytic_topology_counts": {
+      "P1_pressure_pairs": 9,
+      "P2_trace_nodes_per_face": 17,
+      "free_P2_trace_pairs_per_component": 15,
+      "is_actual_mesh_audit": false,
+      "raw_dofs": 1275
+    },
+    "candidate_resources": {
+      "available_RAM_GiB": 4,
+      "disk_GiB": 4,
+      "measured_or_guaranteed": false,
+      "whole_batch_wall_time_allowance_hours": 2
+    },
+    "element": "P2_vector_P1_pressure",
+    "execution_authorized": false,
+    "explicit_body_force_and_pressure_drop_together": false,
+    "field": "mixed",
+    "forcing": "prescribed_MMS_source",
+    "geometry": {
+      "H_hat": 1,
+      "P_hat": 2,
+      "kind": "rectangle",
+      "units": "dimensionless_MMS"
+    },
+    "mesh": {
+      "cell": "triangle",
+      "constructed": false,
+      "diagonal": "right",
+      "label": "N8",
+      "nx": 16,
+      "nz": 8
+    },
+    "periodic": {
+      "actual_pairing_verified": false,
+      "axis": "x",
+      "master": "x=0",
+      "pressure_endpoints": "include",
+      "slave": "x=P",
+      "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+      "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+      "z_interval": [
+        0,
+        1
+      ]
+    },
+    "physical_constants": null,
+    "planned_id": "B0MIN_MMS_mixed_N8",
+    "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+    "pressure_gauge": "one_constant_nullspace_then_integral_mean_removal",
+    "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+    "problem": "MMS",
+    "quadrature_degree": 8,
+    "role": "base",
+    "schema_version": 1,
+    "solve_implementation_present": false,
+    "target_status": "DRAFT_NOT_ACTIVATED",
+    "true_relative_residual_target": 1e-10
+  },
+  "planned_id": "B0MIN_MMS_mixed_N8",
+  "record_dir": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026/D4_N8_diag_v3_1_20261026_v1",
+  "resource_limits": {
+    "grace_seconds": 5,
+    "memory_bytes": 4294967296,
+    "minimum_available_memory_bytes": 6442450944,
+    "minimum_record_disk_bytes": 2147483648,
+    "output_bytes": 536870912,
+    "wall_seconds": 600
+  },
+  "run_id": "D4_N8_diag_v3_1_20261026_v1",
+  "solver_settings": {
+    "ksp_rtol": 1e-10,
+    "max_iterations": 2000,
+    "restart": 50,
+    "true_residual_target": 1e-10
+  },
+  "source_lock_sha256": "6bc89af1ecce6ad748bfa39db2205cfbfda954e02afe62df37bd1fd6fd0fc97b",
+  "status": "APPROVED_DIAGNOSTIC_ONLY",
+  "version": "D4_PILOT_RECORD_V3_1_20261026_PREPARATION",
+  "work_dir": "/run/user/1000/sim240_pilot_n8_work_20261026/D4_N8_diag_v3_1_20261026_v1"
+}

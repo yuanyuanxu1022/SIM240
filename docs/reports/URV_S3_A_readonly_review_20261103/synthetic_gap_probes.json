@@ -1,0 +1,63 @@
+{
+  "label": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE",
+  "native_calls": 0,
+  "VTK_calls": 0,
+  "CASE_writes": 0,
+  "R1": [
+    {
+      "probe": "valid_synthetic_metadata",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE"
+    },
+    {
+      "probe": "wrong_effective_acceleration",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE"
+    },
+    {
+      "probe": "wrong_effective_direction",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE"
+    },
+    {
+      "probe": "wrong_effective_dx",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE"
+    },
+    {
+      "probe": "wrong_effective_nu",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE"
+    },
+    {
+      "probe": "wrong_effective_formal_flag",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE"
+    }
+  ],
+  "R2": [
+    {
+      "probe": "four_synthetic_readbacks_with_wrong_flux",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE",
+      "authority_checks_mocked": true,
+      "file_hash_checks_real": true
+    },
+    {
+      "probe": "four_records_reuse_one_readback",
+      "accepted": true,
+      "error": null,
+      "fixture": "SYNTHETIC_SOFTWARE_PROBE_NOT_NATIVE_OR_FIELD_EVIDENCE",
+      "authority_checks_mocked": true,
+      "file_hash_checks_real": true
+    }
+  ],
+  "interpretation": "Two content-check gaps reproduced; no claim that a genuine authorized native run produced these errors."
+}

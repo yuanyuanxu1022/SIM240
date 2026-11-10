@@ -1,0 +1,924 @@
+{
+  "schema": "D4_MIXED_SOLVE_ENTRY_PREFLIGHT_v1",
+  "status": "PREFLIGHT_COMPLETE",
+  "planned_ids": [
+    "B0MIN_FLAT_T_d5",
+    "B0MIN_FLAT_T_d2p5",
+    "B0MIN_FLAT_T_d1p25",
+    "B0MIN_MMS_mixed_N8",
+    "B0MIN_MMS_mixed_N16",
+    "B0MIN_MMS_mixed_N32",
+    "B0MIN_FLAT_T_d1p25_ALG",
+    "B0MIN_MMS_mixed_N32_ALG",
+    "B0MIN_MMS_mixed_N32_QUAD"
+  ],
+  "records": [
+    {
+      "planned_id": "B0MIN_FLAT_T_d5",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_FLAT_T_d5"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.638770702003967,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_FLAT_T_d5",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "h_nm": 75,
+          "P_nm": 240,
+          "d_nm": 0,
+          "P_hat": 3.2,
+          "H_hat": 1,
+          "units": "SI_recovery_from_h"
+        },
+        "planned_mesh": {
+          "nx": 48,
+          "nz": 15,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "5nm",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 1440,
+          "actual_vertices": 784,
+          "actual_raw_dofs": 6798
+        },
+        "forcing": "unit_uniform_body_acceleration",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": {
+          "rho_kg_m3": 1000,
+          "nu_m2_s": 1e-06,
+          "a_m_s2": 100000.0
+        },
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "2f7bc358a0512c91eda130bf09af93b9024120b8ac790e73d39c8027b9a32b26",
+        "periodic_mapping_sha256": "b35f8ae2a2bf71f5be74e8e92603edf67007197e0b15e6d82ccfcd854a7de88f",
+        "matrix_shape": [
+          6798,
+          6798
+        ],
+        "matrix_csr_sha256": "b8f5782ed2400acd963f54b96e8c3d3113a9a24025234c595b90a910fd614a64",
+        "rhs_sha256_before_projection": "e4377b65443c1373f655acd75e10042ed730ba104bb3e00932dbfb7e79a18c10",
+        "pressure_support": {
+          "physical_pressure_dofs": 784,
+          "pressure_slave_dofs_removed": 16,
+          "algebraic_nonzero_dofs": 768,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 6.938893903907228e-18,
+        "gauge_check": {
+          "right_kernel_relative": 3.3025280770698614e-20,
+          "left_kernel_relative": 3.714197485066494e-20,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d2p5",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_FLAT_T_d2p5"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.7334550240193494,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_FLAT_T_d2p5",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "h_nm": 75,
+          "P_nm": 240,
+          "d_nm": 0,
+          "P_hat": 3.2,
+          "H_hat": 1,
+          "units": "SI_recovery_from_h"
+        },
+        "planned_mesh": {
+          "nx": 96,
+          "nz": 30,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "2.5nm",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 5760,
+          "actual_vertices": 3007,
+          "actual_raw_dofs": 26553
+        },
+        "forcing": "unit_uniform_body_acceleration",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": {
+          "rho_kg_m3": 1000,
+          "nu_m2_s": 1e-06,
+          "a_m_s2": 100000.0
+        },
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "1de069478dd5c4fdd4bb59f346ace1df3b8e168cdb356569f0848c545e8e7eb4",
+        "periodic_mapping_sha256": "0e2d22db226d613115dffd50bf590344112f4d06156e4b669211f1323a881334",
+        "matrix_shape": [
+          26553,
+          26553
+        ],
+        "matrix_csr_sha256": "4f06ebd7c3ac16bce373aa5647dbf30ede2fbbfd41d1976015e42de135ad1cf6",
+        "rhs_sha256_before_projection": "9ac7491ea4afe8f32611e241b7b4e9fc7c52276e670dfeca2d343e62a2b850b3",
+        "pressure_support": {
+          "physical_pressure_dofs": 3007,
+          "pressure_slave_dofs_removed": 31,
+          "algebraic_nonzero_dofs": 2976,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 3.469446951953614e-18,
+        "gauge_check": {
+          "right_kernel_relative": 8.350648551647513e-21,
+          "left_kernel_relative": 9.17365686843031e-21,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d1p25",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_FLAT_T_d1p25"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 1.1534517770051025,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_FLAT_T_d1p25",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "h_nm": 75,
+          "P_nm": 240,
+          "d_nm": 0,
+          "P_hat": 3.2,
+          "H_hat": 1,
+          "units": "SI_recovery_from_h"
+        },
+        "planned_mesh": {
+          "nx": 192,
+          "nz": 60,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "1.25nm",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 23040,
+          "actual_vertices": 11773,
+          "actual_raw_dofs": 104943
+        },
+        "forcing": "unit_uniform_body_acceleration",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": {
+          "rho_kg_m3": 1000,
+          "nu_m2_s": 1e-06,
+          "a_m_s2": 100000.0
+        },
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "626546ccc84f1268f8d5e4d72d865f072f638ac74364fd4e946560dd4f5aaea9",
+        "periodic_mapping_sha256": "1188292119c76c4437ec64e5f92ddd0049a6097c78e4d442c81d511dfcd0e29e",
+        "matrix_shape": [
+          104943,
+          104943
+        ],
+        "matrix_csr_sha256": "fa8d9e39895acdba1addaf2f3f1949d14b9d24e3ce6428319503e7b54fead3a5",
+        "rhs_sha256_before_projection": "20b8ae76a7efe1e06e5fb3f733c6f1f176c169f3a88f8d621d12a24ad03a92e2",
+        "pressure_support": {
+          "physical_pressure_dofs": 11773,
+          "pressure_slave_dofs_removed": 61,
+          "algebraic_nonzero_dofs": 11712,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 3.469446951953614e-18,
+        "gauge_check": {
+          "right_kernel_relative": 2.1587985494558292e-21,
+          "left_kernel_relative": 2.264253655481106e-21,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N8",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_MMS_mixed_N8"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.5952530730282888,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_MMS_mixed_N8",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "P_hat": 2,
+          "H_hat": 1,
+          "units": "dimensionless_MMS"
+        },
+        "planned_mesh": {
+          "nx": 16,
+          "nz": 8,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "N8",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 256,
+          "actual_vertices": 153,
+          "actual_raw_dofs": 1275
+        },
+        "forcing": "prescribed_MMS_source",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": null,
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "3699d077604054967143fdac200d108bba7878ccd1d61e5f26daa9edbb30b4ab",
+        "periodic_mapping_sha256": "c1cb265727e8a0a923d8ba6eb12ef0fb0341ec78ee28994970e883bd0252658f",
+        "matrix_shape": [
+          1275,
+          1275
+        ],
+        "matrix_csr_sha256": "eac8083d785fcf2c0a432b6ca2824ab85bbb321f470184863054a9c45ce655dc",
+        "rhs_sha256_before_projection": "f59ae748bc15258510012708fa3c5e51328ab17b1ca5aeaaf24ba1b8b0f11bfc",
+        "pressure_support": {
+          "physical_pressure_dofs": 153,
+          "pressure_slave_dofs_removed": 9,
+          "algebraic_nonzero_dofs": 144,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 0.0,
+        "gauge_check": {
+          "right_kernel_relative": 1.7091531021232052e-19,
+          "left_kernel_relative": 1.964428335753306e-19,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N16",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_MMS_mixed_N16"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.6214153220062144,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_MMS_mixed_N16",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "P_hat": 2,
+          "H_hat": 1,
+          "units": "dimensionless_MMS"
+        },
+        "planned_mesh": {
+          "nx": 32,
+          "nz": 16,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "N16",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 1024,
+          "actual_vertices": 561,
+          "actual_raw_dofs": 4851
+        },
+        "forcing": "prescribed_MMS_source",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": null,
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "def4cc2e96402fee982e96e26ccba01ad81417a3dd89b1a671bb4bb7ebb61105",
+        "periodic_mapping_sha256": "7239ea84d77de169aef3dfc29e152e0fadf638c0a5a708f730515da15901a4b7",
+        "matrix_shape": [
+          4851,
+          4851
+        ],
+        "matrix_csr_sha256": "31c6349cbf7116d1e954fb3855c8d618339b969047f8fc48f6588f78bea2fe56",
+        "rhs_sha256_before_projection": "598e41ab6ced16b00f06efb20247eaa199dfd061cc67daebf891e84ef0536856",
+        "pressure_support": {
+          "physical_pressure_dofs": 561,
+          "pressure_slave_dofs_removed": 17,
+          "algebraic_nonzero_dofs": 544,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 6.938893903907228e-18,
+        "gauge_check": {
+          "right_kernel_relative": 4.3393700366990026e-20,
+          "left_kernel_relative": 4.9689381102635684e-20,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_MMS_mixed_N32"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.7048578319954686,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_MMS_mixed_N32",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "P_hat": 2,
+          "H_hat": 1,
+          "units": "dimensionless_MMS"
+        },
+        "planned_mesh": {
+          "nx": 64,
+          "nz": 32,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "N32",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 4096,
+          "actual_vertices": 2145,
+          "actual_raw_dofs": 18915
+        },
+        "forcing": "prescribed_MMS_source",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": null,
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "a064e750ac8d83a93bd34d8d86aafbdaf1df2098ff5c3ca45bf53cd9ab04890b",
+        "periodic_mapping_sha256": "dbf006c724bf74034aff2a3c8ffa7069335780d7da219690baccddf6c25ea7b4",
+        "matrix_shape": [
+          18915,
+          18915
+        ],
+        "matrix_csr_sha256": "92745f942ff6b0a530ce39d6923f3d4e83b8dcaf78cd6b92f33890592acfc528",
+        "rhs_sha256_before_projection": "33f82b0bec8421aac28d7a9bd418c4f0ebe7324ec3bf00b59021b51ae2fb83b7",
+        "pressure_support": {
+          "physical_pressure_dofs": 2145,
+          "pressure_slave_dofs_removed": 33,
+          "algebraic_nonzero_dofs": 2112,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 3.469446951953614e-18,
+        "gauge_check": {
+          "right_kernel_relative": 1.3523567704342698e-20,
+          "left_kernel_relative": 1.4216912125218422e-20,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_FLAT_T_d1p25_ALG",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_FLAT_T_d1p25_ALG"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 1.1358551749726757,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_FLAT_T_d1p25_ALG",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "h_nm": 75,
+          "P_nm": 240,
+          "d_nm": 0,
+          "P_hat": 3.2,
+          "H_hat": 1,
+          "units": "SI_recovery_from_h"
+        },
+        "planned_mesh": {
+          "nx": 192,
+          "nz": 60,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "1.25nm",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 23040,
+          "actual_vertices": 11773,
+          "actual_raw_dofs": 104943
+        },
+        "forcing": "unit_uniform_body_acceleration",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": {
+          "rho_kg_m3": 1000,
+          "nu_m2_s": 1e-06,
+          "a_m_s2": 100000.0
+        },
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "626546ccc84f1268f8d5e4d72d865f072f638ac74364fd4e946560dd4f5aaea9",
+        "periodic_mapping_sha256": "1188292119c76c4437ec64e5f92ddd0049a6097c78e4d442c81d511dfcd0e29e",
+        "matrix_shape": [
+          104943,
+          104943
+        ],
+        "matrix_csr_sha256": "fa8d9e39895acdba1addaf2f3f1949d14b9d24e3ce6428319503e7b54fead3a5",
+        "rhs_sha256_before_projection": "20b8ae76a7efe1e06e5fb3f733c6f1f176c169f3a88f8d621d12a24ad03a92e2",
+        "pressure_support": {
+          "physical_pressure_dofs": 11773,
+          "pressure_slave_dofs_removed": 61,
+          "algebraic_nonzero_dofs": 11712,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 3.469446951953614e-18,
+        "gauge_check": {
+          "right_kernel_relative": 2.1587985494558292e-21,
+          "left_kernel_relative": 2.264253655481106e-21,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32_ALG",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_MMS_mixed_N32_ALG"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.691831368021667,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_MMS_mixed_N32_ALG",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "P_hat": 2,
+          "H_hat": 1,
+          "units": "dimensionless_MMS"
+        },
+        "planned_mesh": {
+          "nx": 64,
+          "nz": 32,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "N32",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 4096,
+          "actual_vertices": 2145,
+          "actual_raw_dofs": 18915
+        },
+        "forcing": "prescribed_MMS_source",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": null,
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 8,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "a064e750ac8d83a93bd34d8d86aafbdaf1df2098ff5c3ca45bf53cd9ab04890b",
+        "periodic_mapping_sha256": "dbf006c724bf74034aff2a3c8ffa7069335780d7da219690baccddf6c25ea7b4",
+        "matrix_shape": [
+          18915,
+          18915
+        ],
+        "matrix_csr_sha256": "92745f942ff6b0a530ce39d6923f3d4e83b8dcaf78cd6b92f33890592acfc528",
+        "rhs_sha256_before_projection": "33f82b0bec8421aac28d7a9bd418c4f0ebe7324ec3bf00b59021b51ae2fb83b7",
+        "pressure_support": {
+          "physical_pressure_dofs": 2145,
+          "pressure_slave_dofs_removed": 33,
+          "algebraic_nonzero_dofs": 2112,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 3.469446951953614e-18,
+        "gauge_check": {
+          "right_kernel_relative": 1.3523567704342698e-20,
+          "left_kernel_relative": 1.4216912125218422e-20,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    },
+    {
+      "planned_id": "B0MIN_MMS_mixed_N32_QUAD",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/entry.py",
+        "--mode",
+        "preflight",
+        "--planned-id",
+        "B0MIN_MMS_mixed_N32_QUAD"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.7071439470164478,
+      "stderr": "",
+      "preflight": {
+        "planned_id": "B0MIN_MMS_mixed_N32_QUAD",
+        "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+        "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+        "geometry": {
+          "kind": "rectangle",
+          "P_hat": 2,
+          "H_hat": 1,
+          "units": "dimensionless_MMS"
+        },
+        "planned_mesh": {
+          "nx": 64,
+          "nz": 32,
+          "cell": "triangle",
+          "diagonal": "right",
+          "label": "N32",
+          "constructed": false
+        },
+        "actual_mesh": {
+          "actual_triangles": 4096,
+          "actual_vertices": 2145,
+          "actual_raw_dofs": 18915
+        },
+        "forcing": "prescribed_MMS_source",
+        "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+        "periodic": {
+          "axis": "x",
+          "slave": "x=P",
+          "master": "x=0",
+          "z_interval": [
+            0,
+            1
+          ],
+          "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+          "pressure_endpoints": "include",
+          "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+          "actual_pairing_verified": false
+        },
+        "physical_constants": null,
+        "body_force_and_pressure_drop_together": false,
+        "quadrature_degree": 12,
+        "backend_versions": {
+          "fenics-dolfinx": "0.11.0",
+          "dolfinx_mpc": "0.11.0",
+          "petsc4py": "3.25.6",
+          "mpi4py": "4.1.2"
+        },
+        "mesh_sha256": "a064e750ac8d83a93bd34d8d86aafbdaf1df2098ff5c3ca45bf53cd9ab04890b",
+        "periodic_mapping_sha256": "dbf006c724bf74034aff2a3c8ffa7069335780d7da219690baccddf6c25ea7b4",
+        "matrix_shape": [
+          18915,
+          18915
+        ],
+        "matrix_csr_sha256": "798a393589b8b330c62808f44e067dc2d24ed91472db86f5b81994754f329136",
+        "rhs_sha256_before_projection": "408487f94d7eb1e2db796e1aff3d55d32fd90aee861cff7aaf6fcd2b3b668d16",
+        "pressure_support": {
+          "physical_pressure_dofs": 2145,
+          "pressure_slave_dofs_removed": 33,
+          "algebraic_nonzero_dofs": 2112,
+          "algebraic_slave_entries_zero": true,
+          "algebraic_velocity_entries_zero": true
+        },
+        "pressure_backsubstitution_max_error": 3.469446951953614e-18,
+        "gauge_check": {
+          "right_kernel_relative": 1.6008789361330064e-20,
+          "left_kernel_relative": 1.621692634735413e-20,
+          "rhs_compatibility_relative_before_projection": 0.0,
+          "rhs_projection_change_L2": 0.0,
+          "petsc_nullspace_test": true,
+          "right_and_transpose_nullspaces_attached": true
+        },
+        "prior_assembly_hashes_match": true,
+        "solver_object_created": false,
+        "solver_called": false,
+        "physical_field_generated": false,
+        "formal_run_id": null,
+        "prediction_permission": "HOLD",
+        "NUMERICAL_GATE": "NOT_EVALUATED",
+        "RESULT_PASS": false,
+        "geometry_PASS": null
+      }
+    }
+  ],
+  "source_sha256": {
+    "protocol/benchmarks18.csv": "fb784710590acdbdc1ac5abdc33cdc542d3643bd4df28d49a85cb12902e85aee",
+    "protocol/method_contract.json": "4914b7c701ff97ac8ba1eeab26569ab3ca07a44cf76ad407eb8df5c24b3aacc9",
+    "environment/conda-linux-64.explicit.txt": "769466a0e00bc2303f537dc3b7f9027a8e667e83c96bf7c041b1dcd289cc6414",
+    "mesh_periodic_pressure_20261025/interface.py": "5bff1dcc4946e655ade9cc865474dd4a953551c45fe7a5ce29efd54608d88c90",
+    "src/symbolic_forms.py": "8992ee7879a65c9d289356b5d01a2f8038b962dfc70188f091e2cb5012a7e27f",
+    "src/contract.py": "3d10b8b683dd3901e61de18116697877738256d8d4ef11d6ad5abc8a05231dad",
+    "pressure_assembly_audit_20261025/evidence/assembly_all9.json": "0d40a46d315bfc4697055b9bf79f7568ed491a39419c99832c601eb60c7cbf0a",
+    "solve_entry_review_20261025/entry.py": "500c3af0d286ae0d00a8a11f2098b1cebc890d188510e5357be59ce700b073e0",
+    "solve_entry_review_20261025/run_preflight.py": "9da77ef2d6b9ede976ed73195bedefd5a517549634818690c0d3ef4f0a3c953f",
+    "solve_entry_review_20261025/test_entry.py": "6399c0cdb18abc02284f17f781fe91d51e818bfb20742381e763af6f2740fe3c",
+    "solve_entry_review_20261025/verify_preflight.py": "9428464e179ed80159e851fc137574cd396459f2b63360fafe70bb144abed6d7"
+  },
+  "solver_called": false,
+  "formal_run_id": null
+}

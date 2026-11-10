@@ -1,0 +1,81 @@
+Minimizing filling time for ultraviolet
+nanoimprint lithography with templates with
+multiple structures
+Cite as: J. Vac. Sci. Technol. B 39, 012601 (2021); https://doi.org/10.1116/6.0000648
+Submitted: 19 September 2020 . Accepted: 10 November 2020 . Published Online: 16 December 2020
+
+  Yang H. Ban, and       Roger T. Bonnecaze
+
+COLLECTIONS
+
+
+    This paper was selected as an Editor’s Pick
+
+
+
+
+J. Vac. Sci. Technol. B 39, 012601 (2021); https://doi.org/10.1116/6.0000648              39, 012601
+
+© 2020 Author(s).
+                                                                                                   ARTICLE            avs.scitation.org/journal/jvb
+
+
+
+
+    Minimizing filling time for ultraviolet nanoimprint
+    lithography with templates with multiple
+    structures
+    Cite as: J. Vac. Sci. Technol. B 39, 012601 (2021); doi: 10.1116/6.0000648
+    Submitted: 19 September 2020 · Accepted: 10 November 2020 ·                                                          View Online   Export Citation    CrossMark
+    Published Online: 16 December 2020
+
+    Yang H. Ban            and Roger T. Bonnecazea)
+
+    AFFILIATIONS
+    McKetta Department of Chemical Engineering, The University of Texas at Austin, Austin, Texas 78712
+
+    a)
+      Electronic mail: rtb@che.utexas.edu
+
+
+    ABSTRACT
+    Optimizing the locations and sizes of droplets is the key to reducing defects and increasing throughput of ultraviolet nanoimprint lithogra-
+    phy. In practice the templates are composed of regions with different structures. The interface between structures will generate complicated
+    fluid flow behavior that will slow the filling time. Here, we explore several strategies through simulations to distribute resist material accord-
+    ing to a nonuniform pattern to reduce filling time and ultimately increase throughput. In order to mimic the complexity of a template, the
+    interface between different pairs of template structures is considered and the spreading and merging of droplets are simulated. From these
+    simulations, it is found that the volume and arrangement of droplets underneath strongly affect the imprint time. By distributing the correct
+    amount of resist underneath the template, one can remove the unnecessary fluid transferring step in droplet spreading and reduce the total
+    filling time. Furthermore, by optimally placing the resist droplets, one can delay merging events and accelerate the spreading speed. Finally,
+    the advantage of hexagonal arrangements is explored.
+
+    Published under license by AVS. https://doi.org/10.1116/6.0000648
+
+
+    I. INTRODUCTION                                                            and defects caused by gas trapping. About 70% of the throughput
+          While research in nanopatterning explores a range of pattern-        budget is utilized by the fluid filling step (Fig. 1). In order to be a
+    ing techniques, there are currently only two technologies consid-          competitive manufacturing process, UVNIL should reduce the time
+    ered for manufacturing of next generation integrated circuits: UV          required to complete the fluid filling step.1 It is possible to increase
+    nanoimprint lithography (UVNIL) and extreme ultraviolet lithogra-          the throughput by shortening the filling step. This may increase the
+    phy.1 UVNIL is a promising high-resolution molding process.                number for wafers produced per hour, but at the same time,
+    UVNIL exceeds the patterning limits of 193 nm lithography, the             defects in the imprinted pattern increase because of incomplete
+    current dominant technology.1 UVNIL has a high resolution, and             filling. Thus, in UVNIL, defectivity and throughput are related to
+    the resolution is largely unaffected by the field size being pat-          each other and both must be addressed simultaneously. The chal-
+    terned.2,3 UVNIL is distinct from other lithography processes as it        lenge is finding the shortest time required to achieve complete
+    avoids the use of costly optical systems for traditional photolithog-      filling. There is a need to understand the optimal droplet arrange-
+    raphy and uses an inkjet system to dispense resist materials. When         ment because optimizing the locations and sizes of droplets is the
+    compared to immersion based self-aligned quadruple patterning,             key to reduce defects and increase the throughput of UVNIL.1
+    the cost of ownership for UVNIL is ∼40% lower.4 The use of an              Thus, fluid management is an important issue in enhancing the
+    inkjet system allows us to print complex patterns with pattern             UVNIL process.
+    density variations, because an inkjet system can distribute resist               A typical process of UVNIL is shown in Fig. 1. An inkjet dis-
+    material according to a nonuniform pattern in the template.1               penser is used to dispense droplets of low viscosity photocurable
+    Because the resist volume deposited is matched to the mask pattern         imprint material on the substrate. These droplets are a few picoli-
+    density, resist is not wasted.5 The ability of UVNIL to cheaply and        ters in volume. A UV-transparent template with micro- or nanofea-
+    reliably replicate nanoscale features is degraded by low throughput        tures is lowered on the substrate. As the template is pressed into
+
+
+
+
+J. Vac. Sci. Technol. B 39(1) Jan/Feb 2021; doi: 10.1116/6.0000648                                                                                       39, 012601-1
+Published under license by AVS.
+

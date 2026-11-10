@@ -1,0 +1,116 @@
+{
+  "recomputed_GCI": [
+    {
+      "case": "Smooth75",
+      "fine_K": 3.5165797338982587e-23,
+      "medium_K": 3.5195285780093276e-23,
+      "coarse_K": 3.531249871557505e-23,
+      "order": 1.9909103303821905,
+      "extrapolated_K": 3.515588484914297e-23,
+      "GCI_fine_percent": 0.03523483963715135,
+      "GCI_medium_percent": 0.13993681993551074,
+      "GCI_coarse_percent": 0.5543853880658742,
+      "asymptotic_ratio": 0.9991621479849622,
+      "ratio_equals_fine_over_medium": 0.9991621479849621,
+      "coarse_K_over_extrapolated_percent": 0.44548406932189977
+    },
+    {
+      "case": "EX240_parallel",
+      "fine_K": 9.764325526249012e-23,
+      "medium_K": 9.782423697043172e-23,
+      "coarse_K": 9.834075958643652e-23,
+      "order": 1.5129876294506368,
+      "extrapolated_K": 9.754563861479575e-23,
+      "GCI_fine_percent": 0.12496593778028703,
+      "GCI_medium_percent": 0.3559935199394659,
+      "GCI_coarse_percent": 1.0106706707683852,
+      "asymptotic_ratio": 0.9981499297766432,
+      "ratio_equals_fine_over_medium": 0.9981499297766432,
+      "coarse_K_over_extrapolated_percent": 0.8151271373399549
+    },
+    {
+      "case": "EX240_perpendicular",
+      "fine_K": 4.358613368821741e-23,
+      "medium_K": 4.3852935121144107e-23,
+      "coarse_K": 4.4490220210459354e-23,
+      "order": 1.2561724912115397,
+      "extrapolated_K": 4.339399834463539e-23,
+      "GCI_fine_percent": 0.5510219860185761,
+      "GCI_medium_percent": 1.308170066726721,
+      "GCI_coarse_percent": 3.0799517867025807,
+      "asymptotic_ratio": 0.9939159959945745,
+      "ratio_equals_fine_over_medium": 0.9939159959945747,
+      "coarse_K_over_extrapolated_percent": 2.5262061751437637
+    }
+  ],
+  "scheme_C": {
+    "path": "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/runs/fine_t_C_20261014T151036+0800",
+    "PASS": "true",
+    "shell_exit": "0",
+    "steps": 29548,
+    "corrected_mass_max": 2.20411982524317e-14,
+    "legacy_mass_max": 1.1967043900362632e-10,
+    "delta_mass_error_max": 2.1911587128053967e-14,
+    "mass_ledger_agreement_max": 1.4239696504953402e-16,
+    "std": 9.999523616481308e-07,
+    "span": 3.461180867625412e-06,
+    "K": 4.358613368821741e-23,
+    "common_original_columns": [
+      "step",
+      "J",
+      "rho",
+      "Mach",
+      "mass",
+      "time_s",
+      "mass_error",
+      "max_density_deviation",
+      "Jx",
+      "Jy",
+      "Jz",
+      "Q_section1",
+      "Q_section2",
+      "section_relative_difference",
+      "pressure_min",
+      "pressure_max",
+      "window_rel_std",
+      "window_rel_span",
+      "window_cross_abs_max",
+      "finite"
+    ],
+    "common_rows_compared": 29549,
+    "different_common_rows": 0,
+    "manifest_formal_reference_accepted": false,
+    "source_hash_check": {
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/src/Makefile": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/src/mass_stats.h": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/src/fine_T_statfix_C.cpp": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/scripts/test_mass_stats.cpp": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/scripts/prepare_and_precheck.py": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/scripts/run_formal.py": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/PROTOCOL.md": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/README.md": true,
+      "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/.gitignore": true
+    }
+  },
+  "mu_comparison": [
+    {
+      "direction": "parallel",
+      "K_mu1": 9.834075958643654e-23,
+      "K_mu15": 9.834012591336552e-23,
+      "K_change_percent": -0.0006443646293541327
+    },
+    {
+      "direction": "perpendicular",
+      "K_mu1": 4.449022021045936e-23,
+      "K_mu15": 4.4490094230033704e-23,
+      "K_change_percent": -0.00028316431129882247
+    }
+  ],
+  "D2_D3_manifest_source_hash_missing": 48,
+  "D2_D3_binary_hash_groups": {
+    "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c": 22,
+    "57611b21584c8f32dabd5d4ff240616c65f245930b00a1a40dae5f8d3169f2d6": 18,
+    "85cc9dee8db9a245419a3a152efb72fc9958e29b8dac7a356f4667e54fd5bf66": 6,
+    "efd24c98efd8d7709893df3e8db2bc7537ab149b1d45bc8d22c5eac4ca7e3f81": 2
+  }
+}

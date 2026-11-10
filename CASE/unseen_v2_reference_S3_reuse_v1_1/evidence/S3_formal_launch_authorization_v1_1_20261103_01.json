@@ -1,0 +1,84 @@
+{
+  "kind": "USER_AUTHORIZATION_EVIDENCE",
+  "recorded_at": "2026-11-03T15:53:29.441455+08:00",
+  "authorization_source": "user_reply_to_request_user_input_async",
+  "question_item_id": "[\"request_user_input_async\",\"call_359ddf48ffb44e17958a24f0b2d3b9cd\",0]",
+  "user_explicitly_authorized": true,
+  "user_instruction_verbatim": "现在采用并授权完整四条；生成合同和命令，由我手动启动",
+  "authorization_question_verbatim": "是否现在采用 S3-FRD-v1，并授权 S3 v1.1 完整四条正式计算：低力沿槽P→低力横槽T→高力沿槽P→高力横槽T，每条求解上限4小时、标准独立检查上限1小时；前一条完整验收通过才自动继续，第三条还须沿槽0.1%线性门通过才进入第四条，最后检查横槽线性门？四条求解预算合计16小时、检查另最多4小时，文件核对等另计，不保证20小时内结束；任何失败即停，不自动重试、加时、性能推进或进入S4/S5。本次只让我复核后生成正式合同和一条命令，由你本人手动启动。",
+  "selected_answer_verbatim": "现在采用并授权完整四条；生成合同和命令，由我手动启动",
+  "verbatim_recorded_from_typed_sentence": false,
+  "authorization_recording_note": "The actual selected answer is recorded verbatim together with the complete scope question.",
+  "stage": "S3_REG_LINEARITY",
+  "addendum_id": "URV-S3-S1-ELF-REUSE-v1.1",
+  "adopted_scope_protocol": {
+    "protocol_id": "S3-FRD-v1",
+    "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S3_formal_scope_review_20261103/PROTOCOL.md",
+    "sha256": "e2ddde0b4a1c5cf42447e8be80f6b8e9d78b952d890902bb41b1ea0ebecc9c8f"
+  },
+  "preparation_B_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/preparation_B.json",
+  "preparation_B_sha256": "a5b69ec95180bf92327a3bba1311639dd2a5fb1bec412cd80c3869dda2a47f92",
+  "simulation_authorized": true,
+  "formal_simulation_authorized": true,
+  "native_zero_step_authorized": false,
+  "initial_field_readback_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "approved_run_ids": [
+    "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+    "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+    "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+    "URV_S3_T_a200000_reuse_v1_1_20261103_01"
+  ],
+  "approved_runs": [
+    {
+      "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a50000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "e3e25d5ed53af7b2ec40001de73884c4aec1b5cf90e971a08d7fbe725c511659",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a50000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a50000_reuse_v1_1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "92c3cae4310616ef2fa96bd3a6cee52a19c159b33c77a4c60fa50341dbc9fa26",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a50000_reuse_v1_1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a200000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a200000_reuse_v1_1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "7c99570ddf6dcfc4b734179435c39f926d8e9097a3b77280ccd37047b65e3999",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a200000_reuse_v1_1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S3_T_a200000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a200000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "b4efffc4962e320b19f39a0941d4fd7d6dd25bf7bca0e01c51aefcd32ede0b07",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady"
+    }
+  ],
+  "approved_audit_run_ids": [],
+  "standard_independent_check_including_saved_field_reads_authorized": true,
+  "sequential_advance_only_after_acceptance": true,
+  "P_linearity_required_before_fourth_run": true,
+  "T_linearity_required_after_fourth_run": true,
+  "linearity_K_span_over_mean_max": 0.001,
+  "per_solver_wall_cap_seconds": 14400,
+  "per_checker_wait_cap_seconds": 3600,
+  "solver_total_budget_seconds": 57600,
+  "checker_total_wait_budget_seconds": 14400,
+  "strict_20_hour_batch_completion_guaranteed": false,
+  "failure_policy": "STOP_WITHOUT_RETRY_EXTENSION_OR_NEXT_STAGE",
+  "automatic_retry_authorized": false,
+  "automatic_extension_authorized": false,
+  "S4_authorized": false,
+  "S5_authorized": false,
+  "AI_may_start_solver": false,
+  "user_manually_starts": true
+}

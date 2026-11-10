@@ -1,0 +1,10 @@
+{
+  "initial_failure": "numpy.bool_ was not JSON serializable in report-only output after arithmetic completed",
+  "original_script": "audit_existing_initial.py.txt",
+  "partial_output_preserved": "existing_evidence_audit.json",
+  "corrected_output": "existing_evidence_audit_v1_1.json",
+  "correction": "serialize NumPy scalar via item(); use new output names; repeat pure read-only report arithmetic only",
+  "solver_calls": 0,
+  "checker_calls": 0,
+  "frozen_files_modified": 0
+}

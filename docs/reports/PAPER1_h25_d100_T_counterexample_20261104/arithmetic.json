@@ -1,0 +1,61 @@
+{
+  "scope": "read-only scalar recomputation from saved results and published rounded V2 coefficients, no refit or solver/checker replay",
+  "h_nm": 25.0,
+  "d_nm": 100.0,
+  "w_nm": 120.0,
+  "K0_m3": 2.5834986772486774e-24,
+  "F": 0.6986321322666704,
+  "K_V2_m3": 1.804915189594366e-24,
+  "model_reduction_pct": 30.136786773332958,
+  "reference_rows": [
+    {
+      "dx_nm": 5.0,
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_T/steady/result.txt",
+      "Kref_m3": 2.2202084470320096e-24,
+      "original_signed_error_pct": 16.362888390156204,
+      "V2_signed_error_pct": -18.705147167276593,
+      "absolute_error_change_pp": 2.3422587771203887,
+      "factor_matching_this_discrete_reference": 0.859380524009574,
+      "matching_reduction_pct": 14.0619475990426,
+      "minimum_gap_cells": 5.0,
+      "stored_PASS": "true",
+      "stored_case_label": "D2-T-h25-d100-dx5"
+    },
+    {
+      "dx_nm": 2.5,
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d100_dx2.5_T/steady/result.txt",
+      "Kref_m3": 2.121836963645658e-24,
+      "original_signed_error_pct": 21.75764309477437,
+      "V2_signed_error_pct": -14.936198184933557,
+      "absolute_error_change_pp": -6.821444909840812,
+      "factor_matching_this_discrete_reference": 0.8213036771922521,
+      "matching_reduction_pct": 17.869632280774795,
+      "minimum_gap_cells": 10.0,
+      "stored_PASS": "true",
+      "stored_case_label": "D2-T-h25-d100-dx2"
+    }
+  ],
+  "K_2p5_relative_change_from_5_pct": -4.430731876453098,
+  "same_different_h_5nm": [
+    {
+      "h_nm": 25,
+      "same_V2_factor": 0.6986321322666704,
+      "factor_matching_saved_5nm_reference": 0.859380524009574
+    },
+    {
+      "h_nm": 50,
+      "same_V2_factor": 0.6986321322666704,
+      "factor_matching_saved_5nm_reference": 0.7291740885026659
+    },
+    {
+      "h_nm": 75,
+      "same_V2_factor": 0.6986321322666704,
+      "factor_matching_saved_5nm_reference": 0.682558091728978
+    },
+    {
+      "h_nm": 125,
+      "same_V2_factor": 0.6986321322666704,
+      "factor_matching_saved_5nm_reference": 0.6705873762847379
+    }
+  ]
+}

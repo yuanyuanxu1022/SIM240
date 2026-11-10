@@ -1,0 +1,225 @@
+{
+  "workspace": "/home/dell/yuanyuanxu/SIM240_代码图片数据_20261022",
+  "manifest_files": 6503,
+  "manifest_bytes": 1262482754,
+  "missing_manifest_files": [],
+  "hash_mismatch": [],
+  "source_snapshot_drift": [],
+  "git_folder_present": false,
+  "root_files": [
+    "文件清单.csv",
+    "图片_代码_数据对应表.csv",
+    ".gitignore",
+    "使用说明.txt",
+    "00_工作路线与查看顺序.md",
+    "requirements.txt"
+  ],
+  "runs52": {
+    "groups": {
+      "主地图36项": 36,
+      "加密8项": 8,
+      "斜向6项": 6,
+      "黏度2项": 2
+    },
+    "artifact_counts": {
+      "result.txt": 52,
+      "diagnostics.csv": 52,
+      "run_manifest.txt": 52,
+      "exit_code.txt": 52,
+      "boundary_audit.txt": 52,
+      "run.log": 48
+    },
+    "precheck_counts": {
+      "result.txt": 52,
+      "boundary_audit.txt": 52,
+      "run_manifest.txt": 52,
+      "exit_code.txt": 52,
+      "run.log": 48
+    },
+    "diagnostic_rows": 286352,
+    "diagnostics_issues": [],
+    "shared_log_missing_run_covers": 4,
+    "manifest_field_counts": {
+      "binary_sha256": 52,
+      "source_sha256": 0,
+      "generated_source_sha256": 0,
+      "openlb_commit": 0,
+      "compiler": 0,
+      "compile_flags": 0
+    },
+    "exit_counts": {
+      "0": 52
+    }
+  },
+  "summary36": {
+    "rows": 36,
+    "unique_keys": 36,
+    "max_summary_relative_difference": 0.0
+  },
+  "transverse_depth_variation_by_h": {
+    "25": {
+      "depths": [
+        25,
+        50,
+        100
+      ],
+      "max_over_min_minus_one_percent": 3.689395203762369
+    },
+    "50": {
+      "depths": [
+        100,
+        25,
+        50,
+        75,
+        120
+      ],
+      "max_over_min_minus_one_percent": 3.3861248072897476
+    },
+    "75": {
+      "depths": [
+        100,
+        25,
+        50,
+        75,
+        120
+      ],
+      "max_over_min_minus_one_percent": 2.138462994315571
+    },
+    "125": {
+      "depths": [
+        100,
+        25,
+        50,
+        75,
+        120
+      ],
+      "max_over_min_minus_one_percent": 0.9405265967337151
+    }
+  },
+  "vtk_dependencies": {
+    "unresolved": 0,
+    "xml_parse_failures": [],
+    "examples": []
+  },
+  "code": {
+    "files": 1815,
+    "files_with_home_dell_paths": 53,
+    "absolute_path_files": [
+      "01_代码/图片生成/make_fig1.py",
+      "01_代码/图片生成/make_fig4.py",
+      "01_代码/图片生成/make_fig7_fig8.py",
+      "01_代码/图片生成/make_fig_fre.py",
+      "01_代码/流场出图/D2_publication_layout_20261017_v1/assemble.py",
+      "01_代码/流场出图/D2_publication_layout_20261017_v1/bind_caption_evidence.py",
+      "01_代码/流场出图/D2_h75_d100_dx5_PT_publication_20261017_v1/render_fields.py",
+      "01_代码/流场出图/D2_h75_d100_dx5_PT_publication_20261017_v1/rendered_v4/matched_fields.pvsm",
+      "01_代码/流场出图/D2_h75_d100_dx5_PT_publication_20261017_v1/rendered_v3/matched_fields.pvsm",
+      "01_代码/流场出图/D2_publication_layout_20261017_v1/rendered/dissipation_footprints.pvsm",
+      "01_代码/科学核对/reviewer_numerics_20261018_v1/verify_artifacts.py",
+      "01_代码/科学核对/reviewer_numerics_20261018_v1/viscosity_check.py",
+      "01_代码/科学核对/Methods_support_audit_20261022/audit_supports.py",
+      "01_代码/科学核对/SIM240_independent_audit_20261018/step2_verify_checks.py",
+      "01_代码/科学核对/SIM240_independent_audit_20261018/step1_verify_map36.py",
+      "01_代码/科学核对/SIM240_independent_audit_20261018/step4_decisive_analysis.py",
+      "01_代码/计算与分析/D3_squeeze_error_propagation/make_table2b_common_stroke.py",
+      "01_代码/计算与分析/D3_squeeze_error_propagation/check_time_integral.py",
+      "01_代码/计算与分析/D3_squeeze_error_propagation/aspect_ratio_weights.py",
+      "01_代码/计算与分析/D3_squeeze_error_propagation/squeeze_error_propagation.py",
+      "01_代码/计算与分析/D3_squeeze_error_propagation/make_fig9.py",
+      "01_代码/计算与分析/D3_squeeze_error_propagation/locate_time_convention.py",
+      "01_代码/计算与分析/G1_Poiseuille_Bouzidi_Validation/src/Makefile",
+      "01_代码/计算与分析/D3_oblique_groove_tensor_check/src/Makefile",
+      "01_代码/计算与分析/G4_EX240_period_convergence/scripts/run_field_repair_nx2.py",
+      "01_代码/计算与分析/G4_EX240_period_convergence/scripts/run_fields_nx4.py",
+      "01_代码/计算与分析/G4_EX240_period_convergence/scripts/run_fields_nx8.py",
+      "01_代码/计算与分析/G4_EX240_period_convergence/src/Makefile.fields_nx4",
+      "01_代码/计算与分析/G4_EX240_period_convergence/src/Makefile",
+      "01_代码/计算与分析/G4_EX240_period_convergence/src/Makefile.fields_nx8",
+      "01_代码/计算与分析/G4_EX240_period_convergence/src/Makefile.fields",
+      "01_代码/计算与分析/G2_EX240_fine_T_mass_diagnostic_v2/src/Makefile",
+      "01_代码/计算与分析/G2_EX240_fine_T_statfix_C_v1/src/Makefile",
+      "01_代码/计算与分析/G2_EX240_fine_T_mass_diagnostic_v1/scripts/check_static.py",
+      "01_代码/计算与分析/G2_EX240_fine_T_mass_diagnostic_v1/scripts/prepare_manifest.py",
+      "01_代码/计算与分析/G2_EX240_fine_T_mass_diagnostic_v1/src/Makefile",
+      "01_代码/计算与分析/D2_groove_error_map/scripts/independent_crosscheck.py",
+      "01_代码/计算与分析/D2_groove_error_map/scripts/make_charts.py",
+      "01_代码/计算与分析/D2_groove_error_map/scripts/run_dx25_refinement_20261018.sh",
+      "01_代码/计算与分析/D2_groove_error_map/scripts/rebuild_summary.py",
+      "01_代码/计算与分析/D2_groove_error_map/scripts/analyze_matrix.py",
+      "01_代码/计算与分析/D2_groove_error_map/scripts/fit_correction.py",
+      "01_代码/计算与分析/D2_groove_error_map/src/Makefile",
+      "01_代码/计算与分析/G2_EX240_grid_convergence/src/Makefile",
+      "01_代码/计算与分析/G3_EX240_height_sweep/scripts/run_missing_height_steady.sh",
+      "01_代码/计算与分析/G3_EX240_height_sweep/src/Makefile",
+      "01_代码/00_技术说明/analysis/transport_parameter_extraction/transport_database/G3/transport_summary.md",
+      "01_代码/00_技术说明/CASE/03_grid_convergence/G4_EX240_period_convergence/reports/FIELD_OUTPUT_REPAIR.md",
+      "01_代码/00_技术说明/CASE/03_grid_convergence/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/SOURCE_MANIFEST.md",
+      "01_代码/00_技术说明/CASE/03_grid_convergence/G2_EX240_grid_convergence/results/g2_grid_20260917T165045+0800/SOURCE_MANIFEST.md",
+      "01_代码/补充图片生成/第一篇进展组会汇报_20261017/make_dh_scaling_fig.py",
+      "01_代码/补充图片生成/第一篇进展组会汇报_20261017/make_oblique_sketch.py",
+      "01_代码/补充图片生成/第一篇进展组会汇报_20261017/make_viscosity_fig.py"
+    ],
+    "full_openlb_dependency_included": false,
+    "build_or_execution_performed": false
+  },
+  "excluded_case_instructions": [],
+  "historical_grid": [
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx2p5/EX240_parallel/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx2p5/Smooth75/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx2p5/EX240_perpendicular/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx1p25/EX240_parallel/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx1p25/Smooth75/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx1p25/EX240_perpendicular/steady/result.txt",
+      "PASS": "false",
+      "exit_code": "3"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx5/EX240_parallel/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx5/Smooth75/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    },
+    {
+      "path": "03_数据/计算结果/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx5/EX240_perpendicular/steady/result.txt",
+      "PASS": "true",
+      "exit_code": "0"
+    }
+  ],
+  "periodic_reference": {
+    "g4_period_nx2_fields_v1_20261012T001316+0800": 6,
+    "g4_period_nx4_fields_v1_20261012T105719+0800": 6,
+    "g4_period_nx8_fields_v1_20261012T163341+0800": 6
+  },
+  "limitations": [
+    "文件核对不等于物理验收",
+    "未重新运行求解器或优化器",
+    "未确认老师已收到或具有共享访问权限",
+    "代码与数据分类分离，未适配执行路径",
+    "历史源码与构建绑定尚未闭合"
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "target": "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第5章_对比对象选择草稿_20261018.md",
+  "merge_base": "merge_base_b73a49071ae4.md",
+  "merge_base_sha256": "b73a49071ae47d2166a874b78f0a7ca486525267b3a73a23aa7ab08878f1848e",
+  "audit_chapter_sha256": "9f536f0d339c1bacb08d03b65f8ecc64c96a651c61148e791dace5bea33563d4",
+  "candidate_sha256": "0f9c2454e9477815c6fe95acbb3449541975d9e318390ffabc0d09626417f7b7",
+  "protected_sources": {
+    "figures/paper/make_fig_fre.py": "8f75a34ba99abab99d4fdf8807843941899026b47109327113314c98c7a87cb1",
+    "figures/paper/Fig_fRe_caption_and_record.md": "0c23a543f893b41111dbeded5d9dc8d34164f596346992a2b10fa8f9943a5030",
+    "CASE/D_series/D2_groove_error_map/results/summary.csv": "a1391ee77a3c8a4d6736302970f947a377ebb5fd78ee291d9cc11792b6a3c036",
+    "CASE/D_series/D2_groove_error_map/results/d75_summary.csv": "3a112cc03963cb95bea4a31bf647f7ac5a89aa0392886b34034dc7c8c06ab033",
+    "CASE/D_series/D2_groove_error_map/results/h25_summary.csv": "2dbc12ceeb5292f8ae28abf8f698f4bf2569c81b7e6cde50117b15dcddb193ce",
+    "CASE/D_series/D2_groove_error_map/results/d120_summary.csv": "9c66ef39bffba5189b7169b5434c00fe41b84084a0fd8cd4a947aef5bd0ba430",
+    "CASE/D_series/D3_squeeze_error_propagation/aspect_ratio_weights.py": "24dfa2b9d6548c0b6e650fc846fcd7dc5b84a1bd84c5145104ecf8f90a14f1a7",
+    "CASE/D_series/D3_squeeze_error_propagation/squeeze_error_propagation.py": "7d3da1d97198bb31f8d5cf59f50f0f3912c8b99e078785dc4f1628c7477662dc",
+    "CASE/D_series/D3_squeeze_error_propagation/make_fig9.py": "937688c2209347d00c19c9927b732ab172f5cbefc479681346dfa577bd9f7872",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table1_load_and_peak.csv": "ed01bdb10acda54c44638985bbad1ef4fd65d8c3de391a944b98268f06fbf97b",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table4_corrected_closure.csv": "3ae2ad3d5e3afe829d12cf15d79109699762b4c9f8ab3ff22e346460648af2d0",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table3_decomposition.csv": "d8ae522bd127198fe26257167a759f66e96a355ce4c4cb732c6f577afd103e66",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table6_error_vs_aspect_ratio.csv": "64350c0ed0363a46b38633c666fa5770994f955c9c353143fd6d9ce3c1be2b32",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table2_time_constant_load.csv": "26a61bb0bfe00e85fd648a7a78aa87bc47d64589cc5859a287af3a5815274334",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table5_weights_aspect_ratio.csv": "20abd3ee123a5e799b747012a0a05255779f53e782120dc446d7962d365f6913",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table7_corrected_vs_aspect_ratio.csv": "615fe166a126c2a686972c4dfc142432b7c056ce406e548f9851a25bad803126",
+    "CASE/D_series/D3_squeeze_error_propagation/results/ASPECT_RATIO_REPORT.md": "84b23235eb8171b44d08a8dd380da1813bb0ef0002b86abe9bc31a0c8172d3b2",
+    "CASE/D_series/D3_squeeze_error_propagation/results/PROPAGATION_REPORT.md": "c8dbc14cf5dd4807fd84940365dbb779c8436057fe3cc3051d751b5488097931",
+    "CASE/D_series/D3_squeeze_error_propagation/make_table2b_common_stroke.py": "acbd5ef8fc71c1626f166d3e42f46e80d147a0b5500f3de3516e9838664cd303",
+    "CASE/D_series/D3_squeeze_error_propagation/results/table2b_time_common_stroke.csv": "a80a6e9ab25ebcdf5d3f33c9578ad1d514596b38e867b133f6f4ec59a5512544"
+  },
+  "observed_parallel_changes": [
+    {
+      "path": "CASE/D_series/D3_squeeze_error_propagation/make_fig9.py",
+      "audit_sha256": "c3eab8132ee81b5f52cb8583be42c113c56477be5cb208f94926479bd06fb5ff",
+      "current_sha256": "937688c2209347d00c19c9927b732ab172f5cbefc479681346dfa577bd9f7872"
+    }
+  ],
+  "changed_paragraph_count": 36,
+  "changes": [
+    {
+      "prefix": "The resolved calculations evaluate the same functional",
+      "before": "The resolved calculations evaluate the same functional — mean flux divided by mean gradient — under a different operator, Stokes rather than Reynolds. Their ratio is therefore the error of the Reynolds closure itself: not of the averaging, and not of the normalization, since both sides are defined identically and the four conditions under which the identity holds are listed in Sec. II.",
+      "after": "The resolved calculations and the Reynolds closure use the same definition of transport coefficient: viscosity times mean depth-integrated flux divided by the imposed gradient. Their relative discrepancy is $E_i=K_i^{\\rm mod}/K_i^{\\rm ref}-1$, where $K_i^{\\rm ref}$ denotes the discrete numerical reference. The arithmetic–harmonic averaging step is exact within the stated one-dimensional Reynolds cell model; the comparison therefore tests that local closure against explicitly resolved flow. It does not remove the discretization uncertainty of the numerical reference or locate the discrepancy within the fluid domain."
+    },
+    {
+      "prefix": "What that ratio does not do is locate the error.",
+      "before": "What that ratio does not do is locate the error. It is one global number per geometry, and it cannot apportion the discrepancy among the places where the closure departs from the resolved flow. The distinction matters, because a local-cubic-law error does not require a corner. For fully developed flow along a groove, $\\mathbf{u}=(0,v(x,z),0)$ at fixed axial gradient $G$, the exact statement is $\\mu(v_{xx}+v_{zz})=-G$. The local parallel-plate law retains $v_{zz}$ at each $x$ and drops $v_{xx}$. Substituting the local solution $v=Gz[H(x)-z]/(2\\mu)$ leaves a residual $GzH''(x)/2$, which vanishes only where the wall is straight. A smooth but curved wall therefore carries a local-cubic-law error with no discontinuity anywhere, and neither the size nor the spatial distribution of that error is accessible from a global coefficient ratio.",
+      "after": "A global coefficient discrepancy does not identify its spatial origin. For the ideal fully developed Stokes flow along the grooves, $\\mathbf u=(0,v(x,z),0)$ and $\\mu(v_{xx}+v_{zz})=-G$. The local parallel-plate expression $v=Gz[H(x)-z]/(2\\mu)$ drops $v_{xx}$; substitution into the full equation leaves a residual $GzH''(x)/2$. Wherever $H''(x)\\ne0$, that expression is not a solution, even if the wall is smooth. This derivation illustrates why a local-cubic-law error need not require a corner. It neither measures the contribution of a particular term in the existing numerical fields nor provides a spatial dissipation budget."
+    },
+    {
+      "prefix": "The mechanism is treated as a candidate for this reason.",
+      "before": "The mechanism is treated as a candidate for this reason. Two features of the data are consistent with the sharp edge contributing. The error is single-signed — the closure overestimates the conductance at every sampled geometry and in both directions — so the sign of the load error is known in advance. And on the same rectangular geometry a resolved Stokes solution gives an imprint force two to eighty times the lubrication estimate at large gaps, falling towards it as the gap closes [15]; that ratio is taken against that study's own Stefan-type lubrication force rather than against Eq. (1), so it locates a failure of lubrication at these gaps without apportioning it. Neither feature separates the sharp edge from wall curvature, from the vertical side walls, or from the in-section redistribution of the axial velocity. Treating \"added resistance\" and \"redistribution\" as alternatives would be a false dichotomy in any case, since a redistribution changes the total resistance.",
+      "after": "Mechanistic explanations remain hypotheses. The closure overestimates the conductance at every sampled geometry in both directions, but this sign does not identify where the discrepancy arises. Teyssèdre's related rectangular-grating squeeze-flow study [15] reported force ratios of two to eighty relative to its own Stefan-type lubrication estimate, with changes during filling and contact. Those ratios are neither measured relative to Eq. (1) nor obtained from the present fixed, fully filled cell. They establish relevant prior evidence of lubrication-model limitations, rather than a decomposition of the present error into corner, side-wall and velocity-redistribution contributions. Redistribution itself can change resistance, so it is not an alternative to added resistance."
+    },
+    {
+      "prefix": "The correction derived below is therefore",
+      "before": "The correction derived below is therefore an empirical correction of the local cubic law. It is written in the groove aspect ratio $d/w$ because that ratio orders the sampled residuals, and it is bounded on the sampled domain rather than offered as a continuous law. It is not derived from a corner argument, and its success is not evidence that the corner is the only source of error.",
+      "after": "The adopted V2 relation is an empirical correction of the local cubic law. Its dependence on $d/w$ was selected with the extension data available, even though those data were excluded from coefficient estimation. Its reported residuals characterize the stated discrete samples; they are not bounds over a continuous domain or independent final-test results. The fit does not establish that the correction represents a corner contribution or that the physical dependence on $h$ has disappeared."
+    },
+    {
+      "prefix": "More than one one-dimensional reduction is available",
+      "before": "More than one one-dimensional reduction is available for a rectangular groove, and the choice among them matters in a process whose gap closes from micrometres to tens of nanometres. Two forms are in use, and they differ in one respect: whether the residual gap enters the reduction at all.",
+      "after": "The primary comparator is the arithmetic–harmonic closure used in the imprint models examined here [2,4,5]. It is an explicit baseline with the same geometric variables and transport definition after conversion. Other reductions are not excluded, but a quantitative comparison requires their geometry, fill state, boundary conditions and normalization to be matched."
+    },
+    {
+      "prefix": "**The open-groove resistance correlation.**",
+      "before": "**The open-groove resistance correlation.** In the heat-pipe literature the permeability of a rectangular groove is written as $K=2\\varepsilon r_h^2/(f\\,Re)$ with $\\varepsilon=w/s$ and $r_h=2w\\delta/(w+2\\delta)$, the friction–Reynolds product being read from a chart as a function of the aspect ratio $\\alpha=w/\\delta$. The construction is a one-dimensional duct resistance multiplied by an area fraction; it contains $w$ and $d$ but not $h$. It is standard for wick design, where the liquid runs along the groove under a capillary head and the vapour space above is effectively infinite.",
+      "after": "**Open-groove correlations.** A resistance correlation for an open, partially filled or capillary-fed groove cannot be transferred to a fully filled groove connected to a finite liquid layer merely because both cross-sections are rectangular. The original velocity basis, reference section, porosity, friction-factor convention and interface conditions must be established first. Those definitions have not been verified for the proposed heat-pipe comparator, so no calibrated error or representative friction–Reynolds value is quoted here."
+    },
+    {
+      "prefix": "The second form cannot describe the present problem",
+      "before": "The second form cannot describe the present problem because it does not contain the variable that drives it. In imprint filling the gap is the process variable: it starts at micrometres, passes through the values studied here, and ends at the residual layer thickness. This is a mismatch between the object each closure was built for, not a matter of dimensions — both forms are dimensionally consistent, and the open-groove correlation is correct in its own setting. Nor is it the only other reduction that could be constructed; it is one of the two in use.",
+      "after": "A specified correlation that contains only groove width and depth cannot describe all gap dependence if its remaining inputs are held fixed. That is an applicability and parameter-dependence issue, not a dimensional inconsistency: both expressions may have correct units. It does not prove that the correlation is accurate in its original setting or that no other closure can include the residual gap."
+    },
+    {
+      "prefix": "That form cannot be compared quantitatively here",
+      "before": "That form cannot be compared quantitatively here without a step this work has not taken. The present coefficients are per unit width (m$^3$); converting them to a permeability (m$^2$) requires a reference section, $\\kappa = K/L_{\\rm ref}$ with $L_{\\rm ref}=A_{\\rm ref}/W$. Taking the fluid cross-section gives $L_{\\rm ref}=H_{\\rm ref}=h+d/2$; taking the full cell gives $L_{\\rm ref}=P$. The two conventions differ by a factor of order two and must be applied on both sides. The heat-pipe source additionally leaves its porosity, its velocity basis and the definitions behind $f$ and $Re$ to be confirmed. No calibrated error is therefore quoted for that correlation, and Fig. fRe is read as a diagnostic of dependence, not as an error curve.",
+      "after": "The normalization also requires a definition, not just a change of units. With $J=Q/W$, $\\bar U=Q/A_{\\rm ref}$ and $J=KG/\\mu$, the permeability based on $\\bar U$ is $\\kappa=K/L_{\\rm ref}$, where $L_{\\rm ref}=A_{\\rm ref}/W$. The fluid-volume average used here gives $L_{\\rm ref}=H_{\\rm ref}=h+d/2$. Dividing by $P$ would instead define a reference section $WP$; that section is not automatically the available fluid section of this cell. Both sides of any comparison must use the same definition."
+    },
+    {
+      "prefix": "What survives without that calibration",
+      "before": "What survives without that calibration is qualitative and robust. Under either convention the inferred $f\\,Re$ at fixed $d$ falls as $h$ increases, by factors of roughly $41$ ($A_{\\rm ref}=WP$) or $11$ ($A_{\\rm ref}$ fluid) at $d=25$ nm, and $4.1$ or $2.4$ at $d=120$ nm. The magnitude is convention-dependent; the existence of an $h$ dependence at fixed aspect ratio is not. A correlation in the aspect ratio alone cannot represent it.",
+      "after": "For illustration, the archived diagnostic at $d=25$ nm gives a fixed-depth spread of approximately 41.2 when normalized with $P$, and 11.2 with $H_{\\rm ref}$; at $d=120$ nm the corresponding spreads are approximately 4.1 and 2.4. These are normalization-dependent transformations of the present coefficients, not measured friction factors or calibrated errors of a heat-pipe model. The $d=75$ and $120$ nm groups have sampled gaps of 50, 75 and 125 nm, and do not include 25 nm. The existing fRe plot is therefore excluded from quantitative model validation pending definition and caption reconciliation."
+    },
+    {
+      "prefix": "The stripe average is therefore the primary comparison object",
+      "before": "The stripe average is therefore the primary comparison object for two reasons: it is the closure actually used in imprint filling [2,4,5], and among the two forms examined it is the one that contains the process variable. The comparison in Sec. IV B bounds how far that closure can be pushed. It is not a statement about one-dimensional reduction in general, and it does not establish that only two such reductions exist.",
+      "after": "The stripe average is retained because it has a directly documented imprint-model application and a reproducible definition for the present equal-width pattern. The error map evaluates that baseline under the stated conditions; it does not establish that it is the only possible one-dimensional reduction or that all such reductions fail."
+    },
+    {
+      "prefix": "A note on correctability,",
+      "before": "A note on correctability, because it is easily misstated. A multiplicative factor $1/(1+e)$ corrects an error of either sign provided $e>-1$, so the sign of the error is not what decides whether a correction is possible; what decides it is whether the factor can be predicted from the geometry. The sampled closure happens to err in one direction, which makes its correction monotone and convenient, but monotonicity is a convenience and not a requirement.",
+      "after": "An error of either sign can be removed algebraically by a factor $1/(1+e)$ when $e>-1$. The scientific task is to predict an appropriate factor from geometry with adequate validation. The observed positive closure errors imply factors below unity at those samples; they do not by themselves establish monotonic dependence on any geometric variable."
+    },
+    {
+      "prefix": "A coefficient error matters only",
+      "before": "A coefficient error matters only through what it does downstream. To measure that, the paired coefficients of each geometry at each gap are inserted into a lubrication model of a uniformly closing film, and the model's load and drainage time are compared with those obtained from the discrete reference coefficients. The pairing is strict: both components come from the same geometry and the same gap, and no quantity is assembled from different cases. Throughout this section $K_\\parallel$ denotes the along-groove component and $K_\\perp$ the across-groove one, matching the project convention; no Cartesian subscript is used, because a rotated frame can silently exchange the two.",
+      "after": "The application consequence is evaluated by inserting the paired conductances from each geometry and gap into the same reduced squeeze-film model. Each reference prediction uses both principal values from that same discrete cell calculation. Throughout this section $K_\\parallel=K_{yy}$ and $K_\\perp=K_{xx}$ follow the project coordinates. The propagation scripts rename the along-groove axis as $x$; their variables are mapped to parallel/perpendicular labels here. This coordinate relabelling is not a simulation of rotated groove walls."
+    },
+    {
+      "prefix": "Two reduced models are used.",
+      "before": "Two reduced models are used. The first is axisymmetric with an effective conductance $(K_\\parallel+K_\\perp)/2$, which makes $p\\propto1/(K_\\parallel+K_\\perp)$ and keeps the algebra checkable by hand. The second solves $K_\\parallel p_{\\parallel\\parallel}+K_\\perp p_{\\perp\\perp}=\\mu V$ on a square field with $p=0$ on the boundary, so that the two components enter with separate weights and no averaging is assumed. Their medians agree to 0.1%, so the first is adequate for the load; the second is needed for the sensitivity analysis.",
+      "after": "Two reduced models are used. Model A is a circular-field calculation with load proportional to $1/(K_\\parallel+K_\\perp)$. Model B uses a square field and $p=0$ at its perimeter. With positive closing speed $V=-\\dot h>0$, its positive-pressure convention is $K_\\parallel p_{\\xi\\xi}+K_\\perp p_{\\eta\\eta}=-\\mu V$, where $\\xi$ and $\\eta$ run along and across the grooves. The archived implementation solves the opposite signed-pressure equation and reports the absolute load; this leaves the magnitude ratios unchanged. The sampled median load ratios are 0.6105 for A and 0.6121 for B, a difference of approximately 0.15 percentage points. Their proximity is an internal comparison, not validation of either physical reduction; model B supplies the results below."
+    },
+    {
+      "prefix": "The integral cannot be replaced by a single gap.",
+      "before": "The integral cannot be replaced by a single gap. Along the common stroke $125\\to50$ nm the ratio $S_{\\rm mod}/S_{\\rm ref}$ is not constant: for $d=120$ nm it runs from 0.371 to 0.478, a factor of $1.29$, and the direction of the variation differs between depths. Over the five depths the time ratio ranges from 0.405 to 0.876. Replacing the integral by the value at $h_0$ misplaces the result by 3% at $d=25$ nm and by 18% at $d=120$ nm.",
+      "after": "A single-gap ratio is generally insufficient. For the common stroke $h_0=125$ nm to $h_f=50$ nm, the model-B ratio $S_{\\rm mod}/S_{\\rm ref}$ ranges from 0.371464 to 0.477857 at $d=120$ nm. Across the five depths, the integrated uncorrected time ratio ranges from 0.404987 to 0.874690. Freezing the model-B ratio at 125 nm instead gives a relative difference from its integrated ratio of approximately 3.03% at $d=25$ nm and 17.99% at $d=120$ nm."
+    },
+    {
+      "prefix": "The precision of that statement is limited",
+      "before": "The precision of that statement is limited by the sampling, and the limit should be stated rather than hidden. $K(h)$ is available at only three or four gaps per depth, so the integral depends on how the gaps are joined: a trapezoidal rule on the sampled points and a log-log shape-preserving interpolation differ by up to 0.5 percentage points in the time ratio, which is comparable to the residual after correction. The time results here are quoted to that precision and no further.",
+      "after": "The primary time calculation interpolates each reference conductance $K_i(h)$ in log–log coordinates with shape-preserving cubic interpolation, using all available gaps at that depth, and then evaluates $S[K_\\parallel(h),K_\\perp(h)]$ at 400 points over 125–50 nm. The adopted V2 factors multiply the model conductances before evaluation of the load. A concurrent supplementary table instead interpolates the already evaluated $S(h)$ using knots restricted to that stroke. It gives corrected time ratios of 0.962185–1.005938, whereas the primary chain gives 0.960996–1.004658; the largest paired difference is approximately 0.00162, or 0.162 percentage points. These different interpolation objects and knot choices are kept separate. Neither spread bounds interpolation uncertainty or the uncertainty in the reference conductances."
+    },
+    {
+      "prefix": "**Which component matters.**",
+      "before": "**Which component matters.** Homogeneity also fixes the weights, $w_\\parallel+w_\\perp=1$ with $w_i=-\\partial\\ln F/\\partial\\ln K_{ii}$. At $A=1$ they are equal; at $A=4$ the along-groove weight is 0.78 and the across-groove weight 0.22; at $A=15.5$, 0.90 and 0.10. The along-groove component therefore carries more weight whenever $A>1$, which is the case at every sampled geometry, because the liquid drains preferentially along the grooves. Applying the correction to the along-groove coefficient alone leaves a median load error of $-12.2\\%$; applying it to the across-groove coefficient alone leaves $-32.9\\%$, consistent with the weights. That ordering reflects both the weight and the size of each component's own error, and it must not be read as a ranking of mechanisms.",
+      "after": "**Which component matters.** Homogeneity fixes $w_\\parallel+w_\\perp=1$, with $w_i=-\\partial\\ln F/\\partial\\ln K_i$. For the square field, the weights are equal at $A=1$; at $A=4$ the along-groove weight is approximately 0.78 and the across-groove weight 0.22; at $A=15.5$ they are approximately 0.90 and 0.10. Thus the along-groove component has the larger weight for the sampled square-field cases. Applying V2 only to the model's along-groove coefficient leaves a median load residual of −12.2%; applying it only across the grooves leaves −32.9%. These are partial-correction diagnostics. They are distinct from replacing only one model coefficient while retaining the other reference coefficient, and neither comparison ranks microscopic mechanisms."
+    },
+    {
+      "prefix": "**After the correction.**",
+      "before": "**After the correction.** Applying Eq. (2b) to the model coefficients gives a load ratio of 0.937 to 1.051, that is $-6.3\\%$ to $+5.1\\%$ with a median of $-2.1\\%$, and a time ratio of 0.962 to 1.006, that is $-3.8\\%$ to $+0.6\\%$. The corrected time ratio therefore crosses unity: the correction slightly overestimates the drainage time at the smallest depth and slightly underestimates it elsewhere. Three limitations travel with these numbers. The residual changes sign with gap, at a magnitude small compared with the uncorrected error but not negligible. The across-groove factor is not quoted below $h=50$ nm, so the undeclared $h=25$ nm cell is exposed wherever the field gives $K_\\perp$ a large weight — reaching 23% in the load at $L_\\parallel/L_\\perp\\gtrsim10$, a circumstance in which the square-field figure of about 1% would be misleading. And the comparison is against discrete reference coefficients that carry their own discretization uncertainty, not against an exact solution.",
+      "after": "**After the correction.** Applying the adopted V2 relation in Eq. (2b) to the model conductances gives load ratios of 0.937291–1.050836 over the 18 sampled geometries: residuals of approximately −6.27% to +5.08%, with a signed median of −2.12%. For the primary 125–50 nm time chain, the corrected ratio is 0.960996–1.004658, or approximately −3.90% to +0.47%; it crosses unity. These are retrospective reduced-model results, not independent final tests or continuous-domain guarantees. The perpendicular correction has no declared accuracy below $h=50$ nm. Results involving the $h=25$ nm cells therefore remain outside that two-component claim; the archived aspect-ratio example reaches about 23% load residual for a sufficiently elongated field. All reference predictions also retain conductance discretization and interpolation uncertainty."
+    },
+    {
+      "prefix": "**What this does and does not establish.**",
+      "before": "**What this does and does not establish.** The calculation measures how a known coefficient error propagates inside a Reynolds-type model. Both reduced models share that model's assumptions — local conductance, pressure-driven flow, no free surface — so the exercise does not test the model itself, and it is not a substitute for a direct simulation of the closing film. It also omits capillarity, a gas phase and a moving contact line. What it establishes is the scale of the consequence within that model: the closure error reduces the predicted load to between 37% and 90% of the reference over the sampled geometries, and the empirical correction brings it within about 6%. Whether that constitutes engineering adequacy depends on the tolerance of the application, which this section does not set.",
+      "after": "**What this does and does not establish.** This calculation measures how coefficient discrepancies propagate inside a specified Reynolds-type model. It does not test that reduction against a directly resolved closing film, and it contains no gas phase, capillary front or moving contact line. Within this model and these samples, the original closure gives loads approximately 37%–90% of the predictions based on discrete reference conductances, while V2 reduces the sampled load discrepancy to approximately −6.27% to +5.08%. Engineering adequacy requires an application-specific tolerance and independent evidence; it is not established by these residuals alone."
+    },
+    {
+      "prefix": "精细计算求的是**同一个泛函**",
+      "before": "精细计算求的是**同一个泛函**——平均通量除以平均梯度——只是换了算子：Stokes 而非 Reynolds。因此两者之比**就是 Reynolds 闭合自身的误差**：既不是平均带来的，也不是归一化带来的，因为两侧定义一致，且该恒等成立的四条条件已在第 II 章列出。",
+      "after": "精细计算与 Reynolds 闭合采用相同的输运系数定义：黏度乘以平均深度积分通量，再除以外加梯度。相对偏差为 $E_i=K_i^{\\rm mod}/K_i^{\\rm ref}-1$，其中 $K_i^{\\rm ref}$ 是离散数值参考值。算术—调和平均在所述一维 Reynolds 单元模型内可精确求出，故此处比较的是该局部闭合与显式流动计算；这既不消除参考解自身的离散误差，也不定位偏差来自流体域的何处。"
+    },
+    {
+      "prefix": "**但这个比值不能定位误差。**",
+      "before": "**但这个比值不能定位误差。** 它对每个几何只是一个全局数，无法把偏差分摊到闭合偏离真实流动的各个位置上。这一区分要紧，因为**局部立方律的误差并不需要尖角**。沿槽充分发展流取 $\\mathbf{u}=(0,v(x,z),0)$、轴向梯度 $G$ 固定时，精确方程为 $\\mu(v_{xx}+v_{zz})=-G$；局部平板律在每个 $x$ 处保留 $v_{zz}$、丢掉 $v_{xx}$。代入局部解 $v=Gz[H(x)-z]/(2\\mu)$ 后余下 $GzH''(x)/2$，它只在壁面为直线处为零。**因此光滑但弯曲的壁面即使没有任何间断，也带有局部立方律误差**；而该误差的大小与空间分布，都无法从全局系数比中读出。",
+      "after": "全局系数偏差不能定位空间来源。理想的沿槽充分发展 Stokes 流取 $\\mathbf u=(0,v(x,z),0)$，满足 $\\mu(v_{xx}+v_{zz})=-G$。局部平板表达 $v=Gz[H(x)-z]/(2\\mu)$ 省略了 $v_{xx}$，代入完整方程会留下残差 $GzH''(x)/2$。当 $H''(x)\\ne0$ 时，即使壁面光滑，该表达也不是精确解。这个推导说明局部立方律出现误差并不需要尖角；它既不测量既有数值场中某一项的贡献，也不提供空间耗散收支。"
+    },
+    {
+      "prefix": "正因如此，本文把机制当作",
+      "before": "正因如此，本文把机制当作**候选解释**而非结论。数据有两点与\"尖角有贡献\"相容：其一，误差同号——闭合在每个采样几何、两个方向上都高估导度，故荷载误差的**符号**可事先知道；其二，在同一矩形几何上以精细 Stokes 解为参考，压印力在大间隙时达润滑估计的 2 至 80 倍，并随间隙关闭回落 [15]——但那个比值是相对该文自身的 Stefan 型润滑力，不是相对式(1)，故它只说明润滑近似在这些间隙上失效，并不分摊原因。**两点都无法把尖角与壁面曲率、竖直侧壁、以及轴向速度在截面内的重分布区分开来。** 而且把\"增加阻力\"与\"重新分配\"当作二选一本身就是假二分：重分布会改变总阻力。",
+      "after": "因此机制仍作为候选解释。闭合在所有已采样几何、两个方向上均高估导度，但这个符号不指出偏差发生在哪里。Teyssèdre的相关矩形线栅挤压研究[15]报告了相对其自身 Stefan 型润滑力的2至80倍力比，并涉及填充与接触状态的变化。该比值既非相对本文式(1)，也不是当前固定、全充液单胞的结果；它是润滑模型局限的近邻证据，不是本文角点、侧壁与速度重分布贡献的分解。重分布本身可以改变阻力，两者不能视为二选一。"
+    },
+    {
+      "prefix": "因此下文的修正是",
+      "before": "因此下文的修正是**对局部立方律的经验修正**。它写成槽的宽高比 $d/w$，因为这个比能整理采样残差的次序；它只在采样域上给出界，不声明为连续律。**它不是从尖角论证推出的，它有效也不证明尖角是唯一误差来源。**",
+      "after": "当前采用的V2是局部立方律的经验修正。虽然扩展数据没有进入系数估计，它们在选择 $d/w$ 变量和模型时已可见。所报残差只描述规定的离散样点，不是连续域上界或独立最终测试；拟合本身也不证明修正代表角点贡献，或物理上的 $h$ 依赖已经消失。"
+    },
+    {
+      "prefix": "矩形槽的一维简化不止",
+      "before": "矩形槽的一维简化不止一种，而在间隙由微米关到几十纳米的工艺里，选哪一种并非无关。在用的是两种形式，差别只有一点：**残余间隙到底进不进这个简化**。",
+      "after": "主要对照为本轮所核压印模型采用的算术—调和闭合[2,4,5]。它具有直接应用来源，并可在单位换算后与本项目使用相同的几何变量和输运定义。其他降阶形式并未被排除，但定量比较须先匹配几何、填充状态、边界及归一化。"
+    },
+    {
+      "prefix": "**开放槽阻力关联式。**",
+      "before": "**开放槽阻力关联式。** 热管文献把矩形槽的渗透率写作 $K=2\\varepsilon r_h^2/(f\\,Re)$，其中 $\\varepsilon=w/s$、$r_h=2w\\delta/(w+2\\delta)$，摩擦–雷诺数乘积按宽高比 $\\alpha=w/\\delta$ 查图。其构造是一维槽道阻力乘以面积占比，式中含 $w$ 与 $d$，**不含 $h$**。这是吸液芯设计的通行做法——那里液体在毛细压头下沿槽单向流动，槽顶之上的蒸气空间可视为无限大。",
+      "after": "**开放槽关联式。** 面向开放、部分充液或毛细供液槽的阻力关系，不能仅因截面同为矩形就直接移植到全充液、并连接有限液层的槽。首先须核对原式的速度基准、参考截面、孔隙率、摩擦因子惯例和界面条件。当前拟议热管对照的这些定义尚未核清，因此不在此报告其标定误差或代表性摩擦—雷诺数乘积。"
+    },
+    {
+      "prefix": "第二种形式无法描述本文问题",
+      "before": "**第二种形式无法描述本文问题，原因在于它不含驱动这一过程的变量。** 压印填充中，间隙本身就是过程变量：由微米起步，经过本文区间，终止于残膜厚度。**这是两种闭合各自适用对象的错配，不是量纲问题**——两式量纲都自洽，开放槽式在其自身场景中也是对的。它也不是唯一可能构造的另一种简化，只是目前在用的两种之一。",
+      "after": "若指定关联式只含槽宽和槽深、其余输入保持固定，它就不能描述全部间隙依赖。这是适用对象与参数依赖不匹配，不是量纲不一致：两个表达式都可能具有正确单位。这也不证明该关联式在其原工况中精度如何，更不排除其他闭合引入残余间隙。"
+    },
+    {
+      "prefix": "**在本文条件下无法对它做定量比较",
+      "before": "**在本文条件下无法对它做定量比较，因为尚缺一步。** 本文系数按单位宽度定义（m$^3$）；换成渗透率（m$^2$）需要参考截面：$\\kappa=K/L_{\\rm ref}$，$L_{\\rm ref}=A_{\\rm ref}/W$。取流体截面则 $L_{\\rm ref}=H_{\\rm ref}=h+d/2$；取整个单胞则 $L_{\\rm ref}=P$。两种口径差约一倍，且必须两侧同步采用。热管原式的孔隙率、速度基准以及 $f$ 与 $Re$ 的定义也仍待核对。**故本文不给出该关联式的标定误差**，Fig. fRe 只作依赖性的诊断读，不作误差曲线。",
+      "after": "归一化也必须依靠定义。由 $J=Q/W$、$\\bar U=Q/A_{\\rm ref}$ 和 $J=KG/\\mu$，基于 $\\bar U$ 的渗透率为 $\\kappa=K/L_{\\rm ref}$，其中 $L_{\\rm ref}=A_{\\rm ref}/W$。本文的流体体积平均给出 $L_{\\rm ref}=H_{\\rm ref}=h+d/2$；除以 $P$ 则是另定义一个 $WP$ 的参考截面，不能自动把它称为该单胞的可用流体截面。任何比较的两侧都须使用同一定义。"
+    },
+    {
+      "prefix": "**在此前提下仍成立的是定性的",
+      "before": "**在此前提下仍成立的是定性的、稳健的部分。** 两种口径下，固定 $d$ 时反推的 $f\\,Re$ 都随 $h$ 增大而下降：$d=25$ nm 时约 41 倍（取 $A_{\\rm ref}=WP$）或 11 倍（取流体截面），$d=120$ nm 时 4.1 倍或 2.4 倍。**倍数依赖口径，但\"固定宽高比下仍存在 $h$ 依赖\"这一点不依赖口径**——只含宽高比的关联式无法表示它。",
+      "after": "仅作为口径敏感性示例，归档诊断在 $d=25$ nm 时给出约41.2倍（除以 $P$）或11.2倍（除以 $H_{\\rm ref}$）的固定槽深跨度；$d=120$ nm 时对应约4.1倍或2.4倍。这些是当前输运系数在特定归一化下的变换，不是实测摩擦因子或热管模型的标定误差。$d=75$、120 nm两组只有50、75、125 nm间隙，没有25 nm样点。定义和图注核对完成前，现有fRe图不作为定量模型验证证据。"
+    },
+    {
+      "prefix": "因此条纹平均之作为主要对比对象",
+      "before": "因此条纹平均之作为主要对比对象有两条理由：**它是压印填充实际在用的闭合 [2,4,5]；在所考察的两种形式中，它是含过程变量的那一个。** Sec. IV B 的比较界定的是这个闭合能被推到多远，不是关于一维简化的一般结论，也不表明这样的简化只有两种。",
+      "after": "保留条纹平均作为主对照的理由，是它具有明确的压印模型应用来源，并可为当前等宽线槽定义可复核的比较。误差地图检验的是这一特定基线，不意味着它是唯一可能的一维降阶形式，也不意味着所有一维降阶都失败。"
+    },
+    {
+      "prefix": "**关于\"可修正性\"",
+      "before": "**关于\"可修正性\"，这里要避免一个常见误述。** 乘性因子 $1/(1+e)$ 在 $e>-1$ 时对**任一符号**的误差都成立，故误差符号并不决定能否修正；决定能否修正的是**这个因子能否由几何预测**。本文采样的闭合恰好同号，使修正是单调的、方便；但单调是便利，不是必要条件。",
+      "after": "乘性因子 $1/(1+e)$ 在 $e>-1$ 时能从代数上纠正任一符号的误差。科学问题是能否由几何预测适当因子，并有充分验证。样点上原闭合的正偏差意味着对应纠偏因子小于1，但不由此推出它对任一几何变量必然单调。"
+    },
+    {
+      "prefix": "系数误差只有在向下游传递之后",
+      "before": "系数误差只有在向下游传递之后才有意义。为量出这一点，把每个几何、每个间隙下的**成对**系数代入均速闭合液膜的润滑模型，再将模型的荷载与排液时间同**离散参考系数**所得的对应量相比。配对是严格的：两个分量取自同一几何、同一间隙，任何量都不跨算例拼接。**本节统一用 $K_\\parallel$ 表示沿槽分量、$K_\\perp$ 表示跨槽分量**，与项目冻结口径一致；不使用笛卡尔下标，因为坐标一转动就会在不知不觉中把两者互换。",
+      "after": "应用后果通过同一降阶挤压液膜模型评价：每个几何与间隙的两个参考主值均来自同一个离散单胞，不跨算例拼接。本节使用 $K_\\parallel=K_{yy}$、$K_\\perp=K_{xx}$，与项目坐标一致。传播脚本把沿槽轴另命名为 $x$，这里已映射为沿槽／跨槽标记；坐标重命名不等于模拟了旋转槽壁。"
+    },
+    {
+      "prefix": "用了两个降阶模型。",
+      "before": "用了两个降阶模型。第一个轴对称、取等效导度 $(K_\\parallel+K_\\perp)/2$，从而使 $p\\propto1/(K_\\parallel+K_\\perp)$，代数可手算核对。第二个在方形场上解 $K_\\parallel p_{\\parallel\\parallel}+K_\\perp p_{\\perp\\perp}=\\mu V$、边界 $p=0$，两个分量各带权重进入，不作任何平均。两者中位数相差 0.1%，故第一个用于荷载已足够，第二个是敏感性分析所必需。",
+      "after": "采用两个降阶模型。模型A为圆形场计算，荷载与 $1/(K_\\parallel+K_\\perp)$ 成正比；模型B为边缘 $p=0$ 的方形场。若闭合速率取 $V=-\\dot h>0$，模型B的正压约定为 $K_\\parallel p_{\\xi\\xi}+K_\\perp p_{\\eta\\eta}=-\\mu V$，$\\xi$、$\\eta$ 分别沿槽和跨槽。归档实现解的是相反符号的压力，再取荷载绝对值，故幅值比不变。样点荷载比的中位数A为0.6105、B为0.6121，约差0.15个百分点；两者相近是内部比较，不是对物理降阶的验证。下文数字采用模型B。"
+    },
+    {
+      "prefix": "**这个积分不能用某一个间隙的值替代。**",
+      "before": "**这个积分不能用某一个间隙的值替代。** 在统一行程 $125\\to50$ nm 上，比值 $S_{\\rm mod}/S_{\\rm ref}$ 并非常数：$d=120$ nm 时由 0.371 变到 0.478，幅度 1.29 倍，且变化方向随槽深不同。五个槽深的时间比落在 0.405 至 0.876。把积分换成 $h_0$ 处的值，$d=25$ nm 时偏 3%，$d=120$ nm 时偏 18%。",
+      "after": "一般不能用单一间隙处的比值代替积分。在统一行程 $h_0=125$ nm至 $h_f=50$ nm上，$d=120$ nm的模型B比值 $S_{\\rm mod}/S_{\\rm ref}$ 为0.371464–0.477857。五个槽深的未修正积分时间比为0.404987–0.874690。若将模型B的比值冻结在125 nm处，相对模型B积分结果的差，$d=25$ nm约为3.03%，$d=120$ nm约为17.99%。"
+    },
+    {
+      "prefix": "**这一条的精度受采样限制",
+      "before": "**这一条的精度受采样限制，应当写明而不是隐去。** 每个槽深只有三到四个间隙点，积分取决于这些点如何连接：在采样点上用梯形法，与用对数–对数保形插值，时间比可差到 0.5 个百分点——与修正后的残差同量级。故本文的时间结果只报到这个精度，不再往下报。",
+      "after": "本节时间主链先对各深度全部已知间隙上的参考 $K_i(h)$ 做对数—对数保形三次插值，再在125–50 nm的400个积分点评价 $S[K_\\parallel(h),K_\\perp(h)]$；V2因子先乘模型导度，再求荷载。并行补充表采用另一做法：先算各样点的 $S(h)$，只用行程内节点插值该阻力。后者的修正时间比为0.962185–1.005938，主链为0.960996–1.004658；最大逐深度差约0.00162，即0.162个百分点。两者改变了插值对象和节点选择，须分开记录；该差值不是插值误差或参考导度不确定度的上界。"
+    },
+    {
+      "prefix": "**哪个分量更重要。**",
+      "before": "**哪个分量更重要。** 齐次性同时定住权重：$w_\\parallel+w_\\perp=1$，$w_i=-\\partial\\ln F/\\partial\\ln K_{ii}$。$A=1$ 时两者相等；$A=4$ 时**沿槽**权重 0.78、跨槽 0.22；$A=15.5$ 时为 0.90 与 0.10。**只要 $A>1$——本文每个采样几何都是——沿槽分量权重更大**，因为液体优先沿槽排出。只把修正作用于沿槽分量，荷载中位残差仍有 $-12.2\\%$；只作用于跨槽分量，为 $-32.9\\%$，与权重次序一致。**这个次序同时反映权重与该分量自身误差的大小，不能读成机制的排序。**",
+      "after": "**哪个分量更重要。** 齐次性给出 $w_\\parallel+w_\\perp=1$，$w_i=-\\partial\\ln F/\\partial\\ln K_i$。对方形场，$A=1$时两者相等；$A=4$时沿槽权重约0.78、跨槽约0.22；$A=15.5$时约0.90与0.10。因此在本文方形场样点中沿槽权重较大。只对模型的沿槽系数应用V2，荷载中位残差为−12.2%；只对跨槽应用为−32.9%。这是单方向修正诊断，与“只换一个模型系数、另一个保留参考系数”的检验不同，两者都不能解释为微观机制排序。"
+    },
+    {
+      "prefix": "**修正之后。**",
+      "before": "**修正之后。** 把式(2b) 作用于模型系数后，荷载比为 0.937–1.051，即 $-6.3\\%$ 至 $+5.1\\%$，中位 $-2.1\\%$；时间比为 0.962–1.006，即 $-3.8\\%$ 至 $+0.6\\%$——**修正后的时间比跨过 1**：在最小槽深处略高估排液时间，其余略低估。三点限制随此结论同行：残余随间隙变号，量级远小于未修正误差，但不可忽略；跨槽因子在 $h<50$ nm 不予声明，故凡版图给 $K_\\perp$ 较大权重之处，$h=25$ nm 这一未声明格就会暴露——在 $L_\\parallel/L_\\perp\\gtrsim10$ 时荷载偏差达 23%，此时方形场约 1% 的数会有误导性；比较的对象是**带自身离散不确定度的参考系数**，不是精确解。",
+      "after": "**修正之后。** 将式(2b)所采用的V2作用于模型导度，18个样点的荷载比为0.937291–1.050836，即残差约−6.27%至+5.08%，有符号中位数为−2.12%。在125–50 nm时间主链上，修正比值为0.960996–1.004658，即约−3.90%至+0.47%，跨过1。这些都是事后降阶模型样本结果，不是独立最终测试或连续域保证。跨槽修正在 $h<50$ nm没有声明精度，故涉及 $h=25$ nm单元的结果仍在双分量精度声明之外；归档长宽比示例在足够细长场中出现约23%的荷载残差。所有参考预测也保留导度离散和插值不确定度。"
+    },
+    {
+      "prefix": "**这证明了什么、没证明什么。**",
+      "before": "**这证明了什么、没证明什么。** 本计算度量的是**已知系数误差在 Reynolds 型模型内部如何传播**。两个降阶模型共用该模型的假设——局部导度、压力驱动、无自由面——故这项检验**不检验模型本身**，也不能替代对闭合液膜的直接模拟；它同样不含毛细、气相与移动接触线。它证明的是**模型内后果的量级**：闭合误差把预测荷载压到参考值的 37%–90%，经验修正把它收到约 6% 以内。这是否构成\"工程可用\"，取决于应用所要求的容差，本节不设定该容差。",
+      "after": "**这证明了什么、没证明什么。** 本计算度量系数偏差在指定Reynolds型模型内部的传播，不把该降阶与直接解析的闭合液膜作验证，也不含气相、毛细前沿或移动接触线。在该模型和样点内，原闭合的荷载约为基于离散参考导度预测的37%–90%，V2将样点荷载偏差减小至约−6.27%至+5.08%。是否满足工程需要，仍取决于用途容差和独立证据，不能单靠这些残差认定。"
+    }
+  ],
+  "authorization": "User explicitly requested local chapter5 revision; no new simulations/data/code edits.",
+  "human_review_pending": true,
+  "submission_ready": false,
+  "applied": true,
+  "after_sha256": "0f9c2454e9477815c6fe95acbb3449541975d9e318390ffabc0d09626417f7b7",
+  "main_body_before_equal_latest_merge_base": true,
+  "consistency_check": {
+    "exit_code": 0,
+    "check_count": 47,
+    "scientific_validation": false
+  },
+  "claim_paragraph_count": 58,
+  "source_manifest": "source_manifest.json",
+  "review_note": "REVISION_NOTE.md",
+  "post_prepare_refinement": "Qualified unequal conductance changes as generally changing pressure shape, avoiding an unnecessary iff claim across both circular and square models.",
+  "final_check": {
+    "exit_code": 0,
+    "checks": 47,
+    "paragraph_hashes": 58,
+    "main_chapter_and_protected_inputs_unchanged_after_check": true,
+    "scientific_gate": false
+  },
+  "note_sha256": "94936c0658650fd9dea4a3ad81087a211b98b74265c4be85e3441d33084a072d"
+}

@@ -1,0 +1,539 @@
+{
+  "map_count": 36,
+  "map_missing_rho": 18,
+  "map_missing_mu": 18,
+  "nu_range": [
+    1.0000000000000002e-06,
+    1.0000000000000002e-06
+  ],
+  "mu_range_at_rho1000_mPa_s": [
+    1.0000000000000002,
+    1.0000000000000002
+  ],
+  "rho_indirect_range": [
+    999.9999999995094,
+    1000.0000000002611
+  ],
+  "mu15_checks": [
+    {
+      "result_path": "CASE/D_series/D2_groove_error_map/results/mu15_h75_d100_dx5_P/steady/result.txt",
+      "case": "D2-P-h75-d100-dx5",
+      "h_nm": 75.00000000000001,
+      "d_nm": 100.00000000000001,
+      "direction": "parallel",
+      "tau": 1.0,
+      "dx_m": 5e-09,
+      "dt_s": 2.777777777777778e-13,
+      "nu_inferred_m2_s": 1.5e-05,
+      "rho_used_kg_m3": 1000.0,
+      "rho_basis": "explicit_result",
+      "rho_indirect_from_initial_mass_kg_m3": 999.9999999995094,
+      "mu_inferred_Pa_s": 0.015000000000000001,
+      "mu_inferred_mPa_s": 15.000000000000002,
+      "rho_recorded": "1000",
+      "mu_recorded": "0.015000000000000001",
+      "K_stored_m3": 9.834012591336552e-23,
+      "K_recomputed_m3": 9.834012591336551e-23,
+      "J_stored_m2_s": 6.556008394224367e-13,
+      "mu_from_stored_K_and_J_Pa_s": 0.015000000000000001,
+      "dt_required_for_mu15_s": 2.7777777777777785e-13
+    },
+    {
+      "result_path": "CASE/D_series/D2_groove_error_map/results/mu15_h75_d100_dx5_T/steady/result.txt",
+      "case": "D2-T-h75-d100-dx5",
+      "h_nm": 75.00000000000001,
+      "d_nm": 100.00000000000001,
+      "direction": "perpendicular",
+      "tau": 1.0,
+      "dx_m": 5e-09,
+      "dt_s": 2.777777777777778e-13,
+      "nu_inferred_m2_s": 1.5e-05,
+      "rho_used_kg_m3": 1000.0,
+      "rho_basis": "explicit_result",
+      "rho_indirect_from_initial_mass_kg_m3": 999.9999999995094,
+      "mu_inferred_Pa_s": 0.015000000000000001,
+      "mu_inferred_mPa_s": 15.000000000000002,
+      "rho_recorded": "1000",
+      "mu_recorded": "0.015000000000000001",
+      "K_stored_m3": 4.4490094230033704e-23,
+      "K_recomputed_m3": 4.449009423003371e-23,
+      "J_stored_m2_s": 2.966006282002247e-13,
+      "mu_from_stored_K_and_J_Pa_s": 0.015,
+      "dt_required_for_mu15_s": 2.7777777777777785e-13
+    }
+  ],
+  "paired_scaling": [
+    {
+      "direction": "parallel",
+      "J_mu1": 9.834075958643652e-12,
+      "J_mu15": 6.556008394224367e-13,
+      "J_mu1_over_J_mu15": 15.000096655317215,
+      "K_change_percent": -0.0006443646293319283
+    },
+    {
+      "direction": "perpendicular",
+      "J_mu1": 4.449022021045935e-12,
+      "J_mu15": 2.966006282002247e-13,
+      "J_mu1_over_J_mu15": 15.000042474766966,
+      "K_change_percent": -0.00028316431128772024
+    }
+  ],
+  "geometry_count": 18,
+  "geometry_values": [
+    {
+      "h_nm": 25,
+      "d_nm": 25,
+      "K_parallel": 4.885792928943603e-24,
+      "K_perpendicular": 2.1412107213751493e-24,
+      "anisotropy": 2.2817898678397244,
+      "Href_m": 3.7500000000000005e-08,
+      "eta_parallel": 1.111789324275166,
+      "eta_perpendicular": 0.48724439526403374,
+      "k_parallel_correct_m2": 1.3028781143849606e-16,
+      "k_parallel_if_divide_period_m2": 2.0357470537265015e-17
+    },
+    {
+      "h_nm": 25,
+      "d_nm": 50,
+      "K_parallel": 1.1945761659383243e-23,
+      "K_perpendicular": 2.2121774390346213e-24,
+      "anisotropy": 5.400001576996595,
+      "Href_m": 5.0000000000000004e-08,
+      "eta_parallel": 1.146793119300791,
+      "eta_perpendicular": 0.2123690341473236,
+      "k_parallel_correct_m2": 2.3891523318766486e-16,
+      "k_parallel_if_divide_period_m2": 4.977400691409685e-17
+    },
+    {
+      "h_nm": 25,
+      "d_nm": 100,
+      "K_parallel": 3.430222481900832e-23,
+      "K_perpendicular": 2.2202084470320096e-24,
+      "anisotropy": 15.45000194232383,
+      "Href_m": 7.500000000000001e-08,
+      "eta_parallel": 0.9757077281851252,
+      "eta_perpendicular": 0.06315259582668825,
+      "k_parallel_correct_m2": 4.573629975867776e-16,
+      "k_parallel_if_divide_period_m2": 1.4292593674586803e-16
+    },
+    {
+      "h_nm": 50,
+      "d_nm": 25,
+      "K_parallel": 1.9394819153435098e-23,
+      "K_perpendicular": 1.4169217158439068e-23,
+      "anisotropy": 1.368799626441162,
+      "Href_m": 6.250000000000001e-08,
+      "eta_parallel": 0.9532941510296414,
+      "eta_perpendicular": 0.6964453617715968,
+      "k_parallel_correct_m2": 3.103171064549615e-16,
+      "k_parallel_if_divide_period_m2": 8.081174647264625e-17
+    },
+    {
+      "h_nm": 50,
+      "d_nm": 50,
+      "K_parallel": 3.0611281260422803e-23,
+      "K_perpendicular": 1.461735248943113e-23,
+      "anisotropy": 2.094174118230771,
+      "Href_m": 7.500000000000001e-08,
+      "eta_parallel": 0.8707208891853594,
+      "eta_perpendicular": 0.4157824708104853,
+      "k_parallel_correct_m2": 4.0815041680563734e-16,
+      "k_parallel_if_divide_period_m2": 1.275470052517617e-16
+    },
+    {
+      "h_nm": 50,
+      "d_nm": 75,
+      "K_parallel": 4.3494294378102653e-23,
+      "K_perpendicular": 1.4648013808708635e-23,
+      "anisotropy": 2.9692963801170187,
+      "Href_m": 8.750000000000001e-08,
+      "eta_parallel": 0.7790931331168006,
+      "eta_perpendicular": 0.26238308116823855,
+      "k_parallel_correct_m2": 4.970776500354588e-16,
+      "k_parallel_if_divide_period_m2": 1.8122622657542773e-16
+    },
+    {
+      "h_nm": 50,
+      "d_nm": 100,
+      "K_parallel": 5.736033461930922e-23,
+      "K_perpendicular": 1.4648586599383913e-23,
+      "anisotropy": 3.91575898672174,
+      "Href_m": 1.0000000000000001e-07,
+      "eta_parallel": 0.6883240154317104,
+      "eta_perpendicular": 0.1757830391926069,
+      "k_parallel_correct_m2": 5.736033461930921e-16,
+      "k_parallel_if_divide_period_m2": 2.3900139424712174e-16
+    },
+    {
+      "h_nm": 50,
+      "d_nm": 120,
+      "K_parallel": 6.885905509273695e-23,
+      "K_perpendicular": 1.464900453563973e-23,
+      "anisotropy": 4.700596202643598,
+      "Href_m": 1.1e-07,
+      "eta_parallel": 0.6208179272072452,
+      "eta_perpendicular": 0.13207216711320566,
+      "k_parallel_correct_m2": 6.259914099339722e-16,
+      "k_parallel_if_divide_period_m2": 2.8691272955307067e-16
+    },
+    {
+      "h_nm": 75,
+      "d_nm": 25,
+      "K_parallel": 5.1760667029899454e-23,
+      "K_perpendicular": 4.3563159826171264e-23,
+      "anisotropy": 1.1881752204486187,
+      "Href_m": 8.750000000000001e-08,
+      "eta_parallel": 0.9271648344947585,
+      "eta_perpendicular": 0.7803266879650034,
+      "k_parallel_correct_m2": 5.9155048034170795e-16,
+      "k_parallel_if_divide_period_m2": 2.156694459579144e-16
+    },
+    {
+      "h_nm": 75,
+      "d_nm": 50,
+      "K_parallel": 6.755287420655024e-23,
+      "K_perpendicular": 4.445524781588656e-23,
+      "anisotropy": 1.5195702987940491,
+      "Href_m": 1.0000000000000001e-07,
+      "eta_parallel": 0.8106344904786027,
+      "eta_perpendicular": 0.5334629737906386,
+      "k_parallel_correct_m2": 6.755287420655023e-16,
+      "k_parallel_if_divide_period_m2": 2.8147030919395934e-16
+    },
+    {
+      "h_nm": 75,
+      "d_nm": 75,
+      "K_parallel": 8.304808735996735e-23,
+      "K_perpendicular": 4.448458057678691e-23,
+      "anisotropy": 1.866896040901502,
+      "Href_m": 1.1250000000000001e-07,
+      "eta_parallel": 0.6999279132230992,
+      "eta_perpendicular": 0.37491531284468965,
+      "k_parallel_correct_m2": 7.382052209774875e-16,
+      "k_parallel_if_divide_period_m2": 3.460336973331973e-16
+    },
+    {
+      "h_nm": 75,
+      "d_nm": 100,
+      "K_parallel": 9.834075958643652e-23,
+      "K_perpendicular": 4.4490220210459354e-23,
+      "anisotropy": 2.210390488544205,
+      "Href_m": 1.2500000000000002e-07,
+      "eta_parallel": 0.6042056268990657,
+      "eta_perpendicular": 0.27334791297306216,
+      "k_parallel_correct_m2": 7.86726076691492e-16,
+      "k_parallel_if_divide_period_m2": 4.0975316494348554e-16
+    },
+    {
+      "h_nm": 75,
+      "d_nm": 120,
+      "K_parallel": 1.104845281554495e-22,
+      "K_perpendicular": 4.4494741878208484e-23,
+      "anisotropy": 2.483091787741325,
+      "Href_m": 1.35e-07,
+      "eta_parallel": 0.5388667735062314,
+      "eta_perpendicular": 0.21701443988761948,
+      "k_parallel_correct_m2": 8.184039122625889e-16,
+      "k_parallel_if_divide_period_m2": 4.603522006477063e-16
+    },
+    {
+      "h_nm": 125,
+      "d_nm": 25,
+      "K_parallel": 2.0126512856527951e-22,
+      "K_perpendicular": 1.8463436151958798e-22,
+      "anisotropy": 1.0900740626436816,
+      "Href_m": 1.375e-07,
+      "eta_parallel": 0.9290555596582096,
+      "eta_perpendicular": 0.8522866395013886,
+      "k_parallel_correct_m2": 1.4637463895656692e-15,
+      "k_parallel_if_divide_period_m2": 8.386047023553314e-16
+    },
+    {
+      "h_nm": 125,
+      "d_nm": 50,
+      "K_parallel": 2.278631765554816e-22,
+      "K_perpendicular": 1.8621133377983546e-22,
+      "anisotropy": 1.2236804921063111,
+      "Href_m": 1.5000000000000002e-07,
+      "eta_parallel": 0.8101801833083787,
+      "eta_perpendicular": 0.6620847423283036,
+      "k_parallel_correct_m2": 1.5190878437032105e-15,
+      "k_parallel_if_divide_period_m2": 9.494299023145068e-16
+    },
+    {
+      "h_nm": 125,
+      "d_nm": 75,
+      "K_parallel": 2.4878195882610706e-22,
+      "K_perpendicular": 1.8626020611558356e-22,
+      "anisotropy": 1.3356688689140916,
+      "Href_m": 1.625e-07,
+      "eta_parallel": 0.6957288825797003,
+      "eta_perpendicular": 0.5208842541530019,
+      "k_parallel_correct_m2": 1.5309659004683511e-15,
+      "k_parallel_if_divide_period_m2": 1.0365914951087795e-15
+    },
+    {
+      "h_nm": 125,
+      "d_nm": 100,
+      "K_parallel": 2.6682004390427145e-22,
+      "K_perpendicular": 1.8633902549261666e-22,
+      "anisotropy": 1.4319064039263407,
+      "Href_m": 1.7500000000000002e-07,
+      "eta_parallel": 0.5974279700247243,
+      "eta_perpendicular": 0.4172255731146634,
+      "k_parallel_correct_m2": 1.5246859651672652e-15,
+      "k_parallel_if_divide_period_m2": 1.1117501829344645e-15
+    },
+    {
+      "h_nm": 125,
+      "d_nm": 120,
+      "K_parallel": 2.801565612323316e-22,
+      "K_perpendicular": 1.863708967963892e-22,
+      "anisotropy": 1.5032205459546806,
+      "Href_m": 1.85e-07,
+      "eta_parallel": 0.5309661792648773,
+      "eta_perpendicular": 0.35321908065570373,
+      "k_parallel_correct_m2": 1.5143597904450355e-15,
+      "k_parallel_if_divide_period_m2": 1.1673190051347151e-15
+    }
+  ],
+  "text_matches": {
+    "docs/reports/第一篇论文_第1章引言草稿_20261017.md": [
+      {
+        "line": 29,
+        "text": "where $\\mu$ is the resist viscosity and $\\nabla_\\parallel$ is the in-plane gradient [2,4]. For a line-and-space pattern the two principal components follow from two elementary rules: along the grooves the pressure gradient is common and the fluxes add, giving an arithmetic average of the cubic conductances; across them the flux is common and the pressure drops add, giving a harmonic average. For an equal-width line-and-space pattern ($w/P=1/2$) of period $P$, groove width $w$ and groove depth $d$, with a residual gap $h$ under the protrusions,"
+      },
+      {
+        "line": 66,
+        "text": "This paper evaluates the depth-integrated transport tensor for steady, fully filled flow in explicitly represented periodic rectangular grooves of period $P=240$ nm and width $w=120$ nm. Eighteen sampled geometries span $h=25$–$125$ nm and $d=25$–$120$ nm without forming a complete grid; the error map contains 36 principal-direction calculations. The case inventory, the refinement and viscosity checks, and the audit of existing output are given in Secs. II and III."
+      },
+      {
+        "line": 97,
+        "text": "All results concern a continuous, incompressible, Newtonian liquid with no-slip walls in a fixed, fully filled, ideal periodic geometry. The viscosity independence of the extracted coefficients is checked in Sec. III; it is a consistency check of the assumed linear transport law, not a validation for all resists."
+      },
+      {
+        "line": 99,
+        "text": "Fixed-gap coefficients may supply local inputs to a future slowly varying squeeze-flow model, provided its scale separation, conservation law and boundary conditions are independently justified. The present calculations do not validate dynamic filling, free surfaces, wetting, trapped gas, real-resist slip or rheology, pattern junctions, or other geometries. The single-phase restriction is not cosmetic: once a gas phase occupies part of the void, saturation enters as an independent variable, the coefficient ceases to be a property of the geometry alone and becomes a relative permeability requiring calibration against a saturation curve [11], and a viscosity ratio and capillary number enter that this comparison does not contain. No independent same-geometry solver or experimental comparison is claimed."
+      },
+      {
+        "line": 260,
+        "text": "| 原 ¶14 的「four refinement runs, two viscosity checks and six oblique-drive runs … total to 48」等三句 | 删，改为指向 Secs. II and III | 48 次运行的清单与 Table VI 在**第 3 章 §F**已有完整版 |"
+      },
+      {
+        "line": 262,
+        "text": "| 原 ¶23 的黏度校核数 −0.000644% / −0.000283% | 删，改为指向 Sec. III | 两数在**第 3 章仍在**（已核，2 处） |"
+      }
+    ],
+    "docs/reports/第一篇论文_第2章方法草稿_20261017.md": [
+      {
+        "line": 16,
+        "text": "The computational domain is one period of an infinite line-and-space pattern, shown in FIG. 1(b) and 1(c). A rigid mold carries rectangular ribs of width $P-w$ separated by grooves of width $w$; the ribs stand a distance $h$ above a flat, rigid substrate, so the groove depth measured from the rib face is $d$. The pattern repeats with period $P$ along $x$, and the grooves extend without bound along $y$. The resist is treated as a Newtonian liquid of density $\\rho$ and dynamic viscosity $\\mu$ that completely fills the available volume — the film of thickness $h$ beneath the ribs and the groove volume of depth $h+d$ — so that the calculation contains no gas phase and no free surface."
+      },
+      {
+        "line": 24,
+        "text": "计算域取无限长线槽图案的一个周期，见 FIG. 1(b) and 1(c)。刚性模具上带有宽度为 $P-w$ 的凸台，凸台之间是宽度为 $w$ 的槽；凸台底面距平刚性基板 $h$，故自凸台底面量起的槽深为 $d$。图案沿 $x$ 以周期 $P$ 重复，槽沿 $y$ 方向无限延伸。胶体视为密度 $\\rho$、动力黏度 $\\mu$ 的牛顿流体，**完全充满**可用体积——凸台下方厚度为 $h$ 的薄层，以及深度为 $h+d$ 的槽内体积——因此计算中**不含气相、不含自由液面**。"
+      },
+      {
+        "line": 102,
+        "text": "where $\\tau$ is the relaxation time, $f_i^{\\rm eq}$ the equilibrium distribution and $F_i$ the forcing term accounting for $\\mathbf{a}$. The kinematic viscosity follows from the relaxation time as"
+      },
+      {
+        "line": 110,
+        "text": "so that with the grid spacing $\\Delta x$ fixed by the geometry, $\\Delta t$ and $\\tau$ are tied by the requirement $\\nu=10^{-6}$ m² s⁻¹. The choice $\\tau=1$ is used throughout: it places the solution away from the stability boundary at $\\tau\\to\\tfrac12$, and it is a standard choice for steady Stokes flow, where accuracy is limited by the boundary treatment rather than by the collision model. The corresponding time step is $\\Delta t=4.1667\\times10^{-12}$ s and the lattice viscosity is $\\nu^\\ast=\\nu\\Delta t/\\Delta x^2=1/6$."
+      },
+      {
+        "line": 130,
+        "text": "其中 $\\tau$ 为松弛时间，$f_i^{\\rm eq}$ 为平衡态分布，$F_i$ 为体现 $\\mathbf{a}$ 的力项。运动黏度由松弛时间给出："
+      },
+      {
+        "line": 138,
+        "text": "于是网格步长 $\\Delta x$ 由几何确定后，$\\Delta t$ 与 $\\tau$ 由 $\\nu=10^{-6}$ m² s⁻¹ 这一要求绑定。全文取 $\\tau=1$：该值使解远离 $\\tau\\to\\tfrac12$ 处的稳定边界，也是稳态 Stokes 流动的标准取值——此类问题中精度受边界处理而非碰撞模型限制。对应时间步 $\\Delta t=4.1667\\times10^{-12}$ s，格点黏度 $\\nu^\\ast=\\nu\\Delta t/\\Delta x^2=1/6$。"
+      },
+      {
+        "line": 156,
+        "text": "Steady state is declared when the flux has converged in a window of 1000 consecutive steps, with the relative standard deviation of both the streamwise and the cross-stream flux below $10^{-6}$ and the relative span below $5\\times10^{-6}$, and the run is stopped at 60 000 steps if this is not reached. In practice all reported cases converged well within the limit."
+      },
+      {
+        "line": 164,
+        "text": "稳态判据为：通量在连续 1000 步的窗口内收敛，流向与横向通量的相对标准差均低于 $10^{-6}$、相对极差低于 $5\\times10^{-6}$；若未达到，则在 60 000 步时停止。实际所有报告算例均远早于此收敛。"
+      },
+      {
+        "line": 172,
+        "text": "The 48 existing formal runs comprise 36 principal-direction map cases at 18 geometries, four refinement runs, two viscosity checks and six oblique-drive checks. The map is not a complete grid over its enclosing parameter ranges. The nine calibration geometries belong to the original V1 model development. The d=75 nm batch provides the original V1 withheld-depth check; d=120 nm and h=25 nm provide extension checks. V2 is now the adopted empirical formula; these already visible batches remain retrospective evaluation data, not independent final tests. Selected output checks for all 48 runs are documented in Sec. III F; they do not establish complete source/build provenance."
+      },
+      {
+        "line": 184,
+        "text": "| Viscosity | h=75, d=100 | 2 | μ=15 mPa s, P/T |"
+      },
+      {
+        "line": 189,
+        "text": "48次既有正式运行由18种几何的36个主方向地图工况、4个加密、2个黏度对照和6个斜向驱动组成。外框范围不代表完整交叉矩阵。九种标定几何用于原V1开发；d=75 nm为原V1留出深度检验，d=120 nm与h=25 nm为扩展检查。V2现已作为当前经验公式采用，但这些已可见数据仍只能作回顾性评价，不能重新称为独立最终测试。第3章报告48次运行的所选输出检查，不据此宣称历史源码/构建绑定完整。"
+      },
+      {
+        "line": 201,
+        "text": "| 黏度 | h=75, d=100 | 2 | μ=15 mPa·s，P/T |"
+      },
+      {
+        "line": 210,
+        "text": "Verification is reported in Sec. III. The analytic limit, geometry-specific refinement, tensor/viscosity consistency and output audit are distinct checks. Neither steady-state convergence nor agreement of internal consistency relations establishes a universal spatial-error bound or physical validation. For reference, TABLE II retains the archived fine-grid estimates, conditional on the batch-provenance reconciliation in Sec. III D3; they must not be assigned to the 5 nm production grid."
+      },
+      {
+        "line": 222,
+        "text": "验证见第3章。解析极限、具体几何加密、张量/黏度自洽性与输出审计是不同层面的检查。达到稳态或满足内部自洽关系，都不等于获得普遍空间误差上界或物理确认。TABLE II保留归档的细网格估计，但须结合第3章D3的批次来源限制；不能移用于5 nm生产网格。"
+      },
+      {
+        "line": 279,
+        "text": "reported separately for each principal direction. Because both $K^{\\rm mod}$ and $K^{\\rm DNS}$ are computed for the same geometry, the same driving and the same normalization, $E$ measures the discrepancy relative to the discrete numerical reference; interpreting it as closure error also requires accounting for the uncertainty of that reference. It absorbs neither a difference in the definition of $K$ nor a difference in the reference height, and it does not depend on the viscosity (Sec. IV)."
+      },
+      {
+        "line": 313,
+        "text": "两个主方向分别报告。由于 $K^{\\rm mod}$ 与 $K^{\\rm DNS}$ 针对同一几何、同一驱动、同一归一化，$E$ 衡量相对于离散数值参考解的偏差；解释为闭合误差时仍须计入参考解的不确定度；它既不含 $K$ 定义口径的差异，也不含参考高度的差异，且与黏度无关（Sec. IV）。"
+      }
+    ],
+    "docs/reports/第一篇论文_第3章验证草稿_20261017.md": [
+      {
+        "line": 17,
+        "text": "Verification is separated into an analytic-limit check, geometry-specific discretization checks, internal tensor/viscosity consistency checks and an existing-output audit. The parallel-plate benchmark is not a nonzero-groove reference solution. Spot refinement does not establish a full-map error bound. Tensor predictions use principal coefficients obtained with the same solver and therefore are not independent external validation. The audit checks recorded outputs, not a complete historical source/build/environment chain."
+      },
+      {
+        "line": 23,
+        "text": "验证分为解析极限、具体几何离散检查、张量/黏度内部自洽性、既有输出审计。平板基准不是非零沟槽的参考解；点加密不能给全地图误差上界；张量预测采用同一求解器得到的主值，因此不是外部独立物理确认；输出审计不等于完整历史源码—构建—环境链验收。"
+      },
+      {
+        "line": 207,
+        "text": "**Viscosity.** At h=75 nm, d=100 nm, increasing μ from 1 to 15 mPa s changes K by −0.0006444% parallel and −0.0002832% perpendicular; the original-to-high-viscosity flux ratios are 15.0000967 and 15.0000425. This supports the expected scaling under the stated Newtonian, no-slip, low-inertia assumptions. It is not validation of arbitrary real-resist rheology, and the μ=1 field images must retain their actual physical labels."
+      },
+      {
+        "line": 215,
+        "text": "**黏度。** h75/d100下，μ从1增至15 mPa·s，K的沿槽/跨槽变化分别为−0.0006444%、−0.0002832%；原黏度与高黏度的通量比分别为15.0000967、15.0000425。这支持既定牛顿、无滑移、低惯性条件下的比例关系，不验证任意真实胶流变。μ=1原场图片必须保留其真实物性标签。"
+      },
+      {
+        "line": 233,
+        "text": "| Viscosity | 2 | Reference geometry, μ=15 mPa s |"
+      },
+      {
+        "line": 247,
+        "text": "| 黏度 | 2 | 基准几何，μ=15 mPa·s |"
+      }
+    ],
+    "docs/reports/第一篇论文_第4章结果I草稿_20261018.md": [
+      {
+        "line": 14,
+        "text": "We report first the resolved coefficients themselves, before any comparison with a closure. Two quantities are needed, $K_\\parallel$ (transport along the grooves, driven across $x$) and $K_\\perp$ (transport across the grooves, driven across $y$), obtained from Eq. (4) at steady state for the thirty-six geometries of TABLE I. Both are quoted as $K$ in m³, consistent with the per-unit-width definition of Sec. II G; conversion to the three-dimensional permeability used in porous-media and heat-pipe practice requires division by the period, $K^{[\\mathrm{m^2}]}=K^{[\\mathrm{m^3}]}/P$."
+      },
+      {
+        "line": 30,
+        "text": "Panel (b) renders the same statement as a ratio. Across the thirty-six geometries the anisotropy spans $A=1.090$ to $15.45$, a factor of fourteen. It is not the depth alone that produces this: at fixed $d=100$ nm, $A$ falls from $15.45$ at $h=25$ nm to $2.210$ at $h=75$ nm and $1.432$ at $h=125$ nm. Conversely, at fixed $h=125$ nm, $A$ rises only from $1.090$ to $1.503$ as $d$ goes from 25 to 120 nm."
+      },
+      {
+        "line": 82,
+        "text": "在与任何闭合比较之前，先报告解出来的系数本身。需要两个量：$K_\\parallel$（沿槽输运，沿 $x$ 驱动）与 $K_\\perp$（跨槽输运，沿 $y$ 驱动），由式 (4) 在稳态下对 TABLE I 的三十六种几何求得。两者均以 m³ 给出，与 Sec. II G 的单位宽度定义一致；若要换算成多孔介质与热管惯用的三维渗透率，需除以周期：$K^{[\\mathrm{m^2}]}=K^{[\\mathrm{m^3}]}/P$。"
+      },
+      {
+        "line": 105,
+        "text": "对工艺设计而言，最重要的推论是：**压印沟槽中输运的方向性由残膜有多薄控制，而不由图案有多深控制。** 若设计者想降低方向性——让胶在面内两个方向流得更均匀——**唯一有效的杠杆是 $h$。**"
+      }
+    ],
+    "docs/reports/第一篇论文_第5章_对比对象选择草稿_20261018.md": [
+      {
+        "line": 16,
+        "text": "The resolved calculations and the Reynolds closure use the same definition of transport coefficient: viscosity times mean depth-integrated flux divided by the imposed gradient. Their relative discrepancy is $E_i=K_i^{\\rm mod}/K_i^{\\rm ref}-1$, where $K_i^{\\rm ref}$ denotes the discrete numerical reference. The arithmetic–harmonic averaging step is exact within the stated one-dimensional Reynolds cell model; the comparison therefore tests that local closure against explicitly resolved flow. It does not remove the discretization uncertainty of the numerical reference or locate the discrepancy within the fluid domain."
+      },
+      {
+        "line": 86,
+        "text": "精细计算与 Reynolds 闭合采用相同的输运系数定义：黏度乘以平均深度积分通量，再除以外加梯度。相对偏差为 $E_i=K_i^{\\rm mod}/K_i^{\\rm ref}-1$，其中 $K_i^{\\rm ref}$ 是离散数值参考值。算术—调和平均在所述一维 Reynolds 单元模型内可精确求出，故此处比较的是该局部闭合与显式流动计算；这既不消除参考解自身的离散误差，也不定位偏差来自流体域的何处。"
+      }
+    ]
+  },
+  "inputs": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h125_dx5_P/steady/result.txt": "b1a0e375e52a816231d4805765d358ab04c618f112c0dbc933e3f5d142e1d807",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h125_dx5_P/steady/diagnostics.csv": "3b43d5d4c0130bb1aceab6f94c54f4dd0464ed7b1673c5c50440639284af4b54",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h125_dx5_T/steady/result.txt": "9b07d148a8227d8169dc7be524a6a41061ee419790e701ac806cae63710c24eb",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h125_dx5_T/steady/diagnostics.csv": "07dece85af914af99d6788d376bf11d0a11184a140133921bfed755a1f19bf05",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h50_dx5_P/steady/result.txt": "bcde0d82872242eae29f204d677d29f6a15c71f09aefbfa1854fe31b29f7bca1",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h50_dx5_P/steady/diagnostics.csv": "f0a5819fbc7562132d088c4741b0d6919340d657c892216b3001bb616eba2dc9",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h50_dx5_T/steady/result.txt": "cf43641d6bdb6868c0d2f4c2d737832247bea6d67808221d40850a913086aadd",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h50_dx5_T/steady/diagnostics.csv": "32bba12d098935cbf3d57e3ac9b6eaffb8d7bd3470c7349541cc303da988ab70",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h75_dx5_P/steady/result.txt": "d63d29df9eeb27c56aba064030d7c5992f1934e4387b81653bde1e86ce7640e9",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h75_dx5_P/steady/diagnostics.csv": "105272aefb75a48d9f7833efa6409fe6761a592b73aeaf110544fb27dc697873",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h75_dx5_T/steady/result.txt": "4aafcc3b411aed59252a0a95acc1d972c2a89253c59154fa607728330a68998f",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d120_h75_dx5_T/steady/diagnostics.csv": "3fb8ca021511eb6bfc04e389716497cf99dbf7b43fdda3637ebaf2b24665c72b",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h125_dx5_P/steady/result.txt": "7c1dad02dde222ec082fed25c274face3d72b3394b7721842ec944521267ca21",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h125_dx5_P/steady/diagnostics.csv": "59dbd7b134c413d968d254b1b8ce0176beb39d71a1742f63eeff718571aad5fe",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h125_dx5_T/steady/result.txt": "06022c1a6dacecbfd35a46c108cd4c173614a5513d3dc5393e7d38ff6bafde5e",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h125_dx5_T/steady/diagnostics.csv": "7247ae135dd0e8232c3d663b4c3efbc50ce448b8f5910d41cc507e485d0d1ec2",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h50_dx5_P/steady/result.txt": "a1adc3d817d141040bb132c154134bffc1f8ebd6e1a4372069f260d817b7f9a6",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h50_dx5_P/steady/diagnostics.csv": "3d288e4a119d61ba89239fb4f8e64ec5bda716cca91b5a69c760e1bb7286b149",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h50_dx5_T/steady/result.txt": "adf32c8901b0032aa252d33cdcf242ddf2f3e43041433f7c47c9407a2003d89d",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h50_dx5_T/steady/diagnostics.csv": "9041f723b7e02b84bb93633cdf3c41e23d374db43e74b5bd14dc9d981ee982a5",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h75_dx5_P/steady/result.txt": "a4abc6aba0afd08236672cf8f21a6a6a1ab0bd07819f19c299fe66be2da7db9f",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h75_dx5_P/steady/diagnostics.csv": "44df76a87ebbd3b4a43d0b10e984e7b169d104f94afb4be535095a3c361b9b91",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h75_dx5_T/steady/result.txt": "be36efff13e422241812cb7224f3df6bdfa23f66226a4f880e29ffedbc563559",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/d75_h75_dx5_T/steady/diagnostics.csv": "6e3f140889978e3a42d19570216fba13cd491c02e133840eac7e740d07d6a42e",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d100_dx5_P/steady/result.txt": "ced6fc9011585c87a84df420b7d2d79b4e6d1de5f4c8ee373d61ff21c5f77940",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d100_dx5_P/steady/diagnostics.csv": "d87ff9957e569f3b7eb662f2e6ea7c916f548b52415391655c8dbfbed0903db7",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d100_dx5_T/steady/result.txt": "a40d5e0d4e67de194a02e72707a5b408421416e178ea16fab0a3f1d58cbcbb2d",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d100_dx5_T/steady/diagnostics.csv": "56a935b7e289ae0e06a43e71272f56d51f78d04a38d2f52593f1b5fda639b8c1",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d25_dx2.5_P/steady/result.txt": "32c1413844eaf308b82df92f24d229b1b69d2b2d58dfb0234cf8f7e5f9948646",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d25_dx2.5_T/steady/result.txt": "b6b589b5700474e07a96424ad3be0c3d3786b1006712863cb6893d44acd1ec67",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d25_dx5_P/steady/result.txt": "84b90d9c25f519ba689bbef9fe26d3fe498d40fe0176e9867d6a6aeecdb88ab5",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d25_dx5_P/steady/diagnostics.csv": "50ae9fa60f5df6150b1a3e41a9dfee5ecdd109c38477f81b43adbc6cfc0f1a7b",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d25_dx5_T/steady/result.txt": "dd75b0933b30b2563865205a1d79bb36e5e288d2f6a4986ad1e537aa56ef1b28",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d25_dx5_T/steady/diagnostics.csv": "60f65f6355ca2ecc8c6d1fc6c01fbfc7d8891d889b9ae0585428d8fb7a882ba6",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d50_dx5_P/steady/result.txt": "09431741569c0130a22997201ab4088ef9c7469788a88d2f8508f68ca2462ec1",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d50_dx5_P/steady/diagnostics.csv": "c4a8279fe1f2689e16ce2ee55da84af5e494de17ea79fc0d055853a94c19cedb",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d50_dx5_T/steady/result.txt": "f28193b56c6b0295c28f9fa3754d97f69cbe05cbe76204b8c5f5311581d226bc",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h125_d50_dx5_T/steady/diagnostics.csv": "b7ee93c37429c7f0fbcd3ba3547c1adc4f927e3a4a0a6bb7097e657a4cb0fbb7",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_P/steady/result.txt": "84c5691569464c7f16967374e838a1cfe4f8e5581b30adc6f005e8e7df0cbfac",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_P/steady/diagnostics.csv": "e0cf33bffe155a18949ba655ef2e5beb730dc470c3f63f731843566492e3580c",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_T/steady/result.txt": "86f43fc5c91163eaad8c577d2ce94d2c4e7158157f7a14b69b40fdfb37fd600e",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_T/steady/diagnostics.csv": "c8e5b199b0dc74666d69e98a4a54f132ff093619634d3d68d3250bd08fd97e15",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_P/steady/result.txt": "ec95ca732ec6b27e82edad30e5bd1f6c25d1f1e70edea86d3910c2b6dcae7604",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_P/steady/diagnostics.csv": "51bd38a0d615f3e0b10e0e65266391a548d49539e38a6bc728c9b878c4c89857",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_T/steady/result.txt": "41a36ba04f28a31d1b0e02c9fe96abb1ff99d9a94fa7e95722be01f26ea7114a",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_T/steady/diagnostics.csv": "ad397a76a91d34cb1382620d8ea1e8f31b01313ed3e3a8e2dabb51083972507c",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d50_dx5_P/steady/result.txt": "4f891d731e0df9ca0e542ff322c2a98f93f49f945ad2e6864124107c5b945ab2",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d50_dx5_P/steady/diagnostics.csv": "c004d10584c14fe3837ad7035858653a174bd1fea2345cff93970e00b14086a4",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d50_dx5_T/steady/result.txt": "8e0c87299af9bc0cadbd07f8e4394159c33e1e2a87f454800fa19c3071406bd7",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h25_d50_dx5_T/steady/diagnostics.csv": "dbd073a4ee3711060a75be675d78c433cbfc4c26410a7424020c304ac625f620",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/result.txt": "5f5b7ebfdcfa8ecd5d909deb4bf33534b98855023ff0be4fbedc896183be4cf5",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/result.txt": "4d25d5f697885ee6b3b84e3c3bde2ff96ad454796ae8cd68e612d4cfd0396142",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/result.txt": "327fb406fb62b16b2a09480e0bde24380d1fd60676445831f932f5cebc3e5eea",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/diagnostics.csv": "c4b59ca5f1957a83ad54a59f1023fe30fa6e34732318ac4ce20550903c8470f3",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/result.txt": "8b815eae2eba4efdbc0553591923c4651ccc6a5e2360f56e9284c7c62b7f85cc",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/diagnostics.csv": "2175b594eca241f129f01f1aed876b64d91af84d32f779fb509602ce175d2e49",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/result.txt": "ac64996d2dd61fb74477c0796b663a4f2a5b8f8db4311ad39e06160890307633",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/diagnostics.csv": "e7fb221224612323a3b90b3aa511524c06df569e82979b1e6bd59e4cb8cd0cd4",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/result.txt": "f2cb67778918b2bdc21e434ec2822857350bfac8a018670017741dc286ecea6a",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/diagnostics.csv": "3eefdd818798413c1c811c48e62cd63b4facec19652bd7198bbc2381bdee979d",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d50_dx5_P/steady/result.txt": "55e7d503dcf67fbeb5935662786fa302bd43992f399233215e18a07e8612f105",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d50_dx5_P/steady/diagnostics.csv": "1ed4bcfff82f2033fce33437c5cad3f40fcae1d3e20d3128a4016b024973f807",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d50_dx5_T/steady/result.txt": "3cec9cb40d11b025abdedb1c2597c028ac4985b4e843cc81227d1c04bccf3cca",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d50_dx5_T/steady/diagnostics.csv": "a08e20dff40e7849dd7176b37fe55999a3fba1fc043b31e56550bebef039ed2a",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/result.txt": "a1dc9e60daec4891c0beac5a35ea4c7792e1fd85cdc09965aa6a408b070184f6",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/diagnostics.csv": "f8a8d878da8f0bbd5ec7008a265849b671894bdc616369c82a3e60f407d7d252",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/result.txt": "aee2e75ce2f5a86a58cd3bed9483cea6c7488b72ea7b2111c46a1f8a6e6e5c5b",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/diagnostics.csv": "883619a288efcf026ca033273be01505759d785b8a8a9234880ba9c15a6ebbce",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d25_dx5_P/steady/result.txt": "026d375c23744f426377c74d541d70fe1a43671ef3606a7d288c4b34e2dae0a2",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d25_dx5_P/steady/diagnostics.csv": "de42db4f214b7a2f47764c9d72197877b7a70eadf1f459f8680ae71c05a16f63",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d25_dx5_T/steady/result.txt": "8dccc008db6ab35efb50e68a9b093d36401db5a5b407d271229a113aa9a1cb5b",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d25_dx5_T/steady/diagnostics.csv": "32599054513568673326487ba967fdd5fe9bda43167686699bc7f2ca3d7bbee6",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d50_dx5_P/steady/result.txt": "c9546df1c083387ee837fad0fca2eb3c116b26ef4e3d8c66b9abb022a962d3a0",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d50_dx5_P/steady/diagnostics.csv": "946fac68da6ca782cbb8933c7a6b335efa2bc5366a8e218eda6da44065591fc2",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d50_dx5_T/steady/result.txt": "8d27919454705b29c3ff79e0401dd1f9cceb564691965bc852076bc3a208593c",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d50_dx5_T/steady/diagnostics.csv": "7bceedd1434493cfa1b419b3bff87b93f650681b48c5f593c5f402876bc45e9f",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/mu15_h75_d100_dx5_P/steady/result.txt": "2083cf13e4fb42ce53ea47c2db22839f5167375b10f48350d2819ede2f1d9020",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/mu15_h75_d100_dx5_P/steady/diagnostics.csv": "9b35d5c5aa790ad5dc6117ba124e8e6587b53ed0de530c82e02d5c0955f8e4ef",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/mu15_h75_d100_dx5_T/steady/result.txt": "0c722f7baf755e685802c9f22740a4ad787d769544912a59e50045c8a0177dca",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/mu15_h75_d100_dx5_T/steady/diagnostics.csv": "7730626469fbbb716c05ccb3b6a6ff01559856702708fc36c64aaa0c5927c6d3",
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第1章引言草稿_20261017.md": "e516e637f18c5cdf9546bb77434cde37153ac39080e595750a0feb8394f64989",
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第2章方法草稿_20261017.md": "20758cddd318985e23a21c7892de007466b53e9f8faa7bffaf72ab3fbce18a0b",
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第3章验证草稿_20261017.md": "f25434ece670148cbe432ad6db24c468acf07b0a84cf7db2789cb9c83bd13fc8",
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第4章结果I草稿_20261018.md": "f5f528855e0e76f0b2415c7d0eedded349d0bc3daaf082c4df71c37f8237cec5",
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第5章_对比对象选择草稿_20261018.md": "0f9c2454e9477815c6fe95acbb3449541975d9e318390ffabc0d09626417f7b7",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/src/d2_groove_error_map.cpp": "e7c0cf5d87f6a726a61e760642b803b5c6ee9e5fbc6dd5ba890cb97f5a6fe3b7",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/scripts/run_mu_check.sh": "51a5840bf08fc1306027d4c30a80540eb4d59ea4900f137642098690d985a97c",
+    "/home/dell/openlb/src/core/unitConverter.h": "493a22bc6d7c15fa949194125ce5024914f0b49c5153e417b61c364ea7db9ee3"
+  },
+  "inputs_changed_during_check": []
+}

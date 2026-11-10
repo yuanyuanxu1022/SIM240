@@ -1,0 +1,72 @@
+{
+  "revision_id": "URV-MRP-v1",
+  "status": "A1_SCOPED_STATIC_AUDIT_PASS_NO_EXECUTION_AUTHORITY",
+  "simulation_authorized": false,
+  "native_source_sha256": {
+    "capture_schedule.h": "0ee76b75e1413c145866a4af561387b8e68cbbc43d3814fd41c8a3bbf71f150f",
+    "mrp_observer.h": "560c5e0a55c16ead6a72d6009c3dcafb9813ca661b180dd03c18475e319f473f",
+    "mass_stats.h": "178b0e1b80d4323414b3d2d75642fbd8475143e1172882fb4f2411b7aa99a889",
+    "urv_reference.cpp": "ee886312aff55b3a69060531e7d286dc16a4fe595a145736002896ba81394f77"
+  },
+  "diffs": {
+    "capture_schedule.h": {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/revision/capture_schedule.h.diff",
+      "sha256": "7c9299fa6b2f09763cc4452f9d3771b1b32b92337d00442e2b565b3e7e957741",
+      "baseline_path": null,
+      "baseline_sha256": null
+    },
+    "mrp_observer.h": {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/revision/mrp_observer.h.diff",
+      "sha256": "db1d137f790758816a4a6a12d89591308719611deb93a7db0fb83f38fa5beed3",
+      "baseline_path": null,
+      "baseline_sha256": null
+    },
+    "mass_stats.h": {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/revision/mass_stats.h.diff",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "baseline_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/src/mass_stats.h",
+      "baseline_sha256": "178b0e1b80d4323414b3d2d75642fbd8475143e1172882fb4f2411b7aa99a889"
+    },
+    "urv_reference.cpp": {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/revision/urv_reference.cpp.diff",
+      "sha256": "95c82e1814b2679e6dd9a552385ae590b4a660332e27599a5e78fd771ec13435",
+      "baseline_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/src/urv_reference.cpp",
+      "baseline_sha256": "95451392184f0601ede205eea10bdeda71c6070caa5529a80d3fc57c6ac84ff7"
+    }
+  },
+  "original_anchor_sha256": "7f0fb1be3080e78c0e753ce8396ff638a5f6b745f5904c2e37e76b50cd1604ed",
+  "frozen_inputs": [
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S0_mass_repair_protocol_20261101/PROTOCOL.md",
+      "sha256": "f803c25eb0c611b4808c234965537eb9d3722daf3f281841aa2b874ec5e3c3da"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S0_mass_repair_protocol_20261101/density_capture_schedule.json",
+      "sha256": "dc0b56de8a057cc699907e067231147dedc0f4c511ae9909d66f8569f0016f1c"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/source_preparation_anchor.json",
+      "sha256": "7f0fb1be3080e78c0e753ce8396ff638a5f6b745f5904c2e37e76b50cd1604ed"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_MRP_v1_A1_implementation_20261102/adoption.json",
+      "sha256": "ac64799df3dea8fe4710821c348c1c7f4abc7ad08b2fb7ec18e85b15787c8d07"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_MRP_v1_implementation_20261102/VOLUME_ADDENDUM_DRAFT.md",
+      "sha256": "d8ee1d6beed6688d311ac23c67b68e1cbe33ead3a51a31a4e14dc5029e3a8176"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_MRP_v1_A1_implementation_20261102/applied_volume_rounding.patch",
+      "sha256": "6ccdb0e9d0e1fd0423219ec0eceac48c1dcc1010d992fb4f934af2c6ca619f7e"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_MRP_v1_A1_implementation_20261102/instruction_audit.json",
+      "sha256": "a93b989a95c361fcb4163f75a824e534d891d8df2c7873aeec8663c7a9e6b3c5"
+    }
+  ],
+  "instruction_audit_status": "PASS",
+  "failure_reason": null,
+  "addendum_id": "URV-MRP-v1-A1",
+  "instruction_audit_scope": "Adopted A1 observer repair: exact source-only delta, specified floating-point dataflows in both capture branches and both drive selections, source rules and dependency/library bindings. Not full transitive machine proof or runtime result acceptance."
+}

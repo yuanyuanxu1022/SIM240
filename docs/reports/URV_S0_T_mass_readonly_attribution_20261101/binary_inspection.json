@@ -1,0 +1,60 @@
+{
+  "old": {
+    "binary": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/build/variable_groove_transport",
+    "sha256": "022e479f3270d5b43d8cd0dd629d82a05c18758c77c26409c21c0b6a4d2861a9",
+    "measure_address": "0x3f390",
+    "measure_size_bytes": 2710,
+    "symbol": "000000000003f390 0000000000000a96 t (anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double) [clone .isra.0]",
+    "disassembly_lines": 573,
+    "FMA_instructions": [
+      "3f5e3:\tvfmadd231sd xmm0,xmm6,xmm6",
+      "3f5e8:\tvfmadd231sd xmm0,xmm7,xmm7",
+      "3f661:\tvfmadd213pd xmm10,xmm2,XMMWORD PTR [r12+0x8]",
+      "3f677:\tvfmadd213sd xmm2,xmm1,QWORD PTR [r12+0x18]",
+      "3f716:\tvfmadd213sd xmm0,xmm2,QWORD PTR [r12+0x40]",
+      "3f72c:\tvfmadd213sd xmm0,xmm1,QWORD PTR [r12+0x50]",
+      "3f745:\tvfmadd132sd xmm1,xmm10,xmm3",
+      "3fa9b:\tvfmadd231sd xmm3,xmm6,xmm6",
+      "3faa0:\tvfmadd231sd xmm3,xmm7,xmm7",
+      "3fb16:\tvfmadd213pd xmm0,xmm10,XMMWORD PTR [r13+0x8]",
+      "3fb2a:\tvfmadd213sd xmm0,xmm1,QWORD PTR [r13+0x18]",
+      "3fbbc:\tvfmadd213sd xmm2,xmm1,QWORD PTR [r13+0x40]",
+      "3fbd0:\tvfmadd213sd xmm2,xmm1,QWORD PTR [r13+0x50]",
+      "3fbf5:\tvfmadd132sd xmm1,xmm4,xmm0",
+      "3fd0a:\tvfmadd213sd xmm0,xmm1,QWORD PTR [r12+0x40]",
+      "3fd26:\tvfmadd213sd xmm0,xmm1,QWORD PTR [r12+0x48]",
+      "3fd3c:\tvfmadd213sd xmm0,xmm1,QWORD PTR [r12+0x50]",
+      "3fd6e:\tvfmadd213sd xmm2,xmm1,QWORD PTR [r13+0x40]",
+      "3fd8c:\tvfmadd213sd xmm2,xmm0,QWORD PTR [r13+0x48]",
+      "3fda0:\tvfmadd213sd xmm2,xmm1,QWORD PTR [r13+0x50]"
+    ]
+  },
+  "new": {
+    "binary": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_v1_2/build/urv_reference",
+    "sha256": "a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1",
+    "measure_address": "0x3fbf0",
+    "measure_size_bytes": 3266,
+    "symbol": "000000000003fbf0 0000000000000cc2 t (anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double) [clone .isra.0]",
+    "disassembly_lines": 672,
+    "FMA_instructions": [
+      "3fe7a:\tvfmadd231sd xmm1,xmm5,xmm5",
+      "3fe7f:\tvfmadd231sd xmm1,xmm6,xmm6",
+      "3ff98:\tvfmadd213sd xmm0,xmm2,QWORD PTR [r12+0x28]",
+      "40037:\tvfmadd213sd xmm1,xmm0,QWORD PTR [r12+0x50]",
+      "4004d:\tvfmadd213sd xmm1,xmm2,QWORD PTR [r12+0x60]",
+      "40066:\tvfmadd132sd xmm4,xmm9,xmm2",
+      "4044a:\tvfmadd231sd xmm1,xmm5,xmm5",
+      "4044f:\tvfmadd231sd xmm1,xmm6,xmm6",
+      "40563:\tvfmadd213sd xmm0,xmm7,QWORD PTR [r13+0x28]",
+      "405f5:\tvfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x50]",
+      "40609:\tvfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x60]",
+      "4062d:\tvfmadd231sd xmm3,xmm7,xmm0",
+      "40742:\tvfmadd213sd xmm1,xmm0,QWORD PTR [r12+0x50]",
+      "4075e:\tvfmadd213sd xmm1,xmm2,QWORD PTR [r12+0x58]",
+      "40774:\tvfmadd213sd xmm1,xmm2,QWORD PTR [r12+0x60]",
+      "4079e:\tvfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x50]",
+      "407bc:\tvfmadd213sd xmm1,xmm0,QWORD PTR [r13+0x58]",
+      "407d0:\tvfmadd213sd xmm1,xmm7,QWORD PTR [r13+0x60]"
+    ]
+  }
+}

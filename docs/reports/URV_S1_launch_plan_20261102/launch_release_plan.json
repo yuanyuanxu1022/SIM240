@@ -1,0 +1,109 @@
+{
+  "kind": "NON_EXECUTABLE_RELEASE_PLAN_NOT_AUTHORIZATION",
+  "created_utc": "2026-11-02T03:25:27.140728+00:00",
+  "stage": "S1_SMOOTH_THIN",
+  "protocol_id": "URV-v1",
+  "prepared_binding_file": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/evidence/preparation_manifest.json",
+  "prepared_binding_sha256": "a518596ad413c3c1e8f5e2c2caec97e494b4a247ecff47177315a6bab69a83d7",
+  "source_binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+  "checks_reverified_this_round": {
+    "bound_inputs_total": 1473,
+    "missing_files": 0,
+    "content_changed": 0,
+    "native_binary_matches_prepared": true,
+    "zero_audit_pass": true,
+    "zero_audit_time_steps": 0,
+    "zero_audit_modes": [
+      2,
+      2,
+      2
+    ],
+    "zero_audit_binary_matches": true,
+    "zero_audit_sha256": "fdd15c3a559bfec5826f9a01fa54329e8dde2b00f1a743c3e0b82e63c94c11fb",
+    "author_declaration_status": "AUTHOR_DECLARED_NONUSE_CONFIRMED",
+    "author_declaration_sha256": "f5b7c4e610fbf26bae7c00a569d02cfbcc01cde3120251d4f304a182cfb691b0",
+    "run_directories_pristine": true,
+    "launch_attempts_directory_exists": false,
+    "tmux_sessions": 0,
+    "matching_processes": 0,
+    "MemAvailable_bytes": 22190080000,
+    "disk_free_bytes": 341556211712,
+    "resource_gates_pass": true
+  },
+  "required_inputs_additions_to_release": {
+    "note": "prepared_manifest 的 1473 项不含这些项；release 必须补入，否则 run_S1.py 在 'zero audit not bound' 处拒绝",
+    "paths_to_add": {
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/audits/URV_S1_ZERO_20261102_01/verification.json": "fdd15c3a559bfec5826f9a01fa54329e8dde2b00f1a743c3e0b82e63c94c11fb",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/evidence/preparation_manifest.json": "a518596ad413c3c1e8f5e2c2caec97e494b4a247ecff47177315a6bab69a83d7"
+    },
+    "already_present_in_prepared": [
+      "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_external_history_confirmation_20261101/author_declaration.json"
+    ],
+    "prepared_input_count": 1473,
+    "resulting_release_input_count": 1475
+  },
+  "reserved_run_ids": [
+    "URV_S1_P_A1_v1_20261102_01",
+    "URV_S1_T_A1_v1_20261102_01"
+  ],
+  "reviewed_run_records": [
+    {
+      "run_id": "URV_S1_P_A1_v1_20261102_01",
+      "planned_case_id": "URV1_SMOOTH_H30_P_dx1p25_a100000",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/runs/URV_S1_P_A1_v1_20261102_01/steady/run_config.txt",
+      "run_config_sha256": "c115af30b3a06193c61fa0ba20f6d41ea35d621e03bd549780bf0fbf0edfc5b9",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/runs/URV_S1_P_A1_v1_20261102_01/steady"
+    },
+    {
+      "run_id": "URV_S1_T_A1_v1_20261102_01",
+      "planned_case_id": "URV1_SMOOTH_H30_T_dx1p25_a100000",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/runs/URV_S1_T_A1_v1_20261102_01/steady/run_config.txt",
+      "run_config_sha256": "6e06a14725755aba462b20e9a19aa833056c266252c3a16d5cadb0c7c8296f4e",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/runs/URV_S1_T_A1_v1_20261102_01/steady"
+    }
+  ],
+  "provenance_roles_from_build_capture": {
+    "native_binary": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+    "native_sources": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/src/capture_schedule.h",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/src/mass_stats.h",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/src/mrp_observer.h",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/src/urv_reference.cpp"
+    ],
+    "build_recipe": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/src/Makefile",
+    "build_environment": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/evidence/build_environment.json",
+    "dependency_file": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference.d",
+    "ldd_record": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/evidence/ldd.txt"
+  },
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_run_free_disk_GiB": 8,
+    "solver_wall_cap_seconds_per_case": 14400
+  },
+  "proposed_release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/evidence/S1_launch_release_A1_v1_20261102_01.json",
+  "proposed_authorization_evidence_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/evidence/S1_launch_authorization_A1_v1_20261102_01.json",
+  "proposed_session_name": "urv_s1_a1_v1_20261102_01",
+  "authorized": false,
+  "simulation_authorized": false,
+  "approved_run_ids": [],
+  "approved_runs": [],
+  "user_authorization_verbatim": null,
+  "required_after_explicit_authorization": [
+    "写授权证据文件，逐字记录用户授权原话与范围（仅这两条 S1 身份）",
+    "另存启动合同：复制全部输入闭包＋新增三项＋provenance＋resources＋zero_audit 绑定；prepare 合同原字节不动",
+    "计算启动合同独立 SHA256，作为外部信任锚",
+    "用 run_S1.py 默认只读模式核对实际退出 0、solver_executed=false",
+    "更新 SIM240_AI_CONTEXT.md 与 AI_HANDOFF_20261015.md 后才交付命令",
+    "只交付一条 SHA 绑定的 tmux 命令；不代用户执行"
+  ],
+  "execution_order": "P -> 原 URV 解析/数值/几何验收全过 -> T；任一失败即停",
+  "stop_conditions": "资源/输入/原生/检查器任一失败或超时即停；无重试、不进入 S2",
+  "startup_command_generated": false,
+  "command_shape_if_authorized": "tmux new-session -d -s <session> 'cd <case> && exec <python> <run_S1.py> --release <release> --release-sha256 <sha> --execute'"
+}

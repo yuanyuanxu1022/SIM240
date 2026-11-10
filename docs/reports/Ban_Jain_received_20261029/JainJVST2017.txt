@@ -1,0 +1,797 @@
+RESEARCH ARTICLE | DECEMBER 15 2016
+
+Effect of droplet size, droplet placement, and gas dissolution
+on throughput and defect rate in UV nanoimprint lithography
+
+Akhilesh Jain; Andrew Spann; Roger T. Bonnecaze
+
+
+
+J. Vac. Sci. Technol. B 35, 011602 (2017)
+https://doi.org/10.1116/1.4971771
+ CHORUS
+
+
+
+
+                                                                                               
+                                                                                               View          Export
+                                                                                               Online        Citation
+
+
+  Articles You May Be Interested In
+
+   Optimal placement of droplets for UV nanoimprint lithography
+   J. Vac. Sci. Technol. B (March 2020)
+
+   Minimizing filling time for ultraviolet nanoimprint lithography with templates with multiple structures
+   J. Vac. Sci. Technol. B (December 2020)
+
+   A Three‐Dimensional Ultraviolet Curable Nanoimprint Lithography (3D UV‐NIL)
+
+
+
+
+                                                                                                                        04 August 2025 13:37:52
+   AIP Conf. Proc. (July 2009)
+Effect of droplet size, droplet placement, and gas dissolution on throughput
+and defect rate in UV nanoimprint lithography
+              Akhilesh Jain, Andrew Spann, and Roger T. Bonnecazea)
+              McKetta Department of Chemical Engineering, The University of Texas at Austin, 200 E. Dean Keeton St.
+              Stop C0400, Austin, Texas 78712-1589
+              (Received 16 September 2016; accepted 22 November 2016; published 15 December 2016)
+              Simulation of multidrop spreading in ultraviolet nanoimprint lithography is performed to study the
+              effects of droplet size, droplet arrangement, droplet placement error, and gas diffusion on filling-
+              time and defects. Simulations are carried out for square, hexagonal, and modified hexagonal
+              arrangements of up to 1024 droplets ink-jetted on a substrate to determine the optimum arrange-
+              ment for minimum imprint time. The effect of error in droplet placement by the inkjet dispenser on
+              the imprint time for different droplet sizes is also investigated. The square droplet arrangement
+              leads to the shortest fluid filling time for a flat template. The filling time increases significantly for
+              droplet placement errors of more than 0.01% relative to the width of the substrate. A model is pre-
+              sented to study the diffusion of gas encapsulated between droplets into the resist. A dimensionless
+              parameter a lD=kH cHo measures the relative importance gas diffusion to hydrodynamics, where
+              D is the gas diffusion constant, kH is the Henry’s law constant, l is the resist viscosity, and c is the
+              surface tension of the imprint resist. For small values of a, gas diffusion is slower than resist
+              spreading and defect size is diffusion-controlled while for larger values, gas diffusion is faster than
+              resist spreading and the defect size is hydrodynamically controlled. Scaling laws are developed to
+              extrapolate predictions on filling time, residual layer thickness, and defects here for hundreds to a
+              thousand droplets to tens and hundreds of thousands of droplets. V    C 2016 American Vacuum Society.
+
+              [http://dx.doi.org/10.1116/1.4971771]
+
+
+
+
+                                                                                                                                              04 August 2025 13:37:52
+I. INTRODUCTION                                                           viscosity photo-curable resist droplets on the substrate. A
+   UV nanoimprint lithography (UVNIL) is a low cost, high                 typical inkjet dispenser is capable of dispensing droplets of
+throughput process to replicate high resolution nano- and                 volume as low as one picoliter (1015 m3) at a variable pitch
+micropatterns from a template onto a rigid substrate.1                    ranging from 85 to 150 lm.14,15 The droplet density and
+UVNIL has been used for fabrication of many nanoenabled                   arrangement depend on the volume of resist required to fill
+devices such as high density bit pattern media,2,3 photon-                the local cavities on the template and achieve a desired resid-
+ics,4,5 and displays.6 Lithography techniques like immersion              ual layer thickness (RLT). The stepper template is then low-
+and extreme ultraviolet (EUV) lithography also provide high               ered on the droplets until they merge together to form a
+resolution patterning; however, these techniques are more                 uniform resist film. Once the fluid spreading is complete and
+expensive with lower throughput.7 Pattern resolution in these             the entire template is filled, UV light is irradiated on the
+techniques is limited by the wavelength of light and the                  resist through the transparent template. The UV light causes
+numerical aperture of the optical system. Patterning sub-                 photo-polymerization of the monomers to create a solid
+100 nm structures require complicated optical elements                    resist film. The exposure dose and time depend on the resist
+which increases the cost of exposure tools. UVNIL does not                material and RLT.16,17 Once the resist is completely cured,
+have these limitations and has the following competitive                  the template is peeled off from the resist through controlled
+advantages over other lithography techniques such as immer-               movement of the template. The surface energy of the tem-
+sion and EUV lithography: (1) pattern resolution in UVNIL                 plate is low compared to the substrate, which allows the
+is essentially only limited by the resolution of the template             resist to preferentially adhere to the substrate. This process is
+pattern;8,9 (2) UVNIL has demonstrated sub-100 nm pattern                 repeated multiple times on different portions of the substrate
+replication for features with high aspect ratios;10 and (3) the           to imprint a large wafer.
+cost of ownership per wafer is significantly lower for                        High throughput and low defectivity are critical for high
+UVNIL compared to photolithography and EUV.11,12                          volume manufacturing of devices such as flash memory
+   The process for UVNIL includes a transparent template                  using UVNIL.18,19 A recent cost of ownership calculation
+(also called a mask or mold), a rigid (glass or silicon) sub-             shows that a four-imprint tool system needs to produce 15
+strate, an inkjet dispenser, and a UV light source as shown in            wafers per hour per imprint station at a defect density of 0.1
+Fig. 1. The stepper template is patterned with micro- or                  defects/cm2 to compete with a single ArF self-aligned qua-
+nanofeatures of the same size as the final pattern.13 The                 druple patterning tool.18 This cost advantage was calculated
+nanoimprint process begins with the inkjet dispensing low                 for 15 nm half pitch grating. With current UVNIL technol-
+                                                                          ogy, five wafers of size 300 mm can be imprinted per hour
+                                                                          per imprint station.19,20 This implies that a threefold increase
+a)
+     Electronic mail: rtb@che.utexas.edu                                  in process throughput is required. In UVNIL, UV exposure
+
+011602-1 J. Vac. Sci. Technol. B 35(1), Jan/Feb 2017     2166-2746/2017/35(1)/011602/12/$30.00   C 2016 American Vacuum Society
+                                                                                                 V                                011602-1
+011602-2 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                  011602-2
+
+
+                                                                               time from 0.7 to 1 s. Thus, defect density needs to be consid-
+                                                                               ered in the context of throughput.19
+                                                                                   Conducting experiments to identify optimum droplet size
+                                                                               and arrangement for different template patterns can be
+                                                                               expensive and laborious. Previously, modeling and simula-
+                                                                               tion has been effective in studying fluid behavior and gas
+                                                                               trapping during droplet spreading in UVNIL. Colburn et al.
+                                                                               studied the spreading of droplets between a template and a
+                                                                               substrate for UV imprint lithography under several template
+                                                                               control schemes.21 They proposed models for pressure distri-
+                                                                               bution and filling time for the droplets as the template is
+                                                                               moved with a fixed velocity, fixed pressure or constant
+                                                                               applied force. Reddy and Bonnecaze presented a dynamic,
+                                                                               multidrop simulation based on lubrication theory and simu-
+                                                                               lated spreading of up to 49 drops with a flat template.22
+                                                                               Various mechanisms for interface advancement have been
+                                                                               described to predict incomplete feature filling leading to air
+                                                                               trapping. Local effect of sharp features on interface advance-
+                                                                               ment with patterned template has been explored.23–25
+                                                                               Chauhan et al. analyzed the diffusion of gas entrapped in the
+                                                                               features through liquid imprint resist and found that the
+                                                                               absolute time for diffusion of a gas, entrapped in features is
+                                                                               very short and gas diffusion is not a cause for nonfilling of
+                                                                               features during the UVNIL.26
+                                                                                   We simulate multidrop spreading in UVNIL with a flat
+                                                                               template to study the effect of various factors such as droplet
+
+
+
+
+                                                                                                                                                 04 August 2025 13:37:52
+                                                                               size, droplet arrangement, droplet placement error, and gas
+                                                                               diffusion that influence filling time and defectivity in the
+                                                                               UVNIL process. We explore three droplet arrangements: (a)
+                                                                               square, (b) hexagonal, and (c) modified hexagonal (as shown
+                                                                               in Fig. 3). We also study the effect of error in droplet place-
+                                                                               ment by the inkjet dispenser on the filling time for different
+                                                                               droplet sizes. For the same final RLT, if the size of the drop-
+FIG. 1. (Color online) Schematic showing the main steps for pattern replica-
+                                                                               lets is reduced, more droplets need to be dispensed in order
+tion in UVNIL.                                                                 to fill the template completely. We perform simulations with
+                                                                               up to 1024 droplets. The objective is to understand the effect
+and template/resist separation typically require 0.1–0.2 s for                 of droplet arrangement, droplet placement accuracy, and
+a template of size 6  6 in.19 UV exposure and template/                       drop size on throughput and identify the optimum droplet
+resist separation are well understood and are not the through-                 arrangement for minimum throughput. We also present a
+put limiting step. The throughput is limited by fluid filling,                 model to study the diffusion of gas encapsulated between
+which takes about 1–5 s depending on the droplet size and                      droplets into the resist and identify parameters that deter-
+surface energy of the substrate and template.20                                mine whether the defect size and density are controlled by
+   Fluid filling involves resist spreading over the entire                     gas diffusion or hydrodynamic spreading.
+wafer and the surrounding gas escaping from the features on
+the template as the resist fills these features. High throughput               II. SIMULATION METHOD
+may lead to defects, namely, unfilled regions, in the final pat-                   A schematic of droplets with radius R in a gap of height
+tern since the resist may not have sufficient time to fill the                 H between a template and a substrate is shown in Fig. 2(a).
+features or the gas may not escape the feature completely.                     The template can be controlled to move with a constant
+By optimizing droplet size and allowed spreading time,                         velocity, constant pressure, or applied force.21 As the tem-
+defectivity of the imprint process can be improved.                            plate approaches the substrate, the liquid–air interface of the
+Khusnatdinov et al. conducted nanoimprinting with varying                      droplet exerts capillary force on the template. The fluid flow
+drop volume and spread times to demonstrate their effect on                    in the gap results in viscous force. This viscous force in the
+defect density.20 They demonstrated a tenfold improvement                      fluid balances the capillary force due to the liquid–air inter-
+in defect rate by reducing the drop volume from 1.5 to 0.9 pl                  face and any externally applied force.
+when nanoimprinting with a 28 nm half pitch imprint mask.                          The typical width of the template L used in UVNIL is
+They also demonstrated that the defect density can be                          2.5–15 cm.20,27 During UVNIL, the gap H between the tem-
+reduced from 30 to 0.1 defects/cm2 by increasing the filling                   plate and the substrate reduces from a few microns to finally
+
+J. Vac. Sci. Technol. B, Vol. 35, No. 1, Jan/Feb 2017
+011602-3 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                                  011602-3
+
+                                                                                                                   
+                                                                                                              1   1
+                                                                                       Pinterface ¼ Patm  c    þ     ;                                     (3)
+                                                                                                              R Rm
+
+                                                                                    where Rm is the radius of curvature of the liquid meniscus,
+                                                                                    R is the radius of curvature of the droplet, and c is the sur-
+                                                                                    face tension of the imprint. Rm can be written in terms of
+                                                                                    gap H as Rm ¼ H=ðcos h1 þ cos h2 Þ: In the imprinting pro-
+                                                                                    cess, the gap H is much smaller than the radius R; therefore,
+                                                                                    R1       1
+                                                                                      m  R . Therefore, the capillary pressure at the inter-
+                                                                                    face depends only on the radius of curvature R and can be
+                                                                                    written as
+
+                                                                                                              2^c
+                                                                                       Pinterface ¼ Patm         ;                                         (4)
+                                                                                                              H
+                                                                                     where Patm is the atmospheric pressure, ^c ¼ cðcos h1
+                                                                                     þ cos h2 Þ=2, and c is the surface tension of the imprint resist.
+                                                                                     Initially, we assume that UVNIL is being carried out in vac-
+                                                                                     uum or in a gas which is highly soluble in imprint material,
+                                                                                     and so, the gas release and gas trapping can be neglected.
+                                                                                     The rate of gas dissolution will be considered later in this
+                                                                                     paper. The imprint process begins with the droplets making
+                                                                                     contact with both the substrate and the template. We assume
+                                                                                     that the feature filling is practically instantaneous as the fea-
+                                                                                     ture fill time is negligible compared to the time required for
+                                                                                     the fluid to spread across the gap.26 The typical values of
+                                                                                     parameters in the UVNIL process are listed in Table I.
+
+
+
+
+                                                                                                                                                                  04 August 2025 13:37:52
+                                                                                         The governing equations and boundary condition [Eqs.
+FIG. 2. (Color online) (a) Droplets between a substrate and a template. Rm is        (1)–(3)] are nondimensionalized using following characteristic
+the radius of curvature of the liquid meniscus and R is the radius of a drop-        values of the variables: Pc ¼ 2^c =Ho , Hc ¼ Ho , Tc ¼ 6lL2 =
+let. H is the gap between the top and bottom surface at any time. h1 and h2
+                                                                                    ^c Ho , Vc ¼ ^c Ho2 =6lL2 , and Uc ¼ ^c Ho =6lL, where Ho is the
+are the contact angles of the liquid with the top and bottom surface. (b)
+Schematic shows one droplet on a substrate (top). The domain is discretized          initial gap. The x- and y-coordinates are nondimensionalized
+into cells, and the fluid content in each cell is tracked based on a characteris-    using the width of the template L. The dimensionless govern-
+tic function f (bottom). f is 1 and 0 for cells completely filled with liquid and    ing equations are then given by
+gas, respectively. For cells partially filled with liquid, f is between 0 and 1.
+                                                                                       r  ðh3 rpÞ ¼ v;                                                    (5)
+a few nanometers. Thus, the size of the gap for fluid flow is
+much smaller than the transverse length scale. Reynolds’                               u ¼ h2 rp;                                                          (6)
+lubrication theory is a simplified form of Navier–Stokes
+                                                                                    where, p ¼ P/Pc, h ¼ H/Hc, t ¼ T/Tc, v ¼ V/Vc ¼ @h=@t, and
+equations that can be used to describe this flow of thin fluid
+                                                                                    u ¼ U/Uc. v is the dimensionless template velocity. The
+films.28,29 The governing equations describing the pressure
+                                                                                    dimensionless pressure boundary condition is
+and velocity fields in the drop using Reynolds’ lubrication
+theory are
+                       !
+   @H           H3                                                                  TABLE I. Typical values of the parameters used for the UVNIL process.
+       ¼r          rP ;                                   (1)
+    @T          12l
+                                                                                    Parameter               Symbol                   Typical value
+                2
+             H                                                                      Surface tension            c                      30 dyn/cm
+   U¼           rP;                                                         (2)
+             12l                                                                    Viscosity                  l                   0.003–0.005 Pa s
+                                                                                    Template width             L                        10 cm
+where H is the gap between substrate and template, P is the                         Substrate width            L                        10 cm
+pressure in the droplet, U is the vertically averaged fluid veloc-                  Feature height            DH                      10–100 nm
+ity, and l is the viscosity of the imprint resist. The pressure                     Initial gap                Ho                        1 lm
+distribution in the fluid is calculated using Eq. (1). The capil-                   Final gap                  Hf                        5 nm
+                                                                                    Resist contact angle      h1,2                      5 –10
+lary pressure at the droplet interface is used as boundary condi-
+                                                                                    Initial drop height       Hdrop                      1 lm
+tion to solve the pressure field. The imprint material used in
+                                                                                    Initial drop radius        Ro           5 mm (1 droplet, Hdrop ¼ 1 lm)
+UVNIL is highly wetting and it makes small contact angles h1                                                              500 lm (100 droplets, Hdrop ¼ 1 lm)
+and h2 with the template and the substrate as shown in Fig.                                                              200 lm (1024 droplets, Hdrop ¼ 1 lm)
+2(a). The pressure at the liquid–air interface is given by
+
+JVST B - Nanotechnology and Microelectronics: Materials, Processing, Measurement, and Phenomena
+011602-4 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                    011602-4
+
+
+                 1                                                  Simulations were validated against the results by Reddy and
+   pinterface ¼  :                                          (7)
+                 h                                                  Bonnecaze.22
+                                                                       Simulations are carried out with droplets dispensed in
+    The equations are solved using the volume of fluid              square, hexagonal, and modified hexagonal arrangements.
+(VOF) method.30 The domain is discretized into cells, and           The droplet placement in a square arrangement is shown in
+the fluid content in each cell is tracked based on a charac-        Fig. 3(a). The shaded region in Fig. 3(a) shows the droplet-
+teristic function f. This function is defined as 1 for liquid       free region between the droplets and the edge of the
+and 0 for gas [as shown in Fig. 2(b)]. A value of f between
+0 and 1 implies that the cell is partially filled and contains
+the droplet interface. Several interface reconstruction algo-
+rithms were explored to define the droplet interface effi-
+ciently and accurately.31–34 Efficient least squares VOF
+interface reconstruction algorithm described by Pilliod and
+Puckett31 is used here because it is second order accurate
+and fast. In order to solve for the pressure field, Eq. (5) is
+discretized using a second order finite difference scheme.
+The typical grid size for one droplet in the simulation is
+64  64 cells to ensure volume loss is less than 1%. The
+simulation is stable if the time step is chosen using the
+Courant–Friedrichs–Lewy condition which states that a
+fluid particle may not travel further than one cell during
+one time step, i.e., juDtj < Dx.
+    A guess for template velocity v is used to initiate the sim-
+ulation. Generalized minimal residual method (GMRES)
+method,35 an iterative method to solve nonsymmetric linear
+systems, is used to numerically calculate the pressure field in
+Eq. (5) at every time step. The total force on the template is
+
+
+
+
+                                                                                                                                                     04 August 2025 13:37:52
+calculated by integrating the pressure over the entire sub-
+strate. Then, the template velocity is adjusted such that the
+viscous force balances the capillary force and any externally
+applied force. The pressure field is then recalculated. Once
+the pressure field is known, the total fluid fluxes in the x- and
+y-directions are determined using Eq. (6). Immersed bound-
+ary methods are used to extrapolate the pressure field and
+accurately determine the fluid flux at the interfacial cells.36
+Once the velocity field is known, the fluid is advanced using
+the VOF method and the template is lowered. At every time
+step, the liquid–air interface is reconstructed based on f. The
+simulation is stopped once the desired gap is reached and the
+fluid fills the entire domain.
+    Simulation of large number of droplets in UVNIL is com-
+putationally expensive and time consuming since the size of
+the domain scales as the number of droplets in the process.
+To accelerate the computations, a parallel implementation of
+GMRES method is used for fast computation of the pressure
+field. The simulation also becomes computationally more
+expensive as the droplet size increases since droplet inter-
+face, velocity flux, and pressure need to be calculated on a
+larger domain. For faster simulations without loss of accu-
+racy, the domain is remeshed with one-fourth of the initial
+number of cells every time the radius of the droplet doubles.
+Mesh sizes and times steps were chosen to ensure no more
+                                                                    FIG. 3. (Color online) Schematic showing top view of 100 droplets dis-
+than one-percent variation of volume. The simulations were          pensed on a substrate. The droplets are dispensed in a (a) square, (b) hexago-
+performed using the high performance computing resources            nal, and (c) modified hexagonal arrangement. The shaded region represents
+at Texas Advanced Computing Center at The University of             the droplet-free region between the droplets and the edge of the substrate.
+                                                                    The droplet-free region at the edge is 16%, 26%, and 16% of the substrate in
+Texas at Austin. The computational time varied from 6 h
+                                                                    the square, hexagonal, and modified hexagonal arrangement, respectively.
+(for 100 drops) to a day (for 1024 drops) on 12 core Intel          The droplet placement in the different arrangements is shown in the right
+Xeon processor with 2.6 GHz clock speed and 64 GB RAM.              column. The value of lh =lb and lh =lb is 0.866 and 0.893, respectively.
+
+
+J. Vac. Sci. Technol. B, Vol. 35, No. 1, Jan/Feb 2017
+011602-5 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                     011602-5
+
+
+substrate. This region is 16% of the total imprint area for
+100 drops in square arrangement. Figure 3(b) shows droplets
+                                                          pﬃﬃﬃ
+dispensed in a hexagonal arrangement where lh =lb           3=2
+(¼ 0.866). The figure illustrates that the droplet-free region
+(shaded) is 26% of the total imprint area. Figure 3(c) shows
+droplets dispensed in a modified hexagonal arrangement
+where lh =lb ¼ 0:893. In this arrangement, the droplet-free
+region at the edge is reduced by increasing the distance
+between the droplets. This droplet arrangement generally
+results in unfilled region at the corners and edges. Placing
+additional droplets at the edge region and corners is neces-
+sary to cover the unfilled region and fill the mold edge region
+completely. Figure 3(c) shows 105 droplets placed in a mod-
+ified hexagonal arrangement. The droplet-free region
+(shaded) at the edge reduces from 26% of the substrate in
+hexagonal arrangement to 16% in the modified hexagonal
+arrangement. In all the simulations, the gap between the sub-
+strate and the template closes from a gap of h ¼ 1 to a final
+gap of h ¼ 0.01. The total volume of droplets in all arrange-
+ments is equal to the volume required to fill the gap between
+the template and the substrate to a desired final gap of
+h ¼ hf ¼ 0.01.
+
+III. RESULTS
+   Figure 4 shows the spreading of nine droplets, including
+the location of the interface and the pressure field within the
+
+
+
+
+                                                                                                                                                      04 August 2025 13:37:52
+droplet. The droplets spread on the substrate as a flat tem-
+plate approaches the substrate. The template is driven by the
+capillary forces in the droplet and has no external force act-
+ing on it. The pressure is negative at the liquid–air interface
+because of the capillary pressure and positive at the center
+because of the viscous component of the pressure. The capil-
+lary pressure is very low toward the end when the gap is
+very small. At all times, the viscous force balances the capil-
+lary force creating a net zero force on the template.
+   The simulation is repeated for multidrop UVNIL with flat
+template with zero force acting on it. Figure 5 shows spread-
+ing of about 100 droplets that are dispensed in (a) square, (b)
+hexagonal, and (c) modified hexagonal arrangement. The
+desired final gap is h ¼ 0.01. The droplets spread as the gap
+between the template and the substrate closes. At very small
+gaps, the neighboring droplets merge together and spread to
+the edge of the substrate forming unfilled edge regions.
+Figures 5(a)–5(c) show these unfilled edges for the three
+arrangements. The unfilled edge in the hexagonal arrange-           FIG. 4. (Color) Contour map showing pressure field for a drop spreading on
+ment is significantly larger than the unfilled edge in the          a substrate at h ¼ 0.11, h ¼ 0.023, and h ¼ 0.011. The template is flat and has
+square or modified hexagonal arrangement. At h ¼ 0.01 the           net zero force acting on it.
+gap is completely filled with the resist.
+
+A. Throughput for square, hexagonal, and modified                   gap height h as a function of time t was previously derived
+hexagonal droplet arrangement                                       for multiple droplets spreading on a substrate with net zero
+                                                                    force on a flat template,21,22 and is given by
+   Figure 6(a) shows the gap height h as a function of time t
+                                                                                         
+for UVNIL with multiple droplets in a square arrangement.                    hf      1
+For larger number of droplets, the overall filling time is             t¼              1 :                                  (8)
+                                                                           16pN h2
+shorter. Figure 6(b) shows that plots for different number of
+droplets collapse into a single curve when the x-axis is scaled     The gap h from the analytical solution is shown as dashed
+with number of droplets N. An analytical expression for the         lines in Fig. 6(b). The simulation results (solid line) match
+
+JVST B - Nanotechnology and Microelectronics: Materials, Processing, Measurement, and Phenomena
+011602-6 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                                 011602-6
+
+
+
+
+                                                                                                                                                                  04 August 2025 13:37:52
+FIG. 5. (Color online) Simulation of UVNIL with about 100 droplets dispensed in (a) square arrangement (b) hexagonal arrangement and (c) modified hexago-
+nal arrangement. The droplets reach the edge of the substrate toward the end of the process creating unfilled edges at small gaps. The gap is completely filled
+with resist at h ¼ 0.01.
+
+
+the analytical solution until the droplets come in contact.                       of droplets, the overall filling time for droplets in hexagonal
+The analytical expression is only valid for droplets spreading                    arrangement is longer than droplets in square arrangement.
+before merging. As the droplets merge, they form a single                         This is attributed to the different size of unfilled edge regions
+large droplet which spreads slower than multiple droplets.22                      in square arrangement and hexagonal arrangement. Before
+Thus, after merging, the simulated filling time starts to devi-                   droplet spreading begins, the area of droplet-free region
+ate from the analytical solution.                                                 between the droplets and the edge of the substrate in square
+    Figure 7 shows the gap height h as a function of filling                      arrangement is 16% of the total imprint area as compared to
+time t for hexagonal droplet arrangement. The filling time                        26% in hexagonal arrangement (Fig. 3). A plot of the
+for about the same number of droplets in square arrangement                       unfilled edge area as function of h for 100 droplets in square
+is shown as dashed lines. Similar to square arrangement, the                      and hexagonal droplet arrangement is shown in Fig. 8(a).
+time scales as 1/Nh2 except at the end of the process when                        The unfilled area is larger in hexagonal arrangement com-
+the gap is very small [as shown in Fig. 7(b)]. For UVNIL                          pared to square arrangement. Since the resist spreads slowly
+with substrate length L ¼ 10 cm, initial gap height of                            after droplet merging, larger unfilled edge region takes lon-
+Ho ¼ 1 lm, resist viscosity l ¼ 0.001 Pa s, surface tension                       ger to fill, resulting in longer overall filling time for hexago-
+c ¼ 70 dyn/cm, and characteristic time Tc ¼ 857 s. The simu-                      nal droplet arrangement.
+lated filling time for 100 droplets in square arrangement is                         A modified hexagonal arrangement is proposed in which
+52 s while the filling time for 101 droplets in hexagonal                         the size of the unfilled region is reduced by spreading out the
+arrangement is 420 s. Therefore, for about the same number                        droplets in hexagonal arrangement toward the edges and
+
+J. Vac. Sci. Technol. B, Vol. 35, No. 1, Jan/Feb 2017
+011602-7 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                                  011602-7
+
+
+
+
+                                                                                                                                                                   04 August 2025 13:37:52
+FIG. 6. (Color online) (a) Gap height h with time t for multiple droplets dis-
+pensed in a square arrangement. The template is flat and has net zero force
+acting on it. (b) The plot collapses into a single curve when the x-axis is      FIG. 7. (Color online) (a) Gap height h with time t for multiple droplets dis-
+scaled with number of droplets N. This shows that filling time scales as 1/N.    pensed in a hexagonal arrangement. The template is flat and has net zero
+The inset shows the simulation result starts to deviate from the analytical      force acting on it. The filling time for droplets arranged in a square arrange-
+solution (dashed line) after droplet merging.                                    ment is shown in dashed line. (b) The plot shows the filling time close to the
+                                                                                 time of droplet merging. The filling time for hexagonal arrangement is lon-
+                                                                                 ger than that for square arrangement.
+adding more droplets at the corner as shown in Fig. 3(c).
+Before droplet spreading begins, the area of droplet-free
+                                                                                 arrangement is 143 s. This is a significant improvement in
+region in modified hexagonal arrangement is same as square
+                                                                                 filling time compared to 420 s required for 101 droplets in
+arrangement (as shown in Fig. 3). Figure 8(a) shows that
+                                                                                 hexagonal arrangement. However, imprinting with droplets
+after droplet merging, the unfilled region in modified hexag-
+                                                                                 in square arrangement is still the fastest which requires 52 s.
+onal arrangement is larger than that in square arrangement.
+                                                                                 Thus, the unfilled edge region and droplet arrangement has a
+Figure 8(b) shows the filling time for UVNIL with about 100
+                                                                                 significant impact on the overall filling time. For flat tem-
+droplets dispensed in square, hexagonal, and modified hex-
+agonal arrangement. The filling time required to close from                      plates, the square droplet arrangement is found to be the
+a gap height of h ¼ 1 to h ¼ 0.013 is almost the same for all                    optimum droplet dispensing pattern to achieve fast droplet
+droplet arrangements as shown in Fig. 8(b). However, the                         spreading.
+filling time required to close from h ¼ 0.013 to h ¼ 0.01 is
+considerably longer in hexagonal and modified arrangement                        B. Effect of droplet placement error
+compared to square arrangement as shown in Fig. 8(b) inset.                         There is error in droplet placement during dispensing
+The filling time for 105 droplets in modified hexagonal                          based on the size of the droplet and distance between the
+
+JVST B - Nanotechnology and Microelectronics: Materials, Processing, Measurement, and Phenomena
+011602-8 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                               011602-8
+
+
+                                                                                  square arrangement with different placement error. Figure 9
+                                                                                  shows spreading of 81 droplets dispensed in a square
+                                                                                  arrangement with e ¼ 0.02. Unlike square or hexagonal
+                                                                                  arrangements, the unfilled regions are randomly spread over
+                                                                                  the substrate due to the droplet placement error. Droplets
+                                                                                  merge to create larger droplets of different sizes. The resist
+                                                                                  completely fills the gap between the template and the sub-
+                                                                                  strate at h ¼ 0.01.
+                                                                                     Figure 10 shows gap height as a function of time for dif-
+                                                                                  ferent values of droplet placement error. Figure 11(a)
+
+
+
+
+                                                                                                                                                                04 August 2025 13:37:52
+FIG. 8. (Color online) (a) Area of unfilled edge region for square, hexagonal,
+and modified arrangement of droplets at different gap heights. The hexago-
+nal arrangement has the largest unfilled edge area while square arrangement
+has the smallest area. (b) The gap height h as a function of filling time t for
+droplets dispensed in square (100 drops, solid), hexagonal (101 drops,
+dashed), and modified hexagonal (105 drops, dashed-dotted) arrangements.
+The inset plot shows the filling time close to the time of droplet merging.
+The modified hexagonal arrangement provides significant reduction in fill-
+ing time compared to hexagonal arrangement. The overall filling time is
+least for droplets dispensed in a square arrangement.
+
+imprint head from the substrate. This error can manifest
+itself in droplet spreading and overall filling time. The nor-
+malized placement error e is defined as
+         E
+   e¼      ;                                                               (9)
+         L
+where L is the substrate width and E is the distance between
+the target droplet position and the actual droplet position.
+For a substrate width of 10 cm and a dispensing error of
+                                                                                  FIG. 9. (Color online) Simulation of UVNIL with 81 droplets dispensed in a
+10 lm, e is 104.
+                                                                                  square arrangement with a droplet placement error e ¼ 0.02 at (a) t ¼ 2.0
+   The filling time required for the gap height to close from                      104, (b) t ¼ 0.01, (c) t ¼ 0.0335, and (d) t ¼ 0.23. The gap closes from
+h ¼ 1 to h ¼ 0.01 is simulated for droplets dispensed in a                        h ¼ 1 to h ¼ 0.01.
+
+
+J. Vac. Sci. Technol. B, Vol. 35, No. 1, Jan/Feb 2017
+011602-9 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                                      011602-9
+
+
+
+
+                                                                                                                                                                        04 August 2025 13:37:52
+                                                                                 FIG. 11. (Color online) (a) Total filling time ti required for the gap height to
+                                                                                 reduce from h ¼ 1 to h ¼ 0.01 as a function of normalized droplet placement
+FIG. 10. (Color online) (a) Gap height h as a function of filling time t for
+                                                                                 error e. The total filling time increases as e increases. (b) The ratio ti,e/ti,0 as
+multiple droplets dispensed in a square arrangement with droplet placement
+                                                                                 function of e where ti,e is the filling time required for the gap to close from
+error e ¼ 0, 0.005, and 0.01. (b) The plot shows the filling time close to the
+                                                                                 h ¼ 1 to h ¼ 0.01 with droplet error placement e. ti,0 is the filling time with
+time of droplet merging. Larger error in droplet placement leads to longer
+                                                                                 e ¼ 0.
+filling time.
+
+                                                                                 filling time is more sensitive to e when droplet size is
+shows the overall filling time (ti) required for the gap to
+                                                                                 smaller.
+close from h ¼ 1 to h ¼ 0.01 for different values of e and
+number of droplets N. For e < 104, increase in e has negli-
+                                                                                 C. Gas dissolution
+gible effect on filling time. However for e > 104, the filling
+time increases significantly as e increases. As the placement                       When droplets make contact, unfilled regions or gas-filled
+error increases, the droplets start merging sooner creating                      pockets are formed, as seen, for example, in Fig. 7. Large gas-
+larger droplets of different sizes. Since larger droplets lead                   pockets will remain after UV curing and result in defects in
+to longer filling time, early droplet merging leads to longer                    the imprint process. However, small gas-pockets will dissolve
+filling time. Figure 11(b) shows the ratio ti,e/ti,0 as function                 away into the photocurable monomer.26,37 If the gas dissolu-
+of e where ti,e is the filling time with droplet error place-                    tion is fast relative to hydrodynamic motion of the interfaces,
+ment e. ti,0 is the filling time with no placement error. This                   then one may ignore the gas in modeling. If the gas dissolu-
+ratio is a measure of sensitivity of filling time to placement                   tion rate is relatively slower, then waiting times are necessary
+error. We find that for a fixed e, ti,e/ti,0 is larger for more                  to remove the voids.20 The simulations presented so far
+number of droplets. For example, for e ¼ 0.01, ti,e/ti,0 is 1.5                  assume that gas dissolution is fast enough that gas dissolution
+for 9 droplets and 4 for 100 droplets. This indicated that the                   can be ignored. Here, we develop a model to predict the rate
+
+JVST B - Nanotechnology and Microelectronics: Materials, Processing, Measurement, and Phenomena
+011602-10 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                  011602-10
+
+
+of dissolution of gas-pockets, determine the waiting times and                  where Cbulk is the gas concentration in the bulk of the liquid.
+the conditions under which it is fast enough to ignore.                         Cbulk can be assumed to be negligible. Ci can be determined
+   Figure 12 shows a schematic for a gas-pocket formed                          using Henry’s law26
+during the UVNIL process. The pocket can be modeled as a                                      RTs
+cylinder of radius Rd and height H. Cd is the gas concentra-                       Ci ¼ Cd        ;                                          (16)
+                                                                                              kH
+tion inside the gas-pocket, m is the number of moles, and Ci
+is the gas concentration at the gas–liquid interface. The                       where R is the gas constant, Ts is the surrounding tempera-
+gas–liquid interfacial area Ad and pocket volume Sd are                         ture and kH is the Henry’s law constant. Applying Eqs. (16)
+given by                                                                        and (15) into (14), we find
+
+   Ad ¼ 2pRd H;                                                        (10)        dm        m RTs
+                                                                                      ¼ DAd          :                                      (17)
+                                                                                   dT        Sd Rd kH
+and
+                                                                                Applying Eq. (10) in Eq. (17), we find
+        m
+   Sd ¼    ¼ pR2d H:                                                   (11)
+        Cd                                                                         dm       mH DRTs
+                                                                                      ¼ 2p         :                                        (18)
+                                                                                   dT       Sd kH
+For a final gap height Hf and substrate width L, Sd can be
+written as                                                                      Using the ideal gas law, the gas pressure Pgas is given by
+   L2 H ¼ nd Sd þ L2 Hf ;                                              (12)                  mRTs
+                                                                                   Pgas ¼         :                                          (19)
+                                                                                              Sd
+                                                          2
+where nd is the number of gas-pockets and L Hf is the total
+                                                                                We can nondimensionalize Eqs. (11), (13), (18), and (19) using
+liquid volume in the gap at any time. Rearranging, we get
+                                                                                rd ¼ Rd/L, h ¼ H/Hc, pgas ¼ Pgas/Pc, t ¼ T/Tc, and sd ¼ Sd/L2Ho.
+           2                                                                  The characteristic values of the variables Hc, Pc, and Tc are
+       Rd            H  Hf
+                 ¼          :                                          (13)     given by Hc ¼ Ho , Pc ¼ 2^c =Ho , and Tc ¼ 6lL2 =^c Ho . The
+       L              nd pH
+                                                                                dimensionless equations are given by
+
+
+
+
+                                                                                                                                                    04 August 2025 13:37:52
+The number of pockets, their initial pocket volume and time                                h  hf
+of their formation can be derived from the simulations. The                        rd2 ¼          ;                                          (20)
+                                                                                            nd ph
+rate at which moles of gas deplete from the pocket can be
+written as                                                                         sd ¼ prd2 h;                                              (21)
+                                                                                  dm      mh
+   dm         dC                                                                    ¼ a    ;                                              (22)
+       ¼ DAd                         ;                 (14)                       dt      sd
+   dT         dX gasliquidinterface
+                                                                                            m RTs
+where D is the diffusion constant. The concentration gradient                      pgas ¼             ;                                      (23)
+                                                                                            sd 2^c L2
+profile in the resist can be written as38
+                                                                               where
+   dC                      Ci  Cbulk
+                          ¼            ;                (15)                           12plD RTs
+   dX gasliquidinterface       Rd                                                a¼             :                                          (24)
+                                                                                         ^c Ho kH
+
+                                                                                   The dimensionless force fapp applied on the template tak-
+                                                                                ing into account gas pressure is given by22
+                                                                                                     
+                                                                                              1 vr2
+                                                                                   fapp ¼  þ 3 Npr2 þ pgas :                           (25)
+                                                                                              h 8h
+                                                                                fapp ¼ 0 when there is no force acting on the template. Since
+                                                                                the total volume of the droplets q is equal to the volume of
+                                                                                resist required to fill the gap at h ¼ hf
+
+                                                                                   q ¼ Npr2 h ¼ hf :                                         (26)
+
+                                                                                Assuming net zero force on the template and using Eq. (26),
+                                                                                we find
+
+FIG. 12. (Color online) (a) Schematic showing a gas-pocket trapped between                                    !
+droplets. (b) The gas-pocket is modeled as a cylinder of radius Rd and height         dh       h3          h2
+of H. The gas concentration is Cd inside the pocket and Ci at the gas–liquid       v¼    ¼ 8Np    1  pgas      :                            (27)
+                                                                                      dt       hf          hf
+interface.
+
+
+J. Vac. Sci. Technol. B, Vol. 35, No. 1, Jan/Feb 2017
+011602-11 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                                 011602-11
+
+
+   The unknowns rd, h, sd, m, and pgas are solved numeri-                        gas pressure slows down the template and the gap height
+cally using Eqs. (20)–(24) and (27). For UVNIL, the typical                      becomes close very slowly as shown in Fig. 13(b). The high
+value of R ¼ 8.314 Pa m3 K1 mol1; Ts ¼ 300 K; D ¼ 1010                        gas concentration leads to a higher gas diffusion rate. As the
+–109 m2 s1; and kH ¼ 104–105 Pa m3 mol1.26,39 For these                       gas diffuses into the resist, the pocket slowly fills with the
+values, a ranges from 106 to 104. If the substrate width is                    resist. We find that, as a increases, the pockets fill faster due
+2.5 cm and desired final RLT is 10 nm, the initial pocket size                   to faster gas diffusion. The black line shows simulation
+is about 120 lm when 10 000 droplets are dispensed. The                          results in which gas diffusion is neglected and the pockets
+diameter of the pockets at different times as it shrinks is                      fill only by hydrodynamic droplet spreading. For values of a
+shown in Fig. 13. The initial pocket filling is orders of mag-                       104, gas diffuses faster than the time required to fill the
+nitude faster compared to the remainder of the pocket filling                    pocket by hydrodynamic motion of the interface. This
+process. Initially, the gas pressure inside the pocket is about                  implies that for a 104, the nonfilling defects in UVNIL
+the same as the atmospheric pressure and gas diffusion is                        are only a result of hydrodynamic nonfilling and not gas dif-
+slow. As the template lowers, the pocket size reduces and                        fusion. However for a < 104, the gas diffusion is the rate
+the gas pressure and concentration increase. The increase in                     limiting process for the smallest defects. Thus, for low val-
+                                                                                 ues of a, defect size is diffusion-controlled while for high
+                                                                                 values, it is hydrodynamically controlled. Figure 14 shows
+                                                                                 the time at which the droplets come in contact Tcontact, time
+                                                                                 required for gas to diffuse Tdiff, and the total filling time Tfill
+                                                                                 for different number of droplets and values of a. Tfill is a sum
+                                                                                 of Tcontact and Tdiff. Tcontact depends only on the number of
+                                                                                 droplets and is independent of a. Tdiff reduces as a increases.
+                                                                                 The figure suggests that for achieving filling time of less
+                                                                                 than a second on 2.5  2.5 cm substrate, a needs to be
+                                                                                 greater than 105. For a ¼ 104, Tcontact and Tdiff become
+                                                                                 comparable suggesting that the time required for the droplets
+                                                                                 to spread and come in contact is about the same as the time
+
+
+
+
+                                                                                                                                                                     04 August 2025 13:37:52
+                                                                                 required for the entrapped gas to diffuse.
+
+                                                                                 IV. CONCLUSIONS
+                                                                                    Multidrop spreading is simulated for UVNIL with flat
+                                                                                 template and droplets ink-jetted in square, hexagonal and
+                                                                                 modified hexagonal arrangements. Lubrication theory is
+                                                                                 used to describe the pressure and velocity field for the fluid
+                                                                                 flow. VOF method is used to track fluid interface. No exter-
+                                                                                 nal force is applied on the template during the imprint pro-
+                                                                                 cess. We find that droplet size, droplet arrangement, and
+                                                                                 droplet placement accuracy are critical to achieving high
+
+
+
+
+FIG. 13. (Color online) Plot for (a) diameter of the gas-pocket / (in microns)   FIG. 14. (Color online) Plot shows time at which the droplets come in con-
+and (b) H-Hf as function of time T (in seconds) for number of drops              tact Tcontact (solid line), time required for gas to diffuse Tdiff (dotted line),
+N ¼ 10 000, substrate width L ¼ 2.5 cm, and final gap height Hf ¼ 10 nm.         and the total filling time Tfill (dashed line) for different number of droplets N
+The results indicate that the pockets shrink faster for larger values of a.      and values of a. Tfill is a sum of Tcontact and Tdiff.
+
+
+JVST B - Nanotechnology and Microelectronics: Materials, Processing, Measurement, and Phenomena
+011602-12 Jain, Spann, and Bonnecaze: Effect of droplet size, droplet placement, and gas dissolution                                          011602-12
+
+                                                                              7
+throughput in UVNIL. Large unfilled edge regions increase                        S. V. Sreenivasan, C. G. Willson, N. E. Schumaker, and D. J. Resnick,
+the filling time for hexagonal and modified hexagonal droplet                    Proc. SPIE 4608, 187 (2002).
+                                                                               8
+                                                                                 D. Lentz, G. Doyle, M. Miller, G. Schmid, M. Ganapathisuramanian, X.
+arrangement. For the same size of droplets, the square                           M. Lu, D. Resnick, and D. L. LaBrake, Proc. SPIE 6517, 65172F (2007).
+arrangement is found to be the optimum arrangement as it                       9
+                                                                                 M. J. Chopra and R. T. Bonnecaze, J. Micro/Nanolith. MEMS MOEMS.
+provides lower filling time than both hexagonal and modified                     14, 044502 (2015).
+                                                                              10
+                                                                                 M. Colburn, A. Grot, M. Amistoso, B. J. Choi, T. Bailey, J. Ekerdt, S. V.
+hexagonal droplet arrangement. The effect of droplet place-
+                                                                                 Sreenivasan, J. Hollenhorst, and C. G. Willson, Proc. SPIE 3997, 453
+ment error by inkjet system on the filling time is observed.                     (2000).
+For e > 104, the filling time increases significantly as the                 11
+                                                                                 S. Murthy, M. Falcon, S. V. Sreenivasan, and D. Dance, Proc. SPIE 5751,
+droplet placement error increases. Filling time for UVNIL                        964 (2005).
+                                                                              12
+                                                                                 S. V. Sreenivasan, C. G. Willson, N. E. Schumaker, and D. J. Resnick,
+with smaller droplets is more sensitive to the droplet place-
+                                                                                 Proc. SPIE 4688, 903 (2002).
+ment error. We also propose a model to study the diffusion of                 13
+                                                                                 D. J. Resnick et al., Proc. SPIE 4688, 205 (2002).
+gas encapsulated between droplets into the resist. We find that               14
+                                                                                 K. Usuki, S. Wakamatsu, T. Oomatsu, K. Kodama, and K. Kodama, Proc.
+the defect size can be diffusion-controlled or hydrodynamics-                    SPIE 7970, 79700S (2011).
+                                                                              15
+                                                                                 E. B. Fletcher, G. M. Schmid, S. Im, N. Khusnatdinov, Y. Srinivasan, W.
+controlled based on a parameter a which scales as
+                                                                                 Liu, and F. Y. Xu, U.S. patent 20150017329 (15 January 2015).
+lD=kH cHo . For values of a < 104, gas diffusion is slow                    16
+                                                                                 A. Jain and R. T. Bonnecaze, J. Appl. Phys. 113, 234511 (2013).
+and defect size is diffusion-controlled, while for higher val-                17
+                                                                                 J. Taniguchi, H. Yoshikawa, G. Tazaki, and T. Zento, J. Vac. Sci.
+ues, it is hydrodynamically controlled. For achieving filling                    Technol., B 30, 06FB07 (2012).
+                                                                              18
+                                                                                 M. Neisser and S. Wurm, Adv. Opt. Technol. 4, 235 (2015).
+time of less than a second on a 2.5  2.5 cm substrate, a needs               19
+                                                                                 H. Takeishi and S. V. Sreenivasan, Proc. SPIE 9423, 94230C (2015).
+to be greater than 105. The droplet size, droplet arrangement,               20
+                                                                                 N. Khusnatdinov et al., Proc. SPIE 9049, 904910 (2014).
+                                                                              21
+droplet placement accuracy, and nonfilling are some of the                       M. Colburn, B. J. Choi, S. V. Sreenivasan, R. T. Bonnecaze, and C. G.
+most critical factors affecting throughput and defect rate. We                   Willson, Microelectron. Eng. 75, 321 (2004).
+                                                                              22
+                                                                                 S. Reddy and R. T. Bonnecaze, Microelectron. Eng. 82, 60 (2005).
+have successfully presented the effect of these factors on                    23
+                                                                                 S. Reddy, P. R. Schunk, and R. T. Bonnecaze, Phys. Fluids 17, 122104
+UVNIL process. Designing the UVNIL process based on the                          (2005).
+                                                                              24
+proposed models can significantly improve the throughput                         D. Morihara, Y. Nagaoka, H. Hiroshima, and Y. Hirai, J. Vac. Sci.
+and the defect rate for the process.                                             Technol., B 27, 2866 (2009).
+                                                                              25
+                                                                                 Y. Nagaoka, D. Morihara, H. Hiroshima, and Y. Hirai, J. Photopolym. Sci.
+                                                                                 Technol. 22, 171 (2009).
+ACKNOWLEDGMENTS
+
+
+
+
+                                                                                                                                                             04 August 2025 13:37:52
+                                                                              26
+                                                                                 S. Chauhan, F. Palmieri, R. T. Bonnecaze, and C. G. Willson, J. Vac. Sci.
+                                                                                 Technol., B 27, 1926 (2009).
+   The authors thank S. V. Sreenivasan, Randall Schunk,                       27
+                                                                                 K. J. Nordquist, D. P. Mancini, W. J. Dauksher, E. S. Ainley, K. A.
+and Shrawan Singhal for their helpful comments on this                           Gehoski, D. J. Resnick, Z. S. Masnyj, and P. J. Mangat, Proc. SPIE 4889,
+work. The authors acknowledge the Texas Advanced                                 1143 (2002).
+                                                                              28
+Computing Center (TACC) at The University of Texas at                            Y. Hori, Hydrodynamic Lubrication (Springer, Tokyo, 2006), pp.
+                                                                                 137–139.
+Austin for providing High Performance Computing                               29
+                                                                                 H. G. Rylander, ASLE Trans. 9, 264 (1966).
+resources that have contributed to the research results                       30
+                                                                                 C. W. Hirt and B. D. Nichols, J. Comput. Phys. 39, 201 (1981).
+                                                                              31
+reported within this paper. Funding for this project was                         J. E. Pilliod and E. G. Puckett, J. Comput. Phys. 199, 465 (2004).
+                                                                              32
+provided by NASCENT Engineering Research Center                                  M. Marek, W. Aniszewski, and A. Boguslawaski, Task Q. 12, 255
+                                                                                 (2008), available at https://task.gda.pl/files/quart/TQ2008/03-04/tq312m-
+supported by the National Science Foundation under                               e.pdf.
+Cooperative Agreement No. EEC-1160494.                                        33
+                                                                                 E. G. Puckett, Commun. Appl. Math. Comput. Sci. 5, 199 (2010).
+                                                                              34
+                                                                                 D. L. Youngs, Numerical Methods for Fluid Dynamics (Academic, New
+1
+  M. Colburn et al., Proc. SPIE. 3676, 379 (1999).                               York, 1982), pp. 273–285.
+2                                                                             35
+  Z. M. Ye et al., Proc. SPIE 7970, 79700L (2011).                               Y. Saad and M. H. Schultz, SIAM J. Sci. Stat. Comput. 7, 856
+3
+  G. M. Schmid et al., J. Vac. Sci. Technol., B 27, 573 (2009).                  (1986).
+4                                                                             36
+  J. C. Taylor, T. Hostetler, P. Kornilovich, and K. Kramer, Proc. SPIE          R. Mittal, H. Dong, M. Bozkurttas, F. M. Najjar, A. Vargas, and A. von
+  6151, 61510L (2006).                                                           Loebbecke, J. Comput. Phys. 227, 4825 (2008).
+5                                                                             37
+  M. Miller, G. Schmid, G. Doyle, E. Thompson, and D. J. Resnick,                I. Yoneda et al., Proc. SPIE 7271, 72712A (2009).
+                                                                              38
+  Microelectron. Eng. 84, 885 (2007).                                            P. S. Epstein and M. S. Plesset, J. Chem. Phys. 18, 1505 (1950).
+6                                                                             39
+  M. D. Stewart, S. C. Johnson, S. V. Sreenivasan, D. J. Resnick, and C. G.      X. G. Liang, H. Tan, Z. L. Fu, and S. Y. Chou, Nanotechnology 18,
+  Willson, J. Micro/Nanolith. MEMS MOEMS. 4, 011002 (2005).                      025303 (2006).
+
+
+
+
+J. Vac. Sci. Technol. B, Vol. 35, No. 1, Jan/Feb 2017
+

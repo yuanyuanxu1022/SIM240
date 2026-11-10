@@ -1,0 +1,2265 @@
+Simulation Method of Microscale Fluid-Structure Interactions:
+Diffuse-Resistance-Domain Approach
+Min Gao,1 Zhihao Li,2, 3 and Xinpeng Xu3, 4, ∗
+
+arXiv:2407.14291v2 [physics.flu-dyn] 7 Aug 2025
+
+1
+
+School of General Studies, Guangzhou College of Technology and Business,
+5 Guangming Road, Guangzhou, Guangdong 510850, China
+2
+Department of Civil Engineering and Smart Cities, College of Engineering,
+Shantou University, Shantou, 515063, Guangdong, China.
+3
+Department of Physics and MATEC Key Lab, Guangdong Technion - Israel Institute of Technology,
+241 Daxue Road, Shantou, Guangdong 515063, China
+4
+Technion – Israel Institute of Technology, Haifa 3200003, Israel
+(Dated: August 8, 2025)
+Direct numerical simulations (DNS) of microscale fluid-structure interactions (mFSI) in multicomponent multiphase flows pose many challenges, including the thermodynamic consistency of
+multiphysics couplings, tracking of moving interfaces, dynamics of moving triple-phase contact lines,
+and the coupling of multiphase hydrodynamics with phase transition dynamics. We propose and
+validate a generic DNS approach: Diffuse-Resistance-Domain (DRD) approach. It overcomes the
+above challenges by employing Onsager’s variational principle (OVP) to formulate dynamic models
+and combining traditional diffuse-interface models for fluid-fluid interfacial dynamics with a novel
+implementation of complex fluid-solid interfacial conditions via smooth interpolations of dynamicresistance coefficients across interfaces. After careful validation by numerous benchmark simulations, we simulated several cutting-edge, challenging mFSI problems across diverse fields. This
+generic DNS approach offers a promising tool for elucidating physical mechanisms, manipulating
+microscale fluid dynamics, and optimizing engineering processes across diverse fields.
+Keywords: fluid-structure interactions; direct numerical simulations; microfluidics; active matter; porousmedia flows
+
+I.
+
+INTRODUCTION
+
+Microscale fluid-structure interactions (mFSI) refer to the complex dynamic interplay between multicomponent
+multiphase flows and moving, deformable, or evolving solid structures at length scales that typically range from 1
+to 100 µm [1, 2]. mFSI differs from the fluid-structure interactions at macroscales in many aspects, and physical
+effects such as viscous dissipation, interfacial tension, wettability, and fluid slip start to dominate the system. Understanding mFSI is crucial for various applications, including microfluidics, additive manufacturing, active matter
+physics, biomedical engineering, geophysics, and civil engineering, etc [1]. However, a comprehensive study of mFSI
+remains a significant challenge, largely due to the complexities of multiphysics, multi-field couplings, and the high
+surface-area-to-volume ratio [3, 4]. For most mFSI problems, deriving analytical solutions to the governing equations
+remains unattainable. Consequently, direct numerical simulations (DNS) are commonly employed to investigate the
+fundamental physics underlying mFSI phenomena [2–5].
+Numerous DNS methods have been developed to tackle the complexities of mFSI. These methods can be broadly
+classified into two types [3] – partitioned and monolithic approaches, each with its strengths and limitations. The
+partitioned approach treats fluids and solids as two computational domains solved separately and supplemented by
+proper interfacial conditions at fluid-solid interfaces. Its major advantage is that it integrates available models and
+numerical methods that have been validated to solve complicated fluid or solid problems. Examples are the immersed
+boundary methods [5], arbitrary Lagrangian-Eulerian method [6], and some particle-based simulation methods, e.g.,
+the smoothed particle hydrodynamics method [7], the dissipative particle dynamics method [8], and the multi-particle
+collision dynamics method [9], etc. However, this approach requires either explicit tracking of interfaces or constructing
+proper particle-particle interactions at interfaces, which can present significant practical challenges, particularly for
+mFSI in multiphase flows with moving contact lines. In contrast, the monolithic approach integrates fluids and solids
+into a unified regular computational domain, employing a single mathematical framework and solving a coupled set
+of equations with a unified algorithm. The interfacial conditions are imposed implicitly, and there is no need to track
+the interface explicitly. Examples include multi-phase-field method [10–12], fictitious domain method [13], diffuse
+
+∗ Corresponding authors; xu.xinpeng@gtiit.edu.cn
+
+2
+
+FIG. 1. Schematic illustration of typical mFSI scenarios simulated using the DRD approach. This approach integrates traditional diffuse-interface models for fluid-fluid interfacial dynamics with a novel implementation of complex fluid-solid interfacial
+conditions, achieved through smooth interpolations of dynamic-resistance coefficients across different domains. These scenarios
+typically involve multiphase flows where fluid-fluid interfacial dynamics are intricately coupled with wetting behavior and contact line motion on complex, corrugated solid surfaces. The DRD approach also captures the dynamics of suspended, actively
+deformable objects (including rigid particles, flexible fibers, microswimmers, and elastic capsules) as well as the evolution of
+solid surfaces driven by interfacial processes such as precipitation and dissolution. Here, immiscible two-phase fluid regions are
+distinguished by different values of phase parameter ϕ, while sharing the same value ψ = +1. The solid domain is represented
+by ψ = 0 and ϕ = ϕs .
+
+domain method [14, 15], smoothed profile method [16, 17], and fluid particle dynamics (FPD) method [18, 19], etc.
+Some other popular methods exist, such as the lattice Boltzmann method [20] that can be partitioned or monolithic
+depending on the solved model. Each of the above methods has its advantages and limitations, and the choice of
+method depends on the specific problem. Researchers continue to develop and refine these methods to improve their
+accuracy, efficiency, and applicability to real-world scenarios.
+Despite the development of these powerful DNS methods for mFSI, two main challenges persist. (i) mFSI in
+multicomponent multiphase flows [3]. Most DNS methods discussed above primarily address mFSI between immersed
+solid structures and single-component, single-phase flows. In contrast, mFSI in multicomponent multiphase flows
+remains largely unexplored, posing significant challenges in both model construction (e.g., ensuring the thermodynamic
+consistency of the model) and algorithm development. These challenges arise from the intricate interplay among factors
+such as multicomponent fluid composition, fluid viscoelasticity, fluid-fluid interfacial tension, solid wettability, fluid
+slip, contact line dynamics, and external fields (e.g., electrical, magnetic, or acoustic fields). (ii) Boundary conditions
+at multiple dynamic interfaces and near triple-phase contact lines [1, 2, 21]. The high surface-area-to-volume ratio at
+microscales makes it crucial to define and implement precise boundary conditions that accurately capture interfacial
+or boundary physics for reliable simulations. However, this task becomes particularly challenging and computationally
+demanding when dealing with complex solid geometries or dynamic interfaces that move, deform, or evolve due to
+reactions or phase transitions, such as solidification and evaporation. In this work, we propose a generic monolithic
+DNS approach, the Diffuse-Resistance-Domain (DRD) approach, to address these challenges and enable the simulation
+of mFSI in multicomponent multiphase flows.
+The remainder of this paper is organized as follows. Section II introduces the main idea of the DRD approach,
+illustrating its application to simulate one-dimensional (1D) diffusion and the dynamic coupling between viscous fluids
+and rigid solids. We then extend the application of DRD to the simulation of mFSI in two-phase flows, where we
+employ Onsager’s variational principle (OVP) to derive the general governing equations. Sec. III presents a series
+of benchmark simulations that address various classical mFSI problems in single-phase and two-phase fluid flows,
+validating the DRD approach as a robust direct numerical simulation (DNS) method for mFSI in multiphase flows.
+In addition, this section highlights cutting-edge applications of the DRD approach in areas such as microfluidics and
+active matter hydrodynamics. Section IV delves into more complex mFSI scenarios, including cases where the solid
+structure evolves dynamically due to interfacial processes like precipitation and dissolution in porous media. Finally,
+concluding remarks are provided in Section V.
+
+3
+II.
+
+DIFFUSE-RESISTANCE-DOMAIN (DRD) APPROACH
+A.
+
+Key features of the DRD approach
+
+We propose a generic, monolithic DNS framework for simulating mFSI in multicomponent multiphase flows that
+we call diffuse-resistance-domain (DRD) approach. It has several key features as follows.
+(i) Monolithic and diffuse-interface characterization. The DRD approach is monolithic and all the dynamic
+equations apply to the whole extended fluid-solid domain with regular boundaries. Herein, all the interfaces are treated
+as smooth diffuse interfaces (of small but non-zero thickness) described by phase parameter fields. For example, in
+the typical mFSI scenarios shown in Fig. 1, the phase field ϕ describes the fluid-fluid interface and ψ describes the
+fluid-solid interface.
+(ii) Thermodynamic consistency. The thermodynamic consistency of the governing equations and boundary
+conditions is ensured by the application of Onsager’s variational principle (OVP) [22–26] and linear response theory for
+small deviations near equilibrium [27, 28], where the linear dynamic constitutive relations are assumed: Xi = Rij α̇j
+with Xi and α̇i being the conjugate thermodynamic force-flux pairs, and Rij being the resistance coefficient matrix
+that is symmetric and positive definite. Off-diagonal entries of Rij are referred to as cross-coupling coefficients between
+different irreversible processes (with i ̸= j). Typical linear kinetic laws of Onsager’s form [28] include Fick’s law of
+diffusion, Fourier’s law of heat conduction, Newton’s law of viscosity, and Ohm’s law of electrical conduction, etc.
+For a more comprehensive introduction to Onsager’s variational principle (OVP) and its applications in modeling
+complex fluids, we refer the reader to our review paper [29], Masao Doi’s textbook [22], and the detailed review
+articles [23, 30]. We emphasize that employing the OVP ensures thermodynamic consistency in our DRD method,
+while inherently constraining its applicability due to OVP’s foundational assumptions. Like OVP, DRD is thus limited
+to systems satisfying Onsager’s linear relations, valid only near equilibrium. Nevertheless, our formulation requires
+local equilibrium—-even under globally far-away from equilibrium conditions—-by assuming the relaxation timescale
+of material elements to local equilibrium is negligible compared to that of the global dynamics [22, 28]. Under this
+well-separated timescale condition, all equilibrium thermodynamic quantities (e.g., entropy and restricted free energy)
+remain well-defined locally, thereby justifying the use of linear response theory, the Onsager relations, and OVP in our
+model construction. We acknowledge that in cases where the relaxation time is comparable to the global timescale
+(e.g., in glass or in active colloidal suspensions), these approximations would break down and the current formulation
+would no longer be applicable. That is, the proposed DNS method exhibits limitations in regimes characterized
+by strongly non-equilibrium dynamics or high-Reynolds-number flows, where local equilibrium assumptions become
+invalid and the equilibrium free energy and quadratic dissipation functionals are not well-defined.
+(iii) Prescribed fluid-solid interfacial profiles. In contrast to multi-phase-field methods for mFSI, the DRD
+approach delineates fluid-solid interfaces through phase parameter fields that do not evolve by dynamic equations (such
+as Cahn-Hilliard or Allen-Cahn equations) but are prescribed by functions changing smoothly across the boundary
+from the fluid to the solid domain. This simplifies or avoids the energy construction for solids—especially in the
+rigid limit—and substantially reduces computational costs, particularly when the solids move, deform, or evolve. For
+example, the ψ in Fig. 1 is prescribed by
+
+
+
+1
+D(r, t)
+ψ(r, t) =
+1 − tanh √
+,
+(1)
+2
+2ϵs
+changing smoothly across the boundary from the fluid domains (ψ = 1) to the solid domain (ψ = 0). Here ϵs is the
+characteristic fluid-solid interfacial thickness and D(r, t) is the signed distance function away from the solid surface
+with D > 0 (< 0) in the solid (fluid) domain. Note that D(r, t) encodes the complicated dynamic solid geometries
+(including the shape and the instantaneous position) of the solid structure that moves, deforms, or evolves with known
+or separately-solved local velocities. The fluid-solid phase field ψ is prescribed a priori by the form of Eq. (1), mainly
+because this choice provides a smooth transition between the fluid and solid domains and it makes the sharp-interface
+limit analysis (see Sec. III C 2) more self-consistent. By doing so, we simplify the numerical implementation of fluidsolid interfacial dynamics. We avoid the need to construct a free-energy function to characterize the coexisting fluid
+and solid phases and circumvent the computational expense associated with solving the full dynamic equations for ψ.
+This is particularly advantageous for mFSI systems where solids are rigid of complex geometries or exhibit complex
+motions, deformations, or evolutions.
+(iv) Solids treated as special fluids. The solid domains are treated as special fluid domains where the resistance
+coefficients Rij have a significant contrast compared to the resistance coefficients of other “real” fluid domains. In
+practice, we employ the fluid-solid phase-field parameter (e.g., ψ(r, t)) to smoothly interpolate Rij between fluid and
+solid domains, e.g., in the form of Eq. (8a) or Eq. (8b). By this, we can then obtain the required governing equations
+applicable to the whole fluid-solid system easily from those already developed in sharp (fluid-solid) interface models
+
+4
+of mFSI [31, 32]. Moreover, in comparison to the diffuse-domain method [14], the governing equations in the DRD
+approach applicable to both multiphase fluids and solid structures take the same form as those for multiphase fluids
+alone. This can significantly simplify the development of numerical algorithms.
+In the following subsections, we will further elucidate the key features of the DRD approach. First, we apply it to
+simulate one-dimensional (1D) diffusion and investigate the dynamic coupling between viscous fluids and rigid solids.
+Subsequently, we will further demonstrate the application of DRD in modeling mFSI within two-phase flows.
+
+FIG. 2. Schematic illustrations of the 1D boundary value problem in a system including three (fluid, intermediate, and
+solid) subdomains with (a) diffuse interfaces (of small but non-zero thickness ϵs ) and (b) sharp interfaces (discussed mainly
+in Appendix A to elucidate the validity of DRD approach), respectively. The discussions and conclusions about the diffusion
+equation for 1D diffusion apply equally to the Navier-Stokes equation for laminar simple shear flow.
+
+B.
+
+Simulating 1D diffusion: DRD approach in a nutshell
+
+We begin by explaining the main components of the DRD approach and demonstrate its application by solving
+the one-dimensional (1D) diffusion equation with three representative types of boundary conditions. Consider a 1D
+diffusion process within a fluid domain defined by 0 ⩽ z ⩽ 2H that is in contact with a solid domain defined by
+−Hs ⩽ z < 0, as illustrated in Fig. 2. The governing equation for the concentration c = c(z, t) is the 1D diffusion
+equation
+∂t c = ∂z (D∂z c) ,
+
+(2)
+
+subject to the boundary condition c(H, t) = c1 and a suitable boundary condition at the fluid-solid interface z = 0.
+Three common types of boundary conditions are typically considered: (1) Dirichlet boundary condition, c(0, t) = c2 ;
+(2) Neumann boundary condition, ∂z c(0, t) = 0; (3) Robin boundary condition, ℓs ∂z c(0, t) = c(0, t) − c2 . While
+the numerical solution to such a 1D problem is relatively straightforward, various algorithms have been developed
+to address it. In contrast, solving this problem in a real three-dimensional (3D) system with complex, curved solid
+geometries presents a more significant challenge. To overcome this complexity, we apply the DRD approach to solve
+the 1D diffusion equation under different boundary conditions.
+According to the DRD approach, we treat the fluid-solid interface at z = 0 as a diffuse interface of small finite
+thickness ϵs (see Fig. 2(a)), characterized by a smooth (time-independent) interfacial profile function ψ(z) (also called
+phase parameter as in the phase-field approach of multiphase flows [33]):
+
+
+
+1
+z
+ψ(z) =
+1 + tanh √
+,
+(3)
+2
+2ϵs
+which changes smoothly from ψ = 1 in the fluid domain to ψ = 0 in the solid domain. Furthermore, to be more
+accurate near the fluid-solid interface, we assume the combined phase parameter ψ(z)c(z, t) (instead of c(z, t)) is
+locally conserved following
+∂t (ψc) = −∂z J,
+
+(4)
+
+5
+
+FIG. 3. Steady-state solutions c̃(z) = c/c1 of the 1D diffusion equation (2) in the fluid domain 0 ⩽ z ⩽ 2H under (a,b) Dirichlet
+(c(0, t) = 0) and (c,d) Neumann (∂z c(0, t) = 0) boundary conditions. Numerical solutions using the DRD approach for different
+diffusivity ratios rD = Ds /Df and relative interface thicknesses rϵs = ϵs /H are compared to the analytical solution (red solid
+curves). For sufficiently small rϵs ⩽ 0.01, (a,b) if rD ≫ 1, we reproduce Dirichlet boundary condition, while (c,d) if rD → 0,
+we reproduce Neumann boundary condition. Here, we take the physics parameters to be: H 2 /τ0 Df = 1.0, c2 /c1 = 0, and
+Hs /H = 1.0. There are two “free” parameters: rϵs = ϵs /H and rD = Ds /Df . In (a,c), we vary rD and fix rϵs = 0.01; in (b), we
+vary rϵs and fix the diffusivity ratios rD = 100; in (d), we vary rϵs and fix rD = 0.
+
+with J being the diffusion flux. Then, the governing dynamic equation can be derived using Onsager’s variational
+principle (OVP) [22–25, 29, 30, 33].
+Firstly, the free energy for the fluid-solid two-phase system is given by
+Z
+F [c(z, t), ψ(z)] = dr [ψkB T c ln(c/c0 )] ,
+(5)
+where kB is Boltzmann constant, T is the temperature,R and c0 is the some reference concentration. Using Eq. (4), we
+obtain the rate of change of the free energy as Ḟ[J] = dr (J∂z µ) with the chemical potential µ = kB T (1 + ln(c/c0 )).
+Secondly, the dissipation function is given by [22, 23, 30]
+
+
+Z
+kB T
+Φ[J] = dr
+J2 .
+(6)
+2cD(ψ)
+Physically, the quadratic form of Φ is equivalent to Onsager’s linear force-flux relations [27]. Thirdly, minimizing the
+Rayleighian R[J] = Ḟ + Φ with respect to J gives the dynamic equation:
+∂t (ψc) = ∂z [D(ψ)∂z c] ,
+
+(7)
+
+supplemented with Dirichlet (essential) boundary conditions, c = c1 and c = c2 at z = 2H and z = −Hs , respectively.
+According to the DRD approach, to reproduce the three types of boundary conditions mentioned above at z = 0,
+we need to take proper smooth interpolations of the diffusivity D across the fluid and the solid domains. For the
+Dirichlet and the Neumann boundary conditions, we choose a smooth interpolation of D(z) by taking it as a simple
+linear function of ψ:
+D(ψ) = Ds + (Df − Ds ) ψ,
+
+(8a)
+
+6
+with D(ψ = 1) = Df and D(ψ = 0) = Ds in the fluid and solid domains, respectively. In the sharp interface limit
+(ϵs → 0), if Ds ≫ Df , we reproduce the Dirichlet boundary condition at z = 0 effectively as shown in Fig. 3(a) and
+Fig. 3(b), whereas, if Ds ≪ Df , we would instead reproduce the Neumann boundary condition at z = 0 effectively as
+shown in Fig. 3(c) and Fig. 3(d). Note that in the case of Neumann boundary condition with Ds ≪ Df and hence
+D(ψ) ≈ Df ψ, the diffusion equation becomes ∂t (ψc) = ∂z (ψDf ∂z c), which takes the same form of that in diffuse
+domain method [14].
+In contrast, to reproduce the Robin boundary condition, we have to introduce the third intermediate domain of
+small thickness ϵi with a very small diffusivity Di (< Df ≪ Ds ), as shown in Fig. 2(a), and take the following
+interpolation form of D over the three domains
+(
+Df + 2(1 − ψ)(Di − Df )
+if ψ ⩾ 0.5 and ψ = ψ1 ,
+D(ψ) =
+(8b)
+2Di − Ds + 2(1 − ψ)(Ds − Di ) if ψ < 0.5 and ψ = ψ2 ,
+√ 
+
+as schematically shown in Fig. 2(a) and plotted in Fig. 4(a), with ψ1 (z) = 41 3 + tanh (z − ϵi /2)/ 2ϵs and ψ2 (z) =
+√
+
+
+1
+both taking a form similar to that of Eq. (3). In the limits of sharp interface (as
+4 1 + tanh (z + ϵi /2)/ 2ϵs
+ϵs → 0) and Ds ≫ Df , we reproduce the Robin boundary condition at z = 0 effectively as shown in Fig. 4(b), and
+Fig. 4(c) shows the effective “slip” length ℓs /ϵi is linearly proportional to the diffusivity ratio Df /Di .
+Note that alternative interpolation forms to those in Eqs. (8) are also possible; however, our primary concern is to
+ensure that the interpolation function preserves the essential characteristics—whether monotonic or non-monotonic
+(with an special intermediate domain)—with respect to the fluid–solid phase parameter, ψ. For example, we employ
+the linear, monotonic interpolation in Eq.(8a) since our objective is not to impose any specialized structure to enforce Dirichlet or Neumann boundary conditions. We have also tested a Heaviside function for ψ and observed no
+significant differences in the simulation outcomes. However, to reproduce Robin boundary conditions, we adopted
+the non-monotonic interpolation in Eq. (8b) and compared its performance with that of a piecewise cubic polynomial
+interpolation for ψ as used in our previous work [34]. Both approaches yielded only quantitative differences in the
+relationship between the effective slip length, ℓs /ϵi , and the diffusivity ratio, rDi = Di /Df . In contrast, the piecewise
+linear interpolation in Eq. (8b) is simpler to implement and provides a larger range of slip lengths, as shown in
+Fig.4(c).
+
+FIG. 4. Steady-state solutions c̃(z) = c/c1 of the 1D diffusion equation (2) in the fluid domain 0 ⩽ z ⩽ 2H under the Robin
+boundary condition, ℓs ∂z c(0, t) = c(0, t). (a) The interpolation profile of the diffusivity D(z) takes the form of Eq. (8b). (b)
+“Slip” solution for the Robin boundary condition is reproduced using the DRD approach for different relative slip lengths
+ℓs /H, prescribed by different diffusivity ratios rDi = Di /Df . Here, we take the physics parameters to be: H 2 /τ0 Df = 1.0,
+c2 /c1 = 0, and Hs /H = 1.0. We vary rDi and fix the three “free” parameters: rϵs = ϵs /H = 0.01, rϵi = ϵi /H = 0.005, and
+−1
+rD = Ds /Df = 100. (c) The relative “slip” length ℓs /ϵi is found to be linearly proportional to rD
+= Df /Di , as predicted by
+i
+sharp-interface calculations in the triple-domain system (see Appendix A).
+
+Before carrying out simulations, we first non-dimensionalize the 1D diffusion equation by taking the length unit to
+be H, time by some characteristic measurement time τ0 , and concentration by c1 . Eight dimensionless parameters
+appear, as shown in the following comprehensive list along with their physical interpretations. Moreover, we classify
+these dimensionless parameters into two general categories:
+• (i) Measurable physics parameters defined based on measurable quantities. (1) H 2 /τ0 Df : the ratio of the
+diffusion time H 2 /Df to the time unit τ0 . (2) c2 /c1 : the concentration ratio. (3) Hs /H: the dimension ratio of
+the solid and the fluid region. (4) ℓs /H: the relative “slip” length in the Robin boundary condition.
+
+7
+• (ii) Parameters arising from the DRD treatment of fluid-solid interfaces. Diffusivity ratios: (1) rD = Ds /Df and
+(2) rDi = Di /Df . Relative interfacial thicknesses: (3) rϵs = ϵs /H and (4) rϵi = ϵi /H.
+In the appendix A, we analyze the sharp-interface models for the 1D diffusion problem. It reveals that some parameters
+from the DRD treatment are related to measurable quantities. Consequently, the effective number of free parameters
+−1
+is reduced. For example, the slip length ℓs in the Robin boundary condition is found to scale as ℓs /ϵi ∼ Df /Di = rD
+.
+i
+Therefore, only three free parameters remain: rϵs = ϵs /H, rϵi = ϵi /H, and rD = Ds /Df .
+The DRD simulation results for 1D diffusion are presented in Figs. 3 and 4 with careful convergence analysis.
+They provide practical guidelines for the value selection of the three “free” parameters: sufficiently small interface
+thicknesses, rϵs ∼ rϵi ⩽ 0.01; proper values of diffusivity ratios, rD ⩾ 100 for Dirichlet and Robin boundary condition,
+and rD = 0 for Neumann boundary condition. In this way, the steady-state numerical solutions at 0 ⩽ z ⩽ 2H
+obtained from the DRD approach agree very well with the analytical steady-state solutions for the 1D diffusion
+equation under the three different types of boundary conditions. Such validity of the DRD approach in reproducing
+the solutions of 1D diffusion equation with different boundary conditions can be easily understood by considering the
+analytical steady-state solutions of 1D diffusion equation (2) in a triple-domain system (for −Hs ⩽ z ⩽ 2H) separated
+by two “sharp” interfaces located at z = ϵi /2 and z = −ϵi /2 as shown in Fig. 2(b), and taking proper limits of the
+diffusivity ratio rD = Ds /Df in different cases (see Appendix A for a detailed discussion).
+C.
+
+Simulating dynamic coupling between viscous fluids and rigid solids
+
+The idea of the DRD approach mentioned above can also be used to numerically solve the dynamic equations
+for other transport phenomena such as the heat conduction equation, Navier-Stokes equation, Cahn-Hilliard and
+Allen-Cahn equations, electrokinetic equation, and so on. Here, we provide an additional example demonstrating the
+application of the DRD approach to solving the Navier-Stokes equations.
+To be specific, we consider the 1D laminar flow field (with velocity v = v(z, t)x̂ and pressure p = const), which is
+induced by simple shear in a viscous fluid (with 0 ⩽ z ⩽ 2H) as shown in Fig. 2. The governing equation for the 1D
+velocity field is the following 1D Navier-Stokes equation
+∂t v = ∂z (ν∂z v) ,
+
+(9)
+
+which takes the same form of the 1D diffusion equation (2) with ν being the kinematic viscosity. When Eq. (9) is
+subject to the boundary condition v(2H, t) = V0 and one of the three types of boundary conditions for v at the
+fluid-solid interface z = 0, we can then use the DRD approach to solve it numerically as discussed above. All the
+above discussions for the solution of the 1D diffusion equation also apply to the solution of 1D Navier-Stokes equation
+here. Here, the only relevant resistance coefficient is the viscosity ν, analogous to diffusivity D for the 1D diffusion.
+The three types of boundary conditions at z = 0 can be reproduced effectively if we take proper smooth interpolations
+of ν over different domains. For the interpolation form in Eq. (8a), if ν2 ≫ ν1 (and for sufficiently small interfacial
+thickness ϵs ), we reproduce the Dirichlet or no-slip boundary condition at z = 0 effectively: v|z=0 = 0. Whereas, if
+ν2 ≪ ν1 (and for sufficiently small interfacial thickness ϵs ), we would reproduce the Neumann or free-surface boundary
+condition at z = 0 effectively: ∂z v|z=0 = 0. In contrast, for the interpolation form in Eq. (8b), if Di < Df ≪ Ds , we
+reproduce the Robin boundary condition – Navier’s slip boundary condition: ℓs ∂z v|z=0 = v(z = 0) with ℓs being the
+fluid slip length. More generally, when employing the DRD approach to simulate 3D viscous flows over solid surfaces
+with complex geometries, it suffices to solve the Navier-Stokes equations with spatially varying viscosity. Numerous
+efficient algorithms are already available and can be directly utilized for this purpose [35].
+Finally, we would like to point out that similar ideas of using smoothed profiles of viscosity across the interfacial
+region have been proposed before to facilitate the numerical study of colloidal dynamics [18, 19] (so-called fluid particle
+dynamics method, or FPD method), particle dispersion in nematic liquid-crystal solvents [36], the impact of solid
+objects on free surfaces [10, 37], two-phase flows in or on stationary solid domains with complex geometries [12],
+the melting and flowing of solids [38], and the fluid-structure interaction in presence of a hyperelastic body [39], etc.
+Particularly, the FPD method has been shown by careful numerical [19, 40] and analytical studies [41] to be capable
+of reproducing arbitrary flow fields derived from conventional sharp-interface methods as the viscosity ratio tends to
+be large enough and the interface thickness tends to be sufficiently small.
+D.
+
+Simulating mFSI in two-phase flows: General equations
+
+To further demonstrate the capability of the DRD approach in simulating mFSI, we consider an immiscible twophase flow including some suspending (active deformable) objects composed of N rigid spherical particles over rigid
+
+8
+corrugated solid boundary surfaces, as shown in Fig. 1. In the DRD approach, we use the interfacial profile functions
+or phase parameters ϕ(r, t), ψα (r, t) (with α = 1, ..., N ), and ψ(r) to describe the immiscible fluid-fluid interface, the
+surface of α-th particle, and the corrugated solid boundary surface, respectively. Particularly, for the α-th particle of
+diameter d centered at Rα (t), the interfacial profile function ψα takes the form of Eq. (1) with the signed distance
+function given by Dα (r, t) = d/2 − |r − Rα (t)|, that is,
+
+
+
+d/2 − |r − Rα (t)|
+1
+√
+1 − tanh
+,
+(10)
+ψα (r, t) =
+2
+2ϵs
+and the velocity of the particle is given by
+R
+Ṙα = Vα (t) ≡
+
+dr ′ (1 − ψα )v(r ′ , t)
+R
+,
+dr ′ (1 − ψα )
+
+(11)
+
+with the superscript dot hereafter denoting the material time derivative, i.e., Ṙα = dRα /dt. Note that Eq. (11)
+does not impose force-free conditions; rather, it is applicable even when external forces are present. In fact, Eq. (11)
+originates from one of the key features of our DRD approach—namely, the treatment of solids as special fluids—which
+is outlined at the beginning of Sec. II A. Herein, rigid particles are treated as highly viscous fluids. Then by numerically
+solving the dynamic equations (22), we obtain an effective “flow” field within the particle that primarily reflects its
+translation and rotation. Hence, it is natural that the particle’s translational velocity is computed by Eq. (11) as the
+average flow velocity inside the particle.
+For the corrugated
+solid boundary
+√  surfaces, the interfacial profile function ψ also takes the form of Eq. (1):
+
+ψ(r, t) = 21 1 − tanh D(r, t)/ 2ϵs with D(r, t) being the signed distance away from the solid boundary surfaces.
+Furthermore, to improve the conservation of the phase parameter ϕ within the fluid domain, we assume the combined
+phase parameter Ψ(r, t)ϕ(r, t) (instead of ϕ(r, t)) is locally conserved following
+∂t (Ψϕ) = −∇ · (Ψϕv) − ∇ · J ,
+
+(12)
+
+QN
+
+where Ψ(r, t) ≡ ψ α=1 ψα with Ψ = 0 inside solid boundary or inside particles and Ψ = 1 inside fluids, J is the
+diffusion flux, and v(r, t) denotes the flow velocity, following the incompressibility condition ∇ · v = 0 (alternatively,
+one can also take ∇ · (ψv) = 0 as in the diffuse domain method [14, 15]). Then, the governing dynamic equations can
+be derived using Onsager’s variational principle (OVP) [22–25, 29, 30, 33].
+Firstly, the free energy for the fluid-fluid-solid triple-phase system includes three contributions:
+F [ϕ(r, t), ψ(r), ψα (r; Rα )] = Fb [ϕ(r, t), ψ(r, t)] + Fs [ϕ(r, t), ψ(r), ψα (r; Rα )] .
+(13)
+R
+Here the fluid-bulk energy Fb = dr fˆb takes the form of Cahn-Hilliard free energy as
+ 
+
+Z
+1
+2
+Fb [ϕ(r, t), ψ(r, t)] = dr Ψ fb (ϕ) + K|∇ϕ|
+,
+(14a)
+2
+2
+with fˆb ≡ fb + 12 K|∇ϕ|2 being the bulk free energy density and fb (ϕ) = 14 a ϕ2 − 1 being the double-well potential
+and ϕ = ±1 representing the two fluid phases. The energy parameter a and the interfacial
+positive
+pstiffness K are √
+constants. The thickness and interfacial tension of the fluid-fluid interface are given by ϵ = K/a and γ = 2 2aϵ/3,
+respectively. The fluid-solid interfacial energy Fs is given by
+"
+!#
+Z
+N
+X
+2
+2
+Fs [ϕ(r, t), ψ(r), ψα (r; Rα )] = dr ϵs fs (ϕ)
+|∇ψα | + |∇ψ|
+,
+(14b)
+α=1
+
+with fs (ϕ) = − 14 γ cos θs (ϕ3 − 3ϕ) being the surface energy density [15, 42] and θs being the static contact angle at
+the solid surfaces. Using Eqs. (11)–(14), we obtain the rate of change of the total free energy ḞT = Ḟ − Ẇext as (for
+a detailed derivation, refer to the appendix B)
+Z
+ḞT [v, J ] = dr (−v · µ̂∇(Ψϕ) + J · ∇µ̂ − v · ftot ) ,
+(15)
+where the total chemical potential µ̂ is given by
+Ψµ̂ ≡ Ψµb − ∇ · (KΨ∇ϕ) + ϵs (
+
+N
+X
+α=1
+
+2
+
+2
+
+|∇ψα | + |∇ψ| )µs ,
+
+(16)
+
+9
+
+PN
+with µb =R ∂fb (ϕ)/∂ϕ = aϕ ϕ2 − 1 , and µs = ∂fs (ϕ)/∂ϕ = − 43 γ cos θs (ϕ2 − 1), and ftot = α=1 (1 − ψα )(Fext,α −
+′
+p̂α ∇ψ
+Q α )/ dr (1 − ψα ) is the total force density applied on each particle with the pressure p̂α defined by p̂α ≡
+p̂ψ β̸=α ψβ + ∇ · (2ϵs fs ∇ψα ) and the generalized pressure
+p̂ ≡ −fˆb + µ̂ϕ.
+
+(17)
+
+Moreover, here, we have neglected the motion of solid boundary, and employed the natural boundary condition:
+n̂d · KΨ∇ϕ = 0, the impermeability conditions: n̂d · v = 0 and n̂d · J = 0, with n̂d being the outward unit vector of
+the whole computational domain as shown in Fig. 1. Note that the force density due to −p̂α ∇ψα (small and non-zero
+only in the fluid-solid interfacial region) arises from the assumption of the conservation of Ψϕ in Eq. (12).
+P
+The work power Ẇext = α Fext,α · Ṙα is the work power done by “external forces” Fext,α and the particle velocity
+Ṙα is a function of velocity field v(r, t) given in Eq. (11). The total external force, Fext,α , acting on the α-th particle
+within the suspended active deformable object can be generally expressed as Fext,α ≡ Fact,α − ∂U/∂Rα with Fact,α
+being the active or self-propelled forces (of biological or chemical origin) applied on the α-th particle and U ({Rα })
+being the interaction potential. For the system shown in Fig. 1, the potential U ({Rα }) is given by
+U ({Rα }) =
+
+X
+
+Upp (|Rζ − Rβ |) +
+
+ζ>β
+
+X
+
+Ups (|D(Rβ )|) ,
+
+(18a)
+
+β
+
+where Upp and Ups denote the two-body particle-particle interactions and the particle-solid boundary interactions,
+respectively, and |D(Rβ )| denotes the minimal distance of the β-th particle at r = Rβ away from the solid boundary.
+In this work, the following harmonic potentials are employed to take into account the excluded volume interactions
+between particles and between particles and solid boundaries:
+(
+2
+1
+ks (Rβζ − d) , Rβζ ≤ d,
+Upp (|Rζ − Rβ |) = 2
+(18b)
+0,
+Rβζ > d,
+
+(
+Ups (|D(Rβ )|) =
+
+2
+1
+2 ks [|D(Rβ )| − d/2] ,
+
+0,
+
+|D(Rβ )| ≤ d/2,
+|D(Rβ )| > d/2,
+
+(18c)
+
+with Rβζ ≡ |Rβζ | and Rβζ ≡ Rζ − Rβ . From Eqs. (18), we then obtain
+Fext,α = Fact,α −
+
+X ∂Upp
+β̸=α
+
+= Fact,α −
+
+X
+
+∂Rβα
+
+R̂βα −
+
+∂Ups
+(−n̂s,α ),
+∂|D(Rα )|
+
+ks (Rβα − d) R̂βα − ks (|D(Rα )| − d/2) (−n̂s,α ),
+
+(19)
+
+β̸=α
+
+with R̂βα ≡ Rβα /Rβα and n̂s,α being the inward unit normal vector of the solid boundary passing through the center
+(at r = Rα ) of the α-th particle (see Fig. 1).
+Secondly, the dissipation function of the system is given by
+
+
+Z
+1
+1 −1
+T 2
+2
+Φ[v, J ] = dr η (ϕ, ψ, ψα ) (∇v + ∇v ) + M (ϕ, ψ, ψα ) J ,
+(20)
+4
+2
+with the superscript T denoting the tensor transpose. Again, physically, the quadratic form of Φ is equivalent
+to Onsager’s linear force-flux relations [27]. The two resistance coefficients η (ϕ, ψ, ψα ) and M −1 (ϕ, ψ, ψα ) are the
+viscosity and the inverse of mobility, respectively. In contrast to diffusion domain method [14, 15], we follow the idea
+of DRD approach to incorporate the fluid-solid boundary conditions by interpolating the two resistance coefficients
+smoothly over different domains using either form of Eq. (8a) and Eq. (8b), where the solid viscosity ηs is very large,
+and the solid mobility Ms is very small in comparison to the viscosity ηf and the mobility Mf in fluids, i.e., ηs ≫ ηf
+and Ms ≪ Mf .
+Thirdly, imposing the incompressibility condition ∇ · v = 0, we obtain the Rayleighian
+Z
+R[v, J ] = Ḟ + Φ − Ẇext − drP ∇ · v,
+(21)
+
+10
+with P being a local Lagrange multiplier and representing the pressure. Minimizing R with respect to v and J gives
+a set of thermodynamically-consistent dynamic equations:
+
+
+ρ (∂t v + v · ∇v) = −∇P + ∇ · η (ϕ, ψ, ψα ) ∇v + ∇v T + µ̂∇(Ψϕ) + ftot ,
+(22a)
+∂t (Ψϕ) + ∇ · (Ψϕv) = ∇ · (M (ϕ, ψ, ψα ) ∇µ̂) ,
+
+(22b)
+
+where we have added the inertial terms in the Navier-Stokes equation with ρ being the fluid density.
+In summary, the governing dynamic equations for the immiscible two-phase flows including N suspending particles
+over a stationary rigid corrugated solid surface include Eqs. (10), (11), (16), (19), (22), and the incompressibility
+condition ∇·v = 0, supplemented with proper boundary conditions at the boundary of the whole regular computational
+domain: v = 0, Ψn̂d · ∇ϕ = 0, and n̂d · ∇µ̂ = 0.
+Finally, before ending this subsection, we would like to give some remarks as follows.
+(i) When we derive the dynamic equations by minimizing the Rayleighian in Eq. (21), we have used the fact that
+the particle velocity Vα (t) = Ṙα is not an independent rate [19] but is slaved by the flow field v(r, t) via Eq. (11).
+(ii) The inertial terms in the Navier-Stokes equation (22a) can also be included into OVP directly, as discussed in
+Onsager’s early work with Machlup [43], by introducing β-type state variables α̇i (the change rate of α-type state
+variables, αi ) and adding the change rate of kinetic energy ĖK to the Rayleighian in Eq. (21) [10, 44].
+(iii) The free energy functional F has only included the information about the interactions (energy and entropy)
+among constituents (particles or molecules) of the system fluids; external forces applied at the system boundaries or
+those arising from additional internal (hidden) degrees of freedom (e.g., ATP-driven biochemistry, biophysical, and
+chemophysical processes) have not been included and have to be appended as supplementary terms (through external
+work power Ẇext ) in the OVP.
+(iv) Here, we have only considered neutrally buoyant rigid particles. That is, we have neglected the difference
+between the fluid density and that of particles. More generally, mass density ρ should be a function of ψα , i.e.,
+ρ(ψα , ψ, ϕ), and we should add gravitational force density ρg in the Navier-Stokes equation (22a). Moreover, external
+torques can also be applied to each particle.
+(v) The DRD approach can also describe the inertial motion of massive rigid particles (as how the FPD method
+can do [19, 40]). To show this, we can multiply both sides of Eq. (22a) by 1 − ψα (r), integrate over space, and obtain
+an approximate equation for the translational motion of rigid particles as [19]
+Mα dVα /dt = Fext,α + Fv,α + Fc,α ,
+
+(23)
+R
+
+with Mα and Vα being the mass and the velocity of α-th particle, given via Mα Vα = drρ(1 − ψα )v. Here, Fext,α is
+the external force applied on the α-th particle; Fv,α and Fc,α are the viscous force and the capillary force exerted by
+the surrounding two-phase fluids on the rigid particle [45]:
+Z
+Z
+
+
+Fv,α = dAα n̂p,α · −P I + ηf ∇v + ∇v T , Fc,α ≈ − dAα n̂p,α · Π − Fcs,α .
+(24)
+in which I is the unit tensor, the integral is over the particle surface, dAα and n̂p,α are the surface element and
+the unit outward normal vector of the particle, Korteweg capillary pressure tensor Π and the surface capillary force,
+Fcs,α , are given by
+Z
+∂
+drϵs fs |∇ψα |2 ,
+(25)
+Π ≡ p̂ + K∇ϕ∇ϕ, Fcs,α ≡ −
+∂Rα
+2
+
+2
+
+respectively. We have used the identity ∇ |∇ψα | = −∂ |∇ψα | /∂Rα . Furthermore, for non-spherical particles, one
+also needs to consider their rotational motion and the angular acceleration induced by torques [19, 40]. Particularly,
+in the overdamped limit, the characteristic time scaling as d/V0 is much larger than the viscous relaxation time
+Mα /ηf d ≈ ρd2 /ηf with V0 being the characteristic velocity of the particle. That is, the particle Reynolds number,
+defined by Rep ≡ ρdV0 /ηf , is very small: Rep ≪ 1. In this limit, we have Fext,α + Fv,α + Fc,α = 0.
+E.
+
+Numerical implementations
+
+The DRD approach proposed for mFSI problems demonstrates its strength by employing simple models to achieve
+accurate simulations while maintaining intrinsic thermodynamic consistency by smoothly interpolating dynamicresistance coefficients across interfaces. In particular, for the mFSI problems in two-phase flows discussed in Sec. II D,
+
+11
+the main governing equations (16), (22a), and (22b) differ from those of the standard sharp fluid-solid interface
+model [35, 46, 47] in their treatment of the fluid-solid interactions and the smooth interpolation of dynamic-resistance
+coefficients across the fluid-solid interfaces, i.e., the viscosity coefficient in the Navier-Stokes equation (22a) and the
+mobility coefficient in the Cahn-Hilliard equation (22b). Additional low-order terms in Eq. (16) arise from wettability
+(contact angle) conditions, which are significant only in the vicinity of the fluid-solid interfaces.
+The complete equation system can be solved efficiently using established two-phase flow solvers [35, 46, 47], wherein
+pressure and velocity are decoupled in the Navier-Stokes equations, and a stabilization scheme is applied to the CahnHilliard equation.
+The low-order terms are discretized explicitly, which does not impose additional severe time constraints. The resulting system of discretized equations is efficiently solved using a GMRES (Generalized Minimal RESidual) solver,
+preconditioned with an FFT(Fast-Fourier-Transform)-based method [35]. The smooth interpolation of dynamicresistance coefficients across the diffuse fluid–solid interface is treated implicitly, which eliminates the time-step
+constraints associated with explicit schemes for stiff coefficients. While our DRD approach, focused on transient
+dynamics, incurs a higher computational cost than standard sharp fluid-solid interface methods (approximately 5
+times slower [35]) for planar solid surfaces, its primary advantage manifests for complex solid-surface geometries. For
+such geometries, where traditional finite difference methods are poorly suited and finite element methods (FEM)
+are typically required. In comparison, the DRD method extends the computational domain to a rectangular region,
+enabling the use of structured grids. This allows highly efficient structured-grid solvers (e.g., FFT, multigrid), which
+are typically 10 times faster than FEM solvers for comparable problems. Furthermore, these structured-grid solvers
+benefit from lower communication overhead and exhibit superior performance on modern GPU architectures. Consequently, for mFSI problems with complex, moving, or evolving solid surfaces, our DRD method offers a considerably
+simpler and computationally more efficient alternative.
+Specifically, the dynamic system is discretized as follows. Given a time step ∆t, at the time tn = n∆t, we denote
+n
+(for α = 1, ..., N ), flow velocity by v n , pressure by pn , and
+particle phase-parameter by ψαn , particle positions by Rα
+n+1
+n
+n+1
+,
+two-fluid phase-parameter by ϕ . At the next timestep t
+= (n + 1)∆t, we update the above variables ψαn+1 , Rα
+n+1
+n+1
+n+1
+v
+,p
+and ϕ
+by the following three steps.
+Step 1: We discretize the Cahn-Hilliard equation using a stabilization method [35]. The phase parameter ϕn+1 is
+updated by discretizing Eqs. (16) and (22b) as follows:
+
+
+1
+(Ψn ϕn+1 − Ψn ϕn ) + ∇ · (Ψn ϕn v n ) = ∇ · M (ϕn , ψ n , ψαn ) ∇µ̂n+1 ,
+∆t
+
+n n+1
+
+Ψ µ̂
+
+n
+
+
+
+= Ψ µnb + S(ϕn+1 − ϕn ) − ∇ · (KΨn ∇ϕn+1 ) + ϵs
+
+N
+X
+
+(26a)
+
+!
+2
+2
+|∇ψαn | + |∇ψ|
+
+µns ,
+
+(26b)
+
+α=1
+
+with boundary conditions n̂d · ∇ϕn+1 = 0, n̂d · ∇µ̂n+1 = 0. Here ψαn is defined in Eq. (10) with Rα (t) replaced
+
+
+QN
+n
+; Ψn = ψ α=1 ψαn . The higher-order terms ∇ · (KΨn ∇ϕn+1 ) and ∇ · M (ϕn , ψ n , ψαn ) ∇µ̂n+1 are treated
+with Rα
+implicitly to alleviate time constraints, and the extra low-order terms are handled explicitly. The term S(ϕn+1 − ϕn )
+is a stabilization term introduced to remove instabilities from the nonlinear bulk chemical potential µnb , where S is a
+stabilization coefficient and S = 1.5 is sufficient to ensure the stability in our simulations.
+Step 2: We discretize the incompressible Navier-Stokes equations using a pressure stabilization scheme [48]. The
+velocity is first updated as
+ n+1
+
+h
+n+1 i
+v
+− vn
+n
+n
+n
+n
+ρ
++ v · ∇v
+= −∇(2pn − pn−1 ) + ∇ · η n ∇v + ∇v T
++ µ̂n+1 ∇(Ψn ϕn+1 ) + ftot
+,
+(27)
+∆t
+with boundary conditions v n+1 = 0, where density ρn and viscosity η n are interpolated by phase parameters. The
+viscous term is treated implicitly to remove time constraints. Then, pressure is updated by solving the following
+Poisson equation with constant coefficient:
+∆(pn+1 − pn ) =
+
+ρ̄
+∇ · v n+1 ,
+∆t
+
+with boundary condition n̂d · ∇pn+1 = 0, where ρ̄ denotes the minimum value of density.
+Step 3: Lastly, we update particles positions according to Eq.(11):
+R ′
+dr (1 − ψαn )v n+1
+n+1
+n
+Rα
+= Rα
++ ∆t R ′
+,
+dr (1 − ψαn )
+
+(28)
+
+(29)
+
+12
+n+1
+and then ψαn+1 is updated using Eq. (10), weher Rα (t) is replaced by Rα
+.
+A key advantage of the proposed DRD approach is that it allows discretization of the entire space using a regular
+rectangular mesh (or grid) of dimensions L × H or Lx × Lz , thereby greatly simplifying numerical implementation.
+This setup enables the direct use of simple, structured, and adaptive block-structured grids with well-established
+numerical solvers. In contrast to traditional DNS methods for mFSI problems that require boundary-fitted meshes or
+involve complex geometric treatments, the DRD framework offers a significantly more efficient and straightforward
+alternative. In our simulations, uniform grids are employed, and the domain is discretized using a finite-difference
+method on staggered grids, with velocity defined at cell faces and pressure, the two-fluid phase parameter ϕ, and the
+fluid-solid interfacial parameter ψ defined at cell centers [47].
+Moreover, one key tuning parameter in the proposed DRD method is the fluid-solid interfacial thickness ϵs used
+in various interpolations to enforce different boundary conditions. As a result, the grid resolution (i.e., mesh size
+∆x, ∆z) must be carefully selected to ensure accurate results. For single-phase flows with Dirichlet or Neumann
+boundary conditions, a mesh size satisfying max(∆x, ∆z) ≤ ϵs is sufficient to achieve mesh-independent results. In
+the case of the Robin boundary condition, a finer resolution is required to resolve the intermediate interpolation
+layer, with numerical simulations indicating that a mesh size smaller than 0.5ϵs is adequate. For two-phase flows on
+solid surfaces, the interfacial thickness ϵs must be refined further to accurately resolve the wettability (contact angle)
+condition. In our implementation, we typically set ϵs = 0.5ϵ, where ϵ denotes the interfacial thickness associated with
+two-phase flows. Accordingly, in the hydrodynamic simulations presented in this work, we choose ϵs = ϵ = 0.01 for
+single-phase flows, and ϵs = 0.005, ϵ = 0.01 for two-phase flows. Unless otherwise specified, the mesh sizes are set to
+∆x = ∆z = ϵ = 0.01 in both cases.
+
+III.
+A.
+
+BENCHMARK VALIDATIONS AND APPLICATIONS
+
+Benchmark simulation 1: Complicated (moving) solid geometries
+1.
+
+Governing dynamic equations
+
+In this section, we highlight the first advantage of our DRD approach—its capability to simulate viscous flows
+over moving or geometrically complex solid surfaces. Specifically, we investigate the inertial focusing of a single
+passive colloidal particle suspended in a two-dimensional (2D), single-phase, pressure-driven flow within stationary
+microchannels, both without and with surface corrugations, as shown in Fig. 5(a) and Fig. 6(a). In this fluid-solid
+two-phase system, no fluid-fluid interface is present, eliminating the need to consider the phase parameter ϕ. The
+only relevant interfacial phase parameters are ψ for the solid boundaries and ψ1 for the suspended colloidal particle.
+Then, from the general dynamic equations presented in Sec. II D, we obtain the following Navier-Stokes equation:
+
+ (1 − ψ1 )Fext,1
+,
+ρ (∂t v + v · ∇v) = −∇P + ∇ · η (ψ, ψ1 ) ∇v + ∇v T + R ′
+dr (1 − ψ1 )
+
+(30)
+
+supplemented with the incompressibility condition, ∇ · v = 0, and the boundary condition at the boundary of the
+whole regular computational domain: v = 0. Here, the total force Fext,1 on the particle is applied by the solid
+boundary and is given from Eq. (19) by
+Fext,1 = −
+
+∂Ups
+(−n̂s,1 ) = −ks (|D(R1 )| − d/2) (−n̂s,1 ),
+∂|D(R1 )|
+
+(31)
+
+where |D(R1 )| denotes the minimal distance of the particle at r = R1 away from the solid boundary and it includes
+the information of complicated solid geometries. n̂s,1 is the inward unit normal vector of the solid boundary passing
+through the center of the particle (see Fig. 1). Fluid slip is neglected at all solid boundaries and hence we take the
+spatially-varying viscosity η(r) in the form of Eq. (8a) as
+η(ψ, ψ1 ) = ηs + (ηf − ηs ) ψψ1 ,
+
+(32)
+
+where the interfacial profile functions ψ (of the solid boundary) and ψ1 (of the particle) both take the form of Eq. (1):
+
+
+
+
+
+
+1
+D(r)
+1
+d/2 − |r − R1 (t)|
+√
+√
+ψ(r) =
+1 − tanh
+, ψ1 (r, t) =
+1 − tanh
+,
+(33)
+2
+2
+2ϵs
+2ϵs
+
+13
+with the particle center R1 (t) evolving as Eq. (11) by
+R
+Ṙ1 = V1 (t) =
+
+dr ′ (1 − ψ1 )v(r ′ , t)
+R
+.
+dr ′ (1 − ψ1 )
+
+(34)
+
+In addition, we employ the parabolic profile of the inlet velocity at x = 0 to induce the pressure-driven flows inside
+the microchannel:
+
+
+v|x=0 = V0 z(H − z)/(H/2)2 .
+(35)
+
+2.
+
+Particle focusing in 2D microchannels
+
+Before carrying out simulations, as done in Sec. III A 2, we first non-dimensionalize the above dynamic equations by
+scaling the length by the channel width H, velocity by the maximal inlet velocity V0 , time by τ0 ≡ H/V0 , viscosity by
+ηf , pressure and stress by ηf V0 /H, and force by ηf V0 . Five dimensionless parameters appear, as shown in the following
+comprehensive list along with their physical interpretations. Moreover, we classify them into two general categories:
+
+FIG. 5. Inertial focusing of one (passive, suspended) circular colloidal particle by 2D single-phase pressure-driven flows in
+a microchannel with planar surfaces. (a) Schematic illustration of the simulation setup of dimensions L × H. Here, the
+equilibration distance Lmin refers to the minimum length in the x-direction at which the particle becomes focused from the initial
+center position of channel inlet at x = 0, and the equilibrium position zeq denotes (after the particle being focused) the distance
+of the particle center away from the bottom surface of the channel at z = 0. (b) Flow fields near the particle that has already
+been focused at equilibrium position zeq . (c) Equilibration (after ∼ 30τ0 ) of two individual particles starting from two different
+initial positions (z-coordinates) at the inlet boundary x = 0. (d) Dependence of equilibrium position zeq and equilibration
+distance Lmin on Reynolds number Re = ρV0 H/ηf . Here, we take the physics parameters to be: Re = ρV0 H/ηf = 32.0,
+Rep = ρV0 d/ηf = 10.67, rd = d/H = 1/3, and L/H = 6.0. We take the two “free” parameters to be: rϵs = ϵs /H = 0.01 and
+rη = rs /rf = 100.0. Periodic boundary conditions have been used in the x-direction.
+
+• (i) Measurable physics parameters defined based on measurable quantities. (1) Reynolds number: Re ≡ ρV0 H/ηf ,
+or, the particle Reynolds number: Rep ≡ ρV0 d/ηf . Alternatively, we can define another particle Reynolds
+number: Reps = ρV0 d2 /ηf H. It is the characteristic particle Reynolds number in shear flows [49, 50], which is
+the ratio of inertial forces ρ(2V0 d/H)2 (d/2) to hydrodynamic shear force 2ηf V0 d/H. (2) Stiffness parameter for
+
+14
+the particle-solid boundary interaction: K = k/Hηf V0 . In our simulations, we take Ks to be a large constant to
+avoid overlapping between the particle and the solid boundary. (3) Confinement strength or particle-diameter
+to channel width ratio: rd = d/H with 0 ⩽ rd ⩽ 1. Particularly, rd → 0 corresponds to the limit of free
+(no confinement) particle dynamics in shear flows. rd → 1 or d → H corresponds to the strongest (stuck)
+confinement case.
+• (ii) “Free” parameters arising from the DRD treatment of fluid-solid interfaces. (1) Viscosity ratios: rη = ηs /ηf .
+(2) Relative interfacial thicknesses: rϵs = ϵs /H.
+
+FIG. 6. Inertial focusing of one (passive, suspended) circular colloidal particle of diameter d by 2D single-phase pressuredriven flows in a corrugated (an asymmetrically curved) microchannel of inlet width H/2. (a) Schematic illustration of the 2D
+simulation setup of dimensions Lx × Lz . Here, the equilibration distance Lmin refers to the minimum length in the x-direction
+at which the particle becomes focused from the initial center position of channel inlet at x = 0, and the equilibrium position
+zeq denotes (after the particle being focused) the distance of the particle center away from the bottom surface of the channel
+as it passes through the middle of the channel at x = Lx /2. (b) Flow fields near the particle that has already been focused at
+equilibrium position zeq . (c) Equilibration (after ∼ 30τ0 ) of two individual particles starting from two different initial positions
+(z-coordinate) at the inlet boundary x = 0. The trajectories of the two individual particles gradually converge or coincide. (d)
+A further illustration of the equilibration of the two individual particles by calculating the difference ∆z in the z-coordinates of
+two particles when they are passing the same x position. (e) Dependence of zeq and Lmin on Reynolds number Re = ρV0 H/ηf .
+Here, we take the physics parameters to be: particle-solid boundary interaction stiffness, K = k/HηfV0 = 50.0, rd = d/H = 1/6,
+Lx /H = 3.5, Lz /H = 1.5; in the simulations of (b-d), we take Re = ρV0 H/ηf = 100.0 and hence Rep = ρV0 d/ηf = 16.67. We
+take the two “free” parameters to be: rϵs = ϵs /H = 0.005 and rη = ηs /ηf = 100.0. Periodic boundary conditions have been
+used in the x-direction.
+
+In this study, we perform only two-dimensional (2D) simulations in the x-z plane, as shown in Figs. 5 and 6.
+The microchannel has a length L and a characteristic width H. These simulations serve as standard benchmarks
+for assessing the coupling between rigid particles and confined fluid flow. Firstly, for particles focusing in planar
+microchannels, we observe that particles reach an equilibrium position zeq after traveling a minimum distance Lmin .
+This equilibrium position is independent of the initial particle location but exhibits a non-monotonic dependence on
+the Reynolds number, Re = ρV0 H/ηf (see Fig. 5(d)). Our results show qualitative agreement with previous direct
+numerical simulation (DNS) studies [51, 52]; more quantitative comparison and the exploration of focusing mechanisms
+leave to another undergoing work.
+Secondly, for inertial particles focusing in 2D corrugated (asymmetrically curved) microchannels, we find that
+particles also focus onto equilibrium positions after traveling a distance Lmin , which is again independent of the initial
+particle position. However, in contrast to planar microchannels, Lmin exhibits a monotonic dependence on Re (see
+Fig. 6(e)). Notably, the focusing distance in corrugated microchannels is approximately an order of magnitude smaller
+
+15
+than in planar channels, indicating that channel corrugation significantly enhances focusing efficiency, consistent with
+experimental findings [53].
+These benchmark simulations provide practical guidelines for selecting the two key “free” parameters: (i) a sufficiently small interface thickness, rϵs ⩽ 0.01, and (ii) an appropriate viscosity ratio, rη = ηs /ηf ⩾ 100.
+B.
+
+Benchmark simulation 2: Deformable (active) objects
+1.
+
+Governing dynamic equations
+
+In this section, we demonstrate the second advantage of our DRD approach – the capability of simulating hydrodynamic interactions between viscous fluids and (active) deformable objects. We combine the DRD approach with
+particle-based models of (active) deformable objects that have already been widely used in particle-based molecular
+simulations in soft matter and biological physics [40, 54]. Specifically, we consider the following fluid-solid two-phase
+flow: dynamics of active or passive, deformable or rigid objects in two-dimensional (single-phase) viscous shear flows,
+as shown in Fig. 8. In this fluid-solid two-phase flow, the fluid-fluid interface also does not exist, so the phase parameter ϕ is not needed, and the only interfacial phase parameters are ψ for solid boundaries and ψα (with α = 1, ..., N )
+for the rigid particles that compose the deformable object. Then, from the general dynamic equations (22) presented
+in Sec. II D, we obtain the following Navier-Stokes equation:
+
+
+ρ (∂t v + v · ∇v) = −∇P + ∇ · η(ψα ) ∇v + ∇v T + ftot ,
+(36)
+supplemented with the incompressibility condition, ∇ · v = 0. Here, the total force density ftot is given by
+ftot =
+
+N
+X
+
+Z
+(1 − ψα )Fext,α / dr ′ (1 − ψα )
+
+(37)
+
+α=1
+
+with the total external force Fext,α acting on the α-th particle given by Eq. (19). In the simulations of active
+deformable objects, we also take the simple harmonic form of the particle-solid boundary interaction potential Ups
+in Eq. (18c). However, the specific form of Upp depends on the specific particle-based model of the specific active
+deformable objects that will be discussed in the following subsections.
+
+FIG. 7. Schematic illustration of deformable objects composed of rigid particles. (a) A flexible fiber and (b) an elastic capsule
+composed of connected rigid particles using bead-spring model.
+
+2.
+
+Particle-based models for deformable (active) objects
+
+Flexible fibers: Bead-spring model [40] – A passive flexible fiber can be simulated using the bead-spring model [40,
+55]. As shown schematically in Fig. 7(a), the fiber consists of N identical rigid circular beads (of diameter d) that
+are connected by (N − 1) identical springs (of equilibrium length ℓ0 ). Flexible fibers show elastic resistance to both
+compression and bending. In this case, the interactions between fiber bead particles are represented by the following
+form of energy (per length in 2D):
+Upp (Rα ) =
+
+N
+−1
+X
+
+N
+−1
+X
+2
+1
+2
+ks (Rα,α+1 − ℓ0 ) −
+kb t̂α+1 · t̂α .
+2
+α=1
+α=1
+
+(38)
+
+16
+Here Rα,α+1 = |Rα,α+1 | is the distance between the center-of-mass of the two neighboring beads with Rα,α+1 =
+Rα+1 − Rα and Rα being the center-of-mass position of each bead. t̂α = Rα,α+1 /Rα,α+1 is tangential unit vector of
+the fiber. ks is the spring constant, and for inextensible fibers, a very large ks should be used such that the spring
+length is close to its equilibrium length ℓ0 , and hence the contour length of the fiber is also almost constant to be
+ℓc = N ℓ0 . kb is the bending constant that characterizes the bending stiffness of the fiber.
+Substituting the energy Upp in Eq. (38) and Ups in Eq. (18c) into Eq. (19), we obtain the total force applied on
+each particle bead of the flexible fiber to be
+Fext,α = Fs,α + Fb,α − ks (|D(Rα )| − d/2) (−n̂s,α ),
+in which the lateral spring force Fs,α is given by
+
+
+Fs,α = −ks (Rα−1,α − ℓ0 ) t̂α−1 − (Rα,α+1 − ℓ0 ) t̂α ,
+Fs,1 = ks (R1,2 − ℓ0 ) t̂1 ,
+
+for
+
+2 ⩽ α ⩽ N − 1,
+
+Fs,N = −ks (RN −1,N − ℓ0 ) t̂N −1 ,
+
+and the bending force Fb,α is given by
+"
+#
+
+ I − t̂α t̂α
+ I − t̂α−1 t̂α−1
+,
+− t̂α+1 + t̂α−1 ·
+Fb,α = kb t̂α + t̂α−2 ·
+Rα−1,α
+Rα,α+1
+
+Fb,1 = −kb t̂2 ·
+
+
+I − t̂1 t̂1
+,
+R1,2
+
+(39)
+
+Fb,N = kb t̂N −2 ·
+
+for
+
+(40a)
+(40b)
+
+3 ⩽ α ⩽ N − 2,
+
+
+I − t̂N −1 t̂N −1
+.
+RN −1,N
+
+
+#
+ I − t̂2 t̂2
+I − t̂1 t̂1
+,
+t̂2 ·
+− t̂3 + t̂1 ·
+R1,2
+R2,3
+
+(41a)
+
+(41b)
+
+"
+Fb,2 = kb
+
+"
+Fb,N −1 = kb
+
+t̂N −1 + t̂N −3
+
+
+
+
+#
+I − t̂N −2 t̂N −2
+I − t̂N −1 t̂N −1
+·
+− t̂N −2 ·
+,
+RN −2,N −1
+RN −1,N
+
+(41c)
+
+(41d)
+
+with I being the 2D unit tensor.
+Active (self-propelled) microswimmers: Dumbbell model — Next, to model self-propelling microswimmers, we employ the dumbbell force-dipole model proposed by Furukawa et al. [56], where a swimming microorganism comprises
+a dumbbell with a pair of prescribed dipolar force (see Fig. 8(a)). Each dumbbell microswimmer consists of one
+spherical body particle with diameter dB and one “phantom” particle with diameter dP . The phantom particle can
+be thought of as a far-field modeling of the effect of a thin flagellar bundle, whereby a force is exerted on the fluid
+at the position with a distance d0 away from the microswimmer’s body. The propulsion force −Fact,α = F0 ûα is
+exerted on the fluid via & at the phantom particle; an equal and opposite force Fact,α = F0 ûα is exerted on the
+body particle, which ensures the dipolar character of the swimming mechanism.
+Here the active propulsion force is
+
+B
+P
+B
+P
+m
+denotes and the
+/ Rα
+, where Rα
+assumed to be applied along the direction of unit vector ûα = Rα
+− Rα
+− Rα
+diameter dm of the particles and the distances of separation between them determine the shape of the microswimmer,
+where the subscripts m = B and P denote the body particles and the phantom particle of the dumbbell, respectively.
+Particularly, in 2D, we can represent ûα by ûα = (cos θα , sin θα ) with θα denoting the angle of ûα relative to the +x̂
+direction.
+Since each microswimmer is composed of two particles, it is more convenient to express the total force density ftot
+in the dynamic equation (36) into an alternative form as
+ftot =
+
+N
+X
+X
+
+(1 − ψαm )Fαm
+R
+,
+dr(1 − ψαm )
+α=1 m=B,P
+
+(42)
+
+where the external force Fαm (with m = B, P for body and phantom particles, respectively) acting on the center-of-mass
+of each microswimmer particle is given (from Eq. (19)) by
+FαB = Fact,α −
+
+X ∂Upp
+B
+∂Rβα
+β̸=α
+
+B
+R̂βα
+−
+
+∂Ups
+(−n̂B
+s,α ),
+∂|D(RB
+)|
+α
+
+FαP = −Fact,α ,
+
+(43)
+
+17
+with n̂B
+s,α being the outward unit vector of the solid surface closest to the body of the α-th microswimmer (pointing
+B
+B
+B
+B
+B
+B
+B
+toward the solid domain), Rβα
+≡ Rα
+− RβB , Rβα
+≡ |Rβα
+|, and R̂βα
+≡ Rβα
+/Rβα
+. The particle-solid boundary
+interaction potential Ups is taken to be the simple harmonic form as given in Eq. (18c).
+For the active force Fact,α = F0 ûα that is stochastic and drives the self-propulsion of the microswimmer, we assume
+it follows run-and-tumble (RTP) dynamics where the magnitude F0 is constant but the direction of Fact,α or ûα
+randomly undergoes complete reorientations (“tumbles”) at a certain rate [57]. The time interval ∆t between two
+subsequent tumbling is chosen using an exponential distribution P (∆t) = τp−1 e−∆t/τp with τp being the persistent
+time. When this time is reached, the microswimmer tumbles, a new orientation ûα is chosen uniformly in all 3D
+directions, or in 2D the orientation angle θα is chosen uniformly in [0, 2π], and then a new time interval ∆t is
+generated again from the same exponential distribution. In addition, we assume there are no interactions between
+phantom particles of different microswimmers, which therefore can overlap. However, an overlap between the body
+and phantom particles of different microswimmers leads to an unphysical effect [56]. Therefore, we assume that if
+the phantom particle of the α-th microswimmer overlaps with the “body” of another β-th microswimmer, that is,
+P
+− RβB < (dB + dP )/2, the active force Fact,α applied on the α-th microswimmer will be switched off by
+when Rα
+setting F0 = 0 until its phantom particle once again lies in a purely fluid region [56]. Similar switch rules also
+apply to the overlap of the phantom particle with the solid boundary. On the other hand, the body particles of
+different microswimmers should not overlap and exclude each other, and we take the (excluded volume) interactions
+Upp between the body particles of different microswimmers to be a simple harmonic form as given in Eq. (18b):
+ 
+2
+ B  X  1 k RB − d , RB ≤ d,
+βα
+βα
+2
+Upp Rβα =
+(44)
+0,
+RB > d.
+β̸=α
+
+βα
+
+with k being the interaction stiffness. Fluid slip is neglected at all particle surfaces and at solid boundaries and hence
+we take the spatially-varying viscosity η(r) in the form of Eq. (8a) as
+η(ψα ) = ηs + (ηf − ηs )
+
+N
+Y
+
+ψαB ,
+
+(45)
+
+α=1
+
+where the interfacial profile function ψαm of the particle takes the form of Eq. (10) as
+
+
+
+m
+1
+dm /2 − |r − Rα
+(t)|
+m
+√
+ψα (r, t) =
+1 − tanh
+,
+2
+2ϵs
+
+(46)
+
+m
+(t) being the center position of the body particle (m = B) and the phantom particle (m = P) of α-th
+with Rα
+m
+of the microswimmer’s body and phantom particles are updated using the bodymicroswimmer. The positions Rα
+B
+particle velocity Vα (t) and the orientation ûα (t) of the microswimmer
+R ′
+dr (1 − ψαB )v(r ′ , t)
+B
+P
+B
+R
+Ṙα
+= VαB (t) ≡
+, Rα
+(t) = Rα
+(t) − d0 ûα (t),
+(47)
+dr ′ (1 − ψαB )
+
+respectively.
+3.
+
+Far-field dipolar flow field surrounding dumbbell microswimmers
+
+As done in Sec. III A 2, we non-dimensionalize the above dynamic equations. In addition to the six dimensionless
+parameters, Re ≡ ρV0 H/ηf or Rep ≡ ρV0 d/ηf or Reps = ρV0 d2 /ηf H with V0 being the characteristic velocity; Péclet
+number, Pes ≡ τp /τ0 with τp being the persistence time of the run-and-tumble motion of the microswimmer and
+τ0 = H/V0 being the time unit; Ks = ks /Hηf V0 ; rη ≡ ηs /ηf ≫ 1; rϵ ≡ ϵs /H; rd = d/H, as given in Sec. III A 2, one
+more dimensionless parameter arises: Kb = kb /Hηf V0 , the stiffness parameter for the fiber bending resistance.
+To apply the DRD approach to simulate mFSI in active matter hydrodynamics, we first validated the DRD approach
+by simulating the flow field generated by a dumbbell microswimmer (see Fig. 8(a)), which is known as a “pusher”
+and the far-field flow field surrounding the pusher (centered at the origin) is approximated by that of a point force
+dipole [56]
+2
+
+v(r) =
+
+bα ) − 1
+d0 F0 2 (r̂ · u
+r̂,
+4πηf
+|r|
+
+(48)
+
+where r̂ = r/|r|, and r is the distance vector relative to the center of the dipole. In Fig. 8(b), the flow field at a
+distance of several swimmer body-lengths is shown to match the dipolar flow field given in Eq. (48) very well.
+
+18
+
+FIG. 8. (Color online) (a) A dumbbell model microswimmer (no tumbling) composed of a body particle with diameter dB and
+a “phantom” particle with diameter dP . The center-to-center distance between the body particle and the phantom particle is
+fixed at d0 . (b) Simulated flow field (the top half part) induced by the dumbbell microswimmer (in the reference frame moving
+with the microswimmer) in a square computational domain of dimensions H × H. Analytical far-field flow field induced by
+an extensible force dipole is also plotted (the bottom half part) for comparison. (Inset) The simulated near-field flow in the
+vicinity of (within a distance of 4d0 away from) the center of the microswimmer. Here, we take the physics parameters to be:
+Re ≡ ρV0 H/ηf = 1.0 and hence Rep ≡ ρV0 dB /ηf = 0.05; dB /H = dP /H = 0.05, and d0 /H = 0.075. We take the two “free”
+parameters to be: rη = rs /rf = 100.0 and rϵs = ϵs /H = 0.004. Periodic boundary conditions have been used in both x− and
+z− directions.
+
+C.
+
+Benchmark simulation 3: Two-phase flows on solid surfaces
+1.
+
+Governing dynamic equations
+
+In this section, we demonstrate the third advantage of our DRD approach – the capability of simulating multiphase
+flows on solid surfaces. Specifically, we consider two-phase flows on solid surfaces: moving contact line dynamics of
+two immiscible two-phase flows on solid surfaces, as shown in Fig. 9. In this triple-phase flow, the fluid-fluid interface
+and the fluid-solid interface are described by two-phase parameter functions ϕ and ψ, respectively. The interfacial
+profile function ψ of the solid boundary takes the general form of Eq. (1). In this case, the total free energy is given
+from Eq. (13) by
+
+
+ 
+Z
+1
+2
+2
+(49)
+F [ϕ(r), ψ (r)] = dr ψ fb (ϕ) + K|∇ϕ| + ϵs fs (ϕ) |∇ψ| ,
+2
+2
+where fb (ϕ) = 14 a ϕ2 − 1 is the bulk free energy density and fs (ϕ) = − 14 γ cos θs (ϕ3 − 3ϕ) is the surface energy
+densities at the fluid-particle interface with θs being the static contact angle at the particle
+R surface. The dissipation
+function is given by Eq. (20) and then minimizing the Rayleighian R[v, J ] = Ḟ + Φ − drP ∇ · v in Eq. (21) with
+respect to v and J gives dynamic equations similar to Eqs. (22):
+
+
+ρ (∂t v + v · ∇v) = −∇P + ∇ · η(ϕ, ψ) ∇v + ∇v T + µ̂∇(ψϕ),
+(50a)
+∂t (ψϕ) + v · ∇(ψϕ) = ∇ · [M (ϕ, ψ)∇µ̂] ,
+
+(50b)
+
+and the incompressibility condition ∇ · v = 0, which are supplemented with proper initial and boundary conditions
+at the boundary of the computational domain. Here the total chemical potential, µ̂ defined in Eq. (16) reduces to
+2
+
+ψ µ̂ = ψµb − ∇ · (Kψ∇ϕ) + ϵs µs |∇ψ| .
+
+(51)
+
+Moreover, since fluid slip and relaxation dissipation across the fluid-solid interface are both critical in multiphase
+dynamics, particularly, in the contact line motion [33], we choose the non-monotonic smooth profiles of viscosity
+η(ϕ, ψ) and mobility M (ϕ, ψ) given in Eq. (8b).
+
+19
+
+FIG. 9. Schematic illustration for the moving contact line in immiscible two-phase flows on a planar solid surface. The
+immiscible two-phase fluid domain is distinguished by different values of the phase parameter ϕ while sharing the same value
+of the phase parameter ψ = +1. The solid domain is represented by ψ = 0 and ϕ = ϕs . To fully reproduce Qian-WangSheng’s model [33, 58], we introduce an intermediate domain, which has a small thickness ϵi (magnified in the figure for better
+illustration), a very low viscosity ηi (with ηi < ηf ≪ ηs ), and a very low mobility Mi (with Mi < Mf , and noting Ms ≪ Mf ).
+
+2.
+
+Sharp-interface limit and generalized Navier boundary conditions (GNBC)
+
+Now we consider the sharp-interface limit of the general dynamics equations in Sec. III C 1 that are derived based
+on the diffuse fluid-solid interface, from which we show that generalized Navier boundary conditions (GNBC) at
+solid surface derived by Qian et al. [33, 58] can be recovered. For specificity and simplicity, we consider immiscible
+two-phase flows over a rigid solid domain with a planar surface at z = 0 (with outward normal direction n̂s along
+−ẑ-direction) as shown in Fig. 9. In this case, the interfacial profile function ψ in Eq. (1) of the solid boundary
+reduces to a simpler form
+
+
+
+z
+1
+1 − tanh √
+ψ(z) =
+.
+(52)
+2
+2ϵs
+Moreover, to fully reproduce Qian-Wang-Sheng’s model, we introduce a third intermediate domain between the fluid
+and solid regions (see Fig. 9). This intermediate domain has a small thickness ϵi , a very low viscosity ηi (with
+ηi < ηf ≪ ηs ), and a very low mobility Mi (with Mi < Mf , and noting Ms ≪ Mf ). Both η(ψ) and M (ψ) are
+interpolated using the piecewise linear form given in Eq. (8b).
+Here, instead of using traditional mathematical methods to derive sharp-interface limits of dynamic equations,
+we directly carry out the sharp-interface limits of the change rate of the total free energy ḞT in Eq. (15) and the
+dissipation function in Eq. (20). Firstly, integrating ḞT in Eq. (15) cross the fluid-solid interface of small thickness
+ϵs , we obtain the rate of change of the fluid-solid interface energy in the sharp-interface limit as
+
+
+Z
+Z +ϵs /2
+Z
+
+
+∂fs
+2
+∂t ϕ,
+(53)
+Ḟsurf ≈ dA
+dz −∂z (Kψ∂z ϕ) + ϵs µs (∂z ψ) ∂t ϕ ≈ dA −K∂z ϕ +
+∂ϕ
+−ϵs /2
+where dA is the area element of the solid surface, the surface energy density is fs (ϕ) = − 14 γ cos θs (ϕ3 − 3ϕ), and we
+√
+R +∞
+have used the identity −∞ dzϵs (∂z ψ)2 = 2 2/3. Secondly, noting that the dominant component of the shear rate
+tensor in the fluid-solid interfacial region is ∂z vx ∼ vxslip /ϵs and J ≈ Jz ẑ ∼ −ϕ̇ϵs , we obtain the dissipation function
+at the fluid-solid interface from Eq. (20) as
+"
+#
+ Z
+Z
+Z +ϵs /2 
+2
+2
+
+1
+J
+1
+ϕ̇
+2
+Φsurf [v, J ] ≈ dA
+dz ηi (∂z vx )2 + z = dA β vxslip +
+,
+(54)
+4
+2Mi
+2
+2Γ
+−ϵs /2
+with vxslip being the slip velocity of the fluids relative to the solid at the solid surface. Here the friction coefficient
+β ∼ ηi /ϵs and hence the slip length ℓs ≡ ηf /β relative to the thickness ϵi of intermediate region scales as ℓs /ϵs ∼ ηf /ηi .
+On the other hand, the relaxational parameter Γ ∼ Mi /ϵ3s and hence the relaxation time τs ≡ ϵs /KΓ at the fluid-solid
+interfacial region relative to that τf ∼ ϵ4 /Mf K in the fluid-fluid interfacial region scales as τs /τf ∼ Mf /Mi (since
+
+20
+the thicknesses of fluid-fluid and fluid-solid are of same order ϵ ∼ ϵs ). Thirdly, the change rate of the free energy
+functional and the dissipation functional in the bulk two-phase fluids (with ψ = +1) are given by
+Z
+Ḟbulk =
+
+Z
+dr µ̂CH ∂t ϕ,
+
+Φbulk [v, J ] =
+
+
+
+
+1
+1 −1 2
+T 2
+dr ηf (∇v + ∇v ) + Mf J ,
+4
+2
+
+(55)
+
+respectively, with the Cahn-Hilliard chemical potential µ̂CH ≡ µb − ∇ · (K∇ϕ).
+Furthermore, using ϕ̇ = ∂t ϕ + vx ∂ϕ (due to the impermeability condition, imposed by large viscosity in the solid
+domain in our DRD approach) at the sharp fluid-solid interface and the incompressibility condition ∇·v = 0,
+R we obtain
+the Rayleighian in the limit of sharp fluid-solid interface: R[v, J , vxslip , ϕ̇] = Ḟbulk + Ḟsurf + Φbulk + Φsurf − drP ∇ · v,
+which has been constructed by Qian et al. [33, 58]. That is, our general model in the DRD approach can recover all
+the thermodynamically consistent boundary conditions in the sharp interface limit, including the famous generalized
+Navier boundary conditions (GNBC). Finally, note that if we take the linear monotonic form of η and M as shown in
+Eqs. (8a), we will recover the no-slip boundary condition for velocity and equilibrium condition for ϕ, i.e., vxslip = 0
+and −K∂z ϕ + ∂γFS /∂ϕ = 0 with γFS = fs (ϕ) being the fluid-solid interfacial tension.
+
+FIG. 10. Equilibrating dynamics of a sessile droplet on a planar solid substrate with two different (static) contact angles: (a)
+θs = 30o and (b) θs = 150o . The interface profiles (solid curves) of the droplet, the flow fields (arrows), and the solid phase
+(gray) are all shown in the snapshots of the simulations. Here, we take the physics parameters to be: Re ≡ ρV0 H/ηf = 3.0,
+Ca ≡ ηf V0 /γ = 0.08, Hs /H = 0.2, and ℓs /H = 0.0. We take the “free” parameters to be: (1) free parameters due to the use
+of diffuse fluid-fluid interface model, rϵ = ϵ/H = 0.01, M ≡ Mf a/V0 H = 0.05; (2) free parameters due to the use of DRD
+method, rϵs = ϵs /H = 0.005, rη = ηs /ηf = 100.0, and rM = Ms /Mf = 0.0. Periodic boundary conditions have been used in the
+x-direction.
+
+21
+3.
+
+Equilibrating dynamics of sessile droplets on planar surfaces
+
+As done in Sec. III A 2, we non-dimensionalize the above dynamic equations by scaling the length by the system
+width or height H, velocity by some characteristic velocity V0 , time by τ0 ≡ H/V0 , pressure and stress by ηf V0 /H,
+chemical potential by a, viscosity by ηf , the mobility coefficient by Mf . Fourteen dimensionless parameters appear, as
+shown in the following comprehensive list along with their physical interpretations. Moreover, we classify them into
+three general categories:
+• (i) Measurable physics parameters defined based on measurable quantities. (1) Reynolds number: Re ≡ ρV0 H/ηf .
+(2) Capillary number: Ca ≡ ηf V0 /γ. (3) Relative contact-angle relaxation time: τs /τ0 = τs V0 /H. (4) Static
+contact angles θs ∈ [0, π]. (5) Solid-to-fluid dimension ratio: Hs /H. (6) Relative “slip” length in GNBC: ℓs /H.
+• (ii) “Free” parameters in diffuse-interface models for multiphase fluids. These include parameters intrinsic to
+diffuse-interface formulations. (1) Relative interfacial thicknesses rϵ = ϵ/H. (2) Interfacial mobility parameter:
+M ≡ Mf a/V0 H, the ratio of τ0 to the relaxation time τf /rϵ2 with τf = ϵ2 /aMf = ϵ4 /Mf K being the fluid-fluid
+interfacial relaxation time.
+• (iii) Parameters arising from the DRD treatment of fluid-solid interfaces. (1,2) Viscosity ratios: rη = ηs /ηf
+and rηi = ηi /ηf . (3,4) Mobility ratios, rM = Ms /Mf and rMi = Mi /Mf . (5,6) Relative interfacial thicknesses:
+rϵs = ϵs /H and rϵi = ϵi /H.
+Moreover, in Sec. III C, we analyze the sharp-interface limit (rϵs = ϵs /Hs → 0) of the DRD model for two-phase
+flows on solid surfaces. It reveals that some parameters from the DRD treatment are related to measurable quantities.
+Consequently, the effective number of free parameters is reduced. For example, the slip length ℓs in the GNBC is
+and the relative relaxation time of dynamic contact angle θ to static contact
+found to scale as ℓs /ϵi ∼ ηf /ηi = rη−1
+i
+−1
+angle θs scales as τs /τf ∼ Mf /Mi = rM
+. Therefore, only six free parameters remain: rϵ = ϵ/H, τf /τ0 , rϵs = ϵs /H,
+i
+rϵ = ϵ/H, rη = ηs /ηf , and rM = Ms /Mf .
+
+FIG. 11. Spreading dynamics of a droplet on a flat solid substrate (gray region): Comparison of the simulation results using our
+DRD method (black dashed lines) and the standard “sharp fluid-solid interface” method (red solid lines) [35] at different time
+steps (t/τ0 = 0, 0.05, 0.1, 0.2, 0.3, 0.5). Here, we take the physics parameters to be: Re ≡ ρV0 H/ηf = 3.0, Ca ≡ ηf V0 /γ = 0.08,
+θs = 60◦ , Hs /H = 0.2, and ℓs /H = 0.0. We take the “free” parameters to be: (1) free parameters due to the use of diffuse
+fluid-fluid interface model, rϵ = ϵ/H = 0.01 and M ≡ Mf a/V0 H = 0.05; (2) free parameters due to the use of DRD method,
+rϵs = ϵs /H = 0.005, rη = ηs /ηf = 100.0, and rM = Ms /Mf = 0.0. Periodic boundary conditions have been used in the
+x-direction.
+
+22
+
+FIG. 12. Analysis of simulation accuracy using DRD approach in comparison to those obtained using the standard “sharp
+fluid-solid interface” method [35] as shown in Fig. 11. (a,b) The difference map in phase variable ϕ field and velocity fields
+v = {vx , vy } between the DRD and the sharp-fluid-solid-interface methods at (a) t/τ0 = 0.1 and (b) at t/τ0 = 0.5. (c) The
+time evolution of the L2 errors in the fields of ϕ and v = {vx , vy }, which remain below 0.005 and 0.01, respectively, throughout
+the simulations.
+
+In Fig. 10, we present DRD simulation results for the equilibration dynamics of sessile droplets on a planar solid
+substrate with two distinct static contact angles (30◦ and 150◦ ). Starting from an initial condition at t = 0 with
+a contact angle of 90◦ , the droplets are observed to either spread or dewet spontaneously until they equilibrate at
+the preset static contact angles. This test serves as a standard benchmark for assessing spurious currents in surface
+tension implementations. Moreover, it provides practical guidelines for selecting the six “free” parameters in our
+model, namely: sufficiently small interface thicknesses, rϵ = rϵs = rϵi ⩽ 0.01 (i.e., all the interfacial thicknesses are
+taken to be the same small value); proper values of mobility parameter M ∼ 0.01 [59], viscosity ratio, rη = ηs /ηf ⩾ 100,
+and mobility ratio, rM = Ms /Mf = 0.
+In Fig. 11, we present the simulation results for a droplet spreading on a flat solid substrate. The evolution of
+the droplet profile obtained from our DRD method and the standard “sharp fluid-solid interface” method [35] are
+nearly indistinguishable(as also shown in Fig. 12(a,b)); the L2 errors of the phase-field variable ϕ and velocity field
+v = {vx , vy } remain below 0.005 and 0.01, respectively, as shown in Fig. 12(c)), further confirming the accuracy
+of the proposed DRD method. Here, numerical simulations are conducted with the following parameters: interface
+
+23
+thickness ϵ = 0.01, ϵs = 0.5ϵ = 0.005, domain [0, 1] × [0, 1], number of grids Nx = 128, Nz = 128, and mesh size
+∆x = ∆z = 1/128.
+
+D.
+
+Cutting-edge applications across diverse fields
+1.
+
+Applications in microfluidics
+
+In microfluidics, researchers focus on manipulating and controlling fluids in channels at microscales [1]. DNS
+provides detailed insights into fluid behaviors and enables researchers to study phenomena such as droplet formation,
+mixing, and particle transport, which are crucial for advancing microfluidic technologies and applications. However,
+many significant challenges have been posed to the DNS of mFSI in microfluidics due to the complex interactions
+between different fluid phases and the confined complex geometries involved.
+In Sec. III A 2, we have demonstrated the validity and power of the DRD approach in overcoming these challenges,
+we carried out benchmark simulations of inertial particle focusing in 2D microchannels with planar and corrugated
+surfaces. The results agree well with those obtained from other DNS methods [51] (see Figs. 5 and 6). Moreover, in
+Sec. III C 3, we have simulated the equilibrating dynamics of a sessile droplet on planar solid surfaces with various
+contact angles (see Figs. 10). Here, we use DRD to simulate a more advanced process in microfluidics: the transport
+of a droplet with a suspending flexible fiber in an asymmetrically curved microchannel (see Fig. 13). Interestingly,
+we observed a stick-slip motion of the droplet contact lines on the microchannel surfaces, which can be attributed
+to the strong dependence of effective slip length on the local curvature of the corrugated microchannel. It has been
+predicted before [60] that fluid slip is enhanced (or suppressed) by concave (or convex) surfaces. Therefore, one would
+expect the contact lines to slip when moving from convex to concave surfaces and stick when moving in turn from
+concave to convex surfaces (see Fig. 13).
+
+FIG. 13. (Color online) Applications in microfluidics: Transport of a droplet containing a flexible fiber (composed of particles
+of diameter d) in a corrugated microchannel of inlet width H/2. A snapshot of the whole computational domain is shown, and
+the contact lines show an interesting stick-slip motion. Here, we take the physics parameters to be: Re ≡ ρV0 H/ηf = 1.0, Ca ≡
+ηf V0 /γ = 0.01,d/H = 0.05, Lx /H = 3.5, Lz /H = 1.5, and ℓs /H = 0.0. The static contact angles at the channel surface and the
+fiber surfaces are θs = 135o and θs = 90o , respectively. Particle-solid boundary interaction stiffness, K = k/HηfV0 = 25, fiber
+bead-spring stiffness Ks = ks /HηfV0 = 5.0, and fiber bending stiffness, Kb = kb /HηfV0 = 0.25. We take the “free” parameters
+to be: (1) free parameters due to the use of diffuse fluid-fluid interface model, rϵ = ϵ/H = 0.01 and M ≡ Mf a/V0 H = 0.05;
+(2) free parameters due to the use of DRD method, rϵs = ϵs /H = 0.005, rη = ηs /ηf = 100.0, and rM = Ms /Mf = 0.0. Periodic
+boundary conditions have been used in the x-direction.
+
+2.
+
+Applications in active matter hydrodynamics
+
+Active matter dynamics refers to the collective behaviors exhibited by self-propelled entities, such as bacteria, cells,
+or synthetic micro-robots, that interact with their environment [61]. For hydrodynamic behaviors of active matter,
+DNS provides valuable insights into the underlying mechanisms and enables researchers to understand emergent phenomena such as pattern formation, phase separation, and dynamic self-assembly, that are essential for understanding
+
+24
+living matter systems and designing active matter-based technologies, such as micro-robots, drug delivery systems,
+and self-healing materials. However, mFSI in active matter hydrodynamics presents many significant challenges to
+DNS due to the complex interactions between the self-propelled entities and their surrounding fluid environment.
+
+FIG. 14. (Color online) Applications in active matter hydrodynamics: Dynamics of a flexible fiber (composed of rigid beads of
+diameter d) suspending in a bath of (dumbbell) microswimmer suspension (where the microswimmer is shown in Fig. 8(a)). (a)
+A snapshot of the whole computational domain is shown. (b) Comparisons of the mean-square-displacement (MSD ∝ tα ) of the
+center-of-mass of the fiber (superdiffusive, α > 1) in wet microswimmer baths with those (normally diffusive, α = 1) in dry active
+baths. Here, we take the physics parameters to be: Re ≡ ρV0 H/ηf = 1.0, Pes ≡ τp /τ0 = 0.1, d/H = dB /H = dP /H = 0.05;
+stiffness parameters of the particle-particle interaction, fiber stretching and bending: K = 5.0, Ks = 5.0 and Kb = 0.0025. The
+number of swimmers is 40, and the number of fiber particles is 15. We take the “free” parameters to be: rϵs = ϵs /H = 0.004,
+rη = ηs /ηf = 50.0, and rM = Ms /Mf = 0.0. Periodic boundary conditions apply along both x− and z− directions.
+
+To apply the DRD approach to simulate mFSI in active matter, we have validated the DRD approach in Sec. III B 3
+by simulating and confirming the far-field dipolar flow field generated by a dumbbell model microswimmer [56]
+(see Figs. 8(b)). Here, we use DRD approach to simulate a much more complex active matter dynamic system:
+the interaction of 40 dumbbell microswimmers (with a volume fraction ∼ 8%) with a fairly flexible (passive) fiber
+composed of 15 rigid beads (see Fig. 14). Two types of simulations have been carried out: (i) DRD (wet) simulations
+with hydrodynamic interactions (HIs) and (ii) Brownian (dry) dynamics simulations without HIs, to unveil the effects
+of HIs on the emergent dynamics of the fiber. In Fig. 14(a), we observed the emergence of a turbulent-like flow pattern
+in the suspension of self-propelling microswimmers; the fiber is deformed significantly but quite differently from that in
+dry active baths, highlighting the potential significance of HIs. Moreover, the effects of HIs can be further recognized
+by tracking the center-of-mass of the fiber and comparing its mean-square-displacement (MSD) in wet microswimmer
+baths with those in dry active baths, as shown in Fig. 14(b). The diffusion of the fiber is super-diffusive in the wet
+bath of microswimmers with HIs, while it is normally diffusive (Brownian) for the fiber immersed in the dry active
+bath without HIs [62].
+
+IV.
+
+APPLICATIONS TO REACTIVE POROUS-MEDIA FLOWS WITH EVOLVING SOLID SURFACES
+
+The DRD approach can also be applied to the study of mFSIs, which involve the evolution of solid surfaces
+due to phase transitions or chemical reactions, such as those occurring during crystal growth and melting [63], as
+well as precipitation and dissolution in porous media [21], etc. In particular, direct numerical simulation (DNS)
+at microscopic pore scales for flows involving precipitation and dissolution can yield detailed insights into the complex interplay among multiphase flow patterns, capillary forces, transport processes, pore-scale heterogeneities, and
+fluid–solid phase transitions. This knowledge is crucial for various applications [64], including filtration processes
+and microbially/enzyme-induced calcite precipitation (MICP/EICP) for soil stabilization, ultimately facilitating the
+design of sustainable porous-media systems and the optimization of MICP/EICP performance.
+
+25
+1.
+
+Governing dynamic equations
+
+Here, as an example, we consider the precipitation & dissolution in an array of solid particles (nucleates, see Fig. 16),
+where viscous flows are coupled with solute diffusion in the bulk and precipitation & dissolution at the solid surfaces.
+Such precipitation & dissolution can be regarded as a chemical reaction where the solute molecules in the fluid bulk
+and those in the solid are two different species transforming through the elementary reaction
+Fluid Solute ⇌ Solid Solute.
+
+(56)
+
+In this case, the fluid is a single-phase solution with diffusing solute concentration c(r, t), while in the solid phase,
+the solute concentration is always a constant cs , and the position, structure or shape of the solid evolves with time.
+In this fluid-solid two-phase flow, the fluid-fluid interface is not present, so the phase parameter ϕ is not needed,
+and the only interfacial phase parameter is ψ for the solid boundary, taking the form of Eq. (1). The conservation of
+solutes is ensured by the balance equation of ψc:
+∂t (ψc) + v · ∇(ψc) = −∇ · J − rp (1 − c/cs )|∇ψ(r, t)|,
+
+(57)
+
+where v is the velocity field following the incompressibility condition ∇ · v = 0, J is the diffusion flux, and rp denotes
+the net rate of precipitation (rp > 0) or dissolution (rp < 0) that occurs only at the fluid-solid interface (as indicated
+by the factor of |∇ψ(r, t)|).
+To model the evolution of ψ and solid shapes or structures, we have several different choices [14, 15]. We can
+prescribe the fluid-solid phase parameter ψ based on the interface positions obtained by the local evolving velocity of
+the solid surface, Vs = −n̂s rp /cs , determined by local precipitation kinetics, with the unit normal vector n̂s pointing
+along −ẑ-direction. However, this method becomes problematic when interfaces break or coalesce. To address this
+issue, we can use the level-set method to solve the Hamilton-Jacobi equation for the signed distance function D(r, t)
+or ψ:
+∂t D(r, t) +
+
+rp
+|∇D(r, t)| = 0,
+cs
+
+or,
+
+∂t ψ(r, t) +
+
+rp
+|∇ψ(r, t)| = 0.
+cs
+
+(58)
+
+In this way, the interface breakup or coalescence can be simulated without additional difficulties. Alternatively, we
+can also use the phase-field method through the Cahn-Hilliard equation for ψ [14]:
+−1 2 2
+∂t ψ(r, t) − τsn
+ϵs ∇ µψ +
+
+rp
+|∇ψ(r, t)| = 0,
+cs
+
+(59)
+
+
+with µψ = ψ − 3ψ 2 + 2ψ 3 − ϵ2s ∇2 ψ being the generalized chemical potential and τsn is a timescale governing the
+relaxational dynamics of interface profile that should be chosen to be smaller than ϵs cs /rp .
+Next, we employ the OVP to derive the governing dynamic equations. Firstly, the free energy of the two-phase
+system is given by
+Z
+F [c(r), ψ(r)] = dr [ψf (c) + (1 − ψ)fss (cs )] ,
+(60)
+with f (c) = kB T c ln c and fss (cs ) being the free energy density in the fluid and the solid phases, respectively. Secondly,
+the dissipation function includes contributions from three dissipation mechanisms (viscous dissipation, diffusion, and
+reaction) as
+
+
+Z
+1
+kB T
+1 2
+Φ[v, J , rp ] = dr η(ψ)(∇v + ∇v T )2 +
+J2 +
+rp |∇ψ(r, t)| .
+(61)
+4
+2cD(ψ)
+2Γ
+R
+Thirdly, minimizing the Rayleighian R[v, J , rp ] = Ḟ + Φ − drP ∇ · v gives the following complete set of dynamic
+equations
+
+
+ρ (∂t v + v · ∇v) = −∇P + ∇ · η(ψ) ∇v + ∇v T ,
+(62a)
+∂t (ψc) + v · ∇(ψc) = ∇ · (D(ψ)∇c) − rp (1 − c/cs )|∇ψ(r, t)|,
+−1 2 2
+∂t ψ(r, t) − τsn
+ϵs ∇ µψ +
+
+rp
+|∇ψ(r, t)| = 0,
+cs
+
+(62b)
+(62c)
+
+26
+rp = kr (c2 /c2eq − 1),
+
+(62d)
+
+where we have assumed the first-order reaction kinetics [65] for surface precipitation with kr being a (positive) constant
+reaction rate and ceq (< cs ) being some equilibrium concentration when precipitation or dissolution stops [65]. The
+smooth profiles of viscosity η(r) and diffusivity D(r) are taken to be the linear monotonic interpolation form given
+in Eq. (8a) as
+η(ψ) = ηs + (ηf − ηs ) ψ,
+
+D(ψ) = Ds + (Df − Ds ) ψ.
+
+(62e)
+
+A very large viscosity ηs (≫ ηf ) and very small diffusivity Ds (≪ Df ) in the solid domain can reproduce the following
+boundary conditions in the sharp interface limit: v = 0 and −n̂s · D∇c = rp (1 − c/cs ). Four major dimensionless
+parameters arise: (1) Reynolds number, Re ≡ ρHkr /ηf cs , (2) Péclet number, Pe ≡ V0 H/Df with V0 being the
+maximum inlet velocity, (3) Damköhler number, Da ≡ Hkr /Df cs , and (4) Interfacial mobility parameter: M ≡ τpr /τsn ,
+the ratio of the precipitation time τpr ≡ Hcs /kr to the fluid-fluid interfacial relaxation time τsn . Using the same
+algorithm as before, we integrated the dynamic equations (62) in 2D using the finite difference method on staggered
+grids [35].
+
+2.
+
+Precipitation dynamics in 1D and 2D
+
+To validate the DRD approach for simulating mFSI in porous-media flows involving solute precipitations, we firstly
+applied it to model the precipitation dynamics in a 1D fluid–solid system, as schematically illustrated in Fig. 15(a). We
+then compared the numerical solutions for h(t) obtained using the DRD approach with both the analytical solutions
+and the numerical solutions from the sharp interface model (see appendix C). We observed a strong quantitative
+agreement between the two solutions across a wide range of Damköhler number or Karlovitz number: Da ∈ [0.01, 1000]
+or Ka ∈ [0.001, 100], as shown in Fig. 15(b).
+
+FIG. 15. (a) Schematic illustration for the precipitation or dissolution at the fluid-solid interface in 1D. (b) Comparisons
+between the numerical solutions (gray open markers) obtained from the DRD approach with those (black open markers) from
+sharp interface models in a large range of Damköhler number: Da ≡ kr H/Df cs ∈ [0.01, 1000]. Here, we take the other physics
+parameters to be: equilibrium concentration ceq /cs = 0.8, and environment concentration c0 /cs = 0.85. We take the “free”
+parameters to be: rϵs = ϵs /H = 0.003, rη = ηs /ηf = 100.0, M ≡ τpr /τsn = 0.05, and rD = Ds /Df = 0.0. Periodic boundary
+conditions have been used in the x-direction.
+
+Secondly, we use the DRD to simulate a single-phase flow passing through a porous media initially composed of a
+hexagonal lattice of circular nucleates where viscous flows are coupled with solute diffusion in the bulk and precipitation
+at the solid surfaces (see Fig. 16). We found that some holes are formed and the highly heterogeneous porous structure
+can be controlled and manipulated by tuning the competing transport phenomena through dimensionless parameters.
+Further DNS explorations of this system would help to optimize important engineering processes such as MICP/EICP.
+
+27
+
+FIG. 16. (Color online) Applications in reactive porous-media flows with precipitation at solid surfaces (of initial solid volume
+fraction ≈ 13%). A snapshot is taken for the whole computational domain, including the flow field (arrows), the concentration
+field (color), and the evolved porous structure (gray) that is composed initially of a hexagonal lattice of circular nucleates
+(dashed lines, of diameter 0.2H). Here, we take the physics parameters to be: Re = 2.72, Pe = Da = 1.0, ceq /cs = 0.8,
+and the inlet concentration c0 /cs = 0.9. We take the “free” parameters to be: rϵs = ϵs /H = 0.01, rη = ηs /ηf = 100.0,
+M ≡ τpr /τsn = 0.05, and rD = Ds /Df = 0.0. Inlet/outlet conditions apply in the x− direction, and periodic boundary
+conditions and inlet/outlet conditions apply in the z− direction.
+
+V.
+
+CONCLUSION
+
+In summary, we have proposed and validated a generic monolithic direct numerical simulation (DNS) approach–
+the diffuse resistance domain (DRD) approach–for microscale fluid-structure interactions (mFSI) in multicomponent
+multiphase flows, which are ubiquitous in both nature and modern engineering processes. In contrast to other DNS
+methods for mFSI problems [1–3], the DRD approach naturally overcomes several major challenges: (i) thermodynamic
+consistency is ensured by employing Onsager’s principle in the construction of the model (including both the bulk
+equations and boundary conditions); (ii) the complex interfacial dynamics at fluid–solid interfaces are accurately
+captured by smoothly interpolating dynamic resistance coefficients across the fluid and solid domains. Importantly,
+classical boundary conditions (e.g., the fluid-impermeability, no-slip, Navier-slip, generalized Navier-slip, and dynamic
+contact-angle hysteresis conditions) are all reproduced by the DRD approach, as demonstrated by our sharp-interface
+limit analysis. Moreover, in contrast to the diffuse-domain method [14], the governing equations in the DRD approach
+for systems involving both multiphase fluids and solid structures assume the same form as those for multiphase
+fluids alone, thereby significantly simplifying the development of numerical algorithms. Finally, unlike multiphasefield methods for mFSI—which evolve phase parameter fields dynamically (e.g., via Cahn–Hilliard or Allen–Cahn
+equations)—the DRD approach delineates fluid–solid interfaces through prescribed functions that vary smoothly
+across the interface. This not only simplifies the energy construction for solids (especially in the rigid limit) but also
+substantially reduces computational costs, particularly when the solids move, deform, or evolve. Interestingly, the
+advanced applications of the DRD approach presented in this work yield preliminary simulation results that capture
+complex mFSI phenomena in microfluidics, active matter hydrodynamics, and precipitation dynamics in porous
+media, qualitatively aligning with recent experimental observations. Nevertheless, a comprehensive exploration of all
+relevant dimensionless parameters, further quantitative analyses in 3D simulations (e.g., in ongoing DRD simulations
+of particle focusing in 3D microchannels), and direct comparisons with experimental measurements will be essential
+in future studies.
+In addition, here we adopt diffuse-interface two-phase flows—governed by the field parameter ϕ—as a representative
+model for structured complex fluids, where order parameters are required to capture microstructural evolution. The
+DRD approach can be further extended (e.g., by combining with deformable particle model [54] and dynamic van der
+Waals theory [66]) to simulate more complex mFSI that involves multiphysics multi-field couplings, e.g., viscoelastic
+fluids, deformable elastic continuous solids, external electric or magnetic fields, two-phase fluids in heat flow and/or
+involving phase transitions, thermal fluctuations, and biological activities. Such a generic efficient DNS approach for
+mFSI provides a promising tool to unveil fundamental physical mechanisms in complex mFSI, perform precise control
+of microscale fluids, and optimize engineering processes in applications across diverse fields such as microfluidics,
+additive manufacturing, and biomedical engineering where the technology bottleneck usually arises from ultra-high-
+
+28
+dimensional parameter space and high trial-and-error costs.
+ACKNOWLEDGEMENTS
+
+We thank Tiezheng Qian, Xiao-Ping Wang, Zhenlin Guo, Dong Wang, Haiqin Wang, Yanan Liu, and Guangyin
+Jing for some useful discussions and comments. We thank J. Su for the literature survey and for helping to plot some
+figures. X. Xu is supported partly by the National Natural Science Foundation of China (NSFC, No. 12131010). The
+numerical computations were performed on TianHe-2 through the Shanxi Supercomputing Center of China. M. Gao
+and Z. Li contributed equally to this work.
+CODE AVAILABILITY
+
+The code for the simulations is available on the GitHub data repository at https://github.com/marcusgao11/
+DRD_application.git.
+Appendix A: Sharp-interface model for 1D diffusion: Understand the validity of the DRD approach
+
+In Sec. II B, we demonstrated that the DRD approach can accurately solve the 1D diffusion equation under various
+boundary conditions when the interface thickness is sufficiently small rϵs = ϵs /H → 0. This is achieved by selecting
+appropriate interpolations of diffusivity D(ψ) and optimizing the limits of the diffusivity ratios (rD ≡ Ds /Df and
+rDi ≡ Di /Df ) for different cases. To understand the validity of the DRD approach in accurately reproducing various
+boundary conditions, we analyze the sharp-interface model for the one-dimensional (1D) diffusion equation (2) and
+its solutions in a triple-domain system (for −Hs ⩽ z ⩽ 2H) as shown in Fig. 2(b), where the two “sharp” interfaces
+are located at z = ϵi /2 and z = −ϵi /2, and D(z) is the diffusivity that varies piecewisely from Df in the fluid domain
+(ϵi /2 ⩽ z ⩽ 2H), to Di in the fluid-solid interfacial (intermediate) domain (−ϵi /2 ⩽ z < ϵi /2), and to Ds in the
+solid domain (−Hs ⩽ z < −ϵi /2). Under the boundary conditions c(2H, t) = c1 and c(−Hs , t) = c2 , we obtain the
+steady-state solution of the 1D diffusion equation (2) as
+
+
+if
+ϵi /2 ⩽ z ⩽ 2H,
+c1 + (J0 /Df )(2H − z)
+(A1)
+c(z, t → ∞) = c1 + (J0 /Df ) (2H − ϵi /2) + (J0 /Di ) (ϵi /2 − z) if
+− ϵi /2 ⩽ z < ϵi /2,
+
+c − (J /D )(z + H )
+if
+− Hs ⩽ z < −ϵi /2,
+2
+0
+s
+s
+with the steady state flux J0 given by J0 = −Df (c1 − c2 )/ [Df ϵi /Di + 2H − ϵi /2 + (Df /Ds )(Hs − ϵi /2)]. We consider
+several special cases and pay attention to the effects of the diffusivity ratios rD = Ds /Df and rDi = Di /Df on the
+solution in the fluid domain (domain-1) as follows.
+• Double-domain case 1 (with ϵi = 0): the solid domain-2 has a very large diffusivity, i.e., rD = Ds /Df ≫ 1. In
+this case, we find the solution (A1) in the fluid domain (0 ⩽ z ⩽ 2H) reduces to be c ≈ c1 − (c1 − c2 )(2H − z)/H.
+That is, rD = Ds /Df ≫ 1 sets an effective Dirichlet boundary condition at the interface z = 0 for the diffusion
+in the fluid domain-1 (with 0 ⩽ z ⩽ 2H):
+c(z = 0) = c2 .
+
+(A2a)
+
+Alternatively, we can understand the result in another way. In the steady state, the diffusion flux is a constant:
+J = −D(z)∂z c = J0 = const.. Then, in solid domain-2 with D(z) = Ds ≫ Df , we have ∂z c → 0 and hence
+c(z < 0) ≈ c2 in the solid domain, yielding the effective Dirichlet boundary condition c(z = 0) = c2 .
+Such an analytical double-domain result in the limit of rD ≫ 1 explains the good agreement of the numerical
+DRD solution (implemented using the linear interpolation of diffusivity D(ψ) in Eq. (8a)) with the analytical
+steady-state solution of 1D diffusion equation (2) in the fluid domain (0 ⩽ z ⩽ 2H) under Dirichlet boundary
+condition c(z = 0) = c2 , as shown in Figs. 3(a,b).
+• Double-domain case 2 (with ϵi = 0): the solid domain-2 has a very small diffusivity, i.e., rD = Ds /Df ≪ 1. In
+this case, the solution (A1) in the fluid domain-1 (0 ⩽ z ⩽ 2H) reduces to be c ≈ c1 . That is, rD = Ds /Df → 0
+sets an effective Neumann (impermeable zero-flux) boundary condition at the interface z = 0 for the diffusion
+in the fluid domain-1 (with 0 ⩽ z ⩽ 2H):
+Df ∂z c|z=0 = 0,
+
+(A2b)
+
+29
+Alternatively, we can understand the result in another way. In the steady state and in the solid domain-2 with
+D(z) = Ds → 0, we have J = −Ds ∂z c → 0, yielding the effective Neumann boundary condition Df ∂z c|z=0 = 0.
+Such an analytical double-domain result in the limit of rD → 0 explains the good agreement of the numerical
+DRD solution (implemented also using the linear interpolation of diffusivity D(ψ) in Eq. (8a)) with the analytical
+steady-state solution of 1D diffusion equation (2) in the fluid domain (0 ⩽ z ⩽ 2H) under the Neumann boundary
+condition ∂z c|z=0 = 0, as shown in Figs. 3(c,d).
+• Triple-domain case (ϵi ≪ H but ϵi ̸= 0): the solid domain-2 has a very large diffusivity but the fluid-solid
+interfacial (intermediate) domain has a small diffusivity, i.e., Di < Df ≪ Ds or rD = Ds /Df ≫ 1 and rDi =
+Di /Df < 1. In this case, the solution (A1) in the fluid domain-1 (ϵi /2 ⩽ z ⩽ 2H) reduces to be c ≈ c1 − (c1 −
+c2 )(2H − z)/(2H + ℓs − ϵi /2) with ℓs ≡ Df ϵi /Di and hence ℓs /ϵi = Df /Di > 1. That is, rD = Ds /Df ≫ 1
+and rDi = Di /Df < 1 together set an effective Robin (concentration “slip”) boundary condition at the interface
+z = 0 (as ϵi → 0) for the diffusion in the fluid domain-1 (with ϵi /2 ⩽ z ⩽ 2H):
+ℓs ∂z c|z=ϵi /2 = c(z = ϵi /2) − c2 .
+A similar alternative way of understanding the effective Robin boundary condition can be made as follows.
+Firstly, as discussed in the above double-domain case 1, rD ≫ 1 sets c(z ⩽ −ϵi /2) ≈ c2 . Secondly, in the
+steady state, the diffusion flux is a constant: J = −D(z)∂z c = J0 and hence at the interface z = ϵi /2, we have
+Df ∂z c|z=ϵi /2+ = Di ∂z c|z=ϵi /2− = Di [c(z = ϵi /2+ ) − c2 ] /ϵi , which gives the effective Robin boundary condition
+at z = ϵi /2: ℓs ∂z c|z=ϵi /2+ = c(z = ϵi /2+ ) − c2 , and as ϵi → 0 yields the required Robin boundary condition at
+z = 0:
+ℓs ∂z c|z=0 = c(z = 0) − c2 .
+
+(A2c)
+
+Again, such an analytical triple-domain result explains the good agreement of the numerical DRD solution
+(implemented using the piecewise linear interpolation of diffusivity D(ψ) in Eq. (8b)) with the analytical steadystate solution of 1D diffusion equation (2) in the fluid domain (0 ⩽ z ⩽ 2H) under the Robin boundary
+condition (A2c), as shown in Figs. 4(b). Moreover, the linear dependence of the slip length ℓs /ϵi = Df /Di > 1
+−1
+on rD
+= Df /Di has also been confirmed numerically as shown in Figs. 4(c).
+i
+
+Appendix B: Some relations for deriving general dynamic equations of mFSI in two-phase flows
+
+We present some more details for the derivation of the general dynamic equations of mFSI in two-phase flows in
+Sec. II D. Firstly, from Eqs. (13) and (14), we obtain the rate of change of free energy as
+Z
+Ḟ =
+
+h
+i Z
+ˆ
+dr fb ∂t Ψ + Ψµb ∂t ϕ + KΨ∇ϕ · ∇ (∂t ϕ) + dr
+
+N
+X
+
+!
+|∇ψα | + |∇ψ|
+
+α=1
+
+Z
++
+
+dr2ϵs fs
+
+" N
+X
+
+2
+
+#
+
+2
+
+ϵs µs ∂t ϕ
+(B1)
+
+∇ψα · ∇ (∂t ψα ) + ∇ψ · ∇ (∂t ψ) ,
+
+α=1
+
+with µb = ∂fb (ϕ)/∂ϕ and µs = ∂fs (ϕ)/∂ϕ. Doing integration by parts in Eq. (B1), the rate of change of free energy
+becomes
+Z
+Ḟ = dr [µ̂∂t (Ψϕ) − p̂∂t Ψ − ∇ · (2ϵs fs ∇ψα ) ∂t ψα − ∇ · (2ϵs fs ∇ψ) ∂t ψ] ,
+(B2)
+where the total chemical potential µ̂ is defined in Eq. (16) and the total pressure p̂ = −fˆb + µ̂ϕ is defined in Eq. (17);
+we have used the natural condition, KΨn̂d · ∇ϕ = 0 and the conditions of constant ψα and constant ψ (and hence
+∂t ψα = ∂t ψ = 0) at the boundaries of the whole computational domain with n̂d being their outward unit vector.
+Moreover, since the fluid-solid interfacial functions, ψα and ψ, both take the form of Eq. (1), we obtain the following
+two identities
+∂t ψα = −Vα · ∇ψα ,
+
+∂t ψ = −Vw · ∇ψ,
+
+(B3)
+
+30
+with Vα = Ṙα (defined in Eq. (11)) and Vw being the velocity of the α-th particle and the boundary wall, respectively.
+QN
+Substituting Eq. (B3) into Eq. (B2) and using the definition of Ψ(r, t) ≡ ψ α=1 ψα , we obtain the rate of change of
+P
+the total free energy ḞT = Ḟ − Ẇext = Ḟ − α Fext,α · Vα as
+Z
+ḞT =
+
+"
+
+#
+
+dr µ̂∂t (Ψϕ) −
+
+X
+
+(Fext,α − p̂α ∇ψα ) · Vα ,
+
+(B4)
+
+α
+
+Q
+where p̂α ≡ p̂ψ β̸=α ψβ + ∇ · (2ϵs fs ∇ψα ) and we have taken Vw = 0 for simplicity. Substituting Eqs. (11) and (12)
+into Eq. (B4) and using the incompressibility condition ∇ · v = 0, we obtain the rate of change of the total free energy
+ḞT in Eq. (15) as
+Z
+ḞT [v, J ] = dr (−v · µ̂∇(Ψϕ) + J · ∇µ̂ − v · ftot ) ,
+where we have used the natural condition, n̂d · J = 0.
+
+Appendix C: Sharp-interface model for precipitation in 1D system
+
+We formulate a sharp interface model for the homogeneous precipitation of an ionic liquid solution onto a solid
+surface in 1D [65] with 0 ⩽ z ⩽ H and the liquid-solution interface located at z = h, as shown in Fig. 15. For
+simplicity, we consider a one-component-solute theory where the ion concentration follows the 1D diffusion equation
+∂t c = D∂z2 c,
+
+(C1)
+
+supplemented with c(H, t) = c0 and a Robin-type boundary condition at z = h:
+D∂z c = rp (1 − c/cs ),
+
+(C2)
+
+rp = cs dh/dt = kr (c2 /c2eq − 1).
+
+(C3)
+
+In such a 1D sharp-interface precipitation model, there exist two major time scales: (i) τD ∼ H 2 /Df , the characteristic
+diffusion time of solute in the liquid solution; (ii) τpr ∼ Hcs /kr , the characteristic precipitating time for the solution.
+The dimensionless Damköhler number, Da ≡ τD /τp or the Karlovitz number, Ka ≡ Da−1 are the ratios between the
+diffusion time and the interfacial precipitation time, which characterize their relative importance in determining a
+steady-state ion mass distribution and precipitation rate over the length and time scales of interest. Two limiting
+regimes can be identified according to the magnitude of Da as follows.
+• For Da ≫ 1, or, Ka ≪ 1, or equivalently, τpr ≪ τD , the interface-equilibration rate is much larger than the
+diffusion rate, and the precipitation is said to be diffusion-limited. In this case, diffusion is the slowest process so
+diffusion characteristics dominate and the liquid-solid interface is assumed to be instantaneously in equilibrium.
+The boundary condition in Eq. (C3) should be replaced by
+c(h, t) = ceq .
+
+(C4)
+
+The steady-state solution c(z, t → ∞) and h(t) (where the timescale t is much larger than τD and τpr ) of the
+above equation system can be found to be
+c(z) = c0 − (c0 − ceq )
+
+H −z
+,
+H −h
+
+(H − h(t))2 = (H − h0 )2 − 2D
+
+c0 − ceq
+t.
+ρs − ceq
+
+(C5a)
+
+(C5b)
+
+• For Da ≪ 1, or, Ka ≫ 1, or equivalently, τpr ≫ τD , diffusion occurs much faster than the interface equilibration,
+and the precipitation is said to be reaction-limited. In this case, diffusion reaches an “equilibrium” well before
+
+31
+the interface is at equilibrium. The steady-state solution c(z, t → ∞) and h(t) (where the timescale t is much
+larger than τD and τpr ) of the above equation system can be expanded in terms of Da to the first order as
+
+
+ 2
+c0 
+z
+c0
+−
+1
+1
+−
+,
+(C6a)
+1
+−
+c(z) ≈ c0 − Daceq
+c2eq
+ρs
+H
+
+h(t) ≈ h0 + Da
+
+ceq c20
+Dt
+( 2 − 1) .
+ρs ceq
+H
+
+(C6b)
+
+[1] B. J. Kirby, Micro-and nanoscale fluid mechanics: transport in microfluidic devices (Cambridge university press, 2010).
+[2] S. Subramaniam, Multiphase flows: Rich physics, challenging theory, and big simulations, Physical Review Fluids 5, 110520
+(2020).
+[3] G. Hou, J. Wang, and A. Layton, Numerical methods for fluid-structure interaction—a review, Commun. Comput. Phys.
+12, 337 (2012).
+[4] E. H. Dowell and K. C. Hall, Modeling of fluid-structure interaction, Annual review of fluid mechanics 33, 445 (2001).
+[5] B. E. Griffith and N. A. Patankar, Immersed methods for fluid–structure interaction, Annual review of fluid mechanics 52,
+421 (2020).
+[6] Z.-G. Feng and E. E. Michaelides, Heat transfer in particulate flows with direct numerical simulation (dns), International
+Journal of Heat and Mass Transfer 52, 777 (2009).
+[7] M. S. Shadloo, G. Oger, and D. Le Touzé, Smoothed particle hydrodynamics method for fluid flows, towards industrial
+applications: Motivations, current state, and challenges, Computers & Fluids 136, 11 (2016).
+[8] P. Hoogerbrugge and J. Koelman, Simulating microscopic hydrodynamic phenomena with dissipative particle dynamics,
+Europhysics letters 19, 155 (1992).
+[9] J. T. Padding and A. A. Louis, Hydrodynamic and brownian fluctuations in sedimenting suspensions, Phys. Rev. Lett. 93,
+220601 (2004).
+[10] J. Brannick, C. Liu, T. Qian, and H. Sun, Diffuse interface methods for multiple phase materials: an energetic variational
+approach, Numer. Math.-Theory Mes. 8, 220 (2015).
+[11] D. Mokbel, H. Abels, and S. Aland, A phase-field model for fluid–structure interaction, Journal of Computational Physics
+372, 823 (2018).
+[12] J. Yang and J. Kim, A phase-field method for two-phase fluid flow in arbitrary domains, Comput. Math. Appl. 79, 1857
+(2020).
+[13] R. Glowinski, T.-W. Pan, T. I. Hesla, D. D. Joseph, and J. Periaux, A fictitious domain approach to the direct numerical
+simulation of incompressible viscous flow past moving rigid bodies: application to particulate flow, Journal of computational
+physics 169, 363 (2001).
+[14] X. Li, J. Lowengrub, A. Rätz, and A. Voigt, Solving pdes in complex geometries: a diffuse domain approach, Communications in mathematical sciences 7, 81 (2009).
+[15] Z. Guo, F. Yu, P. Lin, S. Wise, and J. Lowengrub, A diffuse domain method for two-phase flows with large density ratio
+in complex geometries, Journal of Fluid Mechanics 907, A38 (2021).
+[16] Y. Nakayama and R. Yamamoto, Simulation method to resolve hydrodynamic interactions in colloidal dispersions, Physical
+Review E 71, 036707 (2005).
+[17] R. Yamamoto, J. J. Molina, and Y. Nakayama, Smoothed profile method for direct numerical simulations of hydrodynamically interacting particles, Soft Matter 17, 4226 (2021).
+[18] H. Tanaka and T. Araki, Simulation method of colloidal suspensions with hydrodynamic interactions: Fluid particle
+dynamics, Phys. Rev. Lett. 85, 1338 (2000).
+[19] A. Furukawa, M. Tateno, and H. Tanaka, Physical foundation of the fluid particle dynamics method for colloid dynamics
+simulation, Soft Matter 14, 3738 (2018).
+[20] A. De Rosis, G. Falcucci, S. Ubertini, F. Ubertini, and S. Succi, Lattice boltzmann analysis of fluid-structure interaction
+with moving boundaries, Communications in Computational Physics 13, 823 (2013).
+[21] A. J. Ladd and P. Szymczak, Reactive flows in porous media: challenges in theoretical and numerical methods, Annual
+review of chemical and biomolecular engineering 12, 543 (2021).
+[22] M. Doi, Soft Matter Physics (Oxford University Press, 2013).
+[23] M. Doi, Onsager principle in polymer dynamics, Prog. Polym. Sci. 112, 101339 (2021).
+[24] H. Wang, T. Qian, and X. Xu, Onsager’s variational principle in active soft matter, Soft Matter 17, 3634 (2021).
+[25] H. Wang, B. Zou, J. Su, D. Wang, and X. Xu, Variational methods and deep ritz method for active elastic solids, Soft
+Matter 18, 6015 (2022).
+[26] M. Arroyo, N. Walani, A. Torres-Sánchez, and D. Kaurin, Onsager’s variational principle in soft matter: introduction and
+application to the dynamics of adsorption of proteins onto fluid membranes, in The Role of Mechanics in the Study of
+Lipid Bilayers (Springer, 2017) pp. 287–332.
+
+32
+[27] L. Onsager, Reciprocal relations in irreversible processes. i., Phys. Rev. 37, 405 (1931).
+[28] S. R. de Groot and P. Mazur, Non-equilibrium Thermodynamics (Dover, New York, 1984).
+[29] X. Xu and T. Qian, Hydrodynamic boundary conditions derived from onsager’s variational principle, Procedia IUTAM
+20, 144 (2017).
+[30] M. Doi, Onsager’s variational principle in soft matter, J. Condens. Matter Phys. 23, 284118 (2011).
+[31] X. Xu, C. Liu, and T. Qian, Hydrodynamic boundary conditions for one-component liquid-gas flows on non-isothermal
+solid substrates, Commun. Math. Sci. 10, 1027 (2012).
+[32] X. Xu and T. Qian, Droplet motion in one-component fluids on solid substrates with wettability gradients, Phys. Rev. E
+85, 051601 (2012).
+[33] T. Qian, X.-P. Wang, and P. Sheng, A variational approach to moving contact line hydrodynamics, J. Fluid Mech. 564,
+333 (2006).
+[34] J. Zhang, X. Xu, and T. Qian, Anisotropic particle in viscous shear flow: Navier slip, reciprocal symmetry, and jeffery
+orbit, Phys. Rev. E 91, 033016 (2015).
+[35] M. Gao and X.-P. Wang, An efficient scheme for a phase field model for the moving contact line problem with variable
+density and viscosity, Journal of Computational Physics 272, 704 (2014).
+[36] R. Yamamoto, Simulating particle dispersions in nematic liquid-crystal solvents, Phys. Rev. Lett. 87, 075502 (2001).
+[37] I. Mirzaii and M. Passandideh-Fard, Modeling free surface flows in presence of an arbitrary moving object, Int. J. Multiph.
+Flow 39, 216 (2012).
+[38] M. Carlson, P. J. Mucha, R. B. Van Horn III, and G. Turk, Melting and flowing, in Proc. 2002 ACM SIGGRAPH/Eurographics symposium on Computer animation (2002) pp. 167–174.
+[39] H. Esmailzadeh and M. Passandideh-Fard, Numerical and experimental analysis of the fluid-structure interaction in presence of a hyperelastic body, J. Fluids Eng. 136, 111107 (2014).
+[40] J. Su, K. Ma, Z. Yan, Q. He, and X. Xu, Dynamics of flexible fibers in confined shear flows at finite reynolds numbers,
+Phys. Fluids 35 (2023).
+[41] Y. Fujitani, Connection of fields across the interface in the fluid particle dynamics method for colloidal dispersions, J.
+Phys. Soc. Japan 76, 064401 (2007).
+[42] Z. Xia, K. W. Connington, S. Rapaka, P. Yue, J. J. Feng, and S. Chen, Flow patterns in the sedimentation of an elliptical
+particle, J. Fluid Mech. 625, 249 (2009).
+[43] S. Machlup and L. Onsager, Fluctuations and irreversible process. ii. systems with kinetic energy, Phys. Rev. 91, 1512
+(1953).
+[44] Y. Wang and C. Liu, Some recent advances in energetic variational approaches, Entropy 24, 721 (2022).
+[45] Y. Goto and H. Tanaka, Purely hydrodynamic ordering of rotating disks at a finite reynolds number, Nat. Commun. 6, 1
+(2015).
+[46] X. Yang and H. Yu, Efficient second order unconditionally stable schemes for a phase-field moving contact line model using
+invariant energy quadratization approach, SIAM Journal on Scientific Computing 40, B889 (2018).
+[47] G. Zhu, H. Chen, A. Li, S. Sun, and J. Yao, Fully discrete energy stable scheme for a phase-field moving contact line model
+with variable densities and viscosities, Applied Mathematical Modelling 83, 614 (2020).
+[48] J.-L. Guermond and A. Salgado, A splitting method for incompressible flows with variable density based on a pressure
+Poisson equation, Journal of Computational Physics 228, 2834 (2009).
+[49] C. Zettner and M. Yoda, Moderate-aspect-ratio elliptical cylinders in simple shear with inertia, J. Fluid Mech. 442, 241
+(2001).
+[50] H. Huang, X. Yang, M. Krafczyk, and X.-Y. Lu, Rotation of spheroidal particles in couette flows, J. Fluid Mech. 692, 369
+(2012).
+[51] D. V. Esipov, D. V. Chirkov, D. S. Kuranakov, and V. N. Lapin, Direct numerical simulation of the segre–silberberg effect
+using immersed boundary method, Journal of Fluids Engineering 142, 111501 (2020).
+[52] S. R. Bazaz, A. Mashhadian, A. Ehsani, S. C. Saha, T. Krüger, and M. E. Warkiani, Computational inertial microfluidics:
+A review, Lab on a Chip 20, 1023 (2020).
+[53] D. Di Carlo, D. Irimia, R. G. Tompkins, and M. Toner, Continuous inertial focusing, ordering, and separation of particles
+in microchannels, Proceedings of the National Academy of Sciences 104, 18892 (2007).
+[54] A. Boromand, A. Signoriello, F. Ye, C. S. O’Hern, and M. D. Shattuck, Jamming of deformable polygons, Phys. Rev. Lett.
+121, 248003 (2018).
+[55] S. Yamamoto and T. Matsuoka, A method for dynamic simulation of rigid and flexible fibers in a flow field, J. Chem. Phys.
+98, 644 (1993).
+[56] A. Furukawa, D. Marenduzzo, and M. E. Cates, Activity-induced clustering in model dumbbell swimmers: the role of
+hydrodynamic interactions, Phys. Rev. E 90, 022303 (2014).
+[57] A. P. Solon, Y. Fily, A. Baskaran, M. E. Cates, Y. Kafri, M. Kardar, and J. Tailleur, Pressure is not a state function for
+generic active fluids, Nat. Phys. 11, 673 (2015).
+[58] T. Qian, C. Qiu, and P. Sheng, A scaling approach to the derivation of hydrodynamic boundary conditions, J. Fluid Mech.
+611, 333–364 (2008).
+[59] P. Yue, C. Zhou, and J. J. Feng, Sharp-interface limit of the cahn–hilliard model for moving contact lines, Journal of Fluid
+Mechanics 645, 279 (2010).
+[60] D. Einzel, P. Panzer, and M. Liu, Boundary condition for fluid flow: curved or rough surfaces, Phys. Rev. Lett. 64, 2269
+(1990).
+[61] M. C. Marchetti, J.-F. Joanny, S. Ramaswamy, T. B. Liverpool, J. Prost, M. Rao, and R. A. Simha, Hydrodynamics of
+
+33
+soft active matter, Rev. Mod. Phys. 85, 1143 (2013).
+[62] N. Nikola, A. P. Solon, M. Kardar, J. Tailleur, and R. Voituriez, Active particles with soft and curved walls: Equation of
+state, ratchets, and instabilities, Phys. Rev. Lett. 117, 098001 (2016).
+[63] K. Takae and A. Onuki, Phase-field model of solid-liquid phase transition with density difference and latent heat in velocity
+and elastic fields, Phys. Rev. E 83, 041504 (2011).
+[64] A. Almajed, M. A. Lateef, A. A. B. Moghal, and K. Lemboye, State-of-the-art review of the applicability and challenges of
+microbial-induced calcite precipitation (micp) and enzyme-induced calcite precipitation (eicp) techniques for geotechnical
+and geoenvironmental applications, Crystals 11, 370 (2021).
+[65] T. Van Noorden and I. Pop, A stefan problem modelling crystal dissolution and precipitation, IMA J. Appl. Math. 73,
+393 (2008).
+[66] A. Onuki, Dynamic van der waals theory of two-phase fluids in heat flow, Phys. Rev. Lett. 94, 054501 (2005).
+
+

@@ -1,0 +1,53 @@
+{
+  "candidate_fluid_nodes": 16515072,
+  "old_fine_fluid_nodes": 2064384,
+  "core_single_D3Q19_population_GiB": 2.337890625,
+  "core_D3Q19_plus_FORCE_doubles_GiB": 2.70703125,
+  "core_envelope_nodes": 26689536,
+  "envelope_single_D3Q19_population_GiB": 3.7781982421875,
+  "caveat": "Storage arithmetic, not peak RSS or virtual-address-space bound; solid/overlap/arrays/readback/allocator costs remain.",
+  "historical_S2_observed_RSS_GiB": 1.835052,
+  "S2_fluid_nodes": 2949120,
+  "naive_S2_RSS_scaled_by_fluid_nodes_GiB": 10.2762912,
+  "RSS_scaling_not_a_measurement_or_guarantee": true,
+  "old_T_fine_elapsed_seconds": 4326.036089542002,
+  "old_T_fine_steps": 12537,
+  "conditional_seconds_per_step": 2.760492040865918,
+  "conditional_same_stop_physical_time_hours": 38.45365412926224,
+  "conditional_full_cap_hours": 1140.120019438169,
+  "conditional_1024_steps_seconds": 2826.7438498467,
+  "all_costs_conditional_not_observed": true,
+  "draft_limits": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "proposed_address_space_GiB": 16,
+    "required_MemAvailable_GiB": 20,
+    "required_initial_disk_GiB": 100,
+    "required_before_each_child_disk_GiB": 32,
+    "output_budget_GiB_per_identity": 16,
+    "native_zero_caps_seconds": {
+      "describe": 120,
+      "precheck": 1800,
+      "initialize": 3600
+    },
+    "initial_field_readback_cap_seconds": 3600,
+    "PERF_wall_cap_seconds": 7200,
+    "PERF_first_observed_target_step": 1024,
+    "formal_wall_cap_seconds_candidate": 172800,
+    "formal_checker_cap_seconds_candidate": 14400,
+    "caps_are_unadopted_not_authority": true
+  },
+  "current_snapshot": {
+    "captured_at": "2026-11-04T15:19:54.757391+08:00",
+    "MemTotal": 33320763392,
+    "MemAvailable": 15901196288,
+    "SwapTotal": 8589930496,
+    "SwapFree": 8589541376,
+    "disk_free_bytes": 339892350976,
+    "point_in_time_only": true
+  },
+  "current_MemAvailable_meets_proposed_20GiB": false,
+  "current_disk_meets_proposed_100GiB": true
+}

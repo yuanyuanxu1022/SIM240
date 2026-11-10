@@ -1,0 +1,720 @@
+{
+  "checker_version": "GDI-1.0.0",
+  "kind": "COMPLETED_GDI_RUN_ANALYSIS",
+  "protocol_id": "GDI-v1",
+  "case_id": "GDI01",
+  "run_id": "GDI01_v1_20261030_01",
+  "results": {
+    "checks": [
+      {
+        "name": "linear_normalized_residual",
+        "value": 7.857220914256119e-13,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "linear_true_normalized_residual",
+        "value": 7.86005364660838e-13,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "linear_iterations",
+        "value": 35,
+        "limit": 2000,
+        "satisfied": true
+      },
+      {
+        "name": "reported_raw_residual_finite",
+        "value": 3.825164694185942e-29,
+        "limit": 1e+100,
+        "satisfied": true
+      },
+      {
+        "name": "pressure_relative_rms",
+        "value": 1.0477714267661315e-13,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "pressure_relative_max",
+        "value": 3.576398436659171e-13,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "U_relative_L2",
+        "value": 1.4057562520416184e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "U_relative_mean",
+        "value": 1.404476535071808e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "J_relative_L2",
+        "value": 1.4057526186897911e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "J_relative_mean",
+        "value": 1.4044654328415618e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "Uy_relative_max",
+        "value": 4.802799190048639e-12,
+        "limit": 1e-08,
+        "satisfied": true
+      },
+      {
+        "name": "Uz_relative_max",
+        "value": 1.1692352285618085e-12,
+        "limit": 1e-08,
+        "satisfied": true
+      },
+      {
+        "name": "Q_relative",
+        "value": 1.4371837053772651e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "Q_sign",
+        "value": 0,
+        "limit": 0,
+        "satisfied": true
+      },
+      {
+        "name": "K_from_U_relative",
+        "value": 1.404476535071808e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "K_from_Q_relative",
+        "value": 1.4371837053772651e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "global_mass_relative",
+        "value": 2.416010483404546e-13,
+        "limit": 1e-08,
+        "satisfied": true
+      },
+      {
+        "name": "local_mass_relative",
+        "value": 1.7501638792359562e-11,
+        "limit": 1e-08,
+        "satisfied": true
+      },
+      {
+        "name": "side_leakage_relative",
+        "value": 3.2580861666343884e-13,
+        "limit": 1e-08,
+        "satisfied": true
+      },
+      {
+        "name": "face_flux_consistency_relative",
+        "value": 3.647185411923529e-13,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "exported_U_face_interpolation_relative",
+        "value": 1.0643408775065756e-15,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "energy_relative",
+        "value": 1.3717569728216223e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "positive_energy_and_power",
+        "value": 0,
+        "limit": 0,
+        "satisfied": true
+      }
+    ],
+    "interface_checks_satisfied": true,
+    "boundary_Q_m3_s": {
+      "xLow": -2.185821681361997e-18,
+      "xHigh": 2.1858216813610298e-18,
+      "yLow": 2.460526346158513e-31,
+      "yHigh": 1.930525737457089e-31
+    },
+    "mean_U_main_m_s": 3.643036135602908e-07,
+    "mean_J_main_m2_s": 4.553795169503635e-14,
+    "dissipation_W": 5.245972035194509e-17,
+    "pressure_power_W": 5.245972035266471e-17,
+    "analytic_expected_Q_m3_s": 2.185821681392444e-18
+  },
+  "integration": {
+    "checks": [
+      {
+        "name": "actual_model_coefficient_relative",
+        "value": 1.8215180678270365e-16,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "momentum_L2_relative",
+        "value": 1.4044809671772454e-11,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "momentum_max_relative",
+        "value": 1.4052726488130182e-11,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "delta_U_L2_relative",
+        "value": 3.211922156567758e-11,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "delta_U_max_relative",
+        "value": 3.2124388248826864e-11,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "delta_p_max_relative",
+        "value": 8.881784197001252e-16,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "force_independent_consistency",
+        "value": 0.0,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "source_independent_consistency",
+        "value": 3.590193630872529e-16,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "diag_independent_consistency",
+        "value": 2.220446049250313e-16,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "split_independent_consistency",
+        "value": 3.590193630872525e-16,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "exported_gradient_consistency",
+        "value": 1.680522882495893e-12,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "pressure_matrix_residual_vs_conservative_flux",
+        "value": 3.15891821932458e-14,
+        "limit": 1e-12,
+        "satisfied": true
+      },
+      {
+        "name": "all_pressure_solves_converged",
+        "value": 0,
+        "limit": 0,
+        "satisfied": true
+      },
+      {
+        "name": "momentum_L2_relative_history_consistency",
+        "value": 1.4058256435090594e-15,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "momentum_max_relative_history_consistency",
+        "value": 9.215051743165572e-14,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "delta_U_L2_relative_history_consistency",
+        "value": 7.108583389127582e-26,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "delta_U_max_relative_history_consistency",
+        "value": 0.0,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "delta_p_max_relative_history_consistency",
+        "value": 0.0,
+        "limit": 1e-10,
+        "satisfied": true
+      },
+      {
+        "name": "force_based_energy_relative",
+        "value": 1.3717804688516453e-11,
+        "limit": 0.001,
+        "satisfied": true
+      },
+      {
+        "name": "force_based_positive_energy",
+        "value": 0,
+        "limit": 0,
+        "satisfied": true
+      }
+    ],
+    "derived": {
+      "momentum_L2_relative": 1.4044809671772454e-11,
+      "momentum_max_relative": 1.4052726488130182e-11,
+      "delta_U_L2_relative": 3.211922156567758e-11,
+      "delta_U_max_relative": 3.2124388248826864e-11,
+      "delta_p_max_relative": 8.881784197001252e-16
+    },
+    "force_dissipation_W": 5.245972035194508e-17,
+    "pressure_power_W": 5.245972035266471e-17
+  },
+  "cross_checks": [
+    {
+      "name": "two_dimensional_p_Pa_cross_relative",
+      "value": 3.6067445326655917e-13,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "two_dimensional_Jx_m2_s_cross_relative",
+      "value": 1.6359985707514057e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "two_dimensional_Jy_m2_s_cross_relative",
+      "value": 5.4088307414341345e-12,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "two_dimensional_Q_cross_relative",
+      "value": 1.4649363538645403e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_p_Pa_cross_relative",
+      "value": 3.551233381434334e-13,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_Jx_m2_s_cross_relative",
+      "value": 1.6341276702257688e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_Jy_m2_s_cross_relative",
+      "value": 4.086855236763494e-12,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_Q_cross_relative",
+      "value": 1.4596497471094268e-11,
+      "limit": 0.001,
+      "satisfied": true
+    }
+  ],
+  "native_field_readback": {
+    "p": "equal_to_CSV",
+    "U": "equal_to_CSV",
+    "J": "equal_to_CSV",
+    "phi": "equal_to_CSV",
+    "phi_U": "equal_to_CSV"
+  },
+  "checks": [
+    {
+      "name": "linear_normalized_residual",
+      "value": 7.857220914256119e-13,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "linear_true_normalized_residual",
+      "value": 7.86005364660838e-13,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "linear_iterations",
+      "value": 35,
+      "limit": 2000,
+      "satisfied": true
+    },
+    {
+      "name": "reported_raw_residual_finite",
+      "value": 3.825164694185942e-29,
+      "limit": 1e+100,
+      "satisfied": true
+    },
+    {
+      "name": "pressure_relative_rms",
+      "value": 1.0477714267661315e-13,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "pressure_relative_max",
+      "value": 3.576398436659171e-13,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "U_relative_L2",
+      "value": 1.4057562520416184e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "U_relative_mean",
+      "value": 1.404476535071808e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "J_relative_L2",
+      "value": 1.4057526186897911e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "J_relative_mean",
+      "value": 1.4044654328415618e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "Uy_relative_max",
+      "value": 4.802799190048639e-12,
+      "limit": 1e-08,
+      "satisfied": true
+    },
+    {
+      "name": "Uz_relative_max",
+      "value": 1.1692352285618085e-12,
+      "limit": 1e-08,
+      "satisfied": true
+    },
+    {
+      "name": "Q_relative",
+      "value": 1.4371837053772651e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "Q_sign",
+      "value": 0,
+      "limit": 0,
+      "satisfied": true
+    },
+    {
+      "name": "K_from_U_relative",
+      "value": 1.404476535071808e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "K_from_Q_relative",
+      "value": 1.4371837053772651e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "global_mass_relative",
+      "value": 2.416010483404546e-13,
+      "limit": 1e-08,
+      "satisfied": true
+    },
+    {
+      "name": "local_mass_relative",
+      "value": 1.7501638792359562e-11,
+      "limit": 1e-08,
+      "satisfied": true
+    },
+    {
+      "name": "side_leakage_relative",
+      "value": 3.2580861666343884e-13,
+      "limit": 1e-08,
+      "satisfied": true
+    },
+    {
+      "name": "face_flux_consistency_relative",
+      "value": 3.647185411923529e-13,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "exported_U_face_interpolation_relative",
+      "value": 1.0643408775065756e-15,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "energy_relative",
+      "value": 1.3717569728216223e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "positive_energy_and_power",
+      "value": 0,
+      "limit": 0,
+      "satisfied": true
+    },
+    {
+      "name": "actual_model_coefficient_relative",
+      "value": 1.8215180678270365e-16,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "momentum_L2_relative",
+      "value": 1.4044809671772454e-11,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "momentum_max_relative",
+      "value": 1.4052726488130182e-11,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "delta_U_L2_relative",
+      "value": 3.211922156567758e-11,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "delta_U_max_relative",
+      "value": 3.2124388248826864e-11,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "delta_p_max_relative",
+      "value": 8.881784197001252e-16,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "force_independent_consistency",
+      "value": 0.0,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "source_independent_consistency",
+      "value": 3.590193630872529e-16,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "diag_independent_consistency",
+      "value": 2.220446049250313e-16,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "split_independent_consistency",
+      "value": 3.590193630872525e-16,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "exported_gradient_consistency",
+      "value": 1.680522882495893e-12,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "pressure_matrix_residual_vs_conservative_flux",
+      "value": 3.15891821932458e-14,
+      "limit": 1e-12,
+      "satisfied": true
+    },
+    {
+      "name": "all_pressure_solves_converged",
+      "value": 0,
+      "limit": 0,
+      "satisfied": true
+    },
+    {
+      "name": "momentum_L2_relative_history_consistency",
+      "value": 1.4058256435090594e-15,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "momentum_max_relative_history_consistency",
+      "value": 9.215051743165572e-14,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "delta_U_L2_relative_history_consistency",
+      "value": 7.108583389127582e-26,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "delta_U_max_relative_history_consistency",
+      "value": 0.0,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "delta_p_max_relative_history_consistency",
+      "value": 0.0,
+      "limit": 1e-10,
+      "satisfied": true
+    },
+    {
+      "name": "force_based_energy_relative",
+      "value": 1.3717804688516453e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "force_based_positive_energy",
+      "value": 0,
+      "limit": 0,
+      "satisfied": true
+    },
+    {
+      "name": "two_dimensional_p_Pa_cross_relative",
+      "value": 3.6067445326655917e-13,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "two_dimensional_Jx_m2_s_cross_relative",
+      "value": 1.6359985707514057e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "two_dimensional_Jy_m2_s_cross_relative",
+      "value": 5.4088307414341345e-12,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "two_dimensional_Q_cross_relative",
+      "value": 1.4649363538645403e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_p_Pa_cross_relative",
+      "value": 3.551233381434334e-13,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_Jx_m2_s_cross_relative",
+      "value": 1.6341276702257688e-11,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_Jy_m2_s_cross_relative",
+      "value": 4.086855236763494e-12,
+      "limit": 0.001,
+      "satisfied": true
+    },
+    {
+      "name": "openfoam_Q_cross_relative",
+      "value": 1.4596497471094268e-11,
+      "limit": 0.001,
+      "satisfied": true
+    }
+  ],
+  "NUMERICAL_GATE": "PASS",
+  "RESULT_PASS": true,
+  "geometry_PASS": true,
+  "geometry_scope": "synthetic_average_domain_only",
+  "physical_validation": "NOT_EVALUATED",
+  "independent_human_acceptance": false,
+  "raw_files": [
+    {
+      "path": "openfoam/GDI_output/cells.csv",
+      "sha256": "899e145336b8d521d11615cfd11fec9fd28cc4e5a801305833cdf9c5b29fbd1f"
+    },
+    {
+      "path": "openfoam/GDI_output/coefficients.csv",
+      "sha256": "97430de33ed1fbcaf97d674810a15d26881dce40ca901d363dcc648466800b68"
+    },
+    {
+      "path": "openfoam/GDI_output/faces.csv",
+      "sha256": "8aed1ff6a76030735f33255a4d0b52e7a090fb3d406a384ef684c6188fd824c4"
+    },
+    {
+      "path": "openfoam/GDI_output/iteration_history.csv",
+      "sha256": "e57f235c08b1be2b4225d9a0d2625e8247e3d2f1aa84bc0942226715156876d5"
+    },
+    {
+      "path": "openfoam/GDI_output/momentum_residual.csv",
+      "sha256": "ff693485fb028589e7bef46db322dc69ecd2b5680c2cb1b7ef6926aec291e504"
+    },
+    {
+      "path": "openfoam/GDI_output/solver.json",
+      "sha256": "3c0e57ae244a5c96dbcfa4e7ba60b5a249c8d58f8faf07138942c917bb83599e"
+    },
+    {
+      "path": "openfoam/1/J",
+      "sha256": "ef1a8a215e0e1e6ee609bd900824eb4876e840cc0b686c8d7fd2bbfb6eeabcd6"
+    },
+    {
+      "path": "openfoam/1/U",
+      "sha256": "a570469de4895d77708f81f86ba6b0b17cb506df40d68772464d74f93fda6541"
+    },
+    {
+      "path": "openfoam/1/p",
+      "sha256": "4880f4e81dd819b13ec91f5c7937cb73aa3fcdd80790e13dabaf1bd490eb01f8"
+    },
+    {
+      "path": "openfoam/1/phi",
+      "sha256": "4014afbd5c1dd963cafc84e5c99b0fbcc701d156a42ad52a84c224a44a34c45a"
+    },
+    {
+      "path": "openfoam/1/phi_U",
+      "sha256": "00521aa2da7a3b867fd8ce49ef965d2ec42fba04276dac51a3a6302dcb981108"
+    },
+    {
+      "path": "logs/openfoam.log",
+      "sha256": "8e1d544fe0622831693f77506e7200caccffca714399fab8b059b7d40713efc4"
+    },
+    {
+      "path": "execution.json",
+      "sha256": "c72cc406fa84f3e938cc14b64473c03212b66c754a865d29f669c4b3b21ab040"
+    }
+  ],
+  "run_manifest_sha256": "e8d547cbe822bc0dd6ff8cf35b68572718c93b42a089be72748f47446ea8af59"
+}

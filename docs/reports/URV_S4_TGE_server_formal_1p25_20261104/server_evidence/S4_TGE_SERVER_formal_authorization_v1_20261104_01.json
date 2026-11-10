@@ -1,0 +1,37 @@
+{
+  "kind": "USER_AUTHORIZATION_EVIDENCE",
+  "recorded_at": "2026-11-04T21:23:02.900481+08:00",
+  "authorization_source": "user_message_in_session",
+  "user_explicitly_authorized": true,
+  "authorization_question_verbatim": "是否授权在服务器 10.103.102.55 的 yuanyuan 账户内，用已封存的服务器版准备 S 与同一构建，重跑 1.25 nm 横槽基准算例（单个稳态算例，run_id URV_S4_T_dx1p25_TGESRV_v1_20261104_01），并用其结果做构建等价判定（与本机参照 K 相对偏差需 ≤1e-6）？同时采用以下资源：单进程地址空间 64 GiB、可用内存前置 80 GiB、首批空闲磁盘 200 GiB（之后每次 20 GiB）、单次输出上限 16 GiB、求解墙钟上限 6 小时、独立检查上限 1 小时；失败即停、不重试、不加时；不包含 0.625 nm 补充算例、性能标定独立报告或 S5。",
+  "user_instruction_verbatim": "1.25 nm 基准重跑（长算，需 tmux 后台 + 实测峰值内存采集）。  yuanyuan这个账户里面跑",
+  "selected_answer_verbatim": "1.25 nm 基准重跑（长算，需 tmux 后台 + 实测峰值内存采集）。  yuanyuan这个账户里面跑",
+  "authorization_recording_note": "The user message is preserved verbatim. The question text above was composed by the assistant and was not sent as a separate prompt; scope is defined by the user message read against the sealed plan, not by an unanswered option list.",
+  "stage": "S4_T_TRANSVERSE_GRID_SUPPLEMENT_SERVER",
+  "revision": "S4-TGE-SERVER-v1",
+  "preparation_S_path": "/home/yuanyuan/SIM240/CASE/unseen_v2_reference_S4_tge_server_v1/evidence/preparation_S.json",
+  "preparation_S_sha256": "2dff3e35e6bd38e729b44af3f01c46328d7de7e29d61e395bec3d23b60e8566a",
+  "formal_simulation_authorized": true,
+  "simulation_authorized": true,
+  "native_zero_step_authorized": false,
+  "initial_field_readback_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "S5_authorized": false,
+  "automatic_retry_authorized": false,
+  "automatic_extension_authorized": false,
+  "approved_run_ids": [
+    "URV_S4_T_dx1p25_TGESRV_v1_20261104_01"
+  ],
+  "approved_runs_scope": "exactly one steady run, 1.25 nm transverse",
+  "explicitly_excluded": [
+    "0.625 nm supplement run",
+    "separate performance-calibration report",
+    "S5",
+    "automatic retry",
+    "automatic time extension"
+  ],
+  "failure_policy": "STOP_WITHOUT_RETRY",
+  "execution_account": "yuanyuan on 10.103.102.55",
+  "AI_may_start_solver": false,
+  "user_manually_starts": true
+}

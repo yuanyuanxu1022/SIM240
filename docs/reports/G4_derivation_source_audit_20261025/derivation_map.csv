@@ -1,0 +1,13 @@
+claim_id,topic,classification,conclusion,evidence,locator,human_review
+C01,几何族与假设,MODEL_ASSUMPTION,无滑移、单相、固定矩形槽、phi=0.5/P=2w；不能换成固定周期变占比,E1;E3;E4,REPORT.md §1,PENDING
+C02,变量与齐次性,PDE_DERIVED_UNDER_ASSUMPTIONS,"K=h^3*kappa(w/h,d/h;phi)；惯性保留时需要额外参数",E1,REPORT.md §2.1,PENDING
+C03,平板与局部立方律,EXACT_FLAT_AND_REDUCED_MODEL,平板精确；LC是降维模型，不能等同台阶域完整解,E1,REPORT.md §2.2,PENDING
+C04,上下界、排序、深度单调,VARIATIONAL_DERIVATION,理想Stokes模型下成立；不代替离散精度验收,E1;E2;本轮式3,REPORT.md §2.3,PENDING
+C05,深槽沿槽首项,NEW_BOUND_ARGUMENT_REQUIRES_HUMAN_REVIEW,上下界夹逼得K_P~dw^3/(12P)；横槽有限饱和值未求出,E2;E7;本轮式5-8,REPORT.md §2.4,PENDING
+C06,浅槽与宽窄极限,CONDITIONAL_ASYMPTOTIC,尖角极限和余项界不全；不能据此认定拟合指数为理论值,E2;E3,REPORT.md §2.5,PENDING
+C07,H组合、幂律和方向耦合,MODEL_CHOICE,物理约束不唯一选择m=1或幂律，H不是已证真实串联阻力,E3;E4,REPORT.md §3,PENDING
+C08,四个系数和拟合程序,EMPIRICAL_FIT_PROVENANCE_CHECKED,15几何30方向，先T后P的等权logK误差拟合；本轮不重拟合,E3;E4,REPORT.md §4;algebra_checks.json,PENDING
+C09,二维数据与分辨率联动,ALGEBRAIC_IDENTIFIABILITY_LIMIT,固定w仍有二维信息；dx/h=s/24导致几何与分辨率联动,E1;E3,REPORT.md §4,PENDING
+C10,正方形接触极限,ANALYTIC_COUNTEREXAMPLE_OUTSIDE_TARGET_DOMAIN,G4较矩形解析值高18.558974%；不是域内预测失败证据,E7;本轮式10-11,REPORT.md §5;algebra_checks.json,PENDING
+C11,目标域精度,NOT_VALIDATED,目标域保持，数值参考与预测放行未由本轮解决,E4;E5,REPORT.md §6,PENDING
+C12,拟合与推导边界,REVIEW_CONCLUSION,当前路线需标定四参数；不宣称不存在其他半解析路线,C01-C11,REPORT.md §6-7,PENDING

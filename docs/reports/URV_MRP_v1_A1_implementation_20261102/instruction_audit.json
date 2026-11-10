@@ -1,0 +1,262 @@
+{
+  "protocol_id": "URV-MRP-v1-A1",
+  "date": "2026-11-02",
+  "candidate_binary_sha256": "c1fc2a1eeacced8f11a9bb045c25d70936b7be03fe5495a0b8f51789bd8fe8af",
+  "SOURCE_REVISION_AUDIT": "PASS",
+  "audit_scope": "Adopted A1 observer repair: exact source-only delta, specified floating-point dataflows in both capture branches and both drive selections, source rules and dependency/library bindings. Not full transitive machine proof or runtime result acceptance.",
+  "source_patch_exactly_adopted": true,
+  "mass_observer_capture_and_rules_unchanged": true,
+  "checks": [
+    {
+      "item": "volume capture branch",
+      "status": "PASS",
+      "addresses": [
+        "0x421b3 VMULSD dx*dx",
+        "0x421ea VMULSD partial*dx",
+        "0x421ee double store",
+        "0x421f6 double reload",
+        "0x421fe VADDSD volume+term",
+        "0x42204 volume store"
+      ],
+      "formula": "RN(volume+RN(RN(dx*dx)*dx))"
+    },
+    {
+      "item": "volume no-capture branch",
+      "status": "PASS",
+      "addresses": [
+        "0x4288e VMULSD dx*dx",
+        "0x428bd VMULSD partial*dx",
+        "0x428c1 double store",
+        "0x428c9 double reload",
+        "0x428d1 VADDSD volume+term",
+        "0x428d7 volume store"
+      ],
+      "formula": "same as capture branch"
+    },
+    {
+      "item": "legacy mass helper",
+      "status": "PASS",
+      "addresses": [
+        "0x308c4",
+        "0x308d4",
+        "0x308e4",
+        "0x308f4"
+      ],
+      "meaning": "three binary64 rounded products followed by explicit FMA, preserved helper/header"
+    },
+    {
+      "item": "rho/U and capture input",
+      "status": "PASS_LOCAL_DATAFLOW",
+      "addresses": [
+        "0x420bb computeU vcall",
+        "0x420ef computeRho vcall",
+        "0x4210e exact rho spill",
+        "0x42116 append",
+        "0x4213f same rho reload"
+      ],
+      "meaning": "one computeRho in each cell measurement; same returned value supplied to observer and capture"
+    },
+    {
+      "item": "speed / pressure",
+      "status": "PASS_CHECKED_FINITE_PATHS",
+      "addresses": [
+        "0x4213b",
+        "0x42157",
+        "0x4215c",
+        "0x42161",
+        "0x42147",
+        "0x4214f",
+        "0x42173",
+        "0x4219a",
+        "0x4281e",
+        "0x42832",
+        "0x42837",
+        "0x4283c",
+        "0x4280e",
+        "0x42816",
+        "0x42856",
+        "0x4287d"
+      ],
+      "meaning": "RN(uy^2),FMA ux^2,FMA uz^2,sqrt; pressure rho-1,divide3,unit multiply/add unchanged"
+    },
+    {
+      "item": "compensated term / Neumaier both magnitude branches / density delta",
+      "status": "PASS_LOCAL_DATAFLOW",
+      "addresses": [
+        "0x42229",
+        "0x42259",
+        "0x4225d",
+        "0x42261",
+        "0x42271",
+        "0x4227c",
+        "0x42280",
+        "0x42284",
+        "0x425b8",
+        "0x425bc",
+        "0x425c1",
+        "0x422a4",
+        "0x422c7",
+        "0x422cc",
+        "0x422d0",
+        "0x425a0",
+        "0x425a5",
+        "0x425a9",
+        "0x428fc",
+        "0x4292c",
+        "0x42930",
+        "0x42934",
+        "0x42944",
+        "0x4294e",
+        "0x42952",
+        "0x42956",
+        "0x42c38",
+        "0x42c3c",
+        "0x42c40",
+        "0x42976",
+        "0x42998",
+        "0x4299c",
+        "0x429a1",
+        "0x42c20",
+        "0x42c24",
+        "0x42c28"
+      ],
+      "meaning": "four independently rounded products; native mass_stats and all correction operations preserved"
+    },
+    {
+      "item": "densityIntegral",
+      "status": "PASS_CHECKED_FINITE_PATHS",
+      "addresses": [
+        "0x422d5",
+        "0x422fc",
+        "0x42300",
+        "0x429a6",
+        "0x429cd",
+        "0x429d1"
+      ],
+      "meaning": "two rho*dx products and final FMA unchanged"
+    },
+    {
+      "item": "three velocity integrals / two section fluxes",
+      "status": "PASS_CHECKED_FINITE_PATHS",
+      "addresses": [
+        "0x4238f",
+        "0x42397",
+        "0x4239b",
+        "0x423a3",
+        "0x423ab",
+        "0x423b3",
+        "0x423c7",
+        "0x423cd",
+        "0x42443",
+        "0x42463",
+        "0x42a5f",
+        "0x42a67",
+        "0x42a6b",
+        "0x42a73",
+        "0x42a7b",
+        "0x42a83",
+        "0x42a97",
+        "0x42a9d",
+        "0x42ada",
+        "0x42afa"
+      ],
+      "meaning": "same physical conversion, two dx products then integral FMA; separate section adds, drive-dependent axis preserved"
+    },
+    {
+      "item": "normalization / initial denominators / mass error",
+      "status": "PASS_LOCAL_DATAFLOW_AND_SOURCE",
+      "addresses": [
+        "0x4253d",
+        "0x4254b",
+        "0x4255e",
+        "0x42562",
+        "0x2496d VSUBSD",
+        "0x24991 VDIVSD",
+        "0x2499d VSUBSD",
+        "0x249a1 VDIVSD",
+        "0x249b6 VSUBSD",
+        "0x249ba VADDSD",
+        "0x249c6 VDIVSD"
+      ],
+      "meaning": "volume now feeds unchanged divisions; initial reference and state separate; mass error subtract then divide"
+    },
+    {
+      "item": "window / stopping / parameters / geometry / collision / force",
+      "status": "PASS_SOURCE_AND_BOUND_BUILD_RULES",
+      "meaning": "exact source delta only two volume lines relative failed predecessor; no other source or Makefile changes; same core/static/runtime dependency bindings checked below; no runtime evidence"
+    },
+    {
+      "item": "selected computeRho/U/J/collision kernel sequences",
+      "status": "PASS_SELECTED_NORMALIZED_STATIC_COMPARISON",
+      "meaning": "26 selected function FP/register dataflow and call sequences match failed predecessor and v1.2 after relocation/offset normalization",
+      "limit": "not full address equivalence or full transitive proof"
+    }
+  ],
+  "branch_mapping": {
+    "direction": "r8d branch chooses P/T section indices only; both use common measure",
+    "capture_test": [
+      "0x41f0a",
+      "0x41f25"
+    ],
+    "initial_reference": {
+      "caller": "0x24657",
+      "capture": "non-null",
+      "mass_call": "0x4220e"
+    },
+    "diagnostic": {
+      "caller": "0x2493d",
+      "capture": "non-null",
+      "mass_call": "0x4220e"
+    },
+    "final_after_loop": {
+      "caller": "0x2522d",
+      "capture": "null",
+      "mass_call": "0x428e1"
+    },
+    "initialize_if_authorized_later": {
+      "caller": "0x266e5",
+      "capture": "null",
+      "mass_call": "0x428e1"
+    },
+    "P_and_T_each_use_both_capture_modes": true
+  },
+  "constant_values_read_from_ELF": {
+    "rho_phys_at_0xe84e8": 1000.0,
+    "one_at_0xe86e0": 1.0,
+    "invCs2_at_0xe8350": 3.0,
+    "initialized_dx_at_0x117070": 5e-09
+  },
+  "volume_prefix_software_evidence": {
+    "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_MRP_v1_A1_implementation_20261102/volume_all_prefixes.json",
+    "sha256": "ddf6baaed0a7c86d6f6e3611ed95be7d634c97c753126f3c0cc3a666f0f56659",
+    "restored_prefix_differences": 0,
+    "previous_fused_prefix_differences": 196
+  },
+  "unchanged_checker_files": [
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/check_results.py",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/revision.py",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/check_mass_repair.py",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/contracts.py",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/mass_capture.py",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/read_fields.py",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/evidence.py",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/prediction_seal.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/preparation_bindings.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/source_preparation_anchor.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/protocol.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/model_predictions_before_reference.csv",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/acceptance_spec.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/PROTOCOL.md",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/data_history_status.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/adoption.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/common/case_matrix.csv"
+  ],
+  "new_instruction_or_evidence_contradiction_detected": false,
+  "Astra_new_ruling_required": false,
+  "full_transitive_machine_equivalence_claimed": false,
+  "exceptional_cold_paths_exhaustively_proven": false,
+  "native_runtime_executed": false,
+  "new_numerical_or_geometry_results": "NOT_EVALUATED",
+  "S0": "HOLD",
+  "compiler_and_link_runtime_library_hashes_unchanged": true
+}

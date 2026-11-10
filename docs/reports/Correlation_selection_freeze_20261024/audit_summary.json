@@ -1,0 +1,81 @@
+{
+  "input_count": 110,
+  "inputs_unchanged": true,
+  "cv_recomputed_count": 120,
+  "cv_max_relative_difference": 4.440892098500626e-16,
+  "mean_MAE_by_direction": {
+    "G4": {
+      "P": 1.4716742440935633,
+      "T": 1.2852938285822557
+    },
+    "G6": {
+      "P": 2.532097332622368,
+      "T": 0.43195666597555804
+    }
+  },
+  "P_weight_break_even": 0.44589554104302365,
+  "parameter_bound_hit_tolerance": 1e-05,
+  "bound_hits": [
+    {
+      "model": "G4",
+      "label": "leave_h_75",
+      "direction": "P",
+      "n_starts": 8,
+      "all_success": true,
+      "selected_near_boundary": true,
+      "jac_cond": 4.530069864646104,
+      "max_parameter_start_spread": 7.658624845419126e-09,
+      "objective_spread": 8.348356728138384e-18
+    },
+    {
+      "model": "G4",
+      "label": "leave_h_125",
+      "direction": "P",
+      "n_starts": 8,
+      "all_success": true,
+      "selected_near_boundary": true,
+      "jac_cond": 8.453494894176153,
+      "max_parameter_start_spread": 8.517731631130232e-09,
+      "objective_spread": 1.452830911130576e-17
+    },
+    {
+      "model": "G6",
+      "label": "leave_h_50",
+      "direction": "P",
+      "n_starts": 8,
+      "all_success": true,
+      "selected_near_boundary": true,
+      "jac_cond": 99.15830194738331,
+      "max_parameter_start_spread": 6.00278149409661e-08,
+      "objective_spread": 6.635317295611287e-17
+    },
+    {
+      "model": "G6",
+      "label": "leave_h_75",
+      "direction": "P",
+      "n_starts": 8,
+      "all_success": true,
+      "selected_near_boundary": true,
+      "jac_cond": 135.5178062572949,
+      "max_parameter_start_spread": 2.5511215362428175e-09,
+      "objective_spread": 1.734723475976807e-17
+    },
+    {
+      "model": "G6",
+      "label": "leave_h_125",
+      "direction": "P",
+      "n_starts": 8,
+      "all_success": true,
+      "selected_near_boundary": true,
+      "jac_cond": 219.75936411649474,
+      "max_parameter_start_spread": 7.399290646858958e-08,
+      "objective_spread": 4.8138576458356397e-17
+    }
+  ],
+  "reserved_geometry_count": 8,
+  "reserved_primary_direction_count": 16,
+  "reserved_grid_direction_count": 4,
+  "solver_runs": 0,
+  "prediction_results_read": false,
+  "new_fits": 0
+}

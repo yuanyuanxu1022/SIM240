@@ -1,0 +1,60 @@
+{
+  "review_id": "URV-READONLY-S0-20261101",
+  "scope": "preparation package self-review, not independent human scientific acceptance",
+  "old_preparation_evidence_invalidated": false,
+  "execution_readiness": "HOLD",
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "HIGH",
+      "blocks_S0_effective_binding": true,
+      "title": "失败处理可写入被保护的原结果目录",
+      "source": "CASE/unseen_v2_reference_v1/analysis/check_results.py",
+      "lines": [136, 138, 272, 276],
+      "mechanism": "check_run先拒绝out位于run内部，但main异常分支仍无条件向args.out/failure.json写回，重新进入禁止目录。",
+      "evidence": "synthetic_probes/output_inside_raw/probe.json",
+      "evidence_scope": "实际CLI反例，仅在新建人工目录；原CASE和实际原始结果未触碰",
+      "bounded_action": "在任何输出前统一验证目标位置；非法目标仅stderr与非零退出，不向该路径写文件；覆盖run自身、子目录、符号链接和批次各run。"
+    },
+    {
+      "id": "F02",
+      "severity": "MEDIUM",
+      "blocks_S0_effective_binding": true,
+      "title": "h75回归失败前逐列差异没有持久保存",
+      "source": "CASE/unseen_v2_reference_v1/analysis/check_results.py",
+      "lines": [108, 122, 201, 204, 216],
+      "mechanism": "compare_legacy返回全部差值，但need(legacy['all_exact'])在分析目录创建与acceptance写入前抛错，失败产物只有通用提示。",
+      "evidence": "synthetic_probes/legacy_difference/probe.json",
+      "evidence_scope": "人工共同字段差异计算加静态控制流核对；未伪称完整新流场失败复现",
+      "bounded_action": "在经安全校验的新分析目录先保存完整逐列比较与K相对差，再判断停止；保留严格停止口径，不新增放宽容差。"
+    },
+    {
+      "id": "F03",
+      "severity": "HIGH",
+      "blocks_S0_effective_binding": true,
+      "title": "执行合同最小来源覆盖与逐条身份对应未强制校验",
+      "source": "CASE/unseen_v2_reference_v1/analysis/check_results.py",
+      "lines": [124, 134, 153, 161],
+      "mechanism": "binding只核声明输入及analysis/common覆盖，不要求native源码/程序/构建依赖/库在清单；approved_run_ids没有强制对应planned_case_id、配置SHA和唯一目录。",
+      "evidence": "synthetic_probes/incomplete_release/probe.json",
+      "evidence_scope": "实际调用binding的人工合同漏掉native源/程序/库仍返回成功；逐条对应缺口为静态核对。人工CONFIRMED/授权标记仅测试数据，不是作者确认或真实执行授权。",
+      "bounded_action": "新版本强制来源角色与覆盖、每条run_id到case/配置SHA/输出目录的绑定；核完整前后映射。保留当前1432项准备封存，不覆盖或冒充正式构建。"
+    },
+    {
+      "id": "F04",
+      "severity": "MEDIUM",
+      "blocks_S0_effective_binding": false,
+      "blocks_later_24_case_aggregation": true,
+      "title": "汇总CLI单合同入口与逐阶段独立封存不相容",
+      "source": "CASE/unseen_v2_reference_v1/analysis/check_results.py",
+      "lines": [140, 141, 259, 271],
+      "mechanism": "24条check_run共用一个release/SHA，且每条completion必须等于该SHA；按S0到S5分别封存的正常记录不能直接汇总。",
+      "evidence": "synthetic_probes/separate_stage_anchors/probe.json",
+      "evidence_scope": "静态CLI检查加人工不同SHA分支核对，来源层在人工反例中明确mock；没有运行任何阶段。",
+      "bounded_action": "后续汇总索引逐条携带各自受信合同与SHA，独立重验每条后再汇总；不回写旧completion或预先批准全24条。此修订不必混入S0单条验收的最小修订。"
+    }
+  ],
+  "repairs_performed_this_review": false,
+  "physical_threshold_changes": false,
+  "solver_started": false
+}

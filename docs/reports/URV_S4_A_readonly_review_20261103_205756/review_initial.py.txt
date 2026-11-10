@@ -1,0 +1,115 @@
+"""Read-only S4 A review. Audit hook denies process execution and non-report writes."""
+from pathlib import Path
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from fractions import Fraction
+import ast,hashlib,json,math,os,sys
+ROOT=Path('/home/dell/yuanyuanxu/SIM240');OUT=Path(__file__).resolve().parent
+CASE=ROOT/'CASE/unseen_v2_reference_S4_reuse_v1';CHECK=ROOT/'CASE/unseen_v2_reference_checker_S4_reuse_v1'
+PREVIOUS=ROOT/'docs/reports/URV_S4_implementation_20261103_203002'
+PRIOR=ROOT/'docs/reports/URV_S4_prerun_scope_review_20261103_200311'
+A=CASE/'evidence/preparation_A.json';EXPECTED='e9d12e68eaa324bd8e78ad57825710936f9e00518faf39337923b930ad82a165'
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+load=lambda p:json.loads(Path(p).read_text())
+def guard(event,args):
+    if event in ('subprocess.Popen','os.system','os.exec','os.posix_spawn','os.posix_spawnp'):
+        raise AssertionError('No processes permitted in read-only S4 A review')
+    if event=='open':
+        path,mode,flags=args
+        writes=(isinstance(mode,str) and any(x in mode for x in 'wxa+')) or (isinstance(flags,int) and flags&(os.O_WRONLY|os.O_RDWR|os.O_CREAT|os.O_TRUNC|os.O_APPEND))
+        if writes:
+            assert isinstance(path,(str,bytes,os.PathLike)) and Path(path).resolve().is_relative_to(OUT),'non-report write denied'
+    if event in ('os.remove','os.rmdir','os.mkdir','os.chmod','os.utime','os.rename'):
+        paths=args[:2] if event=='os.rename' else args[:1]
+        assert all(Path(p).resolve().is_relative_to(OUT) for p in paths),'non-report mutation denied'
+sys.addaudithook(guard)
+def save(name,value):
+    with (OUT/name).open('x') as f:json.dump(value,f,ensure_ascii=False,indent=2,allow_nan=False);f.write('\n')
+
+assert sha(A)==EXPECTED and A.with_suffix('.sha256').read_text().strip()==EXPECTED
+bound=load(A);protected=load(OUT/'protected_files_before.json')
+assert all(sha(p)==h for p,h in protected.items())
+assert all(sha(p)==h for p,h in bound['inputs_sha256'].items())
+package=load(PREVIOUS/'package_files_sha256.json');assert len(package)==110 and all(sha(p)==h for p,h in package.items())
+actual={str(p):sha(p) for tree in (CASE,CHECK) for p in tree.rglob('*') if p.is_file()}
+assert actual==package and not any(p.is_symlink() for tree in (CASE,CHECK) for p in tree.rglob('*'))
+manifest=load(PREVIOUS/'document_manifest.json');assert len(manifest)==28 and all(sha(PREVIOUS/p)==h for p,h in manifest.items())
+adoption=load(CASE/'evidence/adoption.json');assert adoption['implementation_authorized'] is True
+assert sha(adoption['scope_protocol_path'])==adoption['scope_protocol_sha256']==sha(PRIOR/'PROTOCOL.md')
+assert sha(adoption['scope_decision_path'])==adoption['scope_decision_sha256']
+sys.path.insert(0,str(CHECK/'analysis'))
+from stage_s4 import verify_seal,validate_zero_plan,validate_records,require_pristine,validate_zero_authority,validate_formal_authority,CASES,RUN_IDS,MODES,RESOURCES
+from evidence import kv,rows,exact_parameters,geometry,EvidenceError
+assert verify_seal(A,EXPECTED)==bound
+assert len(validate_records(bound,CHECK))==6 and len(validate_zero_plan(bound))==18
+require_pristine(bound['prepared_runs']+bound['zero_prepared_runs'])
+for forbidden in ('launch_attempts','audit_attempts','analysis_results','evidence/preparation_B.json'):
+    assert not (CASE/forbidden).exists()
+for validator in (validate_zero_authority,validate_formal_authority):
+    try:validator(bound)
+    except EvidenceError:pass
+    else:raise AssertionError('closed A accepted as execution authority')
+flags=('simulation_authorized','formal_simulation_authorized','native_zero_step_authorized','initial_field_readback_authorized','performance_time_stepping_authorized','S5_authorized','automatic_retry_authorized','automatic_extension_authorized')
+assert all(bound[k] is False for k in flags)
+assert all(bound[k]==[] for k in ('approved_run_ids','approved_runs','approved_audit_run_ids','actual_formal_run_ids','actual_audit_run_ids'))
+assert bound['zero_audit_status']=='NOT_EXECUTED' and bound['geometry_PASS'] is None and bound['NUMERICAL_GATE']=='NOT_EVALUATED' and bound['RESULT_PASS'] is False
+matrix={r['planned_case_id']:r for r in rows(CHECK/'common/case_matrix.csv')}
+configurations=[]
+for i,record in enumerate(bound['prepared_runs']):
+    ident=record['planned_case_id'];cfg=kv(record['run_config_path']);row=matrix[ident];p=exact_parameters(cfg);geo=geometry(cfg)
+    assert ident==CASES[i] and record['run_id']==RUN_IDS[i] and row['stage']=='S4_THIN_GRID' and row['family']=='U_THIN'
+    assert cfg['direction']==row['direction'] and cfg['mode']=='steady'
+    for key,mkey in [('h_nm','h_nm'),('d_nm','d_nm'),('w_nm','w_nm'),('period_nm','P_nm'),('Ly_nm','Ly_nm'),('dx_nm','dx_nm'),('nu_m2_s','nu_m2_s'),('acceleration_m_s2','acceleration_m_s2')]:assert float(cfg[key])==float(row[mkey])
+    assert (p['nodes'],p['window'],p['cap'])==[(32256,162,23232),(258048,648,92928),(2064384,2592,371712)][i//2]
+    assert bound['exact_parameters'][ident]==p and p['H']==70e-9
+    assert geo['candidate_links']==[30528,122496,490752][i//2] and geo['q_min']==geo['q_max']==.5
+    assert (p['nodes'],p['window'],p['cap'])==tuple(int(row[k]) for k in ('expected_fluid_nodes','window_steps','maximum_steps'))
+    dx=float(cfg['dx_nm'])*1e-9;h=float(cfg['h_nm'])*1e-9;d=float(cfg['d_nm'])*1e-9;nu=float(cfg['nu_m2_s']);dt=.5*dx*dx/(3*nu)
+    assert math.ceil(.75*h*h/(nu*dt)-1e-9)==p['window'] and math.ceil(8*(h+d)**2/(nu*dt)-1e-9)==p['cap']
+    frames=[math.ceil(Fraction(t)*6*(Fraction(cfg['h_nm'])/Fraction(cfg['dx_nm']))**2) for t in cfg['frame_tstar'].split(',')]
+    zeros=[r for r in bound['zero_prepared_runs'] if r['planned_case_id']==ident]
+    assert [r['mode'] for r in zeros]==list(MODES)
+    for z in zeros:
+        expected=dict(cfg,mode=z['mode'],run_id=z['run_id'],output_directory=z['output_directory']);assert kv(z['run_config_path'])==expected
+    configurations.append(dict(planned_case_id=ident,run_id=record['run_id'],direction=cfg['direction'],dx_nm=float(cfg['dx_nm']),expected_nodes=p['nodes'],expected_wall_links=geo['candidate_links'],window_steps=p['window'],maximum_steps=p['cap'],dt_s=p['dt'],frame_targets=frames,initial_main_J_expected_m2_s=p['H']*p['a']*p['dt']/2,formal_and_three_zero_configs_match=True,native_audit_executed=False,geometry_PASS=None))
+save('six_configuration_review.json',configurations)
+old=ROOT/'CASE/unseen_v2_reference_checker_S3_reuse_v1_1'
+identical={str(p.relative_to(old)):p.read_bytes()==(CHECK/p.relative_to(old)).read_bytes() for p in (old/'common').iterdir() if p.is_file()}
+for name in ('check_results.py','evidence.py','read_fields.py','zero_evidence.py'):identical['analysis/'+name]=(old/'analysis'/name).read_bytes()==(CHECK/'analysis'/name).read_bytes()
+assert all(identical.values())
+expected_zero=(old/'analysis/zero_evidence.py').read_text().replace('len(records)==len(plan)==12','len(records)==len(plan)==18').replace('twelve original','eighteen original').replace('len(seen)==4','len(seen)==6').replace('four unique','six unique')
+assert expected_zero==(CHECK/'analysis/zero_evidence_s4.py').read_text()
+base=(old/'analysis/contracts.py').read_text();needle="        if bound.get('source_revision', {}).get('id') == 'URV-S3-S1-ELF-REUSE-v1.1':"
+replacement="        if bound.get('source_revision', {}).get('id') == 'URV-S4-S1-ELF-REUSE-v1':\n            from revision_s4_reuse import verify_s4_reuse\n            verify_s4_reuse(bound, observed, checker_case)\n        elif bound.get('source_revision', {}).get('id') == 'URV-S3-S1-ELF-REUSE-v1.1':"
+assert base.replace(needle,replacement)==(CHECK/'analysis/contracts.py').read_text()
+def functions(path):return {n.name:n for n in ast.parse(path.read_text()).body if isinstance(n,ast.FunctionDef)}
+audit=functions(CASE/'scripts/audit_S4_zero.py');execute=audit['execute']
+text=ast.get_source_segment((CASE/'scripts/audit_S4_zero.py').read_text(),execute)
+assert text.index('validate_zero_authority(bound)')<text.index('attempt.mkdir')<text.index('call_native(')
+assert "record['mode'] == 'initialize'" in text and 'validate_initial_readback(record, out, folder)' in text
+assert 'timeout=300' in ast.get_source_segment((CASE/'scripts/audit_S4_zero.py').read_text(),audit['field_readback'])
+assert 'env, 300)' in ast.get_source_segment((CASE/'scripts/audit_S4_zero.py').read_text(),audit['call_native'])
+oldfunc=functions(ROOT/'CASE/unseen_v2_reference_S3_reuse_v1_1/scripts/run_S3.py');newfunc=functions(CASE/'scripts/run_S4.py')
+assert all(ast.dump(oldfunc[n],include_attributes=False)==ast.dump(newfunc[n],include_attributes=False) for n in ('resources','child_limits','process_environment','stop','native_process','output_hashes'))
+tests=load(PREVIOUS/'software_verification.json');assert tests['tests_run']==120 and tests['successful'] and tests['errors']==tests['failures']==0
+assert tests['native_invocations']==tests['VTK_invocations']==tests['build_invocations']==0
+assert 'Ran 120 tests' in (PREVIOUS/'guarded_software_tests.log').read_text() and (PREVIOUS/'guarded_software_tests.log').read_text().rstrip().endswith('OK')
+assert all(sha(p)==h for p,h in protected.items()) and actual=={str(p):sha(p) for tree in (CASE,CHECK) for p in tree.rglob('*') if p.is_file()}
+result=dict(at=datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),PREPARATION_A_READONLY_REVIEW_PASS=True,preparation_A_sha256=EXPECTED,
+    inputs_verified=len(bound['inputs_sha256']),candidate_files_verified=len(package),implementation_report_files_verified=len(manifest),protected_files_unchanged=len(protected),
+    adopted_scope_matches=True,six_formal_and_eighteen_zero_configs_match=True,planned_initial_field_reads=6,pristine_directories=24,
+    source_scientific_files_identical=identical,R1_R2_checks_preserved_except_18_6_counts=True,
+    permissions_closed=True,closed_A_rejected_for_both_execution_roles=True,authority_before_new_output_or_process=True,
+    historical_tests_verified=120,tests_rerun_this_turn=0,default_CLI_rerun_this_turn=0,resource_snapshot_taken_this_turn=False,
+    native_calls=0,VTK_calls=0,builds=0,solver_steps=0,performance_steps=0,CASE_writes=0,
+    new_execution_authorization_received=False,execution_release_created=False,launch_command_created=False,
+    observations=[dict(id='N1',severity='NONBLOCKING_DOCUMENTATION',file=str(CASE/'scripts/run_S4.py'),line=1,
+        finding='Leading inherited docstring says Four formal S4 runs; frozen matrix, exact guards, loop and completed record enforce six. No runtime branch uses this text. Preserve seal; correct documentation only in any later isolated revision if needed.')],
+    next_binding_conditions=['Explicit18native+6initialread authorization covering zero advancement,300s per call/read,fail stop,no retry,manual start',
+        'Fresh A/input/pristine/provenance and then-current memory/disk/conflict check',
+        'Separate canonical execution release binding real authorization and A plus sidecar; exact18approved_audit identities only',
+        'Clean execution environment for captured native and pvpython dependencies; no inherited LD_PRELOAD/LD_LIBRARY_PATH ambiguity',
+        'No formal/PERF/S5 authority; prepared/actual lists remain distinct'],
+    NUMERICAL_GATE='NOT_EVALUATED',geometry_PASS=None,RESULT_PASS=False,reference_qualified=False,MODEL_COMPARISON='NOT_EVALUATED',physical_validation='NOT_EVALUATED',submission_ready=False,F04='OPEN_OUT_OF_SCOPE')
+save('review_verification.json',result)
+print(json.dumps({k:v for k,v in result.items() if k not in ('source_scientific_files_identical','next_binding_conditions','observations')},ensure_ascii=False,indent=2))

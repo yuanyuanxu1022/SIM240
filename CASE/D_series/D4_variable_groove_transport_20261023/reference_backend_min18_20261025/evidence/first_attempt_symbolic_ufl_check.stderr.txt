@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/tests/check_symbolic_ufl.py", line 56, in <module>
+    print(json.dumps(check(), indent=2))
+                     ^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/tests/check_symbolic_ufl.py", line 43, in check
+    errors.append(abs(forcing_s.evaluate(point, {}, (), {}) - s["forcing"]))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/lib/python3.12/site-packages/ufl/algebra.py", line 195, in evaluate
+    tmp *= o.evaluate(x, mapping, (), index_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/lib/python3.12/site-packages/ufl/indexsum.py", line 97, in evaluate
+    index_values.push(i, k)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'push'

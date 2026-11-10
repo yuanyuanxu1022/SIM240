@@ -1,0 +1,75 @@
+{
+  "at": "2026-11-03T20:42:38.030062+08:00",
+  "preparation_A_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/evidence/preparation_A.json",
+  "preparation_A_sha256": "e9d12e68eaa324bd8e78ad57825710936f9e00518faf39337923b930ad82a165",
+  "inputs_verified": 2976,
+  "package_files_verified": 110,
+  "protected_predecessor_files_unchanged": 3106,
+  "readonly_entry_checks": [
+    {
+      "script": "run_S4.py",
+      "command": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/scripts/run_S4.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/evidence/preparation_A.json",
+        "--release-sha256",
+        "e9d12e68eaa324bd8e78ad57825710936f9e00518faf39337923b930ad82a165"
+      ],
+      "exit_code": 0,
+      "response": {
+        "PREPARATION_BINDING_CHECK": true,
+        "solver_executed": false,
+        "simulation_authorized": false,
+        "prepared_run_ids": [
+          "URV_S4_P_dx5_reuse_v1_20261103_01",
+          "URV_S4_T_dx5_reuse_v1_20261103_01",
+          "URV_S4_P_dx2p5_reuse_v1_20261103_01",
+          "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+          "URV_S4_P_dx1p25_reuse_v1_20261103_01",
+          "URV_S4_T_dx1p25_reuse_v1_20261103_01"
+        ],
+        "zero_audit_status": "NOT_EXECUTED",
+        "resources_snapshot": {
+          "MemAvailable_bytes": 21356949504,
+          "disk_free_bytes": 340989292544
+        }
+      }
+    },
+    {
+      "script": "audit_S4_zero.py",
+      "command": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/scripts/audit_S4_zero.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/evidence/preparation_A.json",
+        "--release-sha256",
+        "e9d12e68eaa324bd8e78ad57825710936f9e00518faf39337923b930ad82a165"
+      ],
+      "exit_code": 0,
+      "response": {
+        "ZERO_PLAN_BINDING_CHECK": true,
+        "solver_executed": false,
+        "planned_native_calls": 18,
+        "planned_initial_field_reads": 6,
+        "native_zero_step_authorized": false
+      }
+    }
+  ],
+  "all_execution_permissions_closed": true,
+  "approved_and_actual_lists_empty": true,
+  "formal_prepared_count": 6,
+  "zero_prepared_count": 18,
+  "initial_field_read_plan_count": 6,
+  "all_24_run_directories_pristine": true,
+  "attempts_or_analysis_created": false,
+  "preparation_B_created": false,
+  "CXX_changes": 0,
+  "builds": 0,
+  "native_calls": 0,
+  "VTK_calls": 0,
+  "performance_steps": 0,
+  "formal_steps": 0
+}

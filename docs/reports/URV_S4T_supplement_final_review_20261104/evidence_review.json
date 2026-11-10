@@ -1,0 +1,96 @@
+{
+  "checked_at": "2026-11-04T16:01:31.874527+08:00",
+  "scope": "saved hashes, bindings and scalar arithmetic only; no full checker replay",
+  "original_inputs_verified": 3284,
+  "original_release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+  "baselines": [
+    {
+      "run_id": "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+      "K_m3": 3.517910669377557e-24,
+      "raw_files": 39,
+      "bindings_valid": true
+    },
+    {
+      "run_id": "URV_S4_T_dx1p25_reuse_v1_20261103_01",
+      "K_m3": 3.471791836744987e-24,
+      "raw_files": 37,
+      "bindings_valid": true
+    }
+  ],
+  "original_grid": [
+    {
+      "direction": "P",
+      "K_m3": [
+        2.7691299257287254e-23,
+        2.754644779506946e-23,
+        2.750102454184732e-23
+      ],
+      "p": 1.6730713071592136,
+      "D": 0.0016516931270331714,
+      "GCI": 0.0009432091243563523,
+      "GRID_CHECKS_PASS": true
+    },
+    {
+      "direction": "T",
+      "K_m3": [
+        3.64797692375804e-24,
+        3.517910669377557e-24,
+        3.471791836744987e-24
+      ],
+      "p": 1.495818803322428,
+      "D": 0.013283870347425175,
+      "GCI": 0.009122325923024657,
+      "GRID_CHECKS_PASS": false
+    }
+  ],
+  "original_S4_STAGE_ACCEPTED": false,
+  "TGE_preparation_sha256": "53e544543ae26402a0d0fac7a7b3294e0a2286e7a7d4c336ce08e91abf53bfb9",
+  "TGE_input_count": 3695,
+  "TGE_execution_permissions": {
+    "simulation_authorized": false,
+    "formal_simulation_authorized": false,
+    "native_zero_step_authorized": false,
+    "initial_field_readback_authorized": false,
+    "performance_time_stepping_authorized": false,
+    "automatic_retry_authorized": false,
+    "automatic_extension_authorized": false,
+    "S5_authorized": false
+  },
+  "TGE_prepared_directories": [
+    {
+      "run_id": "URV_S4_T_dx0p625_TGE_v1_20261104_01",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_describe",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_precheck",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_initialize",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    }
+  ],
+  "protected_input_count": 3727,
+  "static_evidence_checks_pass": true,
+  "native_calls": 0,
+  "field_reader_calls": 0,
+  "full_scientific_checker_replays": 0,
+  "new_run_ids": [],
+  "reference_qualified": false
+}

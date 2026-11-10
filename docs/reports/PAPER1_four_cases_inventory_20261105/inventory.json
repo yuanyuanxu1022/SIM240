@@ -1,0 +1,2168 @@
+{
+  "date": "2026-11-05",
+  "runs": [
+    {
+      "run_id": "h50_d25_dx5_P",
+      "role": "main",
+      "result": {
+        "case": "D2-P-h50-d25-dx5",
+        "direction": "parallel",
+        "PASS": "true",
+        "converged": "true",
+        "steps_completed": "2286",
+        "Lx_m": "2.3999999999999998e-07",
+        "Ly_m": "2.3999999999999998e-07",
+        "mesa_gap_m": "5.0000000000000004e-08",
+        "groove_depth_m": "2.5000000000000002e-08",
+        "groove_width_m": "1.2000000000000002e-07",
+        "H_ref_m": "6.250000000000001e-08",
+        "dx_m": "5.0000000000000001e-09",
+        "dt_s": "4.1666666666666668e-12",
+        "tau": "1",
+        "descriptor": "D3Q19_FORCE",
+        "collision": "ForcedBGK",
+        "wall_boundary": "Bouzidi_zero_velocity_exact_EX240",
+        "periodicity": "x_y",
+        "acceleration_m_s2": "100000",
+        "force_lattice": "0,3.4722222222222225e-10,0",
+        "fluid_nodes": "28800",
+        "fluid_volume_m3": "3.5999999999981492e-21",
+        "nominal_volume_m3": "3.5999999999999999e-21",
+        "candidate_links": "25248",
+        "installed_links": "25248",
+        "q_min": "0.5",
+        "q_max": "0.5",
+        "fallback_count": "0",
+        "unresolved_links": "0",
+        "max_mass_abs_relative": "0",
+        "max_density_deviation": "2.2204460492503131e-16",
+        "max_Mach": "9.178190590651444e-08",
+        "pressure_range_Pa": "-5.3290705182007514e-08,0",
+        "J_vector_m2_s": "1.0635782380444681e-21,1.9394819153435097e-12,1.2455191349090019e-23",
+        "J_main_m2_s": "1.9394819153435097e-12",
+        "Keff_m3": "1.9394819153435098e-23",
+        "K0_smooth_h75_m3": "1.0416666666666669e-23",
+        "Keff_over_K0": "1.861902638729769",
+        "R_eff_Pa_s_per_m3": "5.1560161097087918e+19",
+        "Q_sections_m3_s": "4.654756596824441e-19,4.654756596824441e-19",
+        "section_relative_difference": "0",
+        "window_main_rel_std": "9.9727881889305288e-07",
+        "window_main_rel_span": "4.8309157633343395e-06",
+        "window_cross_abs_max": "1.5789838558896687e-21",
+        "material_unchanged": "true",
+        "finite": "true",
+        "exit_code": "0"
+      },
+      "manifest": {
+        "case_id": "D2-P-h50-d25-dx5",
+        "direction": "P",
+        "dx_nm": "5",
+        "tau": "1.0",
+        "acceleration_m_s2": "1e5",
+        "mesa_gap_nm": "50",
+        "groove_depth_nm": "25",
+        "binary": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/build/d2_groove_error_map",
+        "binary_sha256": "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c"
+      },
+      "exit_codes": {
+        "precheck": 0,
+        "steady": 0
+      },
+      "boundary_audits": {
+        "precheck": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "28800",
+          "material_2": "2304",
+          "material_3": "14976",
+          "candidate_links": "25248",
+          "valid_distance_links": "25248",
+          "installed_links": "25248",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        },
+        "steady": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "28800",
+          "material_2": "2304",
+          "material_3": "14976",
+          "candidate_links": "25248",
+          "valid_distance_links": "25248",
+          "installed_links": "25248",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        }
+      },
+      "diagnostic_rows": 2287,
+      "diagnostic_columns": [
+        "step",
+        "J",
+        "rho",
+        "Mach",
+        "mass",
+        "time_s",
+        "mass_error",
+        "max_density_deviation",
+        "Jx",
+        "Jy",
+        "Jz",
+        "Q_section1",
+        "Q_section2",
+        "section_relative_difference",
+        "pressure_min",
+        "pressure_max",
+        "window_rel_std",
+        "window_rel_span",
+        "window_cross_abs_max",
+        "finite"
+      ],
+      "recomputed_last_window": {
+        "std": 9.9727881889305e-07,
+        "span": 4.8309157633343284e-06,
+        "cross_max": 1.5789838558896687e-21,
+        "physical_duration_first_to_last_s": 4.162500000000001e-09
+      },
+      "recomputed_diagnostic_maxima": {
+        "Mach": 9.178190590651444e-08,
+        "mass_error": 0.0,
+        "max_density_deviation": 2.220446049250313e-16,
+        "section_relative_difference": 0.0
+      },
+      "nu_from_dx_dt_tau": 1.0000000000000002e-06,
+      "csv_structural_inventory": {
+        "field_slice.csv": {
+          "header": "x,z,ux,uy,uz,speed,rho,pressure,Phi,material",
+          "data_row_count": 600
+        },
+        "energy_dissipation.csv": {
+          "header": "position,Phi",
+          "data_row_count": 48
+        },
+        "velocity_profile.csv": {
+          "header": "position,velocity",
+          "data_row_count": 48
+        },
+        "pressure_profile.csv": {
+          "header": "position,rho,pressure",
+          "data_row_count": 48
+        }
+      },
+      "vtk_structural_inventory": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_parallel_iT0000000iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_parallel_iT0000000iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0002286.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_parallel_iT0002286iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_parallel_iT0002286iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0002286iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/g2_ex240_parallel.pvd",
+          "type": "Collection",
+          "references": [
+            {
+              "reference": "data/g2_ex240_parallel_iT0000000.vtm",
+              "exists": true,
+              "inside_named_run": true
+            },
+            {
+              "reference": "data/g2_ex240_parallel_iT0002286.vtm",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "timestep": "0",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_parallel_iT0000000.vtm"
+            },
+            {
+              "timestep": "2286",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_parallel_iT0002286.vtm"
+            }
+          ]
+        }
+      ],
+      "file_count": 21,
+      "total_bytes": 858364,
+      "saved_log_tail": [
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/gnuplotData/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/gnuplotData/data/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/introspectionData/ created.",
+        "case=D2-P-h50-d25-dx5 PASS=true step=2286 J=1.9394819153435097e-12 Keff=1.9394819153435098e-23"
+      ],
+      "checks": {
+        "recorded_inputs_match_named_geometry_direction": true,
+        "recorded_shared_physical_settings": true,
+        "recorded_fluid_nodes_match_geometry_arithmetic": true,
+        "independent_exits_zero": true,
+        "saved_pass_converged": true,
+        "diagnostic_rows_match_step_0_to_final": true,
+        "diagnostic_all_values_finite": true,
+        "diagnostic_finite_flags": true,
+        "last_j_matches_result": true,
+        "K_reconstructed_from_recorded_units": true,
+        "final_1000_std_matches_result": true,
+        "final_1000_span_matches_result": true,
+        "final_1000_cross_matches_result": true,
+        "recorded_window_thresholds": true,
+        "recorded_diagnostic_thresholds": true,
+        "nominal_volume_vs_saved_counted_volume": true,
+        "precheck_steady_manifests_equal": true,
+        "geometry_q_recorded_true": true,
+        "boundary_no_recorded_fallback_unresolved": true,
+        "links_installed_match_candidates": true,
+        "time_column_matches_dt": true,
+        "diagnostic_max_matches_max_Mach": true,
+        "diagnostic_max_matches_max_mass_abs_relative": true,
+        "diagnostic_max_matches_max_density_deviation": true,
+        "vtk_reference_targets_present": true,
+        "vtk_contains_initial_and_result_step": true
+      },
+      "check_failures": []
+    },
+    {
+      "run_id": "h50_d25_dx5_T",
+      "role": "main",
+      "result": {
+        "case": "D2-T-h50-d25-dx5",
+        "direction": "perpendicular",
+        "PASS": "true",
+        "converged": "true",
+        "steps_completed": "1890",
+        "Lx_m": "2.3999999999999998e-07",
+        "Ly_m": "2.3999999999999998e-07",
+        "mesa_gap_m": "5.0000000000000004e-08",
+        "groove_depth_m": "2.5000000000000002e-08",
+        "groove_width_m": "1.2000000000000002e-07",
+        "H_ref_m": "6.250000000000001e-08",
+        "dx_m": "5.0000000000000001e-09",
+        "dt_s": "4.1666666666666668e-12",
+        "tau": "1",
+        "descriptor": "D3Q19_FORCE",
+        "collision": "ForcedBGK",
+        "wall_boundary": "Bouzidi_zero_velocity_exact_EX240",
+        "periodicity": "x_y",
+        "acceleration_m_s2": "100000",
+        "force_lattice": "3.4722222222222225e-10,0,0",
+        "fluid_nodes": "28800",
+        "fluid_volume_m3": "3.5999999999981492e-21",
+        "nominal_volume_m3": "3.5999999999999999e-21",
+        "candidate_links": "25248",
+        "installed_links": "25248",
+        "q_min": "0.5",
+        "q_max": "0.5",
+        "fallback_count": "0",
+        "unresolved_links": "0",
+        "max_mass_abs_relative": "7.0788625067076106e-13",
+        "max_density_deviation": "1.2937727777995178e-08",
+        "max_Mach": "6.0395547098863467e-08",
+        "pressure_range_Pa": "-6.2087610785965808,6.208765235271585",
+        "J_vector_m2_s": "1.4169217158439067e-12,1.0793834692371176e-23,1.0885079383573213e-21",
+        "J_main_m2_s": "1.4169217158439067e-12",
+        "Keff_m3": "1.4169217158439068e-23",
+        "K0_smooth_h75_m3": "1.0416666666666669e-23",
+        "Keff_over_K0": "1.3602448472101503",
+        "R_eff_Pa_s_per_m3": "7.0575529248940081e+19",
+        "Q_sections_m3_s": "3.4006121314302454e-19,3.4006121243234426e-19",
+        "section_relative_difference": "2.089859870430558e-09",
+        "window_main_rel_std": "7.7219288796794428e-07",
+        "window_main_rel_span": "4.9307612796958817e-06",
+        "window_cross_abs_max": "3.1996012082331389e-23",
+        "material_unchanged": "true",
+        "finite": "true",
+        "exit_code": "0"
+      },
+      "manifest": {
+        "case_id": "D2-T-h50-d25-dx5",
+        "direction": "T",
+        "dx_nm": "5",
+        "tau": "1.0",
+        "acceleration_m_s2": "1e5",
+        "mesa_gap_nm": "50",
+        "groove_depth_nm": "25",
+        "binary": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/build/d2_groove_error_map",
+        "binary_sha256": "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c"
+      },
+      "exit_codes": {
+        "precheck": 0,
+        "steady": 0
+      },
+      "boundary_audits": {
+        "precheck": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "28800",
+          "material_2": "2304",
+          "material_3": "14976",
+          "candidate_links": "25248",
+          "valid_distance_links": "25248",
+          "installed_links": "25248",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        },
+        "steady": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "28800",
+          "material_2": "2304",
+          "material_3": "14976",
+          "candidate_links": "25248",
+          "valid_distance_links": "25248",
+          "installed_links": "25248",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        }
+      },
+      "diagnostic_rows": 1891,
+      "diagnostic_columns": [
+        "step",
+        "J",
+        "rho",
+        "Mach",
+        "mass",
+        "time_s",
+        "mass_error",
+        "max_density_deviation",
+        "Jx",
+        "Jy",
+        "Jz",
+        "Q_section1",
+        "Q_section2",
+        "section_relative_difference",
+        "pressure_min",
+        "pressure_max",
+        "window_rel_std",
+        "window_rel_span",
+        "window_cross_abs_max",
+        "finite"
+      ],
+      "recomputed_last_window": {
+        "std": 7.721928879679431e-07,
+        "span": 4.930761279695877e-06,
+        "cross_max": 3.199601208233139e-23,
+        "physical_duration_first_to_last_s": 4.162500000000001e-09
+      },
+      "recomputed_diagnostic_maxima": {
+        "Mach": 6.039554709886347e-08,
+        "mass_error": 7.078862506707611e-13,
+        "max_density_deviation": 1.2937727777995178e-08,
+        "section_relative_difference": 0.38044562361213663
+      },
+      "nu_from_dx_dt_tau": 1.0000000000000002e-06,
+      "csv_structural_inventory": {
+        "field_slice.csv": {
+          "header": "x,z,ux,uy,uz,speed,rho,pressure,Phi,material",
+          "data_row_count": 600
+        },
+        "energy_dissipation.csv": {
+          "header": "position,Phi",
+          "data_row_count": 48
+        },
+        "velocity_profile.csv": {
+          "header": "position,velocity",
+          "data_row_count": 48
+        },
+        "pressure_profile.csv": {
+          "header": "position,rho,pressure",
+          "data_row_count": 48
+        }
+      },
+      "vtk_structural_inventory": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_perpendicular_iT0000000iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_perpendicular_iT0000000iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0001890.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_perpendicular_iT0001890iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_perpendicular_iT0001890iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0001890iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/g2_ex240_perpendicular.pvd",
+          "type": "Collection",
+          "references": [
+            {
+              "reference": "data/g2_ex240_perpendicular_iT0000000.vtm",
+              "exists": true,
+              "inside_named_run": true
+            },
+            {
+              "reference": "data/g2_ex240_perpendicular_iT0001890.vtm",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "timestep": "0",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_perpendicular_iT0000000.vtm"
+            },
+            {
+              "timestep": "1890",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_perpendicular_iT0001890.vtm"
+            }
+          ]
+        }
+      ],
+      "file_count": 21,
+      "total_bytes": 920097,
+      "saved_log_tail": [
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/gnuplotData/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/gnuplotData/data/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/introspectionData/ created.",
+        "case=D2-T-h50-d25-dx5 PASS=true step=1890 J=1.4169217158439067e-12 Keff=1.4169217158439068e-23"
+      ],
+      "checks": {
+        "recorded_inputs_match_named_geometry_direction": true,
+        "recorded_shared_physical_settings": true,
+        "recorded_fluid_nodes_match_geometry_arithmetic": true,
+        "independent_exits_zero": true,
+        "saved_pass_converged": true,
+        "diagnostic_rows_match_step_0_to_final": true,
+        "diagnostic_all_values_finite": true,
+        "diagnostic_finite_flags": true,
+        "last_j_matches_result": true,
+        "K_reconstructed_from_recorded_units": true,
+        "final_1000_std_matches_result": true,
+        "final_1000_span_matches_result": true,
+        "final_1000_cross_matches_result": true,
+        "recorded_window_thresholds": true,
+        "recorded_diagnostic_thresholds": true,
+        "nominal_volume_vs_saved_counted_volume": true,
+        "precheck_steady_manifests_equal": true,
+        "geometry_q_recorded_true": true,
+        "boundary_no_recorded_fallback_unresolved": true,
+        "links_installed_match_candidates": true,
+        "time_column_matches_dt": true,
+        "diagnostic_max_matches_max_Mach": true,
+        "diagnostic_max_matches_max_mass_abs_relative": true,
+        "diagnostic_max_matches_max_density_deviation": true,
+        "vtk_reference_targets_present": true,
+        "vtk_contains_initial_and_result_step": true
+      },
+      "check_failures": []
+    },
+    {
+      "run_id": "h50_d100_dx5_P",
+      "role": "main",
+      "result": {
+        "case": "D2-P-h50-d100-dx5",
+        "direction": "parallel",
+        "PASS": "true",
+        "converged": "true",
+        "steps_completed": "3713",
+        "Lx_m": "2.3999999999999998e-07",
+        "Ly_m": "2.3999999999999998e-07",
+        "mesa_gap_m": "5.0000000000000004e-08",
+        "groove_depth_m": "1.0000000000000001e-07",
+        "groove_width_m": "1.2000000000000002e-07",
+        "H_ref_m": "1.0000000000000001e-07",
+        "dx_m": "5.0000000000000001e-09",
+        "dt_s": "4.1666666666666668e-12",
+        "tau": "1",
+        "descriptor": "D3Q19_FORCE",
+        "collision": "ForcedBGK",
+        "wall_boundary": "Bouzidi_zero_velocity_exact_EX240",
+        "periodicity": "x_y",
+        "acceleration_m_s2": "100000",
+        "force_lattice": "0,3.4722222222222225e-10,0",
+        "fluid_nodes": "46080",
+        "fluid_volume_m3": "5.7599999999966609e-21",
+        "nominal_volume_m3": "5.7599999999999997e-21",
+        "candidate_links": "32448",
+        "installed_links": "32448",
+        "q_min": "0.5",
+        "q_max": "0.5",
+        "fallback_count": "0",
+        "unresolved_links": "0",
+        "max_mass_abs_relative": "0",
+        "max_density_deviation": "6.6613381477509392e-16",
+        "max_Mach": "1.9424854617343804e-07",
+        "pressure_range_Pa": "-1.0658141036401503e-07,0",
+        "J_vector_m2_s": "1.19156228086471e-21,5.7360334619309209e-12,-6.5552822361933608e-22",
+        "J_main_m2_s": "5.7360334619309209e-12",
+        "Keff_m3": "5.7360334619309217e-23",
+        "K0_smooth_h75_m3": "1.0416666666666669e-23",
+        "Keff_over_K0": "5.5065921234536832",
+        "R_eff_Pa_s_per_m3": "1.7433650041214544e+19",
+        "Q_sections_m3_s": "1.3766480308633896e-18,1.3766480308633896e-18",
+        "section_relative_difference": "0",
+        "window_main_rel_std": "9.991544822341836e-07",
+        "window_main_rel_span": "3.9360774234329036e-06",
+        "window_cross_abs_max": "2.3322393389172125e-21",
+        "material_unchanged": "true",
+        "finite": "true",
+        "exit_code": "0"
+      },
+      "manifest": {
+        "case_id": "D2-P-h50-d100-dx5",
+        "direction": "P",
+        "dx_nm": "5",
+        "tau": "1.0",
+        "acceleration_m_s2": "1e5",
+        "mesa_gap_nm": "50",
+        "groove_depth_nm": "100",
+        "binary": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/build/d2_groove_error_map",
+        "binary_sha256": "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c"
+      },
+      "exit_codes": {
+        "precheck": 0,
+        "steady": 0
+      },
+      "boundary_audits": {
+        "precheck": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "46080",
+          "material_2": "2304",
+          "material_3": "32256",
+          "candidate_links": "32448",
+          "valid_distance_links": "32448",
+          "installed_links": "32448",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        },
+        "steady": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "46080",
+          "material_2": "2304",
+          "material_3": "32256",
+          "candidate_links": "32448",
+          "valid_distance_links": "32448",
+          "installed_links": "32448",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        }
+      },
+      "diagnostic_rows": 3714,
+      "diagnostic_columns": [
+        "step",
+        "J",
+        "rho",
+        "Mach",
+        "mass",
+        "time_s",
+        "mass_error",
+        "max_density_deviation",
+        "Jx",
+        "Jy",
+        "Jz",
+        "Q_section1",
+        "Q_section2",
+        "section_relative_difference",
+        "pressure_min",
+        "pressure_max",
+        "window_rel_std",
+        "window_rel_span",
+        "window_cross_abs_max",
+        "finite"
+      ],
+      "recomputed_last_window": {
+        "std": 9.99154482234183e-07,
+        "span": 3.9360774234329e-06,
+        "cross_max": 2.3322393389172125e-21,
+        "physical_duration_first_to_last_s": 4.162500000000002e-09
+      },
+      "recomputed_diagnostic_maxima": {
+        "Mach": 1.9424854617343804e-07,
+        "mass_error": 0.0,
+        "max_density_deviation": 6.661338147750939e-16,
+        "section_relative_difference": 0.0
+      },
+      "nu_from_dx_dt_tau": 1.0000000000000002e-06,
+      "csv_structural_inventory": {
+        "field_slice.csv": {
+          "header": "x,z,ux,uy,uz,speed,rho,pressure,Phi,material",
+          "data_row_count": 960
+        },
+        "energy_dissipation.csv": {
+          "header": "position,Phi",
+          "data_row_count": 48
+        },
+        "velocity_profile.csv": {
+          "header": "position,velocity",
+          "data_row_count": 48
+        },
+        "pressure_profile.csv": {
+          "header": "position,rho,pressure",
+          "data_row_count": 48
+        }
+      },
+      "vtk_structural_inventory": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_parallel_iT0000000iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_parallel_iT0000000iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0003713.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_parallel_iT0003713iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_parallel_iT0003713iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0003713iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/g2_ex240_parallel.pvd",
+          "type": "Collection",
+          "references": [
+            {
+              "reference": "data/g2_ex240_parallel_iT0000000.vtm",
+              "exists": true,
+              "inside_named_run": true
+            },
+            {
+              "reference": "data/g2_ex240_parallel_iT0003713.vtm",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "timestep": "0",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_parallel_iT0000000.vtm"
+            },
+            {
+              "timestep": "3713",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_parallel_iT0003713.vtm"
+            }
+          ]
+        }
+      ],
+      "file_count": 21,
+      "total_bytes": 1568747,
+      "saved_log_tail": [
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/gnuplotData/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/gnuplotData/data/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/introspectionData/ created.",
+        "case=D2-P-h50-d100-dx5 PASS=true step=3713 J=5.7360334619309209e-12 Keff=5.7360334619309217e-23"
+      ],
+      "checks": {
+        "recorded_inputs_match_named_geometry_direction": true,
+        "recorded_shared_physical_settings": true,
+        "recorded_fluid_nodes_match_geometry_arithmetic": true,
+        "independent_exits_zero": true,
+        "saved_pass_converged": true,
+        "diagnostic_rows_match_step_0_to_final": true,
+        "diagnostic_all_values_finite": true,
+        "diagnostic_finite_flags": true,
+        "last_j_matches_result": true,
+        "K_reconstructed_from_recorded_units": true,
+        "final_1000_std_matches_result": true,
+        "final_1000_span_matches_result": true,
+        "final_1000_cross_matches_result": true,
+        "recorded_window_thresholds": true,
+        "recorded_diagnostic_thresholds": true,
+        "nominal_volume_vs_saved_counted_volume": true,
+        "precheck_steady_manifests_equal": true,
+        "geometry_q_recorded_true": true,
+        "boundary_no_recorded_fallback_unresolved": true,
+        "links_installed_match_candidates": true,
+        "time_column_matches_dt": true,
+        "diagnostic_max_matches_max_Mach": true,
+        "diagnostic_max_matches_max_mass_abs_relative": true,
+        "diagnostic_max_matches_max_density_deviation": true,
+        "vtk_reference_targets_present": true,
+        "vtk_contains_initial_and_result_step": true
+      },
+      "check_failures": []
+    },
+    {
+      "run_id": "h50_d100_dx5_T",
+      "role": "main",
+      "result": {
+        "case": "D2-T-h50-d100-dx5",
+        "direction": "perpendicular",
+        "PASS": "true",
+        "converged": "true",
+        "steps_completed": "2253",
+        "Lx_m": "2.3999999999999998e-07",
+        "Ly_m": "2.3999999999999998e-07",
+        "mesa_gap_m": "5.0000000000000004e-08",
+        "groove_depth_m": "1.0000000000000001e-07",
+        "groove_width_m": "1.2000000000000002e-07",
+        "H_ref_m": "1.0000000000000001e-07",
+        "dx_m": "5.0000000000000001e-09",
+        "dt_s": "4.1666666666666668e-12",
+        "tau": "1",
+        "descriptor": "D3Q19_FORCE",
+        "collision": "ForcedBGK",
+        "wall_boundary": "Bouzidi_zero_velocity_exact_EX240",
+        "periodicity": "x_y",
+        "acceleration_m_s2": "100000",
+        "force_lattice": "3.4722222222222225e-10,0,0",
+        "fluid_nodes": "46080",
+        "fluid_volume_m3": "5.7599999999966609e-21",
+        "nominal_volume_m3": "5.7599999999999997e-21",
+        "candidate_links": "32448",
+        "installed_links": "32448",
+        "q_min": "0.5",
+        "q_max": "0.5",
+        "fallback_count": "0",
+        "unresolved_links": "0",
+        "max_mass_abs_relative": "1.0184692032306671e-12",
+        "max_density_deviation": "1.9425560937591513e-08",
+        "max_Mach": "6.246636726845397e-08",
+        "pressure_range_Pa": "-6.8453936918899672,6.8453837798188033",
+        "J_vector_m2_s": "1.4648586599383912e-12,-1.7732728010377184e-23,-3.4383528465405337e-21",
+        "J_main_m2_s": "1.4648586599383912e-12",
+        "Keff_m3": "1.4648586599383913e-23",
+        "K0_smooth_h75_m3": "1.0416666666666669e-23",
+        "Keff_over_K0": "1.4062643135408552",
+        "R_eff_Pa_s_per_m3": "6.8265971820247687e+19",
+        "Q_sections_m3_s": "3.5156607835568629e-19,3.5156607551346927e-19",
+        "section_relative_difference": "8.0844461231316192e-09",
+        "window_main_rel_std": "5.8162708286175708e-07",
+        "window_main_rel_span": "4.9771830415523927e-06",
+        "window_cross_abs_max": "3.5850951552527967e-23",
+        "material_unchanged": "true",
+        "finite": "true",
+        "exit_code": "0"
+      },
+      "manifest": {
+        "case_id": "D2-T-h50-d100-dx5",
+        "direction": "T",
+        "dx_nm": "5",
+        "tau": "1.0",
+        "acceleration_m_s2": "1e5",
+        "mesa_gap_nm": "50",
+        "groove_depth_nm": "100",
+        "binary": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/build/d2_groove_error_map",
+        "binary_sha256": "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c"
+      },
+      "exit_codes": {
+        "precheck": 0,
+        "steady": 0
+      },
+      "boundary_audits": {
+        "precheck": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "46080",
+          "material_2": "2304",
+          "material_3": "32256",
+          "candidate_links": "32448",
+          "valid_distance_links": "32448",
+          "installed_links": "32448",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        },
+        "steady": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "46080",
+          "material_2": "2304",
+          "material_3": "32256",
+          "candidate_links": "32448",
+          "valid_distance_links": "32448",
+          "installed_links": "32448",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        }
+      },
+      "diagnostic_rows": 2254,
+      "diagnostic_columns": [
+        "step",
+        "J",
+        "rho",
+        "Mach",
+        "mass",
+        "time_s",
+        "mass_error",
+        "max_density_deviation",
+        "Jx",
+        "Jy",
+        "Jz",
+        "Q_section1",
+        "Q_section2",
+        "section_relative_difference",
+        "pressure_min",
+        "pressure_max",
+        "window_rel_std",
+        "window_rel_span",
+        "window_cross_abs_max",
+        "finite"
+      ],
+      "recomputed_last_window": {
+        "std": 5.816270828617577e-07,
+        "span": 4.977183041552397e-06,
+        "cross_max": 3.5850951552527967e-23,
+        "physical_duration_first_to_last_s": 4.1625e-09
+      },
+      "recomputed_diagnostic_maxima": {
+        "Mach": 6.246636726845397e-08,
+        "mass_error": 1.0184692032306671e-12,
+        "max_density_deviation": 1.9425560937591513e-08,
+        "section_relative_difference": 0.7136197348645117
+      },
+      "nu_from_dx_dt_tau": 1.0000000000000002e-06,
+      "csv_structural_inventory": {
+        "field_slice.csv": {
+          "header": "x,z,ux,uy,uz,speed,rho,pressure,Phi,material",
+          "data_row_count": 960
+        },
+        "energy_dissipation.csv": {
+          "header": "position,Phi",
+          "data_row_count": 48
+        },
+        "velocity_profile.csv": {
+          "header": "position,velocity",
+          "data_row_count": 48
+        },
+        "pressure_profile.csv": {
+          "header": "position,rho,pressure",
+          "data_row_count": 48
+        }
+      },
+      "vtk_structural_inventory": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_perpendicular_iT0000000iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_perpendicular_iT0000000iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002253.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_perpendicular_iT0002253iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_perpendicular_iT0002253iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002253iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/g2_ex240_perpendicular.pvd",
+          "type": "Collection",
+          "references": [
+            {
+              "reference": "data/g2_ex240_perpendicular_iT0000000.vtm",
+              "exists": true,
+              "inside_named_run": true
+            },
+            {
+              "reference": "data/g2_ex240_perpendicular_iT0002253.vtm",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "timestep": "0",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_perpendicular_iT0000000.vtm"
+            },
+            {
+              "timestep": "2253",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_perpendicular_iT0002253.vtm"
+            }
+          ]
+        }
+      ],
+      "file_count": 21,
+      "total_bytes": 1177721,
+      "saved_log_tail": [
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/gnuplotData/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/gnuplotData/data/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/introspectionData/ created.",
+        "case=D2-T-h50-d100-dx5 PASS=true step=2253 J=1.4648586599383912e-12 Keff=1.4648586599383913e-23"
+      ],
+      "checks": {
+        "recorded_inputs_match_named_geometry_direction": true,
+        "recorded_shared_physical_settings": true,
+        "recorded_fluid_nodes_match_geometry_arithmetic": true,
+        "independent_exits_zero": true,
+        "saved_pass_converged": true,
+        "diagnostic_rows_match_step_0_to_final": true,
+        "diagnostic_all_values_finite": true,
+        "diagnostic_finite_flags": true,
+        "last_j_matches_result": true,
+        "K_reconstructed_from_recorded_units": true,
+        "final_1000_std_matches_result": true,
+        "final_1000_span_matches_result": true,
+        "final_1000_cross_matches_result": true,
+        "recorded_window_thresholds": true,
+        "recorded_diagnostic_thresholds": true,
+        "nominal_volume_vs_saved_counted_volume": true,
+        "precheck_steady_manifests_equal": true,
+        "geometry_q_recorded_true": true,
+        "boundary_no_recorded_fallback_unresolved": true,
+        "links_installed_match_candidates": true,
+        "time_column_matches_dt": true,
+        "diagnostic_max_matches_max_Mach": true,
+        "diagnostic_max_matches_max_mass_abs_relative": true,
+        "diagnostic_max_matches_max_density_deviation": true,
+        "vtk_reference_targets_present": true,
+        "vtk_contains_initial_and_result_step": true
+      },
+      "check_failures": []
+    },
+    {
+      "run_id": "h50_d100_dx2.5_P",
+      "role": "existing_refinement",
+      "result": {
+        "case": "D2-P-h50-d100-dx2",
+        "direction": "parallel",
+        "PASS": "true",
+        "converged": "true",
+        "steps_completed": "11619",
+        "Lx_m": "2.3999999999999998e-07",
+        "Ly_m": "2.3999999999999998e-07",
+        "mesa_gap_m": "5.0000000000000004e-08",
+        "groove_depth_m": "1.0000000000000001e-07",
+        "groove_width_m": "1.2000000000000002e-07",
+        "H_ref_m": "1.0000000000000001e-07",
+        "dx_m": "2.5000000000000001e-09",
+        "dt_s": "1.0416666666666667e-12",
+        "tau": "1",
+        "descriptor": "D3Q19_FORCE",
+        "collision": "ForcedBGK",
+        "wall_boundary": "Bouzidi_zero_velocity_exact_EX240",
+        "periodicity": "x_y",
+        "acceleration_m_s2": "100000",
+        "force_lattice": "0,4.3402777777777781e-11,0",
+        "fluid_nodes": "368640",
+        "fluid_volume_m3": "5.7599999999767373e-21",
+        "nominal_volume_m3": "5.7599999999999997e-21",
+        "candidate_links": "130176",
+        "installed_links": "130176",
+        "q_min": "0.5",
+        "q_max": "0.5",
+        "fallback_count": "0",
+        "unresolved_links": "0",
+        "max_mass_abs_relative": "0",
+        "max_density_deviation": "1.1102230246251565e-15",
+        "max_Mach": "9.7095422022849897e-08",
+        "pressure_range_Pa": "-1.9184653865522705e-06,-1.2789769243681803e-06",
+        "J_vector_m2_s": "1.4297976383556104e-21,5.7062716668882132e-12,-6.4664669653354528e-21",
+        "J_main_m2_s": "5.7062716668882132e-12",
+        "Keff_m3": "5.7062716668882141e-23",
+        "K0_smooth_h75_m3": "1.0416666666666669e-23",
+        "Keff_over_K0": "5.4780208002126844",
+        "R_eff_Pa_s_per_m3": "1.7524577489058236e+19",
+        "Q_sections_m3_s": "1.3695052000532383e-18,1.3695052000532383e-18",
+        "section_relative_difference": "0",
+        "window_main_rel_std": "9.9925648848759413e-07",
+        "window_main_rel_span": "3.4924107847708181e-06",
+        "window_cross_abs_max": "4.5226168492949257e-21",
+        "material_unchanged": "true",
+        "finite": "true",
+        "exit_code": "0"
+      },
+      "manifest": {
+        "case_id": "D2-P-h50-d100-dx2.5",
+        "direction": "P",
+        "dx_nm": "2.5",
+        "tau": "1.0",
+        "acceleration_m_s2": "1e5",
+        "mesa_gap_nm": "50",
+        "groove_depth_nm": "100",
+        "binary": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/build/d2_groove_error_map",
+        "binary_sha256": "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c"
+      },
+      "exit_codes": {
+        "precheck": 0,
+        "steady": 0
+      },
+      "boundary_audits": {
+        "precheck": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "368640",
+          "material_2": "9216",
+          "material_3": "221184",
+          "candidate_links": "130176",
+          "valid_distance_links": "130176",
+          "installed_links": "130176",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        },
+        "steady": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "368640",
+          "material_2": "9216",
+          "material_3": "221184",
+          "candidate_links": "130176",
+          "valid_distance_links": "130176",
+          "installed_links": "130176",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        }
+      },
+      "diagnostic_rows": 11620,
+      "diagnostic_columns": [
+        "step",
+        "J",
+        "rho",
+        "Mach",
+        "mass",
+        "time_s",
+        "mass_error",
+        "max_density_deviation",
+        "Jx",
+        "Jy",
+        "Jz",
+        "Q_section1",
+        "Q_section2",
+        "section_relative_difference",
+        "pressure_min",
+        "pressure_max",
+        "window_rel_std",
+        "window_rel_span",
+        "window_cross_abs_max",
+        "finite"
+      ],
+      "recomputed_last_window": {
+        "std": 9.992564884875954e-07,
+        "span": 3.4924107847708237e-06,
+        "cross_max": 4.522616849294926e-21,
+        "physical_duration_first_to_last_s": 1.0406250000000004e-09
+      },
+      "recomputed_diagnostic_maxima": {
+        "Mach": 9.70954220228499e-08,
+        "mass_error": 0.0,
+        "max_density_deviation": 1.1102230246251565e-15,
+        "section_relative_difference": 0.0
+      },
+      "nu_from_dx_dt_tau": 1.0000000000000002e-06,
+      "csv_structural_inventory": {
+        "field_slice.csv": {
+          "header": "x,z,ux,uy,uz,speed,rho,pressure,Phi,material",
+          "data_row_count": 3840
+        },
+        "energy_dissipation.csv": {
+          "header": "position,Phi",
+          "data_row_count": 96
+        },
+        "velocity_profile.csv": {
+          "header": "position,velocity",
+          "data_row_count": 96
+        },
+        "pressure_profile.csv": {
+          "header": "position,rho,pressure",
+          "data_row_count": 96
+        }
+      },
+      "vtk_structural_inventory": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_parallel_iT0000000iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_parallel_iT0000000iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 98 -3 98 -3 67",
+              "Origin": "1.25e-09 1.25e-09 -1.25e-09",
+              "Spacing": "2.5e-09 2.5e-09 2.5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/vtkData/data/g2_ex240_parallel_iT0011619.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_parallel_iT0011619iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_parallel_iT0011619iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/vtkData/data/g2_ex240_parallel_iT0011619iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 98 -3 98 -3 67",
+              "Origin": "1.25e-09 1.25e-09 -1.25e-09",
+              "Spacing": "2.5e-09 2.5e-09 2.5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/vtkData/g2_ex240_parallel.pvd",
+          "type": "Collection",
+          "references": [
+            {
+              "reference": "data/g2_ex240_parallel_iT0000000.vtm",
+              "exists": true,
+              "inside_named_run": true
+            },
+            {
+              "reference": "data/g2_ex240_parallel_iT0011619.vtm",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "timestep": "0",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_parallel_iT0000000.vtm"
+            },
+            {
+              "timestep": "11619",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_parallel_iT0011619.vtm"
+            }
+          ]
+        }
+      ],
+      "file_count": 21,
+      "total_bytes": 5386199,
+      "saved_log_tail": [
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/gnuplotData/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/gnuplotData/data/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_P/steady/introspectionData/ created.",
+        "case=D2-P-h50-d100-dx2 PASS=true step=11619 J=5.7062716668882132e-12 Keff=5.7062716668882141e-23"
+      ],
+      "checks": {
+        "recorded_inputs_match_named_geometry_direction": true,
+        "recorded_shared_physical_settings": true,
+        "recorded_fluid_nodes_match_geometry_arithmetic": true,
+        "independent_exits_zero": true,
+        "saved_pass_converged": true,
+        "diagnostic_rows_match_step_0_to_final": true,
+        "diagnostic_all_values_finite": true,
+        "diagnostic_finite_flags": true,
+        "last_j_matches_result": true,
+        "K_reconstructed_from_recorded_units": true,
+        "final_1000_std_matches_result": true,
+        "final_1000_span_matches_result": true,
+        "final_1000_cross_matches_result": true,
+        "recorded_window_thresholds": true,
+        "recorded_diagnostic_thresholds": true,
+        "nominal_volume_vs_saved_counted_volume": true,
+        "precheck_steady_manifests_equal": true,
+        "geometry_q_recorded_true": true,
+        "boundary_no_recorded_fallback_unresolved": true,
+        "links_installed_match_candidates": true,
+        "time_column_matches_dt": true,
+        "diagnostic_max_matches_max_Mach": true,
+        "diagnostic_max_matches_max_mass_abs_relative": true,
+        "diagnostic_max_matches_max_density_deviation": true,
+        "vtk_reference_targets_present": true,
+        "vtk_contains_initial_and_result_step": true
+      },
+      "check_failures": []
+    },
+    {
+      "run_id": "h50_d100_dx2.5_T",
+      "role": "existing_refinement",
+      "result": {
+        "case": "D2-T-h50-d100-dx2",
+        "direction": "perpendicular",
+        "PASS": "true",
+        "converged": "true",
+        "steps_completed": "4943",
+        "Lx_m": "2.3999999999999998e-07",
+        "Ly_m": "2.3999999999999998e-07",
+        "mesa_gap_m": "5.0000000000000004e-08",
+        "groove_depth_m": "1.0000000000000001e-07",
+        "groove_width_m": "1.2000000000000002e-07",
+        "H_ref_m": "1.0000000000000001e-07",
+        "dx_m": "2.5000000000000001e-09",
+        "dt_s": "1.0416666666666667e-12",
+        "tau": "1",
+        "descriptor": "D3Q19_FORCE",
+        "collision": "ForcedBGK",
+        "wall_boundary": "Bouzidi_zero_velocity_exact_EX240",
+        "periodicity": "x_y",
+        "acceleration_m_s2": "100000",
+        "force_lattice": "4.3402777777777781e-11,0,0",
+        "fluid_nodes": "368640",
+        "fluid_volume_m3": "5.7599999999767373e-21",
+        "nominal_volume_m3": "5.7599999999999997e-21",
+        "candidate_links": "130176",
+        "installed_links": "130176",
+        "q_min": "0.5",
+        "q_max": "0.5",
+        "fallback_count": "0",
+        "unresolved_links": "0",
+        "max_mass_abs_relative": "6.0827287409916048e-12",
+        "max_density_deviation": "5.2732379574038646e-09",
+        "max_Mach": "3.0932583868950328e-08",
+        "pressure_range_Pa": "-8.0053730044937765,8.0053992235207261",
+        "J_vector_m2_s": "1.4339090951449541e-12,-1.1950317261855355e-23,1.2389554280767072e-20",
+        "J_main_m2_s": "1.4339090951449541e-12",
+        "Keff_m3": "1.433909095144954e-23",
+        "K0_smooth_h75_m3": "1.0416666666666669e-23",
+        "Keff_over_K0": "1.3765527313391555",
+        "R_eff_Pa_s_per_m3": "6.9739427930674356e+19",
+        "Q_sections_m3_s": "3.4413833376392682e-19,3.4413789806091636e-19",
+        "section_relative_difference": "1.2660693904722204e-06",
+        "window_main_rel_std": "9.7882272070809953e-07",
+        "window_main_rel_span": "4.9136898566675464e-06",
+        "window_cross_abs_max": "4.0284134256660627e-23",
+        "material_unchanged": "true",
+        "finite": "true",
+        "exit_code": "0"
+      },
+      "manifest": {
+        "case_id": "D2-T-h50-d100-dx2.5",
+        "direction": "T",
+        "dx_nm": "2.5",
+        "tau": "1.0",
+        "acceleration_m_s2": "1e5",
+        "mesa_gap_nm": "50",
+        "groove_depth_nm": "100",
+        "binary": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/build/d2_groove_error_map",
+        "binary_sha256": "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c"
+      },
+      "exit_codes": {
+        "precheck": 0,
+        "steady": 0
+      },
+      "boundary_audits": {
+        "precheck": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "368640",
+          "material_2": "9216",
+          "material_3": "221184",
+          "candidate_links": "130176",
+          "valid_distance_links": "130176",
+          "installed_links": "130176",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        },
+        "steady": {
+          "geometry_PASS": "true",
+          "q_audit_PASS": "true",
+          "material_0": "0",
+          "material_1": "368640",
+          "material_2": "9216",
+          "material_3": "221184",
+          "candidate_links": "130176",
+          "valid_distance_links": "130176",
+          "installed_links": "130176",
+          "q_min": "0.5",
+          "q_max": "0.5",
+          "installed_q_min": "0.5",
+          "installed_q_max": "0.5",
+          "geometric_fallback_count": "0",
+          "missing_fluid_neighbour_fallback_count": "0",
+          "unresolved_link_count": "0"
+        }
+      },
+      "diagnostic_rows": 4944,
+      "diagnostic_columns": [
+        "step",
+        "J",
+        "rho",
+        "Mach",
+        "mass",
+        "time_s",
+        "mass_error",
+        "max_density_deviation",
+        "Jx",
+        "Jy",
+        "Jz",
+        "Q_section1",
+        "Q_section2",
+        "section_relative_difference",
+        "pressure_min",
+        "pressure_max",
+        "window_rel_std",
+        "window_rel_span",
+        "window_cross_abs_max",
+        "finite"
+      ],
+      "recomputed_last_window": {
+        "std": 9.788227207080995e-07,
+        "span": 4.91368985666755e-06,
+        "cross_max": 4.0284134256660627e-23,
+        "physical_duration_first_to_last_s": 1.0406249999999996e-09
+      },
+      "recomputed_diagnostic_maxima": {
+        "Mach": 3.093258386895033e-08,
+        "mass_error": 6.082728740991605e-12,
+        "max_density_deviation": 5.2732379574038646e-09,
+        "section_relative_difference": 0.7015698536179561
+      },
+      "nu_from_dx_dt_tau": 1.0000000000000002e-06,
+      "csv_structural_inventory": {
+        "field_slice.csv": {
+          "header": "x,z,ux,uy,uz,speed,rho,pressure,Phi,material",
+          "data_row_count": 3840
+        },
+        "energy_dissipation.csv": {
+          "header": "position,Phi",
+          "data_row_count": 96
+        },
+        "velocity_profile.csv": {
+          "header": "position,velocity",
+          "data_row_count": 96
+        },
+        "pressure_profile.csv": {
+          "header": "position,rho,pressure",
+          "data_row_count": 96
+        }
+      },
+      "vtk_structural_inventory": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_perpendicular_iT0000000iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_perpendicular_iT0000000iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 98 -3 98 -3 67",
+              "Origin": "1.25e-09 1.25e-09 -1.25e-09",
+              "Spacing": "2.5e-09 2.5e-09 2.5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0004943.vtm",
+          "type": "vtkMultiBlockDataSet",
+          "references": [
+            {
+              "reference": "g2_ex240_perpendicular_iT0004943iC00000.vti",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "index": "0",
+              "file": "g2_ex240_perpendicular_iT0004943iC00000.vti"
+            }
+          ]
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0004943iC00000.vti",
+          "type": "ImageData",
+          "references": [],
+          "image_geometry": [
+            {
+              "WholeExtent": "-3 98 -3 98 -3 67",
+              "Origin": "1.25e-09 1.25e-09 -1.25e-09",
+              "Spacing": "2.5e-09 2.5e-09 2.5e-09"
+            }
+          ],
+          "array_metadata": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "datasets": []
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/vtkData/g2_ex240_perpendicular.pvd",
+          "type": "Collection",
+          "references": [
+            {
+              "reference": "data/g2_ex240_perpendicular_iT0000000.vtm",
+              "exists": true,
+              "inside_named_run": true
+            },
+            {
+              "reference": "data/g2_ex240_perpendicular_iT0004943.vtm",
+              "exists": true,
+              "inside_named_run": true
+            }
+          ],
+          "image_geometry": [],
+          "array_metadata": [],
+          "datasets": [
+            {
+              "timestep": "0",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_perpendicular_iT0000000.vtm"
+            },
+            {
+              "timestep": "4943",
+              "group": "",
+              "part": "",
+              "file": "data/g2_ex240_perpendicular_iT0004943.vtm"
+            }
+          ]
+        }
+      ],
+      "file_count": 21,
+      "total_bytes": 3258817,
+      "saved_log_tail": [
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/gnuplotData/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/gnuplotData/data/ created.",
+        "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h50_d100_dx2.5_T/steady/introspectionData/ created.",
+        "case=D2-T-h50-d100-dx2 PASS=true step=4943 J=1.4339090951449541e-12 Keff=1.433909095144954e-23"
+      ],
+      "checks": {
+        "recorded_inputs_match_named_geometry_direction": true,
+        "recorded_shared_physical_settings": true,
+        "recorded_fluid_nodes_match_geometry_arithmetic": true,
+        "independent_exits_zero": true,
+        "saved_pass_converged": true,
+        "diagnostic_rows_match_step_0_to_final": true,
+        "diagnostic_all_values_finite": true,
+        "diagnostic_finite_flags": true,
+        "last_j_matches_result": true,
+        "K_reconstructed_from_recorded_units": true,
+        "final_1000_std_matches_result": true,
+        "final_1000_span_matches_result": true,
+        "final_1000_cross_matches_result": true,
+        "recorded_window_thresholds": true,
+        "recorded_diagnostic_thresholds": true,
+        "nominal_volume_vs_saved_counted_volume": true,
+        "precheck_steady_manifests_equal": true,
+        "geometry_q_recorded_true": true,
+        "boundary_no_recorded_fallback_unresolved": true,
+        "links_installed_match_candidates": true,
+        "time_column_matches_dt": true,
+        "diagnostic_max_matches_max_Mach": true,
+        "diagnostic_max_matches_max_mass_abs_relative": true,
+        "diagnostic_max_matches_max_density_deviation": true,
+        "vtk_reference_targets_present": true,
+        "vtk_contains_initial_and_result_step": true
+      },
+      "check_failures": []
+    }
+  ],
+  "ratios": {
+    "P": {
+      "same_dx5_depth_gain": 2.9575080935544524,
+      "deep_5_to_2p5_change_percent": -0.5188567193729177,
+      "mixed_grid_diagnostic_ratio_not_depth_gain_evidence": 2.9421628640850472
+    },
+    "T": {
+      "same_dx5_depth_gain": 1.033831752000451,
+      "deep_5_to_2p5_change_percent": -2.1128021180377266,
+      "mixed_grid_diagnostic_ratio_not_depth_gain_evidence": 1.011988932847239
+    }
+  },
+  "current_binary_sha256": "57611b21584c8f32dabd5d4ff240616c65f245930b00a1a40dae5f8d3169f2d6",
+  "named_run_recorded_binary_hashes": [
+    "285f67a0aa31ee63bc527b78619a1141c039e01bf8c910c1c4e137d6447c928c"
+  ],
+  "found_named_h50_directories": [
+    "h50_d100_dx2.5_P",
+    "h50_d100_dx2.5_T",
+    "h50_d100_dx5_P",
+    "h50_d100_dx5_T",
+    "h50_d25_dx5_P",
+    "h50_d25_dx5_T"
+  ],
+  "scope": {
+    "solver_executed": false,
+    "original_checker_replayed": false,
+    "field_arrays_decoded": false,
+    "flow_mechanism_extracted": false,
+    "reserved_prediction_opened": false,
+    "formal_gate_reaccepted": false,
+    "new_simulation_run_id": null
+  }
+}

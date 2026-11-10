@@ -1,0 +1,19 @@
+   3fac6:	vmulsd xmm0,xmm0,QWORD PTR [rip+0xa3102]        # e2bd0 <_ZSt19piecewise_construct+0x248>
+   3face:	vmovsd xmm1,QWORD PTR [rip+0xd159a]        # 111070 <_ZN12_GLOBAL__N_12dxE>
+   3fad6:	vaddsd xmm5,xmm5,QWORD PTR [r14+0xe8]
+   3fadf:	vandpd xmm2,xmm2,XMMWORD PTR [rip+0xa2ea9]        # e2990 <_ZSt19piecewise_construct+0x8>
+   3fae7:	vmovddup xmm10,xmm1
+   3faeb:	vmaxsd xmm2,xmm2,QWORD PTR [r13+0x20]
+   3faf1:	add    QWORD PTR [r13+0x0],0x1
+   3faf6:	cmp    BYTE PTR [r13+0x98],0x0
+   3fafe:	movzx  eax,BYTE PTR [r14+0x40]
+   3fb03:	vmulsd xmm0,xmm0,xmm1
+   3fb07:	vmovsd QWORD PTR [r13+0x20],xmm2
+   3fb0d:	vunpcklpd xmm0,xmm1,xmm0
+   3fb11:	vmulpd xmm0,xmm0,xmm10
+   3fb16:	vfmadd213pd xmm0,xmm10,XMMWORD PTR [r13+0x8]
+   3fb1c:	vmovupd XMMWORD PTR [r13+0x8],xmm0
+   3fb22:	vmulsd xmm0,xmm4,xmm1
+   3fb26:	vmulsd xmm0,xmm0,xmm1
+   3fb2a:	vfmadd213sd xmm0,xmm1,QWORD PTR [r13+0x18]
+   3fb30:	vmovsd QWORD PTR [r13+0x18],xmm0

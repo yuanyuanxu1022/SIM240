@@ -1,0 +1,81 @@
+{
+  "schema": "GDI01-1",
+  "protocol_id": "GDI-v1",
+  "case_id": "GDI01",
+  "pressure_units": "Pa",
+  "velocity_definition": "U=J/H",
+  "H_m": 1.25e-07,
+  "L_m": [
+    2.4e-05,
+    4.8e-05,
+    1.25e-07
+  ],
+  "mu_Pa_s": 0.001,
+  "rho_kg_m3": 1000,
+  "mesh_cells": [
+    16,
+    32,
+    1
+  ],
+  "drive_axis": 0,
+  "G_Pa_per_m": 1000000.0,
+  "K_m3": [
+    [
+      4.5537951695675916e-23,
+      0.0
+    ],
+    [
+      0.0,
+      1.0414014079511954e-22
+    ]
+  ],
+  "D_m_minus2": [
+    [
+      2744963164688618.5,
+      0.0
+    ],
+    [
+      0.0,
+      1200305655874992.2
+    ]
+  ],
+  "thresholds": {
+    "pressure_relative_rms_and_max": 0.001,
+    "main_velocity_flux_relative_L2_and_mean": 0.001,
+    "transverse_and_z_relative_max": 1e-08,
+    "Q_relative": 0.001,
+    "recovered_K_relative": 0.001,
+    "global_mass_relative": 1e-08,
+    "sum_absolute_cell_mass_relative": 1e-08,
+    "side_leakage_relative": 1e-08,
+    "face_flux_consistency_relative": 0.001,
+    "power_dissipation_relative": 0.001,
+    "cross_implementation_relative": 0.001,
+    "control_ratio_relative": 0.001,
+    "two_mesh_J_Q_relative": 0.001,
+    "zero_pressure_max_Pa": 1e-09,
+    "zero_velocity_max_m_s": 1e-12,
+    "zero_each_boundary_Q_and_net_m3_s": 1e-24
+  },
+  "linear_solver": {
+    "candidate": "PCG_DIC",
+    "normalized_absolute_tolerance": 1e-12,
+    "relTol": 0,
+    "maxIter": 2000
+  },
+  "source_hashes": {
+    "design_protocol": "697d67730d7da28a96b879cb2de8fe2c6edaa1b16dff260d9bf0e3abf5b2c44d",
+    "coefficient_source": "9616842003a7a014ef4875b7a2e07f594b8c95a4633416e477ee0fa69ca917d1"
+  },
+  "source_paths": {
+    "design_protocol": "/home/dell/yuanyuanxu/SIM240/docs/reports/Static_Darcy_interface_protocol_20261030/protocol.json",
+    "coefficient_source": "/home/dell/yuanyuanxu/SIM240/docs/reports/Shared_transport_interface_20261030/coefficient_examples.json"
+  },
+  "solve_authorized_in_preparation": false,
+  "baseline_case_id": "C01",
+  "baseline_run_id": "SDI_C01_v1_20261030_01",
+  "coefficient_input_id": "V2_published_rounded",
+  "orientation_id": "groove_along_long_y",
+  "GDI_protocol_sha256": "78b626140544993aaadf9df78b53831c617988dcab76a7d7f9ff505aa363d027",
+  "source_coefficient_sha256": "9616842003a7a014ef4875b7a2e07f594b8c95a4633416e477ee0fa69ca917d1"
+}

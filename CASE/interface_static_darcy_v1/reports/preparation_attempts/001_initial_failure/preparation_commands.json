@@ -1,0 +1,31 @@
+[
+  {
+    "label": "compile_2d",
+    "argv": [
+      "g++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Werror",
+      "two_dimensional/darcy2d.cpp",
+      "-o",
+      "build/bin/darcy2d"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.8155581951141357,
+    "log": "reports/compile_2d.log"
+  },
+  {
+    "label": "compile_openfoam",
+    "argv": [
+      "wmake"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/application",
+    "exit_code": 2,
+    "seconds": 1.5673844814300537,
+    "log": "reports/compile_openfoam.log"
+  }
+]

@@ -1,0 +1,145 @@
+{
+  "checked_at": "2026-10-27T22:22:46.949781+08:00",
+  "scope": "CURRENT_FILES_STATIC_INSPECTION_ONLY_NOT_HISTORICAL_BINARY_BINDING",
+  "files": [
+    {
+      "id": "D2_CONFIGURATION",
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/src/d2_groove_error_map.cpp",
+      "bytes": 32650,
+      "sha256": "e7c0cf5d87f6a726a61e760642b803b5c6ee9e5fbc6dd5ba890cb97f5a6fe3b7",
+      "fragments": [
+        {
+          "start_line": 21,
+          "end_line": 56,
+          "text": "21: using T = double;\n22: using DESCRIPTOR = descriptors::D3Q19<descriptors::FORCE>;\n23: \n24: // Physical and lattice parameters. dx, mesaGap and grooveDepth are\n25: // runtime-configurable for the D2 error-map matrix (set in parseParameters).\n26: T dx = 5.0e-9;\n27: constexpr T tau = 1.0;\n28: constexpr T rhoPhys = 1000.0;\n29: T nuPhys = 1.0e-6;\n30: T muPhys = rhoPhys * nuPhys;\n31: constexpr T acceleration = 1.0e5;\n32: constexpr T lx = 240.0e-9;\n33: constexpr T ly = 240.0e-9;\n34: T mesaGap = 75.0e-9;\n35: T grooveDepth = 100.0e-9;\n36: constexpr T grooveStart = 60.0e-9;\n37: constexpr T grooveEnd = 180.0e-9;\n38: constexpr T areaPlan = lx * ly;\n39: T nominalVolume = areaPlan * mesaGap\n40:   + (grooveEnd - grooveStart) * ly * grooveDepth;\n41: T referenceHeight = nominalVolume / areaPlan;\n42: T smoothK0 = mesaGap * mesaGap * mesaGap / 12.0;\n43: T dt = (tau - 0.5) * dx * dx / (3.0 * nuPhys);\n44: int nx = 48;\n45: int ny = 48;\n46: constexpr int overlap = 3;\n47: constexpr int convergenceWindow = 1000;\n48: constexpr int maximumSteps = 60000;\n49: constexpr T relativeStdTolerance = 1.0e-6;\n50: constexpr T relativeSpanTolerance = 5.0e-6;\n51: constexpr T massTolerance = 1.0e-10;\n52: constexpr T densityTolerance = 1.0e-6;\n53: constexpr T machTolerance = 0.05;\n54: constexpr T sectionTolerance = 1.0e-5;\n55: constexpr T crossFluxTolerance = 1.0e-12;\n56: constexpr T qTolerance = 1.0e-10;"
+        },
+        {
+          "start_line": 239,
+          "end_line": 305,
+          "text": "239:   ExactEX240FluidIndicator()\n240:     : IndicatorCuboid3D<T>(\n241:         {lx + 4.0 * dx, ly + 4.0 * dx, mesaGap + grooveDepth},\n242:         {-2.0 * dx, -2.0 * dx, 0.0})\n243:   { }\n244: \n245:   bool distance(\n246:     T& distance,\n247:     const Vector<T, 3>& origin,\n248:     const Vector<T, 3>& direction,\n249:     int = -1) override\n250:   {\n251:     T best = std::numeric_limits<T>::infinity();\n252:     const T epsilon = 1.0e-12;\n253:     auto accept = [&](T lambda) {\n254:       if (lambda >= -epsilon && lambda <= 1.0 + epsilon) {\n255:         best = std::min(best, std::max(T{}, lambda));\n256:       }\n257:     };\n258: \n259:     if (direction[2] < 0.0) {\n260:       accept((0.0 - origin[2]) / direction[2]);\n261:     }\n262:     if (direction[2] > 0.0) {\n263:       for (T wallZ : {mesaGap, mesaGap + grooveDepth}) {\n264:         const T lambda = (wallZ - origin[2]) / direction[2];\n265:         if (lambda < -epsilon || lambda > 1.0 + epsilon) {\n266:           continue;\n267:         }\n268:         const T xHit = origin[0] + lambda * direction[0];\n269:         const bool horizontalExists = wallZ == mesaGap ? !inGroove(xHit) : inGroove(xHit);\n270:         if (horizontalExists) {\n271:           accept(lambda);\n272:         }\n273:       }\n274:     }\n275: \n276:     if (direction[0] != 0.0) {\n277:       for (int image = -1; image <= 1; ++image) {\n278:         for (T wallX : {grooveStart + image * lx, grooveEnd + image * lx}) {\n279:           const T lambda = (wallX - origin[0]) / direction[0];\n280:           if (lambda < -epsilon || lambda > 1.0 + epsilon) {\n281:             continue;\n282:           }\n283:           const T zHit = origin[2] + lambda * direction[2];\n284:           if (zHit >= mesaGap - epsilon\n285:               && zHit <= mesaGap + grooveDepth + epsilon) {\n286:             accept(lambda);\n287:           }\n288:         }\n289:       }\n290:     }\n291: \n292:     if (!std::isfinite(best)) {\n293:       return false;\n294:     }\n295:     // All EX240 walls are exactly halfway between the adjacent fluid and\n296:     // solid nodes.  Snap round-off-sized deviations to the exact analytical\n297:     // intersection so OpenLB selects its q <= 0.5 Bouzidi branch consistently.\n298:     if (std::abs(best - 0.5) <= qTolerance) {\n299:       best = 0.5;\n300:     }\n301:     distance = best * util::norm<3>(direction);\n302:     return std::isfinite(distance);\n303:   }\n304: };\n305: "
+        },
+        {
+          "start_line": 369,
+          "end_line": 383,
+          "text": "369:           audit.qMin = std::min(audit.qMin, q);\n370:           audit.qMax = std::max(audit.qMax, q);\n371:         }\n372:         // OpenLB reads the second fluid-side node only in the q > 0.5\n373:         // Bouzidi branch.  Counting it for q <= 0.5 incorrectly flags\n374:         // concave step-corner links that use the local q <= 0.5 formula.\n375:         if (q > 0.5) {\n376:           const Vector<int, 3> fluidSideR(fluidR - c);\n377:           if (!block.isInside(fluidSideR)\n378:               || block.getMaterial(wrapPeriodicXY(fluidSideR)) != 1) {\n379:             ++audit.missingFluidNeighbourFallbacks;\n380:           }\n381:         }\n382:       }\n383:     });"
+        },
+        {
+          "start_line": 651,
+          "end_line": 661,
+          "text": "651:   UnitConverter<T, DESCRIPTOR> converter(dx, dt, lx, 1.0, nuPhys, rhoPhys);\n652:   const bool converterPass = std::abs(converter.getLatticeRelaxationTime() - tau) <= 1.0e-12;\n653:   SuperLattice<T, DESCRIPTOR> lattice(converter, cuboids, loadBalancer);\n654:   dynamics::set<ForcedBGKdynamics>(lattice, geometry, 1);\n655:   ExactEX240FluidIndicator exactGeometry;\n656:   BoundaryAudit boundaryAudit = auditGeometryLinks(geometry, exactGeometry);\n657:   setBouzidiBoundary<T, DESCRIPTOR, BouzidiPostProcessor>(\n658:     lattice, geometry, 2, exactGeometry);\n659:   setBouzidiBoundary<T, DESCRIPTOR, BouzidiPostProcessor>(\n660:     lattice, geometry, 3, exactGeometry);\n661:   auditInstalledDistances(lattice, geometry, boundaryAudit);"
+        },
+        {
+          "start_line": 742,
+          "end_line": 756,
+          "text": "742:   T maxDensityDeviation = 0.0;\n743:   T maxMach = 0.0;\n744:   T windowStd = std::numeric_limits<T>::infinity();\n745:   T windowSpan = std::numeric_limits<T>::infinity();\n746:   T windowCross = std::numeric_limits<T>::infinity();\n747:   bool converged = false;\n748:   int finalStep = 0;\n749: \n750:   for (int step = 0; step <= maximumSteps; ++step) {\n751:     if (step > 0) {\n752:       lattice.collideAndStream();\n753:     }\n754:     const Measurement state = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);\n755:     const T massError = (state.mass - initial.mass) / initial.mass;\n756:     const T mach = state.maxLatticeSpeed / std::sqrt(T(1.0 / 3.0));"
+        }
+      ]
+    },
+    {
+      "id": "OPENLB_STATIC_BOUNDARY",
+      "path": "/home/dell/openlb/src/boundary/setBouzidiBoundary.h",
+      "bytes": 62924,
+      "sha256": "c2e11fe4c81534f1bf6c21280bc7c93d917d3eb8f3c624729e2ceb0d9593cf83",
+      "fragments": [
+        {
+          "start_line": 31,
+          "end_line": 36,
+          "text": "31: \n32: // M. Bouzidi, M. Firdaouss, and P. Lallemand.\n33: // Momentum transfer of a Boltzmann-lattice fluid with boundaries.\n34: // Physics of Fluids 13, 3452 (2001).\n35: // DOI: 10.1063/1.1399290\n36: "
+        },
+        {
+          "start_line": 47,
+          "end_line": 80,
+          "text": "47: /// Post processor for the zero-velocity Bouzidi boundary\n48: class BouzidiPostProcessor {\n49: public:\n50:   static constexpr OperatorScope scope = OperatorScope::PerCell;\n51: \n52:   int getPriority() const {\n53:     return -1;\n54:   }\n55: \n56:   template <typename CELL, typename V = typename CELL::value_t>\n57:   void apply(CELL& x_b) any_platform {\n58:     using DESCRIPTOR = typename CELL::descriptor_t;\n59:     const auto q = x_b.template getFieldPointer<descriptors::BOUZIDI_DISTANCE>();\n60:     for (int iPop = 1; iPop < descriptors::q<DESCRIPTOR>(); ++iPop) {\n61:       // update missing population if valid bouzidi distance\n62:       if (q[iPop] > V{0}) {\n63:         const auto c = descriptors::c<DESCRIPTOR>(iPop);\n64:         const int iPop_opposite = descriptors::opposite<DESCRIPTOR>(iPop);\n65:         auto x_s = x_b.neighbor(c);                                             // solid side neighbor\n66:         auto x_f = x_b.neighbor(descriptors::c<DESCRIPTOR>(iPop_opposite));     // fluid side neighbor opposite to the missing population\n67: \n68:         x_b[iPop_opposite] = (q[iPop] <= V{0.5}) // cut is closer to the fluid cell\n69:                            * (V{2} * q[iPop] * x_s[iPop] + (V{1} - V{2} * q[iPop]) * x_b[iPop])\n70:                            + (q[iPop] >  V{0.5}) // cut is closer to the solid cell\n71:                            * (V{0.5} / q[iPop] * x_s[iPop] + V{0.5} * (V{2} * q[iPop] - V{1}) / q[iPop] * x_f[iPop_opposite]);\n72:       }\n73:       // if intersection point is on the cell then fall back to full-way bounce back\n74:       else if (q[iPop] == V{0}) {\n75:         const int iPop_opposite = descriptors::opposite<DESCRIPTOR>(iPop);\n76:         x_b[iPop_opposite] = x_b[iPop];\n77:       }\n78:     }\n79:   }\n80: };"
+        },
+        {
+          "start_line": 241,
+          "end_line": 310,
+          "text": "241:   const T deltaR = blockGeometry.getDeltaR();\n242:   // for each solid cell: all of its fluid neighbors need population updates\n243:   block.forSpatialLocations([&](LatticeR<DESCRIPTOR::d> solidLatticeR) {\n244:     // Check if cell is solid cell\n245:     if (boundaryIndicator(solidLatticeR)) {\n246:       for (int iPop=1; iPop < DESCRIPTOR::q; ++iPop) {\n247: \n248:         Vector<T,DESCRIPTOR::d> boundaryLatticeR(solidLatticeR + descriptors::c<DESCRIPTOR>(iPop));\n249:         const auto c = descriptors::c<DESCRIPTOR>(iPop);\n250:         const auto iPop_opposite = descriptors::opposite<DESCRIPTOR>(iPop);\n251: \n252:         if (blockGeometry.isInside(boundaryLatticeR)) {\n253:           auto boundaryPhysR = blockGeometry.getPhysR(boundaryLatticeR);\n254: \n255:           // check if neighbor is fluid cell\n256:           if (bulkIndicator(boundaryLatticeR)) {\n257:             T dist = -1;    // distance to boundary\n258:             T qIpop = -1;   // normed distance (Bouzidi distance) to boundary\n259:             const T norm = deltaR * util::norm<DESCRIPTOR::d>(descriptors::c<DESCRIPTOR>(iPop));\n260:             auto direction = -deltaR * c; // vector pointing from the boundary cell to the solid cell\n261: \n262:             // Check if distance calculation was performed correctly\n263:             if (indicatorAnalyticalBoundary.distance(dist, boundaryPhysR.data(), direction, blockGeometry.getIcGlob())) {\n264:               qIpop = dist / norm;\n265: \n266:               // if distance function returned a dist. not suitable for Bouzidi -> fall-back\n267:               if ((qIpop < 0) || (qIpop > 1)) {\n268:                 if(verbose) {\n269:                   clout << \"Error, non suitable dist. at lattice: (\" << boundaryLatticeR << \"), physical: (\" << blockGeometry.getPhysR(boundaryLatticeR) << \"), direction \" << iPop << \". Fall-back to bounce-back.\" << std::endl;\n270:                 }\n271: \n272:                 // fall-back: half-way bounce back\n273:                 qIpop = 0.5;\n274:               }\n275:             }\n276:             // if distance function couldn't compute any distance -> fall-back\n277:             else {\n278:               if(verbose) {\n279:                 clout << \"Error, no boundary found at lattice:(\" << boundaryLatticeR << \"), physical: (\" << blockGeometry.getPhysR(boundaryLatticeR) << \"), direction: \" << iPop << \".Fall-back to bounce-back.\" << std::endl;\n280:               }\n281: \n282:               // fall-back: half-way bounce back\n283:               qIpop = 0.5;\n284:             }\n285: \n286:             // double check\n287:             if (qIpop >= 0) {\n288:               // Bouzidi require the fluid side neighbor of the boundary cell also to be fluid\n289:               if (bulkIndicator(boundaryLatticeR + descriptors::c<DESCRIPTOR>(iPop))) {\n290:                 // Standard case, c.f. Bouzidi paper, setting Bouzidi-distance\n291:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_DISTANCE>(iPop_opposite, qIpop);\n292:               }\n293:               else {\n294:                 // If no fluid cell found: fall-back to bounce-back\n295:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_DISTANCE>(iPop_opposite, T{0.5});\n296:               }\n297:               // Initialize velocity coefficients if necessary\n298:               if constexpr (std::is_same_v<OPERATOR, BouzidiVelocityPostProcessor>) {\n299:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_VELOCITY>(iPop_opposite, 0);\n300:               }\n301:               // Initialize ade dirichlet coefficients if necessary\n302:               if constexpr (std::is_same_v<OPERATOR, BouzidiAdeDirichletPostProcessor>) {\n303:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_ADE_DIRICHLET>(iPop_opposite, 0);\n304:               }\n305:               // Setting up the post processor, if this cell does not have one yet.\n306:               if (!block.isPadding(boundaryLatticeR)) {\n307:                 block.addPostProcessor(typeid(stage::PostStream),\n308:                                       boundaryLatticeR,\n309:                                       meta::id<OPERATOR>{});\n310:               }"
+        }
+      ]
+    },
+    {
+      "id": "OPENLB_DISTANCE_FIELD",
+      "path": "/home/dell/openlb/src/boundary/bouzidiFields.h",
+      "bytes": 2421,
+      "sha256": "abeefad29e4e675a1e9ef43e29e1c462521f23ee361e378d85ebafb3ac5fa857",
+      "fragments": [
+        {
+          "start_line": 31,
+          "end_line": 39,
+          "text": "31: /// Interpolated Bounce Back (Bouzidi) distance field\n32: struct BOUZIDI_DISTANCE : public descriptors::FIELD_BASE<0,0,1> {\n33:   template <typename T, typename DESCRIPTOR>\n34:   static constexpr auto getInitialValue() {\n35:     return Vector<value_type<T>,DESCRIPTOR::template size<BOUZIDI_DISTANCE>()>(-1);\n36:   }\n37: };\n38: \n39: /// Interpolated Bounce Back (Bouzidi) velocity coefficient field"
+        }
+      ]
+    },
+    {
+      "id": "OPENLB_TIME_STAGES",
+      "path": "/home/dell/openlb/src/core/superLattice.hh",
+      "bytes": 34795,
+      "sha256": "5b3b4700bdcc90296dd838daa2241feda52a6a9c708b30f1a97923ed0509cb85",
+      "fragments": [
+        {
+          "start_line": 663,
+          "end_line": 706,
+          "text": "663: template<typename T, typename DESCRIPTOR>\n664: void SuperLattice<T,DESCRIPTOR>::collideAndStream()\n665: {\n666:   if (!_initialized) [[unlikely]] {\n667:     initialize();\n668:   }\n669: \n670:   using namespace stage;\n671: \n672:   waitForBackgroundTasks(PreCollide());\n673:   auto& load = this->_loadBalancer;\n674: \n675:   if (_statisticsEnabled) {\n676:     setParameter<statistics::AVERAGE_RHO>(getStatistics().getAverageRho());\n677:   }\n678: \n679:   // Optional pre processing stage\n680:   executePostProcessors(PreCollide());\n681: \n682:   // Execute custom tasks (arbitrary callables)\n683:   // (used for multi-stage models such as bubble model)\n684:   executeCustomTasks(PreCollide());\n685: \n686:   #ifdef PARALLEL_MODE_OMP\n687:   #pragma omp taskloop\n688:   #endif\n689:   for (int iC = 0; iC < load.size(); ++iC) {\n690:     _block[iC]->collide();\n691:   }\n692: \n693:   // Communicate propagation overlap, optional post processing\n694:   executePostProcessors(PostCollide());\n695: \n696:   // Block-local propagation\n697:   for (int iC = 0; iC < load.size(); ++iC) {\n698:     _block[iC]->stream();\n699:   }\n700: \n701:   // Communicate (default) post processor neighborhood and apply them\n702:   executePostProcessors(PostStream());\n703: \n704:   // Execute custom tasks (arbitrary callables)\n705:   // (used for multi-stage models such as free surface)\n706:   executeCustomTasks(PostStream());"
+        }
+      ]
+    },
+    {
+      "id": "OPENLB_STREAM",
+      "path": "/home/dell/openlb/src/core/blockLattice.hh",
+      "bytes": 33347,
+      "sha256": "3e01423c6c39f7d07d28c325d2684238c1a189e6e86640bbef42b7c3b21e95e4",
+      "fragments": [
+        {
+          "start_line": 316,
+          "end_line": 341,
+          "text": "316: template<typename T, typename DESCRIPTOR, Platform PLATFORM>\n317: void ConcreteBlockLattice<T,DESCRIPTOR,PLATFORM>::stream()\n318: {\n319:   if constexpr (PLATFORM == Platform::GPU_CUDA || PLATFORM == Platform::GPU_HIP ) {\n320:     DESCRIPTOR::template filter<descriptors::is_propagatable_field>\n321:               ::for_each([&](auto field) {\n322:       auto& population = getField(field.get());\n323:       for (unsigned iPop=0; iPop < DESCRIPTOR::q; ++iPop) {\n324:         population[iPop].rotate(this->getNeighborDistance((!_revertedStreaming) ? (descriptors::c<DESCRIPTOR>(iPop)) :\n325:                                                                                   (descriptors::c<DESCRIPTOR>(descriptors::opposite<DESCRIPTOR>(iPop))) ));\n326:       }\n327:       // Required for resolving populations in (gather,scatter)_any_fields kernel\n328:       getDataRegistry().refreshDeviceFieldArray(population);\n329:     });\n330:   } else {\n331:     DESCRIPTOR::template filter<descriptors::is_propagatable_field>\n332:               ::for_each([&](auto field) {\n333:       auto& population = getField(field.get());\n334:       for (unsigned iPop=0; iPop < DESCRIPTOR::q; ++iPop) {\n335:         population[iPop].rotate(this->getNeighborDistance((!_revertedStreaming) ? (descriptors::c<DESCRIPTOR>(iPop)) :\n336:                                                                                   (descriptors::c<DESCRIPTOR>(descriptors::opposite<DESCRIPTOR>(iPop))) ));\n337:       }\n338:     });\n339:   }\n340: }\n341: "
+        }
+      ]
+    },
+    {
+      "id": "OPENLB_DEFAULT_STREAM",
+      "path": "/home/dell/openlb/src/core/blockLattice.h",
+      "bytes": 27487,
+      "sha256": "a608b27bb6810bf7eb4d2b3360845f995c4c94279d4b12e81e606771800dabc7",
+      "fragments": [
+        {
+          "start_line": 480,
+          "end_line": 486,
+          "text": "480:                     BlockPostProcessorMap<T,DESCRIPTOR,PLATFORM>,\n481:                     std::less<int>>\n482:            > _postProcessors;\n483:   /// Flag to set streaming direction\n484:   bool _revertedStreaming = false;\n485: public:\n486:   using value_t = T;"
+        }
+      ]
+    },
+    {
+      "id": "OPENLB_CPU_SISD_ROTATE",
+      "path": "/home/dell/openlb/src/core/platform/cpu/sisd/column.h",
+      "bytes": 5854,
+      "sha256": "588ef5a8c53b93db2de3a4131467568708925131435fdc03ee284f1b36322d0f",
+      "fragments": [
+        {
+          "start_line": 167,
+          "end_line": 170,
+          "text": "167:   T& operator[](std::size_t i) override\n168:   {\n169:     return (i > _remainder ? _start[1] : _start[0])[i];\n170:   }"
+        },
+        {
+          "start_line": 177,
+          "end_line": 204,
+          "text": "177:   void refresh()\n178:   {\n179:     const std::ptrdiff_t n = size();\n180:     T* const base = _data.get();\n181:     if (_shift >= 0) {\n182:       _remainder = n - _shift - 1;\n183:       _start[0] = base + _shift;\n184:       _start[1] = base - (n - _shift);\n185:     }\n186:     else {\n187:       _remainder = -_shift - 1;\n188:       _start[0] = base + (n + _shift);\n189:       _start[1] = base + _shift;\n190:     }\n191:   }\n192: \n193:   void rotate(std::ptrdiff_t offset)\n194:   {\n195:     const std::ptrdiff_t n = size();\n196:     _shift -= offset;\n197:     if (_shift >= n) {\n198:       _shift -= n;\n199:     }\n200:     else if (_shift <= -n) {\n201:       _shift += n;\n202:     }\n203:     refresh();\n204:   }"
+        }
+      ]
+    },
+    {
+      "id": "D2_BUILD_CONFIG",
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/src/Makefile",
+      "bytes": 967,
+      "sha256": "a1dc6db807970fb7ddf84edb5b7a98dd5316f292cbec6f50b8d2902c2622f1e7",
+      "fragments": [
+        {
+          "start_line": 1,
+          "end_line": 16,
+          "text": "1: CASE_ROOT := ..\n2: OLB_ROOT := /home/dell/openlb\n3: TARGET := $(CASE_ROOT)/build/d2_groove_error_map\n4: OBJECT := $(CASE_ROOT)/build/d2_groove_error_map.o\n5: DEPEND := $(CASE_ROOT)/build/d2_groove_error_map.d\n6: SOURCE := d2_groove_error_map.cpp\n7: \n8: CXX := mpic++\n9: CXXFLAGS := -O3 -Wall -march=native -mtune=native -std=c++20 \\\n10:   -DOLB_VERSION=\\\"5953d8a-dirty\\\" -pthread -DPARALLEL_MODE_MPI \\\n11:   -DPLATFORM_CPU_SISD -DDEFAULT_FLOATING_POINT_TYPE=double\n12: INCLUDE_FLAGS := -I$(OLB_ROOT)/src -I$(OLB_ROOT)/external/zlib \\\n13:   -I$(OLB_ROOT)/external/tinyxml2\n14: LDFLAGS := -L$(OLB_ROOT)/build/lib -lolbcore -L$(OLB_ROOT)/external/lib \\\n15:   -lz -ltinyxml2 -lpthread\n16: "
+        }
+      ]
+    }
+  ]
+}

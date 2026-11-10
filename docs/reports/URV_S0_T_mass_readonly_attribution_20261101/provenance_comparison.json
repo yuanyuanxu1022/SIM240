@@ -1,0 +1,58 @@
+{
+  "P": {
+    "historical_run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+    "manifest_path": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1/steady/run_manifest.json",
+    "manifest_sha256": "dd694eeaa87a09927e4f0536e584345ba588874bfd50874af6137594ea1efbdf",
+    "actual_recorded_run_binary_matches_inspected_ELF": true,
+    "recorded_source_and_recipe_match_current_bytes": true,
+    "historical_compile_recipe_evidence": "make --dry-run in run manifest; not proof of the actual past compile invocation",
+    "historical_compiler_string": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "historical_link_libraries": {
+      "/home/dell/openlb/build/lib/libolbcore.a": {
+        "recorded_sha256": "a9b5bb80fc5cd35bda3a00c1efee799486955f53b45a9434d15be9512fb90e6d",
+        "current_matches": true
+      },
+      "/home/dell/openlb/external/lib/libz.a": {
+        "recorded_sha256": "18188a71086122ac4febacfd7371d49172729f02f75bab07895e41f62c5bd956",
+        "current_matches": true
+      },
+      "/home/dell/openlb/external/lib/libtinyxml2.a": {
+        "recorded_sha256": "26378a92c50f29bfb207273ad7e7864b7fe88d95362f1c715c2434e7ed548da6",
+        "current_matches": true
+      }
+    }
+  },
+  "T": {
+    "historical_run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+    "manifest_path": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1/steady/run_manifest.json",
+    "manifest_sha256": "4e47b54aa00ab30726aa9df60a60d41918ddc9a1fd9379a8c05c43addb49d9a6",
+    "actual_recorded_run_binary_matches_inspected_ELF": true,
+    "recorded_source_and_recipe_match_current_bytes": true,
+    "historical_compile_recipe_evidence": "make --dry-run in run manifest; not proof of the actual past compile invocation",
+    "historical_compiler_string": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "historical_link_libraries": {
+      "/home/dell/openlb/build/lib/libolbcore.a": {
+        "recorded_sha256": "a9b5bb80fc5cd35bda3a00c1efee799486955f53b45a9434d15be9512fb90e6d",
+        "current_matches": true
+      },
+      "/home/dell/openlb/external/lib/libz.a": {
+        "recorded_sha256": "18188a71086122ac4febacfd7371d49172729f02f75bab07895e41f62c5bd956",
+        "current_matches": true
+      },
+      "/home/dell/openlb/external/lib/libtinyxml2.a": {
+        "recorded_sha256": "26378a92c50f29bfb207273ad7e7864b7fe88d95362f1c715c2434e7ed548da6",
+        "current_matches": true
+      }
+    }
+  },
+  "new": {
+    "actual_run_binary_matches_inspected_ELF": true,
+    "binary_sha256": "a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1",
+    "actual_compile_command": "mpic++ -O3 -Wall -Wextra -march=native -mtune=native -std=c++20 -DOLB_VERSION=\\\"882924a9cfc8\\\" -pthread -DPARALLEL_MODE_MPI -DURV_PREPARATION_ONLY=0 -DPLATFORM_CPU_SISD -DDEFAULT_FLOATING_POINT_TYPE=double -I/home/dell/openlb/src -I/home/dell/openlb/external/zlib -I/home/dell/openlb/external/tinyxml2 -MMD -MP -MF ../build/urv_reference.d -c urv_reference.cpp -o ../build/urv_reference.o",
+    "actual_link_command": "mpic++ ../build/urv_reference.o -o ../build/urv_reference -L/home/dell/openlb/build/lib -lolbcore -L/home/dell/openlb/external/lib -lz -ltinyxml2 -lpthread",
+    "compiler_executable": "/usr/bin/x86_64-linux-gnu-g++-13",
+    "compiler_sha256": "1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769",
+    "historical_compiler_executable_hash_available": false,
+    "new_native_compile_this_audit": false
+  }
+}

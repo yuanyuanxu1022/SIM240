@@ -1,0 +1,108 @@
+[
+  {
+    "name": "aip_pdf",
+    "requested_url": "https://pubs.aip.org/aip/pof/article-pdf/13/11/3452/19042466/3452_1_online.pdf",
+    "parameters": [],
+    "accessed_at": "2026-10-27T22:20:33.309985+08:00",
+    "curl_exit": 0,
+    "transport": [
+      "403",
+      "https://pubs.aip.org/aip/pof/article-pdf/13/11/3452/19042466/3452_1_online.pdf",
+      "text/html; charset=UTF-8"
+    ],
+    "stderr": "",
+    "bytes": 5563,
+    "sha256": "7eb2b978ecb3a59057ec2ce25c48c48d8d6e7f942116711ae5847d938b7fb464",
+    "starts_pdf": false
+  },
+  {
+    "name": "hal_title",
+    "requested_url": "https://api.archives-ouvertes.fr/search/",
+    "parameters": [
+      "q=title_t:\"Momentum transfer of a Boltzmann-lattice fluid with boundaries\"",
+      "fl=halId_s,title_s,doiId_s,fileMain_s,uri_s,docType_s,authFullName_s",
+      "rows=10",
+      "wt=json"
+    ],
+    "accessed_at": "2026-10-27T22:20:35.247075+08:00",
+    "curl_exit": 0,
+    "transport": [
+      "200",
+      "https://api.archives-ouvertes.fr/search/?q=title_t%3a%22Momentum+transfer+of+a+Boltzmann-lattice+fluid+with+boundaries%22&fl=halId_s%2ctitle_s%2cdoiId_s%2cfileMain_s%2curi_s%2cdocType_s%2cauthFullName_s&rows=10&wt=json",
+      "application/json; charset=utf-8"
+    ],
+    "stderr": "",
+    "bytes": 116,
+    "sha256": "316b596864c92e18c8f6688107ad49ecfc3fe632ebdc85efe82c65ed28ba8064",
+    "starts_pdf": false,
+    "summary": {
+      "numFound": 0,
+      "docs": []
+    }
+  },
+  {
+    "name": "s2_doi",
+    "requested_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1063/1.1399290",
+    "parameters": [
+      "fields=title,year,authors,externalIds,isOpenAccess,openAccessPdf,url"
+    ],
+    "accessed_at": "2026-10-27T22:20:33.347788+08:00",
+    "curl_exit": 0,
+    "transport": [
+      "200",
+      "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1063/1.1399290?fields=title%2cyear%2cauthors%2cexternalIds%2cisOpenAccess%2copenAccessPdf%2curl",
+      "application/json"
+    ],
+    "stderr": "",
+    "bytes": 577,
+    "sha256": "1b0e977773ded059721d513b2e1143e1090013d0432554b76ebfbc50076dad33",
+    "starts_pdf": false,
+    "summary": {
+      "paperId": "f8e397de7f3ea50848dba713a755ac2befb823fb",
+      "externalIds": {
+        "MAG": "2095470085",
+        "DOI": "10.1063/1.1399290",
+        "CorpusId": 122713204
+      },
+      "url": "https://www.semanticscholar.org/paper/f8e397de7f3ea50848dba713a755ac2befb823fb",
+      "title": "Momentum transfer of a Boltzmann-lattice fluid with boundaries",
+      "year": 2001,
+      "isOpenAccess": false,
+      "openAccessPdf": {
+        "url": "",
+        "status": "CLOSED",
+        "license": null
+      },
+      "authors": [
+        {
+          "authorId": "2368940913",
+          "name": "M. Bouzidi"
+        },
+        {
+          "authorId": "112857882",
+          "name": "M. Firdaouss"
+        },
+        {
+          "authorId": "16687337",
+          "name": "P. Lallemand"
+        }
+      ]
+    }
+  },
+  {
+    "name": "cnam_list",
+    "requested_url": "https://www.lmssc.cnam.fr/en/publications?page=8",
+    "parameters": [],
+    "accessed_at": "2026-10-27T22:20:36.154936+08:00",
+    "curl_exit": 0,
+    "transport": [
+      "200",
+      "https://www.lmssc.cnam.fr/en/publications?page=8",
+      "text/html; charset=UTF-8"
+    ],
+    "stderr": "",
+    "bytes": 65297,
+    "sha256": "f6e1571f833b823414e53002f0575f4e94b3324ac73d817794f664ded9f5eceb",
+    "starts_pdf": false
+  }
+]

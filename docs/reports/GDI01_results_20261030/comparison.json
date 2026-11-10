@@ -1,0 +1,36 @@
+{
+  "shared_conditions": {
+    "pressure_units": true,
+    "velocity_definition": true,
+    "H_m": true,
+    "L_m": true,
+    "mu_Pa_s": true,
+    "rho_kg_m3": true,
+    "mesh_cells": true,
+    "drive_axis": true,
+    "G_Pa_per_m": true,
+    "K_m3": true,
+    "D_m_minus2": true,
+    "thresholds": true,
+    "linear_solver": true
+  },
+  "comparisons": {
+    "C01_2D": {
+      "max_p_difference_Pa": 8.65618687839742e-12,
+      "max_Jx_difference_relative": 1.6359985707514057e-11,
+      "max_Jy_difference_relative": 5.4088307414341345e-12,
+      "Q_difference_relative_analytic": 1.4649363538645403e-11,
+      "Q_difference_signed_percent": -1.464939280992894e-09
+    },
+    "C01_old_OpenFOAM": {
+      "max_p_difference_Pa": 8.522960115442402e-12,
+      "max_Jx_difference_relative": 1.6341276702257688e-11,
+      "max_Jy_difference_relative": 4.086855236763494e-12,
+      "Q_difference_relative_analytic": 1.4596497471094268e-11,
+      "Q_difference_signed_percent": -1.4596546193956783e-09
+    }
+  },
+  "baseline_run_id": "SDI_C01_v1_20261030_01",
+  "new_run_id": "GDI01_v1_20261030_01",
+  "conclusion": "Implementation agreement for the same model; not independent physical validation."
+}

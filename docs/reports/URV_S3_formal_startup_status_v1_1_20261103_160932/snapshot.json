@@ -1,0 +1,223 @@
+{
+  "snapshot_at": "2026-11-03T16:09:32.765934+08:00",
+  "hostname": "dell-OptiPlex-Tower-Plus-7010",
+  "report_directory": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S3_formal_startup_status_v1_1_20261103_160932",
+  "snapshot_mode": "ONCE_NO_POLLING",
+  "release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/S3_formal_launch_release_v1_1_20261103_01.json",
+  "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+  "expected_release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+  "release_sha_matches": true,
+  "release_sidecar_matches": true,
+  "target_processes": [
+    {
+      "pid": 1276519,
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_S3.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/S3_formal_launch_release_v1_1_20261103_01.json",
+        "--release-sha256",
+        "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "--execute"
+      ],
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1",
+      "target_case": true,
+      "state": "State:\tS (sleeping)",
+      "role": "controller"
+    },
+    {
+      "pid": 1276607,
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/run_config.txt"
+      ],
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1",
+      "target_case": true,
+      "state": "State:\tR (running)",
+      "role": "native_solver"
+    }
+  ],
+  "other_relevant_processes": [],
+  "tmux_query_exit_code": 0,
+  "tmux_panes": [
+    "urv_s3_formal_v1_1_20261103_01|1276519|0||python3"
+  ],
+  "tmux_query_stderr": "",
+  "expected_tmux_session": "urv_s3_formal_v1_1_20261103_01",
+  "controller_log": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/S3_formal_controller_v1_1_20261103_01.log",
+    "exists": true,
+    "size_bytes": 0,
+    "mtime": "2026-11-03T16:00:23.020271+08:00"
+  },
+  "controller_log_tail": "",
+  "launch_attempt": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/launch_attempts/04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+    "exists": true,
+    "size_bytes": 4096,
+    "mtime": "2026-11-03T16:00:25.065276+08:00"
+  },
+  "attempt_files": [],
+  "runs": [
+    {
+      "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a50000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady",
+      "files": [
+        "boundary_audit.txt",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "exit_code": null,
+      "result": null,
+      "execution_audit": null,
+      "diagnostics_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/diagnostics.csv",
+        "exists": true,
+        "size_bytes": 3657864,
+        "mtime": "2026-11-03T16:09:31.865927+08:00"
+      },
+      "last_complete_diagnostic_snapshot": {
+        "step": "8682",
+        "time_s": "9.0437499999999995e-09",
+        "Jx": "-4.4484092337489837e-21",
+        "Jy": "2.9595519818317693e-12",
+        "Jz": "2.2996661803494498e-21"
+      },
+      "run_log": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/run.log",
+        "exists": true,
+        "size_bytes": 2009,
+        "mtime": "2026-11-03T16:00:25.461778+08:00"
+      },
+      "run_log_tail": "\n    ┃\n    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁\n    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲\n ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱\n ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱\n ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱\n ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>\n       ┗━━━━━┛\n\n[initialize] Version  : 882924a9cfc8\n[initialize] Platform : CPU_SISD\n[initialize] Parallel : MPI\n[initialize] MPI      : 1 ranks\n[ThreadPool] Sucessfully initialized, numThreads=1\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/imageData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/imageData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/vtkData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/vtkData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/gnuplotData/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/gnuplotData/data/ created.\n[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/introspectionData/ created.\n",
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a50000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": false
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_P_a50000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": false
+      },
+      "failure": null
+    },
+    {
+      "run_id": "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a50000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a50000_reuse_v1_1_20261103_01/steady",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "exit_code": null,
+      "result": null,
+      "execution_audit": null,
+      "diagnostics_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a50000_reuse_v1_1_20261103_01/steady/diagnostics.csv",
+        "exists": false
+      },
+      "last_complete_diagnostic_snapshot": null,
+      "run_log": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a50000_reuse_v1_1_20261103_01/steady/run.log",
+        "exists": false
+      },
+      "run_log_tail": "",
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a50000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": false
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_T_a50000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": false
+      },
+      "failure": null
+    },
+    {
+      "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a200000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a200000_reuse_v1_1_20261103_01/steady",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "exit_code": null,
+      "result": null,
+      "execution_audit": null,
+      "diagnostics_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a200000_reuse_v1_1_20261103_01/steady/diagnostics.csv",
+        "exists": false
+      },
+      "last_complete_diagnostic_snapshot": null,
+      "run_log": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a200000_reuse_v1_1_20261103_01/steady/run.log",
+        "exists": false
+      },
+      "run_log_tail": "",
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_P_a200000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": false
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_P_a200000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": false
+      },
+      "failure": null
+    },
+    {
+      "run_id": "URV_S3_T_a200000_reuse_v1_1_20261103_01",
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a200000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "exit_code": null,
+      "result": null,
+      "execution_audit": null,
+      "diagnostics_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady/diagnostics.csv",
+        "exists": false
+      },
+      "last_complete_diagnostic_snapshot": null,
+      "run_log": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady/run.log",
+        "exists": false
+      },
+      "run_log_tail": "",
+      "completion_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady/completion.json",
+        "exists": false
+      },
+      "acceptance_file": {
+        "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/analysis_results/URV_S3_T_a200000_reuse_v1_1_20261103_01/acceptance.json",
+        "exists": false
+      },
+      "failure": null
+    }
+  ],
+  "linearity_reports": {
+    "P": null,
+    "T": null
+  },
+  "batch_completed": null,
+  "batch_completed_file": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/launch_attempts/04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574/S3_completed.json",
+    "exists": false
+  },
+  "independent_full_review_performed": false,
+  "source_input_closure_rehashed": false,
+  "raw_field_replay_performed": false,
+  "AI_solver_calls": 0,
+  "AI_VTK_reader_invocations": 0,
+  "AI_time_steps": 0,
+  "start_retry_or_stop_command_executed": false
+}

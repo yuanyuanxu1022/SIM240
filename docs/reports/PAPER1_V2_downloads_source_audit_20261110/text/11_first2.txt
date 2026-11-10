@@ -1,0 +1,78 @@
+Optimal placement of droplets for UV
+nanoimprint lithography
+Cite as: J. Vac. Sci. Technol. B 38, 022601 (2020); https://doi.org/10.1116/6.0000030
+Submitted: 25 January 2020 . Accepted: 03 March 2020 . Published Online: 20 March 2020
+
+Yang H. Ban     , and Roger T. Bonnecaze
+
+
+
+
+J. Vac. Sci. Technol. B 38, 022601 (2020); https://doi.org/10.1116/6.0000030             38, 022601
+
+© 2020 Author(s).
+                                                                                                   ARTICLE           avs.scitation.org/journal/jvb
+
+
+
+
+    Optimal placement of droplets for UV nanoimprint
+    lithography
+    Cite as: J. Vac. Sci. Technol. B 38, 022601 (2020); doi: 10.1116/6.0000030
+    Submitted: 25 January 2020 · Accepted: 3 March 2020 ·                                                               View Online   Export Citation    CrossMark
+    Published Online: 20 March 2020
+
+    Yang H. Ban            and Roger T. Bonnecazea)
+
+    AFFILIATIONS
+    McKetta Department of Chemical Engineering, The University of Texas at Austin, 200 E. Dean Keeton St., Stop C0400,
+    Austin, Texas 78712
+
+    a)
+      Electronic mail: rtb@che.utexas.edu
+
+
+    ABSTRACT
+    Optimizing the locations and sizes of droplets are key to reduce defects and increase throughput of ultraviolet nanoimprint lithography
+    (UVNIL). Previously, simulation models describing the flow and coalescence of multiple fluid drops were developed and used to predict the
+    fluid flow during spreading and feature filling. However, the effect of small channels on the resulting capillary pressure is neglected even
+    though the flow along small channels or grooves is encountered in UVNIL. In this study, an accurate method to estimate capillary pressure
+    boundary conditions at the fluid-air interface is developed along with fluid simulation. A method to estimate and compute the anisotropic
+    capillary pressure for templates with line and space patterns is presented. It is found that the droplets flow faster in the direction of the
+    pattern not only because of anisotropic permeability but also the nanostructure of the template, which further propels anisotropic spreading
+    of the droplets by exerting larger capillary pressure. Using the new capillary pressure boundary condition, the simulation of multidrop
+    spreading in UVNIL is performed to study the effects of anisotropic capillary pressures caused by the template structure. A simulation
+    approach to determine optimal droplet placement was developed. From the simulation, a general rule of thumb is developed: delaying
+    droplet merging as much as possible and reducing the number of merging events.
+
+    Published under license by AVS. https://doi.org/10.1116/6.0000030
+
+
+    I. INTRODUCTION                                                             The ability of UVNIL to cheaply and reliably replicate nanoscale
+           Implementation of nanotechnologies depends on the ability to         features is potentially a tremendous asset to many applications.1
+                                                                                      A typical process of UVNIL is shown in Fig. 1. An inkjet dis-
+    pattern small features, and the required feature sizes are continuously
+                                                                                penser is used to dispense droplets of low viscosity photocurable
+    shrinking.1 UV nanoimprint lithography (UVNIL) is a promising
+    high-resolution molding process. UVNIL exceeds the limit of 193 nm          imprint material on the substrate. These droplets are a few picoli-
+    lithography, the current dominant technology. Also, UVNIL has               ters in volume. A UV-transparent template with micro- or nanofea-
+    several advantages compared to the next generation extreme ultravio-        tures is lowered on the substrate. As the template is pressed into
+    let lithography (EUVL).1 UVNIL has a high resolution and the reso-          the resist, the droplets merge together and fill the gap to form a
+    lution is largely unaffected by the field size being patterned; UVNIL       uniform film. When the desired gap is reached, UV light irradiates
+    is essentially only limited by the resolution of the template pattern.2–4   the imprinted film, which photopolymerizes to form a solid resist
+    UVNIL offers a low-cost alternative to photolithography and EUVL.           layer with features replicated from the template. The template is
+    It avoids the use of costly optical systems for traditional photolithog-    then peeled from the resist with a controlled mechanism complet-
+    raphy. When compared to an immersion based self-aligned quadru-             ing the patterning process. This pattern can then be used for
+    ple patterning, cost of ownership for UVNIL is approximately 40%            further processing such as reactive ion etching. UV nanoimprint
+    lower.5 Finally, using an inkjet dispenser, the fluid is dispensed as an    lithography effectively transfers high-resolution micro- and nano-
+    individual droplet. Because the resist volume deposited is matched to       features from templates onto substrates and is deployed in hard
+    the mask pattern density, there is no wasted resist, and the resulting      disk industry and photonics applications.6,7
+    total volume of resist liquid dispensed on a substrate is around 0.001            Despite its advantages, defects caused by gas trapping and low
+    times smaller than a more conventional spin-coat type resist.5              throughput make UVNIL less attractive.1,8 Several processing steps
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                      38, 022601-1
+Published under license by AVS.
+

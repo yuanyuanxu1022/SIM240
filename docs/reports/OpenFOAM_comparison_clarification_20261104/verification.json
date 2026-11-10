@@ -1,0 +1,501 @@
+{
+  "date": "2026-11-04",
+  "kind": "READ_ONLY_SAVED_CASE_IDENTITY_HASH_AND_Q_RECOMPUTATION",
+  "scope": "Saved acceptance read; raw-file and run-manifest hashes checked; Q and mean U recomputed. Not a full rerun of acceptance.",
+  "solver_calls": 0,
+  "builds": 0,
+  "new_run_ids": [],
+  "cases": [
+    {
+      "case_id": "C01",
+      "run_id": "SDI_C01_v1_20261030_01",
+      "model": "V2",
+      "direction": "transverse",
+      "package": "CASE/interface_static_darcy_v1",
+      "accepted_analysis": "docs/reports/SDI_C01_results_20261030/interface_analysis_geometry_v1_1.json",
+      "accepted_analysis_sha256": "75621f3a1f325dcab5f22de31eefaefb926b61e902fe3d03a731b019537f4ef5",
+      "saved_status": {
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "geometry_scope": "synthetic_average_domain_only",
+        "physical_validation": "NOT_EVALUATED"
+      },
+      "raw_files_hash_verified": [
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/cells.csv",
+          "sha256": "98ea3fada1003501bea6fb32890a6499fdc8fff82674c1bfa753c54d8f80edcc"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/faces.csv",
+          "sha256": "b83928d8efb3075b864dc0955176a266affdb3a0a6ec4169555da56c0bc02de1"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/solver.json",
+          "sha256": "c55b6271d1b8bb03998732dabc1cbc4fef77e73739c26a3876cc4772b6ea4035"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/cells.csv",
+          "sha256": "5360bae99c50e1e7fe0933b7d0e7aee9a01cfaa99239e8d74a69d03d16d7b65f"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/faces.csv",
+          "sha256": "84388c85878e9f234d619fdab633b8cb572f9aa0105d6254573827a44bb383a2"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/solver.json",
+          "sha256": "4edbd2e175df534eab088da740dae49e12693325afe56573d8b9f3dc4835af20"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/p",
+          "sha256": "9162bd2189cfb875fff25025d1ea98315931080c1c9abaaf3592c4bb16de8ac8"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/U",
+          "sha256": "548b5600a64ad0c8fba272b8bdfa55f61783f4b11bbaf600c895a2cc0cefd88d"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/J",
+          "sha256": "fb851be48485dda6cafc94f3f2e31d94e3fb48982eb64b262025ac2114978949"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/phi",
+          "sha256": "63e56a2bd00b807ab937ebb22ba4389a22282b02480de576c93e5f104cccfa4b"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/phi_U",
+          "sha256": "d5064be6ea46eef3d0a374f4483a438e52154033c1a099c29545bd457f774973"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/logs/two_dimensional.log",
+          "sha256": "6a2d7f90d193bb74c80fd3d063fd061e1b4495c8f6fe91b5ff75852164573197"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/logs/openfoam.log",
+          "sha256": "ce82bcdd8f4232061f303f9a775e47c2169f2515458fc54f4fbcca2394cdd0d3"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/execution.json",
+          "sha256": "a8b9c7b3d45a2b42afab19a19ba6312b0b5f101c03471212996ee5a07155dfcd"
+        }
+      ],
+      "run_manifest_hash_verified": true,
+      "exits": [
+        {
+          "label": "two_dimensional",
+          "exit_code": 0,
+          "timed_out": false
+        },
+        {
+          "label": "openfoam",
+          "exit_code": 0,
+          "timed_out": false
+        }
+      ],
+      "recomputed_metrics": [
+        {
+          "endpoint": "two_dimensional",
+          "cell_count": 512,
+          "Q_m3_s": 2.1858216813930507e-18,
+          "U_m_s": 3.6430361356540733e-07
+        },
+        {
+          "endpoint": "openfoam",
+          "cell_count": 512,
+          "Q_m3_s": 2.185821681392935e-18,
+          "U_m_s": 3.643036135654074e-07
+        }
+      ]
+    },
+    {
+      "case_id": "C02",
+      "run_id": "SDI_C02_v1_1_20261030_01",
+      "model": "V2",
+      "direction": "parallel",
+      "package": "CASE/interface_static_darcy_v1_1",
+      "accepted_analysis": "docs/reports/SDI_C02_results_20261030/interface_analysis.json",
+      "accepted_analysis_sha256": "01005e47150aadae3ee90bb38de245e18d357c103321060eb690c0d168bc3c4b",
+      "saved_status": {
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "geometry_scope": "synthetic_average_domain_only",
+        "physical_validation": "NOT_EVALUATED"
+      },
+      "raw_files_hash_verified": [
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/cells.csv",
+          "sha256": "ac8eaaf9fc2f7ad2e7803cb61b2754c3f9b0efa8eac1c90bac792ae2ea169cb4"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/faces.csv",
+          "sha256": "e767a16b8e4525b40ef0df1d10a256eaf5dab4a5dfb2c82b2e536863cb5ec578"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/solver.json",
+          "sha256": "108a0317a20d6f340c20399624530558dfaaa675fe227dcde5ff74074d2dd151"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/cells.csv",
+          "sha256": "6e976f13bcc29219359939f86dca8da77165515ad3d3d9a1511ffa897d60b07c"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/faces.csv",
+          "sha256": "397994aa98c235c7e935c6031170b3f40f5c5bc71b7eafa52e2b735d4878f9c0"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/solver.json",
+          "sha256": "78b484735838198c0e0f330a76c4739e65da2822687acb5990a1a69d145ebdbd"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/p",
+          "sha256": "48fb0b6da053f9dd49ed3759ab88e4d0e3eef06d5209b7d228849913cf95518f"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/U",
+          "sha256": "81f415cb1c723571282347a707961c6556b38f8e6836d64b5d1ce58b25a35670"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/J",
+          "sha256": "167f9786f7971cb57b7a66f7e61df45b430b6a19d8953ef177bc645fb03598bb"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/phi",
+          "sha256": "bf20a776a880b44f80da8e4841d84771e67557e2e7e05f8596a2e7232177425b"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/phi_U",
+          "sha256": "ab3d90dfd8b9f6bfe94f93f93b2d8524c3f5677314d5b38b36e168eb7d1323aa"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/logs/two_dimensional.log",
+          "sha256": "0d3f8f71e6666d0e7c790c9fcb1a550d8ec953692d296678d8e45cc350d4a033"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/logs/openfoam.log",
+          "sha256": "809bbdaa459c91c3bd8a73c264181321210b0059e41ee7eba5dd1a40623549a1"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/execution.json",
+          "sha256": "67970c1f9fa96e7b24f1f2134815337750d529fcebc62c4ebca1dcffbd02eb75"
+        }
+      ],
+      "run_manifest_hash_verified": true,
+      "exits": [
+        {
+          "label": "two_dimensional",
+          "exit_code": 0,
+          "timed_out": false
+        },
+        {
+          "label": "openfoam",
+          "exit_code": 0,
+          "timed_out": false
+        }
+      ],
+      "recomputed_metrics": [
+        {
+          "endpoint": "two_dimensional",
+          "cell_count": 512,
+          "Q_m3_s": 4.998726758166358e-18,
+          "U_m_s": 8.331211263609563e-07
+        },
+        {
+          "endpoint": "openfoam",
+          "cell_count": 512,
+          "Q_m3_s": 4.998726758167961e-18,
+          "U_m_s": 8.331211263609565e-07
+        }
+      ]
+    },
+    {
+      "case_id": "C03",
+      "run_id": "SDI_C03_v1_2_20261030_01",
+      "model": "original",
+      "direction": "transverse",
+      "package": "CASE/interface_static_darcy_v1_2",
+      "accepted_analysis": "docs/reports/SDI_C03_results_20261030/interface_analysis.json",
+      "accepted_analysis_sha256": "ed56090faa6c13ebe5b3668b2beb569af315ae24c9372880d048f2a019a8f0b9",
+      "saved_status": {
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "geometry_scope": "synthetic_average_domain_only",
+        "physical_validation": "NOT_EVALUATED"
+      },
+      "raw_files_hash_verified": [
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/two_dimensional/cells.csv",
+          "sha256": "8e4432ef96d314d8595657449b955e41f6145aedf0b4c9e94217c0e08ea16980"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/two_dimensional/faces.csv",
+          "sha256": "e5d685bf0a81779dbdb32b9f8fef9e4ae4f78316b6cf56af1d925cf5dcf0150e"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/two_dimensional/solver.json",
+          "sha256": "15c3cf06e9656642ff8dc05841392a037cd0b87bbbbe530698ee2728adf4ae68"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/SDI_output/cells.csv",
+          "sha256": "ef66d03470b0096890ee8647b92b0239358a843e0fd633d9255754e7aa2e241b"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/SDI_output/faces.csv",
+          "sha256": "e6193529105cf519682e785a0d85487a257b271cb31a41495e79c4360b7cac5c"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/SDI_output/solver.json",
+          "sha256": "8d22da6fa076f5dbc0753a6f76559a55977037e5ffe5cf0e6a50cb8d040c9e8c"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/1/p",
+          "sha256": "98cbdfe511846c6b6e5c5dfcd6432c56b85cf5a2630762bdbfea87cad41a49ad"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/1/U",
+          "sha256": "06f8dc6ebf23b8a05767a6ba82f5db6e66a46b7be7c1ed1e94470282de851127"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/1/J",
+          "sha256": "93e77f069cc2bfd5b2504f6eb61f6d87112a0d0a43efef9af72fdaaf1ed92eff"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/1/phi",
+          "sha256": "0ad469b6af0ba0b931b739ad66ab129b17f47895b7cc3973c516ae5b115ea9e9"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/1/phi_U",
+          "sha256": "cdd4734982ea5f4a644f04001c092932543017af0a14fcbdab3f5b8a3aa02e25"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/logs/two_dimensional.log",
+          "sha256": "5cb01420f65c53ed57edc1da71376fd76c364a949d3491208e1449502c26f503"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/logs/openfoam.log",
+          "sha256": "33995d91a98b8c9e7758c48cdb6d02e6988e644cc04c821747e2fa2bba0d1bfe"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/execution.json",
+          "sha256": "7b71ad041a51630b5ab14e56716536d0617af1ef410a2513fd3907b9be0d58db"
+        }
+      ],
+      "run_manifest_hash_verified": true,
+      "exits": [
+        {
+          "label": "two_dimensional",
+          "exit_code": 0,
+          "timed_out": false
+        },
+        {
+          "label": "openfoam",
+          "exit_code": 0,
+          "timed_out": false
+        }
+      ],
+      "recomputed_metrics": [
+        {
+          "endpoint": "two_dimensional",
+          "cell_count": 512,
+          "Q_m3_s": 3.1287162162167147e-18,
+          "U_m_s": 5.214527027027026e-07
+        },
+        {
+          "endpoint": "openfoam",
+          "cell_count": 512,
+          "Q_m3_s": 3.1287162162165995e-18,
+          "U_m_s": 5.214527027027027e-07
+        }
+      ]
+    },
+    {
+      "case_id": "C04",
+      "run_id": "SDI_C04_v1_3_20261030_01",
+      "model": "original",
+      "direction": "parallel",
+      "package": "CASE/interface_static_darcy_v1_3",
+      "accepted_analysis": "docs/reports/SDI_C04_results_20261030/interface_analysis.json",
+      "accepted_analysis_sha256": "946ce3b0cffe251ce3a9a518bd605fc66cdbf9f1f9d9998dcf8e466d451519dd",
+      "saved_status": {
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "geometry_scope": "synthetic_average_domain_only",
+        "physical_validation": "NOT_EVALUATED"
+      },
+      "raw_files_hash_verified": [
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/two_dimensional/cells.csv",
+          "sha256": "31f34bff2e7a9c0311cb296a7e05873433785851a5c87a64868ce79a2086e763"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/two_dimensional/faces.csv",
+          "sha256": "386655be73651e8d078082a8cdf2a2e291db2e03bfad348276a591747f4033f1"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/two_dimensional/solver.json",
+          "sha256": "5bc2749a1e17d9b341d21e21337141e0bf9fe680266ab7cef23196df8019e655"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/SDI_output/cells.csv",
+          "sha256": "0776eaab9ea8f75bb50e7ee0642bb9630fdb0ad29d6e2962aba6bdfbe61e2d03"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/SDI_output/faces.csv",
+          "sha256": "86844c42ccc9083d19363a9772a720bf9df08d8dcbe6c1b827b54c93322dd035"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/SDI_output/solver.json",
+          "sha256": "39c2ea67b4c5cc0e8c64db9d7bf2f8fac5e3ceec6194ad99a2d606818d322e00"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/1/p",
+          "sha256": "be83d21f763fe81e4f9aa406a67cc6f4cffe82f25ca402e74b715c5185544c75"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/1/U",
+          "sha256": "85cfe93f36956d140e5226c618a28e192d28439f3227bb9727dcbf1f2ddb98c9"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/1/J",
+          "sha256": "f3bb4519cf273fd3f6485273cbb2cab685fcf9abcd7bafddf01dbc4eb98613d7"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/1/phi",
+          "sha256": "d4df5b5ba369d36fc06cffc89051883b8a3fd638bd62488b29c7415f79e944e6"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/1/phi_U",
+          "sha256": "ea479b2d15d91c24d8ad3de94849f0f59eaf7e7836fc1d97039415096830112e"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/logs/two_dimensional.log",
+          "sha256": "abac6f438abaaf1c8ca40c2487539b28394bf3d00127a5d31efa78adcd921841"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/logs/openfoam.log",
+          "sha256": "8215d019b4cc60feb19640f8ed70796aeb00e17ecd71ef466aca595d07799ead"
+        },
+        {
+          "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/execution.json",
+          "sha256": "19f34e08ba2abb1c8cb28f06f64e0cf0592f97e3ac0e64a7bc33883e3a10e1fe"
+        }
+      ],
+      "run_manifest_hash_verified": true,
+      "exits": [
+        {
+          "label": "two_dimensional",
+          "exit_code": 0,
+          "timed_out": false
+        },
+        {
+          "label": "openfoam",
+          "exit_code": 0,
+          "timed_out": false
+        }
+      ],
+      "recomputed_metrics": [
+        {
+          "endpoint": "two_dimensional",
+          "cell_count": 512,
+          "Q_m3_s": 1.1562499999999605e-17,
+          "U_m_s": 1.927083333333333e-06
+        },
+        {
+          "endpoint": "openfoam",
+          "cell_count": 512,
+          "Q_m3_s": 1.1562500000001498e-17,
+          "U_m_s": 1.9270833333333334e-06
+        }
+      ]
+    },
+    {
+      "case_id": "GDI01",
+      "run_id": "GDI01_v1_20261030_01",
+      "model": "V2",
+      "direction": "transverse",
+      "package": "CASE/groove_darcy_static_v1",
+      "accepted_analysis": "docs/reports/GDI01_results_20261030/interface_analysis.json",
+      "accepted_analysis_sha256": "949e8f0709f827fa304529315f6bd339efa83301457e3d4828de9c10dffc090a",
+      "saved_status": {
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "geometry_scope": "synthetic_average_domain_only",
+        "physical_validation": "NOT_EVALUATED"
+      },
+      "raw_files_hash_verified": [
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/GDI_output/cells.csv",
+          "sha256": "899e145336b8d521d11615cfd11fec9fd28cc4e5a801305833cdf9c5b29fbd1f"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/GDI_output/coefficients.csv",
+          "sha256": "97430de33ed1fbcaf97d674810a15d26881dce40ca901d363dcc648466800b68"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/GDI_output/faces.csv",
+          "sha256": "8aed1ff6a76030735f33255a4d0b52e7a090fb3d406a384ef684c6188fd824c4"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/GDI_output/iteration_history.csv",
+          "sha256": "e57f235c08b1be2b4225d9a0d2625e8247e3d2f1aa84bc0942226715156876d5"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/GDI_output/momentum_residual.csv",
+          "sha256": "ff693485fb028589e7bef46db322dc69ecd2b5680c2cb1b7ef6926aec291e504"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/GDI_output/solver.json",
+          "sha256": "3c0e57ae244a5c96dbcfa4e7ba60b5a249c8d58f8faf07138942c917bb83599e"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/1/J",
+          "sha256": "ef1a8a215e0e1e6ee609bd900824eb4876e840cc0b686c8d7fd2bbfb6eeabcd6"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/1/U",
+          "sha256": "a570469de4895d77708f81f86ba6b0b17cb506df40d68772464d74f93fda6541"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/1/p",
+          "sha256": "4880f4e81dd819b13ec91f5c7937cb73aa3fcdd80790e13dabaf1bd490eb01f8"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/1/phi",
+          "sha256": "4014afbd5c1dd963cafc84e5c99b0fbcc701d156a42ad52a84c224a44a34c45a"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/openfoam/1/phi_U",
+          "sha256": "00521aa2da7a3b867fd8ce49ef965d2ec42fba04276dac51a3a6302dcb981108"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/logs/openfoam.log",
+          "sha256": "8e1d544fe0622831693f77506e7200caccffca714399fab8b059b7d40713efc4"
+        },
+        {
+          "path": "CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/execution.json",
+          "sha256": "c72cc406fa84f3e938cc14b64473c03212b66c754a865d29f669c4b3b21ab040"
+        }
+      ],
+      "run_manifest_hash_verified": true,
+      "exits": [
+        {
+          "label": "openfoam",
+          "exit_code": 0,
+          "timed_out": false
+        }
+      ],
+      "recomputed_metrics": [
+        {
+          "endpoint": "openfoam",
+          "cell_count": 512,
+          "Q_m3_s": 2.1858216813610298e-18,
+          "U_m_s": 3.643036135602908e-07
+        }
+      ]
+    }
+  ],
+  "raw_file_entries_verified": 69
+}

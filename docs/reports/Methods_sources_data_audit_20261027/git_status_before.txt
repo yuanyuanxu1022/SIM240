@@ -1,0 +1,257 @@
+ M AGENTS.md
+ M CASE/03_grid_convergence/G4_EX240_period_convergence/.gitignore
+ D CASE/reports/Case01_refinement_summary.md
+ D CASE/reports/F2_G3H_HEIGHT_ANISOTROPY_STAGE_NOTE.md
+ D CASE/reports/F2_v3_design_plan.md
+ D CASE/reports/G2_COMPLETE_VALIDATION_AUDIT.md
+ D CASE/reports/G2_FINAL_STATUS.md
+ D CASE/reports/G2_PRODUCTION_GRID_SELECTION.md
+ D CASE/reports/G2_RESEARCH_SUMMARY.md
+ D CASE/reports/G2_STEP3_PAPER_LEVEL_SUMMARY_20260918.md
+ D CASE/reports/G2_STEP3_dx1p25_EX240_perpendicular_mass_ledger.md
+ D CASE/reports/G2_STEP3_mass_accumulation_audit.md
+ D CASE/reports/G2_dx1p25_perpendicular_runtime_mass_ledger.md
+ D CASE/reports/G2_mass_precision_validation.md
+ D CASE/reports/G3_BASELINE_RUN_START.md
+ D CASE/reports/G3_STARTUP_REPORT.md
+ D CASE/reports/G5A_SQUEEZE_RESISTANCE_RESULTS_20260921.md
+ D CASE/reports/Gate0_report.md
+ D CASE/reports/MCP_G2_TOOL_VALIDATION.md
+ D CASE/reports/SIM240_F2_CURRENT_STATE.md
+ D CASE/reports/SIM240_TRANSPORT_PARAMETER_AUDIT.md
+ D "CASE/reports/SIM240_\345\275\223\345\211\215\351\230\266\346\256\265\347\240\224\347\251\266\346\200\273\347\273\223_\345\257\274\345\270\210\346\261\207\346\212\245.md"
+ D CASE/reports/figures/stage_summary/Figure_1_research_chain.pdf
+ D CASE/reports/figures/stage_summary/Figure_1_research_chain.png
+ D CASE/reports/figures/stage_summary/Figure_2_EX240_geometry_directions.pdf
+ D CASE/reports/figures/stage_summary/Figure_2_EX240_geometry_directions.png
+ D CASE/reports/figures/stage_summary/Figure_3_1_G2_force_flux_linearity.pdf
+ D CASE/reports/figures/stage_summary/Figure_3_1_G2_force_flux_linearity.png
+ D CASE/reports/figures/stage_summary/Figure_3_2_height_resistance_anisotropy.pdf
+ D CASE/reports/figures/stage_summary/Figure_3_2_height_resistance_anisotropy.png
+ D CASE/reports/figures/stage_summary/Figure_3_5_local_pressure_distribution.png
+ D CASE/reports/figures/stage_summary/Figure_3_boundary_and_data_transfer.pdf
+ D CASE/reports/figures/stage_summary/Figure_3_boundary_and_data_transfer.png
+ D CASE/reports/xyy_0923
+ D CASE/reports/xyy_0923.md
+ D "CASE/reports/\347\233\264\346\262\237\346\247\275_0922.md"
+ D "CASE/reports/\350\277\233\345\261\225\346\261\207\346\212\245/SIM240_20260918.md"
+ M docs/reports/SIM240_AI_CONTEXT.md
+ M grooveDNS/stage3_ex240_local/phasefield_minimal_validation/phasefield_minimal_validation.cpp
+?? .Trash-0/
+?? .workbuddy/
+?? CASE/03_grid_convergence/G2_EX240_fine_T_mass_diagnostic_v1/
+?? CASE/03_grid_convergence/G2_EX240_fine_T_mass_diagnostic_v2/
+?? CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/
+?? CASE/03_grid_convergence/G4_EX240_period_convergence/reports/NX4_FIELDS_RELEASE_20261012.json
+?? CASE/03_grid_convergence/G4_EX240_period_convergence/reports/NX8_FIELDS_RUN_READY.md
+?? CASE/03_grid_convergence/G4_EX240_period_convergence/scripts/run_fields_nx8.py
+?? CASE/03_grid_convergence/G4_EX240_period_convergence/scripts/test_nx8_runner.py
+?? CASE/03_grid_convergence/G4_EX240_period_convergence/scripts/verify_nx8_preparation.py
+?? CASE/03_grid_convergence/G4_EX240_period_convergence/src/Makefile.fields_nx8
+?? CASE/04_parameter_study/G3_EX240_height_sweep/ENDPOINT_GRID_LINEARITY_PROTOCOL_20261014.md
+?? CASE/08_droplet_inplane/
+?? CASE/09_dynamic_liquid_gas/
+?? CASE/D_series/
+?? CASE/README.md
+?? "CASE/plans/R2XY_S2.8_\345\215\225\344\275\215\345\217\243\345\276\204\345\256\241\350\256\241_20261015.md"
+?? "CASE/plans/R2XY_\345\233\233\345\221\250\346\234\237\344\272\213\345\211\215\351\242\204\346\265\213_20261015.md"
+?? "CASE/plans/SIM240_Asta\344\272\244\345\217\211\346\214\207\344\273\244_20261016.md"
+?? "CASE/plans/SIM240_OpenLB\350\207\252\345\270\246\346\241\210\344\276\213\345\217\257\345\200\237\347\224\250\347\233\230\347\202\271_20261016.md"
+?? "CASE/plans/SIM240_R2\344\277\256\350\256\242\346\217\220\346\241\210_20261015.md"
+?? "CASE/plans/SIM240_\344\273\273\345\212\241C_Scholar\347\262\227\347\255\233\345\200\231\351\200\211_20261016.md"
+?? "CASE/plans/SIM240_\345\207\240\344\275\225\344\270\216\345\215\225\344\275\215\345\217\243\345\276\204\345\206\273\347\273\223_20261016.md"
+?? "CASE/plans/SIM240_\345\210\244\345\257\271\346\243\200\346\237\245\346\270\205\345\215\225_20261016.md"
+?? "CASE/plans/SIM240_\345\233\272\345\214\226\350\203\266\351\200\211\345\236\213\344\270\216\345\256\236\346\265\213\346\270\205\345\215\225_20261015.md"
+?? "CASE/plans/SIM240_\345\257\271\346\257\224\346\225\260\346\215\256\344\270\216\346\215\242\347\256\227\345\217\243\345\276\204_20261016.md"
+?? "CASE/plans/SIM240_\345\257\274\345\270\210\344\274\232\350\256\256\350\256\250\350\256\272\347\250\277_20261015.md"
+?? "CASE/plans/SIM240_\346\213\237\351\207\207\347\224\250\345\217\202\346\225\260\350\241\250_20261015.md"
+?? "CASE/plans/SIM240_\346\226\207\347\214\256\346\224\257\346\222\221\347\232\204\346\234\200\344\274\230\346\226\271\346\241\210_20261015.md"
+?? "CASE/plans/SIM240_\346\226\207\347\214\256\346\243\200\347\264\242\346\214\207\344\273\244_GPT_20261016.md"
+?? "CASE/plans/SIM240_\346\226\260case\350\247\204\347\272\246_20261016.md"
+?? "CASE/plans/SIM240_\346\234\200\347\273\210\345\217\202\346\225\260\345\215\241_20261015.md"
+?? "CASE/plans/SIM240_\346\234\200\347\273\210\345\244\247\346\226\271\345\220\221_20261015.md"
+?? "CASE/plans/SIM240_\346\237\245\346\226\260\347\273\255\346\237\245\346\214\207\344\273\244_20261016.md"
+?? "CASE/plans/SIM240_\346\250\241\345\205\267\346\216\245\350\247\246\350\247\222\346\234\252\347\237\245\344\270\213\347\232\204\345\210\244\345\210\253\346\226\271\346\241\210_20261016.md"
+?? "CASE/plans/SIM240_\346\266\246\346\271\277\346\240\241\345\207\206\344\273\243\347\240\201\346\224\271\345\212\250\346\226\271\346\241\210_20261016.md"
+?? "CASE/plans/SIM240_\346\266\262\346\273\264OpenLB\350\267\257\347\272\277\350\257\204\344\274\260\344\270\216\346\234\200\345\260\217\351\252\214\350\257\201_20261015.md"
+?? "CASE/plans/SIM240_\346\266\262\346\273\264R2-XY\346\234\200\345\260\217\351\252\214\350\257\201\345\215\217\350\256\256_20261015.md"
+?? "CASE/plans/SIM240_\346\266\262\346\273\264\344\270\213\345\216\213\347\247\221\345\255\246\351\227\256\351\242\230\344\270\216\346\234\200\345\260\217\351\252\214\350\257\201\350\267\257\347\272\277_20261014.md"
+?? "CASE/plans/SIM240_\347\240\224\347\251\266\346\200\235\350\267\257_20261015.md"
+?? "CASE/plans/SIM240_\347\240\224\347\251\266\350\247\204\345\210\222\347\250\277_v1.1_20261013.md"
+?? "CASE/plans/SIM240_\347\247\273\345\212\250\350\276\271\347\225\214\344\270\213\345\216\213\345\216\206\345\217\262\351\227\256\351\242\230\346\270\205\345\215\225_20261015.md"
+?? "CASE/plans/SIM240_\347\254\254\344\270\200\347\257\207\350\214\203\345\233\264\351\207\215\345\256\232\344\275\215_\347\272\257\346\266\262\344\275\223\345\215\225\347\233\270_20261016.md"
+?? "CASE/plans/SIM240_\350\203\266\351\200\211\345\236\213\344\270\216\344\270\273\347\272\277\344\270\200\350\207\264\346\200\247\345\244\215\346\240\270_20261015.md"
+?? "CASE/plans/SIM240_\350\256\272\346\226\207\347\264\240\346\235\220\345\272\223_v0.1_20261016.md"
+?? "CASE/plans/SIM240_\350\256\272\346\226\207\351\252\250\346\236\266_v0.1_20261016.md"
+?? "CASE/plans/SIM240_\351\246\226\347\257\207\350\256\272\346\226\207\344\270\200\351\241\265\347\240\224\347\251\266\344\273\273\345\212\241\344\271\246_20261015.md"
+?? "CASE/plans/SIM240_\351\246\226\347\257\207\351\234\200\350\257\201\346\230\216\346\270\205\345\215\225_20261015.md"
+?? CLAUDE.md
+?? RESEARCH_PLATFORM_RULES.md
+?? "SIM240_\351\241\271\347\233\256\346\200\273\350\247\210.md"
+?? WORKBUDDY/
+?? analysis/transport_evidence_audit/
+?? calib_15.log
+?? "docs/reports/A1\345\206\263\347\255\226\345\244\207\345\277\230_\344\277\256\346\255\243\345\205\254\345\274\217\351\200\211\345\236\213_20261018.md"
+?? docs/reports/AI_HANDOFF_20261015.md
+?? docs/reports/Alpha_space_intake_20261023/
+?? docs/reports/Ban_dissertation_relevance_20261017.json
+?? docs/reports/Ban_dissertation_relevance_20261017.md
+?? docs/reports/Ban_manuscript_integration_20261018/
+?? docs/reports/Chapter5_mechanism_audit_20261018/
+?? docs/reports/Chapter5_revision_20261018/
+?? docs/reports/Chinese_rewrite_20261019/
+?? "docs/reports/Codex\345\206\231\346\221\230\350\246\201\346\214\207\344\273\244_20261019.md"
+?? "docs/reports/Codex\345\217\252\350\257\273\345\256\241\346\237\245\346\214\207\344\273\244_20261018.md"
+?? "docs/reports/Codex\347\254\254\344\270\211\350\275\256\346\214\207\344\273\244_20261019.md"
+?? "docs/reports/Codex\347\254\254\344\270\211\350\275\256\346\240\270\351\252\214_20261019.md"
+?? docs/reports/Constrained_correlation_20261023/
+?? docs/reports/Correction_formula_derivation_20261023/
+?? docs/reports/Correction_formula_physical_review_20261023/
+?? docs/reports/Correlation_selection_freeze_20261024/
+?? docs/reports/D1_existing_run_check_20261016.json
+?? docs/reports/D1_existing_run_check_20261016.md
+?? docs/reports/D2_readiness_audit_20261016.json
+?? docs/reports/D2_readiness_audit_20261016.md
+?? docs/reports/D4_N8_acceptance_20261026/
+?? docs/reports/D4_N8_permission_review_20261026/
+?? docs/reports/D4_N8_run_release_20261026/
+?? docs/reports/D4_N8_single_approval_20261026/
+?? docs/reports/D4_development_release_20261023/
+?? docs/reports/D4_foundation_acceptance_20261023/
+?? docs/reports/D4_foundation_intake_20261023/
+?? docs/reports/D4_grid_execution_review_20261024/
+?? docs/reports/D4_grid_mid6_acceptance_20261024/
+?? docs/reports/D4_grid_mid6_intake_20261024/
+?? docs/reports/D4_grid_mid6_preparation_20261024/
+?? docs/reports/D4_grid_narrow_fine4_acceptance_20261025/
+?? docs/reports/D4_grid_narrow_fine4_intake_20261024/
+?? docs/reports/D4_grid_narrow_fine4_intake_20261025/
+?? docs/reports/D4_grid_narrow_fine4_preparation_20261024/
+?? docs/reports/D4_pilot_v2_release_review_20261026/
+?? docs/reports/D4_pilot_v3_review_20261026/
+?? docs/reports/D4_prediction_readiness_20261024/
+?? docs/reports/D4_reference_protocol_draft_20261025/
+?? docs/reports/D4_reference_protocol_reconfirmation_20261025/
+?? docs/reports/D4_reference_protocol_review_20261025/
+?? docs/reports/D4_reference_revision_review_20261025/
+?? docs/reports/D4_reference_static_audit_20261025/
+?? docs/reports/D4_reference_terminal_review_20261026/
+?? docs/reports/D4_remaining14_acceptance_20261024/
+?? docs/reports/D4_remaining14_intake_20261024/
+?? docs/reports/D4_remaining14_reconfirmation_20261024/
+?? docs/reports/D4_startup_diagnosis_20261024/
+?? docs/reports/D4_variable_groove_preparation_20261023/
+?? docs/reports/D4_volume_probe_20261026/
+?? docs/reports/EJMB_chinese_20261019/
+?? docs/reports/EJMB_draft_20261019/
+?? docs/reports/EJMB_submission_preparation_20261019/
+?? "docs/reports/EJMB\346\212\225\347\250\277\345\207\206\345\244\207_\346\212\200\350\203\275\344\270\216\345\256\230\346\226\271\350\246\201\346\261\202\346\240\270\351\252\214_20261019.md"
+?? "docs/reports/EJMB\346\212\225\347\250\277\345\207\206\345\244\207_\346\212\200\350\203\275\346\270\205\345\215\225\344\270\216\345\256\230\346\226\271\350\246\201\346\261\202_20261019.md"
+?? docs/reports/G4_derivation_source_audit_20261025/
+?? docs/reports/G4_minimum_reference_contract_20261026/
+?? docs/reports/G4_offline_extractor_preparation_20261026/
+?? docs/reports/G4_offline_extractor_review_20261026/
+?? docs/reports/G4_offline_extractor_revision_v2_20261026/
+?? docs/reports/G4_paper_claims_minimum_validation_20261026/
+?? docs/reports/G4_reference_criteria_review_20261026/
+?? docs/reports/GITHUB_SHARE_N8_PACKAGE_PREP_20261026/
+?? "docs/reports/GPT\345\206\231\344\270\255\346\226\207\346\221\230\350\246\201\346\214\207\344\273\244_20261019.md"
+?? "docs/reports/GPT\345\206\231\346\221\230\350\246\201\346\214\207\344\273\244_\345\210\206\346\255\245\347\211\210_20261019.md"
+?? "docs/reports/GPT\345\206\231\350\213\261\346\226\207\346\221\230\350\246\201\346\214\207\344\273\244_20261019.md"
+?? "docs/reports/GPT\347\213\254\347\253\213\345\256\241\346\237\245\346\214\207\344\273\244_20261018.md"
+?? docs/reports/Jain_citation_audit_20261017/
+?? docs/reports/Methods_and_Section4_review_20261022/
+?? docs/reports/Methods_chapter_commentary_review_20261022.md
+?? docs/reports/Methods_followup_relstd_20261022.json
+?? docs/reports/Methods_followup_review_20261022.md
+?? docs/reports/Methods_readiness_assessment_20261022.md
+?? docs/reports/Methods_sources_data_audit_20261027/
+?? docs/reports/Methods_support_audit_20261022/
+?? "docs/reports/OpenLB\347\211\210\346\234\254\346\240\270\346\237\245_20261018.md"
+?? docs/reports/Paper_bounded_candidate_20261027/
+?? docs/reports/Paper_core_reference_final_review_20261027/
+?? docs/reports/Paper_formal_sync_20261027/
+?? docs/reports/Paper_text_figure_corrections_20261027/
+?? "docs/reports/ParaView\345\207\272\345\233\276\346\225\231\347\250\213_20261017.md"
+?? "docs/reports/PoF\346\212\225\347\250\277\345\214\205_\345\211\215\347\275\256\346\235\220\346\226\231\344\270\216\346\240\274\345\274\217\345\257\271\347\205\247_20261017.md"
+?? "docs/reports/SIM240_EJMB_\344\270\255\346\226\207\346\225\264\345\220\210\345\267\245\344\275\234\347\250\277_20261019.md"
+?? "docs/reports/SIM240_EJMB_\344\270\255\346\226\207\351\207\215\345\206\231\347\250\277_v2_20261019.md"
+?? "docs/reports/SIM240_EJMB_\350\213\261\346\226\207\346\225\264\345\220\210\345\267\245\344\275\234\347\250\277_20261019.md"
+?? docs/reports/SIM240_LITERATURE_EVIDENCE_20261016.json
+?? docs/reports/SIM240_LITERATURE_REVIEW_20261016.md
+?? docs/reports/SIM240_OpenLB_six_papers_content_20261016.json
+?? docs/reports/SIM240_OpenLB_six_papers_content_20261016.md
+?? "docs/reports/SIM240_PoF\345\256\232\345\220\221\345\206\231\344\275\234\345\267\245\344\275\234\347\250\277_20261019.md"
+?? docs/reports/SIM240_Supplementary_Methods_20261024/
+?? docs/reports/SIM240_cleanup_20261018.md
+?? docs/reports/SIM240_first_paper_scope_review_20261016.json
+?? docs/reports/SIM240_first_paper_scope_review_20261016.md
+?? docs/reports/SIM240_independent_audit_20261018/
+?? docs/reports/SIM240_journal_screening_20261019_v2/
+?? docs/reports/SIM240_journal_target_assessment_20261016.md
+?? docs/reports/SIM240_literature_skills_20261016.md
+?? docs/reports/SIM240_manuscript_revision_20261018/
+?? docs/reports/SIM240_single_phase_audit_20261018/
+?? docs/reports/SIM240_three_questions_check_20261016.md
+?? docs/reports/SIM240_writing_skills_install_20261017.md
+?? docs/reports/SIM240_writing_skills_screen_20261017.md
+?? "docs/reports/SIM240_\344\270\255\346\226\207\347\250\277_\345\257\274\345\270\210\345\256\241\351\230\205\347\211\210_20261022.md"
+?? "docs/reports/SIM240_\344\270\255\346\226\207\347\250\277_\351\231\220\345\256\232\346\216\252\350\276\236\344\270\216\347\220\206\350\256\272\351\231\204\345\275\225\345\200\231\351\200\211_20261027.md"
+?? "docs/reports/SIM240_\345\257\274\345\270\210\347\241\256\350\256\244\351\227\256\351\242\230\346\270\205\345\215\225_20261015.md"
+?? "docs/reports/SIM240_\346\212\225\347\250\277\347\233\256\346\240\207\345\206\263\345\256\232\344\270\216\345\206\231\344\275\234\345\205\245\345\217\243_20261019.md"
+?? "docs/reports/SIM240_\351\200\211\345\210\212\344\270\216\346\212\225\347\250\277\345\206\231\344\275\234\346\226\271\346\241\210_20261019.md"
+?? "docs/reports/SIM240_\351\200\211\345\210\212\345\206\231\344\275\234\346\240\270\345\257\271_20261019.json"
+?? docs/reports/Section4_sync_20261022/
+?? docs/reports/Teacher_git_readiness_20261023/
+?? docs/reports/before_figfix_backup/
+?? docs/reports/before_round4_backup/
+?? docs/reports/before_round5_backup/
+?? docs/reports/before_round6_backup/
+?? docs/reports/before_v3_backup/
+?? docs/reports/bivariate_piecewise_comparison_20261022/
+?? docs/reports/correlation_design_review_20261022/
+?? docs/reports/correlation_method_plan_20261022/
+?? docs/reports/paraview_dissipation_state_audit_20261017/
+?? docs/reports/paraview_publication_skill_20261017.json
+?? docs/reports/pfcalib_launch_check_20261016.json
+?? docs/reports/piecewise_formula_assessment_20261022/
+?? docs/reports/reviewer_numerics_20261018_v1/
+?? docs/reports/shared_workspace_check_20261022/
+?? "docs/reports/\344\270\211\345\214\272\346\212\225\351\200\222\346\226\271\346\241\210_MEE_20261019.md"
+?? "docs/reports/\344\270\211\345\214\272\346\234\237\345\210\212\346\216\250\350\215\220\344\270\216\351\200\237\345\272\246\345\256\236\346\265\213_20261019.md"
+?? "docs/reports/\344\272\244\344\273\230\347\211\251\347\274\272\351\231\267\345\256\241\350\256\241_20261017.md"
+?? "docs/reports/\344\273\243\347\240\201\345\256\241\346\237\245\347\216\260\347\212\266_20261019.md"
+?? "docs/reports/\344\277\256\346\255\243\345\205\254\345\274\217\351\207\215\346\213\237\345\220\210_\345\217\210\347\250\263\345\217\210\345\245\275\345\220\254_20261017.md"
+?? "docs/reports/\345\233\276\344\273\266\344\277\256\345\244\215\346\211\247\350\241\214\346\212\245\345\221\212_\347\254\254\344\270\203\350\275\256_20261019.md"
+?? "docs/reports/\345\233\276\344\273\266\344\277\256\350\256\242\346\211\247\350\241\214\346\212\245\345\221\212_20261019.md"
+?? "docs/reports/\345\256\232\347\202\271\350\256\242\346\255\243\346\211\247\350\241\214\346\212\245\345\221\212_\347\254\254\344\272\214\350\275\256_20261019.md"
+?? "docs/reports/\345\257\274\345\270\210\344\274\232\350\256\256\345\275\225\351\237\263\350\246\201\347\202\271_\345\211\215\346\256\26520261015.md"
+?? "docs/reports/\346\226\207\347\214\256\346\240\270\351\252\214\345\244\215\346\240\270_\347\254\254\345\215\201\344\270\200\350\275\256_20261019.md"
+?? "docs/reports/\346\226\271\346\263\225\344\270\216\346\265\201\345\234\272\347\241\256\350\256\244_\345\257\274\345\270\210\347\211\210_20261022/"
+?? "docs/reports/\346\237\245\346\226\260\346\223\215\344\275\234\346\211\213\345\206\214_\347\273\231\344\272\272\347\234\213\347\232\204\347\211\210\346\234\254_20261018.md"
+?? "docs/reports/\346\255\243\346\226\207\344\277\256\346\224\271\346\270\205\345\215\225_\347\254\2544\347\253\240\344\270\216\346\226\271\346\263\225\347\253\240_20261018.md"
+?? "docs/reports/\346\255\243\346\226\207\344\277\256\350\256\242\346\211\247\350\241\214\346\212\245\345\221\212_v3_20261019.md"
+?? "docs/reports/\347\254\2544\347\253\240\345\217\202\346\225\260\346\216\222\345\272\217\346\216\252\350\276\236\350\256\242\346\255\243_\347\254\254\345\205\253\350\275\256_20261019.md"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207_run_id\347\264\242\345\274\225_20261022.csv"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207\350\256\272\346\226\207_\346\226\271\346\263\225\344\270\216\347\273\223\346\236\234\350\257\201\346\215\256\350\241\250_20261022.md"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207\350\256\272\346\226\207_\347\254\2541\347\253\240\345\274\225\350\250\200\350\215\211\347\250\277_20261017.md"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207\350\256\272\346\226\207_\347\254\2542\347\253\240\346\226\271\346\263\225\350\215\211\347\250\277_20261017.md"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207\350\256\272\346\226\207_\347\254\2543\347\253\240\351\252\214\350\257\201\350\215\211\347\250\277_20261017.md"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207\350\256\272\346\226\207_\347\254\2544\347\253\240\347\273\223\346\236\234I\350\215\211\347\250\277_20261018.md"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207\350\256\272\346\226\207_\347\254\2545\347\253\240_\345\257\271\346\257\224\345\257\271\350\261\241\351\200\211\346\213\251\350\215\211\347\250\277_20261018.md"
+?? "docs/reports/\347\254\254\344\270\200\347\257\207\350\277\233\345\261\225\347\273\204\344\274\232\346\261\207\346\212\245_20261017/"
+?? "docs/reports/\347\254\254\344\270\203\350\275\256\345\233\276\344\273\266\351\252\214\346\224\266_\346\234\254\346\226\271\347\213\254\347\253\213\346\240\270\351\252\214_20261019.md"
+?? "docs/reports/\347\254\254\344\272\224\350\275\256\346\211\247\350\241\214\346\212\245\345\221\212_\347\274\226\345\217\267\345\223\210\345\270\214\344\270\216E008_20261019.md"
+?? "docs/reports/\347\254\254\345\205\255\350\275\256\346\211\247\350\241\214\346\212\245\345\221\212_E008\345\217\260\350\264\246\344\270\216\345\274\225\350\250\200\345\217\243\345\276\204_20261019.md"
+?? "docs/reports/\347\254\254\345\233\233\350\275\256\346\211\247\350\241\214\346\212\245\345\221\212_B1\347\274\226\345\217\267\347\273\237\344\270\200\344\270\216A\347\261\273\350\256\242\346\255\243_20261019.md"
+?? "docs/reports/\350\256\272\346\226\207\345\206\231\344\275\234\346\225\231\345\255\246_\344\273\245EJMB\346\225\264\345\220\210\347\250\277\344\270\272\344\276\213_20261019.md"
+?? "docs/reports/\351\200\211\345\210\212\345\206\263\345\256\232\344\270\216\346\225\264\345\220\210\347\250\277\346\240\270\351\252\214_20261019.md"
+?? figures/paper/
+?? figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/
+?? figures/paraview/D2_publication_layout_20261017_v1/
+?? grooveDNS/stage3_ex240_local/phasefield_minimal_validation/E0_self_consistent_init_experiment_20261015.md
+?? grooveDNS/stage3_ex240_local/phasefield_minimal_validation/R0_phasefield_conservation_root_cause_20261015.md
+?? grooveDNS/stage3_ex240_local/phasefield_minimal_validation/R1_wetting_benchmark_validation_20261015.md
+?? grooveDNS/stage3_ex240_local/phasefield_minimal_validation/phasefield_minimal_validation.bak_20261016
+?? grooveDNS/stage3_ex240_local/phasefield_minimal_validation/phasefield_minimal_validation.cpp.bak_20261016
+?? grooveDNS/stage3_ex240_local/phasefield_minimal_validation/run_wetting_calibration_20261016.sh

@@ -1,0 +1,443 @@
+{
+  "run_id": "target_lp_diagnostic2000_20261021_v1",
+  "protocol_id": "LP2000_DIAGNOSTIC_EXTENSION_V1_20261021",
+  "independent_exit_code": 0,
+  "records": 2001,
+  "whole_run": {
+    "liquid_drift": {
+      "max_absolute": 3.8026695284673136e-06,
+      "at_step": 110,
+      "final": -2.807920612710443e-06,
+      "below_inherited_candidate_1e_minus3": true
+    },
+    "total_mass_drift": {
+      "max_absolute": 3.736623951698246e-06,
+      "at_step": 110,
+      "final": -2.7591518998659454e-06,
+      "below_inherited_candidate_1e_minus3": true
+    },
+    "all_finite": true,
+    "rho_min": 0.0012000000000000897,
+    "phi_min": 1.1253516263298735e-07,
+    "phi_max": 0.9999999999999999,
+    "max_Mach": 3.473346435436496e-05,
+    "max_u_m_s": 0.5775371998525692,
+    "rho_mapping_error_max": 0.0,
+    "tau_mapping_error_max": 0.0
+  },
+  "pressure": {
+    "p_h_inside_minus_outside_Pa": {
+      "windows": {
+        "1501_2000": {
+          "first_step": 1501,
+          "last_step": 2000,
+          "count": 500,
+          "mean_Pa": 1421469.8143050317,
+          "peak_to_peak_Pa": 193923.4072793657,
+          "standard_deviation_Pa": 47218.87599946274,
+          "peak_to_peak_over_abs_mean": 0.13642456936320976,
+          "slope_Pa_per_step": -21.404176483393833,
+          "fitted_window_change_Pa": -10680.684065213523,
+          "fitted_change_over_abs_mean": -0.00751383107662782
+        },
+        "1751_2000": {
+          "first_step": 1751,
+          "last_step": 2000,
+          "count": 250,
+          "mean_Pa": 1418109.5213832764,
+          "peak_to_peak_Pa": 118502.00950275268,
+          "standard_deviation_Pa": 34756.87367826769,
+          "peak_to_peak_over_abs_mean": 0.08356336920096372,
+          "slope_Pa_per_step": 21.35397963844679,
+          "fitted_window_change_Pa": 5317.140929973251,
+          "fitted_change_over_abs_mean": 0.003749457182112927
+        },
+        "1501_1750": {
+          "first_step": 1501,
+          "last_step": 1750,
+          "count": 250,
+          "mean_Pa": 1424830.107226787,
+          "peak_to_peak_Pa": 193923.4072793657,
+          "standard_deviation_Pa": 56820.95648946985,
+          "peak_to_peak_over_abs_mean": 0.13610282818686914,
+          "slope_Pa_per_step": -31.29280534890591,
+          "fitted_window_change_Pa": -7791.908531877572,
+          "fitted_change_over_abs_mean": -0.005468657977085651
+        }
+      },
+      "mean_difference_last250_vs_last500_Pa": -3360.29292175523,
+      "adjacent_half_mean_difference_Pa": -6720.58584351046,
+      "envelope_diagnostics": [
+        {
+          "start_step": 1,
+          "peak_count": 44,
+          "envelope_points": 44,
+          "median_peak_interval_steps": 45.0,
+          "positive_decay_tau_steps": 504.25188019105974,
+          "log_envelope_slope": -0.0019831358876066115,
+          "status": "descriptive_only_not_mode_identification_or_confidence_interval"
+        },
+        {
+          "start_step": 1001,
+          "peak_count": 22,
+          "envelope_points": 21,
+          "median_peak_interval_steps": 45.0,
+          "positive_decay_tau_steps": 503.87816080169887,
+          "log_envelope_slope": -0.0019846067517769435,
+          "status": "descriptive_only_not_mode_identification_or_confidence_interval"
+        }
+      ]
+    },
+    "p_bulk_candidate_inside_minus_outside_Pa": {
+      "windows": {
+        "1501_2000": {
+          "first_step": 1501,
+          "last_step": 2000,
+          "count": 500,
+          "mean_Pa": 1421307.8344567926,
+          "peak_to_peak_Pa": 193923.99205576698,
+          "standard_deviation_Pa": 47219.12079998404,
+          "peak_to_peak_over_abs_mean": 0.13644052847276572,
+          "slope_Pa_per_step": -21.430165919286363,
+          "fitted_window_change_Pa": -10693.652793723895,
+          "fitted_change_over_abs_mean": -0.00752381189667535
+        },
+        "1751_2000": {
+          "first_step": 1751,
+          "last_step": 2000,
+          "count": 250,
+          "mean_Pa": 1417944.2927722363,
+          "peak_to_peak_Pa": 118501.41190974577,
+          "standard_deviation_Pa": 34756.790872416444,
+          "peak_to_peak_over_abs_mean": 0.08357268512859736,
+          "slope_Pa_per_step": 21.327636239199492,
+          "fitted_window_change_Pa": 5310.581423560674,
+          "fitted_change_over_abs_mean": 0.0037452680268403957
+        },
+        "1501_1750": {
+          "first_step": 1501,
+          "last_step": 1750,
+          "count": 250,
+          "mean_Pa": 1424671.376141349,
+          "peak_to_peak_Pa": 193923.99205576698,
+          "standard_deviation_Pa": 56821.02956802688,
+          "peak_to_peak_over_abs_mean": 0.13611840267402606,
+          "slope_Pa_per_step": -31.31843682227951,
+          "fitted_window_change_Pa": -7798.290768747597,
+          "fitted_change_over_abs_mean": -0.005473747068512653
+        }
+      },
+      "mean_difference_last250_vs_last500_Pa": -3363.541684556287,
+      "adjacent_half_mean_difference_Pa": -6727.083369112806,
+      "envelope_diagnostics": [
+        {
+          "start_step": 1,
+          "peak_count": 44,
+          "envelope_points": 44,
+          "median_peak_interval_steps": 45.0,
+          "positive_decay_tau_steps": 504.25188137402387,
+          "log_envelope_slope": -0.001983135882954217,
+          "status": "descriptive_only_not_mode_identification_or_confidence_interval"
+        },
+        {
+          "start_step": 1001,
+          "peak_count": 22,
+          "envelope_points": 21,
+          "median_peak_interval_steps": 45.0,
+          "positive_decay_tau_steps": 503.8781627022118,
+          "log_envelope_slope": -0.0019846067442914617,
+          "status": "descriptive_only_not_mode_identification_or_confidence_interval"
+        }
+      ]
+    }
+  },
+  "shape_snapshots": {
+    "0": {
+      "weighted_area_lu2": 814.583136776221,
+      "weighted_area_radius_lu": 16.102480105700305,
+      "contour_fit": {
+        "center_lu": [
+          31.999999999991054,
+          32.000000000009386
+        ],
+        "radius_lu": 15.997017350899545,
+        "radial_rms_lu": 0.0039024764088783927,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.821492496369343e-08,
+          "range_lu": 2.3783358932588174e-07,
+          "std_lu": 6.777550330141467e-08
+        },
+        "gas": {
+          "mean_lu": -1.2473715988912923e-09,
+          "range_lu": 3.3412282501456904e-08,
+          "std_lu": 4.498036341120197e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "250": {
+      "weighted_area_lu2": 814.581277235902,
+      "weighted_area_radius_lu": 16.102461726220834,
+      "contour_fit": {
+        "center_lu": [
+          31.999999999991058,
+          32.000000000009344
+        ],
+        "radius_lu": 15.996872928189978,
+        "radial_rms_lu": 0.003919066518785184,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.832934366553083e-08,
+          "range_lu": 2.387462108590102e-07,
+          "std_lu": 6.80060030156798e-08
+        },
+        "gas": {
+          "mean_lu": -1.2349534324565464e-09,
+          "range_lu": 3.310118535518448e-08,
+          "std_lu": 4.452535348494379e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "500": {
+      "weighted_area_lu2": 814.581903929442,
+      "weighted_area_radius_lu": 16.102467920388982,
+      "contour_fit": {
+        "center_lu": [
+          31.999999999991072,
+          32.00000000000936
+        ],
+        "radius_lu": 15.996749660083943,
+        "radial_rms_lu": 0.003935113332461135,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.844583684600314e-08,
+          "range_lu": 2.3968566390757075e-07,
+          "std_lu": 6.824186532896795e-08
+        },
+        "gas": {
+          "mean_lu": -1.221476846799656e-09,
+          "range_lu": 3.2769059021950385e-08,
+          "std_lu": 4.403446151935081e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "750": {
+      "weighted_area_lu2": 814.5816000396026,
+      "weighted_area_radius_lu": 16.102464916776437,
+      "contour_fit": {
+        "center_lu": [
+          31.999999999991058,
+          32.00000000000937
+        ],
+        "radius_lu": 15.996617164412482,
+        "radial_rms_lu": 0.003950730154248033,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.856615094745387e-08,
+          "range_lu": 2.406500566552153e-07,
+          "std_lu": 6.848530887376242e-08
+        },
+        "gas": {
+          "mean_lu": -1.2076306785071363e-09,
+          "range_lu": 3.2430665319763795e-08,
+          "std_lu": 4.353187132521146e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "1000": {
+      "weighted_area_lu2": 814.5817416784304,
+      "weighted_area_radius_lu": 16.10246631671854,
+      "contour_fit": {
+        "center_lu": [
+          31.99999999999107,
+          32.00000000000937
+        ],
+        "radius_lu": 15.996489204559166,
+        "radial_rms_lu": 0.00396587896347975,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.8689349480512674e-08,
+          "range_lu": 2.416335923810957e-07,
+          "std_lu": 6.873492337971934e-08
+        },
+        "gas": {
+          "mean_lu": -1.1932823586279104e-09,
+          "range_lu": 3.208377343757856e-08,
+          "std_lu": 4.301306165086245e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "1250": {
+      "weighted_area_lu2": 814.5817037354129,
+      "weighted_area_radius_lu": 16.102465941694074,
+      "contour_fit": {
+        "center_lu": [
+          31.99999999999105,
+          32.00000000000937
+        ],
+        "radius_lu": 15.996359548609693,
+        "radial_rms_lu": 0.00398060189245662,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.881576932967406e-08,
+          "range_lu": 2.426361344869778e-07,
+          "std_lu": 6.899095369360968e-08
+        },
+        "gas": {
+          "mean_lu": -1.1785156710855676e-09,
+          "range_lu": 3.173202202589483e-08,
+          "std_lu": 4.248225144555923e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "1500": {
+      "weighted_area_lu2": 814.5817109378486,
+      "weighted_area_radius_lu": 16.10246601288213,
+      "contour_fit": {
+        "center_lu": [
+          31.99999999999103,
+          32.00000000000937
+        ],
+        "radius_lu": 15.996230459336275,
+        "radial_rms_lu": 0.003994905987002962,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.8945195461545836e-08,
+          "range_lu": 2.436552534112041e-07,
+          "std_lu": 6.92529307027251e-08
+        },
+        "gas": {
+          "mean_lu": -1.1633313533942932e-09,
+          "range_lu": 3.137654687243758e-08,
+          "std_lu": 4.19400960085838e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "1750": {
+      "weighted_area_lu2": 814.5817311572755,
+      "weighted_area_radius_lu": 16.102466212728643,
+      "contour_fit": {
+        "center_lu": [
+          31.999999999991072,
+          32.000000000009344
+        ],
+        "radius_lu": 15.99610162591011,
+        "radial_rms_lu": 0.004008807956180381,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.907757165390262e-08,
+          "range_lu": 2.4468926805340045e-07,
+          "std_lu": 6.952058446069295e-08
+        },
+        "gas": {
+          "mean_lu": -1.147749462032208e-09,
+          "range_lu": 3.101896723137136e-08,
+          "std_lu": 4.138817297580521e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    },
+    "2000": {
+      "weighted_area_lu2": 814.5817188292662,
+      "weighted_area_radius_lu": 16.102466090880004,
+      "contour_fit": {
+        "center_lu": [
+          31.99999999999107,
+          32.00000000000937
+        ],
+        "radius_lu": 15.995972608636379,
+        "radial_rms_lu": 0.004022324707284205,
+        "points": 62
+      },
+      "chemical_potential_slice": {
+        "liquid": {
+          "mean_lu": -4.92128464832867e-08,
+          "range_lu": 2.457366350677229e-07,
+          "std_lu": 6.979365890438896e-08
+        },
+        "gas": {
+          "mean_lu": -1.1317990044528744e-09,
+          "range_lu": 3.066101129250317e-08,
+          "std_lu": 4.0828273672764244e-09
+        }
+      },
+      "bulk_mask_counts": {
+        "liquid": 421,
+        "gas": 2767
+      }
+    }
+  },
+  "pressure_convergence": "REQUIRES_REVIEW",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": "NOT_EVALUATED",
+  "geometry_PASS": "NOT_EVALUATED",
+  "reference_only": {
+    "volume_equivalent_radius_lu": 16.203014335927943,
+    "volume_based_pressure_Pa": 1481205.8733283547,
+    "contour_based_pressure_Pa": 1500377.6630026342,
+    "note": "not an acceptance target; curvature and mechanical-pressure conventions require review"
+  },
+  "input_sha256": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/history.csv": "17745d12357accd433a7550e376d2d7059121649b72543145a314e4c2c8aaaa9",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/evidence/target_lp_diagnostic2000_20261021_v1/manifest.json": "61bfe119398af9e0f8baf561c3c5f0a6bc4895c20b276434679adb48549dc5e2",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/evidence/target_lp_diagnostic2000_20261021_v1/exit_code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/protocol.json": "788dba74bbdde44e1902a3b0e9b9f55119933af0063923aa0509d4ee59d82382",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_final.csv": "e0d5944a76d3e9f1f7f421ea5b2f5a2024f3f8ba6a7383a4e3566d6853179845",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_initial.csv": "1091ecc104e710524232032df55b42442a167bd882fe642302e61f5f6319fad9",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_1000.csv": "3c7f0fe681042a7a74d74d0e76e26ad01eb83fb26ae12ce5b2892d3f04646632",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_1250.csv": "133e07fba9a6d66252ead3efc67c8e7e80c1399677849c98fe04a3849b3f3967",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_1500.csv": "60c65ce57c75fdea718c81a294cefab5f177baa7b0050fe6d9488cc9e1365907",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_1750.csv": "d46f056033aacd8fb61fc8c1bb789469e8f369729defb8194e6550ac3849b379",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_2000.csv": "e0d5944a76d3e9f1f7f421ea5b2f5a2024f3f8ba6a7383a4e3566d6853179845",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_250.csv": "1f80a725472fdfc814abbb04c803adedc597c21cf312afbcb1d4566e0a1159b0",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_500.csv": "b604840d88ac43bfc66fd11cd67f1a2dffa7e6210ede9bf20622f76382976807",
+    "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/laplace2000_extension_20261021/output/target_lp_diagnostic2000_20261021_v1/slice_step_750.csv": "a0bfb4f9acf734c9039b1d266cda34c692c5f110bed63c6a72d1f9f997542b9a"
+  }
+}

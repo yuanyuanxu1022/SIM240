@@ -1,0 +1,148 @@
+                                                           International Journal of Multiphase Flow 104 (2018) 9–19
+
+
+
+                                                               Contents lists available at ScienceDirect
+
+
+                                           International Journal of Multiphase Flow
+                                                        journal homepage: www.elsevier.com/locate/ijmulflow
+
+
+
+
+Multiphase model for nanoimprint lithographyR
+Andrew Cochrane a,∗, Kristianto Tjiptowidjojo b, Roger T. Bonnecaze c, P. Randall Schunk b,d
+a
+  University of New Mexico, Nanoscience and Microsystems Engineering Program, MSC01 1141, 1, University of New Mexico, Albuquerque, NM, 87131,
+United States
+b
+  University of New Mexico, Department of Chemical & Biological Engineering, MSC01 1120, 1, University of New Mexico, Albuquerque, NM, 87131,
+United States
+c
+  McKetta Department of Chemical Engineering, 200 E Dean Keaton St. Stop C0400, University of Texas at Austin, Austin, TX, 78712-15989, United States
+d
+  Sandia National Laboratories, Advanced Materials Laboratory, 1001 University Blvd SE, Albuquerque, NM, 87106, United States
+
+
+
+
+a r t i c l e         i n f o                            a b s t r a c t
+
+Article history:                                         Reynolds’ lubrication theory is extended to capture two-ﬂuid dynamics based on relative permeability
+Received 28 July 2017                                    concepts used for multiphase ﬂow in porous media. A reduced-order model of gas dissolution is con-
+Revised 24 January 2018
+                                                         structed by combining two-phase lubrication theory with Henry’s law and analytic approximations of
+Accepted 14 March 2018
+                                                         surface area and diffusion length. The governing equations are solved as a thin-shell, ﬁnite-element model
+Available online 15 March 2018
+                                                         that can be used to investigate process sensitivities to a variety of technologically important parameters.
+Keywords:                                                Results are compared to those from related computationally intensive alternative formulations and to ex-
+Nanoimprint lithography                                  perimental ﬂow visualizations to demonstrate its eﬃcacy in modeling large area, many-drop processes
+Reynolds lubrication                                     and capturing the gas dissolution behavior observed in practice.
+Multiphase
+Disperse                                                                                                                           © 2018 Elsevier Ltd. All rights reserved.
+Gas-liquid
+Dissolution
+
+
+
+1. Introduction                                                                            bination of applied pressure and capillary forces exerted by the
+                                                                                           liquid bridges closes the gap between the surfaces as the drops
+    The patterning of surfaces with features smaller than 100 nm                           merge and features ﬁll, depicted in Fig. 1b. This process cre-
+is of great importance to the printed electronics, semiconductor                           ates a two-phase ﬂow of immiscible ﬂuids in an exceedingly thin
+and related manufacturing industries, in which low-cost produc-                            O(15 nm) gap before the liquid ﬁlls its designated volume, depicted
+tion of nanometer-scale featured surfaces is necessary to meet                             in Fig. 2a. Before the liquid is cured with UV light (Fig. 1c), ideally,
+evolving market demands (Morse et al., 2011). Jet-and-ﬂash im-                             all gas has been eliminated from the gap, the liquid has ﬁlled the
+print lithography (J-FIL) (Schmid et al., 2009), a form of ultravi-                        template and the residual layer below the features is uniform over
+olet (UV) nanoimprint lithography (NIL) (Stephen Y. Chou, 1995),                           the print area Usuki et al. (2012). Once the pattern is set, the tem-
+has been rapidly advanced to meet these demands (Haisma et al.,                            plate is separated from it, leaving behind the nano-patterned sur-
+1996). Pictured in Fig. 1, J-FIL involves the interaction between so-                      face (Fig. 1d). The model developed in this paper focuses on the
+lutions of photoactive monomer and solvent in a liquid phase with                          drop merger process of the pattern ﬁll step.
+a gas phase in a thin, closing gap between a substrate and a pat-                              As this process has been used to produce patterned surfaces
+terned template (Colburn et al., 2004).                                                    with feature half-pitches as small as 4 nm (Li et al., 2012), NIL
+    Fig. 1a represents the ﬁrst step of the J-FIL process in which                         has been recognized by the International Technology Roadmap for
+10 0 0s of micro-size drops O(1–10μm) are dispensed over rela-                             Semiconductors as a possible next generation lithography candi-
+tively large areas O(10 cm2 ) in non-uniform arrays, registered with                       date (Schift, 2008). Despite signiﬁcant potential for these processes
+the pattern to be imprinted, so as to distribute the liquid where                          to advance manufacturing eﬃciency and precision, mitigation of
+it can eﬃciently ﬁll the template with minimal waste. The com-                             print-defects remains a signiﬁcant challenge (Morse et al., 2011;
+                                                                                           Schift, 2008). Management of the liquid drop coalescence in the
+                                                                                           closing gap is critical to process optimization because trapped gas
+  R
+     Sandia National Laboratories is a multimission laboratory managed and operated        that does not dissolve into the liquid results in non-ﬁll defects
+by National Technology and Engineering Solutions of Sandia, LLC., a wholly owned           and long dissolution dwell times lead to reduced process through-
+subsidiary of Honeywell International, Inc., for the U.S. Department of Energys Na-        put. This paper puts forth a mathematical formulation based on m
+tional Nuclear Security Administration under contract DE-NA0 0 03525.
+   ∗                                                                                       ﬂow concepts that aggregates the micro-size effects of many-drop
+     Corresponding author.
+     E-mail address: acochrane@gmail.com (A. Cochrane).                                    merger over large areas of varying liquid density and gap thick-
+
+https://doi.org/10.1016/j.ijmultiphaseﬂow.2018.03.014
+0301-9322/© 2018 Elsevier Ltd. All rights reserved.
+10                                                 A. Cochrane et al. / International Journal of Multiphase Flow 104 (2018) 9–19
+
+
+
+
+Fig. 1. Schematic diagram of jet-and-ﬂash imprint lithography (J-FIL), integrable with wafer-scale/roll-to-roll processes. (a) Photoresist applied to substrate via precise ink-jet.
+(b) Photoresist drops merge and ﬁll patterned template. (c) Photoresist is cured with ultraviolet light. (d) Template is separated from patterned template.
+
+
+                                                                                             with the ﬁnite difference method that predicts dissolution rate
+                                                                                             with Henry’s law and Fickian diffusion to investigate how ther-
+                                                                                             modynamic properties of the gas effect dissolution dwell times.
+                                                                                             Roberts et al. (2013) implemented a general two-phase curvilin-
+                                                                                             ear lubrication formulation suitable for non-planar ﬂow domains
+                                                                                             typical of a J-FIL process with structurally ﬂexible templates. Solv-
+                                                                                             ing the resulting equations with a ﬁnite-element based approach,
+                                                                                             they simulated two-phase gap closure ﬂow with level-set inter-
+                                                                                             face tracking. Moreover, they validated their results against analytic
+                                                                                             models for single drop squeeze ﬂow and by accurately predicting
+Fig. 2. (a) Side view of drops merging during pattern ﬁll. (b) Top view of drop              evolution of the interface of a single drop as observed in exper-
+interface evolution during pattern ﬁll.                                                      iment. Scale-up trials by the current authors to 100s and 10 0 0s
+                                                                                             of drops using the approach taken by Roberts et al. revealed the
+                                                                                             method required too ﬁne of a mesh to be practical for process de-
+ness. The mathematical formulation is solved with the ﬁnite ele-                             sign.
+ment method and allows expedient simulation of the merger of                                     More recently several authors have addressed ﬂuid manage-
+thousands of drops over tens of cm2 .                                                        ment in related drop-dispensing, imprint lithography processes. A
+    Gas trapping and residual layer thickness (RLT) variations are                           full three-dimensional, Navier–Stokes, two-phase mixture ﬂow ap-
+key limiters of process rate and yield, as trapped gas impedes fea-                          proach was demonstrated by Peng et al. (2016) to simulate micro-
+ture ﬁlling and non-uniform residual layers adversely effect subse-                          size bubble formation in micro-size features using the ﬁnite vol-
+quent etching processes. Physically consistent mathematical mod-                             ume method. An innovative approach based on contact mechan-
+els are essential to the development of predictive process simula-                           ics has been developed by Taylor (2016) that includes imbibi-
+tors. Simulator eﬃcacy also depends on a robust and rapid numer-                             tion of liquid into the template and the motion of liquid across
+ical solution method so that a wide range of process parameters                              the substrate and demonstrated to scale to manufacturing areas.
+can be explored quickly.                                                                     Jain et al. (2016) have advanced a ﬁnite-difference, volume-of-
+    Computational analysis of the drop merger regime (i.e. Fig. 1b)                          ﬂuid (VOF) approach to address the J-FIL process that allows for
+over areas containing hundreds to tens of thousands of drops is                              large area, (O(10 0 0)) drop simulations, but ignores the gas phase.
+very challenging in part due to the multitude of interfaces and                              Nonetheless, he provides an analytical model that predicts an NIL
+complex liquid-gas ﬂow topology evolution illustrated in Fig. 2b.                            parameter envelope wherein gas physics are negligible (Jain et al.,
+As the drops merge, ﬁlling of nano-size features in the template                             2017).
+draws liquid away from the gap over much shorter time scales                                     While useful process understanding has been gained from these
+than those of dissolution of micro-size gas bubbles within the gap                           works, no approach accounts for the effects of gas trapping and
+Chauhan et al. (2009). However, without liquid at the feature in-                            pressure-driven gas dissolution with a continuum model over prac-
+lets the capillary forces don’t exist to drive ﬁlling of those features.                     tical processing areas of O(10 cm2 ). The approach put forth in this
+A reduced-order model that is predictive of gas trapping without                             paper captures gas trapping and gas dissolution in a multiphase
+resolving individual drop interfaces will enable large area simula-                          ﬂow formulation that enables large scale ( > 10 0 0 drops) simula-
+tions that examine residual layer thickness uniformity.                                      tions suitable for iterative process design studies. The continuum
+    This study builds toward a complete predictive model to guide                            approach is adapted from analyses of the Saffman-Taylor instabil-
+process designs that minimize gas trapping and reduce variation                              ity in oil-water ﬂows through fractured rocks (Fourar et al., 1992)
+in the residual layer. Expedient model set up and short run times                            in which a two-ﬂuid extension of Darcy ﬂow with relative perme-
+are also desirable so that design and scale-up of the process can                            ability (Wyckoff and Botset, 1936; Lockhart and Martinelli, 1949) is
+be realized. At a minimum, the model requires ﬁrst a suitable                                employed. The formulation is developed in Section 2 utilizing mul-
+two-phase ﬂow model, capable of scaling up to large ﬂow areas                                tiphase concepts of saturation and relative permeability augmented
+while capturing the aggregate micron-scale effects without compu-                            by a reduced-order gas dissolution model. Section 3 presents
+tational complexity. As such, trapping of micro-sized gas bubbles,                           model results, demonstrating simple veriﬁcation and one envi-
+subsequent gas dissolution and diffusion through the liquid phase                            sioned application. Comparison between simulation and experi-
+are the focus of this study. The effects of capillary forces, structural                     mental ﬂow visualization demonstrate the model captures two-
+mechanics and ﬂow into template features are left for future work.                           phase phenomena pertinent to prediction of gas dissolution dwell
+    Efforts to model the J-FIL process began with work by                                    times. Section 4 discusses the results and future work.
+Colburn et al. (2004). They assessed template control schemes with
+an analytic approach that accounted for both viscous resistance of                           2. Model development
+the liquid phase and capillary forces as a function of gap thickness,
+gap closure velocity, liquid material properties and drop pattern.                              In this section, a mathematical model is developed to capture
+Reddy and Bonnecaze (2005) extended Colburn’s analytic model                                 two-phase ﬂow evolution from the moment at which the drops
+with a numerical ﬁnite difference approach based on volume-of-                               bridge the gap between substrate and template to beyond the
+ﬂuid interface tracking to predict ﬁll times for non-uniform drop                            point at which all of the gas has either escaped or been dis-
+patterns. Liang et al. (2007) implemented a gas bubble model                                 solved into the liquid, as depicted in Fig. 2a. Fig. 4 shows snapshots
+

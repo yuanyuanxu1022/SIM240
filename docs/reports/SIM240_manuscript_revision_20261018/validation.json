@@ -1,0 +1,216 @@
+{
+  "scope": "arithmetic, raw-input stability and core-claim metadata only",
+  "map_rows": 36,
+  "groups": [
+    {
+      "group": "calibration",
+      "direction": "P",
+      "geometries": 9,
+      "V1_max_abs_pct": 28.090819830230696,
+      "V2_max_abs_pct": 9.914300353322346
+    },
+    {
+      "group": "calibration",
+      "direction": "T",
+      "geometries": 9,
+      "V1_max_abs_pct": 5.669917192269547,
+      "V2_max_abs_pct": 4.18856850751681
+    },
+    {
+      "group": "d75",
+      "direction": "P",
+      "geometries": 3,
+      "V1_max_abs_pct": 16.872585911073166,
+      "V2_max_abs_pct": 9.334483551774797
+    },
+    {
+      "group": "d75",
+      "direction": "T",
+      "geometries": 3,
+      "V1_max_abs_pct": 3.46969459051103,
+      "V2_max_abs_pct": 3.858045905702223
+    },
+    {
+      "group": "d120",
+      "direction": "P",
+      "geometries": 3,
+      "V1_max_abs_pct": 38.5817878217793,
+      "V2_max_abs_pct": 10.504978243933639
+    },
+    {
+      "group": "d120",
+      "direction": "T",
+      "geometries": 3,
+      "V1_max_abs_pct": 9.211759293703292,
+      "V2_max_abs_pct": 6.920727179235653
+    },
+    {
+      "group": "h25",
+      "direction": "P",
+      "geometries": 3,
+      "V1_max_abs_pct": 43.911695285273844,
+      "V2_max_abs_pct": 7.212756754030947
+    },
+    {
+      "group": "h25",
+      "direction": "T",
+      "geometries": 3,
+      "V1_max_abs_pct": 19.962053795692526,
+      "V2_max_abs_pct": 18.705147167276593
+    }
+  ],
+  "coefficient_checks": [
+    {
+      "direction": "P",
+      "objective": "minimax",
+      "field": "max_abs_resid_calib_pct",
+      "recomputed": 9.914149149650232,
+      "difference": 4.914965023239404e-05
+    },
+    {
+      "direction": "P",
+      "objective": "minimax",
+      "field": "max_abs_resid_domain_pct",
+      "recomputed": 10.504590328125051,
+      "difference": 9.67187494893551e-06
+    },
+    {
+      "direction": "P",
+      "objective": "minimax",
+      "field": "max_abs_resid_all_pct",
+      "recomputed": 10.504590328125051,
+      "difference": 9.67187494893551e-06
+    },
+    {
+      "direction": "P",
+      "objective": "rms",
+      "field": "max_abs_resid_calib_pct",
+      "recomputed": 12.317515723897564,
+      "difference": 1.572389756354653e-05
+    },
+    {
+      "direction": "P",
+      "objective": "rms",
+      "field": "max_abs_resid_domain_pct",
+      "recomputed": 13.10949637411043,
+      "difference": 3.6258895708130012e-06
+    },
+    {
+      "direction": "P",
+      "objective": "rms",
+      "field": "max_abs_resid_all_pct",
+      "recomputed": 13.10949637411043,
+      "difference": 3.6258895708130012e-06
+    },
+    {
+      "direction": "T",
+      "objective": "minimax",
+      "field": "max_abs_resid_calib_pct",
+      "recomputed": 4.185481955723436,
+      "difference": 1.804427656448837e-05
+    },
+    {
+      "direction": "T",
+      "objective": "minimax",
+      "field": "max_abs_resid_domain_pct",
+      "recomputed": 6.917728555726043,
+      "difference": 2.8555726043322238e-05
+    },
+    {
+      "direction": "T",
+      "objective": "minimax",
+      "field": "max_abs_resid_all_pct",
+      "recomputed": 18.70252826502353,
+      "difference": 2.826502353059368e-05
+    },
+    {
+      "direction": "T",
+      "objective": "rms",
+      "field": "max_abs_resid_calib_pct",
+      "recomputed": 5.678094057594263,
+      "difference": 5.942405736369949e-06
+    },
+    {
+      "direction": "T",
+      "objective": "rms",
+      "field": "max_abs_resid_domain_pct",
+      "recomputed": 9.140682516803288,
+      "difference": 1.7483196712575477e-05
+    },
+    {
+      "direction": "T",
+      "objective": "rms",
+      "field": "max_abs_resid_all_pct",
+      "recomputed": 19.968991768049804,
+      "difference": 8.231950197057358e-06
+    }
+  ],
+  "raw_inputs_unchanged": 288,
+  "changed_since_prior_audit": [
+    {
+      "path": "CASE/plans/SIM240_第一篇范围重定位_纯液体单相_20261016.md",
+      "previous": "f76450e90cef370a2a67b4d56892ec49c093ec780f71198463a352bf982bff80",
+      "current": "e9000b7088c11bbac4a1906df04574843fcb05458df3418ccebcaca947bc3857"
+    },
+    {
+      "path": "docs/reports/第一篇论文_第1章引言草稿_20261017.md",
+      "previous": "b14c4b41e57896be113c463536e91a8f0a476e017692aa7716e126c853335114",
+      "current": "d94e9b66543631e2fdeb56560d70e87c776a3ab8e37118eed78c9ebb4427d055"
+    },
+    {
+      "path": "docs/reports/第一篇论文_第2章方法草稿_20261017.md",
+      "previous": "7e8d57ccfe44e67259a057ee6e99aef18e4c593eee365d552ee812ff38b3c0c9",
+      "current": "20758cddd318985e23a21c7892de007466b53e9f8faa7bffaf72ab3fbce18a0b"
+    },
+    {
+      "path": "docs/reports/第一篇论文_第3章验证草稿_20261017.md",
+      "previous": "1802aa6e3389eb6c5e21e3420f6e95ea53fde526822140dc671fdc674b7ee23e",
+      "current": "f25434ece670148cbe432ad6db24c468acf07b0a84cf7db2789cb9c83bd13fc8"
+    },
+    {
+      "path": "docs/reports/交付物缺陷审计_20261017.md",
+      "previous": "027fa341fc39eb79e0c7957b51917cdef05b1c3ef655ddbc939c1cb893fabe0a",
+      "current": "449ca45191a0d9c41ee4d73251a75b1aa161d9253ef7cb812fffb58a34a57b49"
+    },
+    {
+      "path": "docs/reports/修正公式重拟合_又稳又好听_20261017.md",
+      "previous": "ca87fd061bca91275984b533cd6c4b665248e381b1eb36ea837015db9a9fc83a",
+      "current": "7e991bbc9f69c38c72db7bf9fc6a7550f35c25a531d7e585e6b45b80c018306b"
+    },
+    {
+      "path": "docs/reports/Jain_citation_audit_20261017/STATUS_20261017.md",
+      "previous": "2088a669fc927816d19fde06b8c50d2ebb7bace3934b8e43d0f890a7a95669e4",
+      "current": "da2ca7478fe078561a3b95bb33d2813df2bb5bb2aec7ea19dbdcfeb96aa81183"
+    }
+  ],
+  "source_sha256": {
+    "E001": "8063df0748e935d1f2b42e4b9adf2aad0b20d844d0a1adf16b30a1d789755ec4",
+    "E002": "42e5d8224a4101cb9ac8b453257ef98d7d213c4b4882d9584cb28ac50d2e2261",
+    "E003": "83317a81fc3e53f7323e09fc217a8410209071370bf738cce1c0ac1b28fa3185",
+    "E004": "7e991bbc9f69c38c72db7bf9fc6a7550f35c25a531d7e585e6b45b80c018306b",
+    "E006": "2ae838d21115cd592a3a6be8b173442b3c2114c09baee76566af9ee23b181aff",
+    "E007": "3638e0ee15f951fbf474a3ccc66e7e865d50e236312a82b1f3a4a028f9b3e849"
+  },
+  "additional_fit_output_sha256": {
+    "CASE/D_series/D2_groove_error_map/results/analysis/v2_fit_params.csv": "df99c765058508912a265e505cc677294c60f813deedbdb7a0e0a6982d83d259",
+    "CASE/D_series/D2_groove_error_map/results/analysis/v2_residuals.csv": "172175faae7c266251eaad7465425a926bde255580462c37ec08f0e5ac0f37ed"
+  },
+  "manuscript_sha256": {
+    "docs/reports/第一篇论文_第1章引言草稿_20261017.md": "d94e9b66543631e2fdeb56560d70e87c776a3ab8e37118eed78c9ebb4427d055",
+    "docs/reports/第一篇论文_第2章方法草稿_20261017.md": "20758cddd318985e23a21c7892de007466b53e9f8faa7bffaf72ab3fbce18a0b",
+    "docs/reports/第一篇论文_第3章验证草稿_20261017.md": "f25434ece670148cbe432ad6db24c468acf07b0a84cf7db2789cb9c83bd13fc8",
+    "docs/reports/PoF投稿包_前置材料与格式对照_20261017.md": "b5bea55e5e4b40e610b2c3b5184ea5da35a47710cb77279957e75c66e4477ced",
+    "CASE/plans/SIM240_第一篇范围重定位_纯液体单相_20261016.md": "e9000b7088c11bbac4a1906df04574843fcb05458df3418ccebcaca947bc3857"
+  },
+  "core_claims_sha256": "52dbb82cd2287ec98b1149b9a7cf304a8bfcf40639036e784d23e0c7380c9d4c",
+  "claims_registered": 24,
+  "abstract_word_count": 226,
+  "skill_claim_audit_human_review_pending": true,
+  "core_hash_mapping_errors": 0,
+  "optimizer_rerun": false,
+  "solver_rerun": false,
+  "formal_gate_release": false,
+  "human_verified": false,
+  "submission_ready": false,
+  "note": "V2 adopted by explicit user reply; data-informed, not independent final validation."
+}

@@ -1,0 +1,55 @@
+{
+  "errors": [],
+  "handling_assertions": {
+    "author_and_editor_channels_must_remain_separate": true,
+    "bundled_tools_are_local_only": true,
+    "data_reuse_authorized": false,
+    "external_service_use_authorized_by_this_report": false
+  },
+  "normalized_scope": {
+    "ai_plan": "approved_ai_assistance",
+    "capacity": "author_requested_reader",
+    "competence_areas": [
+      "cfd",
+      "evidence_integrity",
+      "software_provenance"
+    ],
+    "manuscript_type": "author_owned_deterministic_CFD_completed_outputs",
+    "out_of_scope": [
+      "CASE_implementation",
+      "native_calls",
+      "build",
+      "performance_stepping",
+      "formal_calculation",
+      "S5",
+      "V2_scoring",
+      "final_theory_freeze"
+    ],
+    "peer_review_model": "open",
+    "requested_focus": [
+      "prospective_supplemental_grid_family",
+      "cross_release_baseline_reuse",
+      "minimum_stage_adapter",
+      "static_resource_and_permission_plan"
+    ]
+  },
+  "notice": "This validates declared process controls only. It does not establish reviewer competence, resolve conflicts, authorize external processing, or assess manuscript quality.",
+  "review_id": "URV-S4T-SPATIAL-SUPPLEMENT-DRAFT-20261104",
+  "schema_version": "2.0",
+  "status": "READY_FOR_LOCAL_REVIEW",
+  "valid": true,
+  "warnings": [
+    {
+      "code": "CONFIDENTIAL_NOTES_CHANNEL_UNAVAILABLE",
+      "field": "venue_policy.confidential_editor_notes_supported"
+    },
+    {
+      "code": "EXTERNAL_AUTHORIZATION_NOT_USED",
+      "field": "authorization.external_processing_authorized"
+    },
+    {
+      "code": "COMPETENCE_LIMITS_MUST_BE_DISCLOSED",
+      "field": "reviewer.competence_limits"
+    }
+  ]
+}

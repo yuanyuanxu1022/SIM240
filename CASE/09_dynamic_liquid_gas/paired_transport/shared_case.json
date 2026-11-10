@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "purpose": "GHY Kxx/Kyy preparation; not a runnable or frozen OpenLB case",
+  "sample_id": "GHY",
+  "material_profile": "../materials/GHY_20261014/material_profile.json",
+  "coordinate_convention": {"x": "across_grooves", "y": "along_grooves", "z": "gap_normal"},
+  "geometry": {
+    "role": "proposed_local_periodic_transport_diagnostic_not_finite_droplet_drainage",
+    "period_m": 2.4e-7,
+    "groove_width_m": 1.2e-7,
+    "groove_depth_m": 1.0e-7,
+    "mesa_gap_m": 7.5e-8,
+    "periods_x": 1,
+    "periods_y": 1,
+    "periodic_axes": ["x", "y"],
+    "moving_mold": false,
+    "status": "preparation_proposal_not_geometry_validation"
+  },
+  "physics": {
+    "intended_fluid_system": "GHY_air_conditional_on_water_absent_during_flow",
+    "water_presence_during_flow": "unknown",
+    "water_information": "User does not know when possible water-assisted demolding occurs",
+    "phase_convention": "phi_0_liquid_phi_1_gas_if_existing_CH_backend_is_used",
+    "drive_convention": "uniform_mixture_body_force_per_volume_representing_macro_gradient",
+    "drive_gradient_magnitude_Pa_per_m": null,
+    "drive_signs": [-1, 1],
+    "shared_zero_drive_baseline_required": true,
+    "body_force_implementation_verified": false
+  },
+  "initial_state": {
+    "shared_checkpoint": null,
+    "checkpoint_sha256": null,
+    "liquid_amount_definition": "to_be_frozen_including_phase_field_convention",
+    "checkpoint_and_loading_history_verified": false
+  },
+  "measurement": {
+    "primary_flux": "liquid_phase_volume_flux",
+    "proposed_q_definition": "q_l_i=(1/A_plan)*integral_over_pore_volume((1-phi)*u_i*dV)",
+    "flux_units": "m2/s",
+    "coefficient_units": "m3",
+    "reported_response": "window_conditioned_differential_liquid_response_to_common_mixture_drive",
+    "candidate_K_definition": "K_ij=mu_l*(q_i_plus-q_i_minus)/(2*delta_G_j)",
+    "advective_flux_vs_diffusive_phase_flux_policy": "to_be_frozen; do not silently equate the two",
+    "record_response_components": ["x", "y"],
+    "window_start_s": null,
+    "window_end_s": null,
+    "timescale_separation_verified": false,
+    "measurement_definition_frozen": false
+  },
+  "numerics": {
+    "dx_m": 5e-9,
+    "dx_status": "pilot_only_not_grid_independent",
+    "dt_s": null,
+    "tau_liquid": null,
+    "tau_gas": null,
+    "surface_tension_lattice": null,
+    "mapping_verified": false
+  },
+  "backend": {"executable": null, "sha256": null, "source_manifest": null, "compiled_and_bound_to_manifest": false},
+  "validation": {
+    "protocol_frozen": false,
+    "prerequisites_verified": false,
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": "NOT_EVALUATED",
+    "geometry_PASS": "NOT_EVALUATED"
+  }
+}

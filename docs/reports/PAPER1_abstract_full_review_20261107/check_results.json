@@ -1,0 +1,226 @@
+{
+  "metrics": {
+    "current_formal_CN": {
+      "Han_characters": 416,
+      "English_word_tokens": null,
+      "numeric_occurrences": 18,
+      "numeric_tokens": [
+        "240",
+        "120",
+        "18",
+        "36",
+        "5",
+        "4",
+        "2.5",
+        "5",
+        "36",
+        "+204.85",
+        "+54.19",
+        "3.05",
+        "2.21",
+        "3.70",
+        "45",
+        "9.20",
+        "35",
+        "36"
+      ]
+    },
+    "stitched_CN": {
+      "Han_characters": 534,
+      "English_word_tokens": null,
+      "numeric_occurrences": 23,
+      "numeric_tokens": [
+        "240",
+        "18",
+        "5",
+        "36",
+        "2.5",
+        "4",
+        "5",
+        "36",
+        "+204.85",
+        "+54.19",
+        "3.05",
+        "75",
+        "100",
+        "5",
+        "3.70",
+        "2.21",
+        "45",
+        "9.20",
+        "5",
+        "36",
+        "35",
+        "100",
+        "5"
+      ]
+    },
+    "recommended_CN": {
+      "Han_characters": 418,
+      "English_word_tokens": null,
+      "numeric_occurrences": 15,
+      "numeric_tokens": [
+        "240",
+        "18",
+        "36",
+        "5",
+        "4",
+        "2.5",
+        "5",
+        "+204.85",
+        "+54.19",
+        "3.70",
+        "2.21",
+        "45",
+        "9.20",
+        "10.50",
+        "18.71"
+      ]
+    },
+    "current_formal_EN": {
+      "Han_characters": 0,
+      "English_word_tokens": 254,
+      "numeric_occurrences": 17,
+      "numeric_tokens": [
+        "240",
+        "120",
+        "18",
+        "36",
+        "5",
+        "2.5",
+        "5",
+        "36",
+        "+204.85",
+        "+54.19",
+        "3.05",
+        "2.21",
+        "3.70",
+        "9.20",
+        "45",
+        "35",
+        "36"
+      ]
+    },
+    "recommended_EN": {
+      "Han_characters": 0,
+      "English_word_tokens": 271,
+      "numeric_occurrences": 14,
+      "numeric_tokens": [
+        "240",
+        "18",
+        "36",
+        "5",
+        "2.5",
+        "5",
+        "+204.85",
+        "+54.19",
+        "3.70",
+        "2.21",
+        "45",
+        "9.20",
+        "10.50",
+        "18.71"
+      ]
+    }
+  },
+  "checks": [
+    {
+      "check": "bilingual_quantitative_sequence_normalized_four",
+      "pass": true,
+      "detail": {
+        "cn": [
+          "240",
+          "18",
+          "36",
+          "5",
+          "4",
+          "2.5",
+          "5",
+          "+204.85",
+          "+54.19",
+          "3.70",
+          "2.21",
+          "45",
+          "9.20",
+          "10.50",
+          "18.71"
+        ],
+        "en_with_four_as_4": [
+          "240",
+          "18",
+          "36",
+          "5",
+          "4",
+          "2.5",
+          "5",
+          "+204.85",
+          "+54.19",
+          "3.70",
+          "2.21",
+          "45",
+          "9.20",
+          "10.50",
+          "18.71"
+        ],
+        "normalization": "English four equals Chinese 4; metrics still count Arabic numerals only"
+      }
+    },
+    {
+      "check": "candidate_shorter_than_stitched",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "candidate_fewer_numbers_than_stitched",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "main_counts_and_refinement",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "maximum_matches_Kyy_LC_max",
+      "pass": true,
+      "detail": "204.85"
+    },
+    {
+      "check": "maximum_matches_Kyy_V2_max_abs",
+      "pass": true,
+      "detail": "10.50"
+    },
+    {
+      "check": "maximum_matches_Kxx_LC_max",
+      "pass": true,
+      "detail": "54.19"
+    },
+    {
+      "check": "maximum_matches_Kxx_V2_max_abs",
+      "pass": true,
+      "detail": "18.71"
+    },
+    {
+      "check": "no_new_independent_accuracy_claim",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "retains_tensor_reconstruction",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "all_bound_inputs_preserved",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "passed": 11,
+  "failed": 0,
+  "scope": "editorial and selected-source consistency, not scientific requalification",
+  "formal_abstract_edited": false,
+  "new_solver_runs": 0,
+  "new_fit": false,
+  "submission_ready": false
+}

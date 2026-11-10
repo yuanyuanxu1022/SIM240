@@ -1,0 +1,62 @@
+{
+  "protocol_id": "URV-v1",
+  "kind": "BUILD_EQUIVALENCE_ACCEPTANCE_NOT_STAGE_ACCEPTANCE",
+  "release_sha256": "758f13deecec0a26ae309e982cbcadfb1aa9bf198e58513292bd2114df49631d",
+  "run_id": "URV_S4_T_dx1p25_TGESRV_v1_20261104_01",
+  "planned_case_id": "URV1_U_THIN_T_dx1p25_a100000_TGESRV",
+  "direction": "T",
+  "dx_nm": 1.25,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": true,
+  "BUILD_EQUIVALENCE_PASS": true,
+  "build_equivalence": {
+    "reference_run_id": "URV_S4_T_dx1p25_reuse_v1_20261103_01",
+    "reference_K_m3": 3.471791836744987e-24,
+    "server_K_m3": 3.471791836744987e-24,
+    "relative_difference": 0.0,
+    "relative_tolerance": 1e-06,
+    "declared_before_measurement": true
+  },
+  "scalar": {
+    "K_m3": 3.471791836744987e-24,
+    "J_main_m2_s": 3.4717918367449866e-13,
+    "steps": 12537,
+    "window_steps": 2592,
+    "diagnostic_rows": 12538,
+    "final_window_std": 8.277215726150058e-07,
+    "final_window_span": 4.987652165446628e-06,
+    "corrected_mass_max": 4.394483008026431e-15,
+    "ledger_agreement_max": 1.7752391338696864e-16,
+    "max_density_deviation": 1.2731204979132826e-09,
+    "max_Mach": 6.2651511933297235e-09,
+    "Re_H": 1.909874592374824e-06,
+    "predicted_nodes": 2064384
+  },
+  "geometry": {
+    "fluid_nodes": 2064384,
+    "candidate_links": 490752,
+    "q_min": 0.5,
+    "q_max": 0.5000000000000071,
+    "material_0": 0,
+    "material_1": 2064384,
+    "material_2": 36864,
+    "material_3": 1327104
+  },
+  "measured_performance": {
+    "elapsed_seconds": 7575.365345648956,
+    "peak_rss_bytes": 1638121472,
+    "steps_per_second": 1.65496968501999,
+    "seconds_per_step": 0.604240675253167,
+    "wall_cap_seconds": 21600
+  },
+  "completion_sha256": "e8017379ec2842a2c742fde39fad40725af35c9161d61fda917658c1a7a006ce",
+  "original_S4_stage_accepted": false,
+  "reference_qualified": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false,
+  "next_stage_started": false,
+  "S5_started": false,
+  "note": "This record establishes build equivalence and measured performance only. It does not accept the S4 stage, does not qualify a reference and does not touch the original transverse grid FAIL."
+}

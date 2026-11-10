@@ -1,0 +1,65 @@
+{
+  "schema_version": "2.0",
+  "review_id": "URV-CHECKER-v1-1-READONLY-20261101",
+  "material": {
+    "status": "unpublished_confidential",
+    "contains_personal_or_sensitive_data": false
+  },
+  "authorization": {
+    "basis": "author_request",
+    "documented": true,
+    "local_processing_authorized": true,
+    "external_processing_authorized": true
+  },
+  "reviewer": {
+    "capacity": "author_requested_reader",
+    "human_accountable": true,
+    "competence_areas": [
+      "numerical_protocol",
+      "software_provenance",
+      "deterministic_CFD"
+    ],
+    "competence_limits": [
+      "AI self-review of earlier AI-created code, not an independent human review",
+      "No new steady-flow execution or physical validation",
+      "External data history is known only from author declarations"
+    ],
+    "conflict_status": "none_identified",
+    "conflicts": []
+  },
+  "venue_policy": {
+    "checked": true,
+    "peer_review_model": "open",
+    "confidential_editor_notes_supported": false
+  },
+  "ai_use": {
+    "policy": "permitted_with_disclosure",
+    "planned": "approved_ai_assistance",
+    "permission_confirmed": true,
+    "disclosure_planned": true
+  },
+  "handling": {
+    "local_only": true,
+    "external_service_use": false,
+    "data_reuse_permitted": false,
+    "retention_rule": "retain_per_venue_policy",
+    "deletion_or_retention_record_planned": true
+  },
+  "scope": {
+    "manuscript_type": "own_project_preparation_package",
+    "requested_focus": [
+      "v1_1_checker",
+      "contract_implementation_alignment",
+      "history_status",
+      "execution_boundary"
+    ],
+    "out_of_scope": [
+      "code_changes",
+      "compilation",
+      "solver_execution",
+      "model_refit",
+      "journal_submission"
+    ],
+    "specialist_review_needed": []
+  }
+}

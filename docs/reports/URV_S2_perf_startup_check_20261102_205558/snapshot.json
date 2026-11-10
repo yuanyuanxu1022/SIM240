@@ -1,0 +1,104 @@
+{
+  "snapshot_at": "2026-11-02T20:55:58.575131+08:00",
+  "report_directory": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S2_perf_startup_check_20261102_205558",
+  "release_sha256": "b675010adcc9e57627d3ff39c93d72394e16489e3713abe09851d5de31c5c7e1",
+  "processes": [
+    {
+      "pid": 716959,
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_perf.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/evidence/S2_perf_launch_release_v1_20261102_01.json",
+        "--expected-sha256",
+        "b675010adcc9e57627d3ff39c93d72394e16489e3713abe09851d5de31c5c7e1",
+        "--execute"
+      ]
+    },
+    {
+      "pid": 717003,
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/performance_runs/URV_S2_PERF_P_dx1p25_v1_20261102_01/steady/run_config.txt"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "URV_S2_PERF_P_dx1p25_v1_20261102_01",
+      "directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/performance_runs/URV_S2_PERF_P_dx1p25_v1_20261102_01/steady",
+      "files": [
+        "boundary_audit.txt",
+        "diagnostics.csv",
+        "effective_config.txt",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "performance_observations.csv",
+        "performance_process_intent.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "performance_process_intent.json": {
+        "run_id": "URV_S2_PERF_P_dx1p25_v1_20261102_01",
+        "release_sha256": "b675010adcc9e57627d3ff39c93d72394e16489e3713abe09851d5de31c5c7e1",
+        "argv": [
+          "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+          "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/performance_runs/URV_S2_PERF_P_dx1p25_v1_20261102_01/steady/run_config.txt"
+        ],
+        "recorded_at": "2026-11-02T20:55:01.584289+08:00",
+        "process_started_not_yet_confirmed": true
+      },
+      "run.log": {
+        "size_bytes": 2464,
+        "last_newline_terminated_line": "[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/performance_runs/URV_S2_PERF_P_dx1p25_v1_20261102_01/steady/introspectionData/ created."
+      },
+      "diagnostics.csv": {
+        "size_bytes": 24596,
+        "last_newline_terminated_line": "91,2.1531443734533937e-13,1,8.5982468784829006e-10,5.7599999996385432e-18,2.3697916666666669e-11,0,0,-5.4419223661429609e-31,2.1531443734533937e-13,-1.9274700160258511e-23,5.1675464962945668e-20,5.1675464962945668e-20,0,0,0,-1,-1,-1,1,5.7600000000000002e-18,0,0,0,0"
+      },
+      "performance_observations.csv": {
+        "size_bytes": 7979,
+        "last_newline_terminated_line": "56,108946.017466121,1,91,24366,42eabe9a6d779deeab3f7947608d44d1a87d95692981a08819853b23b0e86ab6,1911709696,19320864768,472730,341436526592\r"
+      }
+    },
+    {
+      "run_id": "URV_S2_PERF_T_dx1p25_v1_20261102_01",
+      "directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/performance_runs/URV_S2_PERF_T_dx1p25_v1_20261102_01/steady",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ]
+    }
+  ],
+  "markers": {
+    "performance_attempt.json": {
+      "exists": true,
+      "sha256": "44e0c0ad9cb25f3c2cd95e7608765bc589e57d18568316f85d7864cf4457b338",
+      "data": {
+        "release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/evidence/S2_perf_launch_release_v1_20261102_01.json",
+        "release_sha256": "b675010adcc9e57627d3ff39c93d72394e16489e3713abe09851d5de31c5c7e1",
+        "started_at": "2026-11-02T20:55:01.490726+08:00",
+        "purpose": "S2_PERFORMANCE_NOT_REFERENCE",
+        "actual_benchmark_run_ids": []
+      }
+    },
+    "performance_execution.lock": {
+      "exists": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "performance_batch_result.json": {
+      "exists": false
+    }
+  },
+  "solver_calls_this_check": 0,
+  "tmux": {
+    "query_exit_code": 0,
+    "target_present": true
+  },
+  "controller_log_tail": ""
+}

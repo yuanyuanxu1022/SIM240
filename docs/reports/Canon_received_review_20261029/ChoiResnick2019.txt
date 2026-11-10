@@ -1,0 +1,255 @@
+                                                                           Journal of Photopolymer Science and Technology
+                                                                           Volume 32, Number 5 (2019) 753－757 Ⓒ 2019SPST
+
+      Review
+
+
+
+
+                 The Status of Nanoimprint Lithography for High
+                     Volume Semiconductor Manufacturing
+
+                                         Jin Choi* and Douglas J. Resnick
+
+                                        Canon Nanotechnologies Inc.,
+                           1807 West Braker Lane, Bldg. C-300 Austin, TX 78758, USA
+                                            *jchoi@cnt.canon.com
+
+
+                  Imprint lithography is an effective and well known technique for replication of nano-scale
+               features. For the purpose of semiconductor device fabrication, nanoimprint lithography (NIL)
+               manufacturing equipment utilizes a patterning technology that involves the field-by-field
+               deposition and exposure of a low viscosity resist deposited by jetting technology onto the
+               substrate. In this paper we describe the latest performance update of the equipment, and to
+               discuss the alignment system and overlay methods needed to yield advanced semiconductor
+               devices. Throughputs of up to 90 wafers per hour have been achieved using a cluster system
+               approach. On tests wafers a mix and match overlay of 3.2 nm is demonstrated. Additionally,
+               a Drop Pattern Compensation (DPC) method is introduced as an additional means for
+               improving overlay. Finally, to address cost of ownership, a mask lifetime of over 300 wafer
+               lots has been demonstrated.
+               Keywords: Nanoimprint lithography, NIL, Throughput, Overlay, Mask life, Drop
+               pattern compensation
+
+
+1. Introduction                                                    This paper introduces the latest performance
+   Imprint lithography is an effective and well                  update of the equipment. Specifically, we describe
+known technique for replication of nano-scale                    progress on throughput, overlay and mask life.
+features [1,2]. For the purpose of semiconductor
+device fabrication, nanoimprint lithography (NIL)                2. Throughput
+manufacturing equipment utilizes a patterning                       Throughput is one of the key contributors to cost
+technology that involves the field-by-field                      of ownership. In this section, we discuss how
+deposition and exposure of a low viscosity resist                throughput was enhanced to 90 wafers per hour.
+deposited by jetting technology onto the substrate               Canon uses a multi-module approach to achieve
+[3-9]. The patterned mask is lowered into the fluid              high throughput. The NZ2C cluster tool typically is
+which then quickly flows into the relief patterns in             configured with four imprint modules or stations.
+the mask by capillary action. Following this filling                Previous papers have discussed throughput
+step, the resist is crosslinked under UV radiation,              breakdown in detail [10]. Overheads to the imprint
+and then the mask is removed, leaving a patterned                TAKT time have been reduced by applying a multi-
+resist on the substrate. The technology faithfully               field dispense strategy, as opposed to dispensing and
+reproduces patterns with a higher resolution and                 imprinting in a sequential fashion (see Fig. 1). The
+greater uniformity compared to those produced by                 reduction in overhead is on the order of 0.24
+photolithography equipment. Additionally, as this                seconds, resulting in an increase in throughput to 90
+technology does not require an array of wide-                    wafers per hour. Figure 2 shows that non-fill
+diameter lenses and the expensive light sources                  defectivity is nominally the same for the multi-field
+necessary      for    advanced     photolithography              approach.
+equipment, NIL equipment achieves a simpler, more
+compact design, allowing for multiple units to be                3. Alignment and overlay
+clustered together for increased productivity.                     The NZ2C system employs a Through The Mask
+ Received   May       21, 2019
+ Accepted   May       27, 2019
+                                                                                                                            753
+                                          J. Photopolym. Sci. Technol., Vol. 32, No. 5, 2019
+
+
+
+
+                                                                        1. Mag actuator, which applies force using an
+                                                                           array of piezo actuators
+                                                                        2. Heat input to correct distortion on a field by
+                                                                           field basis
+
+                                                                         Heat input on a field by field basis is realized
+                                                                      through the use of DMD array which imparts heat
+                                                                      through the mask onto a stepper field of a wafer. The
+                                                                      basic operation of the system, along with initial
+                                                                      results has been described in previous publications
+                                                                      [11,12]. The system is shown schematically in Fig.
+                                                                      3.
+
+
+
+      Fig. 1. By continuously dispensing, overhead times are
+      reduced by 0.24 seconds per field, thereby enhancing
+      throughput to 90 wafers per hour.
+
+
+
+
+                                                                      Fig. 3. Schematic illustration of the HODC system used
+                                                                      to correct in-field distortions.
+
+                                                                         The TTM and HODC systems were applied to
+                                                                      test wafers and the results are reported in Figs. 4 and
+                                                                      5. Figure 4 depicts Cross Matched Machine Overlay
+                                                                      (XMMO) on an existing level patterned with an
+      Fig. 2. Defect inspection result comparison. The multi-         ASML 1950 ArF immersion tool. A total of 84 fields
+      field dispense results are comparable in defectivity to the     were measured, including twelve points per field.
+      sequential imprinting method.                                   The results are an average across 23 wafers. XMMO
+                                                                      of 2.9 nm and 3.2 nm mean plus three sigma was
+                                                                      achieved in x and y, respectively.
+       (TTM) alignment system. First order terms are
+      passed through Moiré marks on the mask and wafer
+      with a sensitivity on the order of 1nm. On device
+      wafers, it is possible to enhance the align signal and
+      avoid blooming by using multiple wavelengths, and
+      controlling the intensity of each wavelength. The
+      method aids in controlling signal variations,
+      resulting in reduced measurement errors.
+         It is important to note the difference in overlay
+      approaches between an optical scanner and an
+      imprint step and repeat tool. In an optical scanner,
+      Shot Shape High Order Compensation (SSHOC) is
+      done by manipulating both the stage and lens during
+      the exposure process. A different approach is
+      required for the imprint tool in order to do high
+      order distortion controls (HODC). HODC for NIL                  Fig. 4. Cross matched machine overlay of 3.2 nm, 3
+      can be enabled by combining two approaches:                     sigma has been demonstrated on test wafers.
+
+754
+                                 J. Photopolym. Sci. Technol., Vol. 32, No. 5, 2019
+
+
+
+   Similarly, Figure 5 depicts Single Machine
+Overlay on an existing level patterned with the FPA-
+1200 NZ2C tool. A total of 84 fields were measured,
+including twelve points per field. The results are an
+average across three wafers. SMO of 2.2 nm and 2.4
+nm mean plus three sigma was achieved in x and y,
+respectively. Residual distortions were 0.7 nm,
+mean plus three sigma.
+
+
+
+
+Fig. 5. Single machine overlay of 2.4 nm has also been       Fig. 6. Using DPC, the resist film thickness is optimized
+demonstrated on test wafers.                                 to match mask and wafer bending.
+
+
+
+
+                                                               A DPC example is shown in Figs. 7, 8a and 8b.
+    In addition to the Magnification actuator that is        The figure below depicts the topography on a
+used to correct linear terms and the HODC system             device-like wafer in which the areas between the die
+that is used to correct higher order terms, a third          within the field are recessed by about 20 nm.
+“knob” is also available for field by field distortion
+correction. In a typical nanoimprint process, resist
+is dispensed to fill all relief images on the mask and
+create a uniform residual layer beneath the patterned
+features. Drop Pattern Compensation (DPC) is used
+to create a drop pattern to match non-flatness and
+other induced distortions and minimize overlay
+errors. This means that DPC can be used to address
+lithography related errors including:
+
+    1. Chuck induced errors
+    2. Pattern induced distortions
+    3. Grid distortion errors from an optical
+       scanner
+    4. Stress induced distortion from previous
+       levels.
+
+   In addition, for nanoimprint lithography, DPC
+can address mask bending induced overlay errors. A           Fig. 7. The topography on a device-like wafer, in which
+schematic illustration of the DPC process is shown           the areas between the die within the field are recessed by
+in Fig. 6.                                                   about 20 nm.
+
+                                                                                                                          755
+                                         J. Photopolym. Sci. Technol., Vol. 32, No. 5, 2019
+
+
+
+         The topography induces overlay errors when                  demonstrated a mask life of over 300 lots (Fig. 9)
+      patterning on top of this layer as shown in Fig. 8a.           [13]. The increase in mask life has been driven by a
+      The 3 sigma errors are on the order of 5.4 nm, and             variety techniques designed to mitigate particles in
+      the effect of the recessed areas within the field are          the wafer tool. The techniques cover source control,
+      easily observed. By applying both HODC and DPC,                particle avoidance and particle collection, as shown
+      the overlay errors are reduced to 3.4 nm, 3, and the          in Fig. 9. As a next step, we are considering the
+      impact of the recesses are clearly reduced.                    implementation of on-tool mask cleaning.
+
+
+
+
+                                                                     Fig. 9. Mask life history. This year, Toshiba Memory
+                                                                     Corporation has a demonstrated a mask life of over 300
+                                                                     lots.
+
+                                                                     5. Conclusion
+                                                                         Any new lithographic technology to be
+                                                                     introduced into manufacturing must deliver either a
+                                                                     performance advantage or a cost advantage. Key
+                                                                     technical attributes include alignment, overlay,
+                                                                     throughput and defectivity. In previous papers,
+                                                                     overlay and throughput results have been reported
+                                                                     on test wafers. In this work, improvements to the
+                                                                     alignment system, together with the High Order
+                                                                     Distortion Correction (HODC) system have enabled
+                                                                     better distortion and overlay results on both test
+                                                                     wafers and device wafers. On test wafers, XMMO
+                                                                     of 2.9 nm and 3.2 nm in x and y respectively was
+                                                                     demonstrated. SMO of 2.2 nm and 2.4 nm was
+                                                                     achieved, with an opportunity to further improve
+                                                                     results by applying wafer chucks with better flatness
+                                                                     specifications. Additionally, a new method for
+                                                                     reducing     overlay     errors,    Drop      Pattern
+                                                                     Compensation (DPC) was introduced, and an
+                                                                     example was presented showing the how DPC could
+      Fig. 8. Overlay is impacted by the 20 nm recessed              be used to overcome existing pattern topography on
+      topography on a device-like wafer. By applying both            a wafer. Finally, defectivity has been addressed by
+      HODC and Drop Pattern Compensation (DPC), the                  reducing particles generated in the imprint tool,
+      overlay errors are reduced from 4.4 nm in x (a) to 3.4 nm      thereby extending mask life to more than 300 wafer
+      in x and 3.3 nm in y (b).                                      lots. Mask life extension is an important factor in
+                                                                     improving NIL cost of ownership.
+      4. Mask life
+         NIL requires both a master mask and multiple                Acknowledgments
+      copies of a replica mask. As a result, the gating item            The authors gratefully acknowledge the support
+      on cost for NIL the mask life of the replica mask. In          of their colleagues at both Canon Inc. and Canon
+      2017 the mask life target of 80 wafer lots was met.            Nanotechnologies, Inc. Further, the authors would
+      This year, Toshiba Memory Corporation has a                    like to thank both DNP and TMC for their efforts in
+
+756
+                                 J. Photopolym. Sci. Technol., Vol. 32, No. 5, 2019
+
+
+
+advancing nanoimprint lithography.                           7. K. Selenidis, J. Maltabes, I. McMackin, J.
+                                                                 Perez, W. Martin, D. J. Resnick, and S.V.
+References                                                       Sreenivasan, Proc. SPIE, 6730 (2007) 67300F.
+1. S. Y. Chou, P. R. Kraus, and P. J. Renstrom, J. Vac.      8. I. McMackin, J. Choi, P. Schumaker, V.
+   Sci. Technol. B, 14 (1996) 4129.                              Nguyen, F. Xu, E. Thompson, D. Babbs, S. V.
+2. T. K. Widden, D. K. Ferry, M. N. Kozicki, E. Kim,             Sreenivasan, M. Watts, and N. Schumaker,
+   A. Kumar, J. Wilbur, and G. M. Whitesides,                    Proc. SPIE, 5374 (2004) 222.
+   Nanotechnology, 7 (1996) 447.                             9. K. S. Selinidis, C. B. Brooks, G. F. Doyle, L.
+3. M. Colburn, S. Johnson, M. Stewart, S. Damle,                 Brown, C. Jones, J. Imhof, D. L. LaBrake, D. J.
+   T. Bailey, B. Choi, M. Wedlake, T. Michaelson,                Resnick, and S. V. Sreenivasan, Proc. SPIE,
+   S. V. Sreenivasan, J. Ekerdt, and C. G. Willson,              7970 (2011) 797009.
+   Proc. SPIE, 3676 (1999) 379.                              10. Z. Hamaya, J. Seki, T. Asano, K. Sakai, A.
+4. M. Colburn, T. Bailey, B. J. Choi, J. G. Ekerdt,              Aghili, M. Mizuno, J. Choi, and C. Jones, Proc.
+   and S. V. Sreenivasan, Solid State Technol., 46               SPIE, 10810 (2018) 108100F.
+   (2001) 67.                                                11. K. Imoto, M. Hiura, H. Morohoshi, T. Hayashi,
+5. T. C. Bailey, D. J. Resnick, D. Mancini, K. J.                A. Kimura, Y. Suzaki, and J. Choi, Proc. SPIE,
+   Nordquist, W. J. Dauksher, E. Ainley, A. Talin, K.            10451 (2017) 104511B.
+   Gehoski, J. H. Baker, B. J. Choi, S. Johnson, M.          12. Y. Takabayashi, M. Hiura, H. Morohoshi, N.
+   Colburn, S. V. Sreenivasan, J. G. Ekerdt, and C.              Kodachi, T. Hayashi, A. Kimura, T. Yoshida,
+   G. Willson, Microelectron. Eng., 61-62 (2002)                 K. Mishima, Y. Suzaki, and J. Choi, Proc.
+   461.                                                          SPIE, 10144 (2017) 1014405.
+6. S. V. Sreenivasan, P. Schumaker, B. Mokaberi-             13. T. Kono, M. Hatano, H. Tokue, H. Kato, K.
+   Nezhad, J. Choi, J. Perez, V. Truskett, F. Xu,                Fukuhara, and T. Nakasugi, Proc. SPIE, 10958
+   presented at the SPIE Advanced Lithography                    (2019) 109580H.
+   Symposium, Conference 7271 (2009).
+
+
+
+
+                                                                                                                   757
+

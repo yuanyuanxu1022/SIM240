@@ -1,0 +1,27 @@
+[
+  {
+    "steps": 2001,
+    "case": "laplace",
+    "exit_code": 4,
+    "stderr": "extension permits 0-step preparation or exactly 2000 diagnostic steps; no formal validation"
+  },
+  {
+    "steps": 200,
+    "case": "laplace",
+    "exit_code": 4,
+    "stderr": "extension permits 0-step preparation or exactly 2000 diagnostic steps; no formal validation"
+  },
+  {
+    "steps": 2000,
+    "case": "contact",
+    "exit_code": 4,
+    "stderr": "this extension permits laplace only"
+  },
+  {
+    "steps": 2000,
+    "case": "laplace",
+    "accepted_parse_then_refused_existing_path": true,
+    "exit_code": 4,
+    "stderr": "refusing to overwrite run-id"
+  }
+]

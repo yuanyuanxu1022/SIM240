@@ -1,0 +1,161 @@
+# Use explicit exponent notation: the local CJK font lacks superscript-minus glyphs.
+def safe_notation(value):
+    for a,b in [('10⁻²³','10^(-23)'),('10⁻²²','10^(-22)'),('10⁻²⁷','10^(-27)'),('K₀','K0')]:
+        value=value.replace(a,b)
+    return value
+for s in slides:
+    for e in s['elements']:
+        if e['kind']=='text':e['text']=safe_notation(e['text'])
+        elif e['kind']=='table':e['rows']=[[safe_notation(c) for c in row] for row in e['rows']]
+
+# OOXML writer: all prose and tables are editable native PowerPoint objects.
+NS='http://schemas.openxmlformats.org'
+A=NS+'/drawingml/2006/main'; PN=NS+'/presentationml/2006/main'; RN=NS+'/officeDocument/2006/relationships'
+REL=NS+'/package/2006/relationships'
+def xml(s):return ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+s).encode()
+def rels(items):return xml('<Relationships xmlns="'+REL+'">'+''.join(f'<Relationship Id="{i}" Type="{RN}/{typ}" Target="{escape(target)}"/>' for i,typ,target in items)+'</Relationships>')
+def xfrm(x,y,w,h):return f'<a:xfrm><a:off x="{round(x*EMU)}" y="{round(y*EMU)}"/><a:ext cx="{round(w*EMU)}" cy="{round(h*EMU)}"/></a:xfrm>'
+def fill(c):return f'<a:solidFill><a:srgbClr val="{c}"/></a:solidFill>'
+def paras(value,size,color,bold=False):
+    result=[]
+    for line in value.split('\n'):
+        sz=round(size*75)
+        result.append(f'<a:p><a:pPr algn="l"><a:lnSpc><a:spcPct val="110000"/></a:lnSpc><a:spcAft><a:spcPts val="300"/></a:spcAft></a:pPr><a:r><a:rPr lang="zh-CN" sz="{sz}" b="{int(bold)}">{fill(color)}<a:latin typeface="{FONT}"/><a:ea typeface="{FONT}"/><a:cs typeface="{FONT}"/></a:rPr><a:t xml:space="preserve">{escape(line)}</a:t></a:r><a:endParaRPr lang="zh-CN" sz="{sz}"/></a:p>')
+    return ''.join(result)
+def shape(e,idx):
+    return f'<p:sp><p:nvSpPr><p:cNvPr id="{idx}" name="Text {idx}"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr>{xfrm(e["x"],e["y"],e["w"],e["h"])}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/><a:ln><a:noFill/></a:ln></p:spPr><p:txBody><a:bodyPr wrap="square" lIns="0" tIns="0" rIns="0" bIns="0" anchor="t"/><a:lstStyle/>{paras(e["text"],e["size"],e["color"],e["bold"])}</p:txBody></p:sp>'
+def tablexml(e,idx):
+    grid=''.join(f'<a:gridCol w="{round(w*EMU)}"/>' for w in e['widths'])
+    trs=[]
+    for ri,row in enumerate(e['rows']):
+        cells=[]
+        for cell in row:
+            bg=BLUE if ri==0 else ('EEF3F6' if ri%2 else WHITE)
+            color=WHITE if ri==0 else INK
+            cells.append(f'<a:tc><a:txBody><a:bodyPr wrap="square"/><a:lstStyle/>{paras(cell,e["size"],color,ri==0)}</a:txBody><a:tcPr marL="152400" marR="95250" marT="114300" marB="57150" anchor="ctr">{fill(bg)}<a:lnL w="6350">{fill(WHITE)}</a:lnL><a:lnR w="6350">{fill(WHITE)}</a:lnR><a:lnT w="6350">{fill(WHITE)}</a:lnT><a:lnB w="6350">{fill(WHITE)}</a:lnB></a:tcPr></a:tc>')
+        trs.append(f'<a:tr h="{round(e["row_h"]*EMU)}">'+''.join(cells)+'</a:tr>')
+    return f'<p:graphicFrame><p:nvGraphicFramePr><p:cNvPr id="{idx}" name="Table {idx}"/><p:cNvGraphicFramePr/><p:nvPr/></p:nvGraphicFramePr><p:xfrm><a:off x="{round(e["x"]*EMU)}" y="{round(e["y"]*EMU)}"/><a:ext cx="{round(e["w"]*EMU)}" cy="{round(e["h"]*EMU)}"/></p:xfrm><a:graphic><a:graphicData uri="{A}/table"><a:tbl><a:tblPr firstRow="1" bandRow="1"/><a:tblGrid>{grid}</a:tblGrid>{"".join(trs)}</a:tbl></a:graphicData></a:graphic></p:graphicFrame>'
+def imagebox(e):
+    with Image.open(e['path']) as im:iw,ih=im.size
+    if e.get('crop'):
+        l,t,r,b=e['crop'];iw*=r-l;ih*=b-t
+    scale=min(e['w']/iw,e['h']/ih);nw,nh=iw*scale,ih*scale
+    return e['x']+(e['w']-nw)/2,e['y']+(e['h']-nh)/2,nw,nh
+def picxml(e,idx,rid):
+    x,y,w,h=imagebox(e)
+    crop=''
+    if e.get('crop'):
+        l,t,r,b=e['crop'];crop=f'<a:srcRect l="{round(l*100000)}" t="{round(t*100000)}" r="{round((1-r)*100000)}" b="{round((1-b)*100000)}"/>'
+    return f'<p:pic><p:nvPicPr><p:cNvPr id="{idx}" name="Source figure {idx}" descr="{escape(Path(e["path"]).name)}"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr><p:blipFill><a:blip r:embed="{rid}"/>{crop}<a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr>{xfrm(x,y,w,h)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>'
+group='<p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>'
+media={}
+def full_elements(s,i):
+    title=dict(kind='text',text=s['title'],x=64,y=65 if i else 122,w=1152,h=64 if i else 180,size=42 if i else 55,color=INK,bold=True)
+    foot=dict(kind='text',text=f'SIM240 单相研究阶段汇报   2026年11月5日                                             {i+1} / {len(slides)}',x=64,y=685,w=1152,h=24,size=15,color=GRAY,bold=False)
+    return [title]+s['elements']+[foot]
+with zipfile.ZipFile(PPT,'w',zipfile.ZIP_DEFLATED) as z:
+    def put(path,content):z.writestr(path,content)
+    overrides=[]
+    def part(path,kind,data):
+        put(path,data);overrides.append((path,kind))
+    mainct='application/vnd.openxmlformats-officedocument.presentationml.'
+    for i,s in enumerate(slides,1):
+        sr=[('rId1','slideLayout','../slideLayouts/slideLayout1.xml'),('rId2','notesSlide',f'../notesSlides/notesSlide{i}.xml')]
+        objects=[]
+        for idx,e in enumerate(full_elements(s,i-1),2):
+            if e['kind']=='text':objects.append(shape(e,idx))
+            elif e['kind']=='table':objects.append(tablexml(e,idx))
+            else:
+                pth=e['path']
+                if pth not in media:media[pth]='image'+str(len(media)+1)+'.png'
+                rid='rId'+str(len(sr)+1);sr.append((rid,'image','../media/'+media[pth]));objects.append(picxml(e,idx,rid))
+        doc=f'<p:sld xmlns:p="{PN}" xmlns:a="{A}" xmlns:r="{RN}"><p:cSld><p:bg><p:bgPr>{fill(WHITE)}<a:effectLst/></p:bgPr></p:bg><p:spTree>{group}{"".join(objects)}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>'
+        part(f'ppt/slides/slide{i}.xml',mainct+'slide+xml',xml(doc));put(f'ppt/slides/_rels/slide{i}.xml.rels',rels(sr))
+        n={'text':s['note']+'\n\n来源：'+s['source']+'\n\n范围：原始记录算术核对或现行稿件说明；未新增求解、拟合或科学Gate验收。','x':64,'y':80,'w':1100,'h':580,'size':22,'color':INK,'bold':False}
+        note_shape=shape(n,2).replace('<p:nvPr/>','<p:nvPr><p:ph type="body" idx="1"/></p:nvPr>',1)
+        notes=f'<p:notes xmlns:p="{PN}" xmlns:a="{A}" xmlns:r="{RN}"><p:cSld><p:spTree>{group}{note_shape}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:notes>'
+        part(f'ppt/notesSlides/notesSlide{i}.xml',mainct+'notesSlide+xml',xml(notes));put(f'ppt/notesSlides/_rels/notesSlide{i}.xml.rels',rels([('rId1','slide',f'../slides/slide{i}.xml'),('rId2','notesMaster','../notesMasters/notesMaster1.xml')]))
+    for path,name in media.items():put('ppt/media/'+name,Path(path).read_bytes())
+    prs=f'<p:presentation xmlns:p="{PN}" xmlns:a="{A}" xmlns:r="{RN}"><p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst><p:notesMasterIdLst><p:notesMasterId r:id="rId2"/></p:notesMasterIdLst><p:sldIdLst>'+''.join(f'<p:sldId id="{255+i}" r:id="rId{i+2}"/>' for i in range(1,len(slides)+1))+f'</p:sldIdLst><p:sldSz cx="{W*EMU}" cy="{H*EMU}" type="screen16x9"/><p:notesSz cx="6858000" cy="9144000"/><p:defaultTextStyle><a:defPPr><a:defRPr lang="zh-CN"><a:latin typeface="{FONT}"/><a:ea typeface="{FONT}"/></a:defRPr></a:defPPr></p:defaultTextStyle></p:presentation>'
+    part('ppt/presentation.xml',mainct+'presentation.main+xml',xml(prs));put('ppt/_rels/presentation.xml.rels',rels([('rId1','slideMaster','slideMasters/slideMaster1.xml'),('rId2','notesMaster','notesMasters/notesMaster1.xml')]+[(f'rId{i+2}','slide',f'slides/slide{i}.xml') for i in range(1,len(slides)+1)]))
+    cmap='<p:clrMap accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" bg1="lt1" bg2="lt2" folHlink="folHlink" hlink="hlink" tx1="dk1" tx2="dk2"/>'
+    part('ppt/slideMasters/slideMaster1.xml',mainct+'slideMaster+xml',xml(f'<p:sldMaster xmlns:p="{PN}" xmlns:a="{A}" xmlns:r="{RN}"><p:cSld><p:spTree>{group}</p:spTree></p:cSld>{cmap}<p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst><p:txStyles><p:titleStyle/><p:bodyStyle/><p:otherStyle/></p:txStyles></p:sldMaster>'))
+    put('ppt/slideMasters/_rels/slideMaster1.xml.rels',rels([('rId1','slideLayout','../slideLayouts/slideLayout1.xml'),('rId2','theme','../theme/theme1.xml')]))
+    part('ppt/slideLayouts/slideLayout1.xml',mainct+'slideLayout+xml',xml(f'<p:sldLayout xmlns:p="{PN}" xmlns:a="{A}" xmlns:r="{RN}" type="blank" preserve="1"><p:cSld name="Blank"><p:spTree>{group}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sldLayout>'))
+    put('ppt/slideLayouts/_rels/slideLayout1.xml.rels',rels([('rId1','slideMaster','../slideMasters/slideMaster1.xml')]))
+    part('ppt/notesMasters/notesMaster1.xml',mainct+'notesMaster+xml',xml(f'<p:notesMaster xmlns:p="{PN}" xmlns:a="{A}" xmlns:r="{RN}"><p:cSld><p:spTree>{group}</p:spTree></p:cSld>{cmap}<p:notesStyle/></p:notesMaster>'))
+    put('ppt/notesMasters/_rels/notesMaster1.xml.rels',rels([('rId1','theme','../theme/theme1.xml')]))
+    colors={'dk1':INK,'lt1':WHITE,'dk2':GRAY,'lt2':'EEF3F6','accent1':BLUE,'accent2':'A96A13','accent3':'2C785C','accent4':'775B91','accent5':'557E90','accent6':RED,'hlink':'0563C1','folHlink':'954F72'}
+    clr=''.join(f'<a:{k}><a:srgbClr val="{v}"/></a:{k}>' for k,v in colors.items())
+    fnt=''.join(f'<a:{kind}Font><a:latin typeface="{FONT}"/><a:ea typeface="{FONT}"/><a:cs typeface="{FONT}"/></a:{kind}Font>' for kind in ['major','minor'])
+    solid='<a:solidFill><a:schemeClr val="phClr"/></a:solidFill>'
+    fmt=f'<a:fmtScheme name="Simple"><a:fillStyleLst>{solid*3}</a:fillStyleLst><a:lnStyleLst>'+''.join(f'<a:ln w="{v}">{solid}<a:prstDash val="solid"/></a:ln>' for v in [6350,12700,19050])+f'</a:lnStyleLst><a:effectStyleLst>{"<a:effectStyle><a:effectLst/></a:effectStyle>"*3}</a:effectStyleLst><a:bgFillStyleLst>{solid*3}</a:bgFillStyleLst></a:fmtScheme>'
+    part('ppt/theme/theme1.xml','application/vnd.openxmlformats-officedocument.theme+xml',xml(f'<a:theme xmlns:a="{A}" name="SIM240"><a:themeElements><a:clrScheme name="Research">{clr}</a:clrScheme><a:fontScheme name="Noto CJK">{fnt}</a:fontScheme>{fmt}</a:themeElements></a:theme>'))
+    put('_rels/.rels',rels([('rId1','officeDocument','ppt/presentation.xml'),('rId2','metadata/core-properties','docProps/core.xml')]).replace((RN+'/metadata/core-properties').encode(),(NS+'/package/2006/metadata/core-properties').encode()))
+    part('docProps/core.xml','application/vnd.openxmlformats-package.core-properties+xml',xml('<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>SIM240 第一篇导师阶段汇报</dc:title><dc:description>AI辅助整理；以5nm离散参考为基准；尚未投稿就绪</dc:description></cp:coreProperties>'))
+    ctypes='<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/>'+''.join(f'<Override PartName="/{path}" ContentType="{kind}"/>' for path,kind in overrides)+'</Types>'
+    put('[Content_Types].xml',xml(ctypes))
+
+# Same layout, local preview/PDF; no generated scientific illustrations.
+SCALE=1.5
+fontcache={}
+def font(size,bold=False):
+    k=(size,bold)
+    if k not in fontcache:fontcache[k]=ImageFont.truetype(BOLD if bold else FONTFILE,round(size*SCALE),index=2)
+    return fontcache[k]
+def wrap(value,ft,max_width):
+    out=[]
+    for para in value.split('\n'):
+        cur=''
+        for c in para:
+            if cur and ft.getlength(cur+c)>max_width:out.append(cur);cur=c
+            else:cur+=c
+        out.append(cur)
+    return out
+fit=[]
+def drawtext(draw,value,box,size,color,bold=False,center=False):
+    x,y,w,h=box;ft=font(size,bold);ls=wrap(value,ft,w*SCALE)
+    lineh=math.ceil(size*1.10+4)*SCALE
+    required=(len(ls)-1)*lineh+size*SCALE*1.3
+    if required>h*SCALE+2:fit.append({'text':value,'height':h,'required':required/SCALE})
+    if center:y+=(h-required/SCALE)/2
+    for i,line in enumerate(ls):draw.text((x*SCALE,(y+i*lineh/SCALE)*SCALE),line,font=ft,fill='#'+color,anchor='lt')
+images=[]
+for i,s in enumerate(slides):
+    im=Image.new('RGB',(round(W*SCALE),round(H*SCALE)),'#'+WHITE);dr=ImageDraw.Draw(im)
+    for e in full_elements(s,i):
+        if e['kind']=='text':drawtext(dr,e['text'],(e['x'],e['y'],e['w'],e['h']),e['size'],e['color'],e['bold'])
+        elif e['kind']=='image':
+            pic=Image.open(e['path']).convert('RGB')
+            if e.get('crop'):
+                l,t,r,b=e['crop'];pic=pic.crop((int(pic.width*l),int(pic.height*t),int(pic.width*r),int(pic.height*b)))
+            x,y,w,h=imagebox(e);pic=pic.resize((round(w*SCALE),round(h*SCALE)),Image.Resampling.LANCZOS);im.paste(pic,(round(x*SCALE),round(y*SCALE)))
+        else:
+            for ri,row in enumerate(e['rows']):
+                x=e['x'];y=e['y']+ri*e['row_h']
+                for ci,cell in enumerate(row):
+                    width=e['widths'][ci];bg=BLUE if ri==0 else ('EEF3F6' if ri%2 else WHITE)
+                    dr.rectangle((x*SCALE,y*SCALE,(x+width)*SCALE,(y+e['row_h'])*SCALE),fill='#'+bg,outline='white',width=2)
+                    drawtext(dr,cell,(x+16,y+12,width-26,e['row_h']-18),e['size'],WHITE if ri==0 else INK,ri==0,center=True);x+=width
+    im.save(QA/f'slide-{i+1:02}.png');images.append(im)
+images[0].save(PDF,'PDF',save_all=True,append_images=images[1:],resolution=144.0,title='SIM240 第一篇导师阶段汇报',author='AI-assisted research briefing')
+mont=Image.new('RGB',(4*480,math.ceil(len(images)/4)*270),'#D9E1E6')
+for i,im in enumerate(images):mont.paste(im.resize((480,270)),((i%4)*480,(i//4)*270))
+mont.save(QA/'contact_sheet.png')
+if fit:(QA/'text_fit_findings.json').write_text(json.dumps(fit,ensure_ascii=False,indent=2))
+notes=['# 第一篇导师汇报逐页讲稿','', '第1—24页为完整汇报，约18—22分钟；第25—28页备查。前期主地图采用5nm离散参考，本周各阶段按各自网格与协议说明。' ,'']
+for i,s in enumerate(slides,1):
+    notes += [f'## 第{i}页：'+s['title'].replace('\n',''),' ',s['note'],'', '证据入口：'+s['source'],'']
+(WORK/'完整汇报逐页讲稿.md').write_text('\n'.join(notes))
+(WORK/'slide_content.json').write_text(json.dumps(slides,ensure_ascii=False,indent=2))
+(WORK/'source_manifest.json').write_text(json.dumps(sources,ensure_ascii=False,indent=2))
+checked={}
+with zipfile.ZipFile(PPT) as z:
+    for n in z.namelist():
+        if n.endswith('.xml') or n.endswith('.rels'):ET.fromstring(z.read(n))
+    checked['slide_count']=len([n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+.xml',n)])
+    checked['native_table_count']=sum(z.read(n).count(b'<a:tbl>') for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+.xml',n))
+    checked['notes_count']=len([n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+.xml',n)])
+checked.update({'source_hashes_unchanged':all(hashfile(ROOT/k)==v for k,v in sources.items()),'local_text_fit_findings':fit,'runtime':'stdlib OOXML fallback; artifact-tool unavailable','pdf':'raster companion from same layout, not a PowerPoint-rendered PDF','pptx_sha256':hashfile(PPT),'pdf_sha256':hashfile(PDF),'no_solver_or_fit_run':True,'scientific_gates_unchanged':True})
+(WORK/'verification.json').write_text(json.dumps(checked,ensure_ascii=False,indent=2))
+print(json.dumps({'pptx':str(PPT),'pdf':str(PDF),'slides':len(slides),'fit_findings':fit},ensure_ascii=False,indent=2))

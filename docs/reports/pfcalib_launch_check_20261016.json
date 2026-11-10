@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-16",
+  "scope": "Repair launch preparation only; no OpenLB run or compilation.",
+  "observed_status_before_preparation": {
+    "tmux_sessions": [
+      "d1v1b"
+    ],
+    "pfcalib_present": false,
+    "phasefield_processes": [],
+    "literal_placeholder_path_exists": false,
+    "four_original_target_output_directories_present": false
+  },
+  "launcher": "grooveDNS/stage3_ex240_local/phasefield_minimal_validation/run_wetting_calibration_20261016.sh",
+  "launcher_sha256": "5f7e3ee8d0048708c9bf7c41e6f05009304f27b80cf4aac87b3ae7f959e91714",
+  "bash_syntax_check": "PASS",
+  "binary_strings_contain_theta_and_extent": true,
+  "openlb_head": "882924a9cfc8dcdf82909e39530789cb6f5ebcc4",
+  "build_binding": "Plan records prior compilation/smoke; no fresh compilation or independent source-build binding asserted here.",
+  "isolated_stub_check": {
+    "status": "PASS",
+    "real_OpenLB_executed": false,
+    "four_runs_recorded": true,
+    "theta104_stub_exit": 3,
+    "aggregate_exit": 1,
+    "per_run_independent_exit_files_verified": true,
+    "theta15_extent100_other_extent64_verified": true
+  },
+  "limits": [
+    "Completed process-status snapshot is not continuous monitoring.",
+    "Launcher ready does not mean user started it or any calibration passed.",
+    "No historical results or thresholds changed.",
+    "Generated program run_manifest omits theta/extent; wrapper records exact command externally."
+  ]
+}

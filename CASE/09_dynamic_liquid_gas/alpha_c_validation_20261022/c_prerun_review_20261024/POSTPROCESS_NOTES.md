@@ -1,0 +1,1 @@
+证据矩阵首次调用Skill校验器exit2：evidence_ids不能包含路径斜线，且claim_type限定枚举。初版CSV及错误日志保留。改为EV-C编号并另存实际路径/定位映射，将mechanism/reproducibility分类改成机械枚举mechanistic/methods；v2格式校验exit0。数值数据、物理公式、阈值和审查结论未因此变化。校验器仅检查声明/格式，不验证科学结论。

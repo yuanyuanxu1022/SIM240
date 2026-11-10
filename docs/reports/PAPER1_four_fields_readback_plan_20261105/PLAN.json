@@ -1,0 +1,591 @@
+{
+  "plan_id": "PAPER1_FOUR_FIELDS_READBACK_PLAN_20261105_v1",
+  "date": "2026-11-05",
+  "scope": "prepare_offline_readback_and_flux_comparison_plan_only",
+  "reviewable_plan": true,
+  "formal_protocol_adopted": false,
+  "checker_implemented": false,
+  "synthetic_checks_executed": false,
+  "readback_executed": false,
+  "partition_results_available": false,
+  "solver_execution_authorized": false,
+  "execution_command_delivered": false,
+  "new_simulation_run_id": null,
+  "runs": [
+    {
+      "run_id": "h50_d25_dx5_P",
+      "geometry_nm": {
+        "h": 50,
+        "d": 25,
+        "w": 120,
+        "P": 240
+      },
+      "dx_nm": 5,
+      "direction": "P",
+      "velocity_component_index": 1,
+      "final_step": 2286,
+      "final_vti": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0002286iC00000.vti",
+      "section_axis": "y",
+      "original_section_indices": [
+        12,
+        36
+      ],
+      "original_section_coordinates_nm": [
+        62.5,
+        182.5
+      ],
+      "csv_anchor_native_y_index": 24,
+      "csv_anchor_y_nm": 122.5,
+      "metadata": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 22"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0002286iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 22"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        }
+      ],
+      "readback_status": "NOT_EXECUTED",
+      "flux_result": null,
+      "partition_result": null
+    },
+    {
+      "run_id": "h50_d25_dx5_T",
+      "geometry_nm": {
+        "h": 50,
+        "d": 25,
+        "w": 120,
+        "P": 240
+      },
+      "dx_nm": 5,
+      "direction": "T",
+      "velocity_component_index": 0,
+      "final_step": 1890,
+      "final_vti": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0001890iC00000.vti",
+      "section_axis": "x",
+      "original_section_indices": [
+        6,
+        24
+      ],
+      "original_section_coordinates_nm": [
+        32.5,
+        122.5
+      ],
+      "csv_anchor_native_y_index": 24,
+      "csv_anchor_y_nm": 122.5,
+      "metadata": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 22"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d25_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0001890iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 22",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 22"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        }
+      ],
+      "readback_status": "NOT_EXECUTED",
+      "flux_result": null,
+      "partition_result": null
+    },
+    {
+      "run_id": "h50_d100_dx5_P",
+      "geometry_nm": {
+        "h": 50,
+        "d": 100,
+        "w": 120,
+        "P": 240
+      },
+      "dx_nm": 5,
+      "direction": "P",
+      "velocity_component_index": 1,
+      "final_step": 3713,
+      "final_vti": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0003713iC00000.vti",
+      "section_axis": "y",
+      "original_section_indices": [
+        12,
+        36
+      ],
+      "original_section_coordinates_nm": [
+        62.5,
+        182.5
+      ],
+      "csv_anchor_native_y_index": 24,
+      "csv_anchor_y_nm": 122.5,
+      "metadata": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0000000iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 37"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0003713iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 37"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        }
+      ],
+      "readback_status": "NOT_EXECUTED",
+      "flux_result": null,
+      "partition_result": null
+    },
+    {
+      "run_id": "h50_d100_dx5_T",
+      "geometry_nm": {
+        "h": 50,
+        "d": 100,
+        "w": 120,
+        "P": 240
+      },
+      "dx_nm": 5,
+      "direction": "T",
+      "velocity_component_index": 0,
+      "final_step": 2253,
+      "final_vti": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002253iC00000.vti",
+      "section_axis": "x",
+      "original_section_indices": [
+        6,
+        24
+      ],
+      "original_section_coordinates_nm": [
+        32.5,
+        122.5
+      ],
+      "csv_anchor_native_y_index": 24,
+      "csv_anchor_y_nm": 122.5,
+      "metadata": [
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0000000iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 37"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        },
+        {
+          "path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002253iC00000.vti",
+          "root": {
+            "type": "ImageData",
+            "version": "0.1",
+            "byte_order": "LittleEndian",
+            "compressor": "vtkZLibDataCompressor"
+          },
+          "image": [
+            {
+              "WholeExtent": "-3 50 -3 50 -3 37",
+              "Origin": "2.5e-09 2.5e-09 -2.5e-09",
+              "Spacing": "5e-09 5e-09 5e-09"
+            }
+          ],
+          "piece": [
+            {
+              "Extent": "-3 50 -3 50 -3 37"
+            }
+          ],
+          "arrays": [
+            {
+              "type": "Float32",
+              "Name": "material",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "velocity_m_s",
+              "NumberOfComponents": "3",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "pressure_Pa",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            },
+            {
+              "type": "Float32",
+              "Name": "dissipation_m2_s3",
+              "NumberOfComponents": "1",
+              "format": "binary",
+              "encoding": "base64"
+            }
+          ],
+          "point_data_blocks": 1,
+          "cell_data_blocks": 0
+        }
+      ],
+      "readback_status": "NOT_EXECUTED",
+      "flux_result": null,
+      "partition_result": null
+    }
+  ],
+  "preferred_runtime": {
+    "pvpython_path": "/usr/bin/pvpython",
+    "ordinary_python_vtk_available": false,
+    "numpy_available": true,
+    "runtime_version_verified": false,
+    "reader_started": false
+  },
+  "excluded": [
+    "solver",
+    "compile",
+    "vtk_array_decode_in_this_task",
+    "dissipation_integration",
+    "reserved_predictions",
+    "new_grid_runs",
+    "gate_changes",
+    "plot_rendering"
+  ],
+  "formulas": {
+    "J": "sum_F(u_e*dx^3)/(Lx*Ly)",
+    "Q_P": "sum_at_y(u_y*dx^2)",
+    "Q_T": "sum_at_x(u_x*dx^2)",
+    "J_region": "sum_region(u_e*dx^3)/(Lx*Ly)",
+    "depth_increment": "delta(J_G)+delta(J_C0)+J_Cplus_deep"
+  },
+  "scientific_status_unchanged": {
+    "S4_STAGE_ACCEPTED": false,
+    "reference_qualified": false,
+    "MODEL_COMPARISON": "NOT_EVALUATED",
+    "physical_validation": "NOT_EVALUATED",
+    "submission_ready": false
+  }
+}

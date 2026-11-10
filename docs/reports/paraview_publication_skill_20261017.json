@@ -1,0 +1,604 @@
+{
+  "date": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "scope": "Create a ParaView publication-figure standards skill for both Codex and Claude Code; read-only checks of existing SIM240 fields; no solver run or modification of raw results.",
+  "skill": "paraview-publication",
+  "installation": {
+    "roots": [
+      "/home/dell/.codex/skills/paraview-publication",
+      "/home/dell/.claude/skills/paraview-publication"
+    ],
+    "file_count_per_platform": 5,
+    "files": [
+      {
+        "relative_path": "SKILL.md",
+        "sha256": "e71b699b0ec18fd74965d4e281cc5d4f8f7ffdc8f7dbfcba50c3885748f1f8aa",
+        "copies_identical": true,
+        "bytes": 7311
+      },
+      {
+        "relative_path": "agents/openai.yaml",
+        "sha256": "761a7e63e7ae38cdbd51102d83e0cbb0d4ff50f970b845ee2f23a4a681b56e40",
+        "copies_identical": true,
+        "bytes": 316
+      },
+      {
+        "relative_path": "references/paraview-workflow.md",
+        "sha256": "5db7a45daf0b32dd123f72f646417dff5a63febda6799956e6f608cb1c1e81c2",
+        "copies_identical": true,
+        "bytes": 5653
+      },
+      {
+        "relative_path": "references/sim240.md",
+        "sha256": "d3bd210d982e14017474ee88f677ca9143de12fac12b30de97f2eb8725e37082",
+        "copies_identical": true,
+        "bytes": 3425
+      },
+      {
+        "relative_path": "scripts/audit_fields.py",
+        "sha256": "2b0a6c1777ef14a63b76e86e7f2c7dd7b0ab4f224b7ee95f3f2366c764fa7481",
+        "copies_identical": true,
+        "bytes": 10694
+      }
+    ],
+    "syntax_and_references_checked": true
+  },
+  "validators": [
+    {
+      "root": "/home/dell/.codex/skills/paraview-publication",
+      "chunk_id": "33cb21",
+      "wall_time_seconds": 0.000009429,
+      "exit_code": 0,
+      "original_token_count": 4,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "root": "/home/dell/.claude/skills/paraview-publication",
+      "chunk_id": "688770",
+      "wall_time_seconds": 0.00000858,
+      "exit_code": 0,
+      "original_token_count": 4,
+      "output": "Skill is valid!\n"
+    }
+  ],
+  "original_skills_preserved": [
+    "/home/dell/.codex/skills/paraview-viz",
+    "/home/dell/.codex/skills/scientific-visualization",
+    "/home/dell/.codex/skills/.system/skill-creator"
+  ],
+  "paraview_version": "5.11.2",
+  "vtk_version": "9.2.20220823",
+  "tests": [
+    {
+      "name": "physical_fluid_P_T_volume",
+      "exit_code": 0,
+      "result": {
+        "schema": "paraview-publication-point-audit-v1",
+        "paraview_version": "(5, 11)",
+        "field": "velocity_m_s",
+        "quantity": "magnitude",
+        "association": "POINTS",
+        "units": "not_inferred_from_array_name",
+        "material_field": "material",
+        "fluid_value": 1,
+        "physical_bounds_filter": [
+          0,
+          2.4e-7,
+          0,
+          2.4e-7,
+          0,
+          1.75e-7
+        ],
+        "slice_origin": null,
+        "slice_normal": null,
+        "requested_range": [
+          0,
+          0.00018
+        ],
+        "inputs": [
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0004329.vtm",
+            "reader_sha256_root_only": "122041a7b03d4770e6e99cde6470fad4d3c7a128d4b7947942490427876aac24",
+            "reader_payload_hashes_checked": false,
+            "available_times": [],
+            "selected_time": null,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 134136,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 57600,
+              "min": 0.0000015253847323037917,
+              "max": 0.00016571265587117523
+            },
+            "range_covers_selected_values": true
+          },
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002940.vtm",
+            "reader_sha256_root_only": "646b6e58af2d64190304c1555a047fec98adcbc3df4b57914017b8b683505b86",
+            "reader_payload_hashes_checked": false,
+            "available_times": [],
+            "selected_time": null,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 134136,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 57600,
+              "min": 2.3137771698600318e-9,
+              "max": 0.00008874550985638052
+            },
+            "range_covers_selected_values": true
+          }
+        ],
+        "errors": [],
+        "requested_range_covers_all_selected_values": true,
+        "audit_completed": true,
+        "limits": [
+          "No geometry, convergence, physical validation or journal acceptance is asserted.",
+          "No volume integration or unique-node count; unflagged overlaps may remain.",
+          "No physical-domain exclusion when --bounds is absent.",
+          "Slice interpolation followed by material selection can exclude mixed boundary points.",
+          "Only root reader SHA256 is computed; referenced payload provenance is not verified."
+        ],
+        "common_min": 2.3137771698600318e-9,
+        "common_max": 0.00016571265587117523
+      }
+    },
+    {
+      "name": "same_z37p5nm_P_T_slice",
+      "command": "pvpython /home/dell/.codex/skills/paraview-publication/scripts/audit_fields.py /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0004329.vtm /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002940.vtm --field velocity_m_s --magnitude --material material --bounds 0 2.4e-7 0 2.4e-7 0 1.75e-7 --slice-origin 1.2e-7 1.2e-7 3.75e-8 --slice-normal 0 0 1 --range 0 1.8e-4",
+      "exit_code": 0,
+      "result": {
+        "schema": "paraview-publication-point-audit-v1",
+        "paraview_version": "(5, 11)",
+        "field": "velocity_m_s",
+        "quantity": "magnitude",
+        "association": "POINTS",
+        "units": "not_inferred_from_array_name",
+        "material_field": "material",
+        "fluid_value": 1,
+        "physical_bounds_filter": [
+          0,
+          2.4e-7,
+          0,
+          2.4e-7,
+          0,
+          1.75e-7
+        ],
+        "slice_origin": [
+          1.2e-7,
+          1.2e-7,
+          3.75e-8
+        ],
+        "slice_normal": [
+          0,
+          0,
+          1
+        ],
+        "requested_range": [
+          0,
+          0.00018
+        ],
+        "inputs": [
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0004329.vtm",
+            "reader_sha256_root_only": "122041a7b03d4770e6e99cde6470fad4d3c7a128d4b7947942490427876aac24",
+            "reader_payload_hashes_checked": false,
+            "available_times": [],
+            "selected_time": null,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 2916,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 2304,
+              "min": 0.00007546257984358817,
+              "max": 0.00013367862266022712
+            },
+            "range_covers_selected_values": true
+          },
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002940.vtm",
+            "reader_sha256_root_only": "646b6e58af2d64190304c1555a047fec98adcbc3df4b57914017b8b683505b86",
+            "reader_payload_hashes_checked": false,
+            "available_times": [],
+            "selected_time": null,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 2916,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 2304,
+              "min": 0.00006171929271658882,
+              "max": 0.00008874550985638052
+            },
+            "range_covers_selected_values": true
+          }
+        ],
+        "errors": [],
+        "requested_range_covers_all_selected_values": true,
+        "audit_completed": true,
+        "limits": [
+          "No geometry, convergence, physical validation or journal acceptance is asserted.",
+          "No volume integration or unique-node count; unflagged overlaps may remain.",
+          "No physical-domain exclusion when --bounds is absent.",
+          "Slice interpolation followed by material selection can exclude mixed boundary points.",
+          "Only root reader SHA256 is computed; referenced payload provenance is not verified."
+        ],
+        "common_min": 0.00006171929271658882,
+        "common_max": 0.00013367862266022712
+      }
+    },
+    {
+      "name": "reject_color_range_cutting_peaks",
+      "expected_exit": 2,
+      "command": "pvpython /home/dell/.codex/skills/paraview-publication/scripts/audit_fields.py /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0004329.vtm /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002940.vtm --field velocity_m_s --magnitude --material material --bounds 0 2.4e-7 0 2.4e-7 0 1.75e-7 --range 0 1e-5",
+      "exit_code": 2,
+      "result": {
+        "schema": "paraview-publication-point-audit-v1",
+        "paraview_version": "(5, 11)",
+        "field": "velocity_m_s",
+        "quantity": "magnitude",
+        "association": "POINTS",
+        "units": "not_inferred_from_array_name",
+        "material_field": "material",
+        "fluid_value": 1,
+        "physical_bounds_filter": [
+          0,
+          2.4e-7,
+          0,
+          2.4e-7,
+          0,
+          1.75e-7
+        ],
+        "slice_origin": null,
+        "slice_normal": null,
+        "requested_range": [
+          0,
+          0.00001
+        ],
+        "inputs": [
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0004329.vtm",
+            "reader_sha256_root_only": "122041a7b03d4770e6e99cde6470fad4d3c7a128d4b7947942490427876aac24",
+            "reader_payload_hashes_checked": false,
+            "available_times": [],
+            "selected_time": null,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 134136,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 57600,
+              "min": 0.0000015253847323037917,
+              "max": 0.00016571265587117523
+            },
+            "range_covers_selected_values": false
+          },
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002940.vtm",
+            "reader_sha256_root_only": "646b6e58af2d64190304c1555a047fec98adcbc3df4b57914017b8b683505b86",
+            "reader_payload_hashes_checked": false,
+            "available_times": [],
+            "selected_time": null,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 134136,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 57600,
+              "min": 2.3137771698600318e-9,
+              "max": 0.00008874550985638052
+            },
+            "range_covers_selected_values": false
+          }
+        ],
+        "errors": [],
+        "requested_range_covers_all_selected_values": false,
+        "audit_completed": true,
+        "limits": [
+          "No geometry, convergence, physical validation or journal acceptance is asserted.",
+          "No volume integration or unique-node count; unflagged overlaps may remain.",
+          "No physical-domain exclusion when --bounds is absent.",
+          "Slice interpolation followed by material selection can exclude mixed boundary points.",
+          "Only root reader SHA256 is computed; referenced payload provenance is not verified."
+        ],
+        "common_min": 2.3137771698600318e-9,
+        "common_max": 0.00016571265587117523
+      }
+    },
+    {
+      "name": "reject_missing_point_array",
+      "expected_exit": 2,
+      "command": "pvpython /home/dell/.codex/skills/paraview-publication/scripts/audit_fields.py /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0004329.vtm --field not_a_real_field --material material",
+      "exit_code": 2,
+      "result": {
+        "schema": "paraview-publication-point-audit-v1",
+        "paraview_version": "(5, 11)",
+        "field": "not_a_real_field",
+        "quantity": "scalar",
+        "association": "POINTS",
+        "units": "not_inferred_from_array_name",
+        "material_field": "material",
+        "fluid_value": 1,
+        "physical_bounds_filter": null,
+        "slice_origin": null,
+        "slice_normal": null,
+        "requested_range": null,
+        "inputs": [],
+        "errors": [
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/data/g2_ex240_parallel_iT0004329.vtm",
+            "error": "Point field 'not_a_real_field' missing in a nonempty block; cell data is not converted."
+          }
+        ],
+        "requested_range_covers_all_selected_values": null,
+        "audit_completed": false,
+        "limits": [
+          "No geometry, convergence, physical validation or journal acceptance is asserted.",
+          "No volume integration or unique-node count; unflagged overlaps may remain.",
+          "No physical-domain exclusion when --bounds is absent.",
+          "Slice interpolation followed by material selection can exclude mixed boundary points.",
+          "Only root reader SHA256 is computed; referenced payload provenance is not verified."
+        ]
+      }
+    },
+    {
+      "name": "reject_implicit_first_frame",
+      "expected_exit": 2,
+      "command": "pvpython /home/dell/.codex/skills/paraview-publication/scripts/audit_fields.py /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/g2_ex240_parallel.pvd --field velocity_m_s --magnitude",
+      "exit_code": 2,
+      "result": {
+        "schema": "paraview-publication-point-audit-v1",
+        "paraview_version": "(5, 11)",
+        "field": "velocity_m_s",
+        "quantity": "magnitude",
+        "association": "POINTS",
+        "units": "not_inferred_from_array_name",
+        "material_field": null,
+        "fluid_value": null,
+        "physical_bounds_filter": null,
+        "slice_origin": null,
+        "slice_normal": null,
+        "requested_range": null,
+        "inputs": [],
+        "errors": [
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/g2_ex240_parallel.pvd",
+            "error": "Time series requires explicit --time; refusing to assume first frame is steady."
+          }
+        ],
+        "requested_range_covers_all_selected_values": null,
+        "audit_completed": false,
+        "limits": [
+          "No geometry, convergence, physical validation or journal acceptance is asserted.",
+          "No volume integration or unique-node count; unflagged overlaps may remain.",
+          "No physical-domain exclusion when --bounds is absent.",
+          "Slice interpolation followed by material selection can exclude mixed boundary points.",
+          "Only root reader SHA256 is computed; referenced payload provenance is not verified."
+        ]
+      }
+    },
+    {
+      "name": "explicit_final_frame_PVD",
+      "exit_code": 0,
+      "result": {
+        "schema": "paraview-publication-point-audit-v1",
+        "paraview_version": "(5, 11)",
+        "field": "velocity_m_s",
+        "quantity": "magnitude",
+        "association": "POINTS",
+        "units": "not_inferred_from_array_name",
+        "material_field": "material",
+        "fluid_value": 1,
+        "physical_bounds_filter": [
+          0,
+          2.4e-7,
+          0,
+          2.4e-7,
+          0,
+          1.75e-7
+        ],
+        "slice_origin": null,
+        "slice_normal": null,
+        "requested_range": [
+          0,
+          0.00018
+        ],
+        "inputs": [
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/vtkData/g2_ex240_parallel.pvd",
+            "reader_sha256_root_only": "8e99dd5797ee6768cfa94f52add4bb67ecd76447e9c667c7d4417a787902475e",
+            "reader_payload_hashes_checked": false,
+            "available_times": [
+              0,
+              4329
+            ],
+            "selected_time": 4329,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 134136,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 57600,
+              "min": 0.0000015253847323037917,
+              "max": 0.00016571265587117523
+            },
+            "range_covers_selected_values": true
+          }
+        ],
+        "errors": [],
+        "requested_range_covers_all_selected_values": true,
+        "audit_completed": true,
+        "limits": [
+          "No geometry, convergence, physical validation or journal acceptance is asserted.",
+          "No volume integration or unique-node count; unflagged overlaps may remain.",
+          "No physical-domain exclusion when --bounds is absent.",
+          "Slice interpolation followed by material selection can exclude mixed boundary points.",
+          "Only root reader SHA256 is computed; referenced payload provenance is not verified."
+        ],
+        "common_min": 0.0000015253847323037917,
+        "common_max": 0.00016571265587117523
+      }
+    },
+    {
+      "name": "Claude_copy_script_T_smoke",
+      "command": "pvpython /home/dell/.claude/skills/paraview-publication/scripts/audit_fields.py /home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002940.vtm --field velocity_m_s --magnitude --material material --bounds 0 2.4e-7 0 2.4e-7 0 1.75e-7 --range 0 1.8e-4",
+      "exit_code": 0,
+      "result": {
+        "schema": "paraview-publication-point-audit-v1",
+        "paraview_version": "(5, 11)",
+        "field": "velocity_m_s",
+        "quantity": "magnitude",
+        "association": "POINTS",
+        "units": "not_inferred_from_array_name",
+        "material_field": "material",
+        "fluid_value": 1,
+        "physical_bounds_filter": [
+          0,
+          2.4e-7,
+          0,
+          2.4e-7,
+          0,
+          1.75e-7
+        ],
+        "slice_origin": null,
+        "slice_normal": null,
+        "requested_range": [
+          0,
+          0.00018
+        ],
+        "inputs": [
+          {
+            "input": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/vtkData/data/g2_ex240_perpendicular_iT0002940.vtm",
+            "reader_sha256_root_only": "646b6e58af2d64190304c1555a047fec98adcbc3df4b57914017b8b683505b86",
+            "reader_payload_hashes_checked": false,
+            "available_times": [],
+            "selected_time": null,
+            "reader_bounds": [
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.2500000000000003e-8,
+              2.5249999999999996e-7,
+              -1.75e-8,
+              2.075e-7
+            ],
+            "statistics": {
+              "nonempty_leaf_blocks": 1,
+              "source_point_count_including_repeats": 134136,
+              "excluded_flagged_ghost_points": 0,
+              "selected_sample_count_not_unique_nodes": 57600,
+              "min": 2.3137771698600318e-9,
+              "max": 0.00008874550985638052
+            },
+            "range_covers_selected_values": true
+          }
+        ],
+        "errors": [],
+        "requested_range_covers_all_selected_values": true,
+        "audit_completed": true,
+        "limits": [
+          "No geometry, convergence, physical validation or journal acceptance is asserted.",
+          "No volume integration or unique-node count; unflagged overlaps may remain.",
+          "No physical-domain exclusion when --bounds is absent.",
+          "Slice interpolation followed by material selection can exclude mixed boundary points.",
+          "Only root reader SHA256 is computed; referenced payload provenance is not verified."
+        ],
+        "common_min": 2.3137771698600318e-9,
+        "common_max": 0.00008874550985638052
+      }
+    },
+    {
+      "name": "preset_and_Never_property_smoke",
+      "chunk_id": "f2e316",
+      "wall_time_seconds": 0.759068617,
+      "exit_code": 0,
+      "original_token_count": 63,
+      "output": "Viridis (matplotlib) True endpoints [0.0, 0.267004, 0.004874, 0.329415] [4.999999987376214e-07, 0.993248, 0.906157, 0.143936]\nCividis True endpoints [0.0, 0.0, 0.1262, 0.3015] [4.999999987376214e-07, 1.0, 0.9169, 0.2731]\nrange 0.0 0.00018 mode 'Never'\n"
+    }
+  ],
+  "development_note": "Initial local auditor smoke failed because GetParaViewVersion returns a non-iterable version object in ParaView 5.11.2; changed metadata serialization to str and reran all recorded tests successfully.",
+  "figure_recommendation": {
+    "scope": "Only this h75_d100_dx5 P/T pair, not every geometry or driving force.",
+    "quantity": "velocity magnitude",
+    "unit": "m/s",
+    "palette": "Viridis",
+    "mapping": "linear",
+    "fixed_range": [
+      0,
+      0.00018
+    ],
+    "auto_rescale": "Never",
+    "matched_comparison_slice_z_m": 3.75e-8
+  },
+  "screenshot_corrections": [
+    "Viridis, Plasma and Cividis are sequential, not diverging.",
+    "Pressure/temperature palette depends on reference semantics; signed shear components differ from shear magnitude.",
+    "Ordinary streamline density is not a speed measurement.",
+    "Gray print and absence of false visual boundaries require actual checks; neither is guaranteed by a palette name."
+  ],
+  "sources_verified": [
+    "https://docs.paraview.org/en/latest/ReferenceManual/colorMapping.html",
+    "https://matplotlib.org/stable/users/explain/colors/colormaps.html",
+    "https://vtk.org/doc/nightly/html/classvtkStreamTracer.html"
+  ],
+  "limits": [
+    "No new simulation, compilation, formal numerical acceptance or Gate release.",
+    "No final publication PNG created or accepted.",
+    "Scripts tested directly; new-session skill discovery and actual Codex/Claude skill routing not verified.",
+    "Point arrays only; root reader hashes do not cover referenced VTK payloads.",
+    "No specific journal compliance claimed."
+  ],
+  "next_action": "Start a new conversation or explicitly give the installed SKILL.md path; apply matched-domain shared linear Viridis scale 0 to 1.8e-4 m/s to the representative figure pair, then inspect actual exports.",
+  "long_run_authorization": "None"
+}

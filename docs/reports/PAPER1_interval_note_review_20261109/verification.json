@@ -1,0 +1,53 @@
+{
+  "scope": "Saved scalar arithmetic and figure checks; no numerical/physical acceptance",
+  "concatenated_row_occurrences": 84,
+  "main38_unique": 38,
+  "audit46_unique": 46,
+  "overlapping_records": 38,
+  "union_unique": 46,
+  "geometries": 19,
+  "intervals_per_panel": 19,
+  "total_intervals": 38,
+  "plotted_points": 46,
+  "main5nm": 38,
+  "refinement2p5nm": 8,
+  "h100_points_plotted": 2,
+  "lower_violations": [],
+  "upper_violations": [],
+  "minimum_K_over_lower": {
+    "run_id": "h125_d25_dx2.5_T",
+    "h_nm": 125.0,
+    "d_nm": 25.0,
+    "w_nm": 120,
+    "direction": "T",
+    "dx_nm": 2.5,
+    "K_m3": 1.833180803e-22,
+    "lower_m3": 1.6276041666666674e-22,
+    "upper_m3": 2.0619501466275668e-22,
+    "K_over_lower": 1.1263062853631995,
+    "upper_over_lower": 1.2668621700879765,
+    "in_primary36": false,
+    "in_main38": false,
+    "raw_path": "CASE/D_series/D2_groove_error_map/results/h125_d25_dx2.5_T/steady/result.txt",
+    "scalar_source": "docs/reports/PAPER1_闭环方案_20261105/bound_check_44_points.csv"
+  },
+  "max_overlap_relative_serialization_difference": 4.0322856165175835e-10,
+  "primary36_metrics": {
+    "P": {
+      "count": 18,
+      "mean_lower_underestimate_percent": 58.16650922809338,
+      "mean_upper_overestimate_percent": 88.84761958251687,
+      "lower_closer_count": 11,
+      "maximum_upper_over_lower": 63.00000000000002
+    },
+    "T": {
+      "count": 18,
+      "mean_lower_underestimate_percent": 23.83918311674232,
+      "mean_upper_overestimate_percent": 30.62704958069905,
+      "lower_closer_count": 11,
+      "maximum_upper_over_lower": 1.984126984126984
+    }
+  },
+  "protected_inputs_unchanged": 8,
+  "formula_scope": "Continuous Stokes, fully liquid, constant viscosity, no slip, fixed periodic rectangular geometry"
+}

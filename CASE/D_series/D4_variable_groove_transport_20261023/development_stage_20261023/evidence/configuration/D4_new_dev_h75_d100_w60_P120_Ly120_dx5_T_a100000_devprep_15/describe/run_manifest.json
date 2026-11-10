@@ -1,0 +1,74 @@
+{
+  "run_id": "D4_new_dev_h75_d100_w60_P120_Ly120_dx5_T_a100000_devprep_15",
+  "mode": "describe",
+  "planned_case_id": "CAND_new_dev_h75_d100_w60_P120_Ly120_dx5_T_a100000",
+  "formal_simulation": false,
+  "timestamp_UTC": "2026-10-23T09:59:58.929544+00:00",
+  "inputs_sha256": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp": "e8981904d5c93e476b3e1f4e0e0cdef8e8f11cbdaff4bd273a4d275e982e1555",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/Makefile": "13b4f7c28cfa27f90a40fe7e87f5d46088630f0e29d2505260000380955ab4b0",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/tools/run_case.py": "4f9f3a6dd607fa8ce226fee9bed591a78d9f0893d9a613b7f57d988dacf9e884",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/protocol/execution.json": "3c1d3a7a11f25e8ab1cd3dcb7c669d117c3ac24c8a7bfdc792aa1c7c383a0df1",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/protocol/candidate_cases.csv": "7f8cf1e00106565e11287b37456ebee1a1cb263759f96d773a12bda3bfeb392f",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/build/variable_groove_transport": "022e479f3270d5b43d8cd0dd629d82a05c18758c77c26409c21c0b6a4d2861a9",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_stage_20261023/evidence/configuration/D4_new_dev_h75_d100_w60_P120_Ly120_dx5_T_a100000_devprep_15/describe/run_config.txt": "10e214b9d4fc5871cae2672707df4212d88dac658e6a976d96e69e7c2c2723f9"
+  },
+  "command": [
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/build/variable_groove_transport",
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_stage_20261023/evidence/configuration/D4_new_dev_h75_d100_w60_P120_Ly120_dx5_T_a100000_devprep_15/describe/run_config.txt"
+  ],
+  "OpenLB_build_environment": {
+    "commands": [
+      {
+        "command": [
+          "make",
+          "-C",
+          "src",
+          "--dry-run"
+        ],
+        "exit_code": 0,
+        "stdout": "make: Entering directory '/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src'\nmkdir -p ../build/\nmpic++ -O3 -Wall -Wextra -march=native -mtune=native -std=c++20 -DOLB_VERSION=\\\"882924a9cfc8\\\" -pthread -DPARALLEL_MODE_MPI -DPLATFORM_CPU_SISD -DDEFAULT_FLOATING_POINT_TYPE=double -I/home/dell/openlb/src -I/home/dell/openlb/external/zlib -I/home/dell/openlb/external/tinyxml2 -MMD -MP -MF ../build/variable_groove_transport.d -c variable_groove_transport.cpp -o ../build/variable_groove_transport.o\nmpic++ ../build/variable_groove_transport.o -o ../build/variable_groove_transport -L/home/dell/openlb/build/lib -lolbcore -L/home/dell/openlb/external/lib -lz -ltinyxml2 -lpthread\nmake: Leaving directory '/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src'\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "mpic++",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "git",
+          "-C",
+          "/home/dell/openlb",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "882924a9cfc8dcdf82909e39530789cb6f5ebcc4\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "git",
+          "-C",
+          "/home/dell/openlb",
+          "status",
+          "--porcelain"
+        ],
+        "exit_code": 0,
+        "stdout": "?? config.mk.bak\n?? examples/freeSurface/fallingDrop3d/fallingDrop3d\n?? examples/laminar/cavity2d/cavity2d\n",
+        "stderr": ""
+      }
+    ],
+    "library_hashes": {
+      "/home/dell/openlb/build/lib/libolbcore.a": "a9b5bb80fc5cd35bda3a00c1efee799486955f53b45a9434d15be9512fb90e6d",
+      "/home/dell/openlb/external/lib/libz.a": "18188a71086122ac4febacfd7371d49172729f02f75bab07895e41f62c5bd956",
+      "/home/dell/openlb/external/lib/libtinyxml2.a": "26378a92c50f29bfb207273ad7e7864b7fe88d95362f1c715c2434e7ed548da6"
+    }
+  },
+  "model_prediction_data": false
+}

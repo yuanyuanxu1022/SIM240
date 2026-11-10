@@ -1,0 +1,96 @@
+{
+  "scope": "physical-domain algebra and existing raw-data audit; no solver or refit",
+  "protected_input_count": 78,
+  "input_mismatches": [],
+  "raw_points": 36,
+  "analytic_derivative_finite_difference_max_abs_error": 6.106515293424764e-11,
+  "negative_depth_slope_threshold": -1e-10,
+  "negative_slope_sample_points": {
+    "P": 0,
+    "T": 10
+  },
+  "depth_pairs": {
+    "P": {
+      "total": 14,
+      "raw_decreasing": 0,
+      "C4_decreasing": 0
+    },
+    "T": {
+      "total": 14,
+      "raw_decreasing": 0,
+      "C4_decreasing": 8
+    }
+  },
+  "scans": {
+    "old_log_hull": {
+      "geometry_points": 56573,
+      "direction_evaluations": 113146,
+      "P_less_than_T_count": 0,
+      "P": {
+        "negative_depth_slope_count": 0,
+        "lower_bound_violation_count": 0,
+        "worst_depth_log_slope": 0.15335301464196982,
+        "worst_alpha_beta": [
+          1.0416666666666665,
+          0.20833333333333334
+        ]
+      },
+      "T": {
+        "negative_depth_slope_count": 25310,
+        "lower_bound_violation_count": 0,
+        "worst_depth_log_slope": -0.18955730587973713,
+        "worst_alpha_beta": [
+          0.4241021894556067,
+          1.0
+        ]
+      }
+    },
+    "proposed_core_rectangle": {
+      "geometry_points": 58081,
+      "direction_evaluations": 116162,
+      "P_less_than_T_count": 0,
+      "P": {
+        "negative_depth_slope_count": 0,
+        "lower_bound_violation_count": 0,
+        "worst_depth_log_slope": 0.15861082786960817,
+        "worst_alpha_beta": [
+          1.25,
+          0.41666666666666663
+        ]
+      },
+      "T": {
+        "negative_depth_slope_count": 22966,
+        "lower_bound_violation_count": 0,
+        "worst_depth_log_slope": -0.25499150629891654,
+        "worst_alpha_beta": [
+          1.25,
+          1.9999999999999998
+        ]
+      }
+    }
+  },
+  "target_domain": {
+    "s_w_over_h": [
+      0.8,
+      3.2
+    ],
+    "t_d_over_h": [
+      0.3333333333333333,
+      1.6
+    ],
+    "phi": 0.5,
+    "P_rule": "2w",
+    "status": "proposed validation domain, not validated applicability"
+  },
+  "new_dev_geometries": 8,
+  "prediction_geometries": 8,
+  "all_planned_geometries_inside_target": true,
+  "core_conclusion": "C4_T violates depth monotonicity inside old hull; do not lock as a physical prediction model",
+  "asymptotic_exponents": {
+    "C4_P_deep_d": 1.4003254028194676,
+    "expected_P_deep_d": 1,
+    "C4_T_deep_d": -0.7768339511443813
+  },
+  "new_run_id": null,
+  "model_lock_created": false
+}

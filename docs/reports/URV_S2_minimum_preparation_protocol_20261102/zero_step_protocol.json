@@ -1,0 +1,605 @@
+{
+  "protocol_id": "S2-MIP-v1-ZERO",
+  "status": "PROTOCOL_ONLY_NOT_EXECUTED",
+  "authorization": {
+    "native_calls_authorized": false,
+    "approved_audit_run_ids": []
+  },
+  "source_binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+  "native_mode_allowlist": [
+    "describe",
+    "precheck",
+    "initialize"
+  ],
+  "forbidden_native_modes": [
+    "steady"
+  ],
+  "max_planned_native_calls": 18,
+  "planned_field_readbacks": 6,
+  "sequential_fail_stop": true,
+  "automatic_retry": false,
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_run_free_disk_GiB": 8,
+    "output_budget_GiB_per_case": 4,
+    "formal_wall_cap_seconds_by_dx_nm": {
+      "5": 3600,
+      "2.5": 14400,
+      "1.25": 43200
+    }
+  },
+  "expected_q": 0.5,
+  "q_absolute_tolerance": 1e-10,
+  "volume_relative_tolerance": 1e-10,
+  "initial_velocity_half_force_correction": true,
+  "capture_status": "NOT_APPLICABLE_S0_ONLY",
+  "numerical_gate_after_zero": "NOT_EVALUATED",
+  "result_pass_after_zero": false,
+  "reference_qualified_after_zero": false,
+  "records": [
+    {
+      "ordinal": 1,
+      "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+      "direction": "P",
+      "mode": "describe",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 46080,
+      "expected_wall_links": 30528,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 46080,
+        "material_2": 2304,
+        "material_3": 27648
+      },
+      "expected_window_steps": 648,
+      "expected_maximum_steps": 37632,
+      "expected_dt_s": 4.166666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 2.0833333333333333e-07,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        2.083333333333333e-14,
+        0
+      ],
+      "expected_initial_Mach": 3.0070326520293007e-10,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 2,
+      "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+      "direction": "P",
+      "mode": "precheck",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 46080,
+      "expected_wall_links": 30528,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 46080,
+        "material_2": 2304,
+        "material_3": 27648
+      },
+      "expected_window_steps": 648,
+      "expected_maximum_steps": 37632,
+      "expected_dt_s": 4.166666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 2.0833333333333333e-07,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        2.083333333333333e-14,
+        0
+      ],
+      "expected_initial_Mach": 3.0070326520293007e-10,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 3,
+      "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+      "direction": "P",
+      "mode": "initialize",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 46080,
+      "expected_wall_links": 30528,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 46080,
+        "material_2": 2304,
+        "material_3": 27648
+      },
+      "expected_window_steps": 648,
+      "expected_maximum_steps": 37632,
+      "expected_dt_s": 4.166666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 2.0833333333333333e-07,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        2.083333333333333e-14,
+        0
+      ],
+      "expected_initial_Mach": 3.0070326520293007e-10,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": 300,
+      "independent_field_readback_required": true
+    },
+    {
+      "ordinal": 4,
+      "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+      "direction": "T",
+      "mode": "describe",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 46080,
+      "expected_wall_links": 30528,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 46080,
+        "material_2": 2304,
+        "material_3": 27648
+      },
+      "expected_window_steps": 648,
+      "expected_maximum_steps": 37632,
+      "expected_dt_s": 4.166666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 2.0833333333333333e-07,
+      "expected_initial_J_vector_m2_s": [
+        2.083333333333333e-14,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 3.0070326520293007e-10,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 5,
+      "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+      "direction": "T",
+      "mode": "precheck",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 46080,
+      "expected_wall_links": 30528,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 46080,
+        "material_2": 2304,
+        "material_3": 27648
+      },
+      "expected_window_steps": 648,
+      "expected_maximum_steps": 37632,
+      "expected_dt_s": 4.166666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 2.0833333333333333e-07,
+      "expected_initial_J_vector_m2_s": [
+        2.083333333333333e-14,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 3.0070326520293007e-10,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 6,
+      "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+      "direction": "T",
+      "mode": "initialize",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 46080,
+      "expected_wall_links": 30528,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 46080,
+        "material_2": 2304,
+        "material_3": 27648
+      },
+      "expected_window_steps": 648,
+      "expected_maximum_steps": 37632,
+      "expected_dt_s": 4.166666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 2.0833333333333333e-07,
+      "expected_initial_J_vector_m2_s": [
+        2.083333333333333e-14,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 3.0070326520293007e-10,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": 300,
+      "independent_field_readback_required": true
+    },
+    {
+      "ordinal": 7,
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+      "direction": "P",
+      "mode": "describe",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 368640,
+      "expected_wall_links": 122496,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 368640,
+        "material_2": 9216,
+        "material_3": 184320
+      },
+      "expected_window_steps": 2592,
+      "expected_maximum_steps": 150528,
+      "expected_dt_s": 1.0416666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 5.208333333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        5.208333333333333e-15,
+        0
+      ],
+      "expected_initial_Mach": 3.758790815036626e-11,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 8,
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+      "direction": "P",
+      "mode": "precheck",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 368640,
+      "expected_wall_links": 122496,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 368640,
+        "material_2": 9216,
+        "material_3": 184320
+      },
+      "expected_window_steps": 2592,
+      "expected_maximum_steps": 150528,
+      "expected_dt_s": 1.0416666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 5.208333333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        5.208333333333333e-15,
+        0
+      ],
+      "expected_initial_Mach": 3.758790815036626e-11,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 9,
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+      "direction": "P",
+      "mode": "initialize",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 368640,
+      "expected_wall_links": 122496,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 368640,
+        "material_2": 9216,
+        "material_3": 184320
+      },
+      "expected_window_steps": 2592,
+      "expected_maximum_steps": 150528,
+      "expected_dt_s": 1.0416666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 5.208333333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        5.208333333333333e-15,
+        0
+      ],
+      "expected_initial_Mach": 3.758790815036626e-11,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": 300,
+      "independent_field_readback_required": true
+    },
+    {
+      "ordinal": 10,
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+      "direction": "T",
+      "mode": "describe",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 368640,
+      "expected_wall_links": 122496,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 368640,
+        "material_2": 9216,
+        "material_3": 184320
+      },
+      "expected_window_steps": 2592,
+      "expected_maximum_steps": 150528,
+      "expected_dt_s": 1.0416666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 5.208333333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        5.208333333333333e-15,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 3.758790815036626e-11,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 11,
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+      "direction": "T",
+      "mode": "precheck",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 368640,
+      "expected_wall_links": 122496,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 368640,
+        "material_2": 9216,
+        "material_3": 184320
+      },
+      "expected_window_steps": 2592,
+      "expected_maximum_steps": 150528,
+      "expected_dt_s": 1.0416666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 5.208333333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        5.208333333333333e-15,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 3.758790815036626e-11,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 12,
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+      "direction": "T",
+      "mode": "initialize",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 368640,
+      "expected_wall_links": 122496,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 368640,
+        "material_2": 9216,
+        "material_3": 184320
+      },
+      "expected_window_steps": 2592,
+      "expected_maximum_steps": 150528,
+      "expected_dt_s": 1.0416666666666667e-12,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 5.208333333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        5.208333333333333e-15,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 3.758790815036626e-11,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": 300,
+      "independent_field_readback_required": true
+    },
+    {
+      "ordinal": 13,
+      "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+      "direction": "P",
+      "mode": "describe",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 2949120,
+      "expected_wall_links": 490752,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 2949120,
+        "material_2": 36864,
+        "material_3": 1327104
+      },
+      "expected_window_steps": 10368,
+      "expected_maximum_steps": 602112,
+      "expected_dt_s": 2.604166666666667e-13,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 1.3020833333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        1.3020833333333332e-15,
+        0
+      ],
+      "expected_initial_Mach": 4.698488518795782e-12,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 14,
+      "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+      "direction": "P",
+      "mode": "precheck",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 2949120,
+      "expected_wall_links": 490752,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 2949120,
+        "material_2": 36864,
+        "material_3": 1327104
+      },
+      "expected_window_steps": 10368,
+      "expected_maximum_steps": 602112,
+      "expected_dt_s": 2.604166666666667e-13,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 1.3020833333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        1.3020833333333332e-15,
+        0
+      ],
+      "expected_initial_Mach": 4.698488518795782e-12,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 15,
+      "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+      "direction": "P",
+      "mode": "initialize",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 2949120,
+      "expected_wall_links": 490752,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 2949120,
+        "material_2": 36864,
+        "material_3": 1327104
+      },
+      "expected_window_steps": 10368,
+      "expected_maximum_steps": 602112,
+      "expected_dt_s": 2.604166666666667e-13,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 1.3020833333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        0,
+        1.3020833333333332e-15,
+        0
+      ],
+      "expected_initial_Mach": 4.698488518795782e-12,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": 300,
+      "independent_field_readback_required": true
+    },
+    {
+      "ordinal": 16,
+      "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+      "direction": "T",
+      "mode": "describe",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 2949120,
+      "expected_wall_links": 490752,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 2949120,
+        "material_2": 36864,
+        "material_3": 1327104
+      },
+      "expected_window_steps": 10368,
+      "expected_maximum_steps": 602112,
+      "expected_dt_s": 2.604166666666667e-13,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 1.3020833333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        1.3020833333333332e-15,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 4.698488518795782e-12,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 17,
+      "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+      "direction": "T",
+      "mode": "precheck",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 2949120,
+      "expected_wall_links": 490752,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 2949120,
+        "material_2": 36864,
+        "material_3": 1327104
+      },
+      "expected_window_steps": 10368,
+      "expected_maximum_steps": 602112,
+      "expected_dt_s": 2.604166666666667e-13,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 1.3020833333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        1.3020833333333332e-15,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 4.698488518795782e-12,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": null,
+      "independent_field_readback_required": false
+    },
+    {
+      "ordinal": 18,
+      "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+      "direction": "T",
+      "mode": "initialize",
+      "audit_run_id": null,
+      "expected_time_steps": 0,
+      "expected_nodes": 2949120,
+      "expected_wall_links": 490752,
+      "expected_material_counts": {
+        "material_0": 0,
+        "material_1": 2949120,
+        "material_2": 36864,
+        "material_3": 1327104
+      },
+      "expected_window_steps": 10368,
+      "expected_maximum_steps": 602112,
+      "expected_dt_s": 2.604166666666667e-13,
+      "expected_nominal_volume_m3": 5.76e-21,
+      "expected_equilibrium_corrected_mass_kg": 5.76e-18,
+      "expected_initial_U_main_m_s": 1.3020833333333333e-08,
+      "expected_initial_J_vector_m2_s": [
+        1.3020833333333332e-15,
+        0,
+        0
+      ],
+      "expected_initial_Mach": 4.698488518795782e-12,
+      "native_timeout_seconds": 300,
+      "field_reader_timeout_seconds": 300,
+      "independent_field_readback_required": true
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+   Flow through microchannels with topographically
+ patterned walls: a spectral theory for arbitrary groove
+                         depths
+                 Mainendra Kumar Dewangan, Subhra Datta
+Department of Mechanical Engineering, IIT Delhi, Hauz Khas, New Delhi 110016, India
+
+
+
+
+Abstract
+Current technology allows us to build microfluidic channels, which are so
+thin that incidental and/or surface topographical features engineered for
+applications such as microfluidic mixing/separations can present significant
+constrictions and dilatations to the flow passage. Considering such situa-
+tions, pressure-driven laminar incompressible flow through an infinitely wide
+channel, one of whose walls has sinusoidal grooves running along the flow
+direction, is investigated through an accurate semi-analytical and grid-free
+spectral approach, without placing any restrictions on the pattern amplitude.
+In the special limits of small pattern amplitude and large channel spacing,
+the spectral model recovers asymptotic predictions earlier reported in the
+literature. The spectral model is also used to provide new closed-form esti-
+mates for permeability and effective slip at an order of asymptotic accuracy
+higher than those currently available from the literature. The predictions
+from the spectral model, which are obtainable with very low computational
+expense, are also cross-validated against finite-element-method based simu-
+lations. In the thick channel limit, the predictions from the spectral model is
+quantitatively consistent with results from recent molecular dynamic (MD)
+simulations conducted by Guo et al. [1, Physical Review Fluids, 1(7), 074102,
+2016]. The newly proposed and existing closed-form asymptotic predictions
+are also assessed numerically against the spectral model. In the long-wave
+limit, the permeability of the channel increases on increasing the depth of
+grooves, while in the short wave limit, the permeability decreases. Certain
+
+   Email address: subhra.datta@mech.iitd.ac.in (Subhra Datta)
+
+
+
+Preprint submitted to European Journal of Mechanics - B/Fluids      March 23, 2019
+predictions from the spectral model are beyond the resolution of currently
+available asymptotic theories; e.g. the existence of a finite pattern ampli-
+tude for medium-wave patterns, at which the permeability of the channel is
+minimized.
+Keywords: basic fluid mechanics, microfluidics, permeation fluid mechanics
+
+
+1. Introduction
+    Topographically patterned surfaces have numerous practical applications
+to microfluidics, such as microfluidic mixing [2], pumping and flow detection
+[3], control of dispersion of analytes [4] and surface capture of bioparticles
+such as circulating tumor cells [5, 6]. In many such applications, fluid motion
+near the patterned surface play a critical role. With continued progress in
+miniaturization from microfluidics to nanofluidics [7], it is now quite proba-
+ble that the passage for microfluidic flows will be obstructed by either engi-
+neered topographic patterns or unintentional irregularities in fabricated sur-
+faces such as waviness and roughness. Therefore, theoretical understanding
+of situations in confined flows where one or more channel walls are topo-
+graphically patterned and the amplitude and wavelength of the patterning is
+comparable to the size of the channels is necessary.
+    There are three main scales in a confined forced flow problem with surface
+topographic patterns: the channel size, the pattern amplitude and pattern
+pitch. Early theoretical approaches on pressure-driven/electrokinetic con-
+fined flow problems often use approximations based on relative magnitude of
+these three scales. The assumption of the depth of patterned grooves being
+much smaller than the channel size is used by [8, 9]. The studies by [10–12]
+employ the asymptotic approximation that the amplitude of the pattern is
+much smaller than the pattern pitch. Apart from [8, 9], earlier work have
+ignored the confinement effects by using an analytical simplification corre-
+sponding to one of the confining surface to be far enough to merely provide
+an ‘outer flow’, while the inner flow can be solved with a prescribed shear
+at infinity [10–18]. Such a flow field is termed ‘shear flow’. However, it can
+be noted that [11, 12, 17, 18] allow for intrinsic wall slip, which introduces
+another length scale to the problem.
+    From the standpoint of applications such as microfluidic mixing discussed
+above, grooves obliquely oriented to the flow are important. Crucially, flow
+fields altered by oblique groove patterns, can be rendered tractable by utiliz-
+
+
+                                      2
+

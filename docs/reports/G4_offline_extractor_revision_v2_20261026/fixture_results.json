@@ -1,0 +1,76 @@
+{
+  "status": "SYNTHETIC_V2_VALIDATION_PASS",
+  "unit_tests_run": 30,
+  "regression_tests": 17,
+  "new_revision_tests": 13,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "test_ids": [
+    "test_bad_maps_nan_degenerate_duplicate_and_units_rejected (test_fixtures.Fixtures.test_bad_maps_nan_degenerate_duplicate_and_units_rejected)",
+    "test_complete_periodic_and_wall_trace_diagnostics (test_fixtures.Fixtures.test_complete_periodic_and_wall_trace_diagnostics)",
+    "test_flat_parabola_full_pipeline_and_shared_edge_sections (test_fixtures.Fixtures.test_flat_parabola_full_pipeline_and_shared_edge_sections)",
+    "test_global_and_local_dof_permutations (test_fixtures.Fixtures.test_global_and_local_dof_permutations)",
+    "test_mms_analytic_integrals_independent_closed_form (test_fixtures.Fixtures.test_mms_analytic_integrals_independent_closed_form)",
+    "test_mms_interpolation_quadrature_and_error_metrics (test_fixtures.Fixtures.test_mms_interpolation_quadrature_and_error_metrics)",
+    "test_no_backend_or_solver_imports (test_fixtures.Fixtures.test_no_backend_or_solver_imports)",
+    "test_p2_complete_polynomial_all_orientations_and_scales (test_fixtures.Fixtures.test_p2_complete_polynomial_all_orientations_and_scales)",
+    "test_pressure_offset_invariance (test_fixtures.Fixtures.test_pressure_offset_invariance)",
+    "test_real_entry_rejects_before_path_access (test_fixtures.Fixtures.test_real_entry_rejects_before_path_access)",
+    "test_rectangle_topology_flip_preserves_polynomial_integrals (test_fixtures.Fixtures.test_rectangle_topology_flip_preserves_polynomial_integrals)",
+    "test_slab_identity_nonzero_wall_flux (test_fixtures.Fixtures.test_slab_identity_nonzero_wall_flux)",
+    "test_strong_divergence_energy_identity_noslip_periodic (test_fixtures.Fixtures.test_strong_divergence_energy_identity_noslip_periodic)",
+    "test_synthetic_archive_roundtrip_hash_tamper_and_kind_rejection (test_fixtures.Fixtures.test_synthetic_archive_roundtrip_hash_tamper_and_kind_rejection)",
+    "test_triangle_monomials_through_degree_eight (test_fixtures.Fixtures.test_triangle_monomials_through_degree_eight)",
+    "test_weak_pressure_sign_and_periodic_aggregation_with_artificial_csr (test_fixtures.Fixtures.test_weak_pressure_sign_and_periodic_aggregation_with_artificial_csr)",
+    "test_zero_field_is_not_positive_driven_pass (test_fixtures.Fixtures.test_zero_field_is_not_positive_driven_pass)",
+    "test_certificate_and_accepted_input_index_tamper (test_revision.RevisionTests.test_certificate_and_accepted_input_index_tamper)",
+    "test_change_during_read_rejected (test_revision.RevisionTests.test_change_during_read_rejected)",
+    "test_complete_synthetic_analysis_artifacts_and_no_overwrite (test_revision.RevisionTests.test_complete_synthetic_analysis_artifacts_and_no_overwrite)",
+    "test_failed_analysis_retains_error_log_and_nonzero_exit (test_revision.RevisionTests.test_failed_analysis_retains_error_log_and_nonzero_exit)",
+    "test_inventory_must_already_be_in_accepted_input_list (test_revision.RevisionTests.test_inventory_must_already_be_in_accepted_input_list)",
+    "test_manifest_shape_and_dtype_rejected_after_trusted_transport (test_revision.RevisionTests.test_manifest_shape_and_dtype_rejected_after_trusted_transport)",
+    "test_missing_or_modified_record_bytes_rejected (test_revision.RevisionTests.test_missing_or_modified_record_bytes_rejected)",
+    "test_nonfinite_missing_and_near_threshold_statuses (test_revision.RevisionTests.test_nonfinite_missing_and_near_threshold_statuses)",
+    "test_nonzero_L2_closed_form_with_pressure_offset_and_permutation (test_revision.RevisionTests.test_nonzero_L2_closed_form_with_pressure_offset_and_permutation)",
+    "test_real_schema_reader_success_and_N8_dimensions (test_revision.RevisionTests.test_real_schema_reader_success_and_N8_dimensions)",
+    "test_replacement_inventory_cannot_replace_pinned_binding (test_revision.RevisionTests.test_replacement_inventory_cannot_replace_pinned_binding)",
+    "test_wrong_run_case_parent_and_completion_rejected (test_revision.RevisionTests.test_wrong_run_case_parent_and_completion_rejected)",
+    "test_wrong_synthetic_kind_and_real_root_rejected_before_arrays (test_revision.RevisionTests.test_wrong_synthetic_kind_and_real_root_rejected_before_arrays)"
+  ],
+  "unit_test_process_exit": 0,
+  "code_sha256": {
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/analysis_record.py": "2a1f210e2b4e2b81a866e9d53353df2cc1f8ace297858281761f4835a8811151",
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/binding.py": "8d177d2c639385cab5caed5d9dac7f91ad32eed776e56112bfe404e77339ed3e",
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/extractor.py": "ec175f19562b69b2359349f9e60e8ad8ff5c3b145a07d47a404279e7b81dac6a",
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/numerics.py": "0934e24efadea518f2a6a501da8490710473a4073c4df9d9843eb6ec113f6177",
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/synthetic_cli.py": "1478b2499350226a92200a1748d0774bd101329d9e50c2f5baa9a1bffa9c0667",
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/synthetic_fixture.py": "74ba46897eefb93730b49d4321b0fd076c1c8c847783a4e103c5961db5fcabc5",
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/test_fixtures.py": "da4c0c3a4e1982dade611d8fa24684de59a091ad6ed4a0be3986df0ad5a9dccc",
+    "CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/offline_extractor_revision_v2_20261026/test_revision.py": "5757353998990bda9f117328c6c306bce908f2a816f5240f968248de78cf09bb"
+  },
+  "independent_synthetic_processes": {
+    "independent_success": {
+      "observed_process_exit": 0,
+      "recorded_analysis_exit": 0,
+      "status": "SYNTHETIC_METRICS_RECORDED",
+      "failure": null
+    },
+    "independent_failure": {
+      "observed_process_exit": 2,
+      "recorded_analysis_exit": 2,
+      "status": "SYNTHETIC_ANALYSIS_FAILED",
+      "failure": {
+        "message": "RECORD_BYTES_CHANGED",
+        "type": "Rejected"
+      }
+    }
+  },
+  "real_N8_arrays_loaded": false,
+  "real_extraction_run": false,
+  "solver_started": false,
+  "theory_criteria_changed": false,
+  "strict_error_bound_established": false,
+  "python": "3.14.7 | packaged by Anaconda, Inc. | (main, Aug 14 2026, 10:21:40) [GCC 14.3.0]",
+  "numpy": "2.5.3"
+}

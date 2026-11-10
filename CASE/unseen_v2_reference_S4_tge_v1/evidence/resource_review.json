@@ -1,0 +1,47 @@
+{
+  "snapshot_at": "2026-11-04T15:43:53.168249+08:00",
+  "MemAvailable_bytes": 16173699072,
+  "disk_free_bytes": 339905609728,
+  "candidate_fluid_nodes": 16515072,
+  "one_population_set_fluid_only_bytes": 2510290944,
+  "conditional_cost": {
+    "reference_run_id": "URV_S4_T_dx1p25_reuse_v1_20261103_01",
+    "reference_seconds": 4326.036089542002,
+    "node_ratio": 8,
+    "steps_ratio_if_same_physical_stop_time": 4,
+    "seconds_if_node_linear_and_same_physical_stop_time": 138433.15486534405,
+    "predicted_step_cost_seconds_if_node_linear": 2.760492040865918,
+    "predicted_steps_if_same_physical_stop_time": 50148,
+    "measured_candidate_speed": false,
+    "measured_candidate_peak_memory": false,
+    "completion_time_guaranteed": false
+  },
+  "candidate_peak_RSS": "NOT_MEASURED",
+  "candidate_throughput": "NOT_MEASURED",
+  "zero_resource_proposal": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_call_free_disk_GiB": 8,
+    "output_budget_GiB_per_call": 4,
+    "native_call_cap_seconds": 300,
+    "field_reader_cap_seconds": 300
+  },
+  "zero_resource_proposal_adopted": false,
+  "formal_solver_wall_cap_seconds": null,
+  "formal_checker_cap_seconds": null,
+  "formal_resource_readiness": "NOT_READY_NATIVE_ZERO_AND_CANDIDATE_RESOURCE_EVIDENCE_PENDING",
+  "performance_interface": "NOT_IMPLEMENTED_NOT_AUTHORIZED",
+  "resources_reserved": false,
+  "required_before_future_authority": [
+    "review_seal_and_current_resources",
+    "explicit_3_plus_1_authority_with_300s_and_8GiB_proposal",
+    "accept_actual_zero_and_initial_readback",
+    "separately_prepare_and_authorize_single_finite_PERF",
+    "decide_formal_budget_from_evidence_and_obtain_distinct_formal_authority"
+  ]
+}

@@ -1,0 +1,1 @@
+授权确认前只读快照已完成；随后收到真实采用/完整六条授权，已在独立新目录生成正式绑定。原readonly_precheck.json的pending字段描述确认前时点，不改写为事后状态。接续见authorization_resolved.json。未启动计算。

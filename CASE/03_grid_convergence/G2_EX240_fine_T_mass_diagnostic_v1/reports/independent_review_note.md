@@ -1,0 +1,11 @@
+# 现存独立审查记录的只读交叉核对
+
+准备包生成期间，工作树另出现`CASE/reports/fine_T_diagnostic_review_20261013_v1/`。该目录不是本准备步骤创建或执行的内容；本步骤只读其记录，没有修改其文件或调用其编译/测试脚本。
+
+本步骤核对其review.json记录的fine_T_diagnostic.cpp与mass_ledger.h SHA与当前准备源/头文件完全匹配。project_recipe_syntax.json记录按本Makefile的-Wall配方执行-fsyntax-only且exit0；review.json还记录合成常密度/平衡扰动的实际C++观察器测试、3686400节点快照读取通过。两者均声明没有链接OpenLB运行binary、没有启动solver、没有验证实际动力学等价性。
+
+这补充了准备包自身Python参考测试之外的现存证据。主preparation_manifest的compilation_performed=false描述本准备步骤，并非宣称工作树中所有其他审查从未调用编译器。STATIC_PREPARATION_PASS_NOT_COMPILED仍指本诊断的完整OpenLB可执行文件尚未构建。
+
+两个审查记录必须分别解释：review.json保留额外-Wextra/-Werror严格警告检查的syntax_check_PASS=false；project_recipe_syntax.json记录实际项目-Wall配方语法通过。不得回写前者为PASS，也不能把库头文件额外警告当成项目配方语法失败。
+
+该独立合成测试仅覆盖step0/1的构造密度，不是本h75横槽LBM运行；它不能证明step120/625峰值的根因或4000步覆盖。下一任务仍需独立编译记录、binary SHA与零推进precheck，短程运行另行安排。

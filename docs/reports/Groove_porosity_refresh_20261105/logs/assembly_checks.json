@@ -1,0 +1,190 @@
+{
+  "status": "ASSEMBLY_TESTS_PASS_NOT_FLOW_VALIDATION",
+  "tests": [
+    {
+      "variant": "normal",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "normal"
+      ],
+      "exit_code": 0,
+      "seconds": 0.06591565802227706,
+      "expected_rejection": null,
+      "passed": true
+    },
+    {
+      "variant": "noMu",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "noMu"
+      ],
+      "exit_code": 0,
+      "seconds": 0.06948132801335305,
+      "expected_rejection": null,
+      "passed": true
+    },
+    {
+      "variant": "noNu",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "noNu"
+      ],
+      "exit_code": 0,
+      "seconds": 0.05685324501246214,
+      "expected_rejection": null,
+      "passed": true
+    },
+    {
+      "variant": "zeroGap",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "zeroGap"
+      ],
+      "exit_code": 1,
+      "seconds": 0.047377136012073606,
+      "expected_rejection": "Require positive gap",
+      "passed": true
+    },
+    {
+      "variant": "negativeGap",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "negativeGap"
+      ],
+      "exit_code": 1,
+      "seconds": 0.049767928023356944,
+      "expected_rejection": "Require positive gap",
+      "passed": true
+    },
+    {
+      "variant": "nanGap",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "nanGap"
+      ],
+      "exit_code": 1,
+      "seconds": 0.047018535959068686,
+      "expected_rejection": "Require positive gap",
+      "passed": true
+    },
+    {
+      "variant": "wrongGapUnits",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "wrongGapUnits"
+      ],
+      "exit_code": 1,
+      "seconds": 0.04646557103842497,
+      "expected_rejection": "gapField must have length dimensions",
+      "passed": true
+    },
+    {
+      "variant": "unequalDuty",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "unequalDuty"
+      ],
+      "exit_code": 1,
+      "seconds": 0.04747562401462346,
+      "expected_rejection": "equal groove/land widths",
+      "passed": true
+    },
+    {
+      "variant": "manualD",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "manualD"
+      ],
+      "exit_code": 1,
+      "seconds": 0.04822642297949642,
+      "expected_rejection": "Do not supply d/f/H",
+      "passed": true
+    },
+    {
+      "variant": "wrongMatrixUnits",
+      "command": [
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/bin/auditPorosity",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/tmp/groove_porosity_refresh_20261105/CASE/groove_porosity_model_v1/build/fixture",
+        "-variant",
+        "wrongMatrixUnits"
+      ],
+      "exit_code": 1,
+      "seconds": 0.05983624001964927,
+      "expected_rejection": "Unsupported momentum matrix dimensions",
+      "passed": true
+    }
+  ],
+  "coefficient_test": "COEFFICIENT_PASS checks=41",
+  "frozen_coefficient_comparisons": [
+    {
+      "family": "original_local_cubic",
+      "orientation": "groove_along_short_x",
+      "max_relative_error": 2.220446049250313e-16
+    },
+    {
+      "family": "original_local_cubic",
+      "orientation": "groove_along_long_y",
+      "max_relative_error": 2.220446049250313e-16
+    },
+    {
+      "family": "V2_published_rounded",
+      "orientation": "groove_along_short_x",
+      "max_relative_error": 2.220446049250313e-16
+    },
+    {
+      "family": "V2_published_rounded",
+      "orientation": "groove_along_long_y",
+      "max_relative_error": 2.220446049250313e-16
+    }
+  ],
+  "coefficient_source": "docs/reports/Shared_transport_interface_20261030/coefficient_examples.json",
+  "coefficient_source_sha256": "9616842003a7a014ef4875b7a2e07f594b8c95a4633416e477ee0fa69ca917d1",
+  "source_sha256": {
+    "src/grooveDarcy.C": "956d4111ae22dfa65fb93b27d1c33d95d4b0775c01afe2ab8767cf7ba2392772",
+    "src/grooveDarcy.H": "0b0d05fa446f636eebbf77a2738387f87258b3853800443266b9bb3eb79ef65a",
+    "src/grooveTransport.H": "df970c90f2312132176fb30d9016451ba4330d7c37e6b5e325b31e66506dad27",
+    "src/Make/options": "1a7dfc880056cb46b159058aeee0e456df9bc72be1d5c988ce87746dfdccb9f6",
+    "src/Make/files": "dde970c8e6bd2051fb3a70335e1fe6d3154f6ec11f246d71354147194009683a",
+    "tests/testTransport.cpp": "1a43017408f99cc7b8c2a85910d551cf1de4e8680d34d60126cf90b4f5c3d8ed",
+    "tests/auditPorosity.C": "77c4b10394a1dc9d3ac09db8c2a9d38d62a22734fa258bf589614f714e33e664",
+    "tests/Make/options": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb",
+    "tests/Make/files": "03263539797a1b70ba8c14f6da74f665fc50f4d5dbb2805bb70751630aa8f8f7",
+    "scripts/prepare_fixture.py": "8cc777ddb47164a05a74adb4d609e448a3a4a69458a806fff73c239a245da076",
+    "scripts/check_assembly.py": "075bb224f4659f29cf6c233b59d2c53bf5126a22125fdf7607016a8db109482f"
+  },
+  "flow_solved": false,
+  "mesh_motion_tested": false,
+  "continuity_coupling_tested": false,
+  "physical_validation": "NOT_EVALUATED",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null
+}

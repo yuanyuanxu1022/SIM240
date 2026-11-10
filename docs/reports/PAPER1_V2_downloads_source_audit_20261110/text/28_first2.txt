@@ -1,0 +1,104 @@
+       Multiphase model for nanoimprint lithography
+
+   Andrew Cochranea,e , Kristianto Tjiptowidjojob , Roger T. Bonnecazec , P.
+                              Randall Schunkb,d
+a University of New Mexico, Nanoscience and Microsystems Engineering Program, MSC01
+
+        1141, 1 University of New Mexico, Albuquerque, NM 87131, United States
+  b University of New Mexico, Department of Chemical & Biological Engineering, MSC01
+
+        1120, 1 University of New Mexico, Albuquerque, NM 87131, United States
+c University of Texas at Austin, McKetta Department of Chemical Engineering, 200 E Dean
+
+                     Keaton St. Stop C0400, Austin, TX 78712-15989
+d Sandia National Laboratories1 , Advanced Materials Laboratory, 1001 University Blvd SE,
+
+                                  Albuquerque, NM 87106
+                         e Correspondence to: acochrane@gmail.com
+
+
+
+
+Abstract
+Reynolds’ lubrication theory is extended to capture two-fluid dynamics based
+on relative permeability concepts used for multiphase flow in porous media. A
+reduced-order model of gas dissolution is constructed by combining two-phase
+lubrication theory with Henry’s law and analytic approximations of surface area
+and diffusion length. The governing equations are solved as a thin finite-element
+shell model that can be used to investigate process sensitivities to a variety
+of technologically important parameters. Results are compared to those from
+related computationally intensive alternative formulations and to experimental
+flow visualizations to demonstrate its efficacy in modeling large area, many-drop
+processes and capturing the gas dissolution behavior observed in practice.
+Keywords: nanoimprint lithography, Reynolds lubrication, multiphase,
+disperse, gas-liquid, dissolution
+
+
+1. Introduction
+
+   The patterning of surfaces with features smaller than 100 nm is of great im-
+portance to the printed electronics, semiconductor and related manufacturing
+industries, in which low-cost production of nanometer-scale featured surfaces is
+necessary to meet evolving market demands[1]. Jet-and-flash imprint lithogra-
+phy (J-FIL)[2], a form of ultraviolet (UV) nanoimprint lithography (NIL)[3], has
+been rapidly advanced to meet these demands[4]. Pictured in Figure 1, J-FIL
+
+
+   1 Sandia National Laboratories is a multimission laboratory managed and operated by
+
+National Technology and Engineering Solutions of Sandia, LLC., a wholly owned subsidiary
+of Honeywell International, Inc., for the U.S. Department of Energys National Nuclear Security
+Administration under contract DE-NA0003525.
+               c 2018. Preprint submitted to Elsevier.
+              This manuscript version is made available under the CC-BY 4.0 license
+              http: // creativecommons. org/ licenses/ by/ 4. 0/
+
+              The published article can be found by its digital object identifier
+              DOI: 10.1016/j.ijmultiphaseflow.2018.03.014
+involves the interaction between solutions of photoactive monomer and solvent
+in a liquid phase with a gas phase in a thin, closing gap between a substrate
+and a patterned template[5].
+    Figure 1a represents the first step of the J-FIL process in which 1000s of
+micro-size drops O(1-10 µm) are dispensed over areas O(10 cm2 ) in non-uniform
+arrays, registered with the pattern to be imprinted, so as to distribute the liquid
+where it can efficiently fill the template with minimal waste. The combination of
+applied pressure and capillary forces exerted by the liquid bridges closes the gap
+between the surfaces as the features fill, as depicted in Figure 1b. This process
+
+
+
+
+       (a) Ink-jet           (b) Pattern Fill           (c) UV Cure               (d) Lift-off
+
+Figure 1: Schematic diagram of jet-and-flash imprint lithography (J-FIL), integrable with
+wafer-scale/roll-to-roll processes. (a) Photoresist applied to substrate via precise ink-jet. (b)
+Photoresist drops merge and fill patterned template. (c) Photoresist is cured with ultraviolet
+light. (d) Template is separated from patterned template.
+
+
+creates a two-phase flow of immiscible fluids in an exceedingly thin O(15 nm)
+gap before the liquid fills its designated volume, depicted in Figure 2a. Before
+the liquid is cured with UV light (Figure 1c), ideally, all gas has been eliminated
+from the gap, the liquid has filled the template and the residual layer below the
+features is uniform over the print area.[6] Once the pattern is set, the template is
+separated from it, leaving behind the nano-patterned surface (Figure 1d). The
+model developed in this paper focuses on the drop merger process of the pattern
+fill step.
+
+
+
+
+                     (a) Side View                            (b) Top View
+
+Figure 2: (a) Side view of drops merging during pattern fill. (b) Top view of drop interface
+evolution during pattern fill.
+
+
+    As this process has been used to produce patterned surfaces with feature
+half-pitches as small as 4 nm[7], NIL has been recognized by the International
+Technology Roadmap for Semiconductors as a possible next generation lithog-
+raphy candidate[8]. Despite significant potential for these processes to advance
+
+
+                                                2
+

@@ -1,0 +1,23 @@
+   3fea5:	vmulsd xmm0,xmm0,QWORD PTR [rip+0xa3ea3]        # e3d50 <_ZSt19piecewise_construct+0x248>
+   3fead:	vmovsd xmm2,QWORD PTR [rip+0xd21bb]        # 112070 <_ZN12_GLOBAL__N_12dxE>
+   3feb5:	vmovsd xmm9,QWORD PTR [rsp+0x50]
+   3febb:	vandpd xmm13,xmm9,XMMWORD PTR [rip+0xa3c4d]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3fec3:	vmovddup xmm11,xmm2
+   3fec7:	add    QWORD PTR [r12],0x1
+   3fecc:	vaddsd xmm4,xmm4,QWORD PTR [r14+0xe8]
+   3fed5:	vmovsd xmm10,QWORD PTR [rsp+0x60]
+   3fedb:	vmulsd xmm0,xmm0,xmm2
+   3fedf:	vunpcklpd xmm0,xmm2,xmm0
+   3fee3:	vmulpd xmm0,xmm0,xmm11
+   3fee8:	vmulpd xmm0,xmm0,xmm11
+   3feed:	vunpckhpd xmm12,xmm0,xmm0
+   3fef1:	vaddpd xmm0,xmm0,XMMWORD PTR [r12+0x8]
+   3fef8:	vaddsd xmm11,xmm12,xmm9
+   3fefd:	vmovupd XMMWORD PTR [r12+0x8],xmm0
+   3ff04:	vandpd xmm0,xmm12,XMMWORD PTR [rip+0xa3c04]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   3ff0c:	vcomisd xmm13,xmm0
+   3ff10:	jb     407f8 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc08>
+   3ff16:	vsubsd xmm9,xmm9,xmm11
+   3ff1b:	vaddsd xmm9,xmm9,xmm12
+   3ff20:	vaddsd xmm10,xmm9,xmm10
+   3ff25:	vmovsd xmm9,QWORD PTR [rsp+0x68]

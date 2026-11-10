@@ -1,0 +1,1 @@
+第一次隔离tmux检查脚本在15秒内未取得预期窗格状态，未生成最终核查记录。未启动steady。以完整目标check:0.0重新检查，明确pane_dead=1、pane_dead_status=0，控制台为will_run=false；见tmux_check_diagnosis.json。该检查程序问题不改动冻结入口或release，不等于求解器失败。

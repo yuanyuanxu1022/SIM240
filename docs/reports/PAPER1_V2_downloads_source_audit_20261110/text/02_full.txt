@@ -1,0 +1,1822 @@
+                                                 Effective slip boundary conditions for arbitrary periodic surfaces: The surface
+                                                                                 mobility tensor
+
+                                                                                  Ken Kamrina,∗, Martin Z. Bazantb , Howard A. Stonec
+                                                                 a School of Engineering and Applied Sciences, Harvard University, Cambridge, MA 01238, USA
+                                                           b Department of Chemical Engineering, Massachusetts Institute of Technology, Cambridge, MA 02139, USA
+                                                            c Department of Mechanical and Aerospace Engineering, Princeton University, Princeton, NJ 08544, USA
+arXiv:0911.1328v2 [physics.flu-dyn] 2 Jan 2010
+
+
+
+
+                                                 Abstract
+                                                 In a variety of applications, most notably microfluidic design, slip-based boundary conditions have been sought
+                                                 to characterize fluid flow over patterned surfaces. We focus on laminar shear flows over surfaces with periodic
+                                                 height fluctuations and/or fluctuating Navier scalar slip properties. We derive a general formula for the “effective
+                                                 slip”, which describes equivalent fluid motion at the mean surface as depicted by the linear velocity profile that
+                                                 arises far from it. We show that the slip and the applied stress are related linearly through a tensorial mobility
+                                                 matrix, and the method of domain perturbation is then used to derive an approximate formula for the mobility
+                                                 law directly in terms of surface properties. The specific accuracy of the approximation is detailed, and the
+                                                 mobility relation is then utilized to address several questions, such as the determination of optimal surface
+                                                 shapes and the effect of random surface fluctuations on fluid slip.
+
+
+                                                 1. Introduction
+
+                                                    With recent progress in the study and fabrication of mirofluidic devices, new interest has arisen in determining
+                                                 generalized forms of hydrodynamic boundary conditions (Stone et al., 2004; Bazant and Vinogradova, 2008).
+                                                 Advances in lithography to pattern substrates at the micrometer and nanometer length scales have raised
+                                                 several questions in the modeling of fluid motions over these surfaces. For example, rather than trying to solve
+                                                 equations of motion for the flow at the scale of the individual corrugations of the pattern, it is appropriate to
+                                                 consider the bulk fluid motion (on length scales much larger than the pattern wavelength) by utilizing effective
+                                                 boundary conditions that characterize the flow at the surface. For fluid being sheared horizontally over a
+                                                 textured surface, a basic aim is to derive a local boundary condition that can be applied along the smooth
+                                                 mean surface, which mimics the effects of the actual condition along the true surface. These effective conditions
+                                                 can be used in place of the no-slip condition to solve for macro-scale flow without the tedium of enforcing a
+                                                 boundary condition on a rough boundary geometry.
+                                                    A standard phenomenological approach for flow over a patterned surface is to assume a Navier slip boundary
+                                                 condition
+                                                                                                             ∂u
+                                                                                           us = U − u = b                                                  (1)
+                                                                                                             ∂n
+                                                 which relates the fluid velocity u at the surface, the velocity of the surface U, and the shear strain rate normal
+                                                 to the mean surface, ∂u/∂n, via the slip-length b. This approach has been studied extensively in experiments,
+
+
+                                                   ∗ Corresponding author.
+
+                                                     Email address: kkamrin@seas.harvard.edu (Ken Kamrin)
+                                                     URL: http://people.seas.harvard.edu/∼kkamrin/ (Ken Kamrin)
+
+
+                                                 Preprint submitted to Elsevier                                                                           October 31, 2018
+theoretical calculations, and simulations (for recent discussion and results see Vinogradova (1999); Lauga et al.
+(2007); Bocquet and Barrat (2007); Davis and Lauga (2009)).
+   The above relationship avoids the possibility of transverse flow over a grooved no-slip surface, perpendicular
+to an applied shear stress, which has been analyzed and observed in a number of studies (see Stroock et al.
+(2002a); Ajdari (2002); Wang (2003); Stroock et al. (2002b)). Such phenomena have motivated a tensorial
+version of Eq 1, as discussed in Stroock et al. (2002a) and Stone et al. (2004), which replaces the scalar slip-
+length b with a rank-2 tensor b characterizing the surface anisotropy:
+
+                                                  us = b · (n̂ · ∇u)                                               (2)
+
+where n̂ is the unit normal (directed into the fluid). Bazant and Vinogradova (2008) proposed to express
+the tensorial slip condition in the convenient form of a mobility law, where the mean surface normal traction
+τ = T · n̂ (for T the Cauchy stress tensor) and some mobility tensor M are used instead of the velocity gradient
+and tensorial slip-length, i.e.
+                                                     us = M · τ                                                    (3)
+
+and discussed general physical constraints on M for different types of fluids and surfaces.
+   The work herein analyzes and quantifies this proposed relationship for the case of Stokes flow over a broad
+class of weakly textured surfaces. We focus on horizontally sheared fluid over surfaces with arbitrary periodic
+height fluctuations, and continue the analysis later (Section 8) to surfaces that also have non-uniform hydropho-
+bicity. To rigorously evaluate the properties of us , our approach is to construct the flow from a family of
+analytical solutions to the equations of motion, which are superposed as needed to satisfy the order-by-order
+boundary conditions on a topographically complex surface. Section 2 defines the problem and proves the valid-
+ity of Eq 3 by deriving the relationship directly from the Stokes equations for a no-slip surface with arbitrary
+periodic height fluctuations. We then proceed in Section 3 with the crucial and natural question of how to relate
+the details of the surface topography to the mobility tensor. This is considered for the case of arbitrary, small,
+periodic surface corrugations, where a second-order approximate formula for M is constructed from a family
+of Fourier series solutions to the Stokes equations and carrying out a domain-level perturbation analysis up to
+second-order. This result is then used to derive/compute a number of consequential results: analytical results
+in the case of grooved surfaces (Section 5), flow optimization over surfaces of fixed heterogeneity (Section 6),
+and statistical results for random surfaces (Section 7). The limitations of our approximation are also deduced
+and quantified through an in-depth error analysis in Section 4 that carries over to the appendix.
+
+
+2. Problem setup and basics
+
+   Consider a rigid, periodic surface with height z = H(x, y), with period 2Lx in the x direction, and period
+2Ly in the y direction. Let z = 0 correspond to the bottom of the surface, so that H(x, y) ≥ 0. Above the
+surface is a layer of fluid (of viscosity η) satisfying the no-slip boundary condition along the surface. It is sheared
+from above, at z → ∞, by a horizontal shear traction τ = (τx , τy , 0), which induces a steady flow u(x, y, z) with
+pressure p(x, y, z). As a convention in this paper, we interchangeably represent horizontal vectors with 2 or 3
+components depending on context — for example τ can also represent (τx , τy ) in planar operations.
+   Before continuing any further, let us non-dimensionalize the problem to scale η out of the analysis. Let T
+and L be arbitrary, fixed units of time and length respectively. Let the unit of stress be η/T . With these units,
+
+
+
+                                                          2
+all system variables and fields are hereby redefined to be their dimensionless counterparts, e.g.
+
+                  u → u T /L ,       τ → τ T /η ,      p → p T /η ,       x → x/L ,    H → H/L                   (4)
+
+We assume that the Reynolds number is sufficiently small that the flow satisfies the three-dimensional Stokes
+equations. Under our non-dimensionalization, this gives
+
+                                                   ∇2 u = ∇p                                                    (5a)
+                                                    ∇·u= 0                                                      (5b)
+
+and the dimensionless boundary conditions are
+
+                                                                   ∂u
+                                     u(x, y, H(x, y)) = 0      ,          =τ                                     (6)
+                                                                   ∂z z→∞
+   Far above the patterned surface, the flow must asymptote to a simple linear flow with uniform constant
+pressure. A major goal of this paper is to determine the effective slip — that is, the horizontal vector us in the
+asymptotic form
+                                               u(z̃ → ∞) = us + τ z̃                                             (7)
+
+where
+                                                  z̃ = z − hH(x, y)i                                             (8)
+
+measures the distance above the space-average height of the fluctuations. By definition, a perfectly flat, no-slip
+surface has us = 0 regardless of τ . When the surface has height fluctuations, us is usually non-zero and has a
+direction and magnitude depending on the stress vector τ and the surface shape.
+    As a consequence of the linearity of the Stokes equations, the effective slip us and the traction τ must be
+related linearly through a 2 × 2 matrix relationship of the form:
+
+                                                     us = M · τ                                                  (9)
+
+We refer to the matrix M = M(H) as the mobility tensor for the surface H(x, y). The mobility tensor can
+be seen as characterizing the dependence of the net flow properties on the direction and magnitude of the
+applied stress. The linearity of the relationship between us and τ also means that surfaces with more than two
+symmetry directions must have isotropic mobility.
+   It is straightforward to prove Eq 9. For some fixed surface H(x, y) consider two particular flows: The first
+flow is induced by applying a unit shear traction from above pointed in the x̂ direction, giving rise to some flow
+profile U1 (x, y, z) with corresponding effective slip U1 s . The second flow is induced by a unit traction in the ŷ
+direction, generating a flow profile U2 (x, y, z) with slip U2 s . Exploiting the linearity of the Stokes equations,
+the following superposition is an exact solution for the flow u(x, y, z) induced by an arbitrary shear traction
+τ = (τ1 , τ2 ) applied from above:
+
+                                     u(x, y, z) = τ1 U1 (x, y, z) + τ2 U2 (x, y, z)                             (10)
+
+
+
+
+                                                           3
+      (a)                                                                (b)
+Figure 1: (a) Setup for the problem. A fluid is horizontally sheared with stress τ at a height of z̃ = ∞ above a surface with
+arbitrary periodic height fluctuations H(x, y). (b) The induced flow profile becomes horizontal and linear in z̃ at large heights, but
+is more complicated closer to the surface. Our interest is to determine the effective slip us , pictured above, which corresponds to
+the extra velocity one would obtain when extrapolating the linear portion down to the mean surface height z̃ = 0.
+
+
+
+
+Consequently, the effective slip us arising from the shear traction τ is
+                                                                              
+                                            us = τ1 U1 s + τ2 U2 s = U1 s |U2 s · τ                                              (11)
+
+The matrix [U1 s |U2 s ] is our mobility matrix M.
+
+
+3. Computing the mobility tensor
+
+    An exact formula for M in terms of H(x, y) seems very complicated to obtain, and unlikely to have a
+tractable form. In the following sections, we derive an approximate formula for the M tensor in the case of
+small height fluctuations, i.e.
+                                                        H(x, y) = ǫh(x, y)                                                       (12)
+
+for ǫ some small, dimensionless number.
+    It is difficult to ascribe a single physical description to ǫ at the outset, since there are an infinite number of
+possible size scales that could be extracted from an arbitrary periodic surface. Which dimensionless size must
+be small for the approximation to be valid? To approach this question systematically, our strategy is to obtain
+the approximate solution for M using domain perturbation theory treating ǫ as a small parameter, and then
+perform an in-depth error analysis to determine how the error of the approximation depends on h(x, y). Once
+the error is quantified in this fashion, it can be used to single out a particular definition of ǫ that is “ideal” in
+the sense that the relative approximation error depends solely on ǫ and no other surface properties.
+   We now summarize the major result of this paper. Let ĥ(m, n) compose the set of Fourier coefficients
+corresponding to h(x, y)
+                                                           X
+                                               h(x, y) =         ĥ(m, n)ei(km x+kn y)                                           (13)
+                                                           m,n
+
+where km = mπ/Lx and kn = nπ/Ly are corresponding wavenumbers. Then the effective slip velocity obeys
+
+
+                                                                   4
+                                             us = −ǫ2 M̃(h) · τ + O(ǫ3 )                                       (14)
+
+where the function M̃(h) is defined by
+                          X                                                                     
+                                    2k 2 + kn2           2               X     km kn           2
+                                   pm          ĥ(m, n)                     p         ĥ(m, n) 
+                                        2 + k2                                  2 + k2
+                       (m,n)6=0 km          n                     (m,n)6=0
+                                                                              km     n           
+                  M̃ h =                                2            X k 2 + 2k 2             2
+                                                                                                              (15)
+                            X        k m kn                                  m      n
+                                   p           ĥ(m, n)                     p         ĥ(m, n) 
+                                     km 2 + k2                                k 2 + k2
+                           (m,n)6=0           n                     (m,n)6=0    m    n
+
+
+Hence, −ǫ2 M̃ is a second-order approximation to the true mobility matrix M.
+   First, observe that the mobility is an O(ǫ2 ) effect for height fluctuations of size O(ǫ). A second-order leading
+perturbation term was also observed in Stroock et al. (2002a) for the effective slip of pressure-driven Poiseuille
+flow along sinusoidally grooved walls. Furthermore, the leading-order mobility matrix is symmetric regardless of
+h(x, y) (within the broad range of validity of the analysis, quantified below). This result was suggested, though
+not proved, in Bazant and Vinogradova (2008), where the notion of symmetric mobility was supported by a
+statistical diffusion argument and treated as an example of the commonly used Onsager-Casimir relations for
+near-equilibrium linear response. The symmetry of M̃ requires that its eigenvectors are orthogonal, and likewise
+a general surface H should have two orthogonal directions along which the shear stress and slip direction align.
+If stress is applied in a different direction, the apparent slip can have lateral components that transport fluid
+transverse to the direction of the stress traction, as in Stroock et al. (2002a) and Stone et al. (2004).
+   It is also important to note that with the definitions used here, Eqs 14 and 15 give a negative-definite
+mobility. That is, the effective slip should point away from the traction vector (see Figure 1(b)), which reflects
+the notion that surface fluctuations cause flow resistance compared to a flat surface of the same mean height.
+This outcome can also be seen as directly related to our choice of placing the origin for z̃ at the mean height of
+the pattern. In studies such as Wang (2003), the origin is placed at the peak of the height fluctuations, which
+redefines the slip vector in a way that ensures τ · us ≥ 0, and equivalently redefines the mobility tensor to be
+positive-definite. Positive mobility is desirable from an intuitive standpoint because it more closely represents an
+object slipping on a dissipative, “passive surface” (Bazant and Vinogradova, 2008). However, for our purposes,
+we find it computationally easier to perform our analyses with the mean surface height selected as the origin.
+Other effective slip studies such as Stroock et al. (2002a) have also found benefit in setting the origin at the
+surface mean. The remainder of this section details the derivation of Eqs 14 and 15.
+
+3.1. Perturbation expansion
+   Our approach utilizes the method of domain perturbations (see Hinch (1991)). Miksis and Davis (1994)
+have also used this technique to study surface flows over small-fluctuation surfaces. Their focus was on two-
+dimensional flows over a surface H(x), and the bulk flow behavior was approximated using asymptotic matching.
+Here, we study the three dimensional problem with bulk behavior solved analytically, and carry out the domain
+perturbation analysis to higher order as necessary to reveal the tensorial properties of the effective slip at the
+surface.
+    To begin, we let the velocity and pressure be represented by the perturbation series
+
+                        u(x, y, z) = u0 (x, y, z) + ǫu1 (x, y, z) + ǫ2 u2 (x, y, z) + O(ǫ3 )                  (16a)
+                                                                     2                   3
+                         p(x, y, z) = p0 (x, y, z) + ǫp1 (x, y, z) + ǫ p2 (x, y, z) + O(ǫ ).                  (16b)
+
+                                                           5
+   Inserting these into the Stokes equations and grouping same-order terms, it is immediately clear that the
+Stokes equations must be upheld at each individual order. Using the method of domain perturbations, the
+expression of the boundary condition along the periodic surface becomes much easier to deal with by expanding
+in a Taylor series about z = 0:
+
+                                                               ∂u0        (ǫh(x, y))2 ∂ 2 u0
+               u(x, y, ǫh(x, y)) = 0 = u0 (x, y, 0) + ǫh(x, y)         +
+                                                                ∂z z=0        2         ∂z 2 z=0
+                                                                         
+                                                                  ∂u1
+                                     + ǫ u1 (x, y, 0) + ǫh(x, y)            + ǫ2 u2 (x, y, 0) + O(ǫ3 ).
+                                                                   ∂z z=0
+
+This expression is equivalent to three separate boundary conditions for the first three orders:
+
+                            u0 (x, y, 0) =    0                                                           (17a)
+                                                            ∂u0
+                            u1 (x, y, 0) =    −h(x, y)                                                    (17b)
+                                                             ∂z z=0
+                                                            ∂u1       h(x, y)2 ∂ 2 u0
+                            u2 (x, y, 0) =    −h(x, y)              −                    .                (17c)
+                                                             ∂z z=0      2      ∂z 2 z=0
+
+The traction condition at z → ∞ is first-order in magnitude, which implies the following three boundary
+conditions:
+                           ∂u0               ∂u1               ∂u2
+                                   =τ                 =0                 = 0.                      (18)
+                            ∂z z=∞            ∂z z=∞            ∂z z=∞
+
+3.2. Solving for horizontally periodic Stokes flow
+   By inspection, we find that the zeroth-order solution is standard simple shear:
+
+                                      u0 (x, y, z) = τ z          p0 (x, y, z) = K0 .                      (19)
+
+where K0 is a constant. To compute each of the higher-order terms, we need an analytic general solution to
+the Stokes equations that satisfies the z → ∞ boundary condition. From such a general solution, we can fit the
+more complicated z = 0 boundary conditions. Due to the horizontal periodicity of the surface, it follows that
+any flow solution be similarly periodic in the x and y directions:
+                                                      X
+                                       u(x, y, z) =         a(m, n, z)ei(km x+kn y)                        (20)
+                                                      m,n
+                                                      X
+                                       p(x, y, z) =         b(m, n, z)ei(km x+kn y) .                      (21)
+                                                      m,n
+
+
+Substituting these forms into the Stokes equations, a somewhat lengthy general solution for a and b can be found
+(see Appendix Appendix A), which ultimately depends on three sets of undetermined coefficients. Whenever
+m and n are non-zero, a and b both decay exponentially in z as expected, which guarantees satisfaction of the
+upper boundary condition.
+
+
+
+
+                                                              6
+3.3. First-order term
+   To solve for the first-order flow, the undetermined coefficients are solved term-by-term by enforcing the
+bottom boundary condition (Eq 17b), which now reads
+
+                                                       u1 (x, y, 0) = −h(x, y)τ .                                            (22)
+
+The result is
+                                                                                                            !
+                                              X                        √ 2   2z
+                                                                                     2
+                                                                                    km  τx + km kn τy
+                                                                   −    km +kn
+          u1 (x, y, z) = −ĥ(0, 0)τx +                 ĥ(m, n)e                       p              z − τx ei(km x+kn y)   (23)
+                                                                                           2 + k2
+                                                                                          km
+                                            (m,n)6=0                                             n
+                                                                                                            !
+                                              X                     √ 2      2z
+                                                                                     2
+                                                                                    kn τy + km kn τx
+           v1 (x, y, z) = −ĥ(0, 0)τy +                ĥ(m, n)e−       km +kn
+                                                                                       p             z − τy ei(km x+kn y)    (24)
+                                                                                           2 + k2
+                                                                                          km
+                                            (m,n)6=0                                            n
+                             X                      √ 2    2z
+          w1 (x, y, z) =              ĥ(m, n)ie−     km +kn
+                                                                (km τx + kn τy )zei(km x+kn y)                               (25)
+                           (m,n)6=0
+                                      X                     √ 2      2z
+           p1 (x, y, z) = K1 +              ĥ(m, n)2ie−        km +kn
+                                                                           (km τx + kn τy )ei(km x+kn y) ,                   (26)
+                                 (m,n)6=0
+
+
+where u1 = (u1 , v1 , w1 ) and K1 is an arbitrary constant. The constant terms in the u1 and v1 expansions grow
+proportionally to the average surface height ĥ(0, 0), and provide a first-order isotropic slip contribution, as all
+other terms decay exponentially as z → ∞.
+
+3.4. Second-order term
+   To determine the second-order solution, we take the general solution from Appendix Appendix A and
+enforce the z = 0 boundary condition, which now reads
+
+                                                                                ∂u1
+                                               u2 (x, y, 0) = −h(x, y)                                                       (27)
+                                                                                 ∂z z=0
+
+where
+                                                      2
+                            ∂u1              X      2km τx + kn2 τx + km kn τy
+                                   =                       p                   ĥ(m, n)ei(km x+kn y)                         (28)
+                            ∂z z=0                           km
+                                                               2 + k2
+                                                                     n
+                                           (m,n)6=0
+
+                            ∂v1              X      2kn2 τy + km
+                                                               2
+                                                                  τy + km kn τx
+                                   =                        p                   ĥ(m, n)ei(km x+kn y)                        (29)
+                            ∂z z=0                            km
+                                                                2  + kn
+                                                                       2
+                                           (m,n)6=0
+
+                            ∂w1              X
+                                    =                 i(km τx + kn τy )ĥ(m, n)ei(km x+kn y)                                 (30)
+                             ∂z z=0
+                                           (m,n)6=0
+
+
+as follows from Eqs 23, 24, and 25.
+    Since we are stopping the perturbation analysis beyond O(ǫ2 ), there is no need to compute the full solution
+for u2 — one need only determine what the constant term is in its Fourier series solution, Eq 20. This term will
+be the only one that does not vanish as z → ∞, and represents the effective slip. Note that the constant term
+in the Fourier expansion of u2 (x, y, z) is necessarily equal to the horizontal average hu2 i at any fixed z, since
+all other terms average to 0 over the period. Hence, we can compute this constant slip term by averaging over
+
+
+
+                                                                       7
+the lower boundary condition,
+                                                                                      
+                                              s                                ∂u1
+                                         u2       = hu2 (x, y, 0)i = − h(x, y)           .                          (31)
+                                                                                ∂z z=0
+
+Since the term on the right-hand side is the average of the product of two periodic functions of equal periodicity,
+we obtain u2 s from the product of the two Fourier expansions. For any coefficients α(m, n), recall the general
+rule
+                   *                                                      +
+                                 X                                                X
+                                                           i(km x+kn y)
+                       h(x, y)         α(m, n)ĥ(m, n)e                       =         α(m, n)ĥ(m, n)ĥ(−m, −n)
+                                 m,n                                              m,n
+                                                                                  X                     2
+                                                                              =         α(m, n) ĥ(m, n) .          (32)
+                                                                                  m,n
+
+
+Applying this rule to the given boundary conditions, we uncover the tensor M̃(h) from Eq 15 giving
+
+                                                           u2 s = −M̃(h) · τ                                        (33)
+
+Combining the constant terms from the first- and second-order flows with the zeroth-order shear flow, we obtain
+the limiting behavior
+                                  u(z → ∞) = τ z − ǫ ĥ(0, 0) τ − ǫ2 M̃(h) · τ + O(ǫ3 )                             (34)
+                                                     | {z }
+                                                              =hh(x,y)i
+
+By switching to the variable z̃, the first-order contribution cancels yielding
+
+                                              u(z̃ → ∞) = τ z̃ − ǫ2 M̃(h) · τ + O(ǫ3 )                              (35)
+
+and the slip formula (Eq 14) immediately follows.
+
+
+4. Error analysis
+
+4.1. The need to compute error bounds
+   The significance of the slip approximation (Eq 14) is tied directly to the error of truncating the perturbation
+expansion at second order. It is of critical importance that we quantify this error to correctly interpret the
+mobility matrix approximation M(ǫh) ≈ −ǫ2 M̃(h).
+  An example is instructive here. Consider a surface of shallow, square grooves— that is, H(x, y) = ǫh(x, y)
+where
+                                                  (
+                                                      1 if 2k < x ≤ 2k + 1 for integer k
+                                  h(x, y) =                                                                         (36)
+                                                      0 if 2k + 1 < x ≤ 2k + 2 for integer k.
+
+To use the mobility matrix approximation for this surface (Eq 15), one computes the Fourier coefficients of
+the above and finds that |ĥ(m, n)| decays like |1/m|. Likewise, the summand in each of the diagonal entries of
+M̃ must decay as |1/m|, and consequently M̃11 and M̃22 are both infinite. This prediction for the mobility is
+clearly erroneous, as it suggests the effective slip velocity should be infinite (regardless of the choice of ǫ > 0),
+which contradicts known results in Wang (2003) and basic intuition.
+
+
+                                                                   8
+   The reason for this failure is because this particular surface introduces an infinite amount of approximation
+error. In view of Eq 14, the error in us must grow as O(ǫ3 ), which means the error can be expressed as ǫ3 C(h, τ )
+for some unknown function C. However, as the example has just demonstrated, certain surfaces h cause C(h, τ )
+to become large or infinite, which overwhelms the fact that the prefactor is ǫ3 small. Hence, in the upcoming
+subsection, we bound |C(h, τ )| by some known form |τ | Err(h), so that
+                                                        
+                                       us − −ǫ2 M̃(h) · τ ≤ ǫ3 |τ | Err(h)                                      (37)
+
+Once the function Err is determined, we can affirm that the mobility matrix approximation M ≈ −ǫ2 M̃ is valid
+for any surface where the error bound is small compared to the approximate slip, i.e.
+
+                                                        ǫ3 Err(h)|τ |      ǫ3 Err(h)
+                            Relative Error Bound =                       ≈            ≪1                        (38)
+                                                      | − ǫ2 M̃(h) · τ |   ǫ2 |M̃(h)|
+
+Such a relation gives an a priori method for ruling out surface shapes for which the slip matrix approximation
+should fail.
+    Below, we show that (38) can also be used to determine an ideal definition of ǫ in terms of properties of the
+surface. Up to this point, we have described ǫ merely as a “small dimensionless number”, and h(x, y) is defined
+as H(x, y)/ǫ. A specific formula for ǫ as a function of the surface H(x, y) is physically desirable, wherein the
+size of ǫ immediately relates to the accuracy of the approximation.
+
+4.2. Bounding the approximation error
+   The second-order flow solution is a superposition of analytical solutions to the Stokes equations. Hence, the
+PDEs are always satisfied exactly. Likewise, the error of the slip approximation arises solely from error in fitting
+the boundary condition u(x, y, ǫh(x, y)) = 0.
+   Appendix Appendix B constructs a bound on this error, which leads to the following bound on the error of
+the second-order slip approximation:
+                                                                               
+                            us − −ǫ2 M̃(h) · τ ≤ ǫ3 κ hM |τ | hM |∇∇h|M + |∇h|2M                                (39)
+
+where we use the subscript M to denote a function’s maximum value over all x and y. The constant κ is
+dimensionless and independent of τ and the surface shape; a first calculation gives κ < 55. Based on the
+analysis in Appendices Appendix B and Appendix C, we speculate it is not possible to bound the error in a
+general fashion using fewer than the first two derivatives of h. While this decrees a qualitative level of tightness,
+it is clear from the appendices that quantitatively tighter bounds could be written using non-local norms and
+surface integrals. We prefer the above, as it is expressible using basic quantities. Recent work on bounding the
+error of Reynold’s lubrication approximation for thin-channel Stokes flows (Wilkening, 2009) has found some
+similar dependences on the norms of the derivatives of the surface.
+   Equation 39 reveals that the error is unbounded for any surface where |∇∇h|M or |∇h|M → ∞. This
+result gives the following crucial limitation: The approximation M(ǫh) ≈ −ǫ2 M̃(h) should not be used
+for surfaces with corners or vertical slopes. This point, which might not be surprising to those familiar
+with domain perturbation techniques, provides an explanation for why the square grooves example of the last
+subsection failed. The mobility matrix formula can only be reliably applied to C 2 functions h(x, y). Note that
+
+
+
+                                                         9
+the error does not depend at all on the higher-order derivatives of h (order ≥ 3), and as such the approximation
+can be accurate even if the higher derivatives of the surface shape are discontinuous.
+   Equation 39 can also be used to read off a formula for the function Err that was sought after in Eq 37:
+                                                                              
+                                     Err(h) = κ hM hM |∇∇h|M + |∇h|2M                                        (40)
+
+Observing Eqs 40 and 15, we note that the relative error bound (Eq 38) can be expressed solely in terms of the
+actual surface H(x, y), and completely independent of ǫ, since all powers of ǫ can be brought into the arguments
+of the functions M̃ and Err, and eliminated by using H = ǫh:
+
+                                                              ǫ3 Err(h)    Err(H)
+                                  Relative Error Bound =                 =                                   (41)
+                                                              ǫ2 |M̃(h)|   |M̃(H)|
+
+   This last expression is a dimensionless ratio determined entirely by the given surface H(x, y). While it may
+not be simple to interpret physically for a general surface, its direct connection to the error suggests an ideal
+formula for choosing ǫ given H(x, y) would be
+                                                                             
+                    Err(H)                       κ HM HM |∇∇H|M + |∇H|2M
+           ǫideal ≡         =  X          2
+                                                                                                            (42)
+                    |M̃(H)|              2km  + kn2           2   X        km kn             2
+                                        p           Ĥ(m, n)            p          Ĥ(m, n)   
+                                            2 + k2                          2 + k2
+                              (m,n)6=0 km         n            (m,n)6=0
+                                                                           km     n            
+                                                                         2      2
+                                                                                               
+                               X          km kn              2   X      km + 2kn            2 
+                                        p           Ĥ(m, n)            p          Ĥ(m, n) 
+                                          km2 + k2                          2 + k2
+                                                                           km
+                                (m,n)6=0           n            (m,n)6=0          n
+
+The relative approximation error can never exceed ǫideal , and hence all surfaces with a small value for ǫideal
+are well-described by the mobility formula Eq 15. If we let ǫ = ǫideal in Eq 37, and consequently h(x, y) =
+H(x, y)/ǫideal , then the slip relation can be rewritten as
+                                                         
+                                   us − −ǫ2ideal M̃(h) · τ ≤ ǫ3ideal |M̃(h)| |τ |                            (43)
+
+    The definition of ǫideal reduces to a simple, expected form in canonical cases. For example, consider the
+surface
+                                               H(x, y) = a sin(x/b)                                          (44)
+
+for constants a and b. We expect that the relevant dimensionless quantity in this case should be a/b, in the
+sense that the slip approximation over this surface should improve as the height to wavelength ratio decreases
+                                                                                                    √
+to zero. Evaluating (42), the relevant small quantity according to the error bound is ǫideal = (8κ/ 5)(a/b),
+which is proportional to a/b as expected.
+   To conclude this discussion on error analysis, we emphasize the major points. Most importantly, the approx-
+imate slip given by Eqs 14 and 15 can be inaccurate for certain surfaces. Approximation error grows with the
+maximal curvature and maximal slope of the surface. To determine the accuracy of the approximation, there
+are two mathematically identical representations that have been discussed (Eqs 39 and 43). The representation
+shown in Eq 39 is most applicable when the user wishes to decide the value of ǫ based on a loose observation
+of the characteristic surface height. Such an approach is useful when computing the mobility properties of a
+broad family of surfaces, all with similar characteristic height ǫ. To survey the range of surfaces, one need only
+vary the scaled surface h, taking care to ensure the range includes only those h shapes that keep Eq 39 within
+
+
+
+                                                         10
+one’s error tolerance. On the other hand we also present the error bound in a second form, that of Eq 43, which
+is in terms of a specific definition of ǫ extracted directly from the surface H(x, y). This error representation is
+best when there is only one surface H to be studied, since ǫideal is in the truest sense the small parameter of
+interest, which immediately determines the relative accuracy of the approximation. However, if a comparison
+over many surfaces is desired, the need to recompute ǫideal for each surface H can complicate the analysis.
+
+
+5. Mobility over surfaces varying in only one direction
+
+    Our main result above (Eq 15) is useful to reveal general properties of the effective slip and, within the
+error bounds, to allow its computation for an arbitrary surface. However, the various series for the elements of
+M̃ can be cumbersome to evaluate. Of course, it is easy to evaluate them for surfaces with simple sinusoidal
+perturbations, which have Fourier series truncated after a small number of terms, but this offers little analytical
+insight into the dependence of the mobility tensor on the shape of the surface. To more clearly see this
+dependence, this section focuses on a simpler family of surfaces.
+    Observing Eq 15, we note that the formula reduces significantly for the class of surfaces varying in only one
+direction. Letting the variation direction be x, these surfaces appear as parallel groove patterns with shape h(x)
+and mobility
+                                                           !                         ∞
+                                2
+                                               2   2     0                          X                2
+                      M ≈ −ǫ M̃ h = −ǫ β                     ,        for      β=2         km ĥ(m)            (45)
+                                                    0     1                          m=1
+
+This shows that the slip length, which measures distance from the mean surface height to the equivalent no-slip
+plane, is generally twice larger for perpendicular versus parallel shearing. For anisotropic Stokes flow, factors of
+two like this are not surprising— it is reminiscent of similar results for striped pipes (Lauga and Stone, 2003)
+and the classical result that a rod sediments twice as fast in creeping flow if aligned vertically, rather than
+horizontally (Batchelor, 1970).
+   Let us evaluate M in closed form for a nontrivial subset of grooved surfaces, whose Fourier series have an
+infinite number of terms, and vary continuously in shape from sinusoidal to sharply peaked. Consider surface
+shapes h(x) of the type
+
+                                            φ(x) − φmin                             1
+                                h(x) =                    ,        φ(x) =                                      (46)
+                                            φmax − φmin                     1 + a2 + 2a cos x
+and the unit of length is L = Lx /π for simplicity, so that km = m. Regardless of the parameter 0 < a < 1,
+h(x) has a maximum of 1, and a minimum of 0. As shown in Figure 2, a controls the shape of the surface. For
+a ≪ 1, the surface height is a small perturbation from a single-mode sinusoid. As a → 1, the surface develops
+wide deep valleys around the minimum height at x = 2nπ separated by tall, narrow peaks at x = (2n + 1)π.
+   The Fourier coefficients of h(x) can be obtained directly from those of φ(x). Set z = eix to obtain a rational
+function f (z), separate into partial fractions, and expand in geometric series (since |az| = |a/z| < 1) to obtain
+the Laurent series of f (z), which equals the desired Fourier series on the unit circle:
+                                                                                  
+                                           z            1        1       a     1
+                     φ(x)   =                       =                  −   ·
+                                    (az + 1)(z + a)   1 − a2 1 + az      z 1 + a/z
+                                                  ∞
+                                                                       !     ∞
+                                      1          X
+                                                         m m       −m
+                                                                             X   (−a)|m| eimx
+                            =            2
+                                             1 +    (−a)  (z   + z    )  =
+                                    1−a          m=1                        m=−∞
+                                                                                    1 − a2
+
+
+                                                              11
+                Figure 2: The surface shape h(x), defined in Eq 46, under different values of the parameter a.
+
+
+
+
+Consequently,
+                                                    1     (−a)|m|    a2 − 1
+                                ĥ(m 6= 0) =                     2
+                                                                   =        (−a)|m|                               (47)
+                                               φmax − φmin 1 − a       4a
+By Eq 45,
+                                ∞  2   2                         2   2       ∞
+                                X  a −1                            a −1       d X 2m    1
+                         β=2                       m(−a)2m =               a        a =                           (48)
+                                m=1
+                                          4a                         4a      da m=0     8
+
+   We observe that for this specific family of surfaces, β does not vary with a. However, the observed slip
+properties will vary, since the average surface height, at which the slip calculation applies, does change with
+a. To understand the slip behavior more clearly, we use Eq 45 to compute a second-order approximation
+to the location of the equivalent no-slip plane (denoted z N.S., i.e. the height of the plane having zero mean
+velocity) corresponding to each a under both parallel and transverse shear. The mean surface height obeys
+ǫhhi = ǫ(1 − a)/2, and consequently, for any ǫ and unit applied shear stress, we have to second-order
+
+                                                        1 − a ǫ2
+                                                z N.S.
+                                                  k    ≈ǫ     +                                                  (49a)
+                                                          2     8
+                                                                  2
+                                                        1 − a   ǫ
+                                                z N.S.
+                                                  ⊥ ≈ ǫ       +                                                  (49b)
+                                                          2     4
+
+This qualitatively states that as a increases, the effective no-slip plane descends (regardless of the shear direc-
+tion). In physical terms, the fluid content in the groove pattern increases with a, which increases the lubrication
+of the surface. The directionality of the surface comes in at second-order, where the added flow resistance of
+shearing transverse to the grooves is apparent.
+   As a increases, it is important to keep in mind the accuracy of the approximation. The second derivative
+of h and the square of the first derivative both diverge as (1 − a)−2 as a → 1. Hence, Eq 39 implies the error
+bound on z N.S. must also diverge as a → 1,
+
+                                                                      1
+                                          ∆z N.S.  N.S.
+                                             k , ∆z ⊥ ≤ ǫ
+                                                          3
+                                                                            O(1)                                  (50)
+                                                                   (1 − a)2
+
+Such a bound is useful for detecting qualitative behavior of the accuracy, however, as is common with asymptotic
+methods like domain perturbation, the actual error is commonly well under the bound.
+   To test this, we compute a near-exact flow solution for parallel shear over the family of surfaces (Eq 46).
+Since the velocity is always parallel to the grooves, the problem reduces to solving the Laplace equation for the
+in-line component v(x, z) under the boundary conditions vz (z = ∞) = τ ≡ 1 and v(x, ǫh(x)) = 0. This can be
+
+
+
+                                                             12
+Figure 3: The true error of the second-order approximation for z N.S.
+                                                                 k
+                                                                      relative to the size of the second-order correction (i.e. ǫ2 /8)
+vs. the value of a. The rate of divergence near a = 1 is notably lower than our conservative error bound ∝ (1 − a)−2 .
+
+
+
+
+solved as a superposition of separable solutions
+                                                           ∞
+                                                           X
+                                          v(x, z) = z +         Am cos(mx) exp(−mz)                                              (51)
+                                                          m=0
+
+
+where the Am are chosen to satisfy the no-slip boundary condition. To compute a numerical solution, we solve
+for the first 1000 terms Am by enforcing the boundary condition on 1000 equally spaced x values from 0 to π.
+   Flows are solved using a values ranging from 0.15 to 0.99 in increments of 0.03. For each a, the flow is
+computed using seven ǫ values decreasing from 10−1 to 10−4 logarithmically. Our goal is to determine how
+accurate Eq 49a is compared to the finest term of the approximation, the second-order correction ǫ2 /8. Hence,
+for each a and ǫ pair, we compute the relative second-order error— the difference between the near-exact
+numerical solution for z N.S.
+                         k    and the second-order approximation (Eq 49a), scaled by the size of the second-
+order correction term ǫ2 /8. As expected from the error bound (Eq 50), the relative second-order error comes
+out as being proportional to ǫ and diverges to ∞ as a → 1. However, the proportionality constant is in general
+much smaller, and diverges more slowly than the bound. The results are plotted in Figure 3. From the plot,
+we see that if ǫ = 0.1, for example, then as long as a is less than about 0.8, the second-order prediction for the
+no-slip plane is accurate to within one tenth of the size of the second-order correction term.
+
+
+6. Optimizing slip properties
+
+   With a direct approximation for the mobility matrix and bounds for the error, we now attempt to answer
+the question: What surface shapes minimize/maximize the effective slip? Problems of this type, relating to flow
+optimization with rigid interfaces, have been looked at primarily in three dimensions, through elegant analyses
+of optimally porous structures for fluid permeability (see Jung and Torquato (2005)). Here we study essentially
+a reduced dimensional problem of optimizing the effective planar slip with respect to a rigid boundary. We study
+
+
+                                                                 13
+     (a)                                                               (b)
+Figure 4: (a) The periodic surface of fixed variance that restricts flow the least (i.e. maximal forward mobility) has long wavelength
+sinusoidal grooves oriented along the direction of the stress. (b) The surface of fixed variance that restricts flow the most (i.e.
+minimal forward mobility) has sinusoidal grooves of the shortest possible wavelength oriented across the direction of the stress.
+
+
+
+
+the case of macroscopic shearing, though in the opposite limit of a thin-channel flow, similar wall-optimization
+studies have recently been performed (Feuillebois et al., 2009).
+   Let us define
+                                               us · (τ /|τ |)     ǫ2             
+                           Forward mobility =                 ≈ − 2 τ · M̃(h) · τ                                                (52)
+                                                    |τ |         |τ |
+which measures how much slip occurs in the direction of τ per unit shear stress. As is evident from Eq 15, the
+most forward mobility occurs when the surface is perfectly flat: If h(x, y) = const, then M̃ = 0 and us = 0 (as
+expected from a flat no-slip surface). For all other surfaces, M̃ is necessarily positive definite and the forward
+mobility must be negative. In simple terms, fluctuating surfaces always resist flow more than flat surfaces.
+   We next investigate the related question of how to maximize/minimize the mobility given that h(x, y) must
+have some fixed level of heterogeneity. We quantify the heterogeneity through the variance of h(x, y):
+
+                                                                               X                 2
+                                  Var(h) = h(h(x, y) − hh(x, y)i)2 i =                  ĥ(m, n) .
+                                                                             (m,n)6=0
+
+
+6.1. Maximal forward mobility
+    Suppose ǫ is fixed, Lx = Ly ≡ L, and h(x, y) is constrained to have a fixed variance σ 2 . We now derive the
+surface shape h(x, y) that maximizes the mobility. This is essentially a Lagrange multiplier problem where the
+unknowns are the coefficients |ĥ(m, n)|. Without loss of generality, presume τ is aligned with the x direction.
+Then our goal is to minimize
+
+                                                                X      2k 2 + kn2           2
+                                      x̂ · M̃ · x̂ = M̃11 =            pm          ĥ(m, n)
+                                                                        km 2 + k2
+                                                              (m,n)6=0           n
+
+
+
+
+                                                                  14
+subject to the constraint
+                                                     X                   2
+                                        Var(h) =              ĥ(m, n)       = σ2 .                          (53)
+                                                   (m,n)6=0
+
+The critical points occur only for
+
+                                      ∇|ĥ(m,n)| M̃11 (h) = λ ∇|ĥ(m,n)| Var(h)
+
+for Lagrange multiplier λ. Evaluating this form gives
+
+                             2k 2 + kn2
+                            2p m         ĥ(m, n) = 2λ ĥ(m, n)          for all (m, n) 6= 0.                (54)
+                              km 2 + k2
+                                       n
+
+
+Hence, any surface constituting a critical point of the Lagrange multiplier problem can only contain modes with
+                     2
+                               p
+the same value of (2km + kn2 )/ km2 + k 2 . So any critical point containing a certain mode ei(kα x+kβ y) must, by
+                                         n
+Eqs 53 and 15, have
+                                                        2kα2 + kβ2 2
+                                               M̃11 = q            σ .                                        (55)
+                                                         kα2 + kβ2
+
+Of these critical M̃11 values, the minimum value is M̃11 = πσ 2 /L, which occurs only for (α, β) = (0, ±1).
+Together with the fact that ĥ(m, n) = ĥ(−m, −n)∗ , we obtain
+
+                              σ                      σ
+                   ĥ(0, 1) = √ eiφ ,    ĥ(0, −1) = √ e−iφ ,       and         ĥ(m 6= 0, n 6= ±1) = 0
+                               2                      2
+
+for some constant phase φ. The minimizing surface given our constraints is then
+
+                                 σ              σ                 √       πy   
+                       h(x, y) = √ eiφ eiπy/L + √ e−iφ e−iπy/L = σ 2 cos      +φ .                           (56)
+                                  2              2                         L
+
+Thus, at fixed variance, the least resistance to forward flow occurs when the surface is a single-mode sinusoid
+and the fluid is pushed in the direction along the grooves. Moreover, the ideal wavelength of the surface is the
+longest one allowable for the given periodicity.
+
+6.2. Minimal forward mobility
+   Before determining the surface shape with the least forward mobility, an important caveat must be included:
+To wit, we constrict the allowable bandwidth of the surface. For some positive K, consider only scaled surfaces
+of the form
+                                                   X
+                                h(x, y) =                         ĥ(m, n)ei(km x+kn y)                      (57)
+                                            n       √ 2 2 o
+                                             m,n: 0< km +kn <K
+
+   Capping the bandwidth is the simplest way to avoid surfaces that violate the second-order accuracy of the
+perturbation expansion. Naive observation of Eq 55 would suggest that minimal mobility occurs as α, β → ∞,
+as this maximizes the critical values of M̃11 . But, in view of the error bound Eq 39, we see that such a solution
+violates the accuracy requirements, as it corresponds to a surface with infinite frequency and hence unbounded
+slope and curvature. By considering only surfaces of a finite bandwidth, we guarantee there exists a single, fixed
+ǫ so that all critical points of the Lagrange multiplier problem correspond to sufficiently accurate solutions.
+
+
+
+                                                         15
+This feature is not a major setback in the study of realistic surfaces, where material structure usually possesses
+some inherent “grain size” placing natural limits on the sharpness of corners.
+   This being said, we reduce to the problem of minimizing the forward mobility over the set of surface shapes
+h with Var(h) = σ 2 , and maximal wavenumber K. Let
+
+                                                         Γ = ⌊KL/π⌋.                                               (58)
+
+Then by inspection of Eq 55, the largest critical M̃11 value is 2Γπσ 2 /L, which occurs only for β = 0, and
+α = ±Γ. The corresponding surface is
+                                                                                                   
+                               σ               σ                  √                           Γπx
+                     h(x, y) = √ eiφ eiΓπx/L + √ e−iφ e−iΓπx/L = σ 2 cos                          +φ .             (59)
+                                2               2                                              L
+
+Hence, the surface with the least forward mobility has sinusoidal grooves oriented perpendicular to the direction
+of the shear stress. The wavelength of the grooves should be the shortest possible, given the fixed surface
+periodicity and fixed bandwidth. In light of the result from the previous subsection, a very natural symmetry
+arises in the solutions to maximum/minimum mobility. The overall directionality of the grooves in each case
+is not surprising — the transverse and parallel distributions are ubiquitous in the optimization of physical
+properties for a variety of materials (Torquato, 2002) — though the groove shape is perhaps less obvious.
+
+
+7. Random height fluctuations
+
+   Based on the prior section, an appropriate follow up is to determine the mobility properties of a (2L-periodic)
+random surface under an identical set of constraints, those being:
+
+  1. The surface is real, and therefore ĥ(m, n) = ĥ(−m, −n)∗ .
+  2. The surface has Var(h) = σ 2 .
+  3. The bandwidth of h is finite, with maximal wavenumber K.
+                                                                                   p
+   Let A be the set of integer pairs (m, n) with the property that                   2 + k 2 < K, m ≥ 0 when n > 0, and
+                                                                                    km    n
+m > 0 whenever n ≤ 0. Under these definitions, any surface obeying constraints (1) and (3) above must be of
+the form                                                                                                  
+                                           X
+                   h(x, y) = ĥ(0, 0) +                 ĥ(m, n)ei(km x+kn y) + ĥ(m, n)∗ e−i(km x+kn y)           (60)
+                                          (m,n)∈A
+
+and the variance constraint (2) is
+                                                    X
+                                                            2|ĥ(m, n)|2 = σ 2 .                                   (61)
+                                               (m,n)∈A
+
+   Observing the slip matrix formula Eq 14, the mobilities depend only on the magnitude of the Fourier
+coefficients. This suggests a simple, broad probability distribution for sampling the surfaces as shall be described
+next. First, index the members of A by p1 through p|A| and define γj ≡ 2|ĥ(pj )|2 . The region of space in the
+variables {γ1 , ..., γ|A| } that fulfills the constraint on the variance is expressed by
+
+
+
+
+                                                                16
+Figure 5: The integer grid points within an upward semicircle, excluding the non-positive m-axis, compose the set A. Up to an
+additive constant, any periodic surface of finite bandwidth can be uniquely described by determining ĥ(m, n) on A.
+
+
+
+
+                                                  0 ≤ γ1 ≤ σ 2                                                         (62a)
+                                                               2
+                                                  0 ≤ γ2 ≤ σ − γ1                                                      (62b)
+                                                               2
+                                                  0 ≤ γ3 ≤ σ − γ1 − γ2                                                 (62c)
+                                                       ..
+                                                        .
+                                                                   |A|−2
+                                                                    X
+                                                                2
+                                                  0 ≤ γ|A|−1 ≤ σ −       γj                                            (62d)
+                                                                             j=1
+                                                                   |A|−1
+                                                                   X
+                                                  γ|A| = σ 2 −             γj .                                        (62e)
+                                                                   j=1
+
+
+   Let us denote by Ω the higher dimensional tetrahedron described by the equalities above on γ1 , · · · , γ|A|−1 .
+Each surface h obeying our constraints is equivalently one point in the region Ω. So, one probability distribution
+we can write is
+
+
+
+        (                                        )                  |A|−1
+                                                                                 ,Z   |A|−1
+                                                                                                  
+            Prob of h ∈ Ω with γ’s between γj and                    Y                 Y
+                                                           =                 dγj              dγj             (63)
+            γj + dγj for each 1 < j < |A| − 1                                      Ω j=1
+                                                                     j=1
+
+
+
+   Under this distribution, the probability of choosing some surface within a subset of Ω occurs with probability
+proportional to the volume of that subset. Using an overbar to denote the weighted average by this distribution,
+basic integration gives the identity
+
+
+
+
+                                                             17
+                                            |A|                          |A|
+                                            X                        σ2 X
+                                                  f (pj )γj =                f (pj )                           (64)
+                                            j=1
+                                                                     |A| j=1
+
+for any function f . Applying this to Eq 15, one finds
+                                        X         2
+                                                                                            
+                                                 2km  + kn2                 X      km kn
+                                                p                               p
+                                                  km2 + k2                        km2 + k2 
+                                   σ2 (m,n)∈A            n             (m,n)∈A          n
+                              M̃ =                                         X k 2 + 2k 2  .
+                                                                                                              (65)
+                                   |A| 
+                                          X       km kn
+                                                 p                               pm      n 
+                                                  k 2      2                        2 + k2
+                                         (m,n)∈A    m + kn               (m,n)∈A
+                                                                                  km      n
+
+
+Next, each of these sums over A must be computed. Each sum in the matrix above can be approximated by
+the semicircular integral
+
+                                X                    Z KL/π Z π
+                                        f (m, n) ∼
+                                                 =                      f (r cos θ, r sin θ) rdrdθ
+                              (m,n)∈A                 r=0        θ=0
+
+
+due to symmetry along the m-axis and the fact the f (0, 0) = 0 for each summand. Then we may write
+                                                                        !
+                                              2      K 3 L2
+                                          σ                      0                 K 3 L2
+                                     M̃ ∼
+                                        =             2π
+                                                               K 3 L2
+                                                                            = σ2          1.                   (66)
+                                          |A|          0        2π
+                                                                                   2π|A|
+
+where 1 is the 2 × 2 identity tensor. Lastly, the number of elements in A can be computed with a semicircular
+area approximation (excluding the missing point at the origin):
+
+                                                           1
+                                                  |A| ∼
+                                                      =      π(KL/π)2 − 1
+                                                           2
+
+giving the final result
+                                                         K 3 L2
+                                           M̃ ∼
+                                              = σ2                1∼
+                                                                   = σ 2 K1.                                   (67)
+                                                      K 2 L2 − 2π
+where the last approximation holds for KL large enough.
+   As expected, a random surface of fixed variance and bandwidth has isotropic slip properties. Moreover, the
+forward mobility of a random surface is approximately −ǫ2 σ 2 K which fits nicely into the ordering we find for
+the most and least optimal surfaces of fixed variance as discussed in section 6:
+
+                                                                  π                       Γπ
+                            Forward mobility:              −ǫ2 σ 2 < −ǫ2 σ 2 K < −2ǫ2 σ 2    .
+                                                           | {z } L  | {z }
+                                                                                 | {z L}
+                                                                      Random
+                                                              Most                             Least
+
+
+Or, perhaps the ordering is easier to see in terms of the relative sizes of these three quantities, which is closely
+approximated by
+                                     Most : Random : Least ∼
+                                                           = − (1 : Γ : 2Γ)
+
+But we reiterate that the result for mean mobility over a random surface depends entirely on the choice of the
+probability distribution. We have selected a particular one, which is simple enough to perform the necessary
+calculations, and which appears relatively unbiased toward any particular subset of surfaces.
+
+
+
+                                                               18
+8. Surfaces with fluctuating scalar Navier slip
+
+   Up to this point, the focus has been on surface patterns due solely to height fluctuations. Now, let us
+expand the analysis to surfaces that have fluctuating scalar slip properties, such as composite surfaces where
+each material has different hydrophobicity properties.
+   Such surfaces can be described with a scalar Navier slip boundary condition, which relates the fluid slip
+along the surface to the fluid shear-rate at the surface
+
+                                                                    ∂u
+                                                     us = b(x, y)      .                                    (68)
+                                                                    ∂n
+
+A no-slip surface corresponds to a Navier slip coefficient of b = 0, whereas a traction-free surface corresponds
+to b = ∞. In this section, we analyze the macroscopic flow properties of surfaces with periodic slip coefficient
+ǫb(x, y) measuring small variations from no-slip, as well as possible height fluctuations ǫh(x, y). Applying the
+Navier slip condition along the surface ǫh(x, y) gives the boundary condition
+
+                                                              (−ǫhx , −ǫhy , 1)
+                              u(x, y, ǫh(x, y)) = ǫb(x, y)                       · ∇u                       (69)
+                                                             |(−ǫhx , −ǫhy , 1)|      z=ǫh(x,y)
+
+
+   Adopting the perturbation series representations of u and p from section 3.1, one expands in ǫ to yield the
+following term-by-term conditions for the flow at z = 0:
+
+
+
+           u0 (x, y, 0) = 0                                                                                 (70)
+                                                 ∂u0
+           u1 (x, y, 0) = (b(x, y) − h(x, y))                                                               (71)
+                                                 ∂z z=0
+                                     ∂u1        h(x, y)2 ∂ 2 u0
+           u2 (x, y, 0) = −h(x, y)           −                                                              (72)
+                                      ∂z z=0         2    ∂z 2 z=0
+                                                  2
+                                                                                                
+                                                  ∂ u0          ∂u0          ∂u0
+                                + b(x, y) h(x, y)       + −hx          , −hy        , 1 · ∇u1               (73)
+                                                   ∂z 2         ∂x z=0       ∂y z=0           z=0
+
+
+The z = ∞ conditions are the same as those in section 3.1. The term u0 is solved, as before, by
+
+                                                     u0 (x, y, z) = τ z.                                    (74)
+
+Substituting this result into the above boundary conditions for the other orders, one finds
+
+                                       u1 (x, y, 0) = (b(x, y) − h(x, y)) τ                                 (75)
+                                                                            ∂u1
+                                       u2 (x, y, 0) = (b(x, y) − h(x, y))          .                        (76)
+                                                                            ∂z z=0
+
+Comparing to sections 3.3 and 3.4, it is now evident that these boundary conditions are the same as the previous,
+except with the switch h(x, y) → h(x, y)−b(x, y). Hence, the solution up to second-order can be inferred directly
+by modifying the results of the previous sections.
+   Keeping with the convention that z = 0 at the bottom of the surface, we apply the switch and obtain the
+result
+                        u(z → ∞) = τ z − ǫhh(x, y) − b(x, y)iτ − ǫ2 M̃(h − b) · τ + O(ǫ3 )                  (77)
+
+
+                                                              19
+Writing, as before, in terms of the variable z̃ = z − ǫhh(x, y)i, one obtains the slip relation
+
+                                    us = ǫhb(x, y)iτ − ǫ2 M̃(h − b) · τ + O(ǫ3 ).                            (78)
+
+Up to second-order, the effective slip of a surface with small scalar slip and height fluctuations is the same as
+that of a no-slip surface except with h → h − b in the argument of M̃, plus an isotropic first-order term due to
+the average of b.
+
+8.1. A simple optimization for surfaces with height and Navier slip fluctuations
+   Consider a surface with height and slip fluctuations of the same periodicity. The forward mobility, as
+computed from Eq 78, is
+                                     us · τ                    τ · M̃(h − b) · τ
+                                           2
+                                             ≈ ǫhb(x, y)i − ǫ2                   .                           (79)
+                                      |τ |                           |τ |2
+Holding the average of b(x, y) fixed, the mobility can be maximized by observing the second-order term above.
+As per the definition of M̃ (Eq 15), the mobility matrix is positive definite if b(x, y) − h(x, y) 6= const, and 0
+otherwise. Consequently, the mobility is maximized when b(x, y) − h(x, y) = const. For any given h(x, y), the
+optimal choice of b(x, y) is
+                                      b(x, y) − hb(x, y)i = h(x, y) − hh(x, y)i                              (80)
+
+which gives a mobility of ǫhb(x, y)i. Physically speaking, this means the forward slip is maximized when the
+peaks of the surface h are more hydrophobic, and the valleys of the surface are more hydrophilic.
+
+
+9. Conclusion
+
+   This work has derived a second-order accurate formula (Eqs 14 and 15) describing an effective local boundary
+condition for shear flows over small-fluctuation periodic surfaces. The formula represents a tensorial mobility
+law, and is easily extended to include surfaces of both non-uniform hydrophobicity and height changes (Eq 78).
+We have gone to great lengths to quantify the error of the approximation, so as to provide firm guidelines for its
+appropriate usage. Within these guidelines, the formula was optimized in a Lagrange multiplier framework to
+derive the no-slip surfaces of fixed variance that maximize/minimize the forward mobility. These extremal cases
+were favorably compared with the mobility of a random, fixed-variance surface as computed by summing over
+some unbiased distribution. We have also performed a simple optimization that instructs the optimal coupling
+between height and scalar slip fluctuations when both surface effects can take place.
+   In the future, we hope to augment our analysis to include the possibility of a surface charge profile. This
+addition would be useful in electro-kinetic applications to help understand and predict electro-osmotic fluid
+transport. We also continue from a mathematical perspective to work on enhanced solution methods that may
+improve the breadth of applicability of the mobility formula.
+
+
+Appendix A. Appendix: General solution to the Stokes Equations
+
+   In this appendix, a general solution to the Stokes equations is given for use in solving the first- and second-
+order terms in the perturbation expansion displayed in Section 3.1. It is expressed as a Fourier series in the
+horizontal dimensions with three undetermined coefficient sets:
+
+
+
+                                                          20
+                                               2 h
+                                                        √ 2
+                                          km +kn   −z                       
+                                  i(km x+kn y) e
+                     X                                           p
+ u(x,y, z) = α +              e       p           −ikm 1 + 2z km     2 + k 2 A(m, n)
+                                         2 + k2                            n
+                (m,n)6=0
+                                     3 km      n
+            p                          p                                     p                                  #
+        3kn2 km
+              2 + k 2 − 2k 4 z + 2k 2 ( k 2 + k 2 − k 2 z)
+                    n     m         m     m     n    n
+                                                                               2 + k 2 − 2z(k 2 + k 2 ))
+                                                                      km kn ( km    n        m     n
+      +                      2 + k2
+                                                           B(m, n) −              2 + k2
+                                                                                                         C(m, n)
+                           km      n                                             km     n
+
+
+                                           √ 2 2
+                                         −z km +kn h                     
+                     X                 e                       p
+ v(x,y, z) = β +          ei(km x+kn y) p           −ikn 1 + 2z km2 + k 2 A(m, n)
+                                                                        n
+                                       3 km 2 + k2
+                 (m,n)6=0                        n
+               p                                          p                          p                          #
+        km kn ( km2 + k 2 − 2z(k 2 + k 2 ))             2
+                                                      3km   2 + k 2 − 2k 4 z + 2k 2 ( k 2 + k 2 − k 2 z)
+                                                           km
+                        n         m      n                       n      n        n     m     n     m
+      −               2 + k2
+                                            B(m, n) +                      2 + k2
+                                                                                                         C(m, n)
+                    km       n                                          km      n
+
+
+                                                        √ 2   2 h
+                                                   −z    km +kn                                                              i
+                                  i(km x+kn y) e
+                     X                                                         p
+w(x,y, z) = γ +               e                                      3 + 2z      2 + k 2 A(m, n) − 2ik zB(x, y) − 2ik zC(m, n)
+                                                                                km    n               m              n
+                                                         3
+                   (m,n)6=0
+
+
+                                                        √ 2   2 h
+                                                   −z    km +kn                                                   i
+                                  i(km x+kn y) e
+                     X                                               p
+ p(x,y, z) = δ +              e                                        2 + k 2 A(m, n) − 4ik B(m, n) − 4ik C(m, n)
+                                                                    4 km    n               m             n
+                                                         3
+                   (m,n)6=0
+
+
+   This system can be inverted to uniquely determine the constants α, β, γ and the coefficient sets A(m, n), B(m, n), C(m, n)
+in terms of the chosen lower boundary condition on the velocity, u(x, y, 0). The general solution automatically
+upholds the known boundary conditions for the first- and second-order perturbation terms:
+
+                                                                                                            ∂u
+            u(x, y, z) = u(x + Lx , y + Ly , z) ,                 p(x, y, z) = p(x + Lx , y + Ly , z) ,            = 0.
+                                                                                                            ∂z z=∞
+
+Appendix B. Appendix: Determining error bounds
+
+   This appendix derives the error bound displayed as Eq 39 in Section 4.2. To begin, define the following
+norm on scalar, vector, or tensor fields f (x, y) over a 2D periodic domain:
+                                                              s           Z Lx Z Ly
+                                                                    1
+                                         kf (x, y)kx,y =                                 |f (x, y)|2 dxdy                 (B.1)
+                                                                  4LxLy    −Lx     −Ly
+
+
+We reserve | · | for the absolute value (if applied to a scalar) or Euclidean norm (if applied to a vector or matrix).
+The above is directly proportional to the compact support L2 norm on functions. The choice of this norm
+greatly simplifies the analysis since it it connects directly to an inner product, and consequently an array of
+useful theorems.
+   The exact flow solution in our problem satisfies the no-slip condition along the surface, i.e. u(x, y, ǫh(x, y)) =
+0. To measure how much our second-order flow approximation differs from the true solution along the surface,
+we use the norm to measure the surface error:
+
+                Surface Error = u0 (x, y, ǫh(x, y)) + ǫu1 (x, y, ǫh(x, y)) + ǫ2 u2 (x, y, ǫh(x, y)) x,y                   (B.2)
+
+
+                                                                          21
+From Taylor’s Remainder Theorem, we know
+                                                                                    Z ǫh(x,y)
+                                                                 ∂u1                                                  ∂ 2 u1
+                     u1 (x, y, ǫh) = u1 (x, y, 0) + ǫh                  +                       (ǫh(x, y) − z)               dz
+                                                                 ∂z z=0              0                                 ∂z 2
+                                                           Z ǫh(x,y)
+                                                                            ∂u2
+                     u2 (x, y, ǫh) = u2 (x, y, 0) +                             dz.
+                                                            0                ∂z
+
+Inserting these forms into the above, and using the order-by-order boundary conditions to cancel terms, one
+obtains
+                                            Z ǫh(x,y)                                    !                Z ǫh(x,y)             !
+                                                                       ∂ 2 u1                                          ∂u2
+               Surface Error = ǫ                        (ǫh(x, y) − z)        dz               + ǫ2                        dz
+                                               0                        ∂z 2                                0           ∂z
+                                                                                                                                    x,y
+                                          Z ǫh(x,y)                             2                         Z ǫh(x,y)
+                                                                            ∂ u1                                      ∂u2
+                                 ≤ǫ                   (ǫh(x, y) − z)              dz           +ǫ2                        dz              (B.3)
+                                           0                                 ∂z 2                          0           ∂z
+                                                                                         x,y                                 x,y
+                                      |                         {z                        }           |               {z       }
+                                                            ≡R(1)                                                ≡R(2)
+
+
+by the triangle ininequality.
+   To place an upper bound on the error, we must calculate tight bounds on each of these two integrals given
+any surface h(x, y). This is a highly nontrivial task. As is derived in Appendix Appendix C, with judicious use
+of Parseval’s Theorem and the Cauchy-Schwartz inequality, we can show that
+                     Z ǫh(x,y)
+                                                     ∂ 2 u1
+           R(1) ≡                (ǫh(x, y) − z)             dz             ≤ ǫ2 h2M K1 |τ | k∇∇h(x, y)kx,y                                (B.4)
+                      0                               ∂z 2
+                                                                     x,y
+                     Z ǫh(x,y)                                                                            
+                                 ∂u2
+           R(2) ≡                    dz              ≤ ǫhM K2 |τ | |∇h|M k∇h(x, y)kx,y + hM k∇∇h(x, y)kx,y                                (B.5)
+                      0           ∂z
+                                               x,y
+
+
+where K1 and K2 are order one, known, dimensionless constants independent of the choice of ǫ, τ , or h(x, y),
+and for any function f (x, y) we adopt the notation
+
+                                                          fM ≡ max f (x, y).                                                              (B.6)
+                                                                       x,y
+
+The bounds on R(1) and R(2) applied to Eq B.3 give
+                                                                                         
+                    Surface Error ≤ κ ǫ3 hM |τ | hM k∇∇h(x, y)kx,y + |∇h|M k∇h(x, y)kx,y
+                                                                     
+                                  ≤ κ ǫ3 hM |τ | hM |∇∇h|M + |∇h|2M ≡ Surface Error Bound                                                 (B.7)
+
+where we define κ ≡ K1 + K2 , which is another known order-one constant.
+    Next, we make the connection between the surface error and the error in the predicted slip. The exact
+flow solution must have the velocity go to zero along the surface. The second-order approximation that we
+have found has some fallacious extra velocity along the surface that arises due to truncation error, and the
+surface error is a space-average measurement of this erroneous surface speed. If we let u(x, y, z) represent the
+true solution, uapp (x, y, z) = u0 (x, y, z) + ǫu1 (x, y, z) + ǫ2 u2 (x, y, z) be our second-order approximation, and
+
+
+
+
+                                                                           22
+∆(x, y, z) ≡ u(x, y, z) − uapp (x, y, z), it follows that
+
+                                      k∆(x, y, ǫh(x, y))kx,y ≤ Surface Error Bound                                (B.8)
+
+   Since both u(x, y, z) and uapp (x, y, z) obey the Stokes equations exactly, the difference ∆(x, y, z) must also
+obey the Stokes equations. Moreover, since both u and uapp satisfy the same traction boundary condition as
+z → ∞, then the difference flow ∆(x, y, z) must asymptote to a constant uniform flow (zero shear traction) for
+large z. The speed in the uniform flow region is precisely the error in the approximation for the effective slip.
+Our goal is hence reduced to determining the maximum possible flow speed that can occur at large z in a Stokes
+flow ∆(x, y, z) that obeys Eq B.8 and zero shear tractions at z = ∞.
+   While the total surface error is described by (B.7), the distribution of this extra velocity over the surface
+is undetermined, providing the only degree of freedom in this maximization. We state without proof that the
+maximal large-z uniform flow arises for
+
+                                          ∆(x, y, z) = (Surface Error Bound) e                                    (B.9)
+
+where e is any horizontal unit vector. In other words, ∆ has a large-z uniform flow of maximal speed when the
+extra surface velocity represented by the surface error is equally distributed and uniformly directed along the
+surface, so that ∆(x, y, z) is globally uniform. This choice of ∆ saturates Eq B.8.
+    Recalling the definition in (B.7), the above selection of ∆(x, y, z) implies the error in the second-order slip
+approximation is subject to
+                                                                                  
+                               us − −ǫ2 M̃(h) · τ ≤ ǫ3 κ hM |τ | hM |∇∇h|M + |∇h|2M
+
+which is our desired result.
+
+
+Appendix C. Appendix: Bounding the integrals R(1) and R(2)
+
+   The purpose of this appendix is to rigorously prove the bounds on the error quantities R(1) and R(2) shown
+as Eqs B.4 and B.5 in Appendix Appendix B.
+
+Appendix C.1. The error R(1)
+   We begin with the bound on R(1) . First, we observe by the Cauchy-Schwartz inequality that
+                                                       s                                     s
+              Z ǫh(x,y)                                 Z ǫh(x,y)                      2        Z ǫh(x,y)
+                                         ∂ 2 u1                                ∂ 2 u1
+                          (ǫh(x, y) − z)        dz ≤           (ǫh(x, y) − z)            dz               12 dz
+               0                          ∂z 2       0                          ∂z 2              0
+                                                            s
+                                                                Z ǫh(x,y)                           2
+                                                   p                                         ∂ 2 u1
+                                                  ≤ ǫh(x, y)              (ǫh(x, y) − z)2             dz
+                                                                 0                            ∂z 2
+                                                        s
+                                                           Z ǫhM                          2
+                                                   p                              ∂ 2 u1
+                                                  ≤ ǫhM            (ǫhM − z)2               dz
+                                                             0                     ∂z 2
+
+
+
+
+                                                              23
+We insert this result into the definition of R(1) , and expand the function norm:
+                                                          s
+                                                           Z ǫhM                                       2
+                                     p                                                        ∂ 2 u1
+                              R(1) ≤  ǫhM                               (ǫhM − z)2                         dz
+                                                                  0                            ∂z 2
+                                                                                                                x,y
+                                         v                                                                                                    !
+                                         u                    Z Lx Z Ly                   Z ǫhM                                      2
+                                         u         1                                                                       ∂ 2 u1
+                                        =t                                      ǫhM                (ǫhM         − z)2                    dz       dxdy
+                                                 4Lx Ly        −Lx       −Ly                  0                             ∂z 2
+                                            s            Z ǫhM                                    2
+                                                                                        ∂ 2 u1
+                                        =        ǫhM                  (ǫhM − z)2                        dz.                                                                  (C.1)
+                                                          0                              ∂z 2     x,y
+
+
+The final line follows from rearranging the order of integration. In order to apply the next step, we must first
+compute |∂ 2 u1 /∂z 2 |2 , which is straightforward because u1 (x, y, z) is completely known. The result is lengthy,
+but can be written somewhat compactly as
+              2                   2                   2                   2
+     ∂ 2 u1               ∂ 2 u1                ∂ 2 v1                ∂ 2 w1
+                  =                     +                     +
+      ∂z 2                ∂z 2                  ∂z 2                   ∂z 2
+                                                                                                                                                                           2
+                  X                X                                                                                            √ 2      2
+        =                                  τ · qm,n · A(j) · pm,n , qm,n · B(j) · pm,n e−z                                          km +kn
+                                                                                                                                                  ĥ(m, n)ei(km x+kn y) 
+              j={1,2,3}       (m,n)6=0
+
+
+where for each choice of m and n, qm,n and pm,n are the vectors defined by
+                          p                                   2    2
+                                                                      √           p             p
+     qm,n = (1, z           2 + k 2 , zk , zk ) and p
+                           km                                                       2    2         2 + k2 )
+                                 n      m    n        m,n = (km , kn , 2km kn , km km + kn , kn   km    n                                                                    (C.2)
+
+and for each j, A(j) and B(j) are constant, dimensionless, 4 × 5 matrices of order one in size.
+   Now for the crucial step: Apply Parseval’s Theorem to convert the function norm to a discrete sum,
+              2    Z Lx Z Ly         2
+   ∂ 2 u1      1              ∂ 2 u1
+                  =                    dxdy
+    ∂z 2 x,y 4LxLy −Lx −Ly ∂z 2
+                                 
+                      Z Lx Z Ly
+           X      1                  X                                                 
+       =                                 τ · qm,n · A(j) · pm,n , qm,n · B(j) · pm,n
+                4Lx Ly −Lx −Ly
+            j={1,2,3}                                             (m,n)6=0
+                                                                                                                               √ 2                                   2 
+                                                                                                                          −z    km +2n                i(km x+kn y)
+                                                                                                                      e                  ĥ(m, n)e                          dxdy
+                  X          X                                                                                                √ 2   2
+                                                                                                                                                         2
+       =                                τ · qm,n · A(j) · pm,n , qm,n · B(j) · pm,n                                   e−z       km +kn
+                                                                                                                                          ĥ(m, n)
+            j={1,2,3} (m,n)6=0
+                  X          X                            
+                                                                        2             2
+                                                                                                                √ 2       2
+                                                                                                                                                  2
+       ≤                                |τ |2 |qm,n |2        A(j)          + B(j)            |pm,n |2 e−2z           km +kn
+                                                                                                                                 ĥ(m, n)
+            j={1,2,3} (m,n)6=0
+
+
+The last line follows from the Cauchy-Schwartz inequality. To express the result more simply, define
+                                                                               X
+                                                                      α=                |A(j) |2 + |B(j) |2
+                                                                            j={1,2,3}
+
+
+
+
+                                                                                        24
+Then, expanding the norms on the vectors p and q, we have
+
+            ∂ 2 u1
+                     2                        X                                                                           √ 2   2
+                                                                                                                                                   2
+                             ≤ α|τ |2                (1 + z 2 (2km
+                                                                 2
+                                                                   + 2kn2 ))(2km
+                                                                               4
+                                                                                 + 2kn4 + 4km
+                                                                                            2 2
+                                                                                              kn ) e−2z                    km +kn
+                                                                                                                                     ĥ(m, n)                   (C.3)
+             ∂z 2    x,y                  (m,n)6=0
+
+
+With a bound on the integrand in (C.1) now established, we move on to evaluate the integral:
+  Z ǫhM                                   2
+                                 ∂ 2 u1
+            (ǫhM − z)2                          dz
+   0                              ∂z 2    x,y
+                                                                                                                                                          
+       Z ǫhM                                    X                                                                              √ 2   2
+                                                                                                                                                       2
+  ≤            (ǫhM − z)2 α|τ |2                      (1 + z 2 (2km
+                                                                   2
+                                                                     + 2kn2 ))(2km
+                                                                                 4
+                                                                                   + 2kn4 + 4km
+                                                                                              2 2
+                                                                                                kn ) e−2z                       km +kn
+                                                                                                                                         ĥ(m, n)  dz
+        0                                     (m,n)6=0
+                                                                              "Z
+                     X                                                    2          ǫhM                      √ 2     2
+  = 2α|τ |2                      4
+                               (km + kn4 + 2km
+                                             2 2
+                                               kn ) ĥ(m, n)                               (ǫhM − z)2 e−2z       km +kn
+                                                                                                                          dz
+                (m,n)6=0                                                         0
+                                                                                                                                                            #
+                                                                                                         Z ǫhM                           √ 2   2
+                                                                                          2
+                                                                                      +2(km + kn2 )              (ǫhM − z) z e 2 2 −2z    km +kn
+                                                                                                                                                       dz       (C.4)
+                                                                                                          0
+
+
+Now we bound the two z integrals appearing in the last expression. One can show by basic calculus that for
+any z ≥ 0,
+                             √ 2 2                      √ 2 2           4
+                         e−2z km +kn ≤ 1 and z 2 e−2z km +kn ≤ 2 2               .                  (C.5)
+                                                                   e (km + kn2 )
+Hence,
+                                   Z ǫhM                            √ 2    2
+                                                                                            Z ǫhM
+                                                                                                                           ǫ3 h3M
+                                                           2 −2z      km +kn
+                                              (ǫhM − z) e                            dz ≤             (ǫhM − z)2 dz =
+                                     0                                                       0                                3
+and            Z ǫhM                                 √ 2      2                     4
+                                                                                                 Z ǫhM
+                                                                                                                                    4ǫ3 h3M
+                             (ǫhM − z)2 z 2 e−2z         km +kn
+                                                                   dz ≤                                  (ǫhM − z)2 dz =                       .
+                 0                                                            e (km + kn2 )
+                                                                               2  2
+                                                                                                  0                             3e2 (km
+                                                                                                                                      2 + k2 )
+                                                                                                                                            n
+
+Substituting these bounds in Eq (C.4), we obtain
+                     Z ǫhM                                 2
+                                                  ∂ 2 u1                                         X                                             2
+                                (ǫhM − z)                        dz ≤ ǫ3 h3M |τ |2 K12                   4
+                                                                                                       (km + kn4 + 2km
+                                                                                                                     2 2
+                                                                                                                       kn ) ĥ(m, n)                            (C.6)
+                         0                        ∂z 2     x,y                               (m,n)6=0
+
+
+
+
+                                                                                     25
+                            p
+where we define K1 ≡         2α(1 + 8/e2 )/3. Now, observe that
+
+            X                                              2
+                       4
+                     (km +kn4 + 2km
+                                  2 2
+                                    kn ) ĥ(m, n)
+          (m,n)6=0
+                                    X                       2            X                         2                X                       2
+                                              4
+                             =               km ĥ(m, n)           +               kn4 ĥ(m, n)        +2                   2 2
+                                                                                                                           km kn ĥ(m, n)
+                                  (m,n)6=0                             (m,n)6=0                                 (m,n)6=0
+                                    X                           2         X                                2          X                               2
+                                               2
+                             =               −km ĥ(m, n) +                          −kn2 ĥ(m, n) + 2                          −km kn ĥ(m, n)
+                                  (m,n)6=0                              (m,n)6=0                                    (m,n)6=0
+                                                                                     2                                                          2
+                                      X                                                            X
+                                                2
+                             =                −km ĥ(m, n)ei(km x+kn y)                    +                   −kn2 ĥ(m, n)ei(km x+kn y)
+                                   (m,n)6=0                                                    (m,n)6=0
+                                                                                     x,y                                                        x,y
+                                                                                                                            2
+                                                                       X
+                                                         +2                    −km kn ĥ(m, n)ei(km x+kn y)
+                                                                    (m,n)6=0
+                                                                                                                            x,y
+                                     2           2             2               2               2                2
+                                    ∂ h(x, y)       ∂ h(x, y)        ∂ h(x, y)
+                             =           2
+                                                  +      2
+                                                                  +2                                                                                       (C.7)
+                                      ∂x      x,y     ∂y      x,y      ∂x∂y    x,y
+
+
+Parseval’s Theorem is invoked in the penultimate line to swap each discrete sum for the function norm of a
+Fourier series. Substituting Eq C.7 into Eq C.6, we may rewrite Eq C.1 as
+                                                    s
+                                                                          2                            2                           2
+                           (1)                          ∂ 2 h(x, y)       ∂ 2 h(x, y)        ∂ 2 h(x, y)
+                       R         ≤ ǫ2 h2M K1 |τ |              2
+                                                                        +        2
+                                                                                          +2
+                                                            ∂x      x,y       ∂y      x,y       ∂x∂y     x,y
+
+                                 = ǫ2 h2M K1 |τ | k∇∇h(x, y)kx,y
+
+giving us our final result.
+
+Appendix C.2. The error R(2)
+   To compute the second error term R(2) , one must have the full solution for the second-order velocity
+u2 (x, y, z). Let Cu , Cv , and Cw represent the non-constant-term Fourier coefficients for u2 (x, y, 0), obtain-
+able via convolution. That is,
+
+                                                        ∂u1                                        X
+                      u2 (x, y, 0) = −h(x, y)                  = −x̂ · M̃ · τ +                                Cu (m, n)ei(km x+kn y)                      (C.8)
+                                                        ∂z z=0
+                                                                                               (m,n)6=0
+
+                                                        ∂v1                                        X
+                       v2 (x, y, 0) = −h(x, y)                 = −ŷ · M̃ · τ +                                Cv (m, n)ei(km x+kn y)                      (C.9)
+                                                        ∂z z=0
+                                                                                               (m,n)6=0
+
+                                                        ∂w1                   X
+                      w2 (x, y, 0) = −h(x, y)                   =                     Cw (m, n)ei(km x+kn y)                                              (C.10)
+                                                         ∂z z=0
+                                                                          (m,n)6=0
+
+
+
+
+                                                                              26
+Now, inserting the boundary conditions into the general solution form, one obtains:
+                                                                                        !
+                                    X                √ 2      2
+                                                               2
+                                                  −km kn Cv − km  Cu
+                                                −z       km +kn
+        u2 = −x̂ · M̃ · τ +          e               p                z − imzCw + Cu ei(km x+kn y)                              (C.11)
+                                                       k 2 + k2
+                            (m,n)6=0                     m    n
+                                                                                       !
+                              X         √ 2 2 −k k C − k 2 C
+                                                    m  n   u    n   v
+        v2 = −ŷ · M̃ · τ +          e−z km +kn      p                z − inzCw + Cv ei(km x+kn y)                              (C.12)
+                                                       k 2 + k2
+                            (m,n)6=0                     m    n
+              X           √ 2 2p                                           
+                       −z km  +kn       2 + k 2 C − imC − inC )z + C           i(km x+kn y)
+        w2 =         e               ( km     n w        u        v        w e                                                  (C.13)
+                (m,n)6=0
+
+
+   The derivation of the bound on R(2) follows a similar sequence as the proof in the last subsection for R(1) .
+Steps will be abbreviated accordingly. First, the Cauchy-Schwartz inequality allows us to bound the integral:
+
+                                                                                 s
+                                           Z ǫh(x,y)                              Z ǫhM               2
+                                                               ∂u2     p                        ∂u2
+                                                                   dz ≤ ǫhM                               dz
+                                            0                  ∂z                    0          ∂z
+
+As in the previous section, the next step is to insert this result into the definition of R(2) and expand the
+function norm, ultimately giving us
+                                                                   s     Z ǫhM            2
+                                                         (2)                     ∂ 2 u2
+                                                     R         ≤   ǫhM                          dz.                             (C.14)
+                                                                          0       ∂z      x,y
+
+
+Taking the z derivative of u2 above, we find that
+                                
+            2
+      ∂u2             X             X
+                =                         cm,n · qm,n · D(j) · pm,n , qm,n · E(j) · pm,n ,
+      ∂z
+                    j={1,2,3}   (m,n)6=0
+                                                                                                        √ 2 2                  !2
+                                                                                                    e−z km +kn
+                                                                                                                  i(km x+kn y)
+                                                                                 qm,n · F(j) · pm,n p           e
+                                                                                                        2 + k2
+                                                                                                       km    n
+
+
+where the vectors pm,n and qm,n are defined in Eqs C.2, cm,n = (Cu , Cv , Cw ), and the matrices D(j) , E(j) , and
+F(j) are constant, order one, 4 × 5 matrices for each j.
+   As was done before, we next apply Parseval’s Theorem to this result, giving
+                                                                                                         √ 2 2 2
+        2
+  ∂u2               X           X                                                                    e−z km +kn
+            =                    cm,n · qm,n · D(j) · pm,n , qm,n · E(j) · pm,n , qm,n · F(j) · pm,n p
+  ∂z    x,y
+                                                                                                         2 + k2
+                                                                                                        km    n
+              j={1,2,3} (m,n)6=0
+
+
+
+
+                                                                          27
+We apply the Cauchy-Schwartz inequality to this result, and simplify/expand algebraically:
+                                                                                          √ 2 2
+                                  2                                                    −2z km +kn
+                           ∂u2                X                                      e
+                                        ≤               β |cm,n |2 |pm,n |2 |qm,n |2     2 + k2
+                           ∂z     x,y                                                   km    n
+                                            (m,n)6=0
+                                              X                       2km 4
+                                                                             + 2kn4 + 4km kn −2z√km
+                                                                                        2 2
+                                                                                                  2 +k2
+                                        =               β |cm,n |2 |pm,n |2    2      2
+                                                                                            e         n
+                                                                              km + kn
+                                          (m,n)6=0
+                                            X                                           √ 2 2
+                                        =          2β |cm,n |2 |pm,n |2 (km2
+                                                                             + kn2 )e−2z km +kn
+                                            (m,n)6=0
+                                              X                                                                      √ 2      2
+                                        =               2β |cm,n |2 (1 + 2z 2 (km
+                                                                                2
+                                                                                  + kn2 ))(km
+                                                                                            2
+                                                                                              + kn2 )e−2z                km +kn
+
+                                            (m,n)6=0
+
+
+where
+                                                           X               2                2            2
+                                                β=                  D(j)       + E(j)           + F(j)       .
+                                                        j={1,2,3}
+
+The integral in Eq C.14 can now be bounded:
+                                                                    "Z                                                                                     #
+Z ǫhM
+        ∂u2
+              2                X                                          ǫhM             √ 2   2
+                                                                                                                          Z ǫhM             √ 2   2
+                                                   22
+                    dz ≤                2β|cm,n | (km + kn2 )                   e   −2z    km +kn           2
+                                                                                                    dz + 2(km + kn2 )               2 −2z
+                                                                                                                                  z e        km +kn
+                                                                                                                                                      dz
+ 0      ∂z    x,y                                                     0                                                     0
+                             (m,n)6=0
+                                          X
+                         ≤ ǫhM K22                 |cm,n |2 (km
+                                                              2
+                                                                + kn2 )
+                                        (m,n)6=0
+
+              p
+where K2 ≡     2β(1 + 8/e2 ) is obtained by bounding the two integrands per (C.5).
+   Substituting this bound into Eq C.14, apply Parseval’s Theorem again, keeping in mind the definition of
+cm,n = (Cu , Cv , Cw ) from Eqs C.8:
+                         s X                                                    s X                                  X
+      R(2) ≤ ǫhM K2                     |cm,n |2 (km
+                                                   2 + k 2 ) = ǫh K
+                                                        n        M 2                            |ikm cm,n |2 +              |ikn cm,n |2
+                             (m,n)6=0                                               (m,n)6=0                     (m,n)6=0
+                   v
+                   u
+                   u ∂           ∂u1
+                                           2
+                                                   ∂
+                                                     
+                                                               ∂u1
+                                                                       2
+          = ǫhM K2 t     −h(x, y)              +      −h(x, y)
+                     ∂x           ∂z z=0 x,y      ∂y            ∂z z=0 x,y
+                                                                                     
+                              ∂u1                              ∂u1                ∂u1
+          = ǫhM K2 ∇ h(x, y)               = ǫhM K2 (∇h(x, y))        + h(x, y) ∇
+                              ∂z z=0 x,y                       ∂z z=0             ∂z z=0 x,y
+                                                             !
+                           ∂u1                   ∂u1
+          ≤ ǫhM K2 |∇h|M                + hM ∇                                            (C.15)
+                             ∂z z=0 x,y           ∂z z=0 x,y
+
+Computing |∂u1 /∂z|2 at z = 0, the solution takes the form:
+                                                                                                                                           2
+                     2
+         ∂u1                    X              X                                                                 
+                         =                             τ · sm,n · G(j) · tm,n , sm,n · H(j) · tm,n ĥ(m, n)ei(km x+kn y) 
+         ∂z z=0
+                             j={1,2,3}       (m,n)6=0
+
+
+For                                                                                  !
+                                                    km        kn
+                                 sm,n =        1, p        ,p                               and tm,n = (km , kn )
+                                                    2    2
+                                                   km + kn   km + kn2
+                                                              2
+
+
+
+
+                                                                           28
+and G(j) and H(j) constant, dimensionless, order one, 3 × 2 matrices. Parseval’s Theorem and the Cauchy-
+Schwartz inequality then give:
+
+
+                                       2
+                           ∂u1                    X                                                     2
+                                      ≤                       γ |τ |2 |sm,n |2 |tm,n |2 ĥ(m, n)
+                           ∂z z=0 x,y
+                                                (m,n)6=0
+                                                                X                                 2
+                                             = 2γ |τ |2                 2
+                                                                      (km + kn2 ) ĥ(m, n)
+                                                              (m,n)6=0
+                                                                                        !
+                                                                         2          2
+                                                          2      ∂h       ∂h                                      2
+                                             = 2γ |τ |                  +                   = 2γ |τ |2 k∇hkx,y                 (C.16)
+                                                                 ∂x x,y   ∂y x,y
+
+for
+                                                               X
+                                                  γ=                  |G(j) |2 + |H(j) |2 .
+                                                          j={1,2,3}
+
+By similar means, we can show
+                       2                                                                            2
+              ∂u1                X
+                                               2
+          ∇                ≤               γ (km + kn2 )|τ |2 |sm,n |2 |tm,n |2 ĥ(m, n)
+              ∂z z=0
+                               (m,n)6=0
+                                             X                                              2
+                           = 2γ |τ |2                4
+                                                   (km + kn4 + 2km
+                                                                 2 2
+                                                                   kn ) ĥ(m, n)
+                                           (m,n)6=0
+                                                      2                      2                2
+                                                                                                    !
+                                              ∂2h      ∂ 2h       ∂2h
+                           = 2γ |τ |   2
+                                                2
+                                                     +    2
+                                                              +2                                        = 2γ |τ |2 k∇∇hk2x,y   (C.17)
+                                              ∂x x,y   ∂y x,y    ∂x∂y                         x,y
+
+                                                                         √
+Applying (C.16) and (C.17) to (C.15), and absorbing                       2γ into the definition of K2 , we obtain the final result:
+                                                                               
+                                 R(2) ≤ ǫhM K2 |τ | |∇h|M k∇hkx,y + hM k∇∇hkx,y
+
+
+References
+
+Ajdari, A., Jan. 2002. Transverse electrokinetic and microfluidic effects in micropatterned channels: Lubrication
+  analysis for slab geometries. Phys. Rev. E 65 (1), 016301.
+
+Batchelor, G. K., 1970. Slender-body theory for particles of arbitary cross-section in stokes flow. J. Fluid Mech.
+  44.
+
+Bazant, M. Z., Vinogradova, O. I., 2008. Tensorial hydrodynamic slip. J. Fluid Mech. 613, 125–134.
+
+Bocquet, L., Barrat, J. L., 2007. Flow boundary conditions from nano- to micro- scales. Soft Matter 3, 685–693.
+
+Davis, A. M. J., Lauga, E., 2009. Geometric transition in friction for flow over a bubble mattress. Phys. Fluids
+ 21, 011701.
+
+Feuillebois, F., Bazant, M. Z., Vinogradova, O. I., 2009. Effective slip over superhydrophobic surfaces in thin
+  channels. Phys. Rev. Lett. 102, 026001.
+
+Hinch, E. J., 1991. Perturbation Methods. Cambridge University Press.
+
+                                                                         29
+Jung, Y., Torquato, S., 2005. Fluid permeabilities of triply periodic minimal surfaces. Phys. Rev. E 72, 056319.
+
+Lauga, E., Brenner, M. P., Stone, H. A., 2007. Handbook of Experimental Fluid Dynamics. Springer, NY,
+  Ch. 19, pp. 1219–1240.
+
+Lauga, E., Stone, H. A., 2003. Effective slip in pressure-driven stokes flow. J. Fluid Mech.
+
+Miksis, M. J., Davis, S. H., 1994. Slip over rough and coated surfaces. J. Fluid Mech. 273, 125–139.
+
+Stone, H. A., Stroock, A. D., Ajdari, A., 2004. Engineering flows in small devices. Annual Review of Fluid
+  Mechanics 36, 381–411.
+
+Stroock, A. D., Dertinger, S. K., Whitesides, G. M., Ajdari, A., 2002a. Patterning flows using grooved surfaces.
+  Anal. Chem. 74, 5306–5312.
+
+Stroock, A. D., Dertinger, S. K. W., Ajdari, A., Mezić, I., Stone, H. A., Whitesides, G. M., Jan. 2002b. Chaotic
+  mixer for microchannels. Science 295, 647–651.
+
+Torquato, S., 2002. Random Heterogeneous Materials. Springer-Verlag.
+
+Vinogradova, O. I., 1999. Slippage of water over hydrophobic surfaces. Int. J. Miner. Proc. 56, 31–60.
+
+Wang, C. Y., May 2003. Flow over a surface with parallel grooves. Phys. Fluids 15, 1114–1121.
+
+Wilkening, J., 2009. Practical error estimates for reynolds’ lubrication approximation and its higher order
+ corrections. SIAM J. Math. Anal. 41, 588–630.
+
+
+
+
+                                                       30
+

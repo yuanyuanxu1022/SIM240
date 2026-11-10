@@ -1,0 +1,36 @@
+{
+  "protocol": "S2-LRP-v1",
+  "recorded_at": "2026-11-02T22:41:37.620590+08:00",
+  "old_release": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/S2_formal_launch_release_reuse_v1_20261102_01.json",
+    "sha256": "2c0ed4c3c9d05178da160c2c2772ea8cee4ea03808ce7d765a19e3e3a86d1ad0",
+    "status": "SUPERSEDED_FOR_FUTURE_LAUNCH_NOT_MODIFIED",
+    "original_failure": "EvidenceError: bound input drift"
+  },
+  "exception": {
+    "original_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/evidence/S2_perf_controller_v1_20261102_01.log",
+    "expected_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "current_sha256": "ca3607bfc8f2c7aaeb99997253e85485f1633f74983f85aa087c96da70d8799c",
+    "current_size_bytes": 1173,
+    "snapshot_path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S2_LRP_launch_release_20261102/PERF_controller_changed_snapshot.log.txt",
+    "snapshot_sha256": "ca3607bfc8f2c7aaeb99997253e85485f1633f74983f85aa087c96da70d8799c",
+    "current_log_meaning": "Old PERF inspect/pristine rejected already used output before execute",
+    "unknowns": [
+      "caller",
+      "complete command",
+      "whether execute flag present",
+      "complete invocation history"
+    ]
+  },
+  "old_formal_rejection_snapshot": {
+    "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S2_LRP_launch_release_20261102/old_formal_rejection_snapshot.log.txt",
+    "sha256": "89287db84047fb3c5c3c7777fa2810e29908430282e52145bbad61a7f98f9298"
+  },
+  "PERF_resource_prerequisite": "RETAINED_WITH_DOCUMENTED_LOG_EXCEPTION",
+  "old_raw_closure_intact": false,
+  "retained_old_inputs": 2139,
+  "required_B_inputs": 1816,
+  "native_run_ids_unchanged": true,
+  "no_scientific_threshold_change": true,
+  "no_solver_retry_or_launch": true
+}

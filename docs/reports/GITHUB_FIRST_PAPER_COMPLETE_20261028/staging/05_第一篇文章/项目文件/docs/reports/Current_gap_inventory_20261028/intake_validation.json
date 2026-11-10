@@ -1,0 +1,58 @@
+{
+  "errors": [],
+  "handling_assertions": {
+    "author_and_editor_channels_must_remain_separate": true,
+    "bundled_tools_are_local_only": true,
+    "data_reuse_authorized": false,
+    "external_service_use_authorized_by_this_report": false
+  },
+  "normalized_scope": {
+    "ai_plan": "approved_ai_assistance",
+    "capacity": "author_requested_reader",
+    "competence_areas": [
+      "numerical_methods",
+      "claim_evidence",
+      "mathematical_consistency"
+    ],
+    "manuscript_type": "deterministic_computational_fluid_dynamics",
+    "out_of_scope": [
+      "solver_execution",
+      "real_N8_extraction",
+      "journal_submission",
+      "model_refit",
+      "theory_final_freeze",
+      "new_computation",
+      "real_N8_analysis",
+      "remote_publication"
+    ],
+    "peer_review_model": "open",
+    "requested_focus": [
+      "remaining_materials",
+      "closed_vs_open_evidence",
+      "bounded_manuscript_vs_stronger_claims"
+    ]
+  },
+  "notice": "This validates declared process controls only. It does not establish reviewer competence, resolve conflicts, authorize external processing, or assess manuscript quality.",
+  "review_id": "SIM240-CURRENT-GAP-INVENTORY-20261028",
+  "schema_version": "2.0",
+  "status": "READY_FOR_LOCAL_REVIEW",
+  "valid": true,
+  "warnings": [
+    {
+      "code": "CONFIDENTIAL_NOTES_CHANNEL_UNAVAILABLE",
+      "field": "venue_policy.confidential_editor_notes_supported"
+    },
+    {
+      "code": "EXTERNAL_AUTHORIZATION_NOT_USED",
+      "field": "authorization.external_processing_authorized"
+    },
+    {
+      "code": "COMPETENCE_LIMITS_MUST_BE_DISCLOSED",
+      "field": "reviewer.competence_limits"
+    },
+    {
+      "code": "SPECIALIST_REVIEW_NEEDED",
+      "field": "scope.specialist_review_needed"
+    }
+  ]
+}

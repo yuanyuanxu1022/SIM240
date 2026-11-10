@@ -1,0 +1,66 @@
+{
+  "reviewed_at": "2026-11-03T15:39:26.351283+08:00",
+  "scope_protocol": "S3-FRD-v1",
+  "scope_review": "COMPATIBLE_PENDING_EXPLICIT_FORMAL_AUTHORIZATION_AND_FRESH_BINDING_CHECKS",
+  "preparation_B_sha256": "a5b69ec95180bf92327a3bba1311639dd2a5fb1bec412cd80c3869dda2a47f92",
+  "B_inputs_verified": 2609,
+  "protected_files_unchanged": 2616,
+  "predecessor_report_manifest_verified": true,
+  "frozen_zero_receipt_rechecked": true,
+  "independent_zero_review_bound": true,
+  "S2_baselines_verified": true,
+  "formal_configurations_verified": 4,
+  "all_formal_directories_pristine": true,
+  "readonly_controller_exit_code": 0,
+  "readonly_controller_output": {
+    "PREPARATION_BINDING_CHECK": true,
+    "solver_executed": false,
+    "simulation_authorized": false,
+    "prepared_run_ids": [
+      "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+      "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+      "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+      "URV_S3_T_a200000_reuse_v1_1_20261103_01"
+    ],
+    "zero_audit_status": "PASSED",
+    "resources_snapshot": {
+      "MemAvailable_bytes": 20158783488,
+      "disk_free_bytes": 341058420736
+    }
+  },
+  "closed_B_authority_refusals": {
+    "formal": "formal S3 release required",
+    "zero": "separate zero-only release required"
+  },
+  "loader_libraries_verified": 15,
+  "current_resources": {
+    "checked_at": "2026-11-03T15:39:26.211187+08:00",
+    "MemAvailable_bytes": 20158038016,
+    "disk_free_bytes": 341058416640,
+    "dynamic_libraries_verified": 15,
+    "relevant_processes": [],
+    "tmux_panes": [],
+    "tmux_query_exit_code": 1,
+    "tmux_query_stderr": "no server running on /tmp/tmux-1000/default\n",
+    "interpretation": "Current snapshot only; repeat prebinding and at actual launch. No resource reservation."
+  },
+  "formal_authorization_received": false,
+  "formal_release_created": false,
+  "execution_command_created": false,
+  "CASE_writes": 0,
+  "source_or_config_changes": 0,
+  "builds": 0,
+  "native_solver_calls": 0,
+  "VTK_reader_invocations": 0,
+  "time_steps": 0,
+  "software_tests_rerun": false,
+  "S3_CONTROL_PASS": "NOT_EVALUATED",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "geometry_PASS": null,
+  "RESULT_PASS": false,
+  "reference_qualified": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false,
+  "next_stage_started": false
+}

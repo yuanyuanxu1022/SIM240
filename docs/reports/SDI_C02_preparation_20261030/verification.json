@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-30",
+  "scope": "CHECKER_1.1.0_AND_C02_PREPARATION_ONLY",
+  "release_files": 48,
+  "runtime_libraries": 21,
+  "old_C01_files_preserved": 94,
+  "old_C01_result_artifacts_preserved": 16,
+  "checker_synthetic_tests_satisfied": 15,
+  "C01_existing_checks_unchanged": 50,
+  "thresholds_unchanged": true,
+  "reused_source_and_binary_binding_verified": true,
+  "new_compilation_performed": false,
+  "mesh_reuse_checked": true,
+  "C02_matrix_assembly_checked": true,
+  "default_preflight_satisfied": true,
+  "python_syntax_files": [
+    "tests/test_geometry_release.py",
+    "tests/test_checker.py",
+    "scripts/audit_c02.py",
+    "scripts/prepare_c02.py",
+    "scripts/seal_release.py",
+    "scripts/run_c02.py",
+    "analysis/check_results.py"
+  ],
+  "local_links": [
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "common/C02_SPEC.md"
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "common/CHECKER_CHANGELOG.md"
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "common/C02.json"
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "common/C02_expected.json"
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "reports/preparation.json"
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "analysis/check_results.py"
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "common/PROTOCOL.md"
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1_1/README.md",
+      "target": "../../docs/reports/Static_Darcy_interface_protocol_20261030/README.md"
+    },
+    {
+      "file": "docs/reports/SDI_C02_preparation_20261030/REPORT.md",
+      "target": "../../../CASE/interface_static_darcy_v1_1/README.md"
+    },
+    {
+      "file": "docs/reports/SDI_C02_preparation_20261030/REPORT.md",
+      "target": "../Static_Darcy_interface_protocol_20261030/README.md"
+    }
+  ],
+  "state_entries_match": true,
+  "later_sections_preserved": true,
+  "artifacts": [
+    {
+      "path": "AI_HANDOFF_20261015.md.diff",
+      "sha256": "f3ea38a4248e40d88c1f5ddc85632cd40284a8b2106fcbdf3788746d97c0c97f"
+    },
+    {
+      "path": "C01_checker_1_1_regression.json",
+      "sha256": "8e6e70053d8b53d28386b676cb29b7fbdffbc769fa25a6213f8d09494ac48d58"
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "d3b90c76401f9483b46496813d4496c7bd46fbffc2ec4736938538dc143ad07c"
+    },
+    {
+      "path": "SIM240_AI_CONTEXT.md.diff",
+      "sha256": "86d8e6d81bbe6ab1aad703fc3c296a2a9e9415d89358e067a2751df221d3fa7f"
+    },
+    {
+      "path": "checker_1_1_release.diff",
+      "sha256": "ccc85d7128ed8cac36730a458d8c32fff3fdcd6f3037efa08ff2557bee623a37"
+    },
+    {
+      "path": "preservation_after.json",
+      "sha256": "8bea46f0cc277dbce80cd4c652580297ff3d49dd02c96f423ace9f3120e15ad4"
+    },
+    {
+      "path": "preservation_before.json",
+      "sha256": "13828b88cee6cb75dbb734eed49535cd1556f27196abd34b39e85de7cb4c385f"
+    },
+    {
+      "path": "source_manifest.json",
+      "sha256": "ea921acef438454bd9f28ba93591feafed994f3bfc80bf11b8483f5735ce977a"
+    },
+    {
+      "path": "state_sync.json",
+      "sha256": "5d9f844cda3583bcdea5bf00fa4069b12b3048e3bfc151d277020d05c6ca8cf9"
+    }
+  ],
+  "C02_pressure_iterations_executed": false,
+  "actual_C02_run_id": null,
+  "user_instruction": "do_not_start_next_case",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": true,
+  "geometry_scope": "synthetic_average_domain_only",
+  "physical_validation": "NOT_EVALUATED",
+  "independent_human_acceptance": false
+}

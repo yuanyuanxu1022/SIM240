@@ -1,0 +1,41 @@
+{
+  "SOFTWARE_CHECK_PASS": true,
+  "tests_run": 49,
+  "tests_exit_code": 0,
+  "native_calls": 0,
+  "VTK_reader_calls": 0,
+  "time_steps": 0,
+  "builds": 0,
+  "test_method": "synthetic diagnostics, fake clocks, mock child/process launcher; all real Popen calls forbidden in suite",
+  "syntax_AST_files": 5,
+  "Popen_sites": {
+    "CASE/unseen_v2_reference_S2_perf_v1/scripts/run_perf.py": [
+      148
+    ],
+    "CASE/unseen_v2_reference_S2_perf_v1/scripts/prepare_perf.py": [],
+    "CASE/unseen_v2_reference_S2_perf_v1/analysis/check_perf.py": [],
+    "CASE/unseen_v2_reference_S2_perf_v1/analysis/perf_contract.py": []
+  },
+  "no_new_Python_cache": true,
+  "frozen_science_not_retested_as_new_physical_evidence": true,
+  "preserved_failed_attempts": [
+    "software_tests_attempt_02.log",
+    "software_tests_attempt_03.log"
+  ],
+  "resolved_software_issues": [
+    "platform.platform could invoke uname; use os.uname directly",
+    "wall-stop fixture lacked coherent stop/signal/exit times",
+    "integration fixture lacked thread environment keys"
+  ],
+  "prepared_ids": [
+    "URV_S2_PERF_P_dx1p25_v1_20261102_01",
+    "URV_S2_PERF_T_dx1p25_v1_20261102_01"
+  ],
+  "source_sha256": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/tests/test_perf.py": "3eb9edb4c6e529449cbf822b6484b154223380da1653321f6ad444b731b378dd",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/scripts/run_perf.py": "8ae10466f6b865093e0f12b285a0f9dae1888c5be063a8a76697016a69cfb247",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/scripts/prepare_perf.py": "68ca07ad9a71c0c0c72b655b995db6e9b1b4dc1dba65f8a323366e6076114eb6",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/analysis/check_perf.py": "b64f03e3b99d1976afba23cf75fb00d11907b74042a3beeb592e98d00f5d75bc",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/analysis/perf_contract.py": "fc5e34d4e500a3143f19151f625279b3078d65ad87724416b19f1cf1b83dfa64"
+  }
+}

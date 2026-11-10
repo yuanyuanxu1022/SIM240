@@ -1,0 +1,977 @@
+{
+  "scope": "Six papers + one user guide; content/design review only, no simulation/compile/run polling.",
+  "input_files": [
+    {
+      "id": "P1",
+      "path": "/home/dell/下载/s00366-025-02217-w.pdf",
+      "sha256": "2c871696266a699b6b1726e7c29f6db23f2e6f5da1095767e5d94b3c8b3ea771",
+      "text": "tmp/pdfs/openlb_review_20261016/paper01.txt",
+      "metadata": "Creator:         Adobe InDesign 18.3 (Windows)\nProducer:        Adobe PDF Library 17.0\nCreationDate:    Fri Dec  5 02:10:56 2025 CST\nModDate:         Fri Dec  5 04:26:41 2025 CST\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          yes\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           19\nEncrypted:       no\nPage size:       595.276 x 790.866 pts\nPage rot:        0\nFile size:       3758672 bytes\nOptimized:       no\nPDF version:     1.4\n",
+      "mtime": "2026-10-16T22:33:11.947020+08:00",
+      "viewed_pdf_pages": [
+        6,
+        12
+      ],
+      "verified_source_unchanged": true
+    },
+    {
+      "id": "P2",
+      "path": "/home/dell/下载/PhysRevE.102.013306.pdf",
+      "sha256": "d309aac0331b1f37fa2af4537f456b2329a216fcef82e258b4ee7ce931b44bf6",
+      "text": "tmp/pdfs/openlb_review_20261016/paper02.txt",
+      "metadata": "Title:           Mesoscopic method to study water flow in nanochannels with different wettability\nSubject:         Phys. Rev. E 102, 013306 (2020). doi:10.1103/PhysRevE.102.013306\nKeywords:        doi:10.1103/PhysRevE.102.013306 url:https://doi.org/10.1103/PhysRevE.102.013306\nAuthor:          Tao Zhang\nCreator:         Copyright 2020 American Physical Society\nProducer:        Acrobat Distiller 10.1.10 (Windows)\nCreationDate:    Thu Jul  9 22:10:06 2020 CST\nModDate:         Thu Jul  9 22:10:48 2020 CST\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           17\nEncrypted:       no\nPage size:       607.536 x 810 pts\nPage rot:        0\nFile size:       3128376 bytes\nOptimized:       yes\nPDF version:     1.3\n",
+      "mtime": "2026-10-16T22:33:09.100936+08:00",
+      "viewed_pdf_pages": [
+        7,
+        9
+      ],
+      "verified_source_unchanged": true
+    },
+    {
+      "id": "P3",
+      "path": "/home/dell/下载/s00366-025-02216-x.pdf",
+      "sha256": "baabfc029526de878fce765131fb798dfd5e2d4bc9e1f1f484ddfef2b20846bd",
+      "text": "tmp/pdfs/openlb_review_20261016/paper03.txt",
+      "metadata": "Creator:         Adobe InDesign 18.3 (Windows)\nProducer:        Adobe PDF Library 17.0\nCreationDate:    Fri Dec  5 02:08:56 2025 CST\nModDate:         Fri Dec  5 04:26:15 2025 CST\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          yes\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           17\nEncrypted:       no\nPage size:       595.276 x 790.866 pts\nPage rot:        0\nFile size:       2523699 bytes\nOptimized:       no\nPDF version:     1.4\n",
+      "mtime": "2026-10-16T22:33:09.056935+08:00",
+      "viewed_pdf_pages": [
+        7,
+        15
+      ],
+      "verified_source_unchanged": true
+    },
+    {
+      "id": "P4",
+      "path": "/home/dell/下载/OpenLB - Open source lattice Boltzmann code.pdf",
+      "sha256": "186a5d065d734cb4742702580926dccd82447662ff37523787bf7b3655fb1983",
+      "text": "tmp/pdfs/openlb_review_20261016/paper04.txt",
+      "metadata": "Subject:         Computers and Mathematics with Applications, 81 (2021) 258-288. doi:10.1016/j.camwa.2020.04.033\nCreator:         Elsevier\nProducer:        pdfTeX\nCreationDate:    Sat Dec 12 23:33:45 2020 CST\nModDate:         Sat Dec 12 23:33:45 2020 CST\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           31\nEncrypted:       no\nPage size:       544.252 x 742.677 pts\nPage rot:        0\nFile size:       5454568 bytes\nOptimized:       no\nPDF version:     1.7\nPDF subtype:    PDF/A-1b:2005\n    Title:         ISO 19005 - Electronic document file format for long-term preservation (PDF/A)\n    Abbreviation:  PDF/A-1\n    Subtitle:      Part 1: Use of PDF 1.4\n    Standard:      ISO 19005-1\n    Conformance:   Level B, Basic\n",
+      "mtime": "2026-10-16T22:33:07.437570+08:00",
+      "viewed_pdf_pages": [
+        20
+      ],
+      "verified_source_unchanged": true
+    },
+    {
+      "id": "P5",
+      "path": "/home/dell/下载/OpenLB User Guide - Release 1.5.pdf",
+      "sha256": "4e67dbdc78c499027fce46718ec1d31bf588dcf98f7292d0d91babb5645993e1",
+      "text": "tmp/pdfs/openlb_review_20261016/paper05.txt",
+      "metadata": "Title:           \nSubject:         \nKeywords:        \nAuthor:          \nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.20\nCreationDate:    Tue Jan  1 08:00:00 1980 CST\nModDate:         Tue Jan  1 08:00:00 1980 CST\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           187\nEncrypted:       no\nPage size:       595.276 x 841.89 pts (A4)\nPage rot:        0\nFile size:       3456855 bytes\nOptimized:       no\nPDF version:     1.5\n",
+      "mtime": "2026-10-16T22:33:05.750837+08:00",
+      "viewed_pdf_pages": [
+        56,
+        128
+      ],
+      "verified_source_unchanged": true
+    },
+    {
+      "id": "P6",
+      "path": "/home/dell/下载/Benchmark Simulation of Laminar Reactive Micromixing Using Lattice Boltzmann Methods.pdf",
+      "sha256": "b7f6cf4c692e0cd3b24e38e7cda55d60ab2a55e72c67f96dd1be51f951d90faa",
+      "text": "tmp/pdfs/openlb_review_20261016/paper06.txt",
+      "metadata": "Creator:         Aspose Ltd.\nProducer:        Aspose.Pdf for Java 17.12\nCreationDate:    Mon Sep  4 20:09:13 2023 CST\nModDate:         Mon Oct  9 11:42:11 2023 CST\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           24\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       10486640 bytes\nOptimized:       no\nPDF version:     1.5\n",
+      "mtime": "2026-10-16T22:33:04.298794+08:00",
+      "viewed_pdf_pages": [
+        10,
+        15
+      ],
+      "verified_source_unchanged": true
+    },
+    {
+      "id": "P7",
+      "path": "/home/dell/下载/1-s2.0-S187610702100153X-main.pdf",
+      "sha256": "4ed503b9f79fac7b4d700c4dac985d9bcddae420923e86f71b01bd40e1a2fbe2",
+      "text": "tmp/pdfs/openlb_review_20261016/paper07.txt",
+      "metadata": "Title:           Simulation of liquid flow transport in nanoscale porous media using lattice Boltzmann method\nSubject:         Journal of the Taiwan Institute of Chemical Engineers, 121 (2021) 128-138. doi:10.1016/j.jtice.2021.03.044\nKeywords:        \"Nanoscale porous media\"; \"Shale/tight oil\"; \"Lattice Boltzmann method\"; \"Slip boundary\"; \"Enhancement factor\"\nAuthor:          Wendong Wang\nCreator:         Elsevier\nProducer:        Acrobat Distiller 10.0.0 (Windows)\nCreationDate:    Sat May  1 04:22:33 2021 CST\nModDate:         Sat May  1 04:23:05 2021 CST\nCustom Metadata: yes\nMetadata Stream: yes\nTagged:          yes\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           11\nEncrypted:       no\nPage size:       595.276 x 793.701 pts\nPage rot:        0\nFile size:       3639086 bytes\nOptimized:       no\nPDF version:     1.7\n",
+      "mtime": "2026-10-16T22:33:00.918693+08:00",
+      "viewed_pdf_pages": [
+        3,
+        6
+      ],
+      "verified_source_unchanged": true
+    }
+  ],
+  "derived_illustrations": {
+    "kind": "Derived illustrations from previously accepted dx2.5 h75/d100 values; not new simulations or validation of oblique runs.",
+    "source": "CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md (dx2.5 row)",
+    "Href_m": 1.25e-07,
+    "K_parallel_m3": 9.782423697043172e-23,
+    "K_transverse_m3": 4.3852935121144107e-23,
+    "equal_volume_smooth_K_m3": 1.6276041666666665e-22,
+    "equal_volume_efficiency_parallel": 0.6010321119463325,
+    "equal_volume_efficiency_transverse": 0.26943243338430944,
+    "drive_angle_from_groove_axis_deg": 45.0,
+    "predicted_flux_angle_from_groove_axis_DNS_tensor_deg": 24.14587894016454,
+    "predicted_flux_angle_from_groove_axis_cubic_tensor_deg": 15.141167350229106,
+    "angle_difference_deg": 9.004711589935434
+  },
+  "original_scope_path": "CASE/plans/SIM240_第一篇范围重定位_纯液体单相_20261016.md",
+  "original_scope_sha256": "03b501e0650036a441891ed9504717eae87d2b658e99090e34708084e3f57580",
+  "original_scope_version": "v2.0 as read; earlier 153-line v1 audit is historical.",
+  "crossref_metadata": [
+    {
+      "id": "P1",
+      "doi": "10.1007/s00366-025-02217-w",
+      "metadata_status": "verified",
+      "title": [
+        "A hybrid Lattice-Boltzmann model for hydro-electrochemical modeling and sensitivity analysis of crystallization potential in nanoporous media. Part II: application to the identification and quantification of influencing factors of phosphate saturation"
+      ],
+      "journal": [
+        "Engineering with Computers"
+      ],
+      "year_online": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            13
+          ]
+        ]
+      },
+      "year_print": {
+        "date-parts": [
+          [
+            2025,
+            12
+          ]
+        ]
+      },
+      "volume": "41",
+      "pages": "4605-4623",
+      "authors": [
+        {
+          "given": "Fedor",
+          "family": "Bukreev",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Adrian",
+          "family": "Kummerländer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Julius",
+          "family": "Jeßberger",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Dennis",
+          "family": "Teutscher",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Shota",
+          "family": "Ito",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Stephan",
+          "family": "Simonis",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Davide",
+          "family": "Dapelo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Mohaddeseh M.",
+          "family": "Nezhad",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Hermann",
+          "family": "Nirschl",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Mathias J.",
+          "family": "Krause",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "query_url": "https://api.crossref.org/works/10.1007%2Fs00366-025-02217-w"
+    },
+    {
+      "id": "P2",
+      "doi": "10.1103/PhysRevE.102.013306",
+      "metadata_status": "verified",
+      "title": [
+        "Mesoscopic method to study water flow in nanochannels with different wettability"
+      ],
+      "journal": [
+        "Physical Review E"
+      ],
+      "year_online": {
+        "date-parts": [
+          [
+            2020,
+            7,
+            9
+          ]
+        ]
+      },
+      "year_print": null,
+      "volume": "102",
+      "pages": null,
+      "authors": [
+        {
+          "given": "Tao",
+          "family": "Zhang",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Farzam",
+          "family": "Javadpour",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Xiangfang",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Keliu",
+          "family": "Wu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jing",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ying",
+          "family": "Yin",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "query_url": "https://api.crossref.org/works/10.1103%2FPhysRevE.102.013306"
+    },
+    {
+      "id": "P3",
+      "doi": "10.1007/s00366-025-02216-x",
+      "metadata_status": "verified",
+      "title": [
+        "A hybrid Lattice-Boltzmann model for hydro-electrochemical modeling and sensitivity analysis of crystallization potential in nanoporous media. Part I: simulation model"
+      ],
+      "journal": [
+        "Engineering with Computers"
+      ],
+      "year_online": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            11
+          ]
+        ]
+      },
+      "year_print": {
+        "date-parts": [
+          [
+            2025,
+            12
+          ]
+        ]
+      },
+      "volume": "41",
+      "pages": "4587-4603",
+      "authors": [
+        {
+          "given": "Fedor",
+          "family": "Bukreev",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Adrian",
+          "family": "Kummerländer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Julius",
+          "family": "Jeßberger",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Dennis",
+          "family": "Teutscher",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Shota",
+          "family": "Ito",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Stephan",
+          "family": "Simonis",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Davide",
+          "family": "Dapelo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Mohaddeseh M.",
+          "family": "Nezhad",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Hermann",
+          "family": "Nirschl",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Mathias J.",
+          "family": "Krause",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "query_url": "https://api.crossref.org/works/10.1007%2Fs00366-025-02216-x"
+    },
+    {
+      "id": "P4",
+      "doi": "10.1016/j.camwa.2020.04.033",
+      "metadata_status": "verified",
+      "title": [
+        "OpenLB—Open source lattice Boltzmann code"
+      ],
+      "journal": [
+        "Computers &amp; Mathematics with Applications"
+      ],
+      "year_online": null,
+      "year_print": {
+        "date-parts": [
+          [
+            2021,
+            1
+          ]
+        ]
+      },
+      "volume": "81",
+      "pages": "258-288",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0003-1026-6462",
+          "authenticated-orcid": false,
+          "given": "Mathias J.",
+          "family": "Krause",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Adrian",
+          "family": "Kummerländer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-9637-9489",
+          "authenticated-orcid": false,
+          "given": "Samuel J.",
+          "family": "Avis",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Halim",
+          "family": "Kusumaatmaja",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Davide",
+          "family": "Dapelo",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Fabian",
+          "family": "Klemens",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Maximilian",
+          "family": "Gaedtke",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Nicolas",
+          "family": "Hafen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Albert",
+          "family": "Mink",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Robin",
+          "family": "Trunk",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jan E.",
+          "family": "Marquardt",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Marie-Luise",
+          "family": "Maier",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Marc",
+          "family": "Haussmann",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-8555-4245",
+          "authenticated-orcid": false,
+          "given": "Stephan",
+          "family": "Simonis",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "query_url": "https://api.crossref.org/works/10.1016%2Fj.camwa.2020.04.033"
+    },
+    {
+      "id": "P6_published",
+      "doi": "10.2514/1.J064234",
+      "metadata_status": "verified",
+      "title": [
+        "Benchmark Simulation of Laminar Reactive Micromixing Using Lattice Boltzmann Methods"
+      ],
+      "journal": [
+        "AIAA Journal"
+      ],
+      "year_online": null,
+      "year_print": {
+        "date-parts": [
+          [
+            2025,
+            4
+          ]
+        ]
+      },
+      "volume": "63",
+      "pages": "1295-1304",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0009-0007-5615-8869",
+          "authenticated-orcid": false,
+          "given": "Fedor",
+          "family": "Bukreev",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Karlsruhe Institute of Technology"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Adrian",
+          "family": "Kummerländer",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Karlsruhe Institute of Technology"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Julius",
+          "family": "Jeßberger",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Karlsruhe Institute of Technology"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Dennis",
+          "family": "Teutscher",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Karlsruhe Institute of Technology"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-8555-4245",
+          "authenticated-orcid": false,
+          "given": "Stephan",
+          "family": "Simonis",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Karlsruhe Institute of Technology"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Dieter",
+          "family": "Bothe",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Technical University Darmstadt"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Mathias J.",
+          "family": "Krause",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Karlsruhe Institute of Technology"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "query_url": "https://api.crossref.org/works/10.2514%2F1.J064234"
+    },
+    {
+      "id": "P7",
+      "doi": "10.1016/j.jtice.2021.03.044",
+      "metadata_status": "verified",
+      "title": [
+        "Simulation of liquid flow transport in nanoscale porous media using lattice Boltzmann method"
+      ],
+      "journal": [
+        "Journal of the Taiwan Institute of Chemical Engineers"
+      ],
+      "year_online": null,
+      "year_print": {
+        "date-parts": [
+          [
+            2021,
+            4
+          ]
+        ]
+      },
+      "volume": "121",
+      "pages": "128-138",
+      "authors": [
+        {
+          "given": "Wendong",
+          "family": "Wang",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Han",
+          "family": "Wang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yuliang",
+          "family": "Su",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Meirong",
+          "family": "Tang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jilong",
+          "family": "Xu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Qi",
+          "family": "Zhang",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "query_url": "https://api.crossref.org/works/10.1016%2Fj.jtice.2021.03.044"
+    }
+  ],
+  "modified_scope_sha256": "2d6b1ee1102a3881af5fbf6a5b4a5b0945dd2e4e69f3e0a4c92a604f2898d081",
+  "scope_changes": "Added section12 scientific content proposals; corrected angle-study rationale; no physical scope or run parameter changes.",
+  "proposal_sources": {
+    "parameter_sensitivity": [
+      "P1 PDF6,11-12",
+      "P3 PDF7-8,15"
+    ],
+    "local_global_and_equal_volume": [
+      "P2 PDF3-5,7,9",
+      "P7 PDF2-3,6,8"
+    ],
+    "momentum_energy_mechanism": [
+      "P6 local preprint PDF10,13-16",
+      "P5 manual PDF128"
+    ],
+    "engineering_consequences": [
+      "P1 PDF11-12",
+      "P4 PDF20",
+      "Own Stokes tensor derivation, not a source quotation"
+    ]
+  },
+  "report_sha256": "7e3e0737a25f6886db7a0c2c9a604f292cd222cafc51bc1bf03aa0b31969fc46"
+}

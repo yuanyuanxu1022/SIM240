@@ -1,0 +1,765 @@
+                                                                          Extended Lubrication Theory:
+                                                           Improved Estimates of Flow in Channels with Variable Geometry
+
+                                                                                                Behrouz Tavakol
+                                                    Wellman Center for Photomedicine, Mass. General Hospital, Harvard Medical School, Cambridge, MA 02139
+
+                                                               Department of Biomedical Engineering & Mechanics, Virginia Tech, Blacksburg, VA 24061
+
+                                                                                             Guillaume Froehlicher
+                                                            Department of Mechanical & Aerospace Engineering, Princeton University, Princeton, NJ 08544
+arXiv:1403.2343v2 [physics.flu-dyn] 27 Jan 2017
+
+
+
+
+                                                                                              Douglas P. Holmes∗
+                                                                     Department of Mechanical Engineering, Boston University, Boston, MA 02215
+
+                                                                                               Howard A. Stone∗
+                                                            Department of Mechanical & Aerospace Engineering, Princeton University, Princeton, NJ 08544
+
+
+
+
+                                                  Abstract
+                                                  Lubrication theory is broadly applicable to the flow characterization of thin fluid films and the
+                                                  motion of particles near surfaces. We offer an extension to lubrication theory by starting with
+                                                  Stokes equations and considering higher-order terms in a systematic perturbation expansion to
+                                                  describe the fluid flow in a channel with features of a modest aspect ratio. Experimental results
+                                                  qualitatively confirm the higher-order analytical solutions while numerical results are in very good
+                                                  agreement with the higher-order analytical results. We show that the extended lubrication theory
+                                                  is a robust tool for an accurate estimate of pressure drop in channels with shape changes on the
+                                                  order of the channel height, accounting for both smooth and sharp changes in geometry.
+                                                  Keywords: Lubrication Theory, Perturbation Expansion, Stokes Flow
+
+
+
+                                                  1. Introduction
+
+                                                      Lubrication theory is an approximation to the Navier-Stokes and continuity equations at low
+                                                  Reynolds numbers for narrow geometries with slow changes in curvature [1–3]. The approach is used
+                                                  regularly to describe the velocity field and pressure gradient in fluid film lubricants [4, 5], the motion
+                                                  of particles within a fluid and near boundaries [6, 7], the fluid flow passing through a microchannel
+                                                  with a known geometry [8–11], flow driven by the contracting walls of a soft channel [12], e.g.,
+                                                  an insect’s trachea [13, 14], and the flow of thin liquid films with free surfaces [15, 16], e.g.,
+                                                  when a droplet wets a solid surface [17, 18] or in spin coating over topographically patterned
+
+                                                    ∗
+                                                        Corresponding authors
+                                                        Email addresses: dpholmes@bu.edu (Douglas P. Holmes), hastone@princeton.edu (Howard A. Stone)
+surfaces [19, 20]. Classical lubrication theory (CLT) is suitable for all of the above cases provided
+that the typical magnitude of the boundary slope is sufficiently small, typically on the order of
+O 10−1 or less. Due to its simplicity and versatile applications, lubrication theory is widely
+applied and it is appreciated that it often works beyond its formal limits of validity. The ideas
+have even been extended to consider inertial effects, e.g. Wilson and Duffy [21]. Also, earlier work
+on flows in sinusoidally constricted pipe with radial variations comparable to axial variations was
+studied numerically, e.g. Tilton and Payatakes [22], where we note that our higher-order approach
+below effectively gives an analytical solution to the problem.
+    In this study, we obtain higher-order terms of the lubrication approximation and present an
+extension to lubrication theory, which we refer to as extended lubrication theory (ELT), to ad-
+dress two limitations of CLT. First, the use of ELT is no longer limited to small gaps and thin
+films. Second, the boundaries can be described by any mathematical shape function with mod-
+est curvatures as long as they are continuous and differentiable. In addition, we show how the
+differentiability condition may be relaxed at low Reynolds numbers, at least in practice, by con-
+sidering geometries that are piece-wise differentiable. We compare the results of different orders of
+the analytical solutions with experimental results and also with direct numerical solutions of the
+Navier-Stokes equations to define a threshold for considering higher-order terms in the solution.
+The theory will breakdown for sufficiently large wall slopes and then if an analysis is desired, an
+approach with matched asymptotic expansions is necessary, e.g. Cormack et al. [23]. Note that a
+related idea emphasizing the first correction to the classical lubrication approach, but focused on
+the mathematical form of the differential equations, is given by Marušić-Paloka et al. [24].
+    Our approach here can be used to describe the flow in a channel with a large constriction made
+by a trapped cell, particle, bubble, or droplet, or as a result of buckled, crumpled, or swollen
+walls. We validate this approach for large non-uniformities within the fluid channel by varying
+two characteristic geometric parameters, the constriction’s length and amplitude, from zero to the
+channel height, e.g. the corresponding dimensionless geometric parameters vary from zero to one.
+We note that in addition to numerical solutions, two types of analytical calculations have been
+considered in the literature. One method is domain perturbation [25–29] where the constriction
+amplitude is much smaller than the channel height. The second method involves corrections to
+leading-order lubrication theory [10, 30–32] while the constriction amplitude can be as high as the
+channel height. We show the applicability of our approach to different geometries and provide the
+accuracy of such results as two nondimensional geometric parameters along with Reynolds number
+vary. Finally, we note that a similar higher-order expansion was used recently in a study of an
+electrokinetic flow in a channel of nonuniform shape [33].
+
+2. Theoretical Approximation
+
+   We consider working to higher order in traditional lubrication theory to describe fluid flow in
+nonuniform channel shapes with modest aspect ratios. Thus, we consider incompressible, steady,
+two-dimensional pressure-driven flow in a channel with shape y = h(x) = h0 H(X), where X =
+x/L0 , L0 is the channel length, h0 is a characteristic channel height, H(X) is a normalized shape
+function, and δ = h0 /L0  1. A typical geometry in the form of a constriction is shown in Fig. 1a.
+We assume that the Reynolds number is small and so consider the continuity and Stokes equations
+
+                                ∇·u=0         and      µ∇2 u = ∇p,                               (1)
+
+
+                                                 2
+where u = (u, v) is the velocity field and µ is the fluid viscosity. We denote the constant flow rate
+(per unit width) as q0 . A discussion of the flow based on the full Navier-Stokes equations is given
+in §4.
+    Consistent with the traditional lubrication approximation we analyze equation (1) and choose
+to introduce dimensionless variables according to
+                  x            y              u                    v                  p       p
+            X=       ,   Y =      ,   U=          ,       V =          ,       P =      =             .    (2)
+                  L0           h0          q0 /h0               q0 /L0               ∆p   µq0 L0 /h30
+
+Note that the scaling for the transverse velocity component v is O(h0 /L0 )  1 smaller than the
+scaling for u, which is the component of flow along the channel axis. The dimensionless equations
+corresponding to (1) for a two-dimensional flow are
+
+                                                ∂U     ∂V
+                                                    +       =0                                            (3a)
+                                                ∂X     ∂Y
+                                              ∂2U     ∂2U     ∂P
+                                           δ2    2
+                                                   +      2
+                                                            =                                             (3b)
+                                              ∂X      ∂Y      ∂X
+                                           ∂ 2V       ∂ 2V    ∂P
+                                        δ4     2
+                                                 + δ2     2
+                                                            =    .                                        (3c)
+                                           ∂X         ∂Y      ∂Y
+These equations are to be solved with boundary conditions
+                                                       Z H(X)
+              U = 0, V = 0 at Y = 0, H(X), and                U (X, Y ) dY = 1,                            (4)
+                                                                     0
+where the integral constraint states that the total flow rate is prescribed. We will determine the
+corresponding pressure drop across the constriction such that the pressure gradient tends to a
+constant as X → ±1. Note that the problem statement only involves one dimensionless parameter
+δ 2 . However, we later introduce another dimensionless parameter, λ, coming from the shape
+function and corresponding to the normalized constriction amplitude. Also, we will show below
+that for sinusoidal shape variations with dimensionless amplitude λ (see Fig. 1b) that the effective
+small parameter is (δλ)2 , corresponding to the square of the typical wall slope.
+
+2.1. Perturbation expansion and the leading-order result from lubrication theory
+    Our first steps follow standard discussions in textbooks, e.g. Leal [2]. Because the problem
+statement only involves δ 2 , which is assumed to be small, we seek a solution to (3) of the form
+
+                     U (X, Y ; δ) = U0 (X, Y ) + δ 2 U2 (X, Y ) + δ 4 U4 (X, Y ) + · · ·                  (5a)
+                                                      2                    4
+                     V (X, Y ; δ) = V0 (X, Y ) + δ V2 (X, Y ) + δ V4 (X, Y ) + · · ·                      (5b)
+                                                      2                    4
+                     P (X, Y ; δ) = P0 (X, Y ) + δ P2 (X, Y ) + δ P4 (X, Y ) + · · ·                      (5c)
+
+   At leading order, we have the familiar classical lubrication problem
+                                           ∂U0 ∂V0
+                                              +       =0                                                  (6a)
+                                           ∂X    ∂Y
+                                               ∂ 2 U0   ∂P0
+                                                    2
+                                                      =                                                   (6b)
+                                               ∂Y       ∂X
+                                                ∂P0
+                                                      = 0,                                                (6c)
+                                                 ∂Y
+                                                          3
+Figure 1: (a) A schematic of the channel with shape y = h(x) = h0 H(x). (b) Shape function of H(X) = 1 −
+λ
+2
+  (1 + cos (πX)) for different λ.
+
+
+with U0 = 0 at Y = 0 and H(X). The solution is
+                                                1 dP0
+                                                      Y 2 − Y H(X)
+                                                                   
+                                 U0 (X, Y ) =                                                       (7)
+                                                2 dX
+and
+R the pressure gradient, which only depends on X, follows from applying the integral constraint
+   H(X)
+  0     U0 (X, Y ) dY = 1
+
+                                           dP0     12
+                                               =−       .                                           (8)
+                                           dX     H(X)3
+The corresponding velocity distribution is then
+                                                 6
+                                                     Y H(X) − Y 2 .
+                                                                 
+                                U0 (X, Y ) =       3
+                                                                                                    (9)
+                                               H(X)
+   To provide an example, we consider the shape function
+                                          λ
+                            H(X) = 1 −      (1 + cos (πX))    (0 ≤ λ < 1) ,                        (10)
+                                          2
+as sketched in Fig. 1b. Here λ corresponds to the dimensionless
+                                                               amplitude
+                                                                              of the change in the
+                                                                h0
+channel height. Thus, the wall slope has magnitude dh dx =  O   L0 λ   = O(δλ).
+    The leading-order pressure drop ∆P0 is then calculated to be (the integration was accomplished
+with Mathematica)
+                                      Z 1                Z 1
+                                           dP0                           1
+           P0 (−1) − P0 (1) = ∆P0 = −          dX = 12                             3 dX
+                                           dX             −1 1 −   λ    λ
+                                                                   2 − 2 cos (πX)
+                                       −1
+
+                                    3 3λ2 − 8λ + 8
+                                                    
+                                  =                   .                                        (11)
+                                       (1 − λ)5/2
+The pressure drop becomes singular in the limit λ → 1 as the gap vanishes.
+                                                   4
+    Before proceeding further, we determine the velocity component V0 (X, Y ) using the continuity
+equation. Although equation (6a) is first order in Y , we expect it to satisfy two boundary condi-
+tions, as V0 (X, 0) = V0 (X, H(X)) = 0. Using the continuity equation, and imposing V0 (X, 0) = 0,
+we have                                         Z Y
+                                                    ∂U0 (X, S)
+                                 V0 (X, Y ) = −                dS,                            (12)
+                                                 0     ∂X
+which yields                                           0          0
+                                 V0 (X, Y ) = 2Y 3 H −3 − 3Y 2 H −2 ,                               (13)
+where primes denotes X derivatives. We then note that at Y = H(X) direct differentiation shows
+that (13) yields V0 (X, H(X)) = 0. Alternatively, we can write
+                            Z H(X)                      Z H(X)
+                                     ∂U0         d                                      dH
+         V0 (X, H(X)) = −                dY = −                  U0 dY + U0 (X, H(X))      = 0,     (14)
+                             0       ∂X         dX        0                             dX
+
+as the second term on the right-hand side vanishes owing to the no-slip condition and the first term
+on the right-hand side vanishes since the flow rate is constant. The same idea applies for evaluating
+the Y -component of velocity at every order in the analysis below and the no-slip boundary condition
+is satisfied for both velocity components of u.
+
+2.2. The O(δ 2 ) term in the perturbation expansion
+    In most calculations utilizing lubrication theory the development is truncated with the leading-
+order term calculated in the preceding section, which is well-known from countless applications.
+Here our interest is to improve the approximation by including additional terms in the perturbation
+solution. At the next order, O δ 2 , the perturbation expansion yields
+
+                                         ∂U2 ∂V2
+                                              +     =0                                             (15a)
+                                          ∂X    ∂Y
+                                        ∂ 2 U2 ∂P2      ∂ 2 U0
+                                              −     = −                                            (15b)
+                                        ∂Y 2    ∂X      ∂X 2
+                                                ∂P2    2
+                                                      ∂ V0
+                                                    =        ,                                     (15c)
+                                                ∂Y    ∂Y 2
+                                                                    R H(X)
+with boundary conditions U2 = 0 at Y = 0 and H(X), and 0                   U2 (X, Y ) dY = 0. This last
+integral constraint follows since all of the fluid flux is specified in the scaling used to establish the
+leading-order problem. We seek the velocity distribution and pressure drop ∆P2 = P2 (−1) − P2 (1)
+needed to enforce the constraint on the flux.
+    We can integrate the last equation of (15), and use continuity, to obtain
+
+                                                       ∂U0
+                                      P2 (X, Y ) = −       + c3 (X),                                (16)
+                                                       ∂X
+where the function c3 (X) is allowed by the integration. With this pressure distribution, we use the
+X-momentum equation to find
+                                       ∂ 2 U2   dc3     ∂ 2 U0
+                                              =     − 2                                         (17)
+                                       ∂Y 2     dX      ∂X 2
+
+
+                                                   5
+where U0 is given by equation (9). Upon integration, and application of the boundary conditions,
+we find
+                                         00 3
+                 U2 (X, Y ) = − 2 H(X)−2     Y − H(X)2 Y
+                                                         
+
+                                       00 4            1 dc3
+                              + H(X)−3      Y − H(X)3 Y +       Y 2 − H(X)Y ,
+                                                                           
+                                                                                              (18)
+                                                           2 dX
+where primes indicate derivatives with respect to X.
+   Since we have accounted for the specified dimensionless flow rate at leading order, then we now
+       R H(X)
+require 0     U2 (X, Y ) dY = 0, which leads to
+
+                       dc3           00     18       00
+                           = 6 H(X)−2 H(X) −    H(X)−3 H(X)2 .                               (19)
+                       dX                    5
+Equations (18) and (19) give the second-order X-component of the velocity U2 (X, Y ) for any
+shape function H(X). To continue with the example of Fig. 1, we again use the shape function
+in equation (10). Integrating (16), taking into account that ∂U
+                                                             ∂X vanishes as X → −1 and 1, and
+                                                               0
+
+using (19), we obtain the pressure drop ∆P2 at this order as
+                                        Z 1               Z 1
+                                          ∂P2                 dc3         12π 2 λ2
+            P2 (−1) − P2 (1) = ∆P2 = −        dX = −              dX =              .        (20)
+                                       −1 ∂X               −1 dX       5 (1 − λ)3/2
+
+    We determine V2 (X, Y ) using the continuity equation and imposing V2 (X, 0) = 0, which leads
+to the expression
+                                                        
+                                −2 000 1 4
+                                                                     00
+                                                     2 2
+                                                           − 2 H(X)−2 H 0 (X)Y 2
+                                   
+            V2 (X, Y ) = H(X)               Y − H(X) Y
+                                          2
+                                                        
+                                     000 1 5                 3        00        2
+                       − H(X)−3             Y − H(X)3 Y 2 +    H(X)−3     H 0 (X) Y 2
+                                   
+                                          5                  2
+                          2
+                                              
+                         d c3 1 3 1                1 dc3 0
+                       −    2
+                                  Y − HY 2 +             H (X)Y 2 .                          (21)
+                         dX     6         4        4 dX
+
+    This equation only involves the shape function H(X), since dc   dX is given in (19). As in the
+                                                                      3
+
+previous section, it can be verified that V2 (X, H(X)) = 0.
+    We conclude this subsection by noting that we have now established the net pressure drop at
+this order:
+
+                          ∆P = ∆P0 + δ 2 ∆P2 + O δ 4
+                                                       
+
+                                  3 3λ2 − 8λ + 8      12 (πδλ)2
+                                                 
+                                                                  + O δ4 .
+                                                                        
+                              =             5/2
+                                                   +          3/2
+                                                                                              (22)
+                                     (1 − λ)         5 (1 − λ)
+
+This result emphasizesthat for
+                               small slopes of the boundaries, then the correction to classical
+                            2
+lubrication theory is O (δλ) , which corresponds to the square of the wall slope.
+
+2.3. The perturbation expansion at O δ 4
+                                           
+
+   It is useful to go one step further simply to illustrate that the basic analytical steps carry
+through at every order. The higher-order terms help to provide a better representation of flows in
+                                                6
+geometries with more rapid shape variations. We can continue these basic steps at O δ 4 , where
+                                                                                       
+
+we have the equations
+                                     ∂U4 ∂V4
+                                           +       =0                                          (23a)
+                                      ∂X     ∂Y
+                                    ∂ 2 U4 ∂P4         ∂ 2 U2
+                                           −       = −                                         (23b)
+                                    ∂Y 2     ∂X         ∂X 2
+                                             ∂P4     ∂ 2 V2 ∂ 2 V0
+                                                   =         +      ,                          (23c)
+                                             ∂Y      ∂Y 2      ∂X 2
+                                         R H(X)
+with U4 = 0 at Y = 0 and H(X), and 0            U4 (X, Y ) dY = 0. Using the results obtained above,
+these equations can be solved, though the algebraic manipulations involved become progressively
+more cumbersome. We outline the main steps below. First, the Y -momentum equation can be
+integrated, which, after using the continuity equation, yields
+                                                    Z Y
+                                       ∂U2      ∂2
+                       P4 (X, Y ) = −       +             V0 (X, S) dS + c5 (X) .               (24)
+                                        ∂X    ∂X 2 0
+Second, from the X-momentum equation we have
+                                               Z Y
+                      ∂ 2 U4      ∂ 2 U2    ∂3                    dc5
+                             = −2        +         V0 (X, S) dS +     .                                        (25)
+                      ∂Y 2        ∂X 2     ∂X 3 0                 dX
+Since U2 (X, Y ) is known from equation (18), then we calculate
+          ∂ 2 U2
+                                                                                 
+                      −3 0000 4
+                                      −2 0000 3
+                                                      3
+                                                               00
+                                                           −3 00
+                                                                      
+                                                                        2
+                                                                              00
+                                                                           −2 00
+                 = H         Y −2 H           Y + − H H             +2 H H           Y
+          ∂X 2
+                   1 d3 c3 2 1        dc3 00
+                                        
+                 +         Y −      H         Y.                                                               (26)
+                   2 dX 3       2     dX
+Combining the last two results, we find
+         ∂ 2 U4
+                                                                                 
+                    3     −3 0000 4
+                                          −2 0000 3
+                                                        3
+                                                               00
+                                                            −3 00
+                                                                      
+                                                                        2
+                                                                              00
+                                                                           −2 00
+                =− H             Y +3 H           Y + 2 H H         −4 H H           Y
+         ∂Y 2       2
+                  d3 c3 2         dc3 00
+                                    
+                                             dc5
+                −     3
+                        Y + H            Y +      .                                                            (27)
+                  dX              dX         dX
+It is straightforward to integrate twice and apply U4 = 0 at Y = 0 and H(X) to arrive at
+                        1         0000 6                      3        0000 5
+                            H −3          Y − H 5Y +              H −2        Y − H 4Y
+                                                                                         
+       U4 (X, Y ) = −
+                       20                  00
+                                                              20       
+                     1  3        −3     00
+                                                   
+                                                         2
+                                                                  00
+                                                              −2 00
+                                                                          Y 3 − H 2Y
+                                                                                     
+                  +        H H                  −2 H H
+                     3
+                     1 d3 c3                                 dc3 00 3
+                                                                
+                                  4          3
+                                                 1                                 1 dc5
+                                                                      Y − H 2Y +              Y 2 − HY .
+                                                                                                         
+                  −         3
+                                Y −H Y +                   H                                                   (28)
+                     12 dX                           6       dX                         2 dX
+       R H(X)
+Since 0       U4 (X, Y ) dY = 0, we obtain dc        dX :
+                                                        5
+
+                                                                                                       
+          dc5      3     −3 0000
+                                   4       3     −2 0000
+                                                           3         3
+                                                                                00
+                                                                             −3 00
+                                                                                         
+                                                                                            2
+                                                                                                    00
+                                                                                                 −2 00
+               =       H         H −            H         H − H H                    −2 H H                H
+          dX      14                        5
+                  3 d3 c3 2 1                dc3 00
+                                                
+              +            H −          H           H.                                                         (29)
+                 10 dX 3          2          dX
+                                                          7
+Figure 2: a. Schematic of the experimental setup from the top view. A constant flow rate was applied using a
+syringe pump and the pressure drop was measured using a sensitive pressure sensor. A scale was also used to
+verify the applied flow rate. For all of the experiments, L0 ≈ h0 ≈ 5 mm. b. Comparison of the dimensionless
+pressure drop across the arch showing the analytical solutions and experimental results (δ ≈ 1). The inset shows
+the difference between the experiment and the theory, suggesting that higher orders of the analytical solutions are
+in better agreement with the experimental results.
+
+
+    The equations (19), (28), and (29) give the X−component velocity at this order for any choice
+of the shape function H(X). We determine the correction to the pressure drop as
+                                      Z 1            Z 1
+                                          ∂P4            dc5
+     P4 (−1) − P4 (1) = ∆P4 = −               dX = −         dX
+                                       −1 ∂X          −1 dX
+                                                   √               √
+                                   8π 4 −428 −1 + 1 − λ + 214 −2 + 1 − λ λ + 53λ2
+                                                                                
+                                 =                          √                       ,                         (30)
+                                                         175 1 − λ
+where we have used Mathematica to accomplish the final integration for the shape function (10).
+    For a given flow rate (q   0 ), we have determined the dimensionless pressure drop ∆P =
+                            3
+(∆p measured ) / µ q0 L0 /h0 as a function of the shape parameters δ and λ, where ∆p measured is
+the difference in pressure measured at the two ends of the constriction. In particular, ∆P =
+∆P0 (λ) + δ 2 ∆P2 (λ) + δ 4 ∆P4 (λ) + O(δ 6 ), where λ is defined by the given shape function (10).
+    We next describe experiments and numerical simulations to confirm the improved description
+offered by these additional terms in the lubrication approximation.
+
+3. Experimental Verification
+
+    Our experimental setup consists of a long channel (200 mm) with a rectangular cross section (5
+mm by 5 mm) and an obstruction in the middle (Fig. 2a), with L0 ≈ h0 . The sides of the channel
+were cut from acrylic sheets (8560K211, McMaster-Carr) using a laser cutter (Epilog Mini Laser 24,
+60 Watts) and bonded together using an acrylic capillary cement (10705, TAP Plastics). We varied
+the arch size and shape, similar to Fig. 1, while keeping all other geometrical parameters constant
+between different tests. We recognize that our theory is two dimensional and the experimental
+                                                        8
+geometry is three dimensional. However, as the arch amplitude increases, the flow through the
+narrow gap better approximates a two-dimensional flow, which allows us to highlight the impact
+on the pressure drop of systematically increasing the magnitude of the shape variations.
+    The pressure drop within the channel between two fixed points, symmetrically located on each
+side of the arch, was measured using a sensitive differential pressure sensor (CPCL04D, Honeywell).
+By keeping the flow rate constant for different tests, the pressure drop across the arch was then
+obtained by subtracting the pressure drop within the flat part of the channel from the total pressure
+drop between those fixed points. The fluid was chosen to be a standard viscosity oil (N1000, Cannon
+Instrument) and the temperature was kept at 22.5 ± 0.5o C, resulting in a viscosity of 2.45 Pa.s
+and density of 848 kg/m3 . We used a syringe pump (PHD Ultra CP, Harvard Apparatus) to
+apply a fixed flow at a rate of 14.4 mm3 /s so that Re ≈ 0.001 for all the tests. The arch height
+was measured by taking images of the setup using a camera (FASTCAM Mini UX100) and then
+processing those images using a MATLAB code.
+    We repeated each test at least three times and the average measured pressure drops along with
+their associated standard deviations are shown in Fig. 2b, where δ ≈ 1 and λ is varied from zero
+(flow in a straight channel) to λ ≈ 0.9. We note that higher orders of the analytical solutions are
+in better agreement with the experimental results while the CLT (red dotted line) underestimates
+the results by about 40 %. We also note that the analytical solutions are obtained in a two-
+dimensional channel while the experimental results are from a three-dimensional channel, and this
+is one of the reasons for the difference between the analytical and experimental results. Although
+the experimental results confirm the trend in the analytical solutions, it may not be feasible to
+conduct experiments for every case to verify the higher orders of the analytical solutions due to
+the sensitivity and the difficulty of such experiments. So we performed numerical simulations for
+variety of cases and compared those results with the analytical solutions in the next section.
+
+4. Numerical Simulations
+
+    As an additional route to test the analytical results above, we seek to numerically solve the
+Navier-Stokes equation in their full form for incompressible, steady two-dimensional flow. Again,
+we assume a specified flow rate and seek the corresponding pressure drop as geometric parameters
+are varied. The same scalings and dimensionless parameters introduced in equation (2) are used
+to obtain the dimensionless continuity and Navier-Stokes equations
+                                   ∂U   ∂V
+                                      +     =0                                                 (31a)
+                                   ∂X   ∂Y
+                                                       ∂2U    ∂2U
+                             
+                                ∂U    ∂U       ∂P
+                        Re δ U     +V       =−    + δ2      +                                  (31b)
+                                ∂X    ∂Y       ∂X      ∂X 2 ∂Y 2
+                                                       ∂2V        2
+                                         
+                                ∂V    ∂V       ∂P               2∂ V
+                       Re δ 3 U    +V       =−    + δ4      + δ       ,                        (31c)
+                                ∂X    ∂Y       ∂Y      ∂X 2      ∂Y 2
+
+where Re = ρ q0 /µ is the Reynolds number, ρ is the fluid density, and µ is the fluid viscosity. In
+the lubrication literature, it is common to define the reduced Reynolds number, Re∗ = Re δ, which
+also appears in (31). Equation (31) emphasizes that there are two parameters needed to describe
+the flow, δ and Re, and a third parameter, λ, enters through a specification of the channel shape.
+    A numerical solver often uses the weak form of (31). To do so, we consider an arbitrary pair
+of P and U = (U, V ) to be a solution to the dimensionless continuity and Navier-Stokes equations
+                                                 9
+Figure 3: Velocity magnitude obtained using numerical simulations for Re = 1, δ = 1, and λ varied from 0 to 0.75
+(a-d).
+
+(31) for a steady and incompressible flow. If these equations are multiplied by any pressure and
+velocity basis functions, i.e. (q, ν1 , ν2 ), and integrated over the domain Ω, the pair is still a solution,
+and satisfies the new equations. We then reduce all the second-order terms to first-order ones using
+Gauss’s theorem and neglect the boundary integrals as they are usually handled separately in finite
+element packages. Therefore, we have the following weak form of the continuity and Navier-Stokes
+equations that can directly be used within numerical solvers:
+                 Z              
+                     ∂U      ∂V
+            0=            +         q dΩ                                                                (32a)
+                  Ω ∂X       ∂Y
+                 Z                                                              
+                                     ∂U         ∂U       ∂P       2 ∂ν1 ∂U    ∂ν1 ∂U
+            0=       ν1 Re δ U             +V         +       +δ            +           dΩ             (32b)
+                  Ω                  ∂X         ∂Y       ∂X         ∂X ∂X     ∂Y ∂Y
+                 Z                                                                 
+                               3       ∂V        ∂V       ∂P       4 ∂ν2 ∂V    2 ∂ν2 ∂V
+            0=       ν2 Re δ U               +V        +       +δ           +δ             dΩ.          (32c)
+                  Ω                    ∂X        ∂Y       ∂Y         ∂X ∂X       ∂Y ∂Y
+
+    We used COMSOL 4.3b mainly as a PDE solver to the above equations. These dimensionless
+equations depend on two dimensionless parameters: Reynolds number and the geometric variable
+δ = h0 /L0 . In addition, the shape function (10) adds another dimensionless parameter, λ, to this
+system. So we performed the numerical simulations first for Re = 0 while varying λ from 0 to 0.99
+and δ from 0.2 to 1. The dimensionless channel height was H0 = 1 and we applied a flow at the
+inlet at a fixed rate with a parabolic velocity profile of 6(Y −Y 2 ) so that Q = 1. The outlet pressure
+was also set to zero. After solving the governing equations, the pressure drop was measured at
+two cross sections that are symmetrically located on each side of the arch and separated by 2L0 .
+These scales respect the nondimensionalization in Section II. While we recognize that our theory,
+which is based on Stokes equations, is strictly valid only when Re = 0, we have highlighted that
+for problems with two distinct length scales (h0 and L0 ) the ratio of the inertia to the viscous
+terms in the Navier-Stokes equations involves the product of Re and δ. Thus, we also performed
+some numerical calculations with finite Re < 20 to show that the results are still useful for finite
+Reynolds numbers. For example, simulation results for Re = 1, δ = 1, and different λ are shown
+in Fig. 3. Since the flow rate is constant, the pressure drop increases rapidly as the gap becomes
+smaller (alternatively, λ increases).
+    The comparison between simulation results and different orders of the analytical solutions for
+a channel with a shape function provided in (10) is shown in Fig. 4. As expected from textbook
+                                                      10
+Figure 4: a. and b. Deviation of different orders of the analytical solutions from the simulation results while varying
+δ and Re, respectively. Each point corresponds to the maximum difference between the simulation and analytical
+results when changing λ from 0 to 0.99. We note that as δ → 1, the deviation of CLT from the simulation results
+becomes significant (about 20%) while higher-order analytical solutions are still in a very good agreement with the
+simulation results for any Re ≤ 10. c. Comparison of the dimensionless pressure drop across the arch showing the
+analytical solutions and simulation results when δ = 0.2 and δ = 1.
+
+                                                          11
+Figure 5: a. A schematic of a channel with a convex shape. The bulge becomes larger as λ → −1. b. Velocity
+magnitude of a channel with 50% convexity (λ = − 12 ), when δ = 1 and Re = 1. c. Comparison of the dimensionless
+pressure drop between simulation results and different orders of the analytical solutions for a channel with a convexity
+shape provided in a, when δ = 1.
+
+
+discussions of classical lubrication theory (see also Pozrikidis [29]), when δ is small, i.e. δ ≤ 0.2,
+the CLT as well as higher orders ELT estimate the pressure drop accurately (the errors are within
+5% when Re ≤ 10). By increasing δ → 1, the CLT estimations deviate significantly from the
+simulation results (about 20 %) while higher orders ELT are still in very good agreement with
+the simulation results, i.e., three terms in the asymptotic expansion in δ (including terms O δ 4 )
+                                                                                                      
+
+provides very good results even when δ → 1 (Fig. 4a). We also note that if a maximum 4% error
+is acceptable, the second-order ELT would be adequate to estimate the pressure drop for a simple
+shape like (10) while δ ≤ 1 and Re ≤ 10. In the literature on pressure-driven flow in slowly varying
+channel shapes, it has been shown that domain perturbations have a limited range of utility and so
+are “of limited practical interest” [29, p. 507–508], while here we see that ELT is, in fact, successful
+even when the wall slopes are order one. As we further increase the Reynolds number (Fig. 4b),
+even the higher orders of the analytical solutions do not estimate the pressure drop accurately as
+inertial forces become more dominant than the viscous forces and can no longer be ignored.
+    We then investigate the use of higher-order ELT in applications where a channel, instead of
+an obstruction, has a convex shape. We choose the shape function (10) while varying λ from 0
+(no bulge) to -1 (bulge with the size of the channel height) (Fig. 5a). This convexity alters the
+flow profile (Fig. 5b) and reduces the pressure drop within the channel. We performed numerical
+analyses for different δ, Re, and λ and the comparisons are shown in Fig. 5c. Since we have shown
+that even for δ = 1 the extended lubrication theory provides a reasonable approximation to the
+full numerical simulations (Fig. 4a), here we choose δ = 1. For a channel with a sharp convexity,
+only fourth-order ELT and higher may accurately estimate the pressure drop (within 5% error)
+while CLT and the second-order ELT estimations differ from the simulation results by about 30%
+and 20%, respectively. Therefore, higher orders of the analytical solutions significantly improve
+the estimation of pressure drop within a channel with a significant change in geometry.
+    Until now, we have used shape functions that are entirely differentiable. This condition may
+not be met in models of all applications. Here we provide of an example showing that ELT can be
+applied to a channel whose shape is continuous but piece-wise differentiable, i.e. the shape function
+                                                          12
+Figure 6: a. A schematic of a channel with a shape function that is not differentiable at γ = 0.75 (see equation (33)
+for the definition of γ). The gap size decreases as λ → 1. b. Velocity magnitude of a channel with a non-differentiable
+point at γ = 0.75, when δ = 1 and Re = 1. c. Comparison of the dimensionless pressure drop between simulation
+results and different orders of the analytical solutions for a channel with a single non-differentiable point, provided
+in a, when δ = 1.
+
+
+may have finite non-differentiable points. A channel with such a shape function can be divided
+into smaller sections where each part has a differentiable shape. The pressure drop within each
+piece is estimated using ELT. Since the flow is laminar, the total pressure drop across the original
+channel is the summation of the pressure drops within each part. For example, consider a shape
+function with a single non-differentiable point as follows
+                                (
+                                        λ
+                                   1 − 2γ (X + 1)          −1 ≤ X ≤ 2γ − 1,
+                       H(X) =             λ                                                     (33)
+                                   1 + 2(1−γ) (X − 1)       2γ − 1 < X ≤ 1,
+
+where 0 < γ < 1 is a dimensionless parameter that determines the location of the discontinuity in
+slope and 1 − λ gives the minimum gap height. This shape function is plotted for γ = 0.75 in Fig.
+6a. Following the same procedure introduced in Section II, the pressure drop is
+                                                                       
+                                         4 2 2     64 4 4           6
+                                                                      
+                          ∆P = ∆P0 1 + λ δ −           λ δ +O δ                              (34)
+                                         5         225
+where ∆P0 = 12    (2−λ)
+                (1−λ)2
+                        , and the terms inside the parentheses correspond to CLT, second-order
+ELT, fourth-order ELT, and so on, respectively. We used the same shape function (33) to perform
+numerical simulations, and the comparison is shown in Fig. 6b. For channels with small δ (δ ≤ 0.2),
+theoretical and numerical results are in good agreement, while for channels with δ ≈ 1, pressure
+drop estimated using the higher orders of the analytical solutions follow the numerical results more
+closely. These results show that ELT can be applied to a channel with a piece-wise differentiable
+shape function. We note that shape functions can appear on both sides of a channel and the same
+procedure can be followed to find analytical solutions at different orders.
+
+
+
+
+                                                          13
+5. Conclusion
+
+    We extended the lubrication approximation by obtaining higher-order terms in a systematic
+perturbation analysis and compared the analytical results with experiment and numerical simu-
+lations. Experimental results were closer to higher-order analytical solutions when the gap was
+narrow so that the two-dimensional approximation was appropriate. Very good agreement was
+found between higher-order analytical solutions and the simulation results, confirming that for
+channels with a high aspect ratio, the higher-order terms of the extended lubrication theory results
+in a significant improvement in accuracy as compared to the classical lubrication theory. More-
+over, though domain perturbations are unsuccessful when the shape changes are modest, extended
+lubrication theory has been shown to be quite successful, at least for the channel shapes studied
+here. Nevertheless, if the wall slope is too steep, we can expect this lubrication approach to fail.
+Finally, for low Reynolds numbers, simple piece-wise differentiable shape functions can be used
+with the analytical solutions obtained in this study, which provides a robust tool to accurately
+estimate the pressure drop in a channel with positive or negative constrictions, whose changes in
+height are comparable to its length.
+
+Acknowledgments
+
+   B.T. and D.P.H. are grateful to the National Science Foundation (CMMI–1505125) for financial
+support.
+
+References
+
+References
+ [1] W. E. Langlois. Slow Viscous Flow. Macmillan, New York, 1964.
+ [2] L. G. Leal. Advanced Transport Phenomena: Fluid Mechanics and Convective Transport Processes. Cambridge
+     University Press, Cambridge, 2007.
+ [3] H. Ockendon and J. R. Ockendon. Viscous Flow. Cambridge University Press, Cambridge, 1995.
+ [4] A. Z. Szeri. Fluid Film Lubrication: Theory and Design. Cambridge University Press, 2005.
+ [5] J. A. Tichy. Hydrodynamic Lubrication, pages 1–14. CRC Press, 2012. doi:10.1201/b12265-18.
+ [6] A. J. Goldman, R. G. Cox, and H. Brenner. Slow viscous motion of a sphere parallel to a plane wall – i. motion
+     through a quiescent fluid. Chem. Eng. Sci., 22:637–651, 1967.
+ [7] H. A. Stone. On lubrication flows in geometries with zero local curvature. Chem. Eng. Sci., 60:4838–4845, 2005.
+ [8] O. Amyot and F. Plouraboué. Capillary pinching in a pinched microchannel. Phys. Fluids, 19:033101, 2007.
+ [9] D. P. Holmes, B. Tavakol, G. Froehlicher, and H. A. Stone. Control and manipulation of microfluidic flow via
+     elastic deformations. Soft Matter, 9:7049–7053, 2013. ISSN 1744-683X. doi: 10.1039/C3SM51002F.
+[10] F. Plouraboué, S. Geoffroy, and M. Prat. Conductances between confined rough walls. Phys. Fluids, 16:615–624,
+     2004.
+[11] H. A. Stone, A. D. Stroock, and A. Ajdari. Engineering flows in small devices: Microfluidics toward a lab-on-
+     a-chip. Annu. Rev. Fluid Mech., 36:381–411, 2004.
+[12] B. Tavakol and D. P. Holmes. Voltage-induced buckling of dielectric films using fluid electrodes. Applied Physics
+     Letters, 108:112901, 2016.
+[13] Y. Aboelkassem and A. E. Staples. Flow transport in a microchannel induced by moving wall contractions: a
+     novel micropumping mechanism. Acta Mechanica, 223:463–480, 2012.
+[14] Y. Aboelkassem and A. E. Staples. A bioinspired pumping model for flow in a microtube with rhythmic wall
+     contractions. J. Fluids and Structures, 42:187–204, 2013.
+[15] A. Oron, S. H. Davis, and S. G. Bankoff. Long-scale evolution of thin liquid films. Rev. Modern Phys., 69:
+     931–980, 1997.
+[16] J. H. Snoeijer. Free-surface flows with large slopes: Beyond lubrication theory. Phys. Fluids, 18:021701, 2006.
+
+                                                         14
+[17] D. Bonn, J. Eggers, J. Indekeu, J. Meunier, and E. Rolley. Wetting and spreading. Rev. Modern Phys., 81:
+     739–805, 2009.
+[18] L. Limat and H. A. Stone. Three-dimensional lubrication model of a contact line corner singularity. Europhys.
+     Lett., 65:365–371, 2004.
+[19] S. Kalliadasis, C. Bielarz, and G. M. Homsy. Steady free-surface thin film flows over topography. Phys. Fluids,
+     12:1889–1898, 2000.
+[20] L. E. Stillwagon and R. G. Larson. Fundamentals of topographic substrate leveling. J. Appl. Phys., 63:5251–
+     5258, 1988.
+[21] S. K. Wilson and B. R. Duffy. On lubrication with comparable viscous and inertia forces. The Quarterly Journal
+     of Mechanics and Applied Mathematics, 51(1):105, 1998. doi: 10.1093/qjmam/51.1.105.
+[22] J. N. Tilton and A. C. Payatakes. Collocation solution of creeping Newtonian flow through sinusoidal tubes: A
+     correction. AIChE Journal, 30:1016–1021, 1984. ISSN 1547–5905. doi: 10.1002/aic.690300628.
+[23] D. E. Cormack, L. G. Leal, and J. Imberger. Natural convection in a shallow cavity with differentially heated
+     end walls. part 1. asymptotic theory. J. Fluid Mech., 65:209–229, 1974.
+[24] E. Marušić-Paloka, I. Pažanin, and S. Marušić. Second order model in fluid film lubrication. Comptes Rendus
+     Mécanique, 340(8):596–601, 2012.
+[25] E. Hasegawa and H. Izuchi. On steady flow through a channel consisting of an uneven wall and a plane wall: Part
+     1. case of no relative motion in two walls. Bulletin of JSME, 26:514–520, 1983. doi: 10.1299/jsme1958.26.514.
+[26] M. Hemmat and A. Borhan. Creeping flow through sinusoidally constricted capillaries. Phys. Fluids, 7:2111–
+     2121, 1995.
+[27] A. E. Malevich, V. V. Mityushev, and P. M. Adler. Stokes flow through a channel with wavy walls. Acta
+     mechanica, 182:151–182, 2006.
+[28] M. J. Manton. Low Reynolds number flow in slowly varying axisymmetric tubes. J. Fluid Mech., 49:451–459,
+     1971. ISSN 1469-7645. doi: 10.1017/S0022112071002192.
+[29] C. Pozrikidis. Creeping flow in two-dimensional channels. J. Fluid Mech., 180:495–514, 1987. ISSN 1469-7645.
+     doi: 10.1017/S0022112087001927.
+[30] P. Disimile and C. Y. Wang. The forces due to the relative motion of two corrugated plates. Phys. Fluids, 26:
+     611–613, 1983.
+[31] C. Y. Wang. Drag due to a striated boundary in slow Couette flow. Phys. Fluids, 21:697–698, 1978.
+[32] C. Y. Wang. Stokes flow through a channel with three-dimensional bumpy walls. Phys. Fluids, 16:2136–2139,
+     2004.
+[33] S. Michelin, T. D. Montenegro-Johnson, G. De Canio, N. Lobato-Dauzier, and E. Lauga. Geometric pumping
+     in autophoretic channels. Soft Matter, 11:5804–5811, 2015. doi: 10.1039/C5SM00718F.
+
+
+
+
+                                                         15
+

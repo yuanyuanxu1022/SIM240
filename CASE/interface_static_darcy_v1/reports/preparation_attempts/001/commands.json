@@ -1,0 +1,83 @@
+[
+  {
+    "label": "compile_2d",
+    "argv": [
+      "g++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Werror",
+      "two_dimensional/darcy2d.cpp",
+      "-o",
+      "build/bin/darcy2d"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.8151800632476807,
+    "log": "reports/preparation_attempts/001/compile_2d.log"
+  },
+  {
+    "label": "compile_openfoam",
+    "argv": [
+      "wmake"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/application",
+    "exit_code": 0,
+    "seconds": 7.628289222717285,
+    "log": "reports/preparation_attempts/001/compile_openfoam.log"
+  },
+  {
+    "label": "blockMesh",
+    "argv": [
+      "blockMesh",
+      "-case",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/cases/C01"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.16484856605529785,
+    "log": "reports/preparation_attempts/001/blockMesh.log"
+  },
+  {
+    "label": "checkMesh",
+    "argv": [
+      "checkMesh",
+      "-case",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/cases/C01",
+      "-allGeometry",
+      "-allTopology"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.06475639343261719,
+    "log": "reports/preparation_attempts/001/checkMesh.log"
+  },
+  {
+    "label": "audit_2d",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/build/bin/darcy2d",
+      "--input",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/common/C01_2d.txt",
+      "--audit-only"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.003545522689819336,
+    "log": "reports/preparation_attempts/001/audit_2d.log"
+  },
+  {
+    "label": "audit_openfoam",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/build/bin/depthAveragedDarcyFoam",
+      "-case",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/cases/C01",
+      "-auditOnly"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.031719207763671875,
+    "log": "reports/preparation_attempts/001/audit_openfoam.log"
+  }
+]

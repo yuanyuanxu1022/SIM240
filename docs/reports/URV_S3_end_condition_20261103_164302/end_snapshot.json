@@ -1,0 +1,230 @@
+{
+  "snapshot_at": "2026-11-03T16:43:02.962324+08:00",
+  "report_directory": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S3_end_condition_20261103_164302",
+  "release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/S3_formal_launch_release_v1_1_20261103_01.json",
+  "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+  "expected_release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+  "target_processes": [
+    {
+      "pid": 1276519,
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_S3.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/S3_formal_launch_release_v1_1_20261103_01.json",
+        "--release-sha256",
+        "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "--execute"
+      ]
+    },
+    {
+      "pid": 1309494,
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/runs/URV_S3_T_a200000_reuse_v1_1_20261103_01/steady/run_config.txt"
+      ]
+    }
+  ],
+  "tmux_panes": [
+    "urv_s3_formal_v1_1_20261103_01|1276519|python3"
+  ],
+  "tmux_query_exit_code": 0,
+  "tmux_query_stderr": "",
+  "runs": [
+    {
+      "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+      "completion_exists": true,
+      "acceptance": {
+        "protocol_id": "URV-v1",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a50000",
+        "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+        "family": "U_REG",
+        "stage": "S3_REG_LINEARITY",
+        "direction": "P",
+        "dx_nm": 2.5,
+        "acceleration_m_s2": 50000.0,
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "REFERENCE_QUALIFIED_FOR_CASE": false,
+        "MODEL_COMPARISON": "NOT_EVALUATED",
+        "physical_validation": "NOT_EVALUATED",
+        "scalar": {
+          "K_m3": 5.919336794569472e-23,
+          "J_main_m2_s": 2.9596683972847364e-12,
+          "diagnostic_rows": 13276,
+          "all_full_windows_recomputed": 10685,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 4.012354050806741e-16,
+          "legacy_mass_max": 0.0,
+          "ledger_agreement_max": 1.0934131316056382e-16,
+          "final_span": 3.6806958698739804e-06,
+          "Re_H": 9.37035151603585e-06
+        },
+        "smooth": null,
+        "regression": null,
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        },
+        "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "completion_sha256": "9e8d8b7369c15009c501f091796bdefc92e796b7fc10f6c71c7a3d51bbb77861",
+        "independent_exit_code": 0
+      },
+      "native_exit": 0,
+      "elapsed_seconds": 833.2980244609935
+    },
+    {
+      "run_id": "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+      "completion_exists": true,
+      "acceptance": {
+        "protocol_id": "URV-v1",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a50000",
+        "run_id": "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+        "family": "U_REG",
+        "stage": "S3_REG_LINEARITY",
+        "direction": "T",
+        "dx_nm": 2.5,
+        "acceleration_m_s2": 50000.0,
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "REFERENCE_QUALIFIED_FOR_CASE": false,
+        "MODEL_COMPARISON": "NOT_EVALUATED",
+        "physical_validation": "NOT_EVALUATED",
+        "scalar": {
+          "K_m3": 2.3663885894734337e-23,
+          "J_main_m2_s": 1.183194294736717e-12,
+          "diagnostic_rows": 7660,
+          "all_full_windows_recomputed": 5069,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 6.419766481290786e-15,
+          "legacy_mass_max": 6.027090764820706e-12,
+          "ledger_agreement_max": 1.3299342152063475e-16,
+          "final_span": 4.1891290181177e-06,
+          "Re_H": 4.131334489806726e-06
+        },
+        "smooth": null,
+        "regression": null,
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        },
+        "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "completion_sha256": "ae03a14ffb9a300cf3d0d1d5214e139010cca09ed068785b9e0e3d0346af6b20",
+        "independent_exit_code": 0
+      },
+      "native_exit": 0,
+      "elapsed_seconds": 477.111975857988
+    },
+    {
+      "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+      "completion_exists": true,
+      "acceptance": {
+        "protocol_id": "URV-v1",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a200000",
+        "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+        "family": "U_REG",
+        "stage": "S3_REG_LINEARITY",
+        "direction": "P",
+        "dx_nm": 2.5,
+        "acceleration_m_s2": 200000.0,
+        "NUMERICAL_GATE": "PASS",
+        "geometry_PASS": true,
+        "RESULT_PASS": true,
+        "REFERENCE_QUALIFIED_FOR_CASE": false,
+        "MODEL_COMPARISON": "NOT_EVALUATED",
+        "physical_validation": "NOT_EVALUATED",
+        "scalar": {
+          "K_m3": 5.919337286143088e-23,
+          "J_main_m2_s": 1.1838674572286177e-11,
+          "diagnostic_rows": 13293,
+          "all_full_windows_recomputed": 10702,
+          "first_accepted_window_is_final": true,
+          "corrected_mass_max": 9.362159451882396e-16,
+          "legacy_mass_max": 0.0,
+          "ledger_agreement_max": 1.5925988492019357e-16,
+          "final_span": 3.6921453085868547e-06,
+          "Re_H": 3.748140728686901e-05
+        },
+        "smooth": null,
+        "regression": null,
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        },
+        "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+        "completion_sha256": "35ce3d900225da7bbd8a47b424cfb2495e382360214b1c254fc272137d5825d7",
+        "independent_exit_code": 0
+      },
+      "native_exit": 0,
+      "elapsed_seconds": 805.5459572930122
+    },
+    {
+      "run_id": "URV_S3_T_a200000_reuse_v1_1_20261103_01",
+      "completion_exists": false,
+      "acceptance": null,
+      "native_exit": null,
+      "elapsed_seconds": null
+    }
+  ],
+  "batch_completed": null,
+  "linearity_reports": {
+    "P": {
+      "direction": "P",
+      "accelerations_m_s2": [
+        50000,
+        100000,
+        200000
+      ],
+      "K_m3": [
+        5.919336794569472e-23,
+        5.919337058277595e-23,
+        5.919337286143088e-23
+      ],
+      "S2_midpoint_run_id": "URV_S2_P_dx2p5_reuse_v1_20261102_01",
+      "S2_release_sha256": "d08297ebda69d9698d40762f778eb43299fa3c01c35e5591b6d31b4e06ef26cd",
+      "S3_points": [
+        {
+          "run_id": "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+          "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+          "completion_sha256": "9e8d8b7369c15009c501f091796bdefc92e796b7fc10f6c71c7a3d51bbb77861"
+        },
+        {
+          "run_id": "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+          "release_sha256": "04836ee00515ac961f80022153eb398ea1692f03b943ca713e7414ce9716b574",
+          "completion_sha256": "35ce3d900225da7bbd8a47b424cfb2495e382360214b1c254fc272137d5825d7"
+        }
+      ],
+      "REFERENCE_QUALIFIED_FOR_CASE": false,
+      "MODEL_COMPARISON": "NOT_EVALUATED",
+      "physical_validation": "NOT_EVALUATED",
+      "K_span_over_mean": 8.304538367142662e-08,
+      "limit": 0.001,
+      "CONTROL_PASS": true
+    },
+    "T": null
+  },
+  "completed_receipt_mtime": null,
+  "end_condition_met": false,
+  "snapshot_count": 1
+}

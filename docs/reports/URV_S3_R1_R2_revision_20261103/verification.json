@@ -1,0 +1,71 @@
+{
+  "preparation_A_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/evidence/preparation_A.json",
+  "preparation_A_sha256": "7f6ca19de96949a537802f92804c787cf092e8de0eb10c681ed279736a2d3695",
+  "inputs_verified": 2437,
+  "old_A_sha256": "5d4e70d85d586b3cdf1ebca09f82f1f4abf90166642c34f1a5f4663cdeb4f02d",
+  "old_A_preserved": true,
+  "protected_files_unchanged": 2371,
+  "formal_identities": [
+    "URV_S3_P_a50000_reuse_v1_1_20261103_01",
+    "URV_S3_T_a50000_reuse_v1_1_20261103_01",
+    "URV_S3_P_a200000_reuse_v1_1_20261103_01",
+    "URV_S3_T_a200000_reuse_v1_1_20261103_01"
+  ],
+  "zero_identities": 12,
+  "planned_field_reads": 4,
+  "permission_flags": {
+    "simulation_authorized": false,
+    "formal_simulation_authorized": false,
+    "native_zero_step_authorized": false,
+    "performance_time_stepping_authorized": false
+  },
+  "approved_and_actual_empty": true,
+  "R1_R2_special_tests": 31,
+  "S3_tests": 57,
+  "base_tests": 42,
+  "R1_effective_field_mutation_subcases": 54,
+  "syntax_files": 25,
+  "unchanged_scientific_files": 13,
+  "entry_checks": {
+    "formal_default": {
+      "exit_code": 0,
+      "stdout": "{\"PREPARATION_BINDING_CHECK\": true, \"solver_executed\": false, \"simulation_authorized\": false, \"prepared_run_ids\": [\"URV_S3_P_a50000_reuse_v1_1_20261103_01\", \"URV_S3_T_a50000_reuse_v1_1_20261103_01\", \"URV_S3_P_a200000_reuse_v1_1_20261103_01\", \"URV_S3_T_a200000_reuse_v1_1_20261103_01\"], \"zero_audit_status\": \"NOT_EXECUTED\", \"resources_snapshot\": {\"MemAvailable_bytes\": 19836014592, \"disk_free_bytes\": 341231063040}}\n",
+      "stderr": ""
+    },
+    "zero_default": {
+      "exit_code": 0,
+      "stdout": "{\"ZERO_PLAN_BINDING_CHECK\": true, \"solver_executed\": false, \"planned_native_calls\": 12, \"planned_initial_field_reads\": 4, \"native_zero_step_authorized\": false}\n",
+      "stderr": ""
+    },
+    "formal_execute_refused": {
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "EvidenceError: current package authorizes zero-step preparation only\n"
+    },
+    "zero_execute_refused": {
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "EvidenceError: separate zero-only release required\n"
+    },
+    "B_without_audit": {
+      "refused": true,
+      "error": "real zero audit missing; cannot finalize B"
+    }
+  },
+  "native_binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+  "native_calls": 0,
+  "VTK_reader_invocations": 0,
+  "time_steps": 0,
+  "builds": 0,
+  "no_attempts": true,
+  "R1_R2_SOFTWARE_FIX_VERIFIED": true,
+  "original_A_HOLD_preserved": true,
+  "new_A_status": "CLOSED_PREPARATION_SOFTWARE_VERIFIED_NATIVE_AUDIT_NOT_EXECUTED",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null,
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false
+}

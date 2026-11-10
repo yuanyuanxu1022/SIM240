@@ -1,0 +1,30 @@
+{
+  "kind": "SYNTHETIC_IN_MEMORY_CHECKER_TESTS_ONLY",
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "exit_code": 0,
+  "tests": 11,
+  "test_names": [
+    "test_ideal_synthetic_fields_accepted",
+    "test_wrong_pressure_sign_rejected",
+    "test_global_and_local_mass_failures_detected",
+    "test_wrong_average_height_scale_detected",
+    "test_missing_face_rejected",
+    "test_swapped_tensor_detected",
+    "test_unconverged_status_rejected",
+    "test_wrong_normal_rejected",
+    "test_nonfinite_csv_rejected",
+    "test_missing_completed_run_evidence_rejected",
+    "test_zero_drive_uses_absolute_checks"
+  ],
+  "flow_solver_executed": false,
+  "scientific_validation": false
+}

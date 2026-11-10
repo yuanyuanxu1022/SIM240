@@ -1,0 +1,208 @@
+{
+  "checked_at": "2026-11-02T22:34:57.894137+08:00",
+  "hash_checks": {
+    "formal_2140": {
+      "total": 2140,
+      "unchanged": 2139,
+      "differences": [
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/evidence/S2_perf_controller_v1_20261102_01.log",
+          "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "current": "ca3607bfc8f2c7aaeb99997253e85485f1633f74983f85aa087c96da70d8799c"
+        }
+      ]
+    },
+    "B_1816": {
+      "total": 1816,
+      "unchanged": 1816,
+      "differences": []
+    },
+    "PERF_inputs_2058": {
+      "total": 2058,
+      "unchanged": 2058,
+      "differences": []
+    },
+    "PERF_raw_62": {
+      "total": 62,
+      "unchanged": 61,
+      "differences": [
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/evidence/S2_perf_controller_v1_20261102_01.log",
+          "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "current": "ca3607bfc8f2c7aaeb99997253e85485f1633f74983f85aa087c96da70d8799c"
+        }
+      ]
+    }
+  },
+  "independent_arithmetic_and_checker_replay_exact_match": true,
+  "direction_reviews": [
+    {
+      "run_id": "URV_S2_PERF_P_dx1p25_v1_20261102_01",
+      "direction": "P",
+      "PERF_OUTCOME": "PERF_EVIDENCE_SUFFICIENT",
+      "independent_raw_review_pass": true,
+      "automatic_checker_reproduced_exactly": true,
+      "started_at": "2026-11-02T20:55:01.584289+08:00",
+      "ended_at": "2026-11-02T21:10:19.288186+08:00",
+      "stop_decision_seconds": 917.5087522739923,
+      "native_process_elapsed_seconds": 917.572216925997,
+      "stop_reason": "target_observed",
+      "native_exit_code": -15,
+      "timed_out": false,
+      "last_complete_step": 2065,
+      "complete_rows": 2066,
+      "exact_collide_and_stream_calls": null,
+      "incomplete_tail_bytes": 396,
+      "throughput_intervals": [
+        {
+          "threshold": 256,
+          "start_sample": 140,
+          "end_sample": 371,
+          "start_step": 277,
+          "end_step": 804,
+          "start_monotonic": 109030.062303867,
+          "end_monotonic": 109261.183728798,
+          "delta_steps": 527,
+          "delta_seconds": 231.12142493099964,
+          "seconds_per_step": 0.4385605786166976,
+          "steps_per_second": 2.280186703406375
+        },
+        {
+          "threshold": 1024,
+          "start_sample": 478,
+          "end_sample": 703,
+          "start_step": 1052,
+          "end_step": 1567,
+          "start_monotonic": 109368.242834142,
+          "end_monotonic": 109593.363309831,
+          "delta_steps": 515,
+          "delta_seconds": 225.12047568899288,
+          "seconds_per_step": 0.4371271372601804,
+          "steps_per_second": 2.287663964922852
+        }
+      ],
+      "safety_maxima": {
+        "corrected_mass": 4.012354050806741e-16,
+        "legacy_mass": 0.0,
+        "ledger": 1.0161252070706335e-16,
+        "density": 9.992007221626409e-16,
+        "Mach": 1.8585287020109984e-08,
+        "Re_H": 7.2107081518261145e-06
+      },
+      "observed_RSS_peak_bytes": 1969909760,
+      "observed_RSS_peak_GiB": 1.8346214294433594,
+      "minimum_available_RAM_GiB": 17.731571197509766,
+      "minimum_free_disk_GiB": 317.9757270812988,
+      "maximum_observed_output_bytes": 8923901,
+      "total_run_directory_files_bytes": 9562246,
+      "observation_samples": 918,
+      "sample_interval_min_seconds": 1.0003899689909304,
+      "sample_interval_max_seconds": 1.0015712449967396,
+      "max_positive_observed_step_jump": 31,
+      "conditional_full_cap_hours": 73.35071864223806,
+      "conditional_12h_steps": 98504.06558715539,
+      "full_window_cost_observed": false,
+      "full_window_steps": 10368,
+      "frames_saved": 5,
+      "formal_geometry_not_upgraded": true,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": false,
+      "geometry_PASS": null,
+      "REFERENCE_QUALIFIED_FOR_CASE": false,
+      "MODEL_COMPARISON": "NOT_EVALUATED",
+      "physical_validation": "NOT_EVALUATED",
+      "reference_qualified": false,
+      "strict_error_bound_established": false,
+      "submission_ready": false
+    },
+    {
+      "run_id": "URV_S2_PERF_T_dx1p25_v1_20261102_01",
+      "direction": "T",
+      "PERF_OUTCOME": "PERF_EVIDENCE_SUFFICIENT",
+      "independent_raw_review_pass": true,
+      "automatic_checker_reproduced_exactly": true,
+      "started_at": "2026-11-02T21:10:19.413887+08:00",
+      "ended_at": "2026-11-02T21:25:48.149119+08:00",
+      "stop_decision_seconds": 928.5259018790093,
+      "native_process_elapsed_seconds": 928.5894429879991,
+      "stop_reason": "target_observed",
+      "native_exit_code": -15,
+      "timed_out": false,
+      "last_complete_step": 2065,
+      "complete_rows": 2066,
+      "exact_collide_and_stream_calls": null,
+      "incomplete_tail_bytes": 254,
+      "throughput_intervals": [
+        {
+          "threshold": 256,
+          "start_sample": 129,
+          "end_sample": 366,
+          "start_step": 260,
+          "end_step": 785,
+          "start_monotonic": 109936.885716329,
+          "end_monotonic": 110174.016111953,
+          "delta_steps": 525,
+          "delta_seconds": 237.1303956240008,
+          "seconds_per_step": 0.45167694404571584,
+          "steps_per_second": 2.2139717627446274
+        },
+        {
+          "threshold": 1024,
+          "start_sample": 474,
+          "end_sample": 703,
+          "start_step": 1034,
+          "end_step": 1550,
+          "start_monotonic": 110282.075909543,
+          "end_monotonic": 110511.211993723,
+          "delta_steps": 516,
+          "delta_seconds": 229.13608418000513,
+          "seconds_per_step": 0.4440621786434208,
+          "steps_per_second": 2.2519368865300144
+        }
+      ],
+      "safety_maxima": {
+        "corrected_mass": 6.82100188637146e-15,
+        "legacy_mass": 9.668556182322232e-11,
+        "ledger": 1.0109608913205255e-16,
+        "density": 1.2731109499952709e-09,
+        "Mach": 1.5174576418111863e-08,
+        "Re_H": 5.8874227640494105e-06
+      },
+      "observed_RSS_peak_bytes": 1970372608,
+      "observed_RSS_peak_GiB": 1.835052490234375,
+      "minimum_available_RAM_GiB": 17.121807098388672,
+      "minimum_free_disk_GiB": 317.91419982910156,
+      "maximum_observed_output_bytes": 10530886,
+      "total_run_directory_files_bytes": 11169328,
+      "observation_samples": 929,
+      "sample_interval_min_seconds": 1.000341450999258,
+      "sample_interval_max_seconds": 1.0017548390023876,
+      "max_positive_observed_step_jump": 19,
+      "conditional_full_cap_hours": 75.54447448145946,
+      "conditional_12h_steps": 95643.58015056791,
+      "full_window_cost_observed": false,
+      "full_window_steps": 10368,
+      "frames_saved": 5,
+      "formal_geometry_not_upgraded": true,
+      "NUMERICAL_GATE": "NOT_EVALUATED",
+      "RESULT_PASS": false,
+      "geometry_PASS": null,
+      "REFERENCE_QUALIFIED_FOR_CASE": false,
+      "MODEL_COMPARISON": "NOT_EVALUATED",
+      "physical_validation": "NOT_EVALUATED",
+      "reference_qualified": false,
+      "strict_error_bound_established": false,
+      "submission_ready": false
+    }
+  ],
+  "P_then_T_verified": true,
+  "protected_files_unchanged": 2152,
+  "solver_calls": 0,
+  "builds": 0,
+  "VTK_reads": 0,
+  "old_binding_modified": false,
+  "PERF_RESOURCE_PREREQUISITE": "RETAINED_WITH_DOCUMENTED_LOG_EXCEPTION",
+  "ORIGINAL_RAW_CLOSURE_INTACT": false,
+  "OLD_FORMAL_RELEASE_USABLE": false,
+  "NEW_EXECUTION_RELEASE_CREATED": false
+}

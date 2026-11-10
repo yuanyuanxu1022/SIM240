@@ -1,0 +1,1090 @@
+       Multiphase model for nanoimprint lithography
+
+   Andrew Cochranea,e , Kristianto Tjiptowidjojob , Roger T. Bonnecazec , P.
+                              Randall Schunkb,d
+a University of New Mexico, Nanoscience and Microsystems Engineering Program, MSC01
+
+        1141, 1 University of New Mexico, Albuquerque, NM 87131, United States
+  b University of New Mexico, Department of Chemical & Biological Engineering, MSC01
+
+        1120, 1 University of New Mexico, Albuquerque, NM 87131, United States
+c University of Texas at Austin, McKetta Department of Chemical Engineering, 200 E Dean
+
+                     Keaton St. Stop C0400, Austin, TX 78712-15989
+d Sandia National Laboratories1 , Advanced Materials Laboratory, 1001 University Blvd SE,
+
+                                  Albuquerque, NM 87106
+                         e Correspondence to: acochrane@gmail.com
+
+
+
+
+Abstract
+Reynolds’ lubrication theory is extended to capture two-fluid dynamics based
+on relative permeability concepts used for multiphase flow in porous media. A
+reduced-order model of gas dissolution is constructed by combining two-phase
+lubrication theory with Henry’s law and analytic approximations of surface area
+and diffusion length. The governing equations are solved as a thin finite-element
+shell model that can be used to investigate process sensitivities to a variety
+of technologically important parameters. Results are compared to those from
+related computationally intensive alternative formulations and to experimental
+flow visualizations to demonstrate its efficacy in modeling large area, many-drop
+processes and capturing the gas dissolution behavior observed in practice.
+Keywords: nanoimprint lithography, Reynolds lubrication, multiphase,
+disperse, gas-liquid, dissolution
+
+
+1. Introduction
+
+   The patterning of surfaces with features smaller than 100 nm is of great im-
+portance to the printed electronics, semiconductor and related manufacturing
+industries, in which low-cost production of nanometer-scale featured surfaces is
+necessary to meet evolving market demands[1]. Jet-and-flash imprint lithogra-
+phy (J-FIL)[2], a form of ultraviolet (UV) nanoimprint lithography (NIL)[3], has
+been rapidly advanced to meet these demands[4]. Pictured in Figure 1, J-FIL
+
+
+   1 Sandia National Laboratories is a multimission laboratory managed and operated by
+
+National Technology and Engineering Solutions of Sandia, LLC., a wholly owned subsidiary
+of Honeywell International, Inc., for the U.S. Department of Energys National Nuclear Security
+Administration under contract DE-NA0003525.
+               c 2018. Preprint submitted to Elsevier.
+              This manuscript version is made available under the CC-BY 4.0 license
+              http: // creativecommons. org/ licenses/ by/ 4. 0/
+
+              The published article can be found by its digital object identifier
+              DOI: 10.1016/j.ijmultiphaseflow.2018.03.014
+involves the interaction between solutions of photoactive monomer and solvent
+in a liquid phase with a gas phase in a thin, closing gap between a substrate
+and a patterned template[5].
+    Figure 1a represents the first step of the J-FIL process in which 1000s of
+micro-size drops O(1-10 µm) are dispensed over areas O(10 cm2 ) in non-uniform
+arrays, registered with the pattern to be imprinted, so as to distribute the liquid
+where it can efficiently fill the template with minimal waste. The combination of
+applied pressure and capillary forces exerted by the liquid bridges closes the gap
+between the surfaces as the features fill, as depicted in Figure 1b. This process
+
+
+
+
+       (a) Ink-jet           (b) Pattern Fill           (c) UV Cure               (d) Lift-off
+
+Figure 1: Schematic diagram of jet-and-flash imprint lithography (J-FIL), integrable with
+wafer-scale/roll-to-roll processes. (a) Photoresist applied to substrate via precise ink-jet. (b)
+Photoresist drops merge and fill patterned template. (c) Photoresist is cured with ultraviolet
+light. (d) Template is separated from patterned template.
+
+
+creates a two-phase flow of immiscible fluids in an exceedingly thin O(15 nm)
+gap before the liquid fills its designated volume, depicted in Figure 2a. Before
+the liquid is cured with UV light (Figure 1c), ideally, all gas has been eliminated
+from the gap, the liquid has filled the template and the residual layer below the
+features is uniform over the print area.[6] Once the pattern is set, the template is
+separated from it, leaving behind the nano-patterned surface (Figure 1d). The
+model developed in this paper focuses on the drop merger process of the pattern
+fill step.
+
+
+
+
+                     (a) Side View                            (b) Top View
+
+Figure 2: (a) Side view of drops merging during pattern fill. (b) Top view of drop interface
+evolution during pattern fill.
+
+
+    As this process has been used to produce patterned surfaces with feature
+half-pitches as small as 4 nm[7], NIL has been recognized by the International
+Technology Roadmap for Semiconductors as a possible next generation lithog-
+raphy candidate[8]. Despite significant potential for these processes to advance
+
+
+                                                2
+manufacturing efficiency and precision, mitigation of print-defects remains a
+significant challenge[1][8]. Management of the liquid drop coalescence in the
+closing gap is critical to process optimization because trapped gas that does not
+dissolve into the liquid results in non-fill defects and long dissolution dwell times
+lead to reduced process throughput. This paper puts forth a mathematical for-
+mulation based on multiphase flow concepts to address these problems. The
+mathematical formulation is solved with the finite element method and allows
+simulation of the merger of thousands of drops over tens of cm2 .
+    Gas trapping and residual layer thickness (RLT) variations are key limiters
+of process rate and yield, as trapped gas impedes feature filling and non-uniform
+residual layers adversely effect subsequent etching processes. Physically consis-
+tent mathematical models are essential to the development of predictive process
+simulators. Simulator efficacy also depends on a robust and rapid numerical
+solution method so that a wide range of process parameters can be explored
+quickly.
+    Computational analysis of the drop merger regime (i.e. Figure 1b) over areas
+containing hundreds to tens of thousands of drops is very challenging in part due
+to the multitude of interfaces and complex liquid-gas flow topology evolution
+illustrated in Figure 2b. As the drops merge, filling of nano-size features in the
+template draws liquid away from the gap over much shorter time scales than
+those of dissolution and diffusion of micro-size gas bubbles within the gap.[9]
+Moreover, capillary forces play a key role throughout the process, even resulting
+in local flexure of the template and substrate[3].
+    This study builds toward a complete predictive model to guide process de-
+signs that minimize gas trapping and reduce variation in the residual layer.
+Expedient model set up and short run times are also desirable so that design
+and scale-up of the process can be realized. At a minimum, the model requires
+first a suitable two-phase flow model, capable of scaling up to large flow areas
+while capturing the aggregate micron-scale effects without computational com-
+plexity. As such, trapping of micro-sized gas bubbles, subsequent gas dissolution
+and diffusion through the liquid phase are the focus of this study. The effects
+of capillary forces, structural mechanics and flow into template features will be
+addressed in future work.
+    Efforts to model the J-FIL process began with work by Colburn et al.[5] They
+assessed template control schemes with an analytic approach that accounted for
+both viscous resistance of the liquid phase and capillary forces as a function of
+gap thickness, gap closure velocity, liquid material properties and drop pattern.
+Reddy et al. [10] extended Colburn’s analytic model with a numerical finite
+difference approach based on volume-of-fluid interface tracking to predict fill
+times for non-uniform drop patterns. Roberts et al. [11] implemented a gen-
+eral two-phase curvilinear lubrication formulation suitable for non-planar flow
+domains typical of a J-FIL process with structurally flexible templates. Solving
+the resulting equations with a finite-element based approach, they simulated
+two-phase gap closure flow with level-set interface tracking. Moreover, they val-
+idated their results against analytic models for single drop squeeze flow and by
+accurately predicting evolution of the interface of a single drop as observed in
+
+
+                                         3
+experiment. Scale-up trials by the current authors to 100s and 1000s of drops
+using the approach taken by Roberts et al. revealed the method required too
+fine of a mesh to be practical for process design.
+    More recently several authors have addressed fluid management in related
+drop-dispensing, imprint lithography processes. A full three-dimensional, Navier-
+Stokes, two-phase mixture flow approach was demonstrated by Peng et al.[12]
+to simulate micro-size bubble formation in micro-size features using the finite
+volume method. An innovative approach based on contact mechanics has been
+developed by Taylor[13] that includes imbibition of liquid into the template
+and the motion of liquid across the substrate and demonstrated to scale to
+manufacturing areas. Jain et al. [14] have advanced a finite-difference, volume-
+of-fluid (VOF) approach to address the J-FIL process that allows for large area,
+(O(1000)) drop simulations, but ignores the gas phase. Nonetheless, he pro-
+vides an analytical model that predicts an NIL parameter envelope wherein gas
+physics are negligible[15].
+    While useful process understanding has been gained from these works, no
+approach accounts for the effects of gas trapping and pressure-driven gas dis-
+solution with a continuum model over practical processing areas of O(10 cm2 ).
+The approach put forth in this paper captures gas trapping and gas dissolu-
+tion in a multiphase flow formulation that enables large scale (>1000 drops)
+simulations suitable for iterative process design studies. The continuum ap-
+proach is adapted from analyses of the Saffman-Taylor instability in oil-water
+flows through fractured rocks[16] in which a two-fluid extension of Darcy flow
+with relative permeability[17][18] is employed. The formulation is developed in
+Section 2 utilizing multiphase concepts of saturation and relative permeability
+augmented by a reduced-order gas dissolution model. Section 3 presents model
+results, demonstrating simple verification and one envisioned application. Com-
+parison between simulation and experimental flow visualization demonstrate the
+model captures two-phase phenomena pertinent to prediction of gas dissolution
+dwell times. Section 4 discusses the results and future work.
+
+2. Model development
+    In this section, a mathematical model is developed to capture two-phase
+flow evolution from the moment at which the drops bridge the gap between
+substrate and template to beyond the point at which all of the gas has either
+escaped or been dissolved into the liquid, as depicted in Figure 2a. Figure
+4 shows snapshots from an experimental flow visualization of the process as
+captured with a high-speed camera. Model development follows observations
+that as the gap thickness is decreased, flow is separated into three stages by
+the events pictured in Figure 4. Formation of liquid bridges between upper
+and lower surfaces marks the beginning of the first stage in which gap volume
+decrease occurs by gas phase displacement. Contact of the drop edges with
+one another (drop merger) marks the beginning of the gas compression stage.
+During this stage, viscous forces in the thinning gap lead to large pressure
+gradients in the liquid as it displaces the compressing gas. Pressure builds up
+
+
+                                       4
+in both gas and liquid phases to offset the squeeze forces, reducing the gap
+closure rate and initiating the gas dissolution stage. During this stage, long
+drop merger times due to increased resistance to liquid flow in very thin gaps
+are exacerbated by the requirement that trapped gas must dissolve into the
+liquid to avoid defects. Previous findings that smaller drops[19] lead to shorter
+processing times suggests that solubility and the distance through which the
+gas species must dissolve may play a role in dwell time reduction. Furthermore,
+work demonstrating that dwell times are practically eliminated with condensible
+gases[20] affirms that gas phase management plays a critical role in the process.
+    An idealized model is developed in the remainder of this section assuming
+drops of identical volume, Vd , are arrayed in a uniform grid across the substrate
+in a square lattice with a pitch of λ, as shown in Figure 2b. Actual applications
+often require array density variation over the device print area, as discussed in
+Section 3.4.
+
+2.1. Lubrication flow
+    The small height of standing drops, O(1 μm), and large areas necessary
+for manufacturing processes O(10 cm2 ) result in a flow domain of extreme as-
+pect ratio, making a full three-dimensional multiphase flow model impractical.
+Reynolds’ lubrication approximation[21] simplifies the Navier-Stokes equations,
+dropping negligible terms when the gap thickness, h, is small compared to
+the flow length, L, and the product of the ratio of inertial to viscous forces
+(Reynolds number Re) with the ratio of gap thickness to flow length is small
+(Re · h/L  1)[22]. Stokes[23] integrated the resulting three dimensional equa-
+tions through the gap thickness assuming the surfaces have no relative, in-plane
+motion. The resulting expression for the gap averaged velocity, v̄, as a func-
+tion of the pressure gradient, ∇P , is used still to describe two-dimensional,
+streamline flows in Hele-Shaw cells[24].
+
+                                           h2
+                                 v̄ = −       ∇P.                              (1)
+                                          12µ
+
+Here, P , is the fluid (or lubrication) pressure, h is the gap thickness and µ is
+the dynamic viscosity.
+
+2.2. Mass balance
+    An approach described by Brennen[25] as disperse, two-fluid flow is taken in
+this development because it inherently allows multiple fluids to occupy the same
+space and avoids the need to track explicit interfaces. Instead of tracking motion
+of two fluids separately, the volume fractions are tracked by the “saturation” in
+the gap, where a diffuse representation of the liquid volume is used as depicted
+in figure 3.
+    Continuity of two immiscible, yet reciprocally dispersed fluids is satisfied by
+employing two mass balance equations, one for each phase, adapted from phase
+field models of Hele-Shaw flow[26]. Each mass balance is integrated through
+
+
+
+                                          5
+the gap thickness and makes use of gap average velocities, yielding planar mass
+conservation equations.
+
+                              ∂(hρl S)
+                                       + ∇ · (hρl v̄l ) = 0                        (2)
+                                ∂t
+                            ∂(hρg Sg )
+                                       + ∇ · (hρg v¯g ) = 0.                       (3)
+                               ∂t
+Here, t is time, ρl is the bulk density of the liquid phase, ρg is the bulk density of
+the gas phase and v̄l and v¯g are the in-plane, gap-average velocities for the liquid
+and gas, respectively. The liquid volume fraction, S, or saturation, together with
+the gas volume fraction, Sg , make up the whole imprint volume, viz. S +Sg = 1.
+To capture two-phase behavior, the concept of relative permeability is used to
+transform Equation 1 into two separate velocity expressions, one for each phase.
+
+2.3. Relative permeability
+   The concept of permeability is extended from models of flow in porous media,
+in which volume flux density, q (dimensions: length/time), is proportional to
+the pressure gradient:
+                                        k
+                                  q = − ∇P                                  (4)
+                                        µ
+The permeability, k, lumps the effects of pore size, tortuosity, void fraction and
+level of saturation into a single, but variable parameter. Two-phase flow in
+an open channel between two flat plates is analogous to flow with a single but
+variable pore size i.e. the gap thickness. The similarity between Equations 4
+and 1 suggests that the permeability of a thin gap is h2 /12.
+    Another concept borrowed from modeling approaches to flow in porous me-
+dia is an additional factor of “relative permeability”, used to describe the flow
+of one phase as it is impeded by the other phase(s)[27]. In other words, the flow
+of one phase, as driven by the pressure gradient, is restricted by the presence
+of the other phase. Therefore the relative permeability depends directly on the
+
+
+
+
+          Figure 3: Ink-jetted drops represented as a diffusely saturated patch.
+
+
+
+                                            6
+(a) t = 0 ms : Drops    (b) t = 220 ms :         (c) t = 240 ms : Gas   (d) t = 1.26 s : Gas
+bridge gap              Drops trap gas           compresses and dis-    phase eliminated
+                                                 solves
+
+Figure 4: Stills captured from high-speed video of drops squeezed between flat plates with
+40 μm scale bar. (a) The drops bridge the gap between substrate and template. (b) The
+drop edges contact one another, trapping a gas pocket. (c) The gas pocket compresses under
+pressure forces imparted by both applied squeezing and surface tension driven suction between
+the substrate and template. (d) The gas phase has been completely eliminated via dissolution
+into the liquid volume.
+
+
+
+saturation and the nature of interaction between phases. Mathematically, the
+relative permeability kα of phase α relates superficial velocity2 v̄sα of phase
+α to effective volume flow velocities, v¯α .[18] In two-phase Hele-Shaw flow, the
+relative permeability augments the superficial velocity,
+
+                                                  h2
+                              v̄α = kα v̄sα =         kα ∇P.                             (5)
+                                                 12µα
+Existing relative permeability models in the literature for Hele-Shaw flows ad-
+dress pressure-driven flow through fixed, wetted gaps[28], or flows in which mix-
+tures have randomly distributed interfaces[29]. In contrast, the J-FIL process
+is characterized by phase mixtures with structured distribution and evolution
+of interfaces within a closing gap between dry surfaces(i.e. squeeze flow).
+    Development of relative permeabilities that capture the J-FIL flow configu-
+ration is motivated in part by discussion of the gas displacement and gas com-
+pression/dissolution stages (demarcated by the frames displayed in Figures 4a,
+4b and 4d3 ). From the point the liquid has bridged the gap, the liquid phase
+is completely discontinuous throughout the domain, so liquid flow is limited
+to expansion of the drops. In fact, the experimental observations in Figure 4
+clearly suggest that net liquid flow across the lattice boundary is negligible up
+to the point at which the gas phase is completely eliminated.
+    The gas phase appears to flow freely, past the liquid bridges, until it is
+trapped. At that point, the gas becomes the discontinuous phase in which no
+net macroscopic flow can take place. Capture of this behavior is permitted by
+the following relative permeability model (constructed from piece-wise linear
+
+
+   2 The superficial velocity of a phase is the velocity computed as though that phase were
+
+the only phase present as it would be driven by the pressure gradient.
+   3 Dr. Shrawan Singhal of the University of Texas at Austin, personal communication
+
+
+
+
+                                             7
+Figure 5: Parameterization of two-phase permeabilities using transition centers, Scα , and
+half-transition spans, βα , for liquid and gas phases.
+
+
+
+segments in saturation, S).
+                     
+                      1                         : 0 ≤ S ≤ Scg − βg
+               krg =    mg S + cg        : Scg − βg < S < Scg + βg                    (6)
+                        0                        : Scg + βg ≤ S ≤ 1
+                     
+                                                                  1
+                                                        mg = −1                       (7)
+                                                                 2βg
+                                                   cg = mg (Scg + βg )                (8)
+
+                        
+                         0                     : 0 ≤ S ≤ Scl − βl
+                  krl =   ml S + cl      : Scl − βl < S < Scl + βl                    (9)
+                          1                     : Scl + βl ≤ S ≤ 1
+                        
+                                                                  1
+                                                          ml = 1                     (10)
+                                                                 2βl
+                                                 cl = −ml (Scl + βl )                (11)
+
+Here, the relative permeability for each phase, krα , is tuned by selection of a
+transition center saturation, Scα , at which transition from free flow to no flow
+occurs and a half-transition length, βα . These curves are depicted graphically
+in Figure 5. The choice of these tuning parameters is influenced by the type
+of simulation being performed (diffuse patch of drops or discrete drops) and is
+discussed in Section 3.
+
+2.4. Gas dissolution
+   The derivation of Equation 1 assumes the fluid is incompressible, yet gas
+phase compression and resulting pressure rise is a driving force for its dissolution.
+
+
+                                            8
+A compressible gas model is introduced into the system via the approach used
+in studies of compressible lubrication flow[30][31]. Simply, the gas density is
+computed according to the ideal gas law,
+                                          PM
+                                   ρg =      .                               (12)
+                                          RT
+Here, M is the molecular weight of the gas, R is the ideal gas law constant
+and T is the temperature, which for the purposes of this study is assumed to
+be constant (subsequent numerical demonstrations use T = 298K). Tracking
+pressure of the compressible gas phase allows the prediction of volume reduction
+by compression and dissolution into the liquid. The liquid is still taken to be
+incompressible, allowing for the liquid density to be divided out of Equation 2.
+    The final stage of the process, seen beginning in Figure 4c, is dominated by
+gas dissolution, a key rate limiting step. The liquid phase is taken here as an
+infinite sink that is initially saturated with gas at standard ambient pressure.
+Henry’s Law states that the concentration of a chemical species, dissolved in
+liquid, is directly proportional to the partial pressure of the gaseous phase of
+that species, i.e.
+                                      P H = bg                              (13)
+Henry’s law constant, H, relates the partial pressure of the gas species to the
+interfacial concentration of dissolved gas, bg . The model assumes a single gas
+species, so the partial pressure is taken as the lubrication pressure, P . The
+magnitude of the diffusive flux density, j, of gas species into the liquid drop is
+modeled with a lumped mass transfer expression,
+                            Dgl
+                       j∼
+                        =       (bg − b∞ ) = kD (bg − b∞ ),                  (14)
+                             L
+where Dgl is the molecular diffusivity of the gas species in the liquid solvent,
+L is the diffusion length, b∞ is the concentration of the dissolved gas species
+in the delivered photo-resist and kD is the lumped mass transfer parameter.
+The diffusion length is approximated with an analytic expression based on the
+square grid drop pattern.
+    The volume-average diffusive flux of gas into the liquid phase, J is derived
+using the volume-average interface density, Ai /Vt , and the assumption that the
+magnitude of the flux density, j, is uniform across the gas-liquid interface,
+                             Ai     Ai Dgl
+                      J =j      h=h        H(P − Patm ).                     (15)
+                             Vt     Vt L
+Expressions for diffusion length and volume-average interface density are derived
+from the ordered evolution of the drop topology during gap closure. Before the
+drops contact each other, the diffusion length is taken as the radius of the drop,
+r, as defined by the drop volume, Vd , and the gap thickness, h,
+                                          r
+                                             Vd
+                                  L=r=          .                             (16)
+                                             πh
+
+                                          9
+The volume-average interface density can be derived from the interface evolution
+of the square drop lattice. For every lattice element (Figure 2b) with lattice
+length, λ, the interfacial area, Ai , is that of a single, cylindrical drop and the
+total volume is of the lattice element,
+                                  Ai  2πrh 2πr
+                                     = 2 = 2 .                                         (17)
+                                  Vt   λ h  λ
+Because the saturation is related to gap thickness through the pitch and drop
+volume, viz.,
+                                     Vd    Vd
+                                S=      = 2 ,                            (18)
+                                     Vt   λ h
+the volume-average interface density can be derived as a function of saturation
+by combining Equations 16, 17 and 18,
+                                       √
+                               Ai     2 π√
+                                   =        S.                             (19)
+                                Vt     λ
+These expressions hold in areas of constant lattice density throughout the gas-
+flow stage, however once the drops begin to merge, their shapes no longer match
+a growing circle and the evolution of the two phase geometry becomes more
+complex.
+
+
+
+
+          (a)                     (b)                     (c)                    (d)
+
+Figure 6: Gas-dissolution stage model geometry (a) Square lattice of circular drops at point
+of drop-drop contact. (b) Square lattice element (c) Simplified ’diamond’ geometry (d)
+Micro-structure geometry
+
+
+    A simplified geometry of the drop structure is used to calculate diffusion
+length and volume-average interfacial area after the gas is trapped. The gas
+pocket between the drops, pictured in Figure 6b, resembles a shrinking square
+depicted in Figure 6c throughout the gas-dissolution stage. The diffusion length
+is approximated to be the shortest distance, L, from the gas pocket to the
+drop center. Several relationships necessary to compute the volume-average
+interface density and diffusion length are derived from this simplified geometry.
+A structure parameter, y, the liquid area, Al , and the quarter interface length,
+Lqi , of the quarter-lattice-element, depicted in Figure 6d, relate the liquid drop
+volume and the lattice length to the inter interfacial area, diffusion length,
+
+
+                                            10
+saturation and gap thickness.
+                                          2
+                              Vd           λ     y2
+                                 = Al =        −                           (20)
+                              4h           2     2
+                                          1
+                                     L = √ (λ − 2y)                        (21)
+                                           2
+                                     Ai        √
+                                        = Lqi = 2y                         (22)
+                                     4h
+Re-organizing Equations 18, 20 and 21 yields the expression for gas-diffusion
+stage diffusion length in terms of gap thickness,
+                                                      !
+                                       √
+                                           r
+                              λ                   Vd
+                         L= √       1− 2 1− 2           .                (23)
+                                2                 λ h
+
+An expression for the volume-average interfacial area in terms of saturation is
+found by combining Equations 18, 20 and 22.
+                                  Ai  4 √
+                                     = ( 1 − S)                            (24)
+                                  Vt  λ
+   The transition point between flow and dissolution stages occurs at the mo-
+ment that drop edges make contact and trap gas pockets. This occurs at the
+moment when the drop radius is equal to half of the drop pitch. Therefore, the
+transition saturation, St , for the square drop lattice is equal to π/4.
+   With the assumption that the liquid is an incompressible fluid and combining
+the dissolution rate, J, into Equation 3 as a sink term, the model equations
+become,
+                                       ∂Sh
+                                           + ∇ · (v̄l h) = 0               (25)
+                                        ∂t
+                        ∂ρg (1 − S)h
+                                     + ∇ · (v¯g ρg h) + J = 0.             (26)
+                             ∂t
+2.5. Numerical implementation details
+    The model equations (25 and 26) and associated boundary conditions are
+discretized in space with the finite element method. The resulting nonlinear al-
+gebraic equations are solved with Newton’s method and integrated in time with
+the backward Euler method. This numerical system is implemented in the mul-
+tiphysics finite element software Goma 6.0[32]4 . As the model was developed,
+mass lumping, a small amount of artificial diffusion and a conservative clipping
+method were found necessary to achieve stability of the transient simulations.
+    Reformulating the time derivative matrices that result from the FEM dis-
+cretization with the mass-lumping[33] procedure mitigates unbounded growth of
+
+
+  4 https://goma.github.io
+
+
+
+
+                                         11
+solutions in the pressure field near regions of sharp saturation transition. Still,
+spurious oscillations in the vicinity of these regions cause the saturation to over-
+shoot the physically maximum value of unity.[34] No mathematical constraints
+exist in the model to prevent the saturation from rising above unity and because
+the advection of each phase is tightly coupled to the level of saturation, these
+spurious fields result in increasing non-physical behavior as solutions evolve in
+time. Specifically, when the saturation is greater than unity, the gas phase mass
+balance, Equation 26, drives the saturation higher. This non-physical behavior
+is remedied with a computational switch that substitutes the gas equation with
+an equation that acts to drive saturation back towards unity.
+    In regions devoid of gas, Equation 26 as written is meaningless, and so is
+replaced with one that promotes stability of the simulation. When S ≥ 1, the
+advection and dissolution terms go to zero, the time derivative is expanded by
+the product rule and (1 − S) is replaced with kc (1 − S)2 to obtain,
+
+                                  ∂S               ∂h
+                            0=h      − kc (1 − S)2                             (27)
+                                  ∂t               ∂t
+Here, kc is a parameter (chosen to be positive) that controls the strength of
+this spurious oscillation correction. Note that Equation 27 applies correction
+by requiring ∂S                        2
+              ∂t < 0, because (1 − S) is always positive and the closing gap
+        ∂h
+implies ∂t < 0. Since the liquid conservation equation (25) remains in effect,
+the conservation of the liquid volume is always maintained.
+
+
+3. Results
+
+    In this section the model is demonstrated at two levels, first on diffuse
+drop patches and then on discrete drop patterns. An energy-based approach
+to determining the specific relative permeability parameters of Equations 6-11
+is discussed in Section 3.1 followed by discussion of sensitivity to key thermo-
+physical parameters. A fine-grain, single-drop simulation exploring the limits of
+accuracy of interface evolution and pressure field predictions demonstrates that
+gas-liquid interfaces can still be captured effectively in Section 3.2. A simula-
+tion that captures the drop merger process is compared with experimental flow
+visualizations in Section 3.3. Finally, in Section 3.4, a coarse-grain simulation of
+varying density drop arrays is used to illustrate the class of problems this model
+was designed to support, and that the model is suitable for further advancement
+in subsequent work.
+
+
+
+
+                                        12
+3.1. Diffuse Drops
+    The manufacturing-scale fluid mechanics resulting from the merger of thou-
+sands of drops can be examined with coarse grain simulations by starting with
+a uniform saturation, representative of the NIL process. A patch of ink-jetted
+drops is represented by a saturation field with a value of the total volume of
+drops divided by the total gap volume, illustrated in Figure 3.
+    For a diffuse representation of the regular square lattice depicted in Figure
+2b, liquid relative permeability can be constructed to maintain the expected vis-
+cous dissipation. To maintain the expected dissipation within a lattice element,
+the rate of work done on the fluid needs to equal the rate of dissipation due to
+irreversible conversion from kinetic to internal energy, as in
+                           Z             Z
+                                   ∂h
+                              P dA     =     τ : ∇vdVd .                     (28)
+                            A       ∂t     V
+
+Here, A is lattice element area, Vd is the volume of the liquid within the lattice
+element, τ is the viscous stress tensor and ∇v is the velocity gradient.
+    In this approach, the notion of effective liquid pressure, Pl , is developed to
+relate forces developed due to drop liquid motion to coarse-grain lubrication
+pressure, P , and relative permeability. The motion of liquid is driven by the
+effective liquid pressure gradient which is equal to the gradient of the lubrication
+pressure modulated by the relative permeability,
+                                   h2              h2
+                        v̄l = −        krl ∇P = −      ∇Pl .                   (29)
+                                  12µl            12µl
+From Equation 29, the assumption that the relative permeability is constant
+across a lattice element results in the relationship between lubrication pressure
+and effective liquid pressure,
+                                    krl P = Pl .                             (30)
+The effective liquid pressure is computed by dividing the total force per drop,
+F , by the lattice area.
+                                          F
+                                     Pl = 2                                  (31)
+                                          λ
+The force per drop is calculated by integrating the analytic expression for pres-
+sure field over the drop area, obtained by Reddy et al.[10].
+                                       3   r4 ∂h
+                                  F = − πµl 3                                  (32)
+                                       2   h ∂t
+   Now, the lubrication pressure changes negligibly across the lattice area so
+the rate of work done on the liquid can be computed as
+                            Z
+                                     ∂h       ∂h
+                                P dA    ≈ P λ2 .                          (33)
+                              A      ∂t       ∂t
+Breaking this expression into the sum of components due to dissipation in liquid
+and in gas gives
+                           ∂h                          ∂h
+                      P λ2    = [P πr2 + P (λ2 − πr2 )] .                   (34)
+                           ∂t                          ∂t
+
+                                          13
+Because the dissipation of energy comes predominately from the liquid phase,
+the second term on the right is neglected, giving
+                            Z
+                                    ∂h          ∂h
+                               P dA     ≈ P πr2 .                       (35)
+                             A       ∂t          ∂t
+Combining Equations 30, 31, 32 and 35 gives
+                                           2
+                                        r4 ∂h   πr2
+                  Z
+                          ∂h      3
+                     P dA     ≈ − πµl 3               .                       (36)
+                   A       ∂t     2    h    ∂t krl λ2
+    Irreversible conversion from kinetic to internal energy is obtained using an-
+alytic expressions for velocity fields as presented by Chauhan et al.[9] resulting
+in,
+                                                 2  2 5
+                                                            r4 h3
+               Z                                                 
+                                           3 ∂h      r h
+                   τ : ∇vdVd = −2πµl                      +         .         (37)
+                Vd                         h3 ∂t       5      12
+   Equating the two expressions for viscous dissipation, Equations 36 and 37
+and simplifying, results in
+                                    λ2
+                                        2       
+                             1          h      1
+                                = 12 2      +      .                    (38)
+                            krl     πr  5r2   12
+In typical NIL processes, h2 /r2  1, this allows removal of the first term on the
+right-hand side of Equation 38. Furthermore, the saturation is the ratio of the
+liquid drop volume to the lattice element drop volume,
+                                        πr2 h
+                                krl ≈         = S.                            (39)
+                                        λ2 h
+This relative permeability is achieved by selecting Scl = βl = 1/2.
+    As for relative permeability of gas, experimental observations show that
+gas no longer flows when the drops contact one another, i.e. when S = π/4.
+Since the gas is much less viscous than the liquid, its viscous dissipation can be
+neglected. Without regard to any viscous coupling of the phases or the resultant
+multiphase dissipation effects, a relative permeability that satisfies the flow/no-
+flow conditions for the gas phase results when Scg = βg = π/8. The sum of
+these relative permeabilities is less than unity except where S = 0 and S = 1,
+a result that is consistent with the experimental measurements of two-phase
+realtive permeabilities for a fracture taken by Fourar et al.[35].
+    Sensitivity analysis of a diffuse carbon dioxide-water system in a gap closing
+at a constant rate shows that increasing the number of drops to deliver the
+same liquid volume requires smaller applied force. In this model, smaller forces
+are allowed by faster gas dissolution resulting from decreased diffusion lengths
+and increased interfacial surface area (c.f. Equation 15). The trend of this
+prediction is in agreement with lubrication studies of Colburn[5] and Reddy[10].
+The disperse, two-fluid model was formulated to capture the effects of disperse,
+immiscible fluid flows without capturing the interfaces, however it can also be
+used to model flow of fluids that are separated by regions of stark saturation
+contrast, much like distinct drops.
+
+
+                                        14
+3.2. Single Discrete Drop
+    Numerical investigations of evolution of a single drop, flowing outward in a
+closing gap, are reproduced with a level-set based, separated, two-fluid method[11]
+and compared (Figure 7) with simulations performed with the disperse, two-fluid
+model developed in this paper. A direct comparison is achieved by excluding
+surface tension forces, taking gas density to be constant and foregoing the gas
+dissolution term. The remaining parameters are specified identically, as listed
+in Table 1, for both models
+
+                     Simulation Parameter                Value         Units
+                  Initial Gap Thickness                      1.32       μm
+                  Initial Drop Volume                        2.59       pL
+                                                                        mm
+                  Gap Closure Rate                           1.36        s
+                  Simulation Time                            800.        μs
+                  Gas Viscosity                        18.6(10−3 )       cP
+                  Liquid Viscosity                           10.0        cP
+                  Boundary Pressure                           101       kPa
+                  Domain Edge Length                         250.       μm
+                  Elements per Domain Edge                    120
+
+Table 1: List of physical parameters defining the simulations of a single drop in a closing gap.
+
+
+    To model discrete drops as islands of fully saturated volume, relative per-
+meability parameters are selected that facilitate neighboring flows with starkly
+different material properties. Transition centers and transition lengths of Scl =
+Scg = βl = βg = 1/2, represent a boundary symmetry in that each material
+interacts with the interface in the same manner. Figure7c shows that increasing
+the interface resolution, either with denser mesh ( = 240) or smaller transition
+lengths (βl = βg = 1/10) leads to more accurate pressure predictions at later
+simulation times.
+    Figure 7a shows the liquid volume as normalized by the initial liquid volume,
+computed via integration over the domain at each time step. The liquid volume
+error accumulation over time in the separated and disperse methods are 1.4%
+and 0.8% respectively. The pressure fields are compared at two different time
+steps in Figures 7b and 7c. The predicted pressure fields at 400 μs are nearly
+identical, however, at the end of the simulation, the maximum pressure differs
+by nearly 20%.
+    Several factors have been found to influence the disparity between the pres-
+sure field maxima, including choice of stabilization parameters, mesh density
+and liquid permeability parameters. Although increasing domain resolution and
+decreasing βl and βg all lead to better agreement between pressure predictions,
+exact agreement between models is not expected in any case.
+
+3.3. Flow Visualization
+    A flow visualization of drop merger was captured with high speed video as
+pictured in Figures 4 and 8. A square lattice pattern of 6 pL drops was ink-
+
+
+                                              15
+jetted onto a glass plate substrate with a drop spacing of 203 μm. A second
+
+
+
+
+                                 Relative Liquid Volume Change, %
+                                                                     1.0
+                                                                     0.5
+                                                                     0.0
+                                                                    −0.5
+                                                                    −1.0
+                                                                                   Separated
+                                                                    −1.5
+                                                                                   Disperse
+                                                                    −2.0
+                                                                        0 100 200 300 400 500 600 700 800
+                                                                                    Time, µs
+
+                                                                           (a) Liquid volume vs. time
+
+                                                114
+                                                112
+                       Pressure, kPa
+
+
+
+
+                                                110
+                                                108
+                                                106
+                                                104
+                                                102
+                                                                      −100      −50      0      50            100
+                                                                                   Position, µm
+                                                                                Separated               Disperse
+
+                                                                            (b) Pressure after 400 μs
+
+                                                  1400
+                                                  1200
+                       Pressure, kPa
+
+
+
+
+                                                  1000
+                                                   800
+                                                   600
+                                                   400
+                                                   200
+                                                                       −100        −50      0      50          100
+                                                                                      Position, µm
+                                                                       Separated               Disperse: βl = βg = 0.1
+                                                                       Disperse                Disperse: ǫ = 240
+
+                      (c) Pressure after 800 μs. Here  is elements per
+                      domain edge (as in Table 1)
+
+Figure 7: Direct comparison of volume conservation characteristics and predicted pressure in
+separated flow (level-set) and two-mass balance flow models in the single drop case. Subfigure
+(c) demonstrates the sensitivity of the pressure field to decreasing transition lengths and
+increasing domain resolution.
+
+
+
+
+                                                                                        16
+Figure 8: Plot of gap thickness vs. time for experiment, curve-fit and simulation. Inset are
+direct visual comparisons at heights marked by parallel lines from the gap thickness axis.
+
+
+
+glass plate was then first lowered onto the drops by controlling its displacement.
+Once the pressure is very high plate motionis controlled by applying a constant
+force while the gas pockets dissolve.
+    The frames of the video are analyzed with computer vision software OpenCV[36]5
+to produce an approximation representative of saturation for every frame. The
+gap thickness is subsequently computed from this measured saturation by Equa-
+tion 18. The saturation predictions and calculated gap thicknesses are only valid
+after the gap thickness is 1350 because the drops do not fully bridge the gap
+until this point.
+    A simulation of 16 water drops surrounded by CO2 using a modified height
+function is compared to the flow visualization experiment. The simulated gap
+thickness function is stretched in time in order to achieve simulation stability.
+    Figure 8 shows the gap thickness as determined from the experiment, a
+least-squares fit of a hyperbolic tangent function to the calculated gap thick-
+ness as well as the smoothed, simulated height function. The oscillation in the
+experimental data curve right before gap thickness reaches 1350 nm stems from
+transformation of the drops from spherical sections rising from the substrate to
+cylinders that bridge the gap. Since the time scales differ between simulation
+and experiment, the visual comparisons are made at specific gap thicknesses.
+Inset into Figure 8 are direct visual comparisons between simulation and exper-
+
+  5 http://opencv.org/
+
+
+
+
+                                            17
+  (a) Conductive layer for pla- (b) Varying drop patterns (c) Saturation field initializa-
+  nar transistor array          required by varying imprint tion
+                                patterns
+
+Figure 9: Single-layer pattern, commensurate drop patterns and simulation initialization for
+transistor array.
+
+
+iment at four different gap thicknesses, demonstrating qualitative prediction of
+the two-phase flow.
+    This section shows that key process features observed in experimental images
+are captured with a multidrop simulation. As the gap closes from 1350 nm, the
+drops expand from the their centers until they merge at 186 nm gap thickness.
+The pockets of trapped gas compress and dissolve until the gap is occupied by
+liquid only at a gap of 146 nm. This experimental comparison, while not true
+validation of the model, demonstrate that the disperse, two-fluid approach is
+able to capture the gross features of the flow.
+
+3.4. Exemplar device
+     In NIL processes, templates may contain a variety of features positioned to
+create complex patterns possessing several tiers of feature density (e.g. tran-
+sistors are organized to form logic gates that are in turn grouped to create
+processors). The approach developed here can be adapted to model varied pat-
+terns of drops for such purpose. For example, Figure 9a illustrates a mask for
+use as a conductive layer etch barrier to be employed in the fabrication of a
+transistor array. In the center of the pattern is the array of the conductive
+paths for planar transistors[37] that might be used to drive an array of LEDs in
+a display. The contact pads at the edge and the block of transistor elements in
+the center have a much greater feature density and therefore require more liquid,
+i.e. a more dense drop pattern than the wire paths connecting the two regions,
+depicted in Figure 9b. To demonstrate how J-FIL processes with varying drop
+densities can be simulated, the saturation field is initialized with corresponding
+saturation levels, as shown in Figure 9c.
+     The regions of higher saturation fill first, and as the model does not yet
+account for patterned templates, once the gap is filled, the liquid must flow into
+adjacent unsaturated regions. Figure 10a shows that all the gas in the central
+and edge regions has escaped or dissolved while the low-liquid-density wiring
+region has not yet completely filled. Figure 10b show that as the simulation
+
+
+                                            18
+                 (a) Filled transistor region (b) Liquid flowing from satu-
+                                              rated to unsaturated regions
+
+ Figure 10: Saturation rises to fill the closing gap before flowing outward from a full gap.
+
+
+proceeds, the fully saturated central and edge regions begin to flood the wiring
+region.
+    This example demonstrates the class of applications for which the model
+is intended. In future work, predictive capabilities will be expanded by the
+addition of physics of substrate/template deformation, capillary action, and
+fluid flow into the template.
+
+4. Conclusion
+
+    A model for two-phase flow in a closing gap that is suitable for simulating
+drop merger of drop-dispensed nanoimprint lithography processes has been pre-
+sented. The model is implemented in a continuum finite-element code using
+two-dimensional shell elements to capture flow. This implementation enables
+the application of lubrication theory to problems in which incompressible liquids
+interact with compressible, dissolvable gases. The model demonstrates qualita-
+tive prediction of closing gap drop merger by capturing evolution of interfaces
+in addition to gas trapping/dissolution behaviors that are congruent with video
+captured of the process.
+    Conservation of mass and momentum are applied to each phase individu-
+ally and interaction between phases occurs through the saturation-based rela-
+tive permeabilities. This disperse, two-fluid flow model enables the simulation
+of large area, multiphase lubrication processes by reducing the computational
+complexity, and hence, computation time, with reduced-order models that allow
+reduction of required spatial resolution. Variation of the dispensed drop pat-
+tern, (i.e. spatial variation of drop size, lattice spacing and lattice type) can be
+addressed in the dissolution model, however these variations are not reflected in
+the relative permeability model, representing one of the many research pursuits
+for future work.
+    Additional avenues for future work include exploration of alternative gas
+compression models that may be more appropriate for the length scales and
+pressures involved in these NIL flows. As the dissolution model is formulated
+
+
+                                             19
+specifically for disperse, two-fluid flows, re-tailoring of the dissolution model may
+improve the accuracy of discrete drop simulations, although the current model
+adequately portrays gas trapping and subsequent gas dissolution when diffuse
+interfaces are included. Incorporation with thin-shell structural mechanics will
+extend simulation capabilities to enable prediction of residual layer thickness
+variations driven by capillary action and coupled deformation of substrate and
+template. To conclude, this work serves as a building block to be used in the
+development of more advanced models that will enable predictive simulations
+to guide the design of drop-dispensing nanoimprint processes.
+
+
+Acknowledgments
+
+    The authors would like to thank Dr. Shrawan Singhal of the University of
+Texas at Austin for his contribution of the drop merger flow visualization. In
+addition, gratitude is conveyed to Dr. Gibson Batch of 3M and Denise Haskins
+of Sandia National Labs for their proof reading and constructive criticism of
+this paper through its various drafts.
+Funding: This work is based upon works supported primarily by the National
+Science Foundation under Cooperative Agreement No. EEC-1160494. Any
+opinions, findings and conclusions or recommendations expressed in this mate-
+rial are those of the author(s) and do not necessarily reflect the views of the
+National Science Foundation.
+ [1] J. Morse, K. Carter, P. Clark, R. Daniels, X. Du, J. Ernst, G. M. Gallatin,
+     D. Gamota, A. Goyal, J. Guo, D. Hardt, M. Hunter, J. Kadtke, N. Keha-
+     gias, H.-Y. Low, T. Niblock, J. Petrzelka, M. Poliks, R. Praino, G. Ranuik,
+     D. Slafer, C. Soles, S. Sreenivasan, G. Sundaram, J. Watkins, L. Whitman,
+     and M. Wright, “Nanofabrication technologies for roll-to-roll processing,”
+     tech. rep., NIST-National Nanomanufacturing Network, 2011.
+
+ [2] G. M. Schmid, C. Brooks, Z. Ye, S. Johnson, D. LaBrake, S. V. Sreenivasan,
+     and D. J. Resnick, “Jet and flash imprint lithography for the fabrication of
+     patterned media drives,” in Proceedings of SPIE, Photomask Technology,
+     2009.
+ [3] S. Y. Chou, P. R. Krauss, and P. J. Renstrom, “Imprint of sub-25 nm vias
+     and trenches in polymers,” Applied Physics Letters, vol. 67, pp. 3114–3116,
+     1995.
+ [4] J. Haisma, M. Verheijen, K. van den Heuvel, and J. van den Berg, “Mold-
+     assisted nanolithography: A process for reliable pattern replication,” Jour-
+     nal of Vacuum Science and Technology B, vol. 14, pp. 4124–4128, 1996.
+
+ [5] M. Colburn, B. J. Choi, S. Sreenivasan, R. T. Bonnecaze, and C. G. Wil-
+     son, “Ramifications of lubrication theory on imprint lithography,” Micro-
+     electronic Engineering, vol. 75, pp. 321–329, 2004.
+
+
+
+                                         20
+ [6] K. Usuki, S. Wakamatsu, T. Oomatsu, A. Hattori, S. Tarutani, K. Kodama,
+     H. Tanabe, and K. Shitabatake, “Design considerations for ultraviolet-
+     nanoimprint lithography resists,” Journal of Micro/Nanolithography,
+     MEMS and MOEMS, vol. 11, 2012.
+ [7] W.-D. Li, W. Wu, and R. S. Williams, “Combined helium ion beam and
+     nanoimprint lithography attains 4nm half-pitch dense patterns,” Journal
+     of Vacuum Science and Technology B, vol. 30, pp. 06F304–1 – 06F304–4,
+     2012.
+ [8] H. Schift, “Nanoimprint lithography An old story in modern times? a
+     review,” Journal of Vacuum Science and Technology B, vol. 26, pp. 458–
+     480, 2008.
+ [9] S. Chauhan, F. Palmieri, R. T. Bonnecaze, and C. G. Wilson, “Feature
+     filling modeling for step and flash inprint lithography,” Journal of Vacuum
+     Science & Technology B, vol. 27, pp. 1926–1932, 2009.
+
+[10] S. Reddy and R. T. Bonnecaze, “Simulation of fluid flow in the step and
+     flash imprint lithography process,” Microelectronic Engineering, vol. 82,
+     pp. 60–70, 2005.
+[11] S. A. Roberts, D. R. Noble, E. M. Benner, and P. R. Schunk, “Multi-
+     phase hydrodynamic lubrication flow using a three-dimensional shell finite
+     element model,” Computers & Fluids, vol. 87, pp. 12–25, 2013.
+
+[12] L. Peng, H. Wu, P. Yi, and X. Lai, “Study on bubble defect in roll-to-roll uv
+     imprinting process for micropyramid arrays. ii. numerical study,” Journal
+     of Vacuum Science & Technology B, vol. 34, pp. 2166–2746, 2016.
+[13] H. Taylor, “Defectivity prediction for droplet-dispensed uv nanoimprint
+     lithography, enabled by fast simulation of resin flow at feature, droplet,
+     and template scales,” in Proceedings of SPIE, vol. 9777, Alternative Litho-
+     graphic Technologies VIII, 2016.
+[14] A. Jain, A. Spann, and R. T. Bonnecaze, “Effect of droplet size, droplet
+     placement, and gas dissolution on throughput and defect rate in uv nanoim-
+     print lithography,” Journal of Vacuum Science and Technology B, vol. 35,
+     2016.
+[15] A. Jain, A. Spann, A. Cochrane, P. R. Schunk, and R. T. Bonnecaze, “Fluid
+     flow in uv nanoimprint lithography with patterned templates,” Microelec-
+     tronic Engineering, vol. 173, pp. 62–70, 2017.
+
+[16] M. Fourar, S. Bories, and R. Lenormand, “Experimental study of two-
+     phase flow in rough fractures,” in Seventeenth Workshop on Geothermal
+     Reservoir Engineering, pp. 215–218, 1992.
+
+
+
+
+                                       21
+[17] R. D. Wyckoff and H. G. Botset, “The flow of gas-liquid mixtures through
+     unconsolidated sands,” Journal of Applied Physics, vol. 7, pp. 325–345,
+     1936.
+[18] R. W. Lockhart and R. C. Martinelli, “Proposed correlation of data for
+     isothermal two-phase two-component flow in pipes,” Chemical Engineering
+     Progress, vol. 45, no. 1, pp. 39–48, 1949.
+[19] W. Zhang, B. Fletcher, E. Thompson, W. Liu, and T. Stachowiak, “High
+     throughput jet and flash imprint lithopgraphy for semiconductor memory
+     applications,” in Proceedings of SPIE, Alternative Lithographic Technolo-
+     gies VIII, 2016.
+
+[20] H. Hiroshima, M. N. Y. Hirai, and S. Matsui, “Innovative nanoimprint
+     lithography using pfp condensible gas,” Journal of Photopolymer Science
+     and Technology, vol. 26, pp. 87–96, 2013.
+[21] O. Reynolds, “On the theory of lubrication and its application to mr.
+     beauchamp tower’s experiments, including an experimental determination
+     of the viscosity of olive oil,” Philosophical Transactions of the Royal Society
+     of London, vol. 177, pp. 157–234, 1886.
+[22] W. M. Deen, Analysis of Transport Phenomena. Oxford University Press,
+     1998.
+
+[23] G. G. Stokes, “Mathematical proof of the identity of the stream lines ob-
+     tained by means of a viscous film with those of a perfect fluid moving in
+     two dimensions,” Report of the British Association for the Advancement of
+     Science, pp. 143–144, 1898.
+[24] H. S. Hele-Shaw, “Stream-line motion of a viscous film,” Report of the
+     British Association for the Advancement of Science, pp. 136–142, 1898.
+[25] C. E. Brennen, Fundamentals of Multiphase Flows. Cambridge University
+     Press, 2005. accessed 2017-07-27.
+[26] L. Cueto-Felgueroso and R. James, “A phase-field model of two-phase hele-
+     shaw flow,” Journal of Fluid Mechanics, vol. 758, pp. 522–552, 2014.
+
+[27] J. Bear, Dynamics of fluids in porous media. Dover, 1972.
+[28] J.-C. Bacri, N. Rakotomalala, D. Salin, and R. Woumèni, “Miscible viscous
+     fingering experiments versus continuum approach,” Physics of Fluids A:
+     Fluid Dynamics, vol. 4, pp. 1611–1619, 1992.
+
+[29] M. Fourar, C. Moyne, and R. Lenormand, “A theoretical model for relative
+     permeabilities in two-phase flow in a fracture,” in Computational Methods
+     in Water Resources XII (V. N. Burganos, G. P. Karatzas, A. C. Payatakes,
+     C. A. Brebbia, and G. F. Pinder, eds.), pp. 159–166, 1998.
+
+
+
+                                        22
+[30] W. J. Harrison, “The hydrodynamical theory of lubrication with special ref-
+     erence to air as a lubricant,” Transactions of the Cambridge Philosophical
+     Society, vol. 22, pp. 39–54, 1913.
+[31] A. Almqvist and J. Dasht, “The homogenization process of the reynolds
+     equation describing compressible liquid flow,” Tribology International,
+     vol. 39, pp. 994–1002, 2005.
+[32] P. R. Schunk, P. A. Sackinger, R. R. Rao, K. S. Chen, T. A. Baer, D. A.
+     Labreche, A. C. Sun, M. M. Hopkins, S. R. Subia, H. Moffat, R. B. Secor,
+     R. A. Roach, E. D. Wilkes, D. R. Noble, P. L. Hopkins, P. K. Notz, and
+     S. A. Roberts, “Goma 6.0 - a full-newton finite element program for free and
+     moving boundary problems with coupled fluid/solid momentum, energy,
+     mass and chemical species transport: User’s guide,” Tech. Rep. SAND2013-
+     1844, Sandia National Laboratories, 2013.
+[33] O. C. Zienkiewicz and R. L. Taylor, The Finite Element Method.
+     Butterworth-Hienemann, 2000.
+
+[34] S. F. Bradford and N. D. Katapodes, “The anti-dissipative, non-monotone
+     behavior of petrov-galerkin upwinding,” International Journal for Numer-
+     ical Methods in Fluids, vol. 33, pp. 583–608, 2000.
+[35] M. Fourar and S. Bories, “Experimental study of air-water two-phase flow
+     through a fracture (narrow channel),” International Journal of Multiphase
+     Flow, vol. 21, pp. 621–637, 1995.
+[36] G. Bradski, “The opencv library,” Dr. Dobb’s Journal of Software Tools,
+     2000. accessed 2017-07-27.
+[37] Y. Choi, W.-Y. Park, M. S. Kang, J.-Y. Lee, Y.-H. Kim, and J. H. Cho,
+     “Monolithic metal oxide transistors,” ACS NANO, vol. 9, pp. 4288–4295,
+     2015.
+
+
+
+
+                                       23
+

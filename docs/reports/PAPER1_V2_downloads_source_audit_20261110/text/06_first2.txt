@@ -1,0 +1,151 @@
+                                                     Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138
+
+
+
+                                                                 Contents lists available at ScienceDirect
+
+
+                                Journal of the Taiwan Institute of Chemical Engineers
+                                                           journal homepage: www.elsevier.com/locate/jtice
+
+
+
+
+Simulation of liquid ﬂow transport in nanoscale porous media using
+lattice Boltzmann method
+Wendong Wanga,b, Han Wanga,b,*, Yuliang Sua,b,*, Meirong Tangc, Jilong Xua,b, Qi Zhangd
+a
+  Key Laboratory of Unconventional Oil & Gas Development (China University of Petroleum (East China)), Ministry of Education, Qingdao 266580, China
+b
+  School of Petroleum Engineering, China University of Petroleum (East China), Qingdao, 266580, China
+c
+  Research Institute of Oil & Gas Technology, PetroChina Changqing Oilﬁeld Company, Xi’an, 710021, China
+d
+  School of Earth Resources, China University of Geosciences, Wuhan 430074, China
+
+
+
+
+A R T I C L E         I N F O                             A B S T R A C T
+
+Article History:                                          Clarifying the conﬁned liquid ﬂow in nanoscale porous media is crucial for many science and engineering
+Received 28 January 2021                                  applications, such as shale/tight oil recovery. However, most of the investigations are focused on the single
+Revised 7 March 2021                                      pore and the uniform wet, and there are few effective nanoscale pore-scale simulation methods. In this
+Accepted 27 March 2021
+                                                          paper, we comprehensively study the conﬁned water ﬂow in shale porous media from the theoretical analy-
+Available online 7 April 2021
+                                                          sis to a new nanoscale lattice Boltzmann method (LBM). The nanoscale effects of the slip boundary and the
+Keywords:                                                 varying interfacial water viscosity caused by the solid-liquid molecular interactions are considered. Addition-
+Nanoscale porous media                                    ally, the water ﬂowing in shale porous media coupling different transport mechanisms in the water-wetting
+Shale/tight oil                                           inorganic and oil-wetting organic media is simulated and discussed. The results show that the water ﬂow
+Lattice Boltzmann method                                  behaviors obtained by (LB) simulations ﬁt well with that calculated by the theoretical analysis. Then, the con-
+Slip boundary                                             trollable nanoscale effects are successfully brought into LB simulation. Additionally, the nanoscale effects of
+Enhancement factor                                        the slip boundary and the interfacial ﬂuid viscosity have a great impact on the water ﬂow capacity, and the
+                                                          conﬁned water ﬂow behaviors are sensitive to heterogeneous wettability and pore size.
+                                                                           © 2021 Taiwan Institute of Chemical Engineers. Published by Elsevier B.V. All rights reserved.
+
+
+
+
+1. Introduction                                                                               media by considering the nanoscale effects, heterogeneous wettabil-
+                                                                                              ity, and pore size.
+    Understanding and clarifying the liquid ﬂow behaviors in nano-                                Compared with the liquid ﬂow in microscopic pores, the liquid ﬂow
+scale porous media is crucial for many science and engineering appli-                         in nanoscale pores strongly depends on the wall wettability. The wetta-
+cations, such as shale/tight oil/gas recovery [16], water puriﬁcation                        bility reﬂects the strength of solid-liquid molecular interactions and can
+[7] and catalysis in fuel cells [8]. The liquid ﬂow behaviors in nano-                        be quantitatively characterized by the contact angle of the liquid drop-
+scale pores are strongly affected by the solid-liquid molecular inter-                        let on the pore wall. In nanoscale pores, the solid-liquid molecular
+actions. The solid-liquid molecular interactions can result in the                            interactions result in the non-zero boundary velocity and the varying
+nanoscale effects of the slip boundary and the varying interfacial vis-                       interfacial liquid viscosity [17,18]. The non-zero boundary velocity is
+cosity. Usually, considering these effects, the liquid ﬂow in single                          linearly related to the slip length and interfacial shear rate [19,20]. The
+pores can be characterized by the theoretical formula [911]. How-                            slip length can be obtained by experiments, molecular dynamics simu-
+ever, due to the complex wall wettability, pore size, and pore struc-                         lation (MDS), and theory [11,17,18,21]. For theory, the slip length can
+ture in the natural porous media [10,1214], the ﬂow behaviors will                           be calculated by a function of the contact angle, based on Huang’s
+be more complex. For example, in shale reservoirs, the shale oil/gas                          model [19], Wu et al. [11] obtained the slip length formula of water by
+storage space is composed of water-wetting inorganic pores and oil-                           ﬁtting the data obtained from MDS. From this formula, with a contact
+wetting organic pores, and with strong heterogeneity of pore size                             angle ranging 0150°, the slip length can vary from 0.1 nm to 22.8 nm.
+[15,16]. All of which complicate the microscopic ﬂow mechanisms in                            In addition to the nanoscale effect of slip length, the viscosity of the
+the porous media. Then, a simple single-pore model will fail to cap-                          interfacial liquid also affects the liquid ﬂow capacity. From MDS, there
+ture the rich ﬂow behaviors arising from these complexities. There-                           are about two molecular layers that are strongly affected by wall force.
+fore, there is an urgent need to study the ﬂow behaviors in porous                            For the water and oil phase, the thickness of the interfacial region is
+                                                                                              about 0.7 nm and 0.96 nm respectively [2224]. Due to the water-wet-
+                                                                                              ting wall, the interfacial liquid viscosity is larger than the bulk water
+  * Corresponding authors.
+                                                                                              viscosity, which can weaken the water ﬂow capacity. When the pore
+     E-mail addresses: wanghan.petro@gmail.com (H. Wang), suyuliang@upc.edu.cn
+(Y. Su).
+                                                                                              wall is oil-wetting, the interfacial water viscosity is smaller than the
+
+https://doi.org/10.1016/j.jtice.2021.03.044
+1876-1070/© 2021 Taiwan Institute of Chemical Engineers. Published by Elsevier B.V. All rights reserved.
+                                             W. Wang et al. / Journal of the Taiwan Institute of Chemical Engineers 121 (2021) 128138                                       129
+
+
+bulk water viscosity which can enhance the liquid ﬂow capacity. By ﬁt-                      limitations of experiments, PNM and MDS, the mesoscopic method of
+ting the results from experiments and MDS, Wu et al. [11] obtained the                      lattice Boltzmann method (LBM) has been developed into an efﬁcient
+interfacial water viscosity formula which is related to the bulk water                      tool to simulate the liquid ﬂow in porous media because of its ease in
+viscosity and the contact angle. At present, the liquid ﬂow capacity in                     handling complex structures, reducing computational resources
+nanoscale pores can be characterized through enhancement factor                             through parallel computing and the algorithm simplicity [3739].
+which is deﬁned as the ratio of the total volume ﬂux calculated by the                      Moreover, the LB simulation can consider the nanoscale effects by
+Hagen-Poiseuille (HP) equation considering nanoscale effects to that                        solving the Navier-Stokes (N-S) equation supplemented with the slip
+calculated by no-slip HP equation [10,25,26]. Also, the apparent perme-                     length and the varying interfacial liquid viscosity [14,40].
+ability is also be used [4]. Based on the theoretical study of water ﬂow                        It has been recognized that the proper boundary conditions are
+in single pores, Wu’s studies indicated the enhancement factor is about                     critical to ensure that the LB simulation results are consistent with the
+101102 times compared to the classical no-slip ﬂow predictions                            actual situation. In recent years, researchers have done many works
+with contact angle ranging 0150° [11]. For shale reservoirs, Zhang                         for the nanoscale effect of the slip boundary. The slip format in LB sim-
+et al. [4] and Cui et al. [27] have studied the shale oil ﬂow in the pores                  ulation includes bounce back (BB), specular reﬂection (SR), and diffu-
+and calculated the apparent permeability considering the nanoscale                          sive Maxwell’s reﬂection (DM) [41]. Nie et al. [42] ﬁrstly found the
+effects. Although the conﬁned liquid ﬂow behaviors in a single nano-                        velocity slip at the pore wall when they employed the BB boundary
+scale pore have been widely investigated by theory, experiment and                          condition to simulate liquid ﬂow in a microchannel, however, later
+MDS, the liquid ﬂow behaviors in a single pore cannot truly reﬂect that                     researchers found the slip velocity is the numerical artifact [43]. Mean-
+in the nanoscale porous media [9,11,17]. Wang et al. [28] and Zhang                         while, Lim et al. [44] applied the SR boundary condition to simulate
+et al. [24] used the capillary bundle model to represent porous media                       liquid ﬂow, however, the slip velocity was not in agreement with
+to study the liquid ﬂow behaviors based on the single-pore theory                           some analytical results. Ansumali et al. [45] proposed the DM bound-
+model. However, the capillary bundle model cannot reﬂect the proper-                        ary condition based on kinetic theory, however, when the MD scheme
+ties of the true porous media like the complex pore connectivity and                        is used to simulate the Poiseuille slip ﬂow, it overpredicted the slip
+structures. Therefore, for the accurate ﬂow characteristics in natural                      velocity. To overcome the above limitations, the combined methods of
+porous media, it is necessary to study the liquid ﬂow in the nanoscale                      BB-SR (BSR) [46], DM-SR (DSR) [47,48], and DM-BB (DBB) boundary
+porous media considering the nanoscale effects. Zhao et al. [14]. have                      conditions [49,50] were proposed, then, the slip velocity can be
+studied the liquid ﬂow characteristics in nanoporous media considering                      changed by choosing different combination parameter r. Although the
+the slip length and the effective viscosity, however, the nanoporous                        hybrid schemes of BSR and DSR are suitable for the straight walls, they
+media used in their simulation is ideally composed of the regular solid                     will bring some difﬁculties for curved boundaries because the SR part
+media. Besides, the effect of the varying interfacial liquid viscosity is                   involved in these hybrid schemes is not computed locally [51]. On the
+characterized by the local effective viscosity, however, that may bring                     other hand, the curved slip boundary based on the hybrid scheme of
+some error in LB simulation by ignoring the relationship between the                        DBB has good performance in simulating the liquid ﬂow in porous
+slip velocity and interfacial liquid viscosity [10,14].                                     media with complex boundaries [52]. Therefore, it is necessary and
+    Although the liquid ﬂow in the nanoscale porous media can be                            feasible to study the liquid ﬂow in porous media using LB simulation.
+studied by core ﬂow experiments, the experiments have inevitable                                In this paper, we apply the theoretical analysis and LB simulations
+shortcomings such as being expensive and time-consuming due to                              with the combination of Maxwellian diffuse reﬂection and half-way
+the low-permeability. Therefore, numerical simulation attracts grow-                        bounce back (HDBB) boundary condition to simulate the water ﬂow
+ing attention. There are two types of approaches for modeling liquid                        in nanoscale porous media. The nanoscale effects of the slip boundary
+transport in porous media, i.e., direct simulation and pore network                         and the varying interfacial water viscosity are considered. Then, the
+modeling (PNM) [2931,61]. PNM is extremely efﬁcient and has                                effects of the wettability, pore size and total organic carbon (TOC) on
+been extensively used to study the liquid ﬂow in porous media, how-                         the water ﬂow capacity in porous media are discussed.
+ever, the complex pore-space geometry is simpliﬁed into the combi-
+nation of spherical pores connected by cylindrical capillaries [32,33].                     2. Analytical and lattice Boltzmann models for water ﬂow
+Additionally, the ﬂow processes are based on the law of mass conser-
+vation and the known characteristics of the Poiseuille ﬂow in cylin-                        2.1. Analytical model in nanoscale pores
+drical capillaries [34]. The direct simulation method of MDS can also
+be used to simulate the liquid ﬂow in porous media, like the oil trans-                        The liquid ﬂow mechanisms in nanoscale pores strongly depend
+port in kerogen porous media [35,36]. Although MDS can capture the                          on the solid-liquid molecular interactions which result in the slip
+microscopic molecular interactions, the porous media model size is                          boundary and the varying interfacial liquid viscosity. Fig. 1A shows
+small and the simulations consume too many resources to meet the                            that the water is conﬁned in the nanoscale pore, due to the solid-liq-
+macroscopic scales of engineering interest. To overcome the                                 uid molecular interactions, the interfacial water viscosity is different
+
+                           A                                                                B
+                                                                                δ
+                                                                    H      h
+                                                                                                                                             j=2
+                                                                                                             6      2       5
+
+                                                                                                             3      0       1                j=1
+                            y
+                                                                                                                                             j = 0.5
+                                                                                                             7      4       8
+                                      x                                                                                                      j=0
+
+                                    Bulk region             Interfacial region                        Solid node             Liquid node
+
+Fig. 1. Schematic diagram of the distribution of bulk water and interfacial water in a nanoscale pore, and boundary grids for the half-way method in the D2Q9 model. Note: There
+are about two layers of molecules that are strongly affected by the wall force, and the single layer of water molecules is about 0.35nm from MDS, therefore, the thickness of the
+interfacial water d = 0.7nm is used in this study.
+

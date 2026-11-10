@@ -1,0 +1,78 @@
+{
+  "analytic_or_continuous_accuracy_bound_claimed": false,
+  "claims": [
+    {
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "id": "C01",
+      "minimum_action": "Review assumptions and algebra against frozen implementation; no new flow run",
+      "status": "CONSTRUCTION_RETAINED_FINAL_PROOF_REVIEW_PENDING",
+      "wording": "有物理约束的四参数经验关系式"
+    },
+    {
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "id": "C02",
+      "minimum_action": "Read-only reconcile folds, source IDs, denominators, P/T/A and worst cases",
+      "status": "EXISTING_DISCRETE_REFERENCE_CV_ONLY",
+      "wording": "相对于旧5nm参考的留组偏差"
+    },
+    {
+      "evidence": [
+        "E3",
+        "E4"
+      ],
+      "id": "C03",
+      "minimum_action": "After valid reference/prerequisites and separate permission: frozen 16 main directions plus 4 refinement references; score 8 A values",
+      "status": "PROSPECTIVE_NOT_VALIDATED",
+      "wording": "仅在冻结8几何测试通过后声称这些测试点达到目标"
+    },
+    {
+      "evidence": [
+        "E4",
+        "E5",
+        "E6"
+      ],
+      "id": "C04",
+      "minimum_action": "Versioned reference qualification and quantity-specific error evidence; no fixed run count certified",
+      "status": "CONTINUOUS_ACCURACY_UNSUPPORTED",
+      "wording": "不承诺连续解3%/5%精度"
+    },
+    {
+      "evidence": [
+        "E2",
+        "E5"
+      ],
+      "id": "C05",
+      "minimum_action": "Check units and reciprocal/ratio error transformations; no new flow run",
+      "status": "ALGEBRAIC_CONVERSION_ONLY",
+      "wording": "阻力/修正/各向异性按一致定义单列"
+    },
+    {
+      "evidence": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "id": "C06",
+      "minimum_action": "Delete or bound unsupported generalizations, preserve limits",
+      "status": "EXCLUDED_FROM_PAPER_ACCURACY_CLAIM",
+      "wording": "不承诺全域、任意占比或真实工艺统一精度"
+    }
+  ],
+  "main_direction_count": 16,
+  "original_thresholds": {
+    "P_T_A_each_MAE_percent": 3,
+    "P_T_A_each_max_abs_percent": 5
+  },
+  "refinement_direction_count": 4,
+  "requested_model_version": "G4_candidate_prediction_v1_20261024",
+  "solver_execution_authorized": false,
+  "status": "AUTHOR_WORKING_CLAIM_PLAN_NOT_FINAL_FREEZE",
+  "test_geometry_count": 8,
+  "uniform_domain_accuracy_claimed": false
+}

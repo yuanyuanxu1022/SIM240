@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-30",
+  "files": [
+    {
+      "id": "E01",
+      "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+      "purpose": "sections 2.1-2.3, 4.4, 5.2; published rounded V2",
+      "sha256": "5ad0fd0040f16fda9d75f5178e4fff4ea9238dbf96562ce843c95c716e524c64",
+      "bytes": 63776,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E02",
+      "path": "CASE/D_series/D2_groove_error_map/src/d2_groove_error_map.cpp",
+      "purpose": "definitions only; does not establish historical build binding",
+      "sha256": "e7c0cf5d87f6a726a61e760642b803b5c6ee9e5fbc6dd5ba890cb97f5a6fe3b7",
+      "bytes": 32650,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E03",
+      "path": "CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/result.txt",
+      "purpose": "saved 5 nm parallel discrete coefficient",
+      "sha256": "a1dc9e60daec4891c0beac5a35ea4c7792e1fd85cdc09965aa6a408b070184f6",
+      "bytes": 1396,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E04",
+      "path": "CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/result.txt",
+      "purpose": "saved 5 nm transverse discrete coefficient",
+      "sha256": "aee2e75ce2f5a86a58cd3bed9483cea6c7488b72ea7b2111c46a1f8a6e6e5c5b",
+      "bytes": 1456,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E05",
+      "path": "CASE/D_series/D3_squeeze_error_propagation/squeeze_error_propagation.py",
+      "purpose": "existing reduced-model code; not imported or run",
+      "sha256": "7d3da1d97198bb31f8d5cf59f50f0f3912c8b99e078785dc4f1628c7477662dc",
+      "bytes": 18287,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E06",
+      "path": "CASE/05_mesoscale/G5A_squeeze_resistance/config/g5a_baseline.json",
+      "purpose": "historical configuration; no transfer of its length/speed authorization",
+      "sha256": "4199424a479f42a3930864121f09b2fef4cc5c514a95271d18c37d6c150e1aaa",
+      "bytes": 569,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E07",
+      "path": "docs/reports/NanrPrint_reference_review_20261030/REPORT.md",
+      "purpose": "previous inspection snapshot; not a new remote check",
+      "sha256": "8286163015caaaef7d0b16c36d17ee35844563d601e577c105fbaad6e4a03844",
+      "bytes": 13285,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E08",
+      "path": "docs/reports/NanrPrint_reference_review_20261030/sources/git_template_3r5cBoard_350/constant/fvModels",
+      "purpose": "reference drag configuration only",
+      "sha256": "43db52e0ad7f443cb11aa7b2eb9ffffac9ad5cf76db73843a50877ec8c98d422",
+      "bytes": 8930,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E09",
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/src/finiteVolume/cfdTools/general/porosityModel/DarcyForchheimer/DarcyForchheimer.H",
+      "purpose": "Darcy source and units",
+      "sha256": "47f39af017ce84f4517b805d7f685dfb12bf2152ef5ad1c95701377af33ae0c3",
+      "bytes": 5260,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E10",
+      "path": "/home/dell/OpenFOAM/OpenFOAM-13/src/finiteVolume/cfdTools/general/porosityModel/DarcyForchheimer/DarcyForchheimerTemplates.C",
+      "purpose": "volume source versus momentum assembly",
+      "sha256": "df39272478e4bf910d1dcd2d9c13a3d948ffe920d90234b9da8759bc0589f989",
+      "bytes": 2516,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    },
+    {
+      "id": "E11",
+      "path": "docs/reports/Teacher_briefing_20261029/arithmetic.json",
+      "purpose": "comparison object only; raw results remain coefficient source",
+      "sha256": "52dedf5508dad586ce302b5edfde841ade1a843618ca6150a66ca2353dad0318",
+      "bytes": 18383,
+      "inspection": "AI_READ_OR_ARITHMETIC_COMPARISON_NOT_INDEPENDENT_HUMAN_ACCEPTANCE"
+    }
+  ],
+  "historical_build_binding_reestablished": false,
+  "external_primary_sources": [
+    "https://cpp.openfoam.org/v13/DarcyForchheimer_8H_source.html",
+    "https://arxiv.org/abs/2609.00065"
+  ]
+}

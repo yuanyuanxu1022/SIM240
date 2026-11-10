@@ -1,0 +1,44 @@
+{
+  "scope": "dimensional identities from current definitions only; no field integration, conductance or error recomputation",
+  "base_order": [
+    "mass",
+    "length",
+    "time"
+  ],
+  "J": {
+    "exponents": [
+      0,
+      2,
+      -1
+    ],
+    "SI": "m^2/s"
+  },
+  "G_rho_a": {
+    "exponents": [
+      1,
+      -2,
+      -2
+    ],
+    "SI": "Pa/m = N/m^3"
+  },
+  "K_mu_J_over_G": {
+    "exponents": [
+      0,
+      3,
+      0
+    ],
+    "SI": "m^3"
+  },
+  "kappa_K_over_H": {
+    "exponents": [
+      0,
+      2,
+      0
+    ],
+    "SI": "m^2"
+  },
+  "height_identity": "V_fluid/A_plan = h+(w/P)*d; w/P=1/2 gives h+d/2",
+  "volume_mean_identity": "J = (V_fluid/A_plan) * fluid_volume_mean_u",
+  "reference_height_caveat": "K/H is an effective permeability only with the matching averaged-velocity/reference-volume convention",
+  "all_dimension_checks_pass": true
+}

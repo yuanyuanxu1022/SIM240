@@ -1,0 +1,151 @@
+{
+  "kind": "DESCRIPTIVE_C01_C03_SAME_DIRECTION_COEFFICIENT_COMPARISON",
+  "run_ids": {
+    "C01": "SDI_C01_v1_20261030_01",
+    "C03": "SDI_C03_v1_2_20261030_01"
+  },
+  "common_parameters_equal": [
+    "H_m",
+    "L_m",
+    "mu_Pa_s",
+    "rho_kg_m3",
+    "mesh_cells",
+    "drive_axis",
+    "G_Pa_per_m",
+    "pressure_units",
+    "velocity_definition",
+    "thresholds",
+    "linear_solver",
+    "source_hashes",
+    "source_paths"
+  ],
+  "identical_boundary_mesh_numerics_files": [
+    "0/p",
+    "system/blockMeshDict",
+    "system/controlDict",
+    "system/fvSchemes",
+    "system/fvSolution",
+    "constant/polyMesh/boundary",
+    "constant/polyMesh/faces",
+    "constant/polyMesh/neighbour",
+    "constant/polyMesh/owner",
+    "constant/polyMesh/points"
+  ],
+  "identical_solver_source_make_binary_files": [
+    "bin/darcy2d",
+    "bin/depthAveragedDarcyFoam",
+    "provenance/two_dimensional/darcy2d.cpp",
+    "provenance/openfoam/application/depthAveragedDarcyFoam.C",
+    "provenance/openfoam/application/Make/files",
+    "provenance/openfoam/application/Make/options"
+  ],
+  "coefficient_families": {
+    "C01": "V2_published_rounded",
+    "C03": "original_local_cubic"
+  },
+  "orientation": "groove_along_y_drive_along_x_cross_groove",
+  "changed_physical_inputs": [
+    "K_m3",
+    "D_m_minus2"
+  ],
+  "comparison": {
+    "two_dimensional": {
+      "cases": {
+        "C01": {
+          "Q_m3_s": 2.1858216813930507e-18,
+          "Umean_m_s": 3.6430361356540733e-07,
+          "Jmean_m2_s": 4.553795169567592e-14,
+          "recovered_K_from_U_m3": 4.5537951695675916e-23,
+          "recovered_K_from_Q_m3": 4.553795169568856e-23,
+          "static_hydraulic_resistance_Pa_s_per_m3": 1.0979852658751427e+19
+        },
+        "C03": {
+          "Q_m3_s": 3.1287162162167147e-18,
+          "Umean_m_s": 5.214527027027026e-07,
+          "Jmean_m2_s": 6.518158783783782e-14,
+          "recovered_K_from_U_m3": 6.518158783783783e-23,
+          "recovered_K_from_Q_m3": 6.518158783784822e-23,
+          "static_hydraulic_resistance_Pa_s_per_m3": 7.670877874958286e+18
+        }
+      },
+      "Q_ratio_C03_over_C01": 1.4313684610460748,
+      "analytic_Q_ratio_C03_over_C01": 1.4313684610462438,
+      "ratio_relative_deviation": 1.1801670751765414e-13,
+      "U_ratio_C03_over_C01": 1.4313684610462438,
+      "pressure_field_max_absolute_difference_Pa": 3.744560217455728e-12,
+      "pressure_field_max_difference_over_24Pa": 1.5602334239398866e-13,
+      "static_resistance_ratio_C03_over_C01": 0.6986321322667529,
+      "V2_flow_change_relative_to_original_percent": -30.136786773324697,
+      "V2_static_resistance_change_relative_to_original_percent": 43.136846104607486
+    },
+    "openfoam": {
+      "cases": {
+        "C01": {
+          "Q_m3_s": 2.185821681392935e-18,
+          "Umean_m_s": 3.643036135654074e-07,
+          "Jmean_m2_s": 4.5537951695675926e-14,
+          "recovered_K_from_U_m3": 4.553795169567592e-23,
+          "recovered_K_from_Q_m3": 4.553795169568615e-23,
+          "static_hydraulic_resistance_Pa_s_per_m3": 1.0979852658752006e+19
+        },
+        "C03": {
+          "Q_m3_s": 3.1287162162165995e-18,
+          "Umean_m_s": 5.214527027027027e-07,
+          "Jmean_m2_s": 6.518158783783785e-14,
+          "recovered_K_from_U_m3": 6.518158783783784e-23,
+          "recovered_K_from_Q_m3": 6.518158783784582e-23,
+          "static_hydraulic_resistance_Pa_s_per_m3": 7.670877874958568e+18
+        }
+      },
+      "Q_ratio_C03_over_C01": 1.4313684610460977,
+      "analytic_Q_ratio_C03_over_C01": 1.4313684610462438,
+      "ratio_relative_deviation": 1.0202949596305189e-13,
+      "U_ratio_C03_over_C01": 1.4313684610462438,
+      "pressure_field_max_absolute_difference_Pa": 5.6141757909244916e-12,
+      "pressure_field_max_difference_over_24Pa": 2.339239912885205e-13,
+      "static_resistance_ratio_C03_over_C01": 0.6986321322667418,
+      "V2_flow_change_relative_to_original_percent": -30.13678677332582,
+      "V2_static_resistance_change_relative_to_original_percent": 43.13684610460977
+    }
+  },
+  "ratio_role": "descriptive comparison; no added acceptance criterion",
+  "resistance_definition": "R_Q=delta_p/Q, Pa s / m^3, fixed-pressure static hydraulic resistance",
+  "squeeze_resistance_F_over_V": null,
+  "physical_validation": "NOT_EVALUATED",
+  "independent_physical_reference": false,
+  "solver_rerun": false,
+  "sources": [
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/cells.csv",
+      "sha256": "98ea3fada1003501bea6fb32890a6499fdc8fff82674c1bfa753c54d8f80edcc"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/faces.csv",
+      "sha256": "b83928d8efb3075b864dc0955176a266affdb3a0a6ec4169555da56c0bc02de1"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/two_dimensional/cells.csv",
+      "sha256": "8e4432ef96d314d8595657449b955e41f6145aedf0b4c9e94217c0e08ea16980"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/two_dimensional/faces.csv",
+      "sha256": "e5d685bf0a81779dbdb32b9f8fef9e4ae4f78316b6cf56af1d925cf5dcf0150e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "5360bae99c50e1e7fe0933b7d0e7aee9a01cfaa99239e8d74a69d03d16d7b65f"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "84388c85878e9f234d619fdab633b8cb572f9aa0105d6254573827a44bb383a2"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "ef66d03470b0096890ee8647b92b0239358a843e0fd633d9255754e7aa2e241b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "e6193529105cf519682e785a0d85487a257b271cb31a41495e79c4360b7cac5c"
+    }
+  ]
+}

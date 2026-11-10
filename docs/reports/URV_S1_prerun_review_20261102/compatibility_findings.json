@@ -1,0 +1,137 @@
+{
+  "scope": "S1 against current S0/A1 artifacts; intentional stage boundaries are not evidence contradictions",
+  "overall": "NOT_COMPATIBLE_FOR_DIRECT_LAUNCH",
+  "findings": [
+    {
+      "id": "C01",
+      "status": "INCOMPATIBLE_BY_DESIGN",
+      "issue": "Existing native steady mode always instantiates h75-specific density capture.",
+      "consequence": "884736 core values exceed the fixed 57600 buffer; append fails by source logic before steady iteration.",
+      "evidence": [
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/src/mrp_observer.h",
+          "sha256": "560c5e0a55c16ead6a72d6009c3dcafb9813ca661b180dd03c18475e319f473f",
+          "lines": [
+            46
+          ],
+          "exact_text": "static constexpr std::size_t count = 57600;"
+        },
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/src/mrp_observer.h",
+          "sha256": "560c5e0a55c16ead6a72d6009c3dcafb9813ca661b180dd03c18475e319f473f",
+          "lines": [
+            140
+          ],
+          "exact_text": "require(ordinal<count"
+        },
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/src/urv_reference.cpp",
+          "sha256": "ee886312aff55b3a69060531e7d286dc16a4fe595a145736002896ba81394f77",
+          "lines": [
+            840
+          ],
+          "exact_text": "mrp::DensityCapture capture("
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "status": "INCOMPATIBLE_BY_DESIGN",
+      "issue": "Current source revision acceptance explicitly limits A1 to S0.",
+      "consequence": "Changing the release stage to S1 cannot authorize the existing A1 source.",
+      "evidence": [
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/revision.py",
+          "sha256": "008370c78746870025a6849a043694974637e5fd68ce59a6afe8977d6df5e3cd",
+          "lines": [
+            16
+          ],
+          "exact_text": "bound.get('stage')=='S0_REGRESSION'"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "status": "INCOMPATIBLE_BY_DESIGN",
+      "issue": "S0 controller pins stage, exact H75 run IDs and 3600 s cap.",
+      "consequence": "It must not be renamed/reused as an S1 launcher; original S1 cap is 14400 s.",
+      "evidence": [
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py",
+          "sha256": "393b03453634de4551216c72e7174d5ce1b9099ca04d10a2383fd62c3ba0119a",
+          "lines": [
+            49
+          ],
+          "exact_text": "data['stage'] == 'S0_REGRESSION'"
+        },
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py",
+          "sha256": "393b03453634de4551216c72e7174d5ce1b9099ca04d10a2383fd62c3ba0119a",
+          "lines": [
+            76
+          ],
+          "exact_text": "URV1_H75_P_dx5_a100000"
+        },
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py",
+          "sha256": "393b03453634de4551216c72e7174d5ce1b9099ca04d10a2383fd62c3ba0119a",
+          "lines": [
+            89
+          ],
+          "exact_text": "solver_wall_cap_seconds_per_case=3600"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "status": "NOT_APPLICABLE_TO_S1_AS_WRITTEN",
+      "issue": "MRP replay schedule/geometry and history comparisons are h75-specific.",
+      "consequence": "Do not impose S0 190-point history or fabricate same-geometry baselines for S1; use separately scoped S1 acceptance.",
+      "evidence": [
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/mass_capture.py",
+          "sha256": "3a50a71af2eaffaebf771c775b1dbb3b11f1db50393e3dcbb14074d0ce2d8770",
+          "lines": [
+            33
+          ],
+          "exact_text": "len(rows)==len(expected)==57600"
+        },
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1_a1/analysis/check_mass_repair.py",
+          "sha256": "4c2a8ba94e5211870bc642e91e6a522529de2b1e7b66db3d8f53ec4dfc4e98cf",
+          "lines": [
+            40
+          ],
+          "exact_text": "h75_regression_references"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "status": "MISSING_S1_PREPARATION_EVIDENCE",
+      "issue": "Existing describe templates and h75 zero-step audit do not supply S1 native installation evidence or final bindings.",
+      "consequence": "No adopted S1 implementation, new build/provenance, native two-direction zero-step audit, actual IDs or execution release yet.",
+      "evidence": [
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/audit_A1_zero.py",
+          "sha256": "6947134d78b8eb60bcdc2e3a97de2a66a16ea2b05a0d232a338c2790ff67ca6d",
+          "lines": [
+            66
+          ],
+          "exact_text": "int(result['fluid_nodes'])==57600"
+        },
+        {
+          "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/Unseen_V2_reference_protocol_20261101/describe_only_templates/URV1_SMOOTH_H30_P_dx1p25_a100000.txt",
+          "sha256": "15d9994004bd8cbb7984f5da66f098bddb341157214643b038d310d69d71b46d",
+          "lines": [
+            3
+          ],
+          "exact_text": "output_directory=NOT_AN_EXECUTION_DIRECTORY"
+        }
+      ]
+    }
+  ],
+  "F04": "OPEN: future cross-stage aggregation still needs per-run release/SHA; no blocker to standalone S1 per-run acceptance",
+  "new_instruction_or_evidence_contradiction": false,
+  "new_Astra_ruling_invoked": false
+}

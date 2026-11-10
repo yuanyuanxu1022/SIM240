@@ -1,0 +1,217 @@
+{
+  "kind": "DESCRIPTIVE_C04_SAME_DIRECTION_FORMULA_AND_SAME_FORMULA_DIRECTION_COMPARISONS",
+  "run_ids": {
+    "C02": "SDI_C02_v1_1_20261030_01",
+    "C03": "SDI_C03_v1_2_20261030_01",
+    "C04": "SDI_C04_v1_3_20261030_01"
+  },
+  "case_identities": {
+    "C02": {
+      "input_id": "V2_published_rounded",
+      "orientation_id": "groove_along_short_x"
+    },
+    "C03": {
+      "input_id": "original_local_cubic",
+      "orientation_id": "groove_along_long_y"
+    },
+    "C04": {
+      "input_id": "original_local_cubic",
+      "orientation_id": "groove_along_short_x"
+    }
+  },
+  "shared_parameters_equal": [
+    "H_m",
+    "L_m",
+    "mu_Pa_s",
+    "rho_kg_m3",
+    "mesh_cells",
+    "drive_axis",
+    "G_Pa_per_m",
+    "pressure_units",
+    "velocity_definition",
+    "thresholds",
+    "linear_solver",
+    "source_hashes",
+    "source_paths"
+  ],
+  "identical_boundary_mesh_numerics_files": [
+    "0/p",
+    "system/blockMeshDict",
+    "system/controlDict",
+    "system/fvSchemes",
+    "system/fvSolution",
+    "constant/polyMesh/boundary",
+    "constant/polyMesh/faces",
+    "constant/polyMesh/neighbour",
+    "constant/polyMesh/owner",
+    "constant/polyMesh/points"
+  ],
+  "identical_solver_source_make_binary_files": [
+    "bin/darcy2d",
+    "bin/depthAveragedDarcyFoam",
+    "provenance/two_dimensional/darcy2d.cpp",
+    "provenance/openfoam/application/depthAveragedDarcyFoam.C",
+    "provenance/openfoam/application/Make/files",
+    "provenance/openfoam/application/Make/options"
+  ],
+  "C04_C02_comparison": "same groove/drive axes, only original versus V2 K/D coefficient family",
+  "C04_C03_comparison": "same original coefficient family, K/D principal values swapped together",
+  "comparison": {
+    "two_dimensional": {
+      "cases": {
+        "C02": {
+          "Umean_m_s": 8.331211263609563e-07,
+          "Jmean_m2_s": 1.0414014079511954e-13,
+          "Q_m3_s": 4.998726758166358e-18,
+          "recovered_K_from_U_m3": 1.0414014079511954e-22,
+          "recovered_K_from_Q_m3": 1.0414014079513246e-22,
+          "static_hydraulic_resistance_Pa_s_per_m3": 4.801222623499374e+18
+        },
+        "C03": {
+          "Umean_m_s": 5.214527027027026e-07,
+          "Jmean_m2_s": 6.518158783783782e-14,
+          "Q_m3_s": 3.1287162162167147e-18,
+          "recovered_K_from_U_m3": 6.518158783783783e-23,
+          "recovered_K_from_Q_m3": 6.518158783784822e-23,
+          "static_hydraulic_resistance_Pa_s_per_m3": 7.670877874958286e+18
+        },
+        "C04": {
+          "Umean_m_s": 1.927083333333333e-06,
+          "Jmean_m2_s": 2.4088541666666664e-13,
+          "Q_m3_s": 1.1562499999999605e-17,
+          "recovered_K_from_U_m3": 2.4088541666666665e-22,
+          "recovered_K_from_Q_m3": 2.4088541666665847e-22,
+          "static_hydraulic_resistance_Pa_s_per_m3": 2.0756756756757466e+18
+        }
+      },
+      "pairs": {
+        "C04_over_C02": {
+          "Q_ratio": 2.313089024342067,
+          "analytic_Q_ratio": 2.3130890243424327,
+          "ratio_relative_deviation": 1.5798473640415978e-13,
+          "U_ratio": 2.3130890243424327,
+          "static_R_ratio": 0.4323223142198079,
+          "pressure_max_difference_Pa": 1.0466294497746276e-11,
+          "pressure_max_difference_over_24Pa": 4.360956040727615e-13
+        },
+        "C04_over_C03": {
+          "Q_ratio": 3.6956052262167565,
+          "analytic_Q_ratio": 3.6956052262174715,
+          "ratio_relative_deviation": 1.9351187319216478e-13,
+          "U_ratio": 3.695605226217471,
+          "static_R_ratio": 0.27059167275388724,
+          "pressure_max_difference_Pa": 5.973888050903042e-12,
+          "pressure_max_difference_over_24Pa": 2.489120021209601e-13
+        }
+      },
+      "V2_along_flow_change_relative_to_original_along_percent": -56.767768578019215,
+      "V2_along_static_R_change_relative_to_original_along_percent": 131.30890243420671
+    },
+    "openfoam": {
+      "cases": {
+        "C02": {
+          "Umean_m_s": 8.331211263609565e-07,
+          "Jmean_m2_s": 1.0414014079511957e-13,
+          "Q_m3_s": 4.998726758167961e-18,
+          "recovered_K_from_U_m3": 1.0414014079511956e-22,
+          "recovered_K_from_Q_m3": 1.0414014079516586e-22,
+          "static_hydraulic_resistance_Pa_s_per_m3": 4.801222623497833e+18
+        },
+        "C03": {
+          "Umean_m_s": 5.214527027027027e-07,
+          "Jmean_m2_s": 6.518158783783785e-14,
+          "Q_m3_s": 3.1287162162165995e-18,
+          "recovered_K_from_U_m3": 6.518158783783784e-23,
+          "recovered_K_from_Q_m3": 6.518158783784582e-23,
+          "static_hydraulic_resistance_Pa_s_per_m3": 7.670877874958568e+18
+        },
+        "C04": {
+          "Umean_m_s": 1.9270833333333334e-06,
+          "Jmean_m2_s": 2.408854166666667e-13,
+          "Q_m3_s": 1.1562500000001498e-17,
+          "recovered_K_from_U_m3": 2.408854166666667e-22,
+          "recovered_K_from_Q_m3": 2.4088541666669788e-22,
+          "static_hydraulic_resistance_Pa_s_per_m3": 2.0756756756754068e+18
+        }
+      },
+      "pairs": {
+        "C04_over_C02": {
+          "Q_ratio": 2.313089024341704,
+          "analytic_Q_ratio": 2.3130890243424327,
+          "ratio_relative_deviation": 3.1508129438861943e-13,
+          "U_ratio": 2.3130890243424327,
+          "static_R_ratio": 0.4323223142198758,
+          "pressure_max_difference_Pa": 1.84359194577155e-11,
+          "pressure_max_difference_over_24Pa": 7.681633107381458e-13
+        },
+        "C04_over_C03": {
+          "Q_ratio": 3.695605226217497,
+          "analytic_Q_ratio": 3.6956052262174715,
+          "ratio_relative_deviation": 6.8833827526759706e-15,
+          "U_ratio": 3.695605226217471,
+          "static_R_ratio": 0.270591672753833,
+          "pressure_max_difference_Pa": 1.2346568212251441e-11,
+          "pressure_max_difference_over_24Pa": 5.144403421771434e-13
+        }
+      },
+      "V2_along_flow_change_relative_to_original_along_percent": -56.76776857801242,
+      "V2_along_static_R_change_relative_to_original_along_percent": 131.3089024341704
+    }
+  },
+  "ratio_role": "descriptive check, no added numerical acceptance threshold",
+  "static_R_definition": "delta_p/Q, Pa s / m^3",
+  "squeeze_resistance_F_over_V": null,
+  "physical_validation": "NOT_EVALUATED",
+  "independent_physical_reference": false,
+  "solver_rerun": false,
+  "sources": [
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/cells.csv",
+      "sha256": "ac8eaaf9fc2f7ad2e7803cb61b2754c3f9b0efa8eac1c90bac792ae2ea169cb4"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/faces.csv",
+      "sha256": "e767a16b8e4525b40ef0df1d10a256eaf5dab4a5dfb2c82b2e536863cb5ec578"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/two_dimensional/cells.csv",
+      "sha256": "8e4432ef96d314d8595657449b955e41f6145aedf0b4c9e94217c0e08ea16980"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/two_dimensional/faces.csv",
+      "sha256": "e5d685bf0a81779dbdb32b9f8fef9e4ae4f78316b6cf56af1d925cf5dcf0150e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/two_dimensional/cells.csv",
+      "sha256": "31f34bff2e7a9c0311cb296a7e05873433785851a5c87a64868ce79a2086e763"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/two_dimensional/faces.csv",
+      "sha256": "386655be73651e8d078082a8cdf2a2e291db2e03bfad348276a591747f4033f1"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "6e976f13bcc29219359939f86dca8da77165515ad3d3d9a1511ffa897d60b07c"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "397994aa98c235c7e935c6031170b3f40f5c5bc71b7eafa52e2b735d4878f9c0"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "ef66d03470b0096890ee8647b92b0239358a843e0fd633d9255754e7aa2e241b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "e6193529105cf519682e785a0d85487a257b271cb31a41495e79c4360b7cac5c"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "0776eaab9ea8f75bb50e7ee0642bb9630fdb0ad29d6e2962aba6bdfbe61e2d03"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "86844c42ccc9083d19363a9772a720bf9df08d8dcbe6c1b827b54c93322dd035"
+    }
+  ]
+}

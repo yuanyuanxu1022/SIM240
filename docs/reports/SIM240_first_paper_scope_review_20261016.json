@@ -1,0 +1,759 @@
+{
+  "requested_path": "/home/dell/yuanyuanxu/SIM240/CASE/plans/40_第一篇范围重定位_纯液体单相_20261016.md",
+  "requested_path_exists": false,
+  "reviewed_path": "/home/dell/yuanyuanxu/SIM240/CASE/plans/SIM240_第一篇范围重定位_纯液体单相_20261016.md",
+  "source_sha256": "60300a021dc8444e7e07d5a062f382c3e1fafc02b530f54d9f88ec38ea7d7bb2",
+  "source_line_count": 153,
+  "no_simulation_or_compile": true,
+  "run_status_not_refreshed": true,
+  "numerical_status_source": "docs/reports/D2_readiness_audit_20261016.json (21:57:44 snapshot; no refresh)",
+  "historical_release_source": "CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md",
+  "environment_snapshot_source": "CASE/reports/stage_report_20261015_v1/evidence_snapshot.json",
+  "issues": [
+    {
+      "id": "S01",
+      "category": "必须改",
+      "title": "当前范围仍保留alpha、有限液区和D3扫描",
+      "source_lines": [
+        47,
+        59,
+        79,
+        104,
+        106,
+        150
+      ],
+      "source_excerpts": [
+        {
+          "line": 47,
+          "text": "2. **无界面 → 必须人为给定「槽内液体填到多高」**：真单相没有自由界面，槽内液面形状不能由物理自发决定，须作为参数给出（记为填充率 α）。⇒ 第一篇的 K 应做成 **K∥(h, α)、K⟂(h, α)** 的参数曲面，而不是单一数值。"
+        },
+        {
+          "line": 59,
+          "text": "3. ~~K(h, α) 是否总目标~~ → **是**，并补充三条范围裁定（见 §7）。"
+        },
+        {
+          "line": 79,
+          "text": "2. **第二步：逐步放开** —— 加入真实因素（部分填充率 α、间隙 h 变化、有限大小液区），量化\"走出适用域后等效做法偏多少\"。**这才是本篇的新结果。**"
+        },
+        {
+          "line": 104,
+          "text": "3. **参数优先级**：本篇只做扎实 (h, α, d) 三个参数（各占一个故事：下压过程 / 填充程度 / 台阶耗散）；占空比 w/P 与槽角形状写进「未来工作」。"
+        },
+        {
+          "line": 106,
+          "text": "**case 路线图（四层）**：校准层（Smooth75 / G2 / G3 / G4，全部已有）→ 扫描层 `D3_partial_fill_alpha_sweep`（~30 档新跑）→ 对照层 `D2_groove_depth_check`（d=50，零依赖随时可跑）+ `D4_literature_alignment`（等 GPT 文献结果）→ 产出：主图 A(h,α) + 失效边界 + 修正系数。"
+        },
+        {
+          "line": 150,
+          "text": "- α 定义不足：单相下相同 α 可对应不同液区形状与连通方式，阻力不同（报告 D0 与冻结卡 §3.2 已呼应）；"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S02",
+      "category": "必须改",
+      "title": "显式DNS被称真值、等效模型被预判不符",
+      "source_lines": [
+        65,
+        71,
+        72,
+        74
+      ],
+      "source_excerpts": [
+        {
+          "line": 65,
+          "text": "**用户原话**：真实 K = OpenLB 显式几何算出来的；假设的一方 = **现在很多论文里的阻力/渗透率是「等效出来的」，与实际不符**。"
+        },
+        {
+          "line": 71,
+          "text": "| **真实（实际）** | OpenLB 显式真实沟槽 DNS 得到的 K∥ / K⟂ |"
+        },
+        {
+          "line": 72,
+          "text": "| **假设（虚拟）** | **文献中通用的等效阻力 / 等效渗透率做法**（须逐条给出原始出处与 DOI），而非我们自己临时编的公式 |"
+        },
+        {
+          "line": 74,
+          "text": "**修正前一轮建议**：原先的 **L1「自搭等效模型」降为次要**（自己编的模型别人引用不了），**L2「文献基准」升为主打**。L0 解析极限仍作底线对照。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S03",
+      "category": "必须改",
+      "title": "K系数、J单位宽度通量、Q体积流量混用",
+      "source_lines": [
+        46,
+        103
+      ],
+      "source_excerpts": [
+        {
+          "line": 46,
+          "text": "1. **单位口径**：既有 K 数据库的单位是 **m³**（如 h=75 nm：K∥=9.7643e-23、K⟂=4.3586e-23，比值 2.24），而常规渗透率是 **m²**。~~对比前必须统一口径~~ ✅ **已于 2026-10-16 晚锁定**：K = μ·J/G（每单位宽度通流率），**k = K / H_ref，H_ref = 125 nm**（等体积高度）；详见冻结卡 §5.2/§5.3。"
+        },
+        {
+          "line": 103,
+          "text": "2. **胶水/黏度不改变 K**：Q = G·K/μ，K = μJ/G 已把 μ 除掉 ⇒ K 是纯几何量，本篇结论对所有牛顿型胶水自动成立，无需换胶重算。胶水真正影响的是 σ（表面张力）与 θ（接触角）——第二篇的参数。例外情形：非牛顿流体或惯性主导（本篇 Ma ~ 10⁻³，远不沾边）。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S04",
+      "category": "必须改",
+      "title": "H_ref=125 nm被当作整个矩阵通用值",
+      "source_lines": [
+        46,
+        121
+      ],
+      "source_excerpts": [
+        {
+          "line": 46,
+          "text": "1. **单位口径**：既有 K 数据库的单位是 **m³**（如 h=75 nm：K∥=9.7643e-23、K⟂=4.3586e-23，比值 2.24），而常规渗透率是 **m²**。~~对比前必须统一口径~~ ✅ **已于 2026-10-16 晚锁定**：K = μ·J/G（每单位宽度通流率），**k = K / H_ref，H_ref = 125 nm**（等体积高度）；详见冻结卡 §5.2/§5.3。"
+        },
+        {
+          "line": 121,
+          "text": "- 数值验证：代入 h=75 nm、ΔH=100 nm、d=1 → Jain 给 K_xx = 1.927e-15 m²、K_yy = 5.2146e-16 m²，恰等于本项目 M∥/H_ref、M⟂/H_ref（H_ref=125 nm），比值同为 3.6956。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S05",
+      "category": "必须改",
+      "title": "Jain无量纲k与维度渗透率、方向和d符号混用",
+      "source_lines": [
+        120,
+        121,
+        131,
+        140
+      ],
+      "source_excerpts": [
+        {
+          "line": 120,
+          "text": "**★ 2026-10-16 21:2x 全文核验的重大发现：Jain 2017 的 kxx/kyy（式 12/13，p.64）与我们的局部立方律基线在数学上完全等价。**"
+        },
+        {
+          "line": 121,
+          "text": "- 数值验证：代入 h=75 nm、ΔH=100 nm、d=1 → Jain 给 K_xx = 1.927e-15 m²、K_yy = 5.2146e-16 m²，恰等于本项目 M∥/H_ref、M⟂/H_ref（H_ref=125 nm），比值同为 3.6956。"
+        },
+        {
+          "line": 131,
+          "text": "| K 的来源 | kxx/kyy 解析式（Supplementary 推导 = 条纹平均/局部立方律） | 渗透率张量谱近似，**作者明言方波不可用** | 显式 Stokes 稳态解 |"
+        },
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S06",
+      "category": "必须改",
+      "title": "fine_t_C新正式参考被误标为旧质量FAIL",
+      "source_lines": [
+        46,
+        52
+      ],
+      "source_excerpts": [
+        {
+          "line": 46,
+          "text": "1. **单位口径**：既有 K 数据库的单位是 **m³**（如 h=75 nm：K∥=9.7643e-23、K⟂=4.3586e-23，比值 2.24），而常规渗透率是 **m²**。~~对比前必须统一口径~~ ✅ **已于 2026-10-16 晚锁定**：K = μ·J/G（每单位宽度通流率），**k = K / H_ref，H_ref = 125 nm**（等体积高度）；详见冻结卡 §5.2/§5.3。"
+        },
+        {
+          "line": 52,
+          "text": "- h = 75 nm 细网格参考：K⟂ = 4.3586e-23 m³（dx=1.25 nm，`fine_t_C_20261014T151036+0800`）——⚠ **该档质量门禁为 FAIL，原位保留，不得当作正式参考**；正式引用用 dx=2.5 nm 的 4.3853e-23（PASS）"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S07",
+      "category": "必须改",
+      "title": "Jain只涉及最终薄间隙的论据错误",
+      "source_lines": [
+        134,
+        138
+      ],
+      "source_excerpts": [
+        {
+          "line": 134,
+          "text": "| 参数域 | Δh≤0.1、h 从 1→0.01（关注点=最终薄间隙，h/P→0.05） | 小振幅、有限 H | **h/P=0.3125 中间间隙**（压印过程的必经阶段） |"
+        },
+        {
+          "line": 138,
+          "text": "1. **\"沟槽方向性输运\"本身不新、\"用真实几何校核公式\"已有先例——同意，定位已改。** 我们的空白具体化为：**矩形直角槽、中间间隙（h/P≈0.3，而非最终薄间隙）下，Jain 型闭合（行业正在使用的公式）的定量误差图 + 物理解释 + 修正**。Jain 自己只用到 h/P→0.05 的薄隙极限，而压印过程必须经过 h/P≈0.3 的阶段——这正好落在无人标定的区间。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S08",
+      "category": "必须改",
+      "title": "无人/首次/行业采用等新颖性主张越过证据",
+      "source_lines": [
+        123,
+        133,
+        135,
+        138
+      ],
+      "source_excerpts": [
+        {
+          "line": 123,
+          "text": "- ⇒ **卖点内核升级为**：Jain 型闭合是目前 NIL 液滴铺展建模实际使用的公式，而它对 120×100 nm 直角槽、有限间隙的误差**从未被定量标定过**（Jain 仅与实验定性比较）。我们给出第一张定量误差图 + 失效边界 + 物理解释——这正是\"等效做法与实际不符\"的最有力、最可引用的形式。（\"第一张/从未\"仍受传统库查新约束，见 §8 末句。）"
+        },
+        {
+          "line": 133,
+          "text": "| 已验证到哪 | **仅与 Zhang 等实验定性比较**（\"沿图案填充更快\"）；从未对真实矩形槽定量检验其 k 公式 | FEM 对比（平滑波形，讨论 5% 级误差） | L0 平板 h³/12（+0.03~0.44%）、三点网格收敛 |"
+        },
+        {
+          "line": 135,
+          "text": "| 空白 | 其 k 公式对真实直角槽的定量误差**无人给出** | 直角槽不在其承诺域内 | **= 我们的空白** |"
+        },
+        {
+          "line": 138,
+          "text": "1. **\"沟槽方向性输运\"本身不新、\"用真实几何校核公式\"已有先例——同意，定位已改。** 我们的空白具体化为：**矩形直角槽、中间间隙（h/P≈0.3，而非最终薄间隙）下，Jain 型闭合（行业正在使用的公式）的定量误差图 + 物理解释 + 修正**。Jain 自己只用到 h/P→0.05 的薄隙极限，而压印过程必须经过 h/P≈0.3 的阶段——这正好落在无人标定的区间。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S09",
+      "category": "必须改",
+      "title": "无免责声明不代表没有润滑近似前提",
+      "source_lines": [
+        78,
+        82,
+        139,
+        147
+      ],
+      "source_excerpts": [
+        {
+          "line": 78,
+          "text": "1. **第一步：对齐条件** —— 把 DNS 设成那些等效公式原本成立的样子（无限周期、满填充、纯定常压力驱动、同一 Re/Stokes 条件），做 head-to-head。**目的：证明我们的 DNS 可靠**，并且反过来说，别人的公式在其适用域内是对的。"
+        },
+        {
+          "line": 82,
+          "text": "> ⚠️ 不做第一步就被打：审稿人一句\"你只是把公式用出了它的适用域\"即可否定全篇。"
+        },
+        {
+          "line": 139,
+          "text": "2. **\"不能拿作者已声明不适用的公式当靶子\"——遵守。** 主靶子 = Jain/局部立方律闭合（它被用在直角线槽上、无免责声明）；Dewangan 谱公式只作\"平滑/圆角对照\"，绝不当作主要挑战对象。"
+        },
+        {
+          "line": 147,
+          "text": "- 我们的槽**不是明显薄隙**（h/P=0.3125、高区/P≈0.7292），所有薄隙/缓变/谱小振幅前提都要逐条自查，不得默认成立。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S10",
+      "category": "必须改",
+      "title": "固定h输运被扩大为已覆盖Z挤压",
+      "source_lines": [
+        12,
+        102
+      ],
+      "source_excerpts": [
+        {
+          "line": 12,
+          "text": "- 液体区夹在两者之间，模具整体下行压缩 → 间隙变薄、液体被迫挤压外排并灌入沟槽。"
+        },
+        {
+          "line": 102,
+          "text": "1. **Z 方向不设单独 case**：模具下压 = h 随时间变小，每一瞬的流动阻力由 K(h) 决定 ⇒ h 扫描已准静态覆盖 Z。唯一未覆盖的是「压速效应」（须移动网格），归第三篇 R3；本篇只需声明「本文对应准静态极限」。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S11",
+      "category": "必须改",
+      "title": "低Ma被当成低Re证据",
+      "source_lines": [
+        103
+      ],
+      "source_excerpts": [
+        {
+          "line": 103,
+          "text": "2. **胶水/黏度不改变 K**：Q = G·K/μ，K = μJ/G 已把 μ 除掉 ⇒ K 是纯几何量，本篇结论对所有牛顿型胶水自动成立，无需换胶重算。胶水真正影响的是 σ（表面张力）与 θ（接触角）——第二篇的参数。例外情形：非牛顿流体或惯性主导（本篇 Ma ~ 10⁻³，远不沾边）。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S12",
+      "category": "必须改",
+      "title": "所有牛顿型胶自动适用的表述过宽",
+      "source_lines": [
+        103,
+        151
+      ],
+      "source_excerpts": [
+        {
+          "line": 103,
+          "text": "2. **胶水/黏度不改变 K**：Q = G·K/μ，K = μJ/G 已把 μ 除掉 ⇒ K 是纯几何量，本篇结论对所有牛顿型胶水自动成立，无需换胶重算。胶水真正影响的是 σ（表面张力）与 θ（接触角）——第二篇的参数。例外情形：非牛顿流体或惯性主导（本篇 Ma ~ 10⁻³，远不沾边）。"
+        },
+        {
+          "line": 151,
+          "text": "- **几何相似缩放**：连续无滑移 Stokes 下 M∝L³，仅仅把尺寸做成纳米不构成新机制——卖点必须落在「有限间隙 + 直角边角」，不能落在「纳米」本身。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S13",
+      "category": "需要补证",
+      "title": "旧平板验证和代表点复现外推全矩阵",
+      "source_lines": [
+        51,
+        94,
+        133,
+        142,
+        143
+      ],
+      "source_excerpts": [
+        {
+          "line": 51,
+          "text": "- h = 50 / 75 / 125 nm 时各向异性比 A = K∥/K⟂ = **3.979521 / 2.230734 / 1.437800**（dx = 2.5 nm；其中 **h=75 已有三点网格收敛 + GCI 渐近区 PASS**（冻结卡 §4.1），h=50/125 暂为单分辨率，出论文前各补一档复核）"
+        },
+        {
+          "line": 94,
+          "text": "- 老 K 库 **dx = 2.5 nm**（G2/G3 线），新 D1 源码默认 **dx = 5 nm**（周期 48 格 ÷ 240 nm）⇒ **不得直接混比**，须统一分辨率或先做网格收敛。"
+        },
+        {
+          "line": 133,
+          "text": "| 已验证到哪 | **仅与 Zhang 等实验定性比较**（\"沿图案填充更快\"）；从未对真实矩形槽定量检验其 k 公式 | FEM 对比（平滑波形，讨论 5% 级误差） | L0 平板 h³/12（+0.03~0.44%）、三点网格收敛 |"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        },
+        {
+          "line": 143,
+          "text": "**（2026-10-16 21:4x 用户已拍板\"直接算满 18 个\"）**：case 已建 `CASE/D_series/D2_groove_error_map/`——基于已验证的 G2 管线，仅把 dx/h/d 参数化（argv 传入），物理模型、边界、统计口径与门禁全部不变；`scripts/run_matrix.sh` 跑 9 组合 × 2 方向 @ dx=5 nm + 2 个 dx=2.5 nm 复核档；结果落 `results/`，汇总 `summary.csv`。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S14",
+      "category": "需要补证",
+      "title": "细网格GCI和两个复核点不能放行全部粗网格",
+      "source_lines": [
+        51,
+        94,
+        142,
+        143
+      ],
+      "source_excerpts": [
+        {
+          "line": 51,
+          "text": "- h = 50 / 75 / 125 nm 时各向异性比 A = K∥/K⟂ = **3.979521 / 2.230734 / 1.437800**（dx = 2.5 nm；其中 **h=75 已有三点网格收敛 + GCI 渐近区 PASS**（冻结卡 §4.1），h=50/125 暂为单分辨率，出论文前各补一档复核）"
+        },
+        {
+          "line": 94,
+          "text": "- 老 K 库 **dx = 2.5 nm**（G2/G3 线），新 D1 源码默认 **dx = 5 nm**（周期 48 格 ÷ 240 nm）⇒ **不得直接混比**，须统一分辨率或先做网格收敛。"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        },
+        {
+          "line": 143,
+          "text": "**（2026-10-16 21:4x 用户已拍板\"直接算满 18 个\"）**：case 已建 `CASE/D_series/D2_groove_error_map/`——基于已验证的 G2 管线，仅把 dx/h/d 参数化（argv 传入），物理模型、边界、统计口径与门禁全部不变；`scripts/run_matrix.sh` 跑 9 组合 × 2 方向 @ dx=5 nm + 2 个 dx=2.5 nm 复核档；结果落 `results/`，汇总 `summary.csv`。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S15",
+      "category": "需要补证",
+      "title": "九点矩阵尚无非零槽渐近对齐证明",
+      "source_lines": [
+        78,
+        79,
+        142,
+        147
+      ],
+      "source_excerpts": [
+        {
+          "line": 78,
+          "text": "1. **第一步：对齐条件** —— 把 DNS 设成那些等效公式原本成立的样子（无限周期、满填充、纯定常压力驱动、同一 Re/Stokes 条件），做 head-to-head。**目的：证明我们的 DNS 可靠**，并且反过来说，别人的公式在其适用域内是对的。"
+        },
+        {
+          "line": 79,
+          "text": "2. **第二步：逐步放开** —— 加入真实因素（部分填充率 α、间隙 h 变化、有限大小液区），量化\"走出适用域后等效做法偏多少\"。**这才是本篇的新结果。**"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        },
+        {
+          "line": 147,
+          "text": "- 我们的槽**不是明显薄隙**（h/P=0.3125、高区/P≈0.7292），所有薄隙/缓变/谱小振幅前提都要逐条自查，不得默认成立。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S16",
+      "category": "需要补证",
+      "title": "三个无量纲轴仅有两个独立自由度",
+      "source_lines": [
+        140,
+        142
+      ],
+      "source_excerpts": [
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S17",
+      "category": "需要补证",
+      "title": "九个几何点不足自动确定连续失效边界",
+      "source_lines": [
+        80,
+        140,
+        142
+      ],
+      "source_excerpts": [
+        {
+          "line": 80,
+          "text": "3. **第三步：输出可引用物** —— 修正系数 / 拟合关联式 + **明确的适用域边界**（超出即失效）。"
+        },
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S18",
+      "category": "需要补证",
+      "title": "误差分母与容许误差、参考高度及平板基线需定义",
+      "source_lines": [
+        46,
+        80,
+        115,
+        140
+      ],
+      "source_excerpts": [
+        {
+          "line": 46,
+          "text": "1. **单位口径**：既有 K 数据库的单位是 **m³**（如 h=75 nm：K∥=9.7643e-23、K⟂=4.3586e-23，比值 2.24），而常规渗透率是 **m²**。~~对比前必须统一口径~~ ✅ **已于 2026-10-16 晚锁定**：K = μ·J/G（每单位宽度通流率），**k = K / H_ref，H_ref = 125 nm**（等体积高度）；详见冻结卡 §5.2/§5.3。"
+        },
+        {
+          "line": 80,
+          "text": "3. **第三步：输出可引用物** —— 修正系数 / 拟合关联式 + **明确的适用域边界**（超出即失效）。"
+        },
+        {
+          "line": 115,
+          "text": "> ② 常用闭合（局部立方律、Patir–Cheng 流量因子、Jain2017 NIL 闭合）在哪个无量纲几何范围偏离经验证的显式解；"
+        },
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S19",
+      "category": "需要补证",
+      "title": "侧壁剪切和收缩耗散尚是机制假说",
+      "source_lines": [
+        116,
+        140,
+        142
+      ],
+      "source_excerpts": [
+        {
+          "line": 116,
+          "text": "> ③ 偏差的物理解释（侧壁剪切、槽内耗散、局部转向）。"
+        },
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S20",
+      "category": "需要补证",
+      "title": "固定压力与固定流量下的耗散含义不同",
+      "source_lines": [
+        140
+      ],
+      "source_excerpts": [
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S21",
+      "category": "需要补证",
+      "title": "能量交叉检验未形成闭合验收证据",
+      "source_lines": [
+        140,
+        142,
+        143
+      ],
+      "source_excerpts": [
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        },
+        {
+          "line": 143,
+          "text": "**（2026-10-16 21:4x 用户已拍板\"直接算满 18 个\"）**：case 已建 `CASE/D_series/D2_groove_error_map/`——基于已验证的 G2 管线，仅把 dx/h/d 参数化（argv 传入），物理模型、边界、统计口径与门禁全部不变；`scripts/run_matrix.sh` 跑 9 组合 × 2 方向 @ dx=5 nm + 2 个 dx=2.5 nm 复核档；结果落 `results/`，汇总 `summary.csv`。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S22",
+      "category": "需要补证",
+      "title": "修正公式缺独立验证及外推限制",
+      "source_lines": [
+        80,
+        140,
+        142
+      ],
+      "source_excerpts": [
+        {
+          "line": 80,
+          "text": "3. **第三步：输出可引用物** —— 修正系数 / 拟合关联式 + **明确的适用域边界**（超出即失效）。"
+        },
+        {
+          "line": 140,
+          "text": "3. **三层贡献框架采纳**：① 适用边界（误差随 h/P、d/w、ΔH/h 的轮廓图）；② 物理解释（沿槽=侧壁剪切、跨槽=台阶收缩/扩张耗散）；③ 预测改进（修正系数 + 未参与拟合工况验证）。"
+        },
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S23",
+      "category": "必须改",
+      "title": "等价模型重复计数、其他模型需另行适用域审查",
+      "source_lines": [
+        86,
+        115,
+        118,
+        122
+      ],
+      "source_excerpts": [
+        {
+          "line": 86,
+          "text": "1. ~~\"很多论文的阻力都是等效出来的\"要 citation~~ → **已核实通行做法**：Patir–Cheng(1978) 流量因子体系（Pusterhofer 2018 复现比较）、Reynolds 条纹平均（Tavakol 2017）、谱渗透率张量（Dewangan & Datta 2020）、超疏水滑移条纹（Feuillebois 2009 / Belyaev 2010）、NIL 各向异性渗透率（**Jain 2017**）。出处与公式页见 `docs/reports/SIM240_LITERATURE_REVIEW_20261016.md`。"
+        },
+        {
+          "line": 115,
+          "text": "> ② 常用闭合（局部立方律、Patir–Cheng 流量因子、Jain2017 NIL 闭合）在哪个无量纲几何范围偏离经验证的显式解；"
+        },
+        {
+          "line": 118,
+          "text": "**优先对照对象**（报告终评）：① **局部立方律/条纹平均**（零拟合、公式透明；Tavakol 2017 现代出处已核）；② **Jain 2017**（应用最贴近的 NIL 先例，**公式页是首要缺口**）；③ Patir–Cheng 独立标定流量因子。D4/D5（超疏水滑移）降为不主战；D3（谱张量）仅作平滑/圆角参照。"
+        },
+        {
+          "line": 122,
+          "text": "- ⇒ **\"主对手\"与\"基线\"其实是同一个模型**：DNS vs 局部立方律 = DNS vs Jain 闭合，一套对齐算例同时覆盖 D1 与 D6，工作量减半。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S24",
+      "category": "文档维护",
+      "title": "多个版本裁定、缺口和case命名同时有效",
+      "source_lines": [
+        34,
+        39,
+        58,
+        106,
+        118,
+        143,
+        153
+      ],
+      "source_excerpts": [
+        {
+          "line": 34,
+          "text": "### 三级替代方案（建议同时做，含金量递增）"
+        },
+        {
+          "line": 39,
+          "text": "| **L1 自搭等效模型（建议主打）** | 把沟槽层视为均质层，套一个常用封闭/经验关系得到 K_eq | 自洽、可复现、完全规避知识产权 | 核心对比：DNS 直接定量给出它错在哪、错多少 |"
+        },
+        {
+          "line": 58,
+          "text": "2. ~~三级方案选哪个~~ → 执行，但 **L2 文献基准升为主打**、L1 自搭模型降为次要（§6）。"
+        },
+        {
+          "line": 106,
+          "text": "**case 路线图（四层）**：校准层（Smooth75 / G2 / G3 / G4，全部已有）→ 扫描层 `D3_partial_fill_alpha_sweep`（~30 档新跑）→ 对照层 `D2_groove_depth_check`（d=50，零依赖随时可跑）+ `D4_literature_alignment`（等 GPT 文献结果）→ 产出：主图 A(h,α) + 失效边界 + 修正系数。"
+        },
+        {
+          "line": 118,
+          "text": "**优先对照对象**（报告终评）：① **局部立方律/条纹平均**（零拟合、公式透明；Tavakol 2017 现代出处已核）；② **Jain 2017**（应用最贴近的 NIL 先例，**公式页是首要缺口**）；③ Patir–Cheng 独立标定流量因子。D4/D5（超疏水滑移）降为不主战；D3（谱张量）仅作平滑/圆角参照。"
+        },
+        {
+          "line": 143,
+          "text": "**（2026-10-16 21:4x 用户已拍板\"直接算满 18 个\"）**：case 已建 `CASE/D_series/D2_groove_error_map/`——基于已验证的 G2 管线，仅把 dx/h/d 参数化（argv 传入），物理模型、边界、统计口径与门禁全部不变；`scripts/run_matrix.sh` 跑 9 组合 × 2 方向 @ dx=5 nm + 2 个 dx=2.5 nm 复核档；结果落 `results/`，汇总 `summary.csv`。"
+        },
+        {
+          "line": 153,
+          "text": "**证据边界**：5 个 PDF 公式页已目视核对、6 个 DOI 入口抽检、SHA256 留痕（`SIM240_LITERATURE_EVIDENCE_20261016.json`）；**未完成**：Jain2017 全文公式页、Patir1978 原式、Ai2 Asta 交叉、WoS/Google Scholar 人工查新——最后一项关系「首次」措辞生死，未完成前不得写任何\"首次/第一个\"。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S25",
+      "category": "执行证据",
+      "title": "矩阵计数、汇总脚本和来源绑定不完整",
+      "source_lines": [
+        142,
+        143
+      ],
+      "source_excerpts": [
+        {
+          "line": 142,
+          "text": "**⇒ D2 升级设计**：从\"单个 d=50 对照\"升级为**形状参数误差图矩阵**——d ∈ {25, 50, 100} × h ∈ {50, 75, 125} × {Kxx, Kyy}（每档分钟级），直接产出三层贡献所需的全部数据点；已有 h=75/d=100 三点网格收敛作为原点。跑量与 D3（α 扫描挂起后）合并，仍是分钟级工作量。"
+        },
+        {
+          "line": 143,
+          "text": "**（2026-10-16 21:4x 用户已拍板\"直接算满 18 个\"）**：case 已建 `CASE/D_series/D2_groove_error_map/`——基于已验证的 G2 管线，仅把 dx/h/d 参数化（argv 传入），物理模型、边界、统计口径与门禁全部不变；`scripts/run_matrix.sh` 跑 9 组合 × 2 方向 @ dx=5 nm + 2 个 dx=2.5 nm 复核档；结果落 `results/`，汇总 `summary.csv`。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "S26",
+      "category": "文档维护",
+      "title": "知识产权授权与是否有DOI、自建模型可引用性混淆",
+      "source_lines": [
+        30,
+        32,
+        39,
+        42,
+        74
+      ],
+      "source_excerpts": [
+        {
+          "line": 30,
+          "text": "**背景**：原先设想拿横向项目那份 OpenFOAM 的等效 K 来比——老师说那是**别人的横向项目，大概率不能引用**。"
+        },
+        {
+          "line": 32,
+          "text": "**原则**：**引用不了 = 别人核查不了 = 证据链断**，在审稿时等同于没有。因此不依赖它。"
+        },
+        {
+          "line": 39,
+          "text": "| **L1 自搭等效模型（建议主打）** | 把沟槽层视为均质层，套一个常用封闭/经验关系得到 K_eq | 自洽、可复现、完全规避知识产权 | 核心对比：DNS 直接定量给出它错在哪、错多少 |"
+        },
+        {
+          "line": 42,
+          "text": "**硬性要求**：L2 引用的每一条必须**能打开原文、DOI 真实**（与既有「三类证据不可互相替代」的口径一致）。"
+        },
+        {
+          "line": 74,
+          "text": "**修正前一轮建议**：原先的 **L1「自搭等效模型」降为次要**（自己编的模型别人引用不了），**L2「文献基准」升为主打**。L0 解析极限仍作底线对照。"
+        }
+      ],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "C01",
+      "category": "配套必须改",
+      "title": "冻结卡宽深比与周期数要求有错/不匹配",
+      "source_lines": [],
+      "source_excerpts": [],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "C02",
+      "category": "配套必须改",
+      "title": "检查清单门槛与D2实际冻结门槛冲突",
+      "source_lines": [],
+      "source_excerpts": [],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "C03",
+      "category": "配套必须改",
+      "title": "倒易性、周期复现和抛物线检验表述错误",
+      "source_lines": [],
+      "source_excerpts": [],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "C04",
+      "category": "配套需要补证",
+      "title": "主指标不能只报各向异性；坐标与压力口径需明确",
+      "source_lines": [],
+      "source_excerpts": [],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "C05",
+      "category": "配套必须改",
+      "title": "换算表把局部截面平均、Darcy速度和固定H_ref混用",
+      "source_lines": [],
+      "source_excerpts": [],
+      "resolution_status": "open_review_finding"
+    },
+    {
+      "id": "C06",
+      "category": "配套文档维护",
+      "title": "骨架素材库和状态文件的事实状态不一致",
+      "source_lines": [],
+      "source_excerpts": [],
+      "resolution_status": "open_review_finding"
+    }
+  ],
+  "review_status": "Complete issue inventory and replacement wording; original scope file not rewritten; all issue resolutions pending explicit implementation/evidence.",
+  "review_report": "docs/reports/SIM240_first_paper_scope_review_20261016.md",
+  "supporting_file_sha256": {
+    "CASE/plans/SIM240_几何与单位口径冻结_20261016.md": "9f92f3269969dc942d7819b90a2cd238dff8ae37d653b6d4c9265ce33349419b",
+    "CASE/plans/SIM240_对比数据与换算口径_20261016.md": "01b48ab1b23f71c98566ace88efec81d7400d9052a7c02a6eb25ac8979c668d5",
+    "CASE/plans/SIM240_判对检查清单_20261016.md": "ffe7f6f17d0ed5e1f31e9902dc421586df481e44310fb4b3a90430e2887ebb4a",
+    "CASE/plans/SIM240_论文骨架_v0.1_20261016.md": "93fad95ce785f077c12a7fc85876951f262f1cb02d4d5b164c74703227954b1d",
+    "CASE/plans/SIM240_论文素材库_v0.1_20261016.md": "ad3f9a4ca609398c1c66c2a28f79764e27a20c2a1bd015ff4b5f06f1af1ad3de",
+    "CASE/D_series/D2_groove_error_map/src/d2_groove_error_map.cpp": "38bc2211fe009a7fbb029fe4f4e93422f7a2ce3c2e3407efaeea717aa12af250",
+    "CASE/D_series/D2_groove_error_map/scripts/run_matrix.sh": "4a10ae0973b7c813281fe3a9363f1a6abc01883fc39a4bd0fa1b76182d3b1613",
+    "CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md": "17e48905f7e769423ab9418ac2eaa8811352d6df408904671680470930377418"
+  }
+}

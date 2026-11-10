@@ -1,0 +1,100 @@
+# 提交说明（润色版 · 全量补齐）
+
+> 用途：GitHub 上这条提交显示的标题与正文。第一段是标题（一行），空一行后是正文。
+> `COMMIT_MESSAGE_CLEAN.txt` 是去掉本说明行的纯文本版，供 `git commit -F` 直接使用。
+
+---
+
+docs: 补齐 9 月以来未入库的论文文档与算例档案
+
+此前仓库只跟踪 1168 个文件，其中 docs/reports 仅 5 个；自 9 月以来的评审、审计、
+改稿记录、论文母本与投稿件，以及大部分算例协议与源码一直没有入库。本次一次性补齐
+8354 个文件（约 201 MB），全部为文档、源码与小体积配置证据，不含仿真场数据与
+编译产物。
+
+论文（docs/reports）
+- 五件母本入库：中文正文、英文正文、中文补充方法、英文补充方法、结论定稿（六条口径）。
+- 新增 `PAPER1_CURRENT_FILES_AUTHORITY_20261110.md`：统一裁决"改哪一份稿"，
+  消除"文件名日期 ≠ 内容版本"导致的改错版本问题。
+- 新增投稿派生件 `PAPER1_submission_manuscript_20261110/`：由 `build_submission.py`
+  从母本自动生成，剥离内部附录 A–D，`--check` 校验一致。投稿正文只取派生件，
+  母本不直接转 PDF。
+- `MANIFEST.md` 与 `output_hashes.json` 同步至 18 项输出，逐项 0 不一致。
+- 430 余个评审/审计/交接目录一并入库，含逐轮改前快照与 diff，可追溯到每次改动的依据。
+
+论文修订要点（均零数字改动）
+- V2 归属由"建立并标定"收窄为"标定"：中英正文共 11 处，另补英文 §1.3 残留的
+  动词原形 `develop`；§2.3 补引 [1]。四个系数、9 种标定几何、minimax 目标与
+  "回顾性、不构成独立预测"的限定全部保留。
+- 证据边界两处：§3.1 诊断段补明"检查通过不构成导度误差界"，§4.2 标题明确
+  "全部 36 条 5 nm 主方向结果"，中英同步。
+- 结论节由五条改为六条，并补 4 处公式回引（式 2/5/6/8）。
+- 成对宽度证据合入 §4.3 与 §5.1，补充材料新增 S14（图 S1、表 S10—S13、
+  式 S14.3—S14.5）；编号未越位，文献 [1]—[14] 身份不变。
+- 汇报 PPT 与伴读 HTML 同步 4 处 V2 归属措辞（实际页码 2/9/11）。
+
+算例与代码
+- 各 CASE 的 PROTOCOL、run_config、src/、scripts/ 与结果摘要 json/csv 入库，
+  排除 results/、build/、runs/、audits/ 等运行目录（由各 CASE 的 .gitignore 约定）。
+- G4 EX240 周期收敛：新增 nx8 场输出脚本与 runner 测试，并忽略其构建目录。
+- phasefield 最小验证程序更新（+84/−9 行）。
+- ParaView 状态文件（.pvsm）入库，出图可复现。
+
+未入库内容及原因
+- 场数据（.npy/.vti/.vtm）、图件与幻灯片（png/pdf/pptx）、编译产物（.o/.so）、
+  运行日志：二进制或可再生，入库会使仓库永久膨胀。
+- 单文件 > 500 KB 的 csv/json：属仿真原始输出，不作为代码管理。
+- `.backend/`（含一套 GCC 工具链副本）、`.conda_pkgs/`、`site-packages/`：环境副本。
+- 上述口径与完整清单见 `docs/reports/GITHUB_UPDATE_20261110/GITHUB_AUDIT_20261110.md`。
+
+状态
+- `SIM240_AI_CONTEXT.md` 与 `AI_HANDOFF_PORTABLE_20261104.md` 同步至最新停点。
+- 本提交不含新的仿真计算。`submission_ready=false`，S4/D4 既有 FAIL、
+  `reference_qualified=false`、`strict_error_bound_established=false` 均保持。
+
+---
+
+## English version
+
+docs: backfill unpublished paper documents and case archives since September
+
+The repository previously tracked only 1168 files, just 5 of them under docs/reports;
+review records, audits, manuscript masters and submission copies accumulated since
+September had never been committed. This commit adds 8354 files (~201 MB): documents,
+source code and small configuration/evidence files only — no simulation field data and
+no build artefacts.
+
+- Five manuscript masters tracked (CN/EN manuscripts, CN/EN supplementary methods,
+  six-item conclusions file).
+- `PAPER1_CURRENT_FILES_AUTHORITY_20261110.md` defines a single source of truth for
+  which manuscript to edit, removing the "file-name date ≠ content version" failure mode.
+- `PAPER1_submission_manuscript_20261110/`: submission copies generated from the masters
+  by `build_submission.py` (internal Appendices A–D stripped, `--check` clean).
+- `MANIFEST.md` and `output_hashes.json` aligned to 18 outputs, zero mismatches.
+- 430+ review/audit/handoff directories, with per-round before-snapshots and diffs.
+
+Manuscript revisions (no numerical change)
+- V2 attribution narrowed from "developed and calibrated" to "calibrated" (11 places
+  across CN/EN), including the remaining English infinitive in §1.3; citation [1] added
+  in §2.3. Four coefficients, nine calibration geometries, the minimax objective and the
+  retrospective/non-predictive caveat unchanged.
+- Two evidence-boundary statements added (§3.1, §4.2) in both languages.
+- Conclusions restructured from five to six items; four cross-references to
+  Eqs. (2), (5), (6), (8) added.
+- Paired-width evidence merged into §4.3 and §5.1, with supplementary S14
+  (Figure S1, Tables S10–S13, Eqs. S14.3–S14.5); numbering and [1]–[14] unchanged.
+- Slide deck and companion HTML: four V2 wording fixes (actual pages 2/9/11).
+
+Cases and code
+- PROTOCOL, run_config, src/ and scripts/ plus result summaries for each case;
+  results/, build/, runs/ and audits/ stay excluded by the per-case .gitignore rules.
+- G4 EX240 period convergence: nx8 field-output script and runner tests, with its build
+  directory ignored. phasefield minimal validation updated (+84/−9).
+- ParaView state files (.pvsm) tracked so figures can be regenerated.
+
+Not included: field data (.npy/.vti/.vtm), raster figures and slides, build artefacts
+and run logs; csv/json files larger than 500 KB; environment copies under `.backend/`
+and `.conda_pkgs/`. See `docs/reports/GITHUB_UPDATE_20261110/GITHUB_AUDIT_20261110.md`.
+
+No new simulations were run. `submission_ready=false`, the existing S4/D4 FAILs,
+`reference_qualified=false` and `strict_error_bound_established=false` all remain.

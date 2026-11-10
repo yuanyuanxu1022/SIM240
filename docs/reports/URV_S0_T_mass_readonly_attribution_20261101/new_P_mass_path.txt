@@ -1,0 +1,22 @@
+   40475:	vmulsd xmm0,xmm0,QWORD PTR [rip+0xa38d3]        # e3d50 <_ZSt19piecewise_construct+0x248>
+   4047d:	vmovsd xmm7,QWORD PTR [rip+0xd1beb]        # 112070 <_ZN12_GLOBAL__N_12dxE>
+   40485:	vmovsd xmm8,QWORD PTR [rsp+0x50]
+   4048b:	vandpd xmm13,xmm8,XMMWORD PTR [rip+0xa367d]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   40493:	vmovddup xmm11,xmm7
+   40497:	add    QWORD PTR [r13+0x0],0x1
+   4049c:	vaddsd xmm2,xmm2,QWORD PTR [r14+0xe8]
+   404a5:	vmovsd xmm10,QWORD PTR [rsp+0x60]
+   404ab:	vmulsd xmm0,xmm0,xmm7
+   404af:	vunpcklpd xmm0,xmm7,xmm0
+   404b3:	vmulpd xmm0,xmm0,xmm11
+   404b8:	vmulpd xmm0,xmm0,xmm11
+   404bd:	vunpckhpd xmm11,xmm0,xmm0
+   404c1:	vaddpd xmm0,xmm0,XMMWORD PTR [r13+0x8]
+   404c7:	vaddsd xmm12,xmm8,xmm11
+   404cc:	vmovupd XMMWORD PTR [r13+0x8],xmm0
+   404d2:	vandpd xmm0,xmm11,XMMWORD PTR [rip+0xa3636]        # e3b10 <_ZSt19piecewise_construct+0x8>
+   404da:	vcomisd xmm13,xmm0
+   404de:	jb     40828 <_ZN12_GLOBAL__N_17measureIN3olb12SuperLatticeIdNS1_11descriptors5D3Q19IJNS3_5FORCEEEEEEENS1_13SuperGeometryIdLj3EEEEENS_11MeasurementERT_RT0_RKNS1_13UnitConverterIdS6_EEidd.isra.0+0xc38>
+   404e4:	vsubsd xmm8,xmm8,xmm12
+   404e9:	vaddsd xmm8,xmm8,xmm11
+   404ee:	vaddsd xmm10,xmm8,xmm10

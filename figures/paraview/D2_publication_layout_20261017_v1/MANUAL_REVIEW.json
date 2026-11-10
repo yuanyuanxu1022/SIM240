@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-17",
+  "reviewer": "Codex assistant (AI, not accountable human author)",
+  "final_directory": "figures_v2",
+  "reviewed": [
+    "Four final PNGs through individual images and final PREVIEW.png",
+    "Final Fig3 after relocating legend above the axes",
+    "Four PDF renders through PDF_PREVIEW.png",
+    "GRAYSCALE_PREVIEW.png"
+  ],
+  "findings": {
+    "no_visible_label_or_legend_truncation": true,
+    "no_observed_legend_data_overlap_in_final_layout": true,
+    "gray_solids_and_drive_direction_clear": true,
+    "calibrated_nm_axes_and_scalar_units_visible": true,
+    "field_geometry_aspect_preserved": true,
+    "curve_styles_redundant_with_color": true,
+    "mixed_boundary_profile_samples_not_replaced_with_zero": true,
+    "pixel_color_assertions_passed": true,
+    "all_original_hashes_unchanged": true,
+    "quantized_palette_small_luminance_reversals_retained": true
+  },
+  "execution_exit_codes": {
+    "render_dissipation": 0,
+    "validate_profiles": 0,
+    "assemble_initial": 0,
+    "assemble_final_figures_v2": 0,
+    "check_outputs": 0,
+    "new_dissipation_state_reopen": 0,
+    "caption_hash_bindings": 0,
+    "source_manifest_schema_after_fix": 0
+  },
+  "earlier_findings_preserved": "Initial figures/Fig3 legend approached a curve. That directory is retained, but final delivery is figures_v2.",
+  "registry_schema_fix": "First schema check reported 23 errors because custom provenance keys and an unsupported confidentiality label were in the controlled source manifest. Moved machine provenance to source_locations.json and used the supported restricted class. Scientific values unchanged; human verification remains pending.",
+  "source_manifest_schema_warnings": "Five local unpublished records have no public identifier. Their local paths and hashes remain in source_locations.json; no DOI or public URL was invented.",
+  "limitations": [
+    "Generic working figure layouts, not verified against any final journal instruction",
+    "An AI visual check does not record human author approval or full accessibility certification",
+    "Sample-footprint rendering is not wall-resolved dissipation or new mesh resolution",
+    "No new energy balance, model-error estimate or physical Gate release"
+  ],
+  "human_author_approval": "pending",
+  "submission_ready": false,
+  "new_OpenLB_simulations": false
+}

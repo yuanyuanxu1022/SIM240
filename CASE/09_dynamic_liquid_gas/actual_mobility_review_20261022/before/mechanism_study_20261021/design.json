@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "study_id": "two_phase_distribution_directional_transport_minimal_design_20261021",
+  "status": "design_only_no_solver_or_physical_validation",
+  "claim_scope": "idealized Newtonian liquid/model gas; not real GHY process prediction",
+  "geometry": {
+    "x": "across_grooves", "y": "along_grooves", "z": "gap_normal",
+    "period_nm": 240.0, "groove_width_nm": 120.0,
+    "groove_depth_nm": 100.0, "mesa_gap_nm": 75.0,
+    "periods_x": 2, "periods_y": 2,
+    "groove_x_interval_within_period_nm": [60.0, 180.0],
+    "periodic_axes": ["x", "y"],
+    "z_walls": "stationary_no_slip",
+    "source_status": "project_geometry_used_as_model_design_not_new_validation"
+  },
+  "material": {
+    "liquid_density_kg_m3": {"value": 1000.0, "evidence_class": "model_assumption_not_GHY_measurement"},
+    "liquid_dynamic_viscosity_Pa_s": {"value": 0.012, "evidence_class": "model_assumption_at_GHY_observed_viscosity_scale_not_validated_GHY_constant"},
+    "gas_density_kg_m3": {"value": 1.2, "evidence_class": "model_assumption_not_identified_experimental_gas"},
+    "gas_dynamic_viscosity_Pa_s": {"value": 1.8e-5, "evidence_class": "model_assumption"},
+    "liquid_gas_surface_tension_N_m": {"value": 0.03, "evidence_class": "model_assumption_not_GHY_measurement"},
+    "substrate_contact_angle_degree": {"value": 90.0, "evidence_class": "neutral_wetting_model_assumption_through_liquid"},
+    "mold_contact_angle_degree": {"value": 90.0, "evidence_class": "neutral_wetting_model_assumption_through_liquid"},
+    "temperature_label_C": 25.0,
+    "constitutive_model": "isothermal_immiscible_incompressible_Newtonian_phases",
+    "water_in_model": false,
+    "water_in_real_process": "unknown",
+    "excluded_from_model": ["curing", "evaporation", "dissolution", "moving_mold", "gas_compression", "rarefied_gas_effects"],
+    "full_density_and_viscosity_ratios_validated": false
+  },
+  "initial_states": [
+    {"id": "F", "liquid_fraction": 1.0, "recipe": "all_pore_space_liquid", "role": "fully_filled_reference"},
+    {"id": "G_roof", "liquid_fraction": 0.8, "recipe": "gas_above_common_z_cut_inside_pore_space", "sharp_interface_z_cut_nm": 125.0, "role": "gas_near_groove_roof_with_liquid_layer_spanning_x_and_y"},
+    {"id": "G_band", "liquid_fraction": 0.8, "recipe": "gas_in_a_periodic_y_band_filling_the_pore_cross_section", "band_center_y_nm": 240.0, "sharp_interface_band_width_nm": 96.0, "role": "different_gas_distribution_at_same_liquid_fraction"}
+  ],
+  "initialization": {
+    "phase_convention": "phi_zero_liquid_one_gas",
+    "diffuse_profiles": "0.5*(1+tanh(2*signed_distance_to_gas/interface_width))",
+    "correct_discrete_liquid_fraction_by_bisection": true,
+    "allow_unforced_relaxation": true,
+    "if_states_relax_to_same_distribution": "do_not_pin_or_relabel_as_distinct_steady_states; redesign_or_report_transient_scope"
+  },
+  "measurement": {
+    "driver": "uniform_mixture_force_per_volume_equivalent_to_macro_pressure_gradient",
+    "gradient_unit": "Pa/m",
+    "candidate_gradient_magnitudes": [1e7, 2e7],
+    "gradient_status": "pilot_candidates_subject_to_resolution_and_linear_response_checks",
+    "common_branches_per_state": ["zero", "x_plus_G", "x_minus_G", "y_plus_G", "y_minus_G", "x_plus_2G", "x_minus_2G", "y_plus_2G", "y_minus_2G"],
+    "primary_flux": "q_liquid_i=(1/A_plan)*integral_pore((1-phi)*u_i*dV)",
+    "coefficient": "window_conditioned_differential_liquid_response_to_mixture_drive",
+    "candidate_K_ij": "mu_liquid*(q_i_plus-q_i_minus)/(2*delta_G_j)",
+    "K_unit": "m3",
+    "record_off_diagonal_responses": true,
+    "sampling_window": null,
+    "timescale_separation_and_signal_resolution_validated": false
+  },
+  "numerics": {
+    "candidate_dx_nm": 2.5,
+    "candidate_interface_width_nodes": 4,
+    "candidate_tau_liquid": 1.0,
+    "candidate_tau_phase": 1.0,
+    "phase_mobility_mapping": "not_yet_defined_or_validated",
+    "dt_and_gas_tau_and_lattice_sigma": "derived_only_in_design_audit_not_solver_stability_proof"
+  },
+  "publication_claim_status": "minimal_discriminating_design_not_complete_submission_evidence",
+  "protocol_frozen": false,
+  "solver_implemented": false,
+  "solver_started": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": "NOT_EVALUATED",
+  "geometry_PASS": "NOT_EVALUATED"
+}

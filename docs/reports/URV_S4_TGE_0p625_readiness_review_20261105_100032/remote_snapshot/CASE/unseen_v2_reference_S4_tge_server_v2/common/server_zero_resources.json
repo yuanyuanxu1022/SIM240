@@ -1,0 +1,23 @@
+{
+  "kind": "PROPOSED_NOT_ADOPTED_SERVER_RESOURCE_PROPOSAL",
+  "user_explicitly_authorized": false,
+  "resource_decision_accepted": false,
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 64,
+    "required_available_RAM_GiB": 80,
+    "required_initial_free_disk_GiB": 200,
+    "required_before_each_call_free_disk_GiB": 20,
+    "output_budget_GiB_per_call": 16,
+    "native_call_cap_seconds": 900,
+    "field_reader_cap_seconds": 900
+  },
+  "rationale": [
+    "the local 8 GiB per-process cap failed with std::bad_alloc at 16,515,072 fluid nodes",
+    "this host has 188 GiB total, so the cap is set high enough that the audit measures real usage instead of failing on the cap",
+    "no measured peak exists for this grid; these figures are not measurements"
+  ]
+}

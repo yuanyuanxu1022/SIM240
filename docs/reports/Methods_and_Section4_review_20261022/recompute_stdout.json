@@ -1,0 +1,104 @@
+{
+  "table5": [
+    {
+      "h": 50,
+      "parallel_ratio": 3.5503839735747698,
+      "perpendicular_ratio": 1.0338612480728975,
+      "parallel_increase_percent": 255.03839735747698,
+      "perpendicular_increase_percent": 3.3861248072897476
+    },
+    {
+      "h": 75,
+      "parallel_ratio": 2.1345267457938344,
+      "perpendicular_ratio": 1.0213846299431557,
+      "parallel_increase_percent": 113.45267457938344,
+      "perpendicular_increase_percent": 2.138462994315571
+    },
+    {
+      "h": 125,
+      "parallel_ratio": 1.391977652708298,
+      "perpendicular_ratio": 1.0094052659673372,
+      "parallel_increase_percent": 39.19776527082981,
+      "perpendicular_increase_percent": 0.9405265967337151
+    }
+  ],
+  "thin_gap_cross_ratio": 1.0368939520376237,
+  "table7": {
+    "Aref": 2.210390488544205,
+    "Amod": 3.6956052262174706,
+    "relative_overestimate_percent": 67.1924144340419,
+    "beta_ref_deg": 24.342412084305693,
+    "beta_model_deg": 15.141167350229113,
+    "delta_beta_deg": -9.20124473407658
+  },
+  "parallel_gap_decrease_failures": [
+    {
+      "d": 50,
+      "sequence": [
+        {
+          "h": 25,
+          "E_percent": 52.599450637355474,
+          "run_id": "h25_d50_dx5_P"
+        },
+        {
+          "h": 50,
+          "E_percent": 53.12982034699898,
+          "run_id": "h50_d50_dx5_P"
+        },
+        {
+          "h": 75,
+          "E_percent": 46.49018934524902,
+          "run_id": "h75_d50_dx5_P"
+        },
+        {
+          "h": 125,
+          "E_percent": 33.71511123729669,
+          "run_id": "h125_d50_dx5_P"
+        }
+      ],
+      "decreasing": false
+    },
+    {
+      "d": 100,
+      "sequence": [
+        {
+          "h": 25,
+          "E_percent": 139.14265162924067,
+          "run_id": "h25_d100_dx5_P"
+        },
+        {
+          "h": 50,
+          "E_percent": 154.2407297677121,
+          "run_id": "h50_d100_dx5_P"
+        },
+        {
+          "h": 75,
+          "E_percent": 144.94972143767168,
+          "run_id": "h75_d100_dx5_P"
+        },
+        {
+          "h": 125,
+          "E_percent": 108.37624310293906,
+          "run_id": "h125_d100_dx5_P"
+        }
+      ],
+      "decreasing": false
+    }
+  ],
+  "max_residual_full": {
+    "parallel": -10.504978243933639,
+    "perpendicular": -18.705147167276593
+  },
+  "worsened": {
+    "parallel": [],
+    "perpendicular": [
+      {
+        "h": 25,
+        "d": 100,
+        "E": 16.362888390156204,
+        "residual": -18.705147167276593
+      }
+    ]
+  },
+  "oblique_max_relative_difference": 4.287740531352117e-08
+}

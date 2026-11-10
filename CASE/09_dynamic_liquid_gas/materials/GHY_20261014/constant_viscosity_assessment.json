@@ -1,0 +1,60 @@
+{
+  "candidate_mu_Pa_s": 0.012,
+  "observed_temperature_range_C": [
+    24.97,
+    25.01
+  ],
+  "points": [
+    {
+      "shear_rate_per_s": 10.0012,
+      "measured_mu_Pa_s": 0.00872356,
+      "candidate_mu_Pa_s": 0.012,
+      "error_percent_of_measured": 37.55851968691681,
+      "deviation_percent_of_candidate": 27.303666666666672
+    },
+    {
+      "shear_rate_per_s": 20.0024,
+      "measured_mu_Pa_s": 0.0106326,
+      "candidate_mu_Pa_s": 0.012,
+      "error_percent_of_measured": 12.860448055978777,
+      "deviation_percent_of_candidate": 11.394999999999996
+    },
+    {
+      "shear_rate_per_s": 30.0036,
+      "measured_mu_Pa_s": 0.0113737,
+      "candidate_mu_Pa_s": 0.012,
+      "error_percent_of_measured": 5.50656338746406,
+      "deviation_percent_of_candidate": 5.219166666666665
+    },
+    {
+      "shear_rate_per_s": 40.0048,
+      "measured_mu_Pa_s": 0.0120967,
+      "candidate_mu_Pa_s": 0.012,
+      "error_percent_of_measured": 0.799391569601626,
+      "deviation_percent_of_candidate": 0.8058333333333325
+    },
+    {
+      "shear_rate_per_s": 50.006,
+      "measured_mu_Pa_s": 0.0118582,
+      "candidate_mu_Pa_s": 0.012,
+      "error_percent_of_measured": 1.1957970012312236,
+      "deviation_percent_of_candidate": 1.1816666666666746
+    }
+  ],
+  "max_error_percent_of_measured_all_five": 37.55851968691681,
+  "max_error_percent_of_measured_last_three": 5.50656338746406,
+  "diagnostic_tolerances_not_protocol_gates": {
+    "5": [
+      40.0048,
+      50.006
+    ],
+    "10": [
+      30.0036,
+      40.0048,
+      50.006
+    ]
+  },
+  "constitutive_model_validated": false,
+  "extrapolation_below_10_or_above_50_per_s_supported": false,
+  "scope": "individual observed points only; no continuous plateau, repeatability or confidence bound established"
+}

@@ -1,0 +1,67 @@
+{
+  "example": [
+    {
+      "label": "D2_5nm",
+      "direction": "parallel",
+      "reference_K_m3": 9.834075958643652e-23,
+      "original_K_m3": 2.4088541666666665e-22,
+      "V2_K_m3": 1.0414014079511954e-22,
+      "E_original_percent": 144.94972143767168,
+      "E_V2_percent": 5.897230439414769,
+      "source_result": "CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/result.txt"
+    },
+    {
+      "label": "G2_2.5nm",
+      "direction": "parallel",
+      "reference_K_m3": 9.782423697043172e-23,
+      "original_K_m3": 2.4088541666666665e-22,
+      "V2_K_m3": 1.0414014079511954e-22,
+      "E_original_percent": 146.24308262120817,
+      "E_V2_percent": 6.45637933940324,
+      "source_result": "CASE/03_grid_convergence/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx2p5/EX240_parallel/steady/result.txt"
+    },
+    {
+      "label": "G2_1.25nm",
+      "direction": "parallel",
+      "reference_K_m3": 9.764325526249012e-23,
+      "original_K_m3": 2.4088541666666665e-22,
+      "V2_K_m3": 1.0414014079511954e-22,
+      "E_original_percent": 146.69949400919177,
+      "E_V2_percent": 6.653696166892553,
+      "source_result": "CASE/03_grid_convergence/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx1p25/EX240_parallel/steady/result.txt"
+    },
+    {
+      "label": "D2_5nm",
+      "direction": "perpendicular",
+      "reference_K_m3": 4.4490220210459354e-23,
+      "original_K_m3": 6.518158783783783e-23,
+      "V2_K_m3": 4.5537951695675916e-23,
+      "E_original_percent": 46.50767636010502,
+      "E_V2_percent": 2.354970328895445,
+      "source_result": "CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/result.txt"
+    },
+    {
+      "label": "G2_2.5nm",
+      "direction": "perpendicular",
+      "reference_K_m3": 4.3852935121144107e-23,
+      "original_K_m3": 6.518158783783783e-23,
+      "V2_K_m3": 4.5537951695675916e-23,
+      "E_original_percent": 48.63677347427975,
+      "E_V2_percent": 3.8424259855741383,
+      "source_result": "CASE/03_grid_convergence/G2_EX240_grid_convergence/archive/g2_grid_20260917T165045+0800/runs/dx2p5/EX240_perpendicular/steady/result.txt"
+    },
+    {
+      "label": "G2_1.25nm_conditional_C",
+      "direction": "perpendicular",
+      "reference_K_m3": 4.358613368821741e-23,
+      "original_K_m3": 6.518158783783783e-23,
+      "V2_K_m3": 4.5537951695675916e-23,
+      "E_original_percent": 49.546615683093485,
+      "E_V2_percent": 4.478070987943905,
+      "source_result": "CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/runs/fine_t_C_20261014T151036+0800/result.txt"
+    }
+  ],
+  "V2_source": "CASE/groove_darcy_static_v1/common/GDI01.json",
+  "V2_source_sha256": "cd22cd4864b7706b1db58a594bd42f2ee0eaa4e8a2663bd053be8b447cd61659",
+  "note": "Existing seen geometry, arithmetic only. Conditional historical grid/source qualifications retained; no unseen prediction scoring or fitting."
+}

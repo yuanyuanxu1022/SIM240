@@ -1,0 +1,83 @@
+{
+  "edits": [
+    {
+      "old": "#include <olb.h>",
+      "new": "#include <olb.h>\n#include \"mass_stats.h\"\n\n#ifndef URV_PREPARATION_ONLY\n#define URV_PREPARATION_ONLY 1\n#endif"
+    },
+    {
+      "old": "using T = double;",
+      "new": "using T = double;\nusing fine_t_stat::NeumaierSum;\nlong long actualCollideAndStreamCalls = 0;\nstruct ExecutionAudit {\n  std::filesystem::path directory;\n  ~ExecutionAudit() {\n    std::ofstream out(directory/\"execution_audit.txt\");\n    out << \"protocol=URV-v1\\npreparation_only_build=\" << URV_PREPARATION_ONLY\n        << \"\\ncollide_and_stream_calls=\" << actualCollideAndStreamCalls << \"\\n\";\n  }\n};"
+    },
+    {
+      "old": "  p.runId=c.at(\"run_id\");",
+      "new": "#if URV_PREPARATION_ONLY\n  if (p.mode==\"steady\") throw std::runtime_error(\"URV-v1 preparation build: formal time stepping is disabled\");\n#endif\n  p.runId=c.at(\"run_id\");"
+    },
+    {
+      "old": "  if (p.mode==\"describe\") return 0;",
+      "new": "  ExecutionAudit executionAudit{p.outputDirectory};\n  if (p.mode==\"describe\") return 0;"
+    },
+    {
+      "old": "  T mass = 0.0;",
+      "new": "  T mass = 0.0; // Original sequential mass, retained verbatim.\n  T correctedMass = 0.0;\n  T densityDelta = 0.0;"
+    },
+    {
+      "old": "  Measurement value;",
+      "new": "  Measurement value;\n  NeumaierSum correctedMass;\n  NeumaierSum densityDelta;"
+    },
+    {
+      "old": "      value.mass += rho * rhoPhys * dx * dx * dx;",
+      "new": "      value.mass += rho * rhoPhys * dx * dx * dx;\n      correctedMass.add(rho * rhoPhys * dx * dx * dx);\n      densityDelta.add(rho - 1.0);"
+    },
+    {
+      "old": "  for (int iD = 0; iD < 3; ++iD) {\n    value.meanVelocity",
+      "new": "  value.correctedMass = correctedMass.value();\n  value.densityDelta = densityDelta.value();\n  value.finite = value.finite && std::isfinite(value.correctedMass)\n    && std::isfinite(value.densityDelta);\n  for (int iD = 0; iD < 3; ++iD) {\n    value.meanVelocity"
+    },
+    {
+      "old": "      <<\"frames_written=\"<<written.size()<<'\\n';",
+      "new": "      <<\"frames_written=\"<<written.size()<<'\\n'\n      <<\"mass=\"<<zero.mass<<'\\n'<<\"corrected_mass=\"<<zero.correctedMass<<'\\n'\n      <<\"density_delta=\"<<zero.densityDelta<<'\\n'\n      <<\"J_vector_m2_s=\"<<zero.fluxJ[0]<<','<<zero.fluxJ[1]<<','<<zero.fluxJ[2]<<'\\n'\n      <<\"max_density_deviation=\"<<zero.maxDensityDeviation<<'\\n'\n      <<\"max_Mach=\"<<zero.maxLatticeSpeed/std::sqrt(T(1.0/3.0))<<'\\n'\n      <<\"exit_code=\"<<(zero.finite?0:3)<<'\\n';"
+    },
+    {
+      "old": "       \"window_cross_abs_max,finite\\n\";",
+      "new": "       \"window_cross_abs_max,finite,corrected_mass,corrected_mass_error,\"\n       \"delta_mass_error,mass_ledger_agreement,density_delta\\n\";"
+    },
+    {
+      "old": "  T maxMassError = 0.0;",
+      "new": "  T maxMassError = 0.0; // Legacy ledger has its own unchanged denominator.\n  T maxCorrectedMassError = 0.0;\n  T maxDeltaMassError = 0.0;\n  T maxMassLedgerAgreement = 0.0;\n  bool allMeasurementsFinite = true;"
+    },
+    {
+      "old": "      lattice.collideAndStream();",
+      "new": "      lattice.collideAndStream();\n      ++actualCollideAndStreamCalls;"
+    },
+    {
+      "old": "    const T massError = (state.mass - initial.mass) / initial.mass;",
+      "new": "    const T massError = (state.mass - initial.mass) / initial.mass;\n    const T correctedMassError =\n      (state.correctedMass - initial.correctedMass) / initial.correctedMass;\n    const T deltaMassError =\n      (state.densityDelta - initial.densityDelta)\n      / (initial.fluidNodes + initial.densityDelta);\n    const T massLedgerAgreement = std::abs(correctedMassError - deltaMassError);"
+    },
+    {
+      "old": "    maxMassError = std::max(maxMassError, std::abs(massError));",
+      "new": "    maxMassError = std::max(maxMassError, std::abs(massError));\n    maxCorrectedMassError = std::max(maxCorrectedMassError, std::abs(correctedMassError));\n    maxDeltaMassError = std::max(maxDeltaMassError, std::abs(deltaMassError));\n    maxMassLedgerAgreement = std::max(maxMassLedgerAgreement, massLedgerAgreement);\n    allMeasurementsFinite = allMeasurementsFinite && state.finite\n      && std::isfinite(massError) && std::isfinite(correctedMassError)\n      && std::isfinite(deltaMassError) && std::isfinite(massLedgerAgreement);"
+    },
+    {
+      "old": "                << state.finite << '\\n';",
+      "new": "                << state.finite << ',' << state.correctedMass << ','\n                << correctedMassError << ',' << deltaMassError << ','\n                << massLedgerAgreement << ',' << state.densityDelta << '\\n';"
+    },
+    {
+      "old": "    && maxMassError < massTolerance",
+      "new": "    && allMeasurementsFinite\n    && maxCorrectedMassError < massTolerance\n    && maxMassLedgerAgreement <= 1.0e-13"
+    },
+    {
+      "old": "          << \"Case,direction,dx,tau,force,J,Keff,R_eff,Mach,mass_error\\n\"",
+      "new": "          << \"Case,direction,dx,tau,force,J,Keff,R_eff,Mach,mass_error,\"\n             \"legacy_mass_error,mass_ledger_agreement\\n\""
+    },
+    {
+      "old": "          << resistance << ',' << maxMach << ',' << maxMassError << '\\n';",
+      "new": "          << resistance << ',' << maxMach << ',' << maxCorrectedMassError\n          << ',' << maxMassError << ',' << maxMassLedgerAgreement << '\\n';"
+    },
+    {
+      "old": "         << \"max_mass_abs_relative=\" << maxMassError << '\\n'",
+      "new": "         << \"mass_gate_statistic=Neumaier_physical_mass\\n\"\n         << \"max_mass_abs_relative=\" << maxCorrectedMassError << '\\n'\n         << \"legacy_max_mass_abs_relative=\" << maxMassError << '\\n'\n         << \"legacy_mass_gate_PASS=\" << (maxMassError < massTolerance) << '\\n'\n         << \"max_delta_mass_abs_relative=\" << maxDeltaMassError << '\\n'\n         << \"max_mass_ledger_agreement=\" << maxMassLedgerAgreement << '\\n'\n         << \"all_measurements_finite=\" << allMeasurementsFinite << '\\n' "
+    }
+  ],
+  "base_source_sha256": "e8981904d5c93e476b3e1f4e0e0cdef8e8f11cbdaff4bd273a4d275e982e1555",
+  "port_source_sha256": "95451392184f0601ede205eea10bdeda71c6070caa5529a80d3fc57c6ac84ff7",
+  "reverse_edits_restore_base_exactly": true
+}

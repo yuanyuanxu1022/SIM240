@@ -1,0 +1,8 @@
+{
+  "command": "/usr/bin/python3 docs/reports/D4_reference_static_audit_20261025/verify_audit.py",
+  "exit_code": 1,
+  "failed_check": "assert '未启动' in current and 'FAIL' in current and 'HOLD' in current",
+  "reason": "The status section uses 不启动计算 and 未改求解器, so the verifier's literal wording assumption was too narrow.",
+  "resolution": "Match the actual explicit scope and preservation wording; numerical checks, raw data and state facts were not changed.",
+  "is_solver_or_scientific_gate_failure": false
+}

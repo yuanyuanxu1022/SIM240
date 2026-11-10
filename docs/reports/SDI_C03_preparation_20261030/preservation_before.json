@@ -1,0 +1,903 @@
+{
+  "roots": [
+    "CASE/interface_static_darcy_v1",
+    "CASE/interface_static_darcy_v1_1",
+    "docs/reports/SDI_C01_results_20261030",
+    "docs/reports/SDI_C02_preparation_20261030",
+    "docs/reports/SDI_C02_results_20261030"
+  ],
+  "files": [
+    {
+      "path": "CASE/interface_static_darcy_v1/.gitignore",
+      "sha256": "8c38ac98aa3598e710e6ad2ea6890987b51ebdca70538ffe4dd46f4c3f75732d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/README.md",
+      "sha256": "73b2dfc80322a91a8d38c4a224b46592c18cfb2dcc0ba56b1f11ce1f82348749"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/analysis/check_results.py",
+      "sha256": "c11689e006bda4d30581d88ffc5a30484c48635adf61e56629c90cfd335ec470"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/build/bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/build/bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/common/C01.json",
+      "sha256": "f04efff604ab9e495a60fa9ac49f975f7f5adddd4ff9d92a8352d99ab2f91c0e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/common/C01_2d.txt",
+      "sha256": "c96c8a1022beed4d8945f0beb958f3ae959b6815276599600e42a2d33820bf3b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/common/PROTOCOL.md",
+      "sha256": "b024ba4bb5122ec022b460114d8fe7b967138d93a7ff28c84f2d5aa1c065a779"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/common/protocol.json",
+      "sha256": "697d67730d7da28a96b879cb2de8fe2c6edaa1b16dff260d9bf0e3abf5b2c44d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/common/release_manifest.json",
+      "sha256": "471e333de82ccd8e015eb84f2468d1da1f3efb9c9451426ed39c16389e9479dc"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/application/Make/linux64GccDPInt32Opt/depthAveragedDarcyFoam.C.dep",
+      "sha256": "d6cac45b109680f0fbdad624b14d0a1b12f500cc68c857f9de9abf71ae89f268"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/application/Make/linux64GccDPInt32Opt/depthAveragedDarcyFoam.o",
+      "sha256": "a0ae407bdf1d8667a4f00789b75750391ba29798848fb278a75d1496e5670980"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/application/Make/linux64GccDPInt32Opt/files",
+      "sha256": "8d524915fca23ddc5e521c1e679a1dcbbf15661cf35dc1554f75714872f19a89"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/0/p",
+      "sha256": "3b75c99f3b4ac0c8375344ac0c5f9eb01cc9e22d6ec389f410cbeb2faeaf68dd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/constant/darcyProperties",
+      "sha256": "074038f8ff734b422a96f442df08633f3e106705ef5c59adba32c6b2e5c1e8c7"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/constant/polyMesh/boundary",
+      "sha256": "be36a8711caf00604db0f3483e15897d79829da8ac14f2e866a89ff44c6bf2fd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/constant/polyMesh/faces",
+      "sha256": "a30d6bca5e45df39dcb1cb9abd740e37a63bcd5cde98f51fd6b2735034ddad59"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/constant/polyMesh/neighbour",
+      "sha256": "d578a4b242da6d2f711726b47c4d7f7f133b2d576f05a1558f6d4b5e76a5ac4d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/constant/polyMesh/owner",
+      "sha256": "c39c56d1124e90a4d5eafb10352a5173cdb7fcce84c25077204881c3c82e14b5"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/constant/polyMesh/points",
+      "sha256": "f0f77ed0a3b9759cbce1e5559eb157f4c9fcede6b6108c7bcf033adf874d786e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/system/blockMeshDict",
+      "sha256": "42132a1164882368e5c13a8f730fef96f669093c6a865213c0f6afcf59c031fa"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/system/controlDict",
+      "sha256": "8448a8bb885a2d7c9539a4f2e6fd9ad5df83ac560e1492d9b1705675473b8426"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/system/fvSchemes",
+      "sha256": "7207f840baa389e593d99ecafbb6d2da6e25e077132d50eb2beb41b0a178ab63"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/openfoam/cases/C01/system/fvSolution",
+      "sha256": "7d75d3d56a9067a0bebffa22d681202db74665366fee43d527cfb2a40d7bc086"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/checker_synthetic_tests.json",
+      "sha256": "075f7c3e2947637849c0cad21f7fb6270d8be8537f96752d9de3b12fbe9237f8"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/checker_synthetic_tests.log",
+      "sha256": "505e4121cb9bc8ed278b15968ef4190fa13f120e5c97cb8abef308de6134166a"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/ldd_darcy2d.log",
+      "sha256": "b2bf67742bca77391df4bb805ec2755332c356cccbfe151fbf68b4f1b8b2587b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/ldd_depthAveragedDarcyFoam.log",
+      "sha256": "5ef451f9d02863390d70d0c545b480785c60f8eb51bbc25ec04b570f6f21138b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation.json",
+      "sha256": "486f3cc47b3aa02d24e42a10fac0baf5cda7ce369fc514e451a9b3c7e9869a45"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001/audit_2d.log",
+      "sha256": "5321af03c8a57e900a05a17dd57e0188c98f2aaaf4b8712a6d02f3cae666ff74"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001/audit_openfoam.log",
+      "sha256": "aa0647f4dd7f0ac86e266938c8235f4c7cf7fed5e7fdf78f8852713b05688cad"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001/blockMesh.log",
+      "sha256": "8e760332d3915bcf12925b7195122a9836f68dcccd61f282d849d58c934c7ed0"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001/checkMesh.log",
+      "sha256": "6d001fdf6217ec090ede949355d0c170d5f1fd10d11c941315d77886699d3854"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001/commands.json",
+      "sha256": "69bd1be9db0abf2079423ce98fb870cdb6c3cbf4a1bbea7ca68d886c997ec028"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001/compile_2d.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001/compile_openfoam.log",
+      "sha256": "f004625965a71e850d8ac7a91bfc4af2e39dd49291f4cef363fdb13cd0ad5e97"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001_initial_failure/compile_2d.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001_initial_failure/compile_openfoam.log",
+      "sha256": "83891fcdc89585f334b4d72bad0560604184e3980abd85e59089b5bcb55ce896"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/001_initial_failure/preparation_commands.json",
+      "sha256": "3997089d102c3c3d24ac241ad41aece961c8e12ee474cb8557d4e7b8da1deb07"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/002/audit_2d.log",
+      "sha256": "5321af03c8a57e900a05a17dd57e0188c98f2aaaf4b8712a6d02f3cae666ff74"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/002/audit_openfoam.log",
+      "sha256": "7f7976ff0fd8de21e2d8470111a627ccb2b206fd05249c1e674638c613231673"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/002/checkMesh.log",
+      "sha256": "5c30dbc9c5b44cd55c669986c7c41a3367ac0bf18454caeee0ca7b493c429524"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/002/commands.json",
+      "sha256": "ae3cd1c64e6191fff8913f8e5421c66b6ae7176534499394fb6d054b8a14493d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/002/compile_2d.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/reports/preparation_attempts/002/compile_openfoam.log",
+      "sha256": "f004625965a71e850d8ac7a91bfc4af2e39dd49291f4cef363fdb13cd0ad5e97"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/common/C01.json",
+      "sha256": "f04efff604ab9e495a60fa9ac49f975f7f5adddd4ff9d92a8352d99ab2f91c0e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/common/C01_2d.txt",
+      "sha256": "c96c8a1022beed4d8945f0beb958f3ae959b6815276599600e42a2d33820bf3b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/common/PROTOCOL.md",
+      "sha256": "b024ba4bb5122ec022b460114d8fe7b967138d93a7ff28c84f2d5aa1c065a779"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/common/protocol.json",
+      "sha256": "697d67730d7da28a96b879cb2de8fe2c6edaa1b16dff260d9bf0e3abf5b2c44d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/execution.json",
+      "sha256": "a8b9c7b3d45a2b42afab19a19ba6312b0b5f101c03471212996ee5a07155dfcd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/logs/openfoam.log",
+      "sha256": "ce82bcdd8f4232061f303f9a775e47c2169f2515458fc54f4fbcca2394cdd0d3"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/logs/two_dimensional.log",
+      "sha256": "6a2d7f90d193bb74c80fd3d063fd061e1b4495c8f6fe91b5ff75852164573197"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/0/p",
+      "sha256": "3b75c99f3b4ac0c8375344ac0c5f9eb01cc9e22d6ec389f410cbeb2faeaf68dd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/J",
+      "sha256": "fb851be48485dda6cafc94f3f2e31d94e3fb48982eb64b262025ac2114978949"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/U",
+      "sha256": "548b5600a64ad0c8fba272b8bdfa55f61783f4b11bbaf600c895a2cc0cefd88d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/p",
+      "sha256": "9162bd2189cfb875fff25025d1ea98315931080c1c9abaaf3592c4bb16de8ac8"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/phi",
+      "sha256": "63e56a2bd00b807ab937ebb22ba4389a22282b02480de576c93e5f104cccfa4b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/1/phi_U",
+      "sha256": "d5064be6ea46eef3d0a374f4483a438e52154033c1a099c29545bd457f774973"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "5360bae99c50e1e7fe0933b7d0e7aee9a01cfaa99239e8d74a69d03d16d7b65f"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "84388c85878e9f234d619fdab633b8cb572f9aa0105d6254573827a44bb383a2"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/solver.json",
+      "sha256": "4edbd2e175df534eab088da740dae49e12693325afe56573d8b9f3dc4835af20"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/constant/darcyProperties",
+      "sha256": "074038f8ff734b422a96f442df08633f3e106705ef5c59adba32c6b2e5c1e8c7"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/constant/polyMesh/boundary",
+      "sha256": "be36a8711caf00604db0f3483e15897d79829da8ac14f2e866a89ff44c6bf2fd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/constant/polyMesh/faces",
+      "sha256": "a30d6bca5e45df39dcb1cb9abd740e37a63bcd5cde98f51fd6b2735034ddad59"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/constant/polyMesh/neighbour",
+      "sha256": "d578a4b242da6d2f711726b47c4d7f7f133b2d576f05a1558f6d4b5e76a5ac4d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/constant/polyMesh/owner",
+      "sha256": "c39c56d1124e90a4d5eafb10352a5173cdb7fcce84c25077204881c3c82e14b5"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/constant/polyMesh/points",
+      "sha256": "f0f77ed0a3b9759cbce1e5559eb157f4c9fcede6b6108c7bcf033adf874d786e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/system/blockMeshDict",
+      "sha256": "42132a1164882368e5c13a8f730fef96f669093c6a865213c0f6afcf59c031fa"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/system/controlDict",
+      "sha256": "8448a8bb885a2d7c9539a4f2e6fd9ad5df83ac560e1492d9b1705675473b8426"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/system/fvSchemes",
+      "sha256": "7207f840baa389e593d99ecafbb6d2da6e25e077132d50eb2beb41b0a178ab63"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/system/fvSolution",
+      "sha256": "7d75d3d56a9067a0bebffa22d681202db74665366fee43d527cfb2a40d7bc086"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/analysis/check_results.py",
+      "sha256": "c11689e006bda4d30581d88ffc5a30484c48635adf61e56629c90cfd335ec470"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/common/release_manifest.json",
+      "sha256": "471e333de82ccd8e015eb84f2468d1da1f3efb9c9451426ed39c16389e9479dc"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/reports/preparation.json",
+      "sha256": "486f3cc47b3aa02d24e42a10fac0baf5cda7ce369fc514e451a9b3c7e9869a45"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/scripts/run_c01.py",
+      "sha256": "802e1f7a75cf9578929a6b00472624f69f97c0ec52da158fcb4cb0f812c8e170"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/provenance/two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/run_manifest.json",
+      "sha256": "89dbddb50d9dba45086dfcd5eff482c246e8872dd6b59aa840e9f00103f11478"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/cells.csv",
+      "sha256": "98ea3fada1003501bea6fb32890a6499fdc8fff82674c1bfa753c54d8f80edcc"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/faces.csv",
+      "sha256": "b83928d8efb3075b864dc0955176a266affdb3a0a6ec4169555da56c0bc02de1"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/solver.json",
+      "sha256": "c55b6271d1b8bb03998732dabc1cbc4fef77e73739c26a3876cc4772b6ea4035"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/scripts/build_and_audit.py",
+      "sha256": "b80d27d343390adc22d10f53ba6dc7a62552aa12884ffc89f8b95d892a86111b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/scripts/prepare_c01.py",
+      "sha256": "2e723f356a8c20015ffdda3c91b82170622c4f616832aff3caa6c8a6936ce294"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/scripts/run_c01.py",
+      "sha256": "802e1f7a75cf9578929a6b00472624f69f97c0ec52da158fcb4cb0f812c8e170"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/scripts/seal_release.py",
+      "sha256": "668ee42104dd391a38ce69ea849b96a8222d6b7f8594d46976323fc9f65ffa2a"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/tests/test_checker.py",
+      "sha256": "4ecf095aa06c9450af28724172401540d9d353e348c84ccd2e7dc6b212b6449a"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1/two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/.gitignore",
+      "sha256": "8c38ac98aa3598e710e6ad2ea6890987b51ebdca70538ffe4dd46f4c3f75732d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/README.md",
+      "sha256": "3eafc2553c583fa8479406b2cc18b285e7896aa2f24108adad93117d39c49277"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/analysis/check_results.py",
+      "sha256": "35f58a902b77ca08e8c16fa8fa3e44a85eaf34eaf6974c73d65ae16ff513f73e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/build/bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/build/bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/C02.json",
+      "sha256": "5f602869c948402bff09510d4aca6e1c30205916ee0582ed5037bf4a5b08af74"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/C02_2d.txt",
+      "sha256": "72b6c5a361106bea25130b3aa9d183d50ce188022c3f1c23b69b4d4f115f2768"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/C02_SPEC.md",
+      "sha256": "0aa36d89bc9440bf3b4ee67626b85c05e2f5453901571e3dc3c8a8eff2a2fa6a"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/C02_expected.json",
+      "sha256": "ae174f42e636d498783ac2e25c34b39db071951949c9f5127f30444f56feab78"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/CHECKER_CHANGELOG.md",
+      "sha256": "e5f080ce2be43c884652ba3fb8c24c71f089496f68262415db29dabf8721e7c2"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/PROTOCOL.md",
+      "sha256": "b024ba4bb5122ec022b460114d8fe7b967138d93a7ff28c84f2d5aa1c065a779"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/checker_version.json",
+      "sha256": "cf1bdb770062519706008475d4fb1ee83d2da37c275fc239109f48c7e84c8656"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/protocol.json",
+      "sha256": "697d67730d7da28a96b879cb2de8fe2c6edaa1b16dff260d9bf0e3abf5b2c44d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/common/release_manifest.json",
+      "sha256": "c3a7bea147f36036d2fe29543da441f8487b5e276b8212e138d5105c6bb049a0"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/0/p",
+      "sha256": "3b75c99f3b4ac0c8375344ac0c5f9eb01cc9e22d6ec389f410cbeb2faeaf68dd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/constant/darcyProperties",
+      "sha256": "f6cb74a935c55c1e83d95192b5e5c089b35421b61e7da165e6f6f0081c3a4e4a"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/constant/polyMesh/boundary",
+      "sha256": "be36a8711caf00604db0f3483e15897d79829da8ac14f2e866a89ff44c6bf2fd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/constant/polyMesh/faces",
+      "sha256": "a30d6bca5e45df39dcb1cb9abd740e37a63bcd5cde98f51fd6b2735034ddad59"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/constant/polyMesh/neighbour",
+      "sha256": "d578a4b242da6d2f711726b47c4d7f7f133b2d576f05a1558f6d4b5e76a5ac4d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/constant/polyMesh/owner",
+      "sha256": "c39c56d1124e90a4d5eafb10352a5173cdb7fcce84c25077204881c3c82e14b5"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/constant/polyMesh/points",
+      "sha256": "f0f77ed0a3b9759cbce1e5559eb157f4c9fcede6b6108c7bcf033adf874d786e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/system/blockMeshDict",
+      "sha256": "42132a1164882368e5c13a8f730fef96f669093c6a865213c0f6afcf59c031fa"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/system/controlDict",
+      "sha256": "8448a8bb885a2d7c9539a4f2e6fd9ad5df83ac560e1492d9b1705675473b8426"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/system/fvSchemes",
+      "sha256": "7207f840baa389e593d99ecafbb6d2da6e25e077132d50eb2beb41b0a178ab63"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/openfoam/cases/C02/system/fvSolution",
+      "sha256": "7d75d3d56a9067a0bebffa22d681202db74665366fee43d527cfb2a40d7bc086"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/C01_existing_data_regression.json",
+      "sha256": "dd663c13efc6db9780a7645f3ae98d18ba63d27c26f6e366b48091cb5b977e70"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/audit_2d.log",
+      "sha256": "5321af03c8a57e900a05a17dd57e0188c98f2aaaf4b8712a6d02f3cae666ff74"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/audit_commands.json",
+      "sha256": "f1e3b35e96a64316ea3f21cd297728644e599fe569371988bed0d11e402b8ab1"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/audit_openfoam.log",
+      "sha256": "b41a57378aba5244187cd5b5dccfd1b46960f2c2a6b56bf0e59cece8ba80d238"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/checkMesh.log",
+      "sha256": "0c7c7a0f4185a2503254f27aeabfdd2990759f6a76f4f21d095c1e82a4b86741"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/checker_tests.json",
+      "sha256": "332525b7f2b0abb1eb00959c2f4bae5d2980be5784d3b89aadf6b1ac89dd9bef"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/checker_tests.log",
+      "sha256": "327013e23c2fd2f2eb2469d04ede848ee776296ab603867e7518941cfaba4b7f"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/inherited_C01_preparation.json",
+      "sha256": "486f3cc47b3aa02d24e42a10fac0baf5cda7ce369fc514e451a9b3c7e9869a45"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/inherited_C01_release_manifest.json",
+      "sha256": "471e333de82ccd8e015eb84f2468d1da1f3efb9c9451426ed39c16389e9479dc"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/ldd_darcy2d.log",
+      "sha256": "631eeca300a80c26a2e9eb125c72781d6024a9aef00fead736105ba5942f4e8b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/ldd_depthAveragedDarcyFoam.log",
+      "sha256": "678cba7609391e10707500ca5ddbd96105cdc35ad5e8f22a567da7cf69819702"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/mesh_reuse.json",
+      "sha256": "6a4c3129737d94358f41a592edd43852701c3eacc1b75074228944fd75b6c5d2"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/preparation.json",
+      "sha256": "d079c2f3df11ec7f22cc55c774a3d3d882d20d75ee7d3e71d606c9919e1ea3cf"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/reports/solver_reuse.json",
+      "sha256": "946fb66f2940a3e5ac040a49f3fe3cda039542bca495aa94d99e843a6180fa5d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/common/C02.json",
+      "sha256": "5f602869c948402bff09510d4aca6e1c30205916ee0582ed5037bf4a5b08af74"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/common/C02_2d.txt",
+      "sha256": "72b6c5a361106bea25130b3aa9d183d50ce188022c3f1c23b69b4d4f115f2768"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/common/PROTOCOL.md",
+      "sha256": "b024ba4bb5122ec022b460114d8fe7b967138d93a7ff28c84f2d5aa1c065a779"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/common/protocol.json",
+      "sha256": "697d67730d7da28a96b879cb2de8fe2c6edaa1b16dff260d9bf0e3abf5b2c44d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/execution.json",
+      "sha256": "67970c1f9fa96e7b24f1f2134815337750d529fcebc62c4ebca1dcffbd02eb75"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/logs/openfoam.log",
+      "sha256": "809bbdaa459c91c3bd8a73c264181321210b0059e41ee7eba5dd1a40623549a1"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/logs/two_dimensional.log",
+      "sha256": "0d3f8f71e6666d0e7c790c9fcb1a550d8ec953692d296678d8e45cc350d4a033"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/0/p",
+      "sha256": "3b75c99f3b4ac0c8375344ac0c5f9eb01cc9e22d6ec389f410cbeb2faeaf68dd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/J",
+      "sha256": "167f9786f7971cb57b7a66f7e61df45b430b6a19d8953ef177bc645fb03598bb"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/U",
+      "sha256": "81f415cb1c723571282347a707961c6556b38f8e6836d64b5d1ce58b25a35670"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/p",
+      "sha256": "48fb0b6da053f9dd49ed3759ab88e4d0e3eef06d5209b7d228849913cf95518f"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/phi",
+      "sha256": "bf20a776a880b44f80da8e4841d84771e67557e2e7e05f8596a2e7232177425b"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/1/phi_U",
+      "sha256": "ab3d90dfd8b9f6bfe94f93f93b2d8524c3f5677314d5b38b36e168eb7d1323aa"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "6e976f13bcc29219359939f86dca8da77165515ad3d3d9a1511ffa897d60b07c"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "397994aa98c235c7e935c6031170b3f40f5c5bc71b7eafa52e2b735d4878f9c0"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/solver.json",
+      "sha256": "78b484735838198c0e0f330a76c4739e65da2822687acb5990a1a69d145ebdbd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/constant/darcyProperties",
+      "sha256": "f6cb74a935c55c1e83d95192b5e5c089b35421b61e7da165e6f6f0081c3a4e4a"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/constant/polyMesh/boundary",
+      "sha256": "be36a8711caf00604db0f3483e15897d79829da8ac14f2e866a89ff44c6bf2fd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/constant/polyMesh/faces",
+      "sha256": "a30d6bca5e45df39dcb1cb9abd740e37a63bcd5cde98f51fd6b2735034ddad59"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/constant/polyMesh/neighbour",
+      "sha256": "d578a4b242da6d2f711726b47c4d7f7f133b2d576f05a1558f6d4b5e76a5ac4d"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/constant/polyMesh/owner",
+      "sha256": "c39c56d1124e90a4d5eafb10352a5173cdb7fcce84c25077204881c3c82e14b5"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/constant/polyMesh/points",
+      "sha256": "f0f77ed0a3b9759cbce1e5559eb157f4c9fcede6b6108c7bcf033adf874d786e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/system/blockMeshDict",
+      "sha256": "42132a1164882368e5c13a8f730fef96f669093c6a865213c0f6afcf59c031fa"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/system/controlDict",
+      "sha256": "8448a8bb885a2d7c9539a4f2e6fd9ad5df83ac560e1492d9b1705675473b8426"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/system/fvSchemes",
+      "sha256": "7207f840baa389e593d99ecafbb6d2da6e25e077132d50eb2beb41b0a178ab63"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/system/fvSolution",
+      "sha256": "7d75d3d56a9067a0bebffa22d681202db74665366fee43d527cfb2a40d7bc086"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/analysis/check_results.py",
+      "sha256": "35f58a902b77ca08e8c16fa8fa3e44a85eaf34eaf6974c73d65ae16ff513f73e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/common/release_manifest.json",
+      "sha256": "c3a7bea147f36036d2fe29543da441f8487b5e276b8212e138d5105c6bb049a0"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/reports/preparation.json",
+      "sha256": "d079c2f3df11ec7f22cc55c774a3d3d882d20d75ee7d3e71d606c9919e1ea3cf"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/scripts/run_c02.py",
+      "sha256": "74b397e3927c37871a570f5cf7a1af5367826286dd3dab24fe58c081bbc6e9fd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/provenance/two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/run_manifest.json",
+      "sha256": "6ca34f9dee782c54daa134628c5ed0b91180b2753538149bc416d97de3186412"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/cells.csv",
+      "sha256": "ac8eaaf9fc2f7ad2e7803cb61b2754c3f9b0efa8eac1c90bac792ae2ea169cb4"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/faces.csv",
+      "sha256": "e767a16b8e4525b40ef0df1d10a256eaf5dab4a5dfb2c82b2e536863cb5ec578"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/solver.json",
+      "sha256": "108a0317a20d6f340c20399624530558dfaaa675fe227dcde5ff74074d2dd151"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/scripts/audit_c02.py",
+      "sha256": "e5f5b2fac0a8f9bbcd754012877982035eecbf26c83fac0759b316c41514a9e9"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/scripts/prepare_c02.py",
+      "sha256": "0a517e4075ecc3b4e856584862b6d053f68d62b2cf0bd03763a425b8478e51d2"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/scripts/run_c02.py",
+      "sha256": "74b397e3927c37871a570f5cf7a1af5367826286dd3dab24fe58c081bbc6e9fd"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/scripts/seal_release.py",
+      "sha256": "7eb3998454119fa61f22b45f4c62f4999911ad499b1de88ff26bdef0e3d1aa9e"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/tests/test_checker.py",
+      "sha256": "3665b9492110a2545fcbd748848c8f01570dd225ad604fedae9a9e607d812aea"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/tests/test_geometry_release.py",
+      "sha256": "970468158488c11872d79fce7303ecda17a8be757092ffc30939804055edfd28"
+    },
+    {
+      "path": "CASE/interface_static_darcy_v1_1/two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/AI_HANDOFF_20261015.md.diff",
+      "sha256": "afc39c7a7046b0f4b0f7e074f882b462ca43216e490fd90c5cc114bec5281259"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/REPORT.md",
+      "sha256": "e989d6affda7dec164226c71d10fdf4b908138b4e652a534949dd9e8ba56fcdc"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/SIM240_AI_CONTEXT.md.diff",
+      "sha256": "2cc427e281c02355c17acb61b6cdef86057bdb91430615aea8759850e4ee45fc"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/audit_raw_results.py",
+      "sha256": "cca0c84c992eaa4059f75a37faac6bf42ff51d8ebdfd20e37ebde2322db815ee"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/check_results_geometry_v1_1.py",
+      "sha256": "29ad7d36f89afd323aa257deec070e844d1667a6d561e130eb9a741125832fa4"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/checker_geometry_repair.diff",
+      "sha256": "b9ccfc6c87601e370e365304bcc0e3b348eb473e0aee1e8525c04bb5176e1f59"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/checker_repair_record.json",
+      "sha256": "16950edefb847d5b26decbf20d2d1f017ed7b7b78738a2a9268238906c2213c5"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/checker_repair_tests.json",
+      "sha256": "44383ca2e3529ed1570d463c861381dda6ab9c5abaef6da5f5626af1cbcd78f6"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/checker_repair_tests.log",
+      "sha256": "39f6b47357787fc260b6759b99e631a8facb0fdfd03d6c1cce5c8e92345df6e3"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/independent_raw_audit.json",
+      "sha256": "ce32ac0c2d038c89c9f59af7857569356386245d25f9e2790a633936f5b6decf"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/interface_analysis.json",
+      "sha256": "2d8f1ced03559d3cf96ea655266800de82f5bf6f559346a0318b54ff7a9d602f"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/interface_analysis_geometry_v1_1.json",
+      "sha256": "75621f3a1f325dcab5f22de31eefaefb926b61e902fe3d03a731b019537f4ef5"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/source_manifest.json",
+      "sha256": "2e00c7c9f95963bc713384bb2f7fb2b9df62576edf420e68b3e4c61d3019d7e6"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/state_sync.json",
+      "sha256": "cb5ec7d3a238bcd073583982be1159fa9dfd5c29826400ea4945bb4b2b88a197"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/status_snapshot.json",
+      "sha256": "a4c53c084a7f8012f34526f90fa8f14c4f3dc64ec91d73a5414e983e15bb96ea"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/test_geometry_checker.py",
+      "sha256": "6384763a02b5c7fb14492367c6034fb5c8a2b660b3143a99e6260651c90f60c8"
+    },
+    {
+      "path": "docs/reports/SDI_C01_results_20261030/verification.json",
+      "sha256": "ab727ca7237affa3cc261da53b77342d344ee2c7d9588e722583a42aaa61c859"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/AI_HANDOFF_20261015.md.diff",
+      "sha256": "f3ea38a4248e40d88c1f5ddc85632cd40284a8b2106fcbdf3788746d97c0c97f"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/C01_checker_1_1_regression.json",
+      "sha256": "8e6e70053d8b53d28386b676cb29b7fbdffbc769fa25a6213f8d09494ac48d58"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/REPORT.md",
+      "sha256": "d3b90c76401f9483b46496813d4496c7bd46fbffc2ec4736938538dc143ad07c"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/SIM240_AI_CONTEXT.md.diff",
+      "sha256": "86d8e6d81bbe6ab1aad703fc3c296a2a9e9415d89358e067a2751df221d3fa7f"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/checker_1_1_release.diff",
+      "sha256": "ccc85d7128ed8cac36730a458d8c32fff3fdcd6f3037efa08ff2557bee623a37"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/preservation_after.json",
+      "sha256": "8bea46f0cc277dbce80cd4c652580297ff3d49dd02c96f423ace9f3120e15ad4"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/preservation_before.json",
+      "sha256": "13828b88cee6cb75dbb734eed49535cd1556f27196abd34b39e85de7cb4c385f"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/source_manifest.json",
+      "sha256": "ea921acef438454bd9f28ba93591feafed994f3bfc80bf11b8483f5735ce977a"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/state_sync.json",
+      "sha256": "5d9f844cda3583bcdea5bf00fa4069b12b3048e3bfc151d277020d05c6ca8cf9"
+    },
+    {
+      "path": "docs/reports/SDI_C02_preparation_20261030/verification.json",
+      "sha256": "ceba8099d47e6e0150e4dbfdeda8f95c5b8dc4c4b640d21ad43f8b65e4797046"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/AI_HANDOFF_20261015.md.diff",
+      "sha256": "3822b0afd3e71a8c8e7ff2df62e4e376b08f6f78dc6361d4b86fe3541fd3a9fb"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/C01_C02_comparison.json",
+      "sha256": "a7409f0777e32da8fa09c1a104a044cda2381ec6ee039fc2426c684b9251bbbe"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/REPORT.md",
+      "sha256": "809e28df0a5c8e8c6c5f7cd11f6aef1b7a24dc687fdf7125631a06743a78cb36"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/SIM240_AI_CONTEXT.md.diff",
+      "sha256": "8d20207e9aaa1f985179716f7cdb89346e29c96161ec30081dbd1c663ec5ebcc"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/audit_raw_results.py",
+      "sha256": "ccc91ce2e2205692e83931dcabf5ebb1a22252e1e32da1bf6afadae47e93624f"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/compare_completed_cases.py",
+      "sha256": "db855aad535763b97003dfa0ded94666f9c00cf294d8e6fec32639383026f719"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/independent_raw_audit.json",
+      "sha256": "3b430173171a0bc8be97c0f185b10a171822746faa4fa8c1aecceb0e6a1d847e"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/interface_analysis.json",
+      "sha256": "01005e47150aadae3ee90bb38de245e18d357c103321060eb690c0d168bc3c4b"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/run_preservation.json",
+      "sha256": "a703e7501e05990bc6dabd56e7d7f0d4d9c82723812544cdadf5bc3e47dccecc"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/source_manifest.json",
+      "sha256": "1550f86a79cfe90e8f28638b40b54ddd5330c9945595bbdae9f049f04c787cb4"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/state_sync.json",
+      "sha256": "f46f2c34ab07b121aa8a229f9ab181acaf3a6809089e833356f6f0b63d18431e"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/status_snapshot.json",
+      "sha256": "a9b74d130a659a6604f1ce67a2883874732e57b2a8ce656a62711d772e0ac19c"
+    },
+    {
+      "path": "docs/reports/SDI_C02_results_20261030/verification.json",
+      "sha256": "d480a0a12162e183f3b907391566d4c387e3bf5fa2a5533aa3beea7f7d654ab5"
+    }
+  ]
+}

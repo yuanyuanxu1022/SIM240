@@ -1,0 +1,46 @@
+{
+  "base_scalar_script": "docs/reports/D4_prediction_readiness_20261024/analyze_screen.py",
+  "base_scalar_sha256": "cbf24aac632c72425f7553d82c29fd1e79735087f009e8096e70c22c0930f230",
+  "adaptations": [
+    [
+      "default=6",
+      "default=14"
+    ],
+    [
+      "development_stage_20261023/release.json",
+      "development_remaining14_20261024/release.json"
+    ],
+    [
+      "len(batch_manifest['case_ids'])==6",
+      "len(batch_manifest['case_ids'])==14"
+    ],
+    [
+      "development_stage_20261023/stage_cases.csv",
+      "development_remaining14_20261024/stage_cases.csv"
+    ],
+    [
+      " and planned['substage']=='screen'",
+      " and planned['role']=='new_dev'"
+    ],
+    [
+      "manifest['stage']=='development_screen'",
+      "manifest['stage']=='remaining14_development'"
+    ],
+    [
+      "complete=args.first==6",
+      "complete=args.first==14"
+    ],
+    [
+      "len(progress)==6",
+      "len(progress)==14"
+    ]
+  ],
+  "additional_output_fields": [
+    "w_nm",
+    "P_nm"
+  ],
+  "flow_script": "docs/reports/D4_prediction_readiness_20261024/check_flow_frames.py",
+  "flow_script_sha256": "65efbb7cbda77aef85d6776d71b56ac3c77d583b039308dc28e37335c3768930",
+  "thresholds_changed": false,
+  "solver_imported_or_executed": false
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "NON_EXECUTABLE_RELEASE_PLAN_NOT_AUTHORIZATION",
+  "prepared_release": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/evidence/S0_prepared_binding_A1_20261102_01.json",
+  "prepared_release_sha256": "d58019c2843454ce0ec1b2548e83fb6af66f4081d20acd54b695d665c916766c",
+  "source_binary_sha256": "c1fc2a1eeacced8f11a9bb045c25d70936b7be03fe5495a0b8f51789bd8fe8af",
+  "reserved_run_ids": [
+    "URV_S0_P_A1_20261102_01",
+    "URV_S0_T_A1_20261102_01"
+  ],
+  "reviewed_run_records": [
+    {
+      "run_id": "URV_S0_P_A1_20261102_01",
+      "planned_case_id": "URV1_H75_P_dx5_a100000",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady/run_config.txt",
+      "run_config_sha256": "56cb7730111078b9d84b0932de74c526ad4bf71f4704c7648e3a0b4f2952b430",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_P_A1_20261102_01/steady"
+    },
+    {
+      "run_id": "URV_S0_T_A1_20261102_01",
+      "planned_case_id": "URV1_H75_T_dx5_a100000",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady/run_config.txt",
+      "run_config_sha256": "a4b401fb59420d5e1fd3f6ea55edce81f96b38eaa138ba1fa8a33ef2d9d94141",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/runs/URV_S0_T_A1_20261102_01/steady"
+    }
+  ],
+  "proposed_new_release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/evidence/S0_launch_release_A1_20261102_01.json",
+  "proposed_session_name": "urv_s0_a1_20261102_01",
+  "authorized": false,
+  "user_authorization_verbatim": null,
+  "required_after_explicit_authorization": [
+    "Refresh pristine directories, all input hashes and resources",
+    "Create separate release copying exact prepared input closure and approved identities; preserve prepared contract unchanged",
+    "Record actual new user authorization wording and scope; set simulation_authorized and approved records only in new release",
+    "Validate new release with immutable checker binding and controller default inspect; verify its independent SHA",
+    "Update both shared states before delivery",
+    "Deliver exactly one SHA-pinned tmux command for user execution; do not execute"
+  ],
+  "execution_order": "P -> capture finalization/completion -> original URV plus independent mass replay and physical guard -> T only if all pass",
+  "stop_conditions": "any resource/input/native/capture/checker/replay failure or timeout; no retries or S1",
+  "startup_command_generated": false
+}

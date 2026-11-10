@@ -1,0 +1,58 @@
+[
+  {
+    "id": "C01",
+    "component": "S1 native source and original ELF",
+    "status": "CONDITIONALLY_REUSABLE",
+    "evidence": "Exact binary/build/compiler/dependency/library hashes verified; parser accepts all aligned S4 parameters. No S4 native audit or time stepping performed.",
+    "source": "CASE/unseen_v2_reference_S1_a1_v1/src/urv_reference.cpp:187"
+  },
+  {
+    "id": "C02",
+    "component": "S2/S3 stage controller, source revision and authorization",
+    "status": "INCOMPATIBLE_AS_IS",
+    "evidence": "Existing adapters require S2_REG_GRID/U_REG six cases or S3_REG_LINEARITY/U_REG four cases and exact old IDs/output paths; S3 explicitly S4_authorized=false.",
+    "source": "CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/stage_s3.py:28"
+  },
+  {
+    "id": "C03",
+    "component": "Single-run scientific acceptance and field reader",
+    "status": "REUSABLE_WITH_ISOLATED_PROVENANCE_DISPATCH",
+    "evidence": "Original common already lists all S4 cases. Ten common files and three scientific scripts byte-identical across S2/S3. Keep unchanged; add isolated S4 source/authority branch.",
+    "source": "CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/check_results.py:169"
+  },
+  {
+    "id": "C04",
+    "component": "R1/R2 zero-evidence checks",
+    "status": "REUSE_VALIDATIONS_ADAPT_EXACT_COUNTS_AND_BINDINGS",
+    "evidence": "Retain effective native physics/time crosschecks and own-field readback/payload association; current 12-record/4-field assertions must become exact S4 18/6 in isolated copy.",
+    "source": "CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/zero_evidence.py:107"
+  },
+  {
+    "id": "C05",
+    "component": "S1/S2/S3 prior results",
+    "status": "PREDECESSOR_EVIDENCE_ONLY_NOT_S4_REFERENCE_POINTS",
+    "evidence": "Smooth d0, U_REG h60 and U_THIN h30/d80 differ. None of their K values can fill a missing S4 point or grant an S4 zero/native PASS.",
+    "source": "CASE/unseen_v2_reference_checker_S3_reuse_v1_1/common/case_matrix.csv"
+  },
+  {
+    "id": "C06",
+    "component": "Stage-local three-grid evidence",
+    "status": "MINIMUM_OFFLINE_JOIN_REQUIRED",
+    "evidence": "After six accepted S4 results, pair each direction at 5/2.5/1.25nm under its own exact release; retain frozen grid math. Do not call/relax 24-result aggregate or upgrade reference qualification.",
+    "source": "CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/evidence.py:143"
+  },
+  {
+    "id": "C07",
+    "component": "Runtime/resources/PERF",
+    "status": "SEPARATE_PRE_FORMAL_DECISION",
+    "evidence": "S2 timings are historical evidence only. Conditional full-step fine-grid costs about32h per direction against original12h cap. Decide bounded risk or separately scoped PERF after zero; no current PERF authorization.",
+    "source": "resource_review.json"
+  },
+  {
+    "id": "C08",
+    "component": "24-case aggregate/F04/model comparison",
+    "status": "OUT_OF_SCOPE",
+    "evidence": "Original aggregate needs full24 and stage lineage. S4 grid-only preparation cannot close S5, F04, reference/model/physical/submission states.",
+    "source": "CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/check_results.py:283"
+  }
+]

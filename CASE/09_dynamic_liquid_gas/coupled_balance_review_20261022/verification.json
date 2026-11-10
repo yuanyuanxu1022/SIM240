@@ -1,0 +1,58 @@
+{
+  "checked_utc": "2026-10-22T05:28:20.626129+00:00",
+  "task": "NS/CH discrete-balance and equilibrium-reference review; next validation design",
+  "static_operator_audit_exit_code": 0,
+  "input_files_rechecked": 2262,
+  "input_hash_mismatches": [],
+  "previous_protection_sets": {
+    "source3d_bound": {
+      "files": 1502,
+      "mismatches": []
+    },
+    "old_protected": {
+      "files": 1772,
+      "mismatches": []
+    },
+    "translation_raw_and_inputs": {
+      "files": 1972,
+      "mismatches": []
+    }
+  },
+  "solver_modified": false,
+  "shared_OpenLB_modified": false,
+  "solver_compiled": false,
+  "new_OpenLB_run_started": false,
+  "new_time_integration": false,
+  "equilibrium_reference_solved": false,
+  "next_design_status": "DESIGN_REVIEWED_IMPLEMENTATION_PENDING_NOT_EXECUTION_PROTOCOL",
+  "new_run_id": null,
+  "long_run_command_delivered": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": "NOT_EVALUATED",
+  "geometry_PASS": "NOT_EVALUATED",
+  "git_diff_check_exit_code": 0,
+  "limitations": [
+    "static algebra is not actual CellD/streaming validation",
+    "no complete Chapman-Enskog derivation or full coupled energy proof",
+    "no equilibrium field solved",
+    "candidate future tolerances need pre-run frozen protocol",
+    "no real GHY property evidence added"
+  ],
+  "outputs_sha256": {
+    "NEXT_VALIDATION_DESIGN.md": "120510cbcf8dff132cb721eb493a50083e7b5a712c1182f05ebce39f47c6f469",
+    "README.md": "8e9b5a7a2ca310d46097b15ccbd7bc0a376a4bb6438f7f4ab204f14d9f617e62",
+    "REVIEW.md": "3de1914dc844b7ba0dad376a372c830e6d9dc09c793cce58f27fb56638263c52",
+    "git_diff_check_exit_code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "input_hashes.json": "4c6aadd83e17a4bc75368fce6976afe18fbcc02da5e7120e616e2b74a0e636f7",
+    "source_protection_check.json": "6b2d3adc98e109f2098fb1ba7fec73d62d16fd4c3623c73e6875e2d7e9056b29",
+    "state_update_before_hashes.json": "926fa0beb9bf585b27714507a5b3cf54a309c7e34e8759307b97bc78f10de471",
+    "static_operator_audit.json": "bdbb6d8a7832d3bbb509e19ea78cccedfb1556be3571f0963b5eb117375b4095",
+    "static_operator_audit.log": "bdbb6d8a7832d3bbb509e19ea78cccedfb1556be3571f0963b5eb117375b4095",
+    "static_operator_audit.py": "cb1fd28bea488f1d42766103e485772d71d6fba2178678fbade416b1e9c54550",
+    "static_operator_audit_exit_code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "shared_state_sha256": {
+    "docs/reports/SIM240_AI_CONTEXT.md": "f53baf035db9a9d79b228c939558974493f7581c5cd79511d4e01d2160564008",
+    "docs/reports/AI_HANDOFF_20261015.md": "46c292525ee9cc77ec51f2640286d71e949e1a9df1f5c051e64053dae0cd0a7e"
+  }
+}

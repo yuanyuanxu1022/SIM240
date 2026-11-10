@@ -1,0 +1,117 @@
+Engineering with Computers (2025) 41:4587–4603
+https://doi.org/10.1007/s00366-025-02216-x
+
+    ORIGINAL ARTICLE
+
+
+
+A hybrid Lattice-Boltzmann model for hydro-electrochemical
+modeling and sensitivity analysis of crystallization potential in
+nanoporous media. Part I: simulation model
+Fedor Bukreev1,2 · Adrian Kummerländer1,3 · Julius Jeßberger1,3 · Dennis Teutscher1,2 · Shota Ito1,2 ·
+Stephan Simonis1,3 · Davide Dapelo4 · Mohaddeseh M. Nezhad4 · Hermann Nirschl1,2 · Mathias J. Krause1,2,3
+
+Received: 24 February 2025 / Accepted: 21 September 2025 / Published online: 11 October 2025
+© The Author(s), under exclusive licence to Springer-Verlag London Ltd., part of Springer Nature 2025
+
+
+Abstract
+This is the first in a two paper series investigating the process of hydro-electrochemical crystallization in nano-scale
+porous media at the supersaturation stage. In Part I, the synchronous numerical model for integrated hydro-electro-
+chemo-dynamics simulation, and sensitivity analysis of nano-scale crystallization potential, is developed within the Lat-
+tice-Boltzmann framework using the open-source software library OpenLB. The present work makes use of a reactive
+Navier-Stokes-Poisson-Nernst-Planck (RNSPNPE) Equation system for three types of ions in the moving carrier fluid and
+in the presence of a dynamic electric field. We propose a time-adaptive splitting approach to decouple the system, using
+Lattice-Boltzmann method (LBM) for the discretization of the equations. We apply an algorithmic differentiation approach
+for calculation of the parameters’ sensitivities. The complete solver is validated with analytical solutions, on the basis of
+a first-order convergence criterion. The sensitivity approach is validated by comparison to predictions achieved from a
+sensitivity analysis performed with finite difference method, enabling a meaningful analysis of crystallization potential on
+the nanopore level. The work integrates the RNSPNPE system into a framework specifically designed for the supersatu-
+ration process investigations of the crystallizing species within nanoporous geometries. This work proposes a model that
+couples fluid flow, electric potential, and ion transport in a reactive setting. A novel aspect of this work lies in the seam-
+less integration of sensitivity analysis algorithms into the Lattice-Boltzmann physicochemical solver, extending the LBM
+beyond its conventional role as a fluid-flow solver and employing it as a tool for sensitivity analysis. This solver can be
+applied to other nanoscopic and microscopic chemical electro-hydrodynamics processes as well.
+
+Keywords Nanoporous geometry · Phosphates crystallization · Saturation · Nano-scale · Electro-hydrodynamics ·
+Lattice-Boltzmann method · Automatic differentiation
+
+
+
+                                                                              1 Introduction
+     Fedor Bukreev
+     fedor.bukreev@kit.edu                                                    The investigation of chemical processes and surface reac-
+                                                                              tions can be conducted across various scales, ranging from
+1
+     Lattice Boltzmann Research Group (LBRG), Karlsruhe                       the nanoscopic to the microscopic. These scales define the
+     Institute of Technology (KIT), Straße am Forum 8,
+     Karlsruhe 76131, Germany                                                 size of the control volume where the reaction is analyzed.
+2
+                                                                              In heterogeneous porous systems, reactions occur at mul-
+     Institute of Mechanical Process Engineering and Mechanics
+     (MVM), Karlsruhe Institute of Technology (KIT), Straße am                tiple scales depending on the pore size distribution. Exten-
+     Forum 8, Karlsruhe 76131, Germany                                        sive research has been conducted at both the macroscopic
+3
+     Institute for Applied and Numerical Mathematics (IANM),                  scale, where the entire reactor volume is considered, and the
+     Karlsruhe Institute of Technology (KIT), Englerstraße 2,                 microscopic scale, focusing on individual pore structures.
+     Karlsruhe 76131, Germany                                                 However, this study primarily focuses on the nanoscale,
+4
+     Department of Civil and Environmental Engineering, School                where reactions occur at the finest level of pore confinement.
+     of Engineering, University of Liverpool, Brownlow Hill,
+     Liverpool L69 3GH, UK
+
+
+                                                                                                                                 13
+4588                                                                                Engineering with Computers (2025) 41:4587–4603
+
+
+   In the present work, we focus on the numerical approach        crystallization also belongs to, can be divided into the fol-
+in the nanoscopic scale, and the relevant lengths are com-        lowing general steps:
+prised between around 40 nanometers (most frequent pore
+diameters of the calcium silicate hydrate (CSH) micro-parti-      1. migration of reacting ions from bulk to the pore entrance
+cles CIRCOSIL). An experimentally fitted reaction kinetics           (diffusive, hydraulic and electric transport)
+equation is often sufficient for simulation of large industrial   2. migration of ions through pore volume (diffusive,
+reactors and has the advantage of covering large scales with         hydraulic and electric transport)
+minimal computational effort [1]. Unfortunately, in most          3. contact of ions with pore wall leading to dissolution of
+cases such macroscopic full reactor simulations can not              calcium cations
+lead to a complete understanding of the detailed processes,       4. saturation of reactants at the soil surface
+when the interaction between chemical species is firmly           5. distinct nucleation of the adsorbate ion based crystal at
+prescribed by an empirically constructed polynomial [2].             the point with most appropriate conditions (saturation
+To recover small-scale process information, finer measures           product above one and low surface tension)
+must be taken, which require more expensive experiments           6. layer-wise growth of the crystal.
+and apparatus or more complex computational techniques.
+   A suitable example to represent the different abstrac-         On example of the phosphate crystallization in the CSH
+tion levels is phosphate adsorption from waste water using        pores, these steps are schematically presented in Fig. 1.
+porous micro-CSH particles as adsorbent. Investigating                The present work considers the first four steps without
+this process on the macroscopic scale allows one to find          pore volume change due to dissolution and crystallization
+the overall mass of adsorbed phosphate assuming standard          processes, assuming very small timescales regarded here.
+linear, Langmuir, or Freundlich sorption isotherms together       To do so, the chemical species are modeled as ions that are
+with multiple diffusion mechanisms, namely film and pore          influenced by fluid motion and an electric field. Previously,
+diffusion (see for example [3] and references therein). As        Kler et al. [4] have investigated the electrodynamic sys-
+mentioned above, simulations of this type are based on            tem on a microfluidic chip with the finite elements method
+experimentally fitted adsorption data and do not provide          (FEM), using a free-slip boundary condition for the carrier
+insight on the separate process steps and the respective          fluid motion. Barnett et al. [5] discretized the pore-scale
+dynamics. In contrast to that, modeling on the pore-scale         electrochemical ionic flow, described by the Stokes-Pois-
+level where the actual reaction occurs promises to provide a      son-Nernst-Planck equation system, using the finite volume
+deeper understanding of the process details like electrically     method. Fuel cells with multiphase (water/air) flow and dis-
+driven movement of dissolved ions in the pores, desorption        solved ions have been modeled with the LBM by Ryan et
+of bounding metal ions, and their reaction with adsorbate         al. [6]. An LBM discretization of a full set of formulations
+ions. In the present work, the adsorption in the pore-scale       describing an electro-reactive system with chemical-reac-
+is considered as nanoscopic. Thus, chemical adsorption is         tion-driven phase change has been presented by Zhang and
+mainly characterized by a crystallization reaction on the         Wang [7] and used to model for precipitation and dissolution
+pore surface. The numerical simulation of this phenomenon         cases. Notably, the use of LBM has become popular in bat-
+is typically based on a crystallization model, a system of        tery modeling [8, 9]. The electro-kinetic system discretized
+equations describing the species dynamics in the surround-        with LBM was analytically also validated by Tian et al. [10].
+ing liquid, and its numerical discretization. Adsorption as an    The principles of electric double layer (EDL) theory rel-
+example of a standard pore-scale chemical process, where          evant to surface reactions at the nano- and micro-levels can
+                                                                  be found in [11]. Nevertheless, these surface reactions have
+Fig. 1 General pore-scale multiphase
+fluid-solid chemical process with chemi-
+cal species considered as solved ions in a
+carrier fluid
+
+
+
+
+13
+

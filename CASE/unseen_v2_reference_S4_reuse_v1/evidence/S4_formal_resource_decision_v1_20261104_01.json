@@ -1,0 +1,68 @@
+{
+  "protocol_id": "S4-FRD-v1",
+  "date": "2026-11-04",
+  "kind": "ADOPTED_FORMAL_RESOURCE_DECISION_NOT_EXECUTION_RELEASE",
+  "stage": "S4_THIN_GRID",
+  "status": "ADOPTED_BY_ACTUAL_USER_REPLY",
+  "recommendation": "FULL_SIX_ORIGINAL_CAPS_WITH_EXPLICIT_TIMEOUT_RISK_ACCEPTANCE",
+  "ordered_run_ids": [
+    "URV_S4_P_dx5_reuse_v1_20261103_01",
+    "URV_S4_T_dx5_reuse_v1_20261103_01",
+    "URV_S4_P_dx2p5_reuse_v1_20261103_01",
+    "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+    "URV_S4_P_dx1p25_reuse_v1_20261103_01",
+    "URV_S4_T_dx1p25_reuse_v1_20261103_01"
+  ],
+  "solver_wall_cap_seconds_by_dx_nm": {
+    "5": 3600,
+    "2.5": 14400,
+    "1.25": 43200
+  },
+  "per_checker_wait_cap_seconds": 3600,
+  "internal_saved_field_reader_wait_cap_seconds": 3600,
+  "solver_budget_hours": 34,
+  "checker_wait_budget_hours": 6,
+  "forty_hours_is_strict_batch_wall_cap": false,
+  "automatic_retry": false,
+  "automatic_extension": false,
+  "S5_authorized": false,
+  "resource_decision_accepted": true,
+  "user_explicitly_authorized": true,
+  "user_instruction_verbatim": "现在采用并授权完整六条；生成合同和命令，由我手动启动",
+  "simulation_authorized": false,
+  "formal_simulation_authorized": false,
+  "native_zero_step_authorized": false,
+  "initial_field_readback_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "approved_runs": [],
+  "approved_run_ids": [],
+  "approved_audit_run_ids": [],
+  "actual_formal_run_ids": [],
+  "AI_may_start_solver": false,
+  "user_manually_starts": true,
+  "preparation_B_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/evidence/preparation_B.json",
+  "preparation_B_sha256": "7ca2ce3c27076a80d7d692bb13f3030854cf44b683dfe6bcec54ed15c288b06c",
+  "PERF_decision": {
+    "required_for_recommended_route": false,
+    "basis": "Same ELF completed larger S2 six-run cases plus documented short S2 PERF resource evidence and accepted S4 zero audit",
+    "does_not_mean_S4_performance_verified": true,
+    "S4_convergence_or_12h_completion_guaranteed": false,
+    "optional_route_requires_separate_scope_implementation_and_authorization": true
+  },
+  "failure_policy": "Any prerequisite/native/process/timeout/drift/checker failure stops the batch; preserve completed prefix, no resume/retry/extension. After six accepted runs evaluate both original three-grid branches; grid failure is HOLD, no S5.",
+  "implementation_required_for_recommended_six_run_route": false,
+  "adopted_at": "2026-11-04T09:30:26.917754+08:00",
+  "authorization_question_verbatim": "是否现在采用 S4-FRD-v1，并授权完整六条正式 S4：按5／2.5／1.25 nm、每档沿槽P→横槽T；单条求解上限分别为1／4／12小时，每条标准独立检查外层等待最多1小时，前条完整验收通过才继续（包括第四条后自动进入细网格）？暂不另做PERF，接受细网格可能12小时未完成、批次随即停止的风险；求解预算合计34小时、检查另最多6小时，文件处理及清理另计，40小时不是总时限保证。失败即停，不自动重试、加时或进入S5。本次仅让我复核后生成正式合同和一条命令，由你本人手动启动。",
+  "authorization_question_item_id": "[\"request_user_input_async\",\"call_a2f8d135b2a942e78a70d8438206254e\",0]",
+  "authorization_evidence": {
+    "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/evidence/S4_formal_launch_authorization_v1_20261104_01.json",
+    "sha256": "172917cc1cfa97a8dc0b639d0f09320841ac0e22047e20650d342822903f4b3a"
+  },
+  "adopted_scope_protocol": {
+    "protocol_id": "S4-FRD-v1",
+    "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S4_formal_scope_resource_review_20261104_090724/PROTOCOL.md",
+    "sha256": "47d94ac2f615f1ad4d438f18d2cb84af2346fb6be1bfa3457ff1c85d0f3b954c"
+  },
+  "fourth_to_fifth_fine_grid_advance_accepted": true,
+  "fine_grid_12h_timeout_risk_accepted": true
+}

@@ -1,0 +1,2030 @@
+                        Appl. Math. Mech. -Engl. Ed., 42(5), 721–746 (2021)
+
+      APPLIED MATHEMATICS AND MECHANICS (ENGLISH EDITION)
+ https://doi.org/10.1007/s10483-021-2733-9
+
+
+
+
+        Mathematical modeling and numerical computation of the
+            eﬀective interfacial conditions for Stokes ﬂow on
+                    an arbitrarily rough solid surface∗
+
+             A. T. TRAN1 , H. LE QUANG2,† , Q. C. HE2,3 , D. H. NGUYEN1
+       1. Research and Application Center for Technology in Civil Engineering, University of
+                      Transport and Communications, Hanoi 10000, Vietnam;
+      2. Laboratoire Modélisation et Simulation Multi-Echelle, Unité Mixte de Recherche 8208,
+               Centre National de la Recherche Scientiﬁque, Université Gustave Eiﬀel,
+                                  Marne-la-Vallée F-77454, France;
+                3. School of Mechanical Engineering, Southwest Jiaotong University,
+                                      Chengdu 610031, China
+                          (Received Jul. 16, 2020 / Revised Mar. 12, 2021)
+
+
+
+      Abstract       The present work is concerned with a two-dimensional (2D) Stokes ﬂow
+      through a channel bounded by two parallel solid walls. The distance between the walls
+      may be arbitrary, and the surface of one of the walls can be arbitrarily rough. The main
+      objective of this work consists in homogenizing the heterogeneous interface between the
+      rough wall and ﬂuid so as to obtain an equivalent smooth slippery ﬂuid/solid interface
+      characterized by an eﬀective slip length. To solve the corresponding problem, two eﬃcient
+      numerical approaches are elaborated on the basis of the method of fundamental solution
+      (MFS) and the boundary element methods (BEMs). They are applied to diﬀerent cases
+      where the ﬂuid/solid interface is periodically or randomly rough. The results obtained by
+      the proposed two methods are compared with those given by the ﬁnite element method
+      and some relevant ones reported in the literature. This comparison shows that the two
+      proposed methods are particularly eﬃcient and accurate.
+      Key words     eﬀective slip length, method of fundamental solution (MFS), boundary
+      element method (BEM), Stokeslet, micro-channel, ﬂuid/solid interface
+      Chinese Library Classification O343.3
+      2010 Mathematics Subject Classification          74Q15
+
+
+∗ Citation: TRAN, A. T., LE QUANG, H., HE, Q. C., and NGUYEN, D. H. Mathematical modelling
+  and numerical computation of the eﬀective interfacial conditions for Stokes ﬂow on an arbitrarily
+  rough solid surface. Applied Mathematics and Mechanics (English Edition), 42(5), 721–746 (2021)
+  https://doi.org/10.1007/s10483-021-2733-9
+† Corresponding author, E-mail: hung.lequang@univ-paris-est.fr
+  Project supported by the Vietnam National Foundation for Science and Technology Development
+  (NAFOSTED) (No. 107.02-2017.310)
+
+c Shanghai University and Springer-Verlag GmbH Germany, part of Springer Nature 2021
+722                 A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+1     Introduction
+
+    In mechanics of ﬂuids, the interface between ﬂuid and solid is usually assumed to be smooth.
+However, in a variety of situations of theoretical or/and practical interest, for example, in the
+fabrication of superhydrophobic surfaces, this assumption may appear to be no longer valid
+and the consideration of rough interfaces becomes necessary. More fundamentally, an interface
+which is nominally smooth at a coarse scale is generally rough at a ﬁner scale. The problem of
+determining the eﬀective interfacial conditions for an interface at the macroscopic scale while
+accounting for interfacial roughness at microscopic and mesoscopic scales has been investigated
+over the past two decades but is still far from being solved. The present work aims to study
+the problem of a pressure-driven Stokes ﬂow through a channel between two parallel walls in
+the case where the interface between the ﬂuid and one wall of the channel is arbitrarily rough.
+This work can be viewed as a continuation of Ref. [1], in which the interfaces were assumed to
+be periodically rough.
+    In modeling and simulating the ﬂow of a ﬂuid over a solid surface, the classical uniform
+ﬂuid/solid interfacial condition is usually adopted in the case where the solid surface is smooth.
+However, when the solid surface exhibits roughness, the uniform ﬂuid/solid interfacial hypoth-
+esis is often no longer applicable and has to be replaced by a mixed or heterogeneous interfacial
+condition. One eﬃcient way to deal with a rough ﬂuid/solid interface consists in replacing it by
+a smooth slippery ﬂuid/solid interface characterized by an eﬀective slip length. The problem
+of determining such an eﬀective slip length for a rough ﬂuid/solid interface has been studied
+for more than two decades. We cite, for example, Refs. [2]–[8] for the shear-driven Stokes ﬂow
+and Refs. [9]–[15] for the pressure-driven Stokes ﬂow. In particular, the eﬀective slip lengths of
+some special microstructures of rough surfaces have been analytically determined by Feuillebois
+et al.[16] for the case of a Stokes ﬂow through a thin channel between two parallel rough walls.
+It is useful to remark that, when the channel thickness is thin, there is a mathematical corre-
+spondence of the problem of determining the eﬀective slip length to the one of determining the
+eﬀective bi-dimensional permeability. Consequently, all results obtained for the eﬀective perme-
+ability are directly applicable to the eﬀective slip length. In the other “extreme” case where the
+channel is thick, Belyaev and Vinogradova[13] obtained an analytical expression of the eﬀective
+slip length for unidirectionally periodic rough surfaces. In addition, by using a semi-analytical
+method, Vinogradova and Belyaev[15] provided the eﬀective slip length for the case where the
+channel thickness is arbitrary but the rough surface is only unidirectionally periodic. Recently,
+in Ref. [1], a semi-analytical method has been proposed to determine the eﬀective slip length for
+the case where the channel thickness is arbitrary and the rough surface can be periodic along
+two directions. However, up to now, the works reported in the literature have been limited
+to the case where the channel thickness is thin or the microstructure of the rough surface is
+periodic along one direction or two directions. In view of this situation, the present work aims
+mainly to solve the open problem of pressure-driven and shear-driven Stokes ﬂows through a
+channel of arbitrary thickness between two parallel walls whose surfaces are arbitrarily rough.
+To achieve this objective, we develop, in particular, two approaches to homogenizing a rough
+interface so as to replace it by an equivalent smooth interface characterized by an eﬀective slip
+length.
+    The ﬁrst approach to be elaborated is based on the method of fundamental solution (MFS).
+The latter, which can be considered as one of the boundary-discretization methods (with-
+out needing to discretize the computational domain), has emerged as an eﬃcient technique
+for numerically calculating a ﬂuid ﬂow in recent years. We can cite here, for example, the
+investigations[17–21] . In these studies, the MFS was applied to solve two-dimensional (2D) or
+three-dimensional (3D) Stokes ﬂows. The speciﬁc feature of the MFS resides in using a set
+of singularized force elements of unknown intensities located at the source points to induce
+the ﬂow ﬁelds. When these intensities are determined, the ﬂuid quantities, such as velocity,
+    Mathematical modeling and numerical computation of the eﬀective interfacial conditions     723
+
+pressure, and stress, can be approximated by employing the free-space Green’s functions, called
+also Stokeslets. In the approach based on the MFS, the collocation points and source points
+have the same number and are placed on the physical boundary and the ﬁctitious boundary,
+respectively (see Fig. 1(a)); the force strength can be determined with the aid of the boundary
+conditions for the whole of collocation points.
+    In this study, we develop an extended MFS, called XMFS, based on the classical MFS,
+and use it to compute the velocity and pressure solution ﬁelds of a Stokes ﬂow through a
+parallel-plate channel of arbitrary channel thickness. In the XMFS, instead of Stokeslet, Green’s
+function for a semi-inﬁnite space is used, which includes the eﬀect of one wall in the solution.
+The modiﬁed Green’s function has the advantage that the number of discrete points is reduced,
+yielding a less number of unknown strength.
+    In the second approach to be proposed, we use the boundary element method (BEM) to
+solve the boundary integral equation (BIE) governing a Stokes ﬂow in a conﬁned 2D domain.
+This method has been successfully used for laminar incompressible ﬂows in many previous
+investigations[22–26] . The BEM is one of the most eﬃcient numerical techniques for solving a
+BIE. In this equation, the solution ﬁelds are presented in terms of integrals (integral repre-
+sentations of the solution), involving the unknown tractions and velocities over the boundaries
+(also called boundary values). These boundary values are then obtained by solving a system
+of linear equations, which results from matching the prescribed boundary conditions. Finally,
+the ﬂuid quantities in the domain are computed by the associated integral representation of the
+solution. It is well-known that singular integrals are a diﬃculty needed to overcome when using
+the BEM, and the accuracy in evaluating them is essential to obtaining accurate solutions. In
+this work, these singular integrals are evaluated analytically. An important distinction between
+the MFS and the BEM is that the boundary in the MFS is discretized discontinuously by a
+system of collocation points and no mesh is required, while the boundary in the BEM is di-
+vided successively into a ﬁnite number of segments, which are called boundary elements (see
+Fig. 1(b)).
+
+
+
+
+                                    Ω                            Ω
+
+
+                               ∂Ω                            ∂Ω
+                                            Physical boundary
+                                                      Boundary element
+                                    (a)    Fictitious boundary (b)
+
+
+             Fig. 1   Discretization schematic of (a) MFS and (b) BEM (color online)
+
+
+    The paper is organized as follows. In Section 2, the setting of the problem under investigation
+is speciﬁed. In particular, the local governing equations, the description of the rough interface,
+and the macroscopic constitutive equations are given. Section 3 is dedicated to elaborating
+the approaches based on the MFS and XMFS to determine the velocity solution ﬁeld of the
+Stokes ﬂow and to ﬁnd the eﬀective slip length for the rough interface. Section 4 describes
+the details of the BEM and the relevant procedure for computing the eﬀective slip length. In
+Section 5, the derived results for the eﬀective slip length of a rough interface obtained from the
+two elaborated approaches are compared with the corresponding numerical results obtained by
+the ﬁnite element method and the main relevant results reported in the literature. Finally, a
+few concluding remarks are provided in Section 6.
+724                   A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+2      Problem setting
+
+    In this work, we consider a 2D steady Stokes ﬂow through a channel between two parallel
+walls of distance H  and length W      . The ﬂuid, with its dynamic viscosity denoted by μ and
+conﬁned in the channel, is assumed to be incompressible, Newtonian, and driven either by an
+applied pressure gradient of intensity ρ or by a translation with a constant speed U  ∗ = ρW H/μ
+                                                                                                
+of the upper channel’s wall.
+    At the microscopic scale, the interface between the Stokes ﬂow and the top wall of this
+channel is assumed to be smooth, and a no-slip interfacial condition is adopted to characterize
+this interface. In contrast with the top wall, the bottom interface between the Stokes ﬂow and
+the bottom wall of the channel is considered to be rough, and a mixed interfacial condition is now
+applied at this bottom interface. Precisely, the bottom interface is assumed to be decomposed of
+n interfacial regions, each of which is characterized by its intrinsic (or microscopic) slip length,
+denoted by λ s (s = 1, 2, · · · , n).
+    Next, we denote by Ω the 2D domain occupied by a representative surface element (RSE)
+of the Stokes ﬂow conﬁned in the channel. We designate by ∂ΩT and ∂ΩB the top and bottom
+interfaces between the Stokes ﬂow and the top and bottom walls of the channel, respectively.
+Let {xy} be a 2D cartesian coordinate system associated with Ω in such a way that the x         -
+direction represents the ﬂow direction and the top wall is located at y = ω  whereas the bottom
+wall is situated at y = ω
+                         −H      (see Fig. 2).
+
+
+
+
+                                                   y              Fluid
+
+                                Solid wall
+                                                                          H
+                                                   O
+                               Rough interface                x
+
+
+
+
+                                                       W
+
+Fig. 2     Problem schematic: Stokes ﬂow inside a channel with non-homogeneous boundary conditions
+           (color online)
+
+      The Stokes equations governing the ﬂuid ﬂow under consideration take the following form:
+                                       μΔU  (
+                                              x) = ∇
+                                                    p(
+                                                      x),                                   (1)
+                                                (
+                                             ∇·U  x) = 0,                                       (2)
+                              
+where U  (
+           x) = U  (
+                     x), V (
+                             x) denotes the velocity vector ﬁeld, and p(
+                                                                         x) designates the pressure
+ﬁeld of the 2D ﬂuid ﬂow.
+    In addition, the velocity vector of the Stokes ﬂow must verify the following boundary con-
+ditions at the top and bottom interfaces:
+    (i) At the top smooth interface ∂ΩT , the no-penetration and no-slip conditions imply that
+                                                  (
+                                                 U  x) = 0.                                     (3)
+                                                       n
+      (ii) At the bottom rough interface ∂ΩB = ∪ ∂ΩB
+                                                   s , the no-penetration and slip conditions
+                                                       s=1
+can be expressed by
+                                              (
+                                             U  x) · n(
+                                                       x) = 0,                                  (4)
+       Mathematical modeling and numerical computation of the eﬀective interfacial conditions             725
+                                                               
+                               (
+                              U  x) · t(     x) − σ
+                                        x) = λ(     (
+                                                       x) · n(
+                                                              x) · t(
+                                                                     x),                                  (5)
+
+where n( x) is the unit vector normal to the boundary, oriented from the ﬂuid into the bottom
+wall, t(
+        x) is the unit tangential vector in the anti-clockwise direction, and the local slip length
+ x) of the bottom interface is characterized by λ(
+λ(                                                  x) = λs if x
+                                                                   ∈ ∂ΩB      denotes the stress
+                                                                          s. σ
+tensor ﬁeld in the ﬂuid.
+    At the macroscopic scale, the bottom rough interface between the ﬂuid and the inferior wall
+of the channel is homogenized so as to be replaced with an equivalent smooth interface whose
+eﬀective interfacial condition is expressed by
+                                                     
+                 U (      x) = b − σ
+                     x) · t(          (
+                                         x) · n(
+                                                x) · t(
+                                                       x) with x     = (
+                                                                         x, ω   
+                                                                             − H),             (6)
+
+where b is deﬁned as the eﬀective slip length of the equivalent smooth interface, and the symbol
+∗ denoting the length average of a local quantity ∗ on the bottom interface characterized by
+y = ω
+     −H   is deﬁned by
+                                                   
+                                               1
+                                      ∗ =                 
+                                                        ∗ dx,                                 (7)
+                                            |∂ΩB | ∂ΩB
+where |∂ΩB | designates the length of ∂ΩB .
+   Due to the fact that the Stokes ﬂow problem is linear, the superposition principle can be
+                                                 (
+applied by decomposing the velocity vector ﬁeld U  x) into two parts as follows:
+
+                                          (
+                                         U        H (
+                                            x) = u          (
+                                                      x) + u  x).                                         (8)
+
+Here, u H (
+            x) is the homogeneous part of the velocity ﬁeld obtained when no-slip interfacial
+conditions are applied at both the top and bottom interfaces. It is clear that u   H (
+                                                                                       x) corresponds
+exactly to the classical solution of the Poiseuille or Couette ﬂow. The second part u     (
+                                                                                            x), viewed
+as the perturbation part of the velocity vector solution and due to the presence of the roughness
+on the bottom ﬂuid/solid interface, will be determined exhaustively in the next two sections.
+It is well-known that, under an applied pressure gradient or a translation of upper wall, the
+                       P (
+velocity vector ﬁeld, u    x) and u C (
+                                        x), of the classical Poiseuille and Couette ﬂow are given by
+
+                                      P (
+                                     u          uP , 0)
+                                          x) = (          for the Poiseuille ﬂow,
+                         H (
+                        u    x) =                                                                         (9)
+                                      C (
+                                     u          uC , 0) for the Couette ﬂow
+                                          x) = (
+
+with
+
+                                      ρ(
+                                        y+H   −ω )2       y+H
+                                                         ρH(    −ω
+                                                                   )
+                              P = −
+                              u                       +               ,                                  (10)
+                                            2μ                2μ
+                                       ρW (
+                                            y+H   −ω )
+                              C (
+                              u   x) =                   .                                               (11)
+                                               μ
+
+3    MFS
+
+3.1 Classical MFS
+    The perturbation part u      (
+                                   x) of the velocity vector U    (
+                                                                    x) and the pressure ﬁeld p(   x) can be
+determined by applying the MFS. For the bi-dimensional case, according to this method, the
+source point ξj = (ξj , ηj ) (j = 1, 2, · · · , N ) with unknown strength τj = (
+                                                                                    τj , νj ) is located out-
+side the ﬂow domain and situated at an artiﬁcial boundary of distance ε between the ﬁctitious
+and physical boundaries. For simplicity, the source points are assumed to be regularly dis-
+tributed at this ﬁctitious boundary. By applying the superposition principle, the perturbation
+726                  A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+                                                                                        ∈Ω
+part of the velocity vector solution ﬁeld can be determined at any point of observation x
+by the following approximation:
+                                                  N
+                                             1       x, ξj )
+                                   (
+                                  u  x) =           S(       τj (ξj ),                            (12)
+                                            4πμ j=1
+
+              is the individual free-space Green’s tensor function associated with the velocity
+        x, ξ)
+where S(
+vector ﬁeld, called also Stokeslet (see Ref. [27]). Physically, the component Sαβ (   of S(
+                                                                                    x, ξ)        
+                                                                                             x, ξ)
+with α and β given by x or y represents the value of the velocity vector at the observation point
+ in the α-direction due to a point source of unit strength applied at ξ in the β-direction. More
+x
+                                     take the following form:
+                               x, ξ)
+precisely, the expressions of S(
+
+                                  Sαβ (   = −δαβ ln r + rα rβ .
+                                        x, ξ)                                                       (13)
+                                                              r2
+In this equation, r = x    r = 
+                        − ξ,      r , and δαβ stands for Kronecker’s symbol if δxx = δyy = 1
+and δαβ = 0 otherwise. By choosing W    as the length scale and ρ as the reference of pressure
+gradient, we obtain the following dimensionless parameters:
+             ⎧
+             ⎨x = x     , y = y/W
+                     /W            , H = H/   W         W
+                                                   , ξ = ξ/  , η = η/W,
+              ⎩           2 ),               2 ),                   2 ),                 2 ).
+                  u=u
+                    μ/(ρW         v = vμ/(ρW              τ = τ/(ρW            ν = ν/(ρW
+Therefore, the perturbation part of the velocity vector ﬁeld takes the following dimensionless
+form:
+                              N                          (x − ξ )(y − η )  
+                           1       (x − ξj )2                      j       j
+                u(x, y) =              2      − ln rj τj +                     νj ,                 (14)
+                          4π j=1      rj                             rj2
+                              N 
+                           1       (x − ξj )(y − ηj )       (y − η )2
+                                                                    j
+                                                                                
+                v(x, y) =                   2          τj +       2     − ln rj νj .                (15)
+                          4π j=1          rj                     rj
+
+    To determine the unknown strength τj with j = 1, 2, · · · , N , the same number of boundary
+collocation points xi (i = 1, 2, · · · , N ) distributed on the physical boundary ∂Ω should be
+considered (see Fig. 3). Note that N is the total number of collocation points determined by
+                                                                     n
+                              N = NT + NB          with N B =             Ns ,                      (16)
+                                                                    s=1
+
+where N T and N B are the numbers of collocation points on the two top and bottom interfaces,
+∂ΩT and ∂ΩB , respectively, and Ns corresponds to the number of collocation points on the sth
+interfacial region ∂ΩB
+                     s of the bottom wall. Then, the boundary conditions (3)–(5) of the pertur-
+bation ﬂow at the top and bottom interfaces can be expressed in the equivalent dimensionless
+forms as follows:
+    (i) At the top smooth interface ∂ΩT ,
+                                     u(xk , ω) = v(xk , ω) = 0.                                     (17)
+                                                      n
+      (ii) At the bottom rough interface ∂ΩB = ∪ ∂ΩB
+                                                   s,
+                                                   s=1
+
+                             v(xi , ω − H) = 0,                                                     (18)
+                                                   ∂u                        
+                             u(xi , ω − H) = λi            (xi , ω − H) + χ ,                       (19)
+                                                      ∂y
+     Mathematical modeling and numerical computation of the eﬀective interfacial conditions                               727
+
+where χ = H/2 for the pressure-driven ﬂow, χ = 1 for the shear-driven ﬂow, and λi = λ            i /W
+                                                                                                      is
+                                                                                    B
+the normalized intrinsic slip length at an arbitrary point xi = (xi , ω − H) ∈ ∂Ωs . By applying
+the point collocation method[5] , a set containing N T collocation points xi (i = 1, 2, · · · , N T ) sit-
+uated at the top interface ∂ΩT and a set comprising N B collocation points xi (i = 1, 2, · · · , N B )
+located at the bottom interface of the channel are introduced. For simplicity, the collocation
+points are assumed to be regularly distributed at the top and bottom interfaces ∂ΩT and ∂ΩB .
+Accounting for the boundary conditions (17)–(19), we obtain the following system of equations
+with 2N unknown strengths {τj , νj } for the 2D Stokes ﬂow problem:
+   (i) At the top smooth interface ∂ΩT ,
+                         N      (x − ξ )2                             N 
+                                                                            (xi − ξj )(yi − ηj ) 
+                                       i         j
+                                            2            − ln rij τj +                2            νj = 0,                (20)
+                         j=1
+                                           rij                         j=1
+                                                                                    rij
+                         N    (x − ξ )(y − η )       N 
+                                                           (yi − ηj )2         
+                                 i   j    i  j
+                                       2         τj +           2      − ln rij νj = 0.                                   (21)
+                         j=1
+                                      rij             j=1
+                                                               rij
+
+   (ii) At the bottom rough interface ∂ΩB ,
+           N     (x − ξ )2                                  (yi − ηj )      2(xi − ξj )2 (yi − ηj ) 
+                     i         j
+                          2            − ln rij + λi             2      + λi            4              τj
+          j=1
+                         rij                                    rij                   rij
+               N     (x − ξ )(y − η )                            (xi − ξj )      2(xi − ξj )(yi − ηj )2 
+                          i        j        i        j
+          +                         2                     − λi        2      + λi            4             νj = 4πλi χ,   (22)
+              j=1
+                                   rij                               rij                   rij
+           N   (x − ξ )(y − η )       N 
+                                            (yi − ηj )2         
+                  i   j    i  j
+                        2         τj +           2      − ln rij νj = 0,                                                  (23)
+          j=1
+                       rij             j=1
+                                                rij
+
+where rij is the distance from the source point j to the observation point i.
+  The system of 2N linear equations (20)–(23) can be recast in the matrix form as follows:
+
+                                                                     Aτ = c,                                              (24)
+
+where A is a 2N × 2N matrix, c is a vector of 2N components whose expressions take the right-
+hand side of Eqs. (20)–(23), and τ = {τ1 , τ2 , · · · , τN , ν1 , ν2 , · · · , νN }T represents the unknown
+strength vector. The expressions of A and c can be found in Appendix A.
+    Finally, the solution provided by the system of linear equations (24) allows us to calculate
+the velocity solution ﬁeld through Eq. (8) together with Eqs. (10), (11), (14), and (15). The
+eﬀective normalized slip length can be determined by using the following equivalent form of
+Eq. (6):
+                                                                   NB
+                                                                         u(xi , ω − H)
+                                                                   i=1
+                                                     b=                                     .                             (25)
+                                                            NB                         
+                                                                    ∂u
+                                                                       (xi , ω − H) + χ
+                                                            i=1
+                                                                    ∂y
+3.2 XMFS
+   It should be mentioned here that the classical MFS previously established requires a dis-
+cretization of collocation points at both the top and bottom interfaces between the ﬂow and two
+walls of the channel. However, in this paper, because the top interface between the ﬂow and the
+bottom wall of the channel is assumed to be smooth and non-slippery, we are interested only
+to determine the eﬀective interfacial condition of the bottom rough interface. Hence, instead
+728                    A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+of the free-space Green’s function employed in the previous section, we propose now to use the
+new Green’s function associated with a domain bounded by a solid plane wall (see Refs. [22] and
+[27]). This Green’s function allows us to reduce the quantity as well as the times of calculation
+by incorporating the eﬀect of the top wall into the fundamental solution. Therefore, only the
+bottom interface must be discretized. This discretization is illustrated in Fig. 4.
+
+
+
+
+                 Source point
+                                                                        Discretization is not required
+  y                                                              y
+
+
+
+
+                                                                                                         H
+                                              H
+                       Boundary field point
+  O                             ε                                O                               ε
+             x                                                                 x
+
+
+
+                         l                                                             l
+
+
+Fig. 3   Distribution of boundary ﬁeld points                Fig. 4     Discretization of the bottom rough
+         and source points (color online)                               interface and distribution of source
+                                                                        points (color online)
+   Here, let us assume that the perturbation part of the velocity solution ﬁeld is induced by an
+array of source points ξj (j = 1, 2, · · · , N B ) located at the distance ε = ε/W
+                                                                                    from the bottom
+wall (see Fig. 4). Therefore, the perturbation part of the velocity ﬁeld can be expressed as
+
+                                                   NB
+                                               1
+                                     (
+                                     u x) =           G    x, ξj )
+                                                       W (       τ (ξj ).                             (26)
+                                              4πμ j=1
+
+In this equation, the individual Green’s function G     x, ξj ) represents the velocity ﬁeld at x
+                                                    W (                                         of
+the ﬂuid bounded by a plane wall located at y = ω  produced by a unit force at a source point
+ξj . This individual Green’s function can be expressed as the sum of four contributions as
+
+                   W (
+                  G        = S(
+                       x, ξ)        − S(
+                               x, ξ)   x, ξ ) + 2       x, ξ ) − 2
+                                                         D (
+                                                     h2 G                hG      x, ξ ),
+                                                                            SD (                       (27)
+
+where ξ is the mirror image of the source point ξ with respect to the upper wall (see Fig. 5),
+
+h = η − ω                    D (
+          , and the tensors G        and G
+                                  x, ξ)          x, ξ ) are deﬁned as
+                                            SD (
+
+                                     R
+                                      α      δ           β 
+                                                         α R
+                 D
+                 G    x
+                     ( ,  ) = κ ∂
+                          ξ                = κ
+                                                  αβ
+                                                     − 2
+                                                         R
+                                                                 ,                                       (28)
+                  αβ
+                                  ∂R  2
+                                   β R         R2       R4
+                                   ∂                                        α − δαy R
+                                                                         δβy R        β
+                  SD (
+                 G                       x, ξ ) = R   D (
+                                                      y G       
+                   αβ x, ξ ) = κ      Sαy (               αβ x, ξ ) + κ                 .               (29)
+                                   
+                                 ∂ Rβ                                          R 2
+
+
+In Eqs. (28) and (29),
+                 ⎧
+                 ⎪
+                 ⎪              1,   β = x,
+                 ⎨κ =
+                   ⎪     − 1, β = y,
+                   ⎪
+                   ⎩ 
+                        − ξ , R
+                     R=x         x = x   
+                                       − ξ,             y = y + η − 2
+                                                         R               ω,         = R.
+                                                                                   R    
+    Mathematical modeling and numerical computation of the eﬀective interfacial conditions        729
+
+
+                                                                ξ'(ξ, 2ω−η)
+
+
+                                                       |R|
+
+
+
+
+                                                                              |h|
+                                     x(x, y)
+
+
+
+
+                                                                              |h|
+                         y                               |r|
+
+
+
+
+                                                                                    |ω|
+                                                                  ξ(ξ, η)
+
+                         O            x
+
+Fig. 5   Location of Stokeslet and image for a computation of Green’s function in a semi-inﬁnite space
+         (color online)
+
+The formulae of the perturbation part of the velocity vector ﬁeld are now expressed in the
+dimensionless forms by using the same normalized parameters proposed in the previous subsec-
+tion,
+
+                                               NB
+                                        1
+                             u(x, y) =        ((GW                W
+                                                 xx (x, ξj )τj + Gxy (x, ξj )νj ),               (30)
+                                       4π j=1
+                                               NB
+                                        1
+                             v(x, y) =       (GW (x, ξj )τj + GW
+                                                               yy (x, ξj )νj ),                  (31)
+                                       4π j=1 yx
+
+where the expressions of GW
+                          αβ (x, ξj ) are detailed by
+
+                    (x − ξj )2           (x − ξj )2                   1    2(x − ξj )2 
+   GW
+    xx (x, ξj ) =              − ln rj −            +  ln R j + 2h 2
+                                                                   j      −
+                       rj2                  Rj2                       Rj2       Rj4
+                           (y + η − 2ω) 2(x − ξ )2 (y + η − 2ω) 
+                                  j                  j          j
+                    −2hj                  −                               ,                      (32)
+                                 Rj2                      Rj4
+
+                    (x − ξj )(y − ηj ) (x − ξj )(y + ηj − 2ω)        (x − ξj )(y + ηj − 2ω)
+   GW
+    xy (x, ξj ) =            2        −            2          + 4h2j
+                           rj                    Rj                            Rj4
+                          (x − ξ ) 2(x − ξ )(y + η − 2ω)2 
+                                   j         j        j
+                    +2hj             −                         ,                                 (33)
+                               Rj2               Rj4
+
+                    (x − ξj )(y − ηj ) (x − ξj )(y + ηj − 2ω)        (x − ξj )(y + ηj − 2ω)
+   GW
+    yx (x, ξj ) =                     −                       − 4h2j
+                           rj2                   Rj2                           Rj4
+                          (x − ξ ) 2(x − ξ )(y + η − 2ω)2 
+                                   j         j        j
+                    +2hj             +                         ,                                 (34)
+                               Rj2               Rj4
+
+                    (y − ηj )2           (y + ηj − 2ω)2                 1    2(y + ηj − 2ω)2 
+   GW
+    yy (x, ξj ) =              − ln rj −                + ln Rj − 2h 2
+                                                                     j      −
+                       rj2                     Rj2                      Rj2         Rj4
+                           (y + η − 2ω) 2(y + η − 2ω)3 
+                                  j                 j
+                    +2hj                  −                                                    (35)
+                                 Rj2               Rj4
+730                 A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+with hj = ηj − ω.
+   Next, the 2N B unknown strengths {τj , νj } with j = 1, 2, · · · , N B related to N B source point
+ξj are determined by applying once more the point collocation method presented in the previous
+section. However, in the present case, the collocation points are distributed only at the bottom
+boundary ∂ΩB and the number of the collocation points xi (i = 1, 2, · · · , N B ) is chosen in
+such a way that it is equal to the number of the source points. The interfacial conditions (18)
+and (19) at ∂ΩB must be satisﬁed at all interfacial points. This yields a system of 2N B linear
+equations as follows:
+                        NB                                         
+                                                     ∂GW
+                                                       xx
+                               GW
+                                xx (xi , ξj ) − λi        (xi , ξj ) τj
+                        j=1
+                                                      ∂y
+
+                            NB                                         
+                                                         ∂GW
+                                                           xy
+                        +         GW
+                                   xy (xi , ξj ) − λi         (xi , ξj ) νj = 4πλi χ,           (36)
+                            j=1
+                                                          ∂y
+
+                        NB                         NB
+                              GW
+                               yx (xi , ξj )τj +         GW
+                                                          yy (x, ξj )νj = 0.                    (37)
+                        j=1                        j=1
+
+
+This system can be rewritten in the equivalent matrix form as
+
+                                                   A τ = c ,                                  (38)
+
+where A and c are a 2N B ×2N B matrix and a column vector of 2N B components, respectively,
+and τ is a column vector of unknown strengths {τk , νk } with k = 1, 2, · · · , N B . The expressions
+of the components of A and c are provided in Appendix B.
+    Similar to Subsection 3.1, after solving the system of linear equations (38), the same pro-
+cedure can be applied to calculate the velocity solution ﬁeld and the eﬀective normalized slip
+length b.
+    It is important to notice that the advantage of using Green’s function for a semi-inﬁnite ﬂow
+consists in reducing the number of source points considered and, thus, in reducing the number
+of unknown strengths. This is achieved by incorporating the no-slip interfacial condition on the
+top wall into the formulation. Therefore, the size of matrix A is less than that of A with the
+same number of discretization points on the bottom interface ∂ΩB . This diminishes the time
+and memory needed for calculations.
+
+4     BEM
+
+    In this section, the perturbation part of the velocity solution ﬁeld will be calculated by
+using an approach based on the BEM, sometimes called also the boundary integral method.
+There are many studies demonstrating the eﬃciency and accuracy of this method in ﬁnding
+the solution to the Stokes ﬂow in 2D channels[22–24,28] . In these studies, Green’s function for a
+domain between two inﬁnite plane walls was used, and there was no need for a discretization
+of these walls. Inspired by the aforementioned works, we propose in this section to use Green’s
+function for a semi-inﬁnite ﬂuid domain bounded by a plane wall.
+    The perturbation part u  (
+                               x0 ) of the velocity solution ﬁeld at an arbitrary point x   0 in a
+domain of ﬂuid bounded by an inﬁnite plan wall can be transformed into a boundary integral
+representation of solution as follows[27] :
+                                                        
+                    1                                  1                              
+ (    u(
+    x0 ) x0 ) = −          τ(     x, x
+                               x) · G(   0 )dl(
+                                                 x) −         u x) · T (
+                                                              (           0 ) · n(
+                                                                         x, x        x) dl(
+                                                                                           x), (39)
+                   4πμ ∂ΩB                            4π ∂ΩB
+       Mathematical modeling and numerical computation of the eﬀective interfacial conditions          731
+
+where (                                                                 0 given by
+        x0 ) is a parameter depending on the position of the source point x
+                              ⎧
+                              ⎨ 1 for x0 inside Ω,
+                      (
+                        x0 ) = 1                                                                      (40)
+                              ⎩        0 on the smooth boundary ∂ΩB ,
+                                   for x
+                                2
+      x, x
+and G(   0 ) is either the velocity Green’s function for a semi-inﬁnite domain of the ﬂuid
+bounded by a plane wall G  W (  0 ) deﬁned by Eq. (27) or the periodic velocity Green’s function
+                               x, x
+for the ﬂow in a semi-inﬁnite domain G    W P (  0 ) given by
+                                                x, x
+
+             W P (
+            G                P (
+                      0 ) = S
+                   x, x                    P (
+                                    0 ) − S
+                                 x, x             0 ) + 2
+                                               x, x            DP (
+                                                           h2 G        0 ) − 2
+                                                                    x, x        hG SDP (  0 ),
+                                                                                         x, x         (41)
+
+      P (
+where S      0 ) stands for the periodic Green’s function in the free space,
+          x, x
+                                                    ⎡                             ⎤
+                                                      −A − Y A Y +  1      Y A X
+           P (
+           S    x, x        P (
+                    0 ) = S   x−x        P (X) = ⎣
+                                   0 ) = S                                      ⎦,                  (42)
+                                                          Y AX          −A + Y AY
+
+where
+                    1                                     1              ∂A        ∂A
+              A(X) =   ln (cosh (kY ) − cos (kX)) + ln 2, AX =              , AY =      (43)
+                    2                                     2             ∂X         ∂Y
+with k = 2π denoting the wave number. In addition, the normalized period of the ﬂow is equal
+to one. The tensors G DP ( x, x          SDP (
+                                0 ) and G         0 ) are determined by
+                                                 x, x
+                                                                  
+               DP (             DP (X) =     −A  Y Y     −A  XY
+              G     x, x0 ) = G                                    ,                  (44)
+                                                 AXY        −AY Y
+                                                                                            
+                                                         −Y AY Y            −AX − Y AXY
+                  SDP (
+                 G      x, x        SDP (X) =
+                           0 ) = G                                                                  (45)
+                                                       −AX + Y AXY            −Y AY Y
+
+with
+                                            ⎧
+                                            ⎪
+                                            ⎪        ∂2A
+                                            ⎪ AXY =
+                                            ⎨            ,
+                                                    ∂X∂Y
+                                            ⎪
+                                            ⎪        ∂2A
+                                            ⎪
+                                            ⎩ AY Y =      .
+                                                     ∂Y 2
+
+    The stress tensor T (x, x0 ) in Eq. (39) can be expressed into the two following cases: (i) when
+an arbitrary ﬂow is considered, the stress tensor corresponds exactly to the stress Green’s func-
+tion TW (   0 ) for a semi-inﬁnite domain bounded by a solid wall, i.e., T (
+           x, x                                                                       0 ) = TW (
+                                                                                   x, x               0 );
+                                                                                                   x, x
+(ii) when a periodic ﬂow is concerned, the stress tensor becomes the periodic stress Green’s
+function TW P (    0 ), i.e., T (
+                  x, x                  0 ) = TW P (
+                                     x, x                 0 ). These two functions TW (
+                                                       x, x                                      0 ) and
+                                                                                              x, x
+T (
+  W  P    0 ) are given as follows:
+       x, x
+    (i) When an arbitrary ﬂow is considered,
+
+                T W (  0 ) = T(
+                      x, x            0 ) − T(
+                                   x, x         x, x        h2 TD (
+                                                   0 ) + 2          0 ) − 2
+                                                                    x, x        hTSD (  0 ),
+                                                                                       x, x           (46)
+
+where the components of T(  0 ), called the free-space stresslet, are deﬁned by
+                           x, x
+
+                                                            rα rβ rγ
+                                        Tαβγ (  0 ) = −4
+                                               x, x                     ,                             (47)
+                                                                r4
+732                    A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+while TD (  0 ) and TSD (
+           x, x                  0 ) are two tensors whose components are determined by
+                              x, x
+                           ⎧
+                           ⎪                        D
+                                                   ∂G       D
+                                                           ∂G
+                           ⎪
+                           ⎪  TD (   x , 
+                                           x
+                                                      αβ      γβ
+                                                                 ,
+                           ⎪
+                           ⎪                 0 ) =       +
+                           ⎨ αβγ                   ∂Rγ    ∂Rα
+                                                                                                       (48)
+                               ⎪
+                               ⎪                                SD     SD
+                               ⎪
+                               ⎪                             ∂G       ∂G
+                               ⎩ Tαβγ (
+                               ⎪   SD                            αβ      γβ
+                                           0 ) = −δαγ pSD
+                                        x, x             β +        +       .
+                                                                
+                                                              ∂ Rγ      
+                                                                      ∂ Rα
+
+In Eq. (48), pSD
+               β is the pressure ﬁeld corresponding to the Stokeslet doublet, given by
+
+                                                ∂ R
+                                                   y       δ
+                                                                αy    R  y 
+                                                                      α R
+                          pSD
+                            α (  0 ) = 2κ
+                               x, x                     = 2κ       −2        ,                         (49)
+                                               ∂R  2
+                                                α R          R2      R4
+and
+                    ⎧
+                    ⎨ r = x
+                           −x
+                             0 ,        r = |
+                                               r|,   rx = x
+                                                           −x
+                                                             0 ,     ry = y − y0 ,
+                    ⎩R
+                     =x  ,
+                       −x               R    
+                                          = |R|,      x = rx ,
+                                                       R             y = y + y0 − 2
+                                                                     R                ω.
+                                     0
+
+      (ii) When a periodic ﬂow is concerned,
+
+            TW P (  0 ) = TP (
+                   x, x              0 ) − TP (
+                                  x, x              0 ) + 2
+                                                 x, x        h2 T DP (  0 ) − 2
+                                                                       x, x        hTSDP (  0 ),
+                                                                                           x, x        (50)
+
+where TP (  0 ), TDP (
+           x, x               0 ), and TSDP (
+                          x, x                      0 ) are, respectively, the periodic Stresslet, the
+                                                x, x
+potential dipole periodic of stress, and the Stresslet doublet periodic, whose components are
+speciﬁed by
+              ⎧
+              ⎪
+              ⎪  Txxx
+                   P
+                       = −4AX − 2Y AXY , Txxy     P
+                                                          = −2AY + 2Y AXX ,
+              ⎪
+              ⎪
+              ⎨
+                 Tyyy
+                   P
+                       = −2AY − 2Y AXX , Txyy     P
+                                                         = Tyxy
+                                                              P
+                                                                 = 2Y AXY ,                         (51)
+              ⎪
+              ⎪
+              ⎪
+              ⎪
+              ⎩ P
+                 Tyyx = 2Y AXY , Txyx   P
+                                             = Tyxx
+                                                 P
+                                                       = −2AY + 2Y AXX ,
+              ⎧
+              ⎪
+              ⎪  Txxx
+                   DP
+                       = −2AXY Y , Txxy   DP
+                                              = AXY X − AY Y Y ,
+              ⎪
+              ⎪
+              ⎨
+                 Txyx
+                   DP
+                       = −2AXY X , Txyy   DP
+                                              = −2AXY Y , Tyxx    DP
+                                                                      = AXY X − AY Y Y ,            (52)
+              ⎪
+              ⎪
+              ⎪
+              ⎪
+              ⎩ DP
+                 Tyxy = 2AXY Y , Tyyx   DP
+                                            = −2AXY Y , Tyyy    DP
+                                                                    = −2AY Y Y ,
+                ⎧ SDP
+                ⎪
+                ⎪ Txxx = −2AXY − 2Y AXY Y ,
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪ Txxy
+                    SDP
+                        = −AXX − AY Y + Y AXY X − Y AY Y Y ,
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎨ Txyx
+                    SDP
+                        = −2AXX + 2AY Y − 2Y AXY X ,
+                                                                                                       (53)
+                ⎪
+                ⎪
+                ⎪
+                ⎪ Tyxx
+                    SDP
+                        = −AXX − AY Y + Y AXY X − Y AY Y Y ,
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪ Txyy
+                    SDP
+                        = −2AXY − 2Y AXY Y , Tyxy
+                                               SDP
+                                                   = −2AXY + 2Y AXY Y ,
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎪
+                ⎩
+                  Tyyx
+                    SDP
+                        = −2AXY − 2Y AXY Y , Tyyy
+                                               SDP
+                                                   = −2Y AY Y Y ,
+where
+                      ∂2A                   ∂3A                      ∂3A                     ∂3A
+             AXX =         ,     AXY Y =          ,     AXY X =             ,     AY Y Y =        .
+                      ∂X 2                 ∂X∂Y 2                   ∂X 2 ∂Y                  ∂Y 3
+    Mathematical modeling and numerical computation of the eﬀective interfacial conditions                    733
+
+    Similar to the aforementioned section, the length, the velocity, the traction, the velocity
+Green’s function, and the stress Green’s function can be normalized into dimensionless forms
+by W , ρW         , μ, and 1/W
+          2 /μ, ρW                 in the equations obtained above, respectively. Next, the BIE
+(39) will be solved numerically by applying the BEM for the dimensionless boundary values
+{τ (x), u(x)}. Here, the bottom wall ∂ΩB of the channel is decomposed into N B boundary
+elements Γj . The velocity vector of each element can be determined from the ones of its node’s
+values by adopting a constant, linear, or parabolic function. In our investigation, for simplicity,
+the geometry of the boundary segment can be considered as a straight line (characterized by
+end points and the node point, see Fig. 6), while the boundary value is assumed to be constant
+along this straight line and is exactly equal to its node’s value. By placing x0 successively at all
+nodal points x0i (i = 1, 2, · · · , N B ) on the boundary ∂ΩB , the 2 × N B BIEs including 4 × N B
+unknowns {τj , νj , uj , vj } are obtained as follows:
+
+                            NB                                          NB     
+             1         1                                          1
+               ui = −        τj             Gxx (xj , x0i )dlj −        νj               Gyx (xj , x0i )dlj
+             2        4π j=1             Γj                      4π j=1             Γj
+
+
+                            NB       
+                        1
+                     −        uj              (Txxx (xj , x0i )nx (xj ) + Txxy (xj , x0i )ny (xj ))dlj
+                       4π j=1            Γj
+
+
+                            NB       
+                        1
+                     −        vj              (Tyxx (xj , x0i )nx (xj ) + Tyxy (xj , x0i )ny (xj ))dlj ,      (54)
+                       4π j=1            Γj
+
+
+                            NB                                          NB     
+              1         1                                         1
+                vi = −        τj            Gxy (xj , x0i )dlj −        νj               Gyy (xj , x0i )dlj
+              2        4π j=1            Γj                      4π j=1          Γj
+
+
+                            NB       
+                          1
+                     −          uj            (Txyx (xj , x0i )nx (xj ) + Txyy (xj , x0i )ny (xj ))dlj
+                         4π j=1          Γj
+
+
+                            NB       
+                        1
+                     −        vj              (Tyyx (xj , x0i )nx (xj ) + Tyyy (xj , x0i )ny (xj ))dlj ,      (55)
+                       4π j=1            Γj
+
+
+where τj , νj , uj , and vj are the nodal values of the j th element for the traction and the velocities
+along the x- and y-directions, and x0i is the nodal coordinates of the ith element, while the
+point xj varies over the j th element.
+
+
+                                                         Top wall
+
+
+                                         Boundary element
+                                                                          y
+                                                   End points
+                                                           Node point
+                                                                          O         x
+
+                                                               Bottom wall
+
+
+        Fig. 6   Discretisation of the bottom wall by using boundary elements (color online)
+734                        A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+   Moreover, the aforementioned boundary values must also satisfy the boundary conditions (4)
+and (5). Referring to the work of Nieto et al.[25] and taking into account that tx (x) = −ny (x)
+and ty (x) = nx (x), the slip and no-penetration boundary conditions applied to all nodal points
+give rise to the following equations:
+
+                            − ui nyi + vi nxi = λi (−τi nyi + νi nxi − χn2xi + χn2yi ),                                 (56)
+
+                            ui nxi + vi nyi = 0,                                                                        (57)
+
+where nxi and nyi are the two components of the outward unit vector n normal to the boundary
+at the ith node x0i and the constant χ takes the value χ = H/2 or χ = 1 according as the ﬂow
+is arbitrary or periodic.
+    By combining Eqs. (54)–(57), we obtain a system of linear equations as follows:
+
+                                                          Bf = q,                                                       (58)
+
+where f = {τ1 , τ2 , · · · , τN B , ν1 , ν2 , · · · , νN B , u1 , u2 , · · · , uN B , v1 , v2 , · · · , vN B }T represents the
+vector of unknown boundary values, B is a matrix of size 4N B × 4N B , and q is a vector of size
+1 × 2N B whose values are provided in Appendix C[29] .
+   The system of linear equations (58) is solved to obtain the values for τi , νi , ui , and vi at all
+nodal points. These values are then substituted into the following equation to determine the
+dimensionless eﬀective slip length b:
+
+                                                   NB
+                                                         (−ui nyi + vi nxi )Li
+                                                   i=1
+                                   b=                                                     ,                             (59)
+                                         NB
+                                               (−τi nyi + νi nxi − χn2xi + χn2yi )Li
+                                         i=1
+               
+where Li =            dli is the length of the ith element. Notice that Einstein’s summation convention
+                 Γi
+does not apply in Eqs. (54)–(57) and (59).
+
+5     Results and discussion
+
+   The methods elaborated in the previous sections are now used to study several examples
+of pressure-driven and shear-driven Stokes ﬂows over a rough surface. In our computations,
+the normalized distance  between the ﬁctitious and physical boundaries is set to be equal to
+that between two neighboring collocation points. The ﬂuid properties used in these numerical
+examples are provided in Table 1.
+
+                            Table 1      Fluid properties and dimensions of the patch
+                   Input                                                   Value                              Unit
+
+      Dynamic viscosity μ                                                  10−3                               Pa · s
+      Mass density of ﬂuid                                                103                                kg/m3
+      x-component of pressure gradient ρ                                   103                                kN/m3
+      Intrinsic slip length Λ                                              320                                µm
+      Mathematical modeling and numerical computation of the eﬀective interfacial conditions           735
+
+5.1 Pressure-driven flow over a surface in the presence of a transverse groove
+    The ﬁrst example consists of a 2D pressure-driven Stokes ﬂow through a channel between
+two parallel walls. The top wall of the channel is smooth but the bottom wall is rough in the
+presence of a transverse groove. The normalized width of transverse grooves with respect to
+the length W of the channel is set to be equal to 0.25. The interfacial zone occupied by the
+groove is assumed to be partially slippery and characterized by a normalized slip length λ = 20,
+while the rest of the bottom wall is assumed to be non-slippery with a zero slip length. Using
+the MFS, XMFS, and BEM, the variation of the normalized eﬀective slip length in terms of
+the normalized channel thickness is ﬁrst shown in Fig. 7 and then compared with the numerical
+ones obtained by the ﬁnite element method (FEM) using Comsol Multiphysics. Good agreement
+between these results can be observed, except the value at H = 10 and its neighbour obtained
+with the MFS. Particularly, unlike the MFS, XMFS, and FEM, it is seen in this ﬁgure that, by
+using the BEM, the eﬀective slip length can be computed without diﬃculty when the channel
+is very thin, for example H ⩽ 10−2 .
+5.2 Pressure-driven flow over a surface with periodically distributed transverse
+       grooves
+    The second example concerns a pressure driven ﬂow through a channel between two parallel
+walls, one of which is periodically rough and microtextured with transverse grooves. In this case,
+the slippery area fraction φ is taken to be equal to 0.75. As in the ﬁrst example, the interfacial
+zone occupied by grooves is supposed to be partially slippery and characterized by a normalized
+slip length λ = 20. It is seen from Fig. 8 that very good agreement is achieved between the
+results obtained by applying the BEM and XMFM and the ones provided by Vinogradova
+and Balyaev[15]. The same remark can be made by comparing our results obtained with the
+numerical ones provided by the FEM.
+
+
+    0.015 0                                                   0.18
+                  BEM                                                  BEM
+                  MFS                                         0.16     XMFS
+    0.012 5                                                            Ref. [15]
+                  XMFS                                        0.14
+                  FEM                                                  FEM
+    0.010 0                                                   0.12
+                                                              0.10
+                                                          b
+
+
+
+
+    0.007 5
+b
+
+
+
+
+                                                              0.08
+    0.005 0                                                   0.06
+                                                              0.04
+    0.002 5
+                                                              0.02
+    0.000 0                                                   0.00
+         −4       −3     −2    −1      0     1        2          −4    −3      −2   −1      0      1     2
+                               lg H                                                 lg H
+
+Fig. 7        Eﬀective slip length versus the chan-       Fig. 8      Eﬀective slip length versus the chan-
+              nel thickness for a pressure-driven                     nel thickness for a pressure-driven
+              ﬂow over a transverse groove (color                     ﬂow over a surface with periodically
+              online)                                                 distributed transverse grooves (color
+                                                                      online)
+5.3    Pressure-driven flow over a surface with randomly distributed transverse
+       grooves
+    In this example, by applying the XMFS and BEM presented in the previous sections, the size
+of the RSE for a rough surface with randomly distributed transverse grooves can be determined.
+We consider a Stokes pressure-driven ﬂow through a channel between two parallel walls, one of
+which is assumed to be rough with randomly distributed transverse grooves. More precisely,
+the interfacial zone occupied by grooves is supposed to be slippery with a normalized slip length
+736                         A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+λ = 20, whereas the rest of the bottom interface is non-slippery. In the latter case, the slipping
+area fraction φ is kept constant and equal to φ = 0.5, and the number of the grooves per
+unit length is taken to be equal to 50. At the macroscopic scale, the bottom rough interface
+is homogenized so as to be replaced by an equivalent smooth interface characterized by an
+eﬀective slip length.
+    The average of the eﬀective slip length corresponding to the rough surface with randomly
+distributed transverse grooves can be calculated by applying the Monte Carlo method, which
+was used in the works of Lachihab and Sab[30–31] . With K independent realizations of the
+microstructure of the rough surface, we denote by (b1 , b2 , · · · , bK ) the corresponding eﬀective
+slip lengths. Then, the average of the eﬀective slip length b is given by
+                                                      1
+                                             bK =       (b1 + b2 + · · · + bK ),                                                            (60)
+                                                      K
+and the variance of the eﬀective slip length is calculated by
+                                                               K
+                                              2          1
+                                             σK =                (bi − bK )2 .                                                              (61)
+                                                       K − 1 i=1
+
+The absolute and relative errors of the average value obtained are, respectively, deﬁned by
+                                         σK                 σK
+                             ζabs = 1.96 √ , ζrel = 1.96 √ .                               (62)
+                                          K               bK K
+With a suﬃciently large value of K, the probability for the eﬀective slip length b to be in the
+interval [bK − ζrel bK , bK + ζrel bK ] is 95%.
+    Figure 9 shows the inﬂuence of the size Π on the average of the eﬀective slip lengths. These
+average values are plotted with their intervals of conﬁdence [bK −1.96σK , bK +1.96σk ]. Figure 10
+indicates the number of realizations in terms of the size of the RSE. It is observed that the
+number of realizations decreases when the size of the RSE increases.
+           ×10−3
+     5.0                                                                                      1 200
+                                                 BEM                                                                                      BEM
+                                                 XMFS                                                                                     XMFS
+     4.5                                                                                      1 000
+                                                                     Number of realizations
+
+
+
+
+     4.0                                                                                       800
+
+                                                                                               600
+bK
+
+
+
+
+     3.5
+
+     3.0                                                                                       400
+
+     2.5                                                                                       200
+
+     2.0                                                                                         0
+           1   2    3   4    5       6   7   8    9     10                                            1   2   3   4   5       6   7   8   9 10
+                                 ∏                                                                                        ∏
+
+Fig. 9         Average value and conﬁdence inter-                    Fig. 10                          Number of realizations versus the
+               val of the eﬀective slip length versus                                                 size of the RSE (color online)
+               the size of the RSE (color online)
+5.4   Shear-driven flow over a surface with slip length varying according to a cosine
+      function
+   In this example, we use both the XMFS and BEM to seek the solution of a 2D Couette
+ﬂow over a periodically textured surface whose local normalized slip length takes the following
+dimensionless expression:
+                                 λ(x, 0) = λa + 2λb cos (2πx),                             (63)
+         Mathematical modeling and numerical computation of the eﬀective interfacial conditions                  737
+
+where the two coeﬃcients λa and λb are chosen to be such that λa ⩾ 2λb ⩾ 0.
+   We plot in Fig. 11 the values obtained for the normalized eﬀective slip length b/λa by ap-
+plying the BEM and XMFS in terms of the ratio λb /λa . Next, to validate the obtained results,
+these values are compared in Fig. 11 with those provided by Asmolov et al.[32] . Perfect agree-
+ment between these values can be observed in Fig. 11.
+   In Fig. 12, by varying the values of λa and λb in such a way that the ratio λb /λa is equal to
+0.5, the normalized eﬀective slip length b/W is plotted versus the ratio λa /W
+                                                                               . It can be seen
+from Fig. 12 that the results given by the XMFS and BEM coincide exactly with the analytical
+ones derived by Asmolov et al.[32] .
+                                                                       0.9
+       1.1                                                                     BEM
+       1.0                                                             0.8     XMFS
+                                                                               Ref. [32]
+       0.9                                                             0.7
+       0.8                                                             0.6
+
+
+
+
+                                                                 b/W
+       0.7                                                             0.5
+b/λa
+
+
+
+
+       0.6                                                             0.4
+       0.5
+                                                                       0.3
+       0.4     BEM
+               XMFS                                                    0.2
+       0.3
+               Ref. [32]                                               0.1
+       0.2                                                              10−1               100          101     102
+         0.0     0.1       0.2           0.3   0.4    0.5
+                                 λb/λa                                                           λa/W
+
+Fig. 11        Normalized eﬀective slip length                   Fig. 12       Normalized eﬀective slip length
+               b/λa versus the ratio λb /λa of a                               b/Wc versus the ratio λa /W c of a
+               ﬂat surface whose local slip length                             ﬂat surface whose local slip length
+               is a cosinusoidal function λ(x) =                               is a cosinusoidal function λ(x) =
+               λa + 2λb cos (2πx) (color online)                               λa + 2λb cos (2πx) with λb /λa = 0.5
+                                                                               (color online)
+5.5 Shear-driven flow over a periodically corrugated surface
+    In the previous examples, the bottom surface was assumed to be rough at the micro- or
+nano-scale, since this is an origin of the liquid slippage phenomenon. At the mesoscopic and
+macroscopic levels, the interface between the wall and the ﬂuid is taken to be ﬂat and its
+roughness is accounted for by a slip boundary condition characterized by an intrinsic slip length.
+However, in many situations of practical importance, the solid surface may exhibit roughness at
+meso-scale and the inﬂuence of this roughness on the the ﬂow properties cannot be neglected.
+This problem has been studied[33–39] . In the present example, the approach based on the BEM
+is now applied to study the problem mentioned above to test the eﬃciency and robustness of our
+approach. To this end, we consider a shear-driven ﬂow over a periodically corrugated surface.
+At the meso-scale, the periodically corrugated surface is modeled as a sinusoidal wave but, at
+the macro-scale, this surface is considered to be ﬂat. Our results will be compared with those
+presented by Niavarani and Priezjev[36] .
+    In this study, the bottom wall has a sinusoidal corrugation described by
+
+                                                     y(x) = a sin (kx),                                         (64)
+
+where k = 2π denotes the wavenumber, and a is the corrugation amplitude. In Fig. 13, we show
+the variation of the eﬀective slip length in terms of wavenumber ka obtained by using the BEM
+for the case where the local no-slip boundary condition is applied. These results are in good
+agreement with those of Ref. [36]. Particularly, the normalized velocity proﬁles shown in Fig. 14
+for diﬀerent values of ka such as ka = 0, 0.7, and 1.12 coincide perfectly with those derived by
+Niavarani and Priezjev[36] .
+738                         A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+      0.05                                                                       1.0
+                                                                                             ka = 0 (Ref. [36])
+      0.00                                                                                   ka = 0.7 (Ref. [36])
+                                                                                 0.8
+  −0.05                                                                                      ka =1.12 (Ref. [36])
+                                                                                               ka = 0 (BEM)
+  −0.10                                                                          0.6
+                                                                                               ka = 0.7 (BEM)
+  −0.15                                                                                        ka = 1.12 (BEM)
+b
+
+
+
+
+                                                                                 0.4
+
+
+
+
+                                                                             u
+  −0.20
+                                                                                 0.2
+  −0.25       BEM
+              Ref. [34]
+  −0.30       Ref. [36]                                                          0.0
+
+  −0.35
+      0.0     0.2     0.4     0.6        0.8   1.0       1.2       1.4        −0.2             0.0      0.2    0.4     0.6         0.8     1.0
+                                    ka                                                                          y
+Fig. 13      Normalized eﬀective slip length b                               Fig. 14          Averaged velocity proﬁles of a
+             versus the wavenumber ka of a                                                    shear-driven ﬂow over a non-
+             non-slippery and sinusoidal surface                                              slippery and sinusoidal surface
+             y(x) = a sin(kx) (color online)                                                  y(x) = a sin(kx) for three diﬀerent
+                                                                                              wavenumber values ka = 0, ka =
+                                                                                              0.7, and ka = 1.12 (color online)
+
+
+
+    The velocity proﬁles inside the valley obtained by the BEM and Niavarani and Priezjev[36]
+are displayed in Fig. 15. It can be seen from this ﬁgure that the velocity proﬁles inside the
+valley obtained by the BEM almost coincide with those provided in Ref. [36]. By setting the
+wavenumber to 1.12 and the local slip length at the corrugated wall to 0.03, Fig. 16 shows the
+velocity ﬁeld and streamline of the shear-driven Stokes ﬂow. We can observe in Fig. 16 that the
+vortex appears at the bottom of the valley. Next, in order to study the eﬀect of the corrugated
+wall’s surface on the velocity ﬁeld and streamline of the Stokes ﬂow, by varying the values of
+the local slip length such as λ0 = 0, λ0 = 0.03, λ0 = 0.06, and λ0 = 0.08, the corresponding
+streamlines in the valley are plotted in Fig. 17. It can be seen from Fig. 17 that the size of vortex
+inside the valley is reduced when the local slip length λ0 is augmented. This phenomenon is
+completely in agreement with the observation about vortex provided in Ref. [36].
+
+      0.00                                                                             1.0
+               λ0 = 0 (Ref. [36])
+    −0.02      λ0 = 0.03 (Ref. [36])
+               λ0 = 0.06 (Ref. [36])                                                   0.8
+    −0.04      λ0 = 0.08 (Ref. [36])
+    −0.06      λ0 = 0 (BEM)                                                            0.6
+               λ0 = 0.03 (BEM)
+    −0.08      λ0 = 0.06 (BEM)
+                                                                                       0.4
+y
+
+
+
+
+                                                                                 y
+
+
+
+
+    −0.10      λ0 = 0.08 (BEM)
+
+    −0.12                                                                              0.2
+    −0.14
+                                                                                       0.0
+    −0.16
+    −0.18                                                            ×10−3
+       −6 −5 −4 −3 −2 −1                   0   1     2         3    4                  −0.2      0.0     0.2   0.4    0.6    0.8     1.0   1.2
+                       u                                                                                             x
+
+Fig. 15      Local velocity proﬁles inside the valley at                         Fig. 16             Velocity ﬁeld and stream-
+             x = 0.75 of a shear-driven ﬂow over a si-                                               line of a shear-driven ﬂuid
+             nusoidal surface y(x) = a sin(kx) for four                                              ﬂow over a sinusoidal surface
+             diﬀerent cases with λ0 = 0, λ0 = 0.03,                                                  y(x) = a sin(kx) with the given
+             λ0 = 0.06, and λ0 = 0.08 (color online)                                                 wavenumber ka = 1.12 and the
+                                                                                                     local slip length at the lower
+                                                                                                     wall λ0 = 0.03 (color online)
+     Mathematical modeling and numerical computation of the eﬀective interfacial conditions                                    739
+              0.2                                                     0.2
+              0.1                                                     0.1
+              0.0                                                     0.0
+          y
+
+
+
+
+                                                                  y
+          −0.1                                                    −0.1
+          −0.2                                                    −0.2
+             0.0           0.2     0.4     0.6    0.8       1.0      0.0           0.2      0.4     0.6      0.8       1.0
+                                        x                                                        x
+                                   (a) λ0 = 0                                              (b) λ0 = 0.03
+              0.2                                                     0.2
+              0.1                                                     0.1
+              0.0                                                     0.0
+
+
+
+
+                                                                  y
+          y
+
+
+
+
+          −0.1                                                    −0.1
+          −0.2                                                    −0.2
+             0.0           0.2     0.4     0.6    0.8       1.0      0.0           0.2      0.4     0.6      0.8       1.0
+                                        x                                                        x
+                                  (c) λ0 = 0.06                                            (d) λ0 = 0.08
+
+
+Fig. 17       Streamlines in the valley of a shear-driven ﬂuid ﬂow over a sinusoidal surface y(x) = a sin(kx)
+              for four diﬀerent values of the surfacial slip length λ0 = 0, λ0 = 0.03, λ0 = 0.06, and λ0 = 0.08
+              (color online)
+
+   We also plot in Figs. 18 and 19 the eﬀective slip length b versus the local slip length λ0 for
+two cases with
+                                             ka = 0.28,       and ka = 1.12,
+
+respectively. Our results are compared with those provided by Panzer et al.[34] and Niavarani
+and Priezjev[36] . More precisely, for the case where the wavenumber ka is equal to 1.12, good
+agreement between the values obtained by applying the BEM and Niavarani and Priezjev[36] is
+observed. For the case where the wavenumber ka equals 0.28, the results provided by the BEM
+is in perfect accord with those of Panzer et al.[34] and Niavarani and Priezjev[36] when λ0 ⩽ 1.
+However, there is a small diﬀerence between them when the local slip length λ0 increases.
+
+    2.0                                                                     0.10
+               BEM
+    1.8
+               Ref. [34]
+    1.6        Ref. [36]                                                    0.05
+    1.4
+    1.2                                                                     0.00
+                                                                      b
+
+
+
+
+    1.0
+b
+
+
+
+
+    0.8                                                                −0.05
+    0.6                                                                                                            BEM
+    0.4                                                                −0.10                                       Ref. [34]
+                                                                                                                   Ref. [36]
+    0.2
+    0.0                                                                −0.15
+     −2             −1             0         1          2                −2.0       −1.5     −1.0   −0.5      0.0       0.5     1.0
+                                 lg λ0                                                               lg λ0
+
+
+Fig. 18       Normalized eﬀective slip length b ver-                  Fig. 19      Normalized eﬀective slip length b ver-
+              sus the surfacial slip length lg λ0 of                               sus the surfacial slip length lg λ0 of
+              a sinusoidal surface y(x) = a sin(kx)                                a sinusoidal surface y(x) = a sin(kx)
+              with a given wavenumber ka = 0.28                                    with a given wavenumber ka = 1.12
+              (color online)                                                       (color online)
+740                  A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+6     Conclusions
+
+    In this work, two numerical approaches based on the MFS or XMFS and BEM are elaborated
+to solve the problem of Stokes ﬂow through a channel between two parallel walls of which one is
+rough and the other is smooth and non-slippery. In particular, the interface between the rough
+wall and ﬂuid is homogenized so as to be replaced by an equivalent smooth slippery interface
+characterized by an eﬀective slip length. The elaborated approaches hold in the general case
+where the distance between the two parallel walls can be arbitrary and the surface of one wall
+can be arbitrarily rough. This is in contrast with most of the available analytical and semi-
+analytical methods for the Stokes ﬂow, which require that the channel thickness should be thin
+or/and the microstructure of the rough surface should be periodic.
+    The methods proposed in this paper can be extended to the case where the Stokes ﬂow is
+produced through a 3D channel bounded by two parallel rough walls or a circular cylindrical
+rough wall. This work will be done in near future.
+
+References
+ [1] TRAN, A. T., LE, Q. H., and HE, Q. C. Eﬀective interfacial conditions for the Stokes ﬂow of a
+     ﬂuid on periodically rough surfaces. Acta Mechanica, 228, 1851–1869 (2017)
+ [2] LAUGA, K. and STONE, H. A. Eﬀective slip in pressure-driven Stokes ﬂow. Journal of Fluid
+     Mechanics, 658, 55–77 (2003)
+ [3] PRIEZJEV, N. V., DARHUBER, A. A., and TROIAN, S. M. Slip behavior on liquid ﬁlms on
+     surfaces of patterned wettability: comparison between continuum and molecular dynamics simu-
+     lations. Physical Review E, 71, 041608 (2005)
+ [4] NG, C. O. and WANG, C. Y. Stokes shear ﬂow over a grating: implications for superhydrophobic
+     slip. Physics of Fluids, 21, 013602 (2009)
+ [5] NG, C. O. and WANG, C. Y. Apparent slip arising from Stokes shear ﬂow over a bidimensional
+     patterned surface. Microfluidics and Nanofluidics, 8, 361–371 (2010)
+ [6] NG, C. O. and WANG, C. Y. Eﬀective slip for Stokes ﬂow over a surface patterned with two- or
+     three-dimensional protrusions. Fluid Dynamics Research, 43, 065504 (2011)
+ [7] KAMRIN, K., BAZANT, M. Z., and STONE, H. A. Eﬀective slip boundary conditions for ar-
+     bitrary periodic surfaces: the surface mobility tensor. Journal of Fluid Mechanics, 658, 409–437
+     (2010)
+ [8] LUND, N. J., ZHANG, X. P., MAHELONA, K., and HENDY, S. C. Calculation of eﬀective slip
+     on rough chemically heterogeneous surfaces using a homogenization approach. Physical Review E,
+     86, 046303 (2012)
+ [9] SBRAGAGLIA, M. and PROSPERETTI, A. A note on the eﬀective slip properties for micro
+     channel ﬂows with ultra hydrophobic surfaces. Physics of Fluids, 19, 043603 (2007)
+[10] TEO, C. J. and KHOO, B. C. Analysis of Stokes ﬂow in micro channels with superhydrophobic
+     surfaces containing a periodic array of micro-grooves. Microfluidics and Nanofluidics, 7, 353–382
+     (2009)
+[11] CHENG, Y. P., TEO, C. J., and KHOO, B. C. Microchannel ﬂows with superhydrophobic surfaces:
+     eﬀects of Reynolds number and pattern width to channel height ratio. Physics of Fluids, 21, 122004
+     (2009)
+[12] NG, C. O., CHU, H. C. W., and WANG, C. Y. On the eﬀects of liquid-gas interfacial shear on
+     slip ﬂow through a parallel-plate channel with superhydrophobic grooved walls. Physics of Fluids,
+     22, 102002 (2010)
+[13] BELYAEV, A. V. and VINOGRADOVA, O. I. Eﬀective slip in pressure-driven ﬂow past super-
+     hydrophobic stripes. Journal of Fluid Mechanics, 652, 489–499 (2010)
+[14] NG, C. O. and CHU, H. C. W. Electrokinetic ﬂows through a parallel-plate channel with slipping
+     stripes on walls. Physics of Fluids, 23, 102002 (2011)
+[15] VINOGRADOVA, O. I. and BELYAEV, A. V. Wetting, roughness and ﬂow boundary conditions.
+     Journal of Physics: Condensed Matter, 23, 184104 (2011)
+    Mathematical modeling and numerical computation of the eﬀective interfacial conditions          741
+
+[16] FEUILLEBOIS, F., BAZANT, M. Z., and VINOGRADOVA, O. I. Eﬀective slip over superhy-
+     drophobic surfaces in thin channels. Physical Review Letters, 102, 026001 (2009)
+[17] ALVES, C. J. S. and SILVESTRE, A. L. Density results using Stokeslets and a method of fun-
+     damental solutions for the Stokes equations. Engineering Analysis with Boundary Elements, 28,
+     1245–1252 (2004)
+[18] YOUNG, D. L., JANE, S. J., FAN, C. M., MURUSEGAN, K., and TSAI, C. C. The method of
+     fundamental solutions for 2D and 3D Stokes problems. Journal of Computational Physics, 211,
+     1–8 (2006)
+[19] ZHAO, S. and POVITSKY, A. Method of fundamental solutions for partial-slip ﬁbrous ﬁltration
+     ﬂows. International Journal for Numerical Methods in Fluids, 61, 255–274 (2009)
+[20] BOSELLI, F., OBRIST, D., and KLEISER, L. A mesh less boundary method for Stokes ﬂows with
+     particles: application to canalithiasis. International Journal for Numerical Methods in Biomedical
+     Engineering, 29, 1176–1191 (2013)
+[21] ABOELKASSEM, Y. and STAPLES, A. E. Stokeslets-meshfree computations and theory for ﬂow
+     in a collapsible microchannel. Theoretical and Computational Fluid Dynamics, 27, 681–700 (2013)
+[22] POZRIKIDIS, C. Creeping ﬂow in two-dimensional channels. Journal of Fluid Mechanics, 180,
+     495–514 (1987)
+[23] STABEN, M. E., ZINCHENKO, A. Z., and DAVIS, R. H. Motion of a particle between two parallel
+     plane walls in low-Reynolds-number Poiseuille ﬂow. Physics of Fluids, 15, 1711–1733 (2003)
+[24] JANSSEN, P. J. A. and ANDERSON, P. D. Boundary-integral method for drop deformation
+     between parallel plates. Physics of Fluids, 19, 043602 (2007)
+[25] NIETO, C., GIRALDO, M., and POWER, H. Boundary integral method for Stokes ﬂow with
+     linear slip ﬂow conditions in curved surfaces. WIT Transactions on Modelling and Simulation, 49,
+     353–362 (2009)
+[26] TLUPOVA, S. and CORTEZ, R. Boundary integral solutions of coupled Stokes and Darcy ﬂows.
+     Journal of Computational Physics, 228, 158–179 (2009)
+[27] POZRIKIDIS, C. Boundary Integral and Singularity Methods for Linearized Viscous Flow, Cam-
+     bridge University Press, Cambridge (1992)
+[28] GRIGGS, A. J., ZINCHENKO, A. Z., and DAVIS, R. H. Low-Reynolds-number motion of a
+     deformable drop between two parallel plane walls. International Journal of Multiphase Flow, 33,
+     182–206 (2007)
+[29] KATSIKADELIS, J. T. Boundary Elements: Theory and Applications, Elsevier, Amsterdam
+     (2002)
+[30] LACHIHAB, A. and SAB, K. Aggregate composites: a contact based modeling. Computational
+     Materials Science, 33, 467–490 (2005)
+[31] LACHIHAB, A. and SAB, K. Does a representative volume element exist for fatigue life pre-
+     diction? The case of aggregate composites. International Journal for Numerical and Analytical
+     Methods in Geomechanics, 32, 1005–1021 (2008)
+[32] ASMOLOV, E. S., SCHMIESCHEK, S., HARTING, J., and VINOGRADOVA, O. I. Flow past
+     superhydrophobic surfaces with cosine variation in local slip length. Physical Review E, 87, 023005
+     (2013)
+[33] EINZEL, D., PANZER, P., and LIU, M. Boundary condition for ﬂuid ﬂow: curved or rough
+     surfaces. Physical Review Letters, 64, 2269–2272 (1990)
+[34] PANZER, P., LIU, M., and EINZEL, D. The eﬀects of boundary curvature on hydrodynamic ﬂuid
+     ﬂow: calculation of slip lengths. Physical Review Letters, 64, 2269–2272 (1992)
+[35] NIAVARANI, A. and PRIEZJEV, N. V. Rheological study of polymer ﬂow past rough surfaces
+     with slip boundary conditions. The Journal of Chemical Physics, 129, 144902 (2008)
+[36] NIAVARANI, A. and PRIEZJEV, N. V. The eﬀective slip length and vortex formation in laminar
+     ﬂow over a rough surface. Physics of Fluids, 21, 052105 (2009)
+[37] NIAVARANI, A. and PRIEZJEV, N. V. Modeling the combined eﬀect of surface roughness and
+     shear rate on slip ﬂow of simple ﬂuids. Physical Review E, 81, 011606 (2010)
+742                        A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+[38] PRIEZJEV, N. V. and TROIAN S. M. Inﬂuence of periodic wall roughness on the slip behaviour
+     at liquid/solid interfaces: molecular-scale simulations versus continuum predictions. Journal of
+     Fluid Mechanics, 554, 25–46 (2006)
+[39] GUO, L., CHEN, S., and ROBBINS, M. O. Eﬀective slip boundary conditions for sinusoidally
+     corrugated surfaces. Physical Review Fluids, 1, 074102 (2016)
+
+Appendix A           Details for the matrix A and vector c
+
+      The matrix A can be written as a combination of sub-matrices as follows:
+                                          2             3
+                                            A(1) A(2)
+                                          6             7
+                                          6 (3)         7
+                                          6A        (4) 7
+                                                  A 7
+                                          6
+                                      A=6               7      ,                                       (A1)
+                                          6A(5) A(6) 7
+                                          6             7
+                                          4             5
+                                            A(7) A(8)
+                                                                        2N×2N
+
+where the components of the sub-matrices are given by
+                8
+                >
+                >   (1)   (xi − ξj )2               (yi − ηj )      2(xi − ξj )2 (yi − ηj )
+                >Aij =
+                <              2
+                                      − ln rij + λi     2
+                                                               + λi            4
+                                                                                            ,
+                              rij                      rij                   rij
+                                                                                                       (A2)
+                       >
+                       >      (xi − ξj )(yi − ηj )
+                       > (3)
+                       :Aij =                      ,
+                                        2
+                                      rij
+                       8
+                       >
+                       >A(2)  (xi − ξj )(yi − ηj )       (xi − ξj )      2(xi − ξj )(yi − ηj )2
+                       >
+                       < il =           2
+                                                    − λi     2
+                                                                    + λi            4
+                                                                                                ,
+                                      rij                   rij                   rij
+                                                                                                       (A3)
+                       >
+                       >      (yi − ηj )2
+                       > (4)
+                       :Aij =             − ln rij
+                                   2
+                                  rij
+
+with xi (xi , yi ) ∈ ∂ΩB , i = 1, 2, · · · , N B , and j = 1, 2, · · · , N , and
+                                        8
+                                        >
+                                        >     (5)    (xi − ξj )2
+                                        >
+                                        >   Aij =         2
+                                                                 − ln rij ,
+                                        >
+                                        >                rij
+                                        >
+                                        >
+                                        >
+                                        <
+                                              (6)     (7)    (xi − ξj )(yi − ηj )
+                                            Aij = Aij =                  2
+                                                                                  ,                    (A4)
+                                        >
+                                        >                              rij
+                                        >
+                                        >
+                                        >
+                                        >
+                                        >
+                                        >            (yi − ηj )2
+                                        >     (8)
+                                        : Aij =                  − ln rij
+                                                          2
+                                                         rij
+with
+                              xi (xi , yi ) ∈ ∂ΩT ,   i = 1, 2, · · · , N T ,   j = 1, 2, · · · , N.
+      The expression of the vector c is given by
+                                       ˆ                                                 ˜T
+                              c = 4πχ λ1 , λ2 , · · · , λN B , 0, · · · , 0, 0, · · · , 0 ,            (A5)
+                                         |      {z         } | {z } | {z }
+                                                      1×N B           1×N B      1×2N T
+
+where rij = xi − ξj  denotes the distance between the collocation point xi and the source point ξj .
+
+
+Appendix B           Details of the matrix A and vector c
+
+      We can rewrite the matrix A as follows:
+                                           2               3
+                                             A(1) A(2)
+                                           6               7
+                                    A = 4                 5                        ,                  (B1)
+                                               (3)   (4)
+                                             A      A
+                                                                       2N B ×2N B
+    Mathematical modeling and numerical computation of the eﬀective interfacial conditions                          743
+
+where the components of the sub-matrices are computed by
+
+        (1)                   (xi − ξj )2            (xi − ξj )2  2h2j 4h2j (xi − ξj )2
+    Aij        = − ln rij +         2
+                                           + ln Rij −      2
+                                                                  + 2 −         4
+                                   rij                   Rij       Rij        Rij
+
+                       2hj (yi + ηj − 2ω)   4hj (xi − ξj )2 (yi + ηj − 2ω)      2(xi − ξj )2 (yi − ηj )
+                   −             2
+                                          +                  4
+                                                                           + λi            4
+                               Rij                        Rij                            rij
+
+                         (yi − ηj )       (yi + ηj − 2ω)       2(xi − ξj )2 (yi + ηj − 2ω)
+                   +λi       2
+                                    − λ i         2
+                                                         − λ i                4
+                            rij                 Rij                        Rij
+
+                         4h2j (yi + ηj − 2ω)      16h2j (xi − ξj )2 (yi + ηj − 2ω)      4hj (xi − ξj )2
+                   +λi              4
+                                             − λi                   6
+                                                                                   − λi         4
+                                  Rij                            Rij                         Rij
+
+                         2hj      4hj (yi + ηj − 2ω)2      16hj (xi − ξj )2 (yi + ηj − 2ω)2
+                   +λi    2
+                             − λi           4
+                                                      + λi                   6
+                                                                                            ,                       (B2)
+                         Rij              Rij                             Rij
+
+        (2)       (xi − ξj )(yi − ηj )   (xi − ξj )(yi + ηj − 2ω)
+    Aij        =             2
+                                        −              2
+                           rij                       Rij
+
+                           (xi − ξj )(yi + ηj − 2ω)   4hj (xi − ξj )(yi + ηj − 2ω)2
+                   +4h2j                4
+                                                    −                 4
+                                      Rij                           Rij
+
+                         2(xi − ξj )(yi − ηj )2      2(xi − ξj )(yi + ηj − 2ω)2
+                   +λi              4
+                                                − λi               4
+                                  rij                            Rij
+
+                         16h2j (xi − ξj )(yi + ηj − 2ω)2       4h2j (xi − ξj )      12hj (xi − ξj )(yi + ηj − 2ω)
+                   +λi                    6
+                                                         − λ i         4
+                                                                               + λi                 4
+                                        Rij                          Rij                         Rij
+
+                         16hj (xi − ξj )(yi + ηj − 2ω)3      (xi − ξj )      (xi − ξj )   2hj (xi − ξj )
+                   −λi                   6              − λi     2      + λi      2     +        2       ,          (B3)
+                                       Rij                      rij             Rij            Rij
+
+        (3)       (xi − ξj )(yi − ηj )   (xi − ξj )(yi + ηj − 2ω)   4h2j (xi − ξj )(yi + ηj − 2ω)
+    Aij        =             2
+                                        −              2
+                                                                   −                 4
+                           rij                       Rij                           Rij
+
+                       2hj (xi − ξj )   4hj (xi − ξj )(yi + ηj − 2ω)2
+                   +          2
+                                      +                 4
+                                                                      ,                                             (B4)
+                            Rij                       Rij
+
+        (4)                   (yi − ηj )2            (yi + ηj − 2ω)2   4h2j (yi + ηj − 2ω)2
+    Aij        = − ln rij +         2
+                                           + ln Rij −         2
+                                                                      +            4
+                                   rij                      Rij                  Rij
+
+                       2hj (z + νl − 2ω)   4hj (z + νl − 2ω)3  2h2j
+                   +            2
+                                         −          4
+                                                              − 2 ,                                                 (B5)
+                              Rij                  Rij         Rij
+
+where
+                                                          ‚         ‚
+                              rij = xi − ξj  ,    Rij = ‚xi − ξj ‚ ,      i, j = 1, 2, · · · , N B .
+
+
+   The vector c has the following expression:
+
+                                                 ˆ                                     ˜T
+                                         c = 4πχ λ1 , λ2 , · · · , λN B , 0, · · · , 0 .                           (B6)
+                                                   |        {z         } | {z }
+                                                            1×N B           1×N B
+744                      A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+
+Appendix C        Details of the matrix B and vector q
+
+      The matrix B can in general be written in the following form:
+                                          2                                          3
+                                              B (1) B (2)       B (3)      B (4)
+                                     6                            7
+                                     6                            7
+                                     6 B (5) B (6) B (7) B (8) 7
+                                     6                            7
+                                   B=6
+                                     6 (9)
+                                                                  7
+                                                                  7                                    ,                     (C1)
+                                     6B      B (10)
+                                                    B (11)
+                                                           B (12) 7
+                                     6                            7
+                                     4                            5
+                                        0      0    B (13) B (14)
+                                                                                         4N B ×4N B
+
+
+where the sub-matrices of B are deﬁned as follows:
+                                   Z                                                 Z
+                     (1)       1                                     (2)         1
+                   Bij =                 Gxx (xj , x0i )dlj ,       Bij =                     Gyx (xj , x0i )dlj ,           (C2)
+                              4π    Γj                                          4π       Γj
+                                   Z
+                     (3)       1                                                                                     δij
+                   Bij =                 (Txxx (xj , x0i )nx (xj ) + Txxy (xj , x0i )ny (xj ))dlj +                      ,   (C3)
+                              4π    Γj                                                                                2
+                                   Z
+                     (4)       1
+                   Bij =                 (Tyxx (xj , x0i )nx (xj ) + Tyxy (xj , x0i )ny (xj ))dlj ,                          (C4)
+                              4π    Γj
+                                   Z                                                 Z
+                     (5)       1                                     (6)         1
+                   Bij =                 Gxy (xj , x0i )dlj ,       Bij =                     Gyy (xj , x0i )dlj ,           (C5)
+                              4π    Γj                                          4π       Γj
+                                   Z
+                     (7)       1
+                   Bij =                 (Txyx (xj , x0i )nx (xj ) + Txyy (xj , x0i )ny (xj ))dlj ,                          (C6)
+                              4π    Γj
+                                   Z
+                     (8)       1                                                                                     δij
+                   Bij =                 (Tyyx (xj , x0i )nx (xj ) + Tyyy (xj , x0i )ny (xj ))dlj +                      ,   (C7)
+                              4π    Γj                                                                                2
+
+                     (9)                        (10)                            (11)
+                   Bij = λi nyi δij ,          Bij     = −λi nxi δij ,         Bij       = −nyi δij ,                        (C8)
+                     (12)                      (13)                     (14)
+                   Bij      = nxi δij ,       Bij     = nxi δij ,    Bij       = nyi δij .                                   (C9)
+
+The expressions of the matrix provided in Eqs. (C2)–(C7) require the evaluation of the line integral
+along the jth element. In this work, we distinguish the integral by considering the following two
+diﬀerent cases:
+    (i) Oﬀ-diagonal elements, i.e., i = j
+    In this case, the evaluation points x0i or x0i lie outside the jth element. This means that the
+distances rij and Rij do not vanish, so that the above mentioned integrals are regular. For this reason,
+the standard Gaussian integration can be applied for their evaluation. This technique was described
+in detail in Ref. [29].
+    (ii) Diagonal elements, i.e., i = j
+    In this case, the evaluation points x0i still lie outside the jth element. Consequently, the standard
+Gaussian integration shall remain valid. However, the kernel functions of Rij may be nearly singular
+when the channel height is very small. In addition, rij takes the value zero when the evaluation
+points x0i and the integration point xj coincide. Thus, the integrals involving rij can be singular.
+In the present work, the singular and near singular integrals have both been calculated analytically
+to overcome these drawbacks. In the analytical integration technique, for simplicity, all the special
+quantities should be taken into account, for example,
+
+                            ry = 0,       Ry = −2H,           h = −H,           nx = 0,           ny = −1.                   (C10)
+ Mathematical modeling and numerical computation of the eﬀective interfacial conditions         745
+
+For arbitrary ﬂow,
+
+                    (1)         Li “ 16H 2 + L2i ”     8H 2 Li              “L ”
+                                                                              i
+                 Bii        =     ln       2
+                                                   −            + 8H arctan      ,             (C11)
+                                2       Li           16H 2 + L2              4H
+                    (2)          (4)          (5)       (7)
+                 Bii        = Bii = Bii = Bii = 0,                                             (C12)
+                                          “L ”                 16HL3i
+                    (3)                             i
+                 Bii        = 4 arctan                  −                   ,                  (C13)
+                                              4H            (16H 2 + L2i )2
+
+                    (6)         Li “ 16H 2 + L2i ”     8H 2 Li
+                 Bii        =     ln               −            ,                              (C14)
+                                2       L2i          16H 2 + L2
+                                          “L ”              16HLi (32H 2 + Li2 )
+                    (8)                             i
+                 Bii        = 4 arctan                  +                        .             (C15)
+                                              4H              (16H 2 + L2i )2
+
+For periodic ﬂow,
+                                                                                     ikLi
+         (1)      iπ 2   ikL2i   Li                    ikLi   2iLi2 e                  2
+        Bii     =      −       −    ln 4 + Li ln (1 − e 2 ) −
+                   3k      8     2                                 k
+                      Li         kLi  1                        ikLi
+                  −      ln sin2     − iLi π + iH ln (e2Hk − e− 2 )
+                      2           4   2
+                      Li              ikLi                  ikLi
+                  −      ln (e2Hk − e− 2 ) − iH ln (e2Hk − e 2 )
+                      4
+                      π           ikLi   Li             ikLi
+                  −     ln (1 + e− 2 ) −    ln (e2Hk − e 2 )
+                      k                  4
+                      π          ikLi                   ikLi
+                  +     ln (1 + e 2 ) − iH ln (1 − e2Hk− 2 )
+                      k
+                   Li              ikLi                      ikLi
+                  −   ln (1 − e2Hk− 2 ) + iH ln (1 − e2Hk+ 2 )
+                    4
+                   Li              ikLi      Li “                       “ kL ””
+                                                                              i
+                  − ln (1 − e2Hk+ 2 ) +         ln 1 + e4Hk − 2e2Hk cos
+                    4                        2                              2
+                              “               “ kL ””          “        “         ikLi ””
+                                                    i
+                  +4H arctan coth (Hk) tan             + iH ln − i sinh Hk −
+                                                  4                                 4
+                        “       “       ikLi ””        “          “      ikLi   ””
+                  +iH ln i sinh Hk −            − iH ln − i sinh Hk +
+                                          4                                4
+                        “       “       ikLi ”” iLi2 (e−2Hk− 2 )
+                                                               ikLi
+
+                  −iH ln i sinh Hk +            −
+                                          4               2k
+                                       ikLi                          ikLi               ikLi
+                      iLi2 (e2Hk−     iLi2 (e−2Hk+ 2 )
+                                         2    )            iLi2 (e2Hk+ 2 )
+                  −                               +      +
+                              2k              2k                   2k
+                                 “     “       ikLi ”       “        ikLi ””     “ kL ”
+                                                                                      i
+                  −H 2 k csch(Hk) csch Hk −           + csch Hk +            sin        ,      (C16)
+                                                 4                     4            4
+          (2)         (4)        (5)          (7)
+        Bii     = Bii = Bii = Bii = 0,                                                         (C17)
+                                                          “ kL ”
+                                                               i
+                                  “           4H 2 k2 sin   “ kL ””
+                                                                  sinh (2Hk)
+         (3)                           i                     2
+        Bii = 4H arctan coth(Hk) tan       +“       “ kL ”                 ”2
+                                     4                   i
+                                                cos          − cosh (2Hk)
+                                                       2
+                            “   “     ikLi ”        “        ikLi ””     “ kL ”
+                                                                              i
+              −2Hk csch(Hk) csch Hk −        + csch Hk +             sin        ,              (C18)
+                                         4                     4            4
+746                         A. T. TRAN, H. LE QUANG, Q. C. HE, and D. H. NGUYEN
+                                                                                   ikLi
+       (6)       iπ 2   ikL2i   Li                     ikLi   2iLi2 (e 2 )    Li                ikLi
+      Bii    =        −       −     ln 4 + Li ln (1 − e 2 ) −               −    ln (e2Hk − e− 2 )
+                  3k      8      2                                  k         4
+                   Li    “     “ kLi ””     1                         ikL i                  ikLi
+                 − ln sin2               − iLi π + iH ln (e2Hk − e− 2 ) − iH ln (e2Hk − e 2 )
+                    2             4         2
+                     π           ikLi   Li             ikLi  π         ikLi                   ikLi
+                 −     ln (1 + e− 2 ) −    ln (e2Hk − e 2 ) + ln (1 + e 2 ) − iH ln (1 − e2Hk− 2 )
+                     k                  4                    k
+                                   ikLi   Li               ikLi   Li              ikLi
+                 +iH ln (1 − e2Hk+ 2 ) −     ln (1 − e2Hk+ 2 ) −     ln (1 − e2Hk− 2 )
+                                          4                       4
+                  Li “                        “ kL ””
+                                                   i
+                                                                   “              “ kL ””
+                                                                                        i
+                 + ln 1 + e4Hk − 2e2Hk cos             − 4H arctan coth (Hk) tan
+                   2                             2                                    4
+                        “        “      ikLi ””         “       “      ikLi ””
+                 +iH ln − i sinh Hk −            + iH ln i sinh Hk −
+                                          4                              4
+                        “        “      ikLi ””         “       “      ikLi ””
+                 −iH ln − i sinh Hk +            − iH ln i sinh Hk +
+                                          4                              4
+                                    ikLi                     ikLi                         ikLi                     ikLi
+                     iLi2 (e−2Hk−   iLi2 (e2Hk− 2 )
+                                      2    )              iLi2 (e−2Hk+ 2 )        iLi2 (e2Hk+ 2 )
+                 −                             −       +                       +
+                             2k             2k                     2k                       2k
+                             “     “        ikLi  ”        “         ikLi ””     “ kLi  ”
+             −H 2 k csch(Hk) csch Hk −              + csch Hk +              sin          ,       (C19)
+                                               4                       4            4
+                                                                  “ kL ”
+                                                                        i
+                        “               “ kL ”” 4H 2 k2 sin               sinh (2Hk)
+       (8)                                    i                       2
+     Bii = 4H arctan coth (Hk) tan                 +“      “ kL ”                   ”2
+                                            4                    i
+                                                       cos           − cosh (2Hk)
+                                                               2
+                             “     “         ikLi ”        “         ikLi ””     “ kL ”
+                                                                                      i
+             +2Hk csch(Hk) csch Hk −                + csch Hk +              sin          ,       (C20)
+                                               4                        4           4
+                                                  √
+where Li denotes the length of ith element, i = −1, and Li2 (z) stands for the poly-logarithm function
+of order 2 and argument z.
+    The vector q is deﬁned by
+
+                       q = (0, · · · , 0, λ1 χ(n2y1 − n2x1 ), · · · , λN B χ(n2yN B − n2xN B ), 0, · · · , 0)T .          (C21)
+                            | {z } |                                {z                       } | {z }
+                               1×2N B                            1×N B                             1×N B
+

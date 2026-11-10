@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-30",
+  "status": "SOURCE_INSPECTION_COMPLETE_PROPOSAL_ONLY_NOT_FROZEN_NOT_RUN",
+  "repository": "junjieli2/nanrPrint",
+  "remote_commit": "381bc94bc4b99631af7d7d9e9538b565beeb9a5f",
+  "candidate": "git_template_3r5cBoard_350",
+  "remote_private": true,
+  "remote_writes": false,
+  "solver_source_changed": false,
+  "compile_performed": false,
+  "mesh_generation_performed": false,
+  "short_test_performed": false,
+  "simulation_started": false,
+  "simulation_run_id": null,
+  "long_run_authorization": false,
+  "new_numerical_or_physical_validation": false,
+  "human_scientific_acceptance_recorded": false,
+  "new_case_gates": {
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": null,
+    "geometry_PASS": null
+  },
+  "common_problem": {
+    "status": "PROPOSAL_ONLY",
+    "physics": "single_phase_fully_filled_newtonian_rigid_instantaneous_squeeze",
+    "h_nm": 75,
+    "groove_depth_nm": 100,
+    "groove_width_nm": 120,
+    "period_nm": 240,
+    "aspect_ratio_candidate": 2,
+    "lengths_m": null,
+    "closing_speed_m_s": null,
+    "mu_Pa_s": null,
+    "rho_kg_m3": null,
+    "orientations": [
+      "groove_along_long_edge",
+      "groove_along_short_edge"
+    ],
+    "coefficient_inputs": [
+      "original_local_cubic_law",
+      "existing_fixed_V2"
+    ],
+    "optional_diagnostic_input": "existing_OpenLB_K_not_an_independent_squeeze_reference",
+    "primary": "R_sq = F_net/V [N s/m]",
+    "secondary": "R_sq_along_short/R_sq_along_long",
+    "diagnostics": [
+      "gauge_pressure_field_and_prespecified_profiles",
+      "edge_outflow_partition",
+      "volume_balance"
+    ],
+    "acceptance_thresholds": null
+  },
+  "unresolved": [
+    "K_to_drag_mapping_and_velocity_average_and_H",
+    "avoid_double_counting_resolved_wall_dissipation",
+    "version_dictionary_compatibility",
+    "actual_motion_or_depth_averaged_volume_source_coupling",
+    "absolute_domain_size_and_period_count_and_edge_phase",
+    "force_and_pressure_projection_definition",
+    "qualified_independent_explicit_groove_reference",
+    "holdout_conditions_and_resource_budget"
+  ],
+  "environment_PATH": {
+    "foamVersion": null,
+    "foamRun": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/bin/foamRun",
+    "blockMesh": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/bin/blockMesh",
+    "checkMesh": "/home/dell/OpenFOAM/OpenFOAM-13/platforms/linux64GccDPInt32Opt/bin/checkMesh",
+    "wmake": "/home/dell/OpenFOAM/OpenFOAM-13/wmake/wmake"
+  },
+  "next_action": "Prepare shared input contract and coefficient adapter specification in isolated directory; verify static pressure-driven mapping before squeeze protocol. No automatic simulation launch.",
+  "preserved_scientific_state": {
+    "D4_run_id": "D4_N8_diag_v3_1_20261026_v1",
+    "D4_NUMERICAL_GATE": "NOT_EVALUATED",
+    "D4_RESULT_PASS": false,
+    "D4_geometry_PASS": null,
+    "reference_qualified": false,
+    "strict_error_bound_established": false,
+    "submission_ready": false,
+    "prediction": "HOLD",
+    "historical_FAIL": "preserved"
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "scope": "selected functions only, normalized FP register dataflow and call symbols; offset/relocation normalization is not full proof of addressing or all machine equivalence",
+  "comparisons": [
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 15,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 3,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 6,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> >::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 1,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> >::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >::collideAndStream()",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 53,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeJ(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 15,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeRho(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 5,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeRhoU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double&, double*)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 38,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo> > >::computeU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 32,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeJ(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeRho(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 1,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeRhoU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double&, double*)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::cpu::sisd::ConcreteDynamics<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::CSE<olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination> > >::computeU(olb::cpu::Cell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>&, double*)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 15,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 3,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 5,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::BulkDensity, olb::momenta::BulkMomentum, olb::momenta::BulkStress, olb::momenta::DefineToNEq>, olb::equilibria::SecondOrder, olb::collision::BGK, olb::forcing::PlainGuo>::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 1,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeJ(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeRho(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 1,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeRhoU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "olb::dynamics::Tuple<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, olb::momenta::Tuple<olb::momenta::OneDensity, olb::momenta::ZeroMomentum, olb::momenta::ZeroStress, olb::momenta::DefineSeparately>, olb::equilibria::None, olb::collision::None, olb::dynamics::DefaultCombination>::computeU(olb::ConstCell<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, double*) const",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 2,
+      "previous_sequence": null,
+      "A1_sequence": null
+    },
+    {
+      "symbol": "void olb::dynamics::set<olb::ForcedBGKdynamics, double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>::d>&, int)",
+      "in_previous": true,
+      "in_A1": true,
+      "normalized_FP_and_calls_equal": true,
+      "instruction_count": 46,
+      "previous_sequence": null,
+      "A1_sequence": null
+    }
+  ]
+}

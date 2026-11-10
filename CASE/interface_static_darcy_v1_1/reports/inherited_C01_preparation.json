@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-30",
+  "protocol_id": "SDI-v1",
+  "kind": "COMPILE_MESH_AND_AUDIT_ONLY",
+  "commands": [
+    {
+      "label": "compile_2d",
+      "argv": [
+        "g++",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "two_dimensional/darcy2d.cpp",
+        "-o",
+        "build/bin/darcy2d"
+      ],
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+      "exit_code": 0,
+      "seconds": 0.8656985759735107,
+      "log": "reports/preparation_attempts/002/compile_2d.log"
+    },
+    {
+      "label": "compile_openfoam",
+      "argv": [
+        "wmake"
+      ],
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/application",
+      "exit_code": 0,
+      "seconds": 7.628193140029907,
+      "log": "reports/preparation_attempts/002/compile_openfoam.log"
+    },
+    {
+      "label": "checkMesh",
+      "argv": [
+        "checkMesh",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/cases/C01",
+        "-allGeometry",
+        "-allTopology"
+      ],
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+      "exit_code": 0,
+      "seconds": 0.03188323974609375,
+      "log": "reports/preparation_attempts/002/checkMesh.log"
+    },
+    {
+      "label": "audit_2d",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/build/bin/darcy2d",
+        "--input",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/common/C01_2d.txt",
+        "--audit-only"
+      ],
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+      "exit_code": 0,
+      "seconds": 0.0014309883117675781,
+      "log": "reports/preparation_attempts/002/audit_2d.log"
+    },
+    {
+      "label": "audit_openfoam",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/build/bin/depthAveragedDarcyFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/cases/C01",
+        "-auditOnly"
+      ],
+      "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+      "exit_code": 0,
+      "seconds": 0.03179597854614258,
+      "log": "reports/preparation_attempts/002/audit_openfoam.log"
+    }
+  ],
+  "environment": {
+    "WM_PROJECT_DIR": "/home/dell/OpenFOAM/OpenFOAM-13",
+    "WM_PROJECT_VERSION": "13",
+    "WM_OPTIONS": "linux64GccDPInt32Opt"
+  },
+  "binary_source_binding": [
+    {
+      "path": "two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    },
+    {
+      "path": "openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "build/bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "build/bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    }
+  ],
+  "two_dimensional_audit": {
+    "audit_only": true,
+    "flow_solved": false,
+    "cells": 512,
+    "volume_m3": 1.4400000000000002e-16
+  },
+  "openfoam_audit": {
+    "audit_only": true,
+    "flow_solved": false,
+    "cells": 512,
+    "volume_m3": 1.4399999999999936e-16,
+    "H_m": 1.25e-07,
+    "Dxx_m_minus2": 2744963164688618.5,
+    "Dyy_m_minus2": 1200305655874992.2,
+    "initial_p_max_Pa": 0,
+    "matrix_assembled": true,
+    "matrix_symmetric": true,
+    "matrix_min_diagonal": 1.9521604418647038e-19
+  },
+  "python_syntax_files": [
+    "tests/test_checker.py",
+    "scripts/build_and_audit.py",
+    "scripts/run_c01.py",
+    "scripts/prepare_c01.py",
+    "analysis/check_results.py"
+  ],
+  "flow_solver_executed": false,
+  "geometry_scope": "synthetic_average_domain_only",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": true
+}

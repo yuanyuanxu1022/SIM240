@@ -1,0 +1,245 @@
+{
+  "checked_at": "2026-10-18T23:04:32.756339+08:00",
+  "checks": {
+    "48_complete_numerical_records": true,
+    "228211_diagnostic_rows": true,
+    "all_contiguous": true,
+    "K_recomputation": true,
+    "slice_J_recomputation": true,
+    "VTK_J_recomputation": true,
+    "VTK_material_geometry": true,
+    "VTK_expected_candidate_links": true,
+    "old_fine_T_exit3": true,
+    "scheme_C_shell_exit0": true,
+    "scheme_C_old_columns_identical": true,
+    "scheme_C_source_hashes": true,
+    "GCI_ratio_identity": true,
+    "all_original_inputs_unchanged": true,
+    "viscosity36_raw_parameter_derivation": true,
+    "viscosity_inputs_unchanged": true,
+    "validate_review_intake.py": true,
+    "select_reporting_guidelines.py": true,
+    "validate_claim_evidence.py": true,
+    "lint_review.py": true
+  },
+  "PASS": true,
+  "original_file_count": 475,
+  "changed_original_paths": [],
+  "source_and_claim_snapshots": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/src/d2_groove_error_map.cpp": {
+      "sha256": "e7c0cf5d87f6a726a61e760642b803b5c6ee9e5fbc6dd5ba890cb97f5a6fe3b7",
+      "lines": 883
+    },
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/src/Makefile": {
+      "sha256": "a1dc6db807970fb7ddf84edb5b7a98dd5316f292cbec6f50b8d2902c2622f1e7",
+      "lines": 35
+    },
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D3_oblique_groove_tensor_check/src/d3_oblique_groove_tensor_check.cpp": {
+      "sha256": "607698cea1aa7e9a3c97254d688efccac9c6465d79f4bf4fd3994d6f63334d1a",
+      "lines": 886
+    },
+    "/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_grid_convergence/scripts/postprocess_grid.py": {
+      "sha256": "9ea9dfb07aac4a95a872639296b282c4bd7269076fbf9a010cdcd8f52b9e265a",
+      "lines": 515
+    },
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/SIM240_manuscript_revision_20261018/CORE_CLAIMS.md": {
+      "sha256": "52dbb82cd2287ec98b1149b9a7cf304a8bfcf40639036e784d23e0c7380c9d4c",
+      "lines": 82
+    },
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/Chapter5_mechanism_audit_20261018/REPORT.md": {
+      "sha256": "11ddc2fe87e4da8eefe2f6a6f4008031b7b0b485316ed89635ac3961985ff79e",
+      "lines": 111
+    },
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第2章方法草稿_20261017.md": {
+      "sha256": "20758cddd318985e23a21c7892de007466b53e9f8faa7bffaf72ab3fbce18a0b",
+      "lines": 345
+    },
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/第一篇论文_第3章验证草稿_20261017.md": {
+      "sha256": "f25434ece670148cbe432ad6db24c468acf07b0a84cf7db2789cb9c83bd13fc8",
+      "lines": 330
+    },
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/analysis/CODE_REVIEW_20261017.md": {
+      "sha256": "1918d68bb7b6ca526674830efc4d72ed262ad8a40725901fb1314f9a2e7625ac",
+      "lines": 58
+    },
+    "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D2_groove_error_map/results/analysis/ACCEPTANCE_AND_ANALYSIS_20261016.md": {
+      "sha256": "0c7692005afcf455d2ddc00bfacfd45574acd96b4dc1dbc9c0c4b3573c1ba040",
+      "lines": 67
+    },
+    "/home/dell/openlb/CITATION.cff": {
+      "sha256": "2c7a3c65723c101a1437dc7212e37c24eca66e63fbbe0094ca04e8ba1fccd231",
+      "lines": 115
+    },
+    "/home/dell/openlb/src/dynamics/dynamics.h": {
+      "sha256": "eff0e472d7698eb83ce9e8d28515ac6c30e7ae224756ad59e9c1d6da74c5ceba",
+      "lines": 823
+    },
+    "/home/dell/openlb/src/dynamics/momenta/elements.h": {
+      "sha256": "4b52298fbd3db8172c36f250e01066730572c2c44aaefba046848d048f472be5",
+      "lines": 2190
+    }
+  },
+  "process_tool_records": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/home/dell/.codex/skills/peer-review/scripts/validate_review_intake.py",
+        "/home/dell/yuanyuanxu/SIM240/docs/reports/reviewer_numerics_20261018_v1/review_intake.json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "errors": [],
+        "handling_assertions": {
+          "author_and_editor_channels_must_remain_separate": true,
+          "bundled_tools_are_local_only": true,
+          "data_reuse_authorized": false,
+          "external_service_use_authorized_by_this_report": false
+        },
+        "normalized_scope": {
+          "ai_plan": "approved_ai_assistance",
+          "capacity": "author_requested_reader",
+          "competence_areas": [
+            "cfd",
+            "lbm",
+            "numerical_verification"
+          ],
+          "manuscript_type": "deterministic_cfd",
+          "out_of_scope": [
+            "new_simulations",
+            "manuscript_rewriting",
+            "editorial_decision"
+          ],
+          "peer_review_model": "open",
+          "requested_focus": [
+            "flux_extraction",
+            "convergence",
+            "conservation",
+            "grid_convergence",
+            "provenance"
+          ]
+        },
+        "notice": "This validates declared process controls only. It does not establish reviewer competence, resolve conflicts, authorize external processing, or assess manuscript quality.",
+        "review_id": "SIM240-NUMERICS-20261018",
+        "schema_version": "2.0",
+        "status": "READY_FOR_LOCAL_REVIEW",
+        "valid": true,
+        "warnings": [
+          {
+            "code": "CONFIDENTIAL_NOTES_CHANNEL_UNAVAILABLE",
+            "field": "venue_policy.confidential_editor_notes_supported"
+          },
+          {
+            "code": "EXTERNAL_AUTHORIZATION_NOT_USED",
+            "field": "authorization.external_processing_authorized"
+          },
+          {
+            "code": "COMPETENCE_LIMITS_MUST_BE_DISCLOSED",
+            "field": "reviewer.competence_limits"
+          }
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/home/dell/.codex/skills/peer-review/scripts/select_reporting_guidelines.py",
+        "/home/dell/yuanyuanxu/SIM240/docs/reports/reviewer_numerics_20261018_v1/study_profile.json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "catalog_reviewed_on": "2026-10-01",
+        "coverage": null,
+        "errors": [],
+        "notice": "Guideline selection and checklist coverage concern reporting completeness only. They are not scores and do not establish study quality, validity, conduct, or manuscript merit. Check the official guideline, applicable extensions, and target venue policy.",
+        "profile_id": "SIM240-DETERMINISTIC-CFD",
+        "schema_version": "2.0",
+        "selected_guidelines": [],
+        "status": "VALID",
+        "valid": true,
+        "warnings": [
+          {
+            "code": "NO_BUNDLED_GUIDELINE_MATCH",
+            "field": "profile.study_types"
+          }
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/home/dell/.codex/skills/peer-review/scripts/validate_claim_evidence.py",
+        "/home/dell/yuanyuanxu/SIM240/docs/reports/reviewer_numerics_20261018_v1/claim_evidence.csv"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "alignment_issue_counts": {
+          "causal_language": 1,
+          "magnitude": 1,
+          "none": 4,
+          "other": 2,
+          "scope": 1,
+          "uncertainty": 1
+        },
+        "claim_count": 10,
+        "claim_ids_missing_requested_action": [],
+        "claim_ids_requiring_resolution": [
+          "N003",
+          "N004",
+          "N005",
+          "N006",
+          "N007",
+          "N008"
+        ],
+        "errors": [],
+        "notice": "This report checks matrix structure and declared claim-evidence alignment only. It does not verify evidence truth, reproduce analyses, or determine manuscript merit. Reports contain identifiers, not claim or manuscript text.",
+        "schema_version": "2.0",
+        "status": "VALID_WITH_ALIGNMENT_GAPS",
+        "support_counts": {
+          "not_assessed": 1,
+          "supported": 4,
+          "unsupported": 5
+        },
+        "valid": true,
+        "warnings": []
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/home/dell/.codex/skills/peer-review/scripts/lint_review.py",
+        "/home/dell/yuanyuanxu/SIM240/docs/reports/reviewer_numerics_20261018_v1/REPORT.md"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "channel_separation": {
+          "author_before_editor": true,
+          "author_heading_count": 1,
+          "editor_heading_count": 1
+        },
+        "comments": [],
+        "errors": [],
+        "line_count": 183,
+        "notice": "This deterministic lint uses structural and lexical rules. It does not judge scientific validity, verify whether statements are true, or replace accountable human review. Findings contain line numbers and rule IDs, not review or manuscript text.",
+        "schema_version": "2.0",
+        "status": "READY_FOR_HUMAN_REVIEW",
+        "structured_comment_count": 0,
+        "valid": true,
+        "warnings": [
+          {
+            "code": "NO_STRUCTURED_COMMENTS_FOUND",
+            "field": "document"
+          }
+        ]
+      },
+      "stderr": ""
+    }
+  ],
+  "new_solver_runs": 0,
+  "new_solver_compiles": 0,
+  "new_gate_releases": 0,
+  "author_review": "pending",
+  "scope": "Independent local audit of existing outputs; no editorial decision."
+}

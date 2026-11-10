@@ -1,0 +1,54 @@
+{
+  "review_id": "D4_REFERENCE_REVISION_REVIEW_20261025_v1",
+  "status": "REVIEW_COMPLETE_PROPOSAL_ONLY_NOT_APPROVED_OR_FROZEN",
+  "old_grid_protocol": "D4_development_grid_sensitivity_executable_20261024_v2",
+  "proposed_grid_protocol": "D4_development_grid_sensitivity_v3_DRAFT_NOT_CREATED",
+  "proposed_reference_contract": "D4_reference_contract_v2_DRAFT_NOT_ADOPTED",
+  "proposed_evaluation_contract": "D4_prediction_evaluation_v2_DRAFT_NOT_ADOPTED",
+  "current_model_lock": "G4_candidate_prediction_v1_20261024",
+  "current_model_coefficients_changed": false,
+  "model_v2_created_or_fitted": false,
+  "reference_strategy_recommended": "QUALIFY_NUMERICAL_REFERENCE_BEFORE_CONTINUUM_CORRELATION_CLAIMS",
+  "selected_new_dx_nm": null,
+  "old_grid_thresholds_changed": false,
+  "old_grid_verdict_retained": {
+    "geometry_FAIL": 2,
+    "quantity_FAIL": 5,
+    "quantity_PASS": 1
+  },
+  "proposal_new_thresholds_activated": false,
+  "preserved_v1_primary_score_reference_dx_nm": 5,
+  "prospective_model_targets_percent_unchanged": {
+    "MAE": 3,
+    "max_abs": 5
+  },
+  "future_numerical_budget_proposal_not_bound": {
+    "P": {
+      "maximum_reference_estimator_percent": 0.5
+    },
+    "T": {
+      "maximum_reference_estimator_percent": 0.5
+    },
+    "A": {
+      "maximum_reference_estimator_percent": 0.5
+    },
+    "iterative_refinement_change_percent": 0.05,
+    "interpretation": "PROPOSED_ESTIMATOR_AND_STABILITY_BUDGET_NOT_RIGOROUS_BOUND",
+    "old_adjacent_mesh_targets_are_not_relabelled_uncertainty": true
+  },
+  "prediction_results_opened": false,
+  "exposure_record": "16 already accepted development direction references read; no reserved flow results read; external exposure not verified",
+  "wide_finest_execution_released": false,
+  "prediction_execution_released": false,
+  "solver_started": false,
+  "teacher_approval_claimed": false,
+  "new_launch_command_delivered": false,
+  "required_before_future_execution": [
+    "choose physical continuum correlation or fixed-resolution emulator objective",
+    "static audit of reference extraction, corner/wall representation, mesh geometry and stopping error",
+    "choose and approve method for qualifying reference estimators with extra independent evidence",
+    "approve reference mesh strategy, domain coverage, budgets and resource ceiling",
+    "freeze new grid/reference/evaluation versions before new results; preserve old FAIL",
+    "separate user authorization and execution review; no automatic next-stage permission"
+  ]
+}

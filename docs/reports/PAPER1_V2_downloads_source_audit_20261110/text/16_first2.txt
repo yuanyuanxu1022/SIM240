@@ -1,0 +1,95 @@
+  Momentum transfer of a Boltzmann-lattice fluid with boundaries
+  M’hamed Bouzidi, Mouaouia Firdaouss, and Pierre Lallemand
+
+
+  Citation: Phys. Fluids 13, 3452 (2001); doi: 10.1063/1.1399290
+  View online: http://dx.doi.org/10.1063/1.1399290
+  View Table of Contents: http://pof.aip.org/resource/1/PHFLE6/v13/i11
+  Published by the AIP Publishing LLC.
+
+
+  Additional information on Phys. Fluids
+  Journal Homepage: http://pof.aip.org/
+  Journal Information: http://pof.aip.org/about/about_the_journal
+  Top downloads: http://pof.aip.org/features/most_downloaded
+  Information for Authors: http://pof.aip.org/authors
+
+
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+PHYSICS OF FLUIDS                                                                 VOLUME 13, NUMBER 11                                                                   NOVEMBER 2001
+
+
+Momentum transfer of a Boltzmann-lattice fluid with boundaries
+              M’hamed Bouzidia)
+              Laboratoire C.N.R.S.-A.S.C.I., Bâtiment 506, Université Paris-Sud (Paris XI Orsay),
+              91405 Orsay Cedex, France
+              Mouaouia Firdaoussb)
+              Laboratoire C.N.R.S.-L.I.M.S.I., Bâtiment 508, Université Paris-Sud (Paris XI Orsay),
+              91405 Orsay Cedex, France
+              Pierre Lallemandc)
+              Laboratoire C.N.R.S.-A.S.C.I., Bâtiment 506, Université Paris-Sud (Paris XI Orsay),
+              91405 Orsay Cedex, France
+              共Received 5 July 2000; accepted 5 June 2001兲
+              We study the velocity boundary condition for curved boundaries in the lattice Boltzmann equation
+              共LBE兲. We propose a LBE boundary condition for moving boundaries by combination of the
+              ‘‘bounce-back’’ scheme and spatial interpolations of first or second order. The proposed boundary
+              condition is a simple, robust, efficient, and accurate scheme. Second-order accuracy of the boundary
+              condition is demonstrated for two cases: 共1兲 time-dependent two-dimensional circular Couette flow
+              and 共2兲 two-dimensional steady flow past a periodic array of circular cylinders 共flow through the
+              porous media of cylinders兲. For the former case, the lattice Boltzmann solution is compared with the
+              analytic solution of the Navier–Stokes equation. For the latter case, the lattice Boltzmann solution
+              is compared with a finite-element solution of the Navier–Stokes equation. The lattice Boltzmann
+              solutions for both flows agree very well with the solutions of the Navier–Stokes equations. We also
+              analyze the torque due to the momentum transfer between the fluid and the boundary for two initial
+              conditions: 共a兲 impulsively started cylinder and the fluid at rest, and 共b兲 uniformly rotating fluid and
+              the cylinder at rest. © 2001 American Institute of Physics. 关DOI: 10.1063/1.1399290兴
+
+
+
+I. INTRODUCTION                                                                                      kind of average over a region including several lattice nodes
+                                                                                                     which led to mean boundary conditions.19–21 This is physi-
+     The lattice gas automaton, a very simplified description
+                                                                                                     cally sound as the relaxational nature of the dynamics acts as
+of the dynamics of a real fluid using an ensemble of fictitious
+                                                                                                     a low-pass spatial frequency filter which erases the details of
+particles that move synchronously on a highly symmetric
+                                                                                                     the representation of a smooth boundary by a series of linear
+lattice from one node to one of the neighboring nodes,1,2
+                                                                                                     steps drawn on the underlying lattice.
+together with its analysis in terms of the lattice Boltzmann
+                                                                                                          To obtain macroscopic information about the flows
+equation 共LBE兲 provides an efficient alternative3– 8 for direct
+                                                                                                     simulated by using the LBE method, one relies on the fact
+numerical simulations of the Navier–Stokes equations at
+moderate Reynolds numbers.9 Numerous papers have been                                                that the LBE technique provides direct information about the
+devoted to the correspondence between the large scale prop-                                          single particle distribution function in phase space, with a
+erties of the solutions of the lattice Boltzmann equation and                                        very small set of discrete particle velocities. Based upon the
+those of the continuous Navier–Stokes equation using either                                          distribution function, macroscopic information on the flow,
+the Chapman–Enskog analysis10 or an analysis of the time                                             such as flow velocity and local pressure distributions, can be
+evolution of moments of distribution functions.11                                                    easily determined. From this information one can in principle
+     One important and outstanding problem in the lattice                                            compute quantities such as drag or lift coefficients.
+Boltzmann method is that of boundary conditions. To include                                               When a boundary of some type is present, the fluid–
+boundaries in the LBE simulations, several schemes have                                              boundary interaction determines the momentum transfer of
+been proposed in the past to satisfy locally the standard ‘‘no-                                      all the particles that encounter the boundary, and in turn af-
+slip’’ or ‘‘free-slip’’ conditions of macroscopic flows.12–18                                        fects the distribution function at the boundary. In the LBE
+The earliest ones in terms of ‘‘bounce-back’’ 共or ‘‘specular                                         method, the fluid–boundary interaction is prescribed to ob-
+reflection’’兲2 were shown to be satisfactory for boundaries                                          tain desirable macroscopic boundary conditions for the cor-
+parallel to one of the discrete velocities of the model pro-                                         responding hydrodynamic situations described by the
+vided one is careful enough about their exact location. For                                          Navier–Stokes equations. The key in analyzing the LBE
+general boundaries it was found necessary to consider some                                           boundary conditions is to realize the locations of the effec-
+                                                                                                     tive boundary for certain fluid–boundary interactions where
+a兲                                                                                                   the desirable macroscopic boundary conditions are satisfied
+  Electronic mail: bouizidi@asci.fr
+b兲
+   Electronic mail: firdaous@limsi.fr                                                                to a certain extent.19–21
+c兲
+  Electronic mail: lalleman@asci.fr                                                                       In this paper a simple way to deal with boundaries of
+
+
+1070-6631/2001/13(11)/3452/8/$18.00                                                           3452                                             © 2001 American Institute of Physics
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+

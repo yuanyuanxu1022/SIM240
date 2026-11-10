@@ -1,0 +1,47 @@
+{
+  "review_id": "URV-v1.1-READONLY-20261101",
+  "original_tests_70_passed_again": true,
+  "formal_execution_ready": false,
+  "findings": [
+    {
+      "id": "R1",
+      "parent_finding": "F01",
+      "severity": "HIGH",
+      "blocks_effective_S0_binding": true,
+      "source": "CASE/unseen_v2_reference_checker_v1_1/analysis/contracts.py",
+      "lines": [16, 26],
+      "title": "合同声明解析出错时清空全部保护路径，仍可能在基准目录写文件",
+      "observation": "release_inputs在任一approved_runs或回归声明缺字段时返回[]，连先前已知输入/有效基准目录也丢弃。公开入口随后先创建输出，binding才拒绝。",
+      "evidence": "synthetic_probes/R1_malformed_metadata/verification.json",
+      "reproduction": "人工合同保留有效P基准目录；仅删另一运行声明的output_directory。正常声明时基准内输出被拒绝且无写入；缺字段时该基准内analysis_malformed/failure.json被创建，外层仍退出2。",
+      "limits": "仅人工目录，无实际原结果被写入；不是并发或恶意文件系统假设。",
+      "bounded_action": "声明结构不合法应在任何mkdir/save前失败，不能用空保护列表继续；覆盖同一合同含有效基准和不完整其他条目的组合，并核目录和文件均无新增。",
+      "fixed_this_review": false
+    },
+    {
+      "id": "R2",
+      "parent_finding": "F03",
+      "severity": "MEDIUM",
+      "blocks_effective_S0_binding": true,
+      "source": "CASE/unseen_v2_reference_checker_v1_1/analysis/contracts.py",
+      "lines": [79, 81],
+      "title": "捕获命令中的分离式宏定义未纳入唯一性检查",
+      "observation": "过滤器只识别-DURV_PREPARATION_ONLY或-UURV_PREPARATION_ONLY开头的单一token，未识别-D与宏名分离的记录。",
+      "evidence": "synthetic_probes/R2_split_macro_capture/verification.json",
+      "reproduction": "对可通过的人工完整合同，将捕获命令从-DURV_PREPARATION_ONLY=0增添-D URV_PREPARATION_ONLY=1，同步人工记录哈希后，binding仍返回成功。",
+      "limits": "只测试捕获文本的解析和binding函数；没有调用编译器，没有测定真实最终宏值，没有生成或运行正式二进制。人工CONFIRMED等标记不代表作者确认。",
+      "bounded_action": "对-D/-U的合并及分离形式统一解析后再检查仅一次明确的0；重复、冲突、undef应按原要求拒绝，保留原始命令文本。",
+      "fixed_this_review": false
+    }
+  ],
+  "F02": {
+    "verdict": "CONFIRMED_WITHIN_REVIEW_SCOPE",
+    "evidence": "v1.1原测试和完整20列保存样例；差异保存先于原K/旧轨迹停止条件",
+    "not_claimed": "new URV native steady-result end-to-end validation"
+  },
+  "F04": "OPEN_PREVIOUSLY_KNOWN_OUT_OF_CURRENT_REVIEW_REPAIR_SCOPE",
+  "source_changes": false,
+  "physical_threshold_changes": false,
+  "compiler_calls": 0,
+  "solver_calls": 0
+}

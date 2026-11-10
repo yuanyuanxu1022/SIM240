@@ -1,0 +1,134 @@
+{
+  "protocol_id": "URV-v1",
+  "planned_case_id": "URV1_H75_T_dx5_a100000",
+  "run_id": "URV_S0_T_A1_20261102_01",
+  "family": "H75",
+  "stage": "S0_REGRESSION",
+  "direction": "T",
+  "dx_nm": 5.0,
+  "acceleration_m_s2": 100000.0,
+  "NUMERICAL_GATE": "PASS",
+  "geometry_PASS": true,
+  "RESULT_PASS": true,
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "scalar": {
+    "K_m3": 4.449022023188299e-23,
+    "J_main_m2_s": 4.449022023188299e-12,
+    "diagnostic_rows": 2954,
+    "all_full_windows_recomputed": 1942,
+    "first_accepted_window_is_final": true,
+    "corrected_mass_max": 1.069961080215131e-15,
+    "legacy_mass_max": 8.934175019802938e-13,
+    "ledger_agreement_max": 1.4626861154089163e-16,
+    "final_span": 4.247639769282007e-06,
+    "Re_H": 1.553046469153581e-05
+  },
+  "smooth": null,
+  "regression": {
+    "relative_K_change": 0.0,
+    "legacy": {
+      "all_common_columns": {
+        "J": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "Jx": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "Jy": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "Jz": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "Mach": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "Q_section1": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "Q_section2": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "finite": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "mass": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "mass_error": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "max_density_deviation": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "pressure_max": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "pressure_min": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "rho": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "section_relative_difference": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "step": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "time_s": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "window_cross_abs_max": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "window_rel_span": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        },
+        "window_rel_std": {
+          "exact": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "old_rows": 2954,
+      "new_rows": 2954,
+      "common_rows_compared": 2954,
+      "all_exact": true,
+      "unexplained_differences_stop": false
+    }
+  },
+  "geometry": {
+    "fluid_nodes": 57600,
+    "candidate_links": 32448,
+    "q_min": 0.5,
+    "q_max": 0.5000000000000018,
+    "material_0": 0,
+    "material_1": 57600,
+    "material_2": 2304,
+    "material_3": 32256
+  },
+  "release_sha256": "cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148",
+  "completion_sha256": "1f6128618769318b677404f2aded5d25a71b79611c6e8366f6efabb9d7e93c29",
+  "independent_exit_code": 0
+}

@@ -1,0 +1,71 @@
+[
+  {
+    "label": "compile_2d",
+    "argv": [
+      "g++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Werror",
+      "two_dimensional/darcy2d.cpp",
+      "-o",
+      "build/bin/darcy2d"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.8656985759735107,
+    "log": "reports/preparation_attempts/002/compile_2d.log"
+  },
+  {
+    "label": "compile_openfoam",
+    "argv": [
+      "wmake"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/application",
+    "exit_code": 0,
+    "seconds": 7.628193140029907,
+    "log": "reports/preparation_attempts/002/compile_openfoam.log"
+  },
+  {
+    "label": "checkMesh",
+    "argv": [
+      "checkMesh",
+      "-case",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/cases/C01",
+      "-allGeometry",
+      "-allTopology"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.03188323974609375,
+    "log": "reports/preparation_attempts/002/checkMesh.log"
+  },
+  {
+    "label": "audit_2d",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/build/bin/darcy2d",
+      "--input",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/common/C01_2d.txt",
+      "--audit-only"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.0014309883117675781,
+    "log": "reports/preparation_attempts/002/audit_2d.log"
+  },
+  {
+    "label": "audit_openfoam",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/build/bin/depthAveragedDarcyFoam",
+      "-case",
+      "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/openfoam/cases/C01",
+      "-auditOnly"
+    ],
+    "cwd": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1",
+    "exit_code": 0,
+    "seconds": 0.03179597854614258,
+    "log": "reports/preparation_attempts/002/audit_openfoam.log"
+  }
+]

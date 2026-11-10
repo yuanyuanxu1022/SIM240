@@ -1,0 +1,101 @@
+{
+  "python_version": "3.14.7 | packaged by Anaconda, Inc. | (main, Aug 14 2026, 10:21:40) [GCC 14.3.0]",
+  "arithmetic_only_not_solver_execution": true,
+  "compiler_invocations": 0,
+  "solver_invocations": 0,
+  "constants_read_from_bound_ELFs": {
+    "old_rhoPhys": {
+      "address": "0xe2bd0",
+      "float_value": 1000.0,
+      "bytes_hex": "0000000000408f40"
+    },
+    "new_rhoPhys": {
+      "address": "0xe3d50",
+      "float_value": 1000.0,
+      "bytes_hex": "0000000000408f40"
+    },
+    "old_initialized_dx": {
+      "address": "0x111070",
+      "float_value": 5e-09,
+      "bytes_hex": "3a8c30e28e79353e"
+    },
+    "new_initialized_dx": {
+      "address": "0x112070",
+      "float_value": 5e-09,
+      "bytes_hex": "3a8c30e28e79353e"
+    }
+  },
+  "old_mass_model": "partial=RN(RN(RN(rho*1000)*dx)*dx); M=RN(partial*dx+M) with one final FMA round",
+  "new_mass_model": "same partial; term=RN(partial*dx); M=RN(term+M)",
+  "final_slice_extrusion_replays": {
+    "P": {
+      "cells": 57600,
+      "old_fused_mass_kg": 7.199999999994686e-18,
+      "new_separate_mass_kg": 7.199999999994686e-18,
+      "compensated_mass_kg": 7.199999999999999e-18,
+      "unequal_cell_prefix_totals": 1,
+      "max_cell_prefix_absolute_difference_kg": 4.70197740328915e-38,
+      "input": "existing final double precision XZ slice, extruded over 48 y planes",
+      "assumption": "rho is identical along y; exact full-domain density was not saved",
+      "final_step": 4342,
+      "actual_old_mass_kg": 7.199999999994686e-18,
+      "actual_new_mass_kg": 7.199999999994686e-18,
+      "actual_corrected_mass_kg": 7.199999999999999e-18,
+      "raw_slice_sha256": "e68935254fbb365888532e7f865f2df0dcd900e7bdd855470ebba645279b72a5",
+      "old_final_total_matches_record": true,
+      "new_final_total_matches_record": true,
+      "compensated_final_total_matches_record": true
+    },
+    "T": {
+      "cells": 57600,
+      "old_fused_mass_kg": 7.199999999999971e-18,
+      "new_separate_mass_kg": 7.199999999999971e-18,
+      "compensated_mass_kg": 7.199999999999993e-18,
+      "unequal_cell_prefix_totals": 39,
+      "max_cell_prefix_absolute_difference_kg": 7.52316384526264e-37,
+      "input": "existing final double precision XZ slice, extruded over 48 y planes",
+      "assumption": "rho is identical along y; exact full-domain density was not saved",
+      "final_step": 2953,
+      "actual_old_mass_kg": 7.199999999999971e-18,
+      "actual_new_mass_kg": 7.199999999999971e-18,
+      "actual_corrected_mass_kg": 7.199999999999993e-18,
+      "raw_slice_sha256": "66f1ff6dacc6e255ed47b36f40c78fe53c00b202202b81b9230e4769ff538542",
+      "old_final_total_matches_record": true,
+      "new_final_total_matches_record": true,
+      "compensated_final_total_matches_record": true
+    }
+  },
+  "same_input_counterexample": {
+    "label": "CONSTRUCTED_ARITHMETIC_COUNTEREXAMPLE_NOT_HISTORICAL_PREFIX",
+    "density_from_saved_slice": 1.0,
+    "prefix_cell_count_label": 28,
+    "accumulator_kg": 3.5e-21,
+    "partial_before_last_dx": 2.5000000000000004e-14,
+    "dx": 5e-09,
+    "fused_result_kg": 3.625000000000001e-21,
+    "separate_result_kg": 3.625e-21,
+    "fused_hex": "0x1.11e5b291d3cc1p-68",
+    "separate_hex": "0x1.11e5b291d3cc0p-68",
+    "ULP_distance": 1,
+    "absolute_difference_kg": 7.52316384526264e-37,
+    "exact_rational_single_round_matches_fma": true,
+    "accumulator_was_constructed_not_observed": true
+  },
+  "total_differing_T_timesteps": 190,
+  "saved_T_timesteps": [
+    0,
+    14,
+    27,
+    68,
+    135,
+    270,
+    675,
+    1350,
+    2700,
+    2953
+  ],
+  "differing_timesteps_with_saved_field": [],
+  "exact_full_density_at_differing_timesteps_available_in_bound_artifacts": false,
+  "whole_190_point_causal_replay_completed": false,
+  "limit": "A static instruction-path difference and its arithmetic effect are established; full historical trajectory attribution is not."
+}

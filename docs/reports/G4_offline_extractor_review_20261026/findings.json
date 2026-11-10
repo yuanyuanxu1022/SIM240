@@ -1,0 +1,50 @@
+{
+  "status": "REVIEW_ONLY_NOT_IMPLEMENTATION",
+  "items": [
+    {
+      "id": "B01",
+      "type": "REAL_ANALYSIS_RELEASE_BLOCKER",
+      "location": "extractor.py:22-42,57-59",
+      "status": "OPEN_NOT_MODIFIED",
+      "observation": "Caller-supplied 48-file digest list is not fixed to the prior independent acceptance certificate",
+      "minimum_action": "Bind certificate SHA, inventory digest, code/spec version and unique analysis output in a versioned analysis object",
+      "observed_real_record_tampering": false
+    },
+    {
+      "id": "B02",
+      "type": "REAL_ANALYSIS_RELEASE_BLOCKER",
+      "location": "extractor.py:16-60; test_fixtures.py:275-289",
+      "status": "OPEN_NOT_MODIFIED",
+      "observation": "Synthetic archive reader and closed guard tested; real-schema successful read branch not exercised",
+      "minimum_action": "Separate pure reader and test equivalent schema with marked temporary synthetic records, success and targeted failure paths, keeping real entry closed"
+    },
+    {
+      "id": "C01",
+      "type": "VALIDATION_GAP",
+      "location": "numerics.py:240-257; test_fixtures.py:200-237",
+      "status": "OPEN_NOT_MODIFIED",
+      "observation": "No independent closed-form nonzero velocity and pressure L2 error fixture",
+      "minimum_action": "Add artificial polynomial field with exact MMS error integrals; no PDE solve"
+    },
+    {
+      "id": "C02",
+      "type": "ANALYSIS_RECORD_AND_COMPARISON_GAP",
+      "location": "numerics.py:223-231,345-369; extractor.py:79-89",
+      "status": "OPEN_NOT_MODIFIED",
+      "observation": "Diagnostic outputs do not yet have a complete real-analysis persistence and predeclared numerical consistency contract",
+      "minimum_action": "Specify complete unique analysis artifacts, comparison tolerance and failure/near-threshold states before examining real metrics"
+    },
+    {
+      "id": "D01",
+      "type": "DOCUMENTATION_COUNT",
+      "location": "prior current state and fixture_results.json",
+      "status": "CURRENT_STATE_CORRECTED_HISTORICAL_RECORD_PRESERVED",
+      "observation": "4 Python sources bound, plus README totals 5 files; prior statement of 5 Python files incorrect",
+      "minimum_action": "Correct current state and handoff only"
+    }
+  ],
+  "new_computations_authorized": false,
+  "real_extraction_authorized": false,
+  "solver_authorized": false,
+  "old_17_fixture_record_preserved": true
+}

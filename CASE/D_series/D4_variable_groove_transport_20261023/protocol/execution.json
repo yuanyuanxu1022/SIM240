@@ -1,0 +1,25 @@
+{
+  "protocol_id": "variable_groove_preparation_20261023_v1",
+  "scope": "geometry and output implementation; no automatic steady simulation",
+  "preparation_authorized_by_user": true,
+  "external_teacher_approval_independently_verified": false,
+  "main_phi": 0.5,
+  "period_equals_twice_width": true,
+  "window_tstar": 0.75,
+  "max_time_H_diffusion": 8,
+  "frame_tstar": [0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 4, 8],
+  "numerical_limits": {
+    "relative_std": 0.000001,
+    "relative_span": 0.000005,
+    "mass_relative_strict": 0.0000000001,
+    "density_deviation": 0.000001,
+    "Mach_strict": 0.05,
+    "section_relative_difference": 0.00001,
+    "cross_flux_m2_s": 0.000000000001,
+    "fallback_count": 0,
+    "unresolved_links": 0
+  },
+  "new_direction_solves_budget": 60,
+  "optional_cases_enabled": false,
+  "prediction_results_require_prior_model_lock": true
+}

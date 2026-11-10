@@ -1,0 +1,64 @@
+{
+  "checked_at": "2026-10-30T05:36:08.287893+08:00",
+  "case_id": "C03",
+  "protocol_id": "SDI-v1",
+  "task": "CHECK_EXISTING_COMPLETED_RESULTS_ONLY",
+  "searched_case_roots": [
+    "CASE/interface_static_darcy_v1",
+    "CASE/interface_static_darcy_v1_1",
+    "CASE/interface_static_darcy_v1_2"
+  ],
+  "path_existence": {
+    "runs": false,
+    "runs/SDI_C03_v1_2_20261030_01": false,
+    "openfoam/cases/C03/1": false,
+    "openfoam/cases/C03/SDI_output": false
+  },
+  "C03_run_manifests_found": [],
+  "process_check": {
+    "kind": "OBSERVED_SINGLE_TERMINAL_CHECK_THIS_TURN",
+    "matching_solver_or_C03_runner_processes": [],
+    "tmux_exit_code": 1,
+    "tmux_stderr": "no server running on /tmp/tmux-1000/default",
+    "continuous_polling": false
+  },
+  "release_files_verified": 44,
+  "runtime_libraries_verified": 21,
+  "preparation_source_manifest_files_verified": 63,
+  "preparation_release_status": "PREPARED_NOT_RUN",
+  "planned_run_id": "SDI_C03_v1_2_20261030_01",
+  "actual_run_id": null,
+  "run_completed": false,
+  "solver_execution_codes": null,
+  "raw_C03_results_available": false,
+  "C03_C01_actual_comparison_performed": false,
+  "analysis_status": "NOT_EVALUATED_NO_C03_RUN_EVIDENCE",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": true,
+  "geometry_scope": "PREPARATION_STATIC_SYNTHETIC_DOMAIN_ONLY",
+  "completed_run_geometry_PASS": null,
+  "physical_validation": "NOT_EVALUATED",
+  "independent_human_acceptance": false,
+  "C01_reference": {
+    "run_id": "SDI_C01_v1_20261030_01",
+    "bound_files_verified": 25,
+    "accepted_raw_files_verified": 14,
+    "execution_status": "completed",
+    "independent_exit_codes": [
+      0,
+      0
+    ],
+    "accepted_analysis": "docs/reports/SDI_C01_results_20261030/interface_analysis_geometry_v1_1.json",
+    "accepted_analysis_sha256": "75621f3a1f325dcab5f22de31eefaefb926b61e902fe3d03a731b019537f4ef5",
+    "NUMERICAL_GATE": "PASS",
+    "RESULT_PASS": true,
+    "new_result_analysis_performed": false
+  },
+  "solver_launched_by_this_task": false,
+  "new_launch_authorization": false,
+  "new_compilation": false,
+  "thresholds_changed": false,
+  "physical_model_changed": false,
+  "conclusion": "No launch or completion evidence was found in the checked local SDI paths; insufficient evidence for completed-run acceptance or actual C03/C01 comparison."
+}

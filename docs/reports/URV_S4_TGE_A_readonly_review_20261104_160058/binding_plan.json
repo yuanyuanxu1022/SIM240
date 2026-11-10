@@ -1,0 +1,58 @@
+{
+  "kind": "NON_EXECUTABLE_ZERO_BINDING_PLAN_NOT_AUTHORIZATION",
+  "stage": "S4_T_TRANSVERSE_GRID_SUPPLEMENT",
+  "preparation_A_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/preparation_A.json",
+  "preparation_A_sha256": "53e544543ae26402a0d0fac7a7b3294e0a2286e7a7d4c336ce08e91abf53bfb9",
+  "existing_input_count": 3695,
+  "exact_audit_run_ids": [
+    "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_describe",
+    "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_precheck",
+    "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_initialize"
+  ],
+  "native_call_count": 3,
+  "initial_field_read_count": 1,
+  "actual_time_steps": 0,
+  "fail_stop_no_retry": true,
+  "proposed_resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_call_free_disk_GiB": 8,
+    "output_budget_GiB_per_call": 4,
+    "native_call_cap_seconds": 300,
+    "field_reader_cap_seconds": 300
+  },
+  "native_zero_step_authorized": false,
+  "initial_field_readback_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "formal_simulation_authorized": false,
+  "S5_authorized": false,
+  "user_authorization_received": false,
+  "resource_proposal_adopted": false,
+  "AI_may_start_solver": false,
+  "user_manually_starts": true,
+  "required_before_issuance": [
+    "actual user authorization for exact 3+1 and adoption of stated limits",
+    "rehash A and all inputs; verify sidecar and source history",
+    "check resources at that time and conflicts; verify four pristine planned directories",
+    "verify new authorization/decision/release/log/session/attempt paths unused",
+    "write separate actual authorization and adopted resource decision; inherit A closure",
+    "bind A and sidecar plus completed immutable review evidence; exclude live logs",
+    "validate new zero-only release and independent SHA without --execute",
+    "update shared handoff and deliver one user-manual tmux command; stop"
+  ],
+  "authority_schema_fields": {
+    "release_kind": "AUTHORIZED_S4_TGE_ZERO_RELEASE",
+    "approved_formal_run_ids": [],
+    "approved_audit_ids": "exact three audit identities above",
+    "actual_run_ids": []
+  },
+  "formal_solver_wall_cap_seconds": null,
+  "formal_checker_cap_seconds": null,
+  "execution_release_created": false,
+  "start_command_created": false
+}

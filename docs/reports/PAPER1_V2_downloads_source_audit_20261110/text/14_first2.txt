@@ -1,0 +1,226 @@
+                                                     PHYSICAL REVIEW E, VOLUME 65, 046308
+
+                   Discrete lattice effects on the forcing term in the lattice Boltzmann method
+                                               Zhaoli Guo,1 Chuguang Zheng,1 and Baochang Shi2
+1
+ National Laboratory of Coal Combustion, Huazhong University of Science and Technology, Wuhan 430074, People’s Republic of China
+      2
+        Department of Mathematics, Huazhong University of Science and Technology, Wuhan 430074, People’s Republic of China
+                                     共Received 13 September 2001; published 10 April 2002兲
+                    We show that discrete lattice effects must be considered in the introduction of a force into the lattice
+                 Boltzmann equation. A representation of the forcing term is then proposed. With the representation, the
+                 Navier-Stokes equation is derived from the lattice Boltzmann equation through the Chapman-Enskog expan-
+                 sion. Several other existing force treatments are also examined.
+
+                 DOI: 10.1103/PhysRevE.65.046308                                                                    PACS number共s兲: 47.11.⫹j
+
+
+   The rapidly developing lattice Boltzmann method 共LBM兲,                          with ␻ 0 ⫽4/9, ␻ i ⫽1/9 for i⫽1 –4, and ␻ i ⫽1/36 for i
+a technique for modeling complex fluid systems, has at-                            ⫽5 –8. c s ⫽c/ 冑3 is the sound speed of the model. A two-
+tracted much attention in a variety of fields 关1,2兴. There is a                    scale analysis in time will lead to the Navier-Stokes equa-
+wide range of fluid problems in which an external or internal                      tion.
+force is involved, such as water waves and multiphase or                              In the presence of a body force density F⫽ ␳ g, where g is
+multicomponent fluids. To design lattice Boltzmann models                          the acceleration due to F, the LBE must be modified to ac-
+for these systems, the force must be treated appropriately in                      count for the force. We do this by adding an additional term
+order to obtain the correct hydrodynamics. In this paper a                         to the LBE:
+representation of the forcing term is proposed in which dis-
+crete lattice effects are considered. Several other existing                                                                  1
+methods are also examined.                                                                f i 共 x⫹ei ⌬t,t⫹⌬ 兲 ⫺ f i 共 x,t 兲 ⫽⫺ 关 f i 共 x,t 兲 ⫺ f (eq) 共 x,t 兲兴
+   The lattice Boltzmann equation 共LBE兲 without a force can                                                                   ␶                  i
+
+be expressed as                                                                                                               ⫹⌬tF i ,                           共4兲
+
+                                                                                   where the EDF f (eq)
+                                                                                                   i    is defined by
+                                         1
+    f i 共 x⫹ei ⌬t,t⫹⌬t 兲 ⫺ f i 共 x,t 兲 ⫽⫺ 关 f i 共 x,t 兲 ⫺ f (eq) 共 x,t 兲兴 ,
+                                         ␶                  i
+
+                                                                           共1兲              f (eq)
+                                                                                              i    ⫽E i 共 ␳ ,u* 兲     with   ␳ u* ⬅   兺i ei f i ⫹mF⌬t.           共5兲
+
+where f i (x,t) is the distribution function 共DF兲 for particles
+                                                                                   Here m is a constant to be determined.
+with velocity ei at position x and time t, and ⌬t is the time
+                                                                                      The forcing term F i can be written in a power series in the
+increment. f (eq)   is the equilibrium distribution function
+               i                                                                   particle velocity 关4兴,
+共EDF兲 and ␶ is the nondimensional relaxation time. The fluid
+
+
+                                                                                                              冋                                     册
+density ␳ and velocity u are determined by the DF,
+                                                                                                                      B•ei    C: 共 ei ei ⫺c s2 I兲
+                                                                                                     F i ⫽ ␻ i A⫹       2
+                                                                                                                          ⫹                             ,        共6兲
+                                                                                                                       cs           2c s4
+                     ␳⫽   兺i f i ,     ␳ u⫽   兺i ei f i .                   共2兲
+                                                                                   where A, B, and C are functions of F to be determined by
+                                                                                   requiring that the moments of F i are consistent with the hy-
+The EDF f (eq)
+             i    in Eq. 共1兲 must be chosen such that the mass                     drodynamic equations. After some calculation, we can obtain
+and momentum are conserved and some symmetry require-                              the zeroth to second moments of F i ,
+ments are satisfied in order that the resulting macroscopic
+equations describe the correct hydrodynamics of the fluid                                                                                                   1
+being simulated. For example, in the D2Q9 关3兴 model, the                           兺i F i ⫽A, 兺i ei F i ⫽B, 兺i ei ei F i ⫽c s2 AI⫹ 2 关 C⫹CT 兴 .
+particle velocities are defined by e0 ⫽(0,0), ei ⫽„cos关␲(i                                                                                                       共7兲
+⫺1)/2兴 ,sin关␲(i⫺1)/2兴 …c for i⫽1 –4, and ei ⫽ 冑2„cos关␲(i
+⫺9/2)/2兴 ,sin关␲(i⫺9/2)/2兴 …c for i⫽5 –8. Here c⫽⌬x/⌬t,                                The macrodynamic behavior arising from the LBE 共5兲 can
+and ⌬x is the lattice spacing. The EDFs of D2Q9 are chosen                         be found from a multiscaling analysis using an expansion
+to be f (eq)
+        i    ⫽E i ( ␳ ,u), where                                                   parameter ⑀ , which is proportional to the ratio of the lattice
+                                                                                   spacing to a characteristic macroscopic length. To do this, the
+
+
+                              冋                                     册
+                                                                                   following expansions are introduced 关5兴:
+                                     e•u     uu: 共 ei ei ⫺c s2 I兲
+            E i 共 ␳ ,u兲 ⫽ ␻ i ␳ 1⫹       ⫹                              ,   共3兲
+                                                                                                                 i ⫹ ⑀ f i ⫹ ⑀ f i ⫹•••,
+                                                                                                         f i ⫽ f (0)                                            共8a兲
+                                       2
+                                     cs             2c s4                                                                (1)  2 (2)
+
+
+
+1063-651X/2002/65共4兲/046308共6兲/$20.00                                       65 046308-1                               ©2002 The American Physical Society
+ZHAOLI GUO, CHUGUANG ZHENG, AND BAOCHANG SHI                                                                           PHYSICAL REVIEW E 65 046308
+
+                  ⳵      ⳵       ⳵                                              ity and the force are modified due to discrete lattice effects.
+                     ⫽⑀     ⫹⑀2     ,           “⫽ ⑀ “ 1 ,           共8b兲       These corrections are from the t 2 ⫽ ⑀ 2 t time scale.
+                  ⳵t    ⳵t1     ⳵t2
+                                                                                   The macroscopic equations on the t 2 ⫽ ⑀ 2 t time scale are
+                                                                                derived by taking moments of Eq. 共9c兲. With the aid of Eqs.
+          F⫽ ⑀ F1 ,        A⫽ ⑀ A 1 ,     B⫽ ⑀ B1 ,     C⫽ ⑀ C1 .    共8c兲
+                                                                                共10兲 and 共11兲, the final equations can be written as
+   Expanding f i (x⫹ei ⌬t,t⫹⌬t) in Eq. 共4兲 about x and t,
+and applying the above multiscaling expansions to the result-
+ing continuous equation, we can obtain the following equa-
+                                                                                                     ⳵␳
+                                                                                                     ⳵t2
+                                                                                                               1
+                                                                                                                   冉 冊
+                                                                                                         ⫽⌬t m⫺ “ 1 •F1 ,
+                                                                                                               2
+                                                                                                                                                共13a兲
+tions in consecutive order of the parameter ⑀ :
+
+                           O共 ⑀0兲:         i ⫽fi
+                                         f (0) (eq)
+                                                    ,                共9a兲
+                                                                                               ⳵ 共 ␳ u* 兲
+                                                                                                   ⳵t2
+                                                                                                          ⫽⌬t m⫺  冉 冊
+                                                                                                                 1 ⳵ F1
+                                                                                                                 2 ⳵t1
+                                                                                                                        ⫹“ 1 • ␴1               共13b兲
+
+                                                1 (1)                           where the stress tensor ␴1 is now given by
+                O共 ⑀1兲:             i ⫽⫺
+                             D 1i f (0)           f ⫹F 1i ,          共9b兲
+                                              ␶ ⌬t i
+
+O共 ⑀2兲:                                                                         ␴1 ␣␤ ⫽⫺ 1⫺冉      1
+                                                                                                         冊    ⌬t
+                                                                                                    “ •⌸ (1) ⫺ 共 C1 ␣␤ ⫹C1 ␤␣ 兲
+                                                                                                 2 ␶ 1 ␣␤ 4
+   ⳵ f (0)
+    ⳵t2
+       i
+            冉
+           ⫹ 1⫺
+                1
+                2␶     冊  i ⫽⫺
+                   D 1i f (1)
+                                 1 (2) ⌬t
+                                   f ⫺ D 1i F 1i ,
+                               ␶ ⌬t i  2
+                                                                     共9c兲               冉 冊
+                                                                                      ⫽ ␶⫺
+                                                                                               1 2
+                                                                                                 c ⌬t ␳ 共 “ ␣ u␤* ⫹“ 1 ␤ u␣* 兲
+                                                                                               2 s
+where D 1i ⫽ ⳵ / ⳵ t 1 ⫹ei •“ 1 .
+   Taking moments of Eq. 共9b兲, we can obtain the following
+macroscopic equations on the t 1 ⫽ ⑀ t time scale and x1 ⫽ ⑀ x
+                                                                                          冋冉 冊
+                                                                                        ⫹⌬t      ␶⫺
+                                                                                                         1
+                                                                                                         2
+                                                                                                                                   ␶
+                                                                                                                                                    册
+                                                                                                           共 u␣* F1 ␤ ⫹u␤* F1 ␣ 兲 ⫺ 共 C1 ␣␤ ⫹C1 ␤␣ 兲 .
+                                                                                                                                   2
+
+space scale:                                                                                                                                      共14兲
+
+                                                                                Clearly, there are additional contributions to the viscous
+                          ⳵␳
+                              ⫹“ 1 • 共 ␳ u* 兲 ⫽A 1 ,                共10a兲       stress due to the discrete lattice effects and the presence of
+                          ⳵t1                                                   the body force. It is well known that the artifact due to the
+
+
+                                               冉 冊
+                                                                                lattice effect can be absorbed into a redefined viscosity,
+                 ⳵ 共 ␳ u* 兲                  m
+
+                                                                                                                  冉 冊
+                            ⫹“ 1 •⌸ (0) ⫽ n⫹   F ,                  共10b兲
+                     ⳵t1                     ␶ 1                                                                        1 2
+                                                                                                             ␯⫽ ␶⫺        c ⌬t.                   共15兲
+                                                                                                                        2 s
+where we assume that B1 ⫽nF1 , and n is a constant to be
+determined. ⌸ (0) is the zeroth-order momentum flux tensor                      The contribution to the stress due to the force can also be
+given by ⌸ ␣␤                     i ⫽c s ␳ ␦ ␣␤ ⫹ ␳ u␣
+                ⫽ 兺 i ei ␣ ei ␤ f (0)
+            (0)                        2
+                                                     * u␤* . To recover         canceled by choosing a proper definition of C. One suitable
+the Euler equations from Eqs. 共10兲, we must choose                              choice is taking
+
+                            A⫽0,         n⫹
+                                              m
+                                              ␶
+                                                ⫽1.                  共11兲
+                                                                                       冉
+                                                                                     C⫽ 1⫺
+                                                                                               1
+                                                                                               2␶冊2u* F           or        冉
+                                                                                                                        C⫽ 1⫺
+                                                                                                                                  1
+                                                                                                                                  2␶ 冊
+                                                                                                                                     共 u* F⫹Fu* 兲 .
+                                                                                                                                                 共16兲
+The first-order momentum flux ⌸ (1) ⬅ 兺 i ei ei f (1)
+                                                  i   can be sim-
+plified using Eq. 共10兲 with the constraint Eq. 共11兲. After some                 Equations 共13兲 also indicate that the spatial and temporal
+standard algebra, we obtain that                                                derivatives influence the density and momentum changes,
+
+                   冋
+                                                                                respectively, on the t 2 time scale. To eliminate these unex-
+  ⌸ ␣␤
+    (1)
+        ⫽⫺ ␶ ⌬t 共 u␣* F1 ␤ ⫹u␤* F1 ␣ 兲 ⫹c s2 ␳ 共 “ 1 ␣ u␤* ⫹“ 1 ␤ u␣* 兲         pected effects, one must take
+
+
+                                     册
+                                                                                                     1                               ⌬t
+            1
+           ⫺ 共 C1 ␣␤ ⫹C1 ␤␣ 兲                                        共12兲
+                                                                                               m⫽
+                                                                                                     2
+                                                                                                             or   ␳ u* ⫽   兺i ei f i ⫹ 2 F.       共17兲
+            2
+
+where the terms of order O(u 3 ) or higher have been ne-                           Combining the results on the t 1 and t 2 time scales, Eqs.
+glected. If we take C⫽2uF1 or C⫽uF1 ⫹F1 u, then the mo-                         共10兲 and 共11兲 together with Eqs. 共11兲, 共16兲, and 共17兲, we now
+mentum flux reduces to the Navier-Stokes expression for the                     obtain the final macroscopic equations:
+viscous stresses, i.e., ⌸ ␣␤(1)
+                                ⫽ ␴1 ␣␤ ⬅ ␯ (“ 1 ␣ u␤* ⫹“ 1 ␤ u␣* ),
+where the kinematic viscosity ␯ is given by ␯ ⫽c s2 ␶ ⌬t. This                                                ⳵␳
+                                                                                                                 ⫹“• ␳ v⫽0                      共18a兲
+is the expression for C given in Refs. 关6 – 8兴, and the kine-                                                 ⳵t
+matic viscosity is the same as in the solution of the continu-
+ous Boltzmann equation. For the LBE, however, the viscos-                       and
+
+                                                                          046308-2
+

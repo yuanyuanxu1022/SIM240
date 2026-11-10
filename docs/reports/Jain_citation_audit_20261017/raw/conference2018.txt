@@ -1,0 +1,237 @@
+         Optimizing Filling of Anisotropic Templates in UV Nanoimprint
+                                   Lithography
+
+                             Yang Ban, Akhilesh Jain and Roger T. Bonnecaze
+
+            McKetta Department of Chemical Engineering, The University of Texas at Austin,
+                                Austin, Texas 78712, United States
+                                                     ISCST-20180919AM-B-PD4
+                                             th
+                       Presented at the 19 International Coating Science and Technology Symposium,
+                                                                                   †
+                                       September 16-19, 2018, Long Beach, CA, USA .
+
+Abstract
+            UV nanoimprint lithography (UV-NIL) offers a potentially effective and low-cost
+nanoscale patterning method at resolutions better than photolithography. Acceptance of UV-NIL
+for integrated circuit (IC) manufacturing requires increased throughput and reduced defects,
+which are both significantly determined by the template filling process. UV-NIL involves filling a
+patterned template with a photocurable monomer. After UV curing, the template is removed to
+leave the desired pattern. Waiting for expulsion or dissolution of gas slows throughput, and
+trapped gas in the cured polymer leads to defects. The challenge is to optimally place the
+droplets on the substrate under the template. This is particularly challenging for anisotropic
+templates, such as lines and spaces, where the filling process is highly directional. Here we
+present a theory and simulation for fluid filling for anisotropic templates. The theory includes an
+anisotropic permeability to account for the variation in flow resistance parallel to the template. It
+also includes a varying capillary pressure that depends on the position of the gas-liquid interface
+relative to the orientation of the template. This theory is integrated into a simulation of template
+filling and droplet motion and merging for up to 1000 droplets to optimize droplet positions under
+different anisotropic templates.
+
+Introduction
+            Nanoimprint lithography (NIL) is an emerging technique which is an effective and low-
+cost nanoscale patterning method and a promising solution to the practical limits of
+photolithography1-2. NIL’s remarkable replication resolution is unmatched by any other process
+and approaching molecular scale3. While UVNIL has been deployed in the hard disk industry4-5
+and display photonics6 as patterning tools, UVNIL is not ready for an advanced semiconductor
+manufacturing. In implementing UVNIL, people faces a dilemma between the defect density and
+
+
+†
+    Unpublished. ISCST shall not be responsible for statements or opinions contained in papers or printed in its publications.
+
+
+                                                                    1
+throughput. Furthermore, stringent requirements and cost of ownership demand UVNIL to be
+both defect free and high throughput process.
+       A key to the successful deployment of UVNIL to ICs manufacturing will need to break the
+bottleneck of UVNIL. There are several experimental observations and analysis which indicates
+template fluid filling, the bottleneck, is strongly related to the structure of a template and the
+configuration of droplet placement. Therefore, through the insights gained from a
+comprehensive model which captures major physics involved with fluid flow, rational design of a
+template or a droplet pattern could be employed in the future to achieve a low defectivity and
+high throughput UVNIL process. Thus, our research problem is finding an optimal UVNIL
+process setting which run at the shortest fluid filling time that leads to an acceptable defect
+density.
+       While optimal tunings are known for simple line-space patterns, templates for practical
+applications contain a range of template patterns, often adjacent to one another. It is interesting
+to note that the defects are highest at boundaries where pattern densities were significantly
+different. Optimization with experiments is expensive and laborious, and every new template
+requires a new optimal pattern of droplet placement. Computer simulations offer a faster and
+inexpensive means to optimizing droplet placements. The challenge is to be able to simulate
+fluid flows across centimeters in features on the scale of 10 nanometers involving over 10,000
+droplets.
+
+Methods
+       From experimental observations, it is found that the optimized droplet placement can
+significantly reduce defect density while not compromising the throughput of UVNIL. Currently,
+these optimized droplet placement is found by trial and error which is expensive and laborious.
+Our ultimate research goal is development of computer simulations which is a faster and
+inexpensive means to find optimizing droplet placements. A schematic of imprint droplets
+between a patterned template and a substrate is shown in Fig. 1. Typically, the initial radii of the
+droplets are about 10–100 μm. Thus, the droplets are many orders of magnitude larger than the
+nanoscale patterns. Since each droplet cover hundreds or thousands of individual patterns, the
+resistance to flow can be described as an effective permeability. The equation describing the
+pressure and velocity fields in the drop for UVNIL with patterned template are given by the
+Reynold’s lubrication theory:
+
+                                       ∂H       ∇p 
+                                          = ∇ ⋅ Κ ⋅
+                                                     µ 
+                                                      H ,                                        (1)
+                                       ∂T      
+
+
+                                                 2
+                                                      ∇p
+                                            u=−Κ ⋅         ,                                        (2)
+                                                      µ
+where H is the gap between substrate and template, P is the pressure in the droplet, u is the
+vertically averaged fluid velocity and μ is the viscosity of the imprint resist. The pressure profile
+in the fluid is calculated using Eq. (1). The capillary pressure at the liquid air interface is used as
+boundary condition to solve Eq. (1). The pressure boundary condition at the liquid air interface
+can be found by the Young–Laplace equation. Young-Laplace equation describes the capillary
+pressure difference sustained across the interface between resist and air:
+
+                                              1 1 
+                                          P γ  + ,
+                                         ∆=                                                         (3)
+                                               R1 R2 
+                                               = Patm − ∆P,
+                                         Pboundary                                                  (4)
+
+where ΔP is the pressure difference across the fluid interface, γ is the surface tension, R 1 and
+R 2 are the principal radii of curvature, P boundary is the pressure at the boundary, and P atm is the
+atmospheric pressure. The equations (1 and 2) are solved using the volume of fluid (VOF)
+method. The domain is discretized into cells, and the fluid content in each cell is tracked as
+droplet spreading simulation advanced.
+
+
+
+
+Figure 1. Droplets between a substrate and a template. The initial radius of the drop is R 0 and
+the initial height is H 0 .
+
+       Furthermore, two physical systems, permeability and capillary pressure, must be studied
+in order to accurately simulate flow driven by nanopattern on the template. There a numerous
+studies which studied effects of structure on permeability, and we can use their approach to
+calculate effective permeability of various template. For capillary boundary conditions, we can
+use a software called Surface Evolver. Surface Evolver can generate surface created by
+nanostructures and calculate various parameters such as pressure and curvature involved with
+the particular surface.
+
+
+                                                  3
+Results
+                                                    Simulation of UVNIL using a template with line
+                                                    and   space     patterns      with   nine   droplets
+                                                    dispensed in a square arrangement is shown in
+                                                    Fig. 2. The droplet spreading and merging is
+                                                    simulated as the gap between the substrate
+                                                    and the template closes from an initial gap of
+                                                    height of 1 to a final gap height of 0.017. It was
+                                                    founded that the droplets are stretched when
+                                                    UVNIL is carried out with templates having line
+                                                    and space patterns. The non-circular shape is a
+                                                    result of the difference in flow permeability in x
+                                                    and y directions7. The higher permeability in y-
+Figure 2. Fluid spreading with a patterned          direction compare to x-direction (Fig. 1) leads to
+template      with    vertical     grating.    In
+experiment, straight channels of fluid and          the droplet spreading faster in the y-direction
+unfilled cavity formed (left figure).               compared to the x-direction and forming
+Simulation result also shows an anisotropic
+flow (right figure), qualitatively similar to the   straight channels (Fig. 2).
+experimental result 9-10.                           However, the simulation result shown in Fig. 2
+                                                    is not completely satisfactory because straight
+channels of unfilled regions was not observed in simulation. We believe the discrepancy exists
+between the experimental result and simulation can be mitigated by considering more accurate
+capillary pressure boundary condition. In the simulation7, the capillary pressure at the fluid-air
+interface was calculated as if the template was a flat plate (Fig. 3). We believe this capillary
+pressure boundary condition caused a discrepancy. A complex surface created by
+nanostructures should be considered more carefully. The capillary pressure was calculated by
+averaging the gap height between the substrate and the template accounting for vertical grating
+pattern, but the interface created by vertical gratings is quite different from a flat plate (Fig. 3).
+From our surface simulation observation, the previous model might have under estimated the
+capillary pressure boundary condition.
+        Using Surface Evolver, the surface created by nanostructures was generated (Fig. 3).
+These results generated by Surface Evolver can be used to accurately calculate the capillary
+pressure boundary condition. The capillary pressure calculated by Surface Evolver is shown in
+Fig. 4. For each simulation, we set the template height into a certain value and changed the
+height to see the variation in capillary pressure. The template width was always fixed to 1 and
+
+
+                                                    4
+the width was fixed to 0.5. In general, as we reduce the length of any parameter the capillary
+pressure which propels fluid front increased. This trend was expected, because the negative
+capillary pressure at the boundary will increase as the radius of curvature is reduced. There are
+two major points that we need to mention about the result generated by Surface Evolver. First,
+the capillary pressure calculation was not carried out further because above a certain length
+scale the fluid-air interface is no longer stable, and resist fluid spontaneously flows into a
+nanostructure. Second, the template height did not change capillary pressure by much, since
+interface created by template is small. However, as the template height increases, the stable
+interface only exists in a small window as shown in Fig. 4.
+
+
+
+
+Figure 3. Fluid-air interfaces between substrate and flat template (top-right) and
+substrate and structured template (bottom-right), generated using Surface Evolver. The
+left figure shows parameters used in the simulation.
+
+Conclusion and Future Work
+       In previous simulation, principal radii of fluid air interface was not exactly calculated.
+Rather the pressure difference, ΔP, is approximated based on the template structure and
+contact angles. This seems to be a poor approximation of capillary pressure and caused the
+discrepancy between the experimental result and the simulated result. We would like to resolve
+this discrepancy by calculate the exact values of principal radii. The result produced from the
+permeability and capillary pressure calculation will be integrated into the previous simulation
+which simulated droplet spreading by solving the equations (1 and 2) using the volume of fluid
+(VOF) method. By adding the new physical parameter, capillary pressure, the simulation can
+more accurately describe the fluid flow behavior in UVNIL. Furthermore, we will enhance the
+code to simulate spreading of 10,000 droplets less than an hour to be a practical means to find
+optimizing droplet placements.
+
+                                                5
+                                                                  The enhanced simulation will be
+                                                                  validated     using     published       results
+                                                                  which experimentally determined the
+                                                                  optimal droplet placement. After the
+                                                                  validation, the simulation will be used
+                                                                  to   determine        the   optimal     droplet
+                                                                  placement       for     various       template
+                                                                  structure     and      at    the   boundary
+                                                                  between       two      different      template
+                                                                  patterns. From our research, we
+                                                                  expect to generate several results.
+                                                                  The first is more accurate capillary
+                                                                  pressure boundary conditions and
+Figure 4. Capillary pressure calculated under various             approach to calculate the capillary
+configuration created by vertical grating template. The           pressure.      The      second     is    more
+comment next to legend present the range of height
+where stable interface existed in Surface Evolver                 accurate      and      faster   multi-droplet
+simulation.                                                       simulation for anisotropic templates.
+Lastly, the optimal droplet placement for various template patterns will be found.
+
+References
+1. Sreenivasan, S., Nanoimprint lithography steppers for volume fabrication of leading-edge
+   semiconductor integrated circuits. Microsystems & Nanoengineering 2017, 3, 17075.
+2. Traub, M. C.; Longsine, W.; Truskett, V. N., Advances in Nanoimprint Lithography. Annu Rev Chem
+   Biomol Eng 2016, 7, 583-604.
+3. Hua, F.; Sun, Y.; Gaur, A.; Meitl, M. A.; Bilhaut, L.; Rotkina, L.; Wang, J.; Geil, P.; Shim, M.; Rogers, J.
+   A., Polymer imprint lithography with molecular-scale resolution. Nano letters 2004, 4 (12), 2467-2471.
+4. Choi, B.-J.; Sreenivasan, S. V., Method and system for double-sided patterning of substrates. Google
+   Patents: 2012.
+5. Ye, Z.; Fretwell, J.; Luo, K.; Ha, S.; Schmid, G.; LaBrake, D.; Resnick, D. J.; Sreenivasan, S., Defect
+   analysis for patterned media. Journal of Vacuum Science & Technology B, Nanotechnology and
+   Microelectronics: Materials, Processing, Measurement, and Phenomena 2010, 28 (6), C6M7-C6M11.
+6. Ahn, S. H.; Yang, S.; Miller, M.; Ganapathisubramanian, M.; Menezes, M.; Choi, J. H.; Xu, F. Y.;
+   Resnick, D. J.; Sreenivasan, S., High-performance wire-grid polarizers using jet and Flash™ imprint
+   lithography. Journal of Micro/Nanolithography, MEMS, and MOEMS 2013, 12 (3), 031104.
+7. Jain, A.; Spann, A.; Cochrane, A.; Schunk, P. R.; Bonnecaze, R. T., Fluid flow in UV nanoimprint
+   lithography with patterned templates. Microelectronic Engineering 2017, 173, 62-70.
+
+
+
+
+                                                       6
+

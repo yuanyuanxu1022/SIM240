@@ -1,0 +1,140 @@
+                                         Computers and Mathematics with Applications 81 (2021) 258–288
+
+
+
+                                                    Contents lists available at ScienceDirect
+
+
+                            Computers and Mathematics with Applications
+                                            journal homepage: www.elsevier.com/locate/camwa
+
+
+
+
+OpenLB—Open source lattice Boltzmann code
+                                  ∗
+Mathias J. Krause a,b,c , , Adrian Kummerländer a,c , Samuel J. Avis e ,
+Halim Kusumaatmaja e , Davide Dapelo d , Fabian Klemens a,c ,
+Maximilian Gaedtke a,b , Nicolas Hafen a,b , Albert Mink a,b , Robin Trunk a,b , Jan
+E. Marquardt a,b , Marie-Luise Maier a,b , Marc Haussmann a,b , Stephan Simonis a,c
+a
+  Lattice Boltzmann Research Group, Karlsruhe Institute of Technology, Karlsruhe, Germany
+b
+  Institute for Mechanical Process Engineering and Mechanics, Karlsruhe Institute of Technology, Karlsruhe, Germany
+c
+  Institute for Applied and Numerical Mathematics, Karlsruhe Institute of Technology, Karlsruhe, Germany
+d
+  Faculty of Engineering and Informatics, University of Bradford, Bradford, United Kingdom
+e
+  Department of Physics, Durham University, Durham, United Kingdom
+
+
+
+article              info                           a b s t r a c t
+
+Article history:                                    We present the OpenLB package, a C++ library providing a flexible framework for lattice
+Available online 27 May 2020                        Boltzmann simulations. The code is publicly available and published under GNU GPLv2,
+                                                    which allows for adaption and implementation of additional models. The extensibility
+Keywords:
+                                                    benefits from a modular code structure achieved e.g. by utilizing template meta-
+Numerical simulation
+Lattice Boltzmann methods                           programming. The package covers various methodical approaches and is applicable to
+Partial differential equations                      a wide range of transport problems (e.g. fluid, particulate and thermal flows). The
+Computational fluid dynamics                        built-in processing of the STL file format furthermore allows for the simple setup of
+Transport problems                                  simulations in complex geometries. The utilization of MPI as well as OpenMP parallelism
+OpenLB                                              enables the user to perform those simulations on large-scale computing clusters. It
+                                                    requires a minimal amount of dependencies and includes several benchmark cases and
+                                                    examples. The package presented here aims at providing an open access platform for
+                                                    both, applicants and developers, from academia as well as industry, which facilitates
+                                                    the extension of previous implementations and results to novel fields of application for
+                                                    lattice Boltzmann methods. OpenLB was tested and validated over several code reviews
+                                                    and publications. This paper summarizes the findings and gives a brief introduction to
+                                                    the underlying concepts as well as the design of the parallel data structure.
+                                                     © 2020 The Author(s). Published by Elsevier Ltd. This is an open access article under the CC
+                                                                      BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+
+
+
+1. Introduction
+
+   In most engineering disciplines, especially in process and mechanical engineering as well as in biotechnology,
+numerical fluid flow simulations are considered as an important and cost-saving tool for the design and dimensioning
+of novel processes and machines. For researching fundamental cause–effect relationships, computational fluid dynamics
+(CFD) have become indispensable. Due to improved performance in computing, the significance of numerical methods
+increased quickly over the past decades. Despite the proceeding hardware enhancement, this performance acceleration
+was only achieved with well-scaling parallel algorithms. The paradigm change towards massively parallel computers
+consisting of more than one million processor cores, triggered the development of CFD simulation software based on novel
+
+    ∗ Corresponding author at: Lattice Boltzmann Research Group, Karlsruhe Institute of Technology, Karlsruhe, Germany.
+      E-mail address: mathias.krause@kit.edu (M.J. Krause).
+
+https://doi.org/10.1016/j.camwa.2020.04.033
+0898-1221/© 2020 The Author(s). Published by Elsevier Ltd. This is an open access article under the CC BY-NC-ND license (http://creativecommons.
+org/licenses/by-nc-nd/4.0/).
+                  M.J. Krause, A. Kummerländer, S.J. Avis et al. / Computers and Mathematics with Applications 81 (2021) 258–288   259
+
+
+approaches besides the conventional well-established methods such as finite element methods (FEM) or finite volume
+methods (FVM).
+   The lattice Boltzmann method (LBM) constitutes one of these promising recently emerged alternatives [1], which
+can efficiently utilize 10,000 and more processor cores [2,3]. Historically, LBM were widely and successfully applied as
+flow solvers for viscous, weakly compressible fluids. Due to its simple algorithmic structure and its local computation
+properties, which enable efficient implementations on high performance computers, LBM have become a popular tool
+also in other fields of application. Meanwhile, besides OpenLB [4] and several other open source codes (e.g. Palabos [5],
+waLBerla [6]), commercial codes (e.g. SIMULIA PowerFlow [7], OMNIS/LB [8]) have been released, which indicates the
+industrial potential of LBM.
+   In 2007, Latt and Krause released the first version of OpenLB [9]. At that time they observed that the majority of
+publications on LBM focused on comparing results obtained by particular LBM implementations for standard benchmarks
+with data gained experimentally or by other numerical schemes. Comparative numerical experiments for the investigation
+and juxtaposition of distinct LBM and associated boundary methods, were missing. Further, the equally important part of
+mathematical analysis, remained rather unattended. Even studies on numerical error analysis using e.g. error norms to
+prove convergence at least experimentally were rare to find. Besides aiming to impact the qualitative research on LBM,
+the intention of OpenLB was and is, transferring LBM to a state which enables solving more complex application scenarios
+beyond the researchers’ prototypical implementations. The early authors of OpenLB were convinced that in order to obtain
+a successful reproduction of published results, a well-established theoretical fundamental as well as sustainable software
+development and open source universal access to prior achievements, are of crucial necessity for the LBM community and
+the general public alike. To their knowledge OpenLB is the first modular open source platform realizing LBM usage via a
+sustainably maintained library [10]. Since the initial release in 2007, many more code developers joined the open access
+project and 96 scientific publications have been issued using OpenLB. Among them, 47 with contributions by major code
+developers.
+   This publication aims at broadening the visibility of LBM via introducing OpenLB to potential future developers as
+well as applicants outside of the community. For this purpose, OpenLB is presented as a general LBM-based solver for
+partial differential equations (PDE) with particular focus on CFD stressing the basic implementation as well as open
+source community concepts. Providing a summary of most recent publications, main emphasis is placed on illustrating
+OpenLB’s integrative realization, which enables efficient parallel simulations of transport problems in complex geometries.
+The presented work is structured as follows. Section 2 generally introduces the lattice Boltzmann (LB) methodology as a
+bottom-up discretization approach for solving problems governed by PDEs. In Section 3, fundamental concepts of OpenLB’s
+implementation and software design are discussed, including its hybrid parallelization concept and recent performance
+results. Finally, the application oriented sections are devoted to summarize the scientific findings which were obtained
+with OpenLB in the fields of multiphase (Section 4), particulate (Section 5), turbulent (Section 6), and thermal flows
+(Section 7), as well as optimal control of fluid flow (Section 8), and for other transport-related problems (Section 9).
+Concluding the paper, a summary is given in Section 10.
+
+2. Lattice Boltzmann methods
+
+   In general, the LBM resembles a bottom-up approach to numerically approximating the solution of a given PDE. Instead
+of a conventional top-down discretization of the target equation (TEQ), the method emerges from the discretization in
+space and time of a discrete velocity Boltzmann-type equation, where the solution to the TEQ is recovered in a limiting
+process. Different PDEs can be reached by altering certain ingredients of the method. The necessary LBM building blocks
+to recover exemplary TEQs appearing in the following sections are introduced below. Thorough derivations of specific
+LBM approaches are summarized more comprehensively for example in [11–13].
+
+2.1. Methodology
+
+   A prototypical LBM can be derived from the non-dimensional Boltzmann equation (BE)
+                          1
+      ∂t f + v · ∇x f +       F · ∇ ξ f = Ω (f , f ) ,                                                                             (1)
+                          ρ
+where the particle distribution function f : X × V × I → R+          0 , (x, ξ, t ) ↦ → f (x, ξ, t ) represents the density of mass in
+position space X ⊆ Rd and velocity space V ⊆ Rd with respect to time I ⊆ R+                 0 . The specific body force is denoted by
+F ∈ Rd , and the density ρ is obtained via moment integration of f over V . The inclusion of possible particle collisions
+depends on the formulation of the collision    operator Ω and determines               the system described by (1). Discretizing the
+velocity space to a finite subset C = c i ∈ Rd | i = 0, 1, . . . , q − 1 ⊆ V , hereafter referred to as DdQq, leads to a discrete
+                                      {                                  }
+velocity version of (1), termed in the following as discrete velocity Boltzmann equation (DVBE)
+
+      ∂t fi + c i · ∇x fi = Ωi + F̃i ,   i = 0, 1, . . . , q − 1.                                                                  (2)
+Since the velocity dependency of the quantities in the single equation (1) has been traded for a system of q equations,
+definite arguments are neglected from now on and i-indexed variables are occasionally summarized in vectors in Rq ,
+

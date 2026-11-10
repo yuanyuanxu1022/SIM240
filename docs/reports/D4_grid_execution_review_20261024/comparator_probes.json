@@ -1,0 +1,106 @@
+{
+  "all_data_synthetic": true,
+  "existing_14_checks": {
+    "ok": true,
+    "synthetic_checks": 14,
+    "checks": [
+      "monotone_good",
+      "large_coarse_error",
+      "large_middle_error",
+      "oscillatory_small",
+      "noncontracting",
+      "flat",
+      "tiny_oscillation",
+      "nonfinite",
+      "manufactured_order_two_extrapolation",
+      "complete_nine_quantity_pairing",
+      "missing",
+      "duplicate",
+      "invalid_reference",
+      "anisotropy_cancellation_cannot_hide_K_failure"
+    ],
+    "real_grid_results_read": false
+  },
+  "physical_magnitude_K_full_table_status": "PASS",
+  "narrow_only_12_rows_status": "INCOMPLETE_OR_REFERENCE_INVALID",
+  "narrow_only_missing_wide_rows": [
+    [
+      75,
+      120,
+      240,
+      1.25,
+      "P"
+    ],
+    [
+      75,
+      120,
+      240,
+      1.25,
+      "T"
+    ],
+    [
+      75,
+      120,
+      240,
+      2.5,
+      "P"
+    ],
+    [
+      75,
+      120,
+      240,
+      2.5,
+      "T"
+    ],
+    [
+      75,
+      120,
+      240,
+      5,
+      "P"
+    ],
+    [
+      75,
+      120,
+      240,
+      5,
+      "T"
+    ]
+  ],
+  "coarse6_mid6_narrowfine4_status": "INCOMPLETE_OR_REFERENCE_INVALID",
+  "coarse6_mid6_narrowfine4_missing": [
+    [
+      75,
+      120,
+      240,
+      1.25,
+      "P"
+    ],
+    [
+      75,
+      120,
+      240,
+      1.25,
+      "T"
+    ]
+  ],
+  "declared_acceptance_with_nonexistent_evidence_wrong_P_and_duplicate_runid_status": "PASS",
+  "explanation": "existing comparator is arithmetic only; missing exporter must prove identity and bindings before use",
+  "exact_decimal_one_percent_boundary_float_probe": {
+    "values_coarse_to_fine": [
+      1.01,
+      1.002,
+      1.0
+    ],
+    "E02": 0.010000000000000009,
+    "E12": 0.0020000000000000018,
+    "d01": 0.008000000000000007,
+    "d12": 0.0020000000000000018,
+    "p": 2.0,
+    "Q_extrapolated": 0.9993333333333333,
+    "GCI_fine": 0.000833333333333334,
+    "GCI_middle": 0.003326679973386563,
+    "status": "FAIL_RESOLUTION_TARGET"
+  },
+  "no_real_grid_results_read": true
+}

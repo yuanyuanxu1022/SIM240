@@ -1,0 +1,111 @@
+"""Read-only disposition arithmetic. No solver/checker/field-reader execution."""
+from pathlib import Path
+from fractions import Fraction
+from datetime import datetime
+from zoneinfo import ZoneInfo
+import csv, hashlib, json, math, sys
+import numpy as np
+
+ROOT=Path('/home/dell/yuanyuanxu/SIM240');OUT=Path(__file__).resolve().parent
+CASE=ROOT/'CASE/unseen_v2_reference_S4_reuse_v1'
+CHECKER=ROOT/'CASE/unseen_v2_reference_checker_S4_reuse_v1'
+OLD=ROOT/'docs/reports/URV_S4_completed_review_20261104_143205'
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+load=lambda p:json.loads(Path(p).read_text())
+def save(name,v):
+    with (OUT/name).open('x') as f:json.dump(v,f,ensure_ascii=False,indent=2);f.write('\n')
+
+protected=load(OLD/'protected_inputs_and_outputs.json')
+assert all(sha(p)==h for p,h in protected.items())
+for p in OLD.rglob('*'):
+    if p.is_file():protected[str(p)]=sha(p)
+for p,h in load(OLD/'document_manifest.json').items():assert sha(OLD/p)==h
+save('protected_before.json',protected)
+release=CASE/'evidence/S4_formal_launch_release_v1_20261104_01.json'
+b=load(release);old=load(OLD/'independent_review.json')
+assert sha(release)==old['release_sha256']
+sys.path.insert(0,str(CHECKER/'analysis'))
+import evidence
+records=[];configs=[]
+for rec in b['prepared_runs']:
+    run=Path(rec['output_directory']);cfg=evidence.kv(run/'run_config.txt');r=evidence.kv(run/'result.txt')
+    configs.append({k:v for k,v in cfg.items() if k not in ['run_id','output_directory','direction','dx_nm']})
+    if cfg['direction']!='T':continue
+    p=evidence.exact_parameters(cfg)
+    with (run/'diagnostics.csv').open() as f:rows=list(csv.DictReader(f))
+    J=np.array([float(v['J']) for v in rows]);n=p['window'];window=J[-n:]
+    K=p['nu']*J[-1]/p['a'];meanK=p['nu']*float(window.mean())/p['a']
+    count=max(1,n//4);suffixes=[]
+    for factor in [1,2,3]:
+        if factor*n<=len(J):
+            a=J[-factor*n:]
+            suffixes.append(dict(windows=factor,steps=len(a),relative_span=float(np.ptp(a)/abs(a.mean())),
+                                 first_to_final_relative=float(a[-1]/a[0]-1)))
+    temporal=dict(run_id=rec['run_id'],dx_nm=float(cfg['dx_nm']),K_end_m3=K,K_last_window_mean_m3=meanK,
+        terminal_std=float(window.std(ddof=1)/abs(window.mean())),terminal_span=float(np.ptp(window)/abs(window.mean())),
+        final_vs_last_window_mean=float(J[-1]/window.mean()-1),
+        last_quarter_mean_vs_previous_quarter=float(J[-count:].mean()/J[-2*count:-count].mean()-1),
+        end_time_s=float(rows[-1]['time_s']),end_tstar=p['nu']*float(rows[-1]['time_s'])/p['h']**2,
+        suffixes=suffixes,asymptotic_time_bias_bound_established=False)
+    slice_data=np.genfromtxt(run/'field_slice.csv',delimiter=',',names=True)
+    sliceK=p['nu']*math.fsum(float(v) for v in slice_data['ux'])*p['dx']**2/(p['P']*p['a'])
+    boundary=evidence.check_boundary(cfg,evidence.kv(run/'boundary_audit.txt'))
+    temporal.update(slice_K_m3=sliceK,slice_over_volume_K_minus_one=sliceK/K-1,
+        independently_reenumerated_geometry=boundary,dt_s=p['dt'],H_m=p['H'],window_steps=p['window'],steps=len(rows)-1)
+    records.append(temporal)
+assert all(c==configs[0] for c in configs)
+kc,km,kf=[r['K_end_m3'] for r in records]
+order=math.log((kc-km)/(km-kf))/math.log(2)
+relative=km/kf-1
+mean_relative=records[1]['K_last_window_mean_m3']/records[2]['K_last_window_mean_m3']-1
+thresholdK=km/1.01
+grid=dict(K_m3=[kc,km,kf],direction='T',monotone_decreasing=kc>km>kf,
+    observed_order=order,mid_fine_relative_change=relative,
+    mid_fine_last_window_mean_change=mean_relative,
+    GCI_fine=1.25*relative/math.expm1(order*math.log(2)),
+    minimum_fine_K_to_meet_change_if_mid_fixed=thresholdK,
+    fine_relative_increase_needed_if_mid_fixed=thresholdK/kf-1,
+    original_gate_PASS=False,time_window_mean_substitution_changes_verdict=False)
+assert relative>.01 and mean_relative>.01
+
+# Pure IEEE-754 repeated addition matching the A1 volume observation path,
+# validated against all three historical native result values before extrapolation.
+volumes=[]
+template=evidence.kv(Path(b['prepared_runs'][-1]['run_config_path']))
+for dxnm in ['5','2.5','1.25','0.625']:
+    cfg=dict(template,dx_nm=dxnm);p=evidence.exact_parameters(cfg)
+    dx=float(dxnm)*1e-9;term=(dx*dx)*dx
+    seq=np.full(p['nodes'],term,dtype=np.float64)
+    np.add.accumulate(seq,out=seq);total=float(seq[-1]);del seq
+    nominal=float(template['period_nm'])*1e-9*(float(template['Ly_nm'])*1e-9)*(float(template['h_nm'])*1e-9)+(float(template['w_nm'])*1e-9)*(float(template['Ly_nm'])*1e-9)*(float(template['d_nm'])*1e-9)
+    rel=total/nominal-1;entry=dict(dx_nm=float(dxnm),core_fluid_nodes=p['nodes'],cell_volume_term=term,
+        repeated_binary64_volume=total,relative_to_native_nominal=rel,
+        relative_to_exact_nominal=total/(p['P']*p['Ly']*p['H'])-1,
+        absolute_relative_pass_1e_10=abs(rel)<=1e-10,dt_s=p['dt'],window_steps=p['window'],maximum_steps=p['cap'])
+    if dxnm!='0.625':
+        row=next(r for r in records if r['dx_nm']==float(dxnm))
+        run=CASE/'runs'/row['run_id']/'steady';native=float(evidence.kv(run/'result.txt')['fluid_volume_m3'])
+        entry['historical_native_exact_match']=native==total
+        assert native==total,(dxnm,native,total)
+    else:
+        # One set of 19 binary64 population values per fluid node only.
+        entry['one_population_set_fluid_only_bytes']=p['nodes']*19*8
+        entry['native_execution_performed']=False
+    volumes.append(entry)
+
+# Conditional cost only: factor8 nodes, factor4 steps for the same physical time.
+fine=next(v for v in old['runs'] if v['direction']=='T' and v['dx_nm']==1.25)
+conditional=dict(reference_run_id=fine['run_id'],reference_seconds=fine['solver_seconds'],
+    node_ratio=8,steps_ratio_if_same_physical_stop_time=4,
+    seconds_if_node_linear_and_same_physical_stop_time=fine['solver_seconds']*32,
+    predicted_step_cost_seconds_if_node_linear=fine['solver_seconds']/fine['steps']*8,
+    predicted_steps_if_same_physical_stop_time=fine['steps']*4,
+    measured_candidate_speed=False,measured_candidate_peak_memory=False,completion_time_guaranteed=False)
+assert all(sha(p)==h for p,h in protected.items())
+save('existing_evidence_audit.json',dict(audited_at=datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),
+    inputs_rehashed=len(b['inputs_sha256']),protected_files_unchanged=len(protected),same_physics_except_grid_direction_identity=True,
+    transverse_records=records,grid=grid,volume_static_path=volumes,conditional_cost=conditional,
+    native_calls=0,builds=0,checker_replays=0,VTK_calls=0,performance_advances=0,formal_runs=0,
+    S4_original_failure_preserved=True,S5_started=False,reference_qualified=False,MODEL_COMPARISON='NOT_EVALUATED'))
+print(json.dumps(dict(grid=grid,volume_static_path=volumes,conditional_cost=conditional,
+    protected_files_unchanged=len(protected)),ensure_ascii=False,indent=2))

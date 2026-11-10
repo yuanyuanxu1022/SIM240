@@ -1,0 +1,81 @@
+{
+  "review_id": "URV-MRP-v1-REVIEW-20261101",
+  "kind": "author_requested_internal_protocol_assessment",
+  "user_request": "审定最小补证／修复协议，限定旧质量观察量的运算路径及必要密度证据，保留原门槛；本阶段只准备协议，不执行构建或诊断运行。",
+  "authorization_basis": "explicit current author request and AGENTS.md",
+  "accountability": "User retains scientific and execution decisions; AI-assisted assessment is not independent human validation",
+  "human_scientific_signoff_record": null,
+  "venue": "not a journal review; journal policy and editorial channels not applicable",
+  "handling": "Project artifacts retained locally under project handoff policy; no project content sent to public search; authorized assistant processing only",
+  "conflicts": "AI is also an implementation/writing assistant on this project; review is not independent",
+  "scope_excludes": [
+    "code_implementation",
+    "build",
+    "native_audit",
+    "arithmetic_replay_execution",
+    "solver_run",
+    "S1",
+    "external_sharing"
+  ],
+  "skill_intake_adaptation": "Internal author protocol, no clinical sampling/p-value or journal editorial gates; template fields must not fabricate journal clearance. Current user request governs authorized internal assessment.",
+  "findings": [
+    {
+      "id": "R01",
+      "observation": "same expression did not preserve machine rounding",
+      "decision": "explicit three rounded products and final FMA; audit true binary",
+      "runtime_status": "UNVERIFIED"
+    },
+    {
+      "id": "R02",
+      "observation": "190 historical difference points have no stored density",
+      "decision": "complete 190-point plus 10-control schedule; full 3D binary64 rho; no history identity claim",
+      "runtime_status": "UNVERIFIED"
+    },
+    {
+      "id": "R03",
+      "observation": "initial denominator measure and diagnostic step0 are separate calls",
+      "decision": "separate phase files and bits; compare explicitly",
+      "runtime_status": "UNVERIFIED"
+    },
+    {
+      "id": "R04",
+      "observation": "v1.2 provenance fixes original native source hashes",
+      "decision": "new exact reviewed-revision anchor branch; original anchor and numeric files unchanged",
+      "runtime_status": "UNVERIFIED"
+    },
+    {
+      "id": "R05",
+      "observation": "added observation code may alter other code generation",
+      "decision": "non-mass dataflow static audit plus full old columns, compensated columns and physical output guards",
+      "runtime_status": "UNVERIFIED"
+    },
+    {
+      "id": "R06",
+      "observation": "repair validation and historical unique cause are distinct",
+      "decision": "only new version can receive new acceptance after all gates; preserve original T FAIL and NOT_ESTABLISHED historical claim",
+      "runtime_status": "UNVERIFIED"
+    },
+    {
+      "id": "R07",
+      "observation": "S0 repair does not authorize next scientific stage",
+      "decision": "fail-stop; S1 requires separate scope and authorization",
+      "runtime_status": "NOT_STARTED"
+    }
+  ],
+  "assessment": "Protocol requirements specified; no implementation feasibility or scientific Gate acceptance asserted",
+  "public_skill_reference": "Kassis et al. (2026), Scientific Agent Skills, https://doi.org/10.48550/arXiv.2609.00065",
+  "external_semantics_sources": [
+    "https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/Optimize-Options.html",
+    "https://docs.python.org/3.14/library/math.html#math.fma"
+  ],
+  "future_tests_only": [
+    "exact FMA rational oracle",
+    "split-rounding negative test",
+    "ordering and phase rejection",
+    "malformed/symlink path input rejection",
+    "missing/truncated/NaN capture rejection",
+    "exact source revision binding and tamper rejection",
+    "retain original R1/R2 negative tests",
+    "failure-before-next-case sequencing"
+  ]
+}

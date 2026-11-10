@@ -1,0 +1,190 @@
+{
+  "C4_H4_full18": [
+    {
+      "model": "C4",
+      "tau": null,
+      "h_c_nm": null,
+      "coefficients": [
+        0.3641722453598825,
+        1.5996745971805324,
+        -0.692959940309755,
+        -0.28288991331900903
+      ],
+      "rank": 4,
+      "condition_number": 10.624011466279978,
+      "training_sse_logE": 0.06151842124993143,
+      "n_train": 18,
+      "train_keys": [
+        "h25_d25_P",
+        "h25_d50_P",
+        "h25_d100_P",
+        "h50_d25_P",
+        "h50_d50_P",
+        "h50_d75_P",
+        "h50_d100_P",
+        "h50_d120_P",
+        "h75_d25_P",
+        "h75_d50_P",
+        "h75_d75_P",
+        "h75_d100_P",
+        "h75_d120_P",
+        "h125_d25_P",
+        "h125_d50_P",
+        "h125_d75_P",
+        "h125_d100_P",
+        "h125_d120_P"
+      ],
+      "method": "unconstrained SVD",
+      "optimizer_status": "global linear least-squares",
+      "b_bound_active": false,
+      "direction": "P",
+      "scheme": "full"
+    },
+    {
+      "model": "H4",
+      "tau": -0.6727361832998178,
+      "h_c_nm": 61.237243569579455,
+      "coefficients": [
+        0.7443361097138925,
+        1.5997997470793752,
+        -0.007514619644314546,
+        -0.5744107448189862
+      ],
+      "rank": 4,
+      "condition_number": 12.245818189604384,
+      "training_sse_logE": 0.06079762637052978,
+      "n_train": 18,
+      "train_keys": [
+        "h25_d25_P",
+        "h25_d50_P",
+        "h25_d100_P",
+        "h50_d25_P",
+        "h50_d50_P",
+        "h50_d75_P",
+        "h50_d100_P",
+        "h50_d120_P",
+        "h75_d25_P",
+        "h75_d50_P",
+        "h75_d75_P",
+        "h75_d100_P",
+        "h75_d120_P",
+        "h125_d25_P",
+        "h125_d50_P",
+        "h125_d75_P",
+        "h125_d100_P",
+        "h125_d120_P"
+      ],
+      "method": "unconstrained SVD",
+      "optimizer_status": "global linear least-squares",
+      "b_bound_active": false,
+      "direction": "P",
+      "scheme": "full"
+    },
+    {
+      "model": "C4",
+      "tau": null,
+      "h_c_nm": null,
+      "coefficients": [
+        -0.6381604560933481,
+        0.7768339511443813,
+        -0.23567419170679005,
+        -0.4708598723288494
+      ],
+      "rank": 4,
+      "condition_number": 10.624011466279978,
+      "training_sse_logE": 0.2933492570147831,
+      "n_train": 18,
+      "train_keys": [
+        "h25_d25_T",
+        "h25_d50_T",
+        "h25_d100_T",
+        "h50_d25_T",
+        "h50_d50_T",
+        "h50_d75_T",
+        "h50_d100_T",
+        "h50_d120_T",
+        "h75_d25_T",
+        "h75_d50_T",
+        "h75_d75_T",
+        "h75_d100_T",
+        "h75_d120_T",
+        "h125_d25_T",
+        "h125_d50_T",
+        "h125_d75_T",
+        "h125_d100_T",
+        "h125_d120_T"
+      ],
+      "method": "unconstrained SVD",
+      "optimizer_status": "global linear least-squares",
+      "b_bound_active": false,
+      "direction": "T",
+      "scheme": "full"
+    },
+    {
+      "model": "H4",
+      "tau": -0.6727361832998178,
+      "h_c_nm": 61.237243569579455,
+      "coefficients": [
+        -0.007379190424948797,
+        0.7771391002346506,
+        0.903449277457401,
+        -0.9523757051998105
+      ],
+      "rank": 4,
+      "condition_number": 12.245818189604384,
+      "training_sse_logE": 0.2940504547401916,
+      "n_train": 18,
+      "train_keys": [
+        "h25_d25_T",
+        "h25_d50_T",
+        "h25_d100_T",
+        "h50_d25_T",
+        "h50_d50_T",
+        "h50_d75_T",
+        "h50_d100_T",
+        "h50_d120_T",
+        "h75_d25_T",
+        "h75_d50_T",
+        "h75_d75_T",
+        "h75_d100_T",
+        "h75_d120_T",
+        "h125_d25_T",
+        "h125_d50_T",
+        "h125_d75_T",
+        "h125_d100_T",
+        "h125_d120_T"
+      ],
+      "method": "unconstrained SVD",
+      "optimizer_status": "global linear least-squares",
+      "b_bound_active": false,
+      "direction": "T",
+      "scheme": "full"
+    }
+  ],
+  "G4_G6_frozen": {
+    "G4": {
+      "model": "G4",
+      "T": [
+        -1.590304379477457,
+        1.5165209408360127
+      ],
+      "P": [
+        -1.367239917734493,
+        0.34957883749740304
+      ]
+    },
+    "G6": {
+      "model": "G6",
+      "T": [
+        -1.8620827956928623,
+        1.173057964954126,
+        2.4872626776815863
+      ],
+      "P": [
+        -1.2589628847023258,
+        0.8437302909906563,
+        0.9458923663467957
+      ]
+    }
+  }
+}

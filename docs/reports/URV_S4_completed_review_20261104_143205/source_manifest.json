@@ -1,0 +1,45 @@
+{
+  "verification_scope": "AI computational verification only; accountable human scientific review not performed",
+  "sources": [
+    {
+      "evidence_id": "E01",
+      "path": "status_snapshot.json",
+      "sha256": "7bfa2e7ab1dc13a6a172079f546b6b8319809cb80ca5aa2f8d3098667e82a7ff",
+      "supports": "single live process and completion snapshot",
+      "machine_verified": true,
+      "human_verified": false
+    },
+    {
+      "evidence_id": "E02",
+      "path": "independent_review.json",
+      "sha256": "2acdf6d825fc79124897ee7c005c86296dfe49974e0b05e7bf0efb5cfeafca95",
+      "supports": "six complete checker replays and raw scalar/window recomputation",
+      "machine_verified": true,
+      "human_verified": false
+    },
+    {
+      "evidence_id": "E03",
+      "path": "independent_grid_report.json",
+      "sha256": "b3b7e37e8d235300191dcec081eb127f1858fcd1ce3651a785729498c578b1d6",
+      "supports": "recomputed original directional three-grid gates",
+      "machine_verified": true,
+      "human_verified": false
+    },
+    {
+      "evidence_id": "E04",
+      "path": "supplementary_verification.json",
+      "sha256": "996dcec12f6bd283a2d2dde55b736e6ade4c41ba765776ac6e374544c6459f7b",
+      "supports": "resources and auxiliary filesystem chronology",
+      "machine_verified": true,
+      "human_verified": false
+    },
+    {
+      "evidence_id": "E05",
+      "path": "protected_inputs_and_outputs.json",
+      "sha256": "224fff4907b256ffd44e99eeebf0b9bef426b881367de45a0c76848bf7cff057",
+      "supports": "input/source/raw-output before/after protected closure",
+      "machine_verified": true,
+      "human_verified": false
+    }
+  ]
+}

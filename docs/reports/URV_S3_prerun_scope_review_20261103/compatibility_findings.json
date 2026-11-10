@@ -1,0 +1,50 @@
+[
+  {
+    "id": "C01",
+    "status": "REUSABLE_CONDITIONALLY",
+    "component": "S1 native ELF",
+    "evidence": "C++ accepts positive acceleration config, geometry and force direction from config; exact existing ELF/source/build closure verified. S3 native zero-step not yet run."
+  },
+  {
+    "id": "C02",
+    "status": "INCOMPATIBLE_AS_IS",
+    "component": "S2 stage_s2/run_S2",
+    "evidence": "Exact S2 stage, six cases, a100000 identities, original B and RUN_IDS; current S2 outputs already used. S3 cannot use old command."
+  },
+  {
+    "id": "C03",
+    "status": "INCOMPATIBLE_AS_IS",
+    "component": "contracts/revision_s2_reuse",
+    "evidence": "Source revision dispatch selects verify_s2_reuse requiring stage S2_REG_GRID, exact six and formal S2 authority. New stage-specific provenance adapter required in isolation."
+  },
+  {
+    "id": "C04",
+    "status": "REUSABLE_WITH_STAGE_ADAPTER",
+    "component": "original per-run scientific checker",
+    "evidence": "Matrix already contains S3 cases and generic per-run arithmetic/VTK checks. Preserve scientific functions and common spec; adapt source provenance branch, not science."
+  },
+  {
+    "id": "C05",
+    "status": "CROSS_RELEASE_STAGE_JOIN_REQUIRED",
+    "component": "three-force control",
+    "evidence": "Use each S2 baseline under its original release plus two S3 records per direction. Do not approve S2 baselines under S3 or edit old completion."
+  },
+  {
+    "id": "C06",
+    "status": "OUT_OF_SCOPE",
+    "component": "global aggregate/F04",
+    "evidence": "Original aggregate requires 24 records and one same-stage release workflow cannot supply them; do not relax count or score V2. Stage-local linearity report may compute metric only."
+  },
+  {
+    "id": "C07",
+    "status": "SEPARATE_AUTHORITY_REQUIRED",
+    "component": "execution",
+    "evidence": "S2 real authorization lists six S2 IDs, S3_authorized=false. This task permits read-only scope/protocol writing only."
+  },
+  {
+    "id": "C08",
+    "status": "PROPOSED_NOT_EXECUTED",
+    "component": "native zero-step and initial readback",
+    "evidence": "Plan four configs x describe/precheck/initialize (12 zero calls) plus four actual initial-field reads. Requires later explicit native audit authorization; no new performance run proposed."
+  }
+]

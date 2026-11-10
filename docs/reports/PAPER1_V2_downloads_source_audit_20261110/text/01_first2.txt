@@ -1,0 +1,121 @@
+Enabling nanoimprint simulator for quality verification:
+ process-design co-optimization toward high-volume
+                   manufacturing
+
+  Junichi Seki,a Yuichiro Oguchi,a Naoki Kiyohara ,a Koshiro Suzuki,a
+       Kohei Nagane,a Shintaro Narioka,b Takahiro Nakayama,b
+       Yoshihiro Shiode,b Sentaro Aihara,b and Toshiya Asanob,*
+                                            a
+                                             Canon Inc., Tokyo, Japan
+                                           b
+                                             Canon Inc., Tochigi, Japan
+
+Abstract. Computational technologies are still in the course of development for nanoimprint
+lithography (NIL). Only a few simulators are applicable to the nanoimprint process, and these
+simulators are desired by device manufacturers as part of their daily toolbox. The most chal-
+lenging issue in NIL process simulation is the scale difference of each component of the system.
+The template pattern depth and the residual resist film thickness are generally of the order of a
+few tens of nanometers, whereas the process needs to work over the entire shot size, which is
+typically of the order of several hundred square millimeters. This amounts to a scale difference of
+the order of 106 . Therefore, in order to calculate the nanoimprint process with conventional fluid
+structure interaction simulators, an enormous number of meshes is required, which results in
+computation times that are unacceptable. We introduce a process simulator which directly inputs
+the process parameters, simulates the whole imprinting process, and evaluates the quality of the
+resulting resist film for jet and flash imprint lithography process. To overcome the scale
+differences, our simulator utilizes analytically integrated expressions which reduce the dimen-
+sions of the calculation region. In addition, the simulator can independently consider the resist
+droplet configurations and calculate the droplet coalescence, thereby predicting the distribution
+of the non-fill areas which originate from the trapped gas between the droplets. The simulator has
+been applied to the actual NIL system and some examples of its applications are presented here.
+© 2022 Society of Photo-Optical Instrumentation Engineers (SPIE) [DOI: 10.1117/1.JMM.21.1.011005]
+
+Keywords: nanoimprint lithography; simulation; fluid structure interaction; computation fluid
+dynamics.
+Paper 21069SS received Aug. 21, 2021; accepted for publication Dec. 9, 2021; published online
+Jan. 4, 2022.
+
+
+1 Introduction
+Imprint lithography is an effective and well-known technique for replication of nanoscale
+structures.1–3 Nanoimprint lithography (NIL) manufacturing equipment utilizes a patterning
+technology that involves a field-by-field deposition and an exposure of low-viscosity resist drop-
+lets dispensed by ink-jetting technology onto the substrate.3–10 The patterned template is lowered
+onto the fluid, which then quickly flows into the relief patterns in the template by capillary
+action. Following this filling step, the resist is cured under UV radiation and then the template
+is removed, leaving a patterned resist on the substrate. This technology faithfully reproduces
+patterns with higher resolution and greater uniformity compared to those produced by
+photolithography equipment. Additionally, as this technology does not require an array of wide-
+diameter lenses and expensive light sources necessary for advanced photolithography equip-
+ment, NIL equipment achieves a simpler, more compact design, allowing multiple units to
+be clustered together for increasing productivity.
+
+
+
+
+*Address all correspondence to Toshiya Asano, asano.tosiya@mail.canon
+
+1932-5150/2022/$28.00 © 2022 SPIE
+
+
+J. Micro/Nanopattern. Mater. Metrol.                     011005-1         Jan–Mar 2022 • Vol. 21(1)
+           Seki et al.: Enabling nanoimprint simulator for quality verification: process-design. . .
+
+
+    For NIL, computational technologies are still being developed. Only a few simulators are
+applicable to the nanoimprint process,11–13 and these simulators are desired by device manufac-
+turers as part of their everyday toolbox.14–16
+    Similar to photolithography systems, there are many process parameters to be optimized to
+achieve greater throughput and better quality of the imprinted patterns. Key physical influencers
+include the elastic deformation of template, the rheological behavior, and polymerization of the
+imprint resist under UV exposure. Therefore, coupling all the influencing physics is mandatory
+to simulate the imprinting process. For example, the optimization of the dispense pattern of the
+resist droplets, referred to as the drop recipe, has a significant effect on the process throughput
+and the resist uniformity.
+    The most challenging issue in NIL process simulation is the scale difference of each com-
+ponent of the system. There are some researches to overcome this scale difference by adopting
+multi-scale analysis.11–13,21–23 The template pattern depth and the residual resist film thickness
+are generally of the order of a few tens of nanometers. Each droplet is spread to a few hundred
+micrometers in size. The process needs to work over the entire shot size, which is typically of the
+order of several hundred square millimeters. This creates a scale difference of the order of 106 .
+Therefore, in order to calculate the nanoimprint process with conventional fluid structure inter-
+action (FSI) simulators, an enormous number of meshes is required, resulting computation times
+that are prohibitive.
+    In this paper, we introduce a process simulator, which directly inputs the process parameters,
+simulates the whole imprinting process, and evaluates the quality of the resulting resist film. To
+overcome the scale differences, our simulator utilizes analytically integrated expressions which
+reduce the dimensions of the calculation region. One of the major features replaces the droplet–
+template interaction by an analytically solved equation. With this scheme, the process simulator
+successfully simulates the template movement during the imprinting process. In addition, the
+simulator can independently consider the positions of the droplets and calculate the droplet coa-
+lescence, thereby predicting the distribution of the non-fill areas which originate from the
+trapped gas between the droplets.
+
+
+2 NIL Process Simulator
+
+2.1 Overview
+The NIL process simulator consists of two complementary simulations: the non-fill defect
+simulation and the spread simulation as shown in Fig. 1. The non-fill defect simulation, which
+is named as the “global mode,” calculates the resist droplet coalescence and the resulting non-
+fill areas within the entire shot area. In this simulation, the dynamics of the template is solved
+simultaneously. Since there is a huge scale difference between the resist droplet and the shot
+area, the global mode adopts two different types of meshes for the template and droplets,
+respectively.
+     The spread simulation, which is named as the “local mode,” focuses on a fraction of a shot
+area and calculates the detailed distribution of the film residual layer thickness (RLT). The spread
+simulation imports and utilizes the template movement profile obtained by the global-mode sim-
+ulation. Therefore, the global-mode simulation must be executed beforehand to the local-mode
+simulations; successively, the local-model simulation would be executed multiple times to cover
+the area of interest.
+
+
+2.2 Inputs and Outputs
+The simulator allows the user to directly input many of the parameters specific to the NIL equip-
+ment. The schematic of the NIL equipment and the corresponding input parameters are shown in
+Fig. 2. The input parameters include the template patterns, the substrate topography, droplet
+positions, and volumes, which we call “drop recipe,” stamping profile of the imprint head, which
+includes the applied load in z direction and the cavity pressure for the template bowing. The drop
+recipe can be generated by our in-house tool, taking into account the template pattern density and
+
+J. Micro/Nanopattern. Mater. Metrol.              011005-2                          Jan–Mar 2022 • Vol. 21(1)
+

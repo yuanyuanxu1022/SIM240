@@ -1,0 +1,11 @@
+name: sim240-reference-min18-preparation
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - fenics-dolfinx=0.11.0
+  - dolfinx_mpc=0.11.0
+  - petsc=*=real_*
+  - mpich
+# This is the requested dependency specification. The explicit export and
+# conda package metadata provide the exact installed builds, not this file.

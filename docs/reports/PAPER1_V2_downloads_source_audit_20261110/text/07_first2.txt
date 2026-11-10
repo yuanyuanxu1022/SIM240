@@ -1,0 +1,99 @@
+                                                                          Extended Lubrication Theory:
+                                                           Improved Estimates of Flow in Channels with Variable Geometry
+
+                                                                                                Behrouz Tavakol
+                                                    Wellman Center for Photomedicine, Mass. General Hospital, Harvard Medical School, Cambridge, MA 02139
+
+                                                               Department of Biomedical Engineering & Mechanics, Virginia Tech, Blacksburg, VA 24061
+
+                                                                                             Guillaume Froehlicher
+                                                            Department of Mechanical & Aerospace Engineering, Princeton University, Princeton, NJ 08544
+arXiv:1403.2343v2 [physics.flu-dyn] 27 Jan 2017
+
+
+
+
+                                                                                              Douglas P. Holmes∗
+                                                                     Department of Mechanical Engineering, Boston University, Boston, MA 02215
+
+                                                                                               Howard A. Stone∗
+                                                            Department of Mechanical & Aerospace Engineering, Princeton University, Princeton, NJ 08544
+
+
+
+
+                                                  Abstract
+                                                  Lubrication theory is broadly applicable to the flow characterization of thin fluid films and the
+                                                  motion of particles near surfaces. We offer an extension to lubrication theory by starting with
+                                                  Stokes equations and considering higher-order terms in a systematic perturbation expansion to
+                                                  describe the fluid flow in a channel with features of a modest aspect ratio. Experimental results
+                                                  qualitatively confirm the higher-order analytical solutions while numerical results are in very good
+                                                  agreement with the higher-order analytical results. We show that the extended lubrication theory
+                                                  is a robust tool for an accurate estimate of pressure drop in channels with shape changes on the
+                                                  order of the channel height, accounting for both smooth and sharp changes in geometry.
+                                                  Keywords: Lubrication Theory, Perturbation Expansion, Stokes Flow
+
+
+
+                                                  1. Introduction
+
+                                                      Lubrication theory is an approximation to the Navier-Stokes and continuity equations at low
+                                                  Reynolds numbers for narrow geometries with slow changes in curvature [1–3]. The approach is used
+                                                  regularly to describe the velocity field and pressure gradient in fluid film lubricants [4, 5], the motion
+                                                  of particles within a fluid and near boundaries [6, 7], the fluid flow passing through a microchannel
+                                                  with a known geometry [8–11], flow driven by the contracting walls of a soft channel [12], e.g.,
+                                                  an insect’s trachea [13, 14], and the flow of thin liquid films with free surfaces [15, 16], e.g.,
+                                                  when a droplet wets a solid surface [17, 18] or in spin coating over topographically patterned
+
+                                                    ∗
+                                                        Corresponding authors
+                                                        Email addresses: dpholmes@bu.edu (Douglas P. Holmes), hastone@princeton.edu (Howard A. Stone)
+surfaces [19, 20]. Classical lubrication theory (CLT) is suitable for all of the above cases provided
+that the typical magnitude of the boundary slope is sufficiently small, typically on the order of
+O 10−1 or less. Due to its simplicity and versatile applications, lubrication theory is widely
+applied and it is appreciated that it often works beyond its formal limits of validity. The ideas
+have even been extended to consider inertial effects, e.g. Wilson and Duffy [21]. Also, earlier work
+on flows in sinusoidally constricted pipe with radial variations comparable to axial variations was
+studied numerically, e.g. Tilton and Payatakes [22], where we note that our higher-order approach
+below effectively gives an analytical solution to the problem.
+    In this study, we obtain higher-order terms of the lubrication approximation and present an
+extension to lubrication theory, which we refer to as extended lubrication theory (ELT), to ad-
+dress two limitations of CLT. First, the use of ELT is no longer limited to small gaps and thin
+films. Second, the boundaries can be described by any mathematical shape function with mod-
+est curvatures as long as they are continuous and differentiable. In addition, we show how the
+differentiability condition may be relaxed at low Reynolds numbers, at least in practice, by con-
+sidering geometries that are piece-wise differentiable. We compare the results of different orders of
+the analytical solutions with experimental results and also with direct numerical solutions of the
+Navier-Stokes equations to define a threshold for considering higher-order terms in the solution.
+The theory will breakdown for sufficiently large wall slopes and then if an analysis is desired, an
+approach with matched asymptotic expansions is necessary, e.g. Cormack et al. [23]. Note that a
+related idea emphasizing the first correction to the classical lubrication approach, but focused on
+the mathematical form of the differential equations, is given by Marušić-Paloka et al. [24].
+    Our approach here can be used to describe the flow in a channel with a large constriction made
+by a trapped cell, particle, bubble, or droplet, or as a result of buckled, crumpled, or swollen
+walls. We validate this approach for large non-uniformities within the fluid channel by varying
+two characteristic geometric parameters, the constriction’s length and amplitude, from zero to the
+channel height, e.g. the corresponding dimensionless geometric parameters vary from zero to one.
+We note that in addition to numerical solutions, two types of analytical calculations have been
+considered in the literature. One method is domain perturbation [25–29] where the constriction
+amplitude is much smaller than the channel height. The second method involves corrections to
+leading-order lubrication theory [10, 30–32] while the constriction amplitude can be as high as the
+channel height. We show the applicability of our approach to different geometries and provide the
+accuracy of such results as two nondimensional geometric parameters along with Reynolds number
+vary. Finally, we note that a similar higher-order expansion was used recently in a study of an
+electrokinetic flow in a channel of nonuniform shape [33].
+
+2. Theoretical Approximation
+
+   We consider working to higher order in traditional lubrication theory to describe fluid flow in
+nonuniform channel shapes with modest aspect ratios. Thus, we consider incompressible, steady,
+two-dimensional pressure-driven flow in a channel with shape y = h(x) = h0 H(X), where X =
+x/L0 , L0 is the channel length, h0 is a characteristic channel height, H(X) is a normalized shape
+function, and δ = h0 /L0  1. A typical geometry in the form of a constriction is shown in Fig. 1a.
+We assume that the Reynolds number is small and so consider the continuity and Stokes equations
+
+                                ∇·u=0         and      µ∇2 u = ∇p,                               (1)
+
+
+                                                 2
+

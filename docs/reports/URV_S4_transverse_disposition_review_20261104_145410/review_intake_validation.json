@@ -1,0 +1,58 @@
+{
+  "errors": [],
+  "handling_assertions": {
+    "author_and_editor_channels_must_remain_separate": true,
+    "bundled_tools_are_local_only": true,
+    "data_reuse_authorized": false,
+    "external_service_use_authorized_by_this_report": false
+  },
+  "normalized_scope": {
+    "ai_plan": "approved_ai_assistance",
+    "capacity": "author_requested_reader",
+    "competence_areas": [
+      "cfd",
+      "evidence_integrity",
+      "software_provenance"
+    ],
+    "manuscript_type": "author_owned_CFD_protocol_disposition_review",
+    "out_of_scope": [
+      "CASE_modifications",
+      "build",
+      "native_calls",
+      "checker_replay",
+      "VTK_reader",
+      "PERF",
+      "new_solver_run",
+      "threshold_change",
+      "S5",
+      "V2_scoring"
+    ],
+    "peer_review_model": "open",
+    "requested_focus": [
+      "read_only_existing_evidence",
+      "frozen_gate_failure",
+      "minimum_supplementary_evidence",
+      "source_and_contract_compatibility",
+      "resource_feasibility_scope"
+    ]
+  },
+  "notice": "This validates declared process controls only. It does not establish reviewer competence, resolve conflicts, authorize external processing, or assess manuscript quality.",
+  "review_id": "URV-S4-TRANSVERSE-DISPOSITION-REVIEW-20261104",
+  "schema_version": "2.0",
+  "status": "READY_FOR_LOCAL_REVIEW",
+  "valid": true,
+  "warnings": [
+    {
+      "code": "CONFIDENTIAL_NOTES_CHANNEL_UNAVAILABLE",
+      "field": "venue_policy.confidential_editor_notes_supported"
+    },
+    {
+      "code": "EXTERNAL_AUTHORIZATION_NOT_USED",
+      "field": "authorization.external_processing_authorized"
+    },
+    {
+      "code": "COMPETENCE_LIMITS_MUST_BE_DISCLOSED",
+      "field": "reviewer.competence_limits"
+    }
+  ]
+}

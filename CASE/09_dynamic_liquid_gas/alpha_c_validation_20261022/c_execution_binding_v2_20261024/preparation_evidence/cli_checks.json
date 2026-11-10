@@ -1,0 +1,23 @@
+[
+  {
+    "name": "runner_precheck",
+    "exit": 0,
+    "expected": 0,
+    "stdout": "C_PRECHECK_OK cases=4 binding_files=3808; physical inputs/thresholds unchanged; no solver started\n",
+    "stderr": ""
+  },
+  {
+    "name": "analyzer_input_precheck",
+    "exit": 0,
+    "expected": 0,
+    "stdout": "C_ANALYSIS_INPUTS_OK; same execution binding; completion not evaluated; no solver/output created\n",
+    "stderr": ""
+  },
+  {
+    "name": "missing_completion_rejection",
+    "exit": 2,
+    "expected": 2,
+    "stdout": "",
+    "stderr": "C_ANALYSIS_FAILED: FileNotFoundError(2, 'No such file or directory')\n"
+  }
+]

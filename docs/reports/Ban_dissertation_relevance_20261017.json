@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-17",
+  "source": "/home/dell/下载/BAN-DISSERTATION-2021.pdf",
+  "source_sha256": "2af437dcbb5af2b176c691a0784b80dea173f8155d95f5007d6515aa71cab8b7",
+  "pages": 154,
+  "title": "Fluid Dynamics of Thin Films in Semiconductor Manufacturing Processes",
+  "author": "Yang Hun Ban",
+  "institution": "The University of Texas at Austin",
+  "year": 2021,
+  "source_metadata_verified_from": "local thesis cover/title and chapter publication footnotes; no independent thesis DOI verified",
+  "printed_to_pdf_page_offset": 22,
+  "rendered_and_visually_inspected_pdf_pages": [
+    26,
+    31,
+    32,
+    33,
+    36,
+    37,
+    38,
+    39,
+    45,
+    46,
+    53,
+    54,
+    55,
+    56,
+    60,
+    64,
+    65,
+    66,
+    67,
+    68,
+    84,
+    117,
+    118
+  ],
+  "methods": "pdftotext -layout; selected relevant chapters read; key PDF pages rendered using pdftoppm and visually inspected. Not a new publisher-journal PDF retrieval.",
+  "baseline_self_derivation": {
+    "h_m": 7.5e-08,
+    "depth_m": 1e-07,
+    "H_ref_m": 1.25e-07,
+    "K_parallel_m3": 2.4088541666666665e-22,
+    "K_perp_m3": 6.518158783783782e-23,
+    "ratio_dimensionless": 3.695605226217472,
+    "flat_limit": "K_parallel=K_perp=h^3/12; Ban dimensionless k=h_dimensionless^2, not 1 except at h_dimensionless=1"
+  },
+  "source_anchors": {
+    "chapter2_publication": {
+      "printed": 26,
+      "pdf": 48,
+      "doi": "10.1116/6.0000030"
+    },
+    "chapter3_publication": {
+      "printed": 60,
+      "pdf": 82,
+      "doi": "10.1116/6.0000648"
+    },
+    "K_ch2": {
+      "printed": 33,
+      "pdf": 55,
+      "equations": [
+        "2.8",
+        "2.9",
+        "2.10"
+      ]
+    },
+    "K_scale": {
+      "printed": 66,
+      "pdf": 88,
+      "definition": "K_c=H_0^2/12; k=K/K_c"
+    },
+    "K_ch3": {
+      "printed": 67,
+      "pdf": 89,
+      "equations": [
+        "3.8",
+        "3.9",
+        "3.10"
+      ]
+    },
+    "capillary_validation": {
+      "printed": [
+        42,
+        43
+      ],
+      "pdf": [
+        64,
+        65
+      ],
+      "equation": "2.19",
+      "figure": "2.7"
+    },
+    "instantaneous_feature_filling": {
+      "printed": [
+        55,
+        56,
+        57
+      ],
+      "pdf": [
+        77,
+        78,
+        79
+      ]
+    }
+  },
+  "scope_no_simulation": true,
+  "run_id": null,
+  "novelty_limit": "No explicit resolved single-phase rectangular groove directional K error calibration found in reviewed relevant chapters; not proof of global absence; Dewangan-Datta2020 remains mandatory prior art; Scholar/Asta gaps not closed."
+}

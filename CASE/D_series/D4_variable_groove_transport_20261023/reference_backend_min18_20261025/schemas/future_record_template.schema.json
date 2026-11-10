@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Preparation template only; never an actual result",
+  "type": "object",
+  "required": [
+    "record_kind",
+    "planned_id",
+    "actual_run_id",
+    "execution_authorized",
+    "source_dependency_and_input_hashes",
+    "input_hashes_before_after",
+    "independent_solver_exit_code",
+    "complete_log_path",
+    "raw_mesh_field_integral_and_periodic_map_hashes",
+    "measurements",
+    "applicability",
+    "NUMERICAL_GATE",
+    "RESULT_PASS",
+    "geometry_PASS",
+    "REFERENCE_DISCRETIZATION",
+    "STOKES_MODEL_GAP",
+    "LBM_STOP_COMPARISON"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "record_kind": {
+      "const": "TEMPLATE_NOT_A_RESULT"
+    },
+    "planned_id": {
+      "type": "string",
+      "enum": [
+        "B0MIN_FLAT_P_d5",
+        "B0MIN_FLAT_T_d5",
+        "B0MIN_FLAT_P_d2p5",
+        "B0MIN_FLAT_T_d2p5",
+        "B0MIN_FLAT_P_d1p25",
+        "B0MIN_FLAT_T_d1p25",
+        "B0MIN_MMS_scalar_N8",
+        "B0MIN_MMS_scalar_N16",
+        "B0MIN_MMS_scalar_N32",
+        "B0MIN_MMS_mixed_N8",
+        "B0MIN_MMS_mixed_N16",
+        "B0MIN_MMS_mixed_N32",
+        "B0MIN_FLAT_P_d1p25_ALG",
+        "B0MIN_FLAT_T_d1p25_ALG",
+        "B0MIN_MMS_scalar_N32_ALG",
+        "B0MIN_MMS_mixed_N32_ALG",
+        "B0MIN_MMS_scalar_N32_QUAD",
+        "B0MIN_MMS_mixed_N32_QUAD"
+      ]
+    },
+    "actual_run_id": {
+      "const": null
+    },
+    "execution_authorized": {
+      "const": false
+    },
+    "source_dependency_and_input_hashes": {
+      "const": null
+    },
+    "input_hashes_before_after": {
+      "const": null
+    },
+    "independent_solver_exit_code": {
+      "const": null
+    },
+    "complete_log_path": {
+      "const": null
+    },
+    "raw_mesh_field_integral_and_periodic_map_hashes": {
+      "const": null
+    },
+    "measurements": {
+      "type": "object",
+      "required": [
+        "J_hat",
+        "J_m2_s",
+        "K_m3",
+        "R_Pa_s_m3",
+        "true_unpreconditioned_relative_residual",
+        "velocity_L2_error",
+        "pressure_L2_error",
+        "pressure_gauge_nullspace_rhs_checks",
+        "periodic_trace_errors",
+        "area_and_boundary_audit",
+        "divergence_and_section_flux",
+        "energy_balance",
+        "wall_time_seconds",
+        "peak_RSS_KiB"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "J_hat": {
+          "type": "null"
+        },
+        "J_m2_s": {
+          "type": "null"
+        },
+        "K_m3": {
+          "type": "null"
+        },
+        "R_Pa_s_m3": {
+          "type": "null"
+        },
+        "true_unpreconditioned_relative_residual": {
+          "type": "null"
+        },
+        "velocity_L2_error": {
+          "type": "null"
+        },
+        "pressure_L2_error": {
+          "type": "null"
+        },
+        "pressure_gauge_nullspace_rhs_checks": {
+          "type": "null"
+        },
+        "periodic_trace_errors": {
+          "type": "null"
+        },
+        "area_and_boundary_audit": {
+          "type": "null"
+        },
+        "divergence_and_section_flux": {
+          "type": "null"
+        },
+        "energy_balance": {
+          "type": "null"
+        },
+        "wall_time_seconds": {
+          "type": "null"
+        },
+        "peak_RSS_KiB": {
+          "type": "null"
+        }
+      }
+    },
+    "applicability": {
+      "type": "object",
+      "required": [
+        "physical_K_J_R",
+        "pressure_divergence",
+        "MMS_forcing_work_not_uniform_acceleration"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "physical_K_J_R": {
+          "type": "boolean"
+        },
+        "pressure_divergence": {
+          "type": "boolean"
+        },
+        "MMS_forcing_work_not_uniform_acceleration": {
+          "type": "boolean"
+        }
+      }
+    },
+    "NUMERICAL_GATE": {
+      "const": "NOT_EVALUATED"
+    },
+    "RESULT_PASS": {
+      "const": false
+    },
+    "geometry_PASS": {
+      "const": null
+    },
+    "REFERENCE_DISCRETIZATION": {
+      "const": "NOT_EVALUATED"
+    },
+    "STOKES_MODEL_GAP": {
+      "const": "NOT_EVALUATED"
+    },
+    "LBM_STOP_COMPARISON": {
+      "const": "NOT_EVALUATED"
+    }
+  }
+}

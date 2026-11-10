@@ -1,0 +1,693 @@
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:108-141
+108: struct FluxWindow {
+109:   std::deque<T> main;
+110:   std::deque<T> cross;
+111: 
+112:   void add(T mainValue, T crossValue)
+113:   {
+114:     main.push_back(mainValue);
+115:     cross.push_back(crossValue);
+116:     if (static_cast<int>(main.size()) > convergenceWindow) {
+117:       main.pop_front();
+118:       cross.pop_front();
+119:     }
+120:   }
+121: 
+122:   bool full() const
+123:   {
+124:     return static_cast<int>(main.size()) == convergenceWindow;
+125:   }
+126: 
+127:   void metrics(T& relativeStd, T& relativeSpan, T& crossMaximum) const
+128:   {
+129:     const T mean = std::accumulate(main.begin(), main.end(), T{}) / main.size();
+130:     T squared = 0.0;
+131:     for (T value : main) {
+132:       squared += (value - mean) * (value - mean);
+133:     }
+134:     relativeStd = std::sqrt(squared / (main.size() - 1)) / std::abs(mean);
+135:     const auto extrema = std::minmax_element(main.begin(), main.end());
+136:     relativeSpan = (*extrema.second - *extrema.first) / std::abs(mean);
+137:     crossMaximum = 0.0;
+138:     for (T value : cross) {
+139:       crossMaximum = std::max(crossMaximum, std::abs(value));
+140:     }
+141:   }
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:192-222
+192:   grooveDepth=number(c,"d_nm")*1e-9;
+193:   const T width=number(c,"w_nm")*1e-9;
+194:   lx=number(c,"period_nm")*1e-9;
+195:   ly=number(c,"Ly_nm")*1e-9;
+196:   nuPhys=number(c,"nu_m2_s");
+197:   acceleration=number(c,"acceleration_m_s2");
+198:   if (!(dx>0 && mesaGap>0 && grooveDepth>=0 && width>0 && lx>width && ly>0 && nuPhys>0 && acceleration>0))
+199:     throw std::runtime_error("nonpositive/invalid geometry or material");
+200:   grooveStart=(lx-width)/2;
+201:   grooveEnd=(lx+width)/2;
+202:   for (const T length: {lx,ly,mesaGap,grooveDepth,width,grooveStart}) {
+203:     const T n=length/dx;
+204:     if (n>100000 || std::abs(n-std::round(n))>1e-8)
+205:       throw std::runtime_error("geometry must align with lattice cell boundaries");
+206:   }
+207:   nx=static_cast<int>(std::llround(lx/dx));
+208:   ny=static_cast<int>(std::llround(ly/dx));
+209:   if (nx<16 || ny<16) throw std::runtime_error("too few periodic cells for section checks");
+210:   areaPlan=lx*ly;
+211:   nominalVolume=areaPlan*mesaGap+width*ly*grooveDepth;
+212:   referenceHeight=nominalVolume/areaPlan;
+213:   smoothK0=mesaGap*mesaGap*mesaGap/12;
+214:   muPhys=rhoPhys*nuPhys;
+215:   dt=(tau-.5)*dx*dx/(3*nuPhys);
+216:   const T window=number(c,"window_tstar"), cap=number(c,"max_time_H_diffusion");
+217:   if (!(window>0 && cap>window)) throw std::runtime_error("invalid observation times");
+218:   const T windowSteps=std::ceil(window*mesaGap*mesaGap/(nuPhys*dt)-1e-9);
+219:   const T capSteps=std::ceil(cap*std::pow(mesaGap+grooveDepth,2)/(nuPhys*dt)-1e-9);
+220:   if (!(windowSteps>=2 && capSteps>windowSteps && capSteps<2000000000)) throw std::runtime_error("invalid step limits");
+221:   convergenceWindow=static_cast<int>(windowSteps);
+222:   maximumSteps=static_cast<int>(capSteps);
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:254-347
+254: T wrapX(T x)
+255: {
+256:   x = std::fmod(x, lx);
+257:   return x < 0.0 ? x + lx : x;
+258: }
+259: 
+260: bool inGroove(T x)
+261: {
+262:   const T wrapped = wrapX(x);
+263:   return wrapped >= grooveStart && wrapped < grooveEnd;
+264: }
+265: 
+266: T upperWall(T x)
+267: {
+268:   return inGroove(x) ? mesaGap + grooveDepth : mesaGap;
+269: }
+270: 
+271: int materialAt(const Vector<T, 3>& position)
+272: {
+273:   if (position[2] < 0.0) {
+274:     return 2;
+275:   }
+276:   if (position[2] >= upperWall(position[0])) {
+277:     return 3;
+278:   }
+279:   return 1;
+280: }
+281: 
+282: class ExactEX240FluidIndicator final : public IndicatorCuboid3D<T> {
+283: public:
+284:   ExactEX240FluidIndicator()
+285:     : IndicatorCuboid3D<T>(
+286:         {lx + 4.0 * dx, ly + 4.0 * dx, mesaGap + grooveDepth},
+287:         {-2.0 * dx, -2.0 * dx, 0.0})
+288:   { }
+289: 
+290:   bool distance(
+291:     T& distance,
+292:     const Vector<T, 3>& origin,
+293:     const Vector<T, 3>& direction,
+294:     int = -1) override
+295:   {
+296:     T best = std::numeric_limits<T>::infinity();
+297:     const T epsilon = 1.0e-12;
+298:     auto accept = [&](T lambda) {
+299:       if (lambda >= -epsilon && lambda <= 1.0 + epsilon) {
+300:         best = std::min(best, std::max(T{}, lambda));
+301:       }
+302:     };
+303: 
+304:     if (direction[2] < 0.0) {
+305:       accept((0.0 - origin[2]) / direction[2]);
+306:     }
+307:     if (direction[2] > 0.0) {
+308:       for (T wallZ : {mesaGap, mesaGap + grooveDepth}) {
+309:         const T lambda = (wallZ - origin[2]) / direction[2];
+310:         if (lambda < -epsilon || lambda > 1.0 + epsilon) {
+311:           continue;
+312:         }
+313:         const T xHit = origin[0] + lambda * direction[0];
+314:         const bool horizontalExists = grooveDepth == 0.0 || (wallZ == mesaGap ? !inGroove(xHit) : inGroove(xHit));
+315:         if (horizontalExists) {
+316:           accept(lambda);
+317:         }
+318:       }
+319:     }
+320: 
+321:     if (direction[0] != 0.0) {
+322:       for (int image = -1; image <= 1; ++image) {
+323:         for (T wallX : {grooveStart + image * lx, grooveEnd + image * lx}) {
+324:           const T lambda = (wallX - origin[0]) / direction[0];
+325:           if (lambda < -epsilon || lambda > 1.0 + epsilon) {
+326:             continue;
+327:           }
+328:           const T zHit = origin[2] + lambda * direction[2];
+329:           if (zHit >= mesaGap - epsilon
+330:               && zHit <= mesaGap + grooveDepth + epsilon) {
+331:             accept(lambda);
+332:           }
+333:         }
+334:       }
+335:     }
+336: 
+337:     if (!std::isfinite(best)) {
+338:       return false;
+339:     }
+340:     // All EX240 walls are exactly halfway between the adjacent fluid and
+341:     // solid nodes.  Snap round-off-sized deviations to the exact analytical
+342:     // intersection so OpenLB selects its q <= 0.5 Bouzidi branch consistently.
+343:     if (std::abs(best - 0.5) <= qTolerance) {
+344:       best = 0.5;
+345:     }
+346:     distance = best * util::norm<3>(direction);
+347:     return std::isfinite(distance);
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:380-468
+380: template <typename GEOMETRY>
+381: BoundaryAudit auditGeometryLinks(
+382:   GEOMETRY& geometry,
+383:   IndicatorF3D<T>& analyticalBoundary)
+384: {
+385:   BoundaryAudit audit;
+386:   for (int iC = 0; iC < geometry.getLoadBalancer().size(); ++iC) {
+387:     auto& block = geometry.getBlockGeometry(iC);
+388:     block.forCoreSpatialLocations([&](LatticeR<3> fluidR) {
+389:       if (block.getMaterial(fluidR) != 1) {
+390:         return;
+391:       }
+392:       const Vector<T, 3> origin = block.getPhysR(fluidR);
+393:       for (int iPop = 1; iPop < DESCRIPTOR::q; ++iPop) {
+394:         const auto c = descriptors::c<DESCRIPTOR>(iPop);
+395:         const Vector<int, 3> solidR(fluidR + c);
+396:         const int material = block.getMaterial(wrapPeriodicXY(solidR));
+397:         if (material != 2 && material != 3) {
+398:           continue;
+399:         }
+400:         ++audit.candidateLinks;
+401:         const Vector<T, 3> ray = dx * c;
+402:         const T norm = util::norm<3>(ray);
+403:         T wallDistance = -1.0;
+404:         T q = -1.0;
+405:         if (analyticalBoundary.distance(
+406:               wallDistance, origin.data(), ray, block.getIcGlob())) {
+407:           q = wallDistance / norm;
+408:         }
+409:         if (!(q > 0.0 && q <= 1.0 + qTolerance)) {
+410:           ++audit.geometricFallbacks;
+411:         }
+412:         else {
+413:           ++audit.validDistanceLinks;
+414:           audit.qMin = std::min(audit.qMin, q);
+415:           audit.qMax = std::max(audit.qMax, q);
+416:         }
+417:         // OpenLB reads the second fluid-side node only in the q > 0.5
+418:         // Bouzidi branch.  Counting it for q <= 0.5 incorrectly flags
+419:         // concave step-corner links that use the local q <= 0.5 formula.
+420:         if (q > 0.5) {
+421:           const Vector<int, 3> fluidSideR(fluidR - c);
+422:           if (!block.isInside(fluidSideR)
+423:               || block.getMaterial(wrapPeriodicXY(fluidSideR)) != 1) {
+424:             ++audit.missingFluidNeighbourFallbacks;
+425:           }
+426:         }
+427:       }
+428:     });
+429:   }
+430:   return audit;
+431: }
+432: 
+433: template <typename LATTICE, typename GEOMETRY>
+434: void auditInstalledDistances(
+435:   LATTICE& lattice,
+436:   GEOMETRY& geometry,
+437:   BoundaryAudit& audit)
+438: {
+439:   lattice.setProcessingContext(ProcessingContext::Evaluation);
+440:   for (int iC = 0; iC < geometry.getLoadBalancer().size(); ++iC) {
+441:     auto& block = lattice.getBlock(iC);
+442:     auto& blockGeometry = geometry.getBlockGeometry(iC);
+443:     block.forCoreSpatialLocations([&](LatticeR<3> latticeR) {
+444:       if (blockGeometry.getMaterial(latticeR) != 1) {
+445:         return;
+446:       }
+447:       const auto distances = block.get(latticeR)
+448:         .template getFieldPointer<descriptors::BOUZIDI_DISTANCE>();
+449:       for (int iPop = 1; iPop < DESCRIPTOR::q; ++iPop) {
+450:         if (distances[iPop] > 0.0) {
+451:           ++audit.installedLinks;
+452:           audit.installedQMin = std::min(audit.installedQMin, distances[iPop]);
+453:           audit.installedQMax = std::max(audit.installedQMax, distances[iPop]);
+454:           if (distances[iPop] > 1.0 + qTolerance) {
+455:             ++audit.unresolvedLinks;
+456:           }
+457:         }
+458:       }
+459:     });
+460:   }
+461:   audit.pass = audit.candidateLinks > 0
+462:     && audit.validDistanceLinks == audit.candidateLinks
+463:     && audit.installedLinks == audit.candidateLinks
+464:     && audit.geometricFallbacks == 0
+465:     && audit.missingFluidNeighbourFallbacks == 0
+466:     && audit.unresolvedLinks == 0
+467:     && std::abs(audit.installedQMin - audit.qMin) <= qTolerance
+468:     && std::abs(audit.installedQMax - audit.qMax) <= qTolerance;
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:500-562
+500:   LATTICE& lattice,
+501:   GEOMETRY& geometry,
+502:   const UnitConverter<T, DESCRIPTOR>& converter,
+503:   int drive,
+504:   T fx,
+505:   T fy)
+506: {
+507:   Measurement value;
+508:   const int section1 = drive == 0 ? nx / 8 : ny / 4;
+509:   const int section2 = drive == 0 ? nx / 2 : 3 * ny / 4;
+510:   lattice.setProcessingContext(ProcessingContext::Evaluation);
+511:   for (int iC = 0; iC < geometry.getLoadBalancer().size(); ++iC) {
+512:     auto& block = lattice.getBlock(iC);
+513:     auto& blockGeometry = geometry.getBlockGeometry(iC);
+514:     block.forCoreSpatialLocations([&](LatticeR<3> latticeR) {
+515:       if (blockGeometry.getMaterial(latticeR) != 1) {
+516:         return;
+517:       }
+518:       auto cell = block.get(latticeR);
+519:       T uLat[3]{};
+520:       cell.computeU(uLat);
+521:       const T rho = cell.computeRho();
+522:       const T speedLat = std::sqrt(
+523:         uLat[0] * uLat[0] + uLat[1] * uLat[1] + uLat[2] * uLat[2]);
+524:       const T pressure = converter.getPhysPressure(
+525:         (rho - 1.0) / descriptors::invCs2<T, DESCRIPTOR>());
+526:       ++value.fluidNodes;
+527:       value.volume += dx * dx * dx;
+528:       value.mass += rho * rhoPhys * dx * dx * dx;
+529:       value.densityIntegral += rho * dx * dx * dx;
+530:       value.maxDensityDeviation = std::max(
+531:         value.maxDensityDeviation, std::abs(rho - 1.0));
+532:       value.maxLatticeSpeed = std::max(value.maxLatticeSpeed, speedLat);
+533:       value.pressureMin = std::min(value.pressureMin, pressure);
+534:       value.pressureMax = std::max(value.pressureMax, pressure);
+535:       value.finite = value.finite && std::isfinite(rho)
+536:         && std::isfinite(speedLat) && std::isfinite(pressure);
+537:       for (int iD = 0; iD < 3; ++iD) {
+538:         const T uPhys = converter.getPhysVelocity(uLat[iD]);
+539:         value.integratedVelocity[iD] += uPhys * dx * dx * dx;
+540:         value.finite = value.finite && std::isfinite(uPhys);
+541:       }
+542:       // Section consistency check must integrate the flux component normal
+543:       // to each section (u_x on x-sections, u_y on y-sections), NOT the
+544:       // projection onto the drive direction: only the normal component is
+545:       // conserved across parallel sections in steady state.
+546:       const T sectionVelocity = drive == 0
+547:         ? converter.getPhysVelocity(uLat[0])
+548:         : converter.getPhysVelocity(uLat[1]);
+549:       const int coordinate = drive == 0 ? latticeR[0] : latticeR[1];
+550:       if (coordinate == section1) {
+551:         value.sectionQ1 += sectionVelocity * dx * dx;
+552:       }
+553:       if (coordinate == section2) {
+554:         value.sectionQ2 += sectionVelocity * dx * dx;
+555:       }
+556:     });
+557:   }
+558:   for (int iD = 0; iD < 3; ++iD) {
+559:     value.meanVelocity[iD] = value.integratedVelocity[iD] / value.volume;
+560:     value.fluxJ[iD] = value.integratedVelocity[iD] / areaPlan;
+561:   }
+562:   return value;
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:671-707
+671:   const T domainTop = mesaGap + grooveDepth + 4.0 * dx;
+672:   IndicatorCuboid3D<T> domain(
+673:     {lx - dx, ly - dx, domainTop},
+674:     {0.5 * dx, 0.5 * dx, -0.5 * dx});
+675:   CuboidDecomposition<T, 3> cuboids(domain, dx, 1);
+676:   cuboids.setPeriodicity({true, true, false});
+677:   HeuristicLoadBalancer<T> loadBalancer(cuboids);
+678:   SuperGeometry<T, 3> geometry(cuboids, loadBalancer, overlap);
+679:   geometry.setWriteIncrementalVTK(false);
+680:   for (int iC = 0; iC < loadBalancer.size(); ++iC) {
+681:     auto& block = geometry.getBlockGeometry(iC);
+682:     block.forCoreSpatialLocations([&](LatticeR<3> latticeR) {
+683:       block.set(latticeR, materialAt(block.getPhysR(latticeR)));
+684:     });
+685:   }
+686:   geometry.rename(0, 0);
+687:   geometry.communicate();
+688:   const bool geometryErrors = geometry.checkForErrors(false);
+689:   const auto initialMaterials = countMaterials(geometry);
+690:   const long long expectedFluidNodes =
+691:     static_cast<long long>(nx) * ny * static_cast<long long>(std::round(mesaGap / dx))
+692:     + static_cast<long long>(std::round((grooveEnd - grooveStart) / dx)) * ny
+693:       * static_cast<long long>(std::round(grooveDepth / dx));
+694:   const bool geometryPass = !geometryErrors
+695:     && initialMaterials[1] == expectedFluidNodes;
+696: 
+697:   UnitConverter<T, DESCRIPTOR> converter(dx, dt, lx, 1.0, nuPhys, rhoPhys);
+698:   const bool converterPass = std::abs(converter.getLatticeRelaxationTime() - tau) <= 1.0e-12;
+699:   SuperLattice<T, DESCRIPTOR> lattice(converter, cuboids, loadBalancer);
+700:   dynamics::set<ForcedBGKdynamics>(lattice, geometry, 1);
+701:   ExactEX240FluidIndicator exactGeometry;
+702:   BoundaryAudit boundaryAudit = auditGeometryLinks(geometry, exactGeometry);
+703:   setBouzidiBoundary<T, DESCRIPTOR, BouzidiPostProcessor>(
+704:     lattice, geometry, 2, exactGeometry);
+705:   setBouzidiBoundary<T, DESCRIPTOR, BouzidiPostProcessor>(
+706:     lattice, geometry, 3, exactGeometry);
+707:   auditInstalledDistances(lattice, geometry, boundaryAudit);
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:746-758
+746:   AnalyticalConst3D<T, T> one(1.0);
+747:   AnalyticalConst3D<T, T> zeroVelocity(0.0, 0.0, 0.0);
+748:   lattice.defineRhoU(geometry.getMaterialIndicator(1), one, zeroVelocity);
+749:   lattice.iniEquilibrium(geometry, 1, one, zeroVelocity);
+750:   Vector<T, 3> force{0.0, 0.0, 0.0};
+751:   force[0] = acceleration * dt * dt / dx * p.fx;
+752:   force[1] = acceleration * dt * dt / dx * p.fy;
+753:   force[2] = 0.0;
+754:   fields::set<descriptors::FORCE>(
+755:     lattice, geometry.getMaterialIndicator(1), force);
+756:   lattice.setParameter<descriptors::OMEGA>(
+757:     converter.getLatticeRelaxationFrequency());
+758:   lattice.initialize();
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/src/variable_groove_transport.cpp:799-898
+799:   std::size_t nextFrame=1;
+800: 
+801:   const Measurement initial = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+802:   const bool initialVolumePass = initial.fluidNodes == expectedFluidNodes
+803:     && std::abs(initial.volume - nominalVolume) / nominalVolume
+804:          <= volumeRoundoffTolerance;
+805:   std::ofstream diagnostics(p.outputDirectory / "diagnostics.csv");
+806:   diagnostics << std::setprecision(17)
+807:     << "step,J,rho,Mach,mass,time_s,mass_error,max_density_deviation,"
+808:        "Jx,Jy,Jz,Q_section1,Q_section2,section_relative_difference,"
+809:        "pressure_min,pressure_max,window_rel_std,window_rel_span,"
+810:        "window_cross_abs_max,finite\n";
+811: 
+812:   FluxWindow window;
+813:   T maxMassError = 0.0;
+814:   T maxDensityDeviation = 0.0;
+815:   T maxMach = 0.0;
+816:   T windowStd = std::numeric_limits<T>::infinity();
+817:   T windowSpan = std::numeric_limits<T>::infinity();
+818:   T windowCross = std::numeric_limits<T>::infinity();
+819:   bool converged = false;
+820:   int finalStep = 0;
+821: 
+822:   for (int step = 0; step <= maximumSteps; ++step) {
+823:     if (step > 0) {
+824:       lattice.collideAndStream();
+825:     }
+826:     const Measurement state = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+827:     const T massError = (state.mass - initial.mass) / initial.mass;
+828:     const T mach = state.maxLatticeSpeed / std::sqrt(T(1.0 / 3.0));
+829:     const T sectionDenominator = std::max(
+830:       std::abs(state.sectionQ1), std::abs(state.sectionQ2));
+831:     const T sectionDifference = sectionDenominator > 0.0
+832:       ? std::abs(state.sectionQ1 - state.sectionQ2) / sectionDenominator : 0.0;
+833:     const T mainFlux = p.fx * state.fluxJ[0] + p.fy * state.fluxJ[1];
+834:     const T crossFlux = -p.fy * state.fluxJ[0] + p.fx * state.fluxJ[1];
+835:     window.add(mainFlux, crossFlux);
+836:     if (window.full()) {
+837:       window.metrics(windowStd, windowSpan, windowCross);
+838:     }
+839:     maxMassError = std::max(maxMassError, std::abs(massError));
+840:     maxDensityDeviation = std::max(
+841:       maxDensityDeviation, state.maxDensityDeviation);
+842:     maxMach = std::max(maxMach, mach);
+843:     diagnostics << step << ',' << mainFlux << ','
+844:                 << state.densityIntegral / state.volume << ',' << mach << ','
+845:                 << state.mass << ',' << step * dt << ',' << massError << ','
+846:                 << state.maxDensityDeviation << ',' << state.fluxJ[0] << ','
+847:                 << state.fluxJ[1] << ',' << state.fluxJ[2] << ','
+848:                 << state.sectionQ1 << ',' << state.sectionQ2 << ','
+849:                 << sectionDifference << ',' << state.pressureMin << ','
+850:                 << state.pressureMax << ','
+851:                 << (window.full() ? windowStd : -1.0) << ','
+852:                 << (window.full() ? windowSpan : -1.0) << ','
+853:                 << (window.full() ? windowCross : -1.0) << ','
+854:                 << state.finite << '\n';
+855:     const T actualTstar=nuPhys*step*dt/(mesaGap*mesaGap);
+856:     while (nextFrame<p.frameTimes.size() && actualTstar+1e-12>=p.frameTimes[nextFrame]) {
+857:       writeFrame(step,"scheduled");
+858:       ++nextFrame;
+859:     }
+860:     finalStep = step;
+861:     if (window.full()
+862:         && windowStd <= relativeStdTolerance
+863:         && windowSpan <= relativeSpanTolerance
+864:         && windowCross <= crossFluxTolerance) {
+865:       converged = true;
+866:       break;
+867:     }
+868:   }
+869: 
+870:   const Measurement final = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+871:   writeFrame(finalStep,converged?"converged_final":"unconverged_final");
+872:   std::ofstream schedule(p.outputDirectory/"frame_schedule.csv");
+873:   schedule<<"requested_tstar,target_step,reached\n"<<std::setprecision(17);
+874:   for (T target:p.frameTimes) {
+875:     const auto targetStep=static_cast<long long>(std::ceil(target*mesaGap*mesaGap/(nuPhys*dt)-1e-9));
+876:     schedule<<target<<','<<targetStep<<','<<(targetStep<=finalStep)<<'\n';
+877:   }
+878:   writeFinalProfiles(lattice, geometry, converter, p);
+879:   const auto finalMaterials = countMaterials(geometry);
+880:   const bool materialUnchanged = finalMaterials == initialMaterials;
+881:   const T sectionDenominator = std::max(
+882:     std::abs(final.sectionQ1), std::abs(final.sectionQ2));
+883:   const T sectionDifference = sectionDenominator > 0.0
+884:     ? std::abs(final.sectionQ1 - final.sectionQ2) / sectionDenominator : 0.0;
+885:   const T mainJ = p.fx * final.fluxJ[0] + p.fy * final.fluxJ[1];
+886:   const T effectiveK = muPhys * mainJ / (rhoPhys * acceleration);
+887:   const T resistance = rhoPhys * acceleration / mainJ;
+888:   const bool pass = initialVolumePass
+889:     && boundaryAudit.pass
+890:     && materialUnchanged
+891:     && final.finite
+892:     && converged
+893:     && maxMassError < massTolerance
+894:     && maxDensityDeviation <= densityTolerance
+895:     && maxMach < machTolerance
+896:     && windowCross <= crossFluxTolerance
+897:     && sectionDifference <= sectionTolerance
+898:     && mainJ > 0.0;
+
+SOURCE /home/dell/openlb/src/boundary/setBouzidiBoundary.h:47-80
+47: /// Post processor for the zero-velocity Bouzidi boundary
+48: class BouzidiPostProcessor {
+49: public:
+50:   static constexpr OperatorScope scope = OperatorScope::PerCell;
+51: 
+52:   int getPriority() const {
+53:     return -1;
+54:   }
+55: 
+56:   template <typename CELL, typename V = typename CELL::value_t>
+57:   void apply(CELL& x_b) any_platform {
+58:     using DESCRIPTOR = typename CELL::descriptor_t;
+59:     const auto q = x_b.template getFieldPointer<descriptors::BOUZIDI_DISTANCE>();
+60:     for (int iPop = 1; iPop < descriptors::q<DESCRIPTOR>(); ++iPop) {
+61:       // update missing population if valid bouzidi distance
+62:       if (q[iPop] > V{0}) {
+63:         const auto c = descriptors::c<DESCRIPTOR>(iPop);
+64:         const int iPop_opposite = descriptors::opposite<DESCRIPTOR>(iPop);
+65:         auto x_s = x_b.neighbor(c);                                             // solid side neighbor
+66:         auto x_f = x_b.neighbor(descriptors::c<DESCRIPTOR>(iPop_opposite));     // fluid side neighbor opposite to the missing population
+67: 
+68:         x_b[iPop_opposite] = (q[iPop] <= V{0.5}) // cut is closer to the fluid cell
+69:                            * (V{2} * q[iPop] * x_s[iPop] + (V{1} - V{2} * q[iPop]) * x_b[iPop])
+70:                            + (q[iPop] >  V{0.5}) // cut is closer to the solid cell
+71:                            * (V{0.5} / q[iPop] * x_s[iPop] + V{0.5} * (V{2} * q[iPop] - V{1}) / q[iPop] * x_f[iPop_opposite]);
+72:       }
+73:       // if intersection point is on the cell then fall back to full-way bounce back
+74:       else if (q[iPop] == V{0}) {
+75:         const int iPop_opposite = descriptors::opposite<DESCRIPTOR>(iPop);
+76:         x_b[iPop_opposite] = x_b[iPop];
+77:       }
+78:     }
+79:   }
+80: };
+
+SOURCE /home/dell/openlb/src/boundary/setBouzidiBoundary.h:241-310
+241:   const T deltaR = blockGeometry.getDeltaR();
+242:   // for each solid cell: all of its fluid neighbors need population updates
+243:   block.forSpatialLocations([&](LatticeR<DESCRIPTOR::d> solidLatticeR) {
+244:     // Check if cell is solid cell
+245:     if (boundaryIndicator(solidLatticeR)) {
+246:       for (int iPop=1; iPop < DESCRIPTOR::q; ++iPop) {
+247: 
+248:         Vector<T,DESCRIPTOR::d> boundaryLatticeR(solidLatticeR + descriptors::c<DESCRIPTOR>(iPop));
+249:         const auto c = descriptors::c<DESCRIPTOR>(iPop);
+250:         const auto iPop_opposite = descriptors::opposite<DESCRIPTOR>(iPop);
+251: 
+252:         if (blockGeometry.isInside(boundaryLatticeR)) {
+253:           auto boundaryPhysR = blockGeometry.getPhysR(boundaryLatticeR);
+254: 
+255:           // check if neighbor is fluid cell
+256:           if (bulkIndicator(boundaryLatticeR)) {
+257:             T dist = -1;    // distance to boundary
+258:             T qIpop = -1;   // normed distance (Bouzidi distance) to boundary
+259:             const T norm = deltaR * util::norm<DESCRIPTOR::d>(descriptors::c<DESCRIPTOR>(iPop));
+260:             auto direction = -deltaR * c; // vector pointing from the boundary cell to the solid cell
+261: 
+262:             // Check if distance calculation was performed correctly
+263:             if (indicatorAnalyticalBoundary.distance(dist, boundaryPhysR.data(), direction, blockGeometry.getIcGlob())) {
+264:               qIpop = dist / norm;
+265: 
+266:               // if distance function returned a dist. not suitable for Bouzidi -> fall-back
+267:               if ((qIpop < 0) || (qIpop > 1)) {
+268:                 if(verbose) {
+269:                   clout << "Error, non suitable dist. at lattice: (" << boundaryLatticeR << "), physical: (" << blockGeometry.getPhysR(boundaryLatticeR) << "), direction " << iPop << ". Fall-back to bounce-back." << std::endl;
+270:                 }
+271: 
+272:                 // fall-back: half-way bounce back
+273:                 qIpop = 0.5;
+274:               }
+275:             }
+276:             // if distance function couldn't compute any distance -> fall-back
+277:             else {
+278:               if(verbose) {
+279:                 clout << "Error, no boundary found at lattice:(" << boundaryLatticeR << "), physical: (" << blockGeometry.getPhysR(boundaryLatticeR) << "), direction: " << iPop << ".Fall-back to bounce-back." << std::endl;
+280:               }
+281: 
+282:               // fall-back: half-way bounce back
+283:               qIpop = 0.5;
+284:             }
+285: 
+286:             // double check
+287:             if (qIpop >= 0) {
+288:               // Bouzidi require the fluid side neighbor of the boundary cell also to be fluid
+289:               if (bulkIndicator(boundaryLatticeR + descriptors::c<DESCRIPTOR>(iPop))) {
+290:                 // Standard case, c.f. Bouzidi paper, setting Bouzidi-distance
+291:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_DISTANCE>(iPop_opposite, qIpop);
+292:               }
+293:               else {
+294:                 // If no fluid cell found: fall-back to bounce-back
+295:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_DISTANCE>(iPop_opposite, T{0.5});
+296:               }
+297:               // Initialize velocity coefficients if necessary
+298:               if constexpr (std::is_same_v<OPERATOR, BouzidiVelocityPostProcessor>) {
+299:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_VELOCITY>(iPop_opposite, 0);
+300:               }
+301:               // Initialize ade dirichlet coefficients if necessary
+302:               if constexpr (std::is_same_v<OPERATOR, BouzidiAdeDirichletPostProcessor>) {
+303:                 block.get(boundaryLatticeR).template setFieldComponent<descriptors::BOUZIDI_ADE_DIRICHLET>(iPop_opposite, 0);
+304:               }
+305:               // Setting up the post processor, if this cell does not have one yet.
+306:               if (!block.isPadding(boundaryLatticeR)) {
+307:                 block.addPostProcessor(typeid(stage::PostStream),
+308:                                       boundaryLatticeR,
+309:                                       meta::id<OPERATOR>{});
+310:               }
+
+SOURCE /home/dell/openlb/src/dynamics/dynamics.h:223-230
+223: template <typename T, typename DESCRIPTOR, typename MOMENTA=momenta::BulkTuple>
+224: using ForcedBGKdynamics = dynamics::Tuple<
+225:   T, DESCRIPTOR,
+226:   MOMENTA,
+227:   equilibria::SecondOrder,
+228:   collision::BGK,
+229:   forcing::PlainGuo
+230: >;
+
+SOURCE /home/dell/openlb/src/dynamics/forcing.h:36-67
+36: struct PlainGuo {
+37:   static std::string getName() {
+38:     return "PlainGuoForcing";
+39:   }
+40: 
+41:   template <typename M>
+42:   using Forced = typename momenta::Forced<M>;
+43: 
+44:   template <typename DESCRIPTOR, typename MOMENTA>
+45:   using combined_momenta = typename Forced<MOMENTA>::template type<DESCRIPTOR>;
+46: 
+47:   template <typename DESCRIPTOR, typename MOMENTA, typename EQUILIBRIUM>
+48:   using combined_equilibrium = typename EQUILIBRIUM::template type<DESCRIPTOR,Forced<MOMENTA>>;
+49: 
+50:   template <typename DESCRIPTOR, typename MOMENTA, typename EQUILIBRIUM, typename COLLISION>
+51:   struct combined_collision {
+52:     using MomentaF   = typename Forced<MOMENTA>::template type<DESCRIPTOR>;
+53:     using CollisionO = typename COLLISION::template type<DESCRIPTOR,Forced<MOMENTA>,EQUILIBRIUM>;
+54: 
+55:     static_assert(COLLISION::parameters::template contains<descriptors::OMEGA>(),
+56:                   "COLLISION must be parametrized using relaxation frequency OMEGA");
+57: 
+58:     template <typename CELL, typename PARAMETERS, typename V=typename CELL::value_t>
+59:     CellStatistic<V> apply(CELL& cell, PARAMETERS& parameters) any_platform {
+60:       V rho, u[DESCRIPTOR::d];
+61:       MomentaF().computeRhoU(cell, rho, u);
+62:       CollisionO().apply(cell, parameters);
+63:       const V omega = parameters.template get<descriptors::OMEGA>();
+64:       const auto force = cell.template getField<descriptors::FORCE>();
+65:       lbm<DESCRIPTOR>::addExternalForce(cell, rho, u, omega, force);
+66:       return {rho, util::normSqr<V,DESCRIPTOR::d>(u)};
+67:     };
+
+SOURCE /home/dell/openlb/src/dynamics/momenta/elements.h:1593-1608
+1593: struct ForcedMomentum {
+1594:   template <typename TYPE, typename CELL, typename J, typename V=typename CELL::value_t, typename DESCRIPTOR=typename CELL::descriptor_t>
+1595:   void compute(CELL& cell, J& j) any_platform
+1596:   {
+1597:     MOMENTUM().template compute<TYPE>(cell, j);
+1598:   }
+1599: 
+1600:   template <typename TYPE, typename CELL, typename U, typename V=typename CELL::value_t, typename DESCRIPTOR=typename CELL::descriptor_t>
+1601:   void computeU(CELL& cell, U& u) any_platform
+1602:   {
+1603:     MOMENTUM().template computeU<TYPE>(cell, u);
+1604:     const auto force = cell.template getFieldPointer<descriptors::FORCE>();
+1605:     for (int iVel=0; iVel < DESCRIPTOR::d; ++iVel) {
+1606:       u[iVel] += force[iVel] * V(0.5);
+1607:     }
+1608:   }
+
+SOURCE /home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_grid_narrow_fine4_20261024/analyze_results.py:88-131
+88:         def fluid(x,z):
+89:             x=np.remainder(x,nx)
+90:             return (z>=0)&(z<nh+nd*((x>=edge)&(x<nx-edge)))
+91:         mask=fluid(xx,zz);links=0
+92:         assert int(mask.sum())*ny==node_count
+93:         for cx,cy,cz in itertools.product([-1,0,1],repeat=3):
+94:             if cx*cx+cy*cy+cz*cz not in [1,2]:continue
+95:             hit=mask&~fluid(xx+cx,zz+cz);links+=int(hit.sum())*ny
+96:             assert np.all(fluid(xx+.25*cx,zz+.25*cz)[hit])
+97:             assert not np.any(fluid(xx+.75*cx,zz+.75*cz)[hit])
+98:         assert links==int(boundary['candidate_links'])
+99:         assert float(boundary['installed_q_min'])==float(boundary['installed_q_max'])==.5
+100:         with (out/'diagnostics.csv').open() as f: header=next(csv.reader(f))
+101:         matrix=np.loadtxt(out/'diagnostics.csv',delimiter=',',skiprows=1,ndmin=2);data={k:matrix[:,i] for i,k in enumerate(header)}
+102:         assert all(np.isfinite(v).all() for v in data.values())
+103:         N=len(matrix);steps=int(result['steps_completed']);assert steps<=physical_cap and N==steps+1 and np.array_equal(data['step'],np.arange(N))
+104:         assert np.all(data['finite']==1) and np.allclose(data['time_s'],np.arange(N)*dt,rtol=1e-14,atol=1e-24)
+105:         mass=(data['mass']-data['mass'][0])/data['mass'][0]
+106:         assert np.allclose(mass,data['mass_error'],rtol=1e-10,atol=1e-16)
+107:         assert np.allclose(data['J'],data['Jy'] if config['direction']=='P' else data['Jx'],rtol=1e-14,atol=1e-30)
+108:         cross=-data['Jx'] if config['direction']=='P' else data['Jy']
+109:         std,span,cross_max,workspace=metrics(data['J'],cross,n)
+110:         assert np.allclose(std,data['window_rel_std'][n-1:],rtol=1e-5,atol=1e-12)
+111:         assert np.allclose(span,data['window_rel_span'][n-1:],rtol=1e-6,atol=1e-12)
+112:         assert np.allclose(cross_max,data['window_cross_abs_max'][n-1:],rtol=1e-12,atol=1e-28)
+113:         gates=(std<=limits['relative_std'])&(span<=limits['relative_span'])&(cross_max<=limits['cross_flux_m2_s'])
+114:         assert gates[-1] and not np.any(gates[:-1]),'stopping point is not the first independently accepted window'
+115:         worst_mass=float(np.max(np.abs(mass)));worst_rho=float(np.max(data['max_density_deviation']));worst_mach=float(np.max(data['Mach']))
+116:         q1,q2=data['Q_section1'],data['Q_section2'];den=np.maximum(np.abs(q1),np.abs(q2))
+117:         section=np.divide(np.abs(q1-q2),den,out=np.zeros_like(den),where=den>0)
+118:         assert np.allclose(section,data['section_relative_difference'],rtol=1e-6,atol=1e-15)
+119:         assert worst_mass<limits['mass_relative_strict'] and worst_rho<=limits['density_deviation'] and worst_mach<limits['Mach_strict']
+120:         assert section[-1]<=limits['section_relative_difference']
+121:         for value,key in [(worst_mass,'max_mass_abs_relative'),(worst_rho,'max_density_deviation'),(worst_mach,'max_Mach'),(float(std[-1]),'window_main_rel_std'),(float(span[-1]),'window_main_rel_span')]:
+122:             assert math.isclose(value,float(result[key]),rel_tol=1e-6,abs_tol=1e-15),(key,value,result[key])
+123:         rho=float(result['rho_phys_kg_m3']);mu=rho*nu;K=mu*data['J'][-1]/(rho*a)
+124:         assert data['J'][-1]>0 and math.isclose(K,float(result['Keff_m3']),rel_tol=1e-14)
+125:         assert math.isclose(rho*a/data['J'][-1],float(result['R_eff_Pa_s_per_m3']),rel_tol=1e-14)
+126:         profile=rows(out/'field_slice.csv');x=np.array([float(r['x']) for r in profile]);z=np.array([float(r['z']) for r in profile])
+127:         velocity=np.array([float(r['uy' if config['direction']=='P' else 'ux']) for r in profile])
+128:         expected_slice_nodes=round(P/dx)*round(h/dx)+round(w/dx)*round(d/dx)
+129:         assert len(profile)==expected_slice_nodes and len(set(zip(x,z)))==len(profile)
+130:         sliceK=mu*(float(np.sum(velocity))*dx*dx/P)/(rho*a)
+131:         assert math.isclose(sliceK,K,rel_tol=2e-8)

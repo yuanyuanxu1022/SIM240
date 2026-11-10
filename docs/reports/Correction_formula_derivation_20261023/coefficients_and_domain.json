@@ -1,0 +1,79 @@
+{
+  "status": "existing retrospective C4 rewritten by exact similarity variables; not a newly fitted or finally locked model",
+  "phi": 0.5,
+  "period_rule": "P=2w",
+  "original_reference_w_nm": 120,
+  "coefficients": {
+    "P": [
+      0.3641722453598825,
+      1.5996745971805324,
+      -0.692959940309755,
+      -0.28288991331900903
+    ],
+    "T": [
+      -0.6381604560933481,
+      0.7768339511443813,
+      -0.23567419170679005,
+      -0.4708598723288494
+    ]
+  },
+  "coefficient_order": [
+    "a",
+    "b",
+    "c",
+    "q"
+  ],
+  "original_form": "Delta=exp(a)*(d/w)^b*(h/w)^c*exp(q*ln(h/w)^2)",
+  "gap_scaled_form": "Delta=exp(a)*(d/h)^b*(w/h)^(-(b+c))*exp(q*ln(w/h)^2)",
+  "log_domain_halfspaces": [
+    [
+      0.0,
+      -1.0,
+      -1.5686159179138452
+    ],
+    [
+      1.0,
+      0.0,
+      -0.0408219945202552
+    ],
+    [
+      0.0,
+      1.0,
+      -0.0
+    ],
+    [
+      -0.2543816058632648,
+      0.9671039233704032,
+      -0.22270314329116983
+    ],
+    [
+      -1.0,
+      0.0,
+      -1.5686159179138452
+    ]
+  ],
+  "sample_ratio_vertices": [
+    [
+      0.20833333333333334,
+      0.20833333333333334
+    ],
+    [
+      1.0416666666666667,
+      0.20833333333333334
+    ],
+    [
+      1.0416666666666667,
+      1.0
+    ],
+    [
+      0.4166666666666667,
+      1.0
+    ],
+    [
+      0.20833333333333334,
+      0.8333333333333334
+    ]
+  ],
+  "domain_note": "convex hull in ln(h/w),ln(d/w) of existing 18 geometries; membership does not guarantee prediction accuracy",
+  "model_lock_created": false
+}

@@ -1,0 +1,23 @@
+{
+  "purpose": "internal validation report; journal specifications not applicable yet",
+  "width_inches": 11.3,
+  "height_inches": 8.2,
+  "matplotlib": "3.11.2",
+  "numpy": "2.5.3",
+  "png_dpi": 300,
+  "input": "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/analysis_20261023/independent_review.json",
+  "input_sha256": "696e6a311f7f1f0b6df7950d4780b2d5cd68fe9205b831ea8cd8002667b5825f",
+  "raw_hash_manifest": "raw_input_hashes.json",
+  "source_data": "figure_source_data.json",
+  "transformations": [
+    "a: absolute fitted rate / continuum - 1, percent",
+    "b: fitted/discrete rate - 1 times 1e8; fixed 25%-100% fit window",
+    "c: signed (Q-Q0)/Q0 from decimal phase_sum in long double; scale 1e-13; every recorded step",
+    "d: per-case maximum absolute nonlinear local update residual over all saved steps"
+  ],
+  "uncertainty": "deterministic numerical diagnostics; no statistical intervals or repeats",
+  "exclusions": "none; source fixtures excluded only from unforced phase-drift definition",
+  "zero_policy": "linear axes a,b,c include zero; log panel d contains four positive update residuals; zero mu errors not plotted",
+  "alt_text": "Five modal rate errors decrease by about fourfold after grid spacing halves. Fourteen unforced phase histories remain below 2.12e-13 relative drift. All nonlinear update residuals are below 6e-16.",
+  "visual_inspection": "Final PNG and PDF-rendered page inspected 2026-10-23: all four panels, signs, limits, labels and legends legible; threshold annotation moved clear of data; no visible clipping. Log panel uses points."
+}

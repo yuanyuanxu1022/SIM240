@@ -1,0 +1,113 @@
+                                                                                      J. Fluid Mech. (2020), vol. 891, A12. c The Author(s), 2020.                                         891 A12-1
+                                                                                      Published by Cambridge University Press
+                                                                                      This is an Open Access article, distributed under the terms of the Creative Commons Attribution
+                                                                                      licence (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted re-use, distribution,
+                                                                                      and reproduction in any medium, provided the original work is properly cited.
+                                                                                      doi:10.1017/jfm.2020.134
+
+                                                                                        Effective permeability tensor of confined flows
+                                                                                             with wall grooves of arbitrary shape
+                                                                                                        Mainendra Kumar Dewangan1 and Subhra Datta1, †
+                                                                                            1 Department of Mechanical Engineering, Indian Institute of Technology Delhi, Hauz Khas,
+                                                                                                                               New Delhi 110016, India
+
+                                                                                                (Received 18 September 2019; revised 31 January 2020; accepted 12 February 2020)
+
+
+                                                                                      Pressure and shear-driven flows of a confined film of fluid overlying a periodic
+                                                                                      one-dimensional topography of arbitrary shape are considered for prediction of
+                                                                                      the effective hydraulic permeability in the Stokes flow regime. The other surface
+                                                                                      confining the fluid may be a planar no-slip wall, an identically patterned wall, a
+                                                                                      free surface or a surface with prescribed shear. Analytical predictions are obtained
+                                                                                      using spectral analysis and the domain perturbation method under the assumption
+                                                                                      of small pattern size to pitch ratio. Using a novel decomposition of the channel
+                                                                                      height effects into exponentially and algebraically decaying components, a simple
+                                                                                      surface-metrology-dependent relationship which connects the eigenvalues of the
+                                                                                      effective permeability tensor is obtained. Two representative topographies are assessed
+                                                                                      numerically: the infinitely differentiable topography of a phase-modulated sinusoid
+                                                                                      which has multiple local extrema and zero crossings and the non-differentiable
+                                                                                      triangular-wave topography. Non-differentiability in the form of corners of triangular
+                                                                                      patterns and the cusps of scalloped patterns are not found to be an impediment to
+                                                                                      meaningful and numerically accurate asymptotic predictions of effective permeability
+                                                                                      and effective slip, contradicting an earlier suggestion from the literature. Several
+                                                                                      distinct applications of the theory to the friction-reduction and shear-stability
+                                                                                      performance of the recently developed lubricant impregnated patterned surfaces
+                                                                                      as well as to scalloped and trapezoidal drag-reduction riblets are discussed, with
+https://doi.org/10.1017/jfm.2020.134 Published online by Cambridge University Press
+
+
+
+
+                                                                                      comparison to experimental data from the literature for the last application. Analytical
+                                                                                      approximations which have an extended domain of numerical accuracy are also
+                                                                                      proposed.
+                                                                                      Key words: Hele-Shaw flows, general fluid mechanics, drag reduction
+
+
+
+
+                                                                                      1. Introduction
+                                                                                        The subject of this study, a flowing film of fluid contacting a surface with
+                                                                                      complex topographic patterns, is a prominent feature of both technology and nature.
+                                                                                      Superhydrophobic surfaces (SHS) (Choi et al. 2006; Ybert et al. 2007; Zhou et al.
+                                                                                      2013; Song, Daniello & Rothstein 2014) and liquid-impregnated surfaces (LIS)
+                                                                                      (Wexler, Jacobi & Stone 2015; Asmolov, Nizkaya & Vinogradova 2018; Solomon
+
+                                                                                                       † Email address for correspondence: subhra.datta@mech.iitd.ac.in
+                                                                                      891 A12-2                   M. K. Dewangan and S. Datta
+                                                                                      et al. 2018) have been shown to reduce the frictional resistance of flow passages with
+                                                                                      potential applications to microfluidics and flow batteries. An important application
+                                                                                      of SHS and LIS in the form of antimicrobial surfaces for implants and surgical
+                                                                                      instruments involve contact with flowing blood (Wong et al. 2011; Parmar et al.
+                                                                                      2018). Similarly, contact with flowing sea water may arise in applications of SHS
+                                                                                      and LIS to prevent marine bio-fouling (Ware et al. 2018). In fact, the stability of LIS
+                                                                                      under shear is a specific area of concern (Wexler et al. 2015) for their technological
+                                                                                      viability. The anisotropy of flow over topographic patterns can be leveraged to
+                                                                                      successfully mix reagents in microfluidics (Stroock & McGraw 2004) and even to
+                                                                                      effect separations (Asmolov et al. 2015).
+                                                                                         In addition to relevance to the above-discussed more recent technological advances,
+                                                                                      a substantial motivation behind studying wetted topographic patterns has historically
+                                                                                      been in the realm of reduction of skin-friction drag in turbulent flows through riblets
+                                                                                      immersed within the viscous sublayer (Bechert & Bartenwerfer 1989; Luchini, Manzo
+                                                                                      & Pozzi 1991; Choi, Moin & Kim 1993; Chang et al. 2019). Inspiration for this
+                                                                                      application is drawn from the micro-structure of the skin of marine organisms like
+                                                                                      fast-moving sharks. Also of relevance to the current study on confined flows is the fact
+                                                                                      that fractured rocks in natural/man-made geological formations also present complex
+                                                                                      topographies to even the laminar flow of oil and water, causing departures from the
+                                                                                      Poiseuille law that need careful consideration (Sisavath et al. 2003).
+                                                                                         Corrugations provide often the smallest or the least-resolvable scale in the hierarchy
+                                                                                      of scales that affect fluid flow (Bechert & Bartenwerfer 1989; Miksis & Davis 1994;
+                                                                                      Tuck & Kouzoubov 1995; Kamrin, Bazant & Stone 2010). A powerful theoretical
+                                                                                      paradigm in the assessment of the hydrodynamic effects of wall corrugation arises
+                                                                                      from the realization that the feature-averaged effects of wall corrugations accessible
+                                                                                      to coarse-scale measurements can be quantified easily through effective equation
+                                                                                      approaches such as locating an effective no-slip plane (Tuck & Kouzoubov 1995;
+                                                                                      Kamrin et al. 2010) or evaluating for confined flows the hydrodynamic conductance of
+                                                                                      an equivalent channel with a simpler wall geometry (Stroock et al. 2002; Feuillebois,
+                                                                                      Bazant & Vinogradova 2009). The location of the effective no-slip plane, which
+                                                                                      depends of course on the reference plane for measuring distances, has been specified
+                                                                                      variously through closely related parameters such as the ‘effective slip length’
+                                                                                      or the ‘protrusion height’, the latter term being used almost exclusively in the
+https://doi.org/10.1017/jfm.2020.134 Published online by Cambridge University Press
+
+
+
+
+                                                                                      turbulent-drag-reduction literature (Bechert & Bartenwerfer 1989). In what follows,
+                                                                                      the above-discussed effective equation approach will play an important role.
+                                                                                         In SHS, the liquid does not contact all points of the pattern and the details of the
+                                                                                      solid-contacting gas flow is not usually resolved (Lauga & Stone 2003; Asmolov et al.
+                                                                                      2013a; Kumar, Datta & Kalyanasundaram 2016). In contrast, the current study will
+                                                                                      deal with a fluid contacting a solid no-slip surface. Crucially, in creeping flow, SHS
+                                                                                      (Zhou et al. 2013) and wetted surfaces (Lecoq et al. 2004) with the same pattern
+                                                                                      waveform (e.g. trapezoidal, as in the above two studies) act as drag-reducing and drag-
+                                                                                      enhancing surfaces, respectively, as judged from the location of the effective no-slip
+                                                                                      plane, which is closer to the troughs in SHS and closer to the peaks in wetted surfaces.
+                                                                                      Wetted trapezoidal surfaces such as in Lecoq et al. (2004) will be investigated as an
+                                                                                      application in the current study. The literature on SHS will not, therefore, be surveyed
+                                                                                      in great detail. The literature on channels with non-planar mean wall shapes will also
+                                                                                      be left out of scope.
+                                                                                         The problem of predicting the location of the effective no-slip plane in shear
+                                                                                      flows bounded only on one side by a specialized topography such as rectangular
+                                                                                      or sinusoidal topographic patterns has attracted the attention of several researchers
+

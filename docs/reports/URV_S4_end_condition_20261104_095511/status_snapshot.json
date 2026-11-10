@@ -1,0 +1,177 @@
+{
+  "snapshot_started": "2026-11-04T09:55:11.565960+08:00",
+  "snapshot_ended": "2026-11-04T09:55:11.584897+08:00",
+  "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+  "release_matches_delivered": true,
+  "active_processes": [
+    {
+      "pid": 1701694,
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "scripts/run_S4.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/evidence/S4_formal_launch_release_v1_20261104_01.json",
+        "--release-sha256",
+        "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "--execute"
+      ]
+    },
+    {
+      "pid": 1711573,
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx1p25_reuse_v1_20261103_01/steady/run_config.txt"
+      ]
+    }
+  ],
+  "tmux_exit": 0,
+  "tmux_stdout": "urv_s4_formal_v1_20261104_01|1701694|python3\n",
+  "tmux_stderr": "",
+  "expected_session_present": true,
+  "attempt_exists": true,
+  "batch_completion_exists": false,
+  "batch_completion": null,
+  "grid_report_exists": false,
+  "grid_report": null,
+  "controller_log": {
+    "exists": true,
+    "bytes_at_snapshot": 0,
+    "tail": ""
+  },
+  "runs": [
+    {
+      "run_id": "URV_S4_P_dx5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_P_dx5_a100000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx5_reuse_v1_20261103_01/steady",
+      "native_log_exists": true,
+      "diagnostics_exists": true,
+      "completion_exists": true,
+      "automatic_acceptance_exists": true,
+      "active_native": false,
+      "completion": {
+        "run_id": "URV_S4_P_dx5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 14.776023832993815,
+        "inputs_unchanged": true
+      },
+      "automatic_acceptance": {
+        "run_id": "URV_S4_P_dx5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "independent_exit_code": 0
+      }
+    },
+    {
+      "run_id": "URV_S4_T_dx5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_T_dx5_a100000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx5_reuse_v1_20261103_01/steady",
+      "native_log_exists": true,
+      "diagnostics_exists": true,
+      "completion_exists": true,
+      "automatic_acceptance_exists": true,
+      "active_native": false,
+      "completion": {
+        "run_id": "URV_S4_T_dx5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 9.025115069991443,
+        "inputs_unchanged": true
+      },
+      "automatic_acceptance": {
+        "run_id": "URV_S4_T_dx5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "independent_exit_code": 0
+      }
+    },
+    {
+      "run_id": "URV_S4_P_dx2p5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_P_dx2p5_a100000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx2p5_reuse_v1_20261103_01/steady",
+      "native_log_exists": true,
+      "diagnostics_exists": true,
+      "completion_exists": true,
+      "automatic_acceptance_exists": true,
+      "active_native": false,
+      "completion": {
+        "run_id": "URV_S4_P_dx2p5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 430.61390840201057,
+        "inputs_unchanged": true
+      },
+      "automatic_acceptance": {
+        "run_id": "URV_S4_P_dx2p5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "independent_exit_code": 0
+      }
+    },
+    {
+      "run_id": "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_T_dx2p5_a100000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx2p5_reuse_v1_20261103_01/steady",
+      "native_log_exists": true,
+      "diagnostics_exists": true,
+      "completion_exists": true,
+      "automatic_acceptance_exists": true,
+      "active_native": false,
+      "completion": {
+        "run_id": "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 196.58617075599614,
+        "inputs_unchanged": true
+      },
+      "automatic_acceptance": {
+        "run_id": "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+        "release_sha256": "e5f7de1e584b776f8cc9bf1dbb31f198422ce10984ba8ad7d729220afdcdd19b",
+        "NUMERICAL_GATE": "PASS",
+        "RESULT_PASS": true,
+        "geometry_PASS": true,
+        "independent_exit_code": 0
+      }
+    },
+    {
+      "run_id": "URV_S4_P_dx1p25_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_P_dx1p25_a100000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx1p25_reuse_v1_20261103_01/steady",
+      "native_log_exists": true,
+      "diagnostics_exists": true,
+      "completion_exists": false,
+      "automatic_acceptance_exists": false,
+      "active_native": true
+    },
+    {
+      "run_id": "URV_S4_T_dx1p25_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_T_dx1p25_a100000",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx1p25_reuse_v1_20261103_01/steady",
+      "native_log_exists": false,
+      "diagnostics_exists": false,
+      "completion_exists": false,
+      "automatic_acceptance_exists": false,
+      "active_native": false
+    }
+  ],
+  "native_calls_this_task": 0,
+  "VTK_calls_this_task": 0,
+  "solver_retries": 0,
+  "extensions": 0,
+  "S5_started": false
+}

@@ -1,0 +1,112 @@
+{
+  "checked_at": "2026-11-04T20:53:45.461714+08:00",
+  "existing_release_sha256": "d654196816e36fe97638c079c26a498e6203db8a01bd492042ecb1320c314949",
+  "existing_release_inputs_verified": 3710,
+  "protected_files": 3739,
+  "records": [
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_describe",
+      "mode": "describe",
+      "files": [
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt": {
+        "independent_process_exit_code": 0,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 0.36747822095640004,
+        "solver_wall_cap_seconds": 300
+      },
+      "execution_audit": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "result_exists": false,
+      "boundary_audit_exists": false,
+      "log_bad_alloc": false
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_precheck",
+      "mode": "precheck",
+      "files": [
+        "effective_config.txt",
+        "exit_code.txt",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "process_receipt": {
+        "independent_process_exit_code": -6,
+        "timed_out": false,
+        "resource_stop_reason": null,
+        "elapsed_seconds": 10.417795438028406,
+        "solver_wall_cap_seconds": 300
+      },
+      "execution_audit": null,
+      "result_exists": false,
+      "boundary_audit_exists": false,
+      "log_bad_alloc": true
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_initialize",
+      "mode": "initialize",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt": null,
+      "execution_audit": null,
+      "result_exists": false,
+      "boundary_audit_exists": false,
+      "log_bad_alloc": false
+    }
+  ],
+  "original_failed_report_matches_raw_logs": true,
+  "pristine_precondition_met": false,
+  "pristine_error": "output used; no retry/overwrite",
+  "attempt_directory_exists": true,
+  "active_processes": [],
+  "tmux_session_present": false,
+  "zero_verification_exists": false,
+  "initial_field_read_exists": false,
+  "formal_directory_pristine": true,
+  "existing_authorization_answer_exact_match": true,
+  "existing_authorization_question_exact_match": false,
+  "existing_authorization_question_equal_ignoring_whitespace": true,
+  "new_authorization_receipt_recorded": true,
+  "new_execution_release_created": false,
+  "start_command_reissued": false,
+  "no_retry_authorized": true,
+  "current_resource_snapshot_taken": false,
+  "memory_evidence": {
+    "observed_exception": "std::bad_alloc",
+    "adopted_per_process_address_space_GiB": 8,
+    "peak_RSS": "NOT_RECORDED",
+    "required_memory": "NOT_ESTABLISHED",
+    "machine_incapability": "NOT_ESTABLISHED",
+    "specific_failed_allocation": "NOT_LOCALIZED"
+  },
+  "precheck_collide_counter_file": "ABSENT; zero-step expectation follows frozen precheck source path, not a saved execution counter",
+  "intermediate_0p9375nm_alignment": {
+    "depth_over_dx": "256/3",
+    "integer_aligned": false
+  },
+  "new_native_calls": 0,
+  "new_VTK_calls": 0,
+  "new_builds": 0,
+  "new_software_tests": 0,
+  "new_PERF_advances": 0,
+  "new_formal_runs": 0,
+  "original_S4_stage_accepted": false,
+  "reference_qualified": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "submission_ready": false
+}

@@ -1,0 +1,178 @@
+{
+  "protocol_id": "GDI-v1",
+  "date": "2026-10-30",
+  "status": "PROTOCOL_PREPARED_HOST_NOT_IMPLEMENTED_NOT_RUN",
+  "scope": "steady_fixed_gap_native_porosityForce_momentum_pressure_integration",
+  "first_case_only": "GDI01",
+  "first_case_baseline": "C01",
+  "run_id": null,
+  "launch_ready": false,
+  "simulation_authorized": false,
+  "solver_design_name": "grooveDarcyStaticFoam",
+  "solver_exists": false,
+  "OpenFOAM": "Foundation 13",
+  "pressure_definition": "physical_gauge_Pa",
+  "velocity_definition": "fluid_volume_mean_U=J/H",
+  "inputs": {
+    "mesaGap_m": 7.5e-08,
+    "grooveDepth_m": 1e-07,
+    "grooveWidth_m": 1.2e-07,
+    "period_m": 2.4e-07,
+    "H_m": 1.25e-07,
+    "L_m": [
+      2.4e-05,
+      4.8e-05,
+      1.25e-07
+    ],
+    "mu_Pa_s": 0.001,
+    "rho_kg_m3": 1000,
+    "nu_m2_s": 1e-06,
+    "mesh_cells": [
+      16,
+      32,
+      1
+    ],
+    "porous_zone_cells": 512,
+    "gapMode": "uniform",
+    "xLow_p_Pa": 24,
+    "xHigh_p_Pa": 0,
+    "side_flux": 0,
+    "G_Pa_m": 1000000.0,
+    "V_m_s": 0,
+    "family": "V2_published_rounded",
+    "groove_axis": "y",
+    "drive_axis": "x"
+  },
+  "momentum_terms": {
+    "total_Darcy": true,
+    "pressure": true,
+    "ddt": false,
+    "convection": false,
+    "viscous_laplacian": false,
+    "gravity": false,
+    "Forchheimer": false,
+    "extra_porosity_source": false,
+    "thickness_resolved_shear": false
+  },
+  "boundary": {
+    "p": {
+      "xLow": "fixedValue 24 Pa",
+      "xHigh": "fixedValue 0 Pa",
+      "yLow": "zeroGradient",
+      "yHigh": "zeroGradient",
+      "frontAndBack": "empty"
+    },
+    "U": {
+      "xLow": "zeroGradient",
+      "xHigh": "zeroGradient",
+      "yLow": "slip",
+      "yHigh": "slip",
+      "frontAndBack": "empty"
+    }
+  },
+  "initial_internal_fields": {
+    "p_Pa": 0,
+    "U_m_s": [
+      0,
+      0,
+      0
+    ]
+  },
+  "algorithm": {
+    "source_route": "negative of standard porosityForce physical-momentum source on LHS",
+    "splitting": "scalar_trace_implicit_plus_deferred_anisotropic_term",
+    "pressure": "laplacian(rAU,p)=div(phiHbyA)",
+    "phi": "phiHbyA-pEqn.flux()",
+    "velocity": "HbyA-rAU*grad(p)",
+    "max_outer_iterations": 2000,
+    "relaxation": 1,
+    "zero_pressure_initial_guess_each_outer": true,
+    "pressure_relTol": 0,
+    "no_pseudo_time_term": true,
+    "normalization": "raw final L1 / raw initial L1 with zero internal pressure per assembled equation"
+  },
+  "inherited_SDI_thresholds": {
+    "pressure_relative_rms_and_max": 0.001,
+    "main_velocity_flux_relative_L2_and_mean": 0.001,
+    "transverse_and_z_relative_max": 1e-08,
+    "Q_relative": 0.001,
+    "recovered_K_relative": 0.001,
+    "global_mass_relative": 1e-08,
+    "sum_absolute_cell_mass_relative": 1e-08,
+    "side_leakage_relative": 1e-08,
+    "face_flux_consistency_relative": 0.001,
+    "power_dissipation_relative": 0.001,
+    "cross_implementation_relative": 0.001,
+    "control_ratio_relative": 0.001,
+    "two_mesh_J_Q_relative": 0.001,
+    "zero_pressure_max_Pa": 1e-09,
+    "zero_velocity_max_m_s": 1e-12,
+    "zero_each_boundary_Q_and_net_m3_s": 1e-24
+  },
+  "inherited_linear_solver": {
+    "candidate": "PCG_DIC",
+    "normalized_absolute_tolerance": 1e-12,
+    "relTol": 0,
+    "maxIter": 2000
+  },
+  "additional_pre_run_fixed_checks": {
+    "geometry_relative_tolerance": 1e-10,
+    "coefficient_relative_tolerance": 1e-12,
+    "unsplit_momentum_relative_L2_and_max": 1e-10,
+    "outer_velocity_change_relative_L2_and_max": 1e-10,
+    "outer_pressure_change_relative_max": 1e-10
+  },
+  "extra_checks_are_new_integration_guards_not_changes_to_SDI": true,
+  "resources": {
+    "processes": 1,
+    "wall_seconds": 300,
+    "memory_GiB": 2,
+    "max_pressure_iterations_per_outer": 2000
+  },
+  "baselines": [
+    {
+      "case": "GDI01",
+      "baseline": "C01",
+      "new_run_id": null,
+      "authorized": false
+    },
+    {
+      "case": "GDI02",
+      "baseline": "C02",
+      "new_run_id": null,
+      "authorized": false
+    },
+    {
+      "case": "GDI03",
+      "baseline": "C03",
+      "new_run_id": null,
+      "authorized": false
+    },
+    {
+      "case": "GDI04",
+      "baseline": "C04",
+      "new_run_id": null,
+      "authorized": false
+    }
+  ],
+  "stages": {
+    "protocol_prepared": true,
+    "subclass_previously_compiled": true,
+    "subclass_current_binding_verified": true,
+    "host_source_prepared": false,
+    "host_compiled": false,
+    "full_zone_run_package_prepared": false,
+    "pre_run_audit_pass": false,
+    "new_flow_run_started": false,
+    "new_flow_run_completed": false,
+    "result_checker_implemented": false
+  },
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": null,
+  "physical_validation": "NOT_EVALUATED",
+  "independent_human_acceptance": false,
+  "squeeze_interface_status": "DEFINED_NOT_IMPLEMENTED_NOT_RUN",
+  "squeeze_parameters_frozen": false,
+  "submission_ready": false
+}

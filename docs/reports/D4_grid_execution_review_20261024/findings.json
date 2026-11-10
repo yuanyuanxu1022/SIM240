@@ -1,0 +1,75 @@
+[
+  {
+    "id": "R1",
+    "priority": "BLOCKS_EXECUTION",
+    "finding": "12项仅有参数JSON模板，无细格专用runner/正式key=value配置/阶段release；旧三份release允许细格0项",
+    "evidence": [
+      "entry_review.json",
+      "development_completion_plan_20261024/preparation.json",
+      "tools/run_case.py:31"
+    ],
+    "action": "另建中格6项独立入口；默认只检查，白名单/批次/配置/输入绑定/资源/禁止重跑全部审查后才交付命令"
+  },
+  {
+    "id": "R2",
+    "priority": "BLOCKS_TRUSTED_COMPARISON",
+    "finding": "现比较器只检查声明字段，未证实run_id、真实证据及P/Ly/物性/驱动一致",
+    "evidence": [
+      "comparator_probes.json",
+      "development_completion_plan_20261024/compare_grid.py:27"
+    ],
+    "action": "增加来源绑定的独立验收导出器，匹配完整canonical case、run/config/hash/exit/流场验收，不能直接手填true"
+  },
+  {
+    "id": "R3",
+    "priority": "BLOCKS_INTERMEDIATE_GATE",
+    "finding": "比较器固定要求18行，完成中6+窄细4后有16行，仍缺宽细P/T，无法据其全局状态裁定先行窄槽两族",
+    "evidence": [
+      "comparator_probes.json",
+      "development_completion_plan_20261024/compare_grid.py:27"
+    ],
+    "action": "新版本另记逐几何结果；两个窄槽六个量均通过才可审宽细预算；完整九量最终要求保留，不能用子集PASS称全局PASS"
+  },
+  {
+    "id": "R4",
+    "priority": "BLOCKS_BOUNDED_ACCEPTANCE_PIPELINE",
+    "finding": "原验收器将全部滑窗传给NumPy std，实际产生窗口数×窗长的密集临时数组，细格上限场景约139GiB",
+    "evidence": [
+      "case_review12.csv",
+      "numpy_variance_implementation.txt",
+      "numpy_temporary_probe.json",
+      "../D4_remaining14_acceptance_20261024/analyze_remaining14.py:98"
+    ],
+    "action": "新增分块独立验收器，保留ddof=1、所有完整窗口、首个停止点和原门槛；用原5nm全窗口及细格长度人造数据核对，不用不稳定二阶矩相减替代"
+  },
+  {
+    "id": "R5",
+    "priority": "RESOURCE_HOLD_WIDE_FINE",
+    "finding": "本次可用RAM16.58GiB，小于宽槽1.25nm预定22GiB门槛，不能把总内存或swap算作可用RAM",
+    "evidence": [
+      "resource_snapshot.json",
+      "batch_resource_review.json"
+    ],
+    "action": "宽细P和T分别保持HOLD，先窄槽证据，之后单独审满足RAM的机器/空闲资源及多日预算；不关闭用户进程或减门槛"
+  },
+  {
+    "id": "R6",
+    "priority": "PRE_FREEZE_NUMERIC_BOUNDARY",
+    "finding": "十进制恰好1%的合成量[1.01,1.002,1]因二进制计算得到E02=0.010000000000000009而被判FAIL",
+    "evidence": [
+      "comparator_probes.json",
+      "development_completion_plan_20261024/compare_grid.py:14"
+    ],
+    "action": "新版本在新细格结果出现前明确数字边界处理，如基于输入十进制值比较并测试等号内外；不改变1%/0.5%科学目标"
+  },
+  {
+    "id": "R7",
+    "priority": "STALE_PREPARATION_CHECKER",
+    "finding": "旧verify_plan.py断言DEV14等所有结果目录不存在；已完成DEV14后不能再用其代表当前准备状态",
+    "evidence": [
+      "entry_review.json",
+      "development_completion_plan_20261024/verify_plan.py:40"
+    ],
+    "action": "旧证据保持字节，新增当前细格专用检查；区分历史准备快照与现状态"
+  }
+]

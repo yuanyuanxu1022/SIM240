@@ -1,0 +1,16 @@
+{
+  "checked_at_utc": "2026-10-29T17:58:59.890593+00:00",
+  "scope": "read_only_preflight_and_command_delivery_only",
+  "case_id": "C02",
+  "planned_run_id": "SDI_C02_v1_1_20261030_01",
+  "release_manifest_sha256": "c3a7bea147f36036d2fe29543da441f8487b5e276b8212e138d5105c6bb049a0",
+  "preflight_satisfied": true,
+  "target_run_exists": false,
+  "tmux_session_exists": false,
+  "actual_run_id": null,
+  "solver_launched": false,
+  "new_numerical_or_physical_validation": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "command": "tmux new-session -d -s sdi-c02-v1-1-20261030 'cd /home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1 && exec python3 scripts/run_c02.py --execute --run-id SDI_C02_v1_1_20261030_01'"
+}

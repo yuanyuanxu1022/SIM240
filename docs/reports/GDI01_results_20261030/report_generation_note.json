@@ -1,0 +1,6 @@
+{
+  "stage": "final report manifest generation",
+  "initial_attempt": "relative_to used a relative report path against an absolute root; ValueError",
+  "effect": "Only source_manifest.json generation failed; completed scientific checks and raw data unaffected.",
+  "correction": "resolve report paths before relative_to; no change to numerical criteria or analysis"
+}

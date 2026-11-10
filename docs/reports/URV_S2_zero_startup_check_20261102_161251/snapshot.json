@@ -1,0 +1,1283 @@
+{
+  "snapshot_started_at": "2026-11-02T16:12:51.544702+08:00",
+  "snapshot_finished_at": "2026-11-02T16:12:51.589557+08:00",
+  "scope": "single startup-status snapshot only; no independent result acceptance",
+  "report_directory": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S2_zero_startup_check_20261102_161251",
+  "release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/S2_zero_launch_release_reuse_v1_20261102_01.json",
+  "release_sha256": "4b6759d061bc59079556c3a3b4bb34a7a8970b2f6529d4fa0cebeb1bdc1925c0",
+  "bound_inputs": 1586,
+  "input_changes": [],
+  "tmux": {
+    "session": "urv_s2_zero_20261102_01",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "no server running on /tmp/tmux-1000/default\n"
+  },
+  "matching_processes": [],
+  "console_exists": true,
+  "console_snapshot_bytes": 2022,
+  "console_tail": [
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx5_a100000\", \"mode\": \"describe\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx5_a100000\", \"mode\": \"precheck\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx5_a100000\", \"mode\": \"initialize\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx5_a100000\", \"mode\": \"describe\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx5_a100000\", \"mode\": \"precheck\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx5_a100000\", \"mode\": \"initialize\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx2p5_a100000\", \"mode\": \"describe\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx2p5_a100000\", \"mode\": \"precheck\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx2p5_a100000\", \"mode\": \"initialize\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx2p5_a100000\", \"mode\": \"describe\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx2p5_a100000\", \"mode\": \"precheck\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx2p5_a100000\", \"mode\": \"initialize\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx1p25_a100000\", \"mode\": \"describe\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx1p25_a100000\", \"mode\": \"precheck\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_P_dx1p25_a100000\", \"mode\": \"initialize\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx1p25_a100000\", \"mode\": \"describe\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx1p25_a100000\", \"mode\": \"precheck\", \"native_exit\": 0, \"actual_time_steps\": 0}",
+    "{\"planned_case_id\": \"URV1_U_REG_T_dx1p25_a100000\", \"mode\": \"initialize\", \"native_exit\": 0, \"actual_time_steps\": 0}"
+  ],
+  "audit_attempt_marker_exists": true,
+  "audit_attempts": [
+    "audit_attempts/4b6759d061bc59079556c3a3b4bb34a7a8970b2f6529d4fa0cebeb1bdc1925c0"
+  ],
+  "zero_records": [
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_describe",
+      "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+      "mode": "describe",
+      "files": [
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.31702327899984084,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_precheck",
+      "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+      "mode": "precheck",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.4672663320088759,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_initialize",
+      "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+      "mode": "initialize",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.5171136330027366,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_describe",
+      "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+      "mode": "describe",
+      "files": [
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.3162072779959999,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_precheck",
+      "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+      "mode": "precheck",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.4168311579996953,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_initialize",
+      "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+      "mode": "initialize",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.5172919000033289,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_describe",
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+      "mode": "describe",
+      "files": [
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.3664767110021785,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_precheck",
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+      "mode": "precheck",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.8673181580088567,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_initialize",
+      "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+      "mode": "initialize",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 1.568637056989246,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_describe",
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+      "mode": "describe",
+      "files": [
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.3165493639971828,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_precheck",
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+      "mode": "precheck",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.8174830579955596,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_initialize",
+      "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+      "mode": "initialize",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 1.6193097020004643,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_describe",
+      "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+      "mode": "describe",
+      "files": [
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.3667974660056643,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_precheck",
+      "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+      "mode": "precheck",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 3.572412842011545,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_initialize",
+      "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+      "mode": "initialize",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 10.717636888992274,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_describe",
+      "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+      "mode": "describe",
+      "files": [
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "process_receipt.json",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 0.3663916289951885,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_precheck",
+      "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+      "mode": "precheck",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 3.5215581280062906,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    },
+    {
+      "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_initialize",
+      "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+      "mode": "initialize",
+      "files": [
+        "boundary_audit.txt",
+        "effective_config.txt",
+        "energy_dissipation.csv",
+        "execution_audit.txt",
+        "exit_code.txt",
+        "field_slice.csv",
+        "frame_index.csv",
+        "gnuplotData",
+        "imageData",
+        "introspectionData",
+        "pressure_profile.csv",
+        "process_receipt.json",
+        "result.txt",
+        "run.log",
+        "run_config.txt",
+        "run_manifest.txt",
+        "velocity_profile.csv",
+        "vtkData"
+      ],
+      "process_receipt.json": "{\n  \"independent_process_exit_code\": 0,\n  \"timed_out\": false,\n  \"resource_stop_reason\": null,\n  \"elapsed_seconds\": 10.76791046600556,\n  \"solver_wall_cap_seconds\": 300\n}\n",
+      "execution_audit.txt": "protocol=URV-v1\npreparation_only_build=0\ncollide_and_stream_calls=0\n",
+      "exit_code.txt": "0\n"
+    }
+  ],
+  "progress": [
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/01.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.31702327899984084,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21837869056,
+          "disk_free_bytes": 341490274304
+        },
+        "geometry": null
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/02.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.4672663320088759,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21830201344,
+          "disk_free_bytes": 341490241536
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        }
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/03.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.5171136330027366,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21842309120,
+          "disk_free_bytes": 341490147328
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_P_dx5_a100000.json",
+        "field_readback_sha256": "ea7dbe1a9cd1b3e512bee950f74312cd6418302a4463f45e712f1b4b0ae8dd74"
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/04.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3162072779959999,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21772283904,
+          "disk_free_bytes": 341489922048
+        },
+        "geometry": null
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/05.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.4168311579996953,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21770043392,
+          "disk_free_bytes": 341489897472
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        }
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/06.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.5172919000033289,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21721653248,
+          "disk_free_bytes": 341489836032
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_T_dx5_a100000.json",
+        "field_readback_sha256": "a5b2bdb0cec87bb459c2e9fe474ee50a2b497135f9ead59382d697277df86c98"
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/07.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3664767110021785,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx2p5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21742579712,
+          "disk_free_bytes": 341489610752
+        },
+        "geometry": null
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/08.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.8673181580088567,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx2p5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21744328704,
+          "disk_free_bytes": 341489586176
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        }
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/09.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 1.568637056989246,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx2p5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21729091584,
+          "disk_free_bytes": 341489524736
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_P_dx2p5_a100000.json",
+        "field_readback_sha256": "26cf06427b032be8f0507ebd6aec3ab41dda63e47d676e92edc0650d559e687c"
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/10.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3165493639971828,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx2p5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21666590720,
+          "disk_free_bytes": 341488898048
+        },
+        "geometry": null
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/11.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.8174830579955596,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx2p5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21647908864,
+          "disk_free_bytes": 341488873472
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        }
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/12.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 1.6193097020004643,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx2p5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21555830784,
+          "disk_free_bytes": 341488812032
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_T_dx2p5_a100000.json",
+        "field_readback_sha256": "6bd180d94420fac46e6a146476d2d29c87e44f616b6af56d0d7f18367b862ec4"
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/13.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3667974660056643,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx1p25_a100000/describe",
+        "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21472784384,
+          "disk_free_bytes": 341487710208
+        },
+        "geometry": null
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/14.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 3.572412842011545,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx1p25_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21470486528,
+          "disk_free_bytes": 341487685632
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        }
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/15.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 10.717636888992274,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx1p25_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21371629568,
+          "disk_free_bytes": 341487513600
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_P_dx1p25_a100000.json",
+        "field_readback_sha256": "25d51e7def3797e49e09c0e4a80684d5b0cf5ac60ea36926d6cdbd220a9b0c7f"
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/16.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3663916289951885,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx1p25_a100000/describe",
+        "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21693870080,
+          "disk_free_bytes": 341484576768
+        },
+        "geometry": null
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/17.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 3.5215581280062906,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx1p25_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21700038656,
+          "disk_free_bytes": 341484552192
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        }
+      }
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/progress/18.json",
+      "record": {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 10.76791046600556,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx1p25_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21604671488,
+          "disk_free_bytes": 341484490752
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_T_dx1p25_a100000.json",
+        "field_readback_sha256": "d26059b4fefa5d48c383b190ef412f099ad396f5389724ae4974e5acf722bee5"
+      }
+    }
+  ],
+  "worker_verification": {
+    "audit_id": "URV_S2_ZERO_20261102_01",
+    "ZERO_STEP_AUDIT_PASS": true,
+    "binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+    "native_describe": 6,
+    "native_precheck": 6,
+    "native_initialize": 6,
+    "initialized_frames_read": 6,
+    "actual_time_steps": 0,
+    "steady_mode_invocations": 0,
+    "records": [
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.31702327899984084,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21837869056,
+          "disk_free_bytes": 341490274304
+        },
+        "geometry": null
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.4672663320088759,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21830201344,
+          "disk_free_bytes": 341490241536
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        }
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.5171136330027366,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_P_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21842309120,
+          "disk_free_bytes": 341490147328
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_P_dx5_a100000.json",
+        "field_readback_sha256": "ea7dbe1a9cd1b3e512bee950f74312cd6418302a4463f45e712f1b4b0ae8dd74"
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3162072779959999,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21772283904,
+          "disk_free_bytes": 341489922048
+        },
+        "geometry": null
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.4168311579996953,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21770043392,
+          "disk_free_bytes": 341489897472
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        }
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.5172919000033289,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_T_dx5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21721653248,
+          "disk_free_bytes": 341489836032
+        },
+        "geometry": {
+          "fluid_nodes": 46080,
+          "candidate_links": 30528,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000018,
+          "material_0": 0,
+          "material_1": 46080,
+          "material_2": 2304,
+          "material_3": 27648
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_T_dx5_a100000.json",
+        "field_readback_sha256": "a5b2bdb0cec87bb459c2e9fe474ee50a2b497135f9ead59382d697277df86c98"
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3664767110021785,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx2p5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21742579712,
+          "disk_free_bytes": 341489610752
+        },
+        "geometry": null
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.8673181580088567,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx2p5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21744328704,
+          "disk_free_bytes": 341489586176
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        }
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 1.568637056989246,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx2p5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_P_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx2p5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21729091584,
+          "disk_free_bytes": 341489524736
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_P_dx2p5_a100000.json",
+        "field_readback_sha256": "26cf06427b032be8f0507ebd6aec3ab41dda63e47d676e92edc0650d559e687c"
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3165493639971828,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx2p5_a100000/describe",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21666590720,
+          "disk_free_bytes": 341488898048
+        },
+        "geometry": null
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.8174830579955596,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx2p5_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21647908864,
+          "disk_free_bytes": 341488873472
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        }
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 1.6193097020004643,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx2p5_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_T_dx2p5_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx2p5_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21555830784,
+          "disk_free_bytes": 341488812032
+        },
+        "geometry": {
+          "fluid_nodes": 368640,
+          "candidate_links": 122496,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000036,
+          "material_0": 0,
+          "material_1": 368640,
+          "material_2": 9216,
+          "material_3": 184320
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_T_dx2p5_a100000.json",
+        "field_readback_sha256": "6bd180d94420fac46e6a146476d2d29c87e44f616b6af56d0d7f18367b862ec4"
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3667974660056643,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx1p25_a100000/describe",
+        "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21472784384,
+          "disk_free_bytes": 341487710208
+        },
+        "geometry": null
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 3.572412842011545,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx1p25_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21470486528,
+          "disk_free_bytes": 341487685632
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        }
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 10.717636888992274,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_P_dx1p25_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_P_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_P_dx1p25_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21371629568,
+          "disk_free_bytes": 341487513600
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_P_dx1p25_a100000.json",
+        "field_readback_sha256": "25d51e7def3797e49e09c0e4a80684d5b0cf5ac60ea36926d6cdbd220a9b0c7f"
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 0.3663916289951885,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx1p25_a100000/describe",
+        "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_describe",
+        "mode": "describe",
+        "resources_before": {
+          "MemAvailable_bytes": 21693870080,
+          "disk_free_bytes": 341484576768
+        },
+        "geometry": null
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 3.5215581280062906,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx1p25_a100000/precheck",
+        "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_precheck",
+        "mode": "precheck",
+        "resources_before": {
+          "MemAvailable_bytes": 21700038656,
+          "disk_free_bytes": 341484552192
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        }
+      },
+      {
+        "native_exit_code": 0,
+        "collide_and_stream_calls": 0,
+        "elapsed_seconds": 10.76791046600556,
+        "output": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/URV1_U_REG_T_dx1p25_a100000/initialize",
+        "planned_case_id": "URV1_U_REG_T_dx1p25_a100000",
+        "run_id": "ZERO_URV_S2_ZERO_20261102_01_URV1_U_REG_T_dx1p25_a100000_initialize",
+        "mode": "initialize",
+        "resources_before": {
+          "MemAvailable_bytes": 21604671488,
+          "disk_free_bytes": 341484490752
+        },
+        "geometry": {
+          "fluid_nodes": 2949120,
+          "candidate_links": 490752,
+          "q_min": 0.5,
+          "q_max": 0.5000000000000071,
+          "material_0": 0,
+          "material_1": 2949120,
+          "material_2": 36864,
+          "material_3": 1327104
+        },
+        "field_readback": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/field_readback_URV1_U_REG_T_dx1p25_a100000.json",
+        "field_readback_sha256": "d26059b4fefa5d48c383b190ef412f099ad396f5389724ae4974e5acf722bee5"
+      }
+    ],
+    "raw_manifest_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/audits/URV_S2_ZERO_20261102_01/audit_files_sha256.json",
+    "raw_manifest_sha256": "4ef394fdf175bef64f4105a6cf07583eaba4f5d77895373037aacf18a1875faf",
+    "preparation_A_sha256": "320d1d8469e2db50db161f91bca20339e60cb9054875722e9cbb50d9ab236e62",
+    "audit_release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/S2_zero_launch_release_reuse_v1_20261102_01.json",
+    "audit_release_sha256": "4b6759d061bc59079556c3a3b4bb34a7a8970b2f6529d4fa0cebeb1bdc1925c0",
+    "density_capture": "NOT_APPLICABLE_S0_ONLY",
+    "formal_simulation_started": false,
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": false,
+    "reference_qualified": false,
+    "next_stage_started": false
+  },
+  "preparation_B_exists": false,
+  "formal_output_directories_pristine": true,
+  "formal_launch_attempts_exist": false,
+  "native_calls_by_this_task": 0,
+  "field_reader_calls_by_this_task": 0,
+  "retries_by_this_task": 0
+}

@@ -1,0 +1,110 @@
+"""Validate review documents and update shared handoff, with all children forbidden."""
+from pathlib import Path
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from unittest.mock import patch
+import json
+import sys
+
+ROOT = Path('/home/dell/yuanyuanxu/SIM240')
+OUT = Path(__file__).resolve().parent
+CASE = ROOT / 'CASE/unseen_v2_reference_S4_reuse_v1'
+CHECK = ROOT / 'CASE/unseen_v2_reference_checker_S4_reuse_v1'
+sys.path.insert(0, str(CHECK / 'analysis'))
+from evidence import need, sha
+import stage_s4 as stage
+
+
+def load(p):
+    return json.loads(Path(p).read_text())
+
+
+def save(name, d):
+    with (OUT/name).open('x') as f:
+        json.dump(d, f, ensure_ascii=False, indent=2, allow_nan=False)
+        f.write('\n')
+
+
+def main():
+    audit = load(OUT/'scope_audit.json')
+    need(audit['PASS'] is True, 'scope audit incomplete')
+    protected = load(OUT/'protected_inputs_before.json')
+    need(all(sha(p) == h for p,h in protected.items()), 'old protected evidence drift')
+    before_set = load(OUT/'package_file_set_before.json')
+    current_set = {str(p):sha(p) for folder in (CASE,CHECK) for p in folder.rglob('*')
+                   if p.is_file() and '__pycache__' not in p.parts}
+    need(current_set == before_set, 'CASE file set/content changed')
+    decision = load(OUT/'resource_decision_candidate.json')
+    plan = load(OUT/'formal_binding_plan.json')
+    need(decision['resource_decision_accepted'] is False and decision['user_explicitly_authorized'] is False and
+         decision['user_instruction_verbatim'] is None and decision['simulation_authorized'] is False and
+         decision['formal_simulation_authorized'] is False and decision['performance_time_stepping_authorized'] is False,
+         'candidate must not pretend adoption or execution authority')
+    need(decision['ordered_run_ids'] == list(stage.RUN_IDS) and
+         decision['solver_wall_cap_seconds_by_dx_nm'] == stage.RESOURCES['solver_wall_cap_seconds_by_dx_nm'] and
+         decision['per_checker_wait_cap_seconds'] == 3600 and decision['approved_run_ids'] == [],
+         'candidate scope incompatibility')
+    need(plan['kind'] == 'NON_EXECUTABLE_FORMAL_BINDING_PLAN_NOT_AUTHORIZATION' and
+         plan['command'] is None and plan['approved_run_ids'] == [] and plan['all_execution_permissions'] is False,
+         'plan has execution content')
+    intake = load(OUT/'review_intake_validation.json')
+    need(intake['status'] == 'READY_FOR_LOCAL_REVIEW', 'local tools intake not complete')
+    bound = stage.verify_seal(CASE/'evidence/preparation_B.json', audit['B_sha256'])
+    stage.require_pristine(bound['prepared_runs'])
+    need(not (CASE/'launch_attempts').exists() and not (CASE/'analysis_results').exists(), 'formal activity exists')
+    protocol = (OUT/'PROTOCOL.md').read_text()
+    need(all(rid in protocol for rid in stage.RUN_IDS), 'protocol missing run identity')
+    need('34h' in protocol and '40h不是严格批次墙钟上限' in protocol and
+         '目前不要求单独增加S4有限PERF' in protocol, 'resource explanation absent')
+
+    stamp = datetime.now(ZoneInfo('Asia/Shanghai')).isoformat()
+    section = f'''## 正式S4范围/资源审查完成，推荐完整六条原预算；暂不强制PERF，未采用/未授权启动（{stamp}）
+
+本轮用户范围：“另行审定正式 S4 六条的执行范围、资源决策及授权绑定前条件，明确是否需要单独的有限性能标定；不自动实现或启动。”已完成只读审查和S4-FRD-v1推荐协议，入口docs/reports/{OUT.name}/PROTOCOL.md、REPORT.md、scope_audit.json、resource_decision_candidate.json、formal_binding_plan.json、final_integrity.json。AI辅助内部技术审查，不代替人工科学终审；本轮无新增流场计算/物理验证。
+
+推荐完整六条dx5P→T、dx2.5P→T、dx1.25P→T，原求解1/1/4/4/12/12h；每条完整原检查通过才继续，六条后按原规则评P/T三格。失败/超时/漂移即停、无重试/续算/加时/PERF/S5。求解预算34h、标准检查外层各1h另最多6h；内层读取1h含在外层内，文件/哈希/汇总/清理另计，40h不是硬批次墙钟或预计时长。继承检查超时后代清理限制已明确，无代码修复/放宽。
+
+PERF决策：目前不把单独S4有限性能标定设为推荐路线必做项，前提为用户后续明确接受细格12h可能超时、批次不完整且停止的风险。依据同ELF完整S2六条及S4六配置零步接入；S2细P52735步/6.538h、T30475步/3.754h，S4节点对应比0.7。S2观察RSS约1.835GiB属历史局部证据，非S4峰值。按S2平均步成本再假设0.7并走满S4 371712步约32.26/32.06h，仅条件估算，不预测S4收敛；S4持续性能/峰值RSS/停止步/12h完成均未知。短PERF仍不能保证收敛；若用户要S4实测或另资源方案，先另定范围、隔离准备和独立授权，不挪用S2命令/授权。
+
+有效B CASE/unseen_v2_reference_S4_reuse_v1/evidence/preparation_B.json SHA 7ca2ce3c27076a80d7d692bb13f3030854cf44b683dfe6bcec54ed15c288b06c，3248输入及原18＋6/独立复核当前一致，全部权限仍false、approved空、actual_formal空；六正式目录仍只有config/manifest。已逐项核对S2 LRP正式输入、6completion/acceptance和222原始输出；共3410项既有保护文件不变。旧PERF62项中61项同原值，唯一控制日志变化按已封存S2-LRP精确路径/旧现SHA/1173bytes/不可变快照保留资源用途；旧全包完整性仍false，不扩展例外。初版本轮helper先用全等检查触发该既有差异，保留audit_scope_initial.py.txt/review_helper_note.json后按原LRP单例校验，没有新科学失败或重跑。
+
+当前资源一次快照2026-11-04T09:10:17.206938+08:00：可用RAM19.689GiB、盘317.535GiB满足12/100GiB，未见目标原生/S4控制进程；不是预留或全面会话审计。未来正式绑定及用户启动仍须重查资源/冲突/净路径、同ELF/解释器/清洁环境15库解析等。
+
+冻结六条入口已具formal_resource_decision门，推荐路线无须新实现/编译/零步/PERF代码。候选决策resource_decision_accepted=false、用户采用原话null，formal_binding_plan非执行且无命令，不能冒充正式合同。未来须真实采用S4-FRD-v1并正式授权六条/自动继续至细格/原求解和检查预算/可能超时失败停，再另存真实采用决策和授权证据，独立正式release继承B全部输入、B/sidecar及不可变采用/授权记录，外部SHA和默认只读校验通过后交付唯一用户手动命令。活动日志不入不可变输入、不覆盖旧绑定，不用已授权release的execute测试。
+
+正式预留ID仍URV_S4_P/T_dx5/2p5/1p25_reuse_v1_20261103_01，不为当前日期改名。原A SHA e9d12e68eaa324bd8e78ad57825710936f9e00518faf39337923b930ad82a165及零步release SHA a62e6f3c96292bec5ab73796789718f28ba2b88232af9f55104697dc30b81d09不变；S1 ELF SHA 5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b保持。上轮首份B活动日志失败候选仍保留且不可用，不改其历史裁定。
+
+正式NUMERICAL_GATE=NOT_EVALUATED、geometry_PASS=null、RESULT_PASS=false，S4_GRID/稳态K/线性未评价，reference_qualified=false、MODEL_COMPARISON/physical_validation未评价、strict_error_bound/submission_ready=false、F04 OPEN。S0–S3接受、旧FAIL/380差异/MRP静态FAIL/旧v1 HOLD/历史唯一归因NOT_ESTABLISHED、作者声明范围/独立核实false保持。S4即便网格通过仍不跳S5或自动评价V2。
+
+本轮CASE写0、源码/配置/合同修改0、编译0、软件测试重跑0、原生0、VTK0、推进0，无新正式授权/release/命令，无PERF或正式启动。下一具体动作：获得真实采用S4-FRD-v1和覆盖完整六条的正式授权后，复核封存/届时资源，另存正式执行绑定并交付一条用户手动命令；AI不启动。下一步模型GPT-6.1 Sol｜High（正式授权范围与绑定前核对）。
+'''
+    for name in ('SIM240_AI_CONTEXT.md','AI_HANDOFF_20261015.md'):
+        p = ROOT/'docs/reports'/name
+        old = p.read_text()
+        need(old == (OUT/('before_'+name)).read_text(), 'concurrent shared-state change')
+        start = old.index('\n## ') + 1
+        end = old.find('\n## ', start+1)
+        p.write_text(old[:start]+section+'\n'+(old[end+1:] if end>=0 else ''))
+        with (OUT/('after_'+name)).open('xb') as f: f.write(p.read_bytes())
+    need(all(sha(p) == h for p,h in protected.items()), 'evidence changed after reporting')
+    now = {str(p):sha(p) for folder in (CASE,CHECK) for p in folder.rglob('*')
+           if p.is_file() and '__pycache__' not in p.parts}
+    need(now == before_set, 'package changed during reporting')
+    save('final_integrity.json', dict(verified_at=stamp,PASS=True,protected_existing_files_unchanged=len(protected),
+        S4_B_sha256=sha(CASE/'evidence/preparation_B.json'),S4_B_inputs_verified=3248,
+        S4_package_file_set_and_hashes_unchanged=True,S2_raw_outputs_verified=222,
+        original_zero_results_unchanged=True,formal_decision_candidate_not_adopted=True,
+        formal_authorization=False,formal_release_created=False,start_command_created=False,
+        CASE_writes=0,native_calls=0,VTK_calls=0,builds=0,software_tests_rerun=0,steps_advanced=0,
+        PERF_started=False,formal_started=False,S5_started=False,shared_state_updated=True))
+    files = {str(p.relative_to(ROOT)):sha(p) for p in sorted(OUT.iterdir())
+             if p.is_file() and p.name!='document_manifest.json'}
+    save('document_manifest.json', files)
+    print(json.dumps(dict(PASS=True,protocol='S4-FRD-v1',scope_runs=6,PERF_required_for_recommended_route=False,
+        recommended_route_requires_explicit_timeout_risk_acceptance=True,solver_hours=34,checker_wait_hours=6,
+        formal_authorized=False,CASE_writes=0,protected_files=len(protected),report=str(OUT/'REPORT.md')),ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    with patch('subprocess.Popen',side_effect=AssertionError('No child during review finalization')):
+        main()

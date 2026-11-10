@@ -1,0 +1,69 @@
+{
+  "protocol_id": "S4-TDR-v1",
+  "kind": "DISPOSITION_SCOPE_REVIEW_NOT_EXECUTION_AUTHORITY",
+  "scope_review_completed": true,
+  "original_S4_stage_accepted": false,
+  "original_failure_preserved": true,
+  "recommendation": "ONE_NEW_TRANSVERSE_DX0P625_SPATIAL_SUPPLEMENT_AFTER_FEASIBILITY_AND_NEW_AUTHORIZATION",
+  "candidate": {
+    "direction": "T",
+    "dx_nm": 0.625,
+    "h_nm": 30,
+    "d_nm": 80,
+    "w_nm": 120,
+    "period_nm": 240,
+    "Ly_nm": 240,
+    "acceleration_m_s2": 100000,
+    "nu_m2_s": 1e-06,
+    "H_nm": 70,
+    "native_binary_reuse": "STATICALLY_COMPATIBLE_NOT_NATIVE_AUDITED",
+    "native_binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+    "fluid_nodes": 16515072,
+    "window_steps": 10368,
+    "maximum_steps": 1486848,
+    "dt_s": 6.510416666666667e-14,
+    "volume_rounding_relative_estimate": 1.5839551892327108e-11,
+    "proposed_reference_grids_nm": [
+      2.5,
+      1.25,
+      0.625
+    ],
+    "original_grids_nm": [
+      5,
+      2.5,
+      1.25
+    ]
+  },
+  "minimum_new_formal_runs_if_adopted": 1,
+  "existing_reference_runs": [
+    "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+    "URV_S4_T_dx1p25_reuse_v1_20261103_01"
+  ],
+  "proposed_future_native_zero_calls": 3,
+  "proposed_future_initial_field_reads": 1,
+  "native_zero_audit_authorized": false,
+  "initial_field_readback_authorized": false,
+  "implementation_authorized": false,
+  "build_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "formal_simulation_authorized": false,
+  "automatic_retry_authorized": false,
+  "automatic_extension_authorized": false,
+  "S5_authorized": false,
+  "run_ids_created": [],
+  "approved_run_ids": [],
+  "launch_command_created": false,
+  "required_before_formal": [
+    "isolation_and_provenance_adapter",
+    "software_and_static_checks",
+    "separately_authorized_3_plus_1_zero_audit",
+    "candidate_resource_evidence_and_single_limited_PERF_if_route_retained",
+    "explicit_formal_budget_and_user_authority"
+  ],
+  "formal_solver_wall_cap_seconds": null,
+  "formal_checker_cap_seconds": null,
+  "reference_qualified": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false
+}

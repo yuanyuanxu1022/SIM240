@@ -1,0 +1,64 @@
+{
+  "review_id": "URV-S4T-SUP-FINAL-REVIEW-20261104",
+  "review_complete": true,
+  "disposition": "REVISE_BEFORE_ADOPTION_AND_FREEZE",
+  "review_method": "current_agent_local_source_and_saved_evidence_review",
+  "independent_model_review_claimed": false,
+  "human_signoff_claimed": false,
+  "supplement_rules_adopted": false,
+  "final_execution_contract_frozen": false,
+  "existing_TGE_preparation_scope_adopted_per_saved_record": true,
+  "existing_TGE_preparation_implemented": true,
+  "existing_TGE_preparation_is_execution_authority": false,
+  "this_turn_new_run_ids": [],
+  "original_S4_STAGE_ACCEPTED": false,
+  "reference_qualified": false,
+  "strict_error_bound_established": false,
+  "submission_ready": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "F04": "OPEN",
+  "execution_permissions": {
+    "implementation": false,
+    "build": false,
+    "native_zero": false,
+    "initial_field_readback": false,
+    "PERF": false,
+    "formal": false,
+    "retry": false,
+    "extension": false,
+    "S5": false
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "topic": "qualification_bridge",
+      "resolution": "concrete_unadopted_predicate_in_amendment_section_2"
+    },
+    {
+      "id": "F2",
+      "topic": "process_tree_memory",
+      "resolution": "unadopted_18GiB_task_group_22GiB_available_candidate_requires_mechanism_and_feasibility_verification"
+    },
+    {
+      "id": "F3",
+      "topic": "coexisting_TGE_preparation",
+      "resolution": "identity_mapping_drafted_new_preparation_revision_required_if_rules_change"
+    },
+    {
+      "id": "F4",
+      "topic": "storage_and_nested_timeouts",
+      "resolution": "accounting_scope_defined_candidate_budgets_not_validated_or_frozen"
+    },
+    {
+      "id": "F5",
+      "topic": "fixed_tau_coupled_refinement",
+      "resolution": "claim_limit_explicit_in_amendment"
+    }
+  ],
+  "next_action": "document_consolidation_and_resource_decision_only_no_execution",
+  "new_runtime_source_edits": 0,
+  "native_calls": 0,
+  "field_reader_calls": 0,
+  "full_checker_replays": 0
+}

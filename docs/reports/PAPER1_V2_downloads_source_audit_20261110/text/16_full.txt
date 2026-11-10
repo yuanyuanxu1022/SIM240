@@ -1,0 +1,603 @@
+  Momentum transfer of a Boltzmann-lattice fluid with boundaries
+  M’hamed Bouzidi, Mouaouia Firdaouss, and Pierre Lallemand
+
+
+  Citation: Phys. Fluids 13, 3452 (2001); doi: 10.1063/1.1399290
+  View online: http://dx.doi.org/10.1063/1.1399290
+  View Table of Contents: http://pof.aip.org/resource/1/PHFLE6/v13/i11
+  Published by the AIP Publishing LLC.
+
+
+  Additional information on Phys. Fluids
+  Journal Homepage: http://pof.aip.org/
+  Journal Information: http://pof.aip.org/about/about_the_journal
+  Top downloads: http://pof.aip.org/features/most_downloaded
+  Information for Authors: http://pof.aip.org/authors
+
+
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+PHYSICS OF FLUIDS                                                                 VOLUME 13, NUMBER 11                                                                   NOVEMBER 2001
+
+
+Momentum transfer of a Boltzmann-lattice fluid with boundaries
+              M’hamed Bouzidia)
+              Laboratoire C.N.R.S.-A.S.C.I., Bâtiment 506, Université Paris-Sud (Paris XI Orsay),
+              91405 Orsay Cedex, France
+              Mouaouia Firdaoussb)
+              Laboratoire C.N.R.S.-L.I.M.S.I., Bâtiment 508, Université Paris-Sud (Paris XI Orsay),
+              91405 Orsay Cedex, France
+              Pierre Lallemandc)
+              Laboratoire C.N.R.S.-A.S.C.I., Bâtiment 506, Université Paris-Sud (Paris XI Orsay),
+              91405 Orsay Cedex, France
+              共Received 5 July 2000; accepted 5 June 2001兲
+              We study the velocity boundary condition for curved boundaries in the lattice Boltzmann equation
+              共LBE兲. We propose a LBE boundary condition for moving boundaries by combination of the
+              ‘‘bounce-back’’ scheme and spatial interpolations of first or second order. The proposed boundary
+              condition is a simple, robust, efficient, and accurate scheme. Second-order accuracy of the boundary
+              condition is demonstrated for two cases: 共1兲 time-dependent two-dimensional circular Couette flow
+              and 共2兲 two-dimensional steady flow past a periodic array of circular cylinders 共flow through the
+              porous media of cylinders兲. For the former case, the lattice Boltzmann solution is compared with the
+              analytic solution of the Navier–Stokes equation. For the latter case, the lattice Boltzmann solution
+              is compared with a finite-element solution of the Navier–Stokes equation. The lattice Boltzmann
+              solutions for both flows agree very well with the solutions of the Navier–Stokes equations. We also
+              analyze the torque due to the momentum transfer between the fluid and the boundary for two initial
+              conditions: 共a兲 impulsively started cylinder and the fluid at rest, and 共b兲 uniformly rotating fluid and
+              the cylinder at rest. © 2001 American Institute of Physics. 关DOI: 10.1063/1.1399290兴
+
+
+
+I. INTRODUCTION                                                                                      kind of average over a region including several lattice nodes
+                                                                                                     which led to mean boundary conditions.19–21 This is physi-
+     The lattice gas automaton, a very simplified description
+                                                                                                     cally sound as the relaxational nature of the dynamics acts as
+of the dynamics of a real fluid using an ensemble of fictitious
+                                                                                                     a low-pass spatial frequency filter which erases the details of
+particles that move synchronously on a highly symmetric
+                                                                                                     the representation of a smooth boundary by a series of linear
+lattice from one node to one of the neighboring nodes,1,2
+                                                                                                     steps drawn on the underlying lattice.
+together with its analysis in terms of the lattice Boltzmann
+                                                                                                          To obtain macroscopic information about the flows
+equation 共LBE兲 provides an efficient alternative3– 8 for direct
+                                                                                                     simulated by using the LBE method, one relies on the fact
+numerical simulations of the Navier–Stokes equations at
+moderate Reynolds numbers.9 Numerous papers have been                                                that the LBE technique provides direct information about the
+devoted to the correspondence between the large scale prop-                                          single particle distribution function in phase space, with a
+erties of the solutions of the lattice Boltzmann equation and                                        very small set of discrete particle velocities. Based upon the
+those of the continuous Navier–Stokes equation using either                                          distribution function, macroscopic information on the flow,
+the Chapman–Enskog analysis10 or an analysis of the time                                             such as flow velocity and local pressure distributions, can be
+evolution of moments of distribution functions.11                                                    easily determined. From this information one can in principle
+     One important and outstanding problem in the lattice                                            compute quantities such as drag or lift coefficients.
+Boltzmann method is that of boundary conditions. To include                                               When a boundary of some type is present, the fluid–
+boundaries in the LBE simulations, several schemes have                                              boundary interaction determines the momentum transfer of
+been proposed in the past to satisfy locally the standard ‘‘no-                                      all the particles that encounter the boundary, and in turn af-
+slip’’ or ‘‘free-slip’’ conditions of macroscopic flows.12–18                                        fects the distribution function at the boundary. In the LBE
+The earliest ones in terms of ‘‘bounce-back’’ 共or ‘‘specular                                         method, the fluid–boundary interaction is prescribed to ob-
+reflection’’兲2 were shown to be satisfactory for boundaries                                          tain desirable macroscopic boundary conditions for the cor-
+parallel to one of the discrete velocities of the model pro-                                         responding hydrodynamic situations described by the
+vided one is careful enough about their exact location. For                                          Navier–Stokes equations. The key in analyzing the LBE
+general boundaries it was found necessary to consider some                                           boundary conditions is to realize the locations of the effec-
+                                                                                                     tive boundary for certain fluid–boundary interactions where
+a兲                                                                                                   the desirable macroscopic boundary conditions are satisfied
+  Electronic mail: bouizidi@asci.fr
+b兲
+   Electronic mail: firdaous@limsi.fr                                                                to a certain extent.19–21
+c兲
+  Electronic mail: lalleman@asci.fr                                                                       In this paper a simple way to deal with boundaries of
+
+
+1070-6631/2001/13(11)/3452/8/$18.00                                                           3452                                             © 2001 American Institute of Physics
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+Phys. Fluids, Vol. 13, No. 11, November 2001                                                                         Momentum transfer of a Boltzmann-lattice fluid                        3453
+
+
+arbitrary geometry in the LBE method is proposed, combin-                                           sion with a superscript c and the state after collision and
+ing the intuitive notion of ‘‘bounce-back’’ and interpolations.                                     advection with t⫹1 for the value of the time. It is repre-
+It is computationally efficient and compatible with the phi-                                        sented by the lattice Boltzmann equation
+losophy of LBE techniques in terms of accuracy and ease of
+                                                                                                           F共 rl ⫹ci ,t⫹1 兲 ⫽F共 rl ,t 兲 ⫹CF共 rl ,t 兲 ,                                       共2兲
+implementation through the use of a lattice of high symme-
+try. This differs from standard CFD techniques which use                                            where rl is the location of a lattice node. The collision op-
+nonuniform meshes that are chosen to match solid bound-                                             erator C corresponds to the redistribution of the f i due to
+aries and the application of these ideas to LBE.9,22                                                collisions to give f ci (•,t). Propagation 共or advection兲 is then
+     This paper is organized as follows. Section II briefly                                         applied to give the final values f i (•⫹ci ,t⫹1).
+reviews the lattice Boltzmann equation and its extension—                                                In the bulk of the fluid, collisions can be implemented
+the generalized lattice Boltzmann equation.11 Section III de-                                       using the simple BGK model,7 which is the result in a com-
+scribes the proposed boundary condition for arbitrary bound-                                        pact form of the following operations. At each node one
+ary geometry. In Sec. IV we compare the results of LBE                                              computes a set of nine moments of the incoming distribution
+simulations for Poiseuille flow in a two-dimensional channel                                        F through the linear transformation 共see Refs. 11 and 23兲
+using our proposed boundary conditions. Section V presents                                                 M⫽MF.                                                                             共3兲
+the numerical results of the two-dimensional circular Couette
+flow by using the LBE method with the proposed boundary                                             The matrix M is given in Ref. 23 for the present nine-
+condition, and the numerical results are compared with the                                          velocity model. It can be obtained fairly simply for other
+analytic solution of the Navier–Stokes equations. Section VI                                        cases. Collisions modify the moments in the following way:
+considers the momentum transfer between fluid and bound-                                            some of them are conserved 共density and momentum but not
+ary. The time-dependent torque exerted on the boundary                                              energy in usual cases兲. Other moments are computed through
+from the fluid in the two-dimensional circular Couette flow                                         a simple linear relaxation equation toward equilibrium values
+of Sec. V is considered in two settings: 共1兲 the circular                                           that depend on the conserved quantities. The new state Fc is
+boundary impulsively starts, while the fluid is at rest; and 共2兲                                    then computed from the new moments,
+the fluid is initially in uniform circular motion, and the                                                 Fc ⫽M⫺1 Mc .                                                                      共4兲
+boundary is maintained at rest. The numerical results for the
+torque are compared with the analytic solution of the                                               When a single relaxation time is used as in the BGK model,
+Navier–Stokes equation. Section VII presents the LBE simu-                                          simplified formulas can be derived so that moments do not
+lation of the flow past a periodic array of cylinders. The                                          appear in Ref. 7. We prefer to keep the possibility of using
+permeability coefficient is computed as a function of the vol-                                      different relaxation rates as proposed in the multiple relax-
+ume fraction. The LBE results are compared to those of a                                            ation times model.11 The slight increase in computational
+finite element CFD computation. Section VIII concludes the                                          cost is worthwhile at least for two reasons:
+paper.                                                                                              共1兲 The stability can be significantly improved.23
+                                                                                                    共2兲 The bulk viscosity can be chosen much larger than the
+II. DEFINITION OF LBE SIMULATIONS                                                                       shear viscosity, so that acoustic modes can be attenuated
+     For the sake of simplicity without losing any generality,                                          very quickly, which may be very useful in some situa-
+we shall consider a simple nine-velocity model on a square                                              tions.
+lattice, in which particles move with one of nine possible
+                                                                                                        Advection to neighbors is straightforward except at
+velocities ci ,i苸 兵 0,1,...,8 其
+
+
+       再
+                                                                                                    nodes close to a boundary as ‘‘solid’’ nodes inside the bound-
+           共 0,0兲 , i⫽0                                                                             ary cannot be reached. It is the purpose of this paper to
+ci ⫽       共 cos关共 i⫺1 兲 ␲ /2兴 ,sin关共 i⫺1 兲 ␲ /2兴 兲 , i⫽1 – 4                            共1兲        describe a simple and efficient way out of this problem.
+           共 cos关共 2i⫺9 兲 ␲ /4兴 ,sin关共 2i⫺9 兲 ␲ /4兴 兲 &, i⫽5 – 8,
+where we use nondimensionalized quantities after taking 1                                           III. BOUNDARY CONDITIONS
+for the size of the unit cell of the lattice and 1 for the dura-
+                                                                                                    A. Fixed boundaries
+tion of the time step.
+     The state of the fluid is completely known once we have                                             To deal with the advection step in the presence of bound-
+determined at each time step and each fluid lattice node 关we                                        aries we use an intuitive approach based on the one-
+distinguish fluid and solid lattice nodes, the latter being lo-                                     dimensional situation depicted in Fig. 1. Fluid nodes are on
+cated inside 共outside兲 boundaries, for the case of an external                                      the left with A being the last one near the wall. B is the first
+共internal兲 flow兴 nine quantities f i (r,t) that can be interpreted                                  solid node to the right of the wall. The location of the wall is
+as populations of the nine velocities ci .                                                          given by q⫽ 兩 AC 兩 / 兩 AB 兩 . A particle leaving A and reflecting
+     We denote F(r,t) the following vector in a nine-                                               on the wall 共‘‘bounce-back’’ situation兲 will not reach a fluid
+dimensional space:                                                                                  node after moving over a total distance of 1 共case of velocity
+                                                                                                    1兲 except if q is equal to 0, 1/2, or 1. This means that after
+       F⫽ 共 f 0 , f 1 , f 2 , f 3 , f 4 , f 5 , f 6 , f 7 , f 8 兲 .
+                                                                                                    the collision step the population of particles at A with veloc-
+The dynamics of F includes two steps: collision and advec-                                          ity ⫺1 共indicated by the vector with label L兲 is not known.
+tion to the relevant neighbors. We note the state after colli-                                      We propose the following scheme.
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+3454          Phys. Fluids, Vol. 13, No. 11, November 2001                                                                                                         Bouzidi, Firdaouss, and Lallemand
+
+
+                                                                                                                                               1                      共 2q⫺1 兲 c
+                                                                                                           f i ⬘ 共 rl ,t⫹1 兲 ⫽                       f ci 共 rl ,t 兲 ⫹         f i ⬘ 共 rl ,t 兲
+                                                                                                                                          q 共 2q⫹1 兲                      q
+                                                                                                                                                共 1⫺2q 兲 c                            1
+                                                                                                                                          ⫹             f 共 r ⫺c ,t 兲 ,             q⭓ .       共6b兲
+                                                                                                                                                共 1⫹2q 兲 i ⬘ l i                      2
+                                                                                                    Note that Eq. 共6a兲 is an upwind interpolation, while Eq. 共6b兲
+                                                                                                    is a downwind interpolation.
+                                                                                                         For completeness, we recall the usual ‘‘bounce-back’’
+                                                                                                    scheme without interpolation 共interpolation 0兲,
+                                                                                                           f i ⬘ 共 rl ,t⫹1 兲 ⫽ f ci 共 rl ,t 兲                                                   共7兲
+
+FIG. 1. Details of the collision process for velocities of opposite direction.                      whatever the value of q.
+                                                                                                         A few comments on Eqs. 共5兲, 共6a兲, and 共6b兲 are in order.
+                                                                                                    First of all, in contrast to some other schemes which use
+共1兲 For q⬍1/2, we construct from the information we have                                            extrapolations,17,24 the proposed scheme uses only interpola-
+    in the fluid the population of fictitious particles at loca-                                    tions, therefore it is superior in terms of stability. Second, the
+    tion D that will travel to A after bouncing back on the                                         change in q is continuous in Eqs. 共5兲, 共6a兲, and 共6b兲, and
+    wall at C.                                                                                      when q⫽1/2, the interpolation formulas reduce to the
+共2兲 For q⭓1/2, the information on the particle leaving A and                                        ‘‘bounce-back’’ scheme. It is much less complicated than that
+    arriving in D together with the new 共postadvection兲 situ-                                       of Ref. 21 as we consider that the interaction of the fluid with
+    ation at fluid nodes E 共and F兲 will be used to compute                                          the boundary couples only populations f i , f i ⬘ with opposite
+    the unknown quantities at A.                                                                    velocities.
+
+     In both cases we use linear or quadratic interpolation                                         B. Moving boundary
+formulas involving values at two or three nodes.
+                                                                                                         Equations 共5兲, 共6a兲, and 共6b兲 are valid for boundaries at
+     For real computations in two 共or three兲 dimensions, we
+                                                                                                    rest. For boundary with nonzero velocity we use a simple
+proceed in the following way. We first look for all links of
+                                                                                                    argument to deal with first-order contributions in wall mo-
+the lattice that cross the solid boundary. Suppose rl is a fluid
+                                                                                                    tion. Let us refer again to Fig. 1. Assume that the macro-
+node such that rl ⫹ci is a solid node. Call ci ⬘ the reversed
+                                                                                                    scopic velocity V of the fluid to be simulated by the LBE
+velocity of ci (ci ⬘ ⫽⫺ci ). Using linear interpolation 共interpo-
+                                                                                                    scheme varies linearly along EB, taking value V0 at C 共on
+lation 1兲 we set
+                                                                                                    the wall兲,
+       f i ⬘ 共 rl ,t⫹1 兲 ⫽2q f ci 共 rl ,t 兲 ⫹ 共 1⫺2q 兲 f ci 共 rl ⫺ci ,t 兲 ,
+                                                                                                                                              ⳵V
+                                                                                                           V⫽V0 ⫹ 共 x⫺q 兲                                                                       共8兲
+                             q⬍ ,  1
+                                   2                                                   共5a兲                                                   ⳵x
+                                                                                                    with A as origin for the coordinate x. To first order in V the
+                               1 c               共 2q⫺1 兲 c                           1
+       f i ⬘ 共 rl ,t⫹1 兲 ⫽       f i 共 rl ,t 兲 ⫹         f i ⬘ 共 ri ,t 兲 ,         q⭓ .             equilibrium values of the f i are given by
+                              2q                    2q                                2
+                                                                                     共5b兲                  f i ⫽ f 0i ⫹ ␣ i ci "V,                                                              共9兲
+On the right hand-side of Eqs. 共5a兲 and 5共b兲, the f are taken                c
+                                                                                                    where the coefficients ␣ i depend on the set of velocities of
+after collision and before propagation. The f (•,t⫹1) on the                                        the LBE model. For the simple nine-velocity model,
+left-hand side will be used at values after collision and after
+propagation, that is after a complete LBE time step. This                                                  ␣ i ⫽ 兵 0, 31 , 13 , 13 , 13 , 121 , 121 , 121 , 121 其 ,                            共10兲
+means that the dynamics at nodes close to a boundary and at
+bulk nodes differ only in the propagation step.                                                            f 0i ⫽ 兵 94 , 91 , 19 , 19 , 91 , 361 , 361 , 361 , 361 其 .                         共11兲
+     The reason for using two different expressions depend-                                         Equating the corresponding value of f i ⬘ with that given by
+ing on the value of q is the following. When analyzed23 in                                          Eq. 共5兲 leads to an additional term due to the motion of the
+terms of modes varying in space as exp(ik"r) the LBE mod-                                           boundary to be added to the right-hand side of Eqs. 共5a兲 and
+els usually present marginally stable modes with eigenvalue                                         共5b兲,
+⫺1 关time evolution as (⫺1) t 兴 for k⫽ ␲ . Modification of the
+evolution equations involving products of f i by a negative                                                ␦ f 共i ⬘1 兲 ⫽2 ␣ i ci V0 ,               q⬍ 21 ,                                    共12兲
+factor may lead to instabilities that cannot be tolerated.
+                                                                                                                          1
+     One can also use quadratic interpolation 共interpolation 2兲                                            ␦ f 共i ⬘1 兲 ⫽ ␣ i ci "V0 ,                  q⭓ 12 .                                 共13兲
+to obtain                                                                                                                 q
+
+ f i ⬘ 共 rl ,t⫹1 兲 ⫽q 共 2q⫹1 兲 f ci 共 rl ,t 兲 ⫹ 共 1⫹2q 兲                                                When the quadratic interpolation is used, neglecting de-
+                                                                                                    partures from the hypothesis in Eq. 共8兲 in the vicinity of the
+                       ⫻ 共 1⫺2q 兲 f ci 共 rl ⫺ci ,t 兲 ⫺q 共 1⫺2q 兲                                    wall, one gets
+
+                       ⫻ f ci 共 rl ⫺2ci ,t 兲 ,      q⬍ 21 ,                            共6a兲                ␦ f 共i ⬘2 兲 ⫽2 ␣ i ci "V0 ,                q⬍ 21 ,                                  共14兲
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+Phys. Fluids, Vol. 13, No. 11, November 2001                                                                        Momentum transfer of a Boltzmann-lattice fluid                         3455
+
+
+                            2                        1
+       ␦ f 共i ⬘2 兲 ⫽             ␣ c "V ,          q⭓ .                                共15兲
+                       q 共 2q⫹1 兲 i i 0              2
+     With interpolation 0, one simply puts q⫽1/2 in the pre-
+vious expressions.
+     Previous studies allow a good theoretical understanding
+of the ‘‘bounce-back’’ condition19–21 or have given analytic
+solutions in particular cases.25,26 We could make a detailed
+analysis of the Poiseuille flow that we shall discuss in sec.
+IV. First Eq. 共2兲 will be linearized by removing nonlinear
+terms appearing in the expressions of the equilibrium values
+of the moments. Then we consider N L lattice nodes so that
+one time step of the system corresponds to a linear transfor-
+mation from a vector E(t) to a vector E(t⫹1) in a 9N L
+dimensional space. Standard linear algebra techniques can be
+used to determine the eigenvalues and eigenvectors of that
+transformation. One can then analyze the eigenvectors to se-
+lect those that are most affected by the boundary. In practice
+N L is fairly large, say a few hundred except in particular
+cases, and the work has to be done numerically. We have
+obtained some partial results but cannot make general com-
+ments.
+     However we can make the following remarks. As indi-
+cated previously, the scheme includes linear variations of the
+macroscopic fluid velocity that one tries to simulate by LBE.
+It should possess at least first-order accuracy. In cases that
+have been analyzed in detail20 simple ‘‘bounce-back’’ pro-                                          FIG. 2. Normalized value of the tangential velocity vs distance to the cen-
+duces errors that are second order in mesh size. We therefore                                       terline for Poiseuille flow computed by LBE in a channel of width 7. Slope
+assume that our interpolation scheme will be no worse and                                           of boundaries 9/31. From bottom to top: interpolation 0, interpolation 1,
+                                                                                                    interpolation 2. Solid line from Eq. 共17兲.
+have an accuracy consistent with that of LBE, which is sec-
+ond order.
+     The remainder of this paper deals with some applications
+                                                                                                    macroscopic flow is parallel to the centerline of the channel
+of the proposed scheme showing no strong departure from
+                                                                                                    with an amplitude of the fluid velocity given by
+
+                                                                                                                            冉 冊冉 冊
+the above-mentioned assumption.
+                                                                                                                      F     w                   w
+                                                                                                           V共 z 兲⫽       z⫺               z⫹      ,                                        共17兲
+                                                                                                                      2␯    2                   2
+IV. TWO-DIMENSIONAL COUETTE AND POISEUILLE
+FLOWS                                                                                               where z is the distance to the centerline of the channel y
+                                                                                                    ⫽␭x⫹1/2( ␮ 1 ⫹ ␮ 2 ) and ␯ the shear viscosity. As examples
+    To test the proposed formulas, we first considered the
+                                                                                                    of the capabilities of LBE and boundary conditions to simu-
+two-dimensional 共2-D兲 plane Couette flow with boundaries
+                                                                                                    late such a situation, we show in Fig. 2 the values of the
+parallel to the y axis. We have verified that the steady state
+                                                                                                    component of the LBE velocity parallel to the axis of the
+flow for one fixed boundary 共at x⫽x 0 兲 and one boundary
+                                                                                                    channel versus z for all lattice points inside the channel. The
+moving with velocity parallel to the axis O y ,V0 共at x⫽x 1 兲 is
+                                                                                                    prediction of Eq. 共17兲 appears as the solid curve.
+given by
+                                                                                                         Going from interpolation 0 to 2 clearly improves the
+                        共 x⫺x 0 兲                                                                   quality of the LBE simulation. An important point is that
+       v共 x 兲 ⫽                    V                                                   共16兲         with interpolation 1 and better with interpolation 2, the LBE
+                       共 x 1 ⫺x 0 兲 0
+                                                                                                    velocity goes to 0 on the boundary, whereas the interpolation
+for any value of x 0 and x 1 if we first determine the relevant                                     0 共as is well documented for boundaries parallel to O x ,O y or
+values of q for each vertical boundary. Note that the classic                                       their bisector兲 leads to V⫽0 for z⫽⫾(w/2⫹ ␦ ) with ␦ de-
+‘‘bounce-back’’ conditions, say at nodes x 0 ⫽1 and x 1                                             pending on w and the relaxation rates used for the LBE
+⫽N x , lead to a channel located between 1/2 and N x ⫹1/2.                                          simulation.20
+    We then consider Poiseuille flow in a 2-D channel de-
+fined by two boundaries y⫽␭x⫹ ␮ 1 and y⫽␭x⫹ ␮ 2 on a
+                                                                                                    V. FLOW INSIDE A TWO-DIMENSIONAL CIRCULAR
+mesh including N x ⫻N y lattice points. The slope ␭ is chosen
+                                                                                                    CYLINDER
+such that particles leaving the channel on the right-hand side
+can be introduced on the left-hand side with a suitable shift                                            We consider the case of a LBE fluid inside a two-
+in the y coordinate 共␭ is a rational number i/ j with N x a                                         dimensional circular boundary of radius R 共centered at origin
+multiple of j兲. The flow is driven by applying a body force F                                       of the xy plane兲. The initial conditions are 共1兲 impulsively
+parallel to the solid boundaries. For a channel of width w, the                                     started circular flow, i.e., uniform density and flow at rest and
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+3456          Phys. Fluids, Vol. 13, No. 11, November 2001                                                                                         Bouzidi, Firdaouss, and Lallemand
+
+
+
+
+                                                                                                    FIG. 4. Time-dependent amplitude of the torque 共in units of ␯ U ␪ 兲 due to the
+FIG. 3. 2-D flow in a rotating circular cylinder. Transient behavior of nor-                        momentum transfer between the fluid and the circular boundary vs reduced
+malized tangential velocity u ␪ /U 0 as a function of normalized radius r/R                         time, first index 共R, radius of the circular boundary兲, second index 共s related
+and time t. The solid and dashed lines are analytic and LBE simulation                              to the shear viscosity兲 for the impulsively started circular boundary and the
+results, respectively, at t⫽500, 1000, 1500, 2000, and 2500. The dotted line                        fluid at rest at t⫽0.
+is the asymptotic limit of the velocity at t⫽⬁. Note that u ␪ (r,t⫽500)
+⬍u ␪ (r,t⫽1000)⬍u ␪ (r,t⫽1500)⬍u ␪ (r,t⫽2000)⬍u ␪ (r,t⫽2500).
+
+                                                                                                    VI. MOMENTUM TRANSFER ON THE BOUNDARY
+                                                                                                         The expressions for the unknown f i at boundary points
+the cylinder impulsively starts with an angular velocity ␻
+                                                                                                    rl allow us to determine the momentum transfer. Let us con-
+⫽U ␪ /R, where U ␪ is the tangential velocity of the cylinder,
+                                                                                                    sider again Fig. 1. We can consider that the final value of the
+or 共2兲 circular flow with the cylinder boundary at rest, taking
+                                                                                                    population of particles with velocity to the left at A corre-
+as the initial state the steady state reached after a long time in
+                                                                                                    sponds to those coming from a fictitious state B. If B was a
+situation 共1兲.
+                                                                                                    fluid particle there would be a flux of momentum through a
+     For small values of ␻, the Navier–Stokes equations has
+                                                                                                    plane perpendicular to AB,
+a solution for the impulsively started circular flow:
+                                                                                                           ␾ ⫽ f Rc ⫹ f L 共 t⫹1 兲 .                                                        共21兲
+                     U ␪r
+       u ␪ 共 r,t 兲 ⫽      ⫹w ␪ 共 r,t 兲 ,                                               共18兲         As the wall is opaque to particles, ␾ is transferred to the
+                      R
+                                                                                                    wall. As the proposed scheme deals with directions of par-
+where                                                                                               ticle speeds one at a time there is a quantity ␾ i for each
+
+       w ␪ 共 r,t 兲 ⫽   兺k          冉 冊 冉
+                            a kJ 1 ␮ k
+                                          r
+                                          R
+                                                 ␯ ␮ 2k
+                                            exp ⫺ 2 t ,
+                                                  R
+                                                                   冊                   共19兲
+                                                                                                    direction i and the total amount of momentum Pl transferred
+                                                                                                    to the wall is obtained by summing ␾ i ci over all ci that cross
+                                                                                                    the wall starting from fluid node rl .
+and ␯ is the kinematic shear viscosity, ␮ k is the kth root of                                           For the Poiseuille flow of Sec. IV, we have verified that
+the Bessel function of order 1, 关i.e., J 1 ( ␮ k )⫽0兴, and the                                      while reaching steady state, the change of the parallel com-
+coefficient a k comes from the initial conditions                                                   ponent of the total linear momentum of the fluid during one
+                                                                                                    time step is equal to the difference of the input of momentum
+                 2U ␪
+       a k⫽                 .                                                          共20兲         N a F 共N a being the number of ‘‘active’’ points where the
+              ␮ kJ 0共 ␮ k 兲                                                                         force F is applied兲 minus the transfer of momentum to the
+Starting from rest v ␪ (r,t)⫽ ␻ r⫹w ␪ (r,t), whereas the slow-                                      boundaries computed as indicated previously during the
+down is just ⫺w ␪ (r,t).                                                                            same time step.
+     The LBE simulations have been performed in the par-                                                 To illustrate the use of the direct computation of the
+ticular conditions indicated in the following. The radius of                                        momentum transfer, we consider again the 2-D flow in a
+the circle is 15.2 lattice units, the relaxation rates 共inverse of                                  cylinder of Sec. V. Now we determine the torque applied to
+relaxation times appearing for instance in the BGK equa-                                            the fluid by the circle 共either a driving or slowing torque
+tions兲 have been chosen such that the shear viscosity is                                            depending on the situation兲. At each point rl from which a
+0.018 52 共in nondimensional units兲.                                                                 particle gets affected by the boundary, we determine rl ⫻Pl
+     Figure 3 compares the numerical results of u ␪ (r,t) ob-                                       and sum over all such points.
+tained by the LBE simulation to the analytic result of Eq.                                               From the solution of Navier–Stokes equation 关Eq. 共19兲兴,
+共18兲. There is no adjustable parameter in the LBE simulation                                        we can derive the theoretical value of this torque as
+in this case. The LBE results agree very well with the ana-                                                                     dw ␪ 共 r,t 兲
+lytic solutions. It should be stressed that, in spite of the fact                                          T 共 t 兲 ⫽2 ␲ R ␯                  ,                                             共22兲
+                                                                                                                                   dr
+that the LBE algorithm uses Cartesian coordinates and is
+known to present anisotropies for excitations of short                                              where v ␪ (r,t) is given by Eq. 共19兲. We show in Fig. 4 the
+wavelengths,23 the symmetry of the flow is well preserved in                                        time dependence of torque 共divided by ␯ U ␪ 兲 determined by
+the present LBE simulation.                                                                         the LBE simulation versus time 共in units of t d ⫽R 2 / ␯ 兲 for
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+Phys. Fluids, Vol. 13, No. 11, November 2001                                                                        Momentum transfer of a Boltzmann-lattice fluid                         3457
+
+
+several situations, together with the analytic solution for
+T(t/t d )/( ␯ U ␪ ). One can conclude that the LBE simulations
+lead to very satisfactory results whether the boundary is fixed
+or not.
+     Obviously the shape of the boundary can be chosen ar-
+bitrarily. In particular one can use the measurement of mo-
+mentum transfer to determine lift and drag coefficients for
+wing sections. Work is in progress to estimate the accuracy
+of LBE predictions when the size of the sections is not very
+large.
+
+
+VII. FLOW PAST A 2-D PERIODIC ARRAY OF
+CYLINDERS                                                                                           FIG. 5. Flow past a 2-D periodic array of cylinders. Q 共inverse of the
+                                                                                                    permeability兲 computed by LBE method 共solid line兲 and by finite element
+    Flow through porous media has attracted much effort in                                          method 共⫻兲 as a function of concentration C.
+the CFD community recently.27,28 One simplified model for
+the flow is the flow past a periodic array of circular
+cylinders.27,28 One may study just one cell of the array with                                       The numerical solution is obtained by mixed finite element
+periodic boundary conditions and a steady body force ap-                                            共P1/P2兲 based on an isoparametric nonuniform mesh. By de-
+plied to the fluid to counteract the drag due to the cylinders.                                     noting u and p the velocity and pressure, the coupled system
+For small body forces, the steady state regime leads to a                                           expressing the Stokes equations in weak form reads in matrix
+mean flow proportional to the force as was found by Darcy.                                          form:
+This is usually expressed in the form
+                                                                                                           Au⫹Bt p⫽g,                                                                     共27a兲
+          1
+       V⫽⫺ K“p,                                                                        共23兲                Bu⫽0.                                                                         共27b兲
+          ␮
+                                                                                                    Eliminating the velocity, the so-called Uzawa approach
+where V is the mean seepage velocity, “p the pressure gra-
+                                                                                                    yields an equation for the pressure which reads
+dient, ␮ the shear viscosity, and K the permeability tensor.
+     Theoretical results for K have been obtained with ana-                                                Au⫽ 共 g⫺Bt p 兲 ⇒u,                                                             共28a兲
+lytic expansions27 or with accurate finite element CFD
+                                                                                                           BA⫺1 Bt p⫽BA⫺1 g⇒p,                                                           共28b兲
+computations.28 As we consider here a situation which is
+                                                                                                                    ⫺1
+isotropic, K reduces to a scalar and we can consider the                                            where BA B ⫽U is the Uzawa operator. An iterative algo-
+                                                                                                                          t
+
+following quantity                                                                                  rithm based on the preconditioned GMRES method30 is used
+                                                                                                    to solve this system of coupled equations. This avoids the
+                        mean force on the cylinder
+       Q⬅K ⫺1 ⫽                                                                        共24兲         construction of the global BA⫺1 Bt operator. This step repre-
+                           viscosity⫻mean flux                                                      sents the projection of the velocity field into a divergence
+to compare our data with the results of the studies mentioned                                       free subspace. This procedure has already been used for the
+previously, as a function of the fraction of the volume C                                           sharp edged porous medium to compute in particular the
+occupied by the cylinders. Note that this simplification does                                       permeability.31
+not apply at moderate Reynolds numbers.29                                                                For values of C for which the results for Q were given
+     The finite element CFD computations used here are per-                                         by Sangani and Acrivos,27 the lattice Boltzmann results agree
+formed assuming periodic boundary conditions for the unit                                           very well with the finite-element ones. These results are used
+cell ⍀ f 共corresponding to the domain computed by LBE兲 and                                          to test the LBE technique.
+no-slip boundary conditions on the solid. The Stokes prob-                                               We obtain a fairly good agreement with the Navier–
+lem to be solved for the flow in the unit cell subject to an                                        Stokes results if we take the quadratic approximation for the
+external pressure gradient ␭ with 兩 ␭兩 ⫽1 共in terms of velocity                                     unknown f i at boundaries as shown in Fig. 5. In addition we
+u and pressure p兲 is                                                                                verify the isotropy of the LBE computation with very good
+                                                                                                    accuracy when the center of the cylinder is located on one of
+       ⫺ⵜ 2 u共 ␭兲 ⫹“p 共 ␭兲 ⫽␭,                                                                      the lattice nodes.
+       “"u共 ␭兲 ⫽0,                                                                                       We have studied the convergence of the LBE results for
+                                                                                       共25兲         some cases. As an example we show in Fig. 6 the relative
+       u共 ␭兲 兩 ⌫ s ⫽0,                                                                              difference 储 Q LBE /Q FE⫺1 储 for various values of the size N x
+                                                                                                    of the domain in which the LBE computations are done,
+       u,p periodic.                                                                                keeping the same value of C. We observe a tendency of the
+The permeability tensor K is introduced to be                                                       convergence as 1/N 2x , together with fluctuations. We compare
+
+                                 冕
+                                                                                                    in Fig. 6 the results obtained with the linear and the quadratic
+                    1
+       K"␭⫽                              u共 ␭兲 dx dy.                                  共26兲         approximations. It is clear that the quadratic approximation
+                 meas共 ⍀ f 兲        ⍀f                                                              leads to much improved data.
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+3458          Phys. Fluids, Vol. 13, No. 11, November 2001                                                                                         Bouzidi, Firdaouss, and Lallemand
+
+
+                                                                                                    Tests on nontrivial cases allow one to get confidence and
+                                                                                                    therefore to contribute to support the LBE technique as a
+                                                                                                    useful technique for computational fluid dynamics. The com-
+                                                                                                    putational cost is typically a few percent of the LBE simula-
+                                                                                                    tion even when the present technique is applied to the three-
+                                                                                                    dimensional nineteen-velocity model. The initial generation
+                                                                                                    of the lists of boundary points and of the corresponding val-
+                                                                                                    ues for the coefficients q is orders of magnitude faster than
+                                                                                                    the grid generation required by finite-element computations.
+
+
+                                                                                                    ACKNOWLEDGMENTS
+
+                                                                                                        The authors wish to thank Dr. D. d’Humières and Dr. L.
+FIG. 6. Convergence of the factor Q computed by LBE with quadratic 共䊐兲
+                                                                                                    S. Luo for very useful discussions.
+and linear interpolation 共⫻兲 vs computational domain size.
+
+                                                                                                     1
+                                                                                                       U. Frisch, B. Hasslacher, and Y. Pomeau, ‘‘Lattice gas automata for the
+     To test in more detail the present LBE technique, we                                              Navier–Stokes equation,’’ Phys. Rev. Lett. 56, 1505 共1986兲.
+                                                                                                     2
+look at the effect of choosing the center of the cylinder to be                                        U. Frisch, D. d’Humières, B. Hasslacher, P. Lallemand, Y. Pomeau, and
+                                                                                                       J.-P. Rivet, ‘‘Lattice gas hydrodynamics in two and three dimensions,’’
+at a point (l x ⫹q,l y ) for integers l x and l y , and 0⭐q⭐1. We                                      Complex Syst. 1, 649 共1987兲.
+show in Fig. 7 the variation (Q x /Q FE⫺1) and (Q y /Q FE                                            3
+                                                                                                       G. McNamara and G. Zanetti, ‘‘Use of the Boltzmann equation to simulate
+⫺1) for the linear and quadratic interpolation formulas. We                                          4
+                                                                                                       lattice gas automata,’’ Phys. Rev. Lett. 61, 2332 共1988兲.
+can observe some anisotropy and the fact that fluctuations                                             F. J. Higuera and J. Jiménez, ‘‘Boltzmann approach to lattice gas simula-
+                                                                                                       tions,’’ Europhys. Lett. 9, 663 共1989兲.
+are smaller with the quadratic interpolation. These results are                                      5
+                                                                                                       F. J. Higuera, S. Succi, and R. Benzi, ‘‘Lattice gas dynamics with en-
+shown for a domain size of N x ⫻N y ⫽532 and C⫽0.5, lead-                                              hanced collisions,’’ Europhys. Lett. 9, 345 共1989兲.
+                                                                                                     6
+ing to a minimum width of the channels between neighbor-                                               H. Chen, S. Chen, and W. H. Matthaeus, ‘‘Recovery of the Navier–Stokes
+                                                                                                       equations using a lattice gas Boltzmann method,’’ Phys. Rev. A 45, R5339
+ing cylinders of 10.7 lattice spacing.
+                                                                                                       共1992兲.
+     Similar to Sec. VI, we can compare the momentum                                                 7
+                                                                                                       Y. H. Qian, D. d’Humières, and P. Lallemand, ‘‘Lattice BGK models for
+transfer computed on the boundary with the amount of mo-                                               Navier–Stokes equation,’’ Europhys. Lett. 17, 479 共1992兲.
+                                                                                                     8
+mentum used to drive the fluid by applying some kind of                                                R. Benzi, S. Succi, and M. Vergassola, ‘‘The lattice Boltzmann equation:
+                                                                                                       Theory and applications,’’ Phys. Rep. 222, 145 共1992兲.
+body force 共gravity兲. It is found that when steady state is                                          9
+                                                                                                       S. Chen and G. D. Doolen, ‘‘Lattice Boltzmann method for fluid flows,’’
+reached the two quantities agree with high accuracy. This can                                          Annu. Rev. Fluid Mech. 30, 329 共1998兲.
+                                                                                                    10
+be interpreted as the result of a correct implementation of the                                        X. He and L.-S. Luo, ‘‘Lattice Boltzmann model for the incompressible
+conservation of linear momentum in the various steps of the                                            Navier–Stokes equation,’’ J. Stat. Phys. 88, 927 共1997兲.
+                                                                                                    11
+                                                                                                       D. d’Humières, ‘‘Generalized lattice-Boltzmann equations,’’ in Rarefied
+LBE algorithm 共collisions, advection, and interactions with                                            Gas Dynamics: Theory and Simulations, Progress in Astronautics and
+the boundary兲.                                                                                         Aeronautics Vol. 159, edited by B. D. Shizgal and D. P. Weaver 共AIAA,
+                                                                                                       Washington, DC, 1992兲.
+                                                                                                    12
+VIII. CONCLUSION                                                                                       D. P. Zeigler, ‘‘Boundary conditions for the lattice Boltzmann simula-
+                                                                                                       tions,’’ J. Stat. Phys. 71, 1171 共1993兲.
+                                                                                                    13
+    A simple and efficient way to implement moving and                                                 O. Behrend, ‘‘Solid boundaries in particle suspension simulations via lat-
+                                                                                                       tice Boltzmann method,’’ Phys. Rev. E 52, 1164 共1995兲.
+curved boundaries in LBE simulations has been described.                                            14
+                                                                                                       P. A. Skordos, ‘‘Initial and boundary conditions for the lattice Boltzmann
+                                                                                                       method,’’ Phys. Rev. E 48, 4823 共1993兲.
+                                                                                                    15
+                                                                                                       D. R. Noble, S. Chen, J. G. Georgiadis, and R. O. Buckius, ‘‘A consistent
+                                                                                                       hydrodynamic boundary condition for the lattice Boltzmann method,’’
+                                                                                                       Phys. Fluids 7, 203 共1995兲.
+                                                                                                    16
+                                                                                                       T. Inamuro, M. Yoshino, and F. Ogino, ‘‘A nonslip boundary condition for
+                                                                                                       the lattice Boltzmann simulations,’’ Phys. Fluids 7, 2928 共1995兲.
+                                                                                                    17
+                                                                                                       S. Chen, D. Martinez, and R. Mei, ‘‘On boundary conditions in lattice
+                                                                                                       Boltzmann method,’’ Phys. Fluids 8, 2527 共1996兲.
+                                                                                                    18
+                                                                                                       R. Mei, L.-S. Luo, and W. Shyy, ‘‘An accurate curved boundary treatment
+                                                                                                       in lattice Boltzmann method,’’ J. Comput. Phys. 155, 307 共1999兲.
+                                                                                                    19
+                                                                                                       R. Cornubert, D. d’Humières, and D. Levermore, ‘‘A Knudsen layer
+                                                                                                       theory,’’ Physica D 47, 241 共1991兲.
+                                                                                                    20
+                                                                                                       I. Ginzburg and P. Adler, ‘‘Boundary flow condition analysis for the three-
+                                                                                                       dimensional lattice Boltzmann method,’’ J. Phys. II 4, 191 共1994兲.
+                                                                                                    21
+                                                                                                       I. Ginzburg and D. d’Humières, ‘‘Local second-order boundary methods
+                                                                                                       for lattice Boltzmann models,’’ J. Stat. Phys. 84, 927 共1996兲.
+                                                                                                    22
+                                                                                                       I. V. Karlin, S. Succi, and S. Orszag, ‘‘Lattice Boltzmann method for
+                                                                                                       irregular grids,’’ Phys. Rev. Lett. 82, 5245 共1999兲.
+                                                                                                    23
+                                                                                                       P. Lallemand and L.-S. Luo, ‘‘Theory of the lattice Boltzmann method:
+FIG. 7. Dependence of the factor Q computed by LBE vs displacement of                                  Dispersion, dissipation, isotropy, Galilean invariance and stability,’’ Phys.
+the center of the cylinder along Ox. Dashed curves and solid lines corre-                              Rev. E 61, 6546 共2000兲.
+spond, respectively, to linear and quadratic interpolation. ⫻ and 䊐 corre-                          24
+                                                                                                       O. Filippova and D. Hänel, ‘‘Grid refinement for lattice BGK models,’’ J.
+spond, respectively, to the force being applied along x and y directions.                              Comput. Phys. 147, 219 共1998兲.
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+Phys. Fluids, Vol. 13, No. 11, November 2001                                                                        Momentum transfer of a Boltzmann-lattice fluid                         3459
+
+
+25
+   X. He, Q. Zou, L.-S. Luo, and M. Dembo, ‘‘Analytic solutions of simple                              Darcy’s law at low Reynolds numbers,’’ J. Fluid Mech. 343, 331 共1997兲.
+                                                                                                    29
+   flows and analysis of non slip boundary conditions for the lattice Boltz-                           D. L. Koch and A. J. Ladd, ‘‘Moderate Reynolds number flows through
+   mann BGK model,’’ J. Stat. Phys. 87, 115 共1997兲.                                                    periodic and random arrays of aligned cylinders,’’ J. Fluid Mech. 349, 31
+26
+   L.-S. Luo, ‘‘Analytic solutions of linearized lattice Boltzmann equation for                        共1997兲.
+   simple flows,’’ J. Stat. Phys. 88, 913 共1997兲.                                                   30
+                                                                                                       Y. Saad and M. H. Schultz, ‘‘GMRES: A generalized minimal residual
+27
+   A. S. Sangani and A. Acrivos, ‘‘Slow flow past periodic arrays of cylinders                         algorithm for solving nonsymmetric linear systems,’’ SIAM J. Sci. Comp.
+   with applications to heat transfer,’’ Int. J. Multiphase Flow 8, 193 共1982兲.                        7, 856 共1986兲.
+   Note that the coefficient of b n at the end of their Eq. (11) should be                          31
+                                                                                                       M. Firdaouss, J. L. Guermond, and D. Lafarge, ‘‘Some remarks on the
+   ⫹(2n⫺1).                                                                                            acoustic parameters of sharp-edged porous media,’’ Int. J. Eng. Sci. 36,
+28
+   M. Firdaouss, J. L. Guermond, and P. Le Quéré, ‘‘Non linear corrections to                        1035 共1998兲.
+
+
+
+
+Downloaded 13 Jun 2013 to 128.104.1.219. This article is copyrighted as indicated in the abstract. Reuse of AIP content is subject to the terms at: http://pof.aip.org/about/rights_and_permissions
+

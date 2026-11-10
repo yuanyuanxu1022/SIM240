@@ -1,0 +1,30 @@
+{
+  "regression_reference": [
+    {
+      "direction": "P",
+      "source_result": "CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/result.txt",
+      "sha256": "a1dc9e60daec4891c0beac5a35ea4c7792e1fd85cdc09965aa6a408b070184f6",
+      "Keff_m3": 9.834075958643652e-23,
+      "dx_nm": 5,
+      "h_nm": 75,
+      "d_nm": 100,
+      "w_nm": 120,
+      "P_nm": 240
+    },
+    {
+      "direction": "T",
+      "source_result": "CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_T/steady/result.txt",
+      "sha256": "aee2e75ce2f5a86a58cd3bed9483cea6c7488b72ea7b2111c46a1f8a6e6e5c5b",
+      "Keff_m3": 4.4490220210459354e-23,
+      "dx_nm": 5,
+      "h_nm": 75,
+      "d_nm": 100,
+      "w_nm": 120,
+      "P_nm": 240
+    }
+  ],
+  "regression_relative_K_difference_limit": 0.0001,
+  "smooth_K_relative_error_strict_limit": 0.02,
+  "smooth_velocity_profile_L2_relative_strict_limit": 0.02,
+  "reference_is_historical_numeric_not_true_solution": true
+}

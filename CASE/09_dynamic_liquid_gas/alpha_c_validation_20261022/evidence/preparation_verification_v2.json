@@ -1,0 +1,572 @@
+{
+  "preparation_pass": true,
+  "collision_checks": {
+    "alpha_collision_v1": {
+      "checks": 59184,
+      "max_abs_error": 2.220446049250313e-15
+    },
+    "ns_collision_v1": {
+      "checks": 3240,
+      "max_abs_error": 8.673617379884035e-19
+    }
+  },
+  "zero_step_initializations": [
+    {
+      "id": "linear_n16_x_a1",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 8.812086217338695e-14,
+      "all_step_observed_L2": 4.674878612748588e-13,
+      "endpoint_3D_L2": [
+        4.674878612748588e-13,
+        4.674878612748588e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n16_y_a1",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 8.798358092465039e-14,
+      "all_step_observed_L2": 4.674878612748588e-13,
+      "endpoint_3D_L2": [
+        4.674878612748588e-13,
+        4.674878612748588e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n16_z_a1",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 8.798896734519097e-14,
+      "all_step_observed_L2": 4.674878612748588e-13,
+      "endpoint_3D_L2": [
+        4.674878612748588e-13,
+        4.674878612748588e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n16_xy_a1",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 4.895949148990717e-14,
+      "all_step_observed_L2": 6.207135366980525e-13,
+      "endpoint_3D_L2": [
+        6.207135366980525e-13,
+        6.207135366980525e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n16_xyz_a1",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 4.927459602542421e-14,
+      "all_step_observed_L2": 5.255527752125535e-13,
+      "endpoint_3D_L2": [
+        5.255527752125535e-13,
+        5.255527752125535e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "nonlinear_n16_c010_a1",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mu_error": 0.0,
+      "step_error": 0.0,
+      "energy_residual_per_node": 0.0,
+      "checks": {
+        "phase_amount": true,
+        "actual_mu": true,
+        "full_field_step": true,
+        "energy_identity": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "nonlinear_n16_c090_a1",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mu_error": 0.0,
+      "step_error": 0.0,
+      "energy_residual_per_node": 0.0,
+      "checks": {
+        "phase_amount": true,
+        "actual_mu": true,
+        "full_field_step": true,
+        "energy_identity": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n32_x_a4",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 7.146129144854126e-14,
+      "all_step_observed_L2": 3.6477072940801205e-13,
+      "endpoint_3D_L2": [
+        3.6511705429636396e-13,
+        3.6511705429636396e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n32_y_a4",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 6.961980044109646e-14,
+      "all_step_observed_L2": 3.6477072940801205e-13,
+      "endpoint_3D_L2": [
+        3.6511705429636396e-13,
+        3.6511705429636396e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n32_z_a4",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 6.961952978026416e-14,
+      "all_step_observed_L2": 3.6477072940801205e-13,
+      "endpoint_3D_L2": [
+        3.6511705429636396e-13,
+        3.6511705429636396e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n32_xy_a4",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 3.581242217723386e-14,
+      "all_step_observed_L2": 3.815110102137241e-13,
+      "endpoint_3D_L2": [
+        3.8123681217767787e-13,
+        3.8123681217767787e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "linear_n32_xyz_a4",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mode_error_over_A": 3.707025012768403e-14,
+      "all_step_observed_L2": 3.954879740181896e-13,
+      "endpoint_3D_L2": [
+        3.95518141339097e-13,
+        3.95518141339097e-13
+      ],
+      "checks": {
+        "phase_amount": true,
+        "complex_mode": true,
+        "all_step_observed_L2": true,
+        "endpoint_3D_L2": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "nonlinear_n32_c010_a4",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mu_error": 0.0,
+      "step_error": 0.0,
+      "energy_residual_per_node": 0.0,
+      "checks": {
+        "phase_amount": true,
+        "actual_mu": true,
+        "full_field_step": true,
+        "energy_identity": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "nonlinear_n32_c090_a4",
+      "phase_drift": {
+        "max_abs": 0.0,
+        "step": 0,
+        "final": 0.0
+      },
+      "initialization_only": true,
+      "steps": 0,
+      "mu_error": 0.0,
+      "step_error": 0.0,
+      "energy_residual_per_node": 0.0,
+      "checks": {
+        "phase_amount": true,
+        "actual_mu": true,
+        "full_field_step": true,
+        "energy_identity": true,
+        "reported_point_update": true
+      },
+      "operator_contract_pass": null
+    },
+    {
+      "id": "source_n8_a1",
+      "initialization_only": true,
+      "operator_contract_pass": null
+    },
+    {
+      "id": "source_n8_a4",
+      "initialization_only": true,
+      "operator_contract_pass": null
+    },
+    {
+      "id": "C_equal_mu0",
+      "initialization_only": true,
+      "implementation_contract_pass": null,
+      "physical_amount_drift_within_budget": null,
+      "safety_pass": true,
+      "independent_maxima": {
+        "mu_constitutive_max_error": 0.0,
+        "S_local_max_error": 0.0,
+        "force_local_max_error": 0.0,
+        "rho_mapping_max_error": 0.0,
+        "tau_mapping_max_error": 0.0,
+        "half_force_velocity_error": 0.0,
+        "startup_source_error": 0.0,
+        "control_phi_change": 0.0,
+        "control_velocity": 0.0
+      },
+      "reported_stage_maxima": {
+        "NS_collision_population_max_error": 0.0,
+        "CH_collision_population_max_error": 0.0,
+        "NS_stream_population_max_error": 0.0,
+        "CH_stream_population_max_error": 0.0,
+        "CH_point_update_max_error": 0.0,
+        "pressure_recovery_max_error": 0.0,
+        "alpha_max_error": 0.0
+      },
+      "step1_full_population_checks": null,
+      "field_history_max_discrepancy": 2.6020852139652106e-18,
+      "amounts": {
+        "phase_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "liquid_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "mass_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        }
+      },
+      "maximum_Mach": 0.0,
+      "initial_rho_min": 1.0,
+      "full_population_independent_steps": [],
+      "all_step_fields_reconstructed": true,
+      "energy_remainders_descriptive_not_zero_gates": true
+    },
+    {
+      "id": "C_equal_constitutive",
+      "initialization_only": true,
+      "implementation_contract_pass": null,
+      "physical_amount_drift_within_budget": null,
+      "safety_pass": true,
+      "independent_maxima": {
+        "mu_constitutive_max_error": 1.1011428314305904e-20,
+        "S_local_max_error": 7.940933880509066e-23,
+        "force_local_max_error": 3.1763735522036263e-22,
+        "rho_mapping_max_error": 0.0,
+        "tau_mapping_max_error": 0.0,
+        "half_force_velocity_error": 0.0,
+        "startup_source_error": 0.0
+      },
+      "reported_stage_maxima": {
+        "NS_collision_population_max_error": 0.0,
+        "CH_collision_population_max_error": 0.0,
+        "NS_stream_population_max_error": 0.0,
+        "CH_stream_population_max_error": 0.0,
+        "CH_point_update_max_error": 0.0,
+        "pressure_recovery_max_error": 0.0,
+        "alpha_max_error": 0.0
+      },
+      "step1_full_population_checks": null,
+      "field_history_max_discrepancy": 3.198396408832238e-18,
+      "amounts": {
+        "phase_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "liquid_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "mass_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        }
+      },
+      "maximum_Mach": 5.476278818484761e-07,
+      "initial_rho_min": 1.0,
+      "full_population_independent_steps": [],
+      "all_step_fields_reconstructed": true,
+      "energy_remainders_descriptive_not_zero_gates": true
+    },
+    {
+      "id": "C_target_mu0",
+      "initialization_only": true,
+      "implementation_contract_pass": null,
+      "physical_amount_drift_within_budget": null,
+      "safety_pass": true,
+      "independent_maxima": {
+        "mu_constitutive_max_error": 0.0,
+        "S_local_max_error": 0.0,
+        "force_local_max_error": 0.0,
+        "rho_mapping_max_error": 1.1102230246251565e-16,
+        "tau_mapping_max_error": 0.0,
+        "half_force_velocity_error": 0.0,
+        "startup_source_error": 0.0,
+        "control_phi_change": 0.0,
+        "control_velocity": 0.0
+      },
+      "reported_stage_maxima": {
+        "NS_collision_population_max_error": 0.0,
+        "CH_collision_population_max_error": 0.0,
+        "NS_stream_population_max_error": 0.0,
+        "CH_stream_population_max_error": 0.0,
+        "CH_point_update_max_error": 0.0,
+        "pressure_recovery_max_error": 0.0,
+        "alpha_max_error": 0.0
+      },
+      "step1_full_population_checks": null,
+      "field_history_max_discrepancy": 1.1102230246251565e-16,
+      "amounts": {
+        "phase_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "liquid_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "mass_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        }
+      },
+      "maximum_Mach": 0.0,
+      "initial_rho_min": 0.0012000686766583338,
+      "full_population_independent_steps": [],
+      "all_step_fields_reconstructed": true,
+      "energy_remainders_descriptive_not_zero_gates": true
+    },
+    {
+      "id": "C_target_constitutive",
+      "initialization_only": true,
+      "implementation_contract_pass": null,
+      "physical_amount_drift_within_budget": null,
+      "safety_pass": true,
+      "independent_maxima": {
+        "mu_constitutive_max_error": 1.1011428314305904e-20,
+        "S_local_max_error": 8.304893350032398e-22,
+        "force_local_max_error": 3.1763735522036263e-22,
+        "rho_mapping_max_error": 1.1102230246251565e-16,
+        "tau_mapping_max_error": 0.0,
+        "half_force_velocity_error": 0.0,
+        "startup_source_error": 0.0
+      },
+      "reported_stage_maxima": {
+        "NS_collision_population_max_error": 0.0,
+        "CH_collision_population_max_error": 0.0,
+        "NS_stream_population_max_error": 0.0,
+        "CH_stream_population_max_error": 0.0,
+        "CH_point_update_max_error": 0.0,
+        "pressure_recovery_max_error": 0.0,
+        "alpha_max_error": 0.0
+      },
+      "step1_full_population_checks": null,
+      "field_history_max_discrepancy": 1.1102230246251565e-16,
+      "amounts": {
+        "phase_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "liquid_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        },
+        "mass_sum": {
+          "max_abs": 0.0,
+          "step": 0,
+          "final": 0.0
+        }
+      },
+      "maximum_Mach": 7.987376587385928e-06,
+      "initial_rho_min": 0.0012000686766578902,
+      "full_population_independent_steps": [],
+      "all_step_fields_reconstructed": true,
+      "energy_remainders_descriptive_not_zero_gates": true
+    }
+  ],
+  "initialization_count": 20,
+  "spatial_steps_executed": 0,
+  "formal_batches_started": false,
+  "shared_state_snapshots": [
+    {
+      "file": "SIM240_AI_CONTEXT.md",
+      "initial_first_paper_prefix_sha256": "1d235ef22bf8ce8041f8396dc3968717cf8de0a270da105af3edf41eb979fcdf",
+      "current_first_paper_prefix_sha256": "95cd3a632b51958efbca35e9de8aba7e8655e613af3a1d0da2ab52dc80c068b7",
+      "concurrent_prefix_change": true
+    },
+    {
+      "file": "AI_HANDOFF_20261015.md",
+      "initial_first_paper_prefix_sha256": "41c6c632659fd416ee98dc9d6064db526389e9a7ff13f1666bb6e2f58a61b9fb",
+      "current_first_paper_prefix_sha256": "6b83aac319f7d2a5699f4fa68e87887b8db81b5eb57509a4b8ec690b0d53e438",
+      "concurrent_prefix_change": true
+    }
+  ],
+  "protected_files_verified": 3045,
+  "protected_mismatches": [],
+  "make_up_to_date": true,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": "NOT_EVALUATED",
+  "geometry_PASS": "NOT_EVALUATED"
+}

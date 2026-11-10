@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-30",
+  "release_version": "1.3.0",
+  "protocol_id": "SDI-v1",
+  "case_id": "C04",
+  "kind": "UNCHANGED_BINARY_REUSE_AND_STATIC_AUDIT_ONLY",
+  "commands": [
+    {
+      "label": "checkMesh",
+      "argv": [
+        "checkMesh",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/openfoam/cases/C04",
+        "-allGeometry",
+        "-allTopology"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03181600570678711,
+      "log": "reports/checkMesh.log"
+    },
+    {
+      "label": "audit_2d",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/build/bin/darcy2d",
+        "--input",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/common/C04_2d.txt",
+        "--audit-only"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0014138221740722656,
+      "log": "reports/audit_2d.log"
+    },
+    {
+      "label": "audit_openfoam",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/build/bin/depthAveragedDarcyFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/openfoam/cases/C04",
+        "-auditOnly"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03156423568725586,
+      "log": "reports/audit_openfoam.log"
+    }
+  ],
+  "binary_source_binding": [
+    {
+      "path": "two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    },
+    {
+      "path": "openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "build/bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "build/bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    }
+  ],
+  "inherited_compile_evidence": "reports/inherited_C01_preparation.json",
+  "new_compilation_performed": false,
+  "two_dimensional_audit": {
+    "audit_only": true,
+    "flow_solved": false,
+    "cells": 512,
+    "volume_m3": 1.4400000000000002e-16
+  },
+  "openfoam_audit": {
+    "audit_only": true,
+    "flow_solved": false,
+    "cells": 512,
+    "volume_m3": 1.4399999999999936e-16,
+    "H_m": 1.25e-07,
+    "Dxx_m_minus2": 518918918918918.94,
+    "Dyy_m_minus2": 1917719468739877,
+    "initial_p_max_Pa": 0,
+    "matrix_assembled": true,
+    "matrix_symmetric": true,
+    "matrix_min_diagonal": 5.4695242117116905e-19
+  },
+  "thresholds_unchanged": true,
+  "linear_solver_unchanged": true,
+  "C02_same_direction_only_coefficient_family_changed": true,
+  "C03_K_D_principal_values_swapped_together": true,
+  "identical_C02_boundary_mesh_numerics_files": [
+    "0/p",
+    "system/blockMeshDict",
+    "system/controlDict",
+    "system/fvSchemes",
+    "system/fvSolution",
+    "constant/polyMesh/boundary",
+    "constant/polyMesh/faces",
+    "constant/polyMesh/neighbour",
+    "constant/polyMesh/owner",
+    "constant/polyMesh/points"
+  ],
+  "flow_solver_executed": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": true,
+  "geometry_scope": "synthetic_average_domain_only"
+}

@@ -1,0 +1,79 @@
+{
+  "contract_id": "D4_RECTANGLE_FUTURE_RESULT_RECORD_DRAFT_20261025_v1",
+  "status": "DRAFT_NOT_APPROVED_NOT_A_RESULT",
+  "scope": "nine mixed rectangular cases only; scalar cases require a separate solver path",
+  "record_lifecycle": [
+    "PREPARED_NO_SOLVE",
+    "STARTED",
+    "SOLVER_EXITED_UNVERIFIED",
+    "FAILED_PRESERVE_RAW_AND_LOG",
+    "INDEPENDENT_REVIEW_REQUIRED"
+  ],
+  "required_before_solve": [
+    "planned_id_and_independent_formal_run_id",
+    "reviewed_release_id_and_execution_authorization",
+    "complete_input_config_and_geometry_units",
+    "source_dependency_environment_and_pre_run_input_hashes",
+    "mesh_coordinates_connectivity_and_dof_order_hashes",
+    "periodic_slave_master_and_wall_boundary_hashes",
+    "weak_form_pressure_sign_forcing_and_quadrature",
+    "ksp_pc_rtol_max_iterations_restart_and_true_residual_target",
+    "resource_budget_and_available_memory_disk",
+    "prediction_stage_hold_and_formal_protocol_status"
+  ],
+  "required_after_solve": [
+    "independent_process_exit_code_and_complete_stdout_stderr_log",
+    "ksp_converged_reason_iterations_reported_residual_history",
+    "true_unpreconditioned_residual_recomputed_before_mpc_backsubstitution",
+    "pressure_nullspace_right_left_and_rhs_compatibility_before_solve",
+    "raw_float64_algebraic_solution_before_mpc_backsubstitution",
+    "raw_float64_velocity_and_pressure_after_periodic_backsubstitution",
+    "pressure_P1_area_weights_raw_values_removed_mean_and_shifted_values",
+    "raw_mesh_periodic_map_boundary_and_field_file_hashes",
+    "pressure_and_velocity_periodic_trace_errors",
+    "divergence_section_flux_and_mass_balance",
+    "J_hat_definition_integral_and_period_normalization",
+    "flat_only_J_m2_s_K_m3_R_Pa_s_m3_or_MMS_not_applicable",
+    "energy_work_forcing_once_and_viscous_dissipation",
+    "analytic_error_and_grid_repeat_comparisons_when_applicable",
+    "wall_time_peak_RSS_disk_usage_and_post_run_input_hashes",
+    "independent_acceptance_verdict_separate_from_solver_exit"
+  ],
+  "required_on_failure": [
+    "failure_stage_and_reason_without_relabeling_PASS",
+    "independent_process_exit_code_and_complete_stdout_stderr_log",
+    "pre_failure_input_hashes_and_any_post_failure_input_hashes",
+    "all_partial_raw_files_and_their_hashes",
+    "solver_reported_history_and_last_true_residual_if_available",
+    "resource_usage_and_failure_timestamp"
+  ],
+  "scientific_definitions": {
+    "J_hat": "integral_domain(u_drive) / P_hat for unit height",
+    "flat_J_m2_s": "a*h^3/nu * J_hat",
+    "flat_K_m3": "h^3 * J_hat",
+    "flat_R_Pa_s_m3": "rho*a/J_m2_s",
+    "MMS_physical_K_J_R": "NOT_APPLICABLE_NONUNIFORM_FORCING",
+    "pressure_gauge": "P1 triangle-area-weighted mean after MPC backsubstitution",
+    "true_residual": "norm(b-A*x_algebraic)/norm(b), prior to MPC backsubstitution",
+    "energy_work": "integral(f dot u); do not add equivalent pressure-drop work"
+  },
+  "not_implemented_now": [
+    "approved_solver_configuration_and_resource_evidence",
+    "independent_run_wrapper_and_exit_capture",
+    "raw_field_and_mesh_writer",
+    "functional_and_trace_extraction",
+    "independent_numerical_acceptance",
+    "all_nine_scalar_problems",
+    "any_PDE_solve"
+  ],
+  "current_values": {
+    "formal_run_id": null,
+    "solver_exit_code": null,
+    "raw_field_paths": null,
+    "true_residual": null,
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": false,
+    "geometry_PASS": null,
+    "prediction_permission": "HOLD"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "errors": [],
+  "handling_assertions": {
+    "author_and_editor_channels_must_remain_separate": true,
+    "bundled_tools_are_local_only": true,
+    "data_reuse_authorized": false,
+    "external_service_use_authorized_by_this_report": false
+  },
+  "normalized_scope": {
+    "ai_plan": "approved_ai_assistance",
+    "capacity": "author_requested_reader",
+    "competence_areas": [
+      "numerical_protocol",
+      "software_provenance",
+      "deterministic_CFD"
+    ],
+    "manuscript_type": "own_project_preparation_package",
+    "out_of_scope": [
+      "code_changes",
+      "compilation",
+      "solver_execution",
+      "model_refit",
+      "journal_submission"
+    ],
+    "peer_review_model": "open",
+    "requested_focus": [
+      "v1_1_checker",
+      "contract_implementation_alignment",
+      "history_status",
+      "execution_boundary"
+    ]
+  },
+  "notice": "This validates declared process controls only. It does not establish reviewer competence, resolve conflicts, authorize external processing, or assess manuscript quality.",
+  "review_id": "URV-CHECKER-v1-1-READONLY-20261101",
+  "schema_version": "2.0",
+  "status": "READY_FOR_LOCAL_REVIEW",
+  "valid": true,
+  "warnings": [
+    {
+      "code": "CONFIDENTIAL_NOTES_CHANNEL_UNAVAILABLE",
+      "field": "venue_policy.confidential_editor_notes_supported"
+    },
+    {
+      "code": "EXTERNAL_AUTHORIZATION_NOT_USED",
+      "field": "authorization.external_processing_authorized"
+    },
+    {
+      "code": "COMPETENCE_LIMITS_MUST_BE_DISCLOSED",
+      "field": "reviewer.competence_limits"
+    }
+  ]
+}

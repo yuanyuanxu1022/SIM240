@@ -1,0 +1,144 @@
+OPEN                                                                                     Microsystems & Nanoengineering (2017) 3, 17075; doi:10.1038/micronano.2017.75
+                                                                                         www.nature.com/micronano
+
+
+
+REVIEW ARTICLE
+Nanoimprint lithography steppers for volume fabrication of
+leading-edge semiconductor integrated circuits
+S.V. Sreenivasan1,2
+
+
+    This article discusses the transition of a form of nanoimprint lithography technology, known as Jet and Flash Imprint Lithography
+    (J-FIL), from research to a commercial fabrication infrastructure for leading-edge semiconductor integrated circuits (ICs). Leading-
+    edge semiconductor lithography has some of the most aggressive technology requirements, and has been a key driver in the 50-
+    year history of semiconductor scaling. Introducing a new, disruptive capability into this arena is therefore a case study in a “high-
+    risk-high-reward” opportunity. This article ﬁrst discusses relevant literature in nanopatterning including advanced lithography
+    options that have been explored by the IC fabrication industry, novel research ideas being explored, and literature in nanoimprint
+    lithography. The article then focuses on the J-FIL process, and the interdisciplinary nature of risk, involving nanoscale precision
+    systems, mechanics, materials, material delivery systems, contamination control, and process engineering. Next, the article
+    discusses the strategic decisions that were made in the early phases of the project including: (i) choosing a step and repeat process
+    approach; (ii) identifying the ﬁrst target IC market for J-FIL; (iii) deﬁning the product scope and the appropriate collaborations to
+    share the risk-reward landscape; and (iv) properly leveraging existing infrastructure, including minimizing disruption to the widely
+    accepted practices in photolithography. Finally, the paper discusses the commercial J-FIL stepper system and associated
+    infrastructure, and the resulting advances in the key lithographic process metrics such as critical dimension control, overlay,
+    throughput, process defects, and electrical yield over the past 5 years. This article concludes with the current state of the art in J-FIL
+    technology for IC fabrication, including description of the high volume manufacturing stepper tools created for advanced memory
+    manufacturing.
+
+    Keywords: jet and ﬂash imprint; nanoscale overlay; nanoimprint defectivity; semiconductor fabrication; steppers; precision
+    systems; UV nanoimprint
+    Microsystems & Nanoengineering (2017) 3, 17075; doi:10.1038/micronano.2017.75; Published online: 25 September 2017
+
+
+
+
+INTRODUCTION                                                                             (iii) very low pattern-placement distortions relative to an ideal grid;
+In this section, the manufacturing requirements associated with                          (iv) ability to overlay a pattern relative to a previous pattern with
+advanced semiconductor lithography are discussed. This is                                overlay errors of o 1/4th the most aggressive pattern half-pitch;
+followed by a discussion of lithographic approaches being used                           (v) low overall process defectivity to enable high IC yield; and (vi)
+or being considered as future candidates for semiconductor                               high-throughput and high mask usage or template life to achieve
+fabrication. The section then discusses technology gaps in IC                            acceptable cost of ownership. (In this article the term “template” is
+fabrication that establish the motivation for Jet and Flash Imprint                      used to deﬁne the nanoimprint master and is synonymous with
+Lithography (J-FIL) as a viable option for IC fabrication. J-FIL                         the term “mold” or the term “imprint mask” that are also used in
+(referred to as S-FIL in early papers) stepper technology                                the nanoimprint lithography literature.) Table 1 provides repre-
+was conceived at the University of Texas at Austin, and                                  sentative lithographic requirements for leading-edge memory
+then developed for semiconductor fabrication at Molecular                                devices1. Here, memory devices are used to deﬁne representative
+Imprints Inc., a UT-Austin spin out; and is now part of Canon                            requirements, rather than logic chips, as memory devices have
+Corporation.                                                                             more aggressive and well-deﬁned half-pitch requirements,
+                                                                                         whereas logic-device nodes are not clearly deﬁned in recent
+Semiconductor lithography requirements                                                   years as discussed in Table 1 (Ref. 1). This table of speciﬁcations
+While several nanopatterning techniques are reported in the                              illustrates the daunting challenge a new lithographic technology
+literature, only a small percentage of them have the potential to                        faces when it is being considered as a manufacturing option for
+be viable in volume manufacturing of semiconductor ICs.                                  advanced semiconductor ICs. Optical projection lithography has
+Manufacturing viability requires that the patterning approach                            been the workhorse in this industry for 50 years2, and has
+possess the following attributes: (i) high-resolution and tight pitch                    beneﬁted from years of sustained research-and-development
+structures with long-range order; (ii) ability to simultaneously                         investments from industry and academia. In its current form,
+pattern different types of structures with varying pattern densities;                    193 nm wavelength immersion (193i) photolithography (PL) has
+
+1
+ Department of Mechanical Engineering, NASCENT Center, The University of Texas at Austin, J.J. Pickle Research Campus, Building 160, 10100 Burnet Road, Austin, TX 78712, USA
+and 2Canon Nanotechnologies Inc., Austin, TX 78758, USA
+Correspondence: S.V. Sreenivasan (svs@austin.utexas.edu)
+Received: 30 April 2017; revised: 7 September 2017; accepted: 11 September 2017
+                          Nanoimprint steppers for semiconductor fabrication
+                                                            SV Sreenivasan
+2
+    Table 1  Representative semiconductor IC fabrication requirements. Actual requirements can vary somewhat for speciﬁc devices and device layers.
+    These are approximate estimates for advanced memory, both Flash and DRAM.a
+
+    No.                 Lithography speciﬁcation description                                                                        Speciﬁcation
+
+    1.                  Substrate size/type                                                                               300 mm diameter silicon
+    2.                  Patterning area per process step (ﬁeld size)                                                           26 mm × 33 mm
+    3.                  Substrate ﬂatness over a ﬁeld (peak-to-valley)                                                o25 nm, spatial periods of 45 mm
+    4.                  CD (min. feature size and half-pitch)                                                                 o20 nm half-pitch
+    5.                  Line-edge roughness (3σ)                                                                                    o2 nm
+    6.                  CDU (3σ)                                                                                                    o2 nm
+    7.                  Wafer defect density, logic vs. memory (relevant size 40.5 × CD)                        o0.01/cm2 vs. o 1–10/cm2 (defect size 410 nm)
+    8.                  Photomask usage vs. NIL template lifeb                                                  45000 wafers vs. 41000 wafers with replicationb
+    9.                  Alignment (A) and overlay (O) errors (mean+3σ)                                          Flash/DRAM: Ao 3 nm/2.5 nm; Oo5 nm/3.5 nm
+    10.                 Pattern layout, complexity                                                                       Cartesian, arbitrary patterns
+    11.                 Pattern density variations                                                                                   High
+    12.                 Printing of partial ﬁelds over the wafer edge printing                                                        Yes
+    13.                 Throughput for acceptable equipment costb                                                     45 WPH/US$1M of equipment cost
+    Abbreviations: CD, critical dimension; CDU, CD uniformity; IC, integrated circuit; NIL, nanoimprint lithography; WPH, wafers per hour. aThis table deﬁnes critical
+    dimensions based on half-pitch of the ﬁnest structures for memory devices; logic-device deﬁnitions of lithographic nodes have become increasingly confusing
+    over the past 15 years due to half-pitch of metal one layer diverging from the gate length. For example, Ref. 1 points out that Intel’s 65 nm node process in 2005
+    had a gate length of 32 nm and the half-pitch of the Metal 1 of 105 nm. bTemplate life/cost and tool throughput/cost represent the dominant factors in NIL cost-
+    of-ownership, other costs include process materials and gases. Template replication is a key complement to template life, see section “Resist and inkjet
+    development strategy”.
+
+
+
+
+    incrementally incorporated numerous scientiﬁc innovations (for                     throughput by a factor of at least 30 000 ×. Current MEBL tools for
+    example, excimer lasers, precision fabrication of large-scale optics,              mask/template writing are able to write a full-ﬁeld
+    magnetically levitated stages with nanoscale accuracy, chemically                  (26 mm × 33 mm) lithography region in ~ 5–6 h. To be able to
+    ampliﬁed photoresists, to name a few). Even though diffraction                     write an entire silicon wafer consisting of about 100 ﬁelds in about
+    limits its ultimate resolution to ~ 80 nm minimum pitch for lines                  a minute would require at least a 30 000 × improvement in
+    and spaces and ~ 110 nm pitch for more complicated pattern,                        throughput.19 This will require hundreds of thousands of
+    replacing PL with a disruptive lithographic technology has proven                  simultaneous e-beam columns that are individually addressable.
+    to be difﬁcult. A new technology needs to address the                              This leads to highly complicated tooling and formidable technical
+    fundamental resolution limits of PL while otherwise being a                        challenges such as beam blur due to space-charge effects, and
+    “drop-in replacement” to PL.                                                       pattern-placement errors. Even if all these technical challenges
+                                                                                       can be addressed, MEBL’s throughput limitation will likely make
+    Nanolithography literature review                                                  the technology viable only for small volume ASICs, but not for
+    The most aggressive half-pitch of the circuit patterns being                       high volume memory or logic applications.
+    manufactured today are about 20 nm half-pitch. Since the most                         Recent research in nanopatterning has continued to explore
+    advanced form of PL—193i lithography—is limited to ~ 38 nm                         techniques that may become relevant in IC fabrication including
+    half-pitch lines and spaces, the current production approach for                   plasmonic patterning approaches20,21, interferometric lithography
+                                                                                       techniques22,23, arrayed X-ray patterning with zone plates24, and
+    sub-38 nm half-pitch patterning-self-aligned double (SADP)/quad
+                                                                                       arrayed tip-based patterning25–29. The references provided here
+    patterning-comprises extremely complex and expensive proces-
+                                                                                       are exemplar and not meant to be comprehensive. However, to
+    sing steps3. Directed self-assembly (DSA) techniques are also
+                                                                                       the best of the author’s knowledge, none of the capabilities
+    being explored to complement 193i lithography4,5. SADP and DSA
+                                                                                       discussed in this paragraph have developed comprehensive
+    techniques are inherently suited for periodic patterns, and they
+                                                                                       systems that simultaneously address all the speciﬁcations listed
+    place stringent constraints on device designers that require more                  in Table 1, nor have they reached the maturity to warrant a
+    complex patterns6. In addition to the patterning limits of DSA, it                 leading-edge IC manufacturing company exploring them.
+    also has a number of challenges related to defects and pattern                        As discussed next, while the research landscape for nanopat-
+    placement7,8, which has prevented its adoption to date in IC                       terning includes a variety of techniques, the only two technologies
+    manufacturing.                                                                     that are being explored and/or integrated into manufacturing by
+       Over the years, the industry has explored several other high-                   IC fabs to address resolution limits of 193i PL are J-FIL and extreme
+    resolution lithography techniques for production including X-ray                   ultraviolet (EUV) lithography. These two technologies are the only
+    lithography (XRL)9,10, electron projection lithography (EPL)11, ion                ones that appear to have the maturity to be considered for
+    beam projection lithography (IPL)12, and 157 nm PL13,14. As of the                 production for sub-20 nm patterning with arbitrary pattern
+    writing of this document, XRL, EPL, IPL, and 157 nm PL are no                      complexity, including, for example, lines/spaces and contact holes
+    longer being pursued by the silicon IC industry. In addition,                      with arbitrary/variable pitch, and complicated circuit geometries.
+    multiple e-beam lithography (MEBL)15,16 is being considered for IC
+    fabrication. MEBL has made progress towards the development of                     EUV lithography. The historical trend in PL tooling has been to
+    a master writing lithography tool for fabricating both photomasks                  decrease exposure wavelength (λ) and/or increase the numerical
+    and imprint templates. This deﬁnition of the term “template” has                   aperture (NA) of the projection optics to exploit the diffraction
+    now been included earlier in the paper on page one in the section                  limited resolution, R = λ/NA (Refs. 2,13). EUV lithography seeks to
+    “semiconductor lithography requirements”. Wherein the write                        create enhanced resolution beyond 193i PL by using soft X-ray
+    times for the most advanced photomasks are targeted to improve                     wavelength of 13.2 nm, and was originally explored by the
+    from several days to ~ 10 h (Refs. 17,18). However, a direct writing               industry in the early 1990s. While EUVL appears to be a natural
+    tool for wafer fabrication will require a further improvement in                   extension of PL, it has several major challenges as compared to
+
+    Microsystems & Nanoengineering                                doi:10.1038/micronano.2017.75
+

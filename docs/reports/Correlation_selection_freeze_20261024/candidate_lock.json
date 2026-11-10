@@ -1,0 +1,83 @@
+{
+  "lock_id": "G4_candidate_prediction_v1_20261024",
+  "created_utc": "2026-10-23T18:46:42.588150+00:00",
+  "status": "CANDIDATE_FROZEN_NOT_VALIDATED",
+  "primary": "G4",
+  "comparators": [
+    "G6",
+    "MIX7"
+  ],
+  "coefficients": {
+    "G4": {
+      "model": "G4",
+      "T": [
+        -1.590304379477457,
+        1.5165209408360127
+      ],
+      "P": [
+        -1.367239917734493,
+        0.34957883749740304
+      ]
+    },
+    "G6": {
+      "model": "G6",
+      "T": [
+        -1.8620827956928623,
+        1.173057964954126,
+        2.4872626776815863
+      ],
+      "P": [
+        -1.2589628847023258,
+        0.8437302909906563,
+        0.9458923663467957
+      ]
+    }
+  },
+  "parameter_order": "ln(a), p, optional m; absent m=1",
+  "MIX7_rule": "P=complete G4 including G4 T parameters; T=G6 T",
+  "target_domain": {
+    "s": [
+      0.8,
+      3.2
+    ],
+    "t": [
+      0.3333333333333333,
+      1.6
+    ],
+    "phi": 0.5,
+    "period_rule": "P=2w",
+    "accuracy_validated": false
+  },
+  "evaluation": {
+    "quantities": [
+      "P",
+      "T",
+      "A"
+    ],
+    "MAE_percent_limit": 3.0,
+    "max_abs_percent_limit": 5.0,
+    "all_conditions_required": true,
+    "reference": "original validated dx5 rows; grid results reported separately"
+  },
+  "new_solver_runs": 0,
+  "simulation_authorized": false,
+  "prediction_results_read": false,
+  "external_non_exposure_verified": false,
+  "teacher_approval_claimed": false,
+  "bound_files": {
+    "FREEZE_RULES.md": "ec0724f5d6abad392c5e17ddc970c8b7dd5968c2ba0becb3cad5b2853766b04d",
+    "frozen_models.py": "cd9e88f3d2ed1b8268461e789d146359641ee0b99c942d73c5161ef1e4365093",
+    "freeze.py": "85d54f4094f8633cbdcf314d766386ddfec60163c72b774c4a7a3dccf4319b98",
+    "verify_lock.py": "9d2140ab99af9db313623301606531bae3e92cb0547b4a3173e21b07497ed061",
+    "reserved_predictions.csv": "a6bfe5fe3e759ecb5919c9d826b2950da015c50b0ad9fca229189423a91e0b3c",
+    "reserved_anisotropy.csv": "93852b6b4e9699b055753d9ad1f369f1a053a549c0ac883605c743456e72d855",
+    "tradeoffs.csv": "77fee76e52a6111ad6887e99edfc4688194bd09c35e6e8f86965cefa1bbd8469",
+    "parameter_stability.csv": "afbc54c0002e481bc337836fdb5ea020974e2e425aca96ca20ab4077c4e86841",
+    "optimizer_stability.csv": "8628f58448a4acb7daa3a8b6e22139503fa3c3cc55446b053eec5e9c3e8a9c0b",
+    "target_sensitivity.json": "3c013d908fac7d7dfe22c3ee943606bccd68cae744e337d7b26a5d6540ca6b7b",
+    "audit_summary.json": "2548757336f3afe3981e249693fbe867a01ddddbc0d9a2b9c92eca2e5acbd09e",
+    "input_hashes.json": "519719fd69c7c3466db06f6f782b5f9e48ba2f4f051a051ce5fd8ab32dd71d85",
+    "audit.py": "ed9d87852db0568f126e26bd3071a88646756fe0c93e50479fd94787448be849",
+    "REPORT.md": "bd8c3f669a6db5e5103b54d5df4957a278840c4a0e473049b996a848472e625c"
+  }
+}

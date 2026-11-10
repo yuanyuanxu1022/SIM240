@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "original_input_hashes_unchanged": 64,
+  "raw_points_rechecked": 36,
+  "no_refit": true,
+  "maximum_relative_difference_from_stored_C4": 1.1102230246251565e-15,
+  "existing_full_fit_metrics": [
+    {
+      "direction": "P",
+      "n": 18,
+      "MAE_percent": 1.64830981739515,
+      "max_abs_percent": 7.65018589624461
+    },
+    {
+      "direction": "T",
+      "n": 18,
+      "MAE_percent": 2.1009896586982353,
+      "max_abs_percent": 4.524906503718274
+    }
+  ],
+  "algebraic_scaling_relative_error": 8.881784197001252e-16,
+  "in_domain_physical_bound_checks": 12756,
+  "minimum_in_domain_K_over_flat": 1.0972605849214159,
+  "outside_domain_counterexamples": [
+    {
+      "h_nm": 75,
+      "d_nm": 1e-06,
+      "w_nm": 120,
+      "direction": "T",
+      "K_candidate_over_flat": 0.9999997384205879,
+      "outside_sample_domain": true,
+      "physical_lower_bound_violated": true
+    },
+    {
+      "h_nm": 75,
+      "d_nm": 10000.0,
+      "w_nm": 120,
+      "direction": "T",
+      "K_candidate_over_flat": 0.11417243566086001,
+      "outside_sample_domain": true,
+      "physical_lower_bound_violated": true
+    }
+  ],
+  "new_dev_geometries_inside_old_envelope": 3,
+  "new_dev_geometries_total": 8,
+  "new_OpenLB_runs": 0,
+  "new_flow_field_solves": 0,
+  "prediction_results_read": false,
+  "old_V2_changed": false,
+  "old_C4_changed": false,
+  "final_model_lock_created": false,
+  "external_new_width_validation_completed": false,
+  "interpretation": "variables/scaling are derived; specific four-coefficient ansatz is retrospective empirical closure",
+  "python": "3.14.7 | packaged by Anaconda, Inc. | (main, Aug 14 2026, 10:21:40) [GCC 14.3.0]",
+  "numpy": "2.5.3",
+  "parameter_hull_method": "stdlib monotone-chain convex hull; no scipy dependency",
+  "derivation_input_files_hashed": 71
+}

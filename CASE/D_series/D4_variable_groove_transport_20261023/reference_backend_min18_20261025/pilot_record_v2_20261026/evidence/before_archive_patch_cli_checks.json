@@ -1,0 +1,35 @@
+[
+  {
+    "name": "default_precheck",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v2_20261026/runner.py",
+      "--contract",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v2_20261026/contract_template.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "independent_readback",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v2_20261026/readback.py",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v2_20261026/evidence/process_be2b0603a1/work/success",
+      "--record-dir",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v2_20261026/evidence/process_be2b0603a1/records/success"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "dependency_names",
+    "argv": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+      "-B",
+      "-c",
+      "from importlib.metadata import version; import json; print(json.dumps({n:version(n) for n in ('fenics-dolfinx','fenics-basix','fenics-ffcx','petsc4py','dolfinx_mpc','numpy','mpi4py')}))"
+    ],
+    "exit_code": 0
+  }
+]

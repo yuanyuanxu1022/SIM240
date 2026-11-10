@@ -1,0 +1,76 @@
+{
+  "recorded_at": "2026-11-04T21:17:40.087716+08:00",
+  "scope": "current inspector only, cannot attribute peak/events to past solver",
+  "ancestors": [
+    {
+      "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-3715.scope",
+      "exists": true,
+      "files": {
+        "memory.max": "max",
+        "memory.high": "max",
+        "memory.current": "5092667392",
+        "memory.peak": "7697489920",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.swap.max": "max",
+        "cgroup.controllers": "memory pids",
+        "cgroup.subtree_control": ""
+      }
+    },
+    {
+      "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice",
+      "exists": true,
+      "files": {
+        "memory.max": "max",
+        "memory.high": "max",
+        "memory.current": "22308859904",
+        "memory.peak": "29171802112",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.swap.max": "max",
+        "cgroup.controllers": "cpu memory pids",
+        "cgroup.subtree_control": "memory pids"
+      }
+    },
+    {
+      "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service",
+      "exists": true,
+      "files": {
+        "memory.max": "max",
+        "memory.high": "max",
+        "memory.current": "23574163456",
+        "memory.peak": "30385352704",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.swap.max": "max",
+        "cgroup.controllers": "cpu memory pids",
+        "cgroup.subtree_control": "cpu memory pids"
+      }
+    },
+    {
+      "path": "/sys/fs/cgroup/user.slice/user-1000.slice",
+      "exists": true,
+      "files": {
+        "memory.max": "max",
+        "memory.high": "max",
+        "memory.current": "23687319552",
+        "memory.peak": "30498242560",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.swap.max": "max",
+        "cgroup.controllers": "cpu memory pids",
+        "cgroup.subtree_control": "cpu memory pids"
+      }
+    },
+    {
+      "path": "/sys/fs/cgroup/user.slice",
+      "exists": true,
+      "files": {
+        "memory.max": "max",
+        "memory.high": "max",
+        "memory.current": "23763243008",
+        "memory.peak": "30586871808",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.swap.max": "max",
+        "cgroup.controllers": "cpuset cpu io memory pids",
+        "cgroup.subtree_control": "cpu memory pids"
+      }
+    }
+  ]
+}

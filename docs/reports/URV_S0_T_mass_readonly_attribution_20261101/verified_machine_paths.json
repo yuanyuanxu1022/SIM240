@@ -1,0 +1,54 @@
+{
+  "old_T": {
+    "measure_return_pointer_register": "r12",
+    "measurement_volume_offset": 8,
+    "measurement_mass_offset": 16,
+    "packed_high_lane_is_mass": true,
+    "fused_mass_accumulation": true,
+    "separate_rounded_product_then_mass_addition": false,
+    "fused_instructions": [
+      "3f661:\tvfmadd213pd xmm10,xmm2,XMMWORD PTR [r12+0x8]"
+    ],
+    "separate_instructions": [],
+    "snippet_path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S0_T_mass_readonly_attribution_20261101/old_T_mass_path.txt"
+  },
+  "old_P": {
+    "measure_return_pointer_register": "r13",
+    "measurement_volume_offset": 8,
+    "measurement_mass_offset": 16,
+    "packed_high_lane_is_mass": true,
+    "fused_mass_accumulation": true,
+    "separate_rounded_product_then_mass_addition": false,
+    "fused_instructions": [
+      "3fb16:\tvfmadd213pd xmm0,xmm10,XMMWORD PTR [r13+0x8]"
+    ],
+    "separate_instructions": [],
+    "snippet_path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S0_T_mass_readonly_attribution_20261101/old_P_mass_path.txt"
+  },
+  "new_T": {
+    "measure_return_pointer_register": "r12",
+    "measurement_volume_offset": 8,
+    "measurement_mass_offset": 16,
+    "packed_high_lane_is_mass": true,
+    "fused_mass_accumulation": false,
+    "separate_rounded_product_then_mass_addition": true,
+    "fused_instructions": [],
+    "separate_instructions": [
+      "3fef1:\tvaddpd xmm0,xmm0,XMMWORD PTR [r12+0x8]"
+    ],
+    "snippet_path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S0_T_mass_readonly_attribution_20261101/new_T_mass_path.txt"
+  },
+  "new_P": {
+    "measure_return_pointer_register": "r13",
+    "measurement_volume_offset": 8,
+    "measurement_mass_offset": 16,
+    "packed_high_lane_is_mass": true,
+    "fused_mass_accumulation": false,
+    "separate_rounded_product_then_mass_addition": true,
+    "fused_instructions": [],
+    "separate_instructions": [
+      "404c1:\tvaddpd xmm0,xmm0,XMMWORD PTR [r13+0x8]"
+    ],
+    "snippet_path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S0_T_mass_readonly_attribution_20261101/new_P_mass_path.txt"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "kind": "USER_AUTHORIZATION_EVIDENCE",
+  "recorded_at": "2026-11-04T09:30:26.917379+08:00",
+  "stage": "S4_THIN_GRID",
+  "addendum_id": "URV-S4-S1-ELF-REUSE-v1",
+  "authorization_source": "user_reply_to_request_user_input_async",
+  "question_item_id": "[\"request_user_input_async\",\"call_a2f8d135b2a942e78a70d8438206254e\",0]",
+  "user_explicitly_authorized": true,
+  "user_instruction_verbatim": "现在采用并授权完整六条；生成合同和命令，由我手动启动",
+  "selected_answer_verbatim": "现在采用并授权完整六条；生成合同和命令，由我手动启动",
+  "authorization_question_verbatim": "是否现在采用 S4-FRD-v1，并授权完整六条正式 S4：按5／2.5／1.25 nm、每档沿槽P→横槽T；单条求解上限分别为1／4／12小时，每条标准独立检查外层等待最多1小时，前条完整验收通过才继续（包括第四条后自动进入细网格）？暂不另做PERF，接受细网格可能12小时未完成、批次随即停止的风险；求解预算合计34小时、检查另最多6小时，文件处理及清理另计，40小时不是总时限保证。失败即停，不自动重试、加时或进入S5。本次仅让我复核后生成正式合同和一条命令，由你本人手动启动。",
+  "verbatim_recorded_from_typed_sentence": false,
+  "authorization_recording_note": "Actual selected answer and complete question preserved; no fabricated expanded typed sentence.",
+  "adopted_scope_protocol": {
+    "protocol_id": "S4-FRD-v1",
+    "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S4_formal_scope_resource_review_20261104_090724/PROTOCOL.md",
+    "sha256": "47d94ac2f615f1ad4d438f18d2cb84af2346fb6be1bfa3457ff1c85d0f3b954c"
+  },
+  "preparation_B_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/evidence/preparation_B.json",
+  "preparation_B_sha256": "7ca2ce3c27076a80d7d692bb13f3030854cf44b683dfe6bcec54ed15c288b06c",
+  "simulation_authorized": true,
+  "formal_simulation_authorized": true,
+  "approved_runs": [
+    {
+      "run_id": "URV_S4_P_dx5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_P_dx5_a100000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx5_reuse_v1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "e81ddf60b4793e9a373ccbf72033b4a9b6be53b2cc6a323130162a9735f19d5f",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx5_reuse_v1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S4_T_dx5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_T_dx5_a100000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx5_reuse_v1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "57bf7401de6595efb34d645d729b31c677cd198284cfdb09600c3665dd8f66ce",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx5_reuse_v1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S4_P_dx2p5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_P_dx2p5_a100000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx2p5_reuse_v1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "8fdb616b4564521118a32e8bf5387305c202f662e6e3b75cf04197fe4d93e2f6",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx2p5_reuse_v1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_T_dx2p5_a100000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx2p5_reuse_v1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "f694d66d179eff56a74a40d5ecbfe4eed77b28a90d9ce4a9fa98f5bd7ec36532",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx2p5_reuse_v1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S4_P_dx1p25_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_P_dx1p25_a100000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx1p25_reuse_v1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "7ad89b1ffeacdc4a0fa0e28a4f64a6f706879e2565f2f24794de5c901530ecb1",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_P_dx1p25_reuse_v1_20261103_01/steady"
+    },
+    {
+      "run_id": "URV_S4_T_dx1p25_reuse_v1_20261103_01",
+      "planned_case_id": "URV1_U_THIN_T_dx1p25_a100000",
+      "mode": "steady",
+      "run_config_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx1p25_reuse_v1_20261103_01/steady/run_config.txt",
+      "run_config_sha256": "1c240c64f5eeaeed4518b528dd7834f5a9fc20ccdb28f017ac4e509fa8caf512",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/runs/URV_S4_T_dx1p25_reuse_v1_20261103_01/steady"
+    }
+  ],
+  "approved_run_ids": [
+    "URV_S4_P_dx5_reuse_v1_20261103_01",
+    "URV_S4_T_dx5_reuse_v1_20261103_01",
+    "URV_S4_P_dx2p5_reuse_v1_20261103_01",
+    "URV_S4_T_dx2p5_reuse_v1_20261103_01",
+    "URV_S4_P_dx1p25_reuse_v1_20261103_01",
+    "URV_S4_T_dx1p25_reuse_v1_20261103_01"
+  ],
+  "approved_audit_run_ids": [],
+  "standard_independent_check_including_saved_field_reads_authorized": true,
+  "sequential_advance_only_after_acceptance": true,
+  "fourth_to_fifth_fine_grid_advance_authorized": true,
+  "fine_grid_12h_timeout_and_incomplete_batch_risk_accepted": true,
+  "skip_additional_PERF_as_precondition": true,
+  "solver_wall_cap_seconds_by_dx_nm": {
+    "5": 3600,
+    "2.5": 14400,
+    "1.25": 43200
+  },
+  "per_checker_wait_cap_seconds": 3600,
+  "solver_total_budget_seconds": 122400,
+  "checker_total_wait_budget_seconds": 21600,
+  "strict_40_hour_batch_completion_guaranteed": false,
+  "grid_checks_after_six_accepted_runs": true,
+  "native_zero_step_authorized": false,
+  "initial_field_readback_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "automatic_retry_authorized": false,
+  "automatic_extension_authorized": false,
+  "S5_authorized": false,
+  "AI_may_start_solver": false,
+  "user_manually_starts": true,
+  "failure_policy": "STOP_WITHOUT_RETRY_EXTENSION_OR_NEXT_STAGE"
+}

@@ -1,0 +1,204 @@
+{
+  "binary_sha256": "6f83f1482473b6bd99f28b353c060282f031b2c394c2f4417196a8f40bd995ec",
+  "compiler_sha256_same_as_v12": true,
+  "makefile_original_bytes": true,
+  "mass_stats_original_bytes": true,
+  "native_source_diff_exactly_authorized_observer_changes": true,
+  "original_static_library_hashes_same": true,
+  "unchanged_checker_and_common_files": {
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/analysis/check_results.py": "6246053428e99ce4d6e10cf1029930007abad94691c5f80ffd94a741d38c49fe",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/analysis/evidence.py": "2a38a4669c425cc75ce525106202da781833fb7787ffb56f2329bcb9dcf5fd53",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/analysis/read_fields.py": "658801fa02a9afc630124b1605c0659d409b4bce1081e68bd5433e0a70a2346c",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/prediction_seal.json": "e703e16f77d574df52cc561d569bddb0895a7c0105a962afe9f7a0c979c57b4f",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/preparation_bindings.json": "5b62a2c107bfab3989997a2591dad74fe95ce056a5e378cfab7dd369e729df69",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/source_preparation_anchor.json": "7f0fb1be3080e78c0e753ce8396ff638a5f6b745f5904c2e37e76b50cd1604ed",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/protocol.json": "fc70c2d33b617360c8c0d60102e1a37270a27f9da72f795a25197e6a908a6447",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/model_predictions_before_reference.csv": "ad2073cad8ad6bb3dd10ca259667ec63ec59b1b2b5ef32b011e8c272090d7b74",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/acceptance_spec.json": "ee7a3212d097be699c0d53d3cdcf4e1c558829bfcacb7c4309bd9d0f932f04a8",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/PROTOCOL.md": "92d746cd8115fe2e5a9a24ca91d71aa531b049fea56f0fc18fb4dba05bf832ff",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/data_history_status.json": "a076b1482d6a2a02aafbd5ec392b0aec015d482a7aac1f9ae05ffd94af639be9",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/adoption.json": "b60b2e85e56301f8e0052cf10941bb9a1c99deef2c3ff5a0f514a7647a77ec19",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_mrp_v1/common/case_matrix.csv": "9c464eb56a265d0f27e774c8fde831769f0b30113ccaa1f07a6d878aa7e8ba8c"
+  },
+  "constant_elf_values": {
+    "rho_phys_0xe84d8": 1000.0,
+    "one_0xe86c0": 1.0,
+    "invCs2_0xe8340": 3.0
+  },
+  "SOURCE_REVISION_AUDIT": "FAIL",
+  "reason": "volume last multiply-add changed from separated to fused",
+  "scope": "local instruction dataflow plus source/library/constants binding; not full transitive machine equivalence",
+  "branch_map": {
+    "direction_selection": [
+      "0x41e88",
+      "0x41ebd",
+      "0x425e8",
+      "0x42613"
+    ],
+    "capture_pointer_test": [
+      "0x41f0a",
+      "0x41f25"
+    ],
+    "capture_active": {
+      "append": "0x42116",
+      "volume_FMA": "0x421cd",
+      "mass_helper_call": "0x421fa",
+      "phases": [
+        "initial_reference",
+        "diagnostic"
+      ]
+    },
+    "capture_null": {
+      "volume_FMA": "0x4288f",
+      "mass_helper_call": "0x428bd",
+      "phases": [
+        "post_loop_final",
+        "initialize_if_later_authorized"
+      ]
+    },
+    "both_directions_can_use_both_capture_branches": true
+  },
+  "local_checks": [
+    {
+      "item": "legacy mass",
+      "status": "MATCHES_REQUIRED_OPERATION",
+      "addresses": [
+        "0x308c4",
+        "0x308d4",
+        "0x308e4",
+        "0x308f4"
+      ],
+      "meaning": "three VMULSD with binary64 stores/reloads then FMA(p3,dx,M)"
+    },
+    {
+      "item": "volume",
+      "status": "FAIL",
+      "old": [
+        "0x3fee8 VMULPD",
+        "0x3fef1 VADDPD",
+        "0x404b8 VMULPD",
+        "0x404c1 VADDPD"
+      ],
+      "new": [
+        "0x421cd VFMADD213SD",
+        "0x4288f VFMADD213SD"
+      ]
+    },
+    {
+      "item": "computeU / computeRho / rho copy",
+      "status": "LOCAL_CALL_DATAFLOW_CHECKED",
+      "addresses": [
+        "0x420bb indirect computeU",
+        "0x420ef indirect computeRho",
+        "0x4210e same rho spill",
+        "0x42116 append",
+        "0x4213f rho reload"
+      ],
+      "limit": "called physical kernels not fully proven binary-equivalent; no real flow execution"
+    },
+    {
+      "item": "speed / pressure",
+      "status": "MATCH_IN_CHECKED_NORMAL_PATHS",
+      "addresses": [
+        "0x4213b",
+        "0x42157",
+        "0x4215c",
+        "0x42161",
+        "0x42147",
+        "0x4214f",
+        "0x42173",
+        "0x4219a",
+        "0x4280e",
+        "0x42822",
+        "0x42827"
+      ],
+      "meaning": "RN(uy^2),FMA ux^2,FMA uz^2,sqrt; rho-1, divide3, pressure unit multiply/add"
+    },
+    {
+      "item": "compensated term / Neumaier / density delta",
+      "status": "MATCH_IN_CHECKED_LOCAL_BRANCHES",
+      "addresses": [
+        "0x42215",
+        "0x42245",
+        "0x42249",
+        "0x4224d",
+        "0x4225d",
+        "0x42268",
+        "0x4226c",
+        "0x42270",
+        "0x425a8",
+        "0x425ac",
+        "0x425b1",
+        "0x42290",
+        "0x422b3",
+        "0x422b8",
+        "0x422bc",
+        "0x42590",
+        "0x42595",
+        "0x42599"
+      ],
+      "meaning": "four separate multiplies, add, magnitude comparison and both correction branches; same rho-1; mass_stats original bytes"
+    },
+    {
+      "item": "densityIntegral",
+      "status": "MATCH_IN_CHECKED_NORMAL_PATHS",
+      "addresses": [
+        "0x422c1",
+        "0x422e8",
+        "0x422ec",
+        "0x42982",
+        "0x429a9",
+        "0x429ad"
+      ]
+    },
+    {
+      "item": "velocity integrals / sections",
+      "status": "MATCH_IN_CHECKED_NORMAL_PATHS",
+      "addresses": [
+        "0x42377",
+        "0x4238b",
+        "0x42393",
+        "0x4239b",
+        "0x423af",
+        "0x423b5",
+        "0x4242b",
+        "0x4244b",
+        "0x42a5b",
+        "0x42a6f",
+        "0x42a75",
+        "0x42ab2",
+        "0x42ad2"
+      ]
+    },
+    {
+      "item": "normalization / finite cold branches",
+      "status": "SOURCE_SAME_LOCAL_SINKS_CHECKED_NOT_FULL_EQUIVALENCE",
+      "addresses": [
+        "0x42525",
+        "0x42533",
+        "0x42546",
+        "0x4254a"
+      ],
+      "limit": "volume input path changed; therefore downstream equality cannot be generally assumed; exceptional cold calls not exhaustively adjudicated"
+    },
+    {
+      "item": "mass error / initial denominator / convergence",
+      "status": "SOURCE_UNCHANGED_NO_RUNTIME_EVIDENCE",
+      "source_lines": [
+        876,
+        877,
+        879,
+        882,
+        922,
+        923,
+        924,
+        925,
+        926
+      ],
+      "limit": "initial and diagnostic have distinct capture phases; no native numerical or gate acceptance performed"
+    }
+  ],
+  "all_nonmass_paths_proven_equivalent": false,
+  "no_native_zero_step_or_solver_invoked": true,
+  "formal_run_ids": []
+}

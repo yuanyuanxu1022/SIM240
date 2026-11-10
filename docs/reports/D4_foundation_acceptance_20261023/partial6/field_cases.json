@@ -1,0 +1,758 @@
+[
+  {
+    "output": "CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1/steady",
+    "row": {
+      "planned_case_id": "CAND_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000",
+      "run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "role": "regression",
+      "direction": "P",
+      "h_nm": 75.00000000000001,
+      "d_nm": 100.00000000000001,
+      "steps": 4342,
+      "diagnostic_rows": 4343,
+      "K_m3": 9.834076003216204e-23,
+      "smooth_K_error_percent": null,
+      "smooth_profile_L2_percent": null,
+      "regression_K_difference_percent": 4.5324597408580303e-07,
+      "max_mass_drift": 0.0,
+      "max_density_deviation": 8.881784197001252e-16,
+      "max_Mach": 2.391856203909282e-07,
+      "final_window_rel_std": 9.97909388908422e-07,
+      "final_window_rel_span": 3.7988324396191794e-06,
+      "final_section_relative_difference": 0.0,
+      "max_section_relative_difference": 0.0,
+      "frames": 10,
+      "independent_numerical_gate": true,
+      "geometry_PASS": true,
+      "smooth_or_regression_check_pass": true,
+      "source_self_RESULT_PASS": "false"
+    },
+    "frames": [
+      {
+        "step": "0",
+        "time_s": "0",
+        "tstar": "0",
+        "reason": "initial"
+      },
+      {
+        "step": "14",
+        "time_s": "5.8333333333333339e-11",
+        "tstar": "0.01037037037037037",
+        "reason": "scheduled"
+      },
+      {
+        "step": "27",
+        "time_s": "1.125e-10",
+        "tstar": "0.019999999999999997",
+        "reason": "scheduled"
+      },
+      {
+        "step": "68",
+        "time_s": "2.8333333333333334e-10",
+        "tstar": "0.050370370370370357",
+        "reason": "scheduled"
+      },
+      {
+        "step": "135",
+        "time_s": "5.6249999999999997e-10",
+        "tstar": "0.099999999999999992",
+        "reason": "scheduled"
+      },
+      {
+        "step": "270",
+        "time_s": "1.1249999999999999e-09",
+        "tstar": "0.19999999999999998",
+        "reason": "scheduled"
+      },
+      {
+        "step": "675",
+        "time_s": "2.8125e-09",
+        "tstar": "0.49999999999999983",
+        "reason": "scheduled"
+      },
+      {
+        "step": "1350",
+        "time_s": "5.6249999999999999e-09",
+        "tstar": "0.99999999999999967",
+        "reason": "scheduled"
+      },
+      {
+        "step": "2700",
+        "time_s": "1.125e-08",
+        "tstar": "1.9999999999999993",
+        "reason": "scheduled"
+      },
+      {
+        "step": "4342",
+        "time_s": "1.8091666666666668e-08",
+        "tstar": "3.2162962962962953",
+        "reason": "converged_final"
+      }
+    ],
+    "config": {
+      "mode": "steady",
+      "run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1/steady",
+      "direction": "P",
+      "dx_nm": "5",
+      "h_nm": "75",
+      "d_nm": "100",
+      "w_nm": "120",
+      "period_nm": "240",
+      "Ly_nm": "240",
+      "nu_m2_s": "1e-06",
+      "acceleration_m_s2": "100000",
+      "window_tstar": "0.75",
+      "max_time_H_diffusion": "8",
+      "frame_tstar": "0,0.01,0.02,0.05,0.1,0.2,0.5,1,2,4,8"
+    },
+    "effective": {
+      "run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "mode": "steady",
+      "h_m": "7.500000000000001e-08",
+      "d_m": "1.0000000000000001e-07",
+      "w_m": "1.2000000000000002e-07",
+      "Lx_m": "2.4000000000000003e-07",
+      "Ly_m": "2.4000000000000003e-07",
+      "phi": "0.5",
+      "dx_m": "5.0000000000000001e-09",
+      "dt_s": "4.1666666666666668e-12",
+      "nx": "48",
+      "ny": "48",
+      "nominal_volume_m3": "7.2000000000000028e-21",
+      "plan_area_m2": "5.7600000000000015e-14",
+      "window_steps": "1013",
+      "maximum_steps": "58800",
+      "acceleration_m_s2": "100000",
+      "nu_m2_s": "9.9999999999999995e-07",
+      "formal_simulation": "true",
+      "direction": "parallel"
+    }
+  },
+  {
+    "output": "CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1/steady",
+    "row": {
+      "planned_case_id": "CAND_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000",
+      "run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "role": "regression",
+      "direction": "T",
+      "h_nm": 75.00000000000001,
+      "d_nm": 100.00000000000001,
+      "steps": 2953,
+      "diagnostic_rows": 2954,
+      "K_m3": 4.449022023188299e-23,
+      "smooth_K_error_percent": null,
+      "smooth_profile_L2_percent": null,
+      "regression_K_difference_percent": 4.815359222476445e-08,
+      "max_mass_drift": 8.934175019802938e-13,
+      "max_density_deviation": 1.9425560715546908e-08,
+      "max_Mach": 1.280931138614025e-07,
+      "final_window_rel_std": 9.957140656094431e-07,
+      "final_window_rel_span": 4.247639769282007e-06,
+      "final_section_relative_difference": 2.054890843205642e-09,
+      "max_section_relative_difference": 0.6047644557569174,
+      "frames": 10,
+      "independent_numerical_gate": true,
+      "geometry_PASS": true,
+      "smooth_or_regression_check_pass": true,
+      "source_self_RESULT_PASS": "false"
+    },
+    "frames": [
+      {
+        "step": "0",
+        "time_s": "0",
+        "tstar": "0",
+        "reason": "initial"
+      },
+      {
+        "step": "14",
+        "time_s": "5.8333333333333339e-11",
+        "tstar": "0.01037037037037037",
+        "reason": "scheduled"
+      },
+      {
+        "step": "27",
+        "time_s": "1.125e-10",
+        "tstar": "0.019999999999999997",
+        "reason": "scheduled"
+      },
+      {
+        "step": "68",
+        "time_s": "2.8333333333333334e-10",
+        "tstar": "0.050370370370370357",
+        "reason": "scheduled"
+      },
+      {
+        "step": "135",
+        "time_s": "5.6249999999999997e-10",
+        "tstar": "0.099999999999999992",
+        "reason": "scheduled"
+      },
+      {
+        "step": "270",
+        "time_s": "1.1249999999999999e-09",
+        "tstar": "0.19999999999999998",
+        "reason": "scheduled"
+      },
+      {
+        "step": "675",
+        "time_s": "2.8125e-09",
+        "tstar": "0.49999999999999983",
+        "reason": "scheduled"
+      },
+      {
+        "step": "1350",
+        "time_s": "5.6249999999999999e-09",
+        "tstar": "0.99999999999999967",
+        "reason": "scheduled"
+      },
+      {
+        "step": "2700",
+        "time_s": "1.125e-08",
+        "tstar": "1.9999999999999993",
+        "reason": "scheduled"
+      },
+      {
+        "step": "2953",
+        "time_s": "1.2304166666666667e-08",
+        "tstar": "2.1874074074074068",
+        "reason": "converged_final"
+      }
+    ],
+    "config": {
+      "mode": "steady",
+      "run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1/steady",
+      "direction": "T",
+      "dx_nm": "5",
+      "h_nm": "75",
+      "d_nm": "100",
+      "w_nm": "120",
+      "period_nm": "240",
+      "Ly_nm": "240",
+      "nu_m2_s": "1e-06",
+      "acceleration_m_s2": "100000",
+      "window_tstar": "0.75",
+      "max_time_H_diffusion": "8",
+      "frame_tstar": "0,0.01,0.02,0.05,0.1,0.2,0.5,1,2,4,8"
+    },
+    "effective": {
+      "run_id": "D4_regression_h75_d100_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "mode": "steady",
+      "h_m": "7.500000000000001e-08",
+      "d_m": "1.0000000000000001e-07",
+      "w_m": "1.2000000000000002e-07",
+      "Lx_m": "2.4000000000000003e-07",
+      "Ly_m": "2.4000000000000003e-07",
+      "phi": "0.5",
+      "dx_m": "5.0000000000000001e-09",
+      "dt_s": "4.1666666666666668e-12",
+      "nx": "48",
+      "ny": "48",
+      "nominal_volume_m3": "7.2000000000000028e-21",
+      "plan_area_m2": "5.7600000000000015e-14",
+      "window_steps": "1013",
+      "maximum_steps": "58800",
+      "acceleration_m_s2": "100000",
+      "nu_m2_s": "9.9999999999999995e-07",
+      "formal_simulation": "true",
+      "direction": "perpendicular"
+    }
+  },
+  {
+    "output": "CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h50_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1/steady",
+    "row": {
+      "planned_case_id": "CAND_smooth_h50_d0_w120_P240_Ly240_dx5_P_a100000",
+      "run_id": "D4_smooth_h50_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "role": "smooth",
+      "direction": "P",
+      "h_nm": 50.00000000000001,
+      "d_nm": 0.0,
+      "steps": 1197,
+      "diagnostic_rows": 1198,
+      "K_m3": 1.0520833146517703e-23,
+      "smooth_K_error_percent": 0.9999982065699298,
+      "smooth_profile_L2_percent": 0.45641385975965915,
+      "regression_K_difference_percent": null,
+      "max_mass_drift": 0.0,
+      "max_density_deviation": 1.1102230246251565e-16,
+      "max_Mach": 4.480478570175244e-08,
+      "final_window_rel_std": 9.891728660727479e-07,
+      "final_window_rel_span": 4.402395131864053e-06,
+      "final_section_relative_difference": 0.0,
+      "max_section_relative_difference": 0.0,
+      "frames": 9,
+      "independent_numerical_gate": true,
+      "geometry_PASS": true,
+      "smooth_or_regression_check_pass": true,
+      "source_self_RESULT_PASS": "false"
+    },
+    "frames": [
+      {
+        "step": "0",
+        "time_s": "0",
+        "tstar": "0",
+        "reason": "initial"
+      },
+      {
+        "step": "6",
+        "time_s": "2.5000000000000001e-11",
+        "tstar": "0.01",
+        "reason": "scheduled"
+      },
+      {
+        "step": "12",
+        "time_s": "5.0000000000000002e-11",
+        "tstar": "0.02",
+        "reason": "scheduled"
+      },
+      {
+        "step": "30",
+        "time_s": "1.2500000000000001e-10",
+        "tstar": "0.049999999999999989",
+        "reason": "scheduled"
+      },
+      {
+        "step": "60",
+        "time_s": "2.5000000000000002e-10",
+        "tstar": "0.099999999999999978",
+        "reason": "scheduled"
+      },
+      {
+        "step": "120",
+        "time_s": "5.0000000000000003e-10",
+        "tstar": "0.19999999999999996",
+        "reason": "scheduled"
+      },
+      {
+        "step": "300",
+        "time_s": "1.25e-09",
+        "tstar": "0.49999999999999994",
+        "reason": "scheduled"
+      },
+      {
+        "step": "600",
+        "time_s": "2.5000000000000001e-09",
+        "tstar": "0.99999999999999989",
+        "reason": "scheduled"
+      },
+      {
+        "step": "1197",
+        "time_s": "4.9875e-09",
+        "tstar": "1.9949999999999997",
+        "reason": "converged_final"
+      }
+    ],
+    "config": {
+      "mode": "steady",
+      "run_id": "D4_smooth_h50_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h50_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1/steady",
+      "direction": "P",
+      "dx_nm": "5",
+      "h_nm": "50",
+      "d_nm": "0",
+      "w_nm": "120",
+      "period_nm": "240",
+      "Ly_nm": "240",
+      "nu_m2_s": "1e-06",
+      "acceleration_m_s2": "100000",
+      "window_tstar": "0.75",
+      "max_time_H_diffusion": "8",
+      "frame_tstar": "0,0.01,0.02,0.05,0.1,0.2,0.5,1,2,4,8"
+    },
+    "effective": {
+      "run_id": "D4_smooth_h50_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "mode": "steady",
+      "h_m": "5.0000000000000004e-08",
+      "d_m": "0",
+      "w_m": "1.2000000000000002e-07",
+      "Lx_m": "2.4000000000000003e-07",
+      "Ly_m": "2.4000000000000003e-07",
+      "phi": "0.5",
+      "dx_m": "5.0000000000000001e-09",
+      "dt_s": "4.1666666666666668e-12",
+      "nx": "48",
+      "ny": "48",
+      "nominal_volume_m3": "2.880000000000001e-21",
+      "plan_area_m2": "5.7600000000000015e-14",
+      "window_steps": "450",
+      "maximum_steps": "4800",
+      "acceleration_m_s2": "100000",
+      "nu_m2_s": "9.9999999999999995e-07",
+      "formal_simulation": "true",
+      "direction": "parallel"
+    }
+  },
+  {
+    "output": "CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h50_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1/steady",
+    "row": {
+      "planned_case_id": "CAND_smooth_h50_d0_w120_P240_Ly240_dx5_T_a100000",
+      "run_id": "D4_smooth_h50_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "role": "smooth",
+      "direction": "T",
+      "h_nm": 50.00000000000001,
+      "d_nm": 0.0,
+      "steps": 1197,
+      "diagnostic_rows": 1198,
+      "K_m3": 1.0520833026060534e-23,
+      "smooth_K_error_percent": 0.9999970501811006,
+      "smooth_profile_L2_percent": 0.45641280415552354,
+      "regression_K_difference_percent": null,
+      "max_mass_drift": 0.0,
+      "max_density_deviation": 3.3306690738754696e-16,
+      "max_Mach": 4.480478518896239e-08,
+      "final_window_rel_std": 9.86499774999305e-07,
+      "final_window_rel_span": 4.387727258959618e-06,
+      "final_section_relative_difference": 0.0,
+      "max_section_relative_difference": 0.0,
+      "frames": 9,
+      "independent_numerical_gate": true,
+      "geometry_PASS": true,
+      "smooth_or_regression_check_pass": true,
+      "source_self_RESULT_PASS": "false"
+    },
+    "frames": [
+      {
+        "step": "0",
+        "time_s": "0",
+        "tstar": "0",
+        "reason": "initial"
+      },
+      {
+        "step": "6",
+        "time_s": "2.5000000000000001e-11",
+        "tstar": "0.01",
+        "reason": "scheduled"
+      },
+      {
+        "step": "12",
+        "time_s": "5.0000000000000002e-11",
+        "tstar": "0.02",
+        "reason": "scheduled"
+      },
+      {
+        "step": "30",
+        "time_s": "1.2500000000000001e-10",
+        "tstar": "0.049999999999999989",
+        "reason": "scheduled"
+      },
+      {
+        "step": "60",
+        "time_s": "2.5000000000000002e-10",
+        "tstar": "0.099999999999999978",
+        "reason": "scheduled"
+      },
+      {
+        "step": "120",
+        "time_s": "5.0000000000000003e-10",
+        "tstar": "0.19999999999999996",
+        "reason": "scheduled"
+      },
+      {
+        "step": "300",
+        "time_s": "1.25e-09",
+        "tstar": "0.49999999999999994",
+        "reason": "scheduled"
+      },
+      {
+        "step": "600",
+        "time_s": "2.5000000000000001e-09",
+        "tstar": "0.99999999999999989",
+        "reason": "scheduled"
+      },
+      {
+        "step": "1197",
+        "time_s": "4.9875e-09",
+        "tstar": "1.9949999999999997",
+        "reason": "converged_final"
+      }
+    ],
+    "config": {
+      "mode": "steady",
+      "run_id": "D4_smooth_h50_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h50_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1/steady",
+      "direction": "T",
+      "dx_nm": "5",
+      "h_nm": "50",
+      "d_nm": "0",
+      "w_nm": "120",
+      "period_nm": "240",
+      "Ly_nm": "240",
+      "nu_m2_s": "1e-06",
+      "acceleration_m_s2": "100000",
+      "window_tstar": "0.75",
+      "max_time_H_diffusion": "8",
+      "frame_tstar": "0,0.01,0.02,0.05,0.1,0.2,0.5,1,2,4,8"
+    },
+    "effective": {
+      "run_id": "D4_smooth_h50_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "mode": "steady",
+      "h_m": "5.0000000000000004e-08",
+      "d_m": "0",
+      "w_m": "1.2000000000000002e-07",
+      "Lx_m": "2.4000000000000003e-07",
+      "Ly_m": "2.4000000000000003e-07",
+      "phi": "0.5",
+      "dx_m": "5.0000000000000001e-09",
+      "dt_s": "4.1666666666666668e-12",
+      "nx": "48",
+      "ny": "48",
+      "nominal_volume_m3": "2.880000000000001e-21",
+      "plan_area_m2": "5.7600000000000015e-14",
+      "window_steps": "450",
+      "maximum_steps": "4800",
+      "acceleration_m_s2": "100000",
+      "nu_m2_s": "9.9999999999999995e-07",
+      "formal_simulation": "true",
+      "direction": "perpendicular"
+    }
+  },
+  {
+    "output": "CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h75_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1/steady",
+    "row": {
+      "planned_case_id": "CAND_smooth_h75_d0_w120_P240_Ly240_dx5_P_a100000",
+      "run_id": "D4_smooth_h75_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "role": "smooth",
+      "direction": "P",
+      "h_nm": 75.00000000000001,
+      "d_nm": 0.0,
+      "steps": 2694,
+      "diagnostic_rows": 2695,
+      "K_m3": 3.531249871557504e-23,
+      "smooth_K_error_percent": 0.4444407909689696,
+      "smooth_profile_L2_percent": 0.20285511827097105,
+      "regression_K_difference_percent": null,
+      "max_mass_drift": 0.0,
+      "max_density_deviation": 1.9984014443252818e-15,
+      "max_Mach": 1.0163769973948406e-07,
+      "final_window_rel_std": 9.956586804633678e-07,
+      "final_window_rel_span": 4.454068442598888e-06,
+      "final_section_relative_difference": 0.0,
+      "max_section_relative_difference": 0.0,
+      "frames": 9,
+      "independent_numerical_gate": true,
+      "geometry_PASS": true,
+      "smooth_or_regression_check_pass": true,
+      "source_self_RESULT_PASS": "false"
+    },
+    "frames": [
+      {
+        "step": "0",
+        "time_s": "0",
+        "tstar": "0",
+        "reason": "initial"
+      },
+      {
+        "step": "14",
+        "time_s": "5.8333333333333339e-11",
+        "tstar": "0.01037037037037037",
+        "reason": "scheduled"
+      },
+      {
+        "step": "27",
+        "time_s": "1.125e-10",
+        "tstar": "0.019999999999999997",
+        "reason": "scheduled"
+      },
+      {
+        "step": "68",
+        "time_s": "2.8333333333333334e-10",
+        "tstar": "0.050370370370370357",
+        "reason": "scheduled"
+      },
+      {
+        "step": "135",
+        "time_s": "5.6249999999999997e-10",
+        "tstar": "0.099999999999999992",
+        "reason": "scheduled"
+      },
+      {
+        "step": "270",
+        "time_s": "1.1249999999999999e-09",
+        "tstar": "0.19999999999999998",
+        "reason": "scheduled"
+      },
+      {
+        "step": "675",
+        "time_s": "2.8125e-09",
+        "tstar": "0.49999999999999983",
+        "reason": "scheduled"
+      },
+      {
+        "step": "1350",
+        "time_s": "5.6249999999999999e-09",
+        "tstar": "0.99999999999999967",
+        "reason": "scheduled"
+      },
+      {
+        "step": "2694",
+        "time_s": "1.1225e-08",
+        "tstar": "1.9955555555555549",
+        "reason": "converged_final"
+      }
+    ],
+    "config": {
+      "mode": "steady",
+      "run_id": "D4_smooth_h75_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h75_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1/steady",
+      "direction": "P",
+      "dx_nm": "5",
+      "h_nm": "75",
+      "d_nm": "0",
+      "w_nm": "120",
+      "period_nm": "240",
+      "Ly_nm": "240",
+      "nu_m2_s": "1e-06",
+      "acceleration_m_s2": "100000",
+      "window_tstar": "0.75",
+      "max_time_H_diffusion": "8",
+      "frame_tstar": "0,0.01,0.02,0.05,0.1,0.2,0.5,1,2,4,8"
+    },
+    "effective": {
+      "run_id": "D4_smooth_h75_d0_w120_P240_Ly240_dx5_P_a100000_foundation_20261023_v1",
+      "mode": "steady",
+      "h_m": "7.500000000000001e-08",
+      "d_m": "0",
+      "w_m": "1.2000000000000002e-07",
+      "Lx_m": "2.4000000000000003e-07",
+      "Ly_m": "2.4000000000000003e-07",
+      "phi": "0.5",
+      "dx_m": "5.0000000000000001e-09",
+      "dt_s": "4.1666666666666668e-12",
+      "nx": "48",
+      "ny": "48",
+      "nominal_volume_m3": "4.3200000000000018e-21",
+      "plan_area_m2": "5.7600000000000015e-14",
+      "window_steps": "1013",
+      "maximum_steps": "10800",
+      "acceleration_m_s2": "100000",
+      "nu_m2_s": "9.9999999999999995e-07",
+      "formal_simulation": "true",
+      "direction": "parallel"
+    }
+  },
+  {
+    "output": "CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h75_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1/steady",
+    "row": {
+      "planned_case_id": "CAND_smooth_h75_d0_w120_P240_Ly240_dx5_T_a100000",
+      "run_id": "D4_smooth_h75_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "role": "smooth",
+      "direction": "T",
+      "h_nm": 75.00000000000001,
+      "d_nm": 0.0,
+      "steps": 2694,
+      "diagnostic_rows": 2695,
+      "K_m3": 3.5312498760170286e-23,
+      "smooth_K_error_percent": 0.4444409178176567,
+      "smooth_profile_L2_percent": 0.20285523406250813,
+      "regression_K_difference_percent": null,
+      "max_mass_drift": 0.0,
+      "max_density_deviation": 2.1094237467877974e-15,
+      "max_Mach": 1.0163769996382969e-07,
+      "final_window_rel_std": 9.953602260792962e-07,
+      "final_window_rel_span": 4.451196621879305e-06,
+      "final_section_relative_difference": 0.0,
+      "max_section_relative_difference": 0.0,
+      "frames": 9,
+      "independent_numerical_gate": true,
+      "geometry_PASS": true,
+      "smooth_or_regression_check_pass": true,
+      "source_self_RESULT_PASS": "false"
+    },
+    "frames": [
+      {
+        "step": "0",
+        "time_s": "0",
+        "tstar": "0",
+        "reason": "initial"
+      },
+      {
+        "step": "14",
+        "time_s": "5.8333333333333339e-11",
+        "tstar": "0.01037037037037037",
+        "reason": "scheduled"
+      },
+      {
+        "step": "27",
+        "time_s": "1.125e-10",
+        "tstar": "0.019999999999999997",
+        "reason": "scheduled"
+      },
+      {
+        "step": "68",
+        "time_s": "2.8333333333333334e-10",
+        "tstar": "0.050370370370370357",
+        "reason": "scheduled"
+      },
+      {
+        "step": "135",
+        "time_s": "5.6249999999999997e-10",
+        "tstar": "0.099999999999999992",
+        "reason": "scheduled"
+      },
+      {
+        "step": "270",
+        "time_s": "1.1249999999999999e-09",
+        "tstar": "0.19999999999999998",
+        "reason": "scheduled"
+      },
+      {
+        "step": "675",
+        "time_s": "2.8125e-09",
+        "tstar": "0.49999999999999983",
+        "reason": "scheduled"
+      },
+      {
+        "step": "1350",
+        "time_s": "5.6249999999999999e-09",
+        "tstar": "0.99999999999999967",
+        "reason": "scheduled"
+      },
+      {
+        "step": "2694",
+        "time_s": "1.1225e-08",
+        "tstar": "1.9955555555555549",
+        "reason": "converged_final"
+      }
+    ],
+    "config": {
+      "mode": "steady",
+      "run_id": "D4_smooth_h75_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/results/foundation_20261023_v1/D4_smooth_h75_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1/steady",
+      "direction": "T",
+      "dx_nm": "5",
+      "h_nm": "75",
+      "d_nm": "0",
+      "w_nm": "120",
+      "period_nm": "240",
+      "Ly_nm": "240",
+      "nu_m2_s": "1e-06",
+      "acceleration_m_s2": "100000",
+      "window_tstar": "0.75",
+      "max_time_H_diffusion": "8",
+      "frame_tstar": "0,0.01,0.02,0.05,0.1,0.2,0.5,1,2,4,8"
+    },
+    "effective": {
+      "run_id": "D4_smooth_h75_d0_w120_P240_Ly240_dx5_T_a100000_foundation_20261023_v1",
+      "mode": "steady",
+      "h_m": "7.500000000000001e-08",
+      "d_m": "0",
+      "w_m": "1.2000000000000002e-07",
+      "Lx_m": "2.4000000000000003e-07",
+      "Ly_m": "2.4000000000000003e-07",
+      "phi": "0.5",
+      "dx_m": "5.0000000000000001e-09",
+      "dt_s": "4.1666666666666668e-12",
+      "nx": "48",
+      "ny": "48",
+      "nominal_volume_m3": "4.3200000000000018e-21",
+      "plan_area_m2": "5.7600000000000015e-14",
+      "window_steps": "1013",
+      "maximum_steps": "10800",
+      "acceleration_m_s2": "100000",
+      "nu_m2_s": "9.9999999999999995e-07",
+      "formal_simulation": "true",
+      "direction": "perpendicular"
+    }
+  }
+]

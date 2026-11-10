@@ -1,0 +1,53 @@
+{
+  "errors": [],
+  "handling_assertions": {
+    "author_and_editor_channels_must_remain_separate": true,
+    "bundled_tools_are_local_only": true,
+    "data_reuse_authorized": false,
+    "external_service_use_authorized_by_this_report": false
+  },
+  "normalized_scope": {
+    "ai_plan": "approved_ai_assistance",
+    "capacity": "author_requested_reader",
+    "competence_areas": [
+      "cfd",
+      "evidence_integrity",
+      "software_provenance"
+    ],
+    "manuscript_type": "author_owned_CFD_protocol_and_saved_zero_step_evidence",
+    "out_of_scope": [
+      "solver_rerun",
+      "performance_advance",
+      "formal_calculation",
+      "scientific_reference_qualification",
+      "editorial_decision"
+    ],
+    "peer_review_model": "open",
+    "requested_focus": [
+      "provenance",
+      "raw_evidence",
+      "R1_R2",
+      "initial_field",
+      "closed_B_seal"
+    ]
+  },
+  "notice": "This validates declared process controls only. It does not establish reviewer competence, resolve conflicts, authorize external processing, or assess manuscript quality.",
+  "review_id": "URV-S4-ZERO-REVIEW-20261103",
+  "schema_version": "2.0",
+  "status": "READY_FOR_LOCAL_REVIEW",
+  "valid": true,
+  "warnings": [
+    {
+      "code": "CONFIDENTIAL_NOTES_CHANNEL_UNAVAILABLE",
+      "field": "venue_policy.confidential_editor_notes_supported"
+    },
+    {
+      "code": "EXTERNAL_AUTHORIZATION_NOT_USED",
+      "field": "authorization.external_processing_authorized"
+    },
+    {
+      "code": "COMPETENCE_LIMITS_MUST_BE_DISCLOSED",
+      "field": "reviewer.competence_limits"
+    }
+  ]
+}

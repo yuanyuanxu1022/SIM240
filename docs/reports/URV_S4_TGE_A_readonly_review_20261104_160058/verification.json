@@ -1,0 +1,132 @@
+{
+  "preparation_A_sha256": "53e544543ae26402a0d0fac7a7b3294e0a2286e7a7d4c336ce08e91abf53bfb9",
+  "bound_inputs_verified": 3695,
+  "protected_files": 3718,
+  "full_preparation_report_manifest_verified": true,
+  "scope_adoption": "PREPARATION_ONLY",
+  "all_execution_permissions_closed": true,
+  "zero_resource_proposal": {
+    "kind": "PROPOSAL_NOT_ADOPTED_RESOURCE_AUTHORITY",
+    "resources": {
+      "processes": 1,
+      "threads": 1,
+      "cuboids": 1,
+      "overlap": 3,
+      "per_process_address_space_GiB": 8,
+      "required_available_RAM_GiB": 12,
+      "required_initial_free_disk_GiB": 100,
+      "required_before_each_call_free_disk_GiB": 8,
+      "output_budget_GiB_per_call": 4,
+      "native_call_cap_seconds": 300,
+      "field_reader_cap_seconds": 300
+    },
+    "resource_decision_accepted": false,
+    "user_explicitly_authorized": false
+  },
+  "formal_solver_wall_cap_seconds": null,
+  "formal_checker_cap_seconds": null,
+  "planned_directories": [
+    {
+      "run_id": "URV_S4_T_dx0p625_TGE_v1_20261104_01",
+      "mode": "steady",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/runs/URV_S4_T_dx0p625_TGE_v1_20261104_01/steady",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "config_sha256": "29dfa62bd83c56b83f67ba0ef89fd245ed800e89ddc9f5d6f4d6c6f35856ca63"
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_describe",
+      "mode": "describe",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/describe",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "config_sha256": "b6277ce784f3f9e337775323f1448ac33d355a38d226b82c67186ad8b1015b5e"
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_precheck",
+      "mode": "precheck",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "config_sha256": "ff32cf6c74536bef4b7b42b47be03d21ad5d3ce33e9d5a48294bb5bd3005d819"
+    },
+    {
+      "run_id": "ZERO_URV_S4_TGE_ZERO_v1_20261104_01_initialize",
+      "mode": "initialize",
+      "output_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/initialize",
+      "files": [
+        "run_config.txt",
+        "run_manifest.txt"
+      ],
+      "config_sha256": "3c95e8ed19066f82e548a8834b901dfa855546a7bbe2eafbe7aedd7210df3d0a"
+    }
+  ],
+  "source_functions": [
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/scripts/inspect_preparation.py",
+      "sha256": "8ea8bb98068b12fe1bbbe713021efeb313794fcd6148efe183ccf66743c066f3",
+      "functions": []
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/scripts/audit_zero_tge.py",
+      "sha256": "70c2494f4b306edb95a8b946ad0c6e3e0ca9a58911604af6087e639dacf1b100",
+      "functions": [
+        "save",
+        "resources",
+        "limits",
+        "stop",
+        "bounded_process",
+        "execute"
+      ]
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_tge_v1/analysis/tge_stage.py",
+      "sha256": "6093012d41162c3c9a6fd06136c8c32fb979571ad3d57a42e23243b7acdc6817",
+      "functions": [
+        "load",
+        "canonical",
+        "covered",
+        "unchanged",
+        "physics",
+        "validate_plan",
+        "verify_history",
+        "verify_seal",
+        "require_pristine",
+        "validate_zero_authority",
+        "static_summary"
+      ]
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_tge_v1/analysis/check_zero_tge.py",
+      "sha256": "a3d6fb2913bc1108c29423820476918f39143c559753b23fa8f82f293851e3ca",
+      "functions": [
+        "validate_completed_zero"
+      ]
+    }
+  ],
+  "execution_evidence_paths_not_created": [
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/S4_TGE_zero_launch_release_v1_20261104_01.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/S4_TGE_zero_authorization_v1_20261104_01.json",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/S4_TGE_zero_resource_decision_v1_20261104_01.json"
+  ],
+  "native_audit_attempts": 0,
+  "formal_attempts": 0,
+  "old_resource_snapshot_timestamp": "2026-11-04T15:43:53.168249+08:00",
+  "current_RAM_disk_or_process_snapshot_taken": false,
+  "candidate_peak_memory_or_throughput_measured": false,
+  "original_S4_stage_accepted": false,
+  "reference_qualified": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "native_calls": 0,
+  "VTK_calls": 0,
+  "software_test_reruns": 0,
+  "builds": 0,
+  "PERF_advances": 0,
+  "formal_runs": 0
+}

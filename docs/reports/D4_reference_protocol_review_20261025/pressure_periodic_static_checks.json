@@ -1,0 +1,18 @@
+{
+  "scope": "analytic identities only, not a solver or implemented constraint validation",
+  "physical_weak_blocks": "[[nu*K,-B^T],[-B,0]]; B(q,u)=integral(q div u)",
+  "body_force_form": "-nu*Delta(u)+grad(pi)=a*ex, pi periodic",
+  "equivalent_no_body_force_pressure": "p_eq=rho*pi-rho*a*x; remove explicit a*ex",
+  "flat_dimensionless_body_form_residual": 0,
+  "flat_dimensionless_equivalent_no_body_form_residual": 0,
+  "flat_dimensionless_double_drive_form_residual": -1,
+  "double_drive_would_change_flat_K_factor": 2,
+  "constant_pressure_contributes_integral_div_test": "zero by solid no-slip and paired periodic traces",
+  "periodic_faces": "x=0 and x=P, 0<z<h; no fluid face above h",
+  "pressure_gauge": "one constant nullspace then volume-weighted zero mean",
+  "MMS_sample_max_divergence": 0.0,
+  "MMS_sample_max_wall_speed": 0.0,
+  "MMS_sample_max_periodic_trace_difference": 0.0,
+  "MMS_exact_flux_functional_fraction": "1/6",
+  "PDE_solved": false
+}

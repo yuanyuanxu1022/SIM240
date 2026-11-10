@@ -1,0 +1,116 @@
+{
+  "contract": "docs/reports/Primary_text_build_evidence_20261027/MINIMUM_EVIDENCE_CONTRACT.md",
+  "item": "P8",
+  "status": "RECEIVED_IDENTITY_VERIFIED_SIX_SPECIFIED_CURRENT_SOURCE_CORRESPONDENCES_CHECKED",
+  "original_received": true,
+  "identity_verified_by_agent": true,
+  "original_implementation_correspondence_closed": true,
+  "closure_scope": "Stationary-wall linear Eq.(5a,b), q convention, normal streaming/current D2 CPU SISD source, finite inputs and required stencil; NOT runtime or historical binary certification.",
+  "checks": [
+    {
+      "id": "P8-Q",
+      "item": "q definition and directed link",
+      "original_printed_pages": [
+        3453,
+        3454
+      ],
+      "original_locator": "III.A opening paragraph; Fig.1; paragraph preceding Eq.(5a)",
+      "source_locators": [
+        "setBouzidiBoundary.h:248-264,291",
+        "d2_groove_error_map.cpp:239-303"
+      ],
+      "finding": "q is fluid-node-to-wall distance divided by full fluid-to-solid link length, including diagonal norm; setter index direction reverses before storage.",
+      "status": "CORRESPONDS_IN_REVIEWED_SCOPE"
+    },
+    {
+      "id": "P8-L",
+      "item": "linear short-wall-distance branch",
+      "original_printed_pages": [
+        3454
+      ],
+      "original_locator": "Eq.(5a), q<1/2",
+      "source_locators": [
+        "setBouzidiBoundary.h:62-69"
+      ],
+      "finding": "2q and 1-2q coefficients match after converting streamed reads to same-time post-collision populations.",
+      "status": "CORRESPONDS_IN_REVIEWED_SCOPE"
+    },
+    {
+      "id": "P8-H",
+      "item": "linear long-wall-distance branch",
+      "original_printed_pages": [
+        3454
+      ],
+      "original_locator": "Eq.(5b), q>=1/2",
+      "source_locators": [
+        "setBouzidiBoundary.h:70-71"
+      ],
+      "finding": "1/(2q) and (2q-1)/(2q) coefficients and outgoing/opposite directions match after time-layer mapping; q=1/2 assigned differently but same algebraic value.",
+      "status": "CORRESPONDS_IN_REVIEWED_SCOPE"
+    },
+    {
+      "id": "P8-T",
+      "item": "collision/streaming time layers",
+      "original_printed_pages": [
+        3453,
+        3454
+      ],
+      "original_locator": "Sec.II Eq.(2) and surrounding definitions; paragraph following Eq.(5b)",
+      "source_locators": [
+        "superLattice.hh:663-706",
+        "blockLattice.hh:316-341",
+        "blockLattice.h:484",
+        "cpu/sisd/column.h:161-204",
+        "blockStructure.h:178-182",
+        "cpu/cell.h:179-181,208-210"
+      ],
+      "finding": "PostStream reads xs[i],xb[i],xf[opposite] map to collision-stage h_i(A),h_i(A-c),h_opposite(A), respectively, for reviewed normal stream CPU SISD path.",
+      "status": "CORRESPONDS_IN_REVIEWED_SCOPE"
+    },
+    {
+      "id": "P8-S",
+      "item": "stationary wall scope",
+      "original_printed_pages": [
+        3454
+      ],
+      "original_locator": "III.A Eqs.(5a),(5b); III.B opening paragraph before Eq.(8)",
+      "source_locators": [
+        "d2_groove_error_map.cpp:651-661",
+        "setBouzidiBoundary.h:47-80"
+      ],
+      "finding": "Application explicitly installs the zero-velocity processor for materials 2 and 3, matching fixed-wall linear interpolation; quadratic and moving-wall variants not claimed.",
+      "status": "CORRESPONDS_IN_REVIEWED_SCOPE"
+    },
+    {
+      "id": "P8-M",
+      "item": "q=1/2 reduction",
+      "original_printed_pages": [
+        3454
+      ],
+      "original_locator": "Eqs.(5a),(5b),(7); comments immediately after Eq.(7)",
+      "source_locators": [
+        "setBouzidiBoundary.h:68-71",
+        "d2_groove_error_map.cpp:56,294-303"
+      ],
+      "finding": "Both finite-input coefficient forms reduce to local outgoing post-collision bounce-back at half link; <= versus >= endpoint placement does not change the algebraic result.",
+      "status": "CORRESPONDS_IN_REVIEWED_SCOPE"
+    }
+  ],
+  "material_theoretical_conflict_found": false,
+  "astra_review_triggered": false,
+  "compile_executed": false,
+  "solver_executed": false,
+  "numerical_fixture_executed": false,
+  "real_N8_extraction_executed": false,
+  "new_run_id": null,
+  "source_N8_run_id": "D4_N8_diag_v3_1_20261026_v1",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null,
+  "reference_qualified": false,
+  "strict_error_bound_established": false,
+  "submission_ready": false,
+  "prediction": "HOLD",
+  "historical_build_binding": "OPEN",
+  "reference_6_fulltext_applicability": "OPEN"
+}

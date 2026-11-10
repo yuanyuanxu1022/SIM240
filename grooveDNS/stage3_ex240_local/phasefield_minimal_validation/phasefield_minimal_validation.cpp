@@ -29,9 +29,16 @@ using MixtureRules=LinearTauViscosity;
 using Coupling=WellBalancedCahnHilliardPostProcessor<MixtureRules>;
 
 constexpr T pi=3.1415926535897932384626433832795;
-constexpr T tauL=1.,tauG=.8,tauPhase=1.,rhoL=1.,rhoG=1.,sigma=.01,interfaceWidth=4.,targetTheta=100.;
+constexpr T tauL=1.,tauG=.8,tauPhase=1.,rhoL=1.,rhoG=1.,sigma=.01,interfaceWidth=4.;
+// 运行期可覆盖（--theta）。默认 100 = R1 已验证点，保证不传参时行为与历史完全一致。
+T targetTheta=100.;
 
-struct Options { std::string mode,runId; int maxSteps=-1,vtkInterval=-1; bool shortRun=false; };
+struct Options {
+  std::string mode,runId,initPhi="smooth",initPressure="zero";
+  int maxSteps=-1,vtkInterval=-1; bool shortRun=false;
+  T theta=100.;
+  int extent=64;   // 水平域 nx=nz；小接触角液滴铺展更宽，须加大以免撞界
+};
 
 Options parse(int argc,char** argv)
 {
@@ -43,15 +50,74 @@ Options parse(int argc,char** argv)
     else if (key=="--run-id") o.runId=value();
     else if (key=="--max-steps") o.maxSteps=std::stoi(value());
     else if (key=="--vtk-interval") o.vtkInterval=std::stoi(value());
+    else if (key=="--init-phi") o.initPhi=value();
+    else if (key=="--init-pressure") o.initPressure=value();
+    else if (key=="--theta") {
+      o.theta=std::stod(value());
+      if (!(o.theta>T(0)&&o.theta<T(180))) throw std::runtime_error("--theta must be in (0,180)");
+    }
+    else if (key=="--extent") {
+      o.extent=std::stoi(value());
+      if (o.extent<32) throw std::runtime_error("--extent must be >= 32");
+    }
     else if (key=="--short") o.shortRun=true;
     else throw std::runtime_error("unknown option "+key);
   }
   if (o.mode!="contact"&&o.mode!="laplace") throw std::runtime_error("--case must be contact or laplace");
   if (!std::regex_match(o.runId,std::regex("[A-Za-z0-9][A-Za-z0-9_-]*"))) throw std::runtime_error("--run-id is required");
+  if (o.initPhi!="smooth"&&o.initPhi!="tanh") throw std::runtime_error("--init-phi must be smooth or tanh");
+  if (o.initPressure!="zero"&&o.initPressure!="laplace") throw std::runtime_error("--init-pressure must be zero or laplace");
   if (o.maxSteps<0) o.maxSteps=o.shortRun?50:(o.mode=="contact"?6000:4000);
   if (o.vtkInterval<0) o.vtkInterval=o.shortRun?50:(o.mode=="contact"?500:400);
   return o;
 }
+
+// E0 判别实验初值 functor（见 R0 报告 Fix B1）：
+// 模型离散平衡界面剖面 phi(d)=0.5*(1+tanh(2d/w))，d 为到球面带符号距离（外正内负），
+// 与 phaseFieldCoupling.h 壁面处理器一致；phi=0 液体、phi=1 气体。
+template<typename T>
+class TanhSpherePhaseF3D final : public AnalyticalF3D<T,T> {
+  Vector<T,3> _center; T _radius,_width;
+public:
+  TanhSpherePhaseF3D(Vector<T,3> center,T radius,T width)
+    : AnalyticalF3D<T,T>(1),_center(center),_radius(radius),_width(width) {}
+  bool operator()(T output[],const T x[]) override
+  {
+    const T dist=std::sqrt((x[0]-_center[0])*(x[0]-_center[0])
+                          +(x[1]-_center[1])*(x[1]-_center[1])
+                          +(x[2]-_center[2])*(x[2]-_center[2]));
+    const T d=dist-_radius;
+    output[0]=T(.5)*(1+std::tanh(T(2)*d/_width));
+    return true;
+  }
+};
+
+// 静水平衡压力初值 p=pIn*(1-phi)：tanh 模式与离散平衡剖面一致，
+// cos2 模式精确复刻 SmoothIndicatorSphere3D 的 signedDistanceToPorosity 剖面（phi=1-solid）。
+template<typename T>
+class LaplacePressureF3D final : public AnalyticalF3D<T,T> {
+  Vector<T,3> _center; T _radius,_width,_pIn; bool _tanh;
+public:
+  LaplacePressureF3D(Vector<T,3> center,T radius,T width,T pIn,bool tanhProfile)
+    : AnalyticalF3D<T,T>(1),_center(center),_radius(radius),_width(width),_pIn(pIn),_tanh(tanhProfile) {}
+  bool operator()(T output[],const T x[]) override
+  {
+    const T dist=std::sqrt((x[0]-_center[0])*(x[0]-_center[0])
+                          +(x[1]-_center[1])*(x[1]-_center[1])
+                          +(x[2]-_center[2])*(x[2]-_center[2]));
+    const T d=dist-_radius;
+    T solid;
+    if (_tanh) solid=T(.5)*(1-std::tanh(T(2)*d/_width));
+    else {
+      const T eps=_width/T(2);
+      if (d<=-eps/T(2)) solid=1;
+      else if (d>=eps/T(2)) solid=0;
+      else { const T dd=d+eps/T(2); solid=std::cos(pi/T(2)*dd/eps); solid*=solid; }
+    }
+    output[0]=_pIn*solid;
+    return true;
+  }
+};
 
 struct Config {
   int nx,ny,nz; T radius; bool walls;
@@ -105,7 +171,7 @@ void prepareLattice(PhaseCase& c,const Config& cfg)
   communicator.requestField<PHIWETTING>(); communicator.requestField<CHEM_POTENTIAL>(); communicator.exchangeRequests();
 }
 
-void initializeFields(PhaseCase& c,const Config& cfg)
+void initializeFields(PhaseCase& c,const Config& cfg,const Options& opt)
 {
   auto& geometry=c.getGeometry(); auto& ns=c.getLattice(NavierStokes{}); auto& ch=c.getLattice(Component1{});
   AnalyticalConst3D<T,T> zero(0),one(1),rhoV(rhoG),rhoLiquid(rhoL),
@@ -113,12 +179,19 @@ void initializeFields(PhaseCase& c,const Config& cfg)
   const Vector<T,3> center=cfg.walls?Vector<T,3>{T(cfg.nx)/2,0,T(cfg.nz)/2}:Vector<T,3>{T(cfg.nx)/2,T(cfg.ny)/2,T(cfg.nz)/2};
   IndicatorSphere3D<T> sphere(center,cfg.radius);
   SmoothIndicatorSphere3D<T,T> smoothSphere(sphere,interfaceWidth/2);
-  AnalyticalIdentity3D<T,T> phi(one-smoothSphere);
+  AnalyticalIdentity3D<T,T> phiCos2(one-smoothSphere);
+  TanhSpherePhaseF3D<T> phiTanh(center,cfg.radius,interfaceWidth);
+  AnalyticalF3D<T,T>& phi=opt.initPhi=="tanh"
+    ?static_cast<AnalyticalF3D<T,T>&>(phiTanh):static_cast<AnalyticalF3D<T,T>&>(phiCos2);
   AnalyticalIdentity3D<T,T> rho(rhoV+(rhoLiquid-rhoV)*phi);
   AnalyticalIdentity3D<T,T> tau(tauV+(tauLiquid-tauV)*phi);
+  const T pIn=T(2)*sigma/cfg.radius; // 静水平衡 Laplace 跳变，格子单位
+  LaplacePressureF3D<T> pLaplace(center,cfg.radius,interfaceWidth,pIn,opt.initPhi=="tanh");
+  AnalyticalF3D<T,T>& pInit=opt.initPressure=="laplace"
+    ?static_cast<AnalyticalF3D<T,T>&>(pLaplace):static_cast<AnalyticalF3D<T,T>&>(zero);
   auto all=cfg.walls?geometry.getMaterialIndicator({0,1,2}):geometry.getMaterialIndicator({0,1});
   auto bulk=geometry.getMaterialIndicator(1);
-  ns.defineRhoU(all,zero,zeroVelocity); ns.iniEquilibrium(all,zero,zeroVelocity);
+  ns.defineRhoU(all,pInit,zeroVelocity); ns.iniEquilibrium(all,pInit,zeroVelocity);
   ch.defineRhoU(all,phi,zeroVelocity); ch.iniEquilibrium(all,phi,zeroVelocity);
   fields::set<RHO>(ns,all,rho); fields::set<TAU_EFF>(ns,bulk,tau);
   fields::set<EXTERNAL_FORCE>(ns,all,zeroVelocity);
@@ -227,13 +300,14 @@ int main(int argc,char** argv)
 {
   initialize(&argc,&argv); if (singleton::mpi().getSize()!=1) { std::cerr<<"single rank required\n"; return 2; }
   Options opt; try { opt=parse(argc,argv); } catch (const std::exception& e) { std::cerr<<e.what()<<'\n'; return 2; }
-  const Config cfg=opt.mode=="contact"?Config{64,40,64,18,true}:Config{64,64,64,16,false};
+  targetTheta=opt.theta;
+  const Config cfg=opt.mode=="contact"?Config{opt.extent,40,opt.extent,18,true}:Config{64,64,64,16,false};
   const auto out=std::filesystem::path("output")/opt.runId; if (std::filesystem::exists(out)) return 2;
   std::filesystem::create_directories(out); singleton::directories().setOutputDir((out.string()+"/").c_str());
   std::ofstream log(out/"run.log"); log<<std::setprecision(17)<<std::boolalpha;
   try {
     PhaseCase::ParametersD parameters; auto mesh=createMesh(cfg); PhaseCase c(parameters,mesh);
-    prepareGeometry(c,cfg); prepareLattice(c,cfg); initializeFields(c,cfg);
+    prepareGeometry(c,cfg); prepareLattice(c,cfg); initializeFields(c,cfg,opt);
     const Stats initial=measure(c); const std::string vtkName=opt.mode=="contact"?"phasefield_contact_angle":"phasefield_laplace";
     writeVtk(c,vtkName,0,true);
     std::ofstream csv(out/"history.csv"); csv<<std::setprecision(17)
@@ -272,8 +346,9 @@ int main(int argc,char** argv)
       <<"\nfinite="<<allFinite<<"\nexit_code="<<(pass?0:3)<<'\n';
     std::ofstream params(out/"parameters.txt"); params<<std::setprecision(17)
       <<"case="<<opt.mode<<"\nmodel=well_balanced_cahn_hilliard\ndimensions_lattice="<<cfg.nx<<','<<cfg.ny<<','<<cfg.nz<<"\nradius_lattice="<<cfg.radius
-      <<"\ntau_liquid="<<tauL<<"\ntau_gas="<<tauG<<"\ntau_phase="<<tauPhase<<"\nrho_liquid_lattice="<<rhoL<<"\nrho_gas_lattice="<<rhoG<<"\nsurface_tension_lattice="<<sigma<<"\ninterface_width_lattice="<<interfaceWidth<<"\ninput_contact_angle_deg="<<targetTheta<<"\n";
-    std::ofstream manifest(out/"run_manifest.txt"); manifest<<"run_id="<<opt.runId<<"\ncase="<<opt.mode<<"\ncommand=mpirun -np 1 ./phasefield_minimal_validation --case "<<opt.mode<<" --run-id "<<opt.runId<<" --max-steps "<<opt.maxSteps<<" --vtk-interval "<<opt.vtkInterval<<(opt.shortRun?" --short":"")<<"\nopenlb_head=882924a9cfc8dcdf82909e39530789cb6f5ebcc4\nexit_code="<<(pass?0:3)<<'\n';
+      <<"\ntau_liquid="<<tauL<<"\ntau_gas="<<tauG<<"\ntau_phase="<<tauPhase<<"\nrho_liquid_lattice="<<rhoL<<"\nrho_gas_lattice="<<rhoG<<"\nsurface_tension_lattice="<<sigma<<"\ninterface_width_lattice="<<interfaceWidth<<"\ninput_contact_angle_deg="<<targetTheta
+      <<"\ninit_phi="<<opt.initPhi<<"\ninit_pressure="<<opt.initPressure<<"\n";
+    std::ofstream manifest(out/"run_manifest.txt"); manifest<<"run_id="<<opt.runId<<"\ncase="<<opt.mode<<"\ncommand=mpirun -np 1 ./phasefield_minimal_validation --case "<<opt.mode<<" --run-id "<<opt.runId<<" --max-steps "<<opt.maxSteps<<" --vtk-interval "<<opt.vtkInterval<<" --init-phi "<<opt.initPhi<<" --init-pressure "<<opt.initPressure<<(opt.shortRun?" --short":"")<<"\nopenlb_head=882924a9cfc8dcdf82909e39530789cb6f5ebcc4\nexit_code="<<(pass?0:3)<<'\n';
     log<<"PASS="<<pass<<" stable="<<stable<<" physical="<<physical<<" step="<<finalStep<<" maxMach="<<maxMach<<" massDrift="<<maxMassDrift<<'\n';
     std::cout<<opt.runId<<" PASS="<<pass<<" step="<<finalStep<<'\n'; return pass?0:3;
   } catch (const std::exception& e) { log<<"exception="<<e.what()<<'\n'; std::cerr<<e.what()<<'\n'; return 4; }

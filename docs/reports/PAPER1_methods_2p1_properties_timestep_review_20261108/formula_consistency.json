@@ -1,0 +1,27 @@
+{
+  "scope": "arithmetic/dimensional consistency of current manuscript parameters; not solver evidence",
+  "method": "exact rational arithmetic; decimals for display only",
+  "rho_kg_m3": "1000",
+  "nu_phys_m2_s": "0.000001",
+  "mu_Pa_s": "0.001",
+  "mu_mPa_s": "1",
+  "tau_dimensionless": "1",
+  "lattice_nu_exact": "1/6",
+  "time_steps": [
+    {
+      "dx_m": "5E-9",
+      "dt_s_exact_fraction": "1/240000000000",
+      "dt_s_decimal": "4.1666666666666666666666666666666667E-12",
+      "lattice_nu_from_conversion_exact": "1/6"
+    },
+    {
+      "dx_m": "2.5E-9",
+      "dt_s_exact_fraction": "1/960000000000",
+      "dt_s_decimal": "1.0416666666666666666666666666666667E-12",
+      "lattice_nu_from_conversion_exact": "1/6"
+    }
+  ],
+  "refined_dt_over_main_dt_exact": "1/4",
+  "all_formula_checks_pass": true,
+  "dimensional_relation": "nu_phys = nu_lattice * dx^2 / dt; dt has time units"
+}

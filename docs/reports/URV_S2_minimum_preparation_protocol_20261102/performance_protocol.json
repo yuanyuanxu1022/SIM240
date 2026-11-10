@@ -1,0 +1,99 @@
+{
+  "protocol_id": "S2-MIP-v1-PERF",
+  "status": "PROTOCOL_ONLY_NOT_EXECUTED",
+  "purpose": "bounded resource/throughput observation only; not a reference solve",
+  "time_stepping_authorized": false,
+  "formal_simulation_authorized": false,
+  "approved_benchmark_run_ids": [],
+  "candidate_cases": [
+    "URV1_U_REG_P_dx1p25_a100000",
+    "URV1_U_REG_T_dx1p25_a100000"
+  ],
+  "direction_order": [
+    "P",
+    "T"
+  ],
+  "runs_planned": 2,
+  "same_native_binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+  "native_mode": "steady",
+  "native_formal_simulation_flag_expected": true,
+  "native_formal_flag_is_not_authorization": true,
+  "formal_physics_window_cap_and_frame_plan_unchanged": true,
+  "window_tstar": 0.75,
+  "max_time_H_diffusion": 8,
+  "native_window_steps": 10368,
+  "native_maximum_steps": 602112,
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_run_free_disk_GiB": 8,
+    "output_budget_GiB_per_case": 4,
+    "formal_wall_cap_seconds_by_dx_nm": {
+      "5": 3600,
+      "2.5": 14400,
+      "1.25": 43200
+    }
+  },
+  "budget": {
+    "wall_cap_seconds_per_case": 1800,
+    "observed_complete_diagnostic_target_step": 2048,
+    "stop_when": "first of complete diagnostic step >=2048 or 1800s since process start",
+    "monitor_sample_seconds": 1,
+    "SIGTERM_grace_seconds": 10,
+    "SIGKILL_after_grace": true,
+    "automatic_retry": false,
+    "automatic_extension": false
+  },
+  "performance_windows": {
+    "warmup_excluded_observed_steps_below": 256,
+    "first_progress_interval": [
+      256,
+      768
+    ],
+    "second_progress_interval": [
+      1024,
+      1536
+    ],
+    "minimum_distinct_progress_sample_steps": 512,
+    "timing_basis": "monotonic external observation of complete newline-terminated diagnostic records; retain observed endpoints and actual delta-step; no per-step exact timestamps assumed",
+    "endpoint_selection": "start is first observed sample at or above 256 or 1024 respectively; end is first later sample at least start_step+512; intervals may overlap and actual endpoints must be retained"
+  },
+  "required_measurements": [
+    "process monotonic start/stop and exit/signal",
+    "parent-recorded planned-stop reason; timeout flag preserved",
+    "bounded RSS/available RAM/disk/output size samples",
+    "complete raw diagnostics with incomplete final line preserved and separately marked",
+    "diagnostic progress observation log",
+    "last complete diagnostic step as lower bound only if process interrupted",
+    "source/config/library hashes before and after",
+    "host/CPU/Python/environment and single-process/thread settings",
+    "original byte-identical native outputs including formal_simulation flag when present",
+    "missing result/completion/native execution-audit as missing; never synthesize",
+    "checkpoint/restart unsupported; no formal continuation or data promotion"
+  ],
+  "candidate_outcomes": [
+    "PERF_EVIDENCE_SUFFICIENT",
+    "PERF_EVIDENCE_INSUFFICIENT",
+    "PERF_ABORTED_UNEXPECTED"
+  ],
+  "scientific_outputs": {
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": false,
+    "REFERENCE_QUALIFIED_FOR_CASE": false,
+    "MODEL_COMPARISON": "NOT_EVALUATED",
+    "physical_validation": "NOT_EVALUATED"
+  },
+  "blockers_for_next_direction": [
+    "unexpected exit or input drift",
+    "memory/disk/output budget violation",
+    "nonfinite diagnostics or frozen safety guard violation",
+    "missing or insufficient required performance intervals"
+  ],
+  "no_formal_release_from_benchmark_alone": true,
+  "no_S2_formal_or_S3_automatic_start": true
+}

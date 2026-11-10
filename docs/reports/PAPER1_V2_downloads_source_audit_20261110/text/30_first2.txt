@@ -1,0 +1,104 @@
+J. Fluid Mech. (2013), vol. 725, pp. 23–54.   c Cambridge University Press 2013                23
+doi:10.1017/jfm.2013.184
+
+
+              Pressure losses in grooved channels
+                             A. Mohammadi and J. M. Floryan†
+          Department of Mechanical and Materials Engineering, University of Western Ontario,
+                                London, Ontario, N6A 5B9, Canada
+
+               (Received 31 October 2011; revised 27 March 2013; accepted 8 April 2013)
+
+
+The effects of small-amplitude, two-dimensional grooves on pressure losses in a
+laminar channel flow have been analysed. Grooves with an arbitrary shape and an
+arbitrary orientation with respect to the flow direction have been considered. It has
+been demonstrated that losses can be expressed as a superposition of two parts, one
+associated with change in the mean positions of the walls and one induced by flow
+modulations associated with the geometry of the grooves. The former effect can be
+determined analytically, while the latter has to be determined numerically and can be
+captured with an acceptable accuracy using reduced-order geometry models. Projection
+of the wall shape onto a Fourier space has been used to generate such a model.
+It has been found that in most cases replacement of the actual wall geometry with
+the leading mode of the relevant Fourier expansion permits determination of pressure
+losses with an error of less than 10 %. Detailed results are given for sinusoidal
+grooves for the range of parameters of practical interest. These results describe
+the performance of arbitrary grooves with the accuracy set by the properties of the
+reduced-order geometry model and are exact for sinusoidal grooves. The results show
+a strong dependence of the pressure losses on the groove orientation. Longitudinal
+grooves produce the smallest drag, and oblique grooves with an inclination angle of
+∼42◦ exhibit the largest flow turning potential. Detailed analyses of the extreme cases,
+i.e. transverse and longitudinal grooves, have been carried out. For transverse grooves
+with small wavenumbers, the dominant part of the drag is produced by shear, while
+the pressure form drag and the pressure interaction drag provide minor contributions.
+For the same grooves with large wavenumbers, the stream lifts up above the grooves
+due to their blocking effect, resulting in a change in the mechanics of drag formation:
+the contributions of shear decrease while the contributions of the pressure interaction
+drag increase, leading to an overall drag increase. In the case of longitudinal grooves,
+drag is produced by shear, and its rearrangement results in a drag decrease for long-
+wavelength grooves in spite of an increase of the wetted surface area. An increase of
+the wavenumber leads to the fluid being squeezed from the troughs and the stream
+being forced to lift up above the grooves. The shear is nearly eliminated from a large
+fraction of the wall but the overall drag increases due to reduction of the effective
+channel opening. It is shown that properly structured grooves are able to eliminate
+wall shear from the majority of the wetted surface area regardless of the groove
+orientation, thus exhibiting the potential for the creation of drag-reducing surfaces.
+Such surfaces can become practicable if a method for elimination of the undesired
+pressure and shear peaks through proper groove shaping can be found.
+Key words: drag reduction, flow control, mathematical foundations
+
+
+
+                    † Email address for correspondence: mfloryan@eng.uwo.ca
+24                          A. Mohammadi and J. M. Floryan
+1. Introduction
+   The effects of surface roughness represent one of the classical but still not well
+understood topics in fluid dynamics. The lack of closure probably originates from
+the large variety of possible responses, which depend on the roughness topography
+as well as the flow conditions. The direct response can be measured in terms of
+changes of resistance experienced by a flow. It has long been believed, since the
+pioneering experiments of Hagen (1854) and Darcy (1857), that roughness always
+increases this resistance. The overall drag has been quantified in terms of friction
+factor by Nikuradse (1933) and Moody (1944), who also demonstrated that roughness
+does not affect the laminar drag, or, at least, the effect is too small to be measured
+using the techniques available at that time. In the case of turbulent flows, this belief
+has been contradicted by Walsh (1980, 1983), who showed that selection of a surface
+topography in the form of streamwise grooves (riblets) can result in drag reduction.
+Conclusions regarding laminar drag are being revised based on current investigations
+focused on micro-channels (Gamrat et al. 2008). The indirect effects are related to the
+ability of the roughness to promote/delay the laminar–turbulent transition. Again, it has
+been believed, since the classical experiments of Reynolds (1883), that the presence
+of roughness always promotes transition. Recent evidence (Saric, Carrillo & Reibert
+1998) demonstrates that roughness can also play a stabilizing role and thus can delay
+the onset of transition.
+   Analysis of laminar flow in rough channels represents an active research area due
+to the interest in flows in micro-channels. Recent reviews can be found in Papautsky
+et al. (1999), Sobhan & Garimella (2001), Morini (2004), Sharp & Adrian (2004)
+and Gamrat et al. (2008). Choi, Moin & Kim (1991) and Chu & Karniadakis
+(1993) studied the use of longitudinal grooves (riblets) as a drag-reducing device
+and concluded that, while such grooves are able to reduce the turbulent drag, they
+nevertheless always increase the laminar drag. This work is motivated by the lack of a
+complete understanding of the effects associated with roughness and by recent interest
+in super-hydrophobic surfaces (Rothstein 2010). Our own interests are in the search for
+surface topographies that may lead to a lowering of the drag. Since grooves may lead
+to a laminar–turbulent transition at lower Reynolds number, one eventually needs to
+test the stability properties of such flows.
+   There is a large amount of experimental data dealing with the effects of roughness
+on the laminar–turbulent transition (Schlichting 1979), but meaningful progress in the
+understanding of the mechanics of flow response has been achieved only recently
+(Floryan 2007). A frequently used criterion (Morkovin 1990) for the determination of
+the critical roughness size states that the roughness Reynolds number should satisfy
+Rek = Uk k/ν < 25 for the roughness to be active, where Uk is the undisturbed velocity
+at height k. A formal criterion for hydraulic smoothness states that roughness is
+hydraulically active only when it is able to induce flow bifurcation (Floryan 2007);
+the relevant critical conditions can be identified using linear stability theory. It has
+been found that two-dimensional distributed roughness destabilizes travelling wave
+disturbances (Floryan 2005; Asai & Floryan 2006), with the two-dimensional waves
+determining the critical conditions (Floryan 2007). The same roughness can amplify
+disturbances in the form of streamwise vortices (Floryan 2007). Depending on the
+roughness amplitude and wavenumber, and the flow Reynolds number, the first
+bifurcation can lead to either the onset of travelling waves or streamwise vortices.
+Qualitatively similar flow responses have been found in the case of Couette flow
+(Floryan 2002) and flow in a converging–diverging channel (Floryan 2003; Floryan
+& Floryan 2010). The same roughness has been found to increase transient growth,
+

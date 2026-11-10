@@ -1,0 +1,90 @@
+[
+  {
+    "name": "positive_complete_synthetic",
+    "accepted": true,
+    "error": null,
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R1_wrong_acceleration_m_s2",
+    "accepted": false,
+    "error": "effective physical conversion mismatch: acceleration_m_s2",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R1_wrong_direction",
+    "accepted": false,
+    "error": "effective direction mismatch",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R1_wrong_dx_m",
+    "accepted": false,
+    "error": "effective physical conversion mismatch: dx_m",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R1_wrong_nu_m2_s",
+    "accepted": false,
+    "error": "effective physical conversion mismatch: nu_m2_s",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R1_wrong_formal_simulation",
+    "accepted": false,
+    "error": "effective zero mode marked formal",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R2_duplicate_report",
+    "accepted": false,
+    "error": "wrong per-case readback reference",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R2_wrong_initial_J",
+    "accepted": false,
+    "error": "field force direction/half-step flux",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R2_cross_case_payload",
+    "accepted": false,
+    "error": "field payload closure differs from own initialization",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R2_reader_nonzero_exit",
+    "accepted": false,
+    "error": "field reader failed/timed out",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  },
+  {
+    "name": "R2_native_advancement",
+    "accepted": false,
+    "error": "nonzero advancement/wrong zero build",
+    "fixture": "SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY",
+    "authority_checks_mocked": true,
+    "file_and_hash_checks_real": true
+  }
+]

@@ -1,0 +1,14 @@
+mrp::legacyMass(double, double, double, double)
+   2edc0:	f3 0f 1e fa          	endbr64
+   2edc4:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   2edc8:	c5 fb 11 44 24 e8    	vmovsd QWORD PTR [rsp-0x18],xmm0
+   2edce:	c5 fb 10 44 24 e8    	vmovsd xmm0,QWORD PTR [rsp-0x18]
+   2edd4:	c5 fb 59 c2          	vmulsd xmm0,xmm0,xmm2
+   2edd8:	c5 fb 11 44 24 f0    	vmovsd QWORD PTR [rsp-0x10],xmm0
+   2edde:	c5 fb 10 44 24 f0    	vmovsd xmm0,QWORD PTR [rsp-0x10]
+   2ede4:	c5 fb 59 c2          	vmulsd xmm0,xmm0,xmm2
+   2ede8:	c5 fb 11 44 24 f8    	vmovsd QWORD PTR [rsp-0x8],xmm0
+   2edee:	c5 fb 10 44 24 f8    	vmovsd xmm0,QWORD PTR [rsp-0x8]
+   2edf4:	c4 e2 e1 99 c2       	vfmadd132sd xmm0,xmm3,xmm2
+   2edf9:	c3                   	ret
+   2edfa:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]

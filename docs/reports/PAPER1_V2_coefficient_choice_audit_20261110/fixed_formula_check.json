@@ -1,0 +1,202 @@
+{
+  "scope": "Re-evaluation of published fixed coefficients on existing scalar CSV only; no fitting or CV execution",
+  "free_parameters": {
+    "count": 4,
+    "P": [
+      1.7685,
+      1.6331
+    ],
+    "T": [
+      0.49,
+      0.699
+    ]
+  },
+  "primary": {
+    "geometries": 18,
+    "records": 36,
+    "MAE_percent": 5.410843272077345,
+    "max_absolute_percent": 18.705147167276593,
+    "count_gt_10_percent": 4
+  },
+  "directional": {
+    "P": {
+      "count": 18,
+      "MAE_percent": 6.401105519730134,
+      "max_absolute_percent": 10.504978243933639
+    },
+    "T": {
+      "count": 18,
+      "MAE_percent": 4.420581024424557,
+      "max_absolute_percent": 18.705147167276593
+    }
+  },
+  "h25_records": [
+    {
+      "h_nm": 25.0,
+      "d_nm": 25.0,
+      "direction": "P",
+      "d_over_h": 1.0,
+      "d_over_w": 0.20833333333333334,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.8338419932063749,
+      "fixed_V2_F": 0.8799096574268283,
+      "V2_residual_percent": 5.524747445653255,
+      "absolute_residual_percent": 5.524747445653255,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 25.0,
+      "d_nm": 25.0,
+      "direction": "T",
+      "d_over_h": 1.0,
+      "d_over_w": 0.20833333333333334,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.9250030316340645,
+      "fixed_V2_F": 0.8593392013333625,
+      "V2_residual_percent": -7.098769199134791,
+      "absolute_residual_percent": 7.098769199134791,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_T/steady/result.txt"
+    },
+    {
+      "h_nm": 25.0,
+      "d_nm": 50.0,
+      "direction": "P",
+      "d_over_h": 2.0,
+      "d_over_w": 0.4166666666666667,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.6553103538861664,
+      "fixed_V2_F": 0.7025762956959549,
+      "V2_residual_percent": 7.212756754030947,
+      "absolute_residual_percent": 7.212756754030947,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d50_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 25.0,
+      "d_nm": 50.0,
+      "direction": "T",
+      "d_over_h": 2.0,
+      "d_over_w": 0.4166666666666667,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.8809382157222314,
+      "fixed_V2_F": 0.7900625574559549,
+      "V2_residual_percent": -10.315781134749924,
+      "absolute_residual_percent": 10.315781134749924,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d50_dx5_T/steady/result.txt"
+    },
+    {
+      "h_nm": 25.0,
+      "d_nm": 100.0,
+      "direction": "P",
+      "d_over_h": 4.0,
+      "d_over_w": 0.8333333333333334,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.41816045493648235,
+      "fixed_V2_F": 0.43232231421973955,
+      "V2_residual_percent": 3.386704580998301,
+      "absolute_residual_percent": 3.386704580998301,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 25.0,
+      "d_nm": 100.0,
+      "direction": "T",
+      "d_over_h": 4.0,
+      "d_over_w": 0.8333333333333334,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.859380524009574,
+      "fixed_V2_F": 0.6986321322666704,
+      "V2_residual_percent": -18.705147167276593,
+      "absolute_residual_percent": 18.705147167276593,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_T/steady/result.txt"
+    }
+  ],
+  "same_d_over_h_1_counterexamples": [
+    {
+      "h_nm": 50.0,
+      "d_nm": 50.0,
+      "direction": "P",
+      "d_over_h": 1.0,
+      "d_over_w": 0.4166666666666667,
+      "h_over_w": 0.4166666666666667,
+      "required_F_for_exact_discrete_K": 0.6530406668890197,
+      "fixed_V2_F": 0.7025762956959549,
+      "V2_residual_percent": 7.585381939981617,
+      "absolute_residual_percent": 7.585381939981617,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h50_d50_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 50.0,
+      "d_nm": 50.0,
+      "direction": "T",
+      "d_over_h": 1.0,
+      "d_over_w": 0.4166666666666667,
+      "h_over_w": 0.4166666666666667,
+      "required_F_for_exact_discrete_K": 0.789337034429281,
+      "fixed_V2_F": 0.7900625574559549,
+      "V2_residual_percent": 0.09191549300591184,
+      "absolute_residual_percent": 0.09191549300591184,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h50_d50_dx5_T/steady/result.txt"
+    },
+    {
+      "h_nm": 75.0,
+      "d_nm": 75.0,
+      "direction": "P",
+      "d_over_h": 1.0,
+      "d_over_w": 0.625,
+      "h_over_w": 0.625,
+      "required_F_for_exact_discrete_K": 0.5249459349173244,
+      "fixed_V2_F": 0.549198095007226,
+      "V2_residual_percent": 4.619934830759509,
+      "absolute_residual_percent": 4.619934830759509,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/d75_h75_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 75.0,
+      "d_nm": 75.0,
+      "direction": "T",
+      "d_over_h": 1.0,
+      "d_over_w": 0.625,
+      "h_over_w": 0.625,
+      "required_F_for_exact_discrete_K": 0.7117532892285905,
+      "fixed_V2_F": 0.739213057862375,
+      "V2_residual_percent": 3.858045905702223,
+      "absolute_residual_percent": 3.858045905702223,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/d75_h75_dx5_T/steady/result.txt"
+    },
+    {
+      "h_nm": 25.0,
+      "d_nm": 25.0,
+      "direction": "P",
+      "d_over_h": 1.0,
+      "d_over_w": 0.20833333333333334,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.8338419932063749,
+      "fixed_V2_F": 0.8799096574268283,
+      "V2_residual_percent": 5.524747445653255,
+      "absolute_residual_percent": 5.524747445653255,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 25.0,
+      "d_nm": 25.0,
+      "direction": "T",
+      "d_over_h": 1.0,
+      "d_over_w": 0.20833333333333334,
+      "h_over_w": 0.20833333333333334,
+      "required_F_for_exact_discrete_K": 0.9250030316340645,
+      "fixed_V2_F": 0.8593392013333625,
+      "V2_residual_percent": -7.098769199134791,
+      "absolute_residual_percent": 7.098769199134791,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d25_dx5_T/steady/result.txt"
+    }
+  ],
+  "reported_cv_arithmetic_only": {
+    "MAE_change_percentage_points": 1.2800000000000002,
+    "MAE_relative_reduction_percent": 23.703703703703706,
+    "worst_absolute_change_percentage_points": 0.5800000000000018,
+    "19_geometry_folds_implies_direction_records": 38,
+    "leave_one_geometry_is_not_leave_one_h_level": true
+  },
+  "new_fits_verified": false,
+  "reported_fitting_output_location": "User says forgotten; no matching new coefficient/fold artifact identified in targeted searches"
+}

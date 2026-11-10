@@ -1,0 +1,15 @@
+# A1 两条 S0：已启动，P有通过回执，T在单次快照中运行
+
+核查时点：2026-11-02 09:53:40北京时间（01:53:40 UTC）。本轮只进行一次启动快照；随后只处理已保存快照，不再次查看变化中的进程或日志。AI没有执行启动、原生程序、检查器重跑或重试。
+
+正式合同SHA cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148与交付一致，tmux会话urv_s0_a1_20261102_01存在。控制器PID454293，T原生PID454722。launch_attempts内身份与合同SHA对应。
+
+P（URV_S0_P_A1_20261102_01）已完成4342步，独立进程退出0、未超时，completion记录输入不变且捕获最终化无错误。已有original_urv/acceptance.json的NUMERICAL_GATE=PASS、geometry_PASS=true、RESULT_PASS=true；已有mass_repair_review.json的原URV、捕获完整性、同输入重放、补偿账本、物理输出守卫及总RESULT_PASS均true，DIRECTION_ACCEPTED。原20列4343行精确回归在已有回执中all_exact=true。这里是读取已有回执，不是本轮重新执行全量验收。
+
+P原生result.txt仍写RESULT_PASS=false，同时PASS=true和NUMERICAL_GATE=PASS；原生汇总不承担原URV与专项独立结果认证。按本项目既定分层保留该字段，不能把原始false改true，也不因该字段与独立回执含义不同制造新矛盾。
+
+T（URV_S0_T_A1_20261102_01）在此快照中原生正在计算，有diagnostics和mass_capture，无完成/退出/验收记录；状态NOT_EVALUATED，不能判PASS或FAIL。日志末行在写入中可能不完整，本轮不从它推断最终步数或收敛。P通过后进入T符合已授权同批两方向顺序，不是自动进入下一研究阶段。
+
+S0总体HOLD_PENDING_T_COMPLETION_AND_FULL_REVIEW，尚无两方向总完成回执。不继续轮询。后续等任务完成，再按原URV-v1／MRP／A1完整分析已有结果，核清T的201份捕获、全190差异点重放及原精确回归等要求，不自动重跑或进入S1。旧v1.2 T失败、历史唯一归因NOT_ESTABLISHED、reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。没有新指令或证据矛盾，未新调用Astra。
+
+证据在snapshot.json和status.json；包含本次实际进程／会话、原始尾日志和已完成回执SHA。对运行中文件没有声称稳定哈希封存。状态在本快照之后可能变化，不把“当时运行”写成持续实时结论。共享状态与最新交接已同步；没有修改原始结果、源码、冻结合同或门槛，没有提交推送。

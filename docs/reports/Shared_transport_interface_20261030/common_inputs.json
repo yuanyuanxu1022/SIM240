@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "document_id": "SIM240_shared_transport_input_draft_20261030",
+  "status": "PREPARATION_ONLY_NOT_FROZEN_NOT_RUN",
+  "launch_ready": false,
+  "solver_run_id": null,
+  "simulation_authorized_by_this_document": false,
+  "units": "SI",
+  "coordinate_frame": {
+    "x": "fixed short edge",
+    "y": "fixed long edge",
+    "z": "upward from substrate",
+    "groove_axis_is_not_always_y": true
+  },
+  "geometry_baseline_candidate": {
+    "h_m": 7.5e-08,
+    "groove_depth_m": 1e-07,
+    "groove_width_m": 1.2e-07,
+    "period_m": 2.4e-07,
+    "groove_plan_fraction": 0.5,
+    "H_store_nominal_m": 1.25e-07,
+    "H_envelope_m": 1.75e-07,
+    "envelope_fluid_volume_fraction": 0.7142857142857143,
+    "status": "EXISTING_GEOMETRY_FOR_INTERFACE_CHECK_NOT_HOLDOUT"
+  },
+  "domain_candidate": {
+    "Lx_m": null,
+    "Ly_m": null,
+    "Ly_over_Lx": 2.0,
+    "aspect_ratio_status": "PROPOSED_NOT_FROZEN",
+    "projected_area_m2": null,
+    "period_counts": null,
+    "edge_phase": null
+  },
+  "fluid_candidate": {
+    "model": "incompressible_single_phase_newtonian_isothermal",
+    "mu_Pa_s": 0.001,
+    "rho_kg_m3": 1000.0,
+    "nu_m2_s": 1e-06,
+    "status": "PROPOSED_FROM_EXISTING_D2_BASELINE_NOT_ADOPTED",
+    "gravity_m_s2": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "pressure_candidate": {
+    "p_gauge_definition": "p_physical_Pa - p_environment_Pa",
+    "p_environment_absolute_Pa": null,
+    "four_macro_outer_edges_gauge_Pa": 0.0,
+    "four_zero_edges_apply_to": "instantaneous_squeeze_only_not_static_pressure_drive",
+    "status": "PROPOSED_BOUNDARY_NOT_IMPLEMENTED",
+    "force_definition_status": "PENDING_STRESS_AND_PROJECTION_REVIEW"
+  },
+  "drives": {
+    "static_interface_check": {
+      "V_m_s": 0.0,
+      "G_Pa_per_m": null,
+      "boundary_implementation": null,
+      "G_definition": "negative pressure gradient; select pressure-drop or periodic body-force implementation, never both",
+      "four_zero_pressure_edges_not_applicable": true
+    },
+    "instantaneous_squeeze": {
+      "V_m_s": null,
+      "sign": "V = -dh/dt > 0",
+      "dH_store_dt": "-V",
+      "motion_implementation": null
+    }
+  },
+  "averaging_interface_candidate": {
+    "Ubar_definition": "J / H_store_nominal; intrinsic fluid-volume average in this convention",
+    "H_for_conditional_total_drag_example_m": 1.25e-07,
+    "mapping": "D_2D = H * inverse(K_2D)",
+    "applies_only_if": "all unresolved resistance is carried by this total drag with the same averaging and pressure-gradient convention",
+    "resolved_wall_route": "NOT_SELECTED; total drag cannot be added blindly to no-slip-wall solution",
+    "Dzz_m_minus2": null,
+    "out_of_plane_model": null,
+    "Forchheimer_in_plane_m_minus1": [
+      0.0,
+      0.0
+    ]
+  },
+  "formula_version": {
+    "id": "V2_published_rounded_eq6",
+    "parallel": {
+      "a": 1.7685,
+      "b": 1.6331
+    },
+    "perpendicular": {
+      "a": 0.49,
+      "b": 0.699
+    },
+    "rule": "K_corrected = K_original / (1 + a*(depth/width)**b)",
+    "source": "E01",
+    "new_fit": false,
+    "alternative_candidates_included": false
+  },
+  "orientations": [
+    {
+      "id": "groove_along_long_y",
+      "groove_axis": "y",
+      "theta_from_positive_x_deg": 90,
+      "t_parallel": [
+        0,
+        1
+      ],
+      "n_perpendicular": [
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "groove_along_short_x",
+      "groove_axis": "x",
+      "theta_from_positive_x_deg": 0,
+      "t_parallel": [
+        1,
+        0
+      ],
+      "n_perpendicular": [
+        0,
+        1
+      ]
+    }
+  ],
+  "primary_comparison_inputs": [
+    "original_local_cubic",
+    "V2_published_rounded"
+  ],
+  "optional_diagnostic_input": "OpenLB_dx5_diagnostic_only",
+  "outputs_required": [
+    "F_pressure_N",
+    "F_total_stress_N_if_available",
+    "R_pressure_N_s_per_m",
+    "R_total_N_s_per_m_if_comparable",
+    "chi_short_over_long",
+    "p_gauge_Pa",
+    "Q_each_outer_edge_m3_s",
+    "volume_balance_residual"
+  ],
+  "formal_acceptance_thresholds": null,
+  "launch_blockers": [
+    "absolute_Lx_Ly_and_period_count",
+    "closing_speed_or_static_pressure_gradient",
+    "physical_properties_adoption",
+    "wall_dissipation_route_and_OpenFOAM_source_definition",
+    "mesh_or_volume_source_coupling",
+    "pressure_and_force_boundary_equivalence",
+    "numerical_resolution_solver_controls_and_resource_budget",
+    "predeclared_acceptance_criteria",
+    "final_scientific_interface_review"
+  ],
+  "accuracy_claim_blockers": [
+    "qualified_same_condition_explicit_squeeze_reference",
+    "holdout_design_and_evaluation"
+  ],
+  "scientific_state": {
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": null,
+    "geometry_PASS": null,
+    "reference_qualified": false,
+    "submission_ready": false
+  }
+}

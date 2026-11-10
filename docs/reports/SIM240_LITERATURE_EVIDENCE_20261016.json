@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-16",
+  "scope": "Literature review and analytical arithmetic only; no OpenLB execution",
+  "report": "docs/reports/SIM240_LITERATURE_REVIEW_20261016.md",
+  "doi_http_checks": [
+    {
+      "doi": "10.1098/rspa.2017.0234",
+      "status": 502,
+      "url": "http://royalsocietypublishing.org/rspa/article/57481",
+      "bytes": 0
+    },
+    {
+      "doi": "10.1103/PhysRevLett.102.026001",
+      "status": 403,
+      "url": "https://link.aps.org/doi/10.1103/PhysRevLett.102.026001",
+      "bytes": 5537
+    },
+    {
+      "doi": "10.1017/S0022112010000741",
+      "status": 403,
+      "url": "https://www.cambridge.org/core/product/identifier/S0022112010000741/type/journal_article",
+      "bytes": 5694
+    },
+    {
+      "doi": "10.1016/j.mee.2017.04.001",
+      "status": 200,
+      "url": "https://linkinghub.elsevier.com/retrieve/pii/S0167931717301296",
+      "bytes": 2678
+    },
+    {
+      "doi": "10.3390/lubricants6010027",
+      "status": 403,
+      "url": "https://www.mdpi.com/2075-4442/6/1/27",
+      "bytes": 396
+    },
+    {
+      "doi": "10.1016/j.euromechflu.2018.02.004",
+      "status": 200,
+      "url": "https://linkinghub.elsevier.com/retrieve/pii/S0997754617305010",
+      "bytes": 2721
+    }
+  ],
+  "formula_checks": [
+    {
+      "source": "tavakol2017",
+      "page": "author manuscript PDF p4",
+      "equations": "8",
+      "check": "visual page inspection",
+      "sha256": "08ae2fc6818acb2f21a485c8b55c94a1d86c0e0cd56c1cfe265e392a69980da3"
+    },
+    {
+      "source": "feuillebois2009",
+      "page": "author manuscript PDF p2",
+      "equations": "1,2",
+      "check": "visual page inspection",
+      "sha256": "e04d022f96658533fca88976a492ce4231cb69e615be3ace09f7a4c25b780abe"
+    },
+    {
+      "source": "pusterhofer2018",
+      "page": "published PDF p4",
+      "equations": "9,11,12",
+      "check": "visual page inspection",
+      "sha256": "ec694e1900135198d1ea51cc8e86f104c2cdc9bafff8806282c2ba0a2f210865"
+    },
+    {
+      "source": "belyaev2010",
+      "page": "journal p494",
+      "equations": "2.22",
+      "check": "visual page inspection",
+      "sha256": "a6cd56270be323fecafc64b0c8596a874c20d93f535fabcb94540424c0ff10ed"
+    },
+    {
+      "source": "Ban Jain Bonnecaze2018 unpublished conference manuscript",
+      "page": "PDF p3",
+      "equations": "2",
+      "check": "visual page inspection",
+      "sha256": "236e6a6d17ed11dd55cc141b1b4a3872fbdb271ab7ee67ea0305ae77b04bffdf",
+      "url": "https://www.iscst.com/wp-content/uploads/2019/01/ban.etal2018.OptimizingFillingAnisotropic.Paper_.ISCST-20180919AM-B-PD4.p.pdf"
+    }
+  ],
+  "derived_predictions": {
+    "geometry_nm": {
+      "period": 240,
+      "width": 120,
+      "depth": 100,
+      "ridge_gap": 75,
+      "mean_height": 125
+    },
+    "M_parallel_m3": 2.4088541666666665e-22,
+    "M_perpendicular_m3": 6.518158783783782e-23,
+    "ratio_dimensionless": 3.695605226217472,
+    "status": "Reynolds approximation derived from user geometry; not DNS evidence"
+  },
+  "not_completed": [
+    "Jain2017 full formula pages",
+    "Patir1978 full formula pages",
+    "Ai2 Asta independent report",
+    "Traditional database manual novelty review"
+  ],
+  "simulation_run_id": null,
+  "additional_access_checks": [
+    {
+      "source": "UT Austin public repository search for Jain dissertation",
+      "http_status": 403,
+      "full_text_obtained": false
+    }
+  ]
+}

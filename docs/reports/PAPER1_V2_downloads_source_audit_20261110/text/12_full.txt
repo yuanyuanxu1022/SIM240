@@ -1,0 +1,1726 @@
+                                                                                      ed
+                          Benchmark Simulation of Laminar Reactive
+
+
+
+
+                                                                                   iew
+                         Micromixing Using Lattice Boltzmann Methods
+                Fedor Bukreev1,a,b , Adrian Kummerländera,c,b , Julius Jeßbergera,c,b , Dennis
+                           Teutschera,b , Dieter Bothed , Mathias J. Krausea,b,c
+                                       a
+                                            Lattice Boltzmann Research Group (LBRG),
+
+
+
+
+                                                                         ev
+                            b
+                             Institute of Mechanical Process Engineering and Mechanics (MVM),
+                                  c
+                                    Institute for Applied and Numerical Mathematics (IANM),
+                            Karlsruhe Institute of Technology (KIT), 76131 Karlsruhe, Germany,
+                                d
+                                  Department of Mathematics, Technical University Darmstadt
+
+
+
+
+                                                              r
+                Abstract
+                                                           er
+                Micromixers are widely used chemical processing devices that are applied
+                for both mixing and reacting flows. In current research, the laminar reacting
+                                                 pe
+                multi-component flows are considered [1, 2, 3]. Despite the laminar streaming
+                regime (e.g. Re = 186), there exist flow micro-structures. For this setup,
+                accurate predictions of that structures are possible with a direct numerical
+                simulation on a fine mesh resolving the Batchelor microscales.
+                    Utilizing the open-source Lattice Boltzmann Methods (LBM) framework
+                                       ot
+
+                OpenLB (www.openlb.net, [4, 5]) a precise benchmark simulation of the re-
+                acting micromixer was set up and validated based on previous work by Bothe
+                et al. [1, 2, 3]. In this context, a Schmidt number based stabilization method
+                for reactive advection-diffusion equations is proposed. A convergence study
+                             tn
+
+
+
+                is performed which is also a novelty. All computations were performed on
+                the HPC cluster HoreKa using up to 160 NVIDIA A100 GPUs.
+                Keywords: benchmark simulation, micromixer, LBM, DNS, reaction,
+                rin
+
+
+
+
+                advection-diffusion equation
+
+
+                1. Introduction
+     ep
+
+
+
+
+                   Micromixers are widely used in the chemical process technology due to
+                their multiple advantages. Specifically, the high aspect ratio of micromixers
+
+                   ∗
+                       fedor.bukreev@kit.edu
+Pr
+
+
+
+
+                Preprint submitted to Computers and Mathematics with Applications September 4, 2023
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                leads to microfluidic flow structures that enable efficient fluid mixing as well
+
+
+
+
+                                                                                  iew
+                as better heat and mass transfer. The calculation of reacting micromixers
+                necessitates the incorporation of fluid dynamics in conjunction with a chem-
+                ical reaction mechanism [6]. In order to effectively control reactions within
+                these reactors, it is crucial to have a comprehensive understanding of the mi-
+                crofluidic mechanics, as the short residence times do not impede the chemical
+                reaction [7]. Micromixers are operated in the laminar regime with secondary
+
+
+
+
+                                                                        ev
+                flow due to their small geometry leading to high pressure drops.
+                    One disadvantage of micromixers is the inherent complexity of their uti-
+                lization at large industrial scales. Despite this, there exists a wide range of
+                examples showcasing diverse applications of micromixers. Most commonly,
+
+
+
+
+                                                             r
+                the micromixers are utilized in labs for analysis, synthesis of various species
+                and process development [8, 9]. The production of fine chemicals with strict
+                requirements of purity and quality is realized through micromixers [9]. Ad-
+
+                research purposes [10].                   er
+                ditionally, micromixers have applications in the pharmaceutical industry for
+
+                    Estimation of the contact area between mixing species is a decisive factor
+                                               pe
+                in the design of a micromixer geometry. Due to computational power limi-
+                tations, the accurate tracking of the fluid structures that increase this area
+                has been impossible until recently. The design process of the micromixers
+                was based on the estimation of the geometrical Dean number, which serves
+                as a characteristic number for the secondary flow. The mixing efficiency was
+                                     ot
+
+                then evaluated as a result of this estimation. Nowadays, computational fluid
+                dynamics (CFD) allows precise calculation of the flow behavior. The most
+                reliable results are achieved by direct numerical simulation (DNS), where
+                the cell size is less or equal to the finest length scale of the investigated flow
+                          tn
+
+
+
+                structures. Although the operation state of the regarded micromixer is lami-
+                nar, the length scale is bounded from below by the Kolmogorow length scale,
+                at which the kinetic energy of the vortex is dissipated into the thermal en-
+                ergy due to the friction of streaming layers [11]. The species concentrations
+                rin
+
+
+
+
+                transported by the micro-flow form smaller structures within the vortex of
+                the carrier fluid. Therefore, in order to simulate the mixing process in the
+                micromixer accurately, a finer cell size is required than given by the hydrody-
+                namic length scale. Specifically, the simulation needs to resolve the Batchelor
+     ep
+
+
+
+
+                scale [12].
+                    The T-shaped micromixer is the most simple setup. Correspondingly, it
+                has received close experimental and numerical attention [13]. The cell size is
+                the most important parameter and main obstacle for the DNS. The resulting
+Pr
+
+
+
+
+                                                           2
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                fine meshes exceed the capabilities of local workstations and thus are only
+
+
+
+
+                                                                                  iew
+                seldomly used. Existing finite volume method (FVM) CFD softwares also
+                reach their limit at some mesh size. The discretized integration over each
+                cell by FVM requires communication with other cells, implying permanent
+                increasing computation costs and loss of efficiency. An overview of existing
+                CFD publications regarding T-micromixers is provided in Table 1.
+
+
+
+
+                                                                        ev
+                 Publication           Cell size [µm]          Cell number in Discretization
+                                                               the cross section method
+                 [3]                   0, 3 − 2, 5             *                  FVM
+                 [14]                  25                      3200               FVM
+
+
+
+
+                                                             r
+                 [15]                  5                       3200               FVM
+                 [16]                  3, 33                   1800               FVM
+                 [17]
+                 [18]
+                                       25
+                                       12, 31             er   1600
+                                                               19199
+                * adaptive refinement in direction of the concentration gradient
+                                                                                  FVM
+                                                                                  LBM
+                                               pe
+                                         Table 1: Existing DNS of micromixers
+
+                    It can be noticed that the used cell sizes are in most cases much larger than
+                the Batchelor length scale, especially at high Schmidt numbers (> 1000).
+                Numerical diffusion compromises the accuracy of simulations and makes the
+                                     ot
+
+                realistic visualization of concentration vortices impossible. Bothe et al. man-
+                aged to resolve the computation domain with adaptive refinement on a 2D
+                lattice even below the 0.25 µm. The velocity field in the micromixer was
+                calculated using the 3D FVM simulation in the mixing zone and using the
+                          tn
+
+
+
+                exponential extrapolation of the secondary flow field after the mixing zone in
+                the flow direction. Subsequently, the reactive advection-diffusion equations
+                (RADE) were numerically solved in the 2D sections.
+                    The aim of the current paper is to provide more precise data for the
+                rin
+
+
+
+
+                reaction in a micromixer, which can be used as a benchmark. The lattice
+                Boltzmann method (LBM) is used in the current research because of its
+                unique amenability to massively parallel execution on modern high perfor-
+                mance computers. In this work, the reactive T-micromixer as considered
+     ep
+
+
+
+
+                firstly by Bothe et al. [1, 2, 3] is calculated in a DNS with LBM utilizing up
+                to 160 state-of-the-art GPUs of the HoreKa supercomputer using OpenLB’s
+                transparent GPU support [4, 19]. The Dean vortices are investigated and
+                qualified by an extra finely resolved structured lattice and relatively high
+Pr
+
+
+
+
+                                                           3
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                Knudsen number. The very low diffusion coefficients (10−10 − 10−9 m2 s−1 )
+
+
+
+
+                                                                                  iew
+                are treated locally by a special Schmidt number based stabilization method,
+                similar to the Smagorinsky-Lilly ansatz [20, 21]. The influence of the reso-
+                lution on the average product concentration is examined in the convergence
+                study.
+
+                2. Methodology
+
+
+
+
+                                                                        ev
+                   By the DNS the following system of incompressible Navier-Stokes (NSE)
+                and reactive advection-diffusion (RADE) conservation equations is solved
+                numerically:
+
+
+
+
+                                                             r
+                                                   ∇ · u = 0,                                      (1)
+                                                    1
+
+                                              j
+                                                    ρ
+                                                          er
+                                   ∂t u + ∇ · uu + ∇p = ν∇ · (∇u + (∇u)T ),
+
+                                          ∂t c + u · ∇cj = Dj △cj + υ j R.
+                                                                                                   (2)
+
+                                                                                                   (3)
+                                               pe
+                The carrier fluid density ρ remains constant and is not affected by the solved
+                species. u is the fluid velocity that is computed by the mass and momentum
+                conservation equations and inserted in the RADE. p denotes pressure, ν is
+                the kinematic viscosity, which is assumed to be constant. The concentration
+                field cj is calculated for each species separately with corresponding diffusion
+                coefficient Dj , stoichiometric coefficient υ j and reaction rate R common for
+                                     ot
+
+
+                the whole reaction.
+
+                2.1. Lattice Boltzmann Discretization
+                          tn
+
+
+
+                    The mentioned equations are discretized with LBM, which is based on
+                the microscopic gas kinetic theory. The kinetic theory considers molecules as
+                hard spheres that collide elastically with each other and stream away. The
+                probability distribution of molecules in space and time with a certain velocity
+                rin
+
+
+
+
+                fi (x, t) is described by the lattice Boltzmann equation in the discretized
+                version
+                                                                                
+                                fi (x + ξi △t, t + △t) − fi (x, t) = △t ΩC
+                                                                         i + Ω S
+                                                                               i .          (4)
+     ep
+
+
+
+
+                On the left side of the equation is the change of the particle distribution
+                function due to convection, whereas on the right side the collision operator
+                ΩC                                  S
+                  i and sourcing or forcing term Ωi are included. The molecules motion
+Pr
+
+
+
+
+                                                           4
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                            ed
+                proceeds along a constant chosen number of directions i with a normalized
+
+
+
+
+                                                                                         iew
+                lattice velocity ξi . For both NSE and RADE the Bhatnagar-Gross-Krook
+                (BGK) collision operator [22]
+
+                                                          fieq (x, t) − fi (x, t)
+                                            ΩBGK
+                                             i   =                                                 (5)
+                                                                  τ (x, t)
+
+                is chosen. The probability density functions (PDFs) in the BGK collision
+
+
+
+
+                                                                               ev
+                operator change with the relaxation time τ (x, t) towards the discrete equi-
+                librium distribution function fieq (x, t). The latter function is an approxima-
+                tion of the Maxwell distribution based on the ideal gas equation of state and
+                discretized with Hermite quadrature:
+
+
+
+
+                                                                 r
+                                                       ξiα uα (ξiα ξiβ − c2s δαβ )uα uβ 
+                            NSE: fieq (x, t) = wi ρ 1 + 2 +                                ,       (6)
+                                                    
+                                                          cs
+                           RADE: fieq (x, t) = wi cj 1 + 2 .
+                                                           cs
+                                                              er
+                                                         ξiα uα 
+                                                                         2c4s
+                                                                                                   (7)
+                                                 pe
+                In both cases, the wi are quadrature weighting factors that depend on the
+                chosen lattice type. cs is the velocity of sound in lattice units which is √13
+                in this work. The α, β denote the Einstein summation convention. The
+                relaxation time is bound to the viscosity or local diffusivity according to
+                                     ot
+
+                                                     ν      △t
+                                                 τN SE =
+                                                      2
+                                                        +      ,                                   (8)
+                                                     cs     2
+                                                     Dj (x, t) △t
+                                             τRADE =            +   .                              (9)
+                            tn
+
+
+
+                                                        c2s       2
+
+                       In RADE, the source or sink term ΩSi is computed with the Guo scheme [23],
+                i.e.
+                rin
+
+
+
+
+                                                           △t     
+                                         ΩSi =       1−                wi υ j R(x, t).            (10)
+                                                          2τRADE
+                       The macroscopic variables by LBM are retrieved through moments of the
+     ep
+Pr
+
+
+
+
+                                                               5
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                      ed
+                mesoscopic PDFs
+
+
+
+
+                                                                                   iew
+                                                    X
+                                        NSE: ρ =         fi (x, t),                                (11)
+                                                     i
+                                                    X
+                                               u=        ξi fi (x, t),                             (12)
+                                                     i
+                                            p = ρc2s ,                                             (13)
+
+
+
+
+                                                                         ev
+                                                X                  △t j
+                                     RADE: cj =        fi (x, t) +   υ R(x, t).                    (14)
+                                                 i
+                                                                   2
+
+                    The mentioned equations are applied to different lattice types. The NSE
+
+
+
+
+                                                              r
+                calculation is performed on the D3Q19 lattice, whereby RADE is discretized
+                on the D3Q7 lattice for each chemical species (Figure 1 and Table 2). D
+                stands for the number of dimensions and Q for number of discrete veloci-
+
+                                                           er
+                ties ξi , cf. Figure 1 and Table 2. These lattice types are chosen because
+                of the minimal number of lattice direction needed for the second order of
+                convergence of NSE and ADEs.
+                                               pe
+                                     ot
+                          tn
+                rin
+
+
+
+
+                Figure 1: Schematic view of the D3Q19 (left) and D3Q7 (right) discrete velocity set. The
+                discrete velocities are depicted as arrows.
+
+
+                2.2. Schmidt number stabilization
+     ep
+
+
+
+
+                    For a stable simulation run using the lattice Boltzmann method (LBM),
+                it is necessary to ensure that the relaxation time is always greater than
+                0.5. Due to the low diffusion coefficients of the transported species, rang-
+                ing from 10−10 to 10−9 m2 /s, the RADE simulation becomes unstable and
+Pr
+
+
+
+
+                                                            6
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                          ed
+                    Directions i         Normalized lattice velocity ξi      Lattice weights wi
+
+
+
+
+                                                                                       iew
+                                                          D3Q19
+                           0                           (0, 0)                        1/3
+                    1, 2, . . . , 6      (±1, 0, 0), (0, ±1, 0), (0, 0, ±1)         1/18
+                    7, 8, . . . , 18   (±1, ±1, 0), (±1, 0, ±1), (0, ±1, ±1)        1/36
+                                                          D3Q7
+                           0                           (0, 0)                        1/4
+
+
+
+
+                                                                            ev
+                     1, 2, . . . , 6     (±1, 0, 0), (0, ±1, 0), (0, 0, ±1)          1/8
+
+                                         Table 2: Lattice discretization parameters.
+
+
+
+
+                                                                r
+                diverges in cells experiencing high shear stress. To overcome this problem,
+                a Smagorinsky-Lilly-type stabilization model is applied [20, 21]. Firstly, this
+
+                                                             er
+                idea was realized by Gaedtke et al. [24] for the temperature distribution sim-
+                ulation coupled to a turbulent large eddy simulation (LES). In the case of a
+                laminar micromixer, turbulence is not an issue, but the existing Dean vortices
+                induce high shear stress S between the flow layers. At these places, the arti-
+                                                  pe
+                ficial stabilization viscosity νst can be calculated with the Smagorinsky-Lilly
+                model and transformed to the stabilization diffusion Dst , which is added to
+                the molecular one. This conversion is performed with the chosen Smagorin-
+                sky constant CS and stabilization Schmidt number Scst that can take values
+                between 0.1 − 0.2 and 0.03 − 0.7, respectively, depending on the cell size.
+                                       ot
+
+                A higher Smagorinsky constant and a smaller stabilization Schmidt number
+                lead to stronger artificial diffusion, so they are used at coarser mesh resolu-
+                tions.
+                            tn
+
+
+
+                                                 1      X          
+                                                                                    eq
+                                                                                              
+                                      S=−                  ξiα ξiβ   f i (x, t) − f i  (x, t)   , (15)
+                                             2ρτN SE c2s i
+                                                     s X
+                                                   2
+                              νst (x, t) = (CS △x) 2        Sα,β Sα,β ,                           (16)
+                rin
+
+
+
+
+                                                           α,β
+
+                                            νst (x, t)
+                               Dst (x, t) =            ,                                          (17)
+                                              Scst
+                                              j
+                                Dj (x, t) = Dmol  + Dst (x, t).                                   (18)
+     ep
+
+
+
+
+                With the described model, the Dj becomes locally higher at the cells, where
+                the simulation stability is endangered due to a strong shearing counter-flow.
+                The cells without that kind of flow retain their molecular diffusivity. The
+Pr
+
+
+
+
+                                                             7
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                overall accuracy of the species transport is high enough to reproduce the
+
+
+
+
+                                                                                  iew
+                experimental and reference values, which is shown in the reminder of this
+                paper.
+
+                3. Reactive micromixer setup
+                    In this work, a simple one-way reaction of second order is considered
+                based on the publications of Bothe et al. and the dissertation of Lojewski [1,
+
+
+
+
+                                                                        ev
+                2, 3, 25].
+                                                               kf
+                                                    A + B −→ C                                    (19)
+
+
+
+
+                                                             r
+                The corresponding reaction rates R is then kf cA cB . kf is the forward reaction
+                rate constant, with a value of 105 m3 mol−1 s−1 held unchanged in the current
+
+                whereby the υ C is +1.                    er
+                research. The stoichiometric coefficients of the educts υ A and υ B are -1,
+
+                    The simulated T-shaped micromixer has the following dimensions: two
+                100 × 100 × 300 µm inlet channels from the sides and 100 × 200 × 1600 µm
+                                               pe
+                mixing channel in the center (Figure 2).
+                                     ot
+                          tn
+                rin
+     ep
+
+
+
+
+                                         Figure 2: T-micromixer geometry [3]
+Pr
+
+
+
+
+                                                           8
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                          ed
+                3.1. NSE boundary conditions
+
+
+
+
+                                                                                       iew
+                    Through the Dirichlet inlets of the micromixer, the carrier fluid is stream-
+                ing with a Poiseuille type velocity profile given by the formula
+                                                            xp (lx − xp )yp (ly − yp )
+                                   un (xp , yp ) = 16Umax                              .          (20)
+                                                                      lx2 ly2
+                Here, un is local velocity normal to the plane at plane coordinates (xp , yp ). It
+
+
+
+
+                                                                           ev
+                is calculated from the maximal inlet velocity Umax and inlet plane dimensions
+                lx , ly . The maximal velocity is chosen s.t. the Reynolds number in the mixing
+                channel is 186 as in [3]. At the outlet the constant zero Dirichlet boundary
+                condition for pressure and Neumann boundary condition for velocity are set.
+
+
+
+
+                                                               r
+                3.2. RADE boundary conditions
+                    Each reaction component is simulated on its own D3Q7 lattice. The educt
+
+                                                            er
+                A enters through one of the inlets with constant concentration 1 mol m−3 ,
+                whereas the educt B is set to 0.001 mol m−3 . The product C does not exist
+                at the inlets and appears only due to the reaction in the mixing channel. The
+                                               pe
+                mixer outlet is modeled via the Neumann boundary condition.
+
+                3.3. Material properties
+                    The carrier fluid is water with density of 1000 kg m−3 and kinematic vis-
+                cosity of 1.002 · 10−6 m2 s−1 . The diffusion coefficients of the species A, B
+                and C are 1.6 · 10−9 , 2 · 10−10 and 2 · 10−10 m2 s−1 accordingly. The Schmidt
+                                     ot
+
+
+                numbers are then 626, 5010 and 5010.
+
+                3.4. Simulation parameters
+                          tn
+
+
+
+                    The NSE is computed until a physical time of 0.0257 s to reach a steady
+                state with secondary flow. Following this, the RADEs are calculated for an
+                additional duration of 0.01 s until reaching the steady state as well. The
+                calculation was performed with different resolutions, corresponding relax-
+                rin
+
+
+
+
+                ation times and stabilization parameters (Table 3) on distinct numbers of
+                GPUs NVIDIA A100. The overview of simulation parameters and achieved
+                efficiency is shown in the Table 4.
+
+                4. Results
+     ep
+
+
+
+
+                    Firstly, the described setup is validated against the results of Bothe et
+                al.. Subsequently, the simulation outcomes obtained at the finest resolution
+                are discussed and analyzed.
+Pr
+
+
+
+
+                                                            9
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                       ed
+                                     Cell size [µm]       △t [µs]      CS    Scst
+
+
+
+
+                                                                                    iew
+                                           3.33          0.119048 0.2 0.03
+                                           0.83         0.0297619 0.2 0.3
+                                           0.42          0.014881 0.2 0.3
+                                           0.28        0.00992063 0.1 0.7
+                                           0.22        0.00793651 0.1 0.7
+
+
+
+
+                                                                        ev
+                                Table 3: Relaxation times and stabilization parameters
+
+
+                 Cell size [µm]    Cell number      GPUs number        MLUPs*       Simulation time [h]
+                                     1.08 · 106
+
+
+
+
+                                                             r
+                       3.33                                4             1400               0.06
+                       0.83          6.91 · 107            12             3681              3.04
+                       0.42          5.53 · 108            21             8200              28.6
+                       0.28
+                       0.22
+                                     1.87 · 109
+                                     3.65 · 109           er
+                                                          100
+                                                          160
+                * MLUPs - Millions of Cell Updates per Second
+                                                                         53512
+                                                                         68340
+                                                                                            22.3
+                                                                                            34.3
+                                                  pe
+                                           Table 4: Computation parameters
+
+
+                4.1. Validation
+                    The performed simulations are validated visually and numerically against
+                                     ot
+
+                the data given in publications of Bothe et al. and dissertation of Lojewski [3,
+                25]. The results of NSE and RADE can be validated separately. For the NSE
+                verification, the pressure distribution and magnitude of the secondary flow
+                          tn
+
+
+
+                along the micromixer axis are compared numerically to the FVM simulation
+                of Bothe et al. (Figure 3). The streamlines at the beginning of the mixing
+                zone are visually compared to the results of Lojewski, cf. Figure 4.p
+                    The magnitude of the secondary flow is computed cell-wise as u2y + u2z ,
+                rin
+
+
+
+
+                where uy and uz are velocities parallel to the mixer cross-sections, and then
+                averaged along the mixer axis. The streamlines from the LBM simulation
+                are marked with different colors for flows from distinct inlets.
+                    The numerical and visual comparison of FVM and LBM NSE simulation
+                results show a good agreement between the data, which is why the RADE
+     ep
+
+
+
+
+                calculations can be now juxtaposed. They are also compared optically and
+                numerically. The experiment shot shown in the figure 5 (a) is distribution
+                of a tracer taken by the laser induced fluorescence (µ-LIF) combined with
+Pr
+
+
+
+
+                                                          10
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                                                            ed
+                                                                                                        0.6
+                                                              LBM                                                                                LBM
+
+
+
+
+                                                                                                                         iew
+                                                                             Velocity magnitude [m/s]
+                     6,000                                   FVM [3]                                                                            FVM [3]
+     Pressure [Pa]
+
+
+
+
+                                                                                                        0.4
+                     4,000
+
+                                                                                                        0.2
+
+
+
+
+                                                                                                              ev
+                     2,000
+
+
+                        0                                                                                0
+
+
+
+
+                                                                           r
+                             0   0.2 0.4 0.6 0.8 1 1.2 1.4 1.6                                                0   0.2 0.4 0.6 0.8 1 1.2 1.4 1.6
+                                        Axis length [m ] ·10−3                                                           Axis length [m ] ·10−3
+                                   (a) Pressure along axis
+                                                                        er
+                                             Figure 3: Numerical validation of NSE simulation results.
+                                                                                                              (b) Secondary flow magnitude along axis
+                                                              pe
+                                                    ot
+
+
+                                          (a) FVM [25]                                                                    (b) LBM
+                                       tn
+
+
+
+                                      Figure 4: Comparison of streamlines in the beginning of mixing zone.
+
+
+                             micro-resolution confocal microscopy. The picture (b) is the middle slice of
+                             rin
+
+
+
+
+                             the FVM simulation performed for a single component with Sc = 3600. The
+                             LBM (c) result shows distribution of the component A with Sc = 626, 25.
+                             Although the molecular diffusivity in the LBM simulation is higher than in
+                             the FVM one, the numerical diffusion is much lower due to a higher uniform
+     ep
+
+
+
+
+                             resolution. That is why the right pictures is optically sharper then the central
+                             figure. The position of the Dean vortices is the same in all three pictures, their
+                             form is also similar. The next image is cross section of the mixing zone at the
+                             750 µm axis length colored with species B. The figures are very similar even
+Pr
+
+
+
+
+                                                                        11
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                       ed
+                                                                                    iew
+                                                              r           ev
+                                 (a) Experiment [1]
+                                                           er
+                                                        (b) FVM [1]           (c) LBM
+                                                  pe
+                  Figure 5: Comparison of the tracer distribution in the middle slice of the micromixer.
+                                     ot
+                          tn
+
+
+
+                            (a) FVM [3]                                              (b) LBM
+
+                Figure 6: Comparison of the component B distribution in the mixer cross section at 750 µm
+                rin
+
+
+
+
+                axis length.
+
+
+                though the FVM simulation is done on the 2D mesh of this concrete cross
+                section with extrapolated velocity values and RADE computed therewith
+     ep
+
+
+
+
+                and cell size of 0.156 25 µm. The LBM upshot is slice of 3D lattice of the
+                whole micromixer with uniform cell size of 0.22 µm.
+                    The numerical evaluation of the product C average concentration shows a
+                stronger difference between FVM and LBM simulations (Figure 7). The FVM
+Pr
+
+
+
+
+                                                           12
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                                                     ed
+                                                                       ·10−4
+
+
+
+
+                                                                                                                  iew
+                         Product C concentration [ mol m−3 ]   5
+
+
+                                                               4
+
+
+
+
+                                                                                                         ev
+                                                               3
+
+
+                                                               2
+                                                                                                    LBM △x 0,22 µm
+
+
+
+
+                                                                                              r
+                                                                                                    LBM △x 0,28 µm
+                                                               1
+                                                                                                    LBM △x 0,42 µm
+
+                                                               0                           er       LBM △x 0,83 µm
+                                                                                                       FVM [3]
+                                                                                  pe
+                                                                   0       0.2   0.4   0.6   0.8    1      1.2    1.4        1.6
+                                                                                       Axis length [m]                  −3
+                                                                                                                  ·10
+                                                               Figure 7: Numerical comparison of RADE simulation results.
+
+
+                concentration curve starts a rapid growth after 400 µm because of a coarse
+                                                                          ot
+
+
+                grid in this region with uniform cell size of 2.5 µm. The LBM results show a
+                decrease of the product concentration with lattice resolution refinement. It
+                is caused by the shrinkage of the artificial numerical diffusion of components,
+                                    tn
+
+
+
+                which is why the overlap of educts A and B is thinner and reaction outcome
+                is smaller. The complete prevention of this diffusion can be achieved only by
+                resolving the computational domain finer then the Batchelor scale.
+                rin
+
+
+
+
+                4.2. Discussion
+                    The comparison of experimental, FVM and LBM simulation data allow
+                to state that the setup developed in the current research is correct and veri-
+                fied. The fine resolution of the 3D lattice can be investigated more detailed
+     ep
+
+
+
+
+                in terms of microfluidic structures arising in the flow. There are several pa-
+                rameters that can be regarded to characterise the secondary flow in NSE
+                and RADE. The smallest length scale in a turbulent flow is the Kolmogorow
+Pr
+
+
+
+
+                                                                                           13
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                         ed
+                                                                                      iew
+                                                                              ev
+               0       0.1     0.2   0.3         0.4                        −2.2 0    2     4    6      8 9.4
+                             ηB [µm]                                                               −7
+                                                                                  Q criterion ·10
+
+
+
+
+                                                                  r
+                   Figure 8: Analysis of the secondary flow in the cross section at 750 µm of axis length.
+
+                                                               er
+                length scale η computed from the viscosity ν and energy dissipation rate ϵ.
+                                                       pe
+                                           ν 3  14           1 X
+                                     η=                with ϵ = ν    (∂α u′β + ∂β u′α ),                (21)
+                                             ϵ                 2 α,β
+                                                          u′α = uα − uβ .
+
+                The smallest
+                        √ length scale for a transported scalar is then the Batchelor scale
+                                      ot
+
+                ηB = η/ Sc which is an order smaller for high Schmidt numbers.
+                   The vorticity and probability of vortex building can be qualified by the
+                Q-criterion which is also computed from the strain rate tensor.
+                             tn
+
+
+
+                                    1                
+                              Q=       ||Ω||2 − ||S||2 ,                               (22)
+                                    2
+                                    1                        1
+                              S = (∂α uβ + ∂β uα ) and Ω = (∂α uβ − ∂β uα )            (23)
+                                    2                        2
+                rin
+
+
+
+
+                The positive Q-criterion means building of vortex flow, what in combination
+                with Batchelor scale can predefine the needed cell size for DNS of the con-
+                sidered transported scalar flow. Although in the current research a laminar
+                mixer is examined the mentioned parameters can be applied on it as well
+     ep
+
+
+
+
+                (Figure 8). The pictures light up regions where the vortices are. The values
+                of the Batchelor length scale distribution at the places where the Q-criterion
+                is high are around 0.2 µm what corresponds to the simulated smallest cell
+                size of 0.22 µm.
+Pr
+
+
+
+
+                                                               14
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                                                    ed
+                    The added artificial diffusion used for the stabilization of the simulation
+
+
+
+
+                                                                                                                 iew
+                is plotted in Figure 9. The added diffusion is taken along the central axis
+                                                                         ·10−9
+                                                                2                                          △x 0,22 µm
+                        Product C added diffusion [ m2 s−1 ]
+
+
+
+                                                               1.8                                         △x 0,28 µm
+                                                                                                           △x 0,42 µm
+
+
+
+
+                                                                                                           ev
+                                                               1.6                                         △x 0,83 µm
+                                                               1.4
+                                                               1.2
+
+
+
+
+                                                                                               r
+                                                                1
+                                                               0.8
+                                                               0.6
+                                                               0.4
+                                                                                            er
+                                                                                   pe
+                                                               0.2
+
+                                                                     0       0.2   0.4   0.6   0.8    1    1.2   1.4        1.6
+                                                                                         Axis length [m]               −3
+                                                                                                                 ·10
+                                                                           ot
+
+                    Figure 9: Added diffusion Dt to the reaction product locally along the mixer axis
+
+                of the micromixer, where two flows from different inlets come together and
+                create a zone of the highest shear stress in the simulation. The molecular
+                                                 tn
+
+
+
+                diffusion coefficient of the reaction product C is 2 · 10−10 m2 s−1 . Even for
+                the finest cell size, the added diffusion becomes 1.5 times higher then the
+                molecular one.
+                    The necessity of such a fine resolution can be seen as well in the visualized
+                rin
+
+
+
+
+                cell edges on one vortex in the beginning of mixing zone (Figure 10). The
+                species concentration curves are only 4 cells wide at the thinnest places even
+                by the cell size of 0.22 µm. A coarser grid would lose information of that
+                vortex, which is why the scaling power of a LBM simulation is vital for the
+     ep
+
+
+
+
+                starting section of the mixer. This figure also proves the correctness of the
+                chosen cell size and justifies the length scale and Q-criterion analyses for the
+                secondary laminar flow (Figure 8). The evolution of the product C genera-
+                tion is visualized in the Figure 11. The Dean vortices in the beginning of the
+Pr
+
+
+
+
+                                                                                            15
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                       ed
+                                                                                    iew
+                                                              r          ev
+                                                           er
+                                                pe
+                       Figure 10: Resolved concentration vortex in the middle slice of micromixer.
+
+
+                mixing zone can be well demonstrated with volumetric sampling (Figure 12).
+                The LBM simulation at high resolutions leads to the most precise species
+                distributions in the microreactor. Simulations with a cell size of 1.66 µm
+                                     ot
+
+                have also been successfully run on individual consumer-grade NVIDIA RTX
+                3090/4070 GPUs, although the highly detailed calculations are currently be-
+                yond the capabilities of local machines or small HPC clusters commonly used
+                          tn
+
+
+
+                in industrial applications.
+                    The detailed evaluation of the species concentrations along different axes
+                of the micromixer can be found in the supplementary materials. The posi-
+                tion of axes is shown in Figure 13. An examplarary comparison of product
+                concentrations along the line 5 is shown in the Figire 14. The gained precise
+                rin
+
+
+
+
+                simulation results can be used as benchmark case for reactive mixers.
+
+                5. Conclusion and outlook
+     ep
+
+
+
+
+                    The micromixers are chemical devices for precise species mixing and reac-
+                tion. The fluid dynamics inside of a microdevice is a complex process which
+                can be analysed and designed only by means of DNS. That requires calcula-
+                tion of large meshes with fine cell size smaller or equal to the Batchelor length
+Pr
+
+
+
+
+                                                           16
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                                                                                  iew
+                                                             r          ev
+                                                          er                             ·10−3
+                                               pe
+                                                                                                 1
+
+
+
+
+                                                                                                       Concentration C [mol m−3 ]
+                                     ot
+
+                                                                                                 0.5
+                          tn
+
+
+
+                                                                                                 0
+
+                          Figure 11: Product C generation evolution through the micromixer.
+                rin
+     ep
+Pr
+
+
+
+
+                                                          17
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                      ed
+                                                                                   iew
+                                                             r          ev
+                                                          er
+                                               pe
+                                     ot
+                          tn
+
+
+
+
+                                      Figure 12: Dean vortices of the product C.
+                rin
+     ep
+Pr
+
+
+
+
+                                                          18
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                                                  ed
+                                                                                                               iew
+                                                                                                         ev
+                     Figure 13: Position of the evaluation lines in the micromixer cross-section [µm].
+
+                                                                       ·10−4
+
+
+
+
+                                                                                              r
+                                                               7
+                                                                                                         △x 0,22 µm
+                         Product C concentration [ mol m−3 ]
+
+
+
+
+                                                               6                           er            △x 0,28 µm
+                                                                                                         △x 0,42 µm
+                                                                                                         △x 0,83 µm
+                                                                                  pe
+                                                               5
+
+
+                                                               4
+                                                                          ot
+
+                                                               3
+
+
+                                                               2
+                                    tn
+
+
+
+                                                                   0       0.2   0.4   0.6   0.8    1    1.2   1.4     1.6
+                                                                                       Axis length [m]         ·10−3
+                rin
+
+
+
+
+                         Figure 14: Product concentrations at different resolutions along line 5
+
+
+                scale, which which can be orders of magnitude smaller than the Kolmogorow
+     ep
+
+
+
+
+                length scale, depending on the Schmidt number, i.e. on the species diffusiv-
+                ities. The most popular FVM CFD softwares allow to simulate only limited
+                cell numbers in reasonable times, so that the computational domain needs to
+                be very small or there must be applied some mathematical simplifications.
+Pr
+
+
+
+
+                                                                                           19
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                The LBM allows parallel calculations on HPC clusters with multiple GPUs
+
+
+
+
+                                                                                  iew
+                due to the fully local simulation algorithm.
+                    In the current research, a T-micromixer with a simple reaction of sec-
+                ond order and Reynolds number of 186 is simulated within OpenLB software
+                library and validated against the published data of Bothe et al. [3] and Lojew-
+                ski [25]. The instabilities induced by a high shear rate between the rotating
+                Dean vortex layers and low relaxation numbers are compensated locally with
+
+
+
+
+                                                                        ev
+                a stabilization Schmidt number related artificial additional diffusivity. The
+                comparison of NSE and RADE results with experiment and published FVM
+                simulation data show good agreement. The Batchelor length scale distribu-
+                tion proves the chosen cell size, what can be observed on the concentration
+
+
+
+
+                                                             r
+                vortices with displayed cell edges. The generation of the reaction product
+                is visualized on the cross sections along the micromixer axis and volumetric
+                Dean vortices in the mixing zone beginning, where the contact area between
+
+                                                          er
+                two educts lays. The provided simulation data can be used as benchmark for
+                similar CFD applications or software libraries.
+                    In future works, a special reaction term correction shall be developed
+                                               pe
+                for simulations at coarser mesh resolutions based on the DNS results. The
+                Schmidt number stabilization method will be applied to the impinging jets
+                turbulent micromixer and validated against results of Johnson et al [26].
+
+                Author contribution
+                                     ot
+
+                Fedor Bukreev: Methodology, Validation, Formal analysis, Investigation,
+                Software, Data Curation, Writing - Original Draft; Adrian Kummerländer:
+                Software, Formal analysis, Supervision, Writing - Review & Editing; Julius
+                          tn
+
+
+
+                Jeßberger: Formal analysis, Supervision, Writing - Review & Editing; Den-
+                nis Teutscher: Writing - Review & Editing; Dieter Bothe: Data Cura-
+                tion, Writing - Review & Editing; Mathias J. Krause: Software, Resources,
+                Funding acquisition, Writing - Review & Editing.
+                rin
+
+
+
+
+                Acknowledgements
+                    This work was performed on the HoreKa supercomputer funded by the
+                Ministry of Science, Research and the Arts Baden-Württemberg and by the
+     ep
+
+
+
+
+                Federal Ministry of Education and Research. The current research is a part
+                of the DFG project number 436212129 ”Increase of efficiency in phosphate
+                recovery by understanding the interaction of flow and loading processes with
+                modeling and simulation”.
+Pr
+
+
+
+
+                                                          20
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                References
+
+
+
+
+                                                                                  iew
+                 [1] D. Bothe, C. Stemich, H.-J. Warnecke, Fluid mixing in a t-shaped micro-
+                     mixer, Chemical Engineering Science 61 (2006) 2950–2958.
+
+                 [2] D. Bothe,       A. Lojewski,       H.-J. Warnecke,      Computational
+                     analysis of an instantaneous chemical reaction in a t-
+                     microreactor,     AIChE Journal 56 (6) (2010) 1406–1415.
+
+
+
+
+                                                                        ev
+                     arXiv:https://aiche.onlinelibrary.wiley.com/doi/pdf/10.1002/aic.12067,
+                     doi:https://doi.org/10.1002/aic.12067.
+                     URL https://aiche.onlinelibrary.wiley.com/doi/abs/10.1002/aic.12067
+
+
+
+
+                                                             r
+                 [3] D. Bothe, A. Lojewski, H.-J. Warnecke, Fully resolved numerical sim-
+                     ulation of reactive mixing in a t-shaped micromixer using parabolized
+                     species equations, Chemical Engineering Science - CHEM ENG SCI 66
+
+                                                          er
+                     (2011) 6424–6440. doi:10.1016/j.ces.2011.08.045.
+
+                 [4] M. J. Krause, A. Kummerländer, S. J. Avis, H. Kusumaatmaja,
+                                               pe
+                     D. Dapelo, F. Klemens, M. Gaedtke, N. Hafen, A. Mink, R. Trunk,
+                     J. E. Marquardt, M. L. Maier, M. Haussmann, S. Simonis, Openlb—
+                     open source lattice boltzmann code, Computers & Mathematics with
+                     Applications 81 (2021) 258–288. doi:10.1016/J.CAMWA.2020.04.033.
+
+                 [5] A. Kummerländer, S. Avis, H. Kusumaatmaja, F. Bukreev, M. Crocoll,
+                                     ot
+
+                     D. Dapelo, N. Hafen, S. Ito, J. Jeßberger, J. E. Marquardt, J. Mödl,
+                     T. Pertzel, F. Prinz, F. Raichle, M. Schecher, S. Simonis, D. Teutscher,
+                     M. J. Krause, OpenLB Release 1.6: Open Source Lattice Boltzmann
+                          tn
+
+
+
+                     Code (Apr. 2023). doi:10.5281/zenodo.7773497.
+                     URL https://doi.org/10.5281/zenodo.7773497
+
+                 [6] S. Schwolow, J. Hollmann, B. Schenkel, T. Röder, Application-oriented
+                     analysis of mixing performance in microreactors, Organic Process Re-
+                rin
+
+
+
+
+                     search & Development 16 (2012) 1513–1522. doi:10.1021/op300107z.
+
+                 [7] M.-A. Schneider, F. Stoessel, Determination of the kinetic param-
+                     eters of fast exothermal reactions using a novel microreactor-based
+     ep
+
+
+
+
+                     calorimeter, Chemical Engineering Journal 115 (1) (2005) 73–83.
+                     doi:https://doi.org/10.1016/j.cej.2005.09.019.
+                     URL https://www.sciencedirect.com/science/article/pii/S1385894705003414
+Pr
+
+
+
+
+                                                          21
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                 [8] O. Wörz, Wozu mikroreaktoren?, Chemie in unserer Zeit
+
+
+
+
+                                                                                  iew
+                     34 (1) (2000) 24–29.        doi:https://doi.org/10.1002/(SICI)1521-
+                     3781(200002)34:1¡24::AID-CIUZ24¿3.0.CO;2-A.
+
+                 [9] H. Pennemann, V. Hessel, H. Löwe, Chemical micropro-
+                     cess technology—from laboratory-scale to production, Chemi-
+                     cal Engineering Science 59 (22) (2004) 4789–4794, iSCRE18.
+                     doi:https://doi.org/10.1016/j.ces.2004.07.049.
+
+
+
+
+                                                                        ev
+                     URL https://www.sciencedirect.com/science/article/pii/S000925090400483X
+
+                [10] V. Hessel, P. Löb, H. Löwe, Industrial microreactor process development
+                     up to production, Wiley-VCH Verlag, Germany, 2009, pp. 183–247.
+
+
+
+
+                                                             r
+                [11] A. N. Kolmogorov, Local structure of turbulence in an incompressible
+                     fluid at very high reynolds numbers, Dokl. Akad. Nauk SSSR 30 (1941a)
+                     299–303.
+                                                          er
+                [12] G. K. Batchelor, Small-scale variation of convected quantities like tem-
+                                               pe
+                     perature in turbulent fluid part 1. general discussion and the case of
+                     small conductivity, Journal of Fluid Mechanics 5 (1) (1959) 113–133.
+                     doi:10.1017/S002211205900009X.
+
+                [13] C. Stemich, Theoretische und numerische untersuchung des
+                     strömungsmischens in einem t-förmigen mikromischer, disserta-
+                                     ot
+
+                     tion, Universität Paderborn (2006).
+                     URL https://nbn-resolving.org/urn:nbn:de:hbz:466-2007021993
+                          tn
+
+
+
+                [14] C. Galletti, A. Mariotti, L. Siconolfi, R. Mauri, E. Brunazzi, Nu-
+                     merical investigation of flow regimes in t-shaped micromixers:
+                     Benchmark between finite volume and spectral element methods, The
+                     Canadian Journal of Chemical Engineering 97 (2) (2019) 528–541.
+                     arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/cjce.23321,
+                rin
+
+
+
+
+                     doi:https://doi.org/10.1002/cjce.23321.
+                     URL https://onlinelibrary.wiley.com/doi/abs/10.1002/cjce.23321
+
+                [15] A. Lobasov, A. Minakov, Analyzing mixing quality in a t-shaped
+     ep
+
+
+
+
+                     micromixer for different fluids properties through numerical simulation,
+                     Chemical Engineering and Processing - Process Intensification 124
+                     (2018) 11–23. doi:https://doi.org/10.1016/j.cep.2017.11.004.
+                     URL https://www.sciencedirect.com/science/article/pii/S0255270117303306
+Pr
+
+
+
+
+                                                          22
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                [16] S. Tokas, M. Zunaid, M. A. Ansari, Numerical investigation of
+
+
+
+
+                                                                                  iew
+                     the performance of 3d-helical passive micromixer with newto-
+                     nian fluid and non-newtonian fluid blood, Asia-Pacific Journal of
+                     Chemical Engineering 16 (1) (2021) e2570, e2570 APJ-20-0294.R1.
+                     arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/apj.2570,
+                     doi:https://doi.org/10.1002/apj.2570.
+                     URL https://onlinelibrary.wiley.com/doi/abs/10.1002/apj.2570
+
+
+
+
+                                                                        ev
+                [17] C. Fonte, D. Fletcher, P. Guichardon, J. Aubin, Simulation of micromix-
+                     ing in a t-mixer under laminar flow conditions, Chemical Engineering
+                     Science 222 (2020) 115706. doi:10.1016/j.ces.2020.115706.
+
+
+
+
+                                                             r
+                [18] J. Jeßberger, J. E. Marquardt, L. Heim, J. Mangold, F. Bukreev, M. J.
+                     Krause, Optimization of a micromixer with automatic differentiation,
+
+                                                          er
+                     Fluids 7 (5) (2022). doi:10.3390/fluids7050144.
+                     URL https://www.mdpi.com/2311-5521/7/5/144
+
+                [19] A. Kummerländer, M. Dorn, M. Frank, M. J. Krause, Implicit propaga-
+                                               pe
+                     tion of directly addressed grids in lattice boltzmann methods, Concur-
+                     rency and Computation: Practice and Experience 35 (8) (2023) e7509.
+                     arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/cpe.7509,
+                     doi:https://doi.org/10.1002/cpe.7509.
+                     URL https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.7509
+                                     ot
+
+
+                [20] J. Smagorinsky, General Circulation Experiments with the Primitive
+                     Equations, Monthly Weather Review 91 (3) (1963) 99. doi:10.1175/1520-
+                     0493(1963)091¡0099:GCEWTP¿2.3.CO;2.
+                          tn
+
+
+
+                [21] K. E. Lilly, On the application of the eddy viscosity concept in the
+                     inertial sub-range of turbulence, 1966.
+
+                [22] P. L. Bhatnagar, E. P. Gross, M. Krook, A model for colli-
+                rin
+
+
+
+
+                     sion processes in gases. i. small amplitude processes in charged
+                     and neutral one-component systems, Phys. Rev. 94 (1954) 511–525.
+                     doi:10.1103/PhysRev.94.511.
+                     URL https://link.aps.org/doi/10.1103/PhysRev.94.511
+     ep
+
+
+
+
+                [23] Z. Guo, C. Zheng, B. Shi, Discrete lattice effects on the forcing term
+                     in the lattice boltzmann method, Phys. Rev. E 65 (2002) 046308.
+Pr
+
+
+
+
+                                                          23
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                     doi:10.1103/PhysRevE.65.046308.
+
+
+
+
+                                                                                  iew
+                     URL https://link.aps.org/doi/10.1103/PhysRevE.65.046308
+
+                [24] M. Gaedtke, Thermal lattice boltzmann methods for the simulation of
+                     turbulent flows with conjugate heat transfer – application to refrigerated
+                     vehicles, Ph.D. thesis, Karlsruher Institut für Technologie (KIT) (2020).
+                     doi:10.5445/IR/1000126904.
+
+
+
+
+                                                                        ev
+                [25] A.     Lojewski,   Computergestützte    analyse     des  reaktiven
+                     strömungsmischens in t-mikroreaktoren, dissertation, RWTH Aachen
+                     (2010).
+
+
+
+
+                                                             r
+                [26] B. K. Johnson, R. K. Prud’homme, Chemical processing and micromix-
+                     ing in confined impinging jets, AIChE Journal 49 (9) (2003) 2264–2282.
+                     arXiv:https://aiche.onlinelibrary.wiley.com/doi/pdf/10.1002/aic.690490905,
+                                                          er
+                     doi:https://doi.org/10.1002/aic.690490905.
+                     URL https://aiche.onlinelibrary.wiley.com/doi/abs/10.1002/aic.690490905
+                                               pe
+                                     ot
+                          tn
+                rin
+     ep
+Pr
+
+
+
+
+                                                          24
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+

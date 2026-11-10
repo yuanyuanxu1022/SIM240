@@ -1,0 +1,63 @@
+{
+  "kind": "ZERO_RELEASE_ISSUANCE_VERIFICATION",
+  "issued_at": "2026-11-04T16:56+08:00",
+  "preparation_A_sha256": "53e544543ae26402a0d0fac7a7b3294e0a2286e7a7d4c336ce08e91abf53bfb9",
+  "preparation_A_inputs": 3695,
+  "preparation_A_reseal_verified": true,
+  "four_directories_pristine": true,
+  "zero_execution_authorization_received": true,
+  "resource_decision_adopted": true,
+  "zero_release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/S4_TGE_zero_launch_release_v1_20261104_01.json",
+  "zero_release_sha256": "d654196816e36fe97638c079c26a498e6203db8a01bd492042ecb1320c314949",
+  "zero_release_inputs": 3710,
+  "inherited_inputs": 3695,
+  "added_inputs": 15,
+  "authorize_native_zero_step": true,
+  "authorize_initial_field_read": true,
+  "approve_formal_runs": false,
+  "authorize_performance": false,
+  "authorize_S5": false,
+  "authorize_retry": false,
+  "start_command_created": true,
+  "start_command_executed": false,
+  "tmux_session_created": false,
+  "controller_log_created": false,
+  "audit_attempts_created": false,
+  "native_calls": 0,
+  "VTK_calls": 0,
+  "solver_executed": false,
+  "actual_time_steps": 0,
+  "builds": 0,
+  "software_test_reruns": 0,
+  "formal_runs": 0,
+  "resource_snapshot_at_issuance": {
+    "available_RAM_GiB_range": [
+      11.069,
+      12.045
+    ],
+    "samples": 20,
+    "below_12GiB": 19,
+    "disk_free_GiB": 316.17,
+    "memory_floor_met": false,
+    "disk_floor_met": true
+  },
+  "RESOURCE_PRECONDITION_AT_ISSUANCE": "NOT_MET",
+  "scientific_status": {
+    "NUMERICAL_GATE": "NOT_EVALUATED",
+    "RESULT_PASS": false,
+    "geometry_PASS": null,
+    "original_S4_stage_accepted": false,
+    "reference_qualified": false,
+    "MODEL_COMPARISON": "NOT_EVALUATED",
+    "physical_validation": "NOT_EVALUATED",
+    "submission_ready": false
+  },
+  "caveats": [
+    "8GiB is RLIMIT_AS, not measured peak RSS",
+    "300s per-call budgets exclude cleanup/hash/file checks",
+    "4x300s is not a whole-batch duration guarantee",
+    "16515072-node fit inside the limits is unproven"
+  ],
+  "git_commit": false,
+  "pushed": false
+}

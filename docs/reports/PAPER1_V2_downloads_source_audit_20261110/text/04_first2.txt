@@ -1,0 +1,142 @@
+                                                                     Microelectronic Engineering 173 (2017) 62–70
+
+
+
+                                                                    Contents lists available at ScienceDirect
+
+
+                                                             Microelectronic Engineering
+
+                                                     journal homepage: www.elsevier.com/locate/mee
+
+
+Research paper
+
+Fluid ﬂow in UV nanoimprint lithography with patterned templates
+Akhilesh Jain a, Andrew Spann a, Andrew Cochrane b,d, P. Randall Schunk c,d, Roger T. Bonnecaze a,⁎
+a
+  The University of Texas at Austin, McKetta Department of Chemical Engineering, 200 E. Dean Keeton St. Stop C0400, Austin, TX 78712-1589, USA
+b
+  Nanoscience and Microsystems Engineering, University of New Mexico, Albuquerque, NM 87131-0001, USA
+c
+  Advanced Materials Laboratory, Sandia National Laboratories, PO box 5800, Albuquerque, NM 87185, USA
+d
+  Department of Chemical and Biological Engineering, University of New Mexico, Albuquerque, NM 87131-0001, USA
+
+
+
+a r t i c l e          i n f o                             a b s t r a c t
+
+Article history:                                           Fluid ﬂow in UV nanoimprint lithography with patterned template is simulated to study the effect of pattern di-
+Received 9 January 2017                                    rectionality on droplet merging, throughput and defectivity. Flow in high density patterns is simulated by using
+Received in revised form 17 March 2017                     an anisotropic permeability. A method to calculate the permeability for templates with line and space patterns is
+Accepted 1 April 2017
+                                                           presented. It is found that the directionality of the pattern results in anisotropic spreading of the droplets. The
+Available online 3 April 2017
+                                                           droplets ﬂow faster in the direction of the pattern resulting in channelized unﬁlled regions. These regions ﬁll
+Keywords:
+                                                           slowly because the permeability in the direction normal to the patterns is low. A modiﬁed hexagonal arrange-
+Nanoimprinting                                             ment for droplet dispensing is proposed in which the ﬁlling time is lower than square and hexagonal droplet ar-
+Lithography modeling                                       rangements. Simulations are carried out with different multi-patterned template and droplet dispensing
+Micro-ﬂuidics                                              schemes. Dispensing droplets such that their volume is sufﬁcient to ﬁll the features locally is found to be the op-
+                                                           timum dispensing scheme to minimize ﬁlling time.
+                                                                                                                                             © 2017 Published by Elsevier B.V.
+
+
+
+
+1. Introduction                                                                                 [10,11,14,15]. The patterned templates used in UVNIL are very high
+                                                                                                quality as defects on template patterns can result in repeating defects
+     UV nanoimprint lithography (UVNIL) is a pattern replication process                        on the ﬁnal pattern. They are fabricated from an industry standard
+used to transfer micro- and nano- patterns from templates onto glass or                         mask blank using phase shift mask fabrication technology [16,17]. The
+silicon substrates for high volume manufacturing [1] of display applica-                        template fabrication process is highly precise and contributes consider-
+tions [2–4], photonic devices [5,6], photovoltaics [7] and high density bit                     ably to the over-all cost of ownership [16,18]. The throughput and de-
+pattern media [8,9]. A typical set up for UVNIL is shown in Fig. 1. An                          fect rate is inﬂuenced by the feature size and pattern density. Since
+inkjet dispenser is used to dispense droplets of low viscosity photo-cur-                       the cost of template fabrication is very high, experimenting with differ-
+able imprint material on the substrate. These droplets are a few                                ent template designs to minimize ﬁlling time is not viable. We can min-
+picoliters in volume. A template with micro- or nano- features is                               imize ﬁlling time by understanding the ﬂuid ﬂow behavior for various
+lowered on the substrate. As the template lowers, the droplets merge                            pattern type and sizes through modeling and simulation. The effect of
+together and ﬁll the gap between the template and the substrate to                              patterns on ﬂuid ﬂow has been studied primarily in the context of fea-
+form a uniform ﬁlm. Typically, the ﬁnal gap is sub-100 nm. When the                             ture ﬁlling and gas trapping [19–25]. The directionality of pattern fea-
+desired gap is reached, UV light irradiates the imprint ﬁlm, which                              tures has a huge inﬂuence on the ﬂuid ﬂow dynamics during
+photo-polymerizes to form a solid resist layer with features replicated                         spreading of the droplets [13]; however, the bulk effect of high density
+from the template. The template is then peeled from the resist with a                           patterns on droplet spreading across the template has not been ex-
+controlled mechanism completing the patterning process.                                         plored. Simulating the ﬂow around individual patterns is computation-
+     High throughput and low defectivity in UVNIL are important to                              ally very expensive due to the high density of patterns which creates a
+achieve high volume manufacturing for applications such as ﬂash mem-                            huge bottleneck in studying the ﬂuid behavior.
+ory. These factors depend strongly on the template control scheme [10,                              Here we propose a model for droplet spreading in UVNIL with pat-
+11], droplet distribution [11] and template pattern [11–13]. The effect of                      terned template which incorporates the effect of patterns on ﬂuid
+template control scheme and droplet distribution on throughput of                               ﬂow by calculating an average ﬂow permeability of the template.
+UVNIL has been explored previously using modeling and simulation                                UVNIL with line and space patterned templates is studied by varying
+                                                                                                droplet size and arrangement. The average permeability accounts for
+ ⁎ Corresponding author at: The University of Texas at Austin, McKetta Department of
+                                                                                                the porosity due to anisotropic patterns on the imprint template. Drop-
+Chemical Engineering, 200 E. Dean Keeton St. Stop C0400, Austin, TX 78712-1589, USA.            let spreading is simulated with droplets dispensed in different arrange-
+   E-mail address: rtb@che.utexas.edu (R.T. Bonnecaze).                                         ments, multi-patterned templates and different droplet dispensing
+
+
+http://dx.doi.org/10.1016/j.mee.2017.04.001
+0167-9317/© 2017 Published by Elsevier B.V.
+                                                            A. Jain et al. / Microelectronic Engineering 173 (2017) 62–70                                                           63
+
+
+
+
+                                                                                             Fig. 2. Schematic of droplets between a substrate and a template with line and space
+                                                                                             patterns. (a) Side view of the template. The feature height of the pattern is ΔH. The
+                                                                                             minimum gap between the substrate and the template is H. The width of the line and
+                                                                                             space pattern is d1 and d2 respectively. The patterns are parallel to the x direction. (b)
+                                                                                             Top view of the template with a droplet spreading under it. The horizontal lines show
+                                                                                             the direction of the patterns (not to scale).
+
+
+
+                                                                                             is in general a tensor and anisotropic reﬂecting the nature of the pattern.
+                                                                                             The equations describing the pressure and velocity ﬁelds in the drop for
+                                                                                             UVNIL with high density patterned template are given by the Reynolds'
+                                                                                             lubrication theory:
+                                                                                                          
+                                                                                             ∂H        ∇P
+                                                                                                ¼∇ K    H ;                                                                      ð1Þ
+                                                                                             ∂T        μ
+
+                                                                                                          ∇P
+                                                                                             U ¼ −K:                                                                               ð2Þ
+                                                                                                          μ
+
+                                                                                             where H is the gap between substrate and template, P is the pressure in
+                                                                                             the droplet, U is the vertically averaged ﬂuid velocity and μ is the viscos-
+                                                                                             ity of the imprint resist. For a rigid substrate and template, ∂H/∂T = − V,
+                                                                                             where V is the template velocity. The pressure distribution in the ﬂuid is
+                                                                                             calculated using Eq. (1) and the pressure boundary condition at the liq-
+                                                                                             uid-air interface. For a patterned template, the capillary pressure at the
+                                                                                             interface, Pinterface can be written as.
+      Fig. 1. Main steps for pattern replication in UV Nanoimprint lithography.
+
+                                                                                                                     γð cosθ1 þ cosθ2 Þ
+                                                                                             P interface ¼ P atm −                        ;                                        ð3Þ
+schemes to ﬁnd the optimum droplet distribution for maximum                                                                  ^H
+throughput. We identify and characterize different non-ﬁll defects
+formed when using different patterns and predict the size, location                                   ^
+                                                                                             whereH is an averaged gap between the substrate and the template ac-
+and count of these defects.                                                                  counting for the effect of pattern roughness on the capillary pressure. An
+                                                                                                                ^
+                                                                                             expression of H for line and space pattern is presented in the Supple-
+2. Simulation method                                                                         mentary information. Patm is the atmospheric pressure and γ is the sur-
+                                                                                             face tension of the imprint resist. θ1 and θ2 are contact angles made by
+    A schematic of imprint droplets between a patterned template and a                       the imprint material with the template and the substrate respectively.
+substrate is shown in Fig. 2. The template can be controlled to move                         Imprint material used in UVNIL is highly wetting and for our simulations
+with a constant velocity, constant pressure or applied force [10]. As                                                                                         ^
+                                                                                             we assume that θ1 = θ2 =0, so, P interface ¼ P atm −2γ=H. In our model, we
+the template approaches the substrate, the liquid-air interface of the                       assume that UVNIL is being carried out in vacuum or in a gas which is
+droplet results in an attractive capillary force on the template. The                        highly soluble in imprint material and so gas release and trapping can
+ﬂuid ﬂow in the gap results in viscous force which balances the capillary                    be neglected. The imprint process begins with the droplets making con-
+force due to the liquid interface and any externally applied force.                          tact with both the substrate and the template. We also assume that the
+    Typically sub-ten picoliter droplets are used in UVNIL [26]. The initial                 feature ﬁlling is instantaneous as the feature ﬁll time is negligible com-
+radii of the droplets are about 10–100 μm depending on their size and                        pared to the time required for the ﬂuid to spread in the gap.
+the wettability of the substrate. For sub-100 nm wide patterns, the                              The governing equations and boundary condition [Eq. (1), (2) and
+droplets are many orders of magnitude larger than the patterns and                           (3)] can be non-dimensionalized using the characteristic values of pres-
+each droplet cover hundreds or thousands of individual patterns. Since                       sure, gap thickness, time and velocity. These values are given by:
+the resist ﬂows over a very high density of patterns, the resistance to                      Pc = 2γ/Ho,Hc = Ho,Tc = 6μL2/γHo, Vc = γH2o /6μL2 and Uc = γHo/6μL,
+ﬂow can be described as an effective permeability. The permeability K                        where Ho is the initial gap. The x and y coordinates are non-
+

@@ -1,0 +1,1425 @@
+OPEN                                                                                     Microsystems & Nanoengineering (2017) 3, 17075; doi:10.1038/micronano.2017.75
+                                                                                         www.nature.com/micronano
+
+
+
+REVIEW ARTICLE
+Nanoimprint lithography steppers for volume fabrication of
+leading-edge semiconductor integrated circuits
+S.V. Sreenivasan1,2
+
+
+    This article discusses the transition of a form of nanoimprint lithography technology, known as Jet and Flash Imprint Lithography
+    (J-FIL), from research to a commercial fabrication infrastructure for leading-edge semiconductor integrated circuits (ICs). Leading-
+    edge semiconductor lithography has some of the most aggressive technology requirements, and has been a key driver in the 50-
+    year history of semiconductor scaling. Introducing a new, disruptive capability into this arena is therefore a case study in a “high-
+    risk-high-reward” opportunity. This article ﬁrst discusses relevant literature in nanopatterning including advanced lithography
+    options that have been explored by the IC fabrication industry, novel research ideas being explored, and literature in nanoimprint
+    lithography. The article then focuses on the J-FIL process, and the interdisciplinary nature of risk, involving nanoscale precision
+    systems, mechanics, materials, material delivery systems, contamination control, and process engineering. Next, the article
+    discusses the strategic decisions that were made in the early phases of the project including: (i) choosing a step and repeat process
+    approach; (ii) identifying the ﬁrst target IC market for J-FIL; (iii) deﬁning the product scope and the appropriate collaborations to
+    share the risk-reward landscape; and (iv) properly leveraging existing infrastructure, including minimizing disruption to the widely
+    accepted practices in photolithography. Finally, the paper discusses the commercial J-FIL stepper system and associated
+    infrastructure, and the resulting advances in the key lithographic process metrics such as critical dimension control, overlay,
+    throughput, process defects, and electrical yield over the past 5 years. This article concludes with the current state of the art in J-FIL
+    technology for IC fabrication, including description of the high volume manufacturing stepper tools created for advanced memory
+    manufacturing.
+
+    Keywords: jet and ﬂash imprint; nanoscale overlay; nanoimprint defectivity; semiconductor fabrication; steppers; precision
+    systems; UV nanoimprint
+    Microsystems & Nanoengineering (2017) 3, 17075; doi:10.1038/micronano.2017.75; Published online: 25 September 2017
+
+
+
+
+INTRODUCTION                                                                             (iii) very low pattern-placement distortions relative to an ideal grid;
+In this section, the manufacturing requirements associated with                          (iv) ability to overlay a pattern relative to a previous pattern with
+advanced semiconductor lithography are discussed. This is                                overlay errors of o 1/4th the most aggressive pattern half-pitch;
+followed by a discussion of lithographic approaches being used                           (v) low overall process defectivity to enable high IC yield; and (vi)
+or being considered as future candidates for semiconductor                               high-throughput and high mask usage or template life to achieve
+fabrication. The section then discusses technology gaps in IC                            acceptable cost of ownership. (In this article the term “template” is
+fabrication that establish the motivation for Jet and Flash Imprint                      used to deﬁne the nanoimprint master and is synonymous with
+Lithography (J-FIL) as a viable option for IC fabrication. J-FIL                         the term “mold” or the term “imprint mask” that are also used in
+(referred to as S-FIL in early papers) stepper technology                                the nanoimprint lithography literature.) Table 1 provides repre-
+was conceived at the University of Texas at Austin, and                                  sentative lithographic requirements for leading-edge memory
+then developed for semiconductor fabrication at Molecular                                devices1. Here, memory devices are used to deﬁne representative
+Imprints Inc., a UT-Austin spin out; and is now part of Canon                            requirements, rather than logic chips, as memory devices have
+Corporation.                                                                             more aggressive and well-deﬁned half-pitch requirements,
+                                                                                         whereas logic-device nodes are not clearly deﬁned in recent
+Semiconductor lithography requirements                                                   years as discussed in Table 1 (Ref. 1). This table of speciﬁcations
+While several nanopatterning techniques are reported in the                              illustrates the daunting challenge a new lithographic technology
+literature, only a small percentage of them have the potential to                        faces when it is being considered as a manufacturing option for
+be viable in volume manufacturing of semiconductor ICs.                                  advanced semiconductor ICs. Optical projection lithography has
+Manufacturing viability requires that the patterning approach                            been the workhorse in this industry for 50 years2, and has
+possess the following attributes: (i) high-resolution and tight pitch                    beneﬁted from years of sustained research-and-development
+structures with long-range order; (ii) ability to simultaneously                         investments from industry and academia. In its current form,
+pattern different types of structures with varying pattern densities;                    193 nm wavelength immersion (193i) photolithography (PL) has
+
+1
+ Department of Mechanical Engineering, NASCENT Center, The University of Texas at Austin, J.J. Pickle Research Campus, Building 160, 10100 Burnet Road, Austin, TX 78712, USA
+and 2Canon Nanotechnologies Inc., Austin, TX 78758, USA
+Correspondence: S.V. Sreenivasan (svs@austin.utexas.edu)
+Received: 30 April 2017; revised: 7 September 2017; accepted: 11 September 2017
+                          Nanoimprint steppers for semiconductor fabrication
+                                                            SV Sreenivasan
+2
+    Table 1  Representative semiconductor IC fabrication requirements. Actual requirements can vary somewhat for speciﬁc devices and device layers.
+    These are approximate estimates for advanced memory, both Flash and DRAM.a
+
+    No.                 Lithography speciﬁcation description                                                                        Speciﬁcation
+
+    1.                  Substrate size/type                                                                               300 mm diameter silicon
+    2.                  Patterning area per process step (ﬁeld size)                                                           26 mm × 33 mm
+    3.                  Substrate ﬂatness over a ﬁeld (peak-to-valley)                                                o25 nm, spatial periods of 45 mm
+    4.                  CD (min. feature size and half-pitch)                                                                 o20 nm half-pitch
+    5.                  Line-edge roughness (3σ)                                                                                    o2 nm
+    6.                  CDU (3σ)                                                                                                    o2 nm
+    7.                  Wafer defect density, logic vs. memory (relevant size 40.5 × CD)                        o0.01/cm2 vs. o 1–10/cm2 (defect size 410 nm)
+    8.                  Photomask usage vs. NIL template lifeb                                                  45000 wafers vs. 41000 wafers with replicationb
+    9.                  Alignment (A) and overlay (O) errors (mean+3σ)                                          Flash/DRAM: Ao 3 nm/2.5 nm; Oo5 nm/3.5 nm
+    10.                 Pattern layout, complexity                                                                       Cartesian, arbitrary patterns
+    11.                 Pattern density variations                                                                                   High
+    12.                 Printing of partial ﬁelds over the wafer edge printing                                                        Yes
+    13.                 Throughput for acceptable equipment costb                                                     45 WPH/US$1M of equipment cost
+    Abbreviations: CD, critical dimension; CDU, CD uniformity; IC, integrated circuit; NIL, nanoimprint lithography; WPH, wafers per hour. aThis table deﬁnes critical
+    dimensions based on half-pitch of the ﬁnest structures for memory devices; logic-device deﬁnitions of lithographic nodes have become increasingly confusing
+    over the past 15 years due to half-pitch of metal one layer diverging from the gate length. For example, Ref. 1 points out that Intel’s 65 nm node process in 2005
+    had a gate length of 32 nm and the half-pitch of the Metal 1 of 105 nm. bTemplate life/cost and tool throughput/cost represent the dominant factors in NIL cost-
+    of-ownership, other costs include process materials and gases. Template replication is a key complement to template life, see section “Resist and inkjet
+    development strategy”.
+
+
+
+
+    incrementally incorporated numerous scientiﬁc innovations (for                     throughput by a factor of at least 30 000 ×. Current MEBL tools for
+    example, excimer lasers, precision fabrication of large-scale optics,              mask/template writing are able to write a full-ﬁeld
+    magnetically levitated stages with nanoscale accuracy, chemically                  (26 mm × 33 mm) lithography region in ~ 5–6 h. To be able to
+    ampliﬁed photoresists, to name a few). Even though diffraction                     write an entire silicon wafer consisting of about 100 ﬁelds in about
+    limits its ultimate resolution to ~ 80 nm minimum pitch for lines                  a minute would require at least a 30 000 × improvement in
+    and spaces and ~ 110 nm pitch for more complicated pattern,                        throughput.19 This will require hundreds of thousands of
+    replacing PL with a disruptive lithographic technology has proven                  simultaneous e-beam columns that are individually addressable.
+    to be difﬁcult. A new technology needs to address the                              This leads to highly complicated tooling and formidable technical
+    fundamental resolution limits of PL while otherwise being a                        challenges such as beam blur due to space-charge effects, and
+    “drop-in replacement” to PL.                                                       pattern-placement errors. Even if all these technical challenges
+                                                                                       can be addressed, MEBL’s throughput limitation will likely make
+    Nanolithography literature review                                                  the technology viable only for small volume ASICs, but not for
+    The most aggressive half-pitch of the circuit patterns being                       high volume memory or logic applications.
+    manufactured today are about 20 nm half-pitch. Since the most                         Recent research in nanopatterning has continued to explore
+    advanced form of PL—193i lithography—is limited to ~ 38 nm                         techniques that may become relevant in IC fabrication including
+    half-pitch lines and spaces, the current production approach for                   plasmonic patterning approaches20,21, interferometric lithography
+                                                                                       techniques22,23, arrayed X-ray patterning with zone plates24, and
+    sub-38 nm half-pitch patterning-self-aligned double (SADP)/quad
+                                                                                       arrayed tip-based patterning25–29. The references provided here
+    patterning-comprises extremely complex and expensive proces-
+                                                                                       are exemplar and not meant to be comprehensive. However, to
+    sing steps3. Directed self-assembly (DSA) techniques are also
+                                                                                       the best of the author’s knowledge, none of the capabilities
+    being explored to complement 193i lithography4,5. SADP and DSA
+                                                                                       discussed in this paragraph have developed comprehensive
+    techniques are inherently suited for periodic patterns, and they
+                                                                                       systems that simultaneously address all the speciﬁcations listed
+    place stringent constraints on device designers that require more                  in Table 1, nor have they reached the maturity to warrant a
+    complex patterns6. In addition to the patterning limits of DSA, it                 leading-edge IC manufacturing company exploring them.
+    also has a number of challenges related to defects and pattern                        As discussed next, while the research landscape for nanopat-
+    placement7,8, which has prevented its adoption to date in IC                       terning includes a variety of techniques, the only two technologies
+    manufacturing.                                                                     that are being explored and/or integrated into manufacturing by
+       Over the years, the industry has explored several other high-                   IC fabs to address resolution limits of 193i PL are J-FIL and extreme
+    resolution lithography techniques for production including X-ray                   ultraviolet (EUV) lithography. These two technologies are the only
+    lithography (XRL)9,10, electron projection lithography (EPL)11, ion                ones that appear to have the maturity to be considered for
+    beam projection lithography (IPL)12, and 157 nm PL13,14. As of the                 production for sub-20 nm patterning with arbitrary pattern
+    writing of this document, XRL, EPL, IPL, and 157 nm PL are no                      complexity, including, for example, lines/spaces and contact holes
+    longer being pursued by the silicon IC industry. In addition,                      with arbitrary/variable pitch, and complicated circuit geometries.
+    multiple e-beam lithography (MEBL)15,16 is being considered for IC
+    fabrication. MEBL has made progress towards the development of                     EUV lithography. The historical trend in PL tooling has been to
+    a master writing lithography tool for fabricating both photomasks                  decrease exposure wavelength (λ) and/or increase the numerical
+    and imprint templates. This deﬁnition of the term “template” has                   aperture (NA) of the projection optics to exploit the diffraction
+    now been included earlier in the paper on page one in the section                  limited resolution, R = λ/NA (Refs. 2,13). EUV lithography seeks to
+    “semiconductor lithography requirements”. Wherein the write                        create enhanced resolution beyond 193i PL by using soft X-ray
+    times for the most advanced photomasks are targeted to improve                     wavelength of 13.2 nm, and was originally explored by the
+    from several days to ~ 10 h (Refs. 17,18). However, a direct writing               industry in the early 1990s. While EUVL appears to be a natural
+    tool for wafer fabrication will require a further improvement in                   extension of PL, it has several major challenges as compared to
+
+    Microsystems & Nanoengineering                                doi:10.1038/micronano.2017.75
+                                                                         Nanoimprint steppers for semiconductor fabrication
+                                                                         SV Sreenivasan
+                                                                                                                                                      3
+                          a
+
+                                                                                                      H         H′
+
+
+
+
+                          b
+
+
+                                                                                                  T        T′
+
+
+
+
+                          c
+
+
+
+
+Figure 1 Various defects for the case of spin-on imprinting in the presence of pattern and size variation61; shear resistance can cause various
+defects, including non-ﬁlled features (a) and (c), and deformed features under pressure (b).
+
+193i PL, making it a disruptive extension of PL. EUV wavelengths         temperature will likely exceed 600C38. Finally, systems engineering
+cannot penetrate through any medium; therefore, EUVL tools               issues such as tool reliability will need to be addressed. For
+operate in high vacuum. They can only incorporate reﬂective              example, photons coming from increasingly higher power EUV
+optical elements to create a projection lithography system and           sources can severely heat several sub-systems in the tool, leading
+their photomasks are reﬂective elements as well. Creation of a           to concerns about degradation of expensive components. Also,
+viable EUV light source has been a monumental challenge as high-         since the silicon wafer temperature has to be controlled to better
+powered light sources (4200 W) are needed; every EUV reﬂective           than 5 mK for overlay purposes, heat extraction and management
+surface absorbs ~ 30% and there are typically at least seven             from vacuum pose signiﬁcant engineering challenges.
+reﬂective surfaces in the EUVL tool before wafer exposure30,31.
+EUV photons are usually created by subjecting a micro-droplet of         Nanoimprint lithography. Nanoimprint lithography (NIL) techni-
+tin to a high-powered CO2 laser. The state of the art today is a         ques are known to possess remarkable replication capability down
+~ 25 kW CO2 laser creating a 250 W EUV source. While EUVL was            to sub-3 nm resolution39, and sub-7 nm half-pitch40. In this regard,
+ﬁrst proposed and explored in the early nineties, its use in             NIL is unusual in the capability it offers as compared to other
+manufacturing to achieve acceptable throughput for a reasonable          technologies discussed above; its resolution is unmatched,
+cost of ownership has remained elusive due to the need for high-         approaching molecular scale39. Additionally, as compared to PL
+powered sources and other challenges such as contamination due           —which has been the workhorse in the semiconductor and
+to lack of practical EUV mask pellicles that can be used in a            display fabrication industries—NIL’s resolution is largely unaf-
+manufacturing setting32, complex reﬂective mask blanks that              fected by the ﬁeld size being patterned, which has the potential to
+require multi-layer coatings consisting of ~ 80 atomically precise       lead to high-throughput NIL processes. This combination of
+ﬁlms, and pattern line-edge roughness (LER) due to the need for          resolution and large area (high-throughput) of NIL has been
+chemical ampliﬁed resists to achieve acceptable throughput for a
+                                                                         demonstrated in the development of nanopatterning systems that
+reasonable cost of ownership33,34. Improvements in resolution and
+                                                                         can pattern: (i) full wafers including the substrate conformal
+LER requires higher source power (due to the fundamental
+                                                                         imprint lithography system41 and the J-FIL-based Imprio 1100
+problem of shot noise) to retain adequate throughput. Delay in
+                                                                         System42; (ii) double-sided disks43,44, and rolls of ﬂexible
+EUVL adoption creates a familiar problem in next-generation
+lithography: the need to overcome additional technology road-            substrates45–48. These NIL systems have demonstrated the
+blocks for a future node where EUVL is projected to be adopted.          potential for sub-10 nm patterning at high throughputs. As an
+For example, current projections for EUVL call for insertion at the      example, a double-sided nanopatterning system for hard disk
+7 nm logic node, or more realistically at the 5 nm logic node35,36.      drives has demonstrated both sub-10 nm patterning and 4180
+Lapedus37 discusses the projected half-pitch associated with these       double-sided disks per hour49. A good overview of the various NIL
+nodes: “A hypothetical 7 nm ﬁnFET is projected to have anywhere          tools that have been created commercially is provided in a recent
+from a 12 to 18 nm gate length and a 45 to 55 nm gate pitch,             book (see Table 2.1 of Ref. 50).
+according to IBM. In comparison, Intel’s 14 nm ﬁnFET technology             Translating the above molecular-scale replication resolution to a
+has a 20 nm gate length. It has a gate pitch of 70 nm.”                  commercially viable IC manufacturing process, however, requires
+Turkot35 and Kim et al.36 indicate that source power requirements        addressing a variety of process performance, cost, and reliability
+will likely double when the design rules are reduced to 5 nm. In         targets (Table 1). A number of mechanical patterning techniques
+addition, the next-generation ASML high NA tool (0.55NA) will            including thermal molding NIL51–54, UV NIL55–58, and soft
+only be a half-ﬁeld tool to retain the 150 mm square mask form           lithography41,59 have been discussed in the literature. As
+factor affecting productivity and hence cost of ownership. There         discussed next, these techniques are unable to address two
+are also new basic challenges such as three-dimensional (3D)             critical requirements of IC fabrication— o 10 nm overlay and the
+diffraction effects caused by the 70 nm mask absorber layers,            ability to address pattern complexity (Items 9–11 in Table 1). This
+which do not exist in 193i PL. Also, the need for a EUV pellicle         establishes a need for an imprint technology that retains the
+creates a major challenge in handling and thermal stability of an        molecular-scale resolution, while solving the overlay and pattern
+ultra-thin (sub-50 nm) polysilicon membrane whose operational            complexity problems.
+
+                                                       doi:10.1038/micronano.2017.75                                 Microsystems & Nanoengineering
+                        Nanoimprint steppers for semiconductor fabrication
+                                                          SV Sreenivasan
+4
+                     2.0 Td/in2 (14.5×22 nm full pitch)
+                                                                                                        1: Inkjet dispense
+                                                                                                          of resist drops
+
+
+
+
+                                                                                                         Substrate
+
+
+
+                50 nm
+                                                                                                    2: Align template
+    Figure 2 7 nm half-pitch patterns (data from HGST, a Western Digital                             to resist drops
+    Company68) using J-FIL. J-FIL, Jet and Flash Imprint Lithography.
+
+        The need for nanoscale alignment/overlay eliminates the use of                                  Template
+    thermal molding technologies that require elevated temperatures
+    and pressure. Further, technologies that use polymer molds41,59
+    lack thermal and mechanical stability causing in-plane mold
+    distortions that are likely unsuited for sub-5 nm overlay. Nanoscale                                 Substrate
+    overlay also requires the use of a step and repeat (S&R) patterning
+    process, rather than a whole wafer printing process. This makes
+    the use of “wet” UV curable spin-on ﬁlms56 challenging as the wet
+    ﬁlms not only attract contamination as the wafer undergoes S&R                                 3: Bow template to initiate
+    process, they also cause premature curing of areas due to stray UV                                contact in the middle
+    light. For leading-edge IC fabrication, the sub-5 nm overlay
+    requirement and the need to match with 193i PL makes it
+    extremely difﬁcult to pattern full 300 mm silicon substrates in one
+    step. Full wafer patterning causes higher-order distortions due to:
+    (i) large area wafer topography; (ii) mismatch between various PL
+    scanner ﬁelds; (iii) overall thermal stability of the wafer and
+                                                                                                         Substrate
+    template over the entire wafer that cannot be corrected without
+    the use of very sophisticated arrays of real-time sensors and
+    actuation systems; and (iv) fabrication challenges of 300 mm
+    printing area templates. As discussed in section “J-FIL stepper
+                                                                                                    4: Relax bow, complete
+    system and associated imprint materials”, the current J-FIL stepper
+                                                                                                     capillary fill, UV flash
+    template format leverages the PL 6025 format as this substrate is
+    available at reasonable cost, with very low defect levels, and are
+    thermally stable to achieve sub-5 nm overlay. A one-step
+    patterning of 300 mm wafers would require substrate infrastruc-
+    ture that does not exist today. The problem of large-area precision                                    Template
+    overlay has been addressed to some extent by exploring the use
+    of arrays of thermal actuators60, but one-step full wafer patterning                                 Substrate
+    still requires signiﬁcant innovation in sensors, actuators, and
+    wafer-scale template fabrication technologies.
+        The ability to print complex patterns with pattern density
+    variations eliminates the use of spin-coated resist ﬁlms before                               5: Controlled delamination
+    nanoimprinting. This is because a non-uniform pattern in the                                  to separate without shear
+    template is incompatible with a uniform material distribution
+    obtained on the wafer from spin coating as illustrated in Figure 1,
+    which is reproduced here with permission from Cheng and Guo61.                                       Template
+        J-FIL is a form of UV NIL that addresses the above two concerns.
+    The next section describes the J-FIL process steps in detail,
+    discusses its advantages, and the key technical risks. The third
+    section presents the J-FIL stepper system architecture and related                                   Substrate
+    infrastructure choices made to address the key technical risks
+    associated with J-FIL.
+
+                                                                             Figure 3 J-FIL uses inkjet-based adaptive material deposition to
+    JET AND FLASH IMPRINT LITHOGRAPHY                                        dispense resist material correlated with the template geometry,
+    J-FIL is distinct from other imprint lithography processes as it uses    which can include binary, multitiered and generic 3D structures. 3D,
+                                                                             three-dimensional; J-FIL, Jet and Flash Imprint Lithography; UV,
+    inkjet techniques to dispense picoliter volumes of low viscosity UV      ultraviolet.
+    curable resists. This enables adaptive material deposition to match
+
+
+
+    Microsystems & Nanoengineering                         doi:10.1038/micronano.2017.75
+                                                                        Nanoimprint steppers for semiconductor fabrication
+                                                                        SV Sreenivasan
+                                                                                                                                                 5
+
+
+
+
+Figure 4 Steps 3 and 4 of Figure 3 shown here as “through-the-template snap shots” of the template engaging with the ﬂuid. J-FIL, Jet and
+Flash Imprint Lithography.
+
+pattern variations in the template. This, combined with the low            Typically, if sub-micron bubbles are formed, they disappear
+viscosity resist formulations (o 10 cP), leads to high-throughput          quickly due to dissolution in the resist. If the desired ﬂuid
+processes62–64.                                                            distribution is achieved, the resulting residual layer thickness
+   J-FIL steppers pattern one rectangular ﬁeld of ~ 26 mm × 33 mm          (RLT) beneath the pattern is thin and uniform. To enable
+at a time (consistent with advanced PL steppers). Typically, about         subsequent etching, the ﬁnal residual layer has to have a mean
+100 ﬁelds cover a 300 mm wafer, including full ﬁelds and partial           thickness of ~ 1/2 to 1/4th the feature height. For a 20 nm
+ﬁelds at the edge of the wafer. While this article focuses on J-FIL        feature that is 50 nm tall (aspect ratio of o2.5:1 is chosen to
+for semiconductor fabrication, J-FIL has also been deployed in the         avoid defects during separation), the RLT mean ranges from 13
+hard disk industry as double side full-disk patterning tools65,66,         to 25 nm; and the uniformity needs to be ~ 3 nm, 3σ64,72. A
+and roll-to-roll nanopatterning tools for display photonics                reverse tone etch process can also be used with higher RLT
+applications67. In the hard disk drive area, J-FIL has demon-              mean; however, this process is not discussed here. Finally,
+strated resolution below 10 nm over full disks as shown in Figure 2        before UV curing, nanoscale alignment/overlay relative to a
+(Ref. 68).                                                                 prior pattern has to be ensured, followed by UV curing. This
+                                                                           step, involving ﬂuid ﬁlling and precision alignment, is the most
+Description of the J-FIL process                                           time-consuming step and takes about 1.1 s69.
+                                                                        4. Step 5 consists of separating the template without shearing any
+The process steps are shown in Figure 3, and a summary of each
+                                                                           nanoscale features, further aggravated by the need to
+step is provided below. It should be noted that these ﬁve steps
+                                                                           complete the step in ~ 100 ms to achieve 20 WPH throughput.
+have to be completed in ~ 1.5 s to achieve a commercially viable
+throughput of 20 wafers per hour (WPH) in a J-FIL stepper69.
+   The substrate is coated with a thin (sub-5 nm) adhesion layer
+(not shown in Figure 3) that promotes wetting of the liquid resist      J-FIL stepper risks in semiconductor fabrication
+and provides strong adhesion to the cross-linked resist after UV        The key J-FIL technology risks that were identiﬁed early in this
+curing64. Then, a low viscosity UV curable resist is dispensed onto     project to enable advanced semiconductor manufacturing are
+the substrate. The dispensed geometry is based not only on the          listed below. Mitigation of these risks is addressed both
+template pattern but also on the nature of ﬂuid ﬂow as a function       conceptually and with recent results and data in the fourth and
+of pattern type. For example, a grating-type pattern can cause          penultimate sections.
+highly directional ﬂow, while a dot-type pattern leads to more
+isotropic ﬂow70. The overall approach to drop dispense requires         1. Creation of 1X templates: The introduction of 4X reduction PL in
+addressing many aspects including inkjet-to-inkjet variations, ﬂow         the 1970s was driven by the need to relax the fabrication and
+behavior at pattern transitions, the need to address evaporation of        inspection requirements of photomasks. With the advent of
+the liquid drops due to air ﬂow in the equipment, and the fact that        deep subwavelength lithographic resolution, mask features are
+10,000–100,000 drops having picoliter volumes may be dispensed             now signiﬁcantly smaller than 4X, approaching 1.3X. J-FIL is a
+over a ﬁeld of 26 mm × 33 mm. Ofﬂine software algorithms have              1:1 replication of the template, that is,1X. This leads to
+been deployed to allow users to create the ﬁeld drop patterns that         challenges in the fabrication and inspection of the smallest
+address all these constraints71. The process steps shown in                and the tightest pitch structures. 4X masks also relax the
+Figure 3 are:                                                              tolerable image distortion requirements that affect wafer
+                                                                           overlay by 4X, which is also a challenge for NIL templates.
+1. The substrate is moved on the substrate stage to align the              Solutions to this challenge are discussed in section “Resist and
+   drops of resist accurately (better than ~ 5 μm) with respect to         inkjet development strategy”.
+   the template features to ensure efﬁcient and precise ﬂuid            2. Template life: J-FIL requires the templates to make liquid
+   ﬁlling. The template is coated with a release layer to ensure that      contact via the residual ﬁlm between the template and
+   the adhesion at the template–resist interface is about 25 times         substrate (typical mean value of o 25 nm). Any hard particles
+   lower than at the resist–substrate interface64, thereby avoiding        (for example, inorganics or metallic) or other asperities larger
+   resist contamination of the template.                                   than the residual ﬁlm on the substrate can cause template
+2. The next step involves shaping the template with a bow of               damage leading to repeating defects. In PL, the pellicle is used
+   ~ 10–15 μm using air pressure to ensure that the template               to avoid such mask damage or contamination32. Solutions to
+   makes contact with the drops at its center (see Step 3 of               this challenge in J-FIL are discussed in section “Resist and inkjet
+   Figure 3.)                                                              development strategy”.
+3. Next, template bowing is relaxed using precise control of            3. Basic S&R printing (precise ﬂuid distribution and conﬁnement
+   vertically moving actuators (see Figure 4). The speed of the            within stepper full ﬁelds and partial ﬁelds): J-FIL’s low viscosity
+   template shape relaxation is also a function of the resist ﬂuid         liquids can undergo signiﬁcant undesirable/uneven evapora-
+   properties such as viscosity and the ﬂuid’s wetting behavior            tion if left uncovered on a substrate. Therefore, J-FIL steppers
+   with the template and substrate. The speed is controlled to             need to dispense one ﬁeld at a time immediately followed by
+   allow lateral merging of drops and capillary ﬁlling of features to      covering this ﬁeld by the template to attain the process of
+   minimize creation of trapped bubbles between the drops.                 Figure 3. This requires creation of perfect rectangles for each
+
+                                                       doi:10.1038/micronano.2017.75                          Microsystems & Nanoengineering
+                        Nanoimprint steppers for semiconductor fabrication
+                                                          SV Sreenivasan
+6
+       ﬁeld (with no ﬂuid extrusions outside the rectangular regions)        macroscales; high yields; and high throughput exempliﬁed by
+       followed by zero gap between a ﬁeld and the subsequent ﬁeld.          the lithography requirements in Table 1. In this section, the way
+       This requires perfect ﬂuid conﬁnement within each ﬁeld.               this ecosystem was leveraged during the development of J-FIL
+       Further, about 1/3rd of the stepper ﬁelds are “partial ﬁelds” at      technology is discussed.
+       the edge of a 300 mm wafer. These partial ﬁelds contain 410%
+       yielding devices and therefore it is essential that they are          Stepper decision
+       fabricated to meet all lithographic requirements. In J-FIL            J-FIL as well as other imprint processes can be, and have been,
+       steppers, it is necessary to ensure that the liquid is conﬁned        used to pattern the whole wafer at once which signiﬁcantly
+       in this asymmetrically shaped ﬁeld to allow zero-gap patterning       enhances productivity63,74,44. This is a major advantage of NIL as
+       with adjacent ﬁelds, while avoiding resist extrusion over the         compared to PL that is limited in its exposure ﬁeld size by the
+       edge of the wafer that can cause contamination and defects.           need for extremely sophisticated optics. However, when it comes
+       This topic is discussed in section “Basic step and repeat printing    to semiconductor IC fabrication, the following aspects make S&R
+       (precise ﬂuid distribution/conﬁnement for stepper full and            patterning desirable even for J-FIL:
+       partial ﬁelds)”.
+    4. Nanoscale overlay: To be viable at ~ 20 nm half-pitch lithogra-       ● Leveraging photomask infrastructure: The semiconductor indus-
+       phy, J-FIL needs to be capable not only of achieving sub-5 nm           try has developed the photomask blank to meet stringent
+       overlay while aligning to another J-FIL layer, but it also needs to     material stability and defect requirements at acceptable blank
+       “mix and match” with 193i PL and achieve sub-5 nm overlay.              costs. These blanks inherently support about 100 mm × 100 mm
+       This requires rigid body alignment capability (x, y, and θ) to          area for mask patterns. However, since templates require
+       adjust scale or magniﬁcation (independent magniﬁcation in x             additional features (such as a cored out region, see section
+       and y), shape (orthogonality and trapezoidal), and often some           “The stepper system”), the J-FIL ﬁeld size has to be limited to
+       higher-order distortion corrections as well. Nanoscale overlay is       about 50 mm × 50 mm. The current industry ecosystem does
+       discussed in section “Nanoscale overlay”.                               not support the creation of templates large enough to support
+    5. Defect control: In addition to particle-induced template                one-shot full wafer (300 mm) patterning.
+       repeaters, defects can occur in the liquid phase (before UV           ● Precision overlay: Over full wafers, it is very difﬁcult to avoid
+       curing) or solid phase (after UV curing). Liquid phase defects          parasitic overlay errors and distortions as many errors degrade
+       include bubbles and voids, while solid phase defects include            when the printed ﬁeld is increased. For example, lack of substrate
+       separation induced shear, cohesive failure of imprint materials,        ﬂatness, lack of temperature control, and overlay errors due to
+       and feature collapse defects during or after separation. All            magniﬁcation and rotation errors are all aggravated when the ﬁeld
+       these defects are discussed in section “Defect control”.                size is large. Therefore, an S&R process is preferred.
+    6. Throughput: Template ﬂuid ﬁlling is known to be the bottleneck        ● J-FIL integration with PL: To leverage previously installed PL tools
+       in J-FIL. Complete ﬂuid ﬁlling is achieved only when all the            in the fab, integration of J-FIL (used for a few advanced layers)
+       bubbles/voids in the template–ﬂuid–substrate sandwich have              with PL is needed. By using a ﬁeld size that is equal to a PL ﬁeld
+       disappeared. Overlay control also happens in parallel to                (26 mm × 33 mm), this integration is enabled while achieving
+       template ﬁlling. Steps 3 and 4 in Figure 3 and further detailed         sub-5 nm overlay.
+       in Figure 4 represent the throughput bottleneck. These steps
+       take up ~ 65–70% of the throughput budget69. Steps 1 and 2
+       take up o20% of the throughput budget and more
+       importantly depend on mature technologies such as high-               Initial target market
+       speed x–y stages with micro-scale precision alignment relative        J-FIL is inherently better suited for advanced memory (non-volatile
+       to the template. Step 5, while very important for defects as          memory including ﬂash and cross-point memory, and DRAM)
+       discussed below, only takes ~ 5% of the throughput budget.            manufacturing as memory manufacturers have tight cost con-
+       Steps 3 and 4 are discussed in section “Throughput”.                  straints, and have relaxed defect requirements as compared to
+                                                                             logic circuits such as micro-processors. The acceptable defect
+                                                                             density for memory is ~ 1–10 defects cm− 2, which is ~ 2–3 orders
+                                                                             of magnitude higher than what is needed in logic circuits. Within
+    J-FIL TECHNOLOGY TRANSLATION STRATEGY                                    memory, the ﬁrst target market for J-FIL was chosen to be ﬂash
+    The development and deployment of J-FIL stepper technology for           memory, which has somewhat relaxed overlay requirements as
+    semiconductor fabrication required several strategic decisions           compared to DRAM. Toshiba—a leading ﬂash memory manufac-
+    during the early phases of the project. First and foremost was the       turer—became the ﬁrst customer to investigate J-FIL technology
+    decision to develop a stepper with the maximum ﬁeld size                 for IC fabrication75; and SK Hynix—a leading DRAM manufacturer
+    matched with the PL standard ﬁeld of 26 mm × 33 mm. The next             —joined Toshiba in developing J-FIL for manufacturing76.
+    decision was to choose an appropriate initial target market and an
+    initial customer. Then, a partnership was needed to create the           Template infrastructure partner
+    template infrastructure, followed by a strategy to develop the J-FIL     J-FIL templates require 1X patterns and are prone to template life
+    resist materials. Finally, a partnership to develop a high volume        problems due to potential for particle-induced template repeaters
+    manufacturing (HVM) stepper was pursued.                                 as discussed in the second section. While photomasks have
+       It is worth noting that the market for silicon ICs is large,          historically been 4X, the advent of optical proximity correction
+    estimated at over U$330B in 2016 (Ref. 73). This readily supports a      sub-resolution features and computational lithography77 have led
+    vibrant ecosystem of suppliers that contribute to the process            to the need for minimum mask feature size of o 1.3X over 16X the
+    technology in semiconductor fabrication facilities. Companies in         area of imprint templates. Therefore, the original advantage of 4X
+    this ecosystem create and deploy extremely sophisticated                 mask patterns introduced in the 1970s to make mask fabrication
+    products in areas such as fabrication equipment for patterning,          easier is no longer true. Therefore, the electron beam write times
+    vacuum processes, wet processes, and so on; processing gases             for templates is comparable to or often lower than that of
+    and materials; photomasks for lithography; ultra-low defect              advanced photomasks. A careful comparison of write times for
+    300 mm crystalline silicon wafers; and so on. These suppliers play       imprint templates versus photomasks is discussed in the
+    a critical role in enabling nanometer scale precision over               literature78, and this topic is not discussed in any further detail
+
+    Microsystems & Nanoengineering                         doi:10.1038/micronano.2017.75
+                                                                         Nanoimprint steppers for semiconductor fabrication
+                                                                         SV Sreenivasan
+                                                                                                                                                     7
+in this article. Dai Nippon Printing Co. (DNP) in Japan, a leading-      Film, and so on) develop the photoresists. During the develop-
+edge photomask manufacturer, has been the exclusive partner              ment of J-FIL, this decoupling between tool and material supplier
+for J-FIL stepper templates over the past 10 years and has               was not pursued as the inkjetting approach incorporates the
+delivered commercial grade templates by leveraging its existing          material dispense capability in the stepper (eliminating the need
+photomask fabrication facilities. In addition to achieving reason-       for a resist spin coater), and the unique control algorithms needed
+able write times for imprint templates, DNP has used thinner             to operate the inkjets at sub-picoliter volumes requires consider-
+chrome layers ( o10 nm thick) since the chrome ﬁlm is only               able co-development between the tool and the resist materials.
+being used as an etch mask in templates rather than for optical          Additionally, the inkjet approach leads to a near-zero-waste
+opacity in photomasks. This, along with non-chemically ampliﬁed          process as compared to spin coating, which uses solvents that
+electron beam resists, have enabled resolution of J-FIL templates        form a majority of the as-formulated resist volume, and the spin
+to be well below 20 nm half-pitch for both lines/spaces and              coating process creates a signiﬁcant waste stream as the materials
+contacts with o 1.4 nm, 3σ pattern uniformity19. DNP has also            spins off over the edge of the wafer. J-FIL therefore requires ~ 1%
+demonstrated very low image distortions (o 1.5 nm, 3σ), thereby          of photoresist volumes. Since resists are typically priced by
+delivering the templates required for sub-5 nm overlay.                  volume, very low J-FIL resist volumes create a business dis-
+   The issue of template life is related to template damage due to       incentive for existing material suppliers. For these reasons, resist
+hard particles. This has been addressed by two approaches, ﬁrst          development has been integral to the stepper development in MII
+template replication discussed in this paragraph and second              and subsequently in Canon Corporation. Additionally, a long-term
+particle reduction in HVM stepper tools (see section “Particle           partnership with Xaar81, which has leveraged their high-speed
+contamination and template life”). Template replication exploits         industrial grade piezo inkjet arrays to create a semiconductor
+the fact that a J-FIL template is 1:1 and therefore a master             grade solution for J-FIL resists, has been critical to the success of
+template created by e-beam can be duplicated to create replicas          J-FIL steppers. This partnership has resulted in: (i) reliable jetting of
+inexpensively using J-FIL-based template replication tools. Tem-         sub-picoliter resist volumes at sub-5 μm placement accuracies,
+plate replication is a critical technology that supports the J-FIL       and (ii) jetting of imprint resist materials with parts per trillion
+stepper infrastructure. As will be discussed in section “Particle        contamination of metal ions that are undesirable in semiconduc-
+contamination and template life”, the current template life can          tor fabrication.
+extend to 41000 wafers because of the extremely low particle
+contamination counts that are observed today in J-FIL steppers.          HVM stepper development partnership
+Hence, a replication strategy involving one e-beam master being          The J-FIL stepper development included prototypes developed at
+used to make 4100 replicas, followed by each replica patterning          UT-Austin and intermediate products developed at MII achieving
+41000 wafers leads to an equivalent master template life of              several technology milestones before the development of an HVM
+4100 000 wafers, which meets manufacturing cost-of-ownership             tool. This technology and product evolution is discussed in the last
+requirements. Template replicator tools were ﬁrst created by             section. The HVM tool development was a signiﬁcant effort as the
+Molecular Imprints Inc. (MII)79, and then further developed by           tool had to not only achieve the metrics discussed in Table 1, it
+Canon Corporation, resulting in the replica production tool,             also had to be suitable for a leading-edge memory fab. The tool
+FPA-1100-NR280. DNP has used J-FIL-based template replicators            therefore had to meet stringent engineering reliability require-
+and demonstrated their ability to provide commercial template            ments, footprint constraints, and seamless integration into a
+replicas that meet resolution, pattern uniformity, image place-          process ﬂow in the fab. As leading-edge semiconductor fabs cost
+ment, and defect requirements. Template replication tools and            billions of dollars to build, a tool failure can cause a process line to
+processes are not discussed any further in this article.                 go down resulting in signiﬁcant revenue losses. A partnership
+                                                                         between MII and Canon was created to leverage the J-FIL
+Resist and inkjet development strategy                                   technology know-how in MII and PL stepper experience in Canon.
+In PL, photoresist materials are spun on to wafers and then              A novel strategy was chosen to jointly develop the HVM stepper
+processed through 193i PL tools. The industry has evolved to a           involving:
+decoupled development approach, wherein the PL tool manu-
+facturers (ASML, Nikon and Canon) develop the tools while                  • The creation of an imprint module (IM) that captures the J-FIL
+materials companies (JSR, EMD Performance Materials, TOK, Fuji               core technologies such as precision resist jetting, real-time
+
+
+
+
+                                            Imprint
+                                            module
+                                             (IM)
+
+
+
+
+                                        Stepper platform
+
+  Figure 5   Illustration depicting the integration of the IM from Molecular Imprints Inc. in Canon’s stepper platform. IM, imprint module.
+
+
+
+                                                      doi:10.1038/micronano.2017.75                             Microsystems & Nanoengineering
+                        Nanoimprint steppers for semiconductor fabrication
+                                                          SV Sreenivasan
+8
+        alignment nanometrology, magniﬁcation and shape control                      Figure 6 shows the x–y–θ stage that has a motion range of
+        system (MSCS), template shape control system, and separa-                 4350 mm in x and y and few milliradians in θ; and a resolution of
+        tion system.                                                              ~ 1 nm in x and y and ~ 50 nrad in θ. This stage scans the wafer
+      • Integration of the IM into a “stepper platform” to create a J-FIL         underneath the resist jetting system, then aligns the drops to the
+        stepper. The stepper platform includes a nanoprecision, high              template as well as the template and wafer alignment marks to
+        bandwidth x–y stage; sub-10 mK temperature control; particle              within about 500 nm (Figure 3, Step 2) using the interferometric
+        control; and automation of wafer and template handling.                   Moiré alignment technology (i-MAT) system (see i-MAT system
+                                                                                  details shown in Figures 6 and 7).
+       This partnership approach (illustrated in Figure 5) allowed the               Next, the template is deformed to create a convex shape to
+    J-FIL process to be deployed in the fab, and eventually led to the            engage the discrete drops near the center of the template ﬁeld
+    acquisition of the semiconductor unit of MII by Canon in 2014.                (Figure 3, Step 3). The J-FIL template leverages the industry
+                                                                                  standard “6025” format: 6025 stands for a standard fused silica
+                                                                                  photomask substrate that is 6″x6″ square and 0.25 in thick
+    J-FIL STEPPER SYSTEM AND ASSOCIATED IMPRINT MATERIALS                         (152 mm × 152 mm × 6.35 mm). These substrates meet the strin-
+    To meet desired lithographic speciﬁcations, the J-FIL technology              gent defect and material property requirements (optical and
+    risks listed in section “J-FIL stepper risks in semiconductor                 thermomechanical stability) needed for PL as well as J-FIL for IC
+    fabrication” (risks 1–7) need to be addressed. Risk 1 and part of             fabrication. The 6025 glass blank is customized for J-FIL by
+    risk 2 have been addressed in section “Initial target market”. In this        machining it to create a cored out region directly behind the
+    section, the key J-FIL building blocks required to overcome the               patterned area so as to create a thin section that is about 1 mm
+    rest of the risks 2–7 are addressed. The key building blocks are: (i)         thick (see template in Figures 7a and b).
+    J-FIL stepper system; and (ii) the materials (resist and adhesion                This thin section of the template allows for micro-meter-scale
+    layers) associated with the J-FIL process. These two building                 parabolic deformation of the template via pressurization and/or
+    blocks are discussed next. The next section then discusses how                mechanical means (not shown in Figures 3 and 6 or Figure 7)
+    these building blocks address technology risks presented in                   before touching the resist drops. This deformation causes a
+    section “J-FIL stepper risks in semiconductor fabrication”.                   convex surface to contact the drops and enable the formation of a
+                                                                                  contiguous liquid ﬁlm from the discrete drops without forming
+                                                                                  bubbles (see Figure 3, Step 3)63,64. The three voice coils provide
+    The stepper system                                                            precise up-down (z-direction) motion (for imprint and separation)
+    As shown in Figure 6, a J-FIL stepper system includes precision               enabling the template to relax its corners and complete the ﬂuid
+    mechanisms, such as self-leveling ﬂexures for controlling the                 ﬁlling step (see Figure 3, Step 4 and Figure 4).
+    motion of the imprint template chuck82; nanometer-precision                      The template’s ﬁrst engagement with the drops is detected
+    vacuum pre-loaded air-bearing motion stages for moving the                    using force sensors and then the precision alignment process is
+    wafer; interferometric Moiré-based alignment technology capable               initiated. This includes using the i-MAT system (shown in Figures 6
+    of o1 nm alignment measurement resolution83–85; piezo-based                   and 7) to detect the x–y alignment errors at the four corners (eight
+    MSCS for scale and shape-change deformation of the template for               scalar errors) to o 1 nm resolution. After the template has
+    meeting overlay requirements86,87; and piezo “drop-on-demand”                 completely relaxed from its bowed shape, the eight errors sensed
+    inkjets with nozzle arrays having sub-picoliter volume control of             by the i-MAT system can be used to compute errors in x, y, θ,
+    UV curable resists88.                                                         magniﬁcation-x, magniﬁcation-y, trapezoid-x, trapezoidal-y and
+
+
+
+                                      Moiré metrology (a set of four
+                                                                               Voice coils            Template
+                                     microscopes for sub-1 nm in-line
+                                                                               (for z-head            (6025 format)
+                                     metrology of four-field corners)
+                                                                               actuation)                             MSCS
+                                                                                                                      (for
+                                       Granite frame                                                                  overlay
+                                                                               Self-                                  control)
+                                                                             leveling
+                                                                             flexures
+
+
+
+
+                                                                                                             300 mm Si wafer
+
+
+
+
+                                                                                                   Multinozzle
+                                                                                                   inkjet header
+
+
+
+                                                                                                 Motion stage
+
+    Figure 6 Illustration of some critical modules of the J-FIL stepper system. The modules shown include multi-nozzle piezo inkjets, nm-accuracy
+    motion stage, template MSCS, i-MAT, and tilting or self-levelling ﬂexures for the template. i-MAT, interferometric Moiré alignment technology;
+    J-FIL, Jet and Flash Imprint Lithography; MSCS, magniﬁcation/shape control system.
+
+
+    Microsystems & Nanoengineering                             doi:10.1038/micronano.2017.75
+                                                                                   Nanoimprint steppers for semiconductor fabrication
+                                                                                   SV Sreenivasan
+                                                                                                                                                          9
+                                   a                                                       Littrow angle
+
+
+
+                                                    CCD camera
+                                                                            UV
+
+                                          Illuminator                                         Optics
+
+
+                                   Magnification/shape                                             Magnification/shape
+                                      control force                                                   control force
+
+                                                                                                    Mask
+                                    Wafer                                                          Template
+                                   Checker-                                Wafer                   Grating
+                                    board                              X-Y-Θ Stage
+
+                                                                             z
+
+                                                                                   θ
+                                                                                       Y
+                                                                             X
+
+                                   b
+
+
+
+
+Figure 7 (a) An illustration showing the template, wafer and the i-MAT system on 6025 glass showing the circular cored out. This ﬁgure is
+reproduced with permission from Cherala et al. (Ref. 87). (b) A photograph of an imprint template on 6025 glass showing the circular cored
+out region and the 26 mm × 33 mm pattern area. i-MAT, interferometric Moiré alignment technology.
+
+
+
+                                                                                   orthogonality87. These eight errors are corrected by the x–y–θ
+                                       Safety                                      stage combined with the MSCS that corrects the other ﬁve errors.
+                  Delrin               stops
+     MSCS
+                  pads
+                                                                                   The MSCS is shown schematically in Figure 8. It comprises 16
+  fingers with                                                                     actuators, four for each side of the template, each actuator
+ flexure joints                                            Mechanism               combined with a six-bar linkage ﬂexure that provides the desired
+                                                             frame                 force and displacement output to the template. (Flexures are
+                                                                                   compliant joints with sub-nm resolution that work by inducing
+                                                                                   strain energy in the joint. They are used in semiconductor industry
+                                                               Load
+                                                                                   as they possess no friction or backlash and do not generate
+                                                               cells               particle contamination.) The end of the six-bar mechanism is ﬁtted
+                                                                                   with a load cell on each ﬁnger to sense the end-point force. A pad
+                                                                Flexure            made of compliant Delrin (a DuPont material) is connected to the
+                                                                based              load cell through a universal ﬂexure joint. The Delrin pad contacts
+                                                               universal           the glass template with the center of the contact surface
+                                                                  joint
+                                                                                   nominally in line with the center of the template side, to apply
+                                                 Imprint                           a force normal to the side wall. The compliant material avoids
+                                                template                           stress concentration points at the contact surface. The universal
+                                                  chuck                            joint provides tip-tilt degrees of freedom for the pad to conform
+Figure 8 Isometric view of the magniﬁcation/shape control system                   to the template surface. This ensures uniform surface contact
+(MSCS). This ﬁgure is reproduced with permission from Cherala                      between the pad and the template. It is important to note that
+et al.87                                                                           during the magniﬁcation control step, out-of-plane bending of the
+
+                                                           doi:10.1038/micronano.2017.75                                 Microsystems & Nanoengineering
+                        Nanoimprint steppers for semiconductor fabrication
+                                                          SV Sreenivasan
+10
+     template can occur due to the cored-out region shown in Figure 7.       as discrete drops using inkjets in a liquid formulation, the liquid is
+     This out-of-plane bending is however completely eliminated              captured in the template features, and ﬁnally the liquid is cross-
+     during the “in-liquid” phase of the imprinting process, because         linked using UV light to polymerize into a solid material. Hence,
+     the thin liquid layer (o 25 nm mean thickness) holds the template       the resist must have desired liquid and solid phase properties. The
+     ﬂat against the wafer surface due to the very high capillary forces     liquid phase properties include density, viscosity, surface tension,
+     (see Step 4 of Figure 3). Therefore, it is critical that the MSCS be    contact angle, and volatility. On the other hand, the solid
+     actuated to correct for the magniﬁcation/shape errors only in the       properties include cohesive yield strength, shear strength,
+     in-liquid alignment phase (Step 4 of Figure 3).                         elongation to break, adhesion to substrate, and ease of release
+         A schematic of the alignment sub-system, based on an i-MAT, is      from template. The optimum material formulation involves a
+     shown in Figure 7a. The alignment marks constitute a phase              consideration of all these characteristics.
+     grating pattern on the template and a phase grating checker-                The liquid properties of the resist are primarily tailored towards
+     board on the wafer83,86,87. Upon illumination and inspection under      robust inkjettability of picoliter volumes, low parasitic evaporation,
+     a microscope, the grating patterns form a moiré pattern along the       and fast defect-free wetting of both the substrate surface and the
+     main axis, X, that is perpendicular to the plane of Figure 7a. By       template features. Low viscosities (~1–5 cP) generally assist
+     illumination along the Littrow angle, which eliminates noisy zero-      dispensing and ﬂuid ﬁlling, but can have high volatility, which
+     order interference, the signal becomes insensitive to the gap           can cause inconsistent cured resist behavior. Hence, ﬂuid viscosity
+     variation between template and wafer, thereby providing a               and evaporation properties need to be carefully balanced. When
+     completely decoupled in-plane alignment error. The use of               all template patterns are fully ﬁlled, the UV cross-linking step
+     sophisticated image/signal processing then detects misalignment         follows. During UV exposure, the material needs to cross-link
+     errors with a resolution of o1 nm and at 4500 Hz. Using these           quickly for high throughput and to prevent thermal loads on the
+     i-MAT alignment errors, the x, y, θ, magniﬁcation-x, magniﬁcation-      substrate and template. Thermal loads can compromise overlay by
+     y, trapezoid-x, trapezoidal-y, and orthogonality errors are cor-        causing parasitic expansion and nanoscale in-plane distortion of
+     rected by the x–y–θ stage combined with the MSCS to achieve             the patterns. Next, during the separation step, it is necessary to
+     precision overlay immediately before UV exposure in Step 5 of           ensure that the material adheres to the substrate and not to the
+     Figure 3.                                                               template, which is a conﬂicting requirement when compared
+         In the state-of-the-art steppers from Canon, the i-MAT system       against the liquid phase property of requiring wetting and ﬁlling
+     has been further improved to create a through-the-template              of the template features. Separation also requires a material with
+     microscope system69; and the MSCS system has been recently              adequate mechanical strength, toughness, and Young’s Modulus
+     complemented by a higher-order distortion correction (HODC)             to maximize the aspect ratio that can be patterned and yet
+     system69 enabled by precision, selective heating of the wafer ﬁeld      completely prevent the possibility of a feature being distorted or
+     being imprinted using a laser source and a DMD system. The DMD          left in the template. Adding polar resist components helps with
+     (digital micro-mirror device) is a micro-opto-electromechanical         these properties, but excessive amounts increases the surface
+     system projection technology from Texas Instruments89.                  tension and reduces the ﬁll speed in the ﬂuid phase.
+         Piezo ‘drop-on-demand’ inkjets enable adaptive material                 Many types of UV curing chemistries including methacrylate,
+     distribution (Step 1 of Figure 3) that allows imprinting of patterns    epoxy, vinyl ether, thiol-ene, and acrylate have been considered
+     of varying densities with the same RLT. Piezo inkjet arrays that can    for imprint resist. Methacrylate and epoxy have considerably
+     dispense sub-1 pL drop volumes of the resist material are used for      slower polymerization rate. Hence, they are not practical for high-
+     this purpose. These inkjet arrays have ~ 360 nozzles per inch in a      throughput volume manufacturing. Most of the UV imprint
+     single inkjet head, or ~ 720 nozzles per inch obtained by               materials are acrylate-based materials. Vinyl ether, which has low
+     interleaving two inkjet heads. These jets cover the entire width        viscosity, relies on cationic polymerization to cure the liquid resist.
+     of a ﬁeld. They can scan across a ﬁeld (by scanning the x–y stage       It is inherently not inhibited by oxygen, which scavenges radicals.
+     that carries the wafer) and dispense o 1 pL drops to within 3 μm        On the other hand, the cationic initiator is sensitive to the
+     positioning accuracy relative to an ideal grid at speeds exceeding      presence of excessive moisture and has concerns related to shelf-
+     1 m s − 1. Further, these inkjet heads have been demonstrated to        life stability as well as interaction with fused silica templates. Thiol-
+     perform reliably (without defects such as missing or deviated           ene provides a promising alternative to acrylate chemistry for UV
+     nozzles, loss of volume control, or loss of placement accuracy) in      imprint resists. It has distinct advantages over acrylate systems
+     excess of 6 months on J-FIL steppers.                                   including low oxygen inhibition during cure and low separation
+                                                                             force against fused silica template. The disadvantages of thiol-ene
+                                                                             systems are strong odor of thiol, and limited amount of
+     Imprint materials                                                       commercially available compounds. The shelf-life of thiol-ene
+     Imprint materials, including the imprint resists and the substrate      systems can be extended by adding a stabilizer. In summary the
+     adhesion materials, are important building blocks of the J-FIL          leading choice of polymerization chemistry for imprint resists is
+     stepper process. The primary function of the imprint resist is to       acrylate materials. Acrylate materials possess good curing speed,
+     form a polymer replica of the template. This replica forms a            and are typically one order of magnitude faster than methacrylate
+     sacriﬁcial patterned material that serves as an etch mask during        chemistries. It is also advantageous that many different acrylates
+     subsequent reactive ion etching that transfers the pattern to an        are commercially available, which readily enables testing of many
+     underlying ﬁlm or ﬁlm stack on the wafer. The adhesion material         formulations of imprint resists with varying parameters such as
+     serves to modify the surface properties of a wafer to promote           viscosity, surface tension, and solid mechanical properties.
+     wetting during the liquid phase prior to UV curing. It also             Acrylates also have excellent shelf-life lasting at least 6 months,
+     promotes adhesion of the imprint resist to the wafer during the         which can possibly be extended to 12 months. The primary
+     solid phase after UV curing. The development of these materials is      limitation of acrylates is that it is susceptible to oxygen inhibition,
+     discussed next.                                                         which needs to be balanced.
+                                                                                 Early resist formulations included silicon to enable high etch
+     Imprint resist. The imprint resist is a material composition            resistance in oxygen90. However, silicon containing materials, if
+     comprising of several constituents designed to achieve desired          trapped in the template during a process excursion, can cause
+     process considerations. Some of the process considerations can          template cleaning issues as they form silicon dioxide easily in
+     place conﬂicting requirements on the composition requiring a            small features and are then hard to remove chemically. Later resist
+     good understand of the trade-offs. The imprint resist is dispensed      formulations therefore used silicon-free organic materials64,91, and
+
+     Microsystems & Nanoengineering                        doi:10.1038/micronano.2017.75
+                                                                                      Nanoimprint steppers for semiconductor fabrication
+                                                                                      SV Sreenivasan
+                                                                                                                                                                  11
+used the ﬁlm stack shown in Figure 9. Overall, J-FIL resists used                     discussed in section “EUV lithography”. The strategy chosen for
+today possess a viscosity of about 7–10 cP, contact angle with the                    J-FIL is one where a template replica can pick up a small number
+template of o30°, contact angle with the wafer (coated with                           of repeaters as long as the total defectivity stays below what is
+adhesion layer) of o 5°, UV dose to cure of about 75 mJ cm −2 (UV                     expected in memory applications. Typical cost models for J-FIL
+cure time of as low as ~ 100 ms), cured modulus of 41.3 GPa,                          (see for example Ref. 69) require processing of 41000 wafers per
+material strength of 425 MPa, resist elongation to break of                           replica, wherein the replica repeater defect density does not
+420%, and etch behavior similar to 193i PL resists. Typical                           exceed ~ 5 defects cm−2. Here, a total defect density of 10
+maximum aspect ratio is (h/CD)≅2.5 (see Figure 9).                                    defects cm−2 is assumed to be acceptable for contact layer in
+                                                                                      memory applications as discussed in section “Stepper decision”.
+Adhesion material. The ﬁdelity of the J-FIL stepper process is                        Recent results92 indicate that template repeaters are almost
+inﬂuenced by many solid phase resist characteristics including                        exclusively caused by particle events that damage the template;
+preferential adhesion ratio deﬁned as the ratio of adhesion                           and ~ 0.0008 particles per wafer (indicating 1 particle event every
+between the resist material and the adhesion layer (A1) on the                        ~ 1250 wafers) has been achieved (see Figure 10 that has been
+substrate divided by the adhesion between the resist material and                     reproduced with permission from Ref. 92). This is a signiﬁcant
+the template surface treated with a release layer (A2). To increase                   achievement as the particle levels are 2–3 orders of magnitude
+this preferential adhesion ratio (A1/A2) for a given release layer on                 better than best practices, even in the semiconductor fabrication
+the template, an optimal adhesion layer or prime layer is applied                     domain. This particle reduction effort was performed using a KLA-
+to the substrate. The adhesion layer should be quite thin (for                        Tencor Surfscan SP3 tool. This tool is capable of identifying
+example, 1–2 nm) as it adds to the residual layer. If the residual                    particles that affect 2x nm memory device patterning93. (Here 2x
+layer is ~ 15 nm, and the adhesion layer is ~ 2 nm, the etch process                  nm refers to 20–29 nm half-pitch device design rules.) A
+needs to ﬁrst “break-through” the 17 nm organic underlayer in a                       multifaceted particle control approach, both in the tool and in
+non-selective, anisotropic reactive ion etch (RIE) step. This RIE step                the resist materials, has resulted in this capability. Particle
+has a strong physical component that can damage the top of the                        reduction in the resist, down to 0.02 particles ml− 1, was achieved
+resist feature. To maintain a good resist mask after the break-                       using a dynamic recirculating ﬁltration system consisting of two
+through etch, the starting resist height (h) needs to be 2–3 times                    separate ﬁlters with o 5 nm sized pores. This recirculating
+the thickness of the underlayer (residual and adhesion layer                          ﬁltration approach is needed as, at sub-20 nm levels, many of
+combined). The adhesion layer is typically deposited onto the                         the components of the resist delivery system are known to shed
+substrate via spin coating or vapor treatment methods. This 1–                        low levels of particles (on the order of parts per billion) as
+2 nm thin ﬁlm must not include any pin holes or contaminants                          pressurized resist monomer liquids move through them. In the
+that could cause defects during imprinting. The adhesion layer                        tool, particles can result from air ﬂow, from ceramic material
+also needs to be engineered in such a way that it can work on                         surfaces, and from moving components, particularly the ones
+typical substrates such as Si, SiO2, SiN, and so on, and be readily                   involving frictional contact. System design and material choices
+wettable by the imprint resist in its liquid form. A spin-coatable                    that avoid particles include: (i) sophisticated air curtain systems; (ii)
+adhesion material (known as TranSpin)64 has been custom                               surface treatment of ceramic surfaces; and (iii) exclusive use of
+designed for the J-FIL process. It undergoes covalent bonding                         non-contact motion systems such as air bearings, magnetically
+with the resist during UV curing, and provides A1/A2≅30. TranSpin                     levitated systems, non-contact electrical actuators (voice coils,
+has demonstrated robust J-FIL processes at o10 nm half-pitch                          linear motors, and so on) and ﬂexure mechanisms discussed in
+resist patterns66,68.                                                                 section “The stepper system”. A detailed treatment of this topic is
+                                                                                      included in Ref. 92.
+OVERCOMING TECHNICAL RISKS
+                                                                                      Basic step and repeat printing (precise ﬂuid distribution/
+This section describes the role of the J-FIL stepper system and the
+                                                                                      conﬁnement for stepper full and partial ﬁelds)
+imprint materials in overcoming the technical risks identiﬁed in
+section “J-FIL stepper risks in semiconductor fabrication”. Risks                     Two important aspects of a viable J-FIL stepper process are
+associated with template fabrication (risk 1 and a portion of risk 2                  described next. First, the need for a thin and uniform residual layer
+associated with template replication) were discussed in section                       is discussed. As described in section “Description of the J-FIL
+“Initial target market”; these risks are not discussed here. The rest                 process”, accurate ﬂuid distribution across the ﬁeld is needed to
+of the risks are addressed below.                                                     match the pattern density variations in the ﬁeld to achieve thin
+                                                                                      and uniform residual layer (see Figure 11). To enable subsequent
+                                                                                      etching, the mean thickness of the ﬁnal residual layer has to be
+Particle contamination and template life
+                                                                                      o ~ 1/2 to 1/4th the feature height. It is important to note that
+As discussed in section “J-FIL stepper risks in semiconductor                         when the template engages with the resist monomer ﬂuid drops,
+fabrication”, hard particles (for example, inorganic materials such                   the local ﬂuid ﬂow is a function of the template patterns. Grating
+as SiO2, SiN, SiC, and metals) that are larger than the RLT can cause                 structures can cause highly anisotropic ﬂow patterns, while dot
+template damage. PL beneﬁts from pellicles that protect the mask                      patterns result in isotropic ﬂow. Ideally an inverse optimization
+from being contaminated and causing repeating defects; how-                           scheme that is based on comprehensive forward models, is
+ever, EUV lithography currently does not have such a pellicle as                      needed to correctly identify the volume and placement of the
+                                                                                      monomer drops. Heuristic algorithms have found success in
+                                                                                      addressing this problem71, while more comprehensive model-
+            Minimum feature size (CD)                Feature height (h)               based approaches have been pursued94 with some success.
+                         Organic resist                                                  Next, methodologies used to avoid ﬂuid extrusions beyond the
+                                  Residual layer                                      full rectangular ﬁeld and partial ﬁelds are explained. Precision ﬂuid
+                        Adhesion Layer
+                                                            Resist residual           conﬁnement at the ﬁeld boundaries is needed to enable
+                   Material to be etched by resist
+                                                            layer thickness           patterning of precise ﬁeld rectangles with no ﬂuid extrusions
+                          SUBSTRATE                                                   outside these rectangles. There must also be zero gap between a
+                                                                                      ﬁeld and the subsequent ﬁeld (as discussed in Step 3 of section “J-
+Figure 9 J-FIL material stack showing silicon-free organic resist and                 FIL stepper risks in semiconductor fabrication”), thereby creating a
+adhesion layer. J-FIL, Jet and Flash Imprint Lithography.                             continuous patterned polymer ﬁlm akin to patterned resist ﬁlms
+
+                                                                      doi:10.1038/micronano.2017.75                          Microsystems & Nanoengineering
+                                      Nanoimprint steppers for semiconductor fabrication
+                                                                        SV Sreenivasan
+12
+     achieved by PL. This is achieved by taking advantage of “capillary                                          This region provides a buffer zone that tolerates signiﬁcantly less
+     pinning” at the edge of the ﬁeld being imprinted. The template                                              precise deﬁnition of the liquid front—for example, tens of microns
+     format includes a “mesa” (see Figure 7a and Figure 11) on which                                             of variation—as compared to the zero-gap requirement between
+     the nanoscale patterns reside. The mesa has the same size as the                                            ﬁelds. In addition, pinning similar to the one shown in Figure 11
+     desired rectangular ﬁeld (maximum size of 26 mm × 33 mm), and                                               can also be achieved at the wafer edge by having a sharp
+     includes a sharp edge (Mc in Figure 11), which restricts the motion                                         transition in cross-section proﬁle on the wafer side. As discussed in
+     of the ﬂuid front from beyond the desired rectangular ﬁeld. As                                              the literature95,96, there are two major types of silicon wafer edge
+     discussed in section “Imprint resist”, the liquid resist forms a                                            cross-section proﬁles: (i) blunt-nosed (rounded) edge; and (ii)
+     contact angle of o 30° degrees with the template, and a contact                                             bullet-shaped (beveled) edge. The latter includes a sharp corner at
+     angle of o 5° with the wafer (coated with adhesion layer). The                                              the onset of the beveled surface and can cause liquid pinning.
+     wetting front on the template approaches and arrives at Mc (liquid                                          Additionally, the wafer edge needs to be prepared to avoid any
+     fronts “a” through “c” in Figure 11). Then, the liquid has to                                               edge beads resulting from thin ﬁlm deposition processes that
+     circumvent the right angle at Mc requiring it to go from front “c” to                                       result in raised regions at the edge of the wafer as this will
+     “d” and eventually “e”. If front “e” is reached, the liquid is assumed                                      invariably cause the template to interfere with this edge bead
+     to have extruded beyond the ﬁeld which is undesirable. However,                                             causing disruption of the edge ﬁeld patterning process.
+     the transition from “c” to “d” can take a few seconds, providing a                                             Figure 12 shows a photograph of a portion of a J-FIL patterned
+     “pinned” ﬂuid front which provides a time window when UV                                                    wafer (left), and two optical micrographs of four full ﬁelds (ﬁelds
+     curing can capture a perfect rectangular region. At the edge of the                                         “a–b–c–d”) with zero gaps between them. As shown in the right
+     wafer, an exclusion area of 2 mm or higher is used by industry.                                             image of Figure 12, four ﬁelds can be printed with zero gap
+                                                                                                                 between them and without void defects (voids are seen in the
+                                                                                                                 middle image of Figure 12). In the right image, slight color
+                                                                                                                 variations still exist between the four ﬁelds (for example, ﬁelds “a”
+                        100                                                                                      and “c”) indicating small height variations. The height variations
+                         10    10                                                                                have been shown to be o3 nm. Such small variations do not
+                                                       Surface treatment
+                                                                                                                 appear to affect subsequent etch processes. Figure 13 shows a
+        (pcs/wafer)
+
+
+
+
+                          1
+                                            0.1
+                                                                                   Optimized cleaning            photograph of a fully patterned 300 mm wafer using the J-FIL
+                         0.1                                                                                     process demonstrating liquid conﬁnement and zero gap between
+                                                            0.01
+                        0.01                                           0.003                                     both full ﬁelds and partial ﬁelds.
+                               Air flow control
+                               for entire tool                                           0.0008
+                       0.001
+                                                      Air curtain system                                         Nanoscale overlay
+                      0.0001
+                                                                                                                 The J-FIL system includes several components that contribute
+                           2013         2014              2015        2016         2017           2018
+                                                                                                                 towards achieving nanoscale overlay as discussed in section “The
+                 Figure 10        Reduction in tool particle density over 5 years.                               stepper system”. These components include the template MSCS,
+                                                                                                                 i-MAT, the precision x–y–θ air-bearing stage, and the HODC
+                                                                                                                 system. Figure 3 depicts the steps in the J-FIL process. In Step 3,
+                                                                                                                 the micro-scale template deformation causes high in-plane
+                                                                 Fluid advancing front                           overlay errors making it very difﬁcult to start the overlay process.
+                               Resist fluid
+                                                                                                                 Therefore, after the template has relaxed back to its nominally ﬂat
+                                                                                                  Mesa           form in Step 4 of Figure 3, overlay correction is initiated. First, the
+                                                                                                  edge
+                                                  Template                                                       i-MAT system provides eight independent alignment errors (x and
+      Residual
+       layer
+                                                                                    Mc                           y errors near the template corners). The i-MAT system operates
+                                                                                                                 over visible wavelengths at 4500 Hz, and its signal quality is
+                                                                               a    b     c   d     e
+                                                                                                                 unaffected by UV exposure. Further, i-MAT does not block the UV
+                                                                                                                 exposure path, thereby providing in situ overlay error feedback at
+                                                       Wafer                                                     4500 Hz. These errors are converted into rigid body errors (x, y, θ),
+                                                                                                                 scale errors (independent magniﬁcation errors in x and y), and
+     Figure 11 Illustration of template and wafer with the resist ﬂuid                                           shape errors (orthogonality errors, and trapezoidal errors in x and
+     between them, wherein the advancing front of the ﬂuid approaches                                            y). The air-bearing stage is used to correct for the rigid body errors,
+     the mesa corner (Mc).                                                                                       and the MSCS corrects for the scale and shape errors. Errors that
+
+
+
+
+                                                      P          P
+
+
+                                                  P             F          F
+                                                                                                         a   c         A A                           a   c       A A
+                                                                                                         b   d                                       b   d
+                                  P        F                F          F
+                                                  a c
+                                                  b d
+                                  P        F                F          F
+
+     Figure 12 The left image shows a picture of a J-FIL patterned wafer with ﬁeld boundaries superimposed on it to identify the full ﬁeld (F) and
+     partial ﬁeld (P); the middle image is an optical micrograph taken at the interface of four full ﬁelds indicated by “a–b–c–d” in all three images,
+     wherein ﬁelds “a” and “c” possess void defects due to inaccurate ﬂuid dispense; and the right image shows the same four ﬁelds after a process
+     calibration step that eliminates the void defects. J-FIL, Jet and Flash Imprint Lithography.
+
+
+     Microsystems & Nanoengineering                                                       doi:10.1038/micronano.2017.75
+                                                                                     Nanoimprint steppers for semiconductor fabrication
+                                                                                     SV Sreenivasan
+                                                                                                                                                                  13
+are higher order than the rigid body, scale, and shape errors                        ﬁelds near the wafer edge. It should be noted that a single
+cannot be detected in real time with the 8-channel i-MAT system.                     machine overlay (SMO), wherein two patterning layers were
+However, if such errors are systematic in nature and are present in                  printed on the same J-FIL stepper, has yielded an overlay error of
+each ﬁeld, or repeat from wafer to wafer, they can be identiﬁed                      2.1 nm (mean+3σ)69. The SMO and MMO results exceed Flash
+ofﬂine using a dense array of printed overlay marks within a ﬁeld.                   memory requirements in Table 1, and almost achieve those for
+Then, the HODC system can be used to correct for these                               DRAM69,97.
+systematic higher-order distortions in a feed-forward manner, as
+they cannot be corrected in real-time by the stage or the MSCS.                      Defect control
+Figure 14 shows the performance of the HODC while attempting                         In addition to particle-induced template repeaters (discussed in
+to correct a known higher distortion error, the K11 “bow-shaped”                     section “Particle contamination and template life”), non-repeating
+error (reproduced with permission from Ref. 69). Figure 15 shows                     defects can occur in the liquid phase (before UV curing) or solid
+the recent improvement trend in overlay errors as measured over                      phase (after UV curing). Liquid phase defects include bubbles and
+full 300 mm wafers with 84 stepper ﬁelds (including full and                         micro- or nanoscale voids, while solid phase defects include
+partial ﬁelds), while matching a J-FIL pattern to a previously                       separation induced shear, cohesive failure of imprint materials,
+lithographed 193i PL pattern (known as mix-and-match overlay—                        and feature collapse defects during or after separation. The
+MMO). Distinct parasitic signatures associated with J-FIL and 193i                   solutions to liquid phase and solid phase defects are well
+PL need to be accounted for. The major improvement from year
+                                                                                     understood98 and are summarized here. Solid phase defects are
+2013 to 2015 has come from improvements in overlay on partial
+                                                                                     illustrated in Figures 16a–d. Defect types A, B, and C are illustrated
+                                                                                     using resist nanopillars that are the least stable resist structure
+                                                                                     possible (resist holes being the most stable). Type A defects (local
+                                                                                     feature distortion) are caused by local shear stresses; type B
+                                                                                     (cohesive failure of resist) are caused by low resist strength or high
+                                                                                     aspect ratio pillars; type C defects (feature collapse) defects are
+
+                                                                                             40.0
+
+
+                                                                                             30.0
+                                                                                                    23.4
+                                                                                      (nm)
+
+
+
+
+                                                                                             20.0
+                                                                                                             12.0
+
+
+                                                                                             10.0                         4.8           4.8      4.0
+
+
+                                                                                              0.0
+                                                                                                 2013       2014         2015          2016     2017     2018
+
+                                                                                     Figure 15 Overlay errors of 4 nm (mean+3 σ) was achieved when
+                                                                                     matching J-FIL to 193 nm wavelength immersion (193i) photolitho-
+Figure 13 Fully patterned 300 mm wafer using a J-FIL stepper. J-FIL,                 graphy over a full 300 mm wafer with 84 stepper ﬁelds of size
+Jet and Flash Imprint Lithography.                                                   26 mm × 33 mm. J-FIL, Jet and Flash Imprint Lithography.
+
+
+                   20                                                       4
+                                                                                                                                          :dx
+                   15                                                       3                                                             :dy
+
+                   10                                                       2
+                                                                                                            + 1.3 nm
+                                                                            1
+                                                            Residual (nm)
+
+
+
+
+                     5
+
+                                                                            0
+              mm
+
+
+
+
+                     0
+                                                                            –1
+                    –5
+                                                                            –2                              – 1.3 nm
+                   –10
+                                                                            –3
+                   –15
+                                                                            –4
+                                                                                 0                     50                 100                   150
+                   –20
+                      –15   –10   –5   –0   5    10    15                                       Measurement points, total:143 points
+                                       mm
+
+Figure 14 Higher-order distortion correction demonstrated for K11 bow-shaped distortion over a 26 mm × 33 mm J-FIL stepper ﬁeld based on
+143 overlay errors (13 × 11 array) measured by KLA-Tencor Archer-500 Metrology tool; left: HODC system results showing target locations (’)
+and experimentally achieved locations (●); right: residual distortions between experiment and target locations are all below ± 1.3 nm. HODC,
+higher-order distortion correction; J-FIL, Jet and Flash Imprint Lithography.
+
+
+                                                      doi:10.1038/micronano.2017.75                                              Microsystems & Nanoengineering
+                        Nanoimprint steppers for semiconductor fabrication
+                                                          SV Sreenivasan
+14
+
+                           a
+
+
+
+
+                                                                               b
+
+
+                                                                                                                               100 nm
+
+
+
+                           c                                                                d
+
+
+
+
+                                                                           200 nm                                               10 μm
+
+
+
+
+                               e                                                                f
+
+
+
+
+                                                                           10 μm                                             500 nm
+
+
+     Figure 16 J-FIL solid phase defects (post UV cure, a–d); liquid phase (pre-UV cure, e and f). J-FIL, Jet and Flash Imprint Lithography; UV,
+     ultraviolet.
+
+
+                                                                Single layer serpentine E-tests: yield vs. line length
+
+                                       100%
+                                                                                                                  201            201
+                                                                                                                         1            2
+                                                              200
+                                                                                            20
+
+
+
+
+                                       80%                       9
+                                                                                                10
+
+
+
+
+                                       60%
+                                                              J-FIL
+                               Yield
+
+
+
+
+                                       40%
+
+
+                                       20%
+                                                          26 nm HP
+
+                                        0%
+                                              1                       10                 100                   1000          10 000
+
+                                                                                    Line length (mm)
+
+                                                  Figure 17    E-test yield results for 26 nm half-pitch serpentines.
+
+
+
+     Microsystems & Nanoengineering                                   doi:10.1038/micronano.2017.75
+                                                                           Nanoimprint steppers for semiconductor fabrication
+                                                                           SV Sreenivasan
+                                                                                                                                                       15
+caused by low resist modulus, high aspect ratio pillars, or very           ﬁrst target market (see section “Initial target market”). Figure 18
+small spacing between pillars; and type D defects (large-scale             shows the defect densities being reduced to the low end of the 1–
+shear) are caused by macroscale shear stresses induced by                  10 defects cm −2 while simultaneously achieving 80 WPH through-
+uncontrolled, high-speed delamination during the separation step           put. (The 80 WPH throughput was achieved in a four-station J-FIL
+(last step of Figure 3). A combination of enhanced resist materials,       stepper with each station running at 20 WPH.) This defect density is
+aspect ratios of o ~ 2.5, and precision machine controls during            obtained using a KLA-Tencor 2915 Inspection tool and industry
+the separation step have mitigated these types of defects. The             standard statistical protocols. This tool is capable of identifying
+liquid phase defects (Figures 16e and f) include incomplete ﬁlling         defects for both 2x nm and 1x nm memory device patterning99.
+defects (Figure 16e) and surface contamination voids (Figure 16f).         (Here 2x nm refers to 20–29 nm half-pitch, and 1x nm refers to
+Type E defects can be mitigated using precise ﬂuid distribution            ~ 15–19 nm half-pitch device design rules.) This represents the
+combined with sufﬁcient time for ﬂuid ﬁlling (tf). The trade-off           current state of the art for the optimal J-FIL process, wherein
+between ﬂuid ﬁll time and liquid phase defects, and similarly              tf = 1.1 s per ﬁeld with the defect density approaching 1
+between separation time and solid phase defects imply that for             defect cm− 2. Various technical aspects that affect J-FIL ﬁll time (tf)
+any throughput data to be meaningful, the associated defect data           including improvements related to smaller and better-controlled
+has to be measured using advanced inspection tools that have the           inkjet drops, better wettability of drops on the wafer adhesion layer,
+required resolution and adequate speed needed to provide large             template design rules for J-FIL, and machine control strategies are
+area statistics (for example, the KT 2915 series tools). Defect type F     discussed in detail in the literature88.
+is known to be caused by airborne organic vapors that adsorb
+onto the adhesion layer (Figure 9) causing local dewetting spots.
+   The resist circumvents these spots leaving behind sub-micron-           CONCLUDING REMARKS
+scale voids, which take the form shown in Figure 16f. These voids          This article describes the evolution of the J-FIL stepper technology,
+have been eliminated by avoiding exposure to airborne organics             from university research to the recently deployed HVM product for
+prior to entering the J-FIL stepper, and by ensuring that the J-FIL        fabrication of semiconductor ICs100. This represents the only NIL
+stepper is free from such contaminants.                                    effort, and the only non-optical patterning technique, that has
+   An important milestone in the defect program is obtaining high
+                                                                           created an industrially viable lithography technology for advanced
+yield in electrical tests (E-tests). E-tests represent a functional
+                                                                           IC production. Figure 19 presents the key milestones in the
+check of the patterning process and requires J-FIL to be integrated
+                                                                           evolution of the J-FIL stepper. The UT-Austin prototype developed
+into the fab with other unit processes such as metallization and
+                                                                           in 1999 demonstrated the ﬁrst use of inkjet (single nozzle) resist
+etch. The simplest E-tests involve fabrication and testing of single
+layer serpentines, while the ultimate E-test involves integrating          dispense in a nanoimprint stepper and veriﬁed the replication
+J-FIL into one or more lithography steps in a memory product to            resolution below 50 nm over a 25 mm × 25 mm stepper ﬁeld.
+investigate yield. These J-FIL-based E-tests require a collaboration       Imprio 300 incorporated a multinozzle (4100 nozzles) piezo
+with a leading-edge IC manufacturer. A collaboration with Toshiba          inkjet, and deployed the ﬁrst version of the MSCS (see Figure 8) to
+between 2008 and 2012 at 26 nm half-pitch patterning resulted in           enable sub-20 nm MMO with PL. MR-5000 was the ﬁrst template
+the single layer serpentine yield data shown in Figure 17. A yield         replicator developed and installed at mask manufacturer, DNP, to
+of 490% was targeted at 10-m-long serpentine lines as a                    address the topic of template life (see section “Initial target
+milestone to validate J-FIL for memory production. This was
+achieved in 2012. The result achieved in 2012 was a culmination of                                                        Defectivity
+a project involving substantially mitigating the particle contam-                         10 000
+ination issues discussed in section “Particle contamination and
+template life”, and the defect types discussed in Figure 16. In this                         1000 480
+study, no further details such as opens vs. shorts, or the dominant                                      96
+defect types that cause yield loss was published. While defect
+                                                                                (pcs cm–2)
+
+
+
+
+                                                                                              100
+densities have continually improved since 2012, Figure 17 is the                                                9
+only published J-FIL E-test data in the literature.                                            10                              5
+                                                                                                                                         1.1
+Throughput                                                                                      1
+Template ﬂuid ﬁlling is known to be the bottleneck in J-FIL as
+discussed in section “J-FIL stepper risks in semiconductor fabrica-                           0.1
+tion”. Complete ﬂuid ﬁlling is achieved only when all the bubbles/                               2013   2014   2015       2016          2017   2018
+voids in the template–ﬂuid–substrate sandwich have disappeared.
+Overlay control takes place in parallel to template ﬁlling. Steps 3
+                                                                                                                          Throughput
+and 4 in Figure 3 and further detailed in Figure 4 represent the                              100
+throughput bottleneck. These steps take up ~ 65–70% of the                                                                              80
+throughput budget69. Steps 1 and 2 take up o20% of the                                         80
+throughput budget and more importantly depend on mature                                                                   60
+                                                                            (wafer h–1)
+
+
+
+
+technologies such as high-speed x–y stages with micro-scale                                    60
+precision alignment relative to the template. Step 5, while very
+                                                                                                                40
+important for defects, only takes ~ 5% of the throughput budget. As                            40
+discussed in section “Defect control”, increase in ﬂuid ﬁlling time (tf)
+                                                                                                         20
+leads to a decrease in non-ﬁll defects. Therefore, an optimal J-FIL
+                                                                                               20 8
+process is set to run at the shortest tf that leads to an acceptable
+defect density. As discussed in section “Semiconductor lithography
+                                                                                                0
+requirements”, ﬂash memory device yield requires defect density of
+~ 1–10 defect cm − 2, which is much higher than logic devices (see                               2013   2014   2015      2016           2017   2018
+Table 1). This is because there exists a built-in redundancy in ﬂash       Figure 18 Optimal J-FIL process trend and acceptable defectivity for
+memory devices and this is one of the reasons it was chosen as the         maximum throughput. J-FIL, Jet and Flash Imprint Lithography.
+
+
+                                                         doi:10.1038/micronano.2017.75                                Microsystems & Nanoengineering
+                        Nanoimprint steppers for semiconductor fabrication
+                                                          SV Sreenivasan
+16
+     market”). Imprio 500 was the ﬁrst system to include two imprint             41000 wafers by the end of this year92. Also, ongoing efforts by IC
+     stations, and improved various aspects of overlay, throughput and           manufacturers involve developing device-speciﬁc process integra-
+     contamination control. IM-30 was the ﬁrst IM (see section “HVM              tion to deploy J-FIL in memory production. To extend J-FIL to
+     stepper development partnership” and Figure 5) developed by MII             production of logic devices, a further decrease in defect densities
+     to enable a collaboration with Canon Corporation for develop-               by at least two orders of magnitude is required, which is also
+     ment of production steppers. Finally, FPA-1200-NZ2C, a four-                being explored by Canon and its partners.
+     station HVM stepper for advanced memory production, was                        As discussed earlier, the only two lithographic technologies
+     deployed by Canon in 2017 (Ref. 100). As discussed in an earlier            being considered for IC production beyond 193i PL to pattern
+     section, this stepper has demonstrated: (i) ~ 0.0008 particles              20 nm half-pitch structures with arbitrary complexity are J-FIL and
+     added per wafer processed through it (Figure 10), (ii) ~ 4 nm               EUV. Section “EUV lithography” described that EUVL has to address
+     (mean+3σ) MMO (Figure 15), and (iii) 80WPH throughput at ~ 1.1              the coupling between resolution/LER and throughput caused by
+     defects cm −2 (Figure 18).                                                  fundamental shot noise limitations. This requires continued
+        A collaboration among the lithography ecosystem partners and             increase in source power which causes fundamental challenges
+     memory manufacturers has led to deployment of stepper systems,              for the creation of reliable pellicles and optical systems. Also, a
+     lithographic materials, inkjets, and commercial templates, and to
+                                                                                 number of system engineering challenges have to be addressed
+     large area electrical yield data compatible with memory device
+                                                                                 for roadmap extendibility in EUVL. The inherent resolution
+     manufacturing. The key remaining challenge for achieving the
+                                                                                 advantage of J-FIL—its demonstrated ability to pattern sub-5 nm
+     speciﬁcations set forth in Table 1 is template life of 41000 wafers.
+                                                                                 resist structures and complicated patterns—appears to make the
+     Systems that have demonstrated o0.001 added particles per
+     wafer pass (PPWP) (Figure 10) are being made available to                   J-FIL technology roadmap more readily extendable. The technol-
+     memory IC fabs where template life studies will be scaled up.               ogy has the potential be the same at higher resolutions, requiring
+     Based on studies that have correlated PPWP and template life, it is         incremental improvements in overlay and defect management. To
+     expected that o0.001 PPWP will result in a template life of                 address this extendability, Canon recently presented a NIL
+
+
+                     1999, UT-Austin     2006, Molecular imprints       2011, MII                   2011, MII              2013, MII
+                      UT prototype          (MII), Imprio 300           MR 5000                    Imprio 500       Imprint module (IM-30)
+
+
+
+
+                                                                       Wafer feeder
+                                                                                                                2017 Canon corporation
+                                       INLINE                                                                      FPA -1200 NZ2C
+
+
+                                                                                 Station A1
+
+                                                Station B1
+
+                                                                                                                Station A2
+
+                                                                             Station B2
+
+                                                                                          SMIF-POD approach path
+
+                                                                                                                          FOUP opener
+
+                        2830 mm
+
+
+
+
+                                                                       SMIF-INX
+                                                6600 mm
+
+                                                                                              Console panel            4600 mm
+
+
+
+
+     Figure 19 Major milestones of the J-FIL stepper system starting from the ﬁrst UT-Austin prototype in 1999 to the four-station HVM tool
+     deployed in 2017100. J-FIL, Jet and Flash Imprint Lithography.
+
+
+     Microsystems & Nanoengineering                           doi:10.1038/micronano.2017.75
+                                                                                         Nanoimprint steppers for semiconductor fabrication
+                                                                                         SV Sreenivasan
+                                                                                                                                                                                 17
+roadmap with planned advances in resolution, overlay, through-                            3 Lattard L, McCallum M, Morton R et al. Spacer process and alignment
+put, defects, and template life out to year 2021 (Ref. 69).                                 assessment for SADP. Proceedings of SPIE Advanced Lithography 2012; 8326:
+  Leading-edge semiconductor lithography has some of the most                               832604-1.
+                                                                                          4 Ross CA, Jung YS, Chuang VP et al. Si-containing block copolymers for self-
+aggressive technology requirements. Commercialization of this
+                                                                                            assembled nanolithography. Journal of Vacuum Science & Technology B, Nano-
+challenging nanomanufacturing technology has resulted in                                    technology and Microelectronics: Materials, Processing, Measurement, and Phe-
+important observations that may be more broadly applicable to                               nomena 2008; 26.
+researchers involved in other nanomanufacturing technologies:                             5 Ruiz R, Jung YS, Chuang VP et al. Density multiplication and improved litho-
+                                                                                            graphy by directed block copolymer assembly. Science 2008; 321: 936–939.
+● Large strategic market: Nanolithography is a key driver in the                          6 Son JG, Chang JB, Berggren KK et al. Assembly of sub-10-nm block copolymer
+  important business of semiconductor ICs which has justiﬁed                                patterns with mixed morphology and period using electron irradiation and
+                                                                                            solvent annealing. Nano Letters 2011; 11: 5079–5084.
+  signiﬁcant investments in the research-and development
+                                                                                          7 Harumoto M, Stokes H, Tanaka Y et al. Investigation of coat-develop track system
+  phases of this disruptive technology.                                                     for placement error of contact hole shrink process. Proceedings of SPIE 2016;
+● Extendable technology: The fact that NIL’s inherent resolution is
+                                                                                            9777: 977700.
+  well below 5 nm half-pitch makes it likely that this technology                         8 Muramatsu M, Nishi T, You G et al. Pattern defect reduction and LER improve-
+  would be applicable well beyond its initial introduction at                               ment of chemo-epitaxy DSA process. In: Chris B, editor. Proceedings of the SPIE,
+  around 20 nm half-pitch structures.                                                       Vol. 10144, Emerging Patterning Technologies, 101440Q (2017/03/21).
+● Early adopters: The customer partnerships in the advanced                               9 Early K, Schattenberg ML, Smith HI. Absence of resolution degradation in X-ray
+                                                                                            lithography. Microelectronic Engineering 1990; 11: 317–321.
+  memory fabrication sector have allowed for a careful docu-
+                                                                                         10 Carter JD, Pepin A, Schweizer MR et al. Direct measurement of the effect of
+  mentation of the minimally acceptable speciﬁcations that can                              substrate photoelectrons in X-ray nanolithography. Journal of Vacuum Science &
+  create commercial value.                                                                  Technology B: Microelectronics and Nanometer Structures Processing, Measure-
+● Leveraging     existing infrastructure: Partnering with well-                             ment, and Phenomena 1997; 15: 2509–2513.
+  established IC fab ecosystem suppliers that bring in comple-                           11 Miura T. Projection electron beam lithography. Journal of Vacuum Science &
+  mentary capabilities has helped in sharing of the technical risk                          Technology B, Nanotechnology and Microelectronics: Materials, Processing, Mea-
+  and the reward of deploying this new technology.                                          surement, and Phenomena 2002; 20: 2996–2999.
+● Shared technology roadmap: A carefully planned technology                              12 Loeschner H, Stengl G, Chalupka A et al. Projection ion beam lithography.
+                                                                                            Journal of Vacuum Science & Technology B, Nanotechnology and Microelectronics:
+  development roadmap among all the partners—that established
+                                                                                            Materials, Processing, Measurement, and Phenomena 1993; 11: 2409–2415.
+  intermediate milestones to systematically overcome the major                           13 Brunner TA. Why optical lithography will live forever. Journal of Vacuum Science
+  technical risks—has enabled investments from both the public and                          & Technology B, Nanotechnology and Microelectronics: Materials, Processing,
+  the private sectors. The execution of this technology roadmap has,                        Measurement, and Phenomena 2003; 21: 2632–2637.
+  for example, led to a HVM stepper system (Figure 19) that was                          14 Times EE. Intel drops 157-nm tools from lithography roadmap EE Times. Avail-
+  recently deployed to a memory fab by Canon100.                                            able at: http: //www.eetimes.com (last accessed 23 May 2003).
+● Trusted system-level models: An important area of future research                      15 McCord MA, Petric P, Ummethala U et al. REBL: Design progress toward 16nm
+                                                                                            half-pitch electron-beam lithography. Proceedings of SPIE Advanced Litho 2012;
+  needs to be the creation of trusted multi-scale models in the
+                                                                                            8323: 8323–8336.
+  area of nanomanufacturing. An inefﬁcient, trial-and-error                              16 Slot E, Wieland MJ, de Boer G et al. MAPPER: High throughput maskless electron
+  experimental approach, such as the one described in this paper,                           beam lithography. Emerging Lithographic Technologies XII. Edited by Schellenberg,
+  still the norm during the development of new nanomanufactur-                              Frank M., Proceedings of the SPIE 2008; 6921: 69211P–69211P-9.
+  ing technologies. The primary reason for this is the absence of                        17 IMS and JEOL Partner to Provide World’s First Production Multi-Beam Mask
+  comprehensive and reliable system-level models that possess                               Writer. Available at: http://www.ims.co.at/archives/1324 (available on 15 Feb-
+  nanoscale precision over large scales.                                                    ruary 2017).
+                                                                                         18 Kapl SE, Loeschner H, Piller W et al. Characterization of CMOS programmable
+                                                                                            multi-beam blanking arrays as used for programmable multi-beam projection
+                                                                                            lithography and resistless nanopatterning. Journal of Micromechanics and
+                                                                                            Microengineering 2011; 21: 045038.
+ACKNOWLEDGEMENTS                                                                         19 Ichimura K, Hikichi R, Harada S et al. Development of nanoimprint lithography
+The results presented in this article have been enabled by a number of researchers at       templates for the contact hole layer application (Conference Presentation).
+the University of Texas at Austin, at Molecular Imprints Inc., at Canon Corporation,        Proceedings of SPIE 2017; 10144: 101440D–101440D-1.
+and at Dai Nippon Print. The author would particularly like to acknowledge his long-     20 Kik PG, Martin AL, Maier SA et al. Metal nanoparticle arrays for near ﬁeld optical
+term collaborators Grant Willson, Jin Choi, Frank Xu, Phil Schumaker, Anshuman              lithography. Proceedings of SPIE 2002; 4810: 7–13.
+Cherala, Mario Meissl, Zhengmao Ye, Ali Aghili, Van Truskett, Dwayne LaBrake, Doug       21 Srituravanich W, Pan L, Wang Y et al. Flying plasmonic lens in the near ﬁeld for
+Resnick, Paul Hellebrekers, Takehiko Iwanaga, Koji Ichimura, Naoya Hayashi, John            high-speed nanolithography. Nature Nanotechnology 2008; 3: 733–737.
+Ekerdt, Sanjay Banerjee, and Mark Melliar-Smith. The author also appreciates the         22 Brueck SRJ. Optical & interferometric lithography—nanotechnology enablers.
+technical leadership of Kazunori Iwamoto and Hiroaki Takeishi at Canon, and would           1704–1721. Proceedings of the IEEE 2005; 93: 1704–1721.
+like to acknowledge Dan Rubin of Alloy Ventures for his investment and long-term         23 Bentley SJ. Nonlinear interferometric lithography for arbitrary two-dimensional
+support of Molecular Imprints Inc. Finally, the thorough review of this article by the      patterns. Journal of Micro/Nanolithography, MEMS, and MOEMS 2008; 7: 013004.
+anonymous reviewers is much appreciated. This work was partially funded by DARPA         24 Menon R, Patel A, Gil D et al. Maskless lithography. Materials Today 2005; 8:
+Contract No. N66001-02-C-8011, NIST Advanced Technology Program Contract No.                26–33.
+70NANB4H3012, US DoD Contract No. N66001-06-C-2003, DARPA A2P Program                    25 Dürig U, Cross G, Despont M et al. Millipede—an AFM data storage system at the
+administered by AFRL Contract No. FA8650-15-C-7542, and by the National Science             frontier of nanotribology. Tribology Letters 2000; 9: 25.
+Foundation under Cooperative Agreement No. EEC-1160494.                                  26 Minne C, Adams JD, Yaralioglu G et al. Centimeter scale atomic force microscope
+                                                                                            imaging and lithography. Applied Physics Letters 1998; 73: 1742–1744.
+                                                                                         27 Hong S, Mirkin CA. A nanoplotter with both parallel and serial writing cap-
+                                                                                            abilities. Science 2000; 288: 1808–1811.
+COMPETING INTERESTS
+                                                                                         28 Ahn Y, Ono T, Esashi M. Micromachined Si cantilever arrays for parallel AFM
+Canon is commercializing nanoimprint lithography steppers.                                  operation. Journal of Mechanical Science and Technology, The Korean Society of
+                                                                                            Mechanical Enginers 2008; 22: 308–311.
+                                                                                         29 Zhang Y. CMOS-MEMS probe arrays for tip-based nanofabrication. Ph.D. Dis-
+REFERENCES                                                                                  sertation, Carnegie Mellon University: Pittsburgh, PA, USA, 2014.
+    1 Arnold B. Shrinking possibilities. IEEE Spectrum 2009; 4: 50–56.                   30 Martini M. The long and tortuous path of EUV lithography to full production.
+    2 Bruning J. Optical lithography… 40 years and holding. Proceedings of SPIE             Available at: http://www.nanowerk.com/spotlight/spotid = 35314.php (last
+      Microlithography 2007; 6520: 652004-1.                                                accessed 24 April 2014).
+
+
+                                                                    doi:10.1038/micronano.2017.75                                     Microsystems & Nanoengineering
+                             Nanoimprint steppers for semiconductor fabrication
+                                                               SV Sreenivasan
+18
+     31 Lapedus M. Why EUV Is So Difﬁcult, Nov. 17th, 2016, Manufacturing & Process           60 Ajay P, Cherala A, Yin BA et al. Multiﬁeld sub-5 nm overlay in imprint lithography.
+        Technology, Semiconductor Engineering. Available at: https://semiengineering.            Journal of Vacuum Science & Technology B, Nanotechnology and Microelectronics:
+        com/why-euv-is-so-difﬁcult/.                                                             Materials, Processing, Measurement, and Phenomena 2016; 34: 061605.
+     32 Rothschild M. Projection optical lithography. Materials Today 2005; 8: 18–24.         61 Cheng X, Guo LJ. One-step lithography for various size patterns with a hybrid
+     33 Kwon HJ, Harris-Jones J, Cordes A et al. EUV mask multilayer defects and their           mask-mold. Microelectronic Engineering 2004; 71: 288–293.
+        printability under different multilayer deposition conditions. Proceedings of SPIE    62 Sreenivasan SV, Choi BJ, Schumaker NE et al. Step and repeat imprint litho-
+        2012; 8322.                                                                              graphy processs. US Patent No. 7077992, July 2006.
+     34 Wagner C, Harned. N. EUV lithography: Lithography gets extreme. Nature Pho-           63 Sreenivasan SV. Nanoscale manufacturing enabled by imprint lithography. MRS
+        tonics 2010; 4: 24–26.                                                                   Bulletin 2008; 33: 854–863.
+     35 Turkot B. EUVL Readiness for High-Volume. Manufacturing International Work-           64 Choi J, Schumaker P, Xu F. Status of UV imprint lithography for nanoscale
+        shop on EUV Lithography: Berkeley, CA, USA, 2016.                                        manufacturing. Comprehensive Nanoscience and Technology 2011; 4: 83–116.
+     36 Kim S-S, Chalykh R, Kim H et al. Progress in EUV lithography toward manu-             65 Choi BJ, Sreenivasan SV. Method and system for double-sided patterning of
+        facturing. Proceedings of SCIE 2017; 10143: 1014306–1014306-10.                          substrates. US Patent No. 7670529, March 2010.
+     37 Lapedus M. 7nm Fab Challenges, 21 April 2016, Manufacturing & Process                 66 Ye Z, Fretwell J, Luo K et al. Defect analysis for patterned media. Journal of
+        Technology, Semiconductor Engineering. Available at: https://semiengineering.            Vacuum Science & Technology B, Nanotechnology and Microelectronics: Materials,
+        com/7nm-fab-challenges/.                                                                 Processing, Measurement, and Phenomena 2010; Vol. 28: C6M7.
+     38 Lapedus M. Next EUV Challenge: Pellicles, 27 April 2016, Manufacturing & Pro-         67 Ahn SH, Yang S, Miller M et al. High-performance wire-grid polarizers using jet
+        cess Technology, Semiconductor Engineering. Available at: https://semi                   and Flash imprint lithography. Journal of Micro/Nanolithography, MEMS, and
+        engineering.com/next-euv-challenge-pellicles/.                                           MOEMS 2013; 12: 031104.
+     39 Hua F, Sun Y, Gaur A et al. Polymer imprint lithography with molecular-scale          68 T Albrecht. HGST, a Western Digital Company, Personal communication, 2012.
+        resolution. Nano Letters 2004; 4: 2467–2471.                                          69 Takabayashi Y, Hiura M, Morohoshi H et al. Nanoimprint system development for
+     40 Austin MD, Ge H, Wu W et al. Fabrication of 5nm linewidth and 14nm pitch                 high-volume semiconductor manufacturing and status of overlay performance.
+        features by nanoimprint. Applied Physics Letters 2004; 84: 5299–5301.                    Proceedings of SPIE 2017, 10144.
+     41 Ji R, Hornung M, Verschuuren MA et al. UV enhanced substrate conformal                70 Reddy S, Bonnecaze RT. Simulation of ﬂuid ﬂow in the step and ﬂash imprint
+        imprint lithography (UV-SCIL) technique for photonic crystals patterning in LED          lithography process. Microelectronics Engineering 2005; 82: 60–70.
+        manufacturing. Microelectronic Engineering 2010; 87: 963–967.                         71 Shumaker PD. Drop pattern generation for imprint lithography. US Patent No.
+     42 Resnick D, Schmid G, Miller M et al. Step and ﬂash imprint lithography template          8119052, February 2012.
+        fabrication for emerging market applications. Proceedings of SPIE 2007, 6607.         72 Khusnatdinov N, Doyle G, Resnick DJ et al. Development of a robust reverse tone
+     43 Olsson L. Method and device for forming optical or magnetic memory media or              pattern transfer process. Proceedings of SPIE 2017; 10146.
+        a template for the same. US Patent No. 7468784, December 2008.                        73 Rosso D. Global Semiconductor Sales Reach $339 Billion in 2016, 2 February 2017,
+     44 Schmid GM, Miller M, Brooks C et al. Step and ﬂash imprint lithography for               Semiconductor Industry Association (SIA). Available at: https://www.semiconductors.
+        manufacturing patterned media. Journal of Vacuum Science & Technology B,                 org/news/2017/02/02/global_sales_report_2015/global_semiconductor_sales_reach_
+        Nanotechnology and Microelectronics: Materials, Processing, Measurement, and             339_billion_in_2016/.
+        Phenomena 2009; 27: 573–580.                                                          74 Ye Z, Fretwell J, Luo K et al. Defect analysis for magnetic patterned media.
+     45 Unno N, Mäkelä T, Taniguchi J. Thermal roll-to-roll imprinted nanogratings on            Journal of Vacuum Science and Technology B 2010; 28: C6M7.
+        plastic ﬁlm. Journal of Vacuum Science & Technology B, Nanotechnology and             75 Higashiki T, Nakasugi T, Yoneda I. Nanoimprint lithography and future patterning
+        Microelectronics: Materials, Processing, Measurement, and Phenomena 2014; 32:            for semiconductor devices. Journal of Micro/Nanolithography MEMS, and MOEMS
+        06FG03.                                                                                  2011; 10: 043008.
+     46 Ahn SH, Miller M, Yang S et al. High volume nanoscale roll-based imprinting           76 Toshiba press release: Toshiba to accelerate development of nano imprint
+        using jet and ﬂash imprint lithography. Proceedings of SPIE 2013, 8816.                  lithography, signs deﬁnitive agreement with sk hynix on joint development of
+     47 John J, Tang Y, Rothstein JP et al. Large-area, continuous roll-to-roll nanoim-          next generation process. Available at: https://www.toshiba.co.jp/about/press/
+        printing with PFPE composite molds. Nanotechnology 2013; 24: 505307.                     2015_02/pr0501.htm.
+     48 Leitgeb M, Nees D, Ruttloff S et al. Multilength scale patterning of functional       77 Ma X, Arce GR. Computational Lithography. Wiley: New York, NY, USA. 2010.
+        layers by roll-to-roll ultraviolet-light-assisted nanoimprint lithography. ACS Nano   78 Yoshitake S, Sunaoshi H, Yasui K et al. The Development of Full Field High
+        2016; 10: 4926–4941.                                                                     Resolution Imprint Templates. Photomask Technology 2007.
+     49 Brooks C, Schmid GM, Miller M. Step and ﬂash imprint lithography for manu-            79 Selinidis KS, Brooks CB, Doyle GF et al. Mask replication using jet and ﬂash
+        facturing patterned media. In: Schellenberg FM, La Fontaine, editors. Proceedings        imprint lithography. Journal of Micro/Nanolithography MEMS MOEMS 2011; 10:
+        of the SPIE, Vol. 7271, Alternative Lithographic Technologies, 72711L (2009/03/18).      043005.
+     50 Zhou W. Nanoimprint lithography: An enabling process for nanofabrication.             80 Matsuoka Y, Seki J, Nakayama T et al. Nanoimprint wafer and mask tool progress
+        Springer: Berlin, Heidelberg, Germany. 2013.                                             and status for high volume semiconductor manufacturing. Proceedings of SPIE
+     51 Napoli LS, Russell JP. Process for forming a lithographic mask. US Patent                2016; 9985: 99851G–99851G-8.
+        4,731,155, 1988.                                                                      81 Xaar News Molecular Imprints Inc. chooses Xaar inkjet technology for advanced
+     52 Chou SY, Krauss PR, Renstrom PJ. Nanoimprint lithography. Journal of Vacuum              manufacturing, 2013. Available at: http://www.xaar.com/en/media-centre/mole
+        Science & Technology B, Nanotechnology and Microelectronics: Materials, Proces-          cular-imprints-inc-chooses-xaar-inkjet-technology-for-advanced-manufacturing.
+        sing, Measurement, and Phenomena 1996; 14: 4129.                                      82 Choi BJ, Sreenivasan SV, Johnson S et al. Design of orientation stages for Step
+     53 Schift H. Nanoimprint lithography: An old story in modern times? A review.               and Flash Imprint Lithography. Precision Engineering 2001; 192–199.
+        Journal of Vacuum Science & Technology B, Nanotechnology and Microelectronics:        83 Moon EE, Lee J, Everett P et al. Application of interferometric broadband ima-
+        Materials, Processing, Measurement, and Phenomena 2008; 26: 458–480.                     ging alignment on an experimental X-ray stepper. Journal of Vacuum Science &
+     54 Hirai Y, Fujiwara M, Okuno T et al. Study of the resist deformation in nano-             Technology B: Microelectronics and Nanometer Structures 1998; 16: 3631.
+        imprint lithography. Journal of Vacuum Science & Technology B, Nanotechnology         84 Choi BJ, Nimmakayala PK, Shumaker PD. Alignment for edge ﬁeld nano-
+        and Microelectronics: Materials, Processing, Measurement, and Phenomena                  imprinting. US Patent No. 8432548, April 2013.
+        2001; 19.                                                                             85 Fukuhara K, Suzuki M, Mitsuyasu M et al. Overlay control for nanoimprint
+     55 Colburn M, Johnson S, Stewart M et al. Step and ﬂash imprint lithography: A new          lithography. Proceedings of SPIE 2017; 10144: 1014409–1014409-8.
+        approach to high-resolution patterning. Proceedings of the SPIE 1999; 3676:           86 Choi J, Nordquist K, Cherala A et al. Distortion and overlay performance of UV step
+        379–389.                                                                                 and repeat imprint lithography. Microelectronic Engineering 2005; 78-79: 633.
+     56 Otto M, Bender M, Richter F et al. Reproducibility and homogeneity in step and        87 Cherala A, Schumaker P, Mokaberi B et al. Nanoscale magniﬁcation and shape
+        repeat UV-nanoimprint lithography. Microelectronic Engineering 2004; 73-74:              control system for precision overlay in jet and ﬂash imprint lithography. IEEE/
+        152–156.                                                                                 ASME Transactions on Mechatronics 2015; 20: 122–132.
+     57 Jeong J-h, Sim Y-s, Sohn H. UV Nanoimprint Lithography using an elementwise           88 Zhang W, Fletcher B, Thompson E et al. High throughput jet and ﬂash imprint
+        embossed stamp. Proceedings of the IEEE International Conference on MEMS,                lithography for semiconductor memory applications. Proceedings of SPIE 2016;
+        NANO and Smart Systems; 25–27 August. 2004; Banff, AB, Canada; 2004.                     9777: 97770A–97771A.
+     58 Hiroshima H, Komuro M. Control of bubble defects in UV nanoimprint . The Japan        89 Gong C, Hogan T. CMOS Compatible Fabrication Processes for the Digital
+        Society of Applied Physics 2007; 46: 6391.                                               Micromirror Device. IEEE Journal of Electron Devices Society 2014; 2; 27.
+     59 Xia Y, Whitesides. GM. Soft lithography. Annual Review of Materials Science 1998;     90 Bailey T, Choi BJ, Colburn M et al. Step and ﬂash imprint lithography: Template
+        37: 550.                                                                                 surface treatment and defect analysis. Journal of Vacuum Science & Technology B,
+
+
+     Microsystems & Nanoengineering                                      doi:10.1038/micronano.2017.75
+                                                                                     Nanoimprint steppers for semiconductor fabrication
+                                                                                     SV Sreenivasan
+                                                                                                                                                                                 19
+   Nanotechnology and Microelectronics: Materials, Processing Measurement, and        98 Ye Z, Luo K, Lu X et al. Defect reduction for semiconductor memory applications
+   Phenomena 2000; 18: 3572–3577.                                                        using Jet and Flash Imprint Lithography. Journal of Micro/Nanolithography,
+91 Xu F, Stacey NA, Watts M et al. Development of imprint materials for the Step &       MEMS, and MOEMS 2012; 11: 031404.
+   Flash Imprint Lithography. Proceedings of SPIE 2004; 5374: 233.                    99 Luo Q, Wu K, Lee H et al. Defect detection using structural information. US Patent
+92 Nakayama T, Yonekawa M, Matsuoka Y et al. Improved defectivity and particle           No. 9727047, August 2017.
+   control for nanoimprint lithography high-volume semiconductor manufacturing.      100 Canon Global News Release: Canon provides nanoimprint lithography manu-
+   Proceedings of SPIE 2017; 10144: 1014407–1014407-10.                                  facturing equipment to Toshiba Memory's Yokkaichi Operations plant. 20 July
+93 Wolters C, Reich J. Surface scanning inspection system with independently             2017. Available at: http://global.canon/en/news/2017/20170720.html.
+   adjustable scan pitch. US Patent No. 9116132, August 2015.
+94 Taylor HK. Simulation and mitigation of process and pattern dependencies in
+   nanoimprint lithography. Journal of Photopolymer Science and Technology 2011;                       This work is licensed under a Creative Commons Attribution 4.0
+   24: 47–55.                                                                                          International License. The images or other third party material in this
+95 Chapman Instruments. Semiconductor wafer edge analysis, chapman technical         article are included in the article’s Creative Commons license, unless indicated
+   Note-TW-1, waf_edge.doc, Rev-98-07. Available at: http://www.prostek.com/ch_      otherwise in the credit line; if the material is not included under the Creative Commons
+   data/Semiconductor%20Wafer%20Edge%20Analysis.pdf.                                 license, users will need to obtain permission from the license holder to reproduce the
+96 SEMI International Standards. SEMI M73-1013—Test Methods for Extracting           material. To view a copy of this license, visit http://creativecommons.org/licenses/
+   Relevant Characteristics from Measured Wafer Edge Proﬁles.                        by/4.0/
+97 Makino K, Kikuchi T, Sasamoto S et al. Mix-and-match overlay performance
+   of the NSR-S622D immersion scanner. Proceedings of SPIE 2013; 8683:
+   86830Q–86831Q.                                                                    © The Author(s) 2017
+
+
+
+
+                                                                 doi:10.1038/micronano.2017.75                                       Microsystems & Nanoengineering
+

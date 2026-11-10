@@ -1,0 +1,50 @@
+[
+  {
+    "name": "inspect",
+    "command": [
+      "/home/dell/miniconda3/bin/python3",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/scripts/inspect_preparation.py",
+      "--release",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/preparation_A.json",
+      "--release-sha256",
+      "53e544543ae26402a0d0fac7a7b3294e0a2286e7a7d4c336ce08e91abf53bfb9"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "native_calls": 0,
+    "VTK_calls": 0
+  },
+  {
+    "name": "zero_entry_readonly",
+    "command": [
+      "/home/dell/miniconda3/bin/python3",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/scripts/audit_zero_tge.py",
+      "--release",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/preparation_A.json",
+      "--release-sha256",
+      "53e544543ae26402a0d0fac7a7b3294e0a2286e7a7d4c336ce08e91abf53bfb9"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "native_calls": 0,
+    "VTK_calls": 0
+  },
+  {
+    "name": "wrong_sha_readonly",
+    "command": [
+      "/home/dell/miniconda3/bin/python3",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/scripts/inspect_preparation.py",
+      "--release",
+      "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/preparation_A.json",
+      "--release-sha256",
+      "0000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "native_calls": 0,
+    "VTK_calls": 0
+  }
+]

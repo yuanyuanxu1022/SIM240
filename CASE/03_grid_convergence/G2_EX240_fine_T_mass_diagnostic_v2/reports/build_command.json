@@ -1,0 +1,11 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_fine_T_mass_diagnostic_v2/src",
+    "compile"
+  ],
+  "exit_code": 0,
+  "stdout": "make: Entering directory '/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_fine_T_mass_diagnostic_v2/src'\nmkdir -p ../build\nmpic++ -O3 -Wall -march=native -mtune=native -std=c++20 -pthread -DPARALLEL_MODE_MPI -DPLATFORM_CPU_SISD -DDEFAULT_FLOATING_POINT_TYPE=double -DOLB_VERSION=\\\"882924a9cfc8dcdf82909e39530789cb6f5ebcc4\\\" -I/home/dell/openlb/src -I/home/dell/openlb/external/zlib -I/home/dell/openlb/external/tinyxml2 fine_T_diagnostic.cpp -o ../build/fine_T_diagnostic -L/home/dell/openlb/build/lib -lolbcore -L/home/dell/openlb/external/lib -lz -ltinyxml2 -lpthread\nmake: Leaving directory '/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_fine_T_mass_diagnostic_v2/src'\n",
+  "stderr": ""
+}

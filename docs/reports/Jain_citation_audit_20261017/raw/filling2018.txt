@@ -1,0 +1,927 @@
+          micromachines
+
+Article
+Resist Filling Study for UV Nanoimprint Lithography
+Using Stamps with Various Micro/Nano Ratios
+Minqi Yin 1,2 , Hongwen Sun 1,2, * and Haibin Wang 1,2
+ 1   College of Internet of Things Engineering, Hohai University, Changzhou 213022, China;
+     hhucymq@163.com (M.Y.); 20021646@hhu.edu.cn (H.W.)
+ 2   Jiangsu Key Laboratory of Power Transmission and Distribution Equipment Technology,
+     200 JinLing Road North, Changzhou 213022, China
+ *   Correspondence: hwsun@hhu.edu.cn; Tel.: +86-0519-8519-2018
+                                                                                                   
+ Received: 23 May 2018; Accepted: 29 June 2018; Published: 2 July 2018                             
+
+
+ Abstract: Mixed micro- and nanoscale structures are gaining popularity in various fields due to their
+ rapid advances in patterning. An investigation in stamp resist filling with multiscale cavities via
+ ultraviolet (UV) nanoimprint lithography (UV-NIL) is necessary to improve stamp design. Here,
+ simulations at the level of individual features were conducted to explain different filling behaviors of
+ micro- and nanoscale line patterns. There were noticeable interactions between the micro-/nanoscale
+ cavities. These delayed the resist filling process. Several chip-scale simulations were performed
+ using test patterns with different micro/nano ratios of 1:1, 1:2, and 1:3. There were some minor
+ influences that changed the micro/nano ratios on overall imprint qualities. During the imprinting
+ process, the pressure difference at the boundary between micro- and nanoscale patterns became
+ obvious, with a value of 0.04 MPa. There was a thicker residual layer and worse cavity filling when
+ the proportion of nanoscale structures increased.
+
+ Keywords: resist filling; micro/nano ratios; ultraviolet (UV) nanoimprint lithography; multiscale
+ cavities; stamp
+
+
+
+
+1. Introduction
+     The combination of micro- and nanoscale structures has broad applications, including multiscale
+inverse pyramid structures for solar cells with high efficiency [1], or surface-enhanced Raman
+spectroscopy (SERS) to detect various substances [2]. Much attention has been paid to micro/nano
+fluidic channels and chips [3,4], which have played important roles in chemical, biomedical, and
+microelectromechanical systems (MEMS) studies. Micro/nano structures based on polymer materials
+are gaining popularity because they are multifunctional and recyclable. Conventional patterning
+processes are complex and time-consuming. They cannot produce complex micro/nano patterns at
+the same time. Nanoimprint lithography (NIL) is an advanced pattern transfer technique to replicate
+extremely wide features from micrometer to sub-10 nanometer. There are two main variants of NIL:
+Thermal nanoimprint lithography (T-NIL) and ultraviolet (UV) nanoimprint lithography (UV-NIL).
+Though both techniques can replicate micro/nano features to the resist layer [5,6], UV-NIL does not
+require high temperatures and pressures. The guaranteed replication fidelity ensures that UV-NIL can
+mass-produce micro- and nanoscale structures.
+     Due to the huge variations in feature pitches across a multiscale structure, imprint quality is
+inevitably affected by the resist filling behavior. Some defects may be caused during resist filling
+of these special patterns. Thus, various fabrication methods for micro/nano patterns have been
+developed, including UV-NIL. Hansen et al. proposed a novel lithography technique dependent
+on UV capillary forces. This replicated a multiscale system [7], including 95% of the texture from a
+
+
+Micromachines 2018, 9, 335; doi:10.3390/mi9070335                        www.mdpi.com/journal/micromachines
+Micromachines 2018, 9, 335                                                                        2 of 12
+
+
+
+master mold. Several other research groups have created mixed-scale patterns with special stamps.
+By placing a nanoscale polydimethylsiloxane (PDMS) stamp between the microscale stamp and the
+substrate, Lim et al. constructed hybrid micro/nano patterns using UV-NIL [8]. Sun et al. tried a novel
+combination of double-layer PDMS stamps and a hybrid UV-thermal nanoimprint procedure [4]. After
+optimizing the process parameters, this method achieved precise fabrication of micro/nano channels at
+low cost. Chen et al. studied a bulk metallic glass (BMG) stamp to replicate micro/nanoscale features
+ranging from 90 nm to 100 µm [9]. Their work ensures that BMG stamps, which are suitable for MEMS
+applications, can transfer micro-/nanoscale patterns.
+      Mix and match nanoimprint has made great contributions to replicating mixed-scale features.
+Guo et al. used a novel combined-nanoimprint-and-photolithography (CNP) method with a hybrid
+mask mold to achieve high aspect ratio patterns without residual layer [10,11]. High-performance
+ion-sensitive field-effect transistors (ISFET) arrays with multiple nano channels, which are widely
+suitable to biosensor applications, have been fabricated by CNP [12,13]. Silicon nanowire arrays defined
+by nanoimprint can work as conductor channels to enhance the sensing ability of dual-gate transistor
+sensors [14]. Park et al. presented this process-combing NIL and optical lithography successfully
+created a three-dimensional mixed scale pattern on the Si substrate with features ranging from 70 nm
+to 3 µm [15]. Delle et al. also produced gold nanoelectrode arrays with a mixed nanoimprint process
+and demonstrated the interdigitated electrodes’ potential for biological and chemical sensing [16].
+      Although many contributions have been made in multiscale patterning, most studies have
+focused on improving the process or stamp materials. In general, there is a lack of studies on the
+resist filling of multiscale cavities during patterning. Rowland et al. investigated the influence of
+resist thickness, cavity size, and asymmetric cavities on polymer flow and filling time in NIL with
+finite-element modeling (FEM) [17,18]. Their work validated a part of our findings. This study
+offers both feature-scale and chip-scale simulations on neighboring mixed-scale cavities with a fast
+simulation technique provided by Simprint Nanotechnologies Ltd. (Bristol, England). The filling
+process of features was recorded in detail, and the effect of micro/nano ratios on imprinting of the
+entire pattern was discussed. We characterized the imprint quality with several parameters, including
+residual layer thickness (RLT), proportion filled, and contact pressure differences. This work explains
+cavity filling in mixed-scale patterns.
+
+2. Design of Stamps and Processes
+     A number of simulation methods have been proposed since nanoimprint became popular,
+including a computational method based on a linear viscoelastic model by Taylor et al. [19], mesoscale
+modeling using Monte-Carlo techniques by Willson et al. [20,21], and fluid dynamics simulations by
+Bonnecaze et al. [22–25]. In contrast to conventional coarse-grain approaches, Simprint Core is an
+extension of contact mechanics approaches developed by Taylor et al. [26–28]. They have validated its
+reliability and made it commercially available. It divides the simulation into four stages, including
+modeling resist deformation, abstracting imprint of feature-rich patterns, modeling stamp deflections,
+and finally modeling the whole imprint process. It offers precise and real-time observations of the
+UV-NIL process, which takes UV curable resists as a Newtonian viscous model. This method considers
+quasi-equilibrium of the stamp when it sinks into the resist. Contact pressure of UV-NIL leads to
+elastic stamp and substrate deformations, which consists of external and capillary forces:
+
+                               p g ( x, y) = pexternal ( x, y) + pcapillary ( x, y)                  (1)
+
+     In cases where the dissolution of the trapped gas can be a limiting factor, a new pressure term is
+added with approximate models for pattern-dependent gas entrapment and its dissolution rate [29,30].
+Capillary forces are described as being the vertical component of the surface tension times the amount
+of feature sidewall perimeter. For line structures, the capillary pressure is:
+
+                                             pcapillary = 2γ cos
+                                                             s
+                                                                 θ
+                                                                                                     (2)
+Micromachines 2018, 9, x FOR PEER REVIEW                                                                                    3 of 13
+
+
+                                                                   2𝛾cos𝜃
+                                                 𝑝capillary =                                                                 (2)
+Micromachines 2018, 9, 335                                           𝑠                                                      3 of 12
+
+      𝛾, 𝜃, 𝑠 stand for surface tension of the resist, stamp-resist contact angle, and feature pitch,
+respectively.     As for
+      γ, θ, s stand     a consequence,
+                             surface tension  this
+                                                 of simulation   tool is capable
+                                                    the resist, stamp-resist        of angle,
+                                                                              contact    investigating   impact
+                                                                                                and feature       of
+                                                                                                              pitch,
+side-parameters,      like  initial resist layer thickness and  contact  angles between    surfaces, on the
+respectively. As a consequence, this simulation tool is capable of investigating impact of side-parameters, imprint
+quality.
+like initialStamp    designs
+              resist layer        and process
+                              thickness            parameters
+                                         and contact            are equally
+                                                       angles between         important
+                                                                         surfaces,          during quality.
+                                                                                   on the imprint    the modeling
+                                                                                                             Stamp
+designs and process parameters are equally important during the modeling procedure. Figureall1 shows
+procedure.     Figure    1 shows     three  feature-scale stamps   with  features  of 300  nm  or 1  μm;     cavity
+heights   are  500  nm.    These   stamps    were  designed  with  the same  width   of 3.6 μm  and  a
+three feature-scale stamps with features of 300 nm or 1 µm; all cavity heights are 500 nm. These stampsthickness  of
+1 μm.designed with the same width of 3.6 µm and a thickness of 1 µm.
+were
+
+                                                                   3600
+
+                         (a)                                       300
+
+
+
+
+                                                                                                      1000
+                                                             500
+                         (b)
+                                                                   1000
+                                                      500
+
+
+
+
+                         (c)
+                                                            1000                300
+
+                                                                          300
+                                                500
+
+
+
+
+      Figure 1.1. Three
+      Figure       Threefeature-scale stamps
+                          feature-scale      with
+                                        stamps    different
+                                               with         cavities:
+                                                      different       (a) Nanoscale
+                                                                cavities:           cavity;cavity;
+                                                                           (a) Nanoscale    (b) microscale cavity;
+                                                                                                   (b) microscale
+      and (c) neighboring    micro-and-nanoscale  cavities (units: nm).
+      cavity; and (c) neighboring micro-and-nanoscale cavities (units: nm).
+
+       Another 1.2 mm ×      × 1.2
+                                1.2mmmmpatchwork
+                                           patchworkpatternpatternwas
+                                                                    waspresented
+                                                                          presentedin  inFigure
+                                                                                           Figure 22 forfor aa chip-scale
+                                                                                                               chip-scale study,
+                                                                                                                            study,
+where the thick
+              thicklines
+                      linesstand
+                              standfor formicroscale
+                                           microscale   line  features
+                                                           line         andand
+                                                                 features     thethe
+                                                                                  finefine
+                                                                                        lineslines
+                                                                                                are nanoscale
+                                                                                                     are nanoscale features.   The
+                                                                                                                         features.
+entire
+The      pattern
+      entire      is composed
+              pattern    is composedof 3 ×of3 areas,
+                                                3 × 3 and
+                                                       areas,each
+                                                                andarea hasarea
+                                                                     each     the same
+                                                                                  has the feature-scale      units butunits
+                                                                                              same feature-scale        different
+                                                                                                                               but
+orientations.
+different        The chip-scale
+           orientations.             investigation
+                             The chip-scale           used three
+                                                 investigation      stamps
+                                                                  used  threewith   different
+                                                                               stamps            micro/nano
+                                                                                         with different           ratios (1:1,
+                                                                                                             micro/nano        1:2,
+                                                                                                                            ratios
+and 1:3)
+(1:1, 1:2, but
+           andthe1:3)same    layout
+                       but the   same in layout
+                                          Figure in2. Figure
+                                                      The micro/nano       ratio was defined
+                                                                2. The micro/nano       ratio was  as defined
+                                                                                                       the ratioas ofthe
+                                                                                                                      microscale
+                                                                                                                          ratio of
+features to features
+microscale     nanoscale     features. Afeatures.
+                          to nanoscale        detailedAdescription      of this term
+                                                          detailed description          is in
+                                                                                   of this      Figure
+                                                                                             term   is in 3.  This 3.
+                                                                                                           Figure   work
+                                                                                                                       Thisuses
+                                                                                                                             work  a
+micro/nano
+uses            ratio ofratio
+       a micro/nano        1:1 as
+                                of an
+                                   1:1 instance    for further
+                                        as an instance            explanation;
+                                                           for further           namely
+                                                                        explanation;         one 1:1
+                                                                                        namely     oneunit     consisting
+                                                                                                         1:1 unit           of the
+                                                                                                                    consisting   of
+neighboring
+the neighboring  1 μm1 µmmicroscale
+                             microscale line   and
+                                            line    tenten
+                                                  and     100
+                                                            100nmnmnanoscale
+                                                                     nanoscalelines.
+                                                                                  lines.InIncases
+                                                                                              casesof ofvarious
+                                                                                                          various ratios,
+                                                                                                                    ratios, every
+unit’s width is  is constant,
+                    constant, with
+                                 withaavalue
+                                           valueofof22μm.µm.Those
+                                                               Thosestamps
+                                                                       stamps  are 500
+                                                                                 are 500 μm µm thick
+                                                                                                 thickwith
+                                                                                                         with a cavity  height
+                                                                                                                 a cavity  heightof
+300300
+of   nm.   Global
+         nm.  Global stamp
+                        stamp bending
+                                 bending  occurs   in in
+                                              occurs  thethechip-scale
+                                                               chip-scalesimulation
+                                                                            simulation of of
+                                                                                           feature-rich
+                                                                                               feature-rich  stamps,
+                                                                                                                stamps,while
+                                                                                                                          whileit is
+                                                                                                                                  it
+notnot
+is    obvious
+         obvious ininthe
+                       thefeature-scale
+                            feature-scalesimulation.
+                                               simulation.Hence,
+                                                               Hence,aareasonable
+                                                                          reasonablestampstamp thickness
+                                                                                                  thickness can  can reduce the
+negative impact of mold bending on imprint results and help to focus on studying the filling process
+               micro/nano ratios.
+for various micro/nano          ratios.
+      Choices for the stamp and resist materials also significantly affect the imprint results, as in
+experiments. All imprinting processes used a Quartz mold (Young’s modulus: 7.1 × 1010 Pa, Poisson’s
+ratio: 0.17) and a layer of PAK-01 resist (surface tension: 0.0391 N/m). The initial resist layer with
+thickness of 200 nm was directly spun on the silicon substrate (Young’s modulus: 1.6 × 1011 Pa,
+Poisson’s ratio: 0.27). In fact, the initial resist thickness is determined by the resist viscosity and
+spinning speed, while it can be set immediately in the Simprint Core, regardless of these parameters.
+Meanwhile, the contact angle between the stamp and the resist was 60◦ . The feature-scale imprint
+Micromachines 2018, 9, 335                                                                                                 4 of 12
+
+
+
+process was finished at 10.8 s without a pressure load, because a large pressure would markedly
+accelerate the resist filling and make it difficult to study its filling behavior. The chip-scale process
+ended at 0.012 s under a pressure of 0.2 MPa. The simulation results can guide an overall understanding
+of the neighboring
+Micromachines 2018, 9, x micro-/nanoscale
+                         FOR PEER REVIEW cavities’ filling behavior.                                4 of 13
+Micromachines 2018, 9, x FOR PEER REVIEW                                                                                   4 of 13
+
+
+
+
+                               Figure
+                               Figure 2.
+                                      2. Plan
+                                         Plan view
+                                              view of
+                                                   of the
+                                                      the test
+                                                          test pattern
+                                                               pattern with
+                                                                       with line
+                                                                            line structures.
+                                                                                 structures.
+                               Figure 2. Plan view of the test pattern with line structures.
+
+
+
+
+                                 Figure 3. Feature units with a micro/nano ratio of 1:1.
+                                 Figure 3.
+                                 Figure 3. Feature
+                                           Feature units
+                                                   units with
+                                                         with aa micro/nano
+                                                                 micro/nano ratio
+                                                                            ratio of
+                                                                                  of 1:1.
+                                                                                     1:1.
+       Choices for the stamp and resist materials also significantly affect the imprint results, as in
+       Choices
+3. Results         for
+               andAll    the stamp and resist materials also significantly affect the imprint results, as in
+                     Discussion
+experiments.            imprinting processes used a Quartz mold (Young’s modulus: 7.1 × 1010                        Pa, Poisson’s
+experiments. All imprinting processes used a Quartz mold (Young’s modulus: 7.1 × 1010 Pa, Poisson’s
+ratio: 0.17) and a layer of PAK-01 resist (surface tension: 0.0391 N/m). The initial resist layer with
+ratio:  0.17) of
+3.1. Results    and    a layer of Imprint
+                   Feature-Scale      PAK-01 resist (surface tension: 0.0391 N/m). The initial resist layer with
+thickness of 200 nm was directly spun on the silicon substrate (Young’s modulus: 1.6 × 1011                                    Pa,
+thickness of 200 nm was directly spun on the silicon substrate (Young’s modulus: 1.6 × 1011 Pa,
+Poisson’s
+       Polymerratio:   0.27). In fact,
+                   deformation              the initialonresist
+                                      is dependent                thickness
+                                                            contact            is determined
+                                                                     forces—namely,              by thepressure
+                                                                                         the external      resist viscosity   and
+                                                                                                                    and capillary
+Poisson’s ratio: 0.27). In fact, the initial resist thickness is determined by the resist viscosity and
+spinning    speed, in
+forces included        while
+                          the it   can be set
+                                 UV-NIL.         immediately in
+                                              Cross-sectional        the Simprint
+                                                                   profiles           Core, regardless
+                                                                            and corresponding         top of  theseofparameters.
+                                                                                                           views       microscale
+spinning speed, while it can be set immediately in the Simprint Core, regardless of these parameters.
+Meanwhile,
+and nanoscale    theline
+                       contact      anglebeing
+                           structures       between
+                                                  filledthe
+                                                          arestamp
+                                                               shownand    the resist
+                                                                       in Figures       was5,60°.
+                                                                                     4 and          The feature-scale
+                                                                                               respectively.              imprint
+                                                                                                                In these profiles,
+Meanwhile, the contact angle between the stamp and the resist was 60°. The feature-scale imprint
+process
+the heightswasoffinished
+                    the resist  at that
+                                    10.8filled
+                                           s without     a pressure
+                                                 the cavities    were load,   because
+                                                                       recorded         a large
+                                                                                   at 1.08  s, 4.32pressure    would
+                                                                                                     s, and 10.80       markedly
+                                                                                                                    s. Top  views
+process was finished at 10.8 s without a pressure load, because a large pressure would markedly
+accelerate
+in the formthe  of resist    filling
+                    color bars         and make
+                                    present           it difficult
+                                               the filling         to study
+                                                             conditions   withitsvarious
+                                                                                  filling behavior.
+                                                                                           colors, whereThe the
+                                                                                                             chip-scale
+                                                                                                                  darker process
+                                                                                                                           color is
+accelerate the resist filling and make it difficult to study its filling behavior. The chip-scale process
+ended
+a symbol  at of0.012
+                 higher s under       a pressureResist
+                           filling thickness.           of 0.2   MPa.
+                                                             in the     The simulation
+                                                                    microscale    cavity had  results
+                                                                                                dual peakcan guide     an overall
+                                                                                                              deformation,    and
+ended at 0.012 s under a pressure of 0.2 MPa. The simulation results can guide an overall
+understanding
+that in the nanoscale of thecavity
+                               neighboring       micro-/nanoscale
+                                        had a single                   cavities’Previous
+                                                         peak deformation.        filling behavior.
+                                                                                            studies have demonstrated that
+understanding of the neighboring micro-/nanoscale cavities’ filling behavior.
+the deformation geometry of the polymer is closely related to the ratio of a cavity that is half as wide
+3.
+in Results     and Discussion
+    film thickness      [17]. With decreasing polymer resist thickness or increasing cavity width, there is a
+3. Results and Discussion
+transition from a single peak to a dual peak. The deformation geometry remained symmetrical when
+3.1. Results of
+proceeding      to Feature-Scale
+                    10.80 s. Finally, Imprint
+                                           both cavities were nearly completely filled. However, the two corners at
+3.1. Results of    Feature-Scale      Imprint
+the top   of  the  cavities    were
+       Polymer deformation is dependentpartially   filled. Inoncontrast
+                                                                 contacttoforces—namely,
+                                                                            Figures 4b and 5b,the   theexternal
+                                                                                                         smaller cavity   reached
+                                                                                                                   pressure   and
+       Polymer
+a higher filling     deformation         is  dependent       on  contact   forces—namely,        the    external   pressure   and
+capillary    forcesextent
+                       includedat 4.32
+                                     in s.the
+                                            This  proved Cross-sectional
+                                               UV-NIL.      that the cavity size   determines
+                                                                                profiles          the resist fillingtop
+                                                                                          and corresponding           rate. This
+                                                                                                                         views   is
+                                                                                                                                 of
+capillary
+mainly       forces
+          because      included
+                      the   smaller  in   the
+                                        cavity UV-NIL.
+                                                size   leadsCross-sectional
+                                                              to a smaller      profiles
+                                                                             volume    andanda  corresponding
+                                                                                               larger   capillary   top
+                                                                                                                   force.views   of
+microscale and nanoscale line structures being filled are shown in Figures 4 and 5, respectively. In
+microscale and nanoscale line structures being filled are shown in Figures 4 and 5, respectively. In
+these profiles, the heights of the resist that filled the cavities were recorded at 1.08 s, 4.32 s, and
+these profiles, the heights of the resist that filled the cavities were recorded at 1.08 s, 4.32 s, and
+10.80 s. Top views in the form of color bars present the filling conditions with various colors, where
+10.80 s. Top views in the form of color bars present the filling conditions with various colors, where
+the darker color is a symbol of higher filling thickness. Resist in the microscale cavity had dual peak
+the darker color is a symbol of higher filling thickness. Resist in the microscale cavity had dual peak
+deformation, and that in the nanoscale cavity had a single peak deformation. Previous studies have
+deformation, and that in the nanoscale cavity had a single peak deformation. Previous studies have
+demonstrated that the deformation geometry of the polymer is closely related to the ratio of a cavity
+demonstrated that the deformation geometry of the polymer is closely related to the ratio of a cavity
+that is half as wide in film thickness [17]. With decreasing polymer resist thickness or increasing
+that is half as wide in film thickness [17]. With decreasing polymer resist thickness or increasing
+cavity width, there is a transition from a single peak to a dual peak. The deformation geometry
+cavity width, there is a transition from a single peak to a dual peak. The deformation geometry
+remained symmetrical when proceeding to 10.80 s. Finally, both cavities were nearly completely
+remained symmetrical when proceeding to 10.80 s. Finally, both cavities were nearly completely
+filled. However, the two corners at the top of the cavities were partially filled. In contrast to
+filled. However, the two corners at the top of the cavities were partially filled. In contrast to
+Micromachines 2018, 9, x FOR PEER REVIEW                                                                                     5 of 13
+
+
+cavity size determines the resist filling rate. This is mainly because the smaller cavity size leads to a
+Micromachines 2018, 9, 335                                                                         5 of 12
+smaller volume and a larger capillary force.
+
+
+
+
+      Figure4.4.Profiles
+     Figure      Profilesof ofresist
+                               resistfilling
+                                      fillingin
+                                              inthe
+                                                 themicroscale
+                                                      microscalecavity
+                                                                    cavityatat(a)
+                                                                               (a)1.08
+                                                                                   1.08s;s;(b)
+                                                                                            (b)4.32
+                                                                                                4.32s;s;(c)
+                                                                                                         (c)10.80
+                                                                                                             10.80ssand
+                                                                                                                     andtheir
+                                                                                                                         their
+      corresponding
+Micromachines            top
+              2018, 9, xtop
+     corresponding        FORviews   at (d)
+                              PEERatREVIEW
+                            views           1.08 s; (e) 4.32 s; (f) 10.80 s.
+                                       (d) 1.08 s; (e) 4.32 s; (f) 10.80 s.                                                  6 of 13
+
+
+     Two cavities were placed adjacent to each other to further investigate the interactions between
+micro- and nanoscale cavity filling. We compared the profiles of resist filling in Figure 6 with those
+in Figure 5. The nanoscale deformation was higher than the microscale deformation, and the right
+half of microscale deformation was adversely influenced by the neighboring effect. Figures 4b, 5b,
+and 6b show that the filling processes in neighboring cavities are slightly delayed—this is especially
+obvious in the microscale cavity. The geometry did not remain symmetrical, but the top parts of the
+adjacent sides were still slightly empty even at the end. In general, subtle interactions occurred
+between neighboring micro-/nanoscale cavities, though final deformations were very similar.
+
+
+
+
+      Figure 5.
+      Figure 5. Profiles
+                Profiles of
+                         of resist
+                            resist filling
+                                   filling in
+                                            in the
+                                               the nanoscale
+                                                    nanoscale cavity
+                                                                  cavity atat (a)
+                                                                              (a) 1.08
+                                                                                  1.08 s;
+                                                                                       s; (b)
+                                                                                          (b) 4.32
+                                                                                              4.32 s;
+                                                                                                   s; (c)
+                                                                                                       (c) 10.80
+                                                                                                           10.80 ss and
+                                                                                                                    and their
+                                                                                                                         their
+      corresponding top
+      corresponding   topviews
+                          viewsat at(d)
+                                     (d)1.08
+                                         1.08s;s;(e)
+                                                  (e)4.32
+                                                      4.32s;s;(f)
+                                                               (f)10.80
+                                                                   10.80s.s.
+Micromachines 2018, 9, 335                                                                                               6 of 12
+
+
+
+     Two cavities were placed adjacent to each other to further investigate the interactions between
+micro- and nanoscale cavity filling. We compared the profiles of resist filling in Figure 6 with those
+in Figure 5. The nanoscale deformation was higher than the microscale deformation, and the right
+half of microscale deformation was adversely influenced by the neighboring effect. Figures 4b, 5b
+and 6b show that the filling processes in neighboring cavities are slightly delayed—this is especially
+obvious in the microscale cavity. The geometry did not remain symmetrical, but the top parts of
+the adjacent
+      Figure 5.sides  were
+                 Profiles of still
+                             resistslightly
+                                    filling inempty  even atcavity
+                                               the nanoscale    the end.    In1.08
+                                                                       at (a)  general,   subtle
+                                                                                   s; (b) 4.32     interactions
+                                                                                               s; (c) 10.80 s and occurred
+                                                                                                                  their
+between   neighboring
+      corresponding    topmicro-/nanoscale       cavities,
+                           views at (d) 1.08 s; (e)         though
+                                                    4.32 s; (f)       final deformations were very similar.
+                                                                10.80 s.
+
+
+
+
+      Figure6.6.Profiles
+     Figure      Profilesof
+                          ofresist
+                             resistfilling
+                                    fillingininthe
+                                                theneighboring
+                                                    neighboringmicro-/nanoscale
+                                                                 micro-/nanoscale cavities
+                                                                                       cavities at
+                                                                                                 at (a)
+                                                                                                    (a) 1.08
+                                                                                                        1.08 s;
+                                                                                                             s; (b)
+                                                                                                                (b) 4.32
+                                                                                                                    4.32 s;
+                                                                                                                         s;
+      (c) 10.80 s and their corresponding      top views at (d) 1.08 s; (e) 4.32 s, (f) 10.80
+     (c) 10.80 s and their corresponding top views at (d) 1.08 s; (e) 4.32 s, (f) 10.80 s.    s.
+
+
+3.2. Results of Chip-Scale Imprint
+     Due to the difficulties in quantifying the minor interactions between the micro- and nanoscale
+cavities, three chip-scale stamps with different micro/nano ratios were arranged to clarify the influence
+of neighboring micro-/nanoscale features. Measurements of the cavity filled proportion, transient
+contact pressure, and residual layer thickness (RLT) were conducted, and a detailed analysis was
+subsequently made.
+     The cavity filling states at various micro/nano ratios were somewhat similar. This means that
+the cavity filling behavior of mixed-scale patterns have common rules. The profiles of the filled cavity
+volumes are recorded in Figure 7 to illustrate how the resist fills the cavities near the micro/nano
+boundary. Micro- and nanoscale regions were separately labelled for a comprehensive analysis.
+From an overview of the three situations (micro/nano ratios of 1:1, 1:2, and 1:3), it is obvious that the
+microscale region enjoyed a higher quality of cavity filling than the nanoscale region. Figure 7a shows
+that at a micro/nano ratio of 1:1, the microscale region was fully filled but the nanoscale region was
+only 91.5%.
+volumes are recorded in Figure 7 to illustrate how the resist fills the cavities near the micro/nano
+boundary. Micro- and nanoscale regions were separately labelled for a comprehensive analysis. From
+an overview of the three situations (micro/nano ratios of 1:1, 1:2, and 1:3), it is obvious that the
+microscale region enjoyed a higher quality of cavity filling than the nanoscale region. Figure 7a shows
+that at a micro/nano ratio of 1:1, the microscale region was fully filled but the nanoscale region7 was
+Micromachines 2018, 9, 335                                                                          of 12
+only 91.5%.
+
+
+
+
+               Figure 7.
+               Figure 7. Filled
+                         Filled cavity
+                                cavity profiles
+                                       profiles at
+                                                at micro/nano
+                                                   micro/nano ratios of (a) 1:1; (b) 1:2; and (c) 1:3.
+
+
+      Increasing the micro/nano ratio impacted the filling behavior of the polymer, though the microscale
+region remained almost completely filled. Figure 7b presents a 1:2 case where one feature unit (a cavity
+and a protrusion) at the center of microscale region was only filled 92%, versus other features (100%
+filled) in the same region. Nanoscale cavities obtained nearly the same volume of resist with cavity
+filling proportions ranging from 91.85% to 92%.
+      Cavity filling became more complicated when the micro/nano ratio increased to 1:3. Figure 7c
+indicates that the cavity filling extent in the microscale region was divided into three parts—the
+smallest proportion (92.3%) was in the center of the region. The next highest level of cavity filling was
+at next nearest center of the region. This accounts for about 96.1% of the cavity volume. The figures for
+cavity filling near the boundary in the microscale region are all 100%. This means that this area was
+nearly always fully filled in all cases. In contrast, the filling profiles in the nanoscale region were stable,
+and fluctuated between 92.2% and 92.4%. The area adjacent to the microscale region in the nanoscale
+region had a mildly higher proportion of filled cavities. For the rest of the nanoscale region, the extent
+Micromachines 2018, 9, 335                                                                                            8 of 12
+
+
+
+of filled cavities decreased from the central area to both sides. In general, an increasing micro/nano
+ratio increases filling in the microscale region, but only moderately improves filling in the nanoscale.
+      Variations in the micro/nano ratio also impacted RLT and the distribution of contact pressure.
+Figure 8a–c show that there are many RLT gaps in both the outermost area of the microscale region
+and the secondary outer area of the nanoscale region. The gaps in the microscale region in Figure 8a
+were about 4 nm; those in the nanoscale region were 2 nm. The difference in gaps in both regions
+increase as the micro/nano ratio increases (Figure 8b,c). Figure 8b shows the value of the gaps in
+the microscale and nanoscale regions are 5.54 nm and 4.3 nm, respectively, at a ratio of 1:2. These
+differences were further enlarged to 6.5 nm and 5.3 nm at 1:3 (Figure 8c). Therefore, this proved that an
+increased micro/nano ratio would increase the differences in gaps in specific locations of the patterned
+region. The RLT of the other areas is non-uniform. Areas with RLT gaps are mainly responsible for
+cavity  filling2018,
+ Micromachines  because     most
+                     9, x FOR    ofREVIEW
+                              PEER  the resist in the cavities comes from these sites.              9 of 13
+
+
+
+
+       Figure8.8. Residual
+       Figure     Residual layer
+                            layerthickness
+                                  thickness (RLT)
+                                             (RLT)profiles
+                                                   profilesfor
+                                                            formicro/nano
+                                                               micro/nano ratios
+                                                                          ratios of
+                                                                                 of (a)
+                                                                                    (a) 1:1;
+                                                                                        1:1; (b)
+                                                                                              (b) 1:2;
+                                                                                                  1:2; and
+                                                                                                       and (c)
+                                                                                                           (c) 1:3.
+                                                                                                               1:3.
+
+     Next, we studied contact pressure distribution to understand filling behavior in the mixed-scale
+patterns. Figure 9a illustrates that the contact pressure between the stamp and the resist was not
+uniformly distributed. At the boundary of the micro- and nanoscale regions, the contact pressure
+differs greatly. This difference was about 0.075 MPa for a ratio of 1:1. For the case of 1:2 in Figure 9b,
+the pressure gap of 0.083 MPa also existed at the boundary of the micro-/nanoscale regions.
+Micromachines 2018, 9, 335                                                                                          9 of 12
+
+
+
+     Next, we studied contact pressure distribution to understand filling behavior in the mixed-scale
+patterns. Figure 9a illustrates that the contact pressure between the stamp and the resist was not
+uniformly distributed. At the boundary of the micro- and nanoscale regions, the contact pressure
+differs greatly. This difference was about 0.075 MPa for a ratio of 1:1. For the case of 1:2 in Figure 9b,
+the pressure2018,
+Micromachines gap9,ofx 0.083 MPa
+                       FOR PEER  also existed at the boundary of the micro-/nanoscale regions. 10 of 13
+                                REVIEW
+
+
+
+
+              Figure9.9. Contact
+              Figure     Contact pressure
+                                 pressureprofiles
+                                          profilesfor
+                                                   formicro/nano
+                                                      micro/nano ratios
+                                                                 ratios of
+                                                                        of (a)
+                                                                           (a) 1:1;
+                                                                               1:1; (b)
+                                                                                    (b) 1:2;
+                                                                                        1:2; and
+                                                                                             and (c)
+                                                                                                 (c) 1:3.
+                                                                                                     1:3.
+
+     After adjusting
+     After   adjusting thethe micro/nano
+                                micro/nano ratioratio to
+                                                       to 1:3,
+                                                           1:3, the
+                                                                the difference   in pressure
+                                                                     difference in  pressure atat the
+                                                                                                   the boundary
+                                                                                                         boundary was was
+0.09 MPa    (Figure   9c). The    rest  of the regions,    except  the neighboring    mixed-scale
+0.09 MPa (Figure 9c). The rest of the regions, except the neighboring mixed-scale regions, have the   regions,  have   the
+same   pressure    as the  external    pressure.   The  RLT    distribution explains   why  the
+same pressure as the external pressure. The RLT distribution explains why the microscale side had microscale    side  had
+more contact
+more   contact pressure
+                pressure than
+                            than the
+                                   the nanoscale
+                                        nanoscale side
+                                                    side atat the
+                                                              the boundary.
+                                                                  boundary. Figure
+                                                                              Figure 88 proves
+                                                                                        proves that
+                                                                                                that the
+                                                                                                       the mean
+                                                                                                           mean RLT
+                                                                                                                  RLT of of
+the  microscale     region   is  smaller    than  that  of  the   nanoscale  region.  The  underlying
+the microscale region is smaller than that of the nanoscale region. The underlying cause of the pressure   cause   of  the
+pressure
+gap        gap
+    is that,     is that,
+             at first,     at first,
+                       a part   of thea resist
+                                         part of the resist
+                                               under           under theregion
+                                                      the microscale       microscale
+                                                                                movesregion
+                                                                                        to helpmoves      to help in
+                                                                                                 filling cavities  filling
+                                                                                                                       the
+cavities  in the  nanoscale     region    before  the  filling  process  becomes   stable. Afterwards,
+nanoscale region before the filling process becomes stable. Afterwards, the residual resist under the       the  residual
+resist under the nanoscale region moves to the microscale region and induces this part to bear a larger
+contact force than before. The force in the nanoscale region is comparatively low because the residual
+resist in this region continues to flow to the adjacent region.
+     Table 1 summarizes the imprint results of different micro/nano ratios. Table 1 shows that the
+final RLT increases, while the cavity-filling proportion decreases, with increasing micro/nano ratios.
+Micromachines 2018, 9, 335                                                                                 10 of 12
+
+
+
+nanoscale region moves to the microscale region and induces this part to bear a larger contact force
+than before. The force in the nanoscale region is comparatively low because the residual resist in this
+region continues to flow to the adjacent region.
+      Table 1 summarizes the imprint results of different micro/nano ratios. Table 1 shows that the
+final RLT increases, while the cavity-filling proportion decreases, with increasing micro/nano ratios.
+This means that most of the nanoscale region does not benefit from the better filling conditions.
+The maximum values for cavity filling are all 100%, but the minimum values are 91.24%, 91.84%, and
+92.23% at ratios of 1:1, 1:2, and 1:3, respectively. This trend in minimum cavity filling confirms that the
+filling process at some locations was optimized, but the overall condition was worse when the ratio of
+nanoscale features expanded.
+
+                             Table 1. Chip-scale imprint results for various micro/nano ratios.
+
+                               Micro/Nano Ratios                      1:1          1:2             1:3
+                Final Residual Layer Thickness (RLT) (nm)             56.5         58.9             59.8
+                 Proportion of cavities locally >95% filled           50%         27%               20%
+                         Min cavity filling extent                  91.24%       91.84%           92.23%
+                         Max cavity filling extent                   100%         100%             100%
+
+
+4. Conclusions
+      The impact of neighboring micro-and-nanoscale features and various micro/nano ratios of stamps
+in UV-NIL on imprint quality was investigated using a series of modeling stamps. This work studied
+single features and neighboring mixed-scale features. The results show that adjacent features of
+different sizes can exert a negative influence on the efficiency and quality of filling. If the two features
+on different scales are placed close to each other, then their filling behaviors will interact. Under the
+same circumstances, the cavity-filling condition of the uniformly distributed cavities is slightly better
+than that of neighboring mixed-scale cavities.
+      Further study of chip-scale stamps of the three micro/nano ratios (1:1, 1:2, and 1:3) shows a deep
+understanding of the complicated filling process in mixed-scale imprinting. There were gaps in both
+the profiles of contact pressure and RLT. The RLT gaps indicate that the microscale region lost some
+of its resist to help fill the nanoscale cavities. The pressure gaps there homogenized the non-uniform
+residual layer of resist. As the micro/nano ratio changed from 1:1 to 1:3, the cavity-filling proportion
+obviously declined in the microscale regions, but increased moderately in the nanoscale regions.
+The data also show that the overall filling process became worse with variations in the micro/nano
+ratio. To create uniform RLT and high imprint quality, neighboring mixed-scale features should be
+avoided. Otherwise, a long imprint duration might be needed.
+
+Author Contributions: Methodology, H.W.; supervision, H.S.; writing—original draft, M.Y.; writing—review &
+editing, H.S.
+Funding: This research was supported by “the Fundamental Research Funds for the Central Universities” with
+the project No. 2018B23114 and Changzhou Sci&Tech Program (Grant No. CJ20179036). This work was also
+supported by NSFC through Hohai University under contract No. 61504038.
+Conflicts of Interest: The authors declare no conflict of interest.
+
+References
+1.    Tamang, A.; Hongsingthong, A.; Sichanugrist, P.; Jovanov, V.; Konagai, M.; Knipp, D. Light-trapping
+      and interface morphologies of amorphous silicon solar cells on multiscale surface textured substrates.
+      IEEE J. Photovolt. 2013, 4, 16–21. [CrossRef]
+2.    Xu, Z.; Wu, H.-Y.; Ali, S.U.; Jiang, J.; Cunningham, B.T.; Liu, L. Nanoreplicated positive and inverted
+      sub-micron polymer pyramids array for surface enhanced raman spectroscopy. J. Nanophotonics 2014, 5, 3526.
+      [CrossRef]
+Micromachines 2018, 9, 335                                                                                     11 of 12
+
+
+
+3.    Yang, R.; Lu, B.R.; Wan, J.; Xie, S.Q.; Chen, Y.; Huq, E.; Qu, X.-P.; Liu, R. Fabrication of micro/nano fluidic
+      channels by nanoimprint lithography and bonding using su-8. Microelectron. Eng. 2016, 86, 1379–1381.
+      [CrossRef]
+4.    Sun, L.; Yin, Z.; Qi, L.; Wu, D.; Zou, H. A low-cost method of fabricating hybrid micro-nano fluidic chip by
+      double-layer pdms mold and uv–thermal nanoimprinting. Microfluid. Nanofluid. 2016, 20, 1–10. [CrossRef]
+5.    Ye, D.; Wang, P.I.; Ye, Z.; Ou, Y.; Ghoshal, R.; Ghoshal, R.; Lu, T.-M. UV nanoimprint lithography of
+      sub-100 nm nanostructures using a novel UV curable epoxy siloxane polymer. Microelectron. Eng. 2010, 87,
+      2411–2415. [CrossRef]
+6.    Cui, B.; Veres, T. Pattern Replication of 100 nm to Millimeter-scale features by thermal nanoimprint
+      lithography. Microelectron. Eng. 2006, 83, 902–905. [CrossRef]
+7.    Hansen, M.; Ziegler, M.; Kohlstedt, H.; Pradana, A.; Raedler, M.; Gerken, M. UV capillary force lithography
+      for multiscale structures. J. Vac. Sci. Technol. B 2012, 30, 1601. [CrossRef]
+8.    Lim, H.J.; Lee, J.J.; Park, S.; Choi, K.B.; Kim, G.H.; Park, H.H.; Ryu, J.H. Replication of a thin
+      polydimethylsiloxane stamp and its application to dual-nanoimprint lithography for 3D hybrid
+      nano/micropatterns. J. Nanosci. Nanotechnol. 2012, 12, 5489–5493. [CrossRef] [PubMed]
+9.    Chen, Y.C.; Chu, J.P.; Jang, J.S.C.; Hsieh, C.W.; Yang, Y.; Li, C.L.; Chen, Y.M.; Jeng, J.Y. Replication of
+      nano/micro-scale features using bulk metallic glass mold prepared by femtosecond laser and imprint
+      processes. J. Micromech. Microeng. 2013, 23, 035030. [CrossRef]
+10.   Cheng, X.; Guo, L.J. A combined-nanoimprint-and-photolithography patterning technique. Microelectron. Eng.
+      2004, 71, 277–282. [CrossRef]
+11.   Cheng, X.; Guo, L.J. One-step lithography for various size patterns with a hybrid mask-mold.
+      Microelectron. Eng. 2004, 71, 288–293. [CrossRef]
+12.   Rani, D.; Pachauri, V.; Mueller, A.; Xuan, T.V.; Nguyen, T.C.; Ingebrandt, S. On the Use of scalable nanoISFET
+      arrays of silicon with highly reproducible sensor performance for biosensor applications. ACS Omega 2016,
+      1, 84–92. [CrossRef]
+13.   Vu, X.T.; Ghoshmoulick, R.; Eschermann, J.F.; Stockmann, R.; Offenhäusser, A.; Ingebrandt, S. Fabrication
+      and application of silicon nanowire transistor arrays for biomolecular detection. Sens. Actuators B-Chem.
+      2010, 144, 354–360. [CrossRef]
+14.   Lim, C.M.; In-Kyu, L.; Ki Joong, L.; Oh, B.Y.K.; Shin, Y.B.; Cho, W.J. Improved sensing characteristics of
+      dual-gate transistor sensor using silicon nanowire arrays defined by nanoimprint lithography. Sci. Technol.
+      Adv. Mater. 2017, 18, 17–25. [CrossRef] [PubMed]
+15.   Park, S.; Kim, G.; Choi, K.; Lee, J. Fabrication of a 3D stamp with the micro- and nano-scale patterns through
+      combined NIL and optical lithography processes. Microelectron. Eng. 2010, 87, 968–971. [CrossRef]
+16.   Delle, L.E.; Pachauri, V.; Vlandas, A.; Riedel, M.; Lägel, B.; Lilischkis, R.; Vu, X.T.; Wagner, P.; Thoelen, R.;
+      Lisdat, F.; et al. Scalable fabrication and application of nanoscale IDE-arrays as multi-electrode platform for
+      label-free biosensing. Sens. Actuators B-Chem. 2018, 265, 115–125. [CrossRef]
+17.   Rowland, H.D.; Sun, A.C.; Schunk, P.R.; King, W.P. Impact of polymer film thickness and cavity size on
+      polymer flow during embossing: Toward process design rules for nanoimprint lithography. J. Micromech.
+      Microeng. 2005, 15, 2414–2425. [CrossRef]
+18.   Rowland, H.D.; King, W.P.; Sun, A.C.; Schunk, P.R. Simulations of nonuniform embossing: The effect of
+      asymmetric neighbor cavities on polymer flow during nanoimprint lithography. J. Vac. Sci. Technol. B 2005,
+      23, 2958–2962. [CrossRef]
+19.   Taylor, H.; Lam, Y.C.; Boning, D. A computationally simple method for simulating the micro-embossing of
+      thermoplastic layers. J. Micromech. Microeng. 2009, 19, 075007. [CrossRef]
+20.   Burns, R.L.; Johnson, S.C.; Schmid, G.M.; Kim, E.K.; Dickey, M.D.; Meiring, J.; Burns, S.D.; Stacey, N.A.;
+      Willson, C.G.; Convey, D.; et al. Mesoscale modeling for SFIL simulating polymerization kinetics and
+      densification. Proc. SPIE 2004, 5374, 348–360.
+21.   Meiring, J.E.; Michaelson, T.B.; Jamieson, A.T.; Schmid, G.M.; Willson, C.G. Using mesoscale simulation to
+      explore photoresist line edge roughness. Proc. SPIE 2005, 5753, 350–360.
+22.   Reddy, S.; Bonnecaze, R.T. Simulation of fluid flow in the step and flash imprint lithography process.
+      Microelectron. Eng. 2005, 82, 60–70. [CrossRef]
+23.   Colburn, M.; Choi, B.J.; Sreenivasan, S.V.; Bonnecaze, R.T.; Willson, C.G. Ramifications of lubrication theory
+      on imprint lithography. Microelectron. Eng. 2004, 75, 321–329. [CrossRef]
+Micromachines 2018, 9, 335                                                                                    12 of 12
+
+
+
+24.   Chauhan, S.; Palmieri, F.; Bonnecaze, R.T.; Willson, C.G. Feature filling modeling for step and flash imprint
+      lithography. J. Vac. Sci. Technol. B 2009, 27, 1926–1932. [CrossRef]
+25.   Jain, A.; Spann, A.; Cochrane, A.; Schunk, P.R.; Bonnecaze, R.T. Fluid flow in UV nanoimprint lithography
+      with patterned templates. Microelectron. Eng. 2017, 173, 62–70. [CrossRef]
+26.   Yoneda, I.; Nakagawa, Y.; Mikami, S.; Tokue, H.; Ota, T.; Koshiba, T.; Ito, M.; Hashimoto, K.; Nakasugi, T.;
+      Higashiki, T. A study of filling process for UV nanoimprint lithography using a fluid simulation. Proc. SPIE
+      2009, 7271, 72712A. [CrossRef]
+27.   Taylor, H.; Boning, D.S. Towards nanoimprint lithography-aware layout design checking. Proc. SPIE
+      2010, 76410U. [CrossRef]
+28.   Taylor, H.; Smistrup, K.; Boning, D.S. Modeling and simulation of stamp deflections in nanoimprint
+      lithography: Exploiting backside grooves to enhance residual layer thickness uniformity. Microelectron. Eng.
+      2011, 88, 2154–2157. [CrossRef]
+29.   Reddy, S.; Schunk, P.R.; Bonnecaze, R.T. Dynamics of low capillary number interfaces moving through sharp
+      features. Phys. Fluids 2005, 17, 122104. [CrossRef]
+30.   Liang, X.; Tan, H.; Fu, Z.; Chou, S.Y. Air bubble formation and dissolution in dispensing nanoimprint
+      lithography. Nanotechnology 2006, 18, 025303. [CrossRef]
+
+                             © 2018 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access
+                             article distributed under the terms and conditions of the Creative Commons Attribution
+                             (CC BY) license (http://creativecommons.org/licenses/by/4.0/).
+

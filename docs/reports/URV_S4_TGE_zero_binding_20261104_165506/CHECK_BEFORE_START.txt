@@ -1,0 +1,1 @@
+awk '/MemAvailable/{printf "可用内存 %.2f GiB (门槛 12.00 GiB)\n",$2/1048576}' /proc/meminfo; df -h /home/dell/yuanyuanxu/SIM240 | tail -1

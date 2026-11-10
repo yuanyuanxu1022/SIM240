@@ -1,0 +1,32 @@
+{
+  "status": "PASS_APPROVED_CONTRACT_AND_READ_ONLY_PREREQUISITES",
+  "resources": {
+    "work_volume": {
+      "mechanism": "preexisting_dedicated_tmpfs",
+      "capacity_bytes": 536870912,
+      "note": "kernel filesystem capacity; inode/metadata exhaustion may fail earlier"
+    },
+    "record_volume": {
+      "identity": {
+        "mount_id": "33",
+        "device": "259:2",
+        "mount_point": "/",
+        "filesystem": "ext4",
+        "st_dev": 66306
+      },
+      "available_bytes": 361669550080,
+      "persistence_scope": "local filesystem and fsync; not a power-loss or hardware guarantee"
+    },
+    "MemAvailable_bytes": 16074186752,
+    "record_disk_available_bytes": 361669550080
+  },
+  "run_id_assigned": "D4_N8_diag_v3_1_20261026_v1",
+  "actual_started_run_id": null,
+  "created_work_or_record_run_dir": false,
+  "real_solver_called": false,
+  "changed_fields_from_reviewed_candidate": [
+    "status",
+    "authorized_to_execute",
+    "approval"
+  ]
+}

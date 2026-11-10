@@ -1,0 +1,115 @@
+{
+  "schema": "S2_PERF_MINIMUM_SCOPE_REVIEW_1",
+  "status": "REVIEWED_SCOPE_PROPOSED_NOT_IMPLEMENTED_NOT_AUTHORIZATION",
+  "protocol_id": "S2-MIP-v1-PERF",
+  "B_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/preparation_B.json",
+  "B_sha256": "2e55f3369f9445e7763ee1f9a87c57f79348d1b332c959bc038c1bcc4739081f",
+  "proposed_case_directory": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1",
+  "case_directory_created": false,
+  "proposed_modules": [
+    "scripts/prepare_perf.py",
+    "analysis/perf_contract.py",
+    "scripts/run_perf.py",
+    "analysis/check_perf.py"
+  ],
+  "support_files": [
+    "tests/test_perf.py",
+    "README.md",
+    "two prepared native config/manifest pairs",
+    "closed preparation seal"
+  ],
+  "candidate_cases": [
+    "URV1_U_REG_P_dx1p25_a100000",
+    "URV1_U_REG_T_dx1p25_a100000"
+  ],
+  "native_binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+  "native_mode": "steady",
+  "native_config_allowed_changes": [
+    "run_id",
+    "output_directory"
+  ],
+  "native_window_steps": 10368,
+  "native_maximum_steps": 602112,
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 8,
+    "required_available_RAM_GiB": 12,
+    "required_initial_free_disk_GiB": 100,
+    "required_before_each_run_free_disk_GiB": 8,
+    "output_budget_GiB_per_case": 4,
+    "formal_wall_cap_seconds_by_dx_nm": {
+      "5": 3600,
+      "2.5": 14400,
+      "1.25": 43200
+    }
+  },
+  "budget": {
+    "wall_cap_seconds_per_case": 1800,
+    "observed_complete_diagnostic_target_step": 2048,
+    "stop_when": "first of complete diagnostic step >=2048 or 1800s since process start",
+    "monitor_sample_seconds": 1,
+    "SIGTERM_grace_seconds": 10,
+    "SIGKILL_after_grace": true,
+    "automatic_retry": false,
+    "automatic_extension": false
+  },
+  "performance_windows": {
+    "warmup_excluded_observed_steps_below": 256,
+    "first_progress_interval": [
+      256,
+      768
+    ],
+    "second_progress_interval": [
+      1024,
+      1536
+    ],
+    "minimum_distinct_progress_sample_steps": 512,
+    "timing_basis": "monotonic external observation of complete newline-terminated diagnostic records; retain observed endpoints and actual delta-step; no per-step exact timestamps assumed",
+    "endpoint_selection": "start is first observed sample at or above 256 or 1024 respectively; end is first later sample at least start_step+512; intervals may overlap and actual endpoints must be retained"
+  },
+  "fixed_safety_limits_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S2_reuse_v1/common/acceptance_spec.json",
+  "future_preparation_kind": "S2_PERF_PREPARATION_NOT_AUTHORIZATION",
+  "future_performance_stage": "S2_PERFORMANCE_ONLY",
+  "future_authorized_release_kind": "AUTHORIZED_PERFORMANCE_RELEASE",
+  "future_purpose": "S2_PERFORMANCE_NOT_REFERENCE",
+  "B_is_read_only": true,
+  "old_checker_is_read_only": true,
+  "old_CASE_trees_are_read_only": true,
+  "B_inputs_kept_as_subset": true,
+  "B_file_bound_separately": true,
+  "no_new_stage_added_to_URV_scientific_matrix": true,
+  "real_native_formal_flag_preserved": true,
+  "formal_wall_cap_seconds_fine": 43200,
+  "implementation_completed": false,
+  "build_authorized": false,
+  "native_zero_step_authorized": false,
+  "performance_time_stepping_authorized": false,
+  "formal_simulation_authorized": false,
+  "approved_benchmark_run_ids": [],
+  "approved_formal_run_ids": [],
+  "actual_benchmark_run_ids": [],
+  "new_actual_run_ids": [],
+  "launch_contract_generated": false,
+  "start_command_delivered": false,
+  "current_task_native_calls": 0,
+  "current_task_VTK_reads": 0,
+  "current_task_builds": 0,
+  "current_task_time_steps": 0,
+  "future_software_tests_only": true,
+  "execution_requires_true_scope_authorization": true,
+  "AI_may_start_native": false,
+  "user_manually_starts": true,
+  "PERF_OUTCOME": "NOT_EVALUATED_NOT_EXECUTED",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "geometry_PASS": null,
+  "reference_qualified": false,
+  "strict_error_bound_established": false,
+  "submission_ready": false
+}

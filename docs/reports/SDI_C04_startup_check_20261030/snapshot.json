@@ -1,0 +1,264 @@
+{
+  "checked_at": "2026-10-30T15:40:22.881411+08:00",
+  "task": "C04_STARTUP_AND_COMPLETION_STATUS_ONLY",
+  "case_id": "C04",
+  "protocol_id": "SDI-v1",
+  "run_id": "SDI_C04_v1_3_20261030_01",
+  "run_directory": "CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01",
+  "execution_status": "completed",
+  "run_completed": true,
+  "start_time_local": "2026-10-30T15:37:24.982754+08:00",
+  "end_time_local": "2026-10-30T15:37:25.020567+08:00",
+  "steps": [
+    {
+      "label": "two_dimensional",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/bin/darcy2d",
+        "--input",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/common/C04_2d.txt",
+        "--output",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/two_dimensional"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0047571659088134766,
+      "timed_out": false
+    },
+    {
+      "label": "openfoam",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/bin/depthAveragedDarcyFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/openfoam"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0326077938079834,
+      "timed_out": false
+    }
+  ],
+  "bound_run_files_verified": 25,
+  "release_files_verified": 46,
+  "runtime_libraries_verified": 21,
+  "required_output_paths_present": [
+    "logs/two_dimensional.log",
+    "logs/openfoam.log",
+    "two_dimensional/cells.csv",
+    "two_dimensional/faces.csv",
+    "two_dimensional/solver.json",
+    "openfoam/SDI_output/cells.csv",
+    "openfoam/SDI_output/faces.csv",
+    "openfoam/SDI_output/solver.json",
+    "openfoam/1/p",
+    "openfoam/1/U",
+    "openfoam/1/J",
+    "openfoam/1/phi",
+    "openfoam/1/phi_U"
+  ],
+  "solver_self_reports": {
+    "two_dimensional": {
+      "solver": "darcy2d_CG_Jacobi",
+      "flow_solved": true,
+      "converged": true,
+      "iterations": 90,
+      "normalized_residual": 5.655130940936351e-13,
+      "true_normalized_residual": 5.655724027202465e-13,
+      "raw_residual_L1_m3_s": 2.0926178900649107e-28,
+      "normalization": "initial_L1_rhs_zero_initial_pressure",
+      "cells": 512
+    },
+    "openfoam": {
+      "solver": "OpenFOAM13_PCG_DIC",
+      "flow_solved": true,
+      "converged": true,
+      "iterations": 32,
+      "normalized_residual": 6.475376843249707e-13,
+      "initial_normalized_residual": 0.9999729737034133,
+      "true_normalized_residual": 6.47517654852242e-13,
+      "raw_residual_L1_m3_s": 2.3958153229532956e-28,
+      "normalization": "OpenFOAM_initial_normFactor_zero_initial_pressure",
+      "cells": 512
+    }
+  },
+  "solver_self_reports_are_not_independent_acceptance": true,
+  "raw_execution_acceptance": "NOT_EVALUATED",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": true,
+  "geometry_scope": "EXISTING_PREPARATION_STATIC_SYNTHETIC_DOMAIN_ONLY",
+  "completed_run_geometry_PASS": null,
+  "physical_validation": "NOT_EVALUATED",
+  "independent_human_acceptance": false,
+  "full_SDI_result_checker_invoked": false,
+  "C04_C02_C03_comparison_performed": false,
+  "AI_launched_solver": false,
+  "AI_retried_solver": false,
+  "thresholds_changed": false,
+  "process_check": {
+    "kind": "OBSERVED_SINGLE_TERMINAL_CHECK_THIS_TURN",
+    "matching_processes": [],
+    "tmux_exit_code": 1,
+    "tmux_stderr": "no server running on /tmp/tmux-1000/default",
+    "continuous_polling": false
+  },
+  "run_files_before": [
+    {
+      "path": "bin/darcy2d",
+      "sha256": "2e8ecbaff3da5c2fd334faa48b1eb4633e0ca660cb38a0d9ca22fc2110661406"
+    },
+    {
+      "path": "bin/depthAveragedDarcyFoam",
+      "sha256": "44f29ffc0b691e49847f88d32fe5e2145aba33e02e19e44f67bff5a83d86a687"
+    },
+    {
+      "path": "common/C04.json",
+      "sha256": "172ee93bb7c60935c00d64dc45fb9032a2b497c31e8e0532145146e07d59e002"
+    },
+    {
+      "path": "common/C04_2d.txt",
+      "sha256": "4ec2ebe4f5f9410087f1c95ef2c6cb1d1ba28ff16fee4de73cb0123f38125eab"
+    },
+    {
+      "path": "common/PROTOCOL.md",
+      "sha256": "b024ba4bb5122ec022b460114d8fe7b967138d93a7ff28c84f2d5aa1c065a779"
+    },
+    {
+      "path": "common/protocol.json",
+      "sha256": "697d67730d7da28a96b879cb2de8fe2c6edaa1b16dff260d9bf0e3abf5b2c44d"
+    },
+    {
+      "path": "execution.json",
+      "sha256": "19f34e08ba2abb1c8cb28f06f64e0cf0592f97e3ac0e64a7bc33883e3a10e1fe"
+    },
+    {
+      "path": "logs/openfoam.log",
+      "sha256": "8215d019b4cc60feb19640f8ed70796aeb00e17ecd71ef466aca595d07799ead"
+    },
+    {
+      "path": "logs/two_dimensional.log",
+      "sha256": "abac6f438abaaf1c8ca40c2487539b28394bf3d00127a5d31efa78adcd921841"
+    },
+    {
+      "path": "openfoam/0/p",
+      "sha256": "3b75c99f3b4ac0c8375344ac0c5f9eb01cc9e22d6ec389f410cbeb2faeaf68dd"
+    },
+    {
+      "path": "openfoam/1/J",
+      "sha256": "f3bb4519cf273fd3f6485273cbb2cab685fcf9abcd7bafddf01dbc4eb98613d7"
+    },
+    {
+      "path": "openfoam/1/U",
+      "sha256": "85cfe93f36956d140e5226c618a28e192d28439f3227bb9727dcbf1f2ddb98c9"
+    },
+    {
+      "path": "openfoam/1/p",
+      "sha256": "be83d21f763fe81e4f9aa406a67cc6f4cffe82f25ca402e74b715c5185544c75"
+    },
+    {
+      "path": "openfoam/1/phi",
+      "sha256": "d4df5b5ba369d36fc06cffc89051883b8a3fd638bd62488b29c7415f79e944e6"
+    },
+    {
+      "path": "openfoam/1/phi_U",
+      "sha256": "ea479b2d15d91c24d8ad3de94849f0f59eaf7e7836fc1d97039415096830112e"
+    },
+    {
+      "path": "openfoam/SDI_output/cells.csv",
+      "sha256": "0776eaab9ea8f75bb50e7ee0642bb9630fdb0ad29d6e2962aba6bdfbe61e2d03"
+    },
+    {
+      "path": "openfoam/SDI_output/faces.csv",
+      "sha256": "86844c42ccc9083d19363a9772a720bf9df08d8dcbe6c1b827b54c93322dd035"
+    },
+    {
+      "path": "openfoam/SDI_output/solver.json",
+      "sha256": "39c2ea67b4c5cc0e8c64db9d7bf2f8fac5e3ceec6194ad99a2d606818d322e00"
+    },
+    {
+      "path": "openfoam/constant/darcyProperties",
+      "sha256": "65ee22483c62227f65ab838c2f64eac31ba9db9f6da5c558e19151e63a248960"
+    },
+    {
+      "path": "openfoam/constant/polyMesh/boundary",
+      "sha256": "be36a8711caf00604db0f3483e15897d79829da8ac14f2e866a89ff44c6bf2fd"
+    },
+    {
+      "path": "openfoam/constant/polyMesh/faces",
+      "sha256": "a30d6bca5e45df39dcb1cb9abd740e37a63bcd5cde98f51fd6b2735034ddad59"
+    },
+    {
+      "path": "openfoam/constant/polyMesh/neighbour",
+      "sha256": "d578a4b242da6d2f711726b47c4d7f7f133b2d576f05a1558f6d4b5e76a5ac4d"
+    },
+    {
+      "path": "openfoam/constant/polyMesh/owner",
+      "sha256": "c39c56d1124e90a4d5eafb10352a5173cdb7fcce84c25077204881c3c82e14b5"
+    },
+    {
+      "path": "openfoam/constant/polyMesh/points",
+      "sha256": "f0f77ed0a3b9759cbce1e5559eb157f4c9fcede6b6108c7bcf033adf874d786e"
+    },
+    {
+      "path": "openfoam/system/blockMeshDict",
+      "sha256": "42132a1164882368e5c13a8f730fef96f669093c6a865213c0f6afcf59c031fa"
+    },
+    {
+      "path": "openfoam/system/controlDict",
+      "sha256": "8448a8bb885a2d7c9539a4f2e6fd9ad5df83ac560e1492d9b1705675473b8426"
+    },
+    {
+      "path": "openfoam/system/fvSchemes",
+      "sha256": "7207f840baa389e593d99ecafbb6d2da6e25e077132d50eb2beb41b0a178ab63"
+    },
+    {
+      "path": "openfoam/system/fvSolution",
+      "sha256": "7d75d3d56a9067a0bebffa22d681202db74665366fee43d527cfb2a40d7bc086"
+    },
+    {
+      "path": "provenance/analysis/check_results.py",
+      "sha256": "8ce1e28985aff7400453b6b5a02ad8ceae8e0f01b77b86bcbeab836f041d3230"
+    },
+    {
+      "path": "provenance/common/release_manifest.json",
+      "sha256": "f0d4e07d7d6e47fd67d6e878d76b02a274befb068c09fafde76d0675a9fdb73b"
+    },
+    {
+      "path": "provenance/openfoam/application/Make/files",
+      "sha256": "0e4307e0441339936357edb4d39859350eba6bdb07167a7db239f3935089da38"
+    },
+    {
+      "path": "provenance/openfoam/application/Make/options",
+      "sha256": "0e3853fb95fcd3e7b165f157d502a4408f84e2e5b5e7b79e36fff2843d63b6fb"
+    },
+    {
+      "path": "provenance/openfoam/application/depthAveragedDarcyFoam.C",
+      "sha256": "dfed8a258d07a12b71a2533e5a8628f9d15e3735e75a2d5bc71cfe6072d56533"
+    },
+    {
+      "path": "provenance/reports/preparation.json",
+      "sha256": "a331aefd3d76afc2cee4a607b71cb7f145e0458327c5588602735a9a4f60aa74"
+    },
+    {
+      "path": "provenance/scripts/run_c04.py",
+      "sha256": "74f1348df0f985eaadaa186359cf25011c3d3f8eff95298f0a3fbbb6bdcfcffa"
+    },
+    {
+      "path": "provenance/two_dimensional/darcy2d.cpp",
+      "sha256": "eee80d2e8ffaf2860932768f8d6935598da0da9423a7fa2e24b9a456364e66a4"
+    },
+    {
+      "path": "run_manifest.json",
+      "sha256": "c42d0e6551bb4a612a8aaa9136cffd319a52edc0a7ef35f66af143711d43cc32"
+    },
+    {
+      "path": "two_dimensional/cells.csv",
+      "sha256": "31f34bff2e7a9c0311cb296a7e05873433785851a5c87a64868ce79a2086e763"
+    },
+    {
+      "path": "two_dimensional/faces.csv",
+      "sha256": "386655be73651e8d078082a8cdf2a2e291db2e03bfad348276a591747f4033f1"
+    },
+    {
+      "path": "two_dimensional/solver.json",
+      "sha256": "5bc2749a1e17d9b341d21e21337141e0bf9fe680266ab7cef23196df8019e655"
+    }
+  ]
+}

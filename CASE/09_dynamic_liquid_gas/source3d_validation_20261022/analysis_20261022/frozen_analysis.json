@@ -1,0 +1,1259 @@
+{
+  "batch_id": "source3d_translation_20261022_v1",
+  "operator_contract_pass": true,
+  "cases": [
+    {
+      "N": 16,
+      "direction": "x+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.232541849249813e-06,
+          "phase_change": -0.78478769621716,
+          "speed": 0.0039968909259688505,
+          "speed_ratio": 0.4996113657461063,
+          "speed_relative_error": 0.5003886342538937
+        },
+        "y": {
+          "amplitude_relative_error": 1.9761969838327786e-14,
+          "phase_change": -4.440892098500626e-16
+        },
+        "z": {
+          "amplitude_relative_error": 1.9539925233402755e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "stationary_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 2.5102142586774794e-13,
+      "final_L2": 0.4422106417869355,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "x+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.697305408196684e-06,
+          "phase_change": -1.5307396930355057,
+          "speed": 0.007795993312106417,
+          "speed_ratio": 0.9744991640133022,
+          "speed_relative_error": 0.025500835986697834
+        },
+        "y": {
+          "amplitude_relative_error": 4.773959005888173e-15,
+          "phase_change": 0.0
+        },
+        "z": {
+          "amplitude_relative_error": 4.551914400963142e-15,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 5.684341886080803e-14,
+      "final_L2": 0.023125216637273894,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "x-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.2325418570213742e-06,
+          "phase_change": 0.7847876962171796,
+          "speed": -0.00399689092596895,
+          "speed_ratio": 0.49961136574611875,
+          "speed_relative_error": 0.5003886342538812
+        },
+        "y": {
+          "amplitude_relative_error": 1.8318679906315083e-14,
+          "phase_change": 4.440892098500626e-16
+        },
+        "z": {
+          "amplitude_relative_error": 1.687538997430238e-14,
+          "phase_change": -4.440892098500626e-16
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "stationary_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 2.501332474480478e-13,
+      "final_L2": 0.4422106417869257,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "x-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.697305386436312e-06,
+          "phase_change": 1.530739693035499,
+          "speed": -0.007795993312106451,
+          "speed_ratio": 0.9744991640133064,
+          "speed_relative_error": 0.025500835986693615
+        },
+        "y": {
+          "amplitude_relative_error": 3.774758283725532e-15,
+          "phase_change": -2.465190328815662e-32
+        },
+        "z": {
+          "amplitude_relative_error": 3.1086244689504383e-15,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 5.684341886080803e-14,
+      "final_L2": 0.023125216637277964,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "y+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.884981308350689e-15,
+          "phase_change": 2.6645352591003757e-15
+        },
+        "y": {
+          "amplitude_relative_error": 1.232541857687508e-06,
+          "phase_change": -0.7847876962171657,
+          "speed": 0.003996890925968948,
+          "speed_ratio": 0.4996113657461185,
+          "speed_relative_error": 0.5003886342538815
+        },
+        "z": {
+          "amplitude_relative_error": 1.5543122344752192e-15,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "defect_reproduced_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 2.507993812628229e-13,
+      "final_L2": 0.44221064178693636,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "y+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 3.1086244689504383e-15,
+          "phase_change": 4.440892098500627e-16
+        },
+        "y": {
+          "amplitude_relative_error": 4.697305380219063e-06,
+          "phase_change": -1.5307396930354975,
+          "speed": 0.007795993312106425,
+          "speed_ratio": 0.9744991640133032,
+          "speed_relative_error": 0.025500835986696835
+        },
+        "z": {
+          "amplitude_relative_error": 2.220446049250313e-16,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 5.773159728050815e-14,
+      "final_L2": 0.023125216637280666,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "y-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 8.881784197001252e-15,
+          "phase_change": 1.232595164407831e-31
+        },
+        "y": {
+          "amplitude_relative_error": 1.2325418539127497e-06,
+          "phase_change": 0.7847876962171708,
+          "speed": -0.003996890925968915,
+          "speed_ratio": 0.4996113657461143,
+          "speed_relative_error": 0.5003886342538857
+        },
+        "z": {
+          "amplitude_relative_error": 0.0,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "defect_reproduced_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 2.5024426975051033e-13,
+      "final_L2": 0.44221064178693414,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "y-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 5.329070518200751e-15,
+          "phase_change": -3.9968028886505635e-15
+        },
+        "y": {
+          "amplitude_relative_error": 4.697305403977836e-06,
+          "phase_change": 1.5307396930354948,
+          "speed": -0.007795993312106384,
+          "speed_ratio": 0.9744991640132981,
+          "speed_relative_error": 0.025500835986701942
+        },
+        "z": {
+          "amplitude_relative_error": 2.3314683517128287e-15,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 5.706546346573306e-14,
+      "final_L2": 0.02312521663727775,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "z+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 2.220446049250313e-16,
+          "phase_change": -4.440892098500626e-15
+        },
+        "y": {
+          "amplitude_relative_error": 6.217248937900877e-15,
+          "phase_change": -8.881784197001252e-16
+        },
+        "z": {
+          "amplitude_relative_error": 1.2325418563552404e-06,
+          "phase_change": -0.7847876962171632,
+          "speed": 0.003996890925968874,
+          "speed_ratio": 0.49961136574610926,
+          "speed_relative_error": 0.5003886342538908
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 2.5035529205297285e-13,
+      "final_L2": 0.4422106417869346,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "z+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 6.661338147750939e-15,
+          "phase_change": -4.440892098500626e-15
+        },
+        "y": {
+          "amplitude_relative_error": 3.774758283725532e-15,
+          "phase_change": -2.465190328815662e-32
+        },
+        "z": {
+          "amplitude_relative_error": 4.6973053942078735e-06,
+          "phase_change": -1.5307396930355046,
+          "speed": 0.007795993312106507,
+          "speed_ratio": 0.9744991640133133,
+          "speed_relative_error": 0.025500835986686732
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 5.839773109528325e-14,
+      "final_L2": 0.023125216637274265,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "z-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 2.886579864025407e-15,
+          "phase_change": 8.881784197001254e-16
+        },
+        "y": {
+          "amplitude_relative_error": 9.2148511043888e-15,
+          "phase_change": 4.440892098500626e-16
+        },
+        "z": {
+          "amplitude_relative_error": 1.2325418530245713e-06,
+          "phase_change": 0.7847876962171783,
+          "speed": -0.003996890925968984,
+          "speed_ratio": 0.499611365746123,
+          "speed_relative_error": 0.500388634253877
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 2.4980018054066027e-13,
+      "final_L2": 0.44221064178693387,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "z-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.7763568394002505e-15,
+          "phase_change": -1.3322676295501877e-15
+        },
+        "y": {
+          "amplitude_relative_error": 2.220446049250313e-15,
+          "phase_change": 0.0
+        },
+        "z": {
+          "amplitude_relative_error": 4.697305388656758e-06,
+          "phase_change": 1.530739693035498,
+          "speed": -0.007795993312106419,
+          "speed_ratio": 0.9744991640133024,
+          "speed_relative_error": 0.025500835986697612
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 5.706546346573306e-14,
+      "final_L2": 0.023125216637278307,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "xyz+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.232541863904757e-06,
+          "phase_change": -0.7847876962172049,
+          "speed": 0.003996890925969065,
+          "speed_ratio": 0.4996113657461331,
+          "speed_relative_error": 0.5003886342538669
+        },
+        "y": {
+          "amplitude_relative_error": 1.2325418601299987e-06,
+          "phase_change": -0.7847876962171959,
+          "speed": 0.003996890925969012,
+          "speed_ratio": 0.49961136574612647,
+          "speed_relative_error": 0.5003886342538735
+        },
+        "z": {
+          "amplitude_relative_error": 1.2325418619063555e-06,
+          "phase_change": -0.7847876962171934,
+          "speed": 0.003996890925969009,
+          "speed_ratio": 0.49961136574612613,
+          "speed_relative_error": 0.5003886342538739
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "defect_reproduced_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 2.526867604046857e-13,
+      "final_L2": 0.765931299222596,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "xyz+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.697305384437911e-06,
+          "phase_change": -1.5307396930355137,
+          "speed": 0.007795993312106431,
+          "speed_ratio": 0.9744991640133038,
+          "speed_relative_error": 0.02550083598669617
+        },
+        "y": {
+          "amplitude_relative_error": 4.697305368672744e-06,
+          "phase_change": -1.5307396930355188,
+          "speed": 0.007795993312106487,
+          "speed_ratio": 0.9744991640133108,
+          "speed_relative_error": 0.025500835986689174
+        },
+        "z": {
+          "amplitude_relative_error": 4.697305371115235e-06,
+          "phase_change": -1.5307396930355148,
+          "speed": 0.007795993312106457,
+          "speed_ratio": 0.9744991640133072,
+          "speed_relative_error": 0.025500835986692838
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 6.794564910705959e-14,
+      "final_L2": 0.04005405015178906,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "xyz-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.232541867235426e-06,
+          "phase_change": 0.7847876962172005,
+          "speed": -0.0039968909259690604,
+          "speed_ratio": 0.4996113657461325,
+          "speed_relative_error": 0.5003886342538675
+        },
+        "y": {
+          "amplitude_relative_error": 1.2325418625724893e-06,
+          "phase_change": 0.7847876962171983,
+          "speed": -0.003996890925969024,
+          "speed_ratio": 0.49961136574612797,
+          "speed_relative_error": 0.500388634253872
+        },
+        "z": {
+          "amplitude_relative_error": 1.2325418592418202e-06,
+          "phase_change": 0.7847876962171987,
+          "speed": -0.00399689092596903,
+          "speed_ratio": 0.49961136574612874,
+          "speed_relative_error": 0.5003886342538713
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "defect_reproduced_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 2.5301982731207323e-13,
+      "final_L2": 0.7659312992225946,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "xyz-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.697305372447502e-06,
+          "phase_change": 1.5307396930355075,
+          "speed": -0.007795993312106417,
+          "speed_ratio": 0.9744991640133022,
+          "speed_relative_error": 0.025500835986697834
+        },
+        "y": {
+          "amplitude_relative_error": 4.697305371115235e-06,
+          "phase_change": 1.530739693035517,
+          "speed": -0.007795993312106461,
+          "speed_ratio": 0.9744991640133076,
+          "speed_relative_error": 0.025500835986692394
+        },
+        "z": {
+          "amplitude_relative_error": 4.69730537377977e-06,
+          "phase_change": 1.5307396930355126,
+          "speed": -0.007795993312106446,
+          "speed_ratio": 0.9744991640133057,
+          "speed_relative_error": 0.02550083598669428
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 6.72795152922845e-14,
+      "final_L2": 0.040054050151786855,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 16,
+      "direction": "zero",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.1757261830780408e-13,
+          "phase_change": -8.881784197001251e-16
+        },
+        "y": {
+          "amplitude_relative_error": 1.220135104063047e-13,
+          "phase_change": -4.440892098500626e-16
+        },
+        "z": {
+          "amplitude_relative_error": 1.220135104063047e-13,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "zero_velocity_L2": true
+      },
+      "max_abs_phase_drift": 1.9073631563060194e-13,
+      "final_L2": 4.743354725295937e-12,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 16,
+      "direction": "zero",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.567457523307894e-13,
+          "phase_change": 1.232595164407831e-31
+        },
+        "y": {
+          "amplitude_relative_error": 4.567457523307894e-13,
+          "phase_change": 0.0
+        },
+        "z": {
+          "amplitude_relative_error": 4.571898415406395e-13,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "zero_velocity_L2": true
+      },
+      "max_abs_phase_drift": 9.436895709313832e-15,
+      "final_L2": 8.394978444847078e-13,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "x+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 3.084899016236875e-07,
+          "phase_change": -0.7853596307676969,
+          "speed": 0.003999803756157918,
+          "speed_ratio": 0.49997546951973976,
+          "speed_relative_error": 0.5000245304802602
+        },
+        "y": {
+          "amplitude_relative_error": 5.6621374255882984e-14,
+          "phase_change": 1.7763568394002505e-15
+        },
+        "z": {
+          "amplitude_relative_error": 5.3734794391857577e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "stationary_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 5.05706587716761e-13,
+      "final_L2": 0.4419053868459538,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "x+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.2194129987985747e-06,
+          "phase_change": -1.560724158269751,
+          "speed": 0.007948702876582186,
+          "speed_ratio": 0.9935878595727732,
+          "speed_relative_error": 0.00641214042722682
+        },
+        "y": {
+          "amplitude_relative_error": 2.098321516541546e-14,
+          "phase_change": 1.3322676295501878e-15
+        },
+        "z": {
+          "amplitude_relative_error": 2.2093438190040615e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.2845280394913117e-13,
+      "final_L2": 0.005815148216633665,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "x-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 3.0848988519238674e-07,
+          "phase_change": 0.7853596307677053,
+          "speed": -0.003999803756157919,
+          "speed_ratio": 0.49997546951973987,
+          "speed_relative_error": 0.5000245304802602
+        },
+        "y": {
+          "amplitude_relative_error": 6.472600233564663e-14,
+          "phase_change": 8.881784197001252e-16
+        },
+        "z": {
+          "amplitude_relative_error": 6.428191312579656e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "stationary_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 5.038192085748983e-13,
+      "final_L2": 0.44190538684601,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "x-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.2194130203369014e-06,
+          "phase_change": 1.5607241582697298,
+          "speed": -0.007948702876582019,
+          "speed_ratio": 0.9935878595727523,
+          "speed_relative_error": 0.006412140427247692
+        },
+        "y": {
+          "amplitude_relative_error": 2.6645352591003757e-15,
+          "phase_change": -2.220446049250313e-15
+        },
+        "z": {
+          "amplitude_relative_error": 4.551914400963142e-15,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.253441794801807e-13,
+      "final_L2": 0.005815148216651153,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "y+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 3.430589146091734e-14,
+          "phase_change": -2.220446049250313e-15
+        },
+        "y": {
+          "amplitude_relative_error": 3.0848993448628903e-07,
+          "phase_change": -0.7853596307677075,
+          "speed": 0.0039998037561579415,
+          "speed_ratio": 0.4999754695197427,
+          "speed_relative_error": 0.5000245304802573
+        },
+        "z": {
+          "amplitude_relative_error": 2.0650148258027912e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "defect_reproduced_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 4.982680934517724e-13,
+      "final_L2": 0.4419053868460188,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "y+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 7.66053886991358e-15,
+          "phase_change": 1.7763568394002505e-15
+        },
+        "y": {
+          "amplitude_relative_error": 1.2194130005749315e-06,
+          "phase_change": -1.5607241582697062,
+          "speed": 0.007948702876581955,
+          "speed_ratio": 0.9935878595727443,
+          "speed_relative_error": 0.006412140427255686
+        },
+        "z": {
+          "amplitude_relative_error": 1.1657341758564144e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.211253319866051e-13,
+      "final_L2": 0.005815148216661809,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "y-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 3.708144902248023e-14,
+          "phase_change": -4.440892098500624e-16
+        },
+        "y": {
+          "amplitude_relative_error": 3.084899380390027e-07,
+          "phase_change": 0.7853596307677155,
+          "speed": -0.003999803756158009,
+          "speed_ratio": 0.49997546951975114,
+          "speed_relative_error": 0.5000245304802489
+        },
+        "z": {
+          "amplitude_relative_error": 3.141931159689193e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "defect_reproduced_y": true,
+        "stationary_z": true
+      },
+      "max_abs_phase_drift": 4.981570711493099e-13,
+      "final_L2": 0.4419053868460227,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "y-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 8.548717289613705e-15,
+          "phase_change": -3.9968028886505635e-15
+        },
+        "y": {
+          "amplitude_relative_error": 1.2194130101228495e-06,
+          "phase_change": 1.560724158269755,
+          "speed": -0.007948702876582154,
+          "speed_ratio": 0.9935878595727693,
+          "speed_relative_error": 0.006412140427230706
+        },
+        "z": {
+          "amplitude_relative_error": 1.4765966227514582e-14,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "stationary_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.2445600106048058e-13,
+      "final_L2": 0.005815148216632036,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "z+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.6851411639181606e-14,
+          "phase_change": -4.440892098500624e-16
+        },
+        "y": {
+          "amplitude_relative_error": 3.574918139293004e-14,
+          "phase_change": 8.881784197001252e-16
+        },
+        "z": {
+          "amplitude_relative_error": 3.084899384830919e-07,
+          "phase_change": -0.7853596307677151,
+          "speed": 0.003999803756158006,
+          "speed_ratio": 0.4999754695197507,
+          "speed_relative_error": 0.5000245304802493
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 4.978240042419223e-13,
+      "final_L2": 0.44190538684601544,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "z+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.1657341758564144e-14,
+          "phase_change": 5.329070518200751e-15
+        },
+        "y": {
+          "amplitude_relative_error": 1.6653345369377348e-14,
+          "phase_change": 4.930380657631324e-32
+        },
+        "z": {
+          "amplitude_relative_error": 1.2194130054599128e-06,
+          "phase_change": -1.5607241582697255,
+          "speed": 0.007948702876581988,
+          "speed_ratio": 0.9935878595727484,
+          "speed_relative_error": 0.006412140427251578
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.2334577803585542e-13,
+      "final_L2": 0.005815148216649482,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "z-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 4.496403249731884e-14,
+          "phase_change": -4.884981308350689e-15
+        },
+        "y": {
+          "amplitude_relative_error": 3.375077994860476e-14,
+          "phase_change": -4.4408920985006257e-16
+        },
+        "z": {
+          "amplitude_relative_error": 3.0848993937127034e-07,
+          "phase_change": 0.7853596307676916,
+          "speed": -0.0039998037561578825,
+          "speed_ratio": 0.4999754695197353,
+          "speed_relative_error": 0.5000245304802646
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 4.970468481246847e-13,
+      "final_L2": 0.44190538684601843,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "z-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.3766765505351941e-14,
+          "phase_change": -6.661338147750939e-15
+        },
+        "y": {
+          "amplitude_relative_error": 1.2656542480726785e-14,
+          "phase_change": 4.440892098500626e-15
+        },
+        "z": {
+          "amplitude_relative_error": 1.2194130054599128e-06,
+          "phase_change": 1.5607241582697242,
+          "speed": -0.007948702876582009,
+          "speed_ratio": 0.9935878595727511,
+          "speed_relative_error": 0.0064121404272489135
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.224575996161553e-13,
+      "final_L2": 0.00581514821665069,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "xyz+",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 3.0848994381216244e-07,
+          "phase_change": -0.7853596307677373,
+          "speed": 0.003999803756158243,
+          "speed_ratio": 0.4999754695197804,
+          "speed_relative_error": 0.5000245304802196
+        },
+        "y": {
+          "amplitude_relative_error": 3.0848994825305454e-07,
+          "phase_change": -0.78535963076774,
+          "speed": 0.003999803756158189,
+          "speed_ratio": 0.49997546951977356,
+          "speed_relative_error": 0.5000245304802264
+        },
+        "z": {
+          "amplitude_relative_error": 3.084899478089653e-07,
+          "phase_change": -0.7853596307677431,
+          "speed": 0.0039998037561582225,
+          "speed_ratio": 0.4999754695197778,
+          "speed_relative_error": 0.5000245304802222
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "defect_reproduced_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 5.102585021177242e-13,
+      "final_L2": 0.7654025821556163,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "xyz+",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.2194130472042986e-06,
+          "phase_change": -1.5607241582696934,
+          "speed": 0.007948702876581873,
+          "speed_ratio": 0.9935878595727341,
+          "speed_relative_error": 0.0064121404272659
+        },
+        "y": {
+          "amplitude_relative_error": 1.2194130378784251e-06,
+          "phase_change": -1.5607241582696894,
+          "speed": 0.007948702876581852,
+          "speed_ratio": 0.9935878595727315,
+          "speed_relative_error": 0.0064121404272684535
+        },
+        "z": {
+          "amplitude_relative_error": 1.2194130369902467e-06,
+          "phase_change": -1.5607241582696962,
+          "speed": 0.007948702876581887,
+          "speed_ratio": 0.9935878595727359,
+          "speed_relative_error": 0.006412140427264124
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.348920974919571e-13,
+      "final_L2": 0.010072132164811667,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "xyz-",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 3.084899515837236e-07,
+          "phase_change": 0.7853596307677511,
+          "speed": -0.003999803756158263,
+          "speed_ratio": 0.4999754695197829,
+          "speed_relative_error": 0.5000245304802171
+        },
+        "y": {
+          "amplitude_relative_error": 3.084899500294114e-07,
+          "phase_change": 0.7853596307677417,
+          "speed": -0.003999803756158235,
+          "speed_ratio": 0.49997546951977934,
+          "speed_relative_error": 0.5000245304802207
+        },
+        "z": {
+          "amplitude_relative_error": 3.0848994536647467e-07,
+          "phase_change": 0.7853596307677431,
+          "speed": -0.003999803756158225,
+          "speed_ratio": 0.4999754695197781,
+          "speed_relative_error": 0.5000245304802219
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "defect_reproduced_x": true,
+        "defect_reproduced_y": true,
+        "defect_reproduced_z": true
+      },
+      "max_abs_phase_drift": 5.749845044533711e-13,
+      "final_L2": 0.7654025821556122,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "xyz-",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 1.219413038544559e-06,
+          "phase_change": 1.5607241582696942,
+          "speed": -0.007948702876581866,
+          "speed_ratio": 0.9935878595727333,
+          "speed_relative_error": 0.006412140427266677
+        },
+        "y": {
+          "amplitude_relative_error": 1.2194130381004697e-06,
+          "phase_change": 1.560724158269688,
+          "speed": -0.007948702876581847,
+          "speed_ratio": 0.9935878595727309,
+          "speed_relative_error": 0.00641214042726912
+        },
+        "z": {
+          "amplitude_relative_error": 1.2194130367682021e-06,
+          "phase_change": 1.5607241582697011,
+          "speed": -0.007948702876581924,
+          "speed_ratio": 0.9935878595727404,
+          "speed_relative_error": 0.006412140427259572
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "speed_x": true,
+        "amplitude_x": true,
+        "speed_y": true,
+        "amplitude_y": true,
+        "speed_z": true,
+        "amplitude_z": true,
+        "endpoint_L2": true
+      },
+      "max_abs_phase_drift": 1.3467005288703207e-13,
+      "final_L2": 0.010072132164811957,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    },
+    {
+      "N": 32,
+      "direction": "zero",
+      "variant": "old",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 2.469136006766348e-13,
+          "phase_change": 2.220446049250313e-15
+        },
+        "y": {
+          "amplitude_relative_error": 2.5646151868841116e-13,
+          "phase_change": 0.0
+        },
+        "z": {
+          "amplitude_relative_error": 2.5623947408348613e-13,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "zero_velocity_L2": true
+      },
+      "max_abs_phase_drift": 3.6359804056474033e-13,
+      "final_L2": 9.447060678244029e-12,
+      "contract_pass": true,
+      "interpretation": "negative control; not physical advection PASS"
+    },
+    {
+      "N": 32,
+      "direction": "zero",
+      "variant": "new",
+      "components": {
+        "x": {
+          "amplitude_relative_error": 9.099387909827783e-13,
+          "phase_change": 8.881784197001252e-16
+        },
+        "y": {
+          "amplitude_relative_error": 9.097167463778533e-13,
+          "phase_change": 0.0
+        },
+        "z": {
+          "amplitude_relative_error": 9.101608355877033e-13,
+          "phase_change": 0.0
+        }
+      },
+      "tests": {
+        "conservation": true,
+        "stationary_x": true,
+        "stationary_y": true,
+        "stationary_z": true,
+        "zero_velocity_L2": true
+      },
+      "max_abs_phase_drift": 2.1094237467878066e-14,
+      "final_L2": 1.6729930184367601e-12,
+      "contract_pass": true,
+      "interpretation": "corrected operator test"
+    }
+  ],
+  "matrix_tests": {
+    "axis_spread_n16_+": true,
+    "axis_spread_n16_-": true,
+    "axis_spread_n32_+": true,
+    "axis_spread_n32_-": true,
+    "refinement_x+_x": true,
+    "refinement_x-_x": true,
+    "refinement_y+_y": true,
+    "refinement_y-_y": true,
+    "refinement_z+_z": true,
+    "refinement_z-_z": true,
+    "refinement_xyz+_x": true,
+    "refinement_xyz+_y": true,
+    "refinement_xyz+_z": true,
+    "refinement_xyz-_x": true,
+    "refinement_xyz-_y": true,
+    "refinement_xyz-_z": true
+  },
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": "NOT_EVALUATED",
+  "geometry_PASS": "NOT_EVALUATED"
+}

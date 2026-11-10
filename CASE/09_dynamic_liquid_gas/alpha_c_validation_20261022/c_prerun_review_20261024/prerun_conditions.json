@@ -1,0 +1,72 @@
+{
+  "snapshot_utc": "2026-10-24T03:53:10.392670+00:00",
+  "snapshot_local_date": "2026-10-24",
+  "checks": {
+    "alpha_contract_numerically_accepted": true,
+    "alpha_manifest_digest_matches": true,
+    "alpha_binding_digest_matches": true,
+    "alpha_391_evidence_hashes_match": true,
+    "all_current_frozen_hashes_match": false,
+    "all_hashes_except_reviewed_AGENTS_match": true,
+    "C_output_and_evidence_absent": true,
+    "free_disk_at_least_12GiB": true,
+    "coupled_binary_exists_and_executable": true,
+    "no_missing_dynamic_libraries": true,
+    "prior_build_local_and_fixture_exits_zero": true,
+    "only_four_frozen_C_cases": true
+  },
+  "actual_C_precheck_exit": 2,
+  "actual_C_precheck_pass": false,
+  "failure": "AGENTS.md frozen SHA mismatch; no solver started",
+  "scientific_dependency_verdict_still_accepted": true,
+  "permission_to_launch": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": "NOT_EVALUATED",
+  "geometry_PASS": "NOT_EVALUATED",
+  "disk": {
+    "available_bytes": 365030862848,
+    "available_GiB": 339.961483001709,
+    "reserve_GiB": 12,
+    "all_4_frames_uncompressed_bytes": 8724152320,
+    "all_4_population_snapshots_bytes": 956301312,
+    "total_uncompressed_bytes": 9680453632,
+    "total_uncompressed_GiB": 9.015625
+  },
+  "memory_snapshot": {
+    "MemTotal_bytes": 33320751104,
+    "MemAvailable_bytes": 16794112000,
+    "SwapTotal_bytes": 8589930496,
+    "SwapFree_bytes": 7547908096
+  },
+  "cgroup_snapshot": {},
+  "cpu_count": 24,
+  "load_average": [
+    1.96728515625,
+    2.205078125,
+    1.84765625
+  ],
+  "coupled_process_snapshot_returncode": 1,
+  "historical_exit_evidence": [
+    {
+      "file": "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/evidence/build_local_v2_exit_code.txt",
+      "code": 0
+    },
+    {
+      "file": "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/evidence/build_c_v2_exit_code.txt",
+      "code": 0
+    },
+    {
+      "file": "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/evidence/alpha_collision_v1_exit_code.txt",
+      "code": 0
+    },
+    {
+      "file": "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/evidence/ns_collision_v1_exit_code.txt",
+      "code": 0
+    },
+    {
+      "file": "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/evidence/test_contracts_v1_exit_code.txt",
+      "code": 0
+    }
+  ],
+  "resource_limits": "RAM has no frozen quantitative threshold and no formal-run RSS/timing measurement; snapshot is not reservation. Other first-paper work may run concurrently. No dynamic safety claim."
+}

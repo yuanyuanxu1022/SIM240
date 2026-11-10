@@ -1,0 +1,995 @@
+                                          PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+                 Mesoscopic method to study water flow in nanochannels with different wettability
+                        Tao Zhang,1,2,* Farzam Javadpour,2,† Xiangfang Li,1 Keliu Wu,1,3 Jing Li,3 and Ying Yin4
+        1
+            Key Laboratory for Petroleum Engineering of the Ministry of Education, China University of Petroleum, Beijing 102249, China
+                2
+                  Bureau of Economic Geology, Jackson School of Geosciences, The University of Texas at Austin, University Station,
+                                                         Box X, Austin, Texas 78713, USA
+                     3
+                       The Department of Chemical and Petroleum Engineering, University of Calgary, Alberta, Canada T2N1N4
+                    4
+                      MOE Key Laboratory of Thermo-Fluid Science and Engineering, School of Energy and Power Engineering,
+                                                 Xi’an Jiaotong University, Xi’an 710049, China
+
+                               (Received 9 April 2020; revised 9 June 2020; accepted 15 June 2020; published 9 July 2020)
+
+                      Molecular dynamics (MD) simulations is currently the most popular and credible tool to model water flow
+                   in nanoscale where the conventional continuum equations break down due to the dominance of fluid-surface
+                   interactions. However, current MD simulations are computationally challenging for the water flow in complex
+                   tube geometries or a network of nanopores, e.g., membrane, shale matrix, and aquaporins. We present a novel
+                   mesoscopic lattice Boltzmann method (LBM) for capturing fluctuated density distribution and a nonparabolic
+                   velocity profile of water flow through nanochannels. We incorporated molecular interactions between water
+                   and the solid inner wall into LBM formulations. Details of the molecular interactions were translated into true
+                   and apparent slippage, which were both correlated to the surface wettability, e.g., contact angle. Our proposed
+                   LBM was tested against 47 published cases of water flow through infinite-length nanochannels made of different
+                   materials and dimensions–flow rates as high as seven orders of magnitude when compared with predictions
+                   of the classical no-slip Hagen-Poiseuille (HP) flow. Using the developed LBM model, we also studied water
+                   flow through finite-length nanochannels with tube entrance and exit effects. Results were found to be in good
+                   agreement with 44 published finite-length cases in the literature. The proposed LBM model is nearly as accurate
+                   as MD simulations for a nanochannel, while being computationally efficient enough to allow implications for
+                   much larger and more complex geometrical nanostructures.
+
+                   DOI: 10.1103/PhysRevE.102.013306
+
+
+                          I. INTRODUCTION                                   tions (mainly van der Waals and Coulomb-type interactive
+                                                                            forces), mass density distribution is structured and layered in
+   Water flow at the nanoscale, which is relevant to multiple
+                                                                            both hydrophilic and hydrophobic systems, resulting in spa-
+scientific disciplines, has tremendous implications in diverse
+                                                                            tially varying shear-stress fields and density-dependent fluid-
+technological applications, including water desalination [1],
+                                                                            velocity distributions [10,13,14]. Moreover, different kinds
+energy harvesting and conversion [2], development of bio-
+                                                                            of boundary conditions, such as slip, no-slip, or even stick,
+chemical nanosensors [3], drug delivery across biological cell
+                                                                            are all possible at the water-solid interface, which depends
+membranes [4], and hydraulic fracturing of unconventional
+                                                                            on the strength of the interactions between water molecules
+shale gas and tight oil reservoirs [5,6]. Perturbed by the
+                                                                            and solid surfaces [15–19]. As a result, huge differences and
+interactions between water and solids, the transport behavior
+                                                                            contradictions, from flow reduction to flow enhancement with
+of water molecules in nanoscale geometries differs signifi-
+                                                                            several orders of magnitude over continuum fluid theory, are
+cantly from that observed in the pipe flow [7,8]. From the
+                                                                            commonly found in the literature [9]. A conventional macro-
+early 2000s, intense research has been implemented both
+                                                                            scopic method, which is based on Navier-Stokes equations
+experimentally and theoretically by researchers to explain
+                                                                            with a no-slip boundary, seems to be inadequate to model
+and characterize the structural, thermodynamic, and trans-
+                                                                            water flow in such situations [20,21].
+port properties of water confined in nanoscale geometries.
+                                                                                In addition to experiments, MD simulations are widely
+However, the robust modeling of the process in complex
+                                                                            used to model water confined flow [22]. Not only does MD
+geometrical nanostructures at laboratory or prototype scales
+                                                                            provide instantaneous calculation results, but it can also help
+remain out of reach.
+                                                                            to perform sensitivity studies of the controlling parameters
+   Dominated by the high ratio of wall surface area to vol-
+                                                                            hardly feasible by experiments. MD simulation has the ad-
+ume, many investigations indicate that properties of nanocon-
+                                                                            vantages of accuracy and popularity, and extensive fluid flow
+fined water differ significantly from those of bulk water
+                                                                            investigations using MD have thus been conducted on a
+[7–12]. Because of the presence of wall-force-field interac-
+                                                                            single nanochannel [23–28] or networks of interconnected
+                                                                            nanopores [29–34]. However, the scales of these MD simu-
+                                                                            lations are usually below 100 nm, and the huge computational
+ *
+     tobiascheuing@163.com                                                  requirements of MD simulation make it impractical for many
+ †
+     farzam.javadpour@beg.utexas.edu                                        engineering applications. For example, membranes that have
+
+2470-0045/2020/102(1)/013306(17)                                      013306-1                                ©2020 American Physical Society
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                                  PHYSICAL REVIEW E 102, 013306 (2020)
+
+a micrometer to millimeter thickness scale are too large to be                where wi is the weighting factor. Here, w0 = 4/9 for i = 0,
+treated by MD simulations [4,35]. Even using a supercom-                      wi = 1/9 for i = 1−4, and wi = 1/36 for i = 5−8.
+puter having thousands of processors, researchers require sev-                   Accordingly, macroscopic fluid density ρ and velocity u
+eral weeks to run the simulations, presenting challenges to an                are determined by
+engineering fabrication of commercial membranes [22,36,37].
+    Here, we present a novel LBM for confined water flow,                                   ρ=          fi ,   and   ρu =       fi ei .      (5)
+a mesoscopic method lying between microscopic (molecule)                                           i                        i
+and macroscopic (continuum) scales. Far from being a mere
+technicality, this method creates an opportunity for simulating                    The external force F is incorporated into the LB frame by
+confined water flow in large space and timescales with less                   adding velocity increment δu = τ F/ρ to macroscopic veloc-
+computational demand, easily applicable complex systems                       ity u. Each time iteration of these governing equations pro-
+such as biological membrane and tight oil and shale gas reser-                ceeds in three steps: first, particle distributions stream to nodes
+voirs. With this method, the interactions between water-solid                  fi (x, t ). Second, macroscopic parameters such as density and
+and water-water molecules can be modeled by utilizing the                     velocity are obtained by these new distribution functions.
+forces balance between group of molecules, rather than track-                 Finally, the equilibrium distribution function is calculated and
+ing individual molecules. We show how powerful this method                    particle distribution undergoes collision. The program then
+can be by simulating water flow through nanochannels of                       goes into the next loop for a new fi (x + ei t, t + t ).
+infinite length (periodic boundary conditions) and finite length
+(with entrance and exit effects), and we show how our results
+are in accord with most cases in different investigations.                                                III. RESULTS
+The method cannot be applied to simulate water transport in
+nanochannels having dimensions smaller than 1.6 nm, where                              A. LBM for water flow through nanochannels
+momentum-transport is controlled by individual molecules                         The body of work indicating that conventional no-slip
+rather than a group of molecules [38,39].                                     Poiseuille flow is not suitable for use in confined water flow
+                                                                              for both hydrophobic and hydrophilic cases is considerable
+                         II. METHODS                                          [35,42,43]. The reason lies in the relative strength of water-
+                                                                              solid interactions and water-water interactions, which makes
+   The evolution equation in the lattice Boltzmann frame, a                   the no-slip boundary condition unacceptable. Generally, for
+minimally discrete version of the Boltzmann equation, can be                  confined water in hydrophilic nanochannels, the attraction
+expressed as [40]                                                             force between water-solid molecules is much stronger than
+                                            1                               that of water-water interactions, and a substantial epitaxial or-
+ fi (x + ei t, t + t ) − fi (x, t ) = −      fi (x, t ) − fieq (x, t ) ,    dering of water molecules must be induced [44]. This ordering
+                                            τ                                 brings about a notable increase in the density and viscosity of
+                                                                        (1)
+                                                                              the near-wall water, in which a solidlike state exists instead
+where fi (x, t ) is the probability density function, indicating              of a viscous, liquidlike state for the bulk water, reducing
+a particle with velocity ei at position x and time t. The left                effective pore size [45]. The phenomenon is called multi-
+side of the equation represents stream, whereas the right side                layer sticking, in which no slip is observed [46] [Fig. 1(a)].
+stands for collisional interactions; t is a time step, f eq (x, t )          In contrast, in the hydrophobic nanochannel, the attraction
+is the equilibrium distribution function, and τ is the mean                   force between water-solid molecules is smaller than that of
+collision time, written as                                                    water-water interactions. It is entropically unfavorable for the
+                              υe                                              hydrophobic surface to bind water molecules by hydrogen
+                        τ= 2       + 0.5,                      (2)            bonds, and a depletion region having low density and viscosity
+                             cs t
+                                                                              can be found approaching the wall surface, as in a liquid-vapor
+  √ υe is kinematic viscosity, cs is sound speed, and cs =
+where                                                                         interface [47]. Additionally, water molecules can move/slide
+1/ 3 for the D2Q9 lattice model. In this work, the most                       directly along wall surfaces (velocity jump at walls), giving
+widely used D2Q9 lattice model for 2D space was adopted                       rise to a positive slip length [48]. The assumption of a no-slip
+for its simplicity and efficiency. The D3Q19 lattice model can                boundary is invalid, displaying low friction of water inside the
+be used to easily extend the simulation into 3D space [41].                   channel [Fig. 1(c)]. Between these two situations, a transition
+Lattice discrete velocity ei is related to the particular velocity            status exists [Fig. 1(b)], in which the no-slip boundary remains
+model. The D2Q9 lattice model is given by                                     valid, although the density and viscosity of water near walls is
+      ⎧                                                                       decreased slightly.
+      ⎪
+      ⎨0,                                             i=0                      The true slip length ls,t , also called partial slip length
+                              (i−1)π 
+ei = cos       (i−1)π
+                        , sin             ,             i = 1 ∼ 4.            [Fig. 1(c)], is defined by the ratio of slip velocity to strain
+      ⎪
+      ⎩√   (i−5)π
+                  2
+                               π
+                                  2      (i−5)π   π
+                                                                             rate in the position of the effective hydrodynamic boundary
+           2 cos      2
+                            + 4 , sin         2
+                                                  + 4 , i=5∼8
+                                                               (3)            [9,49]. In addition, the influences of radially varied density
+   In the standard D2Q9 pattern, the equilibrium distribution                 and viscosity on the flow are further represented by the so-
+function f eq is defined as                                                   called apparent slip length ls,a [50]. More details on the flow
+                                                                              mechanisms can be found in our previous study (Wu et al.
+                     1               1                 1 2                    [51]). The key to modeling confined water flow accurately
+  fieq = ωi ρ 1 +        (ei · u) +       (ei · u)2 −       u , (4)
+                    cs 2            2cs 4             2cs 4                   involves characterization of the two parameters reliably.
+
+                                                                        013306-2
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                          PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+    FIG. 1. Schematic diagram of water flow in a nanochannel [51]. The strength of the water-solid attraction weakens from (a) (hydrophilic) to
+(c) (hydrophobic). (a) The water-solid interaction is larger than the water-water interaction. The density and viscosity of the blue-square region
+is higher than the water in the bulk-water region, inducing a negative apparent slip length ls,a . (b) The water-solid interaction is comparable to
+the water-water interaction. The density and viscosity of the green-arrow region is smaller than that of the bulk-water region (green arrows),
+owing to depletion. Apparent slip ls,a occurs too, but the value is positive. (c) The water-solid interaction is smaller than the water-water
+interaction. Similar to B, the density and viscosity of the green-arrow region is smaller than that of the bulk-water region (with green arrows.)
+In addition to the apparent slip ls,a induced by density and viscosity, the true slip ls,t occurs owing to the direct surface sliding of water
+molecules on the wall. Both of the two slip-length values are positive here.
+
+
+                             1. True slip                                   MD simulations, leading to the possibility of a description
+    In the LB frame, a linear combination of bounceback                     of the interactions through calculation of trajectories of in-
+and specular reflection, commonly used in modeling of gas                   dividual molecules, and the empirically derived potentials
+slippage [52,53], is revisited to capture the true slip length of           can be sufficient to characterize the interactions quite well
+water near the solid boundary. That is, when a particle-density             [19]. Specifically, for characterizing these interactions, an
+distribution function fi hits a wall surface, it will be bounced            expression of water true-slip length related to contact angle
+back with probability χ , and be specularly reflected with                  can be described by a simple quasiuniversal relationship [66]:
+probability (1 − χ ), shown as [54]                                                               ls,t = C(cos θ + 1)−2 ,                      (8)
+                     fi = χ fibb + (1 − χ ) fisr ,                 (6)
+                                                                            where θ is the contact angle, coefficient C is obtained from
+where χ is the accommodation coefficient, fibb is the bounce-               a fit with MD simulations data, and it equals 0.63 [43]. This
+back distribution function, and fisr is the specular reflection             value remains a constant value (= 0.63) in all the simulation
+distribution function. Note that this equation is a basic lattice           runs. Here the strength of the interaction is described by
+implementation of the idea of kinetic boundary condition                    the contact angle or wettability. Note that for few materials,
+proposed by Maxwell, which can be traced back to 1879                       such as boron nitride, true slip length ls,t is not completely
+[55]. According to the Navier linear-slip model, the following              controlled by wetting properties, although most nanochannels
+expression can be used to connect the accommodation coeffi-                 support this general relationship, and the detail introduction
+cient χ with true slip length ls,t [56–58]:                                 of the relationship between the true slip length and the wall
+                                                                            wettability can be found in Wu et al. [51]. Thus, attention
+                                               −1
+                      ls,t + 41 − 23 (τ − 0.5)2 N1y                         should be paid when using this equation.
+          χ = 1+                                      ,       (7)
+                                τ − 0.5
+                                                                                                      2. Apparent slip
+where τ is mean collision time with a value of 1.11 (Appendix                   Effective slip length can be extremely large—as much as
+A) and Ny is lattice grid numbers in the radial direction. Before           68 μm [42]—although in some reported confined systems
+the true slip length ls,t is incorporated into Eq. (7), the physical        it drops to a negative value [67]. Therefore, in addition to
+unit should be changed into lattice units (Appendix B).                     the true slip which is always a positive value, apparent slip
+   True slip length prediction is affected by many factors,                 induced by density variation is the possible phenomenon for
+such as wall smoothness [59], temperature [60], and viscosity               the reportedly wide range of slip length data [51]. In the
+[61]. Apart from these factors, the related factors in experi-              confined situation, breakdown of uniform fluid density is a
+mental measurements also include dissolved gas at walls [62],               widely reported behavior as a result of water-solid interactions
+operational conditions [63], and unknown contaminants [64].                 [68]. Exerted by an extremely large atomic repulsion, the
+However, on an ideal, atomically smooth surface, true slip                  first liquid layer begins to develop after a void region near
+length depends on the nature of water-solid interactions and                the surface [69] [Fig. 2(a)]. Then density profiles begin to
+water-water interactions [65]. Fortunately, an ideal system                 exhibit strong oscillations in the number of water molecules
+involving water-solid interactions can be readily created using             in the layers adjacent to the wall surface, these oscillations
+
+                                                                    013306-3
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                             PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+    FIG. 2. (a) Typical representation of water molecules near the wall surface in a nanochannel (>1.60 nm) [74]. Water molecules (blue
+circles) tend to be layered and ordered near the wall surface. The fluctuating green curve is the water-density profile. The first liquid layer
+starts to develop after the yellow-filled region near the wall surface. The term δ1 is defined as the distance between the solid surface and the
+location of the first density peak, and δ2 is defined as the distance between the location of the first density peak and the second density peak.
+The value of stand-off distance δ is generally taken as 0.24 nm for water, and δ1 as well as δ2 are about one molecular diameter, 0.28 nm for
+water (Appendix C). The pink curve is the velocity profile, and no velocity can be observed within the stand-off distance because water density
+is zero in the region. (b) Determination of the relationship between the first density peak and the contact angle. Data are from MD simulations
+in the literature [37,43,47,75–88]. Detailed parameters shown in Appendix F. Blue dashed line is optimally fitted curve.
+
+gradually decaying and converging in the bulk region [70].                 where ρ∞ is density in the bulk region. Several points need
+This density inhomogeneity leads to spatially inhomogeneous                to be clarified. First, the first peak density decreases as
+viscosity, affecting flow behavior in the form of apparent slip            the contact angle increases, which appears to be related to
+[69].                                                                      decrease of the molecular dipole moment and weakening
+    Velocity within the void region is not well defined                    of hydrogen bonding at the wall surface [90]. Second, as
+[Fig. 2(a)] because water density rapidly reaches zero in that             captured by Eq. (9), the first peak density is larger than that
+region, whereas a sharp velocity increase can be observed in               of the bulk region in the hydrophilic condition [72,83,85],
+the first density layer, exhibiting a slip [71]. Water molecules           whereas its value can be smaller than the density in the
+are apparently sliding on the cavity, much like a magnetically             bulk region in the superhydrophobic condition [43,78]. That
+levitated train on its pathway, displaying ultralow water-solid            is to say, no maximum/peak density exists in the density
+friction and significant flow enhancement [72]. This could                 profile, which is similar to the density-profile case of the
+be the origin of the true slip length, as discussed earlier;               air-liquid interface [61]. Third, when the channel height is less
+therefore, the location of the slip plane is actually δ away               than 1.6 nm, the density profile is not well defined, and the
+from the wall surface. The term δ is called the stand-off                  first peak density closely depends on channel height [61,91],
+distance, which is defined as the distance between the solid               making application of Eq. (9) inappropriate in these small
+surface and the location where water density appears, and the              channels. Forth, although water models from the different
+true slip length mentioned earlier is defined as δ away from               MD simulations might result in different absolute values
+the wall. Given these physically reasoned observations, the                of density, viscosity and other properties, the dimensionless
+effective transport diameter can be defined as de = d − 2δ. In             density (ρ1 /ρ∞ ), which characterizes the relative interactions
+other words, the stand-off distance should thus be excluded in             between water-water molecules and water-solid molecules,
+calculating the effective transport diameter. Note that a small            is independent of the water model selection at a specific
+variation in tube diameter may cause considerable deviation                wettability. Finally, only the density of the first peak point
+in the prediction of volumetric flow rate because flow rate                is used here as the characterization parameter to describe the
+depends on the third power of the diameter [44,47,73].                     influence of wettability on the density structure. In fact, the
+    The water density in the near-wall region is also strongly             whole density profile will change with the variation in surface
+affected by interactions from the wall surface [89]. Given the             wettability, which can be properly captured in the following
+MD simulation results [Fig. 2(b)], the first peak density and              LB frame.
+contact angle are correlated as a simple linear relationship:                  Compared with those of thermodynamic-equilibrium den-
+                                                                           sity, structuring and layering effects lead to a different ef-
+                                                                           fective density value, altering dynamic viscosity and dif-
+                     ρ1 /ρ∞ = 3.808 − 0.2θ ,                      (9)      fusion coefficients in confined transport behavior [45]. As
+
+                                                                   013306-4
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                     PHYSICAL REVIEW E 102, 013306 (2020)
+
+mentioned earlier, inhomogeneous density results from rel-               a positive or negative nonzero velocity exists, as shown in
+ative interactions between water-solid and water-water. In               Fig. 3(c). In particular, apparent slip length ls,a is a negative
+LBM, water-water interactions, originally proposed by Shan               value in a strong hydrophilic situation and is positive in a
+and Chen [92], are introduced as a mean field-body force                 strong hydrophobic situation, inversely proportional to the
+between nearest particles and are expressed as                           density of the near-wall region [47,96]. It should be noted
+                                                                         that, generally, viscosity is a measure of the fluidity. In LBM
+     Fb (x, t ) = −Gb ψ (x, t )       ωi ψ (x + ei t, t )ei ,   (10)    simulation, the viscosity and density in LBM have same
+                                  i                                      effects on the flow velocity when we use external force to
+where ωi is equilibrium weight, ψ (x, t ) is a phenomenological          drive molecules [94]. In the following sections, a constant
+pseudopotential (also called generalized density), ψ (x, t ) =           bulk viscosity at corresponding temperature was adopted to
+1 − exp(−ρ/ρ0 ), and reference density ρ0 = 1 (lattice units);           fit the MD simulation data from different literature. Under
+Gb is a parameter that tunes water-water molecular interac-              different radial grid numbers, the nearly consistent density
+tions. Through Taylor expansion, the nonideal fluid with the             profile in the near-wall region suggests that the LBM, with
+                                                c2 G                     force terms included and one-diameter resolution, is stable
+equation of state is recovered as p = cs2 ρ + s2 b ψ 2 , with cs as      and reasonable for simulating water confined flow in a wide
+sound speed velocity. To avoid phase transition, parameter Gb            range of channel sizes, as shown in Fig. 3(d).
+should be tuned above a critical value Gb,c (Gb,c = −4 in this               True slip length can be modeled explicitly by using a
+case, as shown in Appendix D). Besides water-water interac-              combination of bounceback and specular reflection boundary
+tions, water-solid interactions can be fulfilled by assuming an          in Eq. (6) while describing the apparent slip length implic-
+exponentially decaying external force with distance from the             itly by exerting the coupling molecular interactions between
+wall surface, the force being described as [93,94]                       water-water [Eq. (10)] and water-solid [Eq. (11)]. Then both
+                Fw (x, t ) = −Gw ρ(x)e−|x−xw |/λ ,               (11)    of the two mechanisms have been properly taken into ac-
+                                                                         count in LBM in a simulation of confined-water-flow behav-
+where xw is a vector perpendicular to the wall surface; λ is             ior. The following section shows how water flow through
+the typical length scale controlling water-solid interactions,           infinite-length (47 cases) and finite-length nanochannels (50
+0.3 nm [39,50]; and Gw is a parameter that tunes water-solid             cases) was investigated for a direct comparison with flow
+molecular interactions. The dynamic effects of the two forces            under the same conditions as those from MD simulations and
+are imposed onto the LB frame by adding velocity increment               experiments.
+δu = τ (Fb + Fw )/ρ to macroscopic velocity u [Eq. (5)] [95].
+Then, in the next propagation, the newly calculated density-
+distribution function is updated correspondingly. Meanwhile,                      B. Validation in infinite-length nanochannels
+actual fluid velocity is redefined by adding velocity increment              The flow-enhancement factor, defined as the ratio of mea-
+δu = t (Fb + Fw )/2ρ to macroscopic velocity u [Eq. (5)].               sured flow rates to those predicted by no-slip Poiseuille
+   Considering the distinct one-molecular-diameter layering              flow, is a critical performance parameter that character-
+characteristics of the density profile and its symmetry with             izes the degree of deviation from traditional macroscale
+respect to the center of the nanochannel, the coarse grids with          inside nanochannels [42]. In the case of confined water
+one-density-layer size in the LB frame can be implemented                flow in infinite-length nanochannels, widely scattered flow-
+to represent local density. Then the grid numbers in the                 enhancement factor ε, ranging from 0.1 to 500 000, has been
+radial direction can be calculated by Ny = (d − 2δ)/σ . To               reported in recent years [9,18,19]. Infinite-length nanochannel
+connect the density between lattice Boltzmann (LB) space                 means that the length of the tube in the experiments is long
+and physical space, we let the fluid density of the near-wall            enough or that boundary conditions in MD simulations are
+grid in the LBM match the density of the first layer calculated          periodic [Fig. 4(a)]. For example, Holt et al. [35] experimen-
+by Eq. (4). Then the relationship between the contact angle              tally measured the flow rate of water flow through 1.3- to
+and tuning parameters (Gb and Gw ) can be obtained. For all              2-nm-diameter and 6-μm-thick CNTs, and they found that
+the simulations in this work, we constrained Gb = −1.5 and               enhancements were as high as 8 400. However, measurements
+changed Gw to meet different wettability, and the simulation             of Gruener et al. [97] suggest that water flow is hindered in
+result is shown in Fig. 3(a). Hence, under a certain contact an-         hydrophilic silica having a 6-nm pore diameter and that en-
+gle of nanochannel, the tuning parameter Gw can be calculated            hancement is smaller than 1. Anomalous flow behaviors arise
+through interpolation. Following the parameter tuning strat-             from the significantly different relative interactions between
+egy in Fig. 3(a), the density profiles under different contact an-       water-water and water-solid, which both depend strongly on
+gles are shown in Fig. 3(b). After the force terms are included,         wall-surface wettability [Eq. (8), Figs. 3(b) and 3(c), and
+the density in the channel is no longer a constant value. In             Fig. 4(b)]. In tubes having characteristic sizes of more than
+the proximity of the wall surface, the liquid water density can          1.6 nm, we noted that deviations from the classical no-slip
+be increased or decreased compared with the density in the               description resulting from the presence of strong molecular
+bulk. The existence of the density inhomogeneity does not                interactions could be taken into account properly within the
+need to be postulated a priori, but it emerges naturally when            framework of Navier-Stokes constitutive equations [98].
+the molecular interactions are exerted. An inhomogeneous                     In exerting different relative interactions between water-
+density profile was found to cause the nonparabolic shape of             water and water-solid, 47 cases, composed of 23 cases from
+the velocity profile in the near-wall region. If we extrapolate          experiments [35,42,99–102] and 24 cases from MD simu-
+the velocity from the velocity profile to the interface position,        lations [98,103–107] in the literature, were simulated and
+
+                                                                   013306-5
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                               PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+    FIG. 3. (a) Relationship between the tuning parameters (Gb and Gw ) and wettability. (b) Density profiles under different contact angles
+in proximity of the wall surface. For the hydrophilic wall surface (e.g., θ = 0◦ ), the water density is increased in the near-wall region; for
+the hydrophobic wall surface (e.g., θ = 170◦ ), the density is decreased in the near-wall region. (c) Velocity profiles under different contact
+angles in proximity of the wall surface. The colorful solid lines are the velocity profiles. The red and blue dashed arrows are the extrapolated
+velocity for θ = 0◦ and θ = 170◦ , respectively. The corresponding apparent slip lengths are ls,a1 and ls,a2 . As shown, ls,a1 is a positive slip
+length, whereas ls,a2 is a negative slip length. The wall interface is located in the first grid. Notably, to decouple the contribution of apparent
+slip and true slip, only the apparent slip after incorporation of Eqs. (10) and (12) is tested here, and the true slip length from Eq. (7) is zero.
+(d) Density profiles in different radial grid numbers (θ = 160◦ ). At a fixed grid resolution (one molecular diameter), the water confined flow
+in different channel sizes with the range of 2.72 nm (Ny = 10) to 83.92 nm (Ny = 300) is simulated.
+
+
+reproduced under matching conditions using the proposed                     In the hydrophilic situations, the velocity profiles are nearly
+LBM. Figure 4(c) shows the comparison results of enhance-                   parabolic shape except the near-wall region, whereas the
+ment factor ε, and detailed parameters are shown in Appendix                parabolic shape changes into a plug shape in the hydrophobic
+F. Note that enhancement factor ε from experiments (3 data                  situations. Therefore, the interaction of the fluid and inner
+points) [99] or MD (1 data point) [107] for the BNNTs                       pore wall can dramatically affect water flow in nanochan-
+cannot be reproduced by our proposed LBM because the true                   nels. There are experimental data that shows water flow in
+slip length ls,t was not determined completely by wetting                   nanochannels could deviate from Hagan-Poiseuille equation
+properties. This is because BNNTs have greater corrugation of               both negatively (lower than HP predictions) and positively (up
+the energy landscape arising from specific electronic structure             to six orders of magnitude higher than HP predictions). The
+effects, which is not related to its wetting properties [51].               discrepancy respectively lies in water negative and positive
+    In addition to the enhancement factor, density-layering                 slippage at the pore inner wall. We tested systems with various
+effects, as well as velocity profiles in nanochannels, have been            material types and dimensions of nanochannels to reconcile
+well predicted simultaneously (Figs. 5, 6). Specifically, only              the longstanding debate that when and why the flow rate of
+the first peak density value was used as the input parameter                confined water is reduced or enhanced, compared with that
+into the LB fame, although subsequent density profiles (sub-                obtained by the no-slip HP equation. It should be noted that,
+sequent layers) were characterized well using proposed force                strictly, the data collected in Figs. 5 and 6 need to come
+terms [Eqs. (10) and (11)]. The density upon approaching the                from the same sources. However, most velocity profiles of
+wall surface is larger than that in the bulk region under hy-               the cases in Fig. 2 were not given in the original literature,
+drophilic conditions, whereas its value can be smaller than the             and the enhancement factor is a much more popular parameter
+density in the bulk region under superhydrophobic conditions.               to characterize the confined flow dynamic performance. The
+
+                                                                    013306-6
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                      PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+    FIG. 4. Confined water flow in an infinite-length nanochannel. (a) Schematic of simulated domain with periodic boundary conditions
+(BC) on both sides. (b) Example of LBM simulation results for confined water flow in an infinite-length nanochannel (θ = 160◦ ). Fluid
+density (lattice unit) near the wall surface is decreased in the hydrophobic tube by molecular interactions. (c) Comparison of experiments or
+MD simulation-enhancement factor ε from literature and simulation-enhancement factor ε by our proposed LBM under identical conditions
+(infinite-length nanochannel). Comparison includes 47 cases from literature, in which 23 cases are experiments [35,42,99–102] and 24 cases
+are MD simulations [98,103–107]. The comparison shows most cases from different research can be recovered well. The black diagonal line
+guides the reader’s eye to the comparison. Error bars in enhancement factor ε originate from uncertainties in determination of contact angles
+or tube size.
+
+good fitting results in Fig. 6 indicate that, as long as the            recently [108]. Furthermore, several methods are known to
+wettability is a known parameter, the density fitting from one          reduce an end effect in maintaining a fast mass-transport rate
+set can be used to get the enhancement factor from a different          [111,112]. Here, we used our proposed LBM to simulate
+set without using the first set of data.                                confined water flow finite systems to show the importance of
+                                                                        pressure loss at the ends. A total of 50 cases were simulated
+                                                                        and reproduced under conditions identical to those from MD
+           C. Validation in finite-length nanochannels                  simulations [25,36,37,108,113] in the literature. Figure 7(c)
+    In the problem of water flow through finite-length                  shows comparison results between enhancement factor ε;
+nanochannels, in addition to the discussed complexities of              detailed parameters are shown in Appendix F. We found good
+flow behavior within the channel, entrance and exit effects are         agreement in most cases between MD simulations and those
+of particular importance [Fig. 7(a)]. A finite-length nanochan-         obtained from LBM prediction. However, CNT data (6 data
+nel is a short tube with a length about ten times the tube              points) by NAMD with external force of 20 MPa from Walther
+diameter that is connected to two water baths at the inlet              et al. [37] do not fit well in this work, nor do they in studies by
+and outlet [108]. In the case of hydrophilic nanochannels, in           Popadić et al. [114], Ritos et al. [36], or Suk and Aluru [108].
+which a negative effective slip length occurs, entrance and exit        In addition, we found that the end effects greatly reduce flow
+resistance becomes less significant because resistance within           capacity in short hydrophobic tubes. Note that our LBM sim-
+the channel is relatively high [108]. However, in tubes such            ulations required only 1 h for a micrometer-scale-length case,
+as CNTs and aquaporin, their smooth surfaces and hydropho-              when an i5, eighth-generation computer was used, whereas
+bicity provide surprisingly low frictional loss inside the tubes        more time is required for a supercomputer with thousands of
+[109]. When water molecules enter or exit these nanochan-               processors to complete MD simulations under the same scale
+nels, streamlines curve sharply from the large reservoirs into          [36,37].
+(or out of) the relatively smaller tubes [Fig. 7(b)], leading
+to a plug flow-velocity profile along the inner tubes and a
+                                                                                                IV. DISCUSSIONS
+negligible inside flow resistance, as compared with entrance
+and exit resistance [110]. In particular, the hydrodynamic en-             Although in principle, MD simulation is the most popular
+trance and exit effect involving additional viscous dissipation         and credible tool for describing fluid dynamic behavior at
+is expected to be a dominant resistance contributor in systems          the microscopic scale [9], its handling of time and space
+of short length and/or systems with strong hydrophobicity               scales for liquid (water) is typically on the order of several
+(low friction) at their wall surface [108,109], challenging the         hundreds of nanoseconds and several tens of nanometers,
+system with a requirement of high flow rate.                            respectively [36,37]. LBM, a minimal version of the kinetic
+    The contribution of the hydrodynamic entrance and exit              equation, is a good candidate for solving this problem [115]
+effect is, however, well understood and has been characterized          because it works between the atomistic and continuum scale
+
+                                                                 013306-7
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                           PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+   FIG. 5. Comparison of the density profiles from MD simulations (gray dashed line) in the literature and the one by the proposed LBM (red
+dots) under the same conditions. The nine cases cover the wettability from hydrophilic to superhydrophobic channels with different dimensions
+and materials [43,75–77,78–80], and all the comparisons show the proposed mesoscopic LBM can reproduce the continuous density profile in
+a molecularly coarse-grained way. The contact angle, channel size, and LBM grids of the simulated cases are (a) θ = 13◦ , d = 2.5 nm, Ny = 9
+[75]; (b) θ = 30◦ , d = 10 nm, Ny = 36 [80]; (c) θ = 52◦ , d = 4 nm, Ny = 15 [43]; (d) θ = 71◦ , d = 5 nm, Ny = 18 [76]; (e) θ = 86.1◦ ,
+d = 7 nm, Ny = 25 [79]; (f) θ = 120◦ , d = 2.5 nm, Ny = 9 [75]; (g) θ = 154◦ , d = 10 nm, Ny = 36 [78]; (h) θ = 163◦ , d = 10 nm, Ny = 36
+[78]; (i) θ = 178◦ , d = 10 nm, Ny = 36 [78].
+
+
+and does not take the atomistic details into account. In this           wall interaction and inverse temperature), notwithstanding an
+work, one molecular-sized, coarse-grained method was im-                intrinsically mesoscopic characteristic [115]. Although the
+plemented on LBM, and the disadvantage is that could only               treatment of force term inspired from Shan-Chen scheme in
+reflect averaged effects of molecular interactions and not fully        this work has the advantages of simplicity and clear physical
+reproduce the density or velocity profile in proximity of the           reflection of fluid flow, it still has its weakness in accuracy
+wall surface below one lattice grid resolution. MD simulation           because the effects of the interaction force are reflected in
+is a powerful tool in modelling nanoscale water flow process            the first-order moment of the equilibrium distribution function
+in small systems such as a single nanochannel. However, for             [116,117], and researchers can develop a more accurate force
+large nanosystems such as a network of nanochannels, MD is              treatment in the future.
+limited due to the need of exorbitant computational resources.              Wettability of the nanochannel surface was used as a
+Our proposed LBM could be a computationally efficient                   fundamental property for characterizing true and apparent
+method to study water flow in complex nanosystems such as               slip length in the LBM explicitly and implicitly, respectively,
+nanoporous material if the macroscopic behavior is of interest          indicating that, besides nearly frictionless walls [101,118] and
+rather than the details of radial density variation in individual       surface nanobubbles [59], the strong hydrophobic channel
+pores. In LBM, we based our coarse-grained model on direct              surface could also enhance water flow rates in confinement
+data mapping from MD simulations or experiments to allow a              dramatically [51,66,119]. Note that great attention should
+direct comparison of the influence of water-solid interactions          be paid to accurate determination of the contact angle for
+in the LB frame on the density profile, velocity profile, and           a strong hydrophobic channel surface, as slip length is a
+enhancement factors [116,117]. Moreover, tuning parameters              highly sensitive quantity [66]. In addition, because the input
+(Gw and Gb ) in the model have no less physical meaning                 parameters of the LBM are from MD simulations for ideal
+than their atomistic counterparts in MD simulations (particle-          atomically smooth surfaces, the model cannot be applied to
+
+                                                                 013306-8
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                       PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+    FIG. 6. Comparison of the velocity profiles from MD simulations (gray hollow dots) in the literature and the one by the proposed LBM
+(colored dots) under the same conditions. The five cases cover the wettability from hydrophilic to hydrophobic channels with different
+dimensions and materials [25,81,84,108], and all the comparisons show the proposed mesoscopic LBM can reproduce the velocity profile
+in a molecularly coarse-grained way. The external forces in these cases are shown in a form of MD in the original literature. To avoid the unit
+conversion and achieve the fitting, we assume the external force is 1 MPa/nm in LBM simulations, and the simulated LBM velocity profiles are
+scaled by the center velocity of MD to obtain the final values. The contact angles of the simulated cases are (a) θ = 43◦ [81]; (b) θ = 105.5◦
+[25]; (c) θ = 130.5◦ [25]; (d) θ = 150◦ [84]; (e) θ = 161.5◦ [108].
+
+
+
+
+   FIG. 7. Confined water flow in a nanochannel with end effects (finite-length nanochannel). (a) Schematic of simulated domain with two
+water baths connected on both ends. Rationalization of value n is calibrated in Appendix E. (b) Example of LBM simulation results for
+confined water flow with ends (θ = 160◦ ). Bending of streamlines (yellow arrowed lines) at entrance and exit induces significant additional
+flow resistance, compared with flow through infinite nanochannels. Density is lattice unit. (c) Comparison of experiments or MD simulation
+enhancement factor ε from literature and simulation enhancement factor ε from our proposed LBM under identical conditions (finite-length
+nanochannel). Comparisons, including 50 cases from MD simulations [25,36,37,108,113]. Comparison shows most cases from different studies
+can be matched well. The black diagonal line guides the reader’s eye to the comparison. Error bars of enhancement factor ε originate from
+uncertainties in determination of contact angles or external force.
+
+                                                                  013306-9
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                      PHYSICAL REVIEW E 102, 013306 (2020)
+
+modeling a nanosystem having dissolved gas or a contaminant
+that possibly occurred in practical conditions [62,64].
+   We have tried to show the outstanding advantages of
+the proposed LBM in its fruitful applications for complex
+geometrical boundaries in simulation of confined flow with
+entrance and exit effect. Moreover, the simulations can be
+extended to 3D nanochannels having different cross-section
+shapes [120,121], tortuous channels with rough surfaces
+[115], and experimentally accessible scales—nanoporous me-              FIG. 8. Sketch of the linear (a) (Couette flow) and (b) nonlinear
+dia (CNTs membrane [4,37], aquaporins [111], shale matrix           velocity distribution (channel flow) with Navier linear slip assump-
+[5,8], etc.)—with easily available computational resources.         tion in the boundary [57].
+For the water flow in complex nanoporous media, the cur-
+rent treatment of boundary condition has the limitation in
+determination of specular reflection directions for the irregular   50974128, No. 51504269, and No. 51490654); the Na-
+surface, while the combined bounce-back and full diffusive          tional Science and Technology Major Projects of China
+boundary condition [56] is more powerful in handling a com-         (Grants No. 2016ZX05042, No. 2017ZX05009003, and No.
+plex geometry, which should be considered in the future work.       2017ZX05039005); the Science Foundation of China Uni-
+The adaptive mesh-refinement scheme using a nonuniform              versity of Petroleum, Beijing (Grants No. 2462018YJRC033
+mesh strategy can be developed in the future to provide the         and No. C201605); NanoGeosciences lab; and the Mudrock
+one-molecular-diameter resolution in the near-wall region and       Systems Research Laboratory at the Bureau of Economic Ge-
+rougher grids in the bulk [122], since the water-solid interac-     ology. T.Z. also acknowledges the China Scholarship Council
+tions causing a slip phenomenon are generally located within        (CSC) for its financial support of his living expenses at The
+a few molecular layers near the boundary surface [68,70].           University of Texas at Austin as a visiting Ph.D. student.
+This strategy will further boost the proposed LBM at a lower
+computational cost in solving much larger systems in time                 APPENDIX A: VALUE OF RELAXATION TIME τ
+and space, yielding molecular-scale, accurate results such as
+in MD simulations.                                                      The linear velocity gradient assumption for the first two
+                                                                    layer-grids is used to model the flow with the nonlinear
+                                                                    velocity gradient (channel flow) [123], as shown in Fig. 8.
+                V. CONCLUDING REMARKS
+                                                                    This assumption results in an additional error term ls,error ,
+   In summary, we developed a mesoscopic LBM framework              associated with the grid numbers and the relaxation time [57].
+using embedded nanophysics for water flow in nanoconfined           If the grid is fine enough or the relaxation time equals 1.11,
+systems, such as nanochannels. We have made two major               the error term can be avoided completely. Thus, τ is set at
+modifications to the conventional LBM to model the effects          1.11 for all the simulations in this work
+of wettability on water flow in nanochannels: (i) modified the                                                 
+fully bounce back boundary to mixed boundary to capture                                          1 2              1
+                                                                                    ls,error =    − (τ − 0.5) 2
+                                                                                                                     .       (A1)
+the true slip length; (ii) included water-water force and water-                                 4 3              Ny
+solid force to capture the apparent slip. The fluctuated density
+distribution and nonparabolic velocity profile in the proximity
+of wall surfaces can be well captured, and simulation results of
+the proposed method are in good agreement with most of the            APPENDIX B: PARAMETER AND UNIT CONVERSION
+47 different cases of water flow through infinite-length tubes
+and 50 different cases through finite-length tubes reported in         The three basic quantities—length, time, and mass—are
+the literature. We quantitatively explained the discrepancies       represented by diameter, viscosity, and density, respectively,
+over an enhancement or reduction in flow capacity in MD             the quantities of which are known in both physical space
+simulations and experiments, as well as the hindrance of the        and lattice space, as shown in Table I. Then, all other un-
+entrance and exit effect on flow behaviors. The proposed            known physical or lattice quantities (the number of lattice
+framework predicts water flow in nanochannels with the ac-          grids in flow directions, the true slip length, external force,
+curacy of MD simulations but computationally more efficient,        velocity, etc.) can be derived by the three scale factors [124].
+opening up a new avenue for modeling confined water flow in         For example, the velocity scale factor can be calculated by
+much larger and complex nanosystems.                                ur = υr /Lr .
+
+
+                   ACKNOWLEDGMENTS
+                                                                            TABLE I. The basic parameters for unit conversion.
+   We thank Dr. Mohamed Ibrahim Shaat (New Mexico
+State University) and Dr. Zhenhua Chai of (Huazhong Uni-            Parameters         Physical symbol    Lattice symbol     Scale factor
+versity of Science and Technology) for helpful discussions          Diameter, m              D                   Ny          Lr = D/Ny
+and MinXia He (China University of Petroleum) for help              Viscosity, m2 /s         υ                   υe          υr = υ/υe
+in simulations. This work is supported by the National              Density, kg/m3           ρp                  ρ           ρr = ρ p /ρ
+Natural Science Foundation Projects of China (Grants No.
+
+                                                              013306-10
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                         PHYSICAL REVIEW E 102, 013306 (2020)
+
+                             TABLE II. A summary of various parameters used to reproduce Figs. 2(b), 9, and 10.
+
+                                                                            Channel          Contact
+Investigators                    Channel material     Temperature, K      diameter, nm       angle, °        δ1 , nm       δ2 , nm     ρ1 , g /cm3
+Tao et al. [75]                        CNTs                  300               2.50         109.61            0.33          0.31          1.58
+                                                                                            119.94            0.34          0.33          1.41
+                                                                                            131.50            0.35          0.33          1.11
+Neek-Amal et al. [74]                Graphene                298               1.80       hydrophobic     0.27 ± 0.02    0.3 ± 0.02       2.57
+Ramos-Alvarado et al. [76]            Silica                 300               5.00          71.00             –            0.42          2.34
+Vo et al. [77]                          Cu                   300               7.00          86.10            0.27          0.33          2.45
+                                      Cu/Gra                                                 92.70            0.31          0.27          2.15
+Evans and Wildinga [78]                 –                                       2            26.00            0.29          0.29          3.22
+                                                     fixed temperature                       88.00            0.29          0.29          2.13
+                                                                                            117.50            0.30          0.30          1.55
+                                                                                            154.00             –              –           0.70
+                                                                                            163.00             –              –           0.45
+                                                                                            178.00             –              –           0.19
+Vo et al. [79]                          Cu                   300               4.00          86.40            0.22          0.23          2.30
+Walther et al. [37]                   CNTs                    –                2.03          95.00            0.30          0.32          2.35
+Bonthuis and Netz [128]             C20 H41 OH                –                >3         hydrophilic         0.19          0.33          2.29
+                                     C20 H42                                              hydrophobic         0.35          0.31          1.56
+Hu et al.c [80]                         Pt                                     0.27          30.00            0.27          0.39          3.06
+                                                              –                              60.00            0.27          0.39          2.68
+                                                                                             90.00            0.27          0.39          2.13
+                                                                                            120.00            0.27          0.39          1.72
+                                                                                            150.00            0.27          0.39          1.34
+Botan et al. [81]                       Clay                 300               4.50          43.00            0.31          0.32          3.34
+Sendner et al.a [43]                     –                                     4.00          87.42b           0.33          0.31          1.96
+                                                             300                            143.64b           0.39          0.31          1.01
+                                                                                            160.03b            –              –           0.53
+Alexiadis et al. [82]                  CNTs                   –                3.52         104.50             –            0.34          1.87
+                                                                                            109.47              –           0.34          1.66
+Chen [83]                                –                    –                  –            0.00            0.31            –           3.90
+Thomas and McGaughey [84]              CNTs                  298               6.90         129.00b           0.30          0.41          1.15
+Xiang et al.c [85]                    Solid Ar                                 6.94          30.00            0.39          0.29          2.85
+                                                              –                              60.00            0.38          0.34          2.29
+                                                                                             90.00            0.39          0.30          2.01
+                                                                                            120.00            0.40          0.34          1.77
+                                                                                            150.00            0.41          0.33          1.13
+Priezjev et al. [129]                    –             kB T /ε = 1.1d        20.15σ         162.40b           0.27          0.31          1.69
+Walther et al. [86]                    CNTs                   –                2.5           86.00            0.32          0.32          2.45
+Werder et al. [87]                     CNTs                  300                –            95.30            0.32          0.29          2.66
+Walther et al. [88]                    CNTs                  300              1.52          112.57b           0.32          0.32          1.94
+Barrat and Bocquet [47]                  –              kB T /ε = 1d          9.00          150.00            0.54          0.45          0.97
+Allen et al. [130]                     ACh                   300              1.12        hydrophilic           –           0.24          4.62
+                                     Potassium                                            hydrophobic           –           0.27          2.96
+a
+  The density curve shows no density peak in the superhydrophobic nanochannel, so δ1 and δ2 are not used in the statistics, whereas the density
+value of ρ1 is obtained by the assumption that δ1 is 0.28 nm.
+b
+  The contact angle is not explicitly shown in the literature, and it is recalculated in this work by using the method introduced in Werder et al.
+[87].
+c
+  The simulated fluid is Ar, so the data δ1 and δ1 are not adopted to reproduce Figs. 9 and 10.
+d
+  A constant reduced temperature, where kB is Boltzmann’s constant and ε is interaction energy.
+
+
+    APPENDIX C: IDENTIFYING SEVERAL DISTANCES                              water flow because no mass appears in this region [125].
+              ON THE DENSITY CURVE                                         For Lennard-Jones (LJ) fluid, the mean-field potential be-
+                                                                           tween the wall surface and the water, obtained by in-
+                        1. Stand-off distance
+                                                                           tegrating the LJ potential, rises sharply as it approaches
+    The stand-off distance δ is defined as the distance be-                the wall surface, leading to a maximum position that
+tween the solid surface and the position of the first den-                 is energetically accessible to the water [126]. Then, the
+sity peak. It should be excluded in the modeling of the                    stand-off distance can be derived analytically as follows
+
+                                                                   013306-11
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                             PHYSICAL REVIEW E 102, 013306 (2020)
+
+                                    TABLE III. A summary of various parameters used to reproduce Fig. 4.
+
+                                                          Channel        Channel     Contact       MD or exper                  LBM
+Investigators                  Channel materials Method diameter, nm    length, nm   angleb , °        ε           ε       ε error (+)c ε error (-)c
+
+Secchi et al. [99]                  CNTs          Exper.       30±2    450 ∼ 1000     155 ± 6      23.84 ± 3.5     18.44      50.01         11.38
+                                                              34±2                    155 ± 6      14.53 ± 1.35    16.37      35.06         10.04
+                                                              66±2                   155 ± 6            5.40        8.79      17.90          5.08
+                                                              76±6                   155 ± 6            3.75        6.81      13.33          3.42
+                                                              100±6                  155 ± 6            2.11        5.31       7.19          2.50
+Secchi et al. [99]                 BNNTsa         Exper.       14.00    600 ∼ 1300      –               0.10        –          –             –
+                                                               46.00                    –               0.73        –          –             –
+                                                               52.00                    –               1.32        –          –             –
+Chiavazzo et al. [103]         Silica nanopores    MD           7.58                  60 ± 5           0.61        0.93       0.01          0.01
+                                                                2.54                   60 ± 5           0.97        1.16       0.06          0.05
+Chiavazzo et al. [103]         CNTs with Fe3 O4    MD          65.00                  55 ± 5           0.48        0.99       0.00          0.00
+                                 nanoparticles                  1.65                   55 ± 5           1.02        1.72       0.12          0.10
+Lee et al. [100]               Anodized alumina   Exper.       47±2       250000       12 ± 2        1.57 ± 0.28    1.23       0.01          0.01
+                                  membranes                   56±6                     12 ± 2        1.25 ± 0.34    1.24       0.01          0.01
+                                                              60±5                     12 ± 2        1.23 ± 0.28    1.27       0.01          0.01
+                                                              70±5                     12 ± 2       1.14 ± 0.23     1.27       0.01          0.01
+                                                              69±6                     12 ± 2       1.14 ± 0.25     1.27       0.01          0.01
+                                                              86±8                     12 ± 2       1.03 ± 0.24     1.27       0.01          0.01
+                                                             82±10                     12 ± 2       1.08 ± 0.29     1.28       0.01          0.01
+                                                              96±8                     12 ± 2       0.99 ± 0.21     1.28       0.01          0.01
+Milischuk and Ladanyi, [104]     Silica pores      MD           2.00                  45 ± 5           0.61        1.25       0.06          0.05
+                                                                4.00                   45 ± 5           0.82        0.91       0.02          0.01
+Babu and Sathian [105]              CNTs           MD           1.62                 132 ± 8           49.81       31.92      34.88         14.43
+                                                                1.90                132 ± 8           30.80       25.26      28.33         11.53
+                                                                2.17                 132 ± 8           21.21       19.63      22.34          8.98
+                                                                2.44                 132 ± 8           14.91       16.62      19.15          7.63
+                                                                2.71                 132 ± 8           11.08       13.98      16.22          6.41
+                                                                2.98                 132 ± 8            8.63       12.38      14.41          5.66
+                                                                3.25                 132 ± 8            6.73       10.88      12.69          4.95
+Thomas and McGaughey [98]           CNTs           MD           1.39         75    157.25 ± 2.5       916.78      976.57     696.29        317.14
+                                                                1.66        150    157.25 ± 2.5       740.70      696.15     513.85        230.77
+Whitby et al. [101]              Carbon pipes     Exper.       44±3    78000±2000     161 ± 1          34.02       39.56      11.11         15.10
+Thomas and McGaughey [106]          CNTs           MD           4.99                 150 ± 1      48.75 ± 5.4     50.68       8.74          7.12
+                                                                4.44                  150 ± 1          52 ± 8.09   58.19       9.93          8.27
+                                                                3.88                  150 ± 1      55.45 ± 9.89    68.30      11.72          9.68
+                                                                3.33                  150 ± 1      86.82 ± 12.59   82.68      13.82         11.48
+                                                                2.77                  150 ± 1     108.68 ± 16.19 104.72       17.24         14.36
+                                                                2.22                 150 ± 1      199.71 ± 33.27 141.27       22.70         18.97
+                                                                1.66                 150 ± 1      444.46 ± 63.85 214.50       33.12         27.81
+Joseph and Aluru [107]          NT with Si LJ      MD           2.17               147.5 ± 2.5      155.00       102.46      42.86         28.17
+Joseph and Aluru [107]            BNNTsa           MD           2.17                   –           1142.00         –          –             –
+Joseph and Aluru [107]             CNTs            MD           2.17                 161 ± 1       2052.00      1087.3      301.59        222.22
+Sinha et al. [102]              Carbon pipes      Exper.        300        10000       44               1.00        1.00       0.00          0.00
+Holt et al. [35]                 DWCNTs           Exper.   1.30 ∼ 2.00 2000 ∼ 3000    163 ± 2       5049.62      3614.29    2475.71       1340
+                                                           1.30 ∼ 2.00                163 ± 2       1822.72      2070.18    1508.77        807.02
+Holt et al. [35]                Polycarbonate     Exper.       15.00        6000      135 ± 2           3.67        3.01       0.51          0.39
+Majumder et al. [42]             MWCNTs           Exper.        7.00       34000      175 ± 0.5    63746.99
+a
+  The enhancement factor ε from exper. (experiment) or MD for boron nitride nanotubes (BNNTs) cannot be reproduced by our proposed LBM
+because the true slip length ls,t of BNNTs is not completely controlled by wetting properties.
+b
+  The contact angles that are not explicitly shown in the literature are from Wu et al. [51].
+c
+  The errors of enhancement factors ε originate from the uncertainties in determination of contact angles or channel size.
+
+
+
+
+                                                                   013306-12
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                         PHYSICAL REVIEW E 102, 013306 (2020)
+
+                                   TABLE IV. A summary of various parameters used to reproduce Fig. 7.
+
+                       Channel                        Channel        Channel      Contact           External        MD or exper         LBM
+Investigators          materials       Method       diameter, nm    length, nm    angleb , °   pressure, MPa/nm         ε                εc
+
+Suk and Aluru [108]      CNTs          NAMD             3.94            5.76      161.5±1.5        0.17 ∼ 60            4.66         4.37 ± 0.20
+                                                                       10.68      161.5±1.5        0.17 ∼ 60            7.52         5.56 ± 0.17
+                                                                       15.46      161.5±1.5        0.17 ∼ 60           10.59         7.54 ± 0.2
+                                                                       20.28      161.5±1.5        0.17 ∼ 60         12.14 ± 2       9.29 ± 0.24
+                                                                       30.85      161.5±1.5        0.17 ∼ 60           17.09        13.36 ± 0.30
+                                                                       41.48      161.5±1.5        0.17 ∼ 60           21.71        17.34 ± 0.60
+                                                                       61.56      161.5±1.5        0.17 ∼ 60           31.62        24.29 ± 0.88
+Ritos et al. [36]        CNTs        Hybrid MD         2.034            2.41      155.5±2.5        82.83                1.68         0.87 ± 0.56
+                                                                        5.01      155.5±2.5        39.94                3.01         5.39 ± 0.43
+                                                                       12.09      155.5±2.5        16.54                8.50         5.34 ± 0.92
+                                                                       24.33      155.5±2.5          8.22              16.27        14.14 ± 2.61
+                                                                       48.95      155.5±2.5          4.09              45.92        35.31 ± 4.57
+                                                                       98.49      155.5±2.5          2.03              82.32        67.09 ± 5.70
+                                                                      146.22      155.5±2.5          1.37             113.85        90.28 ± 9.26
+Ritos et al. [25]        CNTs           MD             2.034            2.51         130.5         79.65                1.73            2.73
+                                                                        5.02         130.5         39.86                3.07            3.99
+                                                                       12.57         130.5         15.92                8.18            8.53
+                                                                       25.49         130.5           7.85              15.85           12.46
+                                                                       50.94         130.5           3.93              29.85           20.16
+Ritos et al. [25]      BNNTsa           MD             2.072            2.56           –           78.19                0.53            –
+                                                                        5.04           –           39.72                1.37            –
+                                                                       12.61           –           15.86                3.87            –
+                                                                       25.20           –             7.94               5.96            –
+                                                                       50.35           –             3.97               8.18            –
+Ritos et al. [25]       SiCNTs          MD             2.062            2.51         105.5         79.76                0.94            2.04
+                                                                        5.09         105.5         39.32                1.73            2.29
+                                                                       12.55         105.5         15.94                2.90            3.11
+                                                                       25.46         105.5           7.86               4.22            3.65
+                                                                       50.11         105.5           3.99               5.16            4.23
+Walther et al. [37]   DWCNTs1        FASTTUBE          2.034            2.78        155±5            7.19               2.40         3.40 ± 2.60
+                                                                        5.73        155±5            3.49               5.89         5.82 ± 0.23
+                                                                       11.50        155±5            1.74              10.00         8.69 ± 0.14
+                                                                       29.10        155±5            0.69              22.60        22.89 ± 2.90
+                                                                      296.00        155±5            0.068            204.00       160.53 ± 15.03
+Walther et al. [37]   DWCNTs2          NAMD            2.034            1.35        155±5            1.48               1.73         2.18 ± 0.12
+                                                                        2.12        155±5            0.94               1.15         2.92 ± 0.12
+                                                                       48.60        155±5            0.041             11.30        33.99 ± 7.86
+                                                                       97.00        155±5            0.0021            65.20        61.88 ± 14.55
+                                                                      478.00        155±5            0.00042          307.00       146.02 ± 92.92
+Walther et al. [37]   DWCNTs3          NAMD            2.034            1.35        155±5          14.81             0.42 ± 0.21     2.07 ± 0.02
+                                                                        2.12        155±5            9.43            0.38 ± 0.24     2.00 ± 1.02
+                                                                        3.14        155±5            6.37            0.87 ± 0.24     4.84 ± 2.42
+                                                                        5.08       155±5             3.94            1.04 ± 0.38     5.33 ± 2.67
+                                                                        9.85        155±5            2.03            1.88 ± 1.02     7.34 ± 3.67
+                                                                       48.60        155±5            0.41            8.85 ± 3.00    35.72 ± 17.86
+                                                                       97.00        155±5            0.21           18.40 ± 9.80    61.71 ± 30.88
+Wang et al. [113]        CNTs          NAMD             1.63            3            85±5            1.67              13.5          1.84 ± 2.18
+                                                                        6            85±5            0.83              13.2          2.11 ± 2.067
+                                                                        9            85±5            0.56              11.8          2.48 ± 1.99
+                                                                       15            85±5            0.33              11.4          2.78 ± 1.99
+a
+  The enhancement factor ε from exper. (experiment) or MD for BNNTs cannot be reproduced by our proposed LBM because the true slip
+length ls,t of BNNTs is not completely controlled by wetting properties.
+b
+  The contact angle is not explicitly shown in the literature, and it is recalculated in this work by using the method introduced in Werder et al.
+[87]. The contact of Wather et al. [37] is estimated by Eq. (9) with a slip length of 64 nm [114].
+c
+  The errors of enhancement factors ε originate from the uncertainties in the determination of contact angles or external pressure.
+
+
+
+
+                                                                   013306-13
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                           PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+    FIG. 9. Determination of the distance between the solid surface           FIG. 10. Determination of the distance between the location of
+and the location of the first density peak δ1 . The data are from         the first density peak and the second density peak δ2 . The data
+MD simulations in the literature, and the simulated wall surfaces         are from MD simulations in the literature, and the simulated wall
+are (1) flexible and rigid carbon nanotubes (CNTs) with various           surfaces are (1) flexible and rigid CNTs with various surface wet-
+surface wettability (Tao et al. [75]); (2) flat walls with two graphene   tability (Tao et al. [85]); (2) flat walls with two graphene layers
+layers (Neek-Amal et al. [76]); (3) Cu and graphene-coated Cu sur-        (Neek-Amal et al. [74]); (3) Si(111) plane (Ramos-Alvarado et al.
+face wall (Vo et al. [77]); (4) Lennard-Jones hydrophobic substrate       [76]); (4) Cu and graphene-coated Cu surface wall (Vo et al. [77]);
+(Evans and Wilding [78]); (5) Au surface wall (Vo et al. [79]); (6)       (5) Lennard-Jones hydrophobic substrate (Evans and Wilding [78]);
+double-walled carbon nanotubes (DWCNTs) (Walther et al. [37]);            (6) Au surface wall (Vo et al. [79]); (7) double-walled carbon
+(7) self-assembled monolayers consisting of single membranes of           nanotubes (DWCNTs) (Walther et al. [37]); (8) self-assembled
+either C20 H41 OH or C20 H4 (Bonthuis and Netz [128]); (8) sodium-        monolayers consisting of single membranes of either C20 H41 OH or
+saturated Wyoming montmorillonite surface to represent clay (Botan        C20 H4 (Bonthuis and Netz [S10]); (9) sodium-saturated Wyoming
+et al. [81]); (9) hydrophobic hydrogen terminated diamond surface         montmorillonite surface to represent clay (Botan et al. [81]); (10)
+(Sendner et al. [43]); (10) Lennard-Jones substrate (Chen et al. [83]);   hydrophobic hydrogen terminated diamond surface (Sendner et al.
+(11) armchair CNTs (Thomas and McGaughey [84]); (12) two (111)            [43]); (11) armchair CNTs (Thomas and McGaughey [84]); (12) two
+planes with an face-centered cubic (FCC) lattice consisting of 12,288     (111) planes with an FCC lattice consisting of 12,288 molecules
+molecules (11)(Priezjev et al. [129]); (13) zigzag CNTs (Walther          (Priezjev et al. [129]); (13) zigzag CNTs (Walther et al. [86]);
+et al. [86]); (14) CNTs (Werder et al. [87]); (15) CNTs (Walther et al.   (14) CNTs (Werder et al. [87]); (15) CNTs (Walther et al. [88]);
+[88]). The blue dashed line with the value of 0.28 nm is drawn to         (16) Lennard-Jones hydrophobic and hydrophilic walls (Allen et al.
+guide the reader’s eyes.                                                  [130]). The blue dashed line with the value of 0.28 nm is drawn to
+                                                                          guide the reader’s eyes.
+
+[127]:
+                                                                          within the range of a few molecular diameters near the wall
+                          δ = (2/5)1/6 σ,                        (C1)     [50]. The location of the first density peak and the second
+                                                                          density peak δ2 is the first and largest oscillatory period
+where σ is the molecular diameter, set at 0.28 nm for water
+                                                                          for the density profile. Various data from different literature
+[89]. Thus, the stand-off distance in this paper equals 0.24
+                                                                          are collected to illustrate the one molecular periodic density
+nm, solely dependent on the molecular diameter [127].
+                                                                          profile, as shown in Fig. 10.
+                                                                             Numerous molecular dynamics (MD) simulations have
+   2. The distance between the solid surface and the location             shown that, at a given water-solid pair and thermodynamic
+                      of first density peak                               state, the periodically oscillated density profiles in nanochan-
+   The distance between the solid surface and the location of             nels are independent of the external force [19,131], channel
+the first density peak δ1 is a critical parameter to character-           width [23,90], and temperature [68]. Specifically, even when
+ize the density structure. In the position of the first density           the density peaks decay to nearly the value of bulk water, the
+peak, the mean-field interaction potential reaches a minimum,             periodic wavelength does not change [68].
+and the position can be obtained by setting the derivative
+of the mean-field interaction potential at zero [127], roughly            APPENDIX D: CRITICAL PARAMETER IN MEAN-FIELD
+equal to the diameter of the molecule. Further, statistical data                      BODY FORCE EQUATION
+extracted from the literature also support this conclusion well,
+as shown in Fig. 9.                                                           The original Shan-Chen model was proposed in the appli-
+                                                                          cation to simulate the multicomponent/phases problems, and
+                                                                          the model supports phase transitions [132]. To avoid the phase
+ 3. The distance between the location of the first density peak           transition in simulating single water phase flow in a confined
+                 and the second density peak                              situation, the parameter Gb should be tuned above the critical
+   The density profile is a distance-related oscillatory function         value Gb,c . To calculate Gb,c , we set the first and the second
+having roughly a molecular diameter period, and the period is             derivatives of the equation of state [Eq. (D1)] equal to zero
+
+                                                                   013306-14
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                    PHYSICAL REVIEW E 102, 013306 (2020)
+
+
+
+
+                                                                            FIG. 12. Relationship between enhancement factors and n under
+   FIG. 11. P-ρ plot of the Shan-Chen equations of state. Dashed        different contact angles (d = 2.034 nm).
+horizontal line is at P = 0.
+
+
+                                                                        densities of the liquid water and vapor valishes when Gb >
+[133]                                                                   −4. Actually, Gb can be set with any value larger than the
+                                                                        critical value -4; however, too large of this value may cause
+                                    cs2 Gb 2                            numerical instabilities due to the steep density gradients. In
+                      p = cs2 ρ +         ψ ,                  (D1)     this work, we set Gb = −1.5 according to the suggestion in
+                                       2
+                                                                        Harting et al. [134].
+where the phenomenological pseudopotential ψ(x, t) is de-
+fined as                                                                      APPENDIX E: GRIDS OF THE TWO WATER BATHS
+
+                  ψ (x, t ) = 1 − exp(−ρ/ρ0 ).                 (D2)        Theoretically, n → ∞ is required to represent the two
+                                                                        water baths, whereas it is computationally impossible and
+   First and second derivatives of Eq. (D1) are                         unnecessary to choose a very large n. From the figure, when
+                                                                        n is larger than 6, the calculated enhancement factor tends to
+    ∂p                                                                  be stable, which means the two cavities are large enough to
+       = cs2 + cs2 Gb,c [1 − exp(−ρc )] exp(−ρc ) = 0,         (D3)
+    ∂ρ                                                                  capture the bending of the streamlines, as shown in Fig. 12.
+        ∂2 p                                                            Therefore, for all simulations, n is set at 6 to balance the
+              = −cs2 Gb,c [1 − exp(−ρc )] exp(−ρc )                     computation cost and accuracy.
+        ∂ρ 2
+                   + cs2 Gb,c exp(−ρc ) exp(−ρc ) = 0,         (D4)      APPENDIX F: A SUMMARY OF VARIOUS PARAMETERS
+                                                                             USED TO REPRODUCE FIGS. 2, 4, 7, 9, AND 10
+where the subscript c denotes the critical state. Solving                  A summary of various parameters used to reproduce Figs.
+Eqs. (D3) and (D4), we calculated Gb,c = −4. The pressure               2(b), 9, and 10 is shown in Table II, to reproduce Fig. 4
+(P) versus (ρ) diagram of these Shan-Chen equations of state            is shown in Table III, and to reproduce Fig. 7 is shown in
+is shown in Fig. 11. As shown in Fig. 11, the coexisting                Table IV.
+
+
+
+  [1] M. A. Shannon, P. W. Bohn, M. Elimelech, J. G. Georgiadis,          [7] N. Pérez-Hernández, T. Q. Luong, M. Febles, C. Marco, H.-H.
+      B. J. Mariñas, and A. M. Mayes, Nature 452, 301 (2008).                 Limbach, M. Havenith, C. Pérez, M. V. Roux, R. Pérez, and
+  [2] A. Siria, P. Poncharal, A.-L. Biance, R. Fulcrand, X. Blase, S.         J. D. Martín, J. Phys. Chem. C 116, 9616 (2012).
+      T. Purcell, and L. Bocquet, Nature 494, 455 (2013).                 [8] T. Zhang, X. Li, J. Shi, Z. Sun, Y. Yin, K. Wu, J. Li, and D.
+  [3] Y. Cui, Science 293, 1289 (2001).                                       Feng, Chem. Eng. Sci. 187, 280 (2018).
+  [4] J. Geng, K. Kim, J. Zhang, A. Escalada, R. Tunuguntla, L. R.        [9] S. K. Kannam, P. J. Daivis, and B. Todd, MRS Bull. 42, 283
+      Comolli, F. I. Allen, A. V. Shnyrova, K. R. Cho, D. Munoz               (2017).
+      et al., Nature 514, 612 (2014).                                    [10] M. Majumder, N. Chopra, and B. J. Hinds, ACS Nano 5, 3867
+  [5] F. Javadpour, M. Mcclure, and M. Naraghi, Fuel 160, 549                 (2011).
+      (2015).                                                            [11] T. Werder, J. H. Walther, R. L. Jaffe, T. Halicioglu, F. Noca,
+  [6] J. Cui, Q. Sang, Y. Li, C. Yin, Y. Li, and M. Dong, Fuel 202,           and P. Koumoutsakos, Nano Lett. 1, 697 (2001).
+      426 (2017).                                                        [12] N. E. Levinger. Science 298, 1722 (2002).
+
+
+                                                                  013306-15
+ZHANG, JAVADPOUR, LI, WU, LI, AND YIN                                                         PHYSICAL REVIEW E 102, 013306 (2020)
+
+[13] B. D. Todd, D. J. Evans, and P. J. Daivis, Phys. Rev. E 52, 1627   [47] J.-L. Barrat and L. Bocquet, Phys. Rev. Lett. 82, 4671 (1999).
+     (1995).                                                            [48] O. I. Vinogradova, K. Koynov, A. Best, and F. Feuillebois,
+[14] L. F. Scatena, Science 292, 908 (2001).                                 Phys. Rev. Lett. 102, 118302 (2009).
+[15] D. Ortiz-Young, H.-C. Chiu, S. Kim, K. Voïtchovsky, and E.         [49] T. Zhang, X. Li, Z. Sun, D. Feng, Y. Miao, P. Li, and Z. Zhang,
+     Riedo, Nat. Comm. 4, 2482 (2013).                                       Chem. Eng. Sci. 174, 1 (2017).
+[16] L. Fu, S. Merabia, and L. Joly, J. Phys. Chem. Lett 9, 2086        [50] J. N. Israelachvili, Intermolecular and Surface Forces (Else-
+     (2018).                                                                 vier, Amsterdam, 2011).
+[17] Y. Yin, Z. Qu, T. Zhang, J. Zhang, and Q. Wang, Fuel 273,          [51] K. Wu, Z. Chen, J. Li, X. Li, J. Xu, and X. Dong, Proc. Nat.
+     117750 (2020).                                                          Acad. Sci. USA 114, 3358 (2017).
+[18] S. K. Kannam, B. D. Todd, J. S. Hansen, and P. J. Daivis,          [52] L. Chen, Q. Kang, Y. Mu, Y. L. He, and W. Q. Tao, Int. J. Heat
+     J. Chem. Phys. 138, 094701 (2013).                                      Mass Trans. 76, 210 (2014).
+[19] W. Lei, M. K. Rigozzi, and D. R. Mckenzie, Rep. Prog. Phys.        [53] Z. Chai, Z. Guo, L. Zheng, and B. Shi, J. App. Phys. 104,
+     79, 025901 (2016).                                                      014902 (2008).
+[20] K. P. Travis, B. D. Todd, and D. J. Evans, Phys. Rev. E 55,        [54] S. Sauro, Phys. Rev. Lett. 89, 064502 (2002).
+     4288 (1997).                                                       [55] J. C. Maxwell, Phil. Trans. Royal Soc. London 170, 231
+[21] K. Falk, B. Coasne, R. Pellenq, F.-J. Ulm, and L. Bocquet, Nat.         (1979).
+     Comm. 6, 6949 (2015).                                              [56] Z. Chai, B. Shi, and Z. Guo, Commun. Comput. Phys. 8, 1052
+[22] M. K. Borg and J. M. Reese, MRS Bull. 42, 294 (2017).                   (2010).
+[23] M. E. Suk and N. R. Aluru, RSC Adv. 3, 9365 (2013).                [57] K. Wang, Z. Chai, G. Hou, W. Chen, and S. Xu, Comput.
+[24] J. Ghorbanian and A. Beskok, Microfl. Nanofl. 20, 121 (2016).           Fluids 161, 60 (2018).
+[25] K. Ritos, D. Mattia, F. Calabrò, and J. M. Reese, J. Chem.         [58] Z. Guo, B. Shi, T. S. Zhao, and C. Zheng, Phys. Rev. E 76,
+     Phys. 140, 014702 (2014).                                               056704 (2007).
+[26] A. A. Pahlavan and J. B. Freund, Phys. Rev. E 83, 021602           [59] S. Granick, Y. Zhu, and H. Lee, Nat. Mat. 2, 221 (2003).
+     (2011).                                                            [60] K. Wu, Z. Chen, J. Li, J. Xu, K. Wang, S. Wang, X. Dong,
+[27] Y. Zhang, Int. J. Heat Mass Trans. 100, 295 (2016).                     Z. Zhu, Y. Peng et al., Angewandte Chemie Int. Ed. 57, 8432
+[28] W. Chen, R. Zhang, and J. Koplik, Phys. Rev. E 89, 023005               (2018).
+     (2014).                                                            [61] D. A. Doshi, E. B. Watkins, J. N. Israelachvili, and
+[29] N. Rajabbeigi, B. Elyassi, T. T. Tsotsis, and M. Sahimi,                J. Majewski, Proc. Nat. Acad. Sci. USA 102, 9458
+     J. Membrane Sci. 335, 5 (2009).                                         (2005).
+[30] N. Rajabbeigi, T. T. Tsotsis, and M. Sahimi, J. Membrane Sci.      [62] P. A. Thompson and S. M. Troian, Nature 389, 360 (1997).
+     345, 323 (2009).                                                   [63] A. P. Bowles and W. A. Ducker, J. Phys. Chem. C 117, 14007
+[31] S. Naserifar, W. A. Goddard, L. Liu, T. T. Tsotsis, and M.              (2013).
+     Sahimi, J. Phys. Chem. C 117, 3320 (2013).                         [64] K. Ahmad, X. Zhao, Y. Pan, W. Wang, and Y. Huang, J. Phys.
+[32] S. Naserifar, T. T. Tsotsis, W. A. G. Iii, and M. Sahimi,               Chem. C 119, 12531 (2015).
+     J. Membrane Sci. 473, 85 (2015).                                   [65] V. S. Craig, C. Neto, and D. R. Williams, Phys. Rev. Lett. 87,
+[33] S. Naserifar, W. A. Goddard, T. T. Tsotsis, and M. Sahimi,              054504 (2001).
+     J. Chem. Phys. 142, 174703 (2015).                                 [66] D. M. Huang, C. Sendner, D. Horinek, R. R. Netz, and L.
+[34] M. Firouzi and M. Sahimi, Transport Porous Med. 115, 495                Bocquet, Phys. Rev. Lett. 101, 226101 (2008).
+     (2016).                                                            [67] D. Y. C. Chan and R. G. Horn, J. Chem. Phys. 83, 5311
+[35] J. K. Holt, Science 312, 1034 (2006).                                   (1985).
+[36] K. Ritos, M. K. Borg, D. A. Lockerby, D. R. Emerson, and           [68] A. E. Giannakopoulos, F. Sofos, T. E. Karakasidis, and A.
+     J. M. Reese, Microfl. Nanofl. 19, 997 (2015).                           Liakopoulos, Microfl. Nanofl. 17, 1011 (2014).
+[37] J. H. Walther, K. Ritos, E. R. Cruz-Chu, C. M. Megaridis, and      [69] J. Ghorbanian, A. T. Celebi, and A. A. Beskok, J. Chem. Phys.
+     P. Koumoutsakos, Nano Lett. 13, 1910 (2013).                            145, 184109 (2016).
+[38] J. A. Thomas, A. J. Mcgaughey, and O. Kuter-Arnebeck,              [70] P. Wu, A. Nikolov, and F. Wasan, Adv. Coll. Interf. Sci. 243,
+     Int. J. Therm. Sci. 49, 281 (2010).                                     114 (2017).
+[39] D. Feng, X. Li, X. Wang, J. Li, T. Zhang, Z. Sun, M. He, Q.        [71] R. Bhadauria, T. Sanghi, and N. R. Aluru, J. Chem. Phys. 143,
+     Liu, J. Qin, and S. Han, Chem. Eng. Sci. 186, 228 (2018).               174702 (2015).
+[40] P. L. Bhatnagar, E. P. Gross, and M. Krook, Phys. Rev. 94, 511     [72] F. Kerstin, S. Felix, J. Laurent, R. R. Netz, and B. Lydéric,
+     (1954).                                                                 Langmuir: ACS J. Surf. Coll. 28, 14261 (2012).
+[41] Y. H. Qian, D. Dhumières, and P. Lallemand, Europhys. Lett.        [73] L. Bocquet and J. L. Barrat, Phys. Rev. E 49, 3079 (1994).
+     17, 479 (1992).                                                    [74] M. Neek-Amal, F. M. Peeters, I. V. Grigorieva, and A. K.
+[42] M. Majumder, N. Chopra, R. Andrews, and B. Hinds, Nature                Geim, ACS Nano 10, 3685 (2016).
+     438, 44 (2005).                                                    [75] J. Tao, X. Song, T. Zhao, S. Zhao, and H. Liu, Chem. Eng. Sci.
+[43] C. Sendner, D. Horinek, L. Bocquet, and R. R. Netz, Langmuir            192, 1252 (2018).
+     25, 10768 (2009).                                                  [76] B. Ramos-Alvarado, S. Kumar, and G. P. Peterson, Phys. Rev.
+[44] P. A. Thompson and M. O. Robbins, Science 250, 792 (1990).              E 93, 033117 (2016).
+[45] A. Koklu, J. Li, S. Sengor, and A. Beskok, Microfl. Nanofl. 21,    [77] T. Q. Vo and B. H. Kim, Sci. Rep. 6, 33881 (2016).
+     124 (2017).                                                        [78] R. Evans and N. B. Wilding, Phys. Rev. Lett. 115, 016103
+[46] U. Heinbuch and J. Fischer, Phys. Rev. A 40, 1144 (1989).               (2015).
+
+                                                                 013306-16
+MESOSCOPIC METHOD TO STUDY WATER FLOW IN …                                                      PHYSICAL REVIEW E 102, 013306 (2020)
+
+ [79] T. Q.Vo, M. Barisik, and B. H. Kim, Phys. Rev. E 92, 053009        [107] S. Joseph and N. R. Aluru, Nano Lett. 8, 452 (2008).
+      (2015).                                                            [108] M. E. Suk and N. R. Aluru, Nanosc. Microsc. Therm. 21, 247
+ [80] H. Hu, B. Luyao, and H. Suhe, Chinese J. Theor. & Appl.                  (2017).
+      Mech. 45, 507 (2013).                                              [109] T. B. Sisan and S. Lichter, Microfl. Nanofl. 11, 787 (2011).
+ [81] A. Boţan, B. Rotenberg, V. Marry, and P. Turq, J. Phys. Chem.     [110] K. Wu, Z. Chen, J. Li, J. Xu, K. Wang, R. Li, S. Wang, and X.
+      C 115, 16109 (2011).                                                     Dong, Langmuir 35, 8867 (2019).
+ [82] A. Alexiadis and S. Kassinos, Chem. Eng. Sci. 63, 2793             [111] S. Gravelle, L. Joly, F. Detcheverry, C. Ybert, C. Cottin-
+      (2015).                                                                  Bizonne, and L. Bocque, Proc. Natl. Acad. Sci. USA 110,
+ [83] X. Chen, Molecular dynamics simulation of nanochannel flow,              16367 (2013).
+      Doctoral thesis, University of Science and Technology of           [112] K. S. Glavatskiy and S.K. Bhatia, Langmuir 32, 3400 (2016).
+      China, 2008.                                                       [113] L. Wang, R. S. Dumont, and J. M. Dickson, J. Chem. Phys.
+ [84] J. A. Thomas and A. J. H. McGaughey, J. Chem. Phys. 128,                 137, 044102 (2012).
+      084715 (2008).                                                     [114] A. Popadić, J. H. Walther, P. Koumoutsakos, and M.
+ [85] H. Xiang, J. Eng. Thermophys. 18, 1346 (2008).                           Praprotnik, New J. Phys. 16, 082001 (2014).
+ [86] J. H. Walther, T. Werder, R. L. Jaffe, and P. Koumoutsakos,        [115] M. Sbragaglia, R. Benzi, L. Biferale, and S. Succi, and F.
+      Phys. Rev. E 69, 062201 (2004).                                          Toschi, Phys. Rev. Lett. 97, 204503 (2006).
+ [87] T. Werder, J. H. Walther, R. L. Jaffe, T. Halicioglu, and T.       [116] Z. Guo and C. Shu, Lattice Boltzmann Method and Its Appli-
+      Koumoutsakos, J. Phys. Chem. B 107, 1345 (2003).                         cations in Engineering (World Scientific, Singapore, 2013).
+ [88] J. H. Walther, R. Jaffe, T. Halicioglu, and P. Koumoutsakos,       [117] T. Krüger, H. Kusumaatmaja, and A. Kuzmin, The Lat-
+      and P. J, Phys. Chem. B 105, 9980 (2001).                                tice Boltzmann Method: Principles and Practice (Springer,
+ [89] D. Feng, X. Li, X. Wang, J. Li, T. Zhang, Z. Sun, M. He, Q.              Switzerland, 2017).
+      Liu, J. Qin, and S. Han et al., Langmuir: ACS J. Surf. Coll. 34,   [118] I. S. Anastasios, M. A. David, J. J Karl, and S. S. David, Phys.
+      7714 (2018).                                                             Rev. Lett. 89, 185901 (2002).
+ [90] G. Cicero, J. C. Grossman, E. Schwegler, F. Gygi, and G. Galli,    [119] B. Ramos-Alvarado, S. Kumar, and G. P. Peterson, App. Phys.
+      J. Am. Chem. Soc. 130, 1871 (2008)..                                     Lett. 108, 074105 (2016).
+ [91] M. Neekamal, A. Lohrasebi, M. Mousaei, F. Shayeganfar,             [120] J. Li, Z. Chen, K. Wu, T. Zhang, R. Zhang, J. Xu, R. Li, S. Qu,
+      B. Radha, and F. M. Peeters, Appl. Phys. Lett. 113, 083101               J. Shi, and X. Li, AIChE J. 64, 3529 (2018).
+      (2018).                                                            [121] A. Afsharpoor and F. Javadpour, Fuel 180, 580 (2016).
+ [92] X. Shan and H. Chen, Phys. Rev. E 49, 2941 (1994).                 [122] Z. Yu and L. S. Fan, J. Comp. Phys. 228, 6456 (2009).
+ [93] J. Zhang and D. Y. Kwok, Phys. Rev. E 70, 056701 (2004).           [123] X. He, Q. Zou, L. S. Luo, and M. Dembo, J. Stat. Phys. 87,
+ [94] R. Benzi, L. Biferale, M. Sbragaglia, S. Succi, and F. Toschi,           115 (1997).
+      Europhys. Lett. 74, 651(2006).                                     [124] S. Succi, The Lattice Boltzmann Equation – for Fluid Dynamics
+ [95] X. Shan and H. Chen, Phys. Rev. E 47, 1815 (1993).                       and Beyond (Oxford University Press, Oxford, UK, 2017).
+ [96] R. S. Voronov, D. V. Papavassiliou, and L. L. Lee, Ind. Eng.       [125] H. Yoshida and L. Bocquet, J. Chem. Phys. 144, 234701
+      Chem. Res. 47, 2455 (2008).                                              (2016).
+ [97] S. Gruener, D. Wallacher, S. Greulich, M. Busch, and P.            [126] M. Shaat, Langmuir: ACS J. Surf. Coll. 33, 12814 (2017).
+      Huber, Phys. Rev. E 93, 013102 (2016).                             [127] G. J. Wang and N. G. Hadjiconstantinou, Phys. Flu. 27,
+ [98] J. A. Thomas and A. J. H. Mcgaughey, Phys. Rev. Lett. 102,               052006 (2015).
+      184502 (2009).                                                     [128] D. J. Bonthuis and R. R. Netz, J. Phys. Chem. B 117, 11397
+ [99] E. Secchi, S. Marbach, A. Niguès, D. Stein, A. Siria, and L.             (2013).
+      Bocquet, Nature 537, 210 (2016).                                   [129] N. V. Priezjev, A. A. Darhuber, and S. M. Troian, Phys. Rev.
+[100] K. P. Lee, H. Leese, and D. Mattia, Nanoscale 4, 2621                    E 71, 041608 (2005).
+      (2012).                                                            [130] T. W. Allen, S. Kuyucak, and S. H. Chung, J. Chem. Phys. 111,
+[101] M. Whitby, L. Cagnon, M. Thanou, and N. Quirke, Nano Lett.               7985 (1999).
+      8, 2632 (2008).                                                    [131] D. T. Semiromi and A. R. Azimian, Heat Mass Transfer 46,
+[102] S. Sinha, M. P. Rossi, D. Mattia, Y. Gogotsi, and H. H. Bau,             791 (2010).
+      Phys. Flu. 19, 013603 (2007).                                      [132] M. C. Sukop and D. T. T. Jr, Lattice Boltzmann Modeling:
+[103] E. Chiavazzo, M. Fasano, P. Asinari, and P. Decuzzi, Nat.                An Introduction for Geoscientists and Engineers (Springer
+      Comm. 5, 3565 (2014).                                                    Publishing Company, Berlin, 2010).
+[104] A. A. Milischuk and B. M. Ladanyi, J. Chem. Phys. 135,             [133] H. Huang, M. Sukop, and X. Lu, Multiphase Lattice Boltzmann
+      174709 (2011).                                                           Method Theory and Application (Wiley Blackwell, Hoboken,
+[105] J. S. Babu and S. P. Sathian, J. Chem. Phys. 134, 194509                 NJ, 2015).
+      (2011).                                                            [134] J. Harting, C. Kunert, and H. J. Herrmann, Europhys. Lett. 75,
+[106] J. A. Thomas and A. J. Mcgaughey, Nano Lett. 8, 2788 (2008).             328 (2005).
+
+
+
+
+                                                                   013306-17
+

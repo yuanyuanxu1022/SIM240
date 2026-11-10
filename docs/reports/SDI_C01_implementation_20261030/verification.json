@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-30",
+  "scope": "IMPLEMENTATION_COMPILE_AND_STATIC_PREPARATION_ONLY",
+  "sealed_case_files": 50,
+  "bound_runtime_libraries": 21,
+  "release_manifest_sha256": "471e333de82ccd8e015eb84f2468d1da1f3efb9c9451426ed39c16389e9479dc",
+  "release_preflight_satisfied": true,
+  "python_syntax": [
+    "tests/test_checker.py",
+    "scripts/build_and_audit.py",
+    "scripts/seal_release.py",
+    "scripts/run_c01.py",
+    "scripts/prepare_c01.py",
+    "analysis/check_results.py"
+  ],
+  "local_links": [
+    {
+      "file": "CASE/interface_static_darcy_v1/README.md",
+      "target": "common/PROTOCOL.md",
+      "exists": true
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1/README.md",
+      "target": "two_dimensional/darcy2d.cpp",
+      "exists": true
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1/README.md",
+      "target": "openfoam/application/depthAveragedDarcyFoam.C",
+      "exists": true
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1/README.md",
+      "target": "analysis/check_results.py",
+      "exists": true
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1/README.md",
+      "target": "scripts/run_c01.py",
+      "exists": true
+    },
+    {
+      "file": "CASE/interface_static_darcy_v1/README.md",
+      "target": "../../docs/reports/Static_Darcy_interface_protocol_20261030/README.md",
+      "exists": true
+    },
+    {
+      "file": "docs/reports/SDI_C01_implementation_20261030/REPORT.md",
+      "target": "../../../CASE/interface_static_darcy_v1/README.md",
+      "exists": true
+    },
+    {
+      "file": "docs/reports/SDI_C01_implementation_20261030/REPORT.md",
+      "target": "../Static_Darcy_interface_protocol_20261030/README.md",
+      "exists": true
+    }
+  ],
+  "two_compiles_exit_zero": true,
+  "synthetic_checker_tests": 11,
+  "synthetic_checker_tests_exit_code": 0,
+  "average_domain_mesh_checked": true,
+  "openfoam_matrix_assembly_audited": true,
+  "clean_environment_audit_satisfied": true,
+  "changed_input_rejected_in_temporary_copy": true,
+  "state_entries_match": true,
+  "later_state_sections_preserved": true,
+  "artifacts": [
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/AI_HANDOFF_20261015.md.diff",
+      "sha256": "1df954967d3ddc3b12063db0573b0d335d489de8dcb314c528f3ac3ebad13cdd"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/REPORT.md",
+      "sha256": "49ebd6d361a648d4304339bfc2fc80afa316fd773b610bae6c0ae9322f56366c"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/SIM240_AI_CONTEXT.md.diff",
+      "sha256": "be2ec0abc18f022bb90ef4a5734fbc2659593cb1a4ddbdd1d2b1acfe94578e84"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/compiler_identity.json",
+      "sha256": "0940cae207e1733120a8973b20d7bcb46617797f950d23106063c4373c642ff3"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/preflight_negative_control.json",
+      "sha256": "27d420e1c1c33c67b2beae5c8a2e24b644fdd1525e64f32efc3b9a39e2d99a9d"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/runtime_environment_audit.json",
+      "sha256": "13d971478b4d68295b1be7ccc7131a74c8e50041d11e28af777f724a5ed8d39a"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/runtime_environment_audit.log",
+      "sha256": "e244d204717ad7b891cbe70fe508dbf75785e65b45f388dcb2136a05cd0e7126"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/source_manifest.json",
+      "sha256": "e7423a167c1240379281d7527a6eb200810c79586ec0ba2b159d9dfdb240b20b"
+    },
+    {
+      "path": "docs/reports/SDI_C01_implementation_20261030/state_sync.json",
+      "sha256": "b5522cc763b474bda4de04d37a0d05c93c09a9cb16b8e55b59b4586268834dc8"
+    }
+  ],
+  "planned_run_id": "SDI_C01_v1_20261030_01",
+  "actual_run_id": null,
+  "source_prepared": true,
+  "compile_checked": true,
+  "mesh_checked": true,
+  "run_completed": false,
+  "pressure_solver_executed": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": true,
+  "geometry_scope": "synthetic_average_domain_only",
+  "independent_human_acceptance": false,
+  "physical_validation": "NOT_EVALUATED"
+}

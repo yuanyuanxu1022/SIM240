@@ -1,0 +1,99 @@
+{
+  "ok": true,
+  "config_and_overwrite_rejections": 18,
+  "stage_guard_negative_tests": 3,
+  "stage_guard_positive_test": 1,
+  "records": [
+    {
+      "case": "dx_zero",
+      "exit_code": 2,
+      "reason": "nonpositive/invalid geometry or material"
+    },
+    {
+      "case": "h_negative",
+      "exit_code": 2,
+      "reason": "nonpositive/invalid geometry or material"
+    },
+    {
+      "case": "d_negative",
+      "exit_code": 2,
+      "reason": "nonpositive/invalid geometry or material"
+    },
+    {
+      "case": "w_equal_period",
+      "exit_code": 2,
+      "reason": "nonpositive/invalid geometry or material"
+    },
+    {
+      "case": "nonaligned",
+      "exit_code": 2,
+      "reason": "geometry must align with lattice cell boundaries"
+    },
+    {
+      "case": "nan",
+      "exit_code": 2,
+      "reason": "invalid finite number: h_nm"
+    },
+    {
+      "case": "inf",
+      "exit_code": 2,
+      "reason": "invalid finite number: nu_m2_s"
+    },
+    {
+      "case": "suffix",
+      "exit_code": 2,
+      "reason": "invalid finite number: dx_nm"
+    },
+    {
+      "case": "bad_direction",
+      "exit_code": 2,
+      "reason": "direction must be P or T"
+    },
+    {
+      "case": "unknown",
+      "exit_code": 2,
+      "reason": "unknown key: surprise"
+    },
+    {
+      "case": "bad_mode",
+      "exit_code": 2,
+      "reason": "invalid mode"
+    },
+    {
+      "case": "runid_path",
+      "exit_code": 2,
+      "reason": "invalid run_id"
+    },
+    {
+      "case": "frames_reverse",
+      "exit_code": 2,
+      "reason": "frame times must be increasing nonnegative"
+    },
+    {
+      "case": "frames_trailing",
+      "exit_code": 2,
+      "reason": "frame schedule must begin at zero and have no trailing comma"
+    },
+    {
+      "case": "window_zero",
+      "exit_code": 2,
+      "reason": "invalid observation times"
+    },
+    {
+      "case": "window_over_cap",
+      "exit_code": 2,
+      "reason": "invalid observation times"
+    },
+    {
+      "case": "huge_grid",
+      "exit_code": 2,
+      "reason": "geometry must align with lattice cell boundaries"
+    },
+    {
+      "case": "overwrite_guard",
+      "exit_code": 2,
+      "reason": "refusing to overwrite existing output"
+    }
+  ],
+  "solver_time_advancement": false
+}

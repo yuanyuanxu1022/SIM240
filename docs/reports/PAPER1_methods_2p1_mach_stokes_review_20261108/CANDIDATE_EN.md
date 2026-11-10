@@ -1,0 +1,5 @@
+# Section 2.1 Mach number and Stokes-condition candidate (not merged)
+
+Replace the current sentence beginning “Maximum Mach numbers range…” without changing the stated values or enlarging the verified scope.
+
+The maximum lattice Mach number is defined as the maximum lattice flow speed divided by the D3Q19 lattice sound speed. Among the existing records described in Supplementary S3, the saved maximum lattice Mach numbers range from $5.7\times10^{-10}$ to $4.1\times10^{-7}$. Even the highest value is about five orders of magnitude below the adopted low-Mach check threshold of 0.05. These records support satisfaction of the low-Mach check for the reported calculations and provide numerical evidence for controlling weak-compressibility effects in the lattice Boltzmann calculation, without independently bounding compressibility error. Low Mach number does not imply negligible inertia, and these values alone do not establish the Stokes approximation for every case. Density and steady-state diagnostics are reported separately (§3.1); the forcing-linearity check at the reference geometry and its scope are described in §2.4.

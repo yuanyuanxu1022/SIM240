@@ -1,0 +1,169 @@
+{
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "actual_run_id": null,
+  "authorized_to_execute": false,
+  "backend_metadata_read_without_import": {
+    "dolfinx-mpc": "0.11.0",
+    "fenics-basix": "0.11.0",
+    "fenics-dolfinx": "0.11.0",
+    "fenics-ffcx": "0.11.0",
+    "mpi4py": "4.1.2",
+    "numpy": "2.5.4",
+    "petsc4py": "3.25.6"
+  },
+  "bound_prior_preflight": {
+    "gauge_check": {
+      "left_kernel_relative": 1.964428335753306e-19,
+      "petsc_nullspace_test": true,
+      "rhs_compatibility_relative_before_projection": 0.0,
+      "rhs_projection_change_L2": 0.0,
+      "right_and_transpose_nullspaces_attached": true,
+      "right_kernel_relative": 1.7091531021232052e-19
+    },
+    "matrix_csr_sha256": "eac8083d785fcf2c0a432b6ca2824ab85bbb321f470184863054a9c45ce655dc",
+    "matrix_shape": [
+      1275,
+      1275
+    ],
+    "mesh_sha256": "3699d077604054967143fdac200d108bba7878ccd1d61e5f26daa9edbb30b4ab",
+    "periodic_mapping_sha256": "c1cb265727e8a0a923d8ba6eb12ef0fb0341ec78ee28994970e883bd0252658f",
+    "planned_id": "B0MIN_MMS_mixed_N8",
+    "rhs_sha256_before_projection": "f59ae748bc15258510012708fa3c5e51328ab17b1ca5aeaaf24ba1b8b0f11bfc"
+  },
+  "candidate": {
+    "actual_run_id": null,
+    "contract_file_sha256": "62061a457793dd4bdf7ddf09e0c053c9b4c1624dce9a9eb2ae0856013d619e12",
+    "contract_sha256": "b10cf21c4cc4263e2df9b23fccf553094aa9f64636bd2fb3d9bc5635b5c1f8d9",
+    "output_paths_unused": true,
+    "proposed_run_id": "D4_N8_diag_v3_1_20261026_v1",
+    "record_dir": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026/D4_N8_diag_v3_1_20261026_v1",
+    "work_dir": "/run/user/1000/sim240_pilot_n8_work_20261026/D4_N8_diag_v3_1_20261026_v1"
+  },
+  "checked_at_Asia_Shanghai": "2026-10-26T16:36:53.147764+08:00",
+  "execution_gate_rejection": "DIAGNOSTIC_RUN_NOT_AUTHORIZED",
+  "existing_tests": {
+    "earlier_suite": 32,
+    "rerun": false,
+    "targeted": 12
+  },
+  "forbidden_backend_modules_loaded": [],
+  "geometry_PASS": null,
+  "live_resource_checks": {
+    "MemAvailable_bytes": 15114969088,
+    "cgroup_parent": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice",
+    "child_group_created": false,
+    "controllers": "memory pids",
+    "durable_record_volume": {
+      "available_bytes": 361696722944,
+      "identity": {
+        "device": "259:2",
+        "filesystem": "ext4",
+        "mount_id": "33",
+        "mount_point": "/",
+        "st_dev": 66306
+      },
+      "persistence_scope": "local filesystem and fsync; not a power-loss or hardware guarantee"
+    },
+    "hard_output_volume": {
+      "capacity_bytes": 536870912,
+      "mechanism": "preexisting_dedicated_tmpfs",
+      "note": "kernel filesystem capacity; inode/metadata exhaustion may fail earlier"
+    },
+    "record": {
+      "available_bytes": 361696722944,
+      "available_inodes": 29877446,
+      "canonical": true,
+      "capacity_bytes": 501809635328,
+      "empty": false,
+      "exists": true,
+      "gid": 1000,
+      "is_directory": true,
+      "mode": "0o700",
+      "mount": {
+        "device": "259:2",
+        "filesystem": "ext4",
+        "mount_id": "33",
+        "options": [
+          "rw",
+          "relatime"
+        ],
+        "point": "/",
+        "super_options": [
+          "rw"
+        ]
+      },
+      "path": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026",
+      "st_dev": 66306,
+      "uid": 1000,
+      "writable": true
+    },
+    "status": "READ_ONLY_TECHNICAL_PREREQUISITES_PASS",
+    "work": {
+      "available_bytes": 536870912,
+      "available_inodes": 4067473,
+      "canonical": true,
+      "capacity_bytes": 536870912,
+      "empty": true,
+      "exists": true,
+      "gid": 1000,
+      "is_directory": true,
+      "mode": "0o700",
+      "mount": {
+        "device": "0:87",
+        "filesystem": "tmpfs",
+        "mount_id": "9170",
+        "options": [
+          "rw",
+          "nosuid",
+          "nodev",
+          "relatime"
+        ],
+        "point": "/run/user/1000/sim240_pilot_n8_work_20261026",
+        "super_options": [
+          "rw",
+          "size=524288k",
+          "mode=700",
+          "uid=1000",
+          "gid=1000",
+          "inode64"
+        ]
+      },
+      "path": "/run/user/1000/sim240_pilot_n8_work_20261026",
+      "st_dev": 87,
+      "uid": 1000,
+      "writable": true
+    }
+  },
+  "new_mesh_or_assembly": false,
+  "package_evidence": {
+    "count": 45,
+    "mismatches": []
+  },
+  "prediction_permission": "HOLD",
+  "prior_v3": {
+    "count": 319,
+    "mismatches": []
+  },
+  "protected_history": {
+    "count": 4233,
+    "mismatches": []
+  },
+  "real_solver_called": false,
+  "source_lock": {
+    "count": 358,
+    "mismatches": []
+  },
+  "static_solver_call_site": {
+    "actually_called": false,
+    "line": 101,
+    "module": "solver.py",
+    "public_release_check_precedes_backend_import": true
+  },
+  "syntax_modules": 17,
+  "technical_readiness": "READY_FOR_USER_REVIEW_OF_ONE_BOUNDED_DIAGNOSTIC",
+  "volume_evidence": {
+    "count": 36,
+    "mismatches": []
+  }
+}

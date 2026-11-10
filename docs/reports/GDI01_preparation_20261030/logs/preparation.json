@@ -1,0 +1,94 @@
+{
+  "checked_at": "2026-10-30T20:43:25.399809+08:00",
+  "protocol_id": "GDI-v1",
+  "case_id": "GDI01",
+  "compile_pass": true,
+  "compile_attempts": [
+    {
+      "log": "reports/compile_attempt1.log",
+      "exit_code": 2
+    },
+    {
+      "log": "reports/compile_attempt2.log",
+      "exit_code": 2
+    },
+    {
+      "log": "reports/compile_attempt3.log",
+      "exit_code": 0
+    }
+  ],
+  "binary_source_binding": [
+    {
+      "path": "application/grooveDarcyStaticFoam.C",
+      "sha256": "8f17736c2df33d83c12bb89d9bb7df5822c552fda6e792ec8e17ed01c66a4656"
+    },
+    {
+      "path": "application/Make/files",
+      "sha256": "b0a7aa048c31fc1a2523c9fb0dc736b6a87debe69178bcb2dfa2bfa569ef7abc"
+    },
+    {
+      "path": "application/Make/options",
+      "sha256": "be857e5b45db2171fe918f09b4d2230b649691e71a5b23a4cbc8a71b65d451ab"
+    },
+    {
+      "path": "build/bin/grooveDarcyStaticFoam",
+      "sha256": "055d404671208f4c43795cda5f02190eb566acd1abc164ece3fc12bf3bdfcd73"
+    }
+  ],
+  "subclass_library_reused": true,
+  "subclass_source_modified": false,
+  "checkMesh_pass": true,
+  "no_solve_audit_pass": true,
+  "checker_tests_pass": true,
+  "checker_unit_tests": 14,
+  "old_CSV_regressions": 8,
+  "negative_native_audits": 4,
+  "commands": [
+    {
+      "argv": [
+        "checkMesh",
+        "-case",
+        "build/audit_case"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "build/bin/grooveDarcyStaticFoam",
+        "-case",
+        "build/audit_case",
+        "-auditOnly"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/audit_case.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tests/test_checker.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "flow_solved": false,
+  "solve_calls": 0,
+  "run_id": null,
+  "run_started": false,
+  "launch_command_delivered": false,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": null,
+  "geometry_PASS": null,
+  "physical_validation": "NOT_EVALUATED",
+  "independent_human_acceptance": false,
+  "peak_RSS_measured": false,
+  "first_flow_convergence_verified": false,
+  "complete_new_run_analysis_exercised": false
+}

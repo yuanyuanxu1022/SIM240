@@ -1,0 +1,49 @@
+{
+  "status": "INTERFACE_DEFINED_NOT_IMPLEMENTED_NOT_RUN",
+  "candidate_model": "fixed_planform_reference_mesh_fully_filled_rigid_uniform_closure",
+  "host_fields": {
+    "mesaGap": {
+      "type": "registered volScalarField",
+      "units": "m",
+      "producer": "host",
+      "consumer": "grooveDarcy",
+      "finite_positive_required": true
+    },
+    "H": {
+      "units": "m",
+      "definition": "mesaGap+(grooveWidth/period)*grooveDepth"
+    },
+    "gap_epoch": {
+      "definition": "same gap snapshot ID and hash used in drag, continuity, flux, force"
+    }
+  },
+  "update_order": [
+    "save_old_gap",
+    "update_new_gap_once",
+    "register_or_update_mesaGap",
+    "compute_same_epoch_H_and_dHdt",
+    "freeze_gap_during_outer_iterations",
+    "assemble_porosity_force",
+    "solve_weighted_pressure_continuity",
+    "audit_volume_flux_and_force",
+    "write_gap_epoch_and_diagnostics"
+  ],
+  "sign_convention": "V_close>0 means dHdt=-V_close",
+  "continuity": "dHdt+div_xy(H*U)=0",
+  "cell_balance": "sum_outward_Q=-A_plan_cell*(H_new-H_old)/dt",
+  "instantaneous_Darcy_pressure": "-div_xy(K*grad(p))=mu*V_close",
+  "native_velocity_flux": "phi_U=U_f dot Sf; reference face area=b0*edge_length",
+  "conserved_depth_flux": "Q_J=(H_face/b0)*phi_U with consistent pressure correction and face reconstruction",
+  "split_pressure_2d": "div_xy(H*rAU*grad(p))=div_xy(H*HbyA)+dHdt",
+  "static_recovery": "dHdt=0 and H=b0 reduce to GDI-v1",
+  "squeezing_velocity_m_s": null,
+  "time_step_s": null,
+  "duration_s": null,
+  "dynamic_thresholds": null,
+  "future_boundary": "to be frozen; four zero-overpressure edges are a distinct candidate from static inlet/outlet",
+  "force": "pressure integral and complete normal stress must be distinguished before reference comparison",
+  "motion_implemented": false,
+  "continuity_implemented": false,
+  "new_run_id": null,
+  "simulation_authorized": false
+}

@@ -1,0 +1,69 @@
+{
+  "revision_id": "URV-S1-A1-v1",
+  "SOURCE_REVISION_AUDIT": "PASS",
+  "binary_sha256": "5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b",
+  "scope": "Adopted source-only removal of S0 capture call sites; all S1 measurements use existing null path; selected observer dataflow and 26 normalized FP/call kernel sequences; not full transitive machine equivalence or formal runtime acceptance",
+  "source_only_delta": "six capture lifecycle lines removed and two measure arguments made null; all other native/header/Makefile bytes preserved",
+  "helper": {
+    "status": "PASS",
+    "three_rounded_multiplies": [
+      "0x2edc4",
+      "0x2edd4",
+      "0x2ede4"
+    ],
+    "stores_and_reloads": true,
+    "explicit_final_FMA": "0x2edf4",
+    "normalized_sequence_matches_A1": true
+  },
+  "measure": {
+    "common_entry": "0x3fc10",
+    "callers": {
+      "initial": "0x243ed",
+      "diagnostic": "0x245e8",
+      "final": "0x24e91",
+      "initialize": "0x26442"
+    },
+    "capture_null_all_calls": true,
+    "one_computeU_and_computeRho_per_cell": [
+      "0x3fe5b",
+      "0x3fe8f"
+    ],
+    "volume": [
+      "0x3ff26 two-dx product",
+      "0x3ff5d third dx product",
+      "0x3ff61 double store",
+      "0x3ff69 reload",
+      "0x3ff71 independent add"
+    ],
+    "legacy_helper_call": "0x3ff81",
+    "compensated_term": [
+      "0x3ff9c",
+      "0x3ffcc",
+      "0x3ffd0",
+      "0x3ffd4"
+    ],
+    "neumaier_two_magnitude_branches": "3ffe4/3ffef-3fff8 and 40918 alternatives; delta40018/4003c-40045 and40900 alternatives",
+    "speed_pressure": "3feb6,3feca,3fecf,3fed4;3feba,3fec2,3fee6,3ff0d",
+    "densityIntegral": "4005b,4006f,40073 FMA",
+    "velocity_integrals_FMA": [
+      "0x4011b",
+      "0x40133",
+      "0x40143"
+    ],
+    "sections": "401a5 and401c5 independent adds",
+    "normalization": "40270 corrected+correction;402d0/402de/402f1/402f5 divisions",
+    "drive_mapping": "P/T section selection only, common measure and unchanged physical source"
+  },
+  "constants_read_from_actual_ELF": {
+    "0xe3da0": 1000.0,
+    "0xe3f20": 1.0,
+    "0xe3c10": 3.0
+  },
+  "selected_kernel_sequences_equal": 26,
+  "compiler_static_and_runtime_library_hashes_unchanged": true,
+  "new_instruction_or_evidence_contradiction": false,
+  "new_Astra_ruling_invoked": false,
+  "full_transitive_machine_equivalence_claimed": false,
+  "cold_paths_exhaustively_proven": false,
+  "formal_simulation_executed": false
+}

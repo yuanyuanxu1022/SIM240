@@ -1,0 +1,105 @@
+{
+  "kind": "DESCRIPTIVE_C01_C02_AXIS_SWAP_COMPARISON",
+  "cases": {
+    "C01": "SDI_C01_v1_20261030_01",
+    "C02": "SDI_C02_v1_1_20261030_01"
+  },
+  "common_parameters_equal": [
+    "H_m",
+    "L_m",
+    "mu_Pa_s",
+    "rho_kg_m3",
+    "mesh_cells",
+    "drive_axis",
+    "G_Pa_per_m",
+    "thresholds",
+    "linear_solver"
+  ],
+  "pressure_mesh_schemes_equal": true,
+  "tensors_swapped": true,
+  "comparison": {
+    "two_dimensional": {
+      "cases": {
+        "C01": {
+          "Q_m3_s": 2.1858216813930507e-18,
+          "Umean_m_s": 3.6430361356540733e-07,
+          "recovered_K_from_U_m3": 4.5537951695675916e-23,
+          "recovered_K_from_Q_m3": 4.553795169568856e-23
+        },
+        "C02": {
+          "Q_m3_s": 4.998726758166358e-18,
+          "Umean_m_s": 8.331211263609563e-07,
+          "recovered_K_from_U_m3": 1.0414014079511954e-22,
+          "recovered_K_from_Q_m3": 1.0414014079513246e-22
+        }
+      },
+      "Q_ratio_C02_over_C01": 2.286886803584366,
+      "analytic_Q_ratio": 2.286886803584717,
+      "ratio_relative_deviation": 1.5343282200319663e-13,
+      "U_ratio_C02_over_C01": 2.286886803584717,
+      "pressure_field_max_absolute_difference_Pa": 1.099209612220875e-11,
+      "pressure_field_max_difference_over_24Pa": 4.580040050920312e-13
+    },
+    "openfoam": {
+      "cases": {
+        "C01": {
+          "Q_m3_s": 2.185821681392935e-18,
+          "Umean_m_s": 3.643036135654074e-07,
+          "recovered_K_from_U_m3": 4.553795169567592e-23,
+          "recovered_K_from_Q_m3": 4.553795169568615e-23
+        },
+        "C02": {
+          "Q_m3_s": 4.998726758167961e-18,
+          "Umean_m_s": 8.331211263609565e-07,
+          "recovered_K_from_U_m3": 1.0414014079511956e-22,
+          "recovered_K_from_Q_m3": 1.0414014079516586e-22
+        }
+      },
+      "Q_ratio_C02_over_C01": 2.28688680358522,
+      "analytic_Q_ratio": 2.286886803584717,
+      "ratio_relative_deviation": 2.2004620348070603e-13,
+      "U_ratio_C02_over_C01": 2.2868868035847174,
+      "pressure_field_max_absolute_difference_Pa": 1.3214318528298463e-11,
+      "pressure_field_max_difference_over_24Pa": 5.505966053457693e-13
+    }
+  },
+  "ratio_role": "descriptive identity, not a newly added numerical gate",
+  "applies_to": "constant-coefficient static pressure-driven average flow only",
+  "squeeze_resistance_ratio": null,
+  "physical_validation": "NOT_EVALUATED",
+  "solver_rerun": false,
+  "sources": [
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/cells.csv",
+      "sha256": "98ea3fada1003501bea6fb32890a6499fdc8fff82674c1bfa753c54d8f80edcc"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/two_dimensional/faces.csv",
+      "sha256": "b83928d8efb3075b864dc0955176a266affdb3a0a6ec4169555da56c0bc02de1"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/cells.csv",
+      "sha256": "ac8eaaf9fc2f7ad2e7803cb61b2754c3f9b0efa8eac1c90bac792ae2ea169cb4"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/two_dimensional/faces.csv",
+      "sha256": "e767a16b8e4525b40ef0df1d10a256eaf5dab4a5dfb2c82b2e536863cb5ec578"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "5360bae99c50e1e7fe0933b7d0e7aee9a01cfaa99239e8d74a69d03d16d7b65f"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "84388c85878e9f234d619fdab633b8cb572f9aa0105d6254573827a44bb383a2"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/cells.csv",
+      "sha256": "6e976f13bcc29219359939f86dca8da77165515ad3d3d9a1511ffa897d60b07c"
+    },
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/openfoam/SDI_output/faces.csv",
+      "sha256": "397994aa98c235c7e935c6031170b3f40f5c5bc71b7eafa52e2b735d4878f9c0"
+    }
+  ]
+}

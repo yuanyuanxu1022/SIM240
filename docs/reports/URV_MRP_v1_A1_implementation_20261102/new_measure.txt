@@ -1,0 +1,839 @@
+0000000000041e40 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]>:
+   41e40:	55                   	push   rbp
+   41e41:	c5 f9 ef c0          	vpxor  xmm0,xmm0,xmm0
+   41e45:	48 89 e5             	mov    rbp,rsp
+   41e48:	41 57                	push   r15
+   41e4a:	49 89 ff             	mov    r15,rdi
+   41e4d:	41 56                	push   r14
+   41e4f:	49 89 ce             	mov    r14,rcx
+   41e52:	41 55                	push   r13
+   41e54:	49 89 f5             	mov    r13,rsi
+   41e57:	41 54                	push   r12
+   41e59:	41 52                	push   r10
+   41e5b:	53                   	push   rbx
+   41e5c:	48 89 d3             	mov    rbx,rdx
+   41e5f:	48 81 ec 90 01 00 00 	sub    rsp,0x190
+   41e66:	44 89 85 c4 fe ff ff 	mov    DWORD PTR [rbp-0x13c],r8d
+   41e6d:	4c 89 8d 60 fe ff ff 	mov    QWORD PTR [rbp-0x1a0],r9
+   41e74:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+   41e7b:	00 00 
+   41e7d:	48 89 45 c8          	mov    QWORD PTR [rbp-0x38],rax
+   41e81:	31 c0                	xor    eax,eax
+   41e83:	c5 fe 7f 47 40       	vmovdqu YMMWORD PTR [rdi+0x40],ymm0
+   41e88:	45 85 c0             	test   r8d,r8d
+   41e8b:	c5 fa 7f 87 a0 00 00 	vmovdqu XMMWORD PTR [rdi+0xa0],xmm0
+   41e92:	00 
+   41e93:	c5 fe 7f 07          	vmovdqu YMMWORD PTR [rdi],ymm0
+   41e97:	c5 fe 7f 47 20       	vmovdqu YMMWORD PTR [rdi+0x20],ymm0
+   41e9c:	c5 fe 7f 47 60       	vmovdqu YMMWORD PTR [rdi+0x60],ymm0
+   41ea1:	c5 fe 7f 87 80 00 00 	vmovdqu YMMWORD PTR [rdi+0x80],ymm0
+   41ea8:	00 
+   41ea9:	c5 f9 28 05 cf 68 0a 	vmovapd xmm0,XMMWORD PTR [rip+0xa68cf]        # e8780 <std::piecewise_construct+0x4f8>
+   41eb0:	00 
+   41eb1:	c6 87 a8 00 00 00 01 	mov    BYTE PTR [rdi+0xa8],0x1
+   41eb8:	c5 f9 11 47 40       	vmovupd XMMWORD PTR [rdi+0x40],xmm0
+   41ebd:	0f 85 35 07 00 00    	jne    425f8 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x7b8>
+   41ec3:	8b 05 63 51 0d 00    	mov    eax,DWORD PTR [rip+0xd5163]        # 11702c <(anonymous namespace)::nx>
+   41ec9:	85 c0                	test   eax,eax
+   41ecb:	8d 50 07             	lea    edx,[rax+0x7]
+   41ece:	0f 49 d0             	cmovns edx,eax
+   41ed1:	c1 fa 03             	sar    edx,0x3
+   41ed4:	89 95 80 fe ff ff    	mov    DWORD PTR [rbp-0x180],edx
+   41eda:	89 c2                	mov    edx,eax
+   41edc:	c1 ea 1f             	shr    edx,0x1f
+   41edf:	01 d0                	add    eax,edx
+   41ee1:	d1 f8                	sar    eax,1
+   41ee3:	89 85 84 fe ff ff    	mov    DWORD PTR [rbp-0x17c],eax
+   41ee9:	4c 89 ef             	mov    rdi,r13
+   41eec:	c5 f8 77             	vzeroupper
+   41eef:	e8 0c ef ff ff       	call   40e00 <olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >::setProcessingContext(olb::ProcessingContext) [clone .constprop.0]>
+   41ef4:	48 8b 43 10          	mov    rax,QWORD PTR [rbx+0x10]
+   41ef8:	8b 48 38             	mov    ecx,DWORD PTR [rax+0x38]
+   41efb:	85 c9                	test   ecx,ecx
+   41efd:	0f 8e 75 0d 00 00    	jle    42c78 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xe38>
+   41f03:	c5 e1 57 db          	vxorpd xmm3,xmm3,xmm3
+   41f07:	45 31 e4             	xor    r12d,r12d
+   41f0a:	48 83 bd 60 fe ff ff 	cmp    QWORD PTR [rbp-0x1a0],0x0
+   41f11:	00 
+   41f12:	4c 89 e8             	mov    rax,r13
+   41f15:	c5 f9 29 9d d0 fe ff 	vmovapd XMMWORD PTR [rbp-0x130],xmm3
+   41f1c:	ff 
+   41f1d:	c5 f9 29 9d e0 fe ff 	vmovapd XMMWORD PTR [rbp-0x120],xmm3
+   41f24:	ff 
+   41f25:	0f 84 fd 06 00 00    	je     42628 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x7e8>
+   41f2b:	48 8b 90 00 02 00 00 	mov    rdx,QWORD PTR [rax+0x200]
+   41f32:	44 89 a5 58 fe ff ff 	mov    DWORD PTR [rbp-0x1a8],r12d
+   41f39:	4e 8b 0c e2          	mov    r9,QWORD PTR [rdx+r12*8]
+   41f3d:	48 8b 93 f8 01 00 00 	mov    rdx,QWORD PTR [rbx+0x1f8]
+   41f44:	c6 83 28 02 00 00 01 	mov    BYTE PTR [rbx+0x228],0x1
+   41f4b:	4a 8b 14 e2          	mov    rdx,QWORD PTR [rdx+r12*8]
+   41f4f:	48 89 95 68 fe ff ff 	mov    QWORD PTR [rbp-0x198],rdx
+   41f56:	41 8b 51 08          	mov    edx,DWORD PTR [r9+0x8]
+   41f5a:	85 d2                	test   edx,edx
+   41f5c:	0f 8e 89 05 00 00    	jle    424eb <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x6ab>
+   41f62:	c7 85 78 fe ff ff 00 	mov    DWORD PTR [rbp-0x188],0x0
+   41f69:	00 00 00 
+   41f6c:	41 8b 49 0c          	mov    ecx,DWORD PTR [r9+0xc]
+   41f70:	4c 89 8d b8 fe ff ff 	mov    QWORD PTR [rbp-0x148],r9
+   41f77:	4c 89 a5 50 fe ff ff 	mov    QWORD PTR [rbp-0x1b0],r12
+   41f7e:	48 89 85 48 fe ff ff 	mov    QWORD PTR [rbp-0x1b8],rax
+   41f85:	48 89 9d 40 fe ff ff 	mov    QWORD PTR [rbp-0x1c0],rbx
+   41f8c:	85 c9                	test   ecx,ecx
+   41f8e:	0f 8e 26 05 00 00    	jle    424ba <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x67a>
+   41f94:	48 8b 85 b8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x148]
+   41f9b:	44 8b 68 10          	mov    r13d,DWORD PTR [rax+0x10]
+   41f9f:	31 c0                	xor    eax,eax
+   41fa1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+   41fa8:	c5 f9 6e 9d 78 fe ff 	vmovd  xmm3,DWORD PTR [rbp-0x188]
+   41faf:	ff 
+   41fb0:	45 85 ed             	test   r13d,r13d
+   41fb3:	c4 e3 61 22 d8 01    	vpinsrd xmm3,xmm3,eax,0x1
+   41fb9:	c5 f9 d6 9d c8 fe ff 	vmovq  QWORD PTR [rbp-0x138],xmm3
+   41fc0:	ff 
+   41fc1:	0f 8e e9 04 00 00    	jle    424b0 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x670>
+   41fc7:	8b 95 c4 fe ff ff    	mov    edx,DWORD PTR [rbp-0x13c]
+   41fcd:	8b 8d 78 fe ff ff    	mov    ecx,DWORD PTR [rbp-0x188]
+   41fd3:	89 85 74 fe ff ff    	mov    DWORD PTR [rbp-0x18c],eax
+   41fd9:	4c 8d a5 20 ff ff ff 	lea    r12,[rbp-0xe0]
+   41fe0:	85 d2                	test   edx,edx
+   41fe2:	0f 45 c8             	cmovne ecx,eax
+   41fe5:	4c 89 f8             	mov    rax,r15
+   41fe8:	31 db                	xor    ebx,ebx
+   41fea:	45 89 ef             	mov    r15d,r13d
+   41fed:	49 89 c5             	mov    r13,rax
+   41ff0:	89 8d c0 fe ff ff    	mov    DWORD PTR [rbp-0x140],ecx
+   41ff6:	eb 14                	jmp    4200c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x1cc>
+   41ff8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+   41fff:	00 
+   42000:	83 c3 01             	add    ebx,0x1
+   42003:	44 39 fb             	cmp    ebx,r15d
+   42006:	0f 8d 80 04 00 00    	jge    4248c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x64c>
+   4200c:	48 8b 85 c8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x138]
+   42013:	48 8b bd 68 fe ff ff 	mov    rdi,QWORD PTR [rbp-0x198]
+   4201a:	4c 89 e6             	mov    rsi,r12
+   4201d:	89 9d 28 ff ff ff    	mov    DWORD PTR [rbp-0xd8],ebx
+   42023:	48 89 85 20 ff ff ff 	mov    QWORD PTR [rbp-0xe0],rax
+   4202a:	e8 81 69 02 00       	call   689b0 <olb::BlockGeometry<double, 3u>::getMaterial(olb::Vector<int, 3u>) const>
+   4202f:	83 f8 01             	cmp    eax,0x1
+   42032:	75 cc                	jne    42000 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x1c0>
+   42034:	48 8b 85 c8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x138]
+   4203b:	48 8b b5 b8 fe ff ff 	mov    rsi,QWORD PTR [rbp-0x148]
+   42042:	48 8d 95 00 ff ff ff 	lea    rdx,[rbp-0x100]
+   42049:	4c 89 e7             	mov    rdi,r12
+   4204c:	48 89 95 b0 fe ff ff 	mov    QWORD PTR [rbp-0x150],rdx
+   42053:	4c 8d 3d 66 7c 00 00 	lea    r15,[rip+0x7c66]        # 49cc0 <olb::ConcreteBlockLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>::getDynamics(unsigned int)>
+   4205a:	48 89 85 00 ff ff ff 	mov    QWORD PTR [rbp-0x100],rax
+   42061:	89 9d 08 ff ff ff    	mov    DWORD PTR [rbp-0xf8],ebx
+   42067:	e8 44 6d 02 00       	call   68db0 <olb::BlockLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >::get(olb::Vector<int, 3u>)>
+   4206c:	48 8b bd 28 ff ff ff 	mov    rdi,QWORD PTR [rbp-0xd8]
+   42073:	c5 f9 ef c0          	vpxor  xmm0,xmm0,xmm0
+   42077:	48 c7 85 10 ff ff ff 	mov    QWORD PTR [rbp-0xf0],0x0
+   4207e:	00 00 00 00 
+   42082:	48 8b b5 20 ff ff ff 	mov    rsi,QWORD PTR [rbp-0xe0]
+   42089:	48 8b 95 b0 fe ff ff 	mov    rdx,QWORD PTR [rbp-0x150]
+   42090:	c5 f9 7f 85 00 ff ff 	vmovdqa XMMWORD PTR [rbp-0x100],xmm0
+   42097:	ff 
+   42098:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   4209b:	48 8b 40 58          	mov    rax,QWORD PTR [rax+0x58]
+   4209f:	4c 39 f8             	cmp    rax,r15
+   420a2:	0f 85 38 05 00 00    	jne    425e0 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x7a0>
+   420a8:	48 8b 87 48 01 00 00 	mov    rax,QWORD PTR [rdi+0x148]
+   420af:	89 f6                	mov    esi,esi
+   420b1:	48 8b 3c f0          	mov    rdi,QWORD PTR [rax+rsi*8]
+   420b5:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   420b8:	4c 89 e6             	mov    rsi,r12
+   420bb:	ff 50 40             	call   QWORD PTR [rax+0x40]
+   420be:	48 8b bd 28 ff ff ff 	mov    rdi,QWORD PTR [rbp-0xd8]
+   420c5:	48 8b b5 20 ff ff ff 	mov    rsi,QWORD PTR [rbp-0xe0]
+   420cc:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   420cf:	48 8b 40 58          	mov    rax,QWORD PTR [rax+0x58]
+   420d3:	4c 39 f8             	cmp    rax,r15
+   420d6:	0f 85 f4 04 00 00    	jne    425d0 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x790>
+   420dc:	48 8b 87 48 01 00 00 	mov    rax,QWORD PTR [rdi+0x148]
+   420e3:	89 f6                	mov    esi,esi
+   420e5:	48 8b 3c f0          	mov    rdi,QWORD PTR [rax+rsi*8]
+   420e9:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   420ec:	4c 89 e6             	mov    rsi,r12
+   420ef:	ff 50 38             	call   QWORD PTR [rax+0x38]
+   420f2:	8b 8d 74 fe ff ff    	mov    ecx,DWORD PTR [rbp-0x18c]
+   420f8:	8b 95 78 fe ff ff    	mov    edx,DWORD PTR [rbp-0x188]
+   420fe:	41 89 d8             	mov    r8d,ebx
+   42101:	8b b5 58 fe ff ff    	mov    esi,DWORD PTR [rbp-0x1a8]
+   42107:	48 8b bd 60 fe ff ff 	mov    rdi,QWORD PTR [rbp-0x1a0]
+   4210e:	c5 fb 11 85 b0 fe ff 	vmovsd QWORD PTR [rbp-0x150],xmm0
+   42115:	ff 
+   42116:	e8 a5 cb 01 00       	call   5ecc0 <mrp::DensityCapture::append(int, int, int, int, double)>
+   4211b:	c5 fb 10 8d 08 ff ff 	vmovsd xmm1,QWORD PTR [rbp-0xf8]
+   42122:	ff 
+   42123:	c5 fb 10 85 00 ff ff 	vmovsd xmm0,QWORD PTR [rbp-0x100]
+   4212a:	ff 
+   4212b:	c5 fb 10 ad 10 ff ff 	vmovsd xmm5,QWORD PTR [rbp-0xf0]
+   42132:	ff 
+   42133:	41 80 be a0 00 00 00 	cmp    BYTE PTR [r14+0xa0],0x0
+   4213a:	00 
+   4213b:	c5 f3 59 c9          	vmulsd xmm1,xmm1,xmm1
+   4213f:	c5 fb 10 a5 b0 fe ff 	vmovsd xmm4,QWORD PTR [rbp-0x150]
+   42146:	ff 
+   42147:	c5 db 5c 3d 91 65 0a 	vsubsd xmm7,xmm4,QWORD PTR [rip+0xa6591]        # e86e0 <std::piecewise_construct+0x458>
+   4214e:	00 
+   4214f:	c5 c3 5e 35 f9 61 0a 	vdivsd xmm6,xmm7,QWORD PTR [rip+0xa61f9]        # e8350 <std::piecewise_construct+0xc8>
+   42156:	00 
+   42157:	c4 e2 f1 99 c0       	vfmadd132sd xmm0,xmm1,xmm0
+   4215c:	c4 e2 f9 99 ed       	vfmadd132sd xmm5,xmm0,xmm5
+   42161:	c5 d3 51 ed          	vsqrtsd xmm5,xmm5,xmm5
+   42165:	0f 84 d8 d3 fd ff    	je     1f543 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0] [clone .cold]>
+   4216b:	41 80 be f0 00 00 00 	cmp    BYTE PTR [r14+0xf0],0x0
+   42172:	00 
+   42173:	c4 c1 4b 59 b6 98 00 	vmulsd xmm6,xmm6,QWORD PTR [r14+0x98]
+   4217a:	00 00 
+   4217c:	0f 84 c1 d3 fd ff    	je     1f543 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0] [clone .cold]>
+   42182:	c5 fb 10 15 e6 4e 0d 	vmovsd xmm2,QWORD PTR [rip+0xd4ee6]        # 117070 <(anonymous namespace)::dx>
+   42189:	00 
+   4218a:	c5 f9 28 9d e0 fe ff 	vmovapd xmm3,XMMWORD PTR [rbp-0x120]
+   42191:	ff 
+   42192:	c5 fb 11 bd 90 fe ff 	vmovsd QWORD PTR [rbp-0x170],xmm7
+   42199:	ff 
+   4219a:	c4 c1 4b 58 b6 e8 00 	vaddsd xmm6,xmm6,QWORD PTR [r14+0xe8]
+   421a1:	00 00 
+   421a3:	c5 7b 10 85 d0 fe ff 	vmovsd xmm8,QWORD PTR [rbp-0x130]
+   421aa:	ff 
+   421ab:	c5 fb 11 ad 98 fe ff 	vmovsd QWORD PTR [rbp-0x168],xmm5
+   421b2:	ff 
+   421b3:	c5 eb 59 c2          	vmulsd xmm0,xmm2,xmm2
+   421b7:	c5 fb 10 0d 29 63 0a 	vmovsd xmm1,QWORD PTR [rip+0xa6329]        # e84e8 <std::piecewise_construct+0x260>
+   421be:	00 
+   421bf:	c5 f9 13 9d 88 fe ff 	vmovlpd QWORD PTR [rbp-0x178],xmm3
+   421c6:	ff 
+   421c7:	c4 c1 7b 10 5d 10    	vmovsd xmm3,QWORD PTR [r13+0x10]
+   421cd:	49 83 45 00 01       	add    QWORD PTR [r13+0x0],0x1
+   421d2:	c5 7b 11 85 a0 fe ff 	vmovsd QWORD PTR [rbp-0x160],xmm8
+   421d9:	ff 
+   421da:	c5 fb 11 b5 a8 fe ff 	vmovsd QWORD PTR [rbp-0x158],xmm6
+   421e1:	ff 
+   421e2:	c5 fb 11 a5 b0 fe ff 	vmovsd QWORD PTR [rbp-0x150],xmm4
+   421e9:	ff 
+   421ea:	c5 fb 59 c2          	vmulsd xmm0,xmm0,xmm2
+   421ee:	c5 fb 11 85 f8 fe ff 	vmovsd QWORD PTR [rbp-0x108],xmm0
+   421f5:	ff 
+   421f6:	c5 fb 10 85 f8 fe ff 	vmovsd xmm0,QWORD PTR [rbp-0x108]
+   421fd:	ff 
+   421fe:	c4 c1 7b 58 45 08    	vaddsd xmm0,xmm0,QWORD PTR [r13+0x8]
+   42204:	c4 c1 7b 11 45 08    	vmovsd QWORD PTR [r13+0x8],xmm0
+   4220a:	c5 db 10 c4          	vmovsd xmm0,xmm4,xmm4
+   4220e:	e8 ad e6 fe ff       	call   308c0 <mrp::legacyMass(double, double, double, double)>
+   42213:	c5 fb 10 a5 b0 fe ff 	vmovsd xmm4,QWORD PTR [rbp-0x150]
+   4221a:	ff 
+   4221b:	c5 fb 10 0d 4d 4e 0d 	vmovsd xmm1,QWORD PTR [rip+0xd4e4d]        # 117070 <(anonymous namespace)::dx>
+   42222:	00 
+   42223:	c4 c1 7b 11 45 10    	vmovsd QWORD PTR [r13+0x10],xmm0
+   42229:	c5 db 59 05 b7 62 0a 	vmulsd xmm0,xmm4,QWORD PTR [rip+0xa62b7]        # e84e8 <std::piecewise_construct+0x260>
+   42230:	00 
+   42231:	c5 7b 10 85 a0 fe ff 	vmovsd xmm8,QWORD PTR [rbp-0x160]
+   42238:	ff 
+   42239:	c5 39 54 0d 4f 60 0a 	vandpd xmm9,xmm8,XMMWORD PTR [rip+0xa604f]        # e8290 <std::piecewise_construct+0x8>
+   42240:	00 
+   42241:	c5 fb 10 b5 a8 fe ff 	vmovsd xmm6,QWORD PTR [rbp-0x158]
+   42248:	ff 
+   42249:	c5 fb 10 ad 98 fe ff 	vmovsd xmm5,QWORD PTR [rbp-0x168]
+   42250:	ff 
+   42251:	c5 fb 10 bd 90 fe ff 	vmovsd xmm7,QWORD PTR [rbp-0x170]
+   42258:	ff 
+   42259:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   4225d:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   42261:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   42265:	c5 f9 54 15 23 60 0a 	vandpd xmm2,xmm0,XMMWORD PTR [rip+0xa6023]        # e8290 <std::piecewise_construct+0x8>
+   4226c:	00 
+   4226d:	c5 79 2f ca          	vcomisd xmm9,xmm2
+   42271:	c4 c1 7b 58 d8       	vaddsd xmm3,xmm0,xmm8
+   42276:	0f 82 3c 03 00 00    	jb     425b8 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x778>
+   4227c:	c5 3b 5c c3          	vsubsd xmm8,xmm8,xmm3
+   42280:	c5 3b 58 c0          	vaddsd xmm8,xmm8,xmm0
+   42284:	c5 bb 58 95 88 fe ff 	vaddsd xmm2,xmm8,QWORD PTR [rbp-0x178]
+   4228b:	ff 
+   4228c:	c5 fb 10 85 e8 fe ff 	vmovsd xmm0,QWORD PTR [rbp-0x118]
+   42293:	ff 
+   42294:	c5 79 54 15 f4 5f 0a 	vandpd xmm10,xmm0,XMMWORD PTR [rip+0xa5ff4]        # e8290 <std::piecewise_construct+0x8>
+   4229b:	00 
+   4229c:	c5 7b 10 85 d8 fe ff 	vmovsd xmm8,QWORD PTR [rbp-0x128]
+   422a3:	ff 
+   422a4:	c5 43 58 c8          	vaddsd xmm9,xmm7,xmm0
+   422a8:	c4 c1 69 14 d1       	vunpcklpd xmm2,xmm2,xmm9
+   422ad:	c5 f9 29 95 e0 fe ff 	vmovapd XMMWORD PTR [rbp-0x120],xmm2
+   422b4:	ff 
+   422b5:	c5 c1 54 15 d3 5f 0a 	vandpd xmm2,xmm7,XMMWORD PTR [rip+0xa5fd3]        # e8290 <std::piecewise_construct+0x8>
+   422bc:	00 
+   422bd:	c5 79 2f d2          	vcomisd xmm10,xmm2
+   422c1:	0f 82 d9 02 00 00    	jb     425a0 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x760>
+   422c7:	c4 c1 7b 5c c1       	vsubsd xmm0,xmm0,xmm9
+   422cc:	c5 fb 58 c7          	vaddsd xmm0,xmm0,xmm7
+   422d0:	c4 41 7b 58 c0       	vaddsd xmm8,xmm0,xmm8
+   422d5:	c5 db 59 c1          	vmulsd xmm0,xmm4,xmm1
+   422d9:	c4 c1 6b 5f 55 30    	vmaxsd xmm2,xmm2,QWORD PTR [r13+0x30]
+   422df:	41 0f b6 85 a8 00 00 	movzx  eax,BYTE PTR [r13+0xa8]
+   422e6:	00 
+   422e7:	c4 c1 61 14 d8       	vunpcklpd xmm3,xmm3,xmm8
+   422ec:	c5 f9 29 9d d0 fe ff 	vmovapd XMMWORD PTR [rbp-0x130],xmm3
+   422f3:	ff 
+   422f4:	84 c0                	test   al,al
+   422f6:	c4 c1 7b 11 55 30    	vmovsd QWORD PTR [r13+0x30],xmm2
+   422fc:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   42300:	c4 c2 f1 a9 45 28    	vfmadd213sd xmm0,xmm1,QWORD PTR [r13+0x28]
+   42306:	c4 c1 7b 11 45 28    	vmovsd QWORD PTR [r13+0x28],xmm0
+   4230c:	c4 c1 53 5f 45 38    	vmaxsd xmm0,xmm5,QWORD PTR [r13+0x38]
+   42312:	c4 c1 7b 11 45 38    	vmovsd QWORD PTR [r13+0x38],xmm0
+   42318:	c4 c1 4b 5d 45 40    	vminsd xmm0,xmm6,QWORD PTR [r13+0x40]
+   4231e:	c4 c1 7b 11 45 40    	vmovsd QWORD PTR [r13+0x40],xmm0
+   42324:	c4 c1 4b 5f 45 48    	vmaxsd xmm0,xmm6,QWORD PTR [r13+0x48]
+   4232a:	c4 c1 7b 11 45 48    	vmovsd QWORD PTR [r13+0x48],xmm0
+   42330:	74 3e                	je     42370 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x530>
+   42332:	c5 d9 54 25 56 5f 0a 	vandpd xmm4,xmm4,XMMWORD PTR [rip+0xa5f56]        # e8290 <std::piecewise_construct+0x8>
+   42339:	00 
+   4233a:	c5 fb 10 05 ae 60 0a 	vmovsd xmm0,QWORD PTR [rip+0xa60ae]        # e83f0 <std::piecewise_construct+0x168>
+   42341:	00 
+   42342:	31 c0                	xor    eax,eax
+   42344:	c5 f9 2e c4          	vucomisd xmm0,xmm4
+   42348:	72 26                	jb     42370 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x530>
+   4234a:	c5 d1 54 2d 3e 5f 0a 	vandpd xmm5,xmm5,XMMWORD PTR [rip+0xa5f3e]        # e8290 <std::piecewise_construct+0x8>
+   42351:	00 
+   42352:	c5 f9 2e c5          	vucomisd xmm0,xmm5
+   42356:	72 18                	jb     42370 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x530>
+   42358:	c5 c9 54 35 30 5f 0a 	vandpd xmm6,xmm6,XMMWORD PTR [rip+0xa5f30]        # e8290 <std::piecewise_construct+0x8>
+   4235f:	00 
+   42360:	c5 f9 2e c6          	vucomisd xmm0,xmm6
+   42364:	0f 93 c0             	setae  al
+   42367:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+   4236e:	00 00 
+   42370:	41 80 7e 40 00       	cmp    BYTE PTR [r14+0x40],0x0
+   42375:	c5 fb 10 85 00 ff ff 	vmovsd xmm0,QWORD PTR [rbp-0x100]
+   4237c:	ff 
+   4237d:	0f 84 c0 d1 fd ff    	je     1f543 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0] [clone .cold]>
+   42383:	c4 c1 7b 10 66 38    	vmovsd xmm4,QWORD PTR [r14+0x38]
+   42389:	c5 f3 10 d1          	vmovsd xmm2,xmm1,xmm1
+   4238d:	84 c0                	test   al,al
+   4238f:	c5 db 59 b5 10 ff ff 	vmulsd xmm6,xmm4,QWORD PTR [rbp-0xf0]
+   42396:	ff 
+   42397:	c5 fb 59 dc          	vmulsd xmm3,xmm0,xmm4
+   4239b:	c5 db 59 a5 08 ff ff 	vmulsd xmm4,xmm4,QWORD PTR [rbp-0xf8]
+   423a2:	ff 
+   423a3:	c5 f3 59 c3          	vmulsd xmm0,xmm1,xmm3
+   423a7:	c5 f3 59 ec          	vmulsd xmm5,xmm1,xmm4
+   423ab:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   423af:	c5 d3 59 e9          	vmulsd xmm5,xmm5,xmm1
+   423b3:	c4 c2 f9 a9 55 50    	vfmadd213sd xmm2,xmm0,QWORD PTR [r13+0x50]
+   423b9:	c4 c1 7b 11 55 50    	vmovsd QWORD PTR [r13+0x50],xmm2
+   423bf:	c5 f3 59 d6          	vmulsd xmm2,xmm1,xmm6
+   423c3:	c5 eb 59 d1          	vmulsd xmm2,xmm2,xmm1
+   423c7:	c4 c2 f1 a9 55 60    	vfmadd213sd xmm2,xmm1,QWORD PTR [r13+0x60]
+   423cd:	c4 c2 d1 a9 4d 58    	vfmadd213sd xmm1,xmm5,QWORD PTR [r13+0x58]
+   423d3:	c4 c1 7b 11 4d 58    	vmovsd QWORD PTR [r13+0x58],xmm1
+   423d9:	0f 84 a7 08 00 00    	je     42c86 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xe46>
+   423df:	c5 e1 54 1d a9 5e 0a 	vandpd xmm3,xmm3,XMMWORD PTR [rip+0xa5ea9]        # e8290 <std::piecewise_construct+0x8>
+   423e6:	00 
+   423e7:	c5 fb 10 0d 01 60 0a 	vmovsd xmm1,QWORD PTR [rip+0xa6001]        # e83f0 <std::piecewise_construct+0x168>
+   423ee:	00 
+   423ef:	c5 f9 2e cb          	vucomisd xmm1,xmm3
+   423f3:	0f 82 8d 08 00 00    	jb     42c86 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xe46>
+   423f9:	c5 d9 54 25 8f 5e 0a 	vandpd xmm4,xmm4,XMMWORD PTR [rip+0xa5e8f]        # e8290 <std::piecewise_construct+0x8>
+   42400:	00 
+   42401:	c5 f9 2e cc          	vucomisd xmm1,xmm4
+   42405:	0f 82 7b 08 00 00    	jb     42c86 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xe46>
+   4240b:	c5 c9 54 35 7d 5e 0a 	vandpd xmm6,xmm6,XMMWORD PTR [rip+0xa5e7d]        # e8290 <std::piecewise_construct+0x8>
+   42412:	00 
+   42413:	c5 f9 2e ce          	vucomisd xmm1,xmm6
+   42417:	0f 93 c0             	setae  al
+   4241a:	41 88 85 a8 00 00 00 	mov    BYTE PTR [r13+0xa8],al
+   42421:	8b 85 c4 fe ff ff    	mov    eax,DWORD PTR [rbp-0x13c]
+   42427:	c4 c1 7b 11 55 60    	vmovsd QWORD PTR [r13+0x60],xmm2
+   4242d:	85 c0                	test   eax,eax
+   4242f:	74 04                	je     42435 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x5f5>
+   42431:	c5 d3 10 c5          	vmovsd xmm0,xmm5,xmm5
+   42435:	8b 8d c0 fe ff ff    	mov    ecx,DWORD PTR [rbp-0x140]
+   4243b:	39 8d 80 fe ff ff    	cmp    DWORD PTR [rbp-0x180],ecx
+   42441:	75 12                	jne    42455 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x615>
+   42443:	c4 c1 7b 58 8d 98 00 	vaddsd xmm1,xmm0,QWORD PTR [r13+0x98]
+   4244a:	00 00 
+   4244c:	c4 c1 7b 11 8d 98 00 	vmovsd QWORD PTR [r13+0x98],xmm1
+   42453:	00 00 
+   42455:	8b 8d c0 fe ff ff    	mov    ecx,DWORD PTR [rbp-0x140]
+   4245b:	39 8d 84 fe ff ff    	cmp    DWORD PTR [rbp-0x17c],ecx
+   42461:	75 12                	jne    42475 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x635>
+   42463:	c4 c1 7b 58 85 a0 00 	vaddsd xmm0,xmm0,QWORD PTR [r13+0xa0]
+   4246a:	00 00 
+   4246c:	c4 c1 7b 11 85 a0 00 	vmovsd QWORD PTR [r13+0xa0],xmm0
+   42473:	00 00 
+   42475:	48 8b 85 b8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x148]
+   4247c:	83 c3 01             	add    ebx,0x1
+   4247f:	44 8b 78 10          	mov    r15d,DWORD PTR [rax+0x10]
+   42483:	44 39 fb             	cmp    ebx,r15d
+   42486:	0f 8c 80 fb ff ff    	jl     4200c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x1cc>
+   4248c:	4c 89 e9             	mov    rcx,r13
+   4248f:	45 89 fd             	mov    r13d,r15d
+   42492:	8b 85 74 fe ff ff    	mov    eax,DWORD PTR [rbp-0x18c]
+   42498:	49 89 cf             	mov    r15,rcx
+   4249b:	48 8b 8d b8 fe ff ff 	mov    rcx,QWORD PTR [rbp-0x148]
+   424a2:	83 c0 01             	add    eax,0x1
+   424a5:	8b 49 0c             	mov    ecx,DWORD PTR [rcx+0xc]
+   424a8:	39 c1                	cmp    ecx,eax
+   424aa:	0f 8f f8 fa ff ff    	jg     41fa8 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x168>
+   424b0:	48 8b 85 b8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x148]
+   424b7:	8b 50 08             	mov    edx,DWORD PTR [rax+0x8]
+   424ba:	83 85 78 fe ff ff 01 	add    DWORD PTR [rbp-0x188],0x1
+   424c1:	8b 85 78 fe ff ff    	mov    eax,DWORD PTR [rbp-0x188]
+   424c7:	39 d0                	cmp    eax,edx
+   424c9:	0f 8c bd fa ff ff    	jl     41f8c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x14c>
+   424cf:	48 8b 9d 40 fe ff ff 	mov    rbx,QWORD PTR [rbp-0x1c0]
+   424d6:	4c 8b a5 50 fe ff ff 	mov    r12,QWORD PTR [rbp-0x1b0]
+   424dd:	48 8b 85 48 fe ff ff 	mov    rax,QWORD PTR [rbp-0x1b8]
+   424e4:	48 8b 53 10          	mov    rdx,QWORD PTR [rbx+0x10]
+   424e8:	8b 4a 38             	mov    ecx,DWORD PTR [rdx+0x38]
+   424eb:	49 83 c4 01          	add    r12,0x1
+   424ef:	44 39 e1             	cmp    ecx,r12d
+   424f2:	0f 8f 33 fa ff ff    	jg     41f2b <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xeb>
+   424f8:	c5 f9 28 9d d0 fe ff 	vmovapd xmm3,XMMWORD PTR [rbp-0x130]
+   424ff:	ff 
+   42500:	41 0f b6 87 a8 00 00 	movzx  eax,BYTE PTR [r15+0xa8]
+   42507:	00 
+   42508:	c5 e1 58 85 e0 fe ff 	vaddpd xmm0,xmm3,XMMWORD PTR [rbp-0x120]
+   4250f:	ff 
+   42510:	c4 c1 7b 10 4f 08    	vmovsd xmm1,QWORD PTR [r15+0x8]
+   42516:	84 c0                	test   al,al
+   42518:	c4 c1 79 11 47 18    	vmovupd XMMWORD PTR [r15+0x18],xmm0
+   4251e:	0f 85 bc 06 00 00    	jne    42be0 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xda0>
+   42524:	c4 c1 79 10 47 50    	vmovupd xmm0,XMMWORD PTR [r15+0x50]
+   4252a:	c5 fb 12 d1          	vmovddup xmm2,xmm1
+   4252e:	c5 fb 10 1d e2 70 0d 	vmovsd xmm3,QWORD PTR [rip+0xd70e2]        # 119618 <(anonymous namespace)::areaPlan>
+   42535:	00 
+   42536:	41 88 87 a8 00 00 00 	mov    BYTE PTR [r15+0xa8],al
+   4253d:	c5 f9 5e d2          	vdivpd xmm2,xmm0,xmm2
+   42541:	c4 c1 79 11 57 68    	vmovupd XMMWORD PTR [r15+0x68],xmm2
+   42547:	c5 fb 12 d3          	vmovddup xmm2,xmm3
+   4254b:	c5 f9 5e c2          	vdivpd xmm0,xmm0,xmm2
+   4254f:	c4 c1 79 11 87 80 00 	vmovupd XMMWORD PTR [r15+0x80],xmm0
+   42556:	00 00 
+   42558:	c4 c1 7b 10 47 60    	vmovsd xmm0,QWORD PTR [r15+0x60]
+   4255e:	c5 fb 5e c9          	vdivsd xmm1,xmm0,xmm1
+   42562:	c5 fb 5e c3          	vdivsd xmm0,xmm0,xmm3
+   42566:	c4 c1 7b 11 4f 78    	vmovsd QWORD PTR [r15+0x78],xmm1
+   4256c:	c4 c1 7b 11 87 90 00 	vmovsd QWORD PTR [r15+0x90],xmm0
+   42573:	00 00 
+   42575:	48 8b 45 c8          	mov    rax,QWORD PTR [rbp-0x38]
+   42579:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+   42580:	00 00 
+   42582:	0f 85 05 07 00 00    	jne    42c8d <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xe4d>
+   42588:	48 81 c4 90 01 00 00 	add    rsp,0x190
+   4258f:	4c 89 f8             	mov    rax,r15
+   42592:	5b                   	pop    rbx
+   42593:	41 5a                	pop    r10
+   42595:	41 5c                	pop    r12
+   42597:	41 5d                	pop    r13
+   42599:	41 5e                	pop    r14
+   4259b:	41 5f                	pop    r15
+   4259d:	5d                   	pop    rbp
+   4259e:	c3                   	ret
+   4259f:	90                   	nop
+   425a0:	c4 c1 43 5c f9       	vsubsd xmm7,xmm7,xmm9
+   425a5:	c5 c3 58 f8          	vaddsd xmm7,xmm7,xmm0
+   425a9:	c4 41 43 58 c0       	vaddsd xmm8,xmm7,xmm8
+   425ae:	e9 22 fd ff ff       	jmp    422d5 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x495>
+   425b3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+   425b8:	c5 fb 5c c3          	vsubsd xmm0,xmm0,xmm3
+   425bc:	c4 c1 7b 58 c0       	vaddsd xmm0,xmm0,xmm8
+   425c1:	c5 fb 58 95 88 fe ff 	vaddsd xmm2,xmm0,QWORD PTR [rbp-0x178]
+   425c8:	ff 
+   425c9:	e9 be fc ff ff       	jmp    4228c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x44c>
+   425ce:	66 90                	xchg   ax,ax
+   425d0:	ff d0                	call   rax
+   425d2:	48 89 c7             	mov    rdi,rax
+   425d5:	e9 0f fb ff ff       	jmp    420e9 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x2a9>
+   425da:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   425e0:	48 89 95 b0 fe ff ff 	mov    QWORD PTR [rbp-0x150],rdx
+   425e7:	ff d0                	call   rax
+   425e9:	48 8b 95 b0 fe ff ff 	mov    rdx,QWORD PTR [rbp-0x150]
+   425f0:	48 89 c7             	mov    rdi,rax
+   425f3:	e9 bd fa ff ff       	jmp    420b5 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x275>
+   425f8:	8b 05 2a 4a 0d 00    	mov    eax,DWORD PTR [rip+0xd4a2a]        # 117028 <(anonymous namespace)::ny>
+   425fe:	85 c0                	test   eax,eax
+   42600:	8d 50 03             	lea    edx,[rax+0x3]
+   42603:	0f 49 d0             	cmovns edx,eax
+   42606:	c1 fa 02             	sar    edx,0x2
+   42609:	89 95 80 fe ff ff    	mov    DWORD PTR [rbp-0x180],edx
+   4260f:	8d 14 40             	lea    edx,[rax+rax*2]
+   42612:	85 d2                	test   edx,edx
+   42614:	8d 42 03             	lea    eax,[rdx+0x3]
+   42617:	0f 49 c2             	cmovns eax,edx
+   4261a:	c1 f8 02             	sar    eax,0x2
+   4261d:	89 85 84 fe ff ff    	mov    DWORD PTR [rbp-0x17c],eax
+   42623:	e9 c1 f8 ff ff       	jmp    41ee9 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xa9>
+   42628:	4d 89 fd             	mov    r13,r15
+   4262b:	48 8b 90 00 02 00 00 	mov    rdx,QWORD PTR [rax+0x200]
+   42632:	4e 8b 04 e2          	mov    r8,QWORD PTR [rdx+r12*8]
+   42636:	48 8b 93 f8 01 00 00 	mov    rdx,QWORD PTR [rbx+0x1f8]
+   4263d:	c6 83 28 02 00 00 01 	mov    BYTE PTR [rbx+0x228],0x1
+   42644:	4a 8b 14 e2          	mov    rdx,QWORD PTR [rdx+r12*8]
+   42648:	48 89 95 78 fe ff ff 	mov    QWORD PTR [rbp-0x188],rdx
+   4264f:	41 8b 50 08          	mov    edx,DWORD PTR [r8+0x8]
+   42653:	85 d2                	test   edx,edx
+   42655:	0f 8e 2a 05 00 00    	jle    42b85 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xd45>
+   4265b:	c7 85 74 fe ff ff 00 	mov    DWORD PTR [rbp-0x18c],0x0
+   42662:	00 00 00 
+   42665:	41 8b 78 0c          	mov    edi,DWORD PTR [r8+0xc]
+   42669:	4c 89 85 b8 fe ff ff 	mov    QWORD PTR [rbp-0x148],r8
+   42670:	4c 89 a5 60 fe ff ff 	mov    QWORD PTR [rbp-0x1a0],r12
+   42677:	48 89 85 58 fe ff ff 	mov    QWORD PTR [rbp-0x1a8],rax
+   4267e:	48 89 9d 50 fe ff ff 	mov    QWORD PTR [rbp-0x1b0],rbx
+   42685:	85 ff                	test   edi,edi
+   42687:	0f 8e c7 04 00 00    	jle    42b54 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xd14>
+   4268d:	48 8b 85 b8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x148]
+   42694:	31 f6                	xor    esi,esi
+   42696:	44 8b 78 10          	mov    r15d,DWORD PTR [rax+0x10]
+   4269a:	4c 89 e8             	mov    rax,r13
+   4269d:	45 89 fd             	mov    r13d,r15d
+   426a0:	49 89 c7             	mov    r15,rax
+   426a3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+   426a8:	c5 f9 6e 9d 74 fe ff 	vmovd  xmm3,DWORD PTR [rbp-0x18c]
+   426af:	ff 
+   426b0:	45 85 ed             	test   r13d,r13d
+   426b3:	c4 e3 61 22 de 01    	vpinsrd xmm3,xmm3,esi,0x1
+   426b9:	c5 f9 d6 9d c8 fe ff 	vmovq  QWORD PTR [rbp-0x138],xmm3
+   426c0:	ff 
+   426c1:	0f 8e 80 04 00 00    	jle    42b47 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xd07>
+   426c7:	8b bd c4 fe ff ff    	mov    edi,DWORD PTR [rbp-0x13c]
+   426cd:	8b 85 74 fe ff ff    	mov    eax,DWORD PTR [rbp-0x18c]
+   426d3:	89 b5 68 fe ff ff    	mov    DWORD PTR [rbp-0x198],esi
+   426d9:	4c 8d a5 20 ff ff ff 	lea    r12,[rbp-0xe0]
+   426e0:	85 ff                	test   edi,edi
+   426e2:	0f 45 c6             	cmovne eax,esi
+   426e5:	31 db                	xor    ebx,ebx
+   426e7:	89 85 c0 fe ff ff    	mov    DWORD PTR [rbp-0x140],eax
+   426ed:	4c 89 f8             	mov    rax,r15
+   426f0:	45 89 ef             	mov    r15d,r13d
+   426f3:	49 89 c5             	mov    r13,rax
+   426f6:	eb 14                	jmp    4270c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x8cc>
+   426f8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+   426ff:	00 
+   42700:	83 c3 01             	add    ebx,0x1
+   42703:	44 39 fb             	cmp    ebx,r15d
+   42706:	0f 8d 17 04 00 00    	jge    42b23 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xce3>
+   4270c:	48 8b 85 c8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x138]
+   42713:	48 8b bd 78 fe ff ff 	mov    rdi,QWORD PTR [rbp-0x188]
+   4271a:	4c 89 e6             	mov    rsi,r12
+   4271d:	89 9d 28 ff ff ff    	mov    DWORD PTR [rbp-0xd8],ebx
+   42723:	48 89 85 20 ff ff ff 	mov    QWORD PTR [rbp-0xe0],rax
+   4272a:	e8 81 62 02 00       	call   689b0 <olb::BlockGeometry<double, 3u>::getMaterial(olb::Vector<int, 3u>) const>
+   4272f:	83 f8 01             	cmp    eax,0x1
+   42732:	75 cc                	jne    42700 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x8c0>
+   42734:	48 8b 85 c8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x138]
+   4273b:	48 8b b5 b8 fe ff ff 	mov    rsi,QWORD PTR [rbp-0x148]
+   42742:	48 8d 95 00 ff ff ff 	lea    rdx,[rbp-0x100]
+   42749:	4c 89 e7             	mov    rdi,r12
+   4274c:	48 89 95 b0 fe ff ff 	mov    QWORD PTR [rbp-0x150],rdx
+   42753:	4c 8d 3d 66 75 00 00 	lea    r15,[rip+0x7566]        # 49cc0 <olb::ConcreteBlockLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE>, (olb::Platform)0>::getDynamics(unsigned int)>
+   4275a:	48 89 85 00 ff ff ff 	mov    QWORD PTR [rbp-0x100],rax
+   42761:	89 9d 08 ff ff ff    	mov    DWORD PTR [rbp-0xf8],ebx
+   42767:	e8 44 66 02 00       	call   68db0 <olb::BlockLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >::get(olb::Vector<int, 3u>)>
+   4276c:	48 8b bd 28 ff ff ff 	mov    rdi,QWORD PTR [rbp-0xd8]
+   42773:	c5 f9 ef c0          	vpxor  xmm0,xmm0,xmm0
+   42777:	48 c7 85 10 ff ff ff 	mov    QWORD PTR [rbp-0xf0],0x0
+   4277e:	00 00 00 00 
+   42782:	48 8b b5 20 ff ff ff 	mov    rsi,QWORD PTR [rbp-0xe0]
+   42789:	48 8b 95 b0 fe ff ff 	mov    rdx,QWORD PTR [rbp-0x150]
+   42790:	c5 f9 7f 85 00 ff ff 	vmovdqa XMMWORD PTR [rbp-0x100],xmm0
+   42797:	ff 
+   42798:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   4279b:	48 8b 40 58          	mov    rax,QWORD PTR [rax+0x58]
+   4279f:	4c 39 f8             	cmp    rax,r15
+   427a2:	0f 85 b8 04 00 00    	jne    42c60 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xe20>
+   427a8:	48 8b 87 48 01 00 00 	mov    rax,QWORD PTR [rdi+0x148]
+   427af:	89 f6                	mov    esi,esi
+   427b1:	48 8b 3c f0          	mov    rdi,QWORD PTR [rax+rsi*8]
+   427b5:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   427b8:	4c 89 e6             	mov    rsi,r12
+   427bb:	ff 50 40             	call   QWORD PTR [rax+0x40]
+   427be:	48 8b bd 28 ff ff ff 	mov    rdi,QWORD PTR [rbp-0xd8]
+   427c5:	48 8b b5 20 ff ff ff 	mov    rsi,QWORD PTR [rbp-0xe0]
+   427cc:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   427cf:	48 8b 40 58          	mov    rax,QWORD PTR [rax+0x58]
+   427d3:	4c 39 f8             	cmp    rax,r15
+   427d6:	0f 85 74 04 00 00    	jne    42c50 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xe10>
+   427dc:	48 8b 87 48 01 00 00 	mov    rax,QWORD PTR [rdi+0x148]
+   427e3:	89 f6                	mov    esi,esi
+   427e5:	48 8b 3c f0          	mov    rdi,QWORD PTR [rax+rsi*8]
+   427e9:	48 8b 07             	mov    rax,QWORD PTR [rdi]
+   427ec:	4c 89 e6             	mov    rsi,r12
+   427ef:	ff 50 38             	call   QWORD PTR [rax+0x38]
+   427f2:	c5 fb 10 8d 08 ff ff 	vmovsd xmm1,QWORD PTR [rbp-0xf8]
+   427f9:	ff 
+   427fa:	c5 fb 10 ad 10 ff ff 	vmovsd xmm5,QWORD PTR [rbp-0xf0]
+   42801:	ff 
+   42802:	c5 fb 10 e0          	vmovsd xmm4,xmm0,xmm0
+   42806:	c5 fb 10 85 00 ff ff 	vmovsd xmm0,QWORD PTR [rbp-0x100]
+   4280d:	ff 
+   4280e:	c5 5b 5c 05 ca 5e 0a 	vsubsd xmm8,xmm4,QWORD PTR [rip+0xa5eca]        # e86e0 <std::piecewise_construct+0x458>
+   42815:	00 
+   42816:	c5 bb 5e 35 32 5b 0a 	vdivsd xmm6,xmm8,QWORD PTR [rip+0xa5b32]        # e8350 <std::piecewise_construct+0xc8>
+   4281d:	00 
+   4281e:	c5 f3 59 c9          	vmulsd xmm1,xmm1,xmm1
+   42822:	41 80 be a0 00 00 00 	cmp    BYTE PTR [r14+0xa0],0x0
+   42829:	00 
+   4282a:	c5 7b 11 85 90 fe ff 	vmovsd QWORD PTR [rbp-0x170],xmm8
+   42831:	ff 
+   42832:	c4 e2 f1 99 c0       	vfmadd132sd xmm0,xmm1,xmm0
+   42837:	c4 e2 f9 99 ed       	vfmadd132sd xmm5,xmm0,xmm5
+   4283c:	c5 d3 51 ed          	vsqrtsd xmm5,xmm5,xmm5
+   42840:	c5 fb 11 ad 88 fe ff 	vmovsd QWORD PTR [rbp-0x178],xmm5
+   42847:	ff 
+   42848:	0f 84 f5 cc fd ff    	je     1f543 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0] [clone .cold]>
+   4284e:	41 80 be f0 00 00 00 	cmp    BYTE PTR [r14+0xf0],0x0
+   42855:	00 
+   42856:	c4 c1 4b 59 b6 98 00 	vmulsd xmm6,xmm6,QWORD PTR [r14+0x98]
+   4285d:	00 00 
+   4285f:	0f 84 de cc fd ff    	je     1f543 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0] [clone .cold]>
+   42865:	c5 fb 10 15 03 48 0d 	vmovsd xmm2,QWORD PTR [rip+0xd4803]        # 117070 <(anonymous namespace)::dx>
+   4286c:	00 
+   4286d:	c5 f9 28 9d e0 fe ff 	vmovapd xmm3,XMMWORD PTR [rbp-0x120]
+   42874:	ff 
+   42875:	c5 fb 11 a5 a8 fe ff 	vmovsd QWORD PTR [rbp-0x158],xmm4
+   4287c:	ff 
+   4287d:	c4 c1 4b 58 b6 e8 00 	vaddsd xmm6,xmm6,QWORD PTR [r14+0xe8]
+   42884:	00 00 
+   42886:	c5 fb 10 bd d0 fe ff 	vmovsd xmm7,QWORD PTR [rbp-0x130]
+   4288d:	ff 
+   4288e:	c5 eb 59 c2          	vmulsd xmm0,xmm2,xmm2
+   42892:	c5 fb 10 0d 4e 5c 0a 	vmovsd xmm1,QWORD PTR [rip+0xa5c4e]        # e84e8 <std::piecewise_construct+0x260>
+   42899:	00 
+   4289a:	49 83 45 00 01       	add    QWORD PTR [r13+0x0],0x1
+   4289f:	c5 f9 13 9d b0 fe ff 	vmovlpd QWORD PTR [rbp-0x150],xmm3
+   428a6:	ff 
+   428a7:	c4 c1 7b 10 5d 10    	vmovsd xmm3,QWORD PTR [r13+0x10]
+   428ad:	c5 fb 11 bd 98 fe ff 	vmovsd QWORD PTR [rbp-0x168],xmm7
+   428b4:	ff 
+   428b5:	c5 fb 11 b5 a0 fe ff 	vmovsd QWORD PTR [rbp-0x160],xmm6
+   428bc:	ff 
+   428bd:	c5 fb 59 c2          	vmulsd xmm0,xmm0,xmm2
+   428c1:	c5 fb 11 85 f8 fe ff 	vmovsd QWORD PTR [rbp-0x108],xmm0
+   428c8:	ff 
+   428c9:	c5 fb 10 85 f8 fe ff 	vmovsd xmm0,QWORD PTR [rbp-0x108]
+   428d0:	ff 
+   428d1:	c4 c1 7b 58 45 08    	vaddsd xmm0,xmm0,QWORD PTR [r13+0x8]
+   428d7:	c4 c1 7b 11 45 08    	vmovsd QWORD PTR [r13+0x8],xmm0
+   428dd:	c5 db 10 c4          	vmovsd xmm0,xmm4,xmm4
+   428e1:	e8 da df fe ff       	call   308c0 <mrp::legacyMass(double, double, double, double)>
+   428e6:	c5 fb 10 a5 a8 fe ff 	vmovsd xmm4,QWORD PTR [rbp-0x158]
+   428ed:	ff 
+   428ee:	c5 fb 10 0d 7a 47 0d 	vmovsd xmm1,QWORD PTR [rip+0xd477a]        # 117070 <(anonymous namespace)::dx>
+   428f5:	00 
+   428f6:	c4 c1 7b 11 45 10    	vmovsd QWORD PTR [r13+0x10],xmm0
+   428fc:	c5 db 59 05 e4 5b 0a 	vmulsd xmm0,xmm4,QWORD PTR [rip+0xa5be4]        # e84e8 <std::piecewise_construct+0x260>
+   42903:	00 
+   42904:	c5 fb 10 bd 98 fe ff 	vmovsd xmm7,QWORD PTR [rbp-0x168]
+   4290b:	ff 
+   4290c:	c5 41 54 0d 7c 59 0a 	vandpd xmm9,xmm7,XMMWORD PTR [rip+0xa597c]        # e8290 <std::piecewise_construct+0x8>
+   42913:	00 
+   42914:	c5 fb 10 b5 a0 fe ff 	vmovsd xmm6,QWORD PTR [rbp-0x160]
+   4291b:	ff 
+   4291c:	c5 7b 10 85 90 fe ff 	vmovsd xmm8,QWORD PTR [rbp-0x170]
+   42923:	ff 
+   42924:	c5 fb 10 ad 88 fe ff 	vmovsd xmm5,QWORD PTR [rbp-0x178]
+   4292b:	ff 
+   4292c:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   42930:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   42934:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   42938:	c5 f9 54 15 50 59 0a 	vandpd xmm2,xmm0,XMMWORD PTR [rip+0xa5950]        # e8290 <std::piecewise_construct+0x8>
+   4293f:	00 
+   42940:	c5 79 2f ca          	vcomisd xmm9,xmm2
+   42944:	c5 fb 58 df          	vaddsd xmm3,xmm0,xmm7
+   42948:	0f 82 ea 02 00 00    	jb     42c38 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xdf8>
+   4294e:	c5 c3 5c fb          	vsubsd xmm7,xmm7,xmm3
+   42952:	c5 c3 58 f8          	vaddsd xmm7,xmm7,xmm0
+   42956:	c5 c3 58 95 b0 fe ff 	vaddsd xmm2,xmm7,QWORD PTR [rbp-0x150]
+   4295d:	ff 
+   4295e:	c5 fb 10 85 e8 fe ff 	vmovsd xmm0,QWORD PTR [rbp-0x118]
+   42965:	ff 
+   42966:	c5 79 54 15 22 59 0a 	vandpd xmm10,xmm0,XMMWORD PTR [rip+0xa5922]        # e8290 <std::piecewise_construct+0x8>
+   4296d:	00 
+   4296e:	c5 7b 10 8d d8 fe ff 	vmovsd xmm9,QWORD PTR [rbp-0x128]
+   42975:	ff 
+   42976:	c5 bb 58 f8          	vaddsd xmm7,xmm8,xmm0
+   4297a:	c5 e9 14 d7          	vunpcklpd xmm2,xmm2,xmm7
+   4297e:	c5 f9 29 95 e0 fe ff 	vmovapd XMMWORD PTR [rbp-0x120],xmm2
+   42985:	ff 
+   42986:	c5 b9 54 15 02 59 0a 	vandpd xmm2,xmm8,XMMWORD PTR [rip+0xa5902]        # e8290 <std::piecewise_construct+0x8>
+   4298d:	00 
+   4298e:	c5 79 2f d2          	vcomisd xmm10,xmm2
+   42992:	0f 82 88 02 00 00    	jb     42c20 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xde0>
+   42998:	c5 fb 5c c7          	vsubsd xmm0,xmm0,xmm7
+   4299c:	c4 c1 7b 58 c0       	vaddsd xmm0,xmm0,xmm8
+   429a1:	c4 41 7b 58 c9       	vaddsd xmm9,xmm0,xmm9
+   429a6:	c5 db 59 c1          	vmulsd xmm0,xmm4,xmm1
+   429aa:	c4 c1 6b 5f 55 30    	vmaxsd xmm2,xmm2,QWORD PTR [r13+0x30]
+   429b0:	41 0f b6 85 a8 00 00 	movzx  eax,BYTE PTR [r13+0xa8]
+   429b7:	00 
+   429b8:	c4 c1 61 14 d9       	vunpcklpd xmm3,xmm3,xmm9
+   429bd:	c5 f9 29 9d d0 fe ff 	vmovapd XMMWORD PTR [rbp-0x130],xmm3
+   429c4:	ff 
+   429c5:	84 c0                	test   al,al
+   429c7:	c4 c1 7b 11 55 30    	vmovsd QWORD PTR [r13+0x30],xmm2
+   429cd:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   429d1:	c4 c2 f1 a9 45 28    	vfmadd213sd xmm0,xmm1,QWORD PTR [r13+0x28]
+   429d7:	c4 c1 7b 11 45 28    	vmovsd QWORD PTR [r13+0x28],xmm0
+   429dd:	c4 c1 53 5f 45 38    	vmaxsd xmm0,xmm5,QWORD PTR [r13+0x38]
+   429e3:	c4 c1 7b 11 45 38    	vmovsd QWORD PTR [r13+0x38],xmm0
+   429e9:	c4 c1 4b 5d 45 40    	vminsd xmm0,xmm6,QWORD PTR [r13+0x40]
+   429ef:	c4 c1 7b 11 45 40    	vmovsd QWORD PTR [r13+0x40],xmm0
+   429f5:	c4 c1 4b 5f 45 48    	vmaxsd xmm0,xmm6,QWORD PTR [r13+0x48]
+   429fb:	c4 c1 7b 11 45 48    	vmovsd QWORD PTR [r13+0x48],xmm0
+   42a01:	74 3d                	je     42a40 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xc00>
+   42a03:	c5 d9 54 25 85 58 0a 	vandpd xmm4,xmm4,XMMWORD PTR [rip+0xa5885]        # e8290 <std::piecewise_construct+0x8>
+   42a0a:	00 
+   42a0b:	c5 fb 10 05 dd 59 0a 	vmovsd xmm0,QWORD PTR [rip+0xa59dd]        # e83f0 <std::piecewise_construct+0x168>
+   42a12:	00 
+   42a13:	31 c0                	xor    eax,eax
+   42a15:	c5 f9 2e c4          	vucomisd xmm0,xmm4
+   42a19:	72 25                	jb     42a40 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xc00>
+   42a1b:	c5 d1 54 2d 6d 58 0a 	vandpd xmm5,xmm5,XMMWORD PTR [rip+0xa586d]        # e8290 <std::piecewise_construct+0x8>
+   42a22:	00 
+   42a23:	c5 f9 2e c5          	vucomisd xmm0,xmm5
+   42a27:	72 17                	jb     42a40 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xc00>
+   42a29:	c5 c9 54 35 5f 58 0a 	vandpd xmm6,xmm6,XMMWORD PTR [rip+0xa585f]        # e8290 <std::piecewise_construct+0x8>
+   42a30:	00 
+   42a31:	c5 f9 2e c6          	vucomisd xmm0,xmm6
+   42a35:	0f 93 c0             	setae  al
+   42a38:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+   42a3f:	00 
+   42a40:	41 80 7e 40 00       	cmp    BYTE PTR [r14+0x40],0x0
+   42a45:	c5 fb 10 85 00 ff ff 	vmovsd xmm0,QWORD PTR [rbp-0x100]
+   42a4c:	ff 
+   42a4d:	0f 84 f0 ca fd ff    	je     1f543 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0] [clone .cold]>
+   42a53:	c4 c1 7b 10 66 38    	vmovsd xmm4,QWORD PTR [r14+0x38]
+   42a59:	c5 f3 10 d1          	vmovsd xmm2,xmm1,xmm1
+   42a5d:	84 c0                	test   al,al
+   42a5f:	c5 db 59 b5 10 ff ff 	vmulsd xmm6,xmm4,QWORD PTR [rbp-0xf0]
+   42a66:	ff 
+   42a67:	c5 fb 59 dc          	vmulsd xmm3,xmm0,xmm4
+   42a6b:	c5 db 59 a5 08 ff ff 	vmulsd xmm4,xmm4,QWORD PTR [rbp-0xf8]
+   42a72:	ff 
+   42a73:	c5 f3 59 c3          	vmulsd xmm0,xmm1,xmm3
+   42a77:	c5 db 59 e9          	vmulsd xmm5,xmm4,xmm1
+   42a7b:	c5 fb 59 c1          	vmulsd xmm0,xmm0,xmm1
+   42a7f:	c5 d3 59 e9          	vmulsd xmm5,xmm5,xmm1
+   42a83:	c4 c2 f9 a9 55 50    	vfmadd213sd xmm2,xmm0,QWORD PTR [r13+0x50]
+   42a89:	c4 c1 7b 11 55 50    	vmovsd QWORD PTR [r13+0x50],xmm2
+   42a8f:	c5 f3 59 d6          	vmulsd xmm2,xmm1,xmm6
+   42a93:	c5 eb 59 d1          	vmulsd xmm2,xmm2,xmm1
+   42a97:	c4 c2 f1 a9 55 60    	vfmadd213sd xmm2,xmm1,QWORD PTR [r13+0x60]
+   42a9d:	c4 c2 d1 a9 4d 58    	vfmadd213sd xmm1,xmm5,QWORD PTR [r13+0x58]
+   42aa3:	c4 c1 7b 11 4d 58    	vmovsd QWORD PTR [r13+0x58],xmm1
+   42aa9:	0f 85 f1 00 00 00    	jne    42ba0 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xd60>
+   42aaf:	31 c0                	xor    eax,eax
+   42ab1:	8b 8d c4 fe ff ff    	mov    ecx,DWORD PTR [rbp-0x13c]
+   42ab7:	41 88 85 a8 00 00 00 	mov    BYTE PTR [r13+0xa8],al
+   42abe:	c4 c1 7b 11 55 60    	vmovsd QWORD PTR [r13+0x60],xmm2
+   42ac4:	85 c9                	test   ecx,ecx
+   42ac6:	74 04                	je     42acc <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xc8c>
+   42ac8:	c5 d3 10 c5          	vmovsd xmm0,xmm5,xmm5
+   42acc:	8b 8d c0 fe ff ff    	mov    ecx,DWORD PTR [rbp-0x140]
+   42ad2:	39 8d 80 fe ff ff    	cmp    DWORD PTR [rbp-0x180],ecx
+   42ad8:	75 12                	jne    42aec <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xcac>
+   42ada:	c4 c1 7b 58 8d 98 00 	vaddsd xmm1,xmm0,QWORD PTR [r13+0x98]
+   42ae1:	00 00 
+   42ae3:	c4 c1 7b 11 8d 98 00 	vmovsd QWORD PTR [r13+0x98],xmm1
+   42aea:	00 00 
+   42aec:	8b 8d c0 fe ff ff    	mov    ecx,DWORD PTR [rbp-0x140]
+   42af2:	39 8d 84 fe ff ff    	cmp    DWORD PTR [rbp-0x17c],ecx
+   42af8:	75 12                	jne    42b0c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xccc>
+   42afa:	c4 c1 7b 58 85 a0 00 	vaddsd xmm0,xmm0,QWORD PTR [r13+0xa0]
+   42b01:	00 00 
+   42b03:	c4 c1 7b 11 85 a0 00 	vmovsd QWORD PTR [r13+0xa0],xmm0
+   42b0a:	00 00 
+   42b0c:	48 8b 85 b8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x148]
+   42b13:	83 c3 01             	add    ebx,0x1
+   42b16:	44 8b 78 10          	mov    r15d,DWORD PTR [rax+0x10]
+   42b1a:	44 39 fb             	cmp    ebx,r15d
+   42b1d:	0f 8c e9 fb ff ff    	jl     4270c <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x8cc>
+   42b23:	4c 89 e8             	mov    rax,r13
+   42b26:	45 89 fd             	mov    r13d,r15d
+   42b29:	8b b5 68 fe ff ff    	mov    esi,DWORD PTR [rbp-0x198]
+   42b2f:	49 89 c7             	mov    r15,rax
+   42b32:	48 8b 85 b8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x148]
+   42b39:	83 c6 01             	add    esi,0x1
+   42b3c:	8b 78 0c             	mov    edi,DWORD PTR [rax+0xc]
+   42b3f:	39 f7                	cmp    edi,esi
+   42b41:	0f 8f 61 fb ff ff    	jg     426a8 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x868>
+   42b47:	48 8b 85 b8 fe ff ff 	mov    rax,QWORD PTR [rbp-0x148]
+   42b4e:	4d 89 fd             	mov    r13,r15
+   42b51:	8b 50 08             	mov    edx,DWORD PTR [rax+0x8]
+   42b54:	83 85 74 fe ff ff 01 	add    DWORD PTR [rbp-0x18c],0x1
+   42b5b:	8b 85 74 fe ff ff    	mov    eax,DWORD PTR [rbp-0x18c]
+   42b61:	39 c2                	cmp    edx,eax
+   42b63:	0f 8f 1c fb ff ff    	jg     42685 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x845>
+   42b69:	48 8b 9d 50 fe ff ff 	mov    rbx,QWORD PTR [rbp-0x1b0]
+   42b70:	4c 8b a5 60 fe ff ff 	mov    r12,QWORD PTR [rbp-0x1a0]
+   42b77:	48 8b 85 58 fe ff ff 	mov    rax,QWORD PTR [rbp-0x1a8]
+   42b7e:	48 8b 53 10          	mov    rdx,QWORD PTR [rbx+0x10]
+   42b82:	8b 4a 38             	mov    ecx,DWORD PTR [rdx+0x38]
+   42b85:	49 83 c4 01          	add    r12,0x1
+   42b89:	44 39 e1             	cmp    ecx,r12d
+   42b8c:	0f 8f 99 fa ff ff    	jg     4262b <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x7eb>
+   42b92:	4d 89 ef             	mov    r15,r13
+   42b95:	e9 5e f9 ff ff       	jmp    424f8 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x6b8>
+   42b9a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   42ba0:	c5 e1 54 1d e8 56 0a 	vandpd xmm3,xmm3,XMMWORD PTR [rip+0xa56e8]        # e8290 <std::piecewise_construct+0x8>
+   42ba7:	00 
+   42ba8:	c5 fb 10 0d 40 58 0a 	vmovsd xmm1,QWORD PTR [rip+0xa5840]        # e83f0 <std::piecewise_construct+0x168>
+   42baf:	00 
+   42bb0:	c5 f9 2e cb          	vucomisd xmm1,xmm3
+   42bb4:	0f 82 f5 fe ff ff    	jb     42aaf <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xc6f>
+   42bba:	c5 d9 54 25 ce 56 0a 	vandpd xmm4,xmm4,XMMWORD PTR [rip+0xa56ce]        # e8290 <std::piecewise_construct+0x8>
+   42bc1:	00 
+   42bc2:	c5 f9 2e cc          	vucomisd xmm1,xmm4
+   42bc6:	0f 82 e3 fe ff ff    	jb     42aaf <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xc6f>
+   42bcc:	c5 c9 54 35 bc 56 0a 	vandpd xmm6,xmm6,XMMWORD PTR [rip+0xa56bc]        # e8290 <std::piecewise_construct+0x8>
+   42bd3:	00 
+   42bd4:	c5 f9 2e ce          	vucomisd xmm1,xmm6
+   42bd8:	0f 93 c0             	setae  al
+   42bdb:	e9 d1 fe ff ff       	jmp    42ab1 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xc71>
+   42be0:	c5 fa 7e 25 a8 56 0a 	vmovq  xmm4,QWORD PTR [rip+0xa56a8]        # e8290 <std::piecewise_construct+0x8>
+   42be7:	00 
+   42be8:	c5 fb 10 1d 00 58 0a 	vmovsd xmm3,QWORD PTR [rip+0xa5800]        # e83f0 <std::piecewise_construct+0x168>
+   42bef:	00 
+   42bf0:	c5 fb 10 d0          	vmovsd xmm2,xmm0,xmm0
+   42bf4:	31 c0                	xor    eax,eax
+   42bf6:	c5 e9 54 d4          	vandpd xmm2,xmm2,xmm4
+   42bfa:	c5 f9 2e da          	vucomisd xmm3,xmm2
+   42bfe:	0f 82 20 f9 ff ff    	jb     42524 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x6e4>
+   42c04:	c5 f9 15 c0          	vunpckhpd xmm0,xmm0,xmm0
+   42c08:	c5 f9 54 c4          	vandpd xmm0,xmm0,xmm4
+   42c0c:	c5 f9 2e d8          	vucomisd xmm3,xmm0
+   42c10:	0f 93 c0             	setae  al
+   42c13:	e9 0c f9 ff ff       	jmp    42524 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x6e4>
+   42c18:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+   42c1f:	00 
+   42c20:	c5 bb 5c ff          	vsubsd xmm7,xmm8,xmm7
+   42c24:	c5 c3 58 f8          	vaddsd xmm7,xmm7,xmm0
+   42c28:	c4 41 43 58 c9       	vaddsd xmm9,xmm7,xmm9
+   42c2d:	e9 74 fd ff ff       	jmp    429a6 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xb66>
+   42c32:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   42c38:	c5 fb 5c c3          	vsubsd xmm0,xmm0,xmm3
+   42c3c:	c5 fb 58 c7          	vaddsd xmm0,xmm0,xmm7
+   42c40:	c5 fb 58 95 b0 fe ff 	vaddsd xmm2,xmm0,QWORD PTR [rbp-0x150]
+   42c47:	ff 
+   42c48:	e9 11 fd ff ff       	jmp    4295e <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0xb1e>
+   42c4d:	0f 1f 00             	nop    DWORD PTR [rax]
+   42c50:	ff d0                	call   rax
+   42c52:	48 89 c7             	mov    rdi,rax
+   42c55:	e9 8f fb ff ff       	jmp    427e9 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x9a9>
+   42c5a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+   42c60:	48 89 95 b0 fe ff ff 	mov    QWORD PTR [rbp-0x150],rdx
+   42c67:	ff d0                	call   rax
+   42c69:	48 8b 95 b0 fe ff ff 	mov    rdx,QWORD PTR [rbp-0x150]
+   42c70:	48 89 c7             	mov    rdi,rax
+   42c73:	e9 3d fb ff ff       	jmp    427b5 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x975>
+   42c78:	c5 f1 57 c9          	vxorpd xmm1,xmm1,xmm1
+   42c7c:	b8 01 00 00 00       	mov    eax,0x1
+   42c81:	e9 9e f8 ff ff       	jmp    42524 <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x6e4>
+   42c86:	31 c0                	xor    eax,eax
+   42c88:	e9 8d f7 ff ff       	jmp    4241a <(anonymous namespace)::Measurement (anonymous namespace)::measure<olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >, olb::SuperGeometry<double, 3u> >(olb::SuperLattice<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> >&, olb::SuperGeometry<double, 3u>&, olb::UnitConverter<double, olb::descriptors::D3Q19<olb::descriptors::FORCE> > const&, int, double, double, mrp::DensityCapture*) [clone .isra.0]+0x5da>
+   42c8d:	e8 9e 94 fd ff       	call   1c130 <__stack_chk_fail@plt>
+   42c92:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+   42c99:	00 00 00 00 
+   42c9d:	0f 1f 00             	nop    DWORD PTR [rax]

@@ -1,0 +1,542 @@
+                        Journal of Fluids Engineering Editorial Policy
+                       Statement on the Control of Numerical Accuracy
+
+  Although no standard method for evaluating numerical uncertainty is currently accepted by the
+CFD community, there are numerous methods and techniques available to the user to accomplish
+this task. The following is a list of guidelines, enumerating the criteria to be considered for ar-
+chival publication of computational results in the Journal of Fluids Engineering.
+    1. Authors must be precise in describing the numerical method used; this includes an as-
+        sessment of the formal order of accuracy of the truncation error introduced by individual
+        terms in the governing equations, such as diffusive terms, source terms, and most impor-
+        tantly, the convective terms. It is not enough to state, for example, that the method is
+        based on a “conservative finite-volume formulation,” giving then a reference to a general
+        CFD textbook.
+    2. The numerical method used must be at least formally second-order accurate in space
+        (based on a Taylor series expansion) for nodes in the interior of the computational grid.
+        The computational expense of second, third, and higher order methods are more expen-
+        sive (per grid point) than first order schemes, but the computational efficiency of these
+        higher order methods (accuracy per overall cost) is much greater. And, it has been dem-
+        onstrated many times that, for first order methods, the effect of numerical diffusion on the
+        solution accuracy is devastating.
+    3. Methods using a blending or switching strategy between first and second order methods
+        (in particular, the well-known “hybrid,” “power-law,” and related exponential schemes)
+        will be viewed as first-order methods, unless it can be demonstrated that their inherent
+        numerical diffusion does not swamp or replace important modeled physical diffusion
+        terms. A similar policy applies to methods invoking significant amounts of explicitly
+        added artificial viscosity or diffusivity.
+    4. Solutions over a range of significantly different grid resolutions should be presented to
+        demonstrate grid-independent or grid-convergent results. This criterion specifically ad-
+        dresses the use of improved grid resolution to systematically evaluate truncation error and
+        accuracy. The use of error estimates based on methods such as Richardson extrapolation
+        or those techniques now used in adaptive grid methods, may also be used to demonstrate
+        solution accuracy.
+    5. Stopping criteria for iterative calculations need to be precisely explained. Estimates must
+        be given for the corresponding convergence error.
+    6. In time-dependent solutions, temporal accuracy must be demonstrated so that the spuri-
+        ous effects of phase error are shown to be limited. In particular, it should be demon-
+        strated that unphysical oscillations due to numerical dispersion are significantly smaller
+        in amplitude than captured short-wavelength (in time) features of the flow.
+    7. Clear statements defining the methods used to implement boundary and initial conditions
+        must be presented. Typically, the overall accuracy of a simulation is strongly affected by
+        the implementation and order of the boundary conditions. When appropriate, particular
+        attention should be paid to the treatment of inflow and outflow boundary conditions.
+    8. In the presentation of an existing algorithm or code, all pertinent references or other pub-
+        lications must be cited in the paper, thus aiding the reader in evaluating the code and its
+        method without the need to redefine details of the methods in the current paper. How-
+        ever, basic features of the code must be outlined according to Item 1, above.
+   9. Comparison to appropriate analytical or well-established numerical benchmark solutions
+       may be used to demonstrate accuracy for another class of problems. However, in general
+       this does not demonstrate accuracy for another class of problems, especially if any ad-
+       justable parameters are involved, as in turbulence modeling.
+   10. Comparison with reliable experimental results is appropriate, provided experimental un-
+       certainty is established. However, “reasonable agreement” with experimental data alone
+       will not be enough to justify a given single-grid calculation, especially if adjustable pa-
+       rameters are involved.
+
+  These ten items lay down a set of criteria by which the editors and reviewers of this Journal
+will judge the archival quality of publications dealing with computational studies for the Journal
+of Fluids Engineering. We recognize that the effort to perform a thorough study of numerical
+accuracy may be great and that many practical engineering calculations will continue to be per-
+formed by first order methods, on a single fixed grid. However, such analyses would not be ap-
+propriate for presentation in this archival journal. With the gains in performance of low-end
+workstations, it is now reasonable to require papers on solutions by CFD to meet these funda-
+mental criteria for archiving of a publication.
+  With the details of these ten criteria now presented, a shortened statement will appear as fol-
+lows:
+  The Journal of Fluids Engineering will not consider any paper reporting the numerical solu-
+tion of a fluids engineering problem that fails to address the task of systematic truncation error
+testing and accuracy estimation. Authors should address the following criteria for assessing
+numerical uncertainty.
+    1. The basic features of the method including formal truncation error of individual terms in
+        the governing numerical equations must be described.
+    2. Methods must be at least second order accurate in space.
+    3. Inherent or explicit artificial viscosity (or diffusivity) must be assessed and minimized.
+    4. Grid independence or convergence must be established.
+    5. When appropriate, iterative convergence must be addressed.
+    6. In transient calculations, phase error must be assessed and minimized.
+    7. The accuracy and implementation of boundary and initial conditions must be fully ex-
+        plained.
+    8. An existing code must be fully cited in easily available references.
+    9. Benchmark solutions may be used for validation for a specific class of problems.
+    10. Reliable experimental results may be used to validate a solution.
+
+References
+
+  Celik, I., 1993, “Numerical Uncertainty in Fluid Flow Calculations: Needs for Future Re-
+search,” ASME JOURNAL OF FLUIDS ENGINEERING, 115, pp. 194-195.
+  Roache, P. J., Ghia, K. N., and White, F. M., 1986, “Editorial Policy Statement on the Control
+of Numerical Accuracy,” ASME JOURNAL OF FLUIDS ENGINEERING, 108, p.2.
+                     Procedure for Estimation and Reporting of Uncertainty
+                           Due to Discretization in CFD Applications
+
+
+              Ismail B. Celik1, Urmila Ghia, Patrick J. Roache and Christopher J. Freitas
+          1
+              Corresponding Author: Mechanical and Aerospace Engineering Department
+                        West Virginia University, Morgantown WV (USA)
+                                   Ismail.Celik@mail.wvu.edu
+
+
+       Since 1990, the Fluids Engineering Division of ASME has pursued activities concerning
+the detection, estimation and control of numerical uncertainty and/or error in computational fluid
+dynamics (CFD) studies. The first quality-control measures in this area were issued in 1986
+(Roache et al., [1]), and revised in 1993 (Freitas [2]). Given the continued increase in CFD
+related publications, and the many significant advancements in computational techniques and
+computer technology, it has become necessary to revisit the issue and formulate a more detailed
+policy to further improve the quality of publications in this area. This brief note provides specific
+guidelines for prospective authors for calculation and reporting of discretization error estimates
+in CFD simulations where experimental data may or may not be available for comparison. The
+underlying perspective is that CFD-related studies will eventually aim to predict the outcome of a
+physical event for which experimental data is not available.
+       It should be emphasized that the requirements outlined in this note do not preclude those
+already published in the previous two policy statements [1, 2]. It is also important to keep in
+mind that the procedure recommended in this note cannot possibly encompass all possible
+scenarios or applications.
+
+Preliminaries
+       The computer code used for an application must be fully referenced, and previous code
+verification studies must be briefly described or cited. The word "verification" is used in this
+note in its broadest sense, meaning that the computer code is capable of solving a system of
+coupled differential or integral equations with a properly posed set of initial and/or boundary
+
+
+
+
+                                                  1
+conditions correctly, and reproduces the exact solution to these equations when sufficiently fine
+grid resolution (both in time and space) is employed. The formal order of accuracy in time and
+space for each equation solved should be also stated clearly, with proper references where this
+information is accessible to the readers. Before any discretization error estimation is calculated, it
+must be shown that iterative convergence is achieved with at least three (preferably four) orders
+of magnitude decrease in the normalized residuals for each equation solved. (This commonly-
+used criterion does not always ensure adequate convergence; see Appendix A)                For time-
+dependent problems, iterative convergence at every time step should be checked, and sample
+convergence trends should be documented for selected, critically important, variables. A possible
+method for assessment of iteration errors is outlined in Appendix A.
+       It should also be recognized that uncertainty in inlet flow boundary conditions could be a
+significant contributor to the overall uncertainty. Here we recommend that the degree of
+sensitivity of the presented solution to small perturbations in the inlet conditions be studied and
+reported.
+       The recommended method for discretization error estimation is the Richardson
+extrapolation (RE) method. Since its first elegant application by its originator (Richardson [3,
+4]), this method has been studied by many authors. Its intricacies, shortcomings and
+generalization have been widely investigated. A short list of references given in the bibliography
+[2, 5-14] is selected for the direct relevance of these references to the subject, and for brevity.
+The limitations of the RE method are well known. The local RE values of the predicted variables
+may not exhibit a smooth, monotonic dependence on grid resolution, and in a time-dependent
+calculation, this non-smooth response will also be a function of time and space. Nonetheless, it is
+currently the most reliable method available for the prediction of numerical uncertainty.
+Prospective authors can find many examples in the above references. As new and more reliable
+methods emerge, the present policy statement will be re-assessed and modified as needed.
+       The GCI method (which is based on RE) described herein is an acceptable and
+recommended method that has been evaluated over several hundred CFD cases [1, 4, 8, 15, 16].
+If authors choose to use it, the method per se will not be challenged in the paper review process.
+
+
+
+
+                                                  2
+If authors choose to use another method, the adequacy of their method will be judged in the
+review process. This policy is not meant to discourage further development of new methods; in
+fact, JFE encourages the development and statistically significant evaluation of alternative
+methods of estimation of error and uncertainty. Rather, this policy is meant to facilitate CFD
+publication by providing practitioners with a method that is straightforward to apply, is fairly
+well justified and accepted, and will avoid possible review bottlenecks, especially when the CFD
+paper is an applications paper rather than one concerned with new CFD methodology.
+
+Recommended Procedure for estimation of discretization error
+
+       Step 1. Define a representative cell, mesh or grid size h. For example, for three-
+
+dimensional calculations
+
+                                 1/3
+                    1 N
+               h        ( Vi )          .                                                  (1)
+                    Ni1
+
+For two-dimensions,
+
+                                 1/ 2
+                    1 N
+               h        ( Ai )                                                             (2)
+                    Ni1
+
+where Vi is the volume, and Ai is the area of the ith cell, and N is the total number of cells used
+
+for the computations. Equations (1) and (2) are to be used when integral quantities, e.g., drag
+
+coefficient, are considered. For field variables, the local cell size can be used. Clearly, if an
+
+observed global variable is used, it is then appropriate to use also an average “global” cell size.
+
+The area should be interpreted strictly according to the mesh being used, i.e. the mesh is either
+
+2-D (consisting of areas) or 3-D (consisting of volumes) irrespective of the problem being solved.
+
+       Step 2. Select three significantly different sets of grids, and run simulations to determine
+
+the values of key variables important to the objective of the simulation study, for example, a
+
+
+
+
+                                                3
+variable     critical to the conclusions being reported. It is desirable that the grid refinement factor,
+
+r=hcoarse/hfine, be greater than 1.3. This value of 1.3 is based on experience, and not on formal
+
+derivation. The grid refinement should, however, be done systematically, that is, the refinement
+
+itself should be structured even if the grid is unstructured. Use of geometrically similar cells is
+
+preferable.
+
+        Step 3. Let h1< h2< h3 and r21=h2/h1, r32=h3/h2, and calculate the apparent order, p, of the
+
+method using the expression
+
+                          1
+                  p              ln | 32 / 21 | q( p) ,                                          (3a)
+                        ln(r21 )
+
+
+                               r21p s
+                  q( p) ln            ,                                                          (3b)
+                               r32p s
+
+
+                  s 1 sign( 32 / 21 ) ,                                                          (3c)
+
+                                                                       th
+where      32= 3- 2 ,    21= 2- 1 ,    k denoting the solution on the k grid. Note that q(p)=0 for
+
+
+r=const. Equation (3) can be solved using fixed-point iteration, with the initial guess equal to the
+
+first term. The absolute value in Eq. (3a) is necessary to ensure extrapolation towards h=0 [6].
+
+Negative values of         32/ 21<0   are an indication of oscillatory convergence. If possible, the
+
+percentage occurrence of oscillatory convergence should also be reported. Agreement of the
+
+observed apparent order with the formal order of the scheme used can be taken as a good
+
+indication of the grids being in the asymptotic range; the converse should not necessarily be
+
+taken as a sign of unsatisfactory calculations. It should be noted that if either 32= 3- 2 or 21= 2-
+
+
+
+
+                                                          4
+ 1   is “very close” to zero, the above procedure does not work. This might be an indication of
+
+oscillatory convergence or, in rare situations, it may indicate that the “exact” solution has been
+
+attained. In such cases, if possible, calculations with additional grid refinement should be
+
+performed; if not, the results may be reported as such.
+
+        Step 4 Calculate the extrapolated values from
+
+                 21
+                 ext   (r21p 1             2   ) /(r21p 1) .                               (4)
+
+                             32
+Similarly, calculate   ext        .
+
+        Step 5 Calculate and report the following error estimates, along with the apparent order p:
+
+Approximate relative error:
+
+
+               ea21    1          2
+                                       .                                                   (5)
+                             1
+
+
+
+Extrapolated relative error:
+
+                           12
+                 21        ext         1
+                eext             12
+                                           .                                               (6)
+                                 ext
+
+
+
+The fine-grid convergence index:
+
+
+                   21            1.25ea21
+                GCIfine                   .                                                (7)
+                                  r21p 1
+
+        Table 1 illustrates this calculation procedure for three selected grids. The data used is
+
+taken from Celik & Karatekin [6]), where the turbulent two-dimensional flow over a backward
+
+
+
+
+                                                               5
+facing step was simulated on non-uniform structured grids with total number of cells N1, N2, and
+
+N3. Hence, according to Table 1, the numerical uncertainty in the fine-grid solution for the
+
+reattachment length should be reported as 2.2%; note that this does not account for modeling
+
+errors.
+
+Discretization Error Bars
+
+          When computed profiles of a certain variable are presented, it is recommended that
+
+numerical uncertainty be indicated by error bars on the profile, analogous to experimental
+
+uncertainty. It is further recommended that this be done using the GCI in conjunction with an
+
+average value of p=pave as a measure of the global order of accuracy. This is illustrated in Figs. 1
+
+and 2.
+
+          Figure 1 (data taken from Celik & Karatekin [6]) presents an axial velocity profile along
+
+y-axis at an axial location of x/H=8.0 for a turbulent two-dimensional backward-facing-step
+
+flow. The three sets of grids had 980, 4500, and 18000 cells, respectively. The local order of
+
+accuracy p calculated from Eq. (3) ranges from 0.012 to 8.47, with a global average pave of 1.49,
+
+which is a good indication of the hybrid method applied for that calculation. Oscillatory
+
+convergence occurs at 20% of the 22 points. This averaged apparent order of accuracy is used to
+
+assess the GCI indices values in Eq. (7) for individual grids, which is plotted in the form of error
+
+bars, as shown in Fig. 1(b). The maximum discretization uncertainty is 10%, which corresponds
+
+to 0.35 m/s.
+
+
+
+
+                                                  6
+                              Table 1: Sample calculations of discretization error
+                         = dimensionless           = axial velocity at       = axial velocity at
+                       reattachment length       x/H=8, y=0.0526           x/H=8, y=0.0526
+                       (with monotonic           (p < 1)                   (with oscillatory
+                       convergence)                                        convergence)
+   N1 , N2 , N3        18000, 8000, 4500         18000, 4500, 980          18000, 4500, 980
+       r21             1.5                       2.0                       2.0
+       r32             1.333                     2.143                     2.143
+         1             6.063                     10.7880                   6.0042
+         2             5.972                     10.7250                   5.9624
+         3             5.863                     10.6050                   6.0909
+        p              1.53                      0.75                      1.51
+             21
+       ext             6.1685                    10.8801                   6.0269
+      ea21             1.5%                      0.6%                      0.7%
+      eext21           1.7%                      0.9%                      0.4%
+                  21
+    GCIfine            2.2%                      1.1%                      0.5%
+
+
+
+       Figure 2 (data taken from Celik & Badeau [17]) presents an axial velocity profile along
+
+the y-axis at the station x/H=8.0 for a laminar two-dimensional backward-facing-step flow. The
+
+Reynolds number based on step height is 230. The sets of grids used were 20x20, 40x40, and
+
+80x80, respectively. The local order of accuracy p ranges from 0.1 to 3.7, with an average value
+
+of pave = 1.38. In this figure, 80% out of 22 points exhibited oscillatory convergence.
+
+Discretization error bars are shown in Fig. 2(b), along with the fine-grid solution. The maximum
+
+% discretization error was about 100%; this high value is relative to a velocity near zero, and
+
+corresponds to a maximum uncertainty in velocity of about 0.012 m/s.
+
+
+
+
+                                                         7
+       In the not unusual cases of noisy grid convergence, the least-squares version of GCI
+
+should be considered [15, 16].
+
+
+
+
+                           (a)                                    (b)
+Figure 1(a): Axial velocity profiles for a two-dimensional turbulent backward-facing-step
+             flow calculation, Ref: Celik & Karatekin [6];
+        (b): Fine-grid solution, with discretization error bars computed using Eq. (7).
+
+
+
+
+                                            8
+                          (a)                                         (b)
+Figure 2(a): Axial velocity profiles for a two-dimensional laminar backward-facing-step
+             flow calculation, Ref: Celik & Badeau [17];
+        (b): Fine-grid solution, with discretization error bars computed using Eq. (7).
+
+
+
+References
+
+[1] Roache, P.J., Ghia, K.N., White, F.M., 1986,“Editorial Policy Statement on Control of
+Numerical Accuracy,” Journal of Fluids Engineering, 108, p. 1.
+
+[2] Freitas, C.J., 1993, “Journal of Fluids Engineering Editorial Policy Statement on the Control
+of Numerical Accuracy,” Journal of Fluids Engineering, 115, pp. 339-340.
+
+[3] Richardson, L.F., 1910, “The Approximate Arithmetical Solution by Finite Differences of
+Physical Problems Involving Differential Equations, with an Application to the Stresses In a
+Masonry Dam,” Transactions of the Royal Society of London, Series A, 210, pp. 307-357.
+
+[4] Richardson L.F. and Gaunt, J. A., 1927, “The Deferred Approach to the Limit,”
+Philosophical Transactions of the Royal Society of London, Series A, 226, pp. 299-361.
+
+[5] Celik, I., Chen, C.J., Roache, P.J. and Scheurer, G., Eds., 1993, “Quantification of
+Uncertainty in Computational Fluid Dynamics,” ASME Publ. No. FED-158, ASME Fluids
+Engineering Division Summer Meeting, Washington, DC, 20-24 June.
+
+
+
+
+                                               9
+[6] Celik, I., Karatekin, O., 1997, “Numerical Experiments on Application of Richardson
+Extrapolation with Nonuniform Grids,” Journal of Fluid Engineering, 119, pp.584-590.
+
+[7] Eca, L. and Hoekstra, M., 2002, “An Evaluation of Verification Procedures for CFD
+Applications,” 24th Symposium on Naval Hydrodynamics, Fukuoka, Japan, 8-13 July.
+
+[8] Roache, P.J., 1993, “A Method for Uniform Reporting of Grid Refinement Studies,”
+Proceedings of Quantification of Uncertainty in Computation Fluid Dynamics, Celik, et al., eds.,
+ASME Publ. No. FED-158, ASME Fluids Engineering Division Summer Meeting, Washington
+D.C., June 23-24.
+[9] Roache, P. J., 1998, Verification and Validation in Computational Science and Engineering,
+Hermosa Publishers, Albuquerque.
+
+[10] Roache, P. J., 2003, “Conservatism of the GCI in Finite Volume Computations on Steady
+State Fluid Flow and Heat Transfer”, Journal of Fluids Engineering, 125, pp 731-732.
+
+[11] Stern, F., Wilson, R. V., Coleman, H. W., and Paterson, E. G., 2001, "Comprehensive
+Approach to Verification and Validation of CFD Simulations - Part 1: Methodology and
+Procedures," Journal of Fluids Engineering, 123, pp. 793-802.
+
+[12] Broadhead, B. L., Rearden, B. T., Hopper, C. M., Wagschal J. J., Parks, C.V., 2004,
+“Sensitivity- and Uncertainty-Based Criticality Safety Validation Techniques,” Nuclear Science
+and Engineering, 146, pp. 340–366.
+
+[13] DeVolder, B., Glimm, J., Grove, J. W., Kang, Y., Lee, Y., Pao, K., Sharp, D. H., Ye, K.,
+2002, “Uncertainty Quantification for Multiscale Simulations,” Journal of Fluids Engineering,
+124, pp. 29-41.
+
+[14] Oberkampf, W.L., Trucano, T.G., and Hirsch , C., 2003, “Verification, validation, and
+predictive capability in computational engineering and physics,” Sandia Report SAND2003-
+3769.
+
+[15] Eça, L., Hoekstra, M., and Roache, P. J., 2005, “Verification of Calculations: an Overview
+of the Lisbon Workshop,” AIAA Paper No. 4728, AIAA Computational Fluid Dynamics
+Conference, Toronto, June.
+
+[16] Eça, L., Hoekstra, M., and Roache, P. J. , 2007, “Verification of Calculations: an Overview
+of the 2nd Lisbon Workshop,” AIAA Paper No. 2007-4089, 2nd Workshop on CFD Uncertainty
+Analysis, AIAA Computational Fluid Dynamics Conference, Miami, June 2007.
+
+
+
+
+                                               10
+[17] Celik, I. and Badeau, A. Jr., 2003, “Verification and Validation of DREAM Code,” Report
+No. MAE_IC03/TR103, Mechanical and Aerospace Engineering Department, West Virginia
+University, Morgantown, WV.
+
+
+
+
+                                             11
+APPENDIX A : A Possible Method for Estimating Iteration Error
+
+        Following Ferziger [1, 2], the iteration error can be estimated by
+                                                    n 1                n
+                              n                 i                  i
+                             iter ,i                                                                                         (A.1)
+                                                      i        1
+where n is the iteration number, and 1 is the principal eigenvalue of the solution matrix of the
+linear system, which can be approximated from
+                                           n 1                 n
+                                       i                   i
+                             i             n              n 1
+                                                                                                                             (A.2)
+                                       i              i
+
+
+The uncertainty     iter   in iteration convergence can then be estimated as
+                                                n
+                                               iter ,i
+                             iter                                                                                            (A.3)
+                                           ave            1
+    is any appropriate norm, e.g., L norm. Here,                                ave   is the average value of   i   over a
+reasonable number of iterations; if ave 1.0 , the difference between two consecutive iterations
+would not be a good indicator of iteration error. In order to build conservatism into these
+estimates, it is recommended that a limiter of     < 2 be applied in calculating ave .
+        It is recommended that iteration convergence error calculated as suggested above (or in
+some other rational way) should be at least one order of magnitude smaller than the discretization
+error estimates for each calculation. For alternative methods see for example Eca and Hoekstra
+[3] or Stern et al.[4].
+
+
+References to Appendix A
+
+[A.1] Ferziger, J.H., 1989, “Estimation and Reduction of Numerical Error,” ASME Winter
+Annual Meeting, San Francisco, December.
+
+[A.2] Ferziger, J.H., Peric, M. ,1996, “Further Discussion of Numerical Errors in CFD,”
+International Journal for Numerical Methods in Fluids 1989; 23: 1263-1274.
+
+
+
+
+                                                                           12
+[A.3] Eça, L. and Hoekstra, M., 2006, “On the Influence of the Iterative Error in the Numerical
+                                                   th
+Uncertainty of Ship Viscous Flow Calculations,” 26 Symposium on Naval Hydrodynamics,
+Rome, Italy, 17-22 September.
+
+[A.4] Stern, F., Wilson, R., and Shao, J., 2006, “Quantitative V&V of CFD Simulations and
+Certification of CFD Codes,” International Journal of Numerical Methods in Fluids, 50, pp.
+1335-1355
+
+
+
+
+                                               13
+

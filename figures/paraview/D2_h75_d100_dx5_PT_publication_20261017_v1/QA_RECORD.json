@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "scope": "Only existing h75_d100_dx5_P/T steady fields. User asked for unified ParaView publication figures and asked to keep/remove the color legend; shared quantitative legend retained.",
+  "deliverable_dirs": {
+    "native_render_and_state": "/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/rendered_v4",
+    "final_png_pdf_svg": "/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/figures_v2"
+  },
+  "render_exit": {
+    "chunk_id": "e1941e",
+    "wall_time_seconds": 2.3259790799999998,
+    "exit_code": 0,
+    "original_token_count": 46,
+    "output": "{\"output_dir\": \"/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/rendered_v4\", \"panels\": 4, \"raw_inputs_unchanged\": true, \"status\": \"rendered\"}\n"
+  },
+  "layout_exit": {
+    "chunk_id": "e3b395",
+    "wall_time_seconds": 1.578350857,
+    "exit_code": 0,
+    "original_token_count": 41,
+    "output": "{\"output_dir\": \"/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/figures_v2\", \"files\": 6, \"status\": \"exported_QA_pending\"}\n"
+  },
+  "numeric_and_native_pixel_QA": {
+    "chunk_id": "49d16b",
+    "wall_time_seconds": 0.020585645,
+    "exit_code": 0,
+    "original_token_count": 503,
+    "output": "{\n  \"native_color_checks\": [\n    {\n      \"panel\": \"P_XY\",\n      \"cell_center_registration_verified\": true,\n      \"native_color_max_error_8bit\": 0,\n      \"solid_gray_max_error_8bit\": null,\n      \"liquid_samples\": 2304\n    },\n    {\n      \"panel\": \"T_XY\",\n      \"cell_center_registration_verified\": true,\n      \"native_color_max_error_8bit\": 0,\n      \"solid_gray_max_error_8bit\": null,\n      \"liquid_samples\": 2304\n    },\n    {\n      \"panel\": \"P_XZ\",\n      \"cell_center_registration_verified\": true,\n      \"native_color_max_error_8bit\": 0,\n      \"solid_gray_max_error_8bit\": 0,\n      \"liquid_samples\": 1200\n    },\n    {\n      \"panel\": \"T_XZ\",\n      \"cell_center_registration_verified\": true,\n      \"native_color_max_error_8bit\": 0,\n      \"solid_gray_max_error_8bit\": 0,\n      \"liquid_samples\": 1200\n    }\n  ],\n  \"png_checks\": [\n    {\n      \"path\": \"figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/figures_v2/Fig_PT_velocity_XY_z37p5nm.png\",\n      \"size\": [\n        2400,\n        1200\n      ],\n      \"mode\": \"RGBA\",\n      \"opaque\": true,\n      \"titles_present\": true\n    },\n    {\n      \"path\": \"figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/figures_v2/Fig_PT_velocity_XZ_y120nm.png\",\n      \"size\": [\n        2400,\n        1200\n      ],\n      \"mode\": \"RGBA\",\n      \"opaque\": true,\n      \"titles_present\": true\n    }\n  ],\n  \"grayscale_screen\": {\n    \"strictly_nondecreasing\": false,\n    \"negative_steps\": 2,\n    \"minimum_step\": -0.000283038746292652,\n    \"endpoint_luminance\": [\n      0.01890745028708783,\n      0.781680461121995\n    ],\n    \"interpretation\": \"The actual 8-bit ParaView LUT has two tiny luminance reversals from RGB quantization; no strict monotonicity or accessibility certification is claimed.\"\n  },\n  \"original_inputs_and_evidence_unchanged\": true,\n  \"text_extent_check\": \"passed during final export\",\n  \"visual_review\": \"Both final PNGs opened; gray solids, correct axes, shared scale and non-cropped legends reviewed.\",\n  \"journal_specific_compliance\": \"not asserted\"\n}\n",
+    "result": {
+      "native_color_checks": [
+        {
+          "panel": "P_XY",
+          "cell_center_registration_verified": true,
+          "native_color_max_error_8bit": 0,
+          "solid_gray_max_error_8bit": null,
+          "liquid_samples": 2304
+        },
+        {
+          "panel": "T_XY",
+          "cell_center_registration_verified": true,
+          "native_color_max_error_8bit": 0,
+          "solid_gray_max_error_8bit": null,
+          "liquid_samples": 2304
+        },
+        {
+          "panel": "P_XZ",
+          "cell_center_registration_verified": true,
+          "native_color_max_error_8bit": 0,
+          "solid_gray_max_error_8bit": 0,
+          "liquid_samples": 1200
+        },
+        {
+          "panel": "T_XZ",
+          "cell_center_registration_verified": true,
+          "native_color_max_error_8bit": 0,
+          "solid_gray_max_error_8bit": 0,
+          "liquid_samples": 1200
+        }
+      ],
+      "png_checks": [
+        {
+          "path": "figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/figures_v2/Fig_PT_velocity_XY_z37p5nm.png",
+          "size": [
+            2400,
+            1200
+          ],
+          "mode": "RGBA",
+          "opaque": true,
+          "titles_present": true
+        },
+        {
+          "path": "figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/figures_v2/Fig_PT_velocity_XZ_y120nm.png",
+          "size": [
+            2400,
+            1200
+          ],
+          "mode": "RGBA",
+          "opaque": true,
+          "titles_present": true
+        }
+      ],
+      "grayscale_screen": {
+        "strictly_nondecreasing": false,
+        "negative_steps": 2,
+        "minimum_step": -0.000283038746292652,
+        "endpoint_luminance": [
+          0.01890745028708783,
+          0.781680461121995
+        ],
+        "interpretation": "The actual 8-bit ParaView LUT has two tiny luminance reversals from RGB quantization; no strict monotonicity or accessibility certification is claimed."
+      },
+      "original_inputs_and_evidence_unchanged": true,
+      "text_extent_check": "passed during final export",
+      "visual_review": "Both final PNGs opened; gray solids, correct axes, shared scale and non-cropped legends reviewed.",
+      "journal_specific_compliance": "not asserted"
+    }
+  },
+  "state_round_trip": {
+    "chunk_id": "86be58",
+    "wall_time_seconds": 1.652690808,
+    "exit_code": 0,
+    "original_token_count": 51,
+    "output": "{\"state_load_ok\": true, \"views\": 4, \"sources\": 12, \"shared_range\": [0.0, 0.00018], \"automatic_rescale\": \"'Never'\", \"scope\": \"Field views only; final vector labels are reproduced by assemble_figures.py.\"}\n",
+    "result": {
+      "state_load_ok": true,
+      "views": 4,
+      "sources": 12,
+      "shared_range": [
+        0,
+        0.00018
+      ],
+      "automatic_rescale": "'Never'",
+      "scope": "Field views only; final vector labels are reproduced by assemble_figures.py."
+    }
+  },
+  "pdf_font_and_page_inspection": {
+    "chunk_id": "ff0fac",
+    "wall_time_seconds": 0.000013785,
+    "exit_code": 0,
+    "original_token_count": 232,
+    "output": "Creator:         Matplotlib v3.11.1, https://matplotlib.org\nProducer:        Matplotlib pdf backend v3.11.1\nCreationDate:    Sat Oct 17 18:12:06 2026 CST\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           1\nEncrypted:       no\nPage size:       576 x 288 pts\nPage rot:        0\nFile size:       42327 bytes\nOptimized:       no\nPDF version:     1.4\nname                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nEOOZSU+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes     18  0\nDETPQB+DejaVuSans-Oblique            CID TrueType      Identity-H       yes yes yes     25  0\nBWZSSQ+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     32  0\n"
+  },
+  "visual_QA": {
+    "opened_final_PNGs": true,
+    "findings": [
+      "White background; two matched panels and a single shared speed legend per figure.",
+      "XY z=37.5 nm and XZ y=120 nm are separate matched comparisons.",
+      "Solid regions gray; axes in nm; correct body-force direction arrows including +y into the XZ page.",
+      "5 nm lattice-sample footprints preserved without smoothing; final PNG pixel count is not claimed as physical spatial resolution.",
+      "No labels outside canvas in final export; complete captions supplied separately."
+    ],
+    "not_certified": [
+      "Target-journal acceptance or formatting",
+      "Complete color-vision accessibility",
+      "New numerical or physical Gate",
+      "Energy-loss mechanisms or recirculation",
+      "Accuracy of 15 mPa s cases, since these are the earlier selected baseline directories."
+    ]
+  },
+  "development_history": [
+    {
+      "stage": "initial render",
+      "chunk_id": "ccb655",
+      "wall_time_seconds": 1.102230715,
+      "exit_code": 1,
+      "original_token_count": 133,
+      "output": "Traceback (most recent call last):\n  File \"/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/render_fields.py\", line 271, in <module>\n    main()\n  File \"/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/render_fields.py\", line 171, in main\n    table = [list(lut.GetClientSideObject().GetColor(v)) for v in np.linspace(*color_range, 256)]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: GetColor() takes exactly 2 arguments (1 given)\n",
+      "resolution": "Fixed VTK GetColor signature to provide an RGB output array."
+    },
+    {
+      "stage": "second render",
+      "chunk_id": "cff971",
+      "wall_time_seconds": 1.9297551240000002,
+      "exit_code": 1,
+      "original_token_count": 478,
+      "output": "(   1.312s) [paraview        ]       vtkXMLParser.cxx:375    ERR| vtkXMLDataParser (0x608e150b7e00): Error parsing XML in stream at line 16, column 0, byte index 1022: junk after document element\n(   1.312s) [paraview        ]       vtkXMLReader.cxx:520    ERR| vtkXMLImageDataReader (0x608e13bed900): Error parsing input file.  ReadXMLInformation aborting.\n(   1.405s) [paraview        ]vtkSMPVRepresentationPr:288   WARN| vtkSMPVRepresentationProxy (0x608e154d0180): Could not determine array range.\nTraceback (most recent call last):\n  File \"/usr/lib/python3/dist-packages/paraview/servermanager.py\", line 3195, in GetAssociationFromString\n    return ASSOCIATIONS[val]\n           ~~~~~~~~~~~~^^^^^\nKeyError: 'NONE'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/usr/lib/python3/dist-packages/paraview/servermanager.py\", line 3198, in GetAssociationFromString\n    return _LEGACY_ASSOCIATIONS[val]\n           ~~~~~~~~~~~~~~~~~~~~^^^^^\nKeyError: 'NONE'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/render_fields.py\", line 275, in <module>\n    main()\n  File \"/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/render_fields.py\", line 227, in main\n    ColorBy(solid_display, None)\n  File \"/usr/lib/python3/dist-packages/paraview/simple.py\", line 807, in ColorBy\n    rep.SetScalarColoring(None, servermanager.GetAssociationFromString(association))\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3/dist-packages/paraview/servermanager.py\", line 3200, in GetAssociationFromString\n    raise RuntimeError (\"invalid association string '%s'\" % val)\nRuntimeError: invalid association string 'NONE'\n",
+      "resolution": "Used explicit ASCII derived VTI serialization for local reader compatibility and explicit cell-association solid-color selection."
+    },
+    {
+      "stage": "intermediate render",
+      "chunk_id": "6fbf43",
+      "wall_time_seconds": 2.263542731,
+      "exit_code": 0,
+      "original_token_count": 46,
+      "output": "{\"output_dir\": \"/home/dell/yuanyuanxu/SIM240/figures/paraview/D2_h75_d100_dx5_PT_publication_20261017_v1/rendered_v3\", \"panels\": 4, \"raw_inputs_unchanged\": true, \"status\": \"rendered\"}\n",
+      "resolution": "Image review found solid actors black under ambient-only lighting; set the solid AmbientColor to the intended gray, then regenerated in rendered_v4."
+    },
+    {
+      "stage": "first numeric QA",
+      "chunk_id": "4519d8",
+      "wall_time_seconds": 0.03948191,
+      "exit_code": 1,
+      "original_token_count": 23,
+      "output": "Traceback (most recent call last):\n  File \"<stdin>\", line 40, in <module>\nAssertionError\n",
+      "resolution": "A strict luminance-monotonicity assertion failed on two tiny 8-bit LUT reversals. This finding is retained; final QA reports the measured values and does not claim strict grayscale monotonicity or accessibility certification."
+    }
+  ],
+  "protocol_and_run_id": {
+    "new_simulation_run_id": null,
+    "existing_case_ids": [
+      "D2-P-h75-d100-dx5",
+      "D2-T-h75-d100-dx5"
+    ],
+    "formal_protocol_changes": false,
+    "raw_data_modified": false,
+    "source_binding_limit": "The input chain hashes bind the exact reader and referenced VTI fields. Existing run metadata is preserved; no missing historical source/build metadata is invented."
+  },
+  "next_action": "Review the linked figures. Exact journal-size/font/file-format adaptation remains a separate destination-specific task.",
+  "long_run_authorization": "No new simulation authorized or started."
+}

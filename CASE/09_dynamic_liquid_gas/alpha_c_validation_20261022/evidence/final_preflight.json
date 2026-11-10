@@ -1,0 +1,29 @@
+{
+  "frozen": true,
+  "bound_file_count": 3401,
+  "protected_file_count": 3045,
+  "mismatches": [],
+  "prechecks": [
+    {
+      "stage": "alpha",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout": "PRECHECK_OK stage=alpha cases=16 frozen_hashes=3401; no solver started yet\n",
+      "stderr": ""
+    },
+    {
+      "stage": "c",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "stdout": "",
+      "stderr": "PRECHECK_FAILED: RuntimeError('C waits for completed alpha analysis; no automatic stage transition')\n"
+    }
+  ],
+  "formal_spatial_steps_executed": 0,
+  "formal_batches_started": false,
+  "alpha_command_prepared": true,
+  "c_command_not_delivered": true,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": "NOT_EVALUATED",
+  "geometry_PASS": "NOT_EVALUATED"
+}

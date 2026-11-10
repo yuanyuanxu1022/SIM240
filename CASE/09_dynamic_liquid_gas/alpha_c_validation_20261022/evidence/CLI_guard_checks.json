@@ -1,0 +1,66 @@
+[
+  {
+    "command": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/build/alpha_diffusion",
+      "no_such_case",
+      "evidence/guard_should_not_exist"
+    ],
+    "independent_exit_code": 3,
+    "passed": true,
+    "stderr_tail": "invalid frozen case ID\n"
+  },
+  {
+    "command": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/build/coupled_check",
+      "C_no_such_case",
+      "evidence/guard_should_not_exist"
+    ],
+    "independent_exit_code": 3,
+    "passed": true,
+    "stderr_tail": "C_DIAGNOSTIC_ERROR: invalid frozen C case ID\n"
+  },
+  {
+    "command": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/build/alpha_diffusion",
+      "linear_n16_x_a1",
+      "evidence/guard_should_not_exist",
+      "--wrong"
+    ],
+    "independent_exit_code": 3,
+    "passed": true,
+    "stderr_tail": "unknown option\n"
+  },
+  {
+    "command": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/build/coupled_check",
+      "C_target_mu0",
+      "evidence/guard_should_not_exist",
+      "--wrong"
+    ],
+    "independent_exit_code": 3,
+    "passed": true,
+    "stderr_tail": "C_DIAGNOSTIC_ERROR: unknown option\n"
+  },
+  {
+    "command": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/build/alpha_diffusion",
+      "linear_n16_x_a1",
+      "evidence/init_linear_n16_x_a1_v1/data",
+      "--initialize-only"
+    ],
+    "independent_exit_code": 3,
+    "passed": true,
+    "stderr_tail": "refusing overwrite of existing run directory\n"
+  },
+  {
+    "command": [
+      "/home/dell/yuanyuanxu/SIM240/CASE/09_dynamic_liquid_gas/alpha_c_validation_20261022/build/coupled_check",
+      "C_target_mu0",
+      "evidence/init_C_target_mu0_v1/data",
+      "--initialize-only"
+    ],
+    "independent_exit_code": 3,
+    "passed": true,
+    "stderr_tail": "C_DIAGNOSTIC_ERROR: refusing existing output\n"
+  }
+]

@@ -1,0 +1,725 @@
+Optimal placement of droplets for UV
+nanoimprint lithography
+Cite as: J. Vac. Sci. Technol. B 38, 022601 (2020); https://doi.org/10.1116/6.0000030
+Submitted: 25 January 2020 . Accepted: 03 March 2020 . Published Online: 20 March 2020
+
+Yang H. Ban     , and Roger T. Bonnecaze
+
+
+
+
+J. Vac. Sci. Technol. B 38, 022601 (2020); https://doi.org/10.1116/6.0000030             38, 022601
+
+© 2020 Author(s).
+                                                                                                   ARTICLE           avs.scitation.org/journal/jvb
+
+
+
+
+    Optimal placement of droplets for UV nanoimprint
+    lithography
+    Cite as: J. Vac. Sci. Technol. B 38, 022601 (2020); doi: 10.1116/6.0000030
+    Submitted: 25 January 2020 · Accepted: 3 March 2020 ·                                                               View Online   Export Citation    CrossMark
+    Published Online: 20 March 2020
+
+    Yang H. Ban            and Roger T. Bonnecazea)
+
+    AFFILIATIONS
+    McKetta Department of Chemical Engineering, The University of Texas at Austin, 200 E. Dean Keeton St., Stop C0400,
+    Austin, Texas 78712
+
+    a)
+      Electronic mail: rtb@che.utexas.edu
+
+
+    ABSTRACT
+    Optimizing the locations and sizes of droplets are key to reduce defects and increase throughput of ultraviolet nanoimprint lithography
+    (UVNIL). Previously, simulation models describing the flow and coalescence of multiple fluid drops were developed and used to predict the
+    fluid flow during spreading and feature filling. However, the effect of small channels on the resulting capillary pressure is neglected even
+    though the flow along small channels or grooves is encountered in UVNIL. In this study, an accurate method to estimate capillary pressure
+    boundary conditions at the fluid-air interface is developed along with fluid simulation. A method to estimate and compute the anisotropic
+    capillary pressure for templates with line and space patterns is presented. It is found that the droplets flow faster in the direction of the
+    pattern not only because of anisotropic permeability but also the nanostructure of the template, which further propels anisotropic spreading
+    of the droplets by exerting larger capillary pressure. Using the new capillary pressure boundary condition, the simulation of multidrop
+    spreading in UVNIL is performed to study the effects of anisotropic capillary pressures caused by the template structure. A simulation
+    approach to determine optimal droplet placement was developed. From the simulation, a general rule of thumb is developed: delaying
+    droplet merging as much as possible and reducing the number of merging events.
+
+    Published under license by AVS. https://doi.org/10.1116/6.0000030
+
+
+    I. INTRODUCTION                                                             The ability of UVNIL to cheaply and reliably replicate nanoscale
+           Implementation of nanotechnologies depends on the ability to         features is potentially a tremendous asset to many applications.1
+                                                                                      A typical process of UVNIL is shown in Fig. 1. An inkjet dis-
+    pattern small features, and the required feature sizes are continuously
+                                                                                penser is used to dispense droplets of low viscosity photocurable
+    shrinking.1 UV nanoimprint lithography (UVNIL) is a promising
+    high-resolution molding process. UVNIL exceeds the limit of 193 nm          imprint material on the substrate. These droplets are a few picoli-
+    lithography, the current dominant technology. Also, UVNIL has               ters in volume. A UV-transparent template with micro- or nanofea-
+    several advantages compared to the next generation extreme ultravio-        tures is lowered on the substrate. As the template is pressed into
+    let lithography (EUVL).1 UVNIL has a high resolution and the reso-          the resist, the droplets merge together and fill the gap to form a
+    lution is largely unaffected by the field size being patterned; UVNIL       uniform film. When the desired gap is reached, UV light irradiates
+    is essentially only limited by the resolution of the template pattern.2–4   the imprinted film, which photopolymerizes to form a solid resist
+    UVNIL offers a low-cost alternative to photolithography and EUVL.           layer with features replicated from the template. The template is
+    It avoids the use of costly optical systems for traditional photolithog-    then peeled from the resist with a controlled mechanism complet-
+    raphy. When compared to an immersion based self-aligned quadru-             ing the patterning process. This pattern can then be used for
+    ple patterning, cost of ownership for UVNIL is approximately 40%            further processing such as reactive ion etching. UV nanoimprint
+    lower.5 Finally, using an inkjet dispenser, the fluid is dispensed as an    lithography effectively transfers high-resolution micro- and nano-
+    individual droplet. Because the resist volume deposited is matched to       features from templates onto substrates and is deployed in hard
+    the mask pattern density, there is no wasted resist, and the resulting      disk industry and photonics applications.6,7
+    total volume of resist liquid dispensed on a substrate is around 0.001            Despite its advantages, defects caused by gas trapping and low
+    times smaller than a more conventional spin-coat type resist.5              throughput make UVNIL less attractive.1,8 Several processing steps
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                      38, 022601-1
+Published under license by AVS.
+                                                                                                     ARTICLE            avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                 issue in enhancing the UVNIL process. Therefore, through the
+                                                                                 insights gained from a comprehensive model that captures the
+                                                                                 major physics involved with fluid flow, rational design of a droplet
+                                                                                 pattern could be employed in the future to achieve a low defectivity
+                                                                                 and high throughput UVNIL process.
+                                                                                      The feature filling step can be mathematically described using
+                                                                                 lubrication theory.9 By predictive modeling of the fluid flow during
+                                                                                 the feature filling step, a high throughput and low defectivity
+                                                                                 UVNIL method can be developed. Previously, a simulation model
+                                                                                 describing the flow and coalescence of multiple fluid drops was
+                                                                                 developed.9 This initial model was used to study a blank template
+                                                                                 with no features. Afterward, a simulation method that describes
+                                                                                 the fluid flow under a line and space pattern template was devel-
+                                                                                 oped.10 Flow in the high density line and space patterns is simu-
+                                                                                 lated by calculating the effective permeability for templates.10 From
+                                                                                 previous studies, it was found that the imprint time was shown to
+                                                                                 decrease with increasing numbers of drops, the placement errors
+                                                                                 increases the filling time, and the directionality of the pattern dic-
+                                                                                 tated the spreading of the droplets.9–11
+                                                                                      However, previous studies did not incorporate the capillary
+                                                                                 pressure generated by structures of the UVNIL template. Since
+                                                                                 UVNIL templates have a high density of nanostructures, it is
+                                                                                 important to consider the flow along small grooves and the result-
+                                                                                 ing capillary pressure. Thus, this study explored the capillary pres-
+                                                                                 sure resulting from nanostructures. Surface Evolver (SE)12 is used
+                                                                                 to numerically calculate the fluid-air interface, and a simple physi-
+                                                                                 cal model to approximate the capillary pressure is developed. The
+                                                                                 simple capillary pressure model does not add a complexity to the
+                                                                                 coarse-grained model but only adds accuracy to the simulation
+                                                                                 results. Using the accurate simulation method, droplet spreading
+                                                                                 patterns and filling time are studied. Also, various comparisons are
+                                                                                 made among different template dimensions and different droplet
+      FIG. 1. Schematic of the main steps for pattern replication in UVNIL and   arrangements. From the comparison, the most effective droplet
+      throughput budget of the UVNIL process.                                    arrangement for a line and space template is determined. The
+                                                                                 objectives are to understand the effect of anisotropic capillary pres-
+                                                                                 sure and droplet arrangement. Furthermore, we present the general
+    are involved with the throughput and defectivity of UVNIL. Most              rule of thumb in determining the optimal droplet arrangement.
+    of these steps are well-established, but the feature filling step needs
+    more understanding and still has much room for improvement.8                 II. SIMULATION METHOD
+    The chart shown in Fig. 1 (Ref. 7) shows the total throughput
+    budget in UVNIL. About 30% is taken by resist dispensing, align-             A. Simulation of resist spreading in UVNIL
+    ments, UV radiation, and peeling. The rest of the budget is taken                  When a template contains regularly ordered structures, the
+    by the fluid filling step. These steps have to be completed in ∼1.5 s        droplet located between the substrate and the template will conform
+    or less for a competitive manufacturing process.7 It is obvious from         to the structures. The simulation aims are to elucidate the effects of
+    this chart that the fluid filling is the bottleneck in UVNIL. It is          geometrical structures, particularly a line and space pattern, and
+    possible to increase the throughput by reducing the filling time.            describe the dynamics of fluid flow in a thin gap. Figure 2 is a sche-
+    This may increase the number for wafers produced per hour, but at            matic representation of a resist droplet with radius R in gap height H
+    the same time, defects in imprinted pattern increase because of              between a patterned template and a substrate at a random instance
+    incomplete filling. The complete fluid filling is achieved only when         during spreading of a droplet in the UVNIL process. The liquid-air
+    all the voids have disappeared, and the challenge is finding the             interface of the droplet results in a pressure gradient that propels the
+    shortest time required to achieve complete filling. Thus, in UVNIL,          spreading and causes an attractive capillary force on the template.
+    defectivity and throughput are related to each other and defectivity         The fluid flow in the gap results in a viscous force that balances a
+    needs to be considered in the context of throughput, and both                capillary force and any externally applied force. Gravity is neglected
+    must be addressed simultaneously. There is a need to understand              in this simulation. It is a reasonable assumption for small drops. The
+    the optimal droplet arrangement because optimizing the locations             interfacial tension γ of the gas-liquid interface is assumed constant.
+    and sizes of droplets is the key to reduce defects and increase the          The interface has two different contact angles, θ1 and θ2, made by
+    throughput of UVNIL.7 Thus, fluid management is an important                 the imprint material with the template and the substrate, respectively.
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                               38, 022601-2
+Published under license by AVS.
+                                                                                                                 ARTICLE                avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                            using Reynolds’s lubrication theory are
+
+                                                                                                                                    
+                                                                                                                       @H        ∇P
+                                                                                                                          ¼∇ K    H ,                                 (1)
+                                                                                                                       @T         μ
+
+                                                                                                                                       ∇P
+                                                                                                                           U ¼ K         ,                             (2)
+                                                                                                                                        μ
+
+                                                                                            where P is the pressure in the droplet, U is the vertically averaged
+                                                                                            fluid velocity, and μ is the viscosity of the imprint resist. The
+                                                                                            pressure distribution in the fluid is calculated using Eq. (1). The
+                                                                                            pressure boundary condition will be discussed later in this section.
+                                                                                            The governing Eqs. (1) and (2) can be nondimensionalized using
+                                                                                            the characteristic values of pressure, gap thickness, time, and
+                                                                                            velocity. These values are given by Pc ¼ 2γ/H0 ,Hc ¼ H0 ,
+                                                                                            Tc ¼ 6 μL2 /γH0 ,Vc ¼ γH02 /6 μL2 , and Uc ¼ γH0 /6 μL. Characteristic
+                                                                                            variables contain the two disparate length scales: H0 is the initial
+                                                                                            gap height and L is the size of the template, the transverse length
+                                                                                            scale. The dimensionless governing equations are given by
+
+                                                                                                                        v ¼ ∇  ((k  ∇p)h),                           (3)
+
+                                                                                                                            u ¼ k  ∇p,                                (4)
+
+                                                                                            where h ¼ H/H0 , t ¼ T/Tc , v ¼ V/Vc ¼ @h/@t, p ¼ P/Pc , andu ¼ U/Uc :
+                                                                                            v is the dimensionless template velocity.
+                                                                                                  A schematic of a nanoimprint template with a line and space
+                                                                                            pattern is shown in Fig. 2(a). The feature height of the pattern is
+                                                                                            ΔH and the minimum and maximum gap between the substrate
+                                                                                            and the template at any time is H and H + ΔH, respectively. The
+                                                                                            width of a line and space pattern is w. The lines and spaces in
+                                                                                            Fig. 2(a) are parallel to the y-direction and into the plane. The
+      FIG. 2. Schematic of a droplet between a stripe template and a substrate. (a)         dimensionless governing Eqs. (3) and (4) can be written in the
+      Top view of the template with a droplet spreading under a line and space tem-         Cartesian coordinate system as
+      plate. The vertical lines show the direction of patterns (not to scale). (b) Side
+      view [the dotted line from (a)] of the template. (c) The unit cell used in studying                                                           
+      the fluid-air interface.                                                                                   @             @p     @             @p
+                                                                                                         v ¼         kxx havg      þ      kyy havg     ,               (5)
+                                                                                                                 @x            @x     @y            @y
+
+
+    These two contact angles are also assumed to be constant due to the                                                    ux ¼ kxx ∇p,                                (6)
+    small capillary number.13
+          Typically, the droplets are many orders of magnitude larger                       and
+    than the patterns and each droplet covers hundreds or thousands
+    of individual patterns. Since the resist flows over a very high                                                        uy ¼ kyy ∇p:                                (7)
+    density of patterns, it is practical to describe the resistance to flow
+    as an effective permeability. The permeability K is in general a
+                                                                                                  For line and space patterns, havg , kxx , and kyy are given by
+    tensor reflecting the anisotropic nature of the pattern. The simula-
+    tion geometry contains two disparate length scales, the size of gap                                                                       
+    fluid flow and the transverse length. The gap H between the                                                                  1 þ (1 þ Δh/h)
+                                                                                                                     havg ¼ h                    ,                      (8)
+    template and the substrate reduces from a few micrometers to                                                                        2
+    finally a few nanometers. The droplet radius or transverse length
+    scale ranges from a few millimeters to centimeters. The two dispa-                                                                                    
+                                                                                                                             2                       2
+    rate length scales allow a lubrication analysis. The governing                                    kxx ¼ h2                                                ,         (9)
+    equations describing the pressure and velocity fields in the drop                                                1 þ (1 þ Δh/h)3         1 þ (1 þ Δh/h)
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                                38, 022601-3
+Published under license by AVS.
+                                                                                                 ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+    and
+
+                                        1 þ (1 þ Δh/h)3
+                             kyy ¼ h2                   ,            (10)
+                                        1 þ (1 þ Δh/h)
+
+    where Δh ¼ ΔH/Hc . The closed-form solution for the two perme-
+    abilities was derived by considering volume conservation in the
+    x-direction and average flow in the y-direction. The full detail of a
+    droplet spreading in UVNIL, including discussion of the effect of
+    droplet size, placement, and gas dissolution, have been presented
+    by Jain et al.10,11 Using the same simulation framework used in
+    previous studies, the conceptual framework to understand the con-
+    sequent capillary pressure and permeabilities caused by structures
+    within a template was developed and extensively studied.
+
+    B. Simulation of capillary pressure at the interface
+          Surface Evolver12 is used to numerically investigate the fluid-
+    air interface shapes and the consequent capillary pressure jump.
+    The numerical procedure used in SE is based on minimizing the
+    free energy of the system to obtain the equilibrium interface shape.
+    Detailed information about the numerical methodology to solve
+    the constrained minimization problem is explained by Brakke.12
+    A unit cell geometry created by horizontal grooves on a template
+    [Fig. 2(c)] and the two contact angles, θ1 and θ2, are assigned to
+    the top and bottom line, respectively. At the left and right edges of
+    the domain [Fig. 2(c)], the contact angle of 90° was assigned to
+    simulate the periodic boundary condition. The resulting equilib-         FIG. 3. Schematic showing top view of 25 droplets dispensed on a substrate.
+    rium shape of the interface found using SE can be adopted to the         The droplets are dispensed in (a) a square and (b) a hexagonal. The droplet
+    simulation. The pressure at the liquid-air interface is given by the     placement in different arrangements is shown in the right column. The value of
+    Young–Laplace equation                                                   lh /lb is 0.5.
+                                                          
+                                                     1   1
+                         Pinterface ¼ Patm  γ         þ     ,       (11)
+                                                     R1 R2                  III. RESULTS AND DISCUSSION
+
+    where R1,2 are the principal radii of curvature. Thus, the pressure     A. Capillary pressure in nanostructure
+    jump resulted from the mean curvature of the interface can be cal-            In this study, a numerical simulation for predicting the sur-
+    culated, and SE also calculates the pressure jump. To mimic the         faces generated by nanostructures was performed to validate the
+    lowering of a template, the variation of capillary pressure at a        proposed analytic model. It was necessary to predict the shape of
+    certain feature height was studied as a function of the template        the liquid meniscus using SE simulation, because experimental data
+    height with respect to a substrate. The capillary pressure caused by    of surfaces generated by nanostructures is not available. Stable
+    the fluid-air interface was analyzed using SE and used as a boun-       interfaces formed between a line and space template and a substrate
+    dary condition in UVNIL simulation.                                     are simulated using SE.
+         Simulation of droplets in UVNIL was carried out in two                   Figure 4 shows the fluid-air interface formed inside of a rect-
+    major configurations: square and hexagonal arrangement.                 angular prism. From this simple simulation, it was observed that,
+    Figure 3(a) shows droplets dispensed in a square arrangement            with sharp 90° corners, liquid interfaces tend to spread in corners
+    and Fig. 3(b) shows droplets dispensed in a hexagonal arrange-          and form infinitely extended filaments [Fig. 4(a)]. Concus and Finn
+    ment where lb /lh ¼ 2. In this hexagonal arrangement, the initial       had investigated this phenomenon and derived the criterion for
+    vertical distance between two droplets is equal to Dv ¼ 2lh , and       spontaneous capillary motion in the corner of the wedge.14 If θ is
+    the initial horizontal distance between two droplets is equal to        Young’s contact angle on both planes and 2α is the wedge angle, an
+    Dh ¼ 0:5lb . The importance of these distances is discussed in the      endlessly growing filament forms when13
+    Results and Discussion section. In all the simulations, the gap
+    between the substrate and the template closes from a gap of h = 1                                             π
+    to a final gap of h = 0.01. The total volume of droplets in all                                          θ,      α:                                (12)
+                                                                                                                  2
+    arrangements is equal to the volume required to fill the gap
+    between the template and the substrate to a desired final gap of             Thus, with 90° corners, if the contact angle is less than 45°,
+    h = hf = 0.01.                                                          endless capillary filaments form. The Concus–Fin condition
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                  38, 022601-4
+Published under license by AVS.
+                                                                                                                 ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+      FIG. 4. Surface generated with SE [the lighter gray (or blue online) is the front
+      of the surface and dark gray is the back of the surface]. (a) Formation of infi-
+      nitely extended capillary filaments. (b) Prevention of an infinitely long filament
+      formation resulted from nonideal corners.
+
+
+
+    [Eq. (12)] is universal for various geometries, provided they have
+    ideally sharp corners.13,14 However, real structures do not have
+    perfectly sharp corners; moreover, infinitely extended capillary fila-
+    ment is not observed in UVNIL processes. The effect of the non-
+    ideal corner was analyzed by Kitron-Belinkov and his colleagues.15
+    In general, when the corner is not ideally sharp, the filament
+    growth stops at a finite length and does not proceed.15 In the simu-
+    lation, the imperfect corner was generated by adding a small curva-
+    ture [Fig. 4(b)]. As can be seen in Fig. 4(b), the curvature in the
+    corner prevents the formation of infinitely long capillary filaments,                   FIG. 5. (a) Schematic shows the two locations where the two major shapes
+                                                                                            of interfaces are formed in the UVNIL process. (b) Surfaces generated with
+    and a stable interface was formed.
+                                                                                            SE at the tip of a droplet ( point A) and (c) at the side of a droplet
+          A small curvature (5% of the characteristic length scale) in                      ( point B). The two different shapes of interface result in two difference cap-
+    nanostructure corners allowed the formation of a stable interface                       illary pressures.
+    even with a contact angle smaller than 45° (Fig. 5). The fluid-air
+    interface and the consequent capillary pressure were numerically calcu-
+    lated using dimensionless parameters. Two characteristic values were
+    used in nondimensionalization; γ ¼ 0:003 dyne/cm and w ¼ 100 nm,                       where Pc is the pressure constant. As can be seen in Fig. 5, the two
+    where γ is the surface tension of the resist material and w is the width               different shapes of interfaces at different locations of the droplet
+    of a nanostructure. Thus, the pressure is nondimensionalized with a                    suggested a capillary pressure variation along the contour of the
+    pressure constant,                                                                     droplet. The interface at point B is simply a two flat plate case, of
+                                                                                           which the analytical solution is known.16 The interface at point A
+                                                                                           was confined in the unit cell described in (Fig. 2). An analytical sol-
+                                                 γ                                         ution for the complex shape of the interface at point A is not
+                                       Pc ¼       ,                                (13)
+                                                 w                                         known.
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                                  38, 022601-5
+Published under license by AVS.
+                                                                                                              ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                         Eq. (13). The nondimensionalized averaged pressure is
+
+
+                                                                                                         γ(2cos(θ1 ))ΔH þ γ(cos(θ1 ) þ cos(θ2 ))2w w
+                                                                                              pavg (h) ¼
+                                                                                                                        w(ΔH þ 2H)                 γ
+                                                                                                         (2cos(θ1 ))ΔH þ (cos(θ1 ) þ cos(θ2 ))2w 1/H0
+                                                                                                       ¼
+                                                                                                                       (ΔH þ 2H)                 1/H0
+                                                                                                           Δhcos(θ1 ) þ (cos(θ1 ) þ cos(θ2 ))ω
+                                                                                                       ¼2                                      ,                    (19)
+                                                                                                                       (Δh þ 2h)
+
+
+                                                                                         where ω ¼ Hw0 , Δh ¼ ΔH  H0 , and h ¼ H0 . This weighted average
+                                                                                                                               H
+
+                                                                                         pressure [Eq. (19)] was compared with SE calculation (Fig. 7).
+      FIG. 6. Schematic of the surface at the tip of the droplet ( point A in Fig. 4)
+      divided into two separate surfaces. Contact angles at each area were assumed       The parity plot (Fig. 7) closely followed a straight line with a
+      to mimic the original surface (Fig. 5) and to simulate a periodic boundary         slope equals one. This graph demonstrated that the averaged
+      condition.                                                                         pressure [Eq. (19)] is an accurate approximation of capillary pres-
+                                                                                         sure. Using Eq. (19), a master curve was generated (Fig. 8). The
+         However, the interface at point A can be seen as a combina-                     master curve of capillary pressure was constructed by rescaling the
+    tion of two different interfaces (Fig. 6). The pressure at the top                   height and the capillary pressure at various feature heights.
+                                                                                                                                           0ω
+    area is                                                                              The characteristic pressure, ~p, is 2γ(Δhcos(θ1 PH
+                                                                                                                                         )þcos(θ 1 )cos(θ 2 )), and the
+                                                                                         characteristic height, e
+                                                                                                                h, is (2HþΔH). With new characteristic values,
+                                                                                                                          H0 ω
+                        γ(2  cos(θ1 )) γ(cos(θ1 ) þ cos(θ1 þ π))                        capillary pressure did not depend on the feature size or the contact
+               Ptop ¼                   
+                               w                   ΔH                                    angles. The characteristic pressure was only a function of character-
+                        γ(2  cos(θ1 ))                                                  istic height.
+                    ¼                  :                                         (14)         This SE analysis provided Eq. (19) to predict the capillary
+                               w
+                                                                                         pressure at the tip of the droplet. The tip and the side of a droplet
+         Based on the shape of the top area surface, the contact angle                   are two extreme cases of interfaces, and the rest of the droplet
+    at the bottom of the top area was assumed to be θ1 þ π. Thus, the                    interface can be thought as a combination of two extreme cases.
+    pressure at the top area is dictated by the width of the nanostruc-                  The capillary pressure was weighted and averaged with x and
+    ture rather than the height of the feature, ΔH. The pressure at the                  y-components of the normal vector of the interface at each point.
+    bottom area is                                                                       Thus, the capillary pressure boundary condition along the contour
+                                                                                         of a droplet, pinterface , is
+                                       γ(cos(θ1 ) þ cos(θ2 ))
+                        Pbottom ¼                            ,                   (15)
+                                                 H
+
+    which is the same as the two flat plate case. The equations for the
+    top area, Atop , and the bottom area, Abottom , are
+
+                                     Atop ¼ wΔH                                   (16)
+
+    and
+
+                                   Abottom ¼ 2wH,                                 (17)
+
+    respectively. Each pressure is weighted with its area, and the capil-
+    lary pressure is averaged. The equation for averaged pressure Pavg is
+    given by
+
+                       Ptop Atop þ Pbottom Abottom
+          Pavg (H) ¼ 
+                            (Atop þ Abottom )
+                         γ(cos(θ 1 ))ΔH þ γ(cos(θ1 ) þ cos(θ2 ))w
+                    ¼ 2                                          :               (18)    FIG. 7. Parity plot that compares numerically predicted pressure and weighted
+                                       w(ΔH þ 2H)
+                                                                                          average pressure. The two normalized pressure values estimated by weighted
+                                                                                          averaged pressure and SE closely match each other.
+    In SE calculation, capillary pressure was nondimensionalized with
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                              38, 022601-6
+Published under license by AVS.
+                                                                                                              ARTICLE            avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                           equal to 100 nm. Because of the high density of pattern, an
+                                                                                           average permeability K was used to describe the effect of a large
+                                                                                           number of gratings. The anisotropic capillary pressure boundary
+                                                                                           condition used in the simulation has been described in Sec. III A.
+                                                                                           Using these two analyzed parameters, Eqs. (3) and (4) are solved
+                                                                                           using the volume of fluid method,17 and anisotropic droplet spread-
+                                                                                           ing was simulated.10
+                                                                                                  The simulation shows that the droplets are stretched along the
+                                                                                           y-direction, which is parallel to line and space patterns. In the pre-
+                                                                                           vious study, the stretch of droplets was solely caused by the effect
+                                                                                           of anisotropic permeabilities,10 but with SE analysis, it is discovered
+                                                                                           that anisotropy also exists in the capillary pressure boundary condi-
+                                                                                           tion. In general, the permeability in x- and y-directions are scaled
+                                                                                           as O(h2 ) initially, but as the gap gets thinner, the permeability
+                                                                                           becomes significantly higher in the y-direction compared to the
+                                                                                           x-direction.10 Added to this deviation in the permeabilities, the
+                                                                                           pressure gradient is larger at the tip of the droplet than the side of
+                                                                                           the droplet because of the anisotropic capillary pressure boundary
+      FIG. 8. Numerically calculated capillary pressure at specific feature heights        condition. The combination of the two effects causes droplets to
+      collapsed into a single curve. Square data points represent θ1 = 10° and             spread faster in the y-direction than in the x-direction and form an
+      θ2 = 30° casesand star data points represent θ1 = θ2 = 45° with  perfectly sharp   elliptical shape [Fig. 9(a)]. The droplet merges in the y-direction
+                                     PH0 ω
+      corners cases ~p ¼ γ(2Δhcos(θ )þ2cos(θ           and e
+                                                           h ¼ (2HþΔH)
+                                                                        .                  first, and the anisotropic pressure boundary condition straightens
+                                    1       1)cos(θ ))
+                                                  2              H ω
+                                                                 0
+                                                                                           the fluid-air interface and forms a long channel, which is observed
+                                                                                           in the experiments.8 The first merge creates larger droplets that
+                                                                                           merge in the x-direction later. The elongation continues and the
+                                                                                           final spreading pattern before the complete merging is largely dif-
+            pinterface ¼ p pointA Ny2 þ p pointB Nx2
+                                                                                           ferent from the flat template simulation case [Figs. 9(a) and 9(b)].
+                            Δhcos(θ1 ) þ ω(cos(θ1 ) þ cos(θ2 )) 2                          Figure 9(c) shows a graph of height as a function of time for the
+                      ¼ 2γ                                     Ny
+                                        ω(Δh þ 2h)                                         144 droplets square arrangement. Initially, the low permeability in
+                           γ(cos(θ 1 ) þ cos(θ2 )) 2                                       the pattern template case hinders the spreading of droplets, and the
+                         þ                        Nx ,                              (20)   spreading is slower than the flat plate template case. However,
+                                    havg
+                                                                                           the large capillary pressure in the pattern template case speeds up
+    where p pointA is the pressure at point A (Fig. 5), p pointB is the pres-              the spreading, but the fast spreading cannot be continued because
+    sure at point B (Fig. 5), Nx is the x-component of the unit normal                     of vertical merging. The two merges in the y-direction and
+    vector, Ny is the y-component of the unit normal vector, and havg                      x-direction are manifest as a sudden slope decrease in the height
+    is average height that is equal to h þ Δh  2 . By inspecting Eq. (20),
+                                                                                           graph [Fig. 9(c)]. Compared to the plane template case [Fig. 9(c)],
+    initially, the y-component of capillary pressure is larger than the                    the first early merge significantly impeded the filling speed and
+    x-component, and this anisotropy in the pressure boundary condi-                       increased the overall filling time.
+    tion would stretch the droplet in the y-direction. This anisotropy in
+    capillary pressure is an additional force that propels the anisotropic                 C. Effect of feature size
+    spreading in the UVNIL process.
+                                                                                                 The general effect of anisotropic capillary pressure arose from
+                                                                                           the line and space template structure was observed in Sec. III B. In
+    B. Effect of anisotropic capillary pressure                                            this section, the size dependency of the capillary pressure boundary
+         There are two major physical phenomena, capillary pressure                        condition will be discussed. The height and width of the feature
+    and permeability, which propel anisotropic flow in the UVNIL                           have a significant influence on the capillary pressure. With a larger
+    process. Both phenomena arose from the structure of the line and                       feature height, the size of top area increases (Fig. 6). Thus, the
+    space template. The effect of template structure manifests itself in                   larger feature height exerts a stronger capillary force because
+    droplet spreading and overall filling time. In this section, the                       the effect of top area gets larger as the feature height increases. The
+    droplet spreading is discussed and overall filling time is discussed                   width dependency arose from Eq. (14), which calculates the capil-
+    in Sec. III C with the effect of droplet arrangement.                                  lary pressure at the top region. Since a smaller width results in a
+         The filling of UVNIL from the gap height from h = 1 to                            smaller curvature, a larger capillary pressure is generated (Fig. 6).
+    h = 0.01 is simulated for droplets dispensed in a square arrange-                      Thus, the smaller width exerts a stronger capillary force, which
+    ment. If the initial height, Ho , is equal to 1 μm, the final gap                      stretches droplets further in the y-direction.
+    height is equal to 100 nm. The template has net zero force acting                            The effect of feature height appears when comparing the
+    on it. Figure 9 shows spreading of 144 droplets dispensed in a                         filling time, and the shape results from different capillary pres-
+    square arrangement with a feature height Δh = 0.10, which is                           sures. Figure 10 shows the different shapes of droplets resulted
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                        38, 022601-7
+Published under license by AVS.
+                                                                                                                       ARTICLE                avs.scitation.org/journal/jvb
+
+
+
+
+      FIG. 9. Nondimesionalized pressure fields of 144 droplets spreading on a substrate. (a) is a simulation result with a template that has a line and space pattern parallel to
+      the y-direction, and the net force acting on the template is zero. (b) is a simulation result with a template that does not have any pattern, and the net force acting on the
+      template is zero. (c) graphs the height change as a function of time. The graph compares the spreading pattern of 144 droplets under a line and space patterned template
+      and a plane template. The two circles indicate the moments when the merge happened.
+
+
+
+    from changing the size of the feature height. The feature width is                         final filling time. Because of a significant elongation, the template
+    fixed at 0.05. As expected, the template with higher feature height                        with feature height Δh ¼ 0:1 merged earlier than the template
+    was elongated more. The simulation with the higher feature                                 with feature height Δh ¼ 0:025. The initial delay caused by the
+    height, Δh ¼ 0:1, formed unfilled channels. The simulation with                            earlier merge propagates until the end of the simulation, and the
+    the smaller feature height, Δh ¼ 0:025, has a shape close to a                             higher feature height case takes a longer time to achieve a com-
+    circle (Fig. 10). The different spreading pattern also effect the                          plete filling. This observation suggests that it is advantageous to
+
+
+
+
+                                                                                                                                           FIG. 10. Nondimesionalized pressure
+                                                                                                                                           fields of 144 droplets spreading on a
+                                                                                                                                           substrate (a). Different shapes of drop-
+                                                                                                                                           lets resulted based on the feature
+                                                                                                                                           height of line and space feature, which
+                                                                                                                                           determines the boundary condition.
+                                                                                                                                           The different spreading patterns’ effect
+                                                                                                                                           in the final filling time (b).
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                                          38, 022601-8
+Published under license by AVS.
+                                                                                                         ARTICLE               avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                                                            FIG. 11. Nondimesionalized pressure
+                                                                                                                            fields of 144 droplets spreading on a
+                                                                                                                            substrate (a). Different shapes of drop-
+                                                                                                                            lets resulted based on the feature
+                                                                                                                            width of the line and space feature,
+                                                                                                                            which determine the boundary condi-
+                                                                                                                            tion. The different merging times
+                                                                                                                            caused by the feature width (b).
+
+
+
+
+    delay the merge as long as possible, because a larger drop spreads             pressure at the boundary. The estimated ratio of elongation is plotted
+    slower.11                                                                      as a function of height (Fig. 13). The graph should be read from
+          The effect of feature width is not obvious as the effect of feature      height equal to 1 to height equal to 0.01. The estimated ratio is close
+    height. Figure 11 shows the different shapes of droplets resulted              to 2 throughout the simulation (from height equal to 1–0.01).
+    from changing the size of width. Since smaller width exerts a larger                 Simulations of droplet spreading under a template with line and
+    capillary force, the smaller width case (ω ¼ 0:05) is slightly faster          space patterns were carried out in two major configurations: square
+    than the wider width case (ω ¼ 0:15) initially. However, in the                and hexagonal arrangement. For the hexagonal arrangement, 145
+    smaller width case, the first merge in the y-direction happens at an           droplets dispensed, and 144 droplets dispensed in the square
+    earlier time step than the wider width case. The initial delay caused          arrangement. For the hexagonal arrangement, the ratio, Dv /Dh , was
+    by the earlier merge propagates until the end of the simulation,               specifically chosen to be 2 because the spreading in the y-direction is
+    and the smaller width case takes a longer time to achieve a complete           expected to be about two times faster than in the x-direction. This
+    filling.                                                                       specific hexagonal arrangement has a different spreading pattern
+                                                                                   than the square arrangement. The hexagonal arrangement had only
+    D. Effect of droplet arrangements                                              one merging step throughout the filling steps. However, the square
+                                                                                   arrangement had two merging steps. The first merging happened
+          The previous analyses suggest an optimal way to arrange the
+                                                                                   before the merging of the hexagonal arrangement, and the second
+    drop. Since the merging impedes the spreading, it is favorable to
+    have the merging at the end of the process and reduce the instances
+    of merging. Thus, if droplets merging happened simultaneously at
+    once at the end of the process, the filling time can be reduced sig-
+    nificantly. A possible way to achieve such a process is shown in
+    Fig. 12. Unlike the flat template, the anisotropic template spreads
+    droplets differently in the x- and y-directions. Thus, droplets
+    cannot be placed in a square pattern. The ratio between vertical dis-
+    tance and horizontal direction traveled by a droplet would be a
+    parameter to determine the droplet placement and can be found
+    using the following equation:
+                                            ð
+                                       Dv     uy
+                                  D¼      ¼      dh,                       (21)
+                                       Dh     ux
+
+    where D is the ratio between vertical and horizontal direction, Dv is
+    the vertical distance, and Dh is the horizontal distance. ux and uy are         FIG. 12. (a) Optimal method to arrange droplets under a line and space tem-
+    horizontal and vertical velocities that are defined in Eqs. (3) and (4),        plate based on the spreading pattern of a droplet. An effective way to place the
+                                                                                    droplets is to postpone merging and reduce the unnecessary merging instances.
+    respectively. Instead of fully integrating Eq. (21), it is possible to esti-    (b) The optimal merging pattern that can reduce the filling time.
+    mate the ratio by approximating the pressure gradient as capillary
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                           38, 022601-9
+Published under license by AVS.
+                                                                                                                        ARTICLE                avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                                merge happened after the hexagonal merge (Fig. 14). Initially, both
+                                                                                                hexagonal and square arrangements fill the gap at the same rate
+                                                                                                (Fig. 15). However, the square arrangement significantly deviates
+                                                                                                from the hexagonal arrangement after the first merging. Later in
+                                                                                                time, the hexagonal arrangement merged simultaneously into a
+                                                                                                single drop and greatly impedes the filling speed, which is slower
+                                                                                                than the square arrangement at that moment. However, the hexago-
+                                                                                                nal arrangement earned enough time from late merging. Also, the
+                                                                                                second merging in the square arrangement happens and slows down
+                                                                                                the filling significantly. Therefore, the overall time required to fill the
+                                                                                                gap was shorter in the hexagonal case than the square case. The final
+                                                                                                nondimensionalized filling time for the square arrangement was
+                                                                                                0.035 and the hexagonal arrangement was 0.016. Thus, the filling
+                                                                                                time of the hexagonal arrangement was reduced to more than half of
+                                                                                                the square arrangement.
+                                                                                                      The simulation results suggest that only a certain type of hex-
+                                                                                                agonal arrangement is significantly advantageous compared to the
+                                                                                                square arrangement. If the ratio, D, is not close to 2, unnecessary
+                                                                                                merging happens in early stages of spreading and impedes the
+                                                                                                filling process. Thus, not every hexagonal arrangement will be
+      FIG. 13. Ratio of elongation as a function of height. Height equal to 1 is the            advantageous compared to the square arrangement. If the ratio, D,
+      beginning of a simulation and height equal to 0.01 is the end of the simulation.          is smaller than 2, just like the square arrangement, droplets will
+      The feature height and width is 0.10. Throughout the simulation, the elongation
+      in the y-direction is about two times larger than in the x-direction.
+                                                                                                merge vertically first and there will be two merging steps. If the
+                                                                                                ratio, D, is larger than 2, a horizontal merging will happen first.
+
+
+
+
+      FIG. 14. (a) Nondimesionalized pressure fields of 144 droplets arranged in a square pattern. (b) Nondimesionalized pressure fields of 145 droplets arranged in a hexago-
+      nal pattern. The template has a line and space pattern parallel to the y-direction, Δh is fixed at 0.10, and the net force acting on the template is zero. Spreading pattern of
+      the droplets is significantly different from each other.
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                                           38, 022601-10
+Published under license by AVS.
+                                                                                                             ARTICLE                avs.scitation.org/journal/jvb
+
+
+
+
+                                                                                      result and the experimental results proves the accuracy of the simu-
+                                                                                      lation approach. The same approach can be applied to various
+                                                                                      shapes of patterns. One can describe the change in a flow behavior
+                                                                                      caused by a large number of features as averaged permeabilities and
+                                                                                      study the interface created by features to describe the anisotropic
+                                                                                      boundary conditions. This new simulation approach provided two
+                                                                                      additional guidance mechanisms to several fluid management
+                                                                                      issues critical to enhance the speed of the imprinting process. It
+                                                                                      has been known that the imprint time decreases with the use of an
+                                                                                      increasing number of droplets.9,11 In addition to the number of
+                                                                                      droplets, it has been shown that the imprint time decreases with
+                                                                                      delayed merging moments and decreases the number of merging
+                                                                                      throughout the UVNIL process. Finally, if a template structure is
+                                                                                      highly complicated, it has been suggested to find both velocities in
+                                                                                      the x-direction and y-direction or the ratio of the two velocities
+                                                                                      experimentally to determine the optimal droplet arrangement
+                                                                                      based on the two guidance mechanisms.
+      FIG. 15. Gap height and covered area as a function of time for ∼144 droplets
+      dispensed in square and hexagonal arrangements. The filling time for the hex-
+      agonal arrangement is faster than that for the square arrangement.              ACKNOWLEDGMENTS
+                                                                                           The authors acknowledge the Texas Advanced Computing
+                                                                                      Center (TACC) at The University of Texas at Austin for providing
+          These analyses provide two clear guidance mechanisms in the                 High Performance Computing resources that have contributed to
+    arrangement of droplets. First and the most important rule of thumb               the research results reported within this paper. Funding for this
+    is that it is better to merge closer to the end of the filling process.           project was provided by NASCENT Engineering Research Center
+    Second, it is better to reduce the number of merging events.                      supported by the National Science Foundation (NSF) under
+    Furthermore, these analyses suggest an alternative method to find                 Cooperative Agreement No. EEC-1160494.
+    optimal droplet arrangement. If the template structure is complex, it
+    is impractical to find effective permeabilities and capillary pressure.           REFERENCES
+    In such a case, velocities in the x-direction and y-direction or the              1
+                                                                                        M. C. Traub, W. Longsine, and V. N. Truskett, Annu. Rev. Chem. Biomol. 7,
+    ratio of the two velocities should be found experimentally. After                 583–604 (2016).
+                                                                                      2
+    finding such quantities, it is possible to find the optimal droplet                 D. Lentz, G. Doyle, M. Miller, G. Schmid, M. Ganapathisuramanian, X. M. Lu,
+    arrangement based on two rules: delay droplet merging as much as                  D. Resnick, and D. L. LaBrake, Proc. SPIE 6517, 65172F (2007).
+                                                                                      3
+    possible and reduce the number of merging steps.                                    M. J. Chopra and R. T. Bonnecaze, J. Micro/Nanolithogr. MEMS MOEMS 14,
+                                                                                      044502 (2015).
+                                                                                      4
+                                                                                        F. Hua, Y. G. Sun, A. Gaur, M. A. Meitl, L. Bilhaut, L. Rotkina, J. F. Wang,
+    IV. SUMMARY AND CONCLUSIONS
+                                                                                      P. Geil, M. Shim, J. A. Rogers, and A. Shim, Nano Lett. 4, 12 (2004).
+                                                                                      5
+         A multidrop simulation of fluid filling of UVNIL has been                      T. Ito, K. Emoto, T. Takashima, K. Sakai, W. Liu, J. DeYoung, Z. Ye, and
+    further furnished. The foundation of the simulation is lubrication                D. LaBrake, J. Photopolym. Sci. Technol. 29, 2 (2016).
+                                                                                      6
+    theory and the Young–Laplace equation, and the volume of the                        S. H. Ahn, S. Yang, M. Miller, M. Ganapathisubramanian, M. Menezes,
+    fluid method is used to track the merging fluid interface.                        J. H. Choi, F. Y. Xu, D. J. Resnick, and S. V. Sreenivasan, J. Micro/Nanolithogr.
+                                                                                      MEMS MOEMS 12, 3 (2013).
+    Anisotropic boundary conditions that account for anisotropic flow                 7
+                                                                                        S. V. Sreenivasan, Microsyst. Nanoeng. 3, 17075 (2017).
+    caused by the line and space template structure were implemented.                 8
+                                                                                        W. Zhang et al., Proc. SPIE 9777, 97770A (2016).
+         The key finding of this work is that it is necessary to include              9
+                                                                                        S. Reddy and R. T. Bonnecaze, Microelectron. Eng. 82, 60 (2005).
+    both anisotropic permeability and an anisotropic capillary pressure               10
+                                                                                         A. Jain, A. Spann, A. Cochrane, P. R. Schunk, and R. T. Bonnecaze,
+    boundary condition to fully describe the anisotropic fluid flow under             Microelectron. Eng. 173, 62 (2017).
+                                                                                      11
+    a patterned template. This is important in the context of previous                   A. Jain, A. Spann, and R. T. Bonnecaze, J. Vac. Sci. Technol. B 35, 011602 (2017).
+                                                                                      12
+    work,10,11 which could not fully capture the sharp gradient shape of                 K. A. Brakke, Exp. Math. 1, 141 (1992).
+                                                                                      13
+    the fluid flow we observed in experiments. The observation made                      J. Berthier, K. A. Brakke, and E. Berthier, Open Microfluidics (Wiley, Hoboken,
+    with SE simulation provided the key ingredient to extrapolate the                 NJ, 2016).
+                                                                                      14
+    anisotropic pressure boundary condition used in this work. For line                  P. Concus and R. Finn, Proc. Natl. Acad. Sci. U.S.A. 63, 2 (1969).
+                                                                                      15
+                                                                                         M. Kitron-Belinkov, A. Marmur, T. Trabold, and G. V. Dadheech, Langmuir
+    and space patterns, the droplet spreads faster in the direction parallel
+                                                                                      23, 16 (2007).
+    to the patterns due to higher permeability and pressure gradient in               16
+                                                                                         P. G. de Gennes, F. Brochard-Wyart, and D. Quere, Capillarity and Wetting
+    the direction parallel to the patterns.                                           Phenomena: Drops, Bubbles, Pearls, Waves (Springer, New York, 2004).
+         Also, the straight channel formed in the square arrangement                  17
+                                                                                         C. W. Hirt and B. D. Nichols, J. Comput. Phys. 39, 1 (1981).
+    and the faster filling time in the hexagonal arrangement agree with               18
+                                                                                         E. B. Fletcher, G. M. Schmid, S. H. Im, N. Khusnatdinov, Y. Srinivasan,
+    the experimental results.8,18 This agreement between the simulation               W. Liu, and F. Y. Xu, U.S. patent 0017329 A1 (15 January 2015).
+
+
+
+
+J. Vac. Sci. Technol. B 38(2) Mar/Apr 2020; doi: 10.1116/6.0000030                                                                                               38, 022601-11
+Published under license by AVS.
+

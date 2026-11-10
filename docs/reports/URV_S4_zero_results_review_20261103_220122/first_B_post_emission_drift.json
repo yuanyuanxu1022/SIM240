@@ -1,0 +1,12 @@
+{
+  "candidate_usable": false,
+  "changes": [
+    {
+      "path": "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S4_zero_results_review_20261103_220122/seal_console.log",
+      "bound_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "current_sha256": "d1b278aba2f9a1708ae1717eeeff7a08eaa9dbc5844f963161adf7b873f3efe9"
+    }
+  ],
+  "reason": "The review sealing helper accidentally included its own active console log before final output was appended. No scientific input or raw result changed.",
+  "action": "Preserve the first candidate and receipts; create a separate corrected candidate from original A, excluding live console streams. No solver, native audit or field reader rerun."
+}

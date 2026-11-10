@@ -1,0 +1,51 @@
+{
+  "protocol_id": "S4-PR-v1",
+  "kind": "READ_ONLY_SCOPE_REVIEW_NOT_IMPLEMENTATION_OR_EXECUTION_AUTHORIZATION",
+  "user_instruction": "另定 S4 运行前材料与合同兼容性审查范围，不自动实现或启动计算。",
+  "future_minimum_scope_id": "S4-MIP-v1_PROPOSED_NOT_ADOPTED",
+  "stage": "S4_THIN_GRID",
+  "planned_case_ids": [
+    "URV1_U_THIN_P_dx5_a100000",
+    "URV1_U_THIN_T_dx5_a100000",
+    "URV1_U_THIN_P_dx2p5_a100000",
+    "URV1_U_THIN_T_dx2p5_a100000",
+    "URV1_U_THIN_P_dx1p25_a100000",
+    "URV1_U_THIN_T_dx1p25_a100000"
+  ],
+  "proposed_isolated_paths": [
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1",
+    "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1"
+  ],
+  "proposed_paths_created": false,
+  "actual_run_ids": [],
+  "approved_run_ids": [],
+  "implementation_authorized": false,
+  "build_authorized": false,
+  "native_zero_step_authorized": false,
+  "initial_field_readback_authorized": false,
+  "performance_authorized": false,
+  "formal_simulation_authorized": false,
+  "S5_authorized": false,
+  "minimum_future_changes": [
+    "S4 exact-stage source adoption and authority validation",
+    "isolated contracts dispatch without weakening prior branches",
+    "S4 preparation A/B closed seals and immutable input closure",
+    "S4 formal controller and separate zero audit entry",
+    "R1 effective-parameter checks and R2 six distinct initial-field/payload associations",
+    "negative-path software checks without real native/VTK calls",
+    "six-point stage-local grid evidence output without model scoring or full reference qualification"
+  ],
+  "frozen": [
+    "native source/ELF and measurement rounding paths",
+    "physics/average/force/boundaries",
+    "all common files and predictions",
+    "check_results.py/evidence.py/read_fields.py scientific routines",
+    "all historical results/releases/FAILs"
+  ],
+  "formal_acceptance": "NOT_EVALUATED",
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "submission_ready": false,
+  "F04": "OPEN_OUT_OF_SCOPE"
+}

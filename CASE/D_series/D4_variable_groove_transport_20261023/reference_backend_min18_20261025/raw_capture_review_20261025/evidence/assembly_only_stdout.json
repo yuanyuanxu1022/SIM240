@@ -1,0 +1,88 @@
+{
+  "planned_id": "B0MIN_FLAT_T_d1p25",
+  "status": "PREFLIGHT_ONLY_NOT_SOLVE_PERMISSION",
+  "preparation_version": "D4_REFERENCE_MIN18_STATIC_PREPARATION_v1",
+  "geometry": {
+    "kind": "rectangle",
+    "h_nm": 75,
+    "P_nm": 240,
+    "d_nm": 0,
+    "P_hat": 3.2,
+    "H_hat": 1,
+    "units": "SI_recovery_from_h"
+  },
+  "planned_mesh": {
+    "nx": 192,
+    "nz": 60,
+    "cell": "triangle",
+    "diagonal": "right",
+    "label": "1.25nm",
+    "constructed": false
+  },
+  "actual_mesh": {
+    "actual_triangles": 23040,
+    "actual_vertices": 11773,
+    "actual_raw_dofs": 104943
+  },
+  "forcing": "unit_uniform_body_acceleration",
+  "pressure_sign": "minus_laplacian_u_plus_grad_pi",
+  "periodic": {
+    "axis": "x",
+    "slave": "x=P",
+    "master": "x=0",
+    "z_interval": [
+      0,
+      1
+    ],
+    "velocity_wall_endpoints": "Dirichlet_priority_exclude_from_periodic_slaves",
+    "pressure_endpoints": "include",
+    "trace_normalization": "max(1,left_amplitude,right_amplitude)",
+    "actual_pairing_verified": false
+  },
+  "physical_constants": {
+    "rho_kg_m3": 1000,
+    "nu_m2_s": 1e-06,
+    "a_m_s2": 100000.0
+  },
+  "body_force_and_pressure_drop_together": false,
+  "quadrature_degree": 8,
+  "backend_versions": {
+    "fenics-dolfinx": "0.11.0",
+    "dolfinx_mpc": "0.11.0",
+    "petsc4py": "3.25.6",
+    "mpi4py": "4.1.2"
+  },
+  "mesh_sha256": "626546ccc84f1268f8d5e4d72d865f072f638ac74364fd4e946560dd4f5aaea9",
+  "periodic_mapping_sha256": "1188292119c76c4437ec64e5f92ddd0049a6097c78e4d442c81d511dfcd0e29e",
+  "matrix_shape": [
+    104943,
+    104943
+  ],
+  "matrix_csr_sha256": "fa8d9e39895acdba1addaf2f3f1949d14b9d24e3ce6428319503e7b54fead3a5",
+  "rhs_sha256_before_projection": "20b8ae76a7efe1e06e5fb3f733c6f1f176c169f3a88f8d621d12a24ad03a92e2",
+  "pressure_support": {
+    "physical_pressure_dofs": 11773,
+    "pressure_slave_dofs_removed": 61,
+    "algebraic_nonzero_dofs": 11712,
+    "algebraic_slave_entries_zero": true,
+    "algebraic_velocity_entries_zero": true
+  },
+  "pressure_backsubstitution_max_error": 3.469446951953614e-18,
+  "gauge_check": {
+    "right_kernel_relative": 2.1587985494558292e-21,
+    "left_kernel_relative": 2.264253655481106e-21,
+    "rhs_compatibility_relative_before_projection": 0.0,
+    "rhs_projection_change_L2": 0.0,
+    "petsc_nullspace_test": true,
+    "right_and_transpose_nullspaces_attached": true
+  },
+  "prior_assembly_hashes_match": true,
+  "solver_object_created": false,
+  "solver_called": false,
+  "physical_field_generated": false,
+  "formal_run_id": null,
+  "prediction_permission": "HOLD",
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null
+}

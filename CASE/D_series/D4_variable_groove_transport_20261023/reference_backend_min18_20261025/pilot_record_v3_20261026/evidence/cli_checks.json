@@ -1,0 +1,38 @@
+[
+  {
+    "name": "default_precheck",
+    "argv": [
+      "/home/dell/miniconda3/bin/python3",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/runner.py",
+      "--contract",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/contract_template.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "offline_independent_readback",
+    "argv": [
+      "/home/dell/miniconda3/bin/python3",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/readback.py",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/evidence/offline_b3d24f52c0/records/success/archive",
+      "--record-dir",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/evidence/offline_b3d24f52c0/records/success"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "failed_archive_integrity",
+    "argv": [
+      "/home/dell/miniconda3/bin/python3",
+      "-B",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/readback.py",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/evidence/memory_d47fd148e7/records/oom/archive",
+      "--record-dir",
+      "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_20261026/evidence/memory_d47fd148e7/records/oom",
+      "--archive-only"
+    ],
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "preparation_A_sha256": "320d1d8469e2db50db161f91bca20339e60cb9054875722e9cbb50d9ab236e62",
+  "records": [
+    {
+      "name": "formal_readonly",
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/scripts/run_S2.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/preparation_A.json",
+        "--release-sha256",
+        "320d1d8469e2db50db161f91bca20339e60cb9054875722e9cbb50d9ab236e62"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\"PREPARATION_BINDING_CHECK\": true, \"solver_executed\": false, \"simulation_authorized\": false, \"prepared_run_ids\": [\"URV_S2_P_dx5_reuse_v1_20261102_01\", \"URV_S2_T_dx5_reuse_v1_20261102_01\", \"URV_S2_P_dx2p5_reuse_v1_20261102_01\", \"URV_S2_T_dx2p5_reuse_v1_20261102_01\", \"URV_S2_P_dx1p25_reuse_v1_20261102_01\", \"URV_S2_T_dx1p25_reuse_v1_20261102_01\"], \"zero_audit_status\": \"NOT_EXECUTED\", \"resources_snapshot\": {\"MemAvailable_bytes\": 21936390144, \"disk_free_bytes\": 341488893952}}\n",
+      "stderr": "",
+      "solver_executed": false
+    },
+    {
+      "name": "zero_readonly",
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/scripts/audit_S2_zero.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/preparation_A.json",
+        "--release-sha256",
+        "320d1d8469e2db50db161f91bca20339e60cb9054875722e9cbb50d9ab236e62"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "{\"ZERO_PLAN_BINDING_CHECK\": true, \"solver_executed\": false, \"planned_native_calls\": 18, \"planned_initial_field_reads\": 6, \"native_zero_step_authorized\": false}\n",
+      "stderr": "",
+      "solver_executed": false
+    },
+    {
+      "name": "formal_execute_refused",
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/scripts/run_S2.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/preparation_A.json",
+        "--release-sha256",
+        "320d1d8469e2db50db161f91bca20339e60cb9054875722e9cbb50d9ab236e62",
+        "--execute"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "EvidenceError: current package authorizes zero-step preparation only\n",
+      "solver_executed": false
+    },
+    {
+      "name": "zero_execute_refused",
+      "argv": [
+        "/home/dell/miniconda3/bin/python3",
+        "-B",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/scripts/audit_S2_zero.py",
+        "--release",
+        "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_reuse_v1/evidence/preparation_A.json",
+        "--release-sha256",
+        "320d1d8469e2db50db161f91bca20339e60cb9054875722e9cbb50d9ab236e62",
+        "--execute"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "EvidenceError: separate zero-only release required\n",
+      "solver_executed": false
+    }
+  ],
+  "prepared_formal_identities": 6,
+  "prepared_zero_identities": 18,
+  "actual_native_calls": 0,
+  "actual_field_reader_calls": 0,
+  "no_attempt_markers": true,
+  "all_24_native_output_directories_pristine": true
+}

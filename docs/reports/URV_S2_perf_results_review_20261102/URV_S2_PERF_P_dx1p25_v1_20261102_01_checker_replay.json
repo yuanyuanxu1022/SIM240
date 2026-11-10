@@ -1,0 +1,73 @@
+{
+  "PERF_OUTCOME": "PERF_EVIDENCE_SUFFICIENT",
+  "reasons": [],
+  "throughput_intervals": [
+    {
+      "threshold": 256,
+      "start_sample": 140,
+      "end_sample": 371,
+      "start_step": 277,
+      "end_step": 804,
+      "start_monotonic": 109030.062303867,
+      "end_monotonic": 109261.183728798,
+      "delta_steps": 527,
+      "delta_seconds": 231.12142493099964,
+      "seconds_per_step": 0.4385605786166976,
+      "steps_per_second": 2.280186703406375
+    },
+    {
+      "threshold": 1024,
+      "start_sample": 478,
+      "end_sample": 703,
+      "start_step": 1052,
+      "end_step": 1567,
+      "start_monotonic": 109368.242834142,
+      "end_monotonic": 109593.363309831,
+      "delta_steps": 515,
+      "delta_seconds": 225.12047568899288,
+      "seconds_per_step": 0.4371271372601804,
+      "steps_per_second": 2.287663964922852
+    }
+  ],
+  "intervals_overlap": false,
+  "slow_interval_full_602112_steps_seconds": 264062.587112057,
+  "observed_RSS_peak_bytes": 1969909760,
+  "exact_peak_RSS_known": false,
+  "full_window_cost_observed": false,
+  "completion_within_12h_guaranteed": false,
+  "timestamp_basis": "external complete-record observation; buffering and sampling uncertainty",
+  "next_direction_allowed": true,
+  "NUMERICAL_GATE": "NOT_EVALUATED",
+  "RESULT_PASS": false,
+  "geometry_PASS": null,
+  "REFERENCE_QUALIFIED_FOR_CASE": false,
+  "MODEL_COMPARISON": "NOT_EVALUATED",
+  "physical_validation": "NOT_EVALUATED",
+  "reference_qualified": false,
+  "strict_error_bound_established": false,
+  "submission_ready": false,
+  "run_id": "URV_S2_PERF_P_dx1p25_v1_20261102_01",
+  "release_sha256": "b675010adcc9e57627d3ff39c93d72394e16489e3713abe09851d5de31c5c7e1",
+  "receipt_sha256": "149da9aa21922b37c7de952a560a77f227489f1019c6814b692ee27c70fa5cda",
+  "diagnostics": {
+    "last_complete_step": 2065,
+    "complete_rows": 2066,
+    "complete_bytes": 663821,
+    "total_bytes_read": 664217,
+    "incomplete_tail_bytes": 396,
+    "incomplete_tail_sha256": "4de9b4d72c37f2533177c5f0e8e81e1f48c31ced6095d1a4d7a7f0758cf04737",
+    "incomplete_tail_start_offset": 663821,
+    "complete_prefix_sha256": "bb4872faf3b48a8b8600553db488df3e938aa1c38da17030dfc2b67ae2b5981c",
+    "safety_maxima": {
+      "corrected_mass": 4.012354050806741e-16,
+      "legacy_mass": 0.0,
+      "ledger": 1.0161252070706335e-16,
+      "density": 9.992007221626409e-16,
+      "Mach": 1.8585287020109984e-08,
+      "Re_H": 7.2107081518261145e-06
+    },
+    "exact_collide_and_stream_calls": null,
+    "step_is_only_lower_bound": true
+  },
+  "exact_collide_and_stream_calls": null
+}

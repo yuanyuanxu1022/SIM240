@@ -1,0 +1,63 @@
+{
+  "kind": "NEGATIVE_NO_SOLVE_AUDITS_ONLY",
+  "tests": [
+    {
+      "name": "half_zone",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/bin/grooveDarcyStaticFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/negative_audits/half_zone",
+        "-auditOnly"
+      ],
+      "exit_code": 1,
+      "seconds": 0.0454882979975082,
+      "expected_error": "Porous zone must cover every cell",
+      "passed": true,
+      "flow_solved": false
+    },
+    {
+      "name": "wrong_units",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/bin/grooveDarcyStaticFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/negative_audits/wrong_units",
+        "-auditOnly"
+      ],
+      "exit_code": 1,
+      "seconds": 0.04545152200444136,
+      "expected_error": "p must be Pa",
+      "passed": true,
+      "flow_solved": false
+    },
+    {
+      "name": "nonzero_initial",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/bin/grooveDarcyStaticFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/negative_audits/nonzero_initial",
+        "-auditOnly"
+      ],
+      "exit_code": 1,
+      "seconds": 0.04325666000659112,
+      "expected_error": "Internal initial p and U must be zero",
+      "passed": true,
+      "flow_solved": false
+    },
+    {
+      "name": "wrong_orientation",
+      "argv": [
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/bin/grooveDarcyStaticFoam",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/negative_audits/wrong_orientation",
+        "-auditOnly"
+      ],
+      "exit_code": 1,
+      "seconds": 0.05212055999436416,
+      "expected_error": "Wrong GDI01 cross-groove tensor response",
+      "passed": true,
+      "flow_solved": false
+    }
+  ],
+  "all_passed": true,
+  "flow_solved": false
+}

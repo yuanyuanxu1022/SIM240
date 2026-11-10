@@ -1,0 +1,36 @@
+{
+  "kind": "USER_RESOURCE_DECISION_EVIDENCE",
+  "recorded_at": "2026-11-04T21:23:02.900481+08:00",
+  "stage": "S4_T_TRANSVERSE_GRID_SUPPLEMENT_SERVER",
+  "revision": "S4-TGE-SERVER-v1",
+  "user_explicitly_authorized": true,
+  "user_instruction_verbatim": "1.25 nm 基准重跑（长算，需 tmux 后台 + 实测峰值内存采集）。  yuanyuan这个账户里面跑",
+  "resource_decision_accepted": true,
+  "resources": {
+    "processes": 1,
+    "threads": 1,
+    "cuboids": 1,
+    "overlap": 3,
+    "per_process_address_space_GiB": 64,
+    "required_available_RAM_GiB": 80,
+    "required_initial_free_disk_GiB": 200,
+    "required_before_each_run_free_disk_GiB": 20,
+    "output_budget_GiB_per_run": 16,
+    "solver_wall_cap_seconds": 21600,
+    "checker_wall_cap_seconds": 3600,
+    "automatic_retry": false,
+    "automatic_extension": false
+  },
+  "scope": "ONE 1.25 nm TRANSIENT RERUN ON THE LAB SERVER",
+  "rationale": [
+    "the local 8 GiB cap already failed at 16,515,072 fluid nodes; 64 GiB leaves room",
+    "this run also measures peak RSS and throughput, which no earlier run recorded",
+    "the 6 hour wall cap is a stop-loss, not a prediction; the local run took 4326 s"
+  ],
+  "limits_are_not_results": [
+    "64 GiB is RLIMIT_AS, not measured RSS",
+    "the wall cap is a stop-loss, not an expected duration",
+    "no measured peak exists for 0.625 nm yet"
+  ],
+  "automatic_adaptation_authorized": false
+}

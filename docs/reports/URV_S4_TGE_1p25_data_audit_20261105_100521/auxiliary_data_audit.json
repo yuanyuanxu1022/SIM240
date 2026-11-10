@@ -1,0 +1,130 @@
+{
+  "pressure_profile.csv": {
+    "rows": 192,
+    "headers": [
+      "position",
+      "rho",
+      "pressure"
+    ],
+    "all_numeric_finite": true,
+    "position_axis": "x for this transverse run; not a z profile"
+  },
+  "velocity_profile.csv": {
+    "rows": 192,
+    "headers": [
+      "position",
+      "velocity"
+    ],
+    "all_numeric_finite": true,
+    "position_axis": "x for this transverse run; not a z profile"
+  },
+  "energy_dissipation.csv": {
+    "rows": 192,
+    "headers": [
+      "position",
+      "Phi"
+    ],
+    "all_numeric_finite": true,
+    "position_axis": "x for this transverse run; not a z profile"
+  },
+  "field_slice.csv": {
+    "rows": 10752,
+    "headers": [
+      "x",
+      "z",
+      "ux",
+      "uy",
+      "uz",
+      "speed",
+      "rho",
+      "pressure",
+      "Phi",
+      "material"
+    ],
+    "all_numeric_finite": true
+  },
+  "result_summary.csv": {
+    "rows": 1,
+    "headers": [
+      "Case",
+      "direction",
+      "dx",
+      "tau",
+      "force",
+      "J",
+      "Keff",
+      "R_eff",
+      "Mach",
+      "mass_error",
+      "legacy_mass_error",
+      "mass_ledger_agreement"
+    ],
+    "all_numeric_finite": true
+  },
+  "frame_schedule.csv": {
+    "rows": 11,
+    "headers": [
+      "requested_tstar",
+      "target_step",
+      "reached"
+    ],
+    "all_numeric_finite": true
+  },
+  "frame_index.csv": {
+    "rows": 10,
+    "headers": [
+      "step",
+      "time_s",
+      "tstar",
+      "reason"
+    ],
+    "all_numeric_finite": true
+  },
+  "energy_unit_definition": {
+    "csv_Phi": "W/m3 = rho_phys * kinematic dissipation",
+    "VTK_dissipation_m2_s3": "m2/s3",
+    "source": "urv_reference.cpp:636 and VTK array name"
+  },
+  "VTK_export_roundoff": [
+    {
+      "step": 0,
+      "max_fraction_of_export_bound": 0.07407716267748979
+    },
+    {
+      "step": 35,
+      "max_fraction_of_export_bound": 0.037396742932568165
+    },
+    {
+      "step": 70,
+      "max_fraction_of_export_bound": 0.012567157238396551
+    },
+    {
+      "step": 173,
+      "max_fraction_of_export_bound": 0.013800159406376333
+    },
+    {
+      "step": 346,
+      "max_fraction_of_export_bound": 0.003305498821978622
+    },
+    {
+      "step": 692,
+      "max_fraction_of_export_bound": 0.01394469852681394
+    },
+    {
+      "step": 1728,
+      "max_fraction_of_export_bound": 0.023398887714287792
+    },
+    {
+      "step": 3456,
+      "max_fraction_of_export_bound": 0.0083455731055746
+    },
+    {
+      "step": 6912,
+      "max_fraction_of_export_bound": 0.00554001344131429
+    },
+    {
+      "step": 12537,
+      "max_fraction_of_export_bound": 0.018093719776483677
+    }
+  ]
+}

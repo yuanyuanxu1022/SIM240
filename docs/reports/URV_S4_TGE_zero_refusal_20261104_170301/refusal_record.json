@@ -1,0 +1,54 @@
+{
+  "kind": "ZERO_LAUNCH_PRECONDITION_REFUSAL_RECORD",
+  "attempt_at": "2026-11-04T17:01:51+08:00",
+  "release_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/evidence/S4_TGE_zero_launch_release_v1_20261104_01.json",
+  "release_sha256": "d654196816e36fe97638c079c26a498e6203db8a01bd492042ecb1320c314949",
+  "user_terminal_memory_readings_GiB": [
+    11.35,
+    11.22
+  ],
+  "adopted_floor_GiB": 12.0,
+  "shortfall_GiB": 0.78,
+  "refusal_message": "EvidenceError: available memory below adopted 12GiB zero limit",
+  "controller_log_path": "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/S4_TGE_zero_controller_v1_20261104_01.log",
+  "controller_log_sha256": "21e6613c595ad192688b6fef5b8be13dbe89a7734e872b4877ce2ab27a36489d",
+  "refusal_stage": "resources(initial) inside execute(), before attempt directory creation",
+  "writes_before_refusal": 0,
+  "attempt_directory_created": false,
+  "audit_attempts_exists": false,
+  "zero_verification_exists": false,
+  "directory_contents": {
+    "formal_steady": [
+      "run_config.txt",
+      "run_manifest.txt"
+    ],
+    "zero_describe": [
+      "run_config.txt",
+      "run_manifest.txt"
+    ],
+    "zero_precheck": [
+      "run_config.txt",
+      "run_manifest.txt"
+    ],
+    "zero_initialize": [
+      "run_config.txt",
+      "run_manifest.txt"
+    ]
+  },
+  "native_calls": 0,
+  "VTK_calls": 0,
+  "actual_time_steps": 0,
+  "solver_executed": false,
+  "input_closure": 3710,
+  "input_closure_unchanged": true,
+  "release_reseal_verified_after_refusal": true,
+  "tmux_session_persisted": false,
+  "correction_to_prior_report": [
+    "The issuance-time statement \"no urv/pvpython solver process, tmux has no session\" came from a process view restricted to the assistant sandbox namespace: ps sees 3 processes while /proc/loadavg reports about 3700 threads, and the tmux socket is equally invisible there.",
+    "The user then ran tmux successfully on the real host, which proves that statement was a false negative and must not be used as evidence of a clean host or a free session name.",
+    "The /proc/meminfo readings remain valid: the user own terminal returned 11.35 and 11.22 GiB, consistent with the assistant readings in the same minutes.",
+    "This record changes no threshold and no authorization; the adopted 12 GiB floor stays exactly as adopted."
+  ],
+  "interpretation": "Configured safety refusal, not a numerical FAIL and not a completed zero audit. No attempt budget was consumed because no attempt directory was written; repeating the same command without freeing host memory reproduces the refusal.",
+  "next_action": "Free at least about 0.8 GiB of host memory, re-run the read-only check until MemAvailable >= 12.00 GiB, then the user may run the same single launch command once."
+}

@@ -1,0 +1,167 @@
+                                                                                      ed
+                          Benchmark Simulation of Laminar Reactive
+
+
+
+
+                                                                                   iew
+                         Micromixing Using Lattice Boltzmann Methods
+                Fedor Bukreev1,a,b , Adrian Kummerländera,c,b , Julius Jeßbergera,c,b , Dennis
+                           Teutschera,b , Dieter Bothed , Mathias J. Krausea,b,c
+                                       a
+                                            Lattice Boltzmann Research Group (LBRG),
+
+
+
+
+                                                                         ev
+                            b
+                             Institute of Mechanical Process Engineering and Mechanics (MVM),
+                                  c
+                                    Institute for Applied and Numerical Mathematics (IANM),
+                            Karlsruhe Institute of Technology (KIT), 76131 Karlsruhe, Germany,
+                                d
+                                  Department of Mathematics, Technical University Darmstadt
+
+
+
+
+                                                              r
+                Abstract
+                                                           er
+                Micromixers are widely used chemical processing devices that are applied
+                for both mixing and reacting flows. In current research, the laminar reacting
+                                                 pe
+                multi-component flows are considered [1, 2, 3]. Despite the laminar streaming
+                regime (e.g. Re = 186), there exist flow micro-structures. For this setup,
+                accurate predictions of that structures are possible with a direct numerical
+                simulation on a fine mesh resolving the Batchelor microscales.
+                    Utilizing the open-source Lattice Boltzmann Methods (LBM) framework
+                                       ot
+
+                OpenLB (www.openlb.net, [4, 5]) a precise benchmark simulation of the re-
+                acting micromixer was set up and validated based on previous work by Bothe
+                et al. [1, 2, 3]. In this context, a Schmidt number based stabilization method
+                for reactive advection-diffusion equations is proposed. A convergence study
+                             tn
+
+
+
+                is performed which is also a novelty. All computations were performed on
+                the HPC cluster HoreKa using up to 160 NVIDIA A100 GPUs.
+                Keywords: benchmark simulation, micromixer, LBM, DNS, reaction,
+                rin
+
+
+
+
+                advection-diffusion equation
+
+
+                1. Introduction
+     ep
+
+
+
+
+                   Micromixers are widely used in the chemical process technology due to
+                their multiple advantages. Specifically, the high aspect ratio of micromixers
+
+                   ∗
+                       fedor.bukreev@kit.edu
+Pr
+
+
+
+
+                Preprint submitted to Computers and Mathematics with Applications September 4, 2023
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+                                                                                     ed
+                leads to microfluidic flow structures that enable efficient fluid mixing as well
+
+
+
+
+                                                                                  iew
+                as better heat and mass transfer. The calculation of reacting micromixers
+                necessitates the incorporation of fluid dynamics in conjunction with a chem-
+                ical reaction mechanism [6]. In order to effectively control reactions within
+                these reactors, it is crucial to have a comprehensive understanding of the mi-
+                crofluidic mechanics, as the short residence times do not impede the chemical
+                reaction [7]. Micromixers are operated in the laminar regime with secondary
+
+
+
+
+                                                                        ev
+                flow due to their small geometry leading to high pressure drops.
+                    One disadvantage of micromixers is the inherent complexity of their uti-
+                lization at large industrial scales. Despite this, there exists a wide range of
+                examples showcasing diverse applications of micromixers. Most commonly,
+
+
+
+
+                                                             r
+                the micromixers are utilized in labs for analysis, synthesis of various species
+                and process development [8, 9]. The production of fine chemicals with strict
+                requirements of purity and quality is realized through micromixers [9]. Ad-
+
+                research purposes [10].                   er
+                ditionally, micromixers have applications in the pharmaceutical industry for
+
+                    Estimation of the contact area between mixing species is a decisive factor
+                                               pe
+                in the design of a micromixer geometry. Due to computational power limi-
+                tations, the accurate tracking of the fluid structures that increase this area
+                has been impossible until recently. The design process of the micromixers
+                was based on the estimation of the geometrical Dean number, which serves
+                as a characteristic number for the secondary flow. The mixing efficiency was
+                                     ot
+
+                then evaluated as a result of this estimation. Nowadays, computational fluid
+                dynamics (CFD) allows precise calculation of the flow behavior. The most
+                reliable results are achieved by direct numerical simulation (DNS), where
+                the cell size is less or equal to the finest length scale of the investigated flow
+                          tn
+
+
+
+                structures. Although the operation state of the regarded micromixer is lami-
+                nar, the length scale is bounded from below by the Kolmogorow length scale,
+                at which the kinetic energy of the vortex is dissipated into the thermal en-
+                ergy due to the friction of streaming layers [11]. The species concentrations
+                rin
+
+
+
+
+                transported by the micro-flow form smaller structures within the vortex of
+                the carrier fluid. Therefore, in order to simulate the mixing process in the
+                micromixer accurately, a finer cell size is required than given by the hydrody-
+                namic length scale. Specifically, the simulation needs to resolve the Batchelor
+     ep
+
+
+
+
+                scale [12].
+                    The T-shaped micromixer is the most simple setup. Correspondingly, it
+                has received close experimental and numerical attention [13]. The cell size is
+                the most important parameter and main obstacle for the DNS. The resulting
+Pr
+
+
+
+
+                                                           2
+
+
+
+
+This preprint research paper has not been peer reviewed. Electronic copy available at: https://ssrn.com/abstract=4596023
+

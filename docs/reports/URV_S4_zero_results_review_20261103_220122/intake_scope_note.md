@@ -1,0 +1,1 @@
+本工具 intake 的 handling 字段仅描述本地确定性检查工具：无网络、无对外发送。本次用户明确委托的宿主 AI 阅读另见 review_scope.json；不将宿主 AI 声称为本地。首次把宿主范围填入工具字段时，工具按只支持本地工具约束拒绝，未作科学判定；原声明保留在 review_intake_hosted_scope_not_supported.json。本次非期刊保密审稿，无目标期刊政策或编辑裁决。
