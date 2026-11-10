@@ -1,5 +1,38 @@
 # SIM240 AI CONTEXT
 
+## GitHub仅保留第一篇：清理变更已准备，推送及远端验收待完成（2026-11-10）
+
+用户本轮明确授权删除远端第二篇并核查第一篇上传完整性。目标仅yuanyuanxu1022/SIM240的main，采用普通删除/快进推送，不改可见性、不重写历史。已有c5522fd的941路径清理基础上补排171项自由表面/旧移动边界/两相计划；均只移出版本控制，本地原有文件保留。旧完整Makefile另存本地，发布版本只保留静态目标。D1里7份第一篇单相剖面/ParaView状态按原blob保留到figures/paper/legacy_profile_sources_20261016，不恢复两相源码。第一篇CASE/06及18项当前输出共52保护输入保持。变更/范围/清单见`docs/reports/GITHUB_PAPER1_ONLY_20261110/REPORT.md`，本段是提交前停点，不能称已在远端生效。
+
+完整性核查：第一篇两母稿/两补充/结论/两派生/authority/MANIFEST九件远端均在且内容相同；补充目录CSV14/14一致；output_hashes仅12/18在远端，缺中英S1的PNG/PDF/SVG六件；正文四张主图均缺；PPT/HTML也未上传。故第一篇图文尚未完整上传。本轮核查不自动强传这些被忽略图件、文献PDF和results原始场。当前已可经gh凭据和单次HTTPS配置访问Git，不沿用“只有用户可操作SSH”的旧断言。
+
+历史状态中第二篇的顺带提及保留以维持审计链，不代表第二篇代码仍应发布。其他会话gen_week.py修改、工作区原CASE/reports35项删除不纳入。无新仿真或数值验证、run_id=null，三项false与S4/D4 FAIL保持；无需长算。推送后必须核远端main/tree与删除路径、第一篇保护文件并更新回执。
+
+## GitHub实时只读核查：第二篇核心材料仍在远端（2026-11-10）
+
+用户询问GitHub SIM240当前内容及是否有第二篇。已用gh GitHub REST API实时核对`yuanyuanxu1022/SIM240`元数据、main、完整树与5个代表blob，不是另一个共享库。远端main=`ac4b15a2a9208685bf8ebf4918999c1263484720`、9517文件、visibility=public；本地HEAD=`c5522fd`，清理提交尚未在远端main生效。941条此前拟删除路径逐条核对仍全部在远端，第二篇核心`CASE/09_dynamic_liquid_gas/`771文件，其README正文明确标为第二篇液气Kxx/Kyy研究。第一篇两母稿/两补充/结论/两派生7个核心路径也在远端。报告与完整树/清单/5个样本/verification：`docs/reports/GITHUB_REMOTE_CONTENT_AUDIT_20261110/`。
+
+本轮纠正分类边界：941为既有清理范围，不是每项都是第二篇独占的证明；CASE/07代表README含单相压缩复用，D1有单相沟槽绘图/剖面支持材料，若继续删除先核混合范围。grooveDNS中该清理范围是22+17+20+1=60项，不能沿用上节59的口头归组。完整第二篇投稿正文与原始场全备份未核实。gh API读取已成功，不把旧SSH失败解释为当前无法读取GitHub。
+
+本轮只新增本地核查目录并同步两状态，未推送清理提交、删本地文件、改远端可见性或历史、暂存/提交/上传。用户本轮为询问，不扩大为执行清理。无新增计算或数值验证、run_id=null；既有科学false与S4/D4 FAIL保持。若后续要求移除，先核共享材料再处理范围；普通删除不会清除历史提交。无需长算。
+
+## GitHub 补齐已推送；第二篇内容已从仓库移除并本地提交，待作者推送（2026-11-10 21:xx）
+
+**① 全量补齐已成功推送。** 作者本人终端完成 `9bad48a..ac4b15a main -> main`，8354 个文件、约 201 MB 入库，远程受控文件由 1168 增至 9517。推送后核验：五件母本在库且 SHA 与 authority 一致，关键禁词扫描 0 命中。**仓库是 PUBLIC（匿名 API 返回 200）**，已建议改 Private，作者尚未操作。
+
+**② 清理提交 `16a1cdd`（本地未推送）**：从版本控制移除 `test.txt`（35 B 测试残留）与 `tmp_jain2017.txt`（Jain 2017 全文提取，35 KB 版权内容），本地文件保留；`.gitignore` 加根目录临时件与论文全文提取规则。
+
+**③ 本次提交 `c5522fd`（本地未推送）＝ 第二篇内容移出仓库。** 按作者"第二篇文章内容不用传送进去／删掉第二篇内容在github"：
+- **删除 941 个文件 / 约 23.4 MB**：`CASE/09_dynamic_liquid_gas` 771、`CASE/07_filling_dynamics` 86、`grooveDNS/stage3_ex240_local` 下 phasefield／freesurface／right_angle 与 step6G 报告 59、`CASE/plans` 液滴与润湿计划 10、`CASE/D_series/D1_nanoimprint_droplet_filling` 9、`CASE/08_droplet_inplane` 3、`docs/reports/D1_existing_run_check_20261016.{md,json}` 2（两相接触角 80°/104° 校准核对）。
+- **保留 `CASE/06_filling_dynamics/`（34 个文件）**：G3-h 高度扫描与单相压缩属第一篇，按作者选择保留；`generate_height_source.py` 与 `height_matrix.csv` 均在，被删的 `f1_single_phase_h50/h75/h125.cpp` 是 5 个第二篇工作目录里的生成副本，可随时重生成，第一篇复现不受影响。
+- `.gitignore` 新增上述路径规则（第 148–172 行），`git check-ignore` 验证：第二篇路径已忽略、`CASE/06` 未被误伤。
+- **核验**：第二篇各路径受控文件数全部为 0；仓库受控文件 9517→8575（HEAD 树＝索引＝8575）；五件母本、投稿派生件、结论、MANIFEST、authority 与任何数值/编号均未改动；本地磁盘 `CASE/09` 5.2 G、`CASE/07` 426 M 原样保留。
+- **判定口径**：`docs/reports` 434 个目录经严格关键词（droplet／phasefield／freesurface／contact_angle／wetting／r2xy／液滴／润湿／接触角／相场／下压／移动边界／两相）扫描**0 命中**，确认该树整体属第一篇；此前"494 个文件提到 CASE/09"均为 `AI_HANDOFF`／`SIM240_AI_CONTEXT` 历史快照的顺带提及，非第二篇内容。`URV_*`／`SDI_*`／`GDI_*` 均为第一篇数值验证体系（URV1_SMOOTH_H30 光滑基准、GrooveDarcy 实现审计），不是第二篇。
+
+**④ 推送命令（作者终端执行一条）**：`cd /home/dell/yuanyuanxu/SIM240 && git push sim240 main`。本机 SSH 目录属 root，`git ls-remote` 报 `Permission denied (publickey)`，我无法代推。
+
+**⑤ 仍悬置**：`CASE/reports/` 下 35 个删除动作仍未暂存（工作区已删、远程仍在），保持原状——它们在 GitHub 上继续保留是安全的，可防审计链丢失；`audits/` 约 700 个小 json 仍被忽略未强传；仓库是否改 Private 待作者定。无新增计算或数值验证、run_id=null，无编译/求解/拟合/新 Gate。
+
 ## GitHub 全量补齐已暂存，未提交未推送（2026-11-10 20:xx 修订）
 
 用户指出"只传本周不够，之前很多东西都没上传"。**经核实确实如此**：远程 `sim240/main`（`9bad48a`，2026-10-12）仅 1168 个文件，其中 `docs/reports` **只有 5 个**——9 月至今的评审/审计/改稿记录、五件母本、投稿派生件、绝大多数算例档案从未入库。故推翻上一轮"只取 11-04 起"的口径，改为**全量补齐**。

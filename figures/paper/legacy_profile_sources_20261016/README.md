@@ -1,0 +1,5 @@
+# 第一篇单相沟槽剖面与ParaView历史状态
+
+本目录7份CSV/PVSM从远端原提交ac4b15a的`CASE/D_series/D1_nanoimprint_droplet_filling/`中按原字节保留。它们的文件名与内容指向h75/d100、5nm的P/T单相沟槽速度/耗散/剖面展示，是第一篇可复用支持材料；不包含D1两相求解器或初值试验报告。
+
+原目录名含droplet，不应据目录名把这些文件一并当作第二篇独占资料删除。移动映射与SHA256见`docs/reports/GITHUB_PAPER1_ONLY_20261110/rescued_first_paper_assets.json`。PVSM沿用历史数据源路径，存在不代表移机后可直接打开，也不替代第一篇当前主图或数值验收。
