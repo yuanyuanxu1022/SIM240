@@ -1,0 +1,25 @@
+--- SIM240_AI_CONTEXT.md.before_plan
++++ SIM240_AI_CONTEXT.md
+@@ -9,7 +9,8 @@
+ - GDI01平均Ux=3.643036135602908e-7m/s，出口Q=2.1858216813610298e-18m³/s，回收Kxx(U)=4.553795169503635e-23m³，静态R_Q=24/Q=1.0979852658912274e19Pa·s/m³。相对C01二维/旧OF的Q差分别1.46494e-11/1.45965e-11（门槛1e-3）；全局/局部质量误差2.41601e-13/1.75016e-11（门槛1e-8），耗散相对压力功差1.37176e-11（门槛1e-3）。
+ - 已验证的是当前固定间隙、xy平均域、同一V2公式的标准porosityForce动量—压力接入及实现一致性；不是独立物理参考、V2预测精度、新条件或网格独立性验证。V=0，R_Q不是挤压R_sq；未实现动态连续性/间隙更新或验证z向阻力。
+ - 改动仅本轮验收报告目录与本状态/最新交接；原运行62份文件、旧C01运行40份及既有包/协议/历史报告合计444份内容保持，见preservation_after.json；验收脚本audit_existing.py为只读补充算术，不改冻结检查器或替代其门槛。本轮无编译、求解、重跑、拟合、启动命令、下一例、提交推送或对外发送。
+-- 当前停点：GDI01数值接入验收完成，后续研究范围由用户另定；不自动进入GDI02、C05、挤压、独立参考或下一Gate。旧D4_N8_diag_v3_1_20261026_v1及其NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。无新增长算授权；后续结果审核建议GPT-6.1 Sol｜High。
++- 后续路线建议（用户本轮询问如何闭环）：已写`docs/reports/GDI01_results_20261030/CLOSURE_NEXT_STEP.md`。优先核既有显式沟槽参考资格，形成已见/未见数据清单与最小验证协议；固定V2后检验新条件，再按所保留应用主张做瞬时挤压力/阻力独立对照。现有5nm参考及细横槽历史质量FAIL不能自动升为可信真值。本轮仅资料核对与方案，没有新增计算或验证；未冻结新样点/门槛或授权实现/求解。
++- 当前停点：GDI01数值接入验收完成，下一建议任务为独立参考资格审计与最小验证协议准备；具体实施范围待定，不自动进入GDI02、C05、挤压计算或下一Gate。旧D4_N8_diag_v3_1_20261026_v1及其NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。无新增长算授权；后续结果审核建议GPT-6.1 Sol｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）
+ 
+
+--- AI_HANDOFF_20261015.md.before_plan
++++ AI_HANDOFF_20261015.md
+@@ -9,7 +9,8 @@
+ - GDI01平均Ux=3.643036135602908e-7m/s，出口Q=2.1858216813610298e-18m³/s，回收Kxx(U)=4.553795169503635e-23m³，静态R_Q=24/Q=1.0979852658912274e19Pa·s/m³。相对C01二维/旧OF的Q差分别1.46494e-11/1.45965e-11（门槛1e-3）；全局/局部质量误差2.41601e-13/1.75016e-11（门槛1e-8），耗散相对压力功差1.37176e-11（门槛1e-3）。
+ - 已验证的是当前固定间隙、xy平均域、同一V2公式的标准porosityForce动量—压力接入及实现一致性；不是独立物理参考、V2预测精度、新条件或网格独立性验证。V=0，R_Q不是挤压R_sq；未实现动态连续性/间隙更新或验证z向阻力。
+ - 改动仅本轮验收报告目录与本状态/最新交接；原运行62份文件、旧C01运行40份及既有包/协议/历史报告合计444份内容保持，见preservation_after.json；验收脚本audit_existing.py为只读补充算术，不改冻结检查器或替代其门槛。本轮无编译、求解、重跑、拟合、启动命令、下一例、提交推送或对外发送。
+-- 当前停点：GDI01数值接入验收完成，后续研究范围由用户另定；不自动进入GDI02、C05、挤压、独立参考或下一Gate。旧D4_N8_diag_v3_1_20261026_v1及其NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。无新增长算授权；后续结果审核建议GPT-6.1 Sol｜High。
++- 后续路线建议（用户本轮询问如何闭环）：已写`docs/reports/GDI01_results_20261030/CLOSURE_NEXT_STEP.md`。优先核既有显式沟槽参考资格，形成已见/未见数据清单与最小验证协议；固定V2后检验新条件，再按所保留应用主张做瞬时挤压力/阻力独立对照。现有5nm参考及细横槽历史质量FAIL不能自动升为可信真值。本轮仅资料核对与方案，没有新增计算或验证；未冻结新样点/门槛或授权实现/求解。
++- 当前停点：GDI01数值接入验收完成，下一建议任务为独立参考资格审计与最小验证协议准备；具体实施范围待定，不自动进入GDI02、C05、挤压计算或下一Gate。旧D4_N8_diag_v3_1_20261026_v1及其NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。无新增长算授权；后续结果审核建议GPT-6.1 Sol｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

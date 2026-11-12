@@ -1,0 +1,52 @@
+--- SIM240_First_Paper_English_20261028.md.before
++++ SIM240_First_Paper_English_20261028.md
+@@ -69,6 +69,8 @@
+ | 75 | 25, 50, 75, 100, 120 | 5 | 10 |
+ | 125 | 25, 50, 75, 100, 120 | 5 | 10 |
+ | **Total** | — | **18** | **36** |
++
++**Note:** This table lists only the 18 main comparison geometries and their 36 principal-direction results on the 5 nm grid, one per direction at each geometry. The 2.5 nm refinements, the added h=100 nm geometry and other controls are excluded. Unsampled combinations are outside this table's coverage.
+ 
+ Calculations use the OpenLB [7] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\tau=1$. The force term uses the Guo scheme [9]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with intersections obtained from the analytical geometry [7,8]. The scheme was formulated for fractional wall distances [8]; OpenLB also maintains implementation checks through analytical benchmarks and automated regression tests [7].
+ 
+@@ -202,7 +204,7 @@
+ 
+ The largest change is in the across-groove component at $(h,d)=(25,100)$: from 16.36% to 21.76%, a difference of 5.39 percentage points, or 33% relative change. It occurs at the thinnest gap. Among these four checked geometries, the along-groove discrepancy changes less with reference grid (≤1.33 percentage points). This observation is not extended to unrefined geometries.
+ 
+-The reported discrepancy intervals therefore use **the 5 nm production grid as reference**. For the four two-grid geometries, reference-grid changes alter model discrepancies by 0.37–5.39 percentage points. This describes sensitivity at the checked conditions, rather than a discretization-error bound or uncertainty estimate. It does not establish comparable sensitivity for the other 14 geometries.
++The model-discrepancy ranges for the 36 main principal-direction records at 18 geometries use the 5 nm OpenLB results as discrete references. Refinement comparisons use the reference grid specified for each comparison; flat-wall benchmark errors use the analytical values as references. For the four two-grid geometries, reference-grid changes alter model discrepancies by 0.37–5.39 percentage points. This describes sensitivity at the checked conditions, rather than a discretization-error bound or uncertainty estimate. It does not establish comparable sensitivity for the other 14 geometries.
+ 
+ ### 2.4 Numerical implementation consistency
+ 
+@@ -312,6 +314,8 @@
+ | Minimum location | $h=125,d=25$ nm | $h=25,d=25$ nm |
+ | Overestimated samples | 18/18 | 18/18 |
+ 
++**Note:** Relative discrepancy is (local-cubic-law conductance/OpenLB discrete conductance−1)×100%, using 5 nm references for the same geometry and direction; positive values indicate larger model values. The table contains 18 records per direction, 36 in total, excluding the eight refinement and two added-gap records. The ranges do not characterize a continuous parameter domain or errors relative to physical reality.
++
+ The largest along-groove discrepancy occurs at $(h,d)=(50,120)$ nm: the model coefficient is approximately 3.05 times the reference, an overestimate of approximately 204.85%. The largest along-groove discrepancy is about 20 times its smallest, giving a wider range than across the grooves.
+ 
+ In addition to the 36 main records, four existing geometries have eight 2.5 nm records (§3.3), and §4.4 adds two principal-direction records at h=100 nm. All 46 comparison records for 19 geometries lie below the corresponding local-cubic-law values. Refinements and added-gap comparisons are reported separately and are excluded from the original 36-record statistics. Appendix E constrains the continuous solution K*, not discrete K_LB. These observations are compatible with the upper bounds; they are neither 46 independent physical conditions nor a map-wide continuous-error bound. The bounds determine neither discrepancy magnitudes, the sign of the ratio discrepancy nor V2 accuracy.
+@@ -332,10 +336,12 @@
+ 
+ **Table 7. Anisotropy and reconstructed flow direction at the reference geometry ($h=75$ nm, $d=100$ nm).**
+ 
+-| Quantity | From numerical principal values | From local-model principal values | Difference |
++| Quantity | From 5 nm OpenLB principal conductances | From local-model principal values | Difference |
+ |---|---:|---:|---:|
+ | Anisotropy $A=K_{yy}/K_{xx}$ | 2.21 | 3.70 | Model overestimate ≈67% |
+ | Flux angle under 45° forcing $\beta$ | 24.34° | 15.14° | −9.20° |
++
++**Note:** Flux directions are reconstructed from the two sets of principal conductances using the same linear tensor relation; the angle difference is not an experimentally measured error. The relative anisotropy discrepancy uses the OpenLB ratio as denominator, and the angle difference is model reconstruction minus reconstruction from the OpenLB principal conductances.
+ 
+ When forcing angle $\theta$ and flux angle $\beta$ are both measured from the groove axis, the linear tensor description gives
+ 
+@@ -371,7 +377,7 @@
+ | Across, all 18 | 54.19% | 18.71% | 30.63% | 4.42% | 17/18 |
+ | Across, $h\ge50$ nm, 15 samples | 54.19% | 6.9% | — | — | — |
+ 
+-Mean absolute discrepancy is the arithmetic mean of absolute percentage discrepancies over the 18 main samples in each direction, not a signed mean. Across both directions, 35/36 records improve. The 15-sample subset identifies the thin-gap contribution; it does not guarantee a 6.9% maximum for every condition with h≥50 nm.
++**Note:** Except for the separately listed 15-sample subset, each direction uses the same 18 main records on the 5 nm grid. Maxima and means concern absolute percentage discrepancies, with arithmetic means rather than signed means. “Absolute discrepancy reduced” means that fixed V2 is closer than the original law to the same discrete reference, giving 35/36 across both directions. The eight refinement and two added-gap records at h=100 nm are excluded. The 15-sample subset identifies the thin-gap contribution; it does not guarantee a 6.9% maximum for every condition with h≥50 nm or establish a continuous applicability range or accuracy guarantee.
+ 
+ A reduction in the overall maximum does not imply improvement at every sample. At the across-groove sample $(h,d)=(25,100)$ nm, the signed discrepancy changes from +16.36% to −18.71%, increasing its absolute value by approximately 2.34 percentage points. This is the only principal-direction sample in the 5 nm main map whose absolute discrepancy increases. With the 2.5 nm reference, the corresponding values are +21.76% and −14.94%. The assessment of local improvement therefore depends on the reference grid; correction accuracy and reference accuracy must be distinguished (Supplementary Table S7).
+ 

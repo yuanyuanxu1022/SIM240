@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+# Build only; caller sources Foundation 13 first. Never starts a flow solver.
+test "${WM_PROJECT_VERSION:-}" = 13
+cd "$(dirname "$0")"
+export GROOVE_BUILD_LIB="$PWD/build/lib"
+export GROOVE_BUILD_BIN="$PWD/build/bin"
+mkdir -p "$GROOVE_BUILD_LIB" "$GROOVE_BUILD_BIN"
+wmake libso src
+wmake tests
+g++ -std=c++14 -O2 -Wall -Wextra -pedantic tests/testTransport.cpp -o "$GROOVE_BUILD_BIN/testTransport"

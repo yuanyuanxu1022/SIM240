@@ -1,0 +1,69 @@
+h75_d100_P_coarse —— 启动命令（第 2 个参考点 / 种子链第 1 层）
+状态：PREPARED_NOT_STARTED（2026-11-11 23:12）
+执行机器：本机（不是服务器）——理由见下"为何必须本机"
+
+======================================================================
+一、复制这一条命令（在你自己电脑的终端里粘贴，回车）
+======================================================================
+
+tmux new -s v21_p1 'source /opt/openfoam13/etc/bashrc && cd /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2 && python3 run_one.py --case h75_d100_P_coarse --execute 2>&1 | tee ~/h75_d100_P_coarse.log; echo "=== 结束 ==="; bash'
+
+
+看进度：   tmux attach -t v21_p1        （离开但不打断：按 Ctrl+B 再按 D）
+预计耗时：5 分钟以内（上轮 coarse 实测 205 s）
+
+======================================================================
+二、为何必须本机（远端已被否决，不是偏好）
+======================================================================
+① release_manifest.json 的 external_sha256 绑了 23 个 /opt/openfoam13/... 绝对路径哈希。
+   三台机器 OpenFOAM 构建各不相同（blockMesh 实测：本机 567bd627… / 103.63 a17371f4… /
+   102.55 d46d2192…），换机必触发 postprocess.py:309 的 RELEASE_DRIFT。
+② 103.63 单核比本机慢 2.11 倍（2.25 GHz 限频 vs 本机 5.10 GHz；中性基准 1.287 s → 2.720 s）。
+
+本机负载（实测 runtime/resource.txt，非估算）：
+   峰值内存 coarse 66 MB / mid 127 MB / fine 372 MB / tight 378 MB
+   run_one.py:59 硬设 RLIMIT_AS = 4 GiB
+   CPU 占满 1 个核（99% of one core），其余核闲置 → 不会卡，只有风扇声
+   （对比：OpenLB 0.625 nm 要十几~二十几 GiB，那才是之前卡的真因）
+
+======================================================================
+三、起飞前复核（2026-11-11 23:08 现算）
+======================================================================
+release_manifest.json SHA256 = 97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5
+                               （= 送审/审查所据值，未漂移）
+235 绑定身份（212 本地 + 23 外部）        0 漂移
+h75_d0_P_flat / h75_d0_T_flat             LOCAL_CHECKS_PASS，issues=[]
+求解进程 / tmux 会话                       均无
+h75_d100_P_{coarse,mid,fine,tight}        四个全部未跑（无 runtime/）⇒ 无覆盖/重跑风险
+空跑验证（不带 --execute）                 退出码 2，
+  "preparation only; --execute is required for an explicitly authorized launch" ⇒ 闸门有效
+
+算例参数（prepared/h75_d100_P_coarse/case.json）：
+  h75 / d100 / w120 / P240 nm，dx 1.25 nm，19200 单元，direction=P，level=coarse，
+  seed_from=null（种子链最底层），end_time_cap 60000，wall_clock 1800 s，
+  exit_trigger p/U/v = 1e-10，flat_zero_component_exception=false
+  注：execution_authorized=false 是 prepare.py:244 建件时写入的预备字段，运行链路不读取；
+      放行只看 release_manifest 的 numerical_execution_authorized=true + formal_review_status。
+      已 FAIL 的 h75_d100_T_coarse 同字段亦为 false 且正常执行，可作反证。
+
+======================================================================
+四、选它的理由
+======================================================================
+h75_d100_P 与刚 FAIL 的 h75_d100_T 同一几何、相反方向。
+  · 若 P 也 > 2% ⇒ "超 2%" 是 5 nm 离散的系统偏差，不是方向特例；
+  · 若 P ≤ 2%   ⇒ T 的 2.5110% 属方向相关。
+未跑：h25_d100_T、h50_d120_P、h125_d120_P、h125_d120_T。
+
+======================================================================
+五、边界（本次不做）
+======================================================================
+· 只跑 coarse 一层，不自动串行 mid/fine/tight
+· 不重跑 T，不改任何阈值/判据，不动冻结代码，不调 freeze_release.py
+· 命令已交付 ≠ 已启动；无 P 点 run_id，无 P 点任何结果
+· 三 false（NUMERICAL_GATE / RESULT_PASS / geometry_PASS）与 T 的 FAIL、论文数字全部不变
+
+======================================================================
+六、跑完之后
+======================================================================
+用 read_case() 独立验收，**必须传绝对路径**（2026-11-11 的坑：相对路径会误报
+REFERENCE_CHECK_FAIL）。通过后才准备 mid。由你开新任务让我验收，或直接说"验收 coarse"。

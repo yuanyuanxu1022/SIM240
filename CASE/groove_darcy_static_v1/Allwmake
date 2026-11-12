@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+test "${WM_PROJECT_VERSION:-}" = 13
+cd "$(dirname "$0")"
+export GDI_BUILD_BIN="$PWD/build/bin"
+mkdir -p "$GDI_BUILD_BIN"
+wmake application
+# Library reuse is separately hash-bound by prepare_case.py; never rebuild originals.

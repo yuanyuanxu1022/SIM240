@@ -1,0 +1,28 @@
+--- docs/reports/SIM240_AI_CONTEXT.md before
++++ docs/reports/SIM240_AI_CONTEXT.md after
+@@ -1,14 +1,16 @@
+ # SIM240 AI CONTEXT
+ 
+-## C04已实际运行完成，尚待原SDI-v1完整结果验收（2026-10-30）
+-
+-- 用户本轮要求核查C04启动状态。确认实际run_id=SDI_C04_v1_3_20261030_01，目录 `CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/`，execution.json status=completed；北京时间2026-10-30 15:37:24.982754开始、15:37:25.020567结束。二维/OF独立退出0、无超时，记录耗时约0.0048/0.0326s。入口 `docs/reports/SDI_C04_startup_check_20261030/STATUS.md`、snapshot.json。
+-- 本轮25份运行绑定文件、46份原发布文件、21个运行库哈希匹配，两端CSV/solver.json、完整日志及原生p/U/J/phi/phi_U均存在。二维自报90次、OF32次迭代，flow_solved=true、converged=true；自报收敛或退出0不等于独立验收通过。单次检查无对应进程，默认tmux socket无服务器，无持续轮询。
+-- C04 run_completed=true，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null；geometry_PASS=true仅沿用准备阶段合成平均域静态核对，completed_run_geometry_PASS=null、physical_validation=NOT_EVALUATED。原execution.json result_acceptance=NOT_EVALUATED未改。本轮未调用完整SDI-v1检查器，未逐项检验全部压力/U/J/Q、守恒、恢复K或耗散，未进行C04/C02/C03实际对照。
+-- 准备包 `CASE/interface_static_darcy_v1_3/`、原准备报告 `docs/reports/SDI_C04_preparation_20261030/REPORT.md` 保持。C04原公式、槽沿x/驱动x；24/0Pa、24×48μm、H=125nm、μ=0.001Pa·s、512网格、U=J/H、D=H K⁻¹与原SDI-v1门槛不变。准备版本1.3.0、15项功能测试和旧例回归仍为既有准备证据，不冒充C04本轮验收。冻结包未运行文字保留为准备时快照，当前执行状态以本条和原execution.json为准。
+-- 本轮仅新增SDI_C04_startup_check_20261030状态/快照/前后保护核验并同步本状态/最新交接；40份C04原始运行文件集和SHA256保持，见verification.json，更新回执state_sync.json。AI未启动/重跑/编译/拟合/改源码输入或门槛/真实N8提取/Git提交推送/对外发送，无新增CFD计算或物理放行。
+-- C01/C02/C03既有局部接口通过与C03/C01实际对照、历史严格零几何识别记录保持；旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD及历史FAIL不变。
+-- 下一具体动作：GPT-6.1 Sol｜High按原SDI-v1完整分析已完成C04，与C02作同方向原/V2对照、与C03作原公式方向对照，分别报告Gate和证据范围。当前卡点是完整验收/实际对照未执行，不是尚未启动。无需重启C04，不自动重试、启动C05或其他Gate，不新增长算授权。本轮启动核查任务已完成。
++## C04满足原SDI-v1，与C02公式对照及C03方向对照均已完成（2026-10-30）
++
++- 用户本轮明确授权完整分析C04已有结果，比较C02同方向原公式/V2及C03同原公式沿/横槽；只分析，不重跑或改门槛。C04 run_id=SDI_C04_v1_3_20261030_01，2026-10-30 15:37:25北京时间完成，两端退出0、无超时，二维90次/OF32次。入口 `docs/reports/SDI_C04_results_20261030/REPORT.md`、METRICS.md及interface_analysis.json。
++- 使用启动留存同版检查器1.3.0，原SDI-v1两端各23项、跨端4项共50项数值检查全部满足：NUMERICAL_GATE=PASS、RESULT_PASS=true、geometry_PASS=true（仅512单元合成平均域）；physical_validation=NOT_EVALUATED、independent_human_acceptance=false。原execution.json/result_acceptance=NOT_EVALUATED不改，独立验收写在本轮外部报告，不升级旧科学Gate。
++- 25份运行绑定、46份发布文件及21运行库哈希匹配，协议thresholds/linear_solver、源系数/方向与检查器版本核对。原生p/U/J/phi/phi_U与CSV逐项相同，另以math.fsum复算均值、Q、局部守恒、恢复K及耗散。C04 Umean约1.927083333333333e-6m/s，Jx约2.4088541666666664e-13m²/s，Q约1.15625e-17m³/s，恢复沿槽Kxx约2.4088541666666665e-22m³；证据binding_audit.json、independent_raw_audit.json。
++- C04压力最大相对解析偏差二维2.20490e-13/OF6.24426e-13；逐单元流量不平衡绝对和/解析Q为1.80976e-11/2.07209e-11（门槛1e-8）；真实归一化残差5.65572e-13/6.47518e-13（门槛1e-12）；跨端Q相对差1.63236e-13。耗散与压力功率约2.775e-16W，能量核对满足。其余原门槛及数值见METRICS.md，50项不是50个独立物理验证。
++- 三例相同24/0Pa、24×48μm、H=125nm、μ=0.001Pa·s、512网格、U=J/H、D=H K⁻¹及原门槛；每组10份边界/网格/离散文件、6份求解源码/Make/二进制相同。C04/C02同为槽沿x/驱动x，仅原/V2系数改变；实际Q比二维2.313089024342067/OF2.313089024341704，解析2.3130890243424327。以原公式为基准，V2沿槽Q低56.7678%，静态R_Q=Δp/Q高131.3089%。
++- C04/C03同为原公式，K/D主值成对交换（槽沿x/y，驱动均x）；实际沿/横槽Q比二维3.6956052262167565/OF3.695605226217497，解析3.6956052262174715；静态R_沿/R_横约0.27059167。两组压力场最大差约1e-11Pa。倍率仅描述性核对，不增Gate；这些是输入系数方向性的再现，不是挤压F/V或物理准确性证明。证据C04_C02_C03_comparison.json。
++- C02/C03本轮只读重验各50项满足，除版本元数据外与旧分析的全部指标/Gate/原始文件哈希相同。结合既有C01记录，原/V2×沿/横槽四个静态主对照均有局部接口验收记录。320份既有包/结果/报告和三次运行共120份原始文件集/哈希保持，见preservation_before.json、run_preservation.json、verification.json；state_sync.json保存本状态/交接替换回执。
++- 新改动仅本轮SDI_C04_results_20261030分析报告/只读脚本/证据与本状态、最新交接；无求解/重跑/编译/拟合/真实N8提取/提交推送/对外发送。原C01严格零几何识别未评价及修正记录保持。真实沟槽独立参照、一般斜向/复杂压力、网格独立、严格误差界、新条件预测、挤压/两相/动态、内置DarcyForchheimer接入仍未验证。
++- 旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL不变。本轮任务已完成，下一具体动作为用户阅读报告并决定后续控制项或独立参考范围；未准备/启动C05或其他计算，不新增长算授权。接手从本报告和原始证据继续；常规工作GPT-6.1 Sol｜High，疑难物理矛盾/最终冻结按协议GPT-6 Astra｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）
+ 

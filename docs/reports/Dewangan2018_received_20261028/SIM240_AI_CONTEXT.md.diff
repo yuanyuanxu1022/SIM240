@@ -1,0 +1,22 @@
+--- before/SIM240_AI_CONTEXT.md
++++ SIM240_AI_CONTEXT.md
+@@ -1,8 +1,18 @@
+ # SIM240 AI CONTEXT
+ 
++## 第一篇：[6]2018接收稿已取得，M1指定适用条件已核（2026-10-28，当前资料接续入口）
++
++- 用户提供`/home/dell/下载/dewangan2018.pdf`，确为正文[6]，DOI10.1016/j.euromechflu.2018.02.004；658320字节，SHA `f02b194d45669ba336d3e57e7f6ca7099dbd11e3dcb352cd42333baf53d916cb`。版本为Elsevier接收稿，35个PDF页=1页封面+34页稿件；不是最终排版版。入口`docs/reports/Dewangan2018_received_20261028/REPORT.md`、`intake.json`、`contract_receipt.json`。
++- 按M1核身份、正弦/平壁几何与沿槽方向、主问题无滑移及另行滑移扩展、完整谱方法与小振幅/厚薄通道近似的区别、h/a及Q/Q0定义、矩形槽与本文引用关系。指定条件在接收稿层面已核；最终排版版逐页对应未核，不称全文全部推导或全部参考文献终校通过。完整谱方法不能概括为仅小振幅，也不能直接给本文矩形槽P/T精度背书。
++- 仅同步正式稿引言[6]一句/书目注/附录C引文清单3处，补充S11日期/[6]条目2处；差异`document_changes.json/.diff`，前稿`before/`。公式、结果、图表及历史FAIL保持，作者最终科学采用未记录。更新本状态及最新交接；旧缺口报告保留历史快照，由新receipt补充M1当前状态。校验范围见本目录`verification.json`。
++- 历史构建专项仍是独立事项，本轮未裁决其源码/版本绑定与标定—留出分组推断，不因本次[6]核对关闭来源缺口或认可其中“完整绑定”等强断言。下方该专项段落保留其原范围，不作为本轮独立验收。需要裁决实质理论/多证据矛盾或严格界时才按规则用GPT-6 Astra｜High，本次未触发。
++- 无编译、求解、真实N8提取、数值夹具、拟合、重画、第二项、Git提交推送或新run_id。旧N8仍`D4_N8_diag_v3_1_20261026_v1`，`NUMERICAL_GATE=NOT_EVALUATED`、`RESULT_PASS=false`、`geometry_PASS=null`，`reference_qualified=false`、`strict_error_bound_established=false`、`submission_ready=false`、预测HOLD沿用；无新运行命令/授权。第三方PDF/全文/页图只留本地，前轮GitHub提交`dccaca7`不因本次本地修订自动刷新。
++- 本次接收核对完成；下一资料动作可由作者核对版本说明，另行取得最终排版版后对照指定段。历史构建、作者声明、最终共享覆盖/版式及作者最终采用分别继续处理；不自动重跑任何算例。常规资料核对建议GPT-6.1 Sol｜High，无需切换。
++
++
+ ## 第一篇：历史构建审计找回部分绑定，并查出「留出验证」与构建更换完全混杂（2026-10-28，当前科研接续入口）
+ 
+-- 用户要求优先核对[6]原文或历史构建档案。本轮只读审计表S1的52项与D2构建目录，入口`docs/reports/Historical_build_binding_recovery_20261028/REPORT.md`、`binding_recovery.json`，脚本`tools/audit_historical_build_binding.py`。[6]2018原文仍不在本机（全盘仅有2020 JFM那篇），M1保持OPEN，未取得。
++- 用户要求优先核对[6]原文或历史构建档案。本轮只读审计表S1的52项与D2构建目录，入口`docs/reports/Historical_build_binding_recovery_20261028/REPORT.md`、`binding_recovery.json`，脚本`tools/audit_historical_build_binding.py`。该轮搜索时未取得[6]2018原文；此状态现由本页顶部2026-10-28接收记录取代，构建专项其余分析本次不重判。
+ - **可回补两项五字段**：①OpenLB归属——52份`.d`依赖文件全部指向`/home/dell/openlb`，该树HEAD=`882924a9cfc8dcdf82909e39530789cb6f5ebcc4`、`CITATION.cff`标1.9.0、全树源码mtime统一为2026-08-31 20:45:42（一次性检出后未改）、已跟踪文件工作区干净、`.d`所列头文件最高1364个路径今日缺失0；②工具链/编译配置——`/home/dell/openlb/config.mk` mtime 2026-09-02 20:31（早于全部运行、之后未动，与`.bak`完全相同）给出`mpic++/gcc`、`-O3 -Wall -march=native -mtune=native -std=c++20`、MPI+OpenMP、CPU_SISD、double。限定：浅克隆仅1个提交，HEAD无法用git历史交叉证明；D2目录无Makefile、无记录编译命令的脚本，故flags是工具链默认值而非该次编译的直接记录，`compile_flags`仍算未直接记录。
+ - **内部记录冲突**：本机OpenLB树标1.9.0，而项目内部长期写「1.8r1」。已核正文与补充材料均未写具体版本号（只写OpenLB[7]并在S10保留版本绑定缺口），**稿件无事实错误**；内部文档不应再以1.8r1为既定事实。
+ - **28/52项具备完整绑定**：二进制哈希三重一致（文件=清单=表S1），源码单文件`d2_groove_error_map.cpp` mtime与二进制同为2026-10-16 23:29且其后未变，故当前文件即构建时源码，`source_sha256=e7c0cf5d87f6a726a61e760642b803b5c6ee9e5fbc6dd5ba890cb97f5a6fe3b7`。

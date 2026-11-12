@@ -1,0 +1,79 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-441953dfbb42
+Exec   : blockMesh
+Date   : Nov 10 2026
+Time   : 23:00:05
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 253034
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/docs/reports/PAPER1_fvm_independent_reference_20261110/probe_refine_Nz15
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Deleting polyMesh directory
+    "/home/dell/yuanyuanxu/SIM240/docs/reports/PAPER1_fvm_independent_reference_20261110/probe_refine_Nz15/constant/polyMesh"
+Reading "blockMeshDict"
+
+Creating block mesh from
+    "system/blockMeshDict"
+No non-linear block edges defined
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Basic statistics
+    Number of internal faces : 0
+    Number of boundary faces : 6
+    Number of defined boundary faces : 6
+    Number of undefined boundary faces : 0
+
+Checking topology
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1e-09
+    Block 0 cell size :
+        i : 5e-09
+        j : 1e-09
+        k : 5e-09
+
+No patch pairs to merge
+
+Detected cyclic patches; ordering boundary faces
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 0) (2.4e-07 1e-09 7.5e-08)
+  nPoints: 1568
+  nCells: 720
+  nFaces: 2943
+  nInternalFaces: 1377
+----------------
+Patches
+----------------
+  patch 0 (start: 1377 size: 15) name: inlet
+  patch 1 (start: 1392 size: 15) name: outlet
+  patch 2 (start: 1407 size: 48) name: bottom
+  patch 3 (start: 1455 size: 48) name: top
+  patch 4 (start: 1503 size: 1440) name: frontAndBack
+
+End
+

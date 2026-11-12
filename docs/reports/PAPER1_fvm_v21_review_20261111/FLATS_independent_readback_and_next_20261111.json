@@ -1,0 +1,111 @@
+{
+  "checked_at": "2026-11-11T16:18:44+08:00",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "drift": [],
+  "flat_results": {
+    "P": {
+      "result": {
+        "case_id": "h75_d0_P_flat",
+        "status": "LOCAL_CHECKS_PASS",
+        "issues": [],
+        "metrics": {
+          "K_m3": 3.5161132812500276e-23,
+          "J_m2_s": 3.516113281250028e-12,
+          "kappa_m2": 4.688151041666703e-16,
+          "Href_m": 7.500000000000002e-08,
+          "fluid_volume_m3": 1.8000000000000005e-23,
+          "drive_power_W": 8.438671875000067e-20,
+          "viscous_dissipation_W": 8.436914062500133e-20,
+          "power_balance_percent": 0.02083044021585767,
+          "section_flux_spread_percent": 0.0,
+          "section_evidence": "exact y invariance of scalar model; not an independent mass test",
+          "flat_K_error_percent": 0.013888888889623807,
+          "flat_profile_L2_percent": 0.009509072159519532
+        }
+      },
+      "run_id": "h75_d0_P_flat_20261111T145810_b5a3ecc4",
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "v": 4.523055253555043e-14
+        },
+        "outer_iterations": 2,
+        "final_time": 2,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      },
+      "amplitudes": {
+        "Ux": 0.0,
+        "Uy": 7.031250000001389e-05,
+        "Uz": 0.0
+      },
+      "Uz_over_Ux": null,
+      "receipt_sha256": "7dc462452c46c34cd49fc9839fd8b151b6fc1333084641f699e906d4bf3b69a6"
+    },
+    "T": {
+      "result": {
+        "case_id": "h75_d0_T_flat",
+        "status": "LOCAL_CHECKS_PASS",
+        "issues": [],
+        "metrics": {
+          "K_m3": 3.516113278785313e-23,
+          "J_m2_s": 3.516113278785313e-12,
+          "kappa_m2": 4.688151038380415e-16,
+          "Href_m": 7.500000000000002e-08,
+          "fluid_volume_m3": 1.8000000000000005e-23,
+          "drive_power_W": 8.438671869084751e-20,
+          "viscous_dissipation_W": 8.436914050671527e-20,
+          "power_balance_percent": 0.0208305103041595,
+          "section_flux_spread_percent": 2.1396249917925323e-14,
+          "section_flux_mean_m3_s": 3.516113278785313e-21,
+          "section_vs_volume_percent": 0.0,
+          "section_evidence": "corrected finite-volume face flux",
+          "flat_K_error_percent": 0.013888818782192835,
+          "flat_profile_L2_percent": 0.009509008160519963
+        }
+      },
+      "run_id": "h75_d0_T_flat_20261111T154355_ab7f0638",
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "iteration_cap",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 3.431841383048143e-13,
+          "Uz": 2.927538054360039e-09,
+          "p": 1.595946099226053e-13
+        },
+        "outer_iterations": 60000,
+        "final_time": 60000,
+        "threshold": 1e-10,
+        "log_reports_converged": false,
+        "ends_with_End": true,
+        "flat_exception_used": true
+      },
+      "amplitudes": {
+        "Ux": 7.031249994838574e-05,
+        "Uy": 4.164999974591155e-32,
+        "Uz": 1.4171781562313136e-18
+      },
+      "Uz_over_Ux": 2.0155422681196386e-14,
+      "receipt_sha256": "7722aff92636e7618d21b885217222a2394d1c17f197570c25cd7d2cbaa5cca6"
+    }
+  },
+  "next_case": {
+    "case_id": "h75_d100_T_coarse",
+    "seed_from": null,
+    "expected_cells": 19200,
+    "wall_clock_seconds": 1800,
+    "iteration_cap": 60000,
+    "runtime_exists": false,
+    "evidence_exists": false,
+    "review_status": "ASTRA_FINAL_STATIC_RECHECK_COMPLETE",
+    "execution_authorized": true
+  },
+  "new_simulations_launched": false
+}

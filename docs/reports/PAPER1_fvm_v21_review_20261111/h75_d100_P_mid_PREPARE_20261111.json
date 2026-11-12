@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-11-11T23:41:07+08:00",
+  "status": "PREPARED_NOT_STARTED",
+  "case_id": "h75_d100_P_mid",
+  "source_case": "h75_d100_P_coarse",
+  "source_run_id": "h75_d100_P_coarse_20261111T231527_172b0354",
+  "source_receipt_sha256": "7099604c8b06f68340a8265394febec5fbb048ea50586cfa2989d0f2396046be",
+  "source_time": "2",
+  "cells": 76800,
+  "dx_nm": 0.625,
+  "start_time": 0.5,
+  "solver_wall_seconds": 14400,
+  "iteration_end_cap": 120000,
+  "command": "tmux new-session -d -s v21_p2 'source /opt/openfoam13/etc/bashrc && cd /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2 && exec python3 run_one.py --case h75_d100_P_mid --execute'",
+  "command_executed": false,
+  "new_solver_runs": 0
+}

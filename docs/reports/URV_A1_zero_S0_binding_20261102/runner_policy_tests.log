@@ -1,0 +1,90 @@
+test_actual_prepared_binding_readonly (__main__.RunnerPolicy.test_actual_prepared_binding_readonly) ... ok
+test_bound_input_drift_stops_inspection (__main__.RunnerPolicy.test_bound_input_drift_stops_inspection) ... ok
+test_capture_failure_no_checker_or_T (__main__.RunnerPolicy.test_capture_failure_no_checker_or_T) ... ERROR
+test_inconsistent_replay_flag_no_T_even_exit_zero (__main__.RunnerPolicy.test_inconsistent_replay_flag_no_T_even_exit_zero) ... ERROR
+test_native_failure_no_T (__main__.RunnerPolicy.test_native_failure_no_T) ... ERROR
+test_original_or_supplementary_checker_failure_no_T (__main__.RunnerPolicy.test_original_or_supplementary_checker_failure_no_T) ... ERROR
+test_prepared_binding_cannot_execute_or_create_attempt (__main__.RunnerPolicy.test_prepared_binding_cannot_execute_or_create_attempt) ... ok
+test_release_sha_mismatch_rejected (__main__.RunnerPolicy.test_release_sha_mismatch_rejected) ... ok
+test_resource_failure_stops_inspection (__main__.RunnerPolicy.test_resource_failure_stops_inspection) ... ok
+test_synthetic_two_case_sequence_only_after_full_flags (__main__.RunnerPolicy.test_synthetic_two_case_sequence_only_after_full_flags) ... ERROR
+
+======================================================================
+ERROR: test_capture_failure_no_checker_or_T (__main__.RunnerPolicy.test_capture_failure_no_checker_or_T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 83, in test_capture_failure_no_checker_or_T
+    def test_capture_failure_no_checker_or_T(self):self.stop_case('capture')
+                                                   ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 75, in stop_case
+    with self.assertRaises(ValueError):runner.execute(Path('SYNTHETIC'),'SYNTHETIC_SHA',data)
+                                       ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py", line 150, in execute
+    run_id=record['run_id'], planned_case_id=record['planned_case_id'],
+                                             ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'planned_case_id'
+
+======================================================================
+ERROR: test_inconsistent_replay_flag_no_T_even_exit_zero (__main__.RunnerPolicy.test_inconsistent_replay_flag_no_T_even_exit_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 85, in test_inconsistent_replay_flag_no_T_even_exit_zero
+    def test_inconsistent_replay_flag_no_T_even_exit_zero(self):self.stop_case('replay_flag')
+                                                                ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 75, in stop_case
+    with self.assertRaises(ValueError):runner.execute(Path('SYNTHETIC'),'SYNTHETIC_SHA',data)
+                                       ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py", line 150, in execute
+    run_id=record['run_id'], planned_case_id=record['planned_case_id'],
+                                             ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'planned_case_id'
+
+======================================================================
+ERROR: test_native_failure_no_T (__main__.RunnerPolicy.test_native_failure_no_T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 82, in test_native_failure_no_T
+    def test_native_failure_no_T(self):self.stop_case('native')
+                                       ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 75, in stop_case
+    with self.assertRaises(ValueError):runner.execute(Path('SYNTHETIC'),'SYNTHETIC_SHA',data)
+                                       ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py", line 150, in execute
+    run_id=record['run_id'], planned_case_id=record['planned_case_id'],
+                                             ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'planned_case_id'
+
+======================================================================
+ERROR: test_original_or_supplementary_checker_failure_no_T (__main__.RunnerPolicy.test_original_or_supplementary_checker_failure_no_T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 84, in test_original_or_supplementary_checker_failure_no_T
+    def test_original_or_supplementary_checker_failure_no_T(self):self.stop_case('checker')
+                                                                  ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 75, in stop_case
+    with self.assertRaises(ValueError):runner.execute(Path('SYNTHETIC'),'SYNTHETIC_SHA',data)
+                                       ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py", line 150, in execute
+    run_id=record['run_id'], planned_case_id=record['planned_case_id'],
+                                             ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'planned_case_id'
+
+======================================================================
+ERROR: test_synthetic_two_case_sequence_only_after_full_flags (__main__.RunnerPolicy.test_synthetic_two_case_sequence_only_after_full_flags)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 86, in test_synthetic_two_case_sequence_only_after_full_flags
+    def test_synthetic_two_case_sequence_only_after_full_flags(self):self.stop_case('success')
+                                                                     ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_A1_zero_S0_binding_20261102/test_runner_A1.py", line 73, in stop_case
+    if reason=='success':runner.execute(Path('SYNTHETIC'), 'SYNTHETIC_SHA',data)
+                         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S0_mrp_v1_a1/scripts/run_S0_A1.py", line 150, in execute
+    run_id=record['run_id'], planned_case_id=record['planned_case_id'],
+                                             ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'planned_case_id'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.254s
+
+FAILED (errors=5)

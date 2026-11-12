@@ -1,0 +1,27 @@
+--- before/SIM240_AI_CONTEXT.md
++++ after/SIM240_AI_CONTEXT.md
+@@ -1,14 +1,15 @@
+ # SIM240 AI CONTEXT
+ 
+-## A1新版本两方向S0完整验收通过，修复回归阻塞已解除；S1未启动（2026-11-02）
+-
+-- 用户本轮授权按原URV-v1／MRP／A1分析两条已有结果，不重跑／进入S1。两条运行与自动检查均结束，S0_completed.json存在；本轮在新目录重新执行未改check_mass_repair.py／原URV及实际VTK读回，不执行求解器。当前入口docs/reports/URV_A1_S0_results_review_20261102/REPORT.md、disposition.json、verification.json、recheck_P/T/、data_audit.json、T_same_density_replay_190.csv与T_380_entry_reconstruction.csv。
+-- 新身份URV_S0_P_A1_20261102_01（沿槽+y）、URV_S0_T_A1_20261102_01（横槽+x）分别4342／2953步、4343／2954行，原生及本轮独立检查均退出0。NUMERICAL_GATE=PASS、geometry_PASS=true、URV_RESULT_PASS=true，MRP各分项及RESULT_PASS=true；新独立JSON与自动回执完整相等。S0_REVISION_DISPOSITION=ACCEPTED_NEW_A1_PAIR，本次观察量修复回归阻塞解除；这是新版本限定数值验收，不是人工科学签字或参考／预测放行。
+-- 原20列全部完整精确回归旧D4、零新增容差；原5个修正账本列全轨迹精确对应v1.2。独立K P9.834076003216203e-23、T4.449022023188299e-23m³；相对旧值变化P1.1102230246251565e-16、T0，均在原≤1e-4内。P原生K尾位9.834076003216204e-23保留，不混作诊断轨迹差异。补偿质量最大相对变化P6.419766481290786e-16、T1.069961080215131e-15；全部原质量／密度／Mach／Re／统计窗／截面／几何门通过。
+-- P11份、T201份真实密度捕获全部完整，212×57600个binary64，rho97689600bytes。phase／初态分母／映射／时间／常量／FP环境／原生ELF／raw及最终索引SHA和completion闭包通过。212份独立同输入重放与本次原生记录位模式一致；T190差异点双路径逐项重现旧D4与失败v1.2的质量／误差共380项，最大mass差7.395570986446986e-32kg、mass_error差1.0271626370072865e-14，最大step1141。A1相对旧D4的差异0；T10个无差异对照与P10点通过。仅支持舍入机制充分解释，历史逐格密度相同仍未建立。
+-- 20保存帧经pvpython实际重新读取，两方向各27份物理输出与v1.2逐字节相同（21VTK＋6表），补偿和物理输出未改。57600节点、32448安装链、q0.5±1e-10、fallback/unresolved0。正式合同SHA cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148与1548项输入保持；A1 ELF c1fc2a1eeacced8f11a9bb045c25d70936b7be03fe5495a0b8f51789bd8fe8af，OpenLB882924a9cfc8。2362项既有保护文件本轮前后不变，无源码／检查器／阈值／封存或原始结果修改，无构建或求解器调用。
+-- 旧v1.2 P接受／T拒绝、380差异／exit2及前个MRP静态FAIL均保留；原生result.txt的RESULT_PASS=false不改，独立回执按原职责认证。HISTORICAL_EXCLUSIVE_ATTRIBUTION=NOT_ESTABLISHED；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T、C/h75、V2/G4、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1、GDI01及外部声明范围不变；F04范围外，不把新S0接受写成论文闭环。
+-- 当前任务完成，S0无须重跑。下一具体动作可在另定范围下核对S1光滑基准h30/d0、dx1.25nm沿／横槽的运行前材料与原合同兼容性；本轮没有实现下一阶段／合同或命令，S1未授权／未启动。常规准备和完整验收GPT-6.1 Sol｜High；新指令／证据矛盾由指定GPT-6 Astra｜High裁定。本轮无新矛盾／新Astra调用，没有提交推送或项目资料外发。
++## S1运行前材料审查完成：原输入静态一致，现A1执行包不能直接接入；未构建／未启动（2026-11-02）
++
++- 用户本轮仅要求“另定范围后，审核 S1 光滑基准的运行前材料与合同兼容性”，据原URV-v1审查S1两条，不含新实现／编译／原生零步或正式计算。入口docs/reports/URV_S1_prerun_review_20261102/REPORT.md、scope_review.json、reviewed_inputs.csv、static_geometry_and_analytics.json、compatibility_findings.json、MINIMUM_ADAPTATION_DRAFT.md与verification.json。草案未采用／实现，不是启动许可。
++- 两条planned_case_id仍URV1_SMOOTH_H30_P_dx1p25_a100000／URV1_SMOOTH_H30_T_dx1p25_a100000，实际run_id空；h30/d0、Lx=Ly240、dx1.25nm、rho1000、nu1e-6、a1e5、tau1，P+y／T+x。纯有理数／NumPy静态枚举核对884736核心节点、368640壁面链、q.5、dt2.604166666666667e-13s、2592窗口／27648cap；解析K2.25e-24m³、J2.25e-13m²/s、U7.5e-6m/s。原K/剖面相对L2各严格<2%及全数值／几何门槛保持。以上是运行前预期，不是S1几何／流场PASS。
++- 当前S0/A1直接启动不兼容：C01原生steady无条件构建57600节点h75捕获器，与S1884736冲突；C02来源修订仅S0；C03控制器固定S0身份/3600s，原S1每方向14400s；C04映射/5nm/190点历史和11/201份捕获专用h75；C05当前URV准备链尚无S1候选／构建／原生安装和初始化／执行绑定。源码定位和SHA已保存；这些是预期阶段边界，未发生新证据矛盾，无新Astra调用。
++- 草案建议新隔离S1候选保留A1旧质量helper、补偿列与体积舍入；S1不调用h75捕获器，使用既有null捕获测量路径，原S1按原URV解析/数值规则验收。h75历史重放不适用S1，不虚填PASS或放宽原数值门。需新精确来源anchor与仅两条S1的控制器，旧S0源码／许可／捕获／回执不改；原check_results/evidence/read_fields/科学规则保持。未来构建／限定指令审计／软件及两方向原生零步须另明确准备范围，正式许可最后单独办理。
++- 原资源保持：1进程/线程/cuboid、overlap3、地址空间8GiB、可用RAM≥12GiB、首批盘≥100GiB/每条≥8GiB、每条输出4GiB预算；S1每方向14400s。单份核心D3Q19数组128.25MiB不是峰值内存；实际资源与原生S1仍待。A1体积表达式在S1尺寸下纯算术相对差3.7047663623415744e-12，原1e-10内；不能代替原生几何审计。
++- S0_ACCEPTED_NEW_A1_PAIR保持：URV_S0_P/T_A1_20261102_01分别4342/2953步、4343/2954行，原20列精确回归、补偿守卫、212份密度重放、190点/380项再现、20实际场读回和物理输出均通过；详见URV_A1_S0_results_review_20261102/REPORT.md、disposition.json。正式S0合同SHA cf7f1aaccf22b8d47b0c81147b9f9dcb22d07615f45664b09c9f7d1347826148、A1 ELF c1fc2a1eeacced8f11a9bb045c25d70936b7be03fe5495a0b8f51789bd8fe8af均保持。2399项保护文件前后不变，无CASE／源码／合同／规则修改，无构建或原生调用。
++- S1_RUN_READINESS=NOT_READY_STAGE_ADAPTATION_REQUIRED，simulation_authorized=false、S1未启动；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false（未接受而非已运行失败）、geometry_PASS=null。旧v1.2 T拒绝/380差异/exit2和前MRP静态FAIL不改；HISTORICAL_EXCLUSIVE_ATTRIBUTION=NOT_ESTABLISHED，reference_qualified=false、strict_error_bound_established=false、submission_ready=false，MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T、C/h75、V2/G4、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1、GDI01和外部声明范围不变。F04跨阶段汇总仍OPEN，后续需按各条独立合同SHA，不阻单批S1验收。
++- 当前审查任务完成。下一具体动作：采用MINIMUM_ADAPTATION_DRAFT后，在新隔离副本实现S1接入及来源／运行层，完成构建／软件／限定指令审计和明确包含的双向原生零步；保持正式计算另授权、不默认重跑S0或进入S2。建议GPT-6.1 Sol｜High；新指令或证据矛盾按用户指定GPT-6 Astra｜High裁定。没有启动命令、提交推送或项目资料外发。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）
+ 

@@ -1,0 +1,214 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p11-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p11-topbar-title
+    bounds: [36, 8, 640, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 验证链四层证据：方法可信度的支撑结构
+  - elementType: text
+    elementId: p11-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 11 / 18
+  - elementType: shape
+    elementId: p11-node1
+    shapeName: roundRect
+    bounds: [60, 76, 204, 240]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p11-node1-chip
+    shapeName: rect
+    bounds: [60, 76, 204, 34]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p11-node1-chiptext
+    bounds: [60, 80, 204, 26]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ① 平壁解析基准
+  - elementType: text
+    elementId: p11-node1-bignum
+    bounds: [76, 124, 172, 44]
+    content:
+      fontSize: 30
+      bold: true
+      color: "#0E3F8C"
+      text: 0.027%
+  - elementType: text
+    elementId: p11-node1-body
+    bounds: [76, 176, 172, 130]
+    content:
+      fontSize: 11
+      color: "#1A2230"
+      lineHeight: 1.5
+      text: 三网格序列误差：<br/>0.444% → 0.111% → 0.0272%，接近二阶收敛；h³/12 解析对照，覆盖离散+提取全流程。
+  - elementType: shape
+    elementId: p11-arrow1
+    shapeName: rightArrow
+    bounds: [268, 182, 36, 26]
+    fill: { type: solid, color: "#3D7BD9" }
+  - elementType: shape
+    elementId: p11-node2
+    shapeName: roundRect
+    bounds: [308, 76, 204, 240]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p11-node2-chip
+    shapeName: rect
+    bounds: [308, 76, 204, 34]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p11-node2-chiptext
+    bounds: [308, 80, 204, 26]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ② 周期复制不变性
+  - elementType: text
+    elementId: p11-node2-bignum
+    bounds: [324, 124, 172, 44]
+    content:
+      fontSize: 30
+      bold: true
+      color: "#0E3F8C"
+      text: 10⁻¹⁴
+  - elementType: text
+    elementId: p11-node2-body
+    bounds: [324, 176, 172, 130]
+    content:
+      fontSize: 11
+      color: "#1A2230"
+      lineHeight: 1.5
+      text: 单胞×2→4→8 周期复制：2→4 逐位相同，4→8 差异 ~10⁻¹⁴；按构造必然，证明周期接缝完整。
+  - elementType: shape
+    elementId: p11-arrow2
+    shapeName: rightArrow
+    bounds: [516, 182, 36, 26]
+    fill: { type: solid, color: "#3D7BD9" }
+  - elementType: shape
+    elementId: p11-node3
+    shapeName: roundRect
+    bounds: [556, 76, 204, 240]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p11-node3-chip
+    shapeName: rect
+    bounds: [556, 76, 204, 34]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p11-node3-chiptext
+    bounds: [556, 80, 204, 26]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ③ 驱动力线性
+  - elementType: text
+    elementId: p11-node3-bignum
+    bounds: [572, 124, 172, 44]
+    content:
+      fontSize: 30
+      bold: true
+      color: "#0E3F8C"
+      text: 3.7×10⁻⁸
+  - elementType: text
+    elementId: p11-node3-body
+    bounds: [572, 176, 172, 130]
+    content:
+      fontSize: 11
+      color: "#1A2230"
+      lineHeight: 1.5
+      text: 三档驱动力（相差四倍）给出同一系数，最大相对偏差 3.7×10⁻⁸——线性响应范围内取 a=10⁵ 合理。
+  - elementType: shape
+    elementId: p11-arrow3
+    shapeName: rightArrow
+    bounds: [764, 182, 36, 26]
+    fill: { type: solid, color: "#3D7BD9" }
+  - elementType: shape
+    elementId: p11-node4
+    shapeName: roundRect
+    bounds: [804, 76, 96, 240]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: shape
+    elementId: p11-node4-chip
+    shapeName: rect
+    bounds: [804, 76, 96, 34]
+    fill: { type: solid, color: "#0E3F8C" }
+  - elementType: text
+    elementId: p11-node4-chiptext
+    bounds: [804, 80, 96, 26]
+    content:
+      fontSize: 12
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ④ 网格加密
+  - elementType: text
+    elementId: p11-node4-bignum
+    bounds: [810, 124, 84, 44]
+    content:
+      fontSize: 26
+      bold: true
+      color: "#0E3F8C"
+      text: −4.4%
+  - elementType: text
+    elementId: p11-node4-body
+    bounds: [810, 176, 84, 132]
+    content:
+      fontSize: 10.5
+      color: "#1A2230"
+      lineHeight: 1.45
+      text: 最薄点跨槽 5→2.5 nm 变化；4 何处？
+  - elementType: shape
+    elementId: p11-scopebar
+    shapeName: rect
+    bounds: [60, 336, 840, 122]
+    fill: { type: solid, color: "#F7F9FC" }
+  - elementType: text
+    elementId: p11-scope-title
+    bounds: [84, 348, 792, 24]
+    content:
+      fontSize: 14
+      bold: true
+      color: "#0E3F8C"
+      text: 每层的适用边界（正文均已声明）
+  - elementType: text
+    elementId: p11-scope-body
+    bounds: [84, 376, 792, 74]
+    content:
+      fontSize: 12
+      color: "#1A2230"
+      lineHeight: 1.55
+      text: "平壁综合误差不分解各项来源；周期复制不构成 RVE 证据；线性检查限基准几何与 2.5 nm；<br/>加密敏感性只对四个几何、最薄跨槽最敏感（−4.43%），双网格给不出收敛阶与全图不确定度上界——5 nm 结果定位为“指定分辨率下的离散参考”。"
+  - elementType: text
+    elementId: p11-conclusion
+    bounds: [60, 470, 840, 30]
+    content:
+      fontSize: 14.5
+      bold: true
+      color: "#0E3F8C"
+      text: 四层链条自洽且每层有限定——这是"方法站得住"的核心证据，也是最希望老师认可的一页。
+  - elementType: text
+    elementId: p11-footer
+    bounds: [60, 508, 840, 14]
+    content:
+      style: $tiny
+      text: 稿件位置：§2.4 + §3.1–3.3 · 原始证据：G4 周期收敛协议 18 份 result、平板三网格归档、8 份加密 run（索引 S7–S9）

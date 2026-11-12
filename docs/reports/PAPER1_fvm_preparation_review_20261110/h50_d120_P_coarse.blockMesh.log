@@ -1,0 +1,82 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-441953dfbb42
+Exec   : blockMesh -case /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v1/prepared/h50_d120_P_coarse
+Date   : Nov 10 2026
+Time   : 23:23:26
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 265287
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v1/prepared/h50_d120_P_coarse
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading "blockMeshDict"
+
+Creating block mesh from
+    "system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Basic statistics
+    Number of internal faces : 2
+    Number of boundary faces : 14
+    Number of defined boundary faces : 14
+    Number of undefined boundary faces : 0
+
+Checking topology
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1.0000000000000001e-09
+    Block 0 cell size :
+        i : 1.25e-09
+        j : 1.0000000000000001e-09
+        k : 1.25e-09
+    Block 1 cell size :
+        i : 1.25e-09
+        j : 1.0000000000000001e-09
+        k : 1.25e-09
+    Block 2 cell size :
+        i : 1.25e-09
+        j : 1.0000000000000001e-09
+        k : 1.25e-09
+
+Detected cyclic patches; ordering boundary faces
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 0) (2.4000000000000003e-07 1.0000000000000003e-09 1.7000000000000004e-07)
+  nPoints: 34450
+  nCells: 16896
+  nFaces: 67912
+  nInternalFaces: 33464
+----------------
+Patches
+----------------
+  patch 0 (start: 33464 size: 40) name: xMinus
+  patch 1 (start: 33504 size: 40) name: xPlus
+  patch 2 (start: 33544 size: 576) name: walls
+  patch 3 (start: 34120 size: 33792) name: frontBack
+
+End
+

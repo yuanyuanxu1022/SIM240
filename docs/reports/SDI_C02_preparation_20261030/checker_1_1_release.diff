@@ -1,0 +1,65 @@
+--- original sealed checker 1.0
++++ released checker 1.1.0
+@@ -1,11 +1,14 @@
+ #!/usr/bin/env python3
+-"""Read completed C01 outputs; never import or launch a flow solver."""
++"""Checker 1.1.0: read completed C01 or C02 outputs; never import or launch a flow solver."""
+ import argparse
+ import csv
+ import hashlib
+ import json
+ import math
+ from pathlib import Path
++
++CHECKER_VERSION = "1.1.0"
++SUPPORTED_CASES = {"C01", "C02"}
+ 
+ 
+ def sha(path):
+@@ -50,8 +53,13 @@
+         owner=int(r['owner']);neighbour=int(r['neighbour'])
+         if owner!=r['owner'] or neighbour!=r['neighbour'] or owner not in ids or (neighbour!=-1 and neighbour not in ids):raise ValueError('Invalid face addressing')
+         sx,sy,sz=r['Sx_m2'],r['Sy_m2'],r['Sz_m2']
+-        if sz!=0 or (sx!=0)==(sy!=0):raise ValueError('Non-axis-aligned active face')
+-        a=0 if sx else 1; s=sx if sx else sy
++        # Geometry recognition repair only: reuse the existing 1e-10
++        # normalized geometry tolerance, retaining every raw Sf/phi value.
++        # Original strict-zero classifier rejected roundoff (max 5.44e-14).
++        a=0 if abs(sx)>=abs(sy) else 1
++        s=sx if a==0 else sy
++        if s==0 or math.hypot(sy if a==0 else sx,sz)/abs(s)>1e-10:
++            raise ValueError('Non-axis-aligned active face')
+         i=round(r['x_m']/dx-(.5 if a==1 else 0));j=round(r['y_m']/dy-(.5 if a==0 else 0))
+         n=nx if a==0 else ny;coord=i if a==0 else j
+         if not (0<=i<=nx and 0<=j<=ny) or (a==0 and j>=ny) or (a==1 and i>=nx):raise ValueError('Face outside grid')
+@@ -125,7 +133,8 @@
+ 
+ def check_run(run):
+     manifest=json.loads((run/'run_manifest.json').read_text())
+-    if manifest.get('case_id')!='C01' or manifest.get('protocol_id')!='SDI-v1':raise ValueError('Not a bound C01 run')
++    case_id=manifest.get('case_id')
++    if case_id not in SUPPORTED_CASES or manifest.get('protocol_id')!='SDI-v1':raise ValueError('Not a supported bound C01/C02 run')
+     for rec in manifest['files']:
+         p=Path(rec['path'])
+         if p.is_absolute() or '..' in p.parts:raise ValueError('Invalid manifest path')
+@@ -133,9 +142,9 @@
+     execution=json.loads((run/'execution.json').read_text())
+     if execution.get('status')!='completed' or len(execution.get('steps',[]))!=2:raise ValueError('Both runs must finish before analysis')
+     if [s['label'] for s in execution['steps']]!=['two_dimensional','openfoam'] or any(s['exit_code']!=0 for s in execution['steps']):raise ValueError('Nonzero/missing independent exit code')
+-    cfg=json.loads((run/'common/C01.json').read_text())
++    cfg=json.loads((run/'common'/f'{case_id}.json').read_text())
+     if sha(run/'common/protocol.json')!=cfg['source_hashes']['design_protocol']:raise ValueError('Protocol binding mismatch')
+-    if cfg['case_id']!='C01' or cfg['pressure_units']!='Pa' or cfg['velocity_definition']!='U=J/H':raise ValueError('Unsupported configuration')
++    if cfg['case_id']!=case_id or cfg['drive_axis']!=0 or cfg['pressure_units']!='Pa' or cfg['velocity_definition']!='U=J/H':raise ValueError('Unsupported configuration')
+     results={};grids={}
+     for label,rel in [('two_dimensional','two_dimensional'),('openfoam','openfoam/SDI_output')]:
+         d=run/rel
+@@ -157,7 +166,7 @@
+     for rel in ['openfoam/1/p','openfoam/1/U','openfoam/1/J','openfoam/1/phi','openfoam/1/phi_U',
+                 'logs/two_dimensional.log','logs/openfoam.log','execution.json']:
+         p=run/rel;raw.append(dict(path=rel,sha256=sha(p)))
+-    return dict(protocol_id='SDI-v1',case_id='C01',run_id=manifest['run_id'],kind='COMPLETED_RUN_INTERFACE_ANALYSIS',
++    return dict(checker_version=CHECKER_VERSION,protocol_id='SDI-v1',case_id=case_id,run_id=manifest['run_id'],kind='COMPLETED_RUN_INTERFACE_ANALYSIS',
+                 independent_exit_codes_checked=True,results=results,cross_checks=cross,interface_checks_satisfied=satisfied,
+                 NUMERICAL_GATE='PASS' if satisfied else 'FAIL',RESULT_PASS=satisfied,geometry_PASS=True,
+                 geometry_scope='synthetic_average_domain_only',physical_validation='NOT_EVALUATED',

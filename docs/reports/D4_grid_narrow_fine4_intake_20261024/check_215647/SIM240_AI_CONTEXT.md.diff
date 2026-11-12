@@ -1,0 +1,11 @@
+--- SIM240_AI_CONTEXT.md before
++++ SIM240_AI_CONTEXT.md after
+@@ -2,7 +2,7 @@
+ 
+ ## 第一篇：窄槽4项1.25nm最细网格已由用户启动，运行中待验收（2026-10-24，当前入口）
+ 
+-- 北京时间2026-10-24 21:17:08单次接收检查：批次development_grid_narrow_fine4_20261024_v1已于21:16:28由用户启动，tmux会话d4-narrow4-20261024存在，progress尚0条，无总completion/exit/error记录。独立验收pending，未作数值/流场或三格判定；证据docs/reports/D4_grid_narrow_fine4_intake_20261024/snapshot.json。本轮没有启动/重跑、编译或持续轮询。
++- 北京时间2026-10-24 21:56:47单次接收核对：批次development_grid_narrow_fine4_20261024_v1仍有tmux会话，尚无算例退出记录（progress=0/4）、总completion/exit/error记录；已确认用户21:16:28启动，当前未完成，独立验收与三格判定pending。证据docs/reports/D4_grid_narrow_fine4_intake_20261024/check_215647/snapshot.json；本轮无新计算/数值验收，不重跑、不持续轮询。
+ - 用户授权准备/审查窄细4项入口、资源和三格接续。新目录development_grid_narrow_fine4_20261024，报告docs/reports/D4_grid_narrow_fine4_preparation_20261024/REPORT.md与preparation_verdict.json；batch_id=development_grid_narrow_fine4_20261024_v1。仅(h,d,w)=(75,25,60)/(75,120,60)nm、dx1.25、P/T四项，其他86canonical行拒绝。旧中格6项独立PASS及全部原始/分析哈希保持。
+ - 正式4配置预存、4 describe+4 precheck零步exit0，2形状/4方向独立节点/18方向q=.5无fallback/unresolved通过。原source/binary与make --question exit0保持，复用已编译程序，无新编译/steady；窗口16200、d25/d120上限307200/1168128，dt2.604166666666667e−13s，原数值/输出门槛不改。
+ - 分块window/helper、比较程序与grid_policy均和中格冻结v2逐字节一致。20旧算例64675窗逐值差0、停止点一致、4050/16200长窗对照通过；适配器回归中格6项91200行exit0，reader回归旧窄中4项40帧exit0，未来fine4动态结果仍待验收。来源默认接粗6+中6证书，实际12行无伪细格；finish_grid_review待真实四项独立证书后导出16行，明确两窄槽六量PASS/FAIL/INCONCLUSIVE，不被宽细缺项掩盖；全局仍需宽细2项。

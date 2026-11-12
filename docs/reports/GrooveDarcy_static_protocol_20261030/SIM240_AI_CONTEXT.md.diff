@@ -1,0 +1,27 @@
+--- SIM240_AI_CONTEXT.md.before
++++ SIM240_AI_CONTEXT.md
+@@ -1,14 +1,15 @@
+ # SIM240 AI CONTEXT
+ 
+-## K模型已接入独立porosityModel子类，编译与装配检查通过（2026-10-30）
+-
+-- 用户要求把K模型放入OpenFOAM多孔介质子类，直接随间隙计算阻力。新包`CASE/groove_porosity_model_v1/`，入口`docs/reports/Groove_porosity_model_20261030/REPORT.md`；本机Foundation13共享库已编译，未改安装源码或nanrPrint。
+-- `grooveDarcy`直接派生porosityModel，经标准porosityForce加载；支持原公式/公布舍入V2、固定或已注册的逐单元间隙场，每次装配重算K/H/D。保持U为液体体积平均、J=HU、H=h_mesa+(w/P)d_g、D=H K^-1；基准H=125nm，不是75nm槽顶间隙。原公式限等宽，V2限120/240nm；数学可算不等于经验有效。
+-- 已验证源码、实际编译、运行时加载、标准包装器装配、物理/除密度动量、黏度替代路径、同一步间隙更新、0/90/45度代数张量及区域外无源；3组正常装配通过、7类非法输入正确拒绝、41项系数测试通过。四个SDI系数对应值最大相对差2.220446049250313e-16；证据logs/assembly_checks.json。开发初次编译/缺库失败及修正后日志均保留，不改原门槛。
+-- 限xy二维empty、全充液单相总未解析壁面阻力；Dzz=0仅为二维嵌入。不能重复叠加同一上下壁剪切/总Darcy源。动态间隙更新不实现∂tH+div(HU)=0，宿主仍需创建更新字段、正确转换通量；MPI/运动网格/挤压/两相/新压力流场/独立参考均未验证。
+-- 新子类无流场run_id：NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、physical_validation=NOT_EVALUATED、independent_human_acceptance=false；这些值不覆盖旧四例。C01–C04主轴静态接口验收和C04/C02约2.31309、C04/C03约3.69561流量比保持，见SDI_C04_results_20261030/REPORT.md；368份旧包/协议文件哈希未变。
+-- 本轮改动仅新包、新报告、本状态与最新交接。无PDE求解、旧例重跑、拟合、C05/下一Gate、提交推送或对外发送。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD及历史FAIL保持。
+-- 当前停点：子类代码和装配准备完成；下一具体动作另定最小标准动量求解接入协议，核对速度/边界/额外黏性项后再与已验收静态结果对照。挤压应用需另审连续性与力定义，不因子类存在自动启动。无新增长算授权。常规实现/检查GPT-6.1 Sol｜High，疑难物理或最终冻结GPT-6 Astra｜High。
++## grooveDarcy最小定间隙接入协议与挤压接口已准备，未启动（2026-10-30）
++
++- 用户本轮授权协议与已有静态对照材料，随后明确挤压连续性/间隙更新接口；不启动流场。新入口`docs/reports/GrooveDarcy_static_protocol_20261030/README.md`、PROTOCOL.md、SQUEEZE_INTERFACE.md及protocol.json（GDI-v1）。
++- 首例GDI01对照旧C01（V2横槽），保持24/0Pa、24×48μm、h_m=75nm、H=b=125nm、μ=0.001Pa·s、16×32×1。正式阻力cellZone必须覆盖全部512单元，不能复用旧代数测试的256单元半区。宿主拟用标准porosityForce装配总阻力并进行稳态动量—压力耦合，不加惯性/面内黏性/厚度剪切/第二份阻力。
++- 原SDI-v1 thresholds和linear_solver逐项保持；迹分裂须外迭代，新增预先指定完整动量残差与外迭代变化守卫，不能用单次压力残差判整个解收敛。GDI01解析Ux约3.643036135654074e-07m/s、Q约2.185821681392444e-18m³/s；EXPECTED_VALUES.md和reference_values.json明确区分解析预期、旧实际CSV与不存在的新结果。
++- 本轮只读核对4个旧run_id/退出码/已验收记录/原始哈希，复算8组已有CSV；78份输入/源/参考绑定通过，454份原包/子类/协议/报告文件哈希未改。旧C01几何识别历史和四例既有PASS保持，未重跑旧例或旧检查器；纯算术不是新增流场验收。
++- 子类CASE/groove_porosity_model_v1仍保留此前编译/原生wrapper装配证据，源码与库当前哈希核对一致；本轮没有再编译或重跑装配测试。新grooveDarcyStaticFoam宿主源码、全域正式包和GDI结果读取器尚未实现：无新run_id，launch_ready=false，simulation_authorized=false，新NUMERICAL_GATE/RESULT_PASS/geometry_PASS均未评价。
++- 挤压接口选择固定平面参考网格的全充液平均路线：宿主注册更新mesaGap，统一间隙快照驱动H/K/D与∂tH+div(HU)=0，正闭合∂tH=−V；变H时面通量按H/b0相容转换。接口已定义但动态连续性/间隙推进/力积分未实现，速度/时间步/资源和动态门槛未冻结；不能重复加入ALE体积变化或把Δp/Q当F/V。
++- 改动仅新协议目录、本状态和最新交接。无新宿主实现/编译/求解/拟合/C05或其他正式运行/提交推送/对外发送。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD及历史FAIL保持。
++- 当前任务准备完成。下一具体动作：按GDI-v1实现最小动量—压力宿主、独立验收适配器和全512单元GDI01包，再编译/不求解审计；完成准备后另交付用户启动命令，不自动运行、进入其他映射或挤压。无新增长算授权。常规实现GPT-6.1 Sol｜High；疑难物理/最终冻结按协议GPT-6 Astra｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）
+ 

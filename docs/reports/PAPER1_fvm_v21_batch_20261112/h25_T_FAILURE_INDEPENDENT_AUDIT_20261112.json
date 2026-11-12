@@ -1,0 +1,129 @@
+{
+  "checked_at": "2026-11-12T14:23:51+08:00",
+  "scope": "read-only re-evaluation of completed original v2.1 h25/d100 T records; no solver execution or CASE changes",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "local_bindings": 212,
+  "external_bindings": 23,
+  "binding_mismatches": 0,
+  "cases": {
+    "coarse": {
+      "case_id": "h25_d100_T_coarse",
+      "status": "LOCAL_CHECKS_PASS",
+      "issues": [],
+      "metrics": {
+        "K_m3": 2.08683356221929e-24,
+        "J_m2_s": 2.0868335622192902e-13,
+        "kappa_m2": 2.7824447496257196e-17,
+        "Href_m": 7.500000000000002e-08,
+        "fluid_volume_m3": 1.8000000000000005e-23,
+        "drive_power_W": 5.008400549326297e-21,
+        "viscous_dissipation_W": 4.9506166833959605e-21,
+        "power_balance_percent": 1.1537389104812945,
+        "section_flux_spread_percent": 9.372154717654031e-11,
+        "section_flux_mean_m3_s": 2.0865558251448258e-22,
+        "section_vs_volume_percent": 0.013309018960239172,
+        "section_evidence": "corrected finite-volume face flux"
+      },
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 2.4223420714545976e-11,
+          "Uz": 9.97953198260432e-11,
+          "p": 2.6986951037531103e-13
+        },
+        "outer_iterations": 4577,
+        "final_time": 4577,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      }
+    },
+    "mid": {
+      "case_id": "h25_d100_T_mid",
+      "status": "LOCAL_CHECKS_PASS",
+      "issues": [],
+      "metrics": {
+        "K_m3": 2.0743975968194715e-24,
+        "J_m2_s": 2.0743975968194715e-13,
+        "kappa_m2": 2.765863462425961e-17,
+        "Href_m": 7.500000000000002e-08,
+        "fluid_volume_m3": 1.8000000000000005e-23,
+        "drive_power_W": 4.9785542323667316e-21,
+        "viscous_dissipation_W": 4.959052358002859e-21,
+        "power_balance_percent": 0.39171762430720847,
+        "section_flux_spread_percent": 6.100863702878255e-11,
+        "section_flux_mean_m3_s": 2.074357467612695e-22,
+        "section_vs_volume_percent": 0.001934499289724112,
+        "section_evidence": "corrected finite-volume face flux"
+      },
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 2.5159818337790782e-11,
+          "Uz": 9.996971374841429e-11,
+          "p": 3.705890609562956e-13
+        },
+        "outer_iterations": 9865,
+        "final_time": 9865.5,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      }
+    },
+    "fine": {
+      "case_id": "h25_d100_T_fine",
+      "status": "REFERENCE_CHECK_FAIL",
+      "issues": [
+        "power vs dissipation exceeds 0.1 percent"
+      ],
+      "metrics": {
+        "K_m3": 2.070117375084757e-24,
+        "J_m2_s": 2.070117375084757e-13,
+        "kappa_m2": 2.7601565001130083e-17,
+        "Href_m": 7.500000000000002e-08,
+        "fluid_volume_m3": 1.8000000000000005e-23,
+        "drive_power_W": 4.968281700203417e-21,
+        "viscous_dissipation_W": 4.961009572165503e-21,
+        "power_balance_percent": 0.1463710891758785,
+        "section_flux_spread_percent": 4.3655623625460117e-11,
+        "section_flux_mean_m3_s": 2.0701114355061505e-22,
+        "section_vs_volume_percent": 0.00028691989537588114,
+        "section_evidence": "corrected finite-volume face flux"
+      },
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 2.6433246656021453e-11,
+          "Uz": 9.999422373466196e-11,
+          "p": 1.3979004760009677e-13
+        },
+        "outer_iterations": 25672,
+        "final_time": 25672.5,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      }
+    }
+  },
+  "grid_mid_coarse_percent": 0.5959251195190252,
+  "grid_fine_mid_percent": 0.2063356485409118,
+  "reference_status": "NOT_ASSESSABLE",
+  "failed_condition": "fine power_balance_percent=0.1463710891758785 > 0.1",
+  "process_snapshot_only": {
+    "947446": "v3_refined/prepared/h25_d100_T_refined/runtime/log.solver",
+    "983980": "v2/prepared/h125_d120_T_fine/runtime/log.solver"
+  },
+  "causal_limit": "h25 tight has no completed evidence; other geometries and refinement trend do not prove an h25 fixed-mesh asymptotic floor or rule out all iteration contribution"
+}

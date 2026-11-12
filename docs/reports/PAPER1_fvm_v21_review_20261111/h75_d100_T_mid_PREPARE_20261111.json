@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-11-11T16:48:59+08:00",
+  "status": "PREPARED_NOT_STARTED",
+  "case_id": "h75_d100_T_mid",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "binding_drift": [],
+  "flat_status": {
+    "P": "LOCAL_CHECKS_PASS",
+    "T": "LOCAL_CHECKS_PASS"
+  },
+  "source_case": "h75_d100_T_coarse",
+  "source_status": "LOCAL_CHECKS_PASS",
+  "source_run_id": "h75_d100_T_coarse_20261111T162843_a1e0527f",
+  "source_receipt_sha256": "42914513ad29eed814c3f6b65c49f563674b3d2ab55c11ffc32bda0cf2166e3b",
+  "source_time": "11403",
+  "source_field_sha256": {
+    "11403/U": "3b846b22ec2ab209985695b3fc48d0368ca6e46009eae5a2636b038d3181ee94",
+    "11403/p": "05389e79245c5655cf1a14172f0c5555acb5d2dce081c323a55efffe7e488648",
+    "11403/phi": "9ecd4d33e8e924a6a5e4b1a3ba7e46a5a5f8eaa278572f85c41c4ce7227bea59"
+  },
+  "source_mesh_sha256": {
+    "points": "7118f161cf4fa8bc86b81faefc52a758069a6c5673980e4134c4474c37a9a9f6",
+    "faces": "423004cdab087c66c3f35e05c5b217f2d1767c0ebb9d3ecbbdf06af455f5420a",
+    "owner": "a558d9cb71dfe2acc43561c26d375ca67f65f560d94d786726eb78573a09dacc",
+    "neighbour": "27c86f71fbed862f2369d581e5e3f26b8775c8cd59bf715af688363e37b243ba",
+    "boundary": "a4342c61122a787cdff558b2c3f93426a6dbcb6f889413fd66d32f9e9e6c6eb5"
+  },
+  "target_cells": 76800,
+  "target_dx_nm": 0.625,
+  "target_start_time": 0.5,
+  "iteration_end_cap": 120000,
+  "solver_wall_seconds": 14400,
+  "target_runtime_exists": false,
+  "target_evidence_exists": false,
+  "tmux_session": "v21_g2",
+  "session_already_exists": false,
+  "command": "tmux new-session -d -s v21_g2 'source /opt/openfoam13/etc/bashrc && cd /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2 && exec python3 run_one.py --case h75_d100_T_mid --execute'",
+  "command_executed_by_agent": false,
+  "mapFields_executed_by_agent": false,
+  "new_solver_runs": 0,
+  "resource_limits": {
+    "address_space_GiB": 4,
+    "single_file_MiB": 256
+  },
+  "post_run_grid_target_percent": 1.0
+}

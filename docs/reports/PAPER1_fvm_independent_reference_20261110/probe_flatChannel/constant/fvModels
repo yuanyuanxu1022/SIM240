@@ -1,0 +1,20 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      fvModels;
+}
+momentumSource
+{
+    type            semiImplicitSource;
+    cellZone        all;
+    volumeMode      specific;
+    sources
+    {
+        U
+        {
+            explicit    (100000 0 0);
+            implicit    0;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+--- AI_HANDOFF_20261015.md before
++++ AI_HANDOFF_20261015.md after
+@@ -2,7 +2,7 @@
+ 
+ ## 第一篇：首批中网格6项已由用户启动，运行中，待完成后独立验收（2026-10-24，当前入口）
+ 
+-- 北京时间2026-10-24 12:35:55单次接收核对：批次development_grid_mid6_20261024_v1已于12:35:37由用户启动，tmux会话d4-mid6-20261024存在；progress暂0条，无总completion/exit/error记录。独立验收pending，不能据运行中或无报错判PASS；证据docs/reports/D4_grid_mid6_intake_20261024/snapshot.json。本轮仅状态核对，无新计算/数值验收、重跑或持续轮询。
++- 北京时间2026-10-24 13:22:55单次接收核对：批次development_grid_mid6_20261024_v1尚无总completion/exit记录，tmux存在=True，已记录4/6项退出；独立验收pending。最新证据docs/reports/D4_grid_mid6_intake_20261024/check_132255/snapshot.json；不重跑或持续轮询。此前启动快照保留，本轮无新计算或数值验收。
+ - 用户授权实现首批6中格入口、来源绑定、分块验收和逐几何比较。新CASE目录development_grid_mid6_20261024；报告docs/reports/D4_grid_mid6_preparation_20261024/REPORT.md与preparation_verdict.json。只允许三几何(75,25,60)/(75,120,60)/(75,120,240)nm的dx2.5、P/T共6项；其余84canonical行拒绝。batch_id=development_grid_mid6_20261024_v1。
+ - 6份正式配置预存、6 describe+6 precheck零步均通过（3不同几何），独立节点/18方向连接/q=.5/无fallback或unresolved通过；make --question exit0与原source/binary哈希保持，复用已编译程序，无新编译或steady。数值/几何流动验收待未来计算，不将零步当物理PASS。
+ - 新来源导出器核真实6粗格来源与原始/分析绑定；分块窗口用16MiB工作预算，20旧算例64675窗与原算法逐值差0且停止点一致，4050/16200长窗对照通过；系统Python测试峰值约118.9MiB。完整数值适配回归14旧项48849行exit0，流场reader回归141帧exit0，未来中格动态帧仍待验收。accept_batch为完成后显式入口，不自动分析。

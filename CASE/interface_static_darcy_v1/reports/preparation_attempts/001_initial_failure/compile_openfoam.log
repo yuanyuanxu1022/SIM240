@@ -1,0 +1,7 @@
+Making dependency list for source file depthAveragedDarcyFoam.C
+g++ -std=c++14 -m64 -DLIB_NAME=libNULL.so -Dlinux64 -DWM_ARCH_OPTION=64 -DWM_DP -DWM_LABEL_SIZE=32 -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-attributes -O3  -DNoRepository -ftemplate-depth-256 -I/home/dell/OpenFOAM/OpenFOAM-13/src/finiteVolume/lnInclude -I/home/dell/OpenFOAM/OpenFOAM-13/src/meshTools/lnInclude -IlnInclude -I. -I/home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude -I/home/dell/OpenFOAM/OpenFOAM-13/src/OSspecific/POSIX/lnInclude   -fPIC -c depthAveragedDarcyFoam.C -o Make/linux64GccDPInt32Opt/depthAveragedDarcyFoam.o
+depthAveragedDarcyFoam.C: In function ‘int main(int, char**)’:
+depthAveragedDarcyFoam.C:60:14: error: ‘class Foam::messageStream’ has no member named ‘precision’
+   60 |         Info.precision(17);
+      |              ^~~~~~~~~
+make: *** [/home/dell/OpenFOAM/OpenFOAM-13/wmake/rules/General/transform:26: Make/linux64GccDPInt32Opt/depthAveragedDarcyFoam.o] Error 1

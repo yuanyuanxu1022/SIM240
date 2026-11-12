@@ -1,0 +1,31 @@
+--- before/SIM240_AI_CONTEXT.md
++++ after/SIM240_AI_CONTEXT.md
+@@ -1,17 +1,16 @@
+ # SIM240 AI CONTEXT
+ 
+-## S0两条已明确授权，启动合同及绑定命令已准备；截至交付前未启动（2026-11-01）
+-
+-- 用户最新真实答复：“现在授权两条 S0；生成合同和命令，由我手动启动”。授权记录`docs/reports/URV_S0_launch_binding_20261101/user_launch_authorization.json`，新入口REPORT.md、verification.json、launch_command.txt。此答复关闭前轮授权范围待答项；旧只读快照保留。代理仅准备合同/命令，不代用户启动，不重试或进入S1。
+-- 新生效启动合同`CASE/unseen_v2_reference_S0_v1_2/evidence/S0_launch_release_20261101_01.json`，SHA eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a。simulation_authorized=true，agent_solver_execution_authorized=false；approved_run_ids=[URV_S0_P_v1_2_20261101_01,URV_S0_T_v1_2_20261101_01]，approved_runs与原prepared_runs逐条一致。P/T分别绑定URV1_H75_P/T_dx5_a100000及既定runs/各编号/steady。新合同1572项输入（原1568加准备绑定/其SHA、真实授权、创建脚本）全部匹配。
+-- 原准备绑定SHA a836c5f4368ed5d80d1a585abde3a353848d4555094ba2556b14fd3d883cb846保持；原准备JSON/README/旧报告“授权关闭”是当时快照，不回写。现时授权以新launch合同及本节为准。原准备包、v1.1/v1.2检查器封存、本轮2518既有保护文件均不变。新合同的S0_started=false/actual_formal_run_ids=[]为交付前快照，后续实际状态依运行目录/进程/completion，不能改封存充运行证据。
+-- 本轮公开binding来源/身份核验通过；运行器不加--execute只读退出0。资源当时RAM 23.08GiB/磁盘 318.65GiB满足门槛，真正启动再查。tmux3.4可用，目标会话不存在，单条命令经bash -n语法解析通过；没有执行该命令、创建tmux、调用native或产生新场数据。两条目录仍仅配置+manifest，没有启动标记/正式输出。
+-- 启动命令保存launch_command.txt并随本轮交付；会话urv_s0_v1_2_20261101_01，控制台追加日志evidence/S0_launch_console_20261101_01.log。由用户手动启动。外层P求解并独立检查通过才继续T；任一失败/超时/来源变更/未解释差异即停，不重试、不进入S1，完整原始产物/VTK/独立退出/前后哈希保留。
+-- h75/d100/w120/P=Ly240、dx5nm、H125nm、a1e5m/s²，P沿槽+y/T横槽+x；窗1013/上限58800。旧基准K P9.834076003216204e-23、T4.449022023188299e-23m³；K差≤1e-4及完整20共同列先保存差异口径不变。单进程/线程/cuboid、overlap3、AS8GiB、单条求解3600s；启动RAM≥12GiB、首批磁盘≥100GiB，每条前≥8GiB。S0是h75统计移植回归，不能当两个新候选的模型预测成绩。
+-- 前轮v1.2 R1/R2=ADDRESSED_AND_TESTED、77检查器/6人工运行器测试、真实编译及4次零步证据保持，本轮未重编译/复跑测试或零步。物理源码仍原字节，新binary SHA a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1，原准备版保护1保持。F02差异保存逻辑/全部物理门槛保持；F04多合同汇总仍OPEN后续单独处理。AI自审非独立人工验收。
+-- 外部历史仍为真实作者未使用声明：h60/d80、h30/d80,w120/P240nm结果未用于选V2系数或这两个检验条件，已绑定原author_declaration.json；核查位置未提供、独立外部审计未做，不扩大为从未见过数据或外部无数据。旧PENDING快照不改。
+-- 当前截至命令交付前：S0_started=false，actual_formal_run_ids=[]，无新数值/物理验证；正式NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及GDI01既有接入结果保持，无提交推送或外发。
+-- 下一具体动作：用户手动执行交付的一条tmux命令，贴回输出后做一次启动核查；不持续轮询。完成后另开任务按原URV-v1核查已有S0结果，未获准不重跑/进入S1。启动状态查询GPT-6.1 Sol｜Low，完整结果分析GPT-6.1 Sol｜High。
++## S0已启动；P已有独立通过回执，T核查时运行中（2026-11-01 19:02）
++
++- 用户本轮仅授权“核查一次S0启动状态”。已完成一次只读快照，证据`docs/reports/URV_S0_startup_check_20261101/snapshot.json`、REPORT.md；未持续轮询、启动、重启、编译、调用独立检查器或读取场文件。19:02是核查时点，后续是否完成未再次查询，不把快照写成实时状态。
++- 启动已证实：tmux会话urv_s0_v1_2_20261101_01存在，launch_attempts/合同SHA目录存在，外层PID115751与横槽native PID116149运行；横槽进程约98.7%CPU。冻结合同`CASE/unseen_v2_reference_S0_v1_2/evidence/S0_launch_release_20261101_01.json` SHA eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a匹配；由用户执行原命令，代理未启动计算。
++- P（URV_S0_P_v1_2_20261101_01）：已完成4342步，实际推进审计4342、独立退出0、未超时，completion合同SHA匹配、inputs_unchanged=true。已有独立acceptance.json：NUMERICAL_GATE=PASS、RESULT_PASS=true、geometry_PASS=true；已有regression_comparison.json：K_gate_PASS=true、legacy_gate_PASS=true、K相对变化1.1102230246251565e-16。以上是读取运行器已生成回执，不是本轮重新验收；完整原始轨迹/来源/VTK未在本轮重核。原生RESULT_PASS=false保持，独立回执true为不同层次。
++- T（URV_S0_T_v1_2_20261101_01）：核查时native运行中，诊断尾部约1834步，无result/exit/completion或独立回执；正式NUMERICAL_GATE/RESULT_PASS/geometry_PASS未判定。步数仅当时已写记录，不据此预测剩余时间。S0整体尚未完整验收，不将P通过扩展为两条均通过。
++- 用户真实授权“现在授权两条S0；生成合同和命令，由我手动启动”保存在`docs/reports/URV_S0_launch_binding_20261101/user_launch_authorization.json`。approved_run_ids仍仅上述P/T，S1及自动重试未获准。原launch合同中S0_started=false/actual_formal_run_ids=[]属于交付前快照，保留封存字节；当前实际已启动身份P/T见本快照和运行目录，不回写合同充运行证据。
++- 本轮快照启动P/T，物理与验收保持原URV-v1：h75/d100/w120/P=Ly240、dx5nm、a1e5m/s²，P+y/T+x；窗1013/上限58800；K差≤1e-4和20共同列先保存差异，未解释变化即停。单进程/线程/cuboid、overlap3、AS8GiB、单条求解3600s、原资源门槛保持。外层P独立检查通过后才进入T，任一失败停、不重试/进入S1。
++- v1.2 R1/R2修订、前轮77检查器/6人工运行器测试和真实编译/4次零步保持，本轮未复跑。原准备seal、v1.1/v1.2封存与程序/源码/配置/合同不修改；前轮准备/授权/只读记录保留。F04多合同汇总仍后续独立处理。旧外部历史PENDING快照与真实作者未使用确认分别保留，未独立外部审计。
++- 科学状态：P已有单条通过回执；S0完整结果复核待做，T在快照时未完成。reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED保持。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及GDI01既有结果不变，无Git提交推送或外发。
++- 下一具体动作：停止状态查询，由用户在计算完成后另开任务，按原URV-v1完整分析已有S0 P/T结果并与旧h75基准对照；不自动重跑/进入S1。完整结果分析GPT-6.1 Sol｜High；本轮一次启动核查已完成。
+ 
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）

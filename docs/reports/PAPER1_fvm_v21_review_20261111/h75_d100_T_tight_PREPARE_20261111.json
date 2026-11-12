@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-11T21:22:10+08:00",
+  "status": "PREPARED_NOT_STARTED",
+  "case_id": "h75_d100_T_tight",
+  "source_case": "h75_d100_T_fine",
+  "source_run_id": "h75_d100_T_fine_20261111T172454_09d491e9",
+  "source_receipt_sha256": "e65c7437d3c9bf05934f58340557a314fa799209d1ec1e52f3cacd389355aab7",
+  "source_time": "65970.5",
+  "same_mesh_as_fine": true,
+  "cells": 307200,
+  "dx_nm": 0.3125,
+  "linear_tolerance": 1e-13,
+  "full_coupled_residual_strictly_less_than": 1e-11,
+  "algebraic_K_change_threshold_percent": 0.05,
+  "finest_quality_threshold_percent": 0.1,
+  "solver_wall_seconds": 43200,
+  "end_time_cap": 250000,
+  "start_time": 0.5,
+  "command": "tmux new-session -d -s v21_g4 'source /opt/openfoam13/etc/bashrc && cd /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2 && exec python3 run_one.py --case h75_d100_T_tight --execute'",
+  "command_executed": false,
+  "new_solver_runs": 0
+}

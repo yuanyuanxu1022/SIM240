@@ -1,0 +1,38 @@
+--- SIM240_AI_CONTEXT.md before
++++ SIM240_AI_CONTEXT.md after
+@@ -1,20 +1,20 @@
+ # SIM240 AI CONTEXT
+ 
+-## 稿件主张—证据审查完成：限定离散比较可保留，来源/参考/独立预测缺口分开（2026-11-05T10:46:07.650617+08:00）
+-
+-用户范围：审查现行稿件核心主张与证据，列必须补证项及结论边界；未授权补算/改稿/新模型。审查入口`docs/reports/PAPER1_claim_evidence_review_20261105/REPORT.md`，逐项`CLAIM_EVIDENCE_MATRIX.csv`、`REQUIRED_EVIDENCE.csv`、`decision.json`。现行中文`SIM240_中文稿_导师审阅版_20261022.md`、英文`SIM240_First_Paper_English_20261028.md`；旧英文整合稿非入口。
+-
+-本轮新增：直接读52份result/manifest/独立exit，572项记录/换算一致性通过；复算36主方向及8项加密，核心倍率、偏差、各向异性/重建角度、V2残差均吻合。主地图18几何/36项，不是独立未见数据；V2沿槽18项10.5%、横槽18项18.7%，h≥50横槽15项6.9%，不能泛化。新证据是保存记录的后处理，不是完整重做52条轨迹/三维场或新Gate验收。173项指定输入核对不变，另见最终完整性回执。
+-
+-核心裁定：现稿已定位为相对5nm离散结果的回顾性比较，该范围可保留；没有为此必须立即补跑0.625的理由。9标定/9扩展完全对应两SHA，摘要槽深倍率六个端点比较均跨组，尚不能排除程序差异后的几何定量解释；52份manifest五个直接历史源码/依赖/编译字段均缺，四组完整构建仍未闭合。h25/d100横槽5→2.5变化−4.430732%，V2由5nm的绝对偏差增大转为2.5nm改善，两参考并列，不能用一个网格/一个几何给全图精度保证。附录E复用已存在书面终审范围，本轮无新公式冻结；机制仅候选、动态/实验未验证。
+-
+-最小后续：作者/导师审阅并定论文主张强度。维持离散回顾性定位先落实证据交付/历史复现边界/作者声明和实际数据版本（A1—A3）；仅升级连续精度、排除构建影响的跨几何解释、V2独立预测或机制/真实动态主张时才另审相匹配补证（B项）。新颖性/目标期刊完整审核本轮未做，作者科学采用未记录；不能宣布整篇已验证，也不作任何期刊必收/不可投的绝对判断。没有改稿/公式/系数/源码/原数据/合同/门槛，无编译/拟合/求解/新查服务器/提交推送，无新run_id或执行权限。
+-
+-1.25既有停点保留：`URV_S4_T_dx1p25_TGESRV_v1_20261104_01`是h30/d80，非稿件地图及h25/d100反例；K=3.471791836744987e-24m³，数据/构建复现可收尾，原生NUMERICAL_GATE=PASS，但构建acceptance仍NUMERICAL_GATE=NOT_EVALUATED/RESULT_PASS=false、geometry_PASS=true、BUILD_EQUIVALENCE_PASS=true。前轮10帧/诊断复核见`URV_S4_TGE_1p25_data_audit_20261105_100521/REPORT.md`；22列同值/3列微差、原逐位全同断言退出1保留，不重判。原包`outputs/URV_S4_1p25_data_20261104_234955/`未改。
+-
+-原S4六条per-run接受/P网格PASS/T中细1.328387035%>1%FAIL、S4_STAGE_ACCEPTED=false、reference_qualified=false、正式URV模型比较/物理未评价、strict_error_bound/submission_ready=false、F04 OPEN及历史质量FAIL不变。0.625准备仍停`URV_S4_TGE_0p625_readiness_review_20261105_100032/INTERRUPTED_HANDOFF.md`，未完成/未启动；本轮不自动恢复零步/PERF/正式/S5。下一模型GPT-6.1 Sol｜High用于选定定位下证据/文字收尾；真正公式结论最终冻结或实质多证据矛盾再建议Astra｜High，未声称切换。
+-
+-下列较早记录仅作历史追溯，不覆盖以上最新停点；详细旧证据从各独立报告接续。
++## OpenFOAM间隙依赖子类已核实：沿用grooveDarcy，隔离编译/装配通过（2026-11-05T11:01:07.344977+08:00）
++
++用户新要求：在porosityModel子类内直接根据实际间隙计算本项目K及d_i=h/K_i。已核现有`CASE/groove_porosity_model_v1`实现该职责，原/V2不改式不拟合；本机Foundation13。物理约定：K为m³，U为液体体积平均，J=HU，H=mesaGap+(width/period)*depth，D_i=H/K_i；若用户h指最小间隙，不能直接替代分子H。基准75/100nm等宽槽H125nm。类每次装配读取注册间隙场，不仅首次创建或每时间步刷新。
++
++报告`docs/reports/Groove_porosity_refresh_20261105/REPORT.md`、verification.json、logs/assembly_checks.json。本轮新增`examples/fvModels.gapField`和`examples/HOST_GAP_FIELD.md`，README加入口；测试脚本仅补创建日志目录一行。首次隔离检查因日志目录不存在退出1保留checks.log；修正后10类正常/预期拒绝检查全部通过，41项纯系数检查通过，四组冻结系数最大相对差2.220446049250313e-16。实际重新编译并加载标准porosityForce；覆盖原/V2、0/90/45度、固定/场间隙和同时间步刷新。无PDE solve、无新run_id、无新流场/运动网格/两相/nanrPrint接入，不把装配PASS当物理或公式准确性。
++
++构建在`tmp/groove_porosity_refresh_20261105`隔离副本，原C++、原库/检查程序、原构建日志、GDI01正式案例未覆盖。原298项文件中仅README与检查脚本2项授权改动，其余296项不变；本轮失败日志单独保留。现有C01—C04/GDI01仍是静态平均模型接口证据，非显式沟槽独立参考。
++
++当前范围已满足“子类里直接计算K/H/D和更新间隙”的实现需求。下一具体动作：若接实际应用，先确定宿主路径/版本/速度与厚度归一化；随后最小接入已注册mesaGap字段。动态挤压还需宿主实现∂tH+div(HU)=0及储液/边界通量，子类刷新D不会自动排液。当前只支持全充液单相xy二维empty总未解析壁阻，不能直接叠加同一套真实上下壁剪切。没有新的仿真启动或下一Gate授权。
++
++上一轮稿件主张—证据审查已完成，入口`docs/reports/PAPER1_claim_evidence_review_20261105/REPORT.md`；现稿限定相对5nm离散回顾性比较，来源/构建混杂/连续精度/独立预测边界保持。原S4 T中细1.328387035%>1%FAIL、S4_STAGE_ACCEPTED=false、reference_qualified=false、正式URV模型/物理未评价、strict_error_bound/submission_ready=false、F04 OPEN和历史FAIL不变。
++
++1.25服务器run_id仍`URV_S4_T_dx1p25_TGESRV_v1_20261104_01`，数据/构建复现已收尾，原构建acceptance仍NUMERICAL_GATE=NOT_EVALUATED/RESULT_PASS=false、geometry_PASS=true；本轮未重查服务器。0.625准备仍停`URV_S4_TGE_0p625_readiness_review_20261105_100032/INTERRUPTED_HANDOFF.md`，未完成未启动，不自动恢复零步/PERF/正式/S5。无提交推送。下一模型GPT-6.1 Sol｜High，用于指定宿主的最小接入与方程审查；未声称模型切换。
++
++下列较早记录只作历史追溯，不覆盖以上最新停点。
+ 
+ ## 1.25nm数据已收齐并整理：原始输出/10帧场/Excel/清单与ZIP（2026-11-04T23:59:54.845006+08:00）
+ 

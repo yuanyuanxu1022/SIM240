@@ -1,0 +1,41 @@
+{
+  "result": {
+    "case_id": "h75_d0_P_flat",
+    "status": "LOCAL_CHECKS_PASS",
+    "issues": [],
+    "metrics": {
+      "K_m3": 3.5161132812500276e-23,
+      "J_m2_s": 3.516113281250028e-12,
+      "kappa_m2": 4.688151041666703e-16,
+      "Href_m": 7.500000000000002e-08,
+      "fluid_volume_m3": 1.8000000000000005e-23,
+      "drive_power_W": 8.438671875000067e-20,
+      "viscous_dissipation_W": 8.436914062500133e-20,
+      "power_balance_percent": 0.02083044021585767,
+      "section_flux_spread_percent": 0.0,
+      "section_evidence": "exact y invariance of scalar model; not an independent mass test",
+      "flat_K_error_percent": 0.013888888889623807,
+      "flat_profile_L2_percent": 0.009509072159519532
+    }
+  },
+  "run_id": "h75_d0_P_flat_20261111T145810_b5a3ecc4",
+  "stopping": {
+    "criterion": "full_fields_v2_1",
+    "actual_stop_reason": "native_convergence",
+    "post_hoc_acceptance": "accepted",
+    "reasons": [],
+    "components": {
+      "v": 4.523055253555043e-14
+    },
+    "outer_iterations": 2,
+    "final_time": 2,
+    "threshold": 1e-10,
+    "log_reports_converged": true,
+    "ends_with_End": true,
+    "flat_exception_used": false
+  },
+  "receipt_sha256": "7dc462452c46c34cd49fc9839fd8b151b6fc1333084641f699e906d4bf3b69a6",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "release_drift": [],
+  "new_simulation_launched_by_this_review": false
+}

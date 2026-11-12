@@ -1,0 +1,52 @@
+--- docs/reports/SIM240_AI_CONTEXT.md.before
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,14 +1,14 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：限定措辞与理论短附录候选已准备，作者采用待确认（2026-10-27，当前接续入口）
+-
+-- 用户范围：依据既有终审准备候选供作者采用；理论实质变更再建议GPT-6 Astra｜High复核。新完整候选`docs/reports/SIM240_中文稿_限定措辞与理论附录候选_20261027.md`，基稿`SIM240_中文稿_导师审阅版_20261022.md`未覆盖。记录入口`docs/reports/Paper_bounded_candidate_20261027/REVISION_NOTE.md`、`candidate_changes.diff`、`adoption_checklist.csv`及`candidate_status.json`。
+-- 本轮改动：24项定点替换及D.7/附录E；标题/摘要/四结论和图注明确5nm离散参考，四几何敏感性限定，沿用终审h125配对增幅，式7补空间均匀系数/常黏度/闭合速度/过压条件；附录C数据声明改为按实际记录待核。仅候选删除历史附录D.2混入的非研究文字。主式1—7、V2系数、原数值表行和文献不变，图件文件未改。
+-- 理论短附录：独立版`THEORY_APPENDIX_CANDIDATE.md`与整稿附录E逐字相同，式E1—E6承接`Paper_core_reference_final_review_20261027/REVIEW.md`已有固定、全充液、无滑移、周期直槽Stokes上界推导；缩放速度改记粗体U仅为避开闭合速度V。无适用范围实质扩展、严格数值误差界或新理论冻结，不声称实际切换模型；作者/导师采用仍PENDING。
+-- 已核/未核：`verification.json`20项文档检查通过，458份选定既有来源/终审产物保持；检查替换可回放、公式/数值表/参考文献保护、链接、附录同文和既有数字舍入，不是新数值或数学独立验收。连续精度、完整历史构建、部分引文、最终数据公开声明、作者采用及嵌入版式仍待闭合；本轮未核远端当前状态。
+-- 科学与权限：无新求解run_id；N8仍`D4_N8_diag_v3_1_20261026_v1`、ONE_N8_DIAGNOSTIC_ACCEPTED，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/评分/Git提交推送，无新运行命令。旧G4锁、数值阈值和历史FAIL保持。
+-- 下一具体动作：作者/导师阅读完整候选、独立附录和24项采用清单，记录选定项后再同步正式稿；未获采用的候选不冒充主版本。常规同步建议GPT-6.1 Sol｜High；涉及假设改变、理论实质推广或严格误差界时建议GPT-6 Astra｜High复核。四项核心结论只在5nm离散比较/回顾性定位下可保留，连续精度与预测升级需另立补证方案。
+-- 前序证据：核心结论终审`Paper_core_reference_final_review_20261027/REVIEW.md`及decision.json保留；先前图文订正`Paper_text_figure_corrections_20261027/REVISION_NOTE.md`与六份选定图件保持。候选完成没有消除终审指出的来源/数值参考缺口。
++## 第一篇：限定修订及理论短附录已同步正式工作稿（2026-10-27，当前接续入口）
++
++- 用户范围：按本轮“同步正式稿”指令执行；未见另列的已选编号或排除项，首条进度已说明按全部已交付24项及附录同步。当前正文仍为`docs/reports/SIM240_中文稿_导师审阅版_20261022.md`，现标题明确相对于5nm离散参考，标“正式工作稿，作者终审待完成”。记录入口`docs/reports/Paper_formal_sync_20261027/REVISION_NOTE.md`、`sync_status.json`及`applied_items.csv`；不伪造逐项人工科学核验或最终签字。
++- 同步内容：候选24项及附录E已写入当前稿；标题/摘要/四结论/图注的参考限定、四几何敏感性与已有h125配对增幅、式7空间均匀系数/常黏度/闭合速度/过压条件、附录C待核数据声明及非研究文字清理。附录D.7作为候选准备历史，D.8记本轮同步；主式1—7、V2系数、8张主数值表、参考文献及附录E推导/式E1—E6保持候选或原稿对应字节。
++- 版本与证据：同步前全文在`Paper_formal_sync_20261027/before/`，差异`manuscript_changes.diff`。原候选`SIM240_中文稿_限定措辞与理论附录候选_20261027.md`及候选包原字节保留；原终审/候选证书绑定同步前基稿SHA，作为历史证据保留，当前正文用本轮验证，不重写旧证书。
++- 已核/失败边界：本轮`verification.json`18项文档检查通过，476份选定既有来源/候选产物不变（有意排除获授权修改的正文，原稿另存快照）；无断链、24项落位、主/附录公式与数值表保护。首次仅报告自引用文件尚未生成的链接检查失败，修正检查器产物时序，`verification_initial.json/log`保留；正文和科学记录未因此变化。这些不是新数学/数值精度验收。
++- 理论与科学停点：只同步已有假设和推导，无理论实质推广或严格误差界审定，未触发新的Astra复核、不声称实际切换。最终作者科学审定、连续解精度/全图空间证据、历史构建来源、部分引文、数据公开声明及嵌入版式仍未闭合。V2仍回顾性，未换G4。
++- 权限：无新求解run_id；N8仍`D4_N8_diag_v3_1_20261026_v1`、ONE_N8_DIAGNOSTIC_ACCEPTED，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/保留评分/Git提交推送，不给启动命令；G4锁、数值阈值、历史FAIL保持。
++- 下一具体动作：以当前工作稿核对未闭合的方法引文/来源说明、实际数据声明和图件嵌入版式；作者最终科学审定另记，不因文本已同步认定可投稿。常规文稿工作建议GPT-6.1 Sol｜High；假设改变、理论实质推广或严格误差界使用GPT-6 Astra｜High复核。新增数值补证需另定范围和运行授权。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 
+--- docs/reports/AI_HANDOFF_20261015.md.before
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,14 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 第一篇：限定措辞与理论短附录候选已准备，作者采用待确认（2026-10-27，当前接续入口）
+-
+-- 用户范围：依据既有终审准备候选供作者采用；理论实质变更再建议GPT-6 Astra｜High复核。新完整候选`docs/reports/SIM240_中文稿_限定措辞与理论附录候选_20261027.md`，基稿`SIM240_中文稿_导师审阅版_20261022.md`未覆盖。记录入口`docs/reports/Paper_bounded_candidate_20261027/REVISION_NOTE.md`、`candidate_changes.diff`、`adoption_checklist.csv`及`candidate_status.json`。
+-- 本轮改动：24项定点替换及D.7/附录E；标题/摘要/四结论和图注明确5nm离散参考，四几何敏感性限定，沿用终审h125配对增幅，式7补空间均匀系数/常黏度/闭合速度/过压条件；附录C数据声明改为按实际记录待核。仅候选删除历史附录D.2混入的非研究文字。主式1—7、V2系数、原数值表行和文献不变，图件文件未改。
+-- 理论短附录：独立版`THEORY_APPENDIX_CANDIDATE.md`与整稿附录E逐字相同，式E1—E6承接`Paper_core_reference_final_review_20261027/REVIEW.md`已有固定、全充液、无滑移、周期直槽Stokes上界推导；缩放速度改记粗体U仅为避开闭合速度V。无适用范围实质扩展、严格数值误差界或新理论冻结，不声称实际切换模型；作者/导师采用仍PENDING。
+-- 已核/未核：`verification.json`20项文档检查通过，458份选定既有来源/终审产物保持；检查替换可回放、公式/数值表/参考文献保护、链接、附录同文和既有数字舍入，不是新数值或数学独立验收。连续精度、完整历史构建、部分引文、最终数据公开声明、作者采用及嵌入版式仍待闭合；本轮未核远端当前状态。
+-- 科学与权限：无新求解run_id；N8仍`D4_N8_diag_v3_1_20261026_v1`、ONE_N8_DIAGNOSTIC_ACCEPTED，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/评分/Git提交推送，无新运行命令。旧G4锁、数值阈值和历史FAIL保持。
+-- 下一具体动作：作者/导师阅读完整候选、独立附录和24项采用清单，记录选定项后再同步正式稿；未获采用的候选不冒充主版本。常规同步建议GPT-6.1 Sol｜High；涉及假设改变、理论实质推广或严格误差界时建议GPT-6 Astra｜High复核。四项核心结论只在5nm离散比较/回顾性定位下可保留，连续精度与预测升级需另立补证方案。
+-- 前序证据：核心结论终审`Paper_core_reference_final_review_20261027/REVIEW.md`及decision.json保留；先前图文订正`Paper_text_figure_corrections_20261027/REVISION_NOTE.md`与六份选定图件保持。候选完成没有消除终审指出的来源/数值参考缺口。
++## 第一篇：限定修订及理论短附录已同步正式工作稿（2026-10-27，当前接续入口）
++
++- 用户范围：按本轮“同步正式稿”指令执行；未见另列的已选编号或排除项，首条进度已说明按全部已交付24项及附录同步。当前正文仍为`docs/reports/SIM240_中文稿_导师审阅版_20261022.md`，现标题明确相对于5nm离散参考，标“正式工作稿，作者终审待完成”。记录入口`docs/reports/Paper_formal_sync_20261027/REVISION_NOTE.md`、`sync_status.json`及`applied_items.csv`；不伪造逐项人工科学核验或最终签字。
++- 同步内容：候选24项及附录E已写入当前稿；标题/摘要/四结论/图注的参考限定、四几何敏感性与已有h125配对增幅、式7空间均匀系数/常黏度/闭合速度/过压条件、附录C待核数据声明及非研究文字清理。附录D.7作为候选准备历史，D.8记本轮同步；主式1—7、V2系数、8张主数值表、参考文献及附录E推导/式E1—E6保持候选或原稿对应字节。
++- 版本与证据：同步前全文在`Paper_formal_sync_20261027/before/`，差异`manuscript_changes.diff`。原候选`SIM240_中文稿_限定措辞与理论附录候选_20261027.md`及候选包原字节保留；原终审/候选证书绑定同步前基稿SHA，作为历史证据保留，当前正文用本轮验证，不重写旧证书。
++- 已核/失败边界：本轮`verification.json`18项文档检查通过，476份选定既有来源/候选产物不变（有意排除获授权修改的正文，原稿另存快照）；无断链、24项落位、主/附录公式与数值表保护。首次仅报告自引用文件尚未生成的链接检查失败，修正检查器产物时序，`verification_initial.json/log`保留；正文和科学记录未因此变化。这些不是新数学/数值精度验收。
++- 理论与科学停点：只同步已有假设和推导，无理论实质推广或严格误差界审定，未触发新的Astra复核、不声称实际切换。最终作者科学审定、连续解精度/全图空间证据、历史构建来源、部分引文、数据公开声明及嵌入版式仍未闭合。V2仍回顾性，未换G4。
++- 权限：无新求解run_id；N8仍`D4_N8_diag_v3_1_20261026_v1`、ONE_N8_DIAGNOSTIC_ACCEPTED，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/保留评分/Git提交推送，不给启动命令；G4锁、数值阈值、历史FAIL保持。
++- 下一具体动作：以当前工作稿核对未闭合的方法引文/来源说明、实际数据声明和图件嵌入版式；作者最终科学审定另记，不因文本已同步认定可投稿。常规文稿工作建议GPT-6.1 Sol｜High；假设改变、理论实质推广或严格误差界使用GPT-6 Astra｜High复核。新增数值补证需另定范围和运行授权。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 

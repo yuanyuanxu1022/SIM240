@@ -1,0 +1,24 @@
+--- before/AI_HANDOFF_20261015.md
++++ after/AI_HANDOFF_20261015.md
+@@ -1,13 +1,13 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 第一篇：v3.1类型一致性补丁通过12项定向测试，实际卷仍未就绪（2026-10-26，当前入口/停点）
+-
+-- 本轮用户授权补记录类型一致性、针对性无求解测试并接续实际工作卷核查，继续不启动。新独立目录`CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_1_20261026/`；入口`PATCH_REPORT.md`、`evidence/preparation_decision.json`及`path_contract_draft.json`。类型补丁PASS_TARGETED_TESTS，整体PASS_PREPARATION_ONLY；合同仍DRAFT_NOT_AUTHORIZED/false/null，无实际run_id。
+-- 小修补已实施：STARTED/capture类型先核已知且一致；真实父记录只配真实system/solution，人工父记录只配SYNTHETIC_MANUAL_ARRAYS_NOT_PDE，数组两侧也须一致。未知/缺失/交叉标签分流前拒绝，archive-only核父类型；公共check/CLI对真实数组必须有父记录。保留数值复算私有入口避免递归，残差/重建阈值不变。新合同统一17数组并重绑，v3快照及审查证据不改。
+-- 已验证：12个针对性测试方法0失败/错误/跳过，0.392秒、独立exit0；同一UNKNOWN_REVIEW_INJECTION反例由v3的PASS变为v3.1明确拒绝。合法类型映射/旧人工成功归档通过，缺父记录、串标签及未知类型均拒绝，1→7重建反例仍FAIL/误差6。无PETSc/DOLFINx/UFL、真实KSP或求解；仅人工数组、已存档案和短CLI拒绝检查，未重跑32项旧测试、进程夹具或OOM。
+-- 来源与档案：17模块语法、358条新来源，旧v3的319文件/v2的359文件/4233历史保护/138前次终审输入SHA均保持（集合不相加）；12份既有v3合成档案只读重核，失败原因保留。见`evidence/independent_preparation.json`、test/CLI日志与独立exit、source_diffs。真实入口未授权拒绝保持，原18项继续false。
+-- 实际卷已只读核查：work`/run/user/1000/sim240_pilot_n8_work_20261026`和record父目录`/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026`均不存在；静态预检LAYOUT_NOT_READY/exit2，内存下限和memory/pids委派检查通过。现有父级tmpfs/ext4可写不等于目标卷已准备。`evidence/layout_precheck.json`与`layout_snapshot.json`记录实际快照，本轮未创建/挂载/写出探针。
+-- 当前卡点与下一步：按`docs/reports/D4_pilot_v3_review_20261026/VOLUME_PLAN.md`准备专用512MiB工作卷及持久目录，实施限定无求解保存/缓存加载/ENOSPC/归档探针，恢复空卷后再核，再审首项N8许可。真实后端成功/失败链和4GiB预算、完整18项/参考精度/公式预测仍未验；类型补丁通过不授予运行权。无OpenLB编译、建网/组装/PDE求解、系统配置更改、拟合、原协议/阈值/G4锁/旧FAIL改动或Git提交/推送。NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、预测HOLD。
++## 第一篇：实际目录与持久盘小文件验证完成，等待管理员挂载专用卷（2026-10-26，当前入口/停点）
++
++- 本轮用户授权准备实际专用卷、持久目录及限定无求解探针，求解保持关闭。入口`docs/reports/D4_volume_probe_20261026/REPORT.md`、`probe_volume.py`和`evidence/independent_verification.json`。当前PARTIAL_ENVIRONMENT_PREPARATION_ADMIN_MOUNT_REQUIRED；不是完整卷验收或运行许可通过，无实际计算run_id。
++- 实际已建：仓库外`/home/dell/yuanyuanxu/SIM240_runtime_records`及其`reference_pilot_n8_20261026`，空work目录`/run/user/1000/sim240_pilot_n8_work_20261026`；均1000:1000/0700，无覆盖。持久盘唯一探针目录`volume_probe_persistent_931b6ba97250`写1048576字节、文件/目录fsync、重新读SHA一致，独立exit0；原文件与结果保留。见directories_created、persistent_probe及退出码。
++- 当前系统阻碍：sudo -n true返回exit1、a password is required，代理没有密码；专用tmpfs未挂载。已执行mounted阶段前置检查并exit2拒绝继续：目标目录现存在，但work不是独立挂载点，仍继承公共/run/user/1000约3.1GiB容量。没有在公共卷做写满测试。记录目录/权限/ext4/余量、内存及memory/pids检查符合当时前提。
++- 待执行入口已具体准备：probe_volume.py仅persistent/mounted阶段，不包含挂载/真实worker/批准包；挂载合格后才进行微型缓存库编译加载、≤513MiB/≤60秒ENOSPC、卷满时普通盘留退出码、真实卷上人工success/exit7归档和独立副本读回、仅清理明确探针源并恢复空卷。C—F均未实施；编译/加载进程组有短超时。已执行源快照保留，未执行分支只核语法，不称通过。
++- 已核来源/边界：358条v3.1来源、319份旧v3、4233历史保护文件SHA保持；1MiB文件独立重核，见independent_verification。v3.1类型补丁12项及旧32项测试证据不改、未重跑。没有PDE模块、真实KSP、建网/组装/求解、OpenLB编译、拟合、原协议/阈值/G4锁/旧FAIL改动、Git提交/推送。原合同false/null，三类Gate保持NOT_EVALUATED/false/null，预测HOLD。
++- 用户需完成的唯一系统动作：本机终端sudo mount专用512MiB tmpfs，准确命令在REPORT.md。需要用户在本机输入管理员密码，不需要重新批准本次准备，也不要把密码发给AI。命令交付不等于已执行；收到实际输出后先核mountinfo/容量/空卷，再执行probe_volume.py --phase mounted，输出另存新证据文件，不覆盖当前拒绝快照。仍不启动求解，不自动运行N8或后项。
+ 
+ ## 第一篇：真实网格到原始记录适配已静态核查，求解仍关闭（2026-10-26，历史准备入口；最新结论见上方）
+ 

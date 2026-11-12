@@ -1,0 +1,30 @@
+--- SIM240_AI_CONTEXT.md.before
++++ SIM240_AI_CONTEXT.md
+@@ -1,16 +1,16 @@
+ # SIM240 AI CONTEXT
+ 
+-## §2.1末黏度对照与集合分工已审，候选未合入（2026-11-08）
+-
+-用户要求继续逐部分审读。本轮以当前双语§2.1末、当前补充说明及表S1/S6为准，不采用旧记录改数字。入口 `docs/reports/PAPER1_methods_2p1_viscosity_sets_review_20261108/REPORT.md`；双语候选CANDIDATE_CN.md、CANDIDATE_EN.md，均未合入正式稿。
+-
+-当前分类计数一致：表S1 main36/refinement8/viscosity2/oblique6合计52，主18几何、加密4旧几何；两黏度对照均h75/d100、dx5沿/横各1条。表S6为h100新增2条、h75构建复算2条及已有h75对照2条，不是6条全新结果。公式比较36+8+2h100=19几何46记录；边界审计36+8+2黏度的46另有身份。原36主统计不变。
+-
+-本段总体无计数错误，现有集合表及46说明可保留。建议回指主μ1e−3 Pa·s并明确μ15对照不进主偏差/改善统计、不是连续黏度验证；将52限定为表S1固定清单而非全部项目数据。候选仅补角色/范围，不新增对照“通过”结论。
+-
+-inventory_check.json仅为当前清单分组和几何/方向标识核对，非导度/黏度缩放复算或新验收。两正文、两补充及两当前CSV共6项SHA保持，见verification.json。仅新增审读目录、同步两状态；无正式稿/原数据/源码改动、原始运行或场读取、编译/求解/拟合、新run_id、Gate、上传/投稿或长算命令。S4原FAIL及reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
+-
+-本轮已审到§2.1末；物性、q、Mach及本段候选均未因审读自动合入。下一可进入§2.2，审深度积分通量J、驱动与K定义、量纲和归一化；不自动改稿或追加算例。建议GPT-6.1 Sol High。
++## §2.2通量、驱动与导度定义已审，候选未合入（2026-11-08）
++
++用户要求审J、驱动量、K的定义/量纲/归一化。本轮只读当前双语§2.2、当前补充S5与当前D2实现，不采用旧数据改数。入口 `docs/reports/PAPER1_methods_2p2_flux_conductance_review_20261108/REPORT.md`；双语候选CANDIDATE_CN.md、CANDIDATE_EN.md未合入。
++
++判断：J=(∫Ω u dV)/Aplan单位m²/s，G=ρa单位Pa/m，K=μJ/G单位m³均一致。建议明确Ω为三维流体域、Aplan=LxLy投影面积；J不是体积平均速度或Q，G是均匀单位体积外加驱动，宏观压降表示G=−∂Pmacro，不等于局部压强梯度处处相同。式2用于分别非零主轴驱动，斜向响应应按张量关系。
++
++Href=Vf/Aplan=h+d/2限本等宽几何，J=Href〈u〉fluid是定义恒等式。K=Href κ可保留，但“通常渗透率”建议限定为该参考高度/平均速度约定下的等效κ（m²）；引用或接入应同时核参考高度与流体/表观平均，不能只按单位换算。本轮不改变任何已计算K、接口数值或科学结论。
++
++dimensional_check.json为基本量纲核对，不含流场积分或导度重算。两正文、两补充、当前源码共5项SHA保持，见verification.json；仅新增本审读目录并同步两状态，无正式稿/源码/原数据修改、原始场/运行读取、编译/求解/拟合、新run_id、Gate、上传/投稿或长算命令。S4原FAIL及reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
++
++本轮§2.2定义审读完成；此前§2.1物性、q、Mach和集合段候选仍未合入。下一可审§2.3算术/调和平均组合与平板退化，分清局部模型推导、连续上界和离散偏差；不自动改稿或增加算例。建议GPT-6.1 Sol High。
+ 
+ ## 完整摘要已合入正式中英文工作稿（2026-11-07）
+ 

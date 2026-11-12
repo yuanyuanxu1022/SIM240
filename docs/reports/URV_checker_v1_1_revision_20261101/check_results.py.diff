@@ -1,0 +1,128 @@
+--- v1/check_results.py
++++ v1.1/check_results.py
+@@ -14,6 +14,7 @@
+ import numpy as np
+ from evidence import (need,sha,kv,rows,save,close,exact_parameters,check_boundary,
+                       window_metrics,grid_estimate,sensitivity)
++from contracts import output_location,release_inputs,verify_provenance,approved_records,check_run_identity
+ 
+ CASE=Path(__file__).resolve().parents[1]
+ LIMITS=json.loads((CASE/'common/acceptance_spec.json').read_text())
+@@ -121,6 +122,24 @@
+                 common_rows_compared=aligned,all_exact=exact,
+                 unexplained_differences_stop=not exact)
+ 
++def regression_check(run, reference, K, output):
++    """F02: retain the complete computed comparison before either stop condition."""
++    output=output_location(output,[run,reference['directory']],require_new=False)
++    baseline=Path(reference['directory'])
++    need(sha(baseline/'result.txt')==reference['result_sha256'], 'regression reference binding')
++    need(sha(baseline/'diagnostics.csv')==reference['diagnostics_sha256'], 'regression diagnostics binding')
++    baseline_K=float(kv(baseline/'result.txt')['Keff_m3'])
++    err=abs(K/baseline_K-1)
++    legacy=compare_legacy(run,baseline)
++    report=dict(relative_K_change=err,K_new_m3=K,K_baseline_m3=baseline_K,
++        K_relative_limit=LIMITS['statistics_port_regression']['K_relative_max'],legacy=legacy,
++        K_gate_PASS=err<=LIMITS['statistics_port_regression']['K_relative_max'],
++        legacy_gate_PASS=legacy['all_exact'],independent_result_accepted=False)
++    save(output/'regression_comparison.json',report)
++    need(report['K_gate_PASS'], 'h75 K port regression')
++    need(legacy['all_exact'], 'legacy trajectory difference needs separate explanation; fail-stop')
++    return dict(relative_K_change=err,legacy=legacy)
++
+ def binding(release, expected_sha):
+     need(sha(release)==expected_sha, 'execution release trust anchor mismatch')
+     bound=json.loads(Path(release).read_text())
+@@ -129,11 +148,26 @@
+          'current package authorizes zero-step preparation only')
+     need(bound['author_external_data_history_confirmation']=='CONFIRMED', 'external data history pending')
+     for path,digest in bound['inputs_sha256'].items(): need(sha(path)==digest, 'execution source/input changed: '+path)
+-    for path in [*CASE.joinpath('analysis').glob('*.py'),*CASE.joinpath('common').glob('*')]:
+-        if path.is_file(): need(str(path) in bound['inputs_sha256'], 'unbound checker/protocol '+str(path))
++    verify_provenance(bound)
++    approved_records(bound)
+     return bound
+ 
+-def check_run(run, release, expected_sha, output):
++def check_run(run, release, expected_sha, output, protected_runs=None):
++    """F01: only an exclusively created, validated directory may receive receipts."""
++    run=Path(run).resolve()
++    protected=[run,*list(protected_runs or []),*release_inputs(release)]
++    output=output_location(output,protected,[release])
++    output.mkdir(parents=True,exist_ok=False)
++    try:
++        return _check_run(run,release,expected_sha,output)
++    except Exception as error:
++        # Never fall back to the original caller path or any existing directory.
++        output_location(output,protected,[release],require_new=False)
++        save(output/'failure.json',dict(RESULT_PASS=False,NUMERICAL_GATE='NOT_EVALUATED',
++            error=type(error).__name__+': '+str(error),independent_exit_code=2,solver_executed=False))
++        raise
++
++def _check_run(run, release, expected_sha, output):
+     run=Path(run).resolve();output=Path(output).resolve()
+     need(not output.is_relative_to(run), 'analysis must be outside original run')
+     bound=binding(release,expected_sha)
+@@ -156,6 +190,7 @@
+     need(cfg['mode']==manifest['mode']=='steady' and r['formal_simulation']=='true', 'zero-step cannot pass completed-result acceptance')
+     need(cfg['run_id']==r['run_id']==effective['run_id']==manifest['run_id']==completion['run_id'], 'run identity mismatch')
+     need(completion['run_id'] in bound['approved_run_ids'], 'run not individually approved')
++    check_run_identity(bound,run,run/'run_config.txt',completion['run_id'],ident)
+     need(cfg['direction']==row['direction'], 'direction not approved')
+     for key,mkey in [('h_nm','h_nm'),('d_nm','d_nm'),('w_nm','w_nm'),('period_nm','P_nm'),('Ly_nm','Ly_nm'),('dx_nm','dx_nm'),('nu_m2_s','nu_m2_s'),('acceleration_m_s2','acceleration_m_s2')]:
+         need(float(cfg[key])==float(row[mkey]), 'config not approved: '+key)
+@@ -195,13 +230,7 @@
+     regression=None
+     if row['family']=='H75':
+         reference=bound['h75_regression_references'][cfg['direction']]
+-        baseline=Path(reference['directory']);need(sha(baseline/'result.txt')==reference['result_sha256'], 'regression reference binding')
+-        need(sha(baseline/'diagnostics.csv')==reference['diagnostics_sha256'], 'regression diagnostics binding')
+-        err=abs(scalar['K_m3']/float(kv(baseline/'result.txt')['Keff_m3'])-1)
+-        legacy=compare_legacy(run,baseline)
+-        need(err<=LIMITS['statistics_port_regression']['K_relative_max'], 'h75 K port regression')
+-        need(legacy['all_exact'], 'legacy trajectory difference needs separate explanation; fail-stop')
+-        regression=dict(relative_K_change=err,legacy=legacy)
++        regression=regression_check(run,reference,scalar['K_m3'],output)
+     frames=rows(run/'frame_index.csv');schedule=rows(run/'frame_schedule.csv')
+     steps=int(r['steps_completed']);expected={0,steps};frame_steps=[int(f['step']) for f in frames]
+     need(len(schedule)==len(protocol['time']['frame_tstar']), 'incomplete frame schedule')
+@@ -213,7 +242,6 @@
+     need(frame_steps==sorted(expected) and len(frames)==int(r['frames_written']), 'missing, future, or duplicate frame')
+     for f in frames:
+         need(close(float(f['time_s']),int(f['step'])*p['dt'],atol=1e-24) and close(float(f['tstar']),p['nu']*int(f['step'])*p['dt']/p['h']**2,atol=1e-14), 'frame time units')
+-    output.mkdir(parents=True,exist_ok=False)
+     env=dict(os.environ,QT_QPA_PLATFORM='offscreen',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1')
+     with (output/'field_reader.log').open('w') as log:
+         proc=subprocess.run(['/usr/bin/pvpython','--force-offscreen-rendering','-B',str(CASE/'analysis/read_fields.py'),
+@@ -261,19 +289,25 @@
+     group.add_argument('--run',type=Path);group.add_argument('--batch-index',type=Path)
+     ap.add_argument('--release',type=Path,required=True);ap.add_argument('--release-sha256',required=True);ap.add_argument('--out',type=Path,required=True)
+     args=ap.parse_args()
++    owned_batch=None
+     try:
+         if args.run:
+             check_run(args.run,args.release,args.release_sha256,args.out)
+         else:
+             index=json.loads(args.batch_index.read_text());need(len(index)==24, '24 raw run paths required')
++            need(isinstance(index,list) and all(isinstance(p,str) and p for p in index), 'invalid batch paths')
+             need(len(set(index))==24, 'duplicate raw run path')
+-            records=[check_run(Path(p),args.release,args.release_sha256,args.out/f'case_{i:02d}') for i,p in enumerate(index)]
+-            save(args.out/'comparison.json',aggregate(records))
++            # Validate against all runs before creating even the batch directory.
++            target=output_location(args.out,[*index,*release_inputs(args.release)],[args.release,args.batch_index])
++            target.mkdir(parents=True,exist_ok=False);owned_batch=target
++            records=[check_run(Path(p),args.release,args.release_sha256,target/f'case_{i:02d}',protected_runs=index) for i,p in enumerate(index)]
++            save(target/'comparison.json',aggregate(records))
+     except Exception as error:
+-        # Keep failure evidence outside all raw results. Never write success on failure.
+-        failure=args.out/'failure.json'
+-        if not failure.exists(): save(failure,dict(RESULT_PASS=False,NUMERICAL_GATE='NOT_EVALUATED',
+-            error=type(error).__name__+': '+str(error),independent_exit_code=2,solver_executed=False))
++        if owned_batch is not None:
++            output_location(owned_batch,[*index,*release_inputs(args.release)],[args.release,args.batch_index],require_new=False)
++            save(owned_batch/'failure.json',dict(RESULT_PASS=False,NUMERICAL_GATE='NOT_EVALUATED',
++                error=type(error).__name__+': '+str(error),independent_exit_code=2,solver_executed=False))
++        # Invalid output has no owned directory: stderr and exit 2 only.
+         print(type(error).__name__+': '+str(error),file=sys.stderr);return 2
+     return 0
+ 

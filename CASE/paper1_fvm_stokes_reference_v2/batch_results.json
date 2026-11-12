@@ -1,0 +1,73 @@
+[
+  {
+    "case_id": "h25_d100_T_tight",
+    "action": "LAUNCH",
+    "started_at": "2026-11-12T02:43:01",
+    "elapsed_seconds": 8.9,
+    "launcher_exit": 1,
+    "verdict": "LAUNCH_REFUSED",
+    "reason": "RuntimeError: seed source fails independent readback",
+    "readback_status": "RUN_INCOMPLETE",
+    "issues": [],
+    "power_balance_percent": null,
+    "K_m3": null
+  },
+  {
+    "case_id": "h125_d120_T_coarse",
+    "action": "SKIP_ALREADY_HAS_RECEIPT",
+    "started_at": "2026-11-12T02:43:10",
+    "run_id": "h125_d120_T_coarse_20261112T022452_97538c63",
+    "solver_exit": 0,
+    "post_hoc_acceptance": "accepted",
+    "verdict": "ACCEPTED",
+    "reason": "existing receipt preserved verbatim",
+    "readback_status": "LOCAL_CHECKS_PASS",
+    "issues": [],
+    "power_balance_percent": 0.20171603270273675,
+    "K_m3": 1.8401353756718793e-22
+  },
+  {
+    "case_id": "h125_d120_T_mid",
+    "action": "LAUNCH",
+    "started_at": "2026-11-12T02:43:10",
+    "elapsed_seconds": 5992.4,
+    "launcher_exit": 0,
+    "stdout_tail": "{\"run_id\": \"h125_d120_T_mid_20261112T024312_7a8370ce\", \"exit_code\": 0, \"solver_converged\": true, \"actual_stop_reason\": \"native_convergence\", \"post_hoc_acceptance\": \"accepted\", \"power_balance_percent\": 0.08774776451963007, \"numerical_reference_accepted\": false}",
+    "run_id": "h125_d120_T_mid_20261112T024312_7a8370ce",
+    "solver_exit": 0,
+    "post_hoc_acceptance": "accepted",
+    "verdict": "ACCEPTED",
+    "reason": "see receipt",
+    "readback_status": "LOCAL_CHECKS_PASS",
+    "issues": [],
+    "power_balance_percent": 0.08774776451963007,
+    "K_m3": 1.8380636898273257e-22
+  },
+  {
+    "case_id": "h125_d120_T_fine",
+    "action": "LAUNCH",
+    "started_at": "2026-11-12T04:23:05",
+    "elapsed_seconds": 43253.4,
+    "launcher_exit": 1,
+    "stdout_tail": "{\"run_id\": \"h125_d120_T_fine_20261112T042307_e9b85823\", \"exit_code\": 124, \"solver_converged\": false, \"actual_stop_reason\": \"wall_clock\", \"post_hoc_acceptance\": \"rejected\", \"power_balance_percent\": null, \"numerical_reference_accepted\": false}",
+    "verdict": "LAUNCH_REFUSED",
+    "reason": "non-zero exit",
+    "readback_status": "EXECUTION_FAILED_OR_NO_EVIDENCE",
+    "issues": [],
+    "power_balance_percent": null,
+    "K_m3": null
+  },
+  {
+    "case_id": "h125_d120_T_tight",
+    "action": "LAUNCH",
+    "started_at": "2026-11-12T16:23:58",
+    "elapsed_seconds": 18.4,
+    "launcher_exit": 1,
+    "verdict": "LAUNCH_REFUSED",
+    "reason": "RuntimeError: seed source has no runtime receipt; run it first: h125_d120_T_fine",
+    "readback_status": "RUN_INCOMPLETE",
+    "issues": [],
+    "power_balance_percent": null,
+    "K_m3": null
+  }
+]

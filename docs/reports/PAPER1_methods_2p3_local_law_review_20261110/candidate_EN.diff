@@ -1,0 +1,31 @@
+--- current_section
++++ candidate_NOT_MERGED
+@@ -1,4 +1,8 @@
+-For equal-width stripes, the local cubic law gives
++# Candidate for the local-law construction in Section 2.3 (not merged)
++
++Replace only the block from “For equal-width stripes, the local cubic law gives” through “these are the one-dimensional Reynolds cell relations [4].” Retain the subsequent mechanism qualifications, upper-bound statement, discrepancy definitions and Table 2. This is a review candidate, not the formal manuscript.
++
++Within the local parallel-plate approximation, let $H(x)$ denote the local total gap, equal to $h$ in the shallow region and $h+d$ in the deep region, with $h>0$. Using the depth-integrated flux and driving conventions of Section 2.2, the local conductance is $k(x)=H(x)^3/12$, in m³. For the present stripes with equal groove and ridge widths, the combined principal conductances are
+ 
+ $$
+ K_{yy}^{\rm mod}=\frac{1}{24}\left[(h+d)^3+h^3\right],
+@@ -7,7 +11,7 @@
+ \tag{3}
+ $$
+ 
+-To construct it, define the shallow- and deep-region parallel-plate conductances as
++The local parallel-plate conductances of the shallow and deep regions are
+ 
+ $$
+ k_{\rm shallow}=\frac{h^{3}}{12},
+@@ -15,5 +19,8 @@
+ k_{\rm deep}=\frac{(h+d)^{3}}{12} .
+ $$
+ 
+-For equal widths, their arithmetic average along the grooves and harmonic average across them give Eq. (3). At $d=0$, both recover the parallel-plate value $h^{3}/12$. With common local heights, boundaries and averaging definitions, these are the one-dimensional Reynolds cell relations [4].
++Define $\langle f\rangle_x=P^{-1}\int_0^P f(x)\,\mathrm dx$ as the width average over one pattern period. Along the grooves, in the $y$ direction, the local model assigns the same driving gradient to both regions and adds their width-weighted fluxes, giving $K_{yy}^{\rm mod}=\langle k\rangle_x$. Across the grooves, in the $x$ direction, steady conservation requires a depth-integrated flux independent of $x$. The local effective driving gradient may differ between regions, with its period average equal to the imposed macroscopic drive, giving $K_{xx}^{\rm mod}=\langle k^{-1}\rangle_x^{-1}$. For equal widths, these relations reduce to the arithmetic and harmonic means, respectively, yielding Eq. (3). The averages apply to the local conductance and its reciprocal; neither can be replaced by the cube of the mean gap.
+ 
++These combinations hold within the local Reynolds model and agree with the one-dimensional averages in Patir–Cheng [4, p. 15, Eqs. (23)–(24)] after restoring the conductance dimensions. They do not constitute an explicit solution of the full grooved domain with sidewalls and steps. The coefficients in Eq. (3) follow from this model and the equal-width geometry without fitting to OpenLB results; this construction does not guarantee accuracy for the full groove conductances.
++
++At $d=0$, both local conductances equal $h^3/12$, and both principal values in Eq. (3) recover the parallel-plate conductance $h^3/12$. This checks the analytical flat-plate limit. Acceptance of the numerical flat-channel implementation and spatial accuracy of the discrete groove references are examined separately in Section 3.

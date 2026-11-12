@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="effective slip length,method of fundamental solution (MFS),boundary element method (BEM),Stokeslet,micro-channel,fluid/solid interface," />
+<meta name="HW.ad-path" content="https://www.amm.shu.edu.cn/CN/abstract/abstract18144.shtml" />
+<meta name="HW.identifier" content="https://www.amm.shu.edu.cn/CN/abstract/abstract18144.shtml" />
+<meta name="DC.Format" content="text/html" />
+<meta name="DC.Language" content="cn" />
+<meta name="DC.Title" content="Mathematical modeling and numerical computation of the effective interfacial conditions for Stokes flow on an arbitrarily rough solid surface" />
+<meta name="DC.Identifier" content="10.1007/s10483-021-2733-9" />
+<meta name="DC.Contributor" content="A. T. TRAN" />
+<meta name="DC.Contributor" content=" H. LE QUANG" />
+<meta name="DC.Contributor" content=" Q. C. HE" />
+<meta name="DC.Contributor" content=" D. H. NGUYEN" />
+<meta name="DC.Date" content="2021-04-22" />
+<meta name="citation_journal_title" content="Applied Mathematics and Mechanics" />
+<meta name="citation_journal_abbrev" content="Applied Mathematics and Mechanics (English Edition)" />
+<meta name="citation_issn" content="0253-4827" />
+<meta name="citation_authors" xml:lang="cn" content="A. T. TRAN, H. LE QUANG, Q. C. HE, D. H. NGUYEN" />
+<meta name="citation_title" xml:lang="cn" content="Mathematical modeling and numerical computation of the effective interfacial conditions for Stokes flow on an arbitrarily rough solid surface" />
+<meta name="DC.Keywords" xml:lang="cn" content="effective slip length,method of fundamental solution (MFS),boundary element method (BEM),Stokeslet,micro-channel,fluid/solid interface,"/>
+<meta name="citation_date" content="2021-04-22" />
+<meta name="citation_volume" content="42" />
+<meta name="citation_issue" content="5" />
+<meta name="citation_firstpage" content="721" />
+<meta name="citation_lastpage" content="746" />
+<meta name="citation_id" content="42/5/721" />
+<meta name="citation_doi" content="10.1007/s10483-021-2733-9" />
+<meta name="citation_authors" xml:lang="en" content="A. T. TRAN, H. LE QUANG, Q. C. HE, D. H. NGUYEN" />
+<meta name="citation_title" xml:lang="en" content="Mathematical modeling and numerical computation of the effective interfacial conditions for Stokes flow on an arbitrarily rough solid surface" />
+<meta name="DC.Keywords" xml:lang="en" content="effective slip length,method of fundamental solution (MFS),boundary element method (BEM),Stokeslet,micro-channel,fluid/solid interface,"/>
+<meta name="citation_abstract_html_url" content="https://www.amm.shu.edu.cn/CN/abstract/abstract18144.shtml" />
+<meta name="citation_pdf_url" content="https://www.amm.shu.edu.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=18144" />
+<meta name="citation_public_url" content="https://www.amm.shu.edu.cn/CN/abstract/abstract18144.shtml" />
+<meta name="robots" content="noarchive" />
+ 
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Mathematical modeling and numerical computation of the effective interfacial conditions for Stokes flow on an arbitrarily rough solid surface</title>
+<!--css必引 -->
+	<link rel="stylesheet" href="https://www.amm.shu.edu.cn/images/0253-4827/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.amm.shu.edu.cn/images/0253-4827/font-awesome-4.7.0/css/font-awesome.css">
+
+<!-- jQuery必引-->
+	<script src="https://www.amm.shu.edu.cn/js/jquery/jquery.min.js"></script>
+	
+	
+<!--原摘要中的js -->
+	<!--图片弹出窗口 必须放在jquery.min.js后-->
+	<link rel="stylesheet" href="https://www.amm.shu.edu.cn/js/colorbox/colorbox.css">
+	<script src="https://www.amm.shu.edu.cn/js/colorbox/jquery.colorbox.js"></script>
+	<script type="text/javascript">
+	//等比缩放图片
+function DrawImage(ImgD,FitWidth,FitHeight){
+	var image=new Image();
+	image.src=ImgD.src;
+	if(image.width>0 && image.height>0){
+		if(image.width/image.height>= FitWidth/FitHeight){
+			if(image.width>FitWidth){
+				ImgD.width=FitWidth;
+				ImgD.height=(image.height*FitWidth)/image.width;
+			}else{
+				ImgD.width=image.width;
+				ImgD.height=image.height;
+			}
+		} else{
+			if(image.height>FitHeight){
+				ImgD.height=FitHeight;
+				ImgD.width=(image.width*FitHeight)/image.height;
+			}else{
+				ImgD.width=image.width;
+				ImgD.height=image.height;
+			}
+		}
+	}
+}
+		</script>
+	<!--图片弹出窗口结束-->
+	
+	<!--原摘要中js end -->
+<script language="javascript" src="https://www.amm.shu.edu.cn/js/modelDialog1.js"></script>
+<script language="javascript" src="https://www.amm.shu.edu.cn/js/layer2.1/layer.js"></script>
+<script language="javascript" src="https://www.amm.shu.edu.cn/js/drag.js"></script>
+<script language="javascript" src="https://www.amm.shu.edu.cn/js/store.js"></script>
+<script language="javascript" src="https://www.amm.shu.edu.cn/js/download_EN.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX", "output/HTML-CSS"], 
+		tex2jax: {inlineMath: [ ['$','$'], ["\\(","\\)"] ],displayMath: [ ['$$','$$'], ["\\[","\\]"] ],processEscapes: true},
+		"HTML-CSS": { availableFonts: ["TeX"] },
+		TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},
+        "HTML-CSS": {linebreaks: {automatic: true}},
+        SVG: {linebreaks: {automatic: true}}
+		});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+jQuery(function() {
+	jQuery.ajax({
+		url: "https://www.amm.shu.edu.cn/EN/user/validateCollectArticle.do?articleId=18144",
+		success: function(res) {
+			collectCount();
+			if (res == "true") {
+				jQuery("#collectArticle").append("This article has been collected");
+			}
+			if (res == "false") {
+				jQuery("#collectArticle").append("<a href='javascript:;' onclick=\"collectArticle('18144')\">Save</a>");
+			}
+		}
+	});
+});
+
+function collectCount() {
+	jQuery.ajax({
+		url: "https://www.amm.shu.edu.cn/CN/user/articleCollectionTimes.do?articleId=18144",
+		success: function(res) {
+			jQuery("#collectCount").html("");
+			jQuery("#collectCount").append(res);
+		}
+	});
+}
+
+function collectArticle(id) {
+	var url = window.location.href;
+	jQuery.ajax({
+		url: "https://www.amm.shu.edu.cn/EN/user/addCollectArticle.do",
+		data: {
+			"articleId": id,
+			"url": url
+		},
+		type: "post",
+		success: function(res) {
+			if (res == "true") {
+				document.getElementById("collectArticle").innerHTML = "This article has been collected!";
+				collectCount();
+				alert("Sucess to collect!");
+			} else if (res == "false") {
+				alert("This article has been collected!");
+				window.location.reload();
+			} else if (res.length > 5) {
+				window.location.href = "https://www.amm.shu.edu.cn/EN/user/userInfo_en.jsp?url=" + res;
+			} else {
+				alert("Fail to collect this article!");
+				window.location.reload();
+			}
+		},
+		error: function() {
+			alert("Fail to collect this article!");
+		}
+	});
+}
+
+//可视化开始
+$(document).ready(function(){
+    jQuery.getJSON("https://www.amm.shu.edu.cn/EN/lexeme/existsCnctstInArticle.do?articleID=18144", null, function(json){
+        if(json.result){
+            $("#knowledge_map_count").html(json.count);
+            $("#knowledge_map_div").show();
+        }
+    });
+});
+function changeKnowledgeMapImg(flag){
+    if(flag==1){
+        document.getElementById("knowledge_map_img").src="../../images/knowledge_map1.png";
+    }else{
+        document.getElementById("knowledge_map_img").src="../../images/knowledge_map2.png";
+    }
+}
+//可视化结束
+<!--
+//点赞开始
+jQuery(function() {
+    jQuery.ajax({
+        url: 'https://www.amm.shu.edu.cn/EN/article/showArticleLikedNum.do',
+        data: {
+            articleId: 18144
+        },
+        type: 'post',
+        dataType: 'json',
+        success:function(data){  //成功的回调函数
+            $("#articleLikedNum").text(data);
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("错误");
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息
+            console.log(textStatus);
+        }
+    });
+});
+
+function addArticleLikedNum(id){
+    jQuery.ajax({
+        url: 'https://www.amm.shu.edu.cn/EN/article/addArticleLikedNum.do',
+        data: {
+            articleId: id
+        },
+        type: 'post',
+        dataType: 'json',
+        success:function(data){  //成功的回调函数
+            if(data==-1){
+                alert('You have already Liked！！');
+            }else{
+                $("#articleLikedNum").text(data);
+            }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("错误");
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息
+            console.log(textStatus);
+        }
+    });
+}
+//点赞结束
+ -->
+
+function lsdy2(attachType,articleId,qiKanWangZhi,nian,issn){
+	var pars = "attachType="+attachType+"&id="+articleId;
+		if(attachType == "RICH_HTML"){
+			jQuery.post(qiKanWangZhi+"/EN/article/downloadArticleFileFee.do?" + new Date(), pars, function(data){
+				window.location.href = qiKanWangZhi+"/article/"+nian+"/"+issn+"/"+articleId;
+			});			
+		}else{
+			window.location.href = qiKanWangZhi+"/EN/article/downloadArticleFile.do?attachType="+attachType+"&id="+articleId;	
+		}	
+					$('.layui-layer').hide();
+	$('.layui-layer-shade').hide();
+}
+function submitLogin(login_id, remote_password){
+	var login_id = document.getElementById(login_id).value;
+	var remote_password = document.getElementById(remote_password).value;
+	var pars = "login_id="+login_id+"&remote_password="+remote_password;
+	jQuery.post("https://www.amm.shu.edu.cn/EN/user/login.do?" + new Date(), pars, function(data){
+		window.subwin = new SubWindow("下载文件",data,null,null,null,null,'620px','310px',null,null,"#dddddd","true",null,null,"true",null);
+		subwin.show();
+	});
+}
+
+function close(){
+		subwin.close();
+	}
+ 
+function showArticleFile(url,attachType,articleId){
+	var viewAttach = url+"/EN/article/showArticleFile.do?attachType="+attachType+"&id="+articleId;
+	window.open(viewAttach,"下载文件","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizeable=no,copyhistory=no,width=520,height=200,left=88,top=88");
+}                      
+		
+function searchKeyword(url,keyword){
+	var form = document.refForm;
+	form.keyword.value=keyword;
+	form.author.value="";
+	form.action = url+"/EN/article/showCorrelativeArticle.do";
+	form.submit();
+}		
+
+function searchEnKeyword(url,id,keyword){
+	var form = document.refForm;
+	form.searchSQL.value="(("+keyword+"[Keyword]) AND "+id+"[Journal])";
+	form.action = url+"/EN/article/advancedSearchResult.do";
+	form.submit();
+}			
+	
+function searchAuthor(url,author){
+	var form = document.refForm;
+	form.author.value=author;
+	form.keyword.value="";
+	form.action = url+"/EN/article/showCorrelativeArticle.do";
+	form.submit();
+}	
+	
+function addtobookshelf(url,articleId){
+	var addbookshelf = "";
+	addbookshelf = url+"/EN/article/addBookShelf.do?id="+articleId;
+	window.open(addbookshelf,"添加到书架","");
+}	
+	
+function showTxtFile(url,articleId){
+	var showtxtfile = "";
+	showtxtfile = url+"/EN/article/showTxtFile.do?id="+articleId;
+	window.open(showtxtfile,"引用管理器","");
+}
+
+function addComment(url,articleId){
+	var addComment = "";
+	addComment = url+"/EN/comment/addComment.do?id="+articleId;
+	window.open(addComment,"文章反馈","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizeable=no,copyhistory=no,width=520,height=300,left=88,top=88");
+}
+
+
+
+function findPassword(email){
+	var emailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
+	var email = document.getElementById(email).value;
+	var matchemail = emailReg.test(email);
+	var pars = "email="+email;
+	if(email == '' || email == null){
+		alert("Email不能为空！");
+		return false;
+	} else {
+		if(matchemail){
+			jQuery.post("https://www.amm.shu.edu.cn/EN/user/findPassword.do?" + new Date(), pars, function(data){
+				subwin.close();
+			});
+		}else{
+			alert("Email格式不正确");		
+		}
+	}
+}
+function chakan(shifoukaifang,id,url){
+	var url2 = "https://www.amm.shu.edu.cn/fileup/0253-4827/SUPPL/"+url;
+	window.location.href = "https://www.amm.shu.edu.cn/CN/suppl/validateVideo.do?url="+url2+"&id="+id+"&shifoukaifang="+shifoukaifang;
+}
+
+//编辑推荐 
+$(document).ready(function(){
+    $("#recommendedArticles-list").load("https://www.amm.shu.edu.cn/EN/article/recommendedArticles.do?id=18144",null,function(){
+    	$("#recommendedArticlesCount").html($("#recommendedArticlesCount1").val());
+    });
+});
+
+
+</script>
+
+	
+	<script src="https://www.amm.shu.edu.cn/images/0253-4827/js/bootstrap.min.js"></script>
+	<script src="https://www.amm.shu.edu.cn/images/0253-4827/js/jquery.pin.js"></script>
+	<script src="https://www.amm.shu.edu.cn/images/0253-4827/js/abstract.js"></script>
+	<!--[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+	<style>
+		#bsBox{
+			width:560px !important;
+			height:420px !important;
+		}
+		.bFind-wrapper-top{
+			height:25px !important;
+		}
+		#bsWXBox{
+			height: 257px !important;
+			width: 232px !important;
+		}
+	</style>
+
+
+<link href="https://www.amm.shu.edu.cn/images/0253-4827/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.amm.shu.edu.cn/images/0253-4827/css/css.css">
+
+<script src="https://www.amm.shu.edu.cn/images/0253-4827/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.amm.shu.edu.cn/images/0253-4827/fonts/font-awesome.min.css">
+
+<!--兼容性问题-->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body id="goTop" style="background:#fff;">
+<script src='https://tongji.journalreport.cn/mstatistics.service.js' ></script>
+<script>recordAdd('ca1d8b59495241dc9e3aee63de089ab6')</script>
+<!--头部-->
+<div class="header">
+	<div class="banner">
+		<div class="logo">
+			<img src="https://www.amm.shu.edu.cn/images/0253-4827/images/banner.png">
+		</div>
+		<div class="tubiao">
+			<div class="top_wzr"></div>
+			<a href="http://www.springer.com/mathematics/applications/journal/10483" target="_blank"><img src="https://www.amm.shu.edu.cn/images/0253-4827/images/springer.png" width="180"></a>
+			<a href="https://app.ithenticate.com/en_us/login" target="_blank"><img src="https://www.amm.shu.edu.cn/images/0253-4827/images/cross.png"></a>
+			<div style="width:100%;text-align:right;font-size: 16px;padding: 5px 52px;"><a href="https://www.amm.shu.edu.cn/CN/0253-4827/home.shtml" target="_blank"><span style="color:#fff;">中文</span></a></div>
+		</div>
+		
+	</div>
+	
+	
+		<!--导航-->
+	<div class="daohang">
+		<div id="nav">
+        <ul id="navMenu">
+        	<li style="width:150px;background:none;">
+        	<span class="date">
+        	<script language="JavaScript">
+							function PageDate()
+							{
+							currentDate = new Date()
+							with (currentDate)
+							{
+							day=getDay()
+							month=getMonth()
+							if (month==0){document.write('Jan. ')}
+							if (month==1){document.write('Feb. ')}
+							if (month==2){document.write('March ')}
+							if (month==3){document.write('Apr. ')}
+							if (month==4){document.write('May. ')}
+							if (month==5){document.write('Jun. ')}
+							if (month==6){document.write('Jul. ')}
+							if (month==7){document.write('Aug. ')}
+							if (month==8){document.write('Sept. ')}
+							if (month==9){document.write('Oct. ')}
+							if (month==10){document.write('Nov. ')}
+							if (month==11){document.write('Dec. ')}
+							this.document.write(getDate()+', '+getFullYear())
+							}
+							}
+							PageDate()
+                </script>
+                </span>
+                </li>
+				<li><a href="https://www.amm.shu.edu.cn/EN/0253-4827/home.shtml">Home</a></li>
+				<li><a href="https://www.amm.shu.edu.cn/EN/column/column97.shtml">About AMM</a></li>
+				<li><a href="https://www.amm.shu.edu.cn/EN/column/column98.shtml">Editorial Board</a></li>
+				<li><a href="https://www.amm.shu.edu.cn/EN/column/column99.shtml">Instruction for Authors</a></li>
+				<li><a href="https://www.amm.shu.edu.cn/EN/column/column100.shtml"> Download </a></li>
+				<li><a href="https://www.amm.shu.edu.cn/EN/column/column101.shtml">Subscription</a></li>
+				<li style="background:none;"><a href="https://www.amm.shu.edu.cn/EN/column/column102.shtml">Contact Us</a></li>
+				
+		 </ul>
+   		 </div>
+       <script type='text/javascript' src='https://www.amm.shu.edu.cn/images/0253-4827/js/dropdown.js'></script>
+       <script type="text/javascript">cssdropdown.startchrome("navMenu")</script>
+	</div>	
+	<!--导航end-->
+	
+	<div class="ding_hui">
+		<div class="ding">
+			<div class="f_l">
+				<!--检索-->
+				<div class="js_1">
+					 <IFRAME id="UserInfo" border=0 src="https://www.amm.shu.edu.cn/EN/article/quickSearch_amm.do" width=100% height=34 scrolling=no frameborder=0 allowtransparency="true"></IFRAME>
+				</div>
+			<!--检索end-->
+			</div>
+		
+			<div class="f_r">
+				<div class="emali_rss">
+				<a href="https://www.amm.shu.edu.cn/EN/alert/showAlertInfo.do"><img src="https://www.amm.shu.edu.cn/images/0253-4827/images/em.png">Email Alert</a> &nbsp;&nbsp; <a href="https://www.amm.shu.edu.cn/EN/rss/showRssInfo.do"><img src="https://www.amm.shu.edu.cn/images/0253-4827/images/rss.png">RSS</a>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+	
+</div>
+
+
+<div class="container whitebg">
+	<div class="abs-con">
+		<div class="row">
+			<div class="col-md-12">
+				<p style="margin-top:10px;">
+											<span><a href="https://www.amm.shu.edu.cn">Applied Mathematics and Mechanics (English Edition)</a> ›› <a href="https://www.amm.shu.edu.cn/EN/article/showTenYearVolumnDetail.do?nian=2021">2021</a>, <a href="https://www.amm.shu.edu.cn/EN/article/showTenYearVolumnDetail.do?nian=2021">Vol. 42</a>  ›› <a href="https://www.amm.shu.edu.cn/EN/volumn/volumn_1322.shtml">Issue (5)</a>: 721-746.</span><span class="doi-doi">doi: <a href="https://doi.org/10.1007/s10483-021-2733-9" target="_blank">https://doi.org/10.1007/s10483-021-2733-9</a></span>									</p>
+                <p>
+					                </p>
+				<p class="clearfix">
+											<span class="pull-left">• Articles •</span>
+										<span class="pull-right">
+													<a href="https://www.amm.shu.edu.cn/EN/abstract/abstract18143.shtml">
+								<i class="glyphicon glyphicon-chevron-left"></i> 
+									Previous Articles
+							</a>
+						 &nbsp;&nbsp;&nbsp;
+													<a href="https://www.amm.shu.edu.cn/EN/abstract/abstract18145.shtml">
+								Next Articles <i class="glyphicon glyphicon-chevron-right"></i>
+							</a>
+											</span>
+				</p>
+		   
+				<!------------------------------------英文---------------------------------------------------------------------->
+								<h3 class="abs-tit">        
+					Mathematical modeling and numerical computation of the effective interfacial conditions for Stokes flow on an arbitrarily rough solid surface	   
+				</h3>
+								<p data-toggle="collapse" data-target="#divPanelEn">
+					<span>
+													A. T. TRAN<sup>1</sup>, H. LE QUANG<sup>2</sup>, Q. C. HE<sup>2,3</sup>, D. H. NGUYEN<sup>1</sup>
+												&nbsp;&nbsp;
+						<span data-placement="right"  type="button">
+						<i class="glyphicon glyphicon-menu-down" style="cursor:pointer;"></i>
+						</span>
+					</span>
+				</p>    
+				
+				<div id="divPanelEn" class="collapse bs-callout">
+					<address class="address">
+						 <ol class="list-unstyled">
+														<li>1. Research and Application Center for Technology in Civil Engineering, University of Transport and Communications, Hanoi 10000, Vietnam;<br>2. Laboratoire Mod&#233;lisation et Simulation Multi-Echelle, Unit&#233; Mixte de Recherche 8208, Centre National de la Recherche Scientifique, Universit&#233; Gustave Eiffel, Marne-la-Vall&#233;e F-77454, France;<br>3. School of Mechanical Engineering, Southwest Jiaotong University, Chengdu 610031, China</li>
+													</ol>
+					</address>
+					 <ul class="list-unstyled code-style" style="overflow: hidden;">
+						<li>
+							<span>
+																	<code>Received:</code>2020-07-16
+															</span>
+							<span>
+																	<code>Revised:</code>2021-03-12
+															</span>
+							<span>
+															</span>
+							<span>
+																	<code>Online:</code>2021-05-01
+															</span>
+							<span>
+																	<code>Published:</code>2021-04-22
+															</span>
+						</li>
+						<li>						</li>
+						<li>						</li>
+						<li>            
+													<code class="pull-left" style="overflow: hidden;">Supported by:</code><div class="pull-left">the Vietnam National Foundation for Science and Technology Development (NAFOSTED) (No. 107.02-2017.310)</div>					
+												</li>           
+					</ul>
+				</div>
+			
+				<!--英文end-->
+				<!-------------------------6大块组----------------------------------------------->
+				<div class="group clearfix">
+					<div class="row">
+													<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10">
+								<span class="change-section">
+                                        <a href="#" onclick="lsdy1('RICH_HTML','18144','https://www.amm.shu.edu.cn','2021','article/2021/0253-4827/2021-5-721.htm');return false;" class="black-bg btn-menu">
+                                    <i class="fa fa-file-text"></i>
+                                    <h2>RichHTML</h2>
+                                    <span class="badge">
+
+
+
+
+
+6</span>
+                                 </a>
+								</span>
+							</div>
+																			<div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10">
+								<span class="change-section">
+									<a href="#1" onClick="lsdy1('PDF','18144','https://www.amm.shu.edu.cn','2021','1322');return false;" class="black-bg btn-menu">
+										<i class="fa fa-file-pdf-o text-danger"></i>
+										<h2>PDF</h2>
+										<span class="badge">
+
+
+
+
+
+192
+
+</span>
+									</a>
+								</span>
+							</div>
+																		<!--
+                        <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10">
+                            <span class="change-section">
+                                <a href="javascript:void(0);" class="black-bg btn-menu" id="likedNum" onclick="addArticleLikedNum(18144)">
+                                    <i class="fa fa-thumbs-up"></i>
+                                    <h2>Like</h2>
+                                    <span id="articleLikedNum" class="badge"></span>
+                                </a>
+                            </span>
+                        </div>
+                         -->
+						                        <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10" id="knowledge_map_div" style="display:none;">
+                            <span class="change-section" onmouseover="changeKnowledgeMapImg(2)" onmouseout="changeKnowledgeMapImg(1)">
+                                <a href="../lexeme/showArticleByLexeme.do?articleID=18144" class="black-bg btn-menu">
+                                    <i class="fa text-muted"><img src="../../images/knowledge_map1.png" height="40" style="margin:0px;" width="36" id="knowledge_map_img"></i>
+                                    <h2>Knowledge</h2>
+                                    <span class="badge" id="knowledge_map_count">0</span>
+                                </a>
+                            </span>
+                        </div>
+																	</div>
+										
+					<!--<div class="jumbotron" id="showPdf2">
+						<ul class="list-unstyled">
+							<li><a href="">1. 探讨2016版国际胰瘘研究小组定义和分级系统对胰腺术后患者胰瘘分级的影响.PDF<span>(500KB)</span></a></li>
+						</ul>
+					</div>-->
+					
+				</div>
+			<!--6大块组------------------->
+			</div>
+		</div>
+    </div>
+    <div class="row" id="pin">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-sm-12">
+            <!--折叠面板begin-->
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="zhaiyao" onClick="xianshi(this)" style="cursor: pointer;">
+                        <h4 class="panel-title">
+                            <a id="abstract">
+                                Abstract
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body line-height text-justify">
+                            <form name="refForm" action="showCorrelativeArticle.do" method=post target=_blank>
+							<input type="hidden" name="searchSQL" value="" />
+                            <input type=hidden name="keyword" value="" id="keyword">
+							<input type=hidden name="author" value="" id="author">
+																	<p>
+										<strong>Abstract: </strong>
+										The present work is concerned with a two-dimensional (2D) Stokes flow through a channel bounded by two parallel solid walls. The distance between the walls may be arbitrary, and the surface of one of the walls can be arbitrarily rough. The main objective of this work consists in homogenizing the heterogeneous interface between the rough wall and fluid so as to obtain an equivalent smooth slippery fluid/solid interface characterized by an effective slip length. To solve the corresponding problem, two efficient numerical approaches are elaborated on the basis of the method of fundamental solution (MFS) and the boundary element methods (BEMs). They are applied to different cases where the fluid/solid interface is periodically or randomly rough. The results obtained by the proposed two methods are compared with those given by the finite element method and some relevant ones reported in the literature. This comparison shows that the two proposed methods are particularly efficient and accurate.
+									</p>
+																									<p><strong>Key words: </strong>
+																																						   <a href="#" onClick="searchEnKeyword('https://www.amm.shu.edu.cn','12','effective slip length')">effective slip length, </a>
+																																							   <a href="#" onClick="searchEnKeyword('https://www.amm.shu.edu.cn','12','method of fundamental solution (MFS)')">method of fundamental solution (MFS), </a>
+																																							   <a href="#" onClick="searchEnKeyword('https://www.amm.shu.edu.cn','12','boundary element method (BEM)')">boundary element method (BEM), </a>
+																																							   <a href="#" onClick="searchEnKeyword('https://www.amm.shu.edu.cn','12','Stokeslet')">Stokeslet, </a>
+																																							   <a href="#" onClick="searchEnKeyword('https://www.amm.shu.edu.cn','12','micro-channel')">micro-channel, </a>
+																																							   <a href="#" onClick="searchEnKeyword('https://www.amm.shu.edu.cn','12','fluid/solid interface')">fluid/solid interface</a> 
+																												</p>
+															</form>
+                            <!--分类号-->
+                            																								<p>
+								<strong>
+																2010 MSC Number:&nbsp;
+																</strong> 
+																</p>
+								<ul class="list-unstyled pacs">
+																								<li>
+								<p>
+																<a href="../article/showArticleBySubjectScheme.do?code=74Q15" target="_blank">
+								74Q15
+								</a>
+																</p>
+								</li>
+																																</ul>
+																                            <!--分类号end-->
+                            <div class="row hidden-xs hidden-sm">
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 margin-bottom-10 text-center" style="padding:0;">
+                                    <div class="text-primary btn-menu">
+                                        <h4>Cite this article</h4>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 margin-bottom-10">
+                                    <div class="primary-border">
+																				                                              <p>A. T. TRAN, H. LE QUANG, Q. C. HE, D. H. NGUYEN. Mathematical modeling and numerical computation of the effective interfacial conditions for Stokes flow on an arbitrarily rough solid surface. Applied Mathematics and Mechanics (English Edition), 2021, 42(5): 721-746.</p>
+																					                                    </div>
+                                </div>
+							</div>
+							
+                            <div class="row hidden-xs hidden-sm">
+				            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-10" id="trendmd-suggestions"><strong>TrendMD</strong>
+							   </div>
+                            </div>
+							
+                            <div class="row hidden-xs hidden-sm">
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 margin-bottom-10 text-center" style="padding:0;">
+                                    <div class="btn-menu bs-callout-warning">
+                                        <h4>share this article</h4>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 margin-bottom-10">
+                                    <div class="primary-border">
+
+                                        <p><b>Add to citation manager</b> <span class="daochu"><a href="https://www.amm.shu.edu.cn/EN/article/getTxtFile.do?fileType=EndNote&id=18144" id="ris_export">EndNote</a>|<a href="https://www.amm.shu.edu.cn/EN/article/getTxtFile.do?fileType=Ris&id=18144">Reference Manager</a>|<a href="https://www.amm.shu.edu.cn/EN/article/getTxtFile.do?fileType=ProCite&id=18144">ProCite</a>|<a id="bibtex_export" href="https://www.amm.shu.edu.cn/EN/article/getTxtFile.do?fileType=BibTeX&id=18144">BibTeX</a>|<a href="https://www.amm.shu.edu.cn/EN/article/getTxtFile.do?fileType=RefWorks&id=18144">RefWorks</a></span>
+										</p>
+										<p><strong>URL:</strong>
+										<a href="https://www.amm.shu.edu.cn/EN/10.1007/s10483-021-2733-9" class="txt_zhaiyao1">https://www.amm.shu.edu.cn/EN/10.1007/s10483-021-2733-9</a>
+										</p>
+										<p>
+																					<strong>&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a href="https://www.amm.shu.edu.cn/EN/Y2021/V42/I5/721" class="txt_zhaiyao1">
+												https://www.amm.shu.edu.cn/EN/Y2021/V42/I5/721
+											</a>
+																				</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                                                <div class="panel panel-default">
+                    <!--<div class="panel-heading" role="tab" id="cankaowenxian" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="reference" class="collapsed">
+                                References                             </a>
+                        </h4>
+                    </div>-->
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" style="display: none;">
+                        <div class="panel-body">
+                            <!--start-->
+                            <table width="98%" border="0" align="center" cellpadding="0" cellspacing="8">
+																	<tr>
+										<td class="J_author"> [1] TRAN, A. T., LE, Q. H., and HE, Q. C. Effective interfacial conditions for the Stokes flow of a fluid on periodically rough surfaces. Acta Mechanica, 228, 1851-1869(2017)<br>[2] LAUGA, K. and STONE, H. A. Effective slip in pressure-driven Stokes flow. Journal of Fluid Mechanics, 658, 55-77(2003)<br>[3] PRIEZJEV, N. V., DARHUBER, A. A., and TROIAN, S. M. Slip behavior on liquid films on surfaces of patterned wettability:comparison between continuum and molecular dynamics simulations. Physical Review E, 71, 041608(2005)<br>[4] NG, C. O. and WANG, C. Y. Stokes shear flow over a grating:implications for superhydrophobic slip. Physics of Fluids, 21, 013602(2009)<br>[5] NG, C. O. and WANG, C. Y. Apparent slip arising from Stokes shear flow over a bidimensional patterned surface. Microfluidics and Nanofluidics, 8, 361-371(2010)<br>[6] NG, C. O. and WANG, C. Y. Effective slip for Stokes flow over a surface patterned with two-or three-dimensional protrusions. Fluid Dynamics Research, 43, 065504(2011)<br>[7] KAMRIN, K., BAZANT, M. Z., and STONE, H. A. Effective slip boundary conditions for arbitrary periodic surfaces:the surface mobility tensor. Journal of Fluid Mechanics, 658, 409-437(2010)<br>[8] LUND, N. J., ZHANG, X. P., MAHELONA, K., and HENDY, S. C. Calculation of effective slip on rough chemically heterogeneous surfaces using a homogenization approach. Physical Review E, 86, 046303(2012)<br>[9] SBRAGAGLIA, M. and PROSPERETTI, A. A note on the effective slip properties for micro channel flows with ultra hydrophobic surfaces. Physics of Fluids, 19, 043603(2007)<br>[10] TEO, C. J. and KHOO, B. C. Analysis of Stokes flow in micro channels with superhydrophobic surfaces containing a periodic array of micro-grooves. Microfluidics and Nanofluidics, 7, 353-382(2009)<br>[11] CHENG, Y. P., TEO, C. J., and KHOO, B. C. Microchannel flows with superhydrophobic surfaces:effects of Reynolds number and pattern width to channel height ratio. Physics of Fluids, 21, 122004(2009)<br>[12] NG, C. O., CHU, H. C. W., and WANG, C. Y. On the effects of liquid-gas interfacial shear on slip flow through a parallel-plate channel with superhydrophobic grooved walls. Physics of Fluids, 22, 102002(2010)<br>[13] BELYAEV, A. V. and VINOGRADOVA, O. I. Effective slip in pressure-driven flow past superhydrophobic stripes. Journal of Fluid Mechanics, 652, 489-499(2010)<br>[14] NG, C. O. and CHU, H. C. W. Electrokinetic flows through a parallel-plate channel with slipping stripes on walls. Physics of Fluids, 23, 102002(2011)<br>[15] VINOGRADOVA, O. I. and BELYAEV, A. V. Wetting, roughness and flow boundary conditions. Journal of Physics:Condensed Matter, 23, 184104(2011)<br>[16] FEUILLEBOIS, F., BAZANT, M. Z., and VINOGRADOVA, O. I. Effective slip over superhydrophobic surfaces in thin channels. Physical Review Letters, 102, 026001(2009)<br>[17] ALVES, C. J. S. and SILVESTRE, A. L. Density results using Stokeslets and a method of fundamental solutions for the Stokes equations. Engineering Analysis with Boundary Elements, 28, 1245-1252(2004)<br>[18] YOUNG, D. L., JANE, S. J., FAN, C. M., MURUSEGAN, K., and TSAI, C. C. The method of fundamental solutions for 2D and 3D Stokes problems. Journal of Computational Physics, 211, 1-8(2006)<br>[19] ZHAO, S. and POVITSKY, A. Method of fundamental solutions for partial-slip fibrous filtration flows. International Journal for Numerical Methods in Fluids, 61, 255-274(2009)<br>[20] BOSELLI, F., OBRIST, D., and KLEISER, L. A mesh less boundary method for Stokes flows with particles:application to canalithiasis. International Journal for Numerical Methods in Biomedical Engineering, 29, 1176-1191(2013)<br>[21] ABOELKASSEM, Y. and STAPLES, A. E. Stokeslets-meshfree computations and theory for flow in a collapsible microchannel. Theoretical and Computational Fluid Dynamics, 27, 681-700(2013)<br>[22] POZRIKIDIS, C. Creeping flow in two-dimensional channels. Journal of Fluid Mechanics, 180, 495-514(1987)<br>[23] STABEN, M. E., ZINCHENKO, A. Z., and DAVIS, R. H. Motion of a particle between two parallel plane walls in low-Reynolds-number Poiseuille flow. Physics of Fluids, 15, 1711-1733(2003)<br>[24] JANSSEN, P. J. A. and ANDERSON, P. D. Boundary-integral method for drop deformation between parallel plates. Physics of Fluids, 19, 043602(2007)<br>[25] NIETO, C., GIRALDO, M., and POWER, H. Boundary integral method for Stokes flow with linear slip flow conditions in curved surfaces. WIT Transactions on Modelling and Simulation, 49, 353-362(2009)<br>[26] TLUPOVA, S. and CORTEZ, R. Boundary integral solutions of coupled Stokes and Darcy flows. Journal of Computational Physics, 228, 158-179(2009)<br>[27] POZRIKIDIS, C. Boundary Integral and Singularity Methods for Linearized Viscous Flow, Cambridge University Press, Cambridge (1992)<br>[28] GRIGGS, A. J., ZINCHENKO, A. Z., and DAVIS, R. H. Low-Reynolds-number motion of a deformable drop between two parallel plane walls. International Journal of Multiphase Flow, 33, 182-206(2007)<br>[29] KATSIKADELIS, J. T. Boundary Elements:Theory and Applications, Elsevier, Amsterdam (2002)<br>[30] LACHIHAB, A. and SAB, K. Aggregate composites:a contact based modeling. Computational Materials Science, 33, 467-490(2005)<br>[31] LACHIHAB, A. and SAB, K. Does a representative volume element exist for fatigue life prediction? The case of aggregate composites. International Journal for Numerical and Analytical Methods in Geomechanics, 32, 1005-1021(2008)<br>[32] ASMOLOV, E. S., SCHMIESCHEK, S., HARTING, J., and VINOGRADOVA, O. I. Flow past superhydrophobic surfaces with cosine variation in local slip length. Physical Review E, 87, 023005(2013)<br>[33] EINZEL, D., PANZER, P., and LIU, M. Boundary condition for fluid flow:curved or rough surfaces. Physical Review Letters, 64, 2269-2272(1990)<br>[34] PANZER, P., LIU, M., and EINZEL, D. The effects of boundary curvature on hydrodynamic fluid flow:calculation of slip lengths. Physical Review Letters, 64, 2269-2272(1992)<br>[35] NIAVARANI, A. and PRIEZJEV, N. V. Rheological study of polymer flow past rough surfaces with slip boundary conditions. The Journal of Chemical Physics, 129, 144902(2008)<br>[36] NIAVARANI, A. and PRIEZJEV, N. V. The effective slip length and vortex formation in laminar flow over a rough surface. Physics of Fluids, 21, 052105(2009)<br>[37] NIAVARANI, A. and PRIEZJEV, N. V. Modeling the combined effect of surface roughness and shear rate on slip flow of simple fluids. Physical Review E, 81, 011606(2010)<br>[38] PRIEZJEV, N. V. and TROIAN S. M. Influence of periodic wall roughness on the slip behaviour at liquid/solid interfaces:molecular-scale simulations versus continuum predictions. Journal of Fluid Mechanics, 554, 25-46(2006)<br>[39] GUO, L., CHEN, S., and ROBBINS, M. O. Effective slip boundary conditions for sinusoidally corrugated surfaces. Physical Review Fluids, 1, 074102(2016)</td>
+									</tr>
+															</table>
+                            <!--end--> 
+                        </div>
+                      </div>         
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="xiangguanwenzhang" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="relatedArticles" class="collapsed" >
+                                Related Articles <span class="badge badge-info">8</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" style="display: none;">
+                        <div class="panel-body">
+							<table width="100%" border="0" height='25'>
+								
+																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[1]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														Hongxiao YAO, Weian YAO, Chong ZUO, Xiaofei HU. 
+														<a href="https://www.amm.shu.edu.cn/EN/10.1007/s10483-021-2760-8" target="_blank" class="txt_zhaiyao">
+															Radial integral boundary element method for simulating phase change problem with mushy zone
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 2021, 42(8): 1155-1170.
+													</td>
+												</tr>
+																																																																																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[2]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														M. D. K. NIAZI, Hang XU. 
+														<a href="https://www.amm.shu.edu.cn/EN/10.1007/s10483-020-2558-7" target="_blank" class="txt_zhaiyao">
+															Modelling two-layer nanofluid flow in a micro-channel with electro-osmotic effects by means of Buongiorno's model
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 2020, 41(1): 83-104.
+													</td>
+												</tr>
+																																																																																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[3]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														 LI Xi;YUAN Da-Ming. 
+														<a href="https://www.amm.shu.edu.cn/EN/10.1007/s10483-014-1798-x" target="_blank" class="txt_zhaiyao">
+															Asymptotic approximation method for elliptic variational inequality of first kind
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 2014, 35(3): 381-390.
+													</td>
+												</tr>
+																																																																																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[4]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														 CUI Zhi-Xiang;SI Jun-Hui;LIU Chun-Tai;SHEN Chang-Yu. 
+														<a href="https://www.amm.shu.edu.cn/EN/10.1007/s10483-014-1789-7" target="_blank" class="txt_zhaiyao">
+															Flowing simulation of injection molded parts with micro-channel
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 2014, 35(3): 269-276.
+													</td>
+												</tr>
+																																																																																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[5]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														ZHANG Kai;LIN Jian-zhong;LI Zhi-hua. 
+														<a href="https://www.amm.shu.edu.cn/EN/10.1007/s10483-006-0502-1" target="_blank" class="txt_zhaiyao">
+															RESEARCH ON DIFFUSION IN MICRO-CHANNEL FLOW DRIVEN BY ELECTROOSMOSIS
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 2006, 27(5): 575-582                                               .
+													</td>
+												</tr>
+																																																																																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[6]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														N. Aktar;F. Rahman;S. K. Sen . 
+														<a href="https://www.amm.shu.edu.cn/EN/" target="_blank" class="txt_zhaiyao">
+															STOKES FLOW DUE TO FUNDAMENTAL SINGULARITIES BEFORE A PLANE BOUNDARY
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 2004, 25(7): 799-805.
+													</td>
+												</tr>
+																																																																																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[7]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														ZHOU Huan-lin;NIU Zhong-rong;WANG Xiu-xi. 
+														<a href="https://www.amm.shu.edu.cn/EN/" target="_blank" class="txt_zhaiyao">
+															REGULARIZATION OF NEARLY SINGULAR INTEGRALS IN THE BOUNDARY ELEMENT METHOD OF POTENTIAL PROBLEMS
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 2003, 24(10): 1208-1214.
+													</td>
+												</tr>
+																																																																																																																																																																																																																																																																																																																																																																																						<tr>
+													<td width="30" valign='top' style="line-height:30px;">[8]</td>
+													<td class="J_zhaiyao" style="line-height:30px;" valign='top'>
+														Zhao Minghao;Cheng Changjun;Liu Guoning;Shen Yapeng. 
+														<a href="https://www.amm.shu.edu.cn/EN/" target="_blank" class="txt_zhaiyao">
+															THE ANALYSIS OF CRACK PROBLEMS WITH NON-LOCAL ELASTICITY
+														</a>[J]. Applied Mathematics and Mechanics (English Edition), 1999, 19(2): 143-153.
+													</td>
+												</tr>
+																																																																																															</table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="tuijianwenzhang" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="recommendedArticles" class="collapsed" >
+                                Recommended Articles <span class="badge badge-info" id="recommendedArticlesCount"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" style="display: none;">
+                        <div class="panel-body" id="recommendedArticles-list">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="Metrics" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a class="collapsed">
+                                Metrics
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive" style="display: none;">
+                        <div class="panel-body">
+							<table width="98%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="24" height="32"></td>
+									<td colspan="2" bgcolor="#E0EEF7"><span class="STYLE1">Viewed</span></td>
+								</tr>
+								<tr>
+									<td width="24" height="5"></td>
+									<td colspan="2" bgcolor="#FFFFFF"></td>
+								</tr>
+								<tr>
+									<td height="153"></td>
+									<td width="110" valign="top" bgcolor="#EFEFEF" style="line-height:150%">
+										<strong>Full text</strong><br />
+										<span class="STYLE2"><div id="FullText"></div></span>
+									</td>
+									<td valign="top">
+										<table width="63%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td><div id="HtmlPdfVersion"></div></td>
+											</tr>
+										</table>
+										<br />
+										<table width="63%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td colspan="3"><div id="FromHtmlPdf"></div></td>
+											</tr>
+										</table>
+										<br />
+										<div id="DownloadDistribution"></div>
+										<div id="DownloadCountryDistribution"></div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="2" height=5></td>
+								</tr>
+								<tr>
+									<td height="158"></td>
+									<td valign="top" bgcolor="#efefef" style="line-height:150%">
+										<strong>Abstract</strong><br>
+										<span class="STYLE2"><div id="AbstractCount"></div></span>
+									</td>
+									<td valign="top">
+										<table width="40%" height="52" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td><div id="AbstractVersion"></div></td>
+											</tr>
+											<tr>
+												<td><div id="FromAbstract"></div></td>
+											</tr>
+										</table>
+										<br />
+										<div id="AbstractDistribution"></div>
+										<div id="AbstractCountryDistribution"></div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="2" height=5></td>
+								</tr>
+								<!--
+								<tr>
+									<td height="30"></td>
+									<td bgcolor="#E0EEF7"><p><strong>Cited</strong></p></td>
+									<td>
+										<div id="citations"></div>
+									</td>
+								</tr>
+								<tr>
+									<td height="8"></td>
+									<td height="8"></td>
+									<td height="8"></td>
+								</tr>
+								<tr>
+									<td height="31">&nbsp;</td>
+									<td bgcolor="#E0EEF7"><strong>Shared</strong></td>
+									<td><strong>&nbsp;&nbsp;<a class="shareCount"></a></strong></td>
+								</tr>
+								-->
+								<tr>
+									<td height="5"></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>			
+                        </div>
+                    </div>
+                </div>
+				<div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="benwenpingjia" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="pingjia">
+                                Comments
+                            </a>
+                        </h4>
+                    </div>
+					<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix" style="display: none;">
+                        <div class="panel-body">
+							<div id="ArticleEstimate">
+								<div id="Estimate"></div>
+								<div id="Comment"></div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+				<!-- <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="tuijianyuedu" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="relatedArticles">
+                                Recommended <span class="badge badge-info">0</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven" style="display: none;">
+                        <div class="panel-body">
+							<table width="98%" border="0" align="center" cellpadding="0" cellspacing="8" valign='top' height='auto'>
+								<tr>
+									<td valign='top'>
+										<table width="100%" border="0" height='25'>
+																																													<tr>
+													<td colspan='2' align='center'><strong>No Suggested Reading articles found!</strong></td>
+												</tr>
+																					</table>
+									</td>
+								</tr>
+							</table>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <!--折叠面板end-->
+        </div>
+        <div class="col-lg-2 col-md-2 hidden-print hidden-xs hidden-sm">
+            <!--右快速导航-->
+            <div id="plane" class="pinned">
+                <ul class="plane-bd list-unstyled">
+                    <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#zhaiyao');">
+                            <span>Abstract</span>
+                            <i class="glyphicon glyphicon-text-color"></i>
+                        </a>
+                    </li>
+				                    <!--<li>
+                        <a href="javascript:;"  onclick="zhaiyao('#cankaowenxian');">
+                            <span>References</span>
+                            <i class="glyphicon glyphicon-equalizer"></i>
+                        </a>
+                    </li>-->
+                    <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#xiangguanwenzhang');">
+                            <span>Related Articles</span>
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#tuijianwenzhang');">
+                            <span>Recommended Articles</span>
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#Metrics');">
+                            <span>Metrics</span>
+                            <i class="glyphicon glyphicon-stats"></i>
+                        </a>
+                    </li>
+					<li>
+                        <a href="javascript:;" onclick="zhaiyao('#benwenpingjia');">
+                            <span>Comments</span>
+                            <i class="glyphicon glyphicon-stats"></i>
+                        </a>
+                    </li>
+					<!-- <li>
+                        <a href="javascript:;" onclick="zhaiyao('#tuijianyuedu');">
+                            <span>Recommended</span>
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </li> -->
+                </ul>
+                <div class="plane-ft">
+                    <a href="#goTop" target="_self"  title="TOP" style="color:#ff6600;" class="text-center">TOP</a>
+                </div>
+            </div>
+            <!--右快速导航-->
+        </div> 
+    </div>
+</div>
+<div class="dibu">
+<a href="https://journals.aps.org" target="_blank"><spa style="color: #113488;">APS Journals</spa></a>   |
+   <a href="http://www.cstam.org.cn/channel/74.html" target="_blank"><spa style="color: #113488;">CSTAM Journals</spa></a>   |
+      <a href="https://journals.ametsoc.org" target="_blank"><spa style="color: #113488;">AMS Journals</spa></a>   |   
+      <a href="https://www.ems-ph.org/journals/journals.php" target="_blank"><spa style="color: #113488;">EMS Journals</spa></a>   |   
+      <a href="https://asmedigitalcollection.asme.org/journals" target="_blank"><spa style="color: #113488;">ASME Journals</spa></a>
+</div>
+<div class="footer">
+	<div class="banquan">
+	<div class="d_l">
+		<img src="https://www.amm.shu.edu.cn/images/0253-4827/images/wx.jpg"><img src="https://www.amm.shu.edu.cn/images/0253-4827/images/springer.jpg">
+	</div>
+	<div class="d_r">
+	<div class="tongji">
+	<script>record('ca1d8b59495241dc9e3aee63de089ab6')</script>   
+Total visitors: <label id="ipVisitsSum"></label>
+
+	</div>		Copyright © Applied Mathematics and Mechanics (English Edition)<br>
+		Address：P. O. Box 122, Shanghai University, 99 Shangda Road, Shanghai 200444, China<br>
+		E-mail： amm@department.shu.edu.cn<br>
+		Technical support: Beijing Magtech Co.ltd    support@magtech.com.cn<br>
+	</div>
+	
+	</div>
+		
+</div>
+
+<iframe src="https://www.amm.shu.edu.cn/EN/article/updateBrowseNum.jsp?articleid=18144" height=0 scrolling=no border=0 frameborder=0 allowtransparency="true"></iframe>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	var hash = window.location.hash;
+	loadMetricsTabc();
+	loadArticleEstimate();
+	$(function() {
+    	$('#container').tabs(1);
+    });
+    $("#MetricsTabC").click(function(){
+		loadMetricsTabc();
+	});
+	 $("#ArticleEstimateTab").click(function(){
+		loadArticleEstimate();
+	});
+	function loadArticleEstimate(){
+		$("#Estimate").empty();
+		$("#Estimate").append("<iframe src=\"https://www.amm.shu.edu.cn/include/showEstimateEn.do?articleId=18144\" width=\"1000\" height=\"85\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+		$("#Comment").empty();
+		$("#Comment").append("<iframe src=\"https://www.amm.shu.edu.cn/EN/comment/showCommentList.do?type=article&typeId=18144\" width=\"1000\" style=\"min-height:700px;width:100%;\"   scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\" id=\"ifr-comment\"></iframe>");
+	}
+	$(function(){
+		$('.tabs-nav').children('li').eq(0).addClass('tabs-selected');
+		$('.tabs-nav').children('li').last().removeClass('tabs-selected');
+		$('#AbstractTab').removeClass('tabs-hide');
+		$('#MetricsTab').addClass('tabs-hide');
+	})
+	function loadMetricsTabc(){
+		$("#FullText").load("https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=FullText");
+		$("#HtmlPdfVersion").load("https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=HtmlPdfVersion");
+		$("#FromHtmlPdf").load("https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=FromHtmlPdf");
+		$("#AbstractVersion").load("https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=AbstractVersion");
+		$("#AbstractCount").load("https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=AbstractCount");
+		$("#FromAbstract").load("https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=FromAbstract");
+		//$("#citations").load("https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=citations");
+		$("#DownloadDistribution").empty();
+		$("#DownloadDistribution").append("<iframe src=\"https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=DownloadDistribution\" width=\"600\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+		$("#DownloadCountryDistribution").empty();
+		$("#DownloadCountryDistribution").append("<iframe src=\"https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=DownloadCountryDistribution\" width=\"550\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\"></iframe>");
+		$("#AbstractDistribution").empty();
+		$("#AbstractDistribution").append("<iframe src=\"https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=AbstractDistribution\" width=\"600\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+		$("#AbstractCountryDistribution").empty();
+		$("#AbstractCountryDistribution").append("<iframe src=\"https://www.amm.shu.edu.cn/EN/matrix/matrix.do?articleId=18144&type=AbstractCountryDistribution\" width=\"550\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+	}
+	
+</script>
+
+    <!--css必引 -->	
+	<link rel="stylesheet" href="https://www.amm.shu.edu.cn/images/0253-4827/css/abstract.css">
+<script defer src='//js.trendmd.com/trendmd.min.js' data-trendmdconfig='{"journal_id":"62672","element":"#trendmd-suggestions"}'></script>

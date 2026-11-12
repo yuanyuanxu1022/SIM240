@@ -1,0 +1,32 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-ced05121dd03
+Exec   : build/bin/grooveDarcyStaticFoam -case build/audit_case -auditOnly
+Date   : Oct 30 2026
+Time   : 20:30:47
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 776432
+I/O    : uncollated
+Case   : build/audit_case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Selecting finite volume model type porosityForce
+    Name: grooveResistance
+Porosity region grooveResistance:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+GDI_AUDIT_COMPLETE: native assembly only; zero solve calls

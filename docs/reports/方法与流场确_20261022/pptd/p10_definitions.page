@@ -1,0 +1,115 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p10-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p10-topbar-title
+    bounds: [36, 8, 640, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 比较量定义与被检模型：先定义清楚，再谈对错
+  - elementType: text
+    elementId: p10-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 10 / 18
+  - elementType: shape
+    elementId: p10-leftcard
+    shapeName: roundRect
+    bounds: [60, 62, 424, 336]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p10-leftchip
+    shapeName: rect
+    bounds: [84, 80, 120, 26]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p10-leftchiptext
+    bounds: [84, 82, 120, 22]
+    content:
+      fontSize: 12.5
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: 输运系数定义
+  - elementType: text
+    elementId: p10-left-formula2
+    bounds: [84, 122, 376, 56]
+    content:
+      fontSize: 15.5
+      bold: true
+      color: "#0E3F8C"
+      lineHeight: 1.5
+      text: "Jᵢ = (1/A)∫ uᵢ dV → 乘 μ、除 G=ρa<br/>Kᵢ = μJᵢ/Gᵢ （单位 m³，深度积分导度）"
+  - elementType: text
+    elementId: p10-left-steps
+    bounds: [84, 190, 376, 132]
+    content:
+      fontSize: 12
+      color: "#1A2230"
+      lineHeight: 1.6
+      text: "① 对驱动方向速度作流体域体积分<br/>② 除以单胞平面面积 → Jᵢ（m²/s）<br/>③ 乘 μ 除以 G → Kᵢ（m³）<br/><br/>与渗透率换算：Kᵢ = H_ref·κᵢ，H_ref = h + d/2；<br/>引用文献必须核对高度口径。"
+  - elementType: shape
+    elementId: p10-rightcard
+    shapeName: roundRect
+    bounds: [512, 62, 388, 336]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: shape
+    elementId: p10-rightchip
+    shapeName: rect
+    bounds: [536, 80, 150, 26]
+    fill: { type: solid, color: "#0E3F8C" }
+  - elementType: text
+    elementId: p10-rightchiptext
+    bounds: [536, 82, 150, 22]
+    content:
+      fontSize: 12.5
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: 被检模型（式 3）
+  - elementType: text
+    elementId: p10-right-formula3
+    bounds: [536, 122, 340, 80]
+    content:
+      fontSize: 14
+      bold: true
+      color: "#0E3F8C"
+      lineHeight: 1.6
+      text: "K_yy^mod = [(h+d)³ + h³] / 24<br/>K_xx^mod = (h+d)³h³ / [6((h+d)³+h³)]"
+  - elementType: text
+    elementId: p10-right-model
+    bounds: [536, 212, 340, 172]
+    content:
+      fontSize: 12
+      color: "#1A2230"
+      lineHeight: 1.55
+      text: "深区/浅区各自当局部平行平板：<br/>· 沿槽 = 算术平均，跨槽 = 调和平均<br/>· d=0 时两式退化为 h³/12 ✓<br/>· 与 Patir–Cheng 一维 Reynolds 单胞关系一致（原文式 23/24 已实读核对）<br/><br/>近似性：侧壁与深浅连接段的耦合未解析——这正是要检验的对象，不是隐藏假设。"
+  - elementType: shape
+    elementId: p10-bottombar
+    shapeName: rect
+    bounds: [60, 414, 840, 44]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p10-conclusion
+    bounds: [78, 422, 804, 28]
+    content:
+      fontSize: 13.5
+      bold: true
+      color: "#0E3F8C"
+      text: 误差定义 E = K^mod/K^ref − 1：正值=高估。参考值是"5 nm 离散数值参考"，不是真值——其可靠性由第 3 章另行检查。
+  - elementType: text
+    elementId: p10-footer
+    bounds: [60, 470, 840, 14]
+    content:
+      style: $tiny
+      text: 稿件位置：§2.2 式 (2)、§2.3 式 (3)(4) · 文献核对：Patir–Cheng 1978 原文第 4 页式 23/24（本地 PDF 已渲染目视核对）

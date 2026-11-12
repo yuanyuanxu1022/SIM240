@@ -1,0 +1,44 @@
+--- before/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,12 +1,12 @@
+ # SIM240 AI CONTEXT
+ 
+-## 共享仓库：再次复查仍不可访问，账号地址也404，无目标邀请（2026-10-27，当前共享入口）
+-
+-- 用户已授权核查并继续向25yuanyuanxu-source/SIM240-data上传既定共享包，不需重复审批既定范围。入口`docs/reports/New_share_target_recheck_20261027/REPORT.md`、`access_recheck.json`；原准备清单与报告保留在`New_share_target_20261027/`。
+-- 本轮实际证据：当前账号yuanyuanxu1022；目标REST404、所属账号资料查询404；待接受邀请中没有该目标；SSH只读ls-remote返回Repository not found/exit128；浏览器连接空。旧私有共享仓库可读，pull/push/admin=true，登录可用于旧仓库。新目标存在性/可见性/内容/分支/写权限仍未核，不能把404原因定为一定私有或账号不存在。
+-- 本地上传基线仍f11c0f20f6aaadf6920b95390855ec418cf8ae42、工作树干净；8,637项清单SHA不变，8,591来源登记+46仓库附加文件范围保持。未切换账号、改remote、创建提交、推送或改向其他仓库发布。
+-- 用户报告新建账号邀请不了人，停止重复同一邀请流程。已有检索异常的具体账号原因仍未判定。已准备由用户本人启动的新所有者直接登录脚本`New_share_target_recheck_20261027/login_new_owner.sh`与`DIRECT_OWNER_LOGIN_PLAN.md`：仅网页登录、独立GH/Git配置、核用户名25yuanyuanxu-source；bash语法通过，未执行、未改登录/权限。下一动作由用户在本机终端运行脚本并在GitHub网页完成新账号授权，再按独立配置核目标可见性/写权限/已有分支与内容后继续原上传范围。依据AGENTS.md第51行，代理不在缺少明确账号授权时自动更改登录；当前没有上传或求解。
+-- 无新计算/编译/真实N8提取/第二项或新run_id。科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD，旧FAIL保持。
++## 共享协作：当前优先恢复邀请老师能力，邮箱已验证，身份差异待核（2026-10-27，当前共享入口）
++
++- 用户明确目标是账号能邀请老师协作，不能用直接上传代替。已确认老师仍为bokong537，新账号能找到并选中但发送邀请时报错；当前精确错误文本/截图尚未取得。入口`docs/reports/Teacher_collaboration_access_20261027/REPORT.md`、`case.json`、`public_identity_checks.json`。先前上传授权/8,637项清单保留，登录脚本未由代理执行，不作为当前修复步骤。
++- 已核：老师公开API200、ID34483962、搜索1条；新账号按名公开查询404。用户截图明确Primary/Verified，已排除未验证邮箱，不再让用户重复验证或重复同次邀请。资料不记录真实邮箱。
++- 新身份差异：截图隐私邮箱说明数字前缀读为34883237，公开按ID及按名均对应dengzhang，而截图顶栏25yuanyuanxu-source；已由GPT-6 Astra｜High独立无认证查询复现API侧事实。截图数字与当前官方会话仍待核；不能据此认定封禁、盗号、伪造或具体受限原因，改名/缓存也未证实。
++- 下一最小动作：当前同一浏览器打开https://github.com/settings/emails并刷新，提供含地址栏、页顶账号名及完整GitHub隐私邮箱说明行的截图，真实邮箱可遮。目的核身份/页面来源；身份核清后再读取老师邀请当前精确报错并确定支持路径。`SUPPORT_TICKET_DRAFT.md`已备但未提交；不再要求先邀请旧工具账号或先执行登录脚本。
++- 本轮未更改登录/token scope/密码/邮箱/remote、未发送邀请或消息、未提交/推送/编译/求解/真实N8提取/第二项，无新run_id。科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD，旧FAIL保持。
+ 
+ ## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
+ 
+--- before/AI_HANDOFF_20261015.md
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,12 +1,12 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 共享仓库：再次复查仍不可访问，账号地址也404，无目标邀请（2026-10-27，当前共享入口）
+-
+-- 用户已授权核查并继续向25yuanyuanxu-source/SIM240-data上传既定共享包，不需重复审批既定范围。入口`docs/reports/New_share_target_recheck_20261027/REPORT.md`、`access_recheck.json`；原准备清单与报告保留在`New_share_target_20261027/`。
+-- 本轮实际证据：当前账号yuanyuanxu1022；目标REST404、所属账号资料查询404；待接受邀请中没有该目标；SSH只读ls-remote返回Repository not found/exit128；浏览器连接空。旧私有共享仓库可读，pull/push/admin=true，登录可用于旧仓库。新目标存在性/可见性/内容/分支/写权限仍未核，不能把404原因定为一定私有或账号不存在。
+-- 本地上传基线仍f11c0f20f6aaadf6920b95390855ec418cf8ae42、工作树干净；8,637项清单SHA不变，8,591来源登记+46仓库附加文件范围保持。未切换账号、改remote、创建提交、推送或改向其他仓库发布。
+-- 用户报告新建账号邀请不了人，停止重复同一邀请流程。已有检索异常的具体账号原因仍未判定。已准备由用户本人启动的新所有者直接登录脚本`New_share_target_recheck_20261027/login_new_owner.sh`与`DIRECT_OWNER_LOGIN_PLAN.md`：仅网页登录、独立GH/Git配置、核用户名25yuanyuanxu-source；bash语法通过，未执行、未改登录/权限。下一动作由用户在本机终端运行脚本并在GitHub网页完成新账号授权，再按独立配置核目标可见性/写权限/已有分支与内容后继续原上传范围。依据AGENTS.md第51行，代理不在缺少明确账号授权时自动更改登录；当前没有上传或求解。
+-- 无新计算/编译/真实N8提取/第二项或新run_id。科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD，旧FAIL保持。
++## 共享协作：当前优先恢复邀请老师能力，邮箱已验证，身份差异待核（2026-10-27，当前共享入口）
++
++- 用户明确目标是账号能邀请老师协作，不能用直接上传代替。已确认老师仍为bokong537，新账号能找到并选中但发送邀请时报错；当前精确错误文本/截图尚未取得。入口`docs/reports/Teacher_collaboration_access_20261027/REPORT.md`、`case.json`、`public_identity_checks.json`。先前上传授权/8,637项清单保留，登录脚本未由代理执行，不作为当前修复步骤。
++- 已核：老师公开API200、ID34483962、搜索1条；新账号按名公开查询404。用户截图明确Primary/Verified，已排除未验证邮箱，不再让用户重复验证或重复同次邀请。资料不记录真实邮箱。
++- 新身份差异：截图隐私邮箱说明数字前缀读为34883237，公开按ID及按名均对应dengzhang，而截图顶栏25yuanyuanxu-source；已由GPT-6 Astra｜High独立无认证查询复现API侧事实。截图数字与当前官方会话仍待核；不能据此认定封禁、盗号、伪造或具体受限原因，改名/缓存也未证实。
++- 下一最小动作：当前同一浏览器打开https://github.com/settings/emails并刷新，提供含地址栏、页顶账号名及完整GitHub隐私邮箱说明行的截图，真实邮箱可遮。目的核身份/页面来源；身份核清后再读取老师邀请当前精确报错并确定支持路径。`SUPPORT_TICKET_DRAFT.md`已备但未提交；不再要求先邀请旧工具账号或先执行登录脚本。
++- 本轮未更改登录/token scope/密码/邮箱/remote、未发送邀请或消息、未提交/推送/编译/求解/真实N8提取/第二项，无新run_id。科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD，旧FAIL保持。
+ 
+ ## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
+ 

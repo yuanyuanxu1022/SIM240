@@ -1,0 +1,25 @@
+--- before/SIM240_AI_CONTEXT.md
++++ after/SIM240_AI_CONTEXT.md
+@@ -1,14 +1,13 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：v3审查保持HOLD，需补类型分流；实际卷方案已具体化（2026-10-26，当前入口/停点）
+-
+-- 本轮用户授权审v3合同/实现及实际工作卷、持久记录路径布置与核查方案，明确不启动。入口`docs/reports/D4_pilot_v3_review_20261026/REPORT.md`、`VOLUME_PLAN.md`、`verdict.json`、`audit_evidence.json`。结论HOLD_NO_RUN_PERMISSION；未修改v3、未挂载/配置系统、未创建cgroup或启动短进程/求解。
+-- 已确认进展：v3独立r=Tx重建和持久归档已实现，上轮主要R1/R2不再按缺失处理。既有32项0失败/错误/跳过、独立exit0记录保持，本轮未重复运行。只读复核12份保存的合成档案及源已移除的人工成功副本，通过完整性/相应人工数值关系核对，不算物理计算。356来源/318份v3产物/359份v2/4233历史保护/138前次终审输入SHA均相符（不相加）。
+-- 一项放行前小修补：readback按capture.kind是否恰为REAL决定是否查完整真实记录，未知值未先拒绝。本轮仅在内存把已存人工capture.kind改成UNKNOWN_REVIEW_INJECTION，仍CAPTURE_BINDING_PASS（22文件），原文件与批准状态不改。需显式允许类型映射、核STARTED/capture与system/solution对应关系，拒绝未知/缺失/真实人工串标签，并补定向无求解反例；archive-only亦核类型一致。不能将本反例表述为真实结果曾被错误验收。
+-- 合同保持首项N8、GMRES/无预条件、restart50/max2000、残差1e−10、600秒+5秒、4GiB/512MiB。新合同前文16组与增补17组的遗留文字应在小补丁发布时统一17并重绑，旧v2不改；不是新增物理问题。不要求先跑全18项再审首项诊断。
+-- 路径方案：拟work挂载点`/run/user/1000/sim240_pilot_n8_work_20261026`；持久父目录`/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026`（仓库外、现有ext4父级）。两目标均不存在，path_contract_draft.json仍false/null/占位run_id；只读precheck_layout.py返回LAYOUT_NOT_READY/exit2。15:07北京时间快照内存约16.79GiB、记录父级盘约336.97GiB，memory/pids委派检查通过；不等于已预留或部署。
+-- 无求解卷方案已列：专用512MiB tmpfs、uid/gid1000与0700、允许缓存扩展库加载（不能noexec）、独立普通盘≥2GiB；静态挂载/权限核查→小文件刷新读回→微型共享库加载探针→有界ENOSPC与失败留档→持久副本独立读回→恢复空卷再核。B—F探针均未实施，本轮未编译。实际挂载与探针属于后续明确范围，不能按方案存在推断完成。
+-- 下一具体动作：小范围补齐记录类型对应检查并重新绑定，接续已列的无求解卷准备/探针后审单项许可；保持不求解。无实际run_id/新物理结果，无原协议/阈值/G4锁/旧FAIL改动、拟合、OpenLB编译、Git提交/推送。NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、预测HOLD。
++## 第一篇：v3.1类型一致性补丁通过12项定向测试，实际卷仍未就绪（2026-10-26，当前入口/停点）
++
++- 本轮用户授权补记录类型一致性、针对性无求解测试并接续实际工作卷核查，继续不启动。新独立目录`CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v3_1_20261026/`；入口`PATCH_REPORT.md`、`evidence/preparation_decision.json`及`path_contract_draft.json`。类型补丁PASS_TARGETED_TESTS，整体PASS_PREPARATION_ONLY；合同仍DRAFT_NOT_AUTHORIZED/false/null，无实际run_id。
++- 小修补已实施：STARTED/capture类型先核已知且一致；真实父记录只配真实system/solution，人工父记录只配SYNTHETIC_MANUAL_ARRAYS_NOT_PDE，数组两侧也须一致。未知/缺失/交叉标签分流前拒绝，archive-only核父类型；公共check/CLI对真实数组必须有父记录。保留数值复算私有入口避免递归，残差/重建阈值不变。新合同统一17数组并重绑，v3快照及审查证据不改。
++- 已验证：12个针对性测试方法0失败/错误/跳过，0.392秒、独立exit0；同一UNKNOWN_REVIEW_INJECTION反例由v3的PASS变为v3.1明确拒绝。合法类型映射/旧人工成功归档通过，缺父记录、串标签及未知类型均拒绝，1→7重建反例仍FAIL/误差6。无PETSc/DOLFINx/UFL、真实KSP或求解；仅人工数组、已存档案和短CLI拒绝检查，未重跑32项旧测试、进程夹具或OOM。
++- 来源与档案：17模块语法、358条新来源，旧v3的319文件/v2的359文件/4233历史保护/138前次终审输入SHA均保持（集合不相加）；12份既有v3合成档案只读重核，失败原因保留。见`evidence/independent_preparation.json`、test/CLI日志与独立exit、source_diffs。真实入口未授权拒绝保持，原18项继续false。
++- 实际卷已只读核查：work`/run/user/1000/sim240_pilot_n8_work_20261026`和record父目录`/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026`均不存在；静态预检LAYOUT_NOT_READY/exit2，内存下限和memory/pids委派检查通过。现有父级tmpfs/ext4可写不等于目标卷已准备。`evidence/layout_precheck.json`与`layout_snapshot.json`记录实际快照，本轮未创建/挂载/写出探针。
++- 当前卡点与下一步：按`docs/reports/D4_pilot_v3_review_20261026/VOLUME_PLAN.md`准备专用512MiB工作卷及持久目录，实施限定无求解保存/缓存加载/ENOSPC/归档探针，恢复空卷后再核，再审首项N8许可。真实后端成功/失败链和4GiB预算、完整18项/参考精度/公式预测仍未验；类型补丁通过不授予运行权。无OpenLB编译、建网/组装/PDE求解、系统配置更改、拟合、原协议/阈值/G4锁/旧FAIL改动或Git提交/推送。NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、预测HOLD。
+ 
+ ## 第一篇：真实网格到原始记录适配已静态核查，求解仍关闭（2026-10-26，历史准备入口；最新结论见上方）
+ 

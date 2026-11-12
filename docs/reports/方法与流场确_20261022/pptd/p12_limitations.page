@@ -1,0 +1,184 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p12-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p12-topbar-title
+    bounds: [36, 8, 640, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 已知限制：如实清单（方法的边界在哪里）
+  - elementType: text
+    elementId: p12-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 12 / 18
+  - elementType: shape
+    elementId: p12-leftpanel
+    shapeName: rect
+    bounds: [60, 60, 230, 400]
+    fill: { type: solid, color: "#F7F9FC" }
+  - elementType: shape
+    elementId: p12-leftaccent
+    shapeName: rect
+    bounds: [60, 60, 6, 400]
+    fill: { type: solid, color: "#D9534F" }
+  - elementType: text
+    elementId: p12-left-title
+    bounds: [88, 84, 186, 80]
+    content:
+      fontSize: 21
+      bold: true
+      color: "#1A2230"
+      lineHeight: 1.35
+      text: 五项<br/>尚未闭合
+  - elementType: text
+    elementId: p12-left-sub
+    bounds: [88, 172, 186, 130]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.5
+      text: 这些不是隐瞒的缺陷，而是方法口径下明示的边界。审稿人问到哪里，答案已经写在正文里。
+  - elementType: text
+    elementId: p12-left-principle
+    bounds: [88, 330, 186, 110]
+    content:
+      fontSize: 12
+      bold: true
+      color: "#D9534F"
+      lineHeight: 1.5
+      text: 处理原则：<br/>如实声明，不掩盖、不粉饰、不越界声称
+  - elementType: shape
+    elementId: p12-card1
+    shapeName: roundRect
+    bounds: [316, 60, 584, 70]
+    fill: { type: solid, color: "#FFFFFF" }
+    border: { color: "#D6DCE5", width: 1 }
+  - elementType: text
+    elementId: p12-card1-title
+    bounds: [336, 70, 544, 22]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#1A2230"
+      text: 1. 最薄间隙分辨率：h=25 nm 在 5 nm 网格只有 5 格
+  - elementType: text
+    elementId: p12-card1-body
+    bounds: [336, 94, 544, 30]
+    content:
+      fontSize: 11
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: 已单独报告加密敏感性（−4.43% 跨槽）；等效误差约 42% 量级的说法不成立，以正文双网格口径为准。
+  - elementType: shape
+    elementId: p12-card2
+    shapeName: roundRect
+    bounds: [316, 140, 584, 70]
+    fill: { type: solid, color: "#FFFFFF" }
+    border: { color: "#D6DCE5", width: 1 }
+  - elementType: text
+    elementId: p12-card2-title
+    bounds: [336, 150, 544, 22]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#1A2230"
+      text: 2. 双网格 ≠ 收敛阶：不能推出全图网格无关
+  - elementType: text
+    elementId: p12-card2-body
+    bounds: [336, 174, 544, 30]
+    content:
+      fontSize: 11
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: 两级加密给不出连续域误差界；正文称"指定分辨率下的离散参考"，不声称网格无关。
+  - elementType: shape
+    elementId: p12-card3
+    shapeName: roundRect
+    bounds: [316, 220, 584, 70]
+    fill: { type: solid, color: "#FFFFFF" }
+    border: { color: "#D6DCE5", width: 1 }
+  - elementType: text
+    elementId: p12-card3-title
+    bounds: [336, 230, 544, 22]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#1A2230"
+      text: 3. 停止判据 ≠ 验收：27 点余量不足 1%
+  - elementType: text
+    elementId: p12-card3-body
+    bounds: [336, 254, 544, 30]
+    content:
+      fontSize: 11
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: 通量收敛是停止条件；统计窗口稳不代表空间精度。§3.1 已明示其性质，不冒充独立验收。
+  - elementType: shape
+    elementId: p12-card4
+    shapeName: roundRect
+    bounds: [316, 300, 584, 70]
+    fill: { type: solid, color: "#FFFFFF" }
+    border: { color: "#D6DCE5", width: 1 }
+  - elementType: text
+    elementId: p12-card4-title
+    bounds: [336, 310, 544, 22]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#1A2230"
+      text: 4. 历史构建绑定未闭合：52 份清单无源码哈希
+  - elementType: text
+    elementId: p12-card4-body
+    bounds: [336, 334, 544, 30]
+    content:
+      fontSize: 11
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: binary_sha256 有；source_sha256 / OpenLB 提交号 / 编译参数缺失。正文"可据以复现"一句超出证据——待收紧（见第 18 页问题 ②）。
+  - elementType: shape
+    elementId: p12-card5
+    shapeName: roundRect
+    bounds: [316, 380, 584, 70]
+    fill: { type: solid, color: "#FFFFFF" }
+    border: { color: "#D6DCE5", width: 1 }
+  - elementType: text
+    elementId: p12-card5-title
+    bounds: [336, 390, 544, 22]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#1A2230"
+      text: 5. "52 次运行"的口径：是地图+附加检查的统计范围
+  - elementType: text
+    elementId: p12-card5-body
+    bounds: [336, 414, 544, 30]
+    content:
+      fontSize: 11
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: 不含历史平板/三网格基准与周期复制批次；不能把文件数相加当独立运行数。表述待同步收紧。
+  - elementType: text
+    elementId: p12-conclusion
+    bounds: [60, 466, 840, 30]
+    content:
+      fontSize: 14.5
+      bold: true
+      color: "#0E3F8C"
+      text: 方法的可信不等于没有限制——而是限制说得清、证据分得开、结论不越界。
+  - elementType: text
+    elementId: p12-footer
+    bounds: [60, 506, 840, 14]
+    content:
+      style: $tiny
+      text: 稿件位置：§3.4 + §5.3 · 审计依据：方法支持资料审计 20261022（三处候选收紧句已备）

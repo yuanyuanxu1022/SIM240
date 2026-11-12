@@ -1,0 +1,103 @@
+--- reviewed_v1/mass_ledger.h
++++ v2/src/mass_ledger.h
+@@ -57,7 +57,10 @@
+   int step = -1, rows = 0, peakStep = -1;
+   std::array<std::uint64_t,4> materials{}, initialMaterials{};
+   std::uint64_t coreCount=0, hash=0, initialHash=0, lastId=0;
+-  bool haveId=false, lastFluid=false, finite=true;
++  bool haveId=false, lastFluid=false, finite=true, densityRecorded=false;
++  std::uint64_t filmNodes=0, recessNodes=0, rhoMinId=0, rhoMaxId=0;
++  double rhoMin=0, rhoMax=0;
++  long double filmDelta=0, recessDelta=0, maxReconstruction=0;
+   Neumaier massComp{}, rhoComp{}, deltaComp{};
+   long double massLong=0, rhoLong=0, deltaLong=0;
+   long double m0Comp=0, m0Long=0, delta0=0, legacy0=0, bias0=0;
+@@ -97,12 +100,14 @@
+          "delta_neumaier,delta_long_double,M0_neumaier_kg,M0_long_double_kg,delta0,"
+          "e_neumaier,e_long_double,e_delta,max_e_neumaier,max_e_long_double,max_e_delta,"
+          "bias_t_kg,bias0_kg,reconstruction_residual,agreement_relative,"
+-         "double_mant_dig,long_double_mant_dig,Jx,Jy,Jz,Q1,Q2,Mach,rho_min,rho_max,finite\n";
++         "double_mant_dig,long_double_mant_dig,Jx,Jy,Jz,Q1,Q2,Mach,rho_min,rho_max,finite,"
++         "film_nodes,recess_nodes,film_delta,recess_delta,rho_min_id,rho_max_id,nominal_volume_m3\n";
+   }
+   void begin(int nextStep) {
+     if (nextStep != rows || nextStep > lastStep) throw std::runtime_error("Non-contiguous diagnostic step");
+     step=nextStep; materials={}; coreCount=0; hash=14695981039346656037ULL;
+-    haveId=false; finite=true; rhoBuffer.clear();
++    haveId=false; finite=true; densityRecorded=false; rhoBuffer.clear();
++    filmNodes=0; recessNodes=0; filmDelta=0; recessDelta=0;
+     massComp={}; rhoComp={}; deltaComp={}; massLong=0; rhoLong=0; deltaLong=0;
+   }
+   void shape(int cuboid, int sx, int sy, int sz) const {
+@@ -112,14 +117,22 @@
+   void material(int cuboid, int x, int y, int z, int value) {
+     if (cuboid != 0 || x<0 || x>=192 || y<0 || y>=192 || z<0 || z>=145 || value<0 || value>3)
+       throw std::runtime_error("Invalid core material coordinate");
++    if (haveId && lastFluid && !densityRecorded)
++      throw std::runtime_error("Missing fluid density observation");
+     const std::uint64_t id = (static_cast<std::uint64_t>(x)*192+y)*145+z;
+     if (haveId && id <= lastId) throw std::runtime_error("Duplicate/out-of-order core ID");
+-    lastId=id; haveId=true; lastFluid=(value==1); ++coreCount; ++materials[value];
++    lastId=id; haveId=true; lastFluid=(value==1); densityRecorded=false; ++coreCount; ++materials[value];
+     hashWord(hash,id); hashWord(hash,static_cast<std::uint64_t>(value));
+   }
+   void density(double rho, double rhoPhysical, double spacing) {
+-    if (!lastFluid) throw std::runtime_error("Density outside material-1 core");
++    if (!haveId || !lastFluid || densityRecorded)
++      throw std::runtime_error("Invalid or duplicate fluid density observation");
++    if (rhoPhysical!=1000.0 || spacing!=1.25e-9)
++      throw std::runtime_error("Unexpected diagnostic physical units");
++    densityRecorded=true;
+     const auto index = rhoBuffer.size();
++    if (index==0 || rho<rhoMin) { rhoMin=rho; rhoMinId=lastId; }
++    if (index==0 || rho>rhoMax) { rhoMax=rho; rhoMaxId=lastId; }
+     if (step == 0) mask.push_back(lastId);
+     else if (index >= mask.size() || mask[index] != lastId) throw std::runtime_error("Fluid mask changed");
+     rhoBuffer.push_back(rho);
+@@ -127,6 +140,9 @@
+     massComp.add(term); rhoComp.add(rho); deltaComp.add(rho-1.0);
+     const long double r=rho, rp=rhoPhysical, d=spacing;
+     massLong += r*rp*d*d*d; rhoLong += r; deltaLong += r-1.0L;
++    // z_phys=(z_index-0.5)*dx. material1 z=1..60 is film; above is recess.
++    if (lastId%145<=60) { ++filmNodes; filmDelta+=r-1.0L; }
++    else { ++recessNodes; recessDelta+=r-1.0L; }
+     finite = finite && std::isfinite(rho);
+   }
+   template<class M>
+@@ -136,6 +152,8 @@
+         || original.fluidNodes != static_cast<long long>(expectedNodes))
+       throw std::runtime_error("Incomplete diagnostic domain");
+     if (!finite) throw std::runtime_error("Non-finite density snapshot");
++    if (filmNodes!=2211840 || recessNodes!=1474560)
++      throw std::runtime_error("Incomplete film/recess partition");
+     const long double mc=massComp.value(), ml=massLong, dl=deltaLong, old=original.mass;
+     if (step == 0) {
+       initialHash=hash; initialMaterials=materials; legacy0=originalM0;
+@@ -149,6 +167,7 @@
+     const long double bias=old-mc, reconstruction=((mc-m0Comp)+bias-bias0)/legacy0;
+     const long double residual=reconstruction-static_cast<long double>(legacyError);
+     const long double agreement=std::max({std::abs(ec-el),std::abs(ec-ed),std::abs(el-ed)});
++    maxReconstruction=std::max(maxReconstruction,std::abs(residual));
+     maxComp=std::max(maxComp,std::abs(ec)); maxLong=std::max(maxLong,std::abs(el));
+     maxStable=std::max(maxStable,std::abs(ed)); maxAgreement=std::max(maxAgreement,agreement);
+     if (std::abs(legacyError)>peakLegacy) {
+@@ -167,7 +186,9 @@
+         << ',' << DBL_MANT_DIG << ',' << LDBL_MANT_DIG
+         << ',' << original.fluxJ[0] << ',' << original.fluxJ[1] << ',' << original.fluxJ[2]
+         << ',' << original.sectionQ1 << ',' << original.sectionQ2 << ',' << mach
+-        << ',' << original.rhoMin << ',' << original.rhoMax << ',' << original.finite << '\n';
++        << ',' << original.rhoMin << ',' << original.rhoMax << ',' << original.finite
++        << ',' << filmNodes << ',' << recessNodes << ',' << filmDelta << ',' << recessDelta
++        << ',' << rhoMinId << ',' << rhoMaxId << ',' << nominal/rhoPhysical << '\n';
+     csv.flush();
+     ++rows;
+   }
+@@ -182,6 +203,8 @@
+         << "\nlegacy_result_PASS=" << legacyPass << "\nlegacy_mass_gate_PASS=" << (legacyPeak<1e-10)
+         << "\nlegacy_max_mass_abs_relative=" << legacyPeak << "\nlegacy_peak_step=" << peakStep
+         << "\nmax_e_delta=" << maxStable << "\nmax_ledger_agreement=" << maxAgreement
++        << "\nmax_reconstruction_residual=" << maxReconstruction
++        << "\nreconstruction_target_met=" << (maxReconstruction<=1e-13L)
+         << "\nlong_double_mant_dig=" << LDBL_MANT_DIG
+         << "\nhigh_precision_supported=" << (LDBL_MANT_DIG>DBL_MANT_DIG)
+         << "\nledger_agreement_target_met=" << (maxAgreement<=1e-13L) << '\n';

@@ -1,0 +1,32 @@
+--- before/AI_HANDOFF_20261015.md
++++ after/AI_HANDOFF_20261015.md
+@@ -1,17 +1,17 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## URV-v1只读复核完成，S0绑定草案暂停生效（2026-11-01）
+-
+-- 本轮用户范围：只读复核准备包，随后确认外部数据历史，再另行准备S0两条h75回归执行绑定；当前不启动。用户已回答外部历史“尚不能确认，需要核查”，记录`docs/reports/URV_v1_readonly_review_S0_20261101/external_data_history.json`，状态PENDING_AUTHOR_CHECK，不能填CONFIRMED或认定候选未见。此前本地无匹配只限已查范围，不替代作者事实核查。
+-- 新入口`docs/reports/URV_v1_readonly_review_S0_20261101/REPORT.md`、findings.json、review_verification.json及`S0_DRAFT_NOT_EXECUTABLE/S0_binding_DRAFT.json`。本轮审查编号URV-READONLY-S0-20261101，非求解run_id。实际新正式run_id=[]，没有启动命令、正式运行目录或执行授权生效。
+-- 只读复核：原准备CASE全830文件保持；1432项准备输入、旧C/h75及回归1686绑定匹配；既有零步审计796文件哈希匹配。24组从配置独立复算材料/体积/边界，19处源码替换逆向恢复D4。原编译exit0、72次零步调用/24帧reader与35测试通过证据保留为前轮事实；本轮没有重复编译、原生预检、求解器或VTK reader调用，没有修改封存源/程序/协议/门槛。原URV_ZERO_20261101_01仍只为零步审计。
+-- 发现执行前缺口F01(HIGH)：check_run拒绝out在原run内后，main异常分支仍向该out写failure.json；仅在新人工目录用真实CLI复现，未触碰实际结果。F02(MEDIUM)：h75逐列差异在need失败前未保存，与“保存差值并暂停”不符；人工helper计算+静态控制流核对。F03(HIGH)：binding未强制native源/程序/编译依赖/库覆盖，run名单未强制逐条case/配置SHA/目录对应；人工缺native清单仍被binding接受，人工字段不是用户确认/执行合同。F01—F03在生效S0绑定前须修订或等效外层约束并验证，本轮未改源码。
+-- F04(MEDIUM)：24条汇总CLI共用同一合同SHA，不兼容S0—S5分阶段各自封存；静态核对+明确mock来源层的人工SHA分支核查。该项需在后续汇总前解决，不阻塞S0单条接受，不为此提前授权全部24条或回写旧completion。四反例均新报告内隔离人工材料，不是流场解/新物理证据。
+-- S0两条未生效材料已静态整理：h75/d100/w120/P=Ly240、dx5nm，H125nm，P=+y/T=+x；a1e5、rho1000、nu1e-6、mu.001、tau1；dt4.166666666666667e-12s，窗1013/上限58800，57600流体点/32448壁连接/q=.5。旧D4基准K为P9.834076003216204e-23、T4.449022023188299e-23m³；仅旧基准非新结果。旧完整20共同列/全部输出及独立foundation证书SHA已列；原raw RESULT_PASS=false保留。K差≤1e-4与全部原URV数值/几何门槛不变，差异应先保存、无法解释则停。每条wall3600s/AS8GiB、单rank/thread/cuboid、overlap3，启动前RAM/磁盘另核。
+-- 草案明确INACTIVE_BINDING_DRAFT_NOT_EXECUTION_RELEASE；simulation_authorized=false、approved_run_ids=[]，候选编号仅PROPOSED_，模板mode=describe且输出DRAFT_NOT_AN_EXECUTION_DIRECTORY。正式程序SHA/最终配置SHA/执行清单SHA为空，当前URV_PREPARATION_ONLY=1程序只列准备来源，没有移除保护或创建正式执行合同/外层运行器。作者历史未确认且F01—F03未解决，所以当前执行就绪HOLD，而非已可启动。
+-- 当前正式NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，MODEL_COMPARISON/physical_validation=NOT_EVALUATED；reference_qualified=false、strict_error_bound_established=false、submission_ready=false。旧C/h75限定离散资格、旧细T FAIL、V2/G4锁、D4预测HOLD、旧N8 run_id=D4_N8_diag_v3_1_20261026_v1及NOT_EVALUATED/false/null、GDI01既有接入结果均保持。前轮零步准备证据未被否定，但不能作为本轮执行审查放行。
+-- 改动仅新增本轮报告/人工反例/不生效草案并维护本状态与最新交接；没有改旧CASE/源码/结果/协议，没有编译/正式求解/重跑/拟合/新物理验证/提交推送/对外发送。审查为作者请求的AI自审，不是独立人工验收。具体缺口、原始定位、验证边界及作者待查事项见REPORT。
+-- 当前停点：只读复核完成，外部历史待作者按范围核查，S0正式绑定未生效。下一具体任务可另授权新版本最小修订F01—F03及反例核验，保留旧准备包；作者并行核实外部历史。两项完成后再准备S0正式构建/逐条配置编号目录/完整来源和独立退出资源产物合同，当前不启动、不进入S1；F04后续汇总前单独处理。常规修订/复核建议GPT-6.1 Sol｜High；实质理论疑难/多证据矛盾或最终公式冻结依原规则GPT-6 Astra｜High。
++## URV检查器v1.1修订验证完成，外部历史待核查，S0未启动（2026-11-01）
++
++- 用户范围：在隔离新版本最小修订F01—F03并验证，保留原准备封存；外部历史继续核查，S0保持未启动。新代码入口`CASE/unseen_v2_reference_checker_v1_1/README.md`；证据`docs/reports/URV_checker_v1_1_revision_20261101/REPORT.md`、verification.json、tests_final.log。修订编号URV-CHECKER-v1.1-20261101不是求解run_id；actual_formal_run_ids=[]，无启动命令或生效执行合同。
++- F01已修：公开检查入口先规范化/核验输出，再独占创建新目录；raw自身/子目录/父目录、符号链接、既有目录、批次任一raw、合同声明的基准/输入与原/新CASE均受保护。非法目标只stderr/exit2不写文件；失败仅写入本次合法创建目录。独立reader入口同样在读场前保护。F02已修：来源通过后先保存regression_comparison.json，含K新旧/相对差及所有共同列差异/长度，再按原1e-4和旧轨迹一致要求判定；失败保留差异和失败回执，无成功acceptance、不加宽门槛。
++- F03已修：新contracts.py强制URV-EXEC-1.1合同、native源/程序/构建配方/构建记录/编译器/.d依赖/链接和动态库、检查器与协议全覆盖；解析捕获.d/ldd的闭包并核哈希。物理源需匹配原准备锚点，准备构建和模糊宏定义拒绝。approved_runs强制run_id→case→配置路径/SHA→唯一目录，单阶段/原矩阵/时间帧计划对应；完成记录再核真实目录配置。未来合同格式见新版本EXECUTION_CONTRACT_REQUIREMENTS.md，本轮没有生成真实执行合同。
++- 已验证：70Python测试通过=35原回归+35新增，0失败/错误；8个Python源在内存编译核语法，未生成CASE缓存。原diagnostics/check_slice/compare_legacy/aggregate及reader的payloads/leaves/audit逐字节一致，evidence.py与原common文件逐字节保留。质量/J/K/方向/平均/窗口/GCI/敏感性与全部物理门槛不变。原35通过、扩展69通过、补reader入口覆盖后70通过，日志保留。
++- 可复查证据：旧h75 P4343行/T2954行20共同列自对照及明确人工改一项J后的20列失败报表已保存；只是既有控制/人工软件验证，不是新S0运行。前轮被原binding接受的缺项人工合同现用新版真实CLI拒绝exit2，无成功记录。测试中的授权/CONFIRMED和惰性程序/库只为人工验证，不是作者声明、真实构建或执行许可。新URV完整稳态输出端到端验收仍NOT_EVALUATED。
++- 原包保护：原CASE830文件与1432项准备绑定不变；另1725项前轮审查/历史保护输入哈希一致。原准备封存e0eb9a54c1c1168d25483a085e70462d04cfa76aeb4922dddbea17b07b1811cb保留，原源码/二进制/URV_PREPARATION_ONLY=1未动；旧URV_ZERO_20261101_01的72次零步/24帧证据保留为历史。本轮native编译/求解0、实际VTK数据读取0，未拟合、提交推送或对外发送项目材料。新检查器有独立CHECKER_REVISION_PREPARATION_ONLY封存，不是执行release。
++- F04仍OPEN_OUT_OF_SCOPE：24条汇总CLI仍共用一个合同SHA，不兼容各阶段独立封存；aggregate未改。未来多合同汇总前单独修订，不为此提前授权24条或回写旧completion。F01—F03的软件修订完成不等于S0执行准备齐备。
++- 外部历史仍PENDING_AUTHOR_CHECK：作者最后答复“尚不能确认，需要核查”，源`docs/reports/URV_v1_readonly_review_S0_20261101/external_data_history.json`保持。两个候选h60/d80与h30/d80、w120/P240nm仍不能认定已确认未见。原S0草案仅未生效材料，正式程序/配置/合同SHA及批准编号仍未形成；S0 h75/d100/dx5的原窗口1013/上限58800、K差≤1e-4及20列比较口径保持。
++- 当前新正式NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定离散资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及NOT_EVALUATED/false/null、GDI01既有接入结果不变。
++- 当前停点：本轮仅检查器修订与软件准备验证完成；新目录/本轮报告及当前状态/最新交接为改动范围，原准备包和旧审查结论不覆写。下一具体动作只读复核v1.1及来源合同要求，作者继续核实外部数据历史；获得真实确认后再另行准备S0正式构建、逐条配置编号目录、独立退出/资源/原始产物捕获与生效合同，保持不自动启动。F04后续汇总前单独处理。常规复核建议GPT-6.1 Sol｜High，疑难理论/多证据矛盾/最终公式冻结依原规则GPT-6 Astra｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

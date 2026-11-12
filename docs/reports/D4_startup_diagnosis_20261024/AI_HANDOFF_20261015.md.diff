@@ -1,0 +1,38 @@
+--- docs/reports/D4_startup_diagnosis_20261024/before_state_sync/AI_HANDOFF_20261015.md
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,17 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 第一篇：D4余14项准备就绪，本机尚无正式结果可验收（2026-10-24，当前入口）
+-
+-- 最新启动确认（北京时间2026-10-24 04:40）：用户报告已在本机执行命令，但单次检查仍未见规范余14批次目录及tmux会话。随后入口默认只检查退出0、ok=true/will_run=false，2611绑定及资源核查通过，没有启动求解器。证据 `docs/reports/D4_remaining14_intake_20261024/startup_diagnostic_044022.json`。当前为START_NOT_CONFIRMED_ENTRY_CHECK_PASSES，不能认定正在计算或已完成；待用户提供原终端返回文字。已发异步问题，不擅自重启、不持续轮询；本轮无新增计算或物理验收。原接收/状态快照保留。
+-- 用户明确授权“准备首批14项的执行入口和运行前核查，尚未启动计算”。当前入口 `CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/PREPARATION_STATUS.md`，PROTOCOL/policy、run_remaining.py、stage_cases.csv、14份launch_configs与本机release已准备并审查；NEXT_COMMAND.txt仅交付用户手动启动，本轮没有执行命令或创建正式结果batch。
+-- 白名单仅余14主开发：h75/w60深25/50/100/120×P/T共8，h75/w240深25/50/100×P/T共6；dx5、P=Ly=2w、φ.5、a1e5/ρ1000/ν1e−6/μ.001/τ1保持。排除已完成首6项及所有legacy/smooth/regression/linearity/grid/prediction；原60项预算不增加。规范正式结果仍仅基础8+筛选6=14，主开发2/16、细格0/12、预测20未进入。
+-- 复用已验收筛选的C++源码/binary：原SHA一致、make --question退出0，本轮没有重编译。14项describe+14项precheck实际零步通过（7种不同几何），独立节点/18方向边界连接/q=.5及无fallback/unresolved符合；统计窗1013步、各深度最大步数与14配置核对。28个检查run_id保留在evidence/zero_step_checks，不是28项流动结果，collideAndStream合计0。
+-- 本轮范围守卫：14项接受、其余76主表行拒绝，另15项负面检查通过（含篡改参数、资源/绑定缺失或变化、已存在批次等）；最终另核3项MPI/root环境拦截。默认CLI实际dry-run退出0、will_run=false。首14正式NUMERICAL_GATE/geometry_PASS仍NOT_EVALUATED、RESULT_PASS=false；准备/零步PASS不升级为物理验证。
+-- release_id D4_remaining14_local_release_20261024_v1，绑定2611个去重输入，SHA256=9606906a7ea18c5ec47f1728eeb7d9af48990e17955167f79019c6ec1e3358c9；原2276保护是其来源之一，集合不相加。绑定原源码/binary/依赖/库/协议、首6验收、旧方案、新调度/协议/白名单/配置/零步和审查证据；运行每项前后核绑定与OpenLB提交。G4 v1锁、旧协议/FAIL与所有原始结果保持；无GitHub推送。
+-- 本机单进程单MPI rank；每项前可用RAM≥2GiB、磁盘≥7GiB，准备快照满足，tmux/time可用。fixed batch_id=development_remaining14_20261024_v1、tmux=d4-dev14-20261024；已存在批次/相同case正式结果拒绝覆盖或续跑。只防本入口重入，不声称控制所有手工启动。配置生成后须逐字节匹配准备模板；失败/绑定变化/资源不足即停，不重试。
+-- 正确唯一命令在本阶段NEXT_COMMAND.txt；命令已准备/交付，不等于已启动。正式输出预定D4/results/development_remaining14_20261024_v1，每项保存manifest/完整配置/日志/资源/独立exit/CSV/VTK/输入后核对，批次另有stage_manifest/progress/exit/completion。全部14结束后independent_acceptance=pending，不自动分析/拟合/网格/预测。原RESULT_PASS=false保持，完成后按冻结协议独立验收。
+-- 下一具体动作：若仍在本机计算，由用户手动启动此前交付的tmux命令，完成后再发起14项独立验收；若已在别处计算，先提供运行机器/完整结果目录并归档；Codex不等待长算、不轮询、不复跑首6项。12项开发细格和20预测继续关闭；网格/资源分批草案仍在development_completion_plan_20261024，最大细格RAM≥22GiB和长时预算另审。后续重拟合须新v2并在保留预测流动结果产生前新冻结。
+-- 其他第一篇与第二篇状态完整保留；新检查/绑定/状态差异与最终保护见本阶段evidence。原方案preparation/verification中“尚无runner/许可”是绑定历史快照，未改字节，本段与当前PREPARATION_STATUS更新现状。
++## 第一篇：D4余14项启动目录问题已修正，待用户运行更正命令（2026-10-24，当前入口）
++
++- 用户贴出真实终端后确认启动命令执行但tmux随即退出。本轮以原调用目录、移除--execute的后台检查复现原因：原命令cd到D4，而release含47项以SIM240项目根目录为基准的相对绑定；Path(p)因此找不到未改动的case_budget26.csv等文件，保护退出。此前只在项目根目录做默认CLI检查，遗漏实际启动目录。这是启动准备缺陷，不是用户操作错误或数值/物理FAIL。
++- 直接证据 `docs/reports/D4_startup_diagnosis_20261024/REPORT.md`、tmux_dry_check.log/json、verification.json。当前正式results/development_remaining14_20261024_v1仍不存在，未创建正式运行记录或启动steady；不能将tmux消失当成运行完成。原04:37/04:39/04:40“无结果”是接收快照，当前已有具体根因，不再等待终端输出。
++- 最小修正为新增D4/development_remaining14_20261024/start_from_project.sh，自动定位并cd项目根目录，默认--check，明确--execute才调用原冻结run_remaining.py；未来控制台日志追加evidence/startup_console.log。实际使用新CURRENT_STARTUP.md与NEXT_COMMAND_CORRECTED.txt；原NEXT_COMMAND.txt/README/PREPARATION_STATUS和原release/协议为历史快照，保留字节，不再使用旧cd到D4的启动命令。
++- 新wrapper bash语法通过；从D4和/tmp调用--check均exit0、ok=true/will_run=false；隔离tmux按直接传参方式--check通过，非法参数拒绝。2611原绑定按项目根目录重新核对一致，旧release SHA仍9606906a7ea18c5ec47f1728eeb7d9af48990e17955167f79019c6ec1e3358c9。新wrapper及命令单列SHA，不声称纳入原2611绑定；原runner/source/binary/数值门槛/G4锁均未改，不重新编译或重新绑定。
++- 本批范围仍余14主开发（h75/w60深25/50/100/120×P/T，w240深25/50/100×P/T，dx5/P=2w/a1e5）；已完成基础8+筛选6保持，主开发仍2/16、开发细格0/12、预测20未进入。单进程单rank、RAM≥2GiB/磁盘≥7GiB、固定batch_id与拒绝重跑、逐项日志/独立exit/完整数据/哈希检查不变；原RESULT_PASS=false保留，完成后独立验收。
++- 下一具体动作：用户在本机终端手动执行NEXT_COMMAND_CORRECTED.txt中的唯一命令；运行完成后按冻结协议验收14项原始记录/收敛/守恒/几何与全部保存流场。Codex没有启动或重跑正式计算、不等待长算/持续轮询；本轮无新数值或物理验收、无GitHub推送。12开发细格和20预测继续关闭，后续重拟合另立v2且在保留结果产生前新冻结。
++- 本轮报告、状态差异和新wrapper/命令哈希在startup诊断目录；其他第一篇与第二篇内容完整保留。
+ 
+ ## 第一篇：G4主候选v1已冻结，双向权衡与参数稳定性审查完成（2026-10-24，当前入口）
+ 
+@@ -23,7 +20,7 @@
+ - 锁 `candidate_lock.json`，ID `G4_candidate_prediction_v1_20261024`，SHA256 `08ae91994910e98afd701143928a5186a9b22d003c96f73d9643c2eb11d810dc`。绑定模型/系数/规则/预测等14文件；16主方向+4细格参考×3方案=60预测行，8主几何×3方案=24个A。`verify_lock.py`退出0，独立标量重算最大相对差4.44e−16，内存缺失/篡改两测试拒绝。模型锁只在本目录，不是旧D4 runner的release。
+ - 前瞻新目标采用草案3%/5%建议：P、T、A各自MAE≤3%、max≤5%，六条件全满足；不是老师原话或既有数值阈值，G4现有CV的A已超过5%，不掩盖失败风险。先核验完整来源/独立exit/原数值与几何协议，缺失或无效参考不判完整预测PASS；细格证据另列，不以细格替换粗格主分数，不把5nm一致性升级为全域物理正确。
+ - 正确时序为先锁候选/系数/逐点预测，再审前置条件和运行许可，由用户计算后独立验收；原草案“盲测PASS后锁”被纠正。本轮未读保留结果，不声称外部人员从未看过，运行前还须核验生成时间与接触记录。任何重拟合或规则变化另立v2，已见数据不得再次称盲测。
+-- D4余14主开发执行入口/绑定与技术许可已准备，当前以顶部D4执行准备入口为准：筛选6项PASS，余14待用户手动启动；网格比较草案保留，网格/预测执行未放行；不自动启动或跨阶段。无新OpenLB run_id、求解器修改/编译、原协议/运行许可改动、Gate升级或GitHub推送；旧FAIL、其他第一篇与第二篇内容保持。拟议目标域仍φ=.5、P=2w、s[.8,3.2]、t[1/3,1.6]，未获全域精度保证。
++- D4余14主开发启动目录缺陷已修正，当前以顶部D4启动修正入口为准：筛选6项PASS，余14待用户运行更正命令；网格比较草案保留，网格/预测执行未放行；不自动启动或跨阶段。无新OpenLB run_id、求解器修改/编译、原协议/运行许可改动、Gate升级或GitHub推送；旧FAIL、其他第一篇与第二篇内容保持。拟议目标域仍φ=.5、P=2w、s[.8,3.2]、t[1/3,1.6]，未获全域精度保证。
+ 
+ ## 第一篇既有稿：§2.3速度解释与方法支持资料核对完成（2026-10-23）
+ 

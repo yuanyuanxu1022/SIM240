@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-11-12T17:07:13+08:00",
+  "type": "targeted methods lookup, not a systematic review",
+  "scope": "DOE methods relevant to a two-factor deterministic groove conductance study; no new simulations, fitting or manuscript edits",
+  "queries": [
+    "site.itl.nist.gov div898 handbook response surface designs factorial interactions center points",
+    "Sacks Welch Mitchell Wynn 1989 Design and Analysis of Computer Experiments space filling deterministic",
+    "McKay Beckman Conover 1979 comparison three methods selecting values input variables computer code Latin hypercube"
+  ],
+  "sources": [
+    {
+      "title": "NIST How do you select an experimental design?",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri33.htm",
+      "access": "full webpage inspected"
+    },
+    {
+      "title": "NIST Response surface designs",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri336.htm",
+      "access": "full webpage inspected; two factors, three levels => 9 combinations; two-level plus center cannot separate pure quadratic terms"
+    },
+    {
+      "title": "NIST How to model DOE data",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section4/pri43.htm",
+      "access": "full webpage inspected"
+    },
+    {
+      "title": "Sacks, Welch, Mitchell, Wynn (1989), Design and Analysis of Computer Experiments",
+      "doi": "10.1214/ss/1177012413",
+      "url": "https://doi.org/10.1214/ss/1177012413",
+      "access": "publisher abstract and metadata via indexed publisher result; direct open returned iframe; full text not assessed"
+    },
+    {
+      "title": "McKay, Beckman, Conover (1979), A Comparison of Three Methods for Selecting Values of Input Variables in the Analysis of Output from a Computer Code",
+      "doi": "10.1080/00401706.1979.10489755",
+      "url": "https://www.stat.cmu.edu/technometrics/70-79/VOL-21-02/v2102239.pdf",
+      "access": "original 1979 7-page paper retrieved as PDF and text inspected; SOLA-PLOOP hydrodynamic simulation example; not general proof that LHS best for every response"
+    }
+  ],
+  "application_limits": [
+    "DOE is geometry coverage, not mesh convergence or physical validation",
+    "Use h/w and d/w as geometric factors at fixed phi=.5, w120 and P240; grid resolution is a numerical control, P/T are separate directional responses",
+    "Existing design: complete nonuniform 3x5 for h50/75/125 x d25/50/75/100/120, plus three thin-gap h25 points; not prospectively randomized DOE",
+    "Optional display subset h25/75/125 x d25/50/100 has all 9 existing geometries; d levels nonuniform; not standard orthogonal/CCD; all 18 retained for statistics and counterexamples",
+    "Read existing 5nm trends first; 2.5nm data remain separate; six FVM directions remain unchanged; independent-reference qualification required before reference-based trend claims",
+    "Do not refit V2 or treat exploratory subset as independent validation"
+  ]
+}

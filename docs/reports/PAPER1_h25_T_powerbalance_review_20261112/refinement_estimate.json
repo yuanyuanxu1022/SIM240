@@ -1,0 +1,67 @@
+{
+  "ladder": [
+    {
+      "cid": "h25_d100_T_coarse",
+      "dx": 1.25,
+      "cells": 11520,
+      "iters": 4577,
+      "elapsed": 42.41,
+      "peak_mb": 56.3594,
+      "per_iter": 0.0093,
+      "pb": 1.1537
+    },
+    {
+      "cid": "h25_d100_T_mid",
+      "dx": 0.625,
+      "cells": 46080,
+      "iters": 9865,
+      "elapsed": 245.83,
+      "peak_mb": 92.8008,
+      "per_iter": 0.0249,
+      "pb": 0.3917
+    },
+    {
+      "cid": "h25_d100_T_fine",
+      "dx": 0.3125,
+      "cells": 184320,
+      "iters": 25672,
+      "elapsed": 2658.12,
+      "peak_mb": 236.1094,
+      "per_iter": 0.1035,
+      "pb": 0.1464
+    }
+  ],
+  "fitted_order": 1.489,
+  "segment_orders": [
+    1.558,
+    1.42
+  ],
+  "iteration_growth_per_level": [
+    2.155,
+    2.602
+  ],
+  "iteration_growth_mean": 2.379,
+  "prediction": {
+    "dx_nm": 0.15625,
+    "cells": 737280,
+    "power_balance_percent": 0.05213,
+    "range_percent": [
+      0.05469,
+      0.0497
+    ],
+    "threshold_percent": 0.1,
+    "margin_factor": 1.92
+  },
+  "cost": {
+    "per_iteration_seconds": 0.5465,
+    "expected_iterations": 61069,
+    "fine_hours": 9.27,
+    "tight_iterations_assumed": 24428,
+    "tight_hours": 3.71,
+    "peak_memory_gb": 0.99,
+    "disk_gb": 0.63,
+    "wall_cap_hours": 12,
+    "total_hours_both_levels": 12.98,
+    "wall_cap_margin_hours": 2.73
+  }
+}

@@ -1,0 +1,10 @@
+--- v2/synthetic_child.py
++++ v3/synthetic_child.py
+@@ -18,6 +18,7 @@
+         pressure_reconstructed_dof_indices=np.array([2,3,4],dtype=np.int64),
+         velocity_reconstructed_values=x[:2].copy(),wall_velocity_dof_indices=np.array([1],dtype=np.int64),
+         periodic_slave_dofs=np.array([2],dtype=np.int64),periodic_master_dofs=np.array([3],dtype=np.int64),
++        periodic_coefficients=np.ones(1),
+         pressure_raw_P1=x[2:].copy(),pressure_zero_mean_P1=np.zeros(3),pressure_area_weights_hat2=np.ones(3))
+     arrays(root/'solution',fields,dict(record_kind='SYNTHETIC_MANUAL_ARRAYS_NOT_PDE'))
+ 

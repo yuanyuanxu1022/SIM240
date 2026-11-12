@@ -1,0 +1,31 @@
+--- before/AI_HANDOFF_20261015.md
++++ after/AI_HANDOFF_20261015.md
+@@ -1,17 +1,16 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## S0两条已有结果复核完成：P通过、T旧质量轨迹差异HOLD，未进入S1（2026-11-01）
+-
+-- 用户本轮范围：S0完成后按原URV-v1完整分析两条已有结果。已确认两条求解结束、独立native退出0；tmux会话结束，S0_completed.json未生成，外层因T回归拒绝而停止。本轮不重跑、不改门槛、不启动S1。证据入口`docs/reports/URV_S0_results_review_20261101/REPORT.md`、summary.json、analysis_P.json、analysis_T.json、comparison_summary.csv、numerical_gates.csv、source_manifest.json。使用peer-review/scientific-writing，AI自审非独立人工验收。
+-- 冻结合同SHA eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a，approved/实际运行身份P=URV_S0_P_v1_2_20261101_01、T=URV_S0_T_v1_2_20261101_01。逐条配置/case/目录与1572输入前后及当前哈希核对一致；37项/条原始文件清单与实际完整匹配，completion保留；独立native耗时P42.8371s/T29.9162s，无超时。真实启动授权仍限这两条、用户手动，未授权重试/进入S1。原合同S0_started=false是交付前快照，不回写封存。
+-- 原checker v1.2本轮对完成结果重新执行：P exit0、acceptance true；T exit2，复现legacy trajectory difference needs separate explanation。原运行时与本轮T failure/regression报表均保留，未改旧失败为成功。P正式RESULT_PASS=true；T RESULT_PASS=false，S0_RESULT_PASS=false、阶段HOLD。
+-- P重核4342步/4343行、3331完整窗，T2953步/2954行、1942完整窗；窗1013/上限58800，两者第一合格窗都恰好为实际末步。数值分项均PASS：修正质量最大相对变化P6.41977e-16/T1.06996e-15（严格<1e-10），账本差P2.28339e-16/T1.46269e-16（≤1e-13），密度/Mach/Re/末态截面/正通量/全有限和原统计窗规则全部符合；详细数值见表。T原失败JSON的NUMERICAL_GATE=NOT_EVALUATED保留，另存本轮分项数值重算PASS，不把分项通过当整体接受。
+-- 两条geometry_PASS=true：57600核心流体节点、32448链接、q=.5在原容差内，fallback/unresolved0、材料/体积/方向/单位正确。本轮实际读P/T各10保存帧，共20帧，完整21payload/条与原completion哈希匹配；逐帧57600唯一流体节点，排除周期重叠/固体，速度积分差在预设导出舍入界内。T读场是在原回归拒绝后的补充诊断，不覆盖失败或生成成功acceptance。
+-- 与旧h75基准对照：P重算K9.834076003216203e-23m³/旧9.834076003216204e-23，相对差1.1102230246251565e-16；T新旧K4.449022023188299e-23m³相同。两者K差≤1e-4。P全部20共同诊断列全程相同；T18/20相同，仅mass/mass_error各190行不同，共380条已保存legacy_differences_T.csv；首次step11、最后2414、最大在1141。mass最大差7.395570986446986e-32kg（相对旧初质量1.02716e-14、最多48双精度末位间隔），mass_error差最大1.0271626370072865e-14。
+-- T两列差异在相同190时点；新旧初质量/旧质量误差定义一致，旧质量最大相对变化同为8.934175019802938e-13。两方向最终切片、速度/压力/耗散文件、帧表和全部保存VTK payload均与旧基准逐字节相同。原D4/URV旧质量累计语句相同，但确切差异根因未证实；浮点累计/编译求值路径仅候选解释，不把小量级或保存流场相同直接当放行依据。原精确轨迹要求不加容差，T继续HOLD。
+-- 本轮只新增报告/复核回执/差异表与维护共享状态；1674份受保护原有文件前后保持；冻结checker/reader/协议/源码/程序/原始结果及旧回执未改。没有native调用/编译/拟合/新时间推进。原准备/v1.1/v1.2封存及此前77检查器/6人工测试、零步审计保持；F04多合同汇总仍OPEN后续单独处理。
+-- 科学状态：这是已知h75移植回归；REFERENCE_QUALIFIED_FOR_CASE=false、reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED不提升。旧细T FAIL、C/h75限定资格、V2/G4锁、旧D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1与GDI01既有结果保持。作者外部未使用声明及核查位置未提供/未独立审计的边界保持。无提交推送/外发材料。
+-- 下一具体动作：专项只读追踪T旧mass/mass_error差异，收口编译/累计来源与原回归条件的解释依据；在充分证据与明确裁定前保持S0 HOLD，不自动放宽、重跑或进入S1。该多线索编译/数值归因及裁定建议GPT-6 Astra｜High；不声称已切换模型。
++## S0横槽旧质量只读归因：已证实FMA路径改变，190点唯一归因未闭合，HOLD保持（2026-11-01）
++
++- 用户本轮范围：专项只读归因，查清累计/编译路径影响；证据与明确裁定前保持S0 HOLD，不自动重跑或进入S1。本轮入口`docs/reports/URV_S0_T_mass_readonly_attribution_20261101/REPORT.md`、summary.json、verified_machine_paths.json、provenance_comparison.json、arithmetic_probe.json及source_manifest.json。只读实际运行ELF/源码/记录并作算术核对；无C++编译、native调用、调试运行、验收重跑、源码/门槛修改或S1启动。peer-review证据边界，AI自审非独立人工科学终审。
++- 实际绑定旧ELF SHA022e479f3270d5b43d8cd0dd629d82a05c18758c77c26409c21c0b6a4d2861a9（旧h75 P/T manifest均匹配），新ELF SHA a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1（S0构建/合同匹配）。旧/新源码质量累计语句相同，ELF .comment均GCC13.3.0，三静态库哈希相同；旧编译命令仍仅make dry-run证据，不假装重建完整旧构建环境。本结论直接检查实际ELF，不依赖猜测旧环境。
++- 确定发现：旧mass最后一次乘加是FMA单次舍入；新mass先舍入单项乘积再相加。旧T0x3f661/旧P0x3fb16为vfmadd213pd，新T0x3fee8 vmulpd+0x3fef1 vaddpd，新P0x404b8 vmulpd+0x404c1 vaddpd；同一volume/mass打包项高64位mass偏移16已核。新增Neumaier统计共享已舍入单项质量，新指令数据流证实。因此“旧累计源码保留”没有保持机器运算路径等价，是实现层面的证据遗漏。volume同组也改变融合，本h75体积结果仍相同；不能全局关FMA而假定其他物理输出不受影响。
++- 算术正证：相同输入的明确构造例（非历史部分和）融合与分开乘加差1个双精度末位单位，精确有理数一次舍入交叉核对融合结果。最终XZ密度切片按沿y不变假设延拓48层、依源码x/y/z顺序累加57600项：两方向旧/新/补偿末态总质量均重现已有记录，中途单元前缀累计P1处/T39处有尾数差异但末态总量相同。这些是空间求和前缀，不是历史时间步，不当作190点复现。
++- 证据缺口：T保存步0,14,27,68,135,270,675,1350,2700,2953与190个差异时间点交集为空。原始材料无这些时点完整有序双精度rho或粒子分布；保存压力有限精度、其他时刻切片/全局均值/极值不能唯一恢复它们。故FMA机制及其同输入影响已确认，但“190点全部且仅由此产生”的严格历史归因NOT_ESTABLISHED；不从单个反例/小量级/其他保存场相同推定已完全解释。
++- 明确裁定：S0 HOLD保持，P_RESULT_PASS=true、T_RESULT_PASS=false、S0_RESULT_PASS=false。旧T checker exit2、failure和完整差异记录不改，不加新容差或追认接受。前轮两条数值/几何/20保存帧复核通过保持；T20共同列中18一致、mass/mass_error各190行差异（最大质量差7.395570986446986e-32kg、相对误差列差1.0271626370072865e-14），来源记录见`URV_S0_results_review_20261101/`。
++- 运行身份/合同保持：P=URV_S0_P_v1_2_20261101_01，T=URV_S0_T_v1_2_20261101_01；合同SHA eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a，approved仍仅用户已启动的这两条。S0_completed.json因T拒绝未生成；旧合同S0_started=false为交付前快照，实际两条已完成但整体未接受，不改封存。本轮1709份受保护既有文件前后保持，旧报告/原始数据/程序/配置/协议/检查器不改，无提交推送/外发项目材料。
++- 科学边界保持：reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及GDI01既有结果不回写；F04多合同汇总仍后续单独处理。原准备/v1.1/v1.2封存与真实作者未使用声明及其核查范围限制保持。
++- 下一具体动作：先审定最小补证/修复协议，限定旧质量观察量的旧舍入路径与必要密度输入证据，禁止全局改碰撞/力/速度浮点选项；任何隔离构建/诊断运行及新编号S0回归均需另行授权，本轮未准备或执行。原历史失败永久保留，未来只能另存新运行验收；在证据和裁定充分前继续HOLD，不自动进入S1。专项补证设计/裁定建议GPT-6 Astra｜High，不声称已切换模型。
+ 
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）

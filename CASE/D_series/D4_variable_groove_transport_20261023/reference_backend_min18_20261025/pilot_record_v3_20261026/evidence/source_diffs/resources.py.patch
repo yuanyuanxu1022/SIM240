@@ -1,0 +1,42 @@
+--- v2/resources.py
++++ v3/resources.py
+@@ -3,6 +3,30 @@
+ from pathlib import Path
+ import signal
+ import time
++
++
++def mount_identity(path):
++    path=Path(path).resolve(strict=True)
++    matches=[]
++    for line in Path('/proc/self/mountinfo').read_text().splitlines():
++        left,right=line.split(' - ',1);fields=left.split()
++        mount=Path(fields[4].replace('\\040',' ').replace('\\134','\\'))
++        if path.is_relative_to(mount):
++            matches.append((len(mount.parts),dict(mount_id=fields[0],device=fields[2],
++                mount_point=str(mount),filesystem=right.split()[0],st_dev=path.stat().st_dev)))
++    if not matches:raise ValueError('MOUNT_IDENTITY_UNAVAILABLE')
++    return max(matches,key=lambda x:x[0])[1]
++
++
++def durable_record_volume(record_parent,work_parent,minimum):
++    record_parent=Path(record_parent).resolve(strict=True)
++    record,work=mount_identity(record_parent),mount_identity(work_parent)
++    if record['filesystem'] not in {'ext4','xfs','btrfs','zfs'} or record['st_dev']==work['st_dev']:
++        raise ValueError('SEPARATE_PERSISTENT_RECORD_FILESYSTEM_REQUIRED')
++    stat=os.statvfs(record_parent)
++    if stat.f_bavail*stat.f_frsize<minimum:raise ValueError('INSUFFICIENT_RECORD_DISK')
++    return dict(identity=record,available_bytes=stat.f_bavail*stat.f_frsize,
++                persistence_scope='local filesystem and fsync; not a power-loss or hardware guarantee')
+ 
+ 
+ def hard_output_volume(parent, limit):
+@@ -117,7 +141,7 @@
+     stats=group.stats() if group else None
+     if stats and int(dict(line.split() for line in stats['memory.events'].splitlines()).get('oom_kill','0')):
+         reason='CGROUP_MEMORY_OOM'
+-    return dict(independent_exit_code=code, stop_reason=reason,
++    return dict(independent_exit_code=code, stop_reason=reason,children_stopped=True,
+                 direct_child_peak_RSS_KiB=usage.ru_maxrss,
+                 direct_child_cpu_seconds=usage.ru_utime+usage.ru_stime,
+                 sampled_tree_peak_RSS_bytes=peak_sample, sampled_output_peak_bytes=peak_output,

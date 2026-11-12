@@ -1,0 +1,234 @@
+--- before/SIM240_First_Paper_English_20261028.md
++++ after/SIM240_First_Paper_English_20261028.md
+@@ -1,22 +1,14 @@
+-# Directional transport discrepancies of the local cubic law in confined rectangular grooves: comparison against 5 nm discrete numerical references
++# Directional conductance discrepancies of the local cubic law in confined rectangular grooves and empirical correction
++
++**Author-review working manuscript; synchronized on 2026-11-07.** Existing results are used without new solver runs or fitting. Author scientific approval, venue formatting, declarations and access arrangements remain pending.
+ 
+ ## Abstract
+ 
+-Reduced models of nanoimprint flow commonly use a local cubic law to estimate effective transport through the residual film and grooves. We assess this approximation with lattice Boltzmann calculations of steady, fully filled flow between a planar substrate and a periodically grooved wall.
+-
+-The period and groove width are 240 and 120 nm. 18 geometries span gaps of 25–125 nm and groove depths of 25–120 nm. Along-groove ($y$) and across-groove ($x$) forcing is applied separately, giving 36 principal-direction samples.
+-
+-Three results emerge.
+-
+-**First, the 5 nm discrete results show different depth responses in the two directions.** At a gap of 50 nm, increasing depth from 25 to 120 nm multiplies the along-groove coefficient $K_{yy}$ by 3.55, but the across-groove coefficient $K_{xx}$ by only 1.034. Among the gaps of 50, 75 and 125 nm that cover this depth interval, the relative along-groove gain decreases with gap, but remains approximately 39.2% at 125 nm.
+-
+-**Second, the local cubic law overestimates transport at all 36 principal-direction samples relative to the 5 nm discrete references.** The overestimates range from +10.30% to +204.85% along the grooves and from +8.11% to +54.19% across them. This is a systematic pattern within the sampled geometries and resolution, rather than a discrepancy confined to a few samples.
+-
+-**Third, the reference geometry shows discrepancies in both anisotropy and reconstructed flow direction relative to the 5 nm principal values.** At $h=75$ nm and $d=100$ nm, the numerical anisotropy is 2.21, whereas the model gives 3.70, approximately 67% higher. Under the same linear tensor description, the flux directions reconstructed from the two sets of principal values differ by 9.20° for forcing at 45°.
+-
+-Retrospective evaluation against the 5 nm references, using the published rounded coefficients, gives maximum absolute corrected residuals of 10.5% for the 18 along-groove samples and 18.7% for the 18 across-groove samples. The 15 across-groove samples with $h\ge50$ have a maximum of 6.9%. At the across-groove sample $(h,d)=(25,100)$ nm against the 5 nm reference, the signed discrepancy changes from +16.36% to −18.71%, increasing its absolute value. The correction depends only on $d/w$; the residuals still vary with gap, and their sources have not been separated.
+-
+-These discrepancy magnitudes and correction residuals are specific to the sampled conditions and 5 nm references; they are neither continuous-solution error bounds nor prediction accuracies for new geometries. Separately, Appendix E uses an energy identity and sectional dissipation inequalities to show that the local cubic law bounds both principal conductances from above in the ideal Stokes model of fixed, fully filled, no-slip periodic straight grooves. This result determines neither the discrepancy magnitudes nor the sign of the anisotropy discrepancy. The quantitative contribution is the sampled directional comparison and the limits of retrospective correction. Model assessment must report $K_{xx}$, $K_{yy}$, their ratio and the scope of the numerical reference evidence together.
++Reduced nanoimprint models commonly estimate patterned-surface transport with a local cubic law, which does not explicitly resolve groove sidewalls or step connections. We assess this construction for equal-width rectangular grooves and ribs of period 240 nm and groove width 120 nm. Lattice Boltzmann calculations give the along- and across-groove conductances for fixed, fully filled gaps with Newtonian liquid and no-slip walls. The main dataset comprises 18 geometries and 36 principal-direction results on a 5 nm grid; four geometries also have 2.5 nm refinements.
++
++Relative to the 5 nm discrete references, the local cubic law overestimates all 36 principal-direction results. Maximum discrepancies are +204.85% along and +54.19% across the grooves; the former corresponds to a model value approximately 3.05 times the reference. At the reference geometry, anisotropy increases from the numerical value of 2.21 to the model value of 3.70. Under the same linear tensor relation, the reconstructed mean flux directions differ by 9.20° for forcing at 45°. The fixed V2 empirical correction reduces absolute discrepancy in 35 of the 36 records, although the local improvement assessment at the thinnest-gap deep-groove transverse condition changes with reference grid. A fixed-form comparison at one additional gap provides supplementary evidence.
++
++Appendix E establishes upper bounds on both principal conductances for the stated continuous Stokes problem; these bounds determine neither discrepancy magnitudes nor V2 accuracy. Quantitative conclusions concern the sampled conditions and specified discrete references. Assessment should consider both principal values, their ratio and reference sensitivity together. Continuous-domain prediction accuracy and real-imprint fidelity have not been established.
+ 
+ **Keywords:** nanoimprint lithography; rectangular grooves; anisotropic transport; lattice Boltzmann method; local cubic law; model discrepancy
+ 
+@@ -38,9 +30,13 @@
+ 
+ Effective transport tensors in confined grooves have also been studied analytically and numerically. Dewangan and Datta combined spectral analysis with domain perturbation to establish tensor relations and evaluate representative topographies [5]. The same authors studied along-groove flow between a sinusoidal wall and a planar wall. Their full spectral method does not assume small amplitude; separate asymptotic approximations have their own limiting conditions [6]. Groove-induced transport anisotropy is therefore not itself a new finding.
+ 
++The compared problems and coefficient definitions differ. Jain et al. [1] use anisotropic transport in a patterned-template process model; here the comparison is restricted to fixed, fully filled cells. Patir–Cheng [4, p. 15, Eqs. (23)–(24)] gives harmonic and arithmetic flow-factor averages within a local Reynolds model; the reference-height normalization must be restored before comparison with the present conductance in m³. Dewangan–Datta [5, §§4.1–4.2] compares smooth and triangular profiles with finite-element solutions. Its §4 identifies divergent spectral sums for a square-wave profile, so the affected expressions are not a matched solution for the present rectangular steps. Our contribution is a paired assessment of directional discrepancies, anisotropy consequences and fixed-correction performance for this rectangular family, without a priority claim. Source-check scopes are given in Supplementary S11.
++
+ We compare the magnitudes and directional differences of local-cubic-law discrepancies against explicitly resolved numerical principal values, and examine the remaining residuals of an empirical correction. The ideal-Stokes upper bounds are established separately in Appendix E. Positive discrepancy alone is not treated as sufficient evidence of novelty. The comparison uses 5 nm discrete references and informs assessment of a reduced model; it does not establish process-prediction accuracy.
+ 
+ ### 1.3 Scope of this study
++
++We compare both principal conductances of fully filled rectangular grooves against the local cubic law, quantify consequences for anisotropy and tensor-reconstructed flow direction, and assess the fixed empirical correction at the same discrete references. Ideal-Stokes upper bounds provide theoretical context; discrepancy magnitudes and grid sensitivity are reported separately.
+ 
+ For rectangular grooves of fixed period and width, we apply along-groove and across-groove forcing separately. The principal values obtained on a 5 nm grid serve as discrete references for the local cubic law under common geometry, flux definitions and fluid properties. We retrospectively evaluate the V2 correction. Refinements at four geometries characterize reference sensitivity, rather than certifying continuous-solution accuracy across the map.
+ 
+@@ -74,7 +70,7 @@
+ | 125 | 25, 50, 75, 100, 120 | 5 | 10 |
+ | **Total** | — | **18** | **36** |
+ 
+-Calculations use the OpenLB [7] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\tau=1$. The force term uses the Guo scheme [9]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with wall intersections obtained from the analytical geometry [7,8].
++Calculations use the OpenLB [7] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\tau=1$. The force term uses the Guo scheme [9]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with intersections obtained from the analytical geometry [7,8]. The scheme was formulated for fractional wall distances [8]; OpenLB also maintains implementation checks through analytical benchmarks and automated regression tests [7].
+ 
+ The in-plane dimensions are $L_x=L_y=240$ nm, exactly one pattern period. Boundaries are periodic in $x$ and $y$, with no slip at the substrate and mold. A uniform volume force is imposed with acceleration $a=1\times10^{5}$ m s⁻². The same amplitude is used throughout the main map; the reference-geometry check is described in §2.4. OpenLB `computeU` supplies the macroscopic velocity, including the half-time-step force correction consistent with the Guo scheme. The stopping rule uses a 1000-step flux window: main-flux relative standard deviation $\le10^{-6}$, relative range $\le5\times10^{-6}$, and, for principal-axis forcing, absolute cross-flux $\le10^{-12}$ m²/s. Its scope as a stopping rule, rather than an independent acceptance metric, is discussed in §3.1. Saved manifests contain binary hashes; parameters, results and logs are indexed in [Supplementary Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s1). Binding to historical application source, compiler configuration and OpenLB dependencies remains incomplete for some runs; this provenance limitation is retained in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10).
+ 
+@@ -99,13 +95,25 @@
+ 
+ The main map uses $\Delta x=5$ nm. The smallest gap, $h=25$ nm, has $h/\Delta x=5$, requiring particular attention to resolution. Refining $(h,d)=(25,100)$ nm to 2.5 nm changes the along-groove and across-groove coefficients by approximately −0.386% and −4.431%, normalized by the 5 nm values. We therefore retain 5 nm results as references at a specified discrete resolution and report thin-gap refinement sensitivity separately. Two grids neither determine observed convergence order nor establish grid independence of the full map (§3.3).
+ 
+-Fractional wall distances are determined analytically and checked individually. All 46 analyzed cases (36 main-map, 8 refinement and 2 viscosity checks) satisfy $q_{\min}=q_{\max}=0.5$ within tolerance $10^{-10}$. Wall intersections therefore lie at the midpoints of neighboring-node links, so the Bouzidi rule reduces to its half-way case. This geometry-consistency check alone does not establish zero boundary error. The flat-wall convergence in Section 3 reflects the combined discretization and flux-extraction error; it does not separate those sources or establish accuracy at arbitrary fractional wall distances.
++Fractional wall distances are determined analytically and checked individually. All 46 records in the legacy boundary-audit set (36 main-map, 8 refinement and 2 viscosity checks, excluding the added h=100 nm cases) satisfy $q_{\min}=q_{\max}=0.5$ within tolerance $10^{-10}$. Wall intersections therefore lie at the midpoints of neighboring-node links, so the Bouzidi rule reduces to its half-way case. This geometry-consistency check alone does not establish zero boundary error. The flat-wall convergence in Section 3 reflects the combined discretization and flux-extraction error; it does not separate those sources or establish accuracy at arbitrary fractional wall distances.
+ 
+ Maximum Mach numbers range from $5.7\times10^{-10}$ to $4.1\times10^{-7}$, about five orders of magnitude below the 0.05 compressibility criterion, placing the flow in an effectively incompressible regime.
+ 
+ Two additional viscosity checks use $\mu=15$ mPa·s and are recorded separately from the main-map properties. The D2/D3 inventory contains 52 runs: 36 principal-direction samples, 8 refinements, 2 viscosity checks and 6 oblique-forcing runs ([S1 and Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s1)). **Run count is not geometry count.** Periodic-replication and multi-force checks are in [S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s8); historical flat-wall and three-grid benchmarks are in [S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s9). These are not part of the 52-run inventory. Historical-build provenance is discussed in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10).
+ 
+-Supporting methods are numbered S1–S11. The [supplementary index](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-index) and the source manuscript Appendix B map text locations to supporting tables.
++The datasets have distinct roles; records reused across checks must not be counted as independent geometries:
++
++| Dataset | Composition | Role |
++|---|---|---|
++| Main comparison | 18 geometries, 36 principal-direction results at 5 nm | Main local-law and V2 statistics |
++| Refinements | 8 results at 2.5 nm for 4 of those geometries | Reference sensitivity, reported separately |
++| Additional gap | 2 results at 5 nm for h=100 nm, d=100 nm | Fixed-form supplementary comparison |
++| Build reproduction | 2 new records for h=75 nm, d=100 nm, paired with historical records | Single-geometry reproduction, not added comparison geometries |
++| Legacy additional checks | 2 viscosity and 6 oblique results | Property response and internal tensor consistency |
++
++The formula-comparison set therefore contains 19 geometries and 46 discrete records (36+8+2), distinct from the 46-record legacy boundary-audit set (36+8+2 viscosity checks). The original 52-row Table S1 is retained; added and build-comparison records are indexed in Supplementary Table S6.
++
++Supporting methods are numbered S1–S13. The [supplementary index](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-index) and the source manuscript Appendix B map text locations to supporting tables.
+ 
+ ### 2.2 Definition of the transport coefficients
+ 
+@@ -208,7 +216,7 @@
+ 
+ **Cross-check with the main-map reference.** At $N_x=2$, 2.5 nm spacing and $1\times10^5$ m s⁻², the result is $K_{yy}=9.7824236970\times10^{-23}$ m³, agreeing with the archived three-grid baseline at 2.5 nm to relative difference $6.9\times10^{-14}$. This supports agreement between batches at that point, rather than common provenance for every condition.
+ 
+-**Terminology.** We report **numerical verification** of consistency between the implementation, computed solutions and prescribed equations, including analytical benchmarks, grid sensitivity and periodic consistency. Each check has its own coverage and limits. An independent-solver comparison would be a numerical cross-check and would not alone establish physical validation; no such same-geometry comparison has been completed. **Physical validation is outside this study:** the model has not been compared with experimental measurements of the target system. Unless explicitly qualified as physical validation, verification here concerns numerical checks. Conclusions describe discrepancies within this numerical model, rather than its fidelity to real imprint processes.
++**Terminology.** We report **numerical verification** of consistency between the implementation, computed solutions and prescribed equations, including analytical benchmarks, grid sensitivity and periodic consistency. Each check has its own coverage and limits. An independent-solver comparison of resolved grooves would be a numerical cross-check; no such matched comparison has been completed. Independent implementations of the same static averaged model are compared in §5.3, which tests coefficient interfacing rather than resolved-groove accuracy. **Physical validation is outside this study:** the model has not been compared with experimental measurements of the target system. Unless explicitly qualified as physical validation, verification here concerns numerical checks. Conclusions describe discrepancies within this numerical model, rather than its fidelity to real imprint processes.
+ 
+ ---
+ 
+@@ -238,7 +246,7 @@
+ | 2.5 | $3.519529\times10^{-23}$ | $3.515625\times10^{-23}$ | 0.111% |
+ | 1.25 | $3.516580\times10^{-23}$ | $3.515625\times10^{-23}$ | 0.0272% |
+ 
+-Halving the spacing reduces the error by approximately a factor of four. This tests total integrated-transport error in the planar configuration, including velocity discretization and quadrature. **It cannot be attributed entirely to bulk or boundary treatment.** Nor does it establish second-order accuracy of interpolated bounce-back at arbitrary fractional wall distances: these calculations use only $q=1/2$.
++Halving the spacing reduces the error by approximately a factor of four. The analytical-comparison/refinement structure is consistent with OpenLB Poiseuille benchmarks and regression tests [7], although the metric here is integrated conductance rather than a velocity-field L2 norm. This tests total integrated-transport error in the planar configuration, including velocity discretization and quadrature. **It cannot be attributed entirely to bulk or boundary treatment.** Nor does it establish second-order accuracy of interpolated bounce-back at arbitrary fractional wall distances: these calculations use only $q=1/2$.
+ 
+ ### 3.3 Grid resolution in grooved geometries
+ 
+@@ -259,9 +267,13 @@
+ 
+ Two-grid comparisons characterize resolution sensitivity only for the checked geometries. Historical data at h=75 nm and d=100 nm also use 5, 2.5 and 1.25 nm grids. Conditional Richardson extrapolation and GCI based on observed order, together with run limitations, are reported in [S9 and Table S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s5), following [10]. The 1.25 nm transverse record failed the frozen mass gate. We do not use the table to confirm an asymptotic range or extend its fine-grid estimates to every production sample.
+ 
++The S0–S4 control chain is indexed separately in [S12 and Table S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s12): S0 implementation/statistic regression at h=75 nm, d=100 nm, S1 analytical plate checks, grid and forcing checks at h=60 nm, d=80 nm, and grid checks at h=30 nm, d=80 nm. The thin-gap transverse medium-to-fine change is 1.328387035%, exceeding its original 1% criterion, so stage S4 remains FAIL. This differs from the historical mass failure at h=75 nm, d=100 nm. Control geometries are excluded from the main comparison set, and their grid changes are not error bars for other geometries.
++
+ ### 3.4 Known limitations
+ 
+-Existing output audits checked saved flux, mass, density, convergence and boundary diagnostics. The original 48-run audit and 4 later refinements are recorded separately. The historical finest transverse mass FAIL is retained. Scheme C has saved passing outputs, but the cited independent-release-report path and historical-build binding remain incomplete. **No same-geometry independent-solver or experimental reference is available here.** The evidence supports comparison of saved discrete results, rather than spatial convergence at every sample.
++Existing output audits checked saved flux, mass, density, convergence and boundary diagnostics. The original 48-run audit and 4 later refinements are recorded separately. The historical finest transverse mass FAIL is retained. Scheme C has saved passing outputs, but the cited independent-release-report path and historical-build binding remain incomplete. **No resolved-groove independent-solver or experimental reference is available here.** The OpenFOAM comparison in §5.3 concerns the same averaged model and supports interface consistency only. The evidence supports comparison of saved discrete results, rather than spatial convergence at every sample.
++
++**Single-geometry build reproduction.** At $h=75$ nm and $d=100$ nm, matched calculations with the currently identifiable executable reproduce both historical principal conductances: $K_{xx}=4.449022\times10^{-23}$ m³ and $K_{yy}=9.834076\times10^{-23}$ m³. Stopping steps and stepwise main-flux values coincide in each direction; sectional-flow diagnostics have last-digit differences, with maximum absolute difference $3.66\times10^{-33}$ m³/s. This supports reproduction of the main transport results at this geometry, rather than equivalence over all historical geometries or complete binding to historical source and dependencies.
+ 
+ ---
+ 
+@@ -302,6 +314,8 @@
+ 
+ The largest along-groove discrepancy occurs at $(h,d)=(50,120)$ nm: the model coefficient is approximately 3.05 times the reference, an overestimate of approximately 204.85%. The largest along-groove discrepancy is about 20 times its smallest, giving a wider range than across the grooves.
+ 
++In addition to the 36 main records, four existing geometries have eight 2.5 nm records (§3.3), and §4.4 adds two principal-direction records at h=100 nm. All 46 comparison records for 19 geometries lie below the corresponding local-cubic-law values. Refinements and added-gap comparisons are reported separately and are excluded from the original 36-record statistics. Appendix E constrains the continuous solution K*, not discrete K_LB. These observations are compatible with the upper bounds; they are neither 46 independent physical conditions nor a map-wide continuous-error bound. The bounds determine neither discrepancy magnitudes, the sign of the ratio discrepancy nor V2 accuracy.
++
+ Within sampled depth sequences at fixed gap, the along-groove discrepancy increases with $d/w$. At gaps $h=50$, 75 and 125 nm, it decreases with gap at fixed depth. Including $h=25$ nm removes monotonicity at some depths. For example, at $d=100$ nm it rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm, before falling to 144.95% and 108.38% at $h=75$ and 125 nm. These data support parameter dependence, but establish neither a unique mechanism nor the exclusion of discretization effects.
+ 
+ ![Figure 3: local-cubic-law discrepancy against gap](../../figures/paper/Fig7_error_vs_gap.png)
+@@ -345,21 +359,29 @@
+ \tag{6}
+ $$
+ 
+-Evaluation using the published coefficients gives a maximum absolute residual of 10.5% over all 18 along-groove samples and 18.7% over all 18 across-groove samples. The 15 across-groove samples with $h\ge50$ give 6.9%. Table 8 compares maxima over matched sample sets.
++V2 is evaluated here as a fixed empirical relation. Its multiplicative form retains the local-law baseline, stays positive and recovers the flat-plate value at d=0. These properties do not establish accuracy of its coefficients, exponents or choice of d/w as the sole factor variable. Surviving records do not fully document an a priori exclusion of alternative variables or function families; no such rationale is reconstructed, and the added results are not used to reselect the form or coefficients.
++
++Evaluation using the published coefficients gives a maximum absolute residual of 10.5% over all 18 along-groove samples and 18.7% over all 18 across-groove samples. The 15 across-groove samples with $h\ge50$ give 6.9%. Table 8 compares maxima, means and improvement counts over matched sample sets.
+ 
+ **Table 8. Discrepancies before and after correction, relative to the 5 nm references.**
+ 
+-| Direction and samples | Original maximum absolute discrepancy | V2 maximum absolute residual |
+-|---|---:|---:|
+-| Along, all 18 | 204.85% | 10.5% |
+-| Across, all 18 | 54.19% | 18.7% |
+-| Across, $h\ge50$ nm，15 samples | 54.19% | 6.9% |
+-
+-A reduction in the overall maximum does not imply improvement at every sample. At the across-groove sample $(h,d)=(25,100)$ nm, the signed discrepancy changes from +16.36% to −18.71%, increasing its absolute value by approximately 2.34 percentage points. This is the only principal-direction sample in the 5 nm main map whose absolute discrepancy increases. With the 2.5 nm reference, the corresponding values are +21.76% and −14.94%. The assessment of local improvement therefore depends on the reference grid; correction accuracy and reference accuracy must be distinguished.
+-
+-V2 depends only on $d/w$, whereas residuals still vary with gap. This variable choice does not capture the full sampled gap response. Contributions from model form, parameter estimation and discrete references have not been separated.
+-
+-The 9 calibration geometries and 9 extension geometries correspond to two different binary-SHA groups: geometry grouping and program identity coincide completely. Among extension data, d=75 nm lies within the calibration depth range, whereas d=120 nm and h=25 nm extend beyond the calibration depth and gap ranges. Without same-condition comparisons across the two program identities, potential build effects cannot be separated from geometry, model and reference effects on residuals. Extension data were already visible during model-form selection. These residuals therefore remain retrospective descriptions, rather than independent prediction evidence. V1, group-specific residuals and fitting records are retained separately in supporting files and are not mixed with V2.
++| Direction and samples | Original maximum absolute discrepancy | V2 maximum absolute residual | Original mean absolute discrepancy | V2 mean absolute discrepancy | Absolute discrepancy reduced |
++|---|---:|---:|---:|---:|---:|
++| Along, all 18 | 204.85% | 10.50% | 88.85% | 6.40% | 18/18 |
++| Across, all 18 | 54.19% | 18.71% | 30.63% | 4.42% | 17/18 |
++| Across, $h\ge50$ nm, 15 samples | 54.19% | 6.9% | — | — | — |
++
++Mean absolute discrepancy is the arithmetic mean of absolute percentage discrepancies over the 18 main samples in each direction, not a signed mean. Across both directions, 35/36 records improve. The 15-sample subset identifies the thin-gap contribution; it does not guarantee a 6.9% maximum for every condition with h≥50 nm.
++
++A reduction in the overall maximum does not imply improvement at every sample. At the across-groove sample $(h,d)=(25,100)$ nm, the signed discrepancy changes from +16.36% to −18.71%, increasing its absolute value by approximately 2.34 percentage points. This is the only principal-direction sample in the 5 nm main map whose absolute discrepancy increases. With the 2.5 nm reference, the corresponding values are +21.76% and −14.94%. The assessment of local improvement therefore depends on the reference grid; correction accuracy and reference accuracy must be distinguished (Supplementary Table S7).
++
++The V2 multiplicative factor depends only on $d/w$, while the complete formula $K_i^{V2}=F_i(d/w)K_i^{LC}(h,d)$ still contains gap $h$. Residuals still vary with gap. This variable choice does not capture the full sampled gap response. Contributions from model form, parameter estimation and discrete references have not been separated.
++
++The 9 calibration geometries and 9 extension geometries correspond to two different binary-SHA groups: geometry grouping and program identity coincide completely. Among extension data, d=75 nm lies within the calibration depth range, whereas d=120 nm and h=25 nm extend beyond the calibration depth and gap ranges. Apart from the matched reproduction at h=75 nm, d=100 nm (§3.4), no further same-condition comparisons across the two program identities are available. Potential build effects therefore remain incompletely separated from geometry, model and reference effects on residuals. Extension data were already visible during model-form selection. These residuals therefore remain retrospective descriptions, rather than independent prediction evidence. V1, group-specific residuals and fitting records are retained separately in supporting files and are not mixed with V2.
++
++**Fixed-form comparison at an additional gap ($h=100$ nm).** At fixed groove width $w=120$ nm, period $P=240$ nm and depth $d=100$ nm, two principal-direction calculations were added on the 5 nm grid. This gap was absent from the original nine-geometry coefficient-calibration set. The comparison uses the previously published V2 coefficients without refitting. Across- and along-groove OpenLB conductances are $9.914424\times10^{-23}$ m³ and $1.654764\times10^{-22}$ m³. With the matched OpenLB discrete values as denominators, local-law discrepancies are +49.43% and +126.62%, and V2 residuals are +4.39% and −2.03%. The OpenLB ratio $A=K_{yy}/K_{xx}$ is 1.6690, compared with 1.5664 from V2; its discrepancy, using the same model/reference−1 convention, is −6.15%. These results provide supplementary evidence for the fixed V2 relation at one added gap. Comparison is restricted to the 5 nm references and provides neither a continuous-domain accuracy guarantee nor certification of a strictly blinded test.
++
++At fixed $d/w$, the along-groove V2 residual changes from +5.90% at $h=75$ nm to −2.03% at $h=100$ nm, a difference of 7.93 percentage points; the transverse difference is 2.04 percentage points. The along-groove change fails the batch's recorded five-percentage-point structural screen. This motivates examining gap dependence of the multiplicative factor, but does not uniquely identify omission of gap as the cause or determine a replacement form. Supplementary Tables S6 and S7 index the added comparisons and the thin-gap two-grid assessment.
+ 
+ ---
+ 
+@@ -390,15 +412,32 @@
+ 
+ Prescribed speed and prescribed load give different outputs. At fixed speed, motion sets the stroke time and coefficient errors primarily affect pressure and load. At fixed load, closure rate depends on resistance and time must be integrated over the changing gap. **A discrepancy at one fixed gap cannot be treated directly as the time error for an entire stroke.**
+ 
+-### 5.3 Applicability and unverified conditions
+-
+-Responses and discrepancy ranges come from 18 geometries and 36 principal-direction samples at period 240 nm, width 120 nm and equal groove/rib widths. They do not cover other area fractions, groove widths, pattern junctions or arbitrary continuous parameter combinations.
++### 5.3 Coefficient interfacing in a static averaged model
++
++To check coefficient interfacing, the local-law and V2 conductances at $h=75$ nm, $d=100$ nm, $w=120$ nm and $P=240$ nm are supplied to a static averaged model with mean liquid thickness $\bar H=h+d/2=125$ nm. The interface is
++
++$$
++\mathbf J=-\frac{\mathbf K}{\mu}\nabla p,\qquad
++\bar{\mathbf u}=\frac{\mathbf J}{\bar H},\qquad
++\mathbf D=\bar H\,\mathbf K^{-1},
++\tag{8}
++$$
++
++where $\mathbf D$ has units m⁻². The synthetic averaged domain is 24×48 μm with 16×32×1 cells. Viscosity is 0.001 Pa·s; the driving edges have gauge pressures 24 and 0 Pa, the other in-plane edges have no flux, and the walls do not move.
++
++C01–C04 apply either local-law or V2 principal conductances and compare outlet fluxes from a two-dimensional implementation and an OpenFOAM averaged-pressure solver. Along-groove forcing is represented by rotating the groove direction; $K_{yy}$ always refers to groove-attached coordinates. GDI01 additionally inserts the V2 transverse coefficient through the momentum-resistance source and compares its output with the C01 baseline. Replacing the local law with V2 reduces transverse and longitudinal outlet flow by 30.14% and 56.77%, respectively: these are output responses to changed conductance at common static boundaries.
++
++The checks support units, directions and flux interfacing in the tested cases. The averaged domain does not resolve individual grooves, and coefficients come from the same formulas. Agreement therefore does not independently validate conductance accuracy, dynamic squeezing, load or filling time. Supplementary S13 records the implementation-check scope.
++
++### 5.4 Applicability and unverified conditions
++
++Main-map responses and discrepancy ranges come from 18 geometries and 36 principal-direction results at period 240 nm, width 120 nm and equal groove/rib widths. The h=100 nm comparison adds one geometry, reported separately, giving 19 comparison geometries in total. They do not cover other area fractions, groove widths, pattern junctions or arbitrary continuous parameter combinations.
+ 
+ Reported ratios, trends and anisotropy derive from saved 5 nm discrete records. Along-groove and across-groove results at each geometry share a binary, but different geometries belong to two program-identity groups. Pairing within one program does not guarantee cancellation of directional errors, and cross-geometry trends have not excluded build effects.
+ 
+ Among the four refined geometries, the transverse component at the thinnest gap, $(h,d)=(25,100)$ nm, has the largest grid sensitivity (−4.43%, normalized by the 5 nm value). Geometry-specific refinements cannot yet establish a map-wide uncertainty bound.
+ 
+-Correction performance must specify sample set and reference grid. The maximum absolute transverse residual is 18.7% over all 18 samples; 6.9% applies only to the 15 with $h\ge50$. At the thinnest gap and $d=100$ nm, the absolute transverse discrepancy increases from 16.36% to 18.71% against the 5 nm reference, but decreases from 21.76% to 14.94% against the 2.5 nm reference. Overall maxima cannot replace pointwise assessment, and local improvement depends on reference resolution. V2 does not explicitly include gap, although residuals vary with gap. This limits its representation, but does not establish omission of gap as the sole residual source.
++Correction performance must specify sample set and reference grid. The maximum absolute transverse residual is 18.7% over all 18 samples; 6.9% applies only to the 15 with $h\ge50$. At the thinnest gap and $d=100$ nm, the absolute transverse discrepancy increases from 16.36% to 18.71% against the 5 nm reference, but decreases from 21.76% to 14.94% against the 2.5 nm reference. Overall maxima cannot replace pointwise assessment, and local improvement depends on reference resolution. The V2 multiplicative factor does not explicitly include gap, although the complete formula does through the local-law baseline. Residuals vary with gap. This limits its representation, but does not establish omission of gap as the sole residual source.
+ 
+ The empirical relation and numerical reference have separate limitations. The former requires conditions unused in model selection after the model and scope are frozen. The latter requires grid or independent-reference evidence commensurate with the claimed accuracy. **Neither has been completed over the entire parameter range.**
+ 
+@@ -408,15 +447,19 @@
+ 
+ ## 6 Conclusions
+ 
+-**1.** In the sampled 5 nm discrete results for fully filled rectangular grooves, deepening the grooves affects along-groove and across-groove transport differently. At a 50 nm gap, increasing depth from 25 to 120 nm multiplies $K_{yy}$ by 3.55 and $K_{xx}$ by only 1.034. Among gaps of 50, 75 and 125 nm covering that interval, the relative along-groove gain decreases with gap but remains approximately 39.2% at 125 nm.
+-
+-**2.** Relative to the 5 nm discrete references, the local cubic law overestimates all 36 principal-direction samples: +10.30% to +204.85% for $K_{yy}$ and +8.11% to +54.19% for $K_{xx}$. Along-groove discrepancy increases with depth in sampled fixed-gap sequences, but does not decrease monotonically with gap at every depth. These magnitudes and trends are not continuous-domain accuracy guarantees and identify no single dominant mechanism. Appendix E separately proves ideal-Stokes principal-conductance upper bounds, which do not determine these percentages.
+-
+-**3.** Relative to the reference geometry’s 5 nm principal values, the model overestimates anisotropy by approximately 67%. Under the same linear tensor description, flux directions reconstructed from the two sets of principal values differ by 9.20° for forcing at 45°. These are not experimentally validated or continuous-solution-certified flow-direction errors. Both principal values and their ratio require assessment.
+-
+-**4.** Retrospective evaluation using published V2 coefficients against 5 nm references gives maximum absolute residuals of 10.5% for 18 along-groove samples and 18.7% for 18 across-groove samples; the 15 transverse samples with $h\ge50$ give 6.9%. At the transverse sample $(25,100)$ nm, the absolute discrepancy increases against the 5 nm reference, and local improvement depends on the reference grid. Residual gap dependence remains. Evaluation must report sample coverage, reference grid and data-use history; the relation cannot be extended as a prediction relation for arbitrary geometries or dynamic imprinting.
+-
+----
++**1.** Against the 36 main principal-direction records for 18 geometries at 5 nm, local-law discrepancies range from +10.30% to +204.85% along and from +8.11% to +54.19% across the grooves. Appendix E separately establishes upper bounds for the ideal continuous Stokes problem, without determining these percentages. Eight refinement and two additional-gap records also lie below the model values, giving 46 comparison records for 19 geometries; this compatibility does not certify map-wide continuous-solution accuracy.
++
++**2.** Geometry responses and model discrepancies differ by direction. At a 50 nm gap, deepening from 25 to 120 nm multiplies the 5 nm Kyy by 3.55 and Kxx by 1.034. At 125 nm gap, the along-groove gain remains about 39.2%, with refinements at both endpoints supporting the paired trend. At the reference geometry, the model anisotropy is about 67% higher than the 5 nm reference, and mean flux directions reconstructed under the same linear tensor relation differ by 9.20° for 45° forcing. Both principal values and their ratio require assessment; no unique dissipation mechanism or real dispensing error has been established.
++
++**3.** Retrospective comparison using the published V2 coefficients reduces the along-groove mean absolute discrepancy from 88.85% to 6.40% and the transverse value from 30.63% to 4.42%, improving 35/36 main records. Maximum absolute residuals are 10.50% and 18.71%, respectively. At h=25 nm, d=100 nm, the local transverse improvement assessment changes between 5 and 2.5 nm references. The 6.9% maximum in the h≥50 nm subset is not a continuous applicability guarantee. Residual gap dependence must be assessed separately from model selection, parameter estimation and reference error.
++
++**4.** With V2 coefficients fixed, the added h=100 nm, d=100 nm geometry gives transverse, longitudinal and anisotropy discrepancies of +4.39%, −2.03% and −6.15% against the 5 nm references. This fixed-form supplementary comparison does not establish general prediction accuracy. OpenFOAM interface checks in a static averaged model support tested units, directions and flux consistency, rather than independently validating resolved conductances or dynamic imprinting accuracy.
++
++---
++
++## Data, code and author-review status
++
++Selected code, figures and small data are retained in the private repository [SIM240_code_figures_data](https://github.com/yuanyuanxu1022/SIM240_code_figures_data), at the checked snapshot [e05b3f21171ce52a66af41dfe172e79c0a099c20](https://github.com/yuanyuanxu1022/SIM240_code_figures_data/commit/e05b3f21171ce52a66af41dfe172e79c0a099c20), under `07_第一篇代码数据更新_20261107/`. Access is restricted to authorized users. The snapshot includes a read-only checker for saved numbers; it is not a complete reconstruction of historical build environments. This manuscript and the present supplement revision have not been newly uploaded. Public release, reviewer access and a persistent identifier remain for the authors to determine under the selected venue's requirements. Author information, funding, conflicts, contributions and AI-use disclosures also require author confirmation. This remains an author-review manuscript, not a submission-readiness declaration.
+ 
+ ## Appendix E. Upper-bound property of the local cubic law in the ideal Stokes model
+ 

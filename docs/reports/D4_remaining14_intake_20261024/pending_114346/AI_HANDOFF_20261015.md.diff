@@ -1,0 +1,13 @@
+--- AI_HANDOFF_20261015.md before
++++ AI_HANDOFF_20261015.md after
+@@ -2,8 +2,8 @@
+ 
+ ## 第一篇：D4余14项已由用户启动，后台运行中，待完成后独立验收（2026-10-24，当前入口）
+ 
+-- 北京时间2026-10-24 11:40:24单次检查：tmux会话d4-dev14-20261024存在；正式批次development_remaining14_20261024_v1的stage_manifest记录11:39:59启动。stage_progress记录前4项独立exit_code=0（h75/w60/d25、d50各P/T），第5项h75/w60/d100/P运行目录已建立。未观察到总批次完成记录；上述是执行状态，不是结果或物理验收，不能将exit0或目录存在判为PASS。
+-- 本轮快照与状态差异入口docs/reports/D4_remaining14_intake_20261024/running_114024/。没有重复启动、重跑、编译或持续轮询；独立验收pending，NUMERICAL_GATE、RESULT_PASS、geometry_PASS及开发网格证据未在本轮新评定。既有基础8项和筛选6项验收保持，余14项完成计数以之后完整批次证据为准。
++- 北京时间2026-10-24 11:43:46单次接收检查：tmux会话d4-dev14-20261024存在，批次development_remaining14_20261024_v1的stage_progress记录9/14项exit_code=0；尚无stage_completion、批次exit_code或stage_error记录。批次未证实结束，独立验收pending；不据正常退出判定NUMERICAL_GATE、RESULT_PASS、geometry_PASS或流场合格。
++- 本轮用户要求批次结束后独立验收14项原始结果及流场；当前停在接收检查，证据入口docs/reports/D4_remaining14_intake_20261024/pending_114346/。此前11:40:24快照保留。没有启动、重跑、编译或持续轮询，无新数值/物理/网格验收、无GitHub推送。待用户批次结束后发起验收，再核完整证据；12项开发细格和预测阶段不自动进入。
+ - 原启动目录缺陷及最小修正已保留于docs/reports/D4_startup_diagnosis_20261024/REPORT.md。新start_from_project.sh先切到项目根目录，再调用冻结runner；实际入口为CURRENT_STARTUP.md/NEXT_COMMAND_CORRECTED.txt。旧NEXT_COMMAND.txt等为历史准备快照，不再使用。当前运行记录中的release SHA为9606906a7ea18c5ec47f1728eeb7d9af48990e17955167f79019c6ec1e3358c9；本轮不重新绑定或改冻结文件。
+ - 本批范围仍为余14主开发（h75/w60深25/50/100/120×P/T，w240深25/50/100×P/T，dx5/P=2w/a1e5），单进程单rank。下一动作：用户计算结束后，独立核对总/逐项退出码、冻结输入哈希、原始数据完整性、收敛/守恒/几何和全部保存流场；不据正常退出直接放行。
+ - 12项开发细格和20项预测继续未进入；G4候选v1锁完整保留，若新增开发数据重拟合必须另立v2并在取得保留结果前重新冻结。本轮无新数值或物理验收、无GitHub推送，其他第一篇与第二篇状态保留。

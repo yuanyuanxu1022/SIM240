@@ -1,0 +1,85 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p16-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p16-topbar-title
+    bounds: [36, 8, 700, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 流场三：高度速度剖面 + 结果预览
+  - elementType: text
+    elementId: p16-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 16 / 18
+  - elementType: image
+    elementId: p16-fig3
+    src: assets/fig3_velocity_profiles.png
+    bounds: [56, 58, 540, 285]
+  - elementType: text
+    elementId: p16-fig3-caption
+    bounds: [56, 347, 540, 44]
+    content:
+      style: $tiny
+      lineHeight: 1.35
+      text: 流场三：沿槽驱动下两处高度剖面——橙实线=沟槽中心 x=120 nm，蓝虚线=凸台下 x=30 nm；保留有效液体采样（971/933 个），排除混合材料边界点、不外推壁面；未叠加平板理论解。
+  - elementType: image
+    elementId: p16-fig8
+    src: assets/fig8_error_map.png
+    bounds: [620, 58, 284, 116]
+  - elementType: text
+    elementId: p16-fig8-caption
+    bounds: [620, 178, 284, 30]
+    content:
+      style: $tiny
+      text: 结果预览：误差热图（稿件图 4，已验收）。
+  - elementType: shape
+    elementId: p16-result-card
+    shapeName: roundRect
+    bounds: [620, 218, 284, 173]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p16-result-title
+    bounds: [638, 230, 248, 24]
+    content:
+      fontSize: 13.5
+      bold: true
+      color: "#0E3F8C"
+      text: 核心结果（详第 4 章）
+  - elementType: text
+    elementId: p16-result-body
+    bounds: [638, 258, 248, 124]
+    content:
+      fontSize: 11.5
+      color: "#1A2230"
+      lineHeight: 1.55
+      text: "局部立方律在全部 36 样点高估：K_yy +10.30%~+204.85%；K_xx +8.11%~+54.19%；各向异性被高估约 67%。结果章另有四图四表支撑，本轮不展开。"
+  - elementType: shape
+    elementId: p16-bottombar
+    shapeName: rect
+    bounds: [56, 402, 848, 40]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p16-conclusion
+    bounds: [74, 409, 812, 26]
+    content:
+      fontSize: 13
+      bold: true
+      color: "#0E3F8C"
+      text: 剖面图的边界：曲线形状与峰值差单独不构成"等效模型失效"的证据——结论由全局系数给出（图注原文口径）。
+  - elementType: text
+    elementId: p16-footer
+    bounds: [56, 452, 848, 14]
+    content:
+      style: $tiny
+      text: 来源：figures_v2 + figures/paper · 稿件位置：§4.2 图 4、附录 A · 高度剖面建议作为正文图 5 候选或补充材料

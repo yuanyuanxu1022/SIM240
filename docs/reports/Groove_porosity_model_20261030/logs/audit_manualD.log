@@ -1,0 +1,40 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-ced05121dd03
+Exec   : /home/dell/yuanyuanxu/SIM240/CASE/groove_porosity_model_v1/build/bin/auditPorosity -case /home/dell/yuanyuanxu/SIM240/CASE/groove_porosity_model_v1/build/fixture -variant manualD
+Date   : Oct 30 2026
+Time   : 16:10:16
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 675027
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/groove_porosity_model_v1/build/fixture
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+
+
+--> FOAM FATAL IO ERROR: 
+Do not supply d/f/H or conflicting gap inputs; coefficients are computed
+
+file: IStringStream.sourceFile/grooveDarcyCoeffs at line 0.
+
+    From function Foam::porosityModels::grooveDarcy::grooveDarcy(const Foam::word&, const Foam::fvMesh&, const Foam::dictionary&, const Foam::dictionary&, const Foam::word&)
+    in file grooveDarcy.C at line 40.
+
+FOAM exiting
+

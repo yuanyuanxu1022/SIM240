@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+test "${WM_PROJECT_VERSION:-}" = 13
+cd "$(dirname "$0")"
+export GAP_BUILD_BIN="$PWD/build/bin"
+mkdir -p "$GAP_BUILD_BIN"
+wmake application

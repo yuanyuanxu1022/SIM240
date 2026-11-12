@@ -1,0 +1,138 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p06-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p06-topbar-title
+    bounds: [36, 8, 600, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 方法要素总览：一张表看全部口径
+  - elementType: text
+    elementId: p06-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 6 / 18
+  - elementType: shape
+    elementId: p06-leftpanel
+    shapeName: rect
+    bounds: [60, 60, 250, 418]
+    fill: { type: solid, color: "#0E3F8C" }
+  - elementType: text
+    elementId: p06-left-title
+    bounds: [84, 84, 202, 90]
+    content:
+      fontSize: 24
+      bold: true
+      color: "#FFFFFF"
+      lineHeight: 1.35
+      text: 七类<br/>方法要素
+  - elementType: text
+    elementId: p06-left-sub
+    bounds: [84, 190, 202, 120]
+    content:
+      fontSize: 12
+      color: "#C7D6EE"
+      lineHeight: 1.5
+      text: 全部来自稿件 §2 已冻结表述；<br/>右侧数值即正文口径，<br/>未做任何圆整以外的改动。
+  - elementType: text
+    elementId: p06-left-run
+    bounds: [84, 400, 202, 60]
+    content:
+      fontSize: 12.5
+      bold: true
+      color: "#FFFFFF"
+      lineHeight: 1.4
+      text: 52 次运行全部可定位<br/>36 主地图 + 8 加密 + 2 黏度 + 6 斜向
+  - elementType: table
+    elementId: p06-table
+    bounds: [330, 60, 570, 418]
+    columnWidths: [0.20, 0.52, 0.28]
+    rows:
+      - - text: 要素
+          textStyle: { bold: true, color: "#FFFFFF", fontSize: 11.5 }
+          cellStyle: { fill: { type: solid, color: "#0E3F8C" } }
+        - text: 数值 / 口径
+          textStyle: { bold: true, color: "#FFFFFF", fontSize: 11.5 }
+          cellStyle: { fill: { type: solid, color: "#0E3F8C" } }
+        - text: 备注
+          textStyle: { bold: true, color: "#FFFFFF", fontSize: 11.5 }
+          cellStyle: { fill: { type: solid, color: "#0E3F8C" } }
+      - - text: 几何
+          textStyle: { bold: true, fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: P=240 nm，w=120 nm；h∈{25,50,75,125}，d 五档；等宽槽/凸台
+          textStyle: { fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: h=25 时 d 仅 3 档
+          textStyle: { fontSize: 11, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+      - - text: 求解器
+          textStyle: { bold: true, fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: OpenLB，D3Q19，BGK，τ=1；Guo 体力；Bouzidi 反弹
+          textStyle: { fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 未做 τ 敏感性扫描（已声明）
+          textStyle: { fontSize: 11, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+      - - text: 物性/时间步
+          textStyle: { bold: true, fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: ν=1.0×10⁻⁶ m²/s，μ=10⁻³ Pa·s，ρ=1000；dx=5 nm ⇒ dt=4.1667×10⁻¹² s
+          textStyle: { fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 物性先行，dt 唯一确定
+          textStyle: { fontSize: 11, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+      - - text: 壁面
+          textStyle: { bold: true, fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 46 算例全部 q_min=q_max=0.5（容差 10⁻¹⁰）
+          textStyle: { fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 解析壁面，半程反弹
+          textStyle: { fontSize: 11, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+      - - text: 驱动/压缩性
+          textStyle: { bold: true, fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 均匀体积力 a=10⁵ m/s²；最大 Mach 5.7×10⁻¹⁰–4.1×10⁻⁷
+          textStyle: { fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 低于 0.05 判据五个量级
+          textStyle: { fontSize: 11, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+      - - text: 停止判据
+          textStyle: { bold: true, fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 1000 步通量窗：相对标准差 ≤10⁻⁶、相对极差 ≤5×10⁻⁶、横向通量 ≤10⁻¹² m²/s
+          textStyle: { fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 停止条件≠验收（§3.1 已声明）
+          textStyle: { fontSize: 11, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+      - - text: 提取
+          textStyle: { bold: true, fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: J：流体域体积分 / 平面面积；K=μJ/(ρa)；误差 E=K^mod/K^ref−1
+          textStyle: { fontSize: 11, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 含半时间步力修正
+          textStyle: { fontSize: 11, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+  - elementType: text
+    elementId: p06-footer
+    bounds: [60, 526, 840, 14]
+    content:
+      style: $tiny
+      text: 依据：导师审阅版 §2.1–§2.4 · 支持资料索引 S1–S5 · 46 算例 q 审计来自 52 份原始记录

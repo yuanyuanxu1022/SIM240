@@ -1,0 +1,219 @@
+test_coarse_power_diagnostic_not_extra_acceptance_gate (test_postprocess.TestReader.test_coarse_power_diagnostic_not_extra_acceptance_gate) ... ERROR
+test_deleted_native_field_rejected_even_with_valid_csv (test_postprocess.TestReader.test_deleted_native_field_rejected_even_with_valid_csv) ... ERROR
+test_failure_can_close_task_with_other_inputs_unexecuted (test_postprocess.TestReader.test_failure_can_close_task_with_other_inputs_unexecuted) ... ok
+test_finished_fixed_set_does_not_request_more_runs_after_reference_failure (test_postprocess.TestReader.test_finished_fixed_set_does_not_request_more_runs_after_reference_failure) ... ok
+test_generated_plan_has_no_execution (test_postprocess.TestReader.test_generated_plan_has_no_execution) ... ok
+test_missing_receipt_never_accepts_csv (test_postprocess.TestReader.test_missing_receipt_never_accepts_csv) ... ERROR
+test_missing_transverse_faces_is_rejected (test_postprocess.TestReader.test_missing_transverse_faces_is_rejected) ... ok
+test_nan_is_rejected (test_postprocess.TestReader.test_nan_is_rejected) ... ok
+test_p_uses_y_velocity (test_postprocess.TestReader.test_p_uses_y_velocity) ... ok
+test_receipt_without_numeric_stopping_record_is_rejected (test_postprocess.TestReader.test_receipt_without_numeric_stopping_record_is_rejected) ... ERROR
+test_solid_ridge_cell_is_rejected (test_postprocess.TestReader.test_solid_ridge_cell_is_rejected) ... ok
+test_volume_drift_is_rejected (test_postprocess.TestReader.test_volume_drift_is_rejected) ... ok
+test_volume_weight_and_m3_normalization (test_postprocess.TestReader.test_volume_weight_and_m3_normalization) ... ok
+test_bound_seed_accepts (test_postprocess.TestSeedChain.test_bound_seed_accepts) ... ERROR
+test_broken_chain_rejected (test_postprocess.TestSeedChain.test_broken_chain_rejected) ... ERROR
+test_mapped_input_tamper_rejected (test_postprocess.TestSeedChain.test_mapped_input_tamper_rejected) ... ERROR
+test_mapping_tool_tamper_rejected (test_postprocess.TestSeedChain.test_mapping_tool_tamper_rejected) ... ERROR
+test_source_native_tamper_rejected (test_postprocess.TestSeedChain.test_source_native_tamper_rejected) ... ERROR
+test_source_receipt_tamper_rejected (test_postprocess.TestSeedChain.test_source_receipt_tamper_rejected) ... ERROR
+test_source_time_must_match_receipt (test_postprocess.TestSeedChain.test_source_time_must_match_receipt) ... ERROR
+test_unbound_later_directory_is_not_selected (test_postprocess.TestSeedChain.test_unbound_later_directory_is_not_selected) ... ERROR
+test_decimal_seeded_time (test_stopping.TestStopping.test_decimal_seeded_time) ... ok
+test_flat_exception_cannot_apply_to_groove (test_stopping.TestStopping.test_flat_exception_cannot_apply_to_groove) ... ok
+test_flat_exception_requires_amplitude_and_analytic (test_stopping.TestStopping.test_flat_exception_requires_amplitude_and_analytic) ... ok
+test_full_vector_accepts_cap_explicitly (test_stopping.TestStopping.test_full_vector_accepts_cap_explicitly) ... ok
+test_invalid_residuals (test_stopping.TestStopping.test_invalid_residuals) ... ok
+test_last_complete_cycle_not_last_pressure (test_stopping.TestStopping.test_last_complete_cycle_not_last_pressure) ... ok
+test_limits_and_targets (test_stopping.TestStopping.test_limits_and_targets) ... ok
+test_missing_end (test_stopping.TestStopping.test_missing_end) ... ok
+test_missing_pressure (test_stopping.TestStopping.test_missing_pressure) ... ok
+test_missing_vertical (test_stopping.TestStopping.test_missing_vertical) ... ok
+test_native_priority_at_cap (test_stopping.TestStopping.test_native_priority_at_cap) ... ok
+test_native_report_must_match_cycle (test_stopping.TestStopping.test_native_report_must_match_cycle) ... ok
+test_old_string_not_tail (test_stopping.TestStopping.test_old_string_not_tail) ... ok
+test_one_zero (test_stopping.TestStopping.test_one_zero) ... ok
+test_pressure_failure (test_stopping.TestStopping.test_pressure_failure) ... ok
+test_scalar_cannot_use_ux (test_stopping.TestStopping.test_scalar_cannot_use_ux) ... ok
+test_scalar_uses_v_only (test_stopping.TestStopping.test_scalar_uses_v_only) ... ok
+test_string_cannot_bypass_bad_pressure (test_stopping.TestStopping.test_string_cannot_bypass_bad_pressure) ... ok
+test_tight_not_ordinary (test_stopping.TestStopping.test_tight_not_ordinary) ... ok
+test_tight_success (test_stopping.TestStopping.test_tight_success) ... ok
+test_timeout_never_accepts (test_stopping.TestStopping.test_timeout_never_accepts) ... ok
+test_unknown_early_end (test_stopping.TestStopping.test_unknown_early_end) ... ok
+test_vertical_failure (test_stopping.TestStopping.test_vertical_failure) ... ok
+test_zero_and_zero (test_stopping.TestStopping.test_zero_and_zero) ... ok
+test_zero_log_accepts (test_stopping.TestStopping.test_zero_log_accepts) ... ok
+
+======================================================================
+ERROR: test_coarse_power_diagnostic_not_extra_acceptance_gate (test_postprocess.TestReader.test_coarse_power_diagnostic_not_extra_acceptance_gate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 108, in test_coarse_power_diagnostic_not_extra_acceptance_gate
+    case,release=self.synthetic_receipt(d)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_deleted_native_field_rejected_even_with_valid_csv (test_postprocess.TestReader.test_deleted_native_field_rejected_even_with_valid_csv)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 115, in test_deleted_native_field_rejected_even_with_valid_csv
+    case,release=self.synthetic_receipt(d);(case/'1/v').unlink()
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_missing_receipt_never_accepts_csv (test_postprocess.TestReader.test_missing_receipt_never_accepts_csv)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 122, in test_missing_receipt_never_accepts_csv
+    case,release=self.synthetic_receipt(d);(case/'referenceEvidence/receipt.json').unlink()
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_receipt_without_numeric_stopping_record_is_rejected (test_postprocess.TestReader.test_receipt_without_numeric_stopping_record_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 128, in test_receipt_without_numeric_stopping_record_is_rejected
+    case,release=self.synthetic_receipt(d)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_bound_seed_accepts (test_postprocess.TestSeedChain.test_bound_seed_accepts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 170, in test_bound_seed_accepts
+    _,t,m,r,h=self.setup_chain(d);pp.validate_seed(t,m,r,h,'synthetic')
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_broken_chain_rejected (test_postprocess.TestSeedChain.test_broken_chain_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 185, in test_broken_chain_rejected
+    _,t,m,r,h=self.setup_chain(d);r['seed'].pop('source_run_id')
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_mapped_input_tamper_rejected (test_postprocess.TestSeedChain.test_mapped_input_tamper_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 189, in test_mapped_input_tamper_rejected
+    _,t,m,r,h=self.setup_chain(d);(t/'runtime/seed_inputs/v').write_text('tampered')
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_mapping_tool_tamper_rejected (test_postprocess.TestSeedChain.test_mapping_tool_tamper_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 193, in test_mapping_tool_tamper_rejected
+    _,t,m,r,h=self.setup_chain(d);r['seed']['map_tool_sha256']='wrong'
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_source_native_tamper_rejected (test_postprocess.TestSeedChain.test_source_native_tamper_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 177, in test_source_native_tamper_rejected
+    s,t,m,r,h=self.setup_chain(d);(s/'1/v').write_text('tampered')
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_source_receipt_tamper_rejected (test_postprocess.TestSeedChain.test_source_receipt_tamper_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 181, in test_source_receipt_tamper_rejected
+    s,t,m,r,h=self.setup_chain(d);(s/'referenceEvidence/receipt.json').write_text('{}')
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_source_time_must_match_receipt (test_postprocess.TestSeedChain.test_source_time_must_match_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 197, in test_source_time_must_match_receipt
+    _,t,m,r,h=self.setup_chain(d);r['seed']['source_time']='999'
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+======================================================================
+ERROR: test_unbound_later_directory_is_not_selected (test_postprocess.TestSeedChain.test_unbound_later_directory_is_not_selected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 173, in test_unbound_later_directory_is_not_selected
+    s,t,m,r,h=self.setup_chain(d);(s/'999').mkdir();(s/'999/v').write_text('unbound')
+              ~~~~~~~~~~~~~~~~^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 153, in setup_chain
+    source,release=TestReader().synthetic_receipt(folder)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/tests/test_postprocess.py", line 79, in synthetic_receipt
+    (case.parent.parent/'prepared_manifest.json').write_text(json.dumps(dict(cases=[m],acceptance_rule=pp._accept.RULE)))
+                                                                                                       ^^^^^^^^^^
+AttributeError: module 'postprocess' has no attribute '_accept'
+
+----------------------------------------------------------------------
+Ran 46 tests in 0.068s
+
+FAILED (errors=12)

@@ -1,0 +1,148 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "alpha.liquid.*"
+    {
+        nCorrectors     2;
+        nSubCycles      1;
+
+        MULESCorr       yes;
+
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-6;
+        relTol          0;
+        minIter         1;
+        maxIter         5;
+    }
+
+    ".*(rho|rhoFinal)"
+    {
+        solver          diagonal;
+    }
+
+    "pcorr.*"
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-6;   // 从 1e-5 → 1e-6
+        relTol          0;      // 从 0.05 → 0，强制绝对收敛
+        maxIter         200;    // 新增：保证有足够迭代次数
+    }
+
+    pcorrFinal
+    {
+        $pcorr;
+        relTol          0;
+    }
+
+    p_rgh
+    {
+        solver          GAMG;
+        smoother        GaussSeidel;
+        tolerance       1e-6;
+        relTol          0.01;
+        minIter         1;
+        maxIter         50;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        relTol          0;
+    }
+
+    U
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-06;
+        relTol          0.1;
+    }
+
+    UFinal
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-06;
+        relTol          0;
+        maxIter         50;
+    }
+
+    "(T|h|k|epsilon|B|nuTilda).*"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-06;
+        relTol          0.1;
+    }
+
+    cellDisplacement
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0.01;
+        maxIter         100;
+    }
+
+    cellDisplacementFinal
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0;
+        maxIter         100;
+    }
+
+    cellMotionU
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0.01;
+    }
+
+    cellMotionUFinal
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0;
+        maxIter         100;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor   no;
+    transonic           no;
+    correctPhi              yes;
+    correctMeshPhi          no;
+    moveMeshOuterCorrectors no;
+    nOuterCorrectors    3;
+    nCorrectors         1;
+    nNonOrthogonalCorrectors 0;
+}
+
+relaxationFactors
+{
+    equations
+    {
+        ".*"    1;
+    }
+}
+
+// ************************************************************************* //

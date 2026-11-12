@@ -1,0 +1,126 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p05-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p05-topbar-title
+    bounds: [36, 8, 600, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 审稿人五个常见毙稿点 → 本文的对应做法
+  - elementType: text
+    elementId: p05-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 5 / 18
+  - elementType: text
+    elementId: p05-lead
+    bounds: [60, 58, 840, 24]
+    content:
+      style: $h2
+      text: 方法有据可查的项，逐条对上稿件位置
+  - elementType: table
+    elementId: p05-table
+    bounds: [60, 92, 840, 368]
+    columnWidths: [0.06, 0.27, 0.40, 0.27]
+    rows:
+      - - text: "#"
+          textStyle: { bold: true, color: "#FFFFFF", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#0E3F8C" } }
+        - text: 审稿人常问
+          textStyle: { bold: true, color: "#FFFFFF", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#0E3F8C" } }
+        - text: 本文做法
+          textStyle: { bold: true, color: "#FFFFFF", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#0E3F8C" } }
+        - text: 稿件位置
+          textStyle: { bold: true, color: "#FFFFFF", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#0E3F8C" } }
+      - - text: "1"
+          textStyle: { bold: true, color: "#1E4FA8", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 几何没定义清楚
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 单胞、坐标、周期 P=240/w=120、h 与 d 全定义；采样矩阵表 1 列 18 几何 36 样点，未算组合标明不填补
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: §2.1 + 表 1 + 图 1
+          textStyle: { fontSize: 11.5, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+      - - text: "2"
+          textStyle: { bold: true, color: "#1E4FA8", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 方法不可复现
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: OpenLB D3Q19 + BGK + Guo 体力 + Bouzidi 反弹全部注明出处；物性→时间步换算链唯一确定（式 1）
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: §2.1 + 式 (1)
+          textStyle: { fontSize: 11.5, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+      - - text: "3"
+          textStyle: { bold: true, color: "#1E4FA8", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 比较量的定义模糊
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: J 与 K 三步定义（体积分→除平面面积→乘 μ 除 G），K 是深度积分导度（m³），与渗透率换算关系明确
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: §2.2 + 式 (2)
+          textStyle: { fontSize: 11.5, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+      - - text: "4"
+          textStyle: { bold: true, color: "#1E4FA8", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 数值没验证就下结论
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: 四层验证链（平壁解析 0.03% → 周期复制 10⁻¹⁴ → 驱动线性 10⁻⁸ → 网格加密最薄 −4.4%），且明示 verification ≠ validation
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+        - text: §2.4 + §3.1–3.3
+          textStyle: { fontSize: 11.5, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#FFFFFF" } }
+      - - text: "5"
+          textStyle: { bold: true, color: "#1E4FA8", fontSize: 12 }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 声称超出证据
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: 误差均相对 5 nm 数值参考；未算组合、机制未量化、适用范围在 §5.3 逐项声明
+          textStyle: { fontSize: 11.5, color: "#1A2230" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+        - text: §2.3 + §5.3
+          textStyle: { fontSize: 11.5, color: "#4A5568" }
+          cellStyle: { fill: { type: solid, color: "#F7F9FC" } }
+  - elementType: shape
+    elementId: p05-bottombar
+    shapeName: rect
+    bounds: [60, 478, 840, 42]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p05-conclusion
+    bounds: [78, 486, 804, 26]
+    content:
+      fontSize: 13.5
+      bold: true
+      color: "#0E3F8C"
+      text: 结论：方法要经得起逐项追问——每一项都有位置可指、有原始 run 可溯（52 次）。
+  - elementType: text
+    elementId: p05-footer
+    bounds: [60, 526, 840, 14]
+    content:
+      style: $tiny
+      text: 依据：导师审阅版 §2–§3 · 方法支持资料审计 20261022（run 索引 52 行全部可定位）

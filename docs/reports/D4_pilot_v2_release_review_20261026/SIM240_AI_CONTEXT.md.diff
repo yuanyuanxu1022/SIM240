@@ -1,0 +1,23 @@
+--- before/SIM240_AI_CONTEXT.md
++++ after/SIM240_AI_CONTEXT.md
+@@ -1,12 +1,13 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：三项缺口v2已实现并通过无求解核查，运行仍未授权（2026-10-26，当前入口）
+-
+-- 本轮用户仅授权补B1–B3、无求解测试与独立读回入口，不启动计算。新目录`CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v2_20261026/`；入口`PREPARATION_REPORT.md`、`DIAGNOSTIC_CONTRACT.md`、`README.md`。准备结论PASS_PREPARATION_ONLY，诊断合同DRAFT_NOT_AUTHORIZED；没有真实pilot run_id，模板占位编号不算启动。
+-- B1：新合同与不可变物理plan并列，父/worker/组装/solver核同一许可、来源、run_id/目录/命令/环境；旧18项CSV及plan继续false，不靠改flag或猴子补丁。B2：新assembly保存投影前b，记录A的CSR、投影前后b、约化n/gauge、单元P2/P1映射及16组场；独立readback重算残差/零空间、映射/周期/壁面/压力均值和父进程文件绑定。KSP创建/快照失败有记录，工作卷归档失败的原始错误保存在独立记录卷。B3：超时/终止及cgroup内存停止已实现，真实输出要求已有专用≤512MiB tmpfs；缺资源前提拒绝。
+-- 证据：最终16个测试方法0失败/0错误/0跳过，独立exit0；仅手写矩阵/向量、假KSP和固定短进程，无PETSc/DOLFINx后端加载。实测64MiB cgroup夹具OOM exit−9，超时/输出抽样超限停止；成功读回/exit7部分文件/失败向量归档保留。默认CLI预查与另进程独立读回各exit0，记录kind明确SYNTHETIC。见`evidence/test_no_solve.log`、`test_summary.json`、`cli_checks.json`。早期测试和来源版本保留，不累加成科学验证数。
+-- 来源与限制：354路径新绑定、13模块语法核查，旧4233保护路径及终审138输入哈希均不变；见`source_lock.json`和`evidence/independent_preparation.json`。源码/旧协议/原18项/G4锁/旧FAIL不改。真实适配层未建网/组装/创建KSP或求解；真实成功/失败写出、解析误差、通量/能量/完整18项均未验。生产4GiB预算未证明，专用工作卷未准备/写满路径未实测；不把抽样监测当硬上限。
+-- 停点/权限：仅实现与合成核查完成，不是参考或运行许可通过。NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，预测HOLD。下一动作是审新版本、工作卷前提与单项诊断合同；实际运行另获明确授权并由用户启动。本轮无OpenLB编译/推进、PDE计算、公式重拟合、阈值修改、Git提交/推送，不交启动命令。独立读回只读已存目录，不自动推进后项。
++## 第一篇：单项诊断v2复核为HOLD，需补读回关联及持久归档（2026-10-26，当前入口/停点）
++
++- 本轮用户授权核新版本、单项诊断合同和工作卷前提，明确不启动。结论HOLD_NO_RUN_PERMISSION：技术条件尚未齐全，且无运行授权。入口`docs/reports/D4_pilot_v2_release_review_20261026/REPORT.md`、`verdict.json`、`audit_evidence.json`；旧`pilot_record_v2_20261026/`源码/合同/测试原样保留。
++- 已核：新旧合同并列门禁结构有效；原模板DRAFT_NOT_AUTHORIZED/false/approval=null在纯执行校验中拒绝。新来源354路径、旧保护4233路径、前次终审138输入、旧包358产物哈希全部相符（集合重叠不相加），13模块语法通过；既有16个无求解测试通过记录保持，本轮未重复跑16项。没有真实run_id、网格组装、KSP或物理结果。
++- R1独立读回缺口已复现：复制旧人工夹具，A/b/代数向量不变，仅把重建向量及对应速度的一个非从属值1改7并更新数组哈希，check(work)仍PASS，差6。仅为人工反例，不冒充真实capture。需独立核r由x按已绑定周期关系回填，并强制真实成功必需记录、求解原因/配置/资源等一致；记录阶段错误须与子退出码分开。
++- R2持久保存缺口：当前矩阵/场/日志/失败向量只在tmpfs工作卷，记录盘仅留清单等；没有终止后完整复制、哈希读回与完成发布。需另版补成功/失败/超时/OOM已落盘文件归档；复制失败标未完成、保留源，不掩盖首错。读回需支持显式绑定的持久副本。
++- 工作卷前提未满足：模板work/record父目录均不存在。08:56北京时间只读快照MemAvailable约16.49GiB、仓库所在盘约337.00GiB；指定cgroup父路径memory/pids及可写检查通过，未创建组。现有/dev/shm容量约15.52GiB，非专用≤512MiB空卷。总体余量不等于目标卷已准备；未挂载/安装/改系统。见audit_evidence.json。
++- 下一最小动作：另版补R1/R2及无求解拒绝/归档测试，再明确实际工作卷和持久记录路径、核卷测试与冻结单项配置。范围仍仅B0MIN_MMS_mixed_N8；协议审定并获用户明确单项授权前不能运行；本轮不交启动命令、不自动推进后项。NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、预测HOLD，G4 v1及旧网格FAIL不变。无OpenLB编译、PDE求解、拟合、原协议/阈值修改或Git提交/推送。
+ 
+ ## 第一篇：真实网格到原始记录适配已静态核查，求解仍关闭（2026-10-26，历史准备入口；最新结论见上方）
+ 

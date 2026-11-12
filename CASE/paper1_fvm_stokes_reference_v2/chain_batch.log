@@ -1,0 +1,25 @@
+2026-11-12T02:40:23  chain all_remaining start; order = h25_d100_T_tight -> h125_d120_T_coarse -> h125_d120_T_mid -> h125_d120_T_fine -> h125_d120_T_tight; failure policy = continue
+2026-11-12T02:40:23  [1/5] h25_d100_T_tight: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h25_d100_T_tight --execute
+2026-11-12T02:40:23  [2/5] h125_d120_T_coarse: already running; skipping
+2026-11-12T02:40:23  [3/5] h125_d120_T_mid: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h125_d120_T_mid --execute
+2026-11-12T02:40:23  [4/5] h125_d120_T_fine: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h125_d120_T_fine --execute
+2026-11-12T02:40:23  [5/5] h125_d120_T_tight: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h125_d120_T_tight --execute
+2026-11-12T02:40:23  chain complete: {'chain': 'all_remaining', 'finished_at': '2026-11-12T02:40:23', 'total': 5, 'accepted': 0, 'failed': 0, 'running': 1}
+2026-11-12T02:40:23  results written to /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/batch_results.json
+2026-11-12T02:43:01  chain all_remaining start; order = h25_d100_T_tight -> h125_d120_T_coarse -> h125_d120_T_mid -> h125_d120_T_fine -> h125_d120_T_tight; failure policy = continue
+2026-11-12T02:43:01  [1/5] h25_d100_T_tight: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h25_d100_T_tight --execute
+2026-11-12T02:43:10  [1/5] h25_d100_T_tight: launch refused after 0.1 min: RuntimeError: seed source fails independent readback
+2026-11-12T02:43:10  [1/5] h25_d100_T_tight: readback RUN_INCOMPLETE power=None K=None
+2026-11-12T02:43:10  [2/5] h125_d120_T_coarse: receipt already present, exit=0, acceptance=accepted -> ACCEPTED; NOT re-running
+2026-11-12T02:43:10  [2/5] h125_d120_T_coarse: readback LOCAL_CHECKS_PASS power=0.20171603270273675 K=1.8401353756718793e-22
+2026-11-12T02:43:10  [3/5] h125_d120_T_mid: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h125_d120_T_mid --execute
+2026-11-12T04:23:03  [3/5] h125_d120_T_mid: finished in 1.66 h, exit=0, acceptance=accepted -> ACCEPTED
+2026-11-12T04:23:05  [3/5] h125_d120_T_mid: readback LOCAL_CHECKS_PASS power=0.08774776451963007 K=1.8380636898273257e-22
+2026-11-12T04:23:05  [4/5] h125_d120_T_fine: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h125_d120_T_fine --execute
+2026-11-12T16:23:58  [4/5] h125_d120_T_fine: launch refused after 720.9 min: non-zero exit
+2026-11-12T16:23:58  [4/5] h125_d120_T_fine: readback EXECUTION_FAILED_OR_NO_EVIDENCE power=None K=None
+2026-11-12T16:23:58  [5/5] h125_d120_T_tight: launching /usr/bin/python3 /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/run_one.py --case h125_d120_T_tight --execute
+2026-11-12T16:24:17  [5/5] h125_d120_T_tight: launch refused after 0.3 min: RuntimeError: seed source has no runtime receipt; run it first: h125_d120_T_fine
+2026-11-12T16:24:17  [5/5] h125_d120_T_tight: readback RUN_INCOMPLETE power=None K=None
+2026-11-12T16:24:17  chain complete: {'chain': 'all_remaining', 'finished_at': '2026-11-12T16:24:17', 'total': 5, 'accepted': 2, 'failed': 3, 'running': 0}
+2026-11-12T16:24:17  results written to /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/batch_results.json

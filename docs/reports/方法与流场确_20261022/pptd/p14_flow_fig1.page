@@ -1,0 +1,96 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p14-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p14-topbar-title
+    bounds: [36, 8, 700, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 流场一：俯视速度场——同一驱动幅值下两方向对比
+  - elementType: text
+    elementId: p14-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 14 / 18
+  - elementType: image
+    elementId: p14-fig
+    src: assets/fig1_velocity_xy.png
+    bounds: [56, 60, 620, 328]
+  - elementType: text
+    elementId: p14-fig-caption
+    bounds: [56, 392, 620, 34]
+    content:
+      style: $tiny
+      lineHeight: 1.35
+      text: z=37.5 nm 平面的稳态速度大小：(a) 沿槽 +y 驱动 vs (b) 跨槽 +x 驱动，同幅值 10⁵ m/s²；<br/>共用线性色标 0–1.8×10⁻⁴ m/s（不逐图归一化）；白虚线=上方沟槽边缘投影。几何 h=75、d=100、P=240、w=120 nm，dx=5 nm。
+  - elementType: shape
+    elementId: p14-check-card
+    shapeName: roundRect
+    bounds: [700, 60, 204, 150]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p14-check-title
+    bounds: [718, 72, 168, 24]
+    content:
+      fontSize: 13.5
+      bold: true
+      color: "#0E3F8C"
+      text: 请老师目视检查
+  - elementType: text
+    elementId: p14-check-body
+    bounds: [718, 100, 168, 104]
+    content:
+      fontSize: 11
+      color: "#1A2230"
+      lineHeight: 1.5
+      text: "· 两方向流动是否合理<br/>· 周期性是否干净<br/>· 跨槽驱动下沟槽正上方的速度结构"
+  - elementType: shape
+    elementId: p14-fact-card
+    shapeName: roundRect
+    bounds: [700, 224, 204, 198]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: text
+    elementId: p14-fact-title
+    bounds: [718, 236, 168, 24]
+    content:
+      fontSize: 13.5
+      bold: true
+      color: "#1E4FA8"
+      text: 数据事实
+  - elementType: text
+    elementId: p14-fact-body
+    bounds: [718, 264, 168, 150]
+    content:
+      fontSize: 11
+      color: "#1A2230"
+      lineHeight: 1.5
+      text: "每幅 2304 个液体样本；分片常值显示不增加分辨率；原始 VTK 场可溯；渲染步数 P:4329 / T:2940。"
+  - elementType: shape
+    elementId: p14-bottombar
+    shapeName: rect
+    bounds: [56, 438, 848, 44]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p14-conclusion
+    bounds: [74, 446, 812, 28]
+    content:
+      fontSize: 13.5
+      bold: true
+      color: "#0E3F8C"
+      text: 这张图回答"流动长什么样"：两方向在同一色标下直接对比，供方法合理性目视确认；不用于机制量化结论。
+  - elementType: text
+    elementId: p14-footer
+    bounds: [56, 494, 848, 14]
+    content:
+      style: $tiny
+      text: 来源：figures/paraview/D2_publication_layout_20261017_v1/figures_v2 · 图注草稿 CAPTIONS.md 已备 · 渲染来源限度见第 18 页问题 ①

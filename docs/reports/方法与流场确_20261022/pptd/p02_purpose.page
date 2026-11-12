@@ -1,0 +1,77 @@
+pageType: purpose
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p02-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p02-topbar-title
+    bounds: [36, 8, 500, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 这份材料的目的与用法
+  - elementType: text
+    elementId: p02-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 2 / 18
+  - elementType: shape
+    elementId: p02-quote-card
+    shapeName: roundRect
+    bounds: [60, 74, 840, 88]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p02-quote-text
+    bounds: [84, 88, 792, 60]
+    content:
+      fontSize: 17
+      bold: true
+      color: "#0E3F8C"
+      lineHeight: 1.45
+      text: 老师的判断：审稿人先看方法——方法站不住，结果根本不会被看。<br/>因此先把方法链条与流场图整理出来，请老师逐项确认，再谈结果与投稿。
+  - elementType: text
+    elementId: p02-sec-include
+    bounds: [60, 190, 400, 26]
+    content:
+      style: $h2
+      text: 本材料包含
+  - elementType: text
+    elementId: p02-include-list
+    bounds: [60, 222, 400, 240]
+    content:
+      fontSize: 13.5
+      color: "#1A2230"
+      lineHeight: 1.55
+      text: "① 方法要素总览：几何、求解器、单位换算、系数定义、被检模型<br/>② 验证链四层证据：平壁基准 → 周期复制 → 驱动线性 → 网格加密<br/>③ 已知限制如实清单：方法口径下尚未闭合的五项<br/>④ 四张流场图过目：俯视速度、纵剖速度、高度剖面、耗散分布<br/>⑤ 三处表述待收紧 + 三个待老师裁定的问题"
+  - elementType: text
+    elementId: p02-sec-exclude
+    bounds: [500, 190, 400, 26]
+    content:
+      style: $h2
+      text: 本材料不包含
+  - elementType: text
+    elementId: p02-exclude-list
+    bounds: [500, 222, 400, 240]
+    content:
+      fontSize: 13.5
+      color: "#4A5568"
+      lineHeight: 1.55
+      text: "✗ 没有新仿真、新数据、新 run_id<br/>✗ 没有改动冻结协议或历史 PASS/FAIL 记录<br/>✗ 没有投稿动作或期刊决策<br/>✗ 不做机制断言（侧壁剪切、台阶重分布仅为候选，正文未量化）<br/><br/>材料依据：导师审阅版 20261022 §2–§3<br/>+ 方法支持资料审计（同日）"
+  - elementType: shape
+    elementId: p02-bottombar
+    shapeName: rect
+    bounds: [0, 512, 960, 28]
+    fill: { type: solid, color: "#F7F9FC" }
+  - elementType: text
+    elementId: p02-footer
+    bounds: [60, 518, 840, 18]
+    content:
+      style: $tiny
+      text: SIM240 · 第一篇论文方法确认 · 2026-10-22

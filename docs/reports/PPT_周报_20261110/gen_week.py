@@ -172,99 +172,124 @@ def p1():
     footer(s, 1)
 
 
-# ==================== P2 别人怎么闭环 ====================
+# ==================== P2 证据强度五级 ====================
 def p2():
     s = prs.slides.add_slide(BLANK)
-    header(s, "别人是怎么闭环的：四份材料，一套骨架",
-           "11-05 查文献（徐新鹏 + OpenLB）→ 11-06 核对官方源码 → 本周逐条落进稿子")
+    header(s, "关于「沟槽 K 准不准」，能拿出的证据只有这五类",
+           "它们查的不是同一件事：第 1–2 类查数值解，第 3 类查接口，第 4–5 类才查独立解与物理——不能互相顶替")
 
-    cards = [
-        ("徐新鹏 2012 → 2013 ｜ PRE / JPCM", "换一个建模尺度去验",
-         "连续模型说「接触线附近蒸发/凝结改接触角 → 液滴迁移」；随即用分子动力学当数值实验，验「朝低温、速度正比于温度梯度」，再查尺寸与共存温度的影响。",
-         "只说「约 10 nm 半定量一致」，不说普遍适用。", BLUE),
-        ("徐新鹏 2014（共同作者）｜ Nature Physics", "改变条件，看边界在哪",
-         "饼状弹跳：液滴不回缩就能以扁平形态离开 → 提出「压入柱间的毛细能转为向上动能」，要求两个时间尺度匹配 → 再改柱形、柱距、撞击条件，看何时出现、何时不出现。",
-         "结论落在「出现/不出现的范围」，不在单点精度。", MBLUE),
-        ("用 OpenLB 发文 ｜ Bukreev 2025 / Czelusniak 2025", "先分块自证，再核接口",
-         "Bukreev：子模块先各自对解析解，耦合再验一次，最后用自动微分灵敏度与有限差分做独立算法交叉。Czelusniak：先导出方法逼近哪个方程，再建基准族，最后报收敛阶。",
-         "每个部分先证明自己，再核接口。", GREEN),
-        ("OpenLB 官方源码 ｜ tests/benchmarks（1.9.0）", "看收敛阶，不设绝对门槛",
-         "官方 Poiseuille 误差 0.0250 → 0.00673 → 0.00176（网格 11/21/41），相邻比 3.48–3.83，接近二阶的 4 倍律；回归容差是 errorFactor 1–2，不是 ≤1%。",
-         "同份数据：bounceBack 12.8–23.2%，插值类 1.1–5.7%。", AMBER),
+    rows = [
+        ("1", "自洽 + 平板基准", "有", "平板通道解析解（S1）；周期 ×2/4/8 逐位相同；驱动力 ×4 偏差 3.7e−8；质量、密度、Mach",
+         "程序实现没崩；平板极限下解是对的——而且解析基准不是我们自己算的", "平板解不是沟槽几何；自洽只说明程序稳，不说明沟槽 K 对", GREEN),
+        ("2", "网格加密", "有", "5 → 2.5 nm，四个几何；偏差只动 0.37–5.39 个百分点",
+         "这批几何在两档网格下的离散敏感性（0.37–5.39 个百分点）", "两档算不出收敛阶，不能说已渐近收敛或给出误差界；收敛到错值也会很稳", GREEN),
+        ("3", "接口换算互核", "半个", "输入的是「公式的 K」（原式或 V2），不是 OpenLB 的 K；两端按式(8) 各算出口流量（C01–C04）",
+         "单位、方向、张量约定对不对，K 换算成流量这条管道通不通", "OpenLB 的 K 压根没进这个检查——所以它连「OpenLB 准不准」都查不了", AMBER),
+        ("4", "显式沟槽独立求解", "缺", "换一套完全不同的算法直接解沟槽几何，不走 LBM",
+         "才能查 LBM 实现与 Bouzidi 边界有没有引入系统偏差", "——这一级整级没有，稿里明写「尚未完成」", DRED),
+        ("5", "实验", "缺", "真实压印或微观流动测量",
+         "才能查模型假设本身（单相、全充液、稳态）对不对", "——整级没有，故稿里明写「本文不涉及物理验证」", DRED),
     ]
-    w = Inches(6.0); h = Inches(1.72)
-    for i, (src, head, body, note, col) in enumerate(cards):
-        r, c = i // 2, i % 2
-        l = Inches(0.55) + c * Inches(6.24)
-        t = Inches(1.44) + r * (h + Inches(0.12))
-        box(s, l, t, w, h, fill=WHITE, line=LINE, radius=True)
-        box(s, l, t, Inches(0.055), h, fill=col)
-        text(s, l + Inches(0.24), t + Inches(0.085), w - Inches(0.45), Inches(0.22),
-             src, size=8.5, color=GRAY, bold=True)
-        text(s, l + Inches(0.24), t + Inches(0.31), w - Inches(0.45), Inches(0.26),
-             head, size=12.5, color=NAVY, bold=True)
-        text(s, l + Inches(0.24), t + Inches(0.63), w - Inches(0.46), Inches(0.70),
-             body, size=8.8, color=SUB, spacing=1.30)
-        text(s, l + Inches(0.24), t + Inches(1.36), w - Inches(0.46), Inches(0.28),
-             note, size=8.5, color=col, spacing=1.26)
+    text(s, Inches(0.72), Inches(1.40), Inches(0.5), Inches(0.22), "级", size=9, color=GRAY, bold=True)
+    text(s, Inches(1.18), Inches(1.40), Inches(1.85), Inches(0.22), "手段", size=9, color=GRAY, bold=True)
+    text(s, Inches(3.10), Inches(1.40), Inches(0.55), Inches(0.22), "有吗", size=9, color=GRAY, bold=True)
+    text(s, Inches(3.75), Inches(1.40), Inches(2.90), Inches(0.22), "做了什么", size=9, color=TXT, bold=True)
+    text(s, Inches(6.80), Inches(1.40), Inches(2.85), Inches(0.22), "能证明", size=9, color=GREEN, bold=True)
+    text(s, Inches(9.80), Inches(1.40), Inches(2.95), Inches(0.22), "不能证明", size=9, color=RED, bold=True)
 
-    box(s, Inches(0.55), Inches(5.16), Inches(12.23), Inches(1.42), fill=LBLUE, radius=True)
-    box(s, Inches(0.55), Inches(5.16), Inches(0.075), Inches(1.42), fill=BLUE)
-    text(s, Inches(0.92), Inches(5.28), Inches(11.4), Inches(0.26),
-         "四份看下来，闭环其实是同一套骨架——这一篇就照这个顺序写", size=11.5, color=BLUE, bold=True)
-    steps = ["① 每一部分先单独证明自己", "② 再核接口",
-             "③ 用另一种独立手段交叉", "④ 最后才说能回答什么，\n并明说不能回答什么"]
-    for i, st in enumerate(steps):
-        x = Inches(0.92) + i * Inches(2.82)
-        text(s, x, Inches(5.62), Inches(2.70), Inches(0.80), st,
-             size=9.8, color=NAVY, bold=True, spacing=1.34)
+    y = Inches(1.66); rh = Inches(0.92)
+    for i, (lv, name, have, did, can, cannot, col) in enumerate(rows):
+        fill = WHITE if i % 2 == 0 else LBLUE2
+        if have == "缺":
+            fill = LAMBER
+        box(s, Inches(0.55), y, Inches(12.23), rh, fill=fill, line=LINE, radius=True)
+        box(s, Inches(0.55), y, Inches(0.05), rh, fill=col)
+        text(s, Inches(0.72), y + Inches(0.30), Inches(0.4), Inches(0.28),
+             lv, size=13, color=col, bold=True)
+        text(s, Inches(1.18), y + Inches(0.30), Inches(1.80), Inches(0.28),
+             name, size=10, color=NAVY, bold=True, spacing=1.2)
+        text(s, Inches(3.10), y + Inches(0.30), Inches(0.60), Inches(0.28),
+             have, size=10, color=col, bold=True)
+        text(s, Inches(3.75), y + Inches(0.09), Inches(2.92), Inches(0.76),
+             did, size=8.2, color=TXT, spacing=1.3)
+        text(s, Inches(6.80), y + Inches(0.09), Inches(2.85), Inches(0.76),
+             can, size=8.2, color=SUB, spacing=1.3)
+        text(s, Inches(9.80), y + Inches(0.09), Inches(2.92), Inches(0.76),
+             cannot, size=8.2, color=DRED, spacing=1.3)
+        y = y + rh + Inches(0.04)
+
+    box(s, Inches(0.55), Inches(6.48), Inches(12.23), Inches(0.44), fill=LBLUE, radius=True)
+    box(s, Inches(0.55), Inches(6.48), Inches(0.075), Inches(0.44), fill=BLUE)
+    text(s, Inches(0.92), Inches(6.52), Inches(11.55), Inches(0.38),
+         [("能站住的只有第 1、2 级，第 3 级只迈了半步。", {'size': 10, 'bold': True, 'color': NAVY}),
+          ("第 1 级只到实现与平板极限，第 2 级只到网格敏感性，第 3 级只到接口换算；真正咬住沟槽 K 的第 4、5 级，两级皆空。", {'size': 9.0, 'color': SUB})],
+         spacing=1.3)
     footer(s, 2)
 
 
-# ==================== P3 我怎么用 ====================
+# ==================== P3 因此哪句话不能说 + 换条件的真相 ====================
 def p3():
     s = prs.slides.add_slide(BLANK)
-    header(s, "这周怎么用：每一条惯例都对到稿子的某一节",
-           "不是「读了文献」，是「能指到哪一节改了、改成什么」")
+    header(s, "所以：哪些话能说、哪些不能说，以及「换条件」的实情",
+           "这一页是自我审查，不是表功——审稿人一定会问到这些")
 
-    rows = [
-        ("解析解基准 + 看收敛阶", "平板 h=75 对 h³/12：0.444%→0.111%→0.0272%，每加密一倍约降 1/4（官方相邻比 3.48–3.83）", "同构句已入稿，引 [7]", "§3.2 表 3", BLUE),
-        ("边界格式选择有据", "官方对比四种格式、插值类优于 bounceBack ⇒ 选 Bouzidi + q=0.5", "补半句", "§2.1", MBLUE),
-        ("独立算法交叉", "同一套系数进 OpenFOAM 独立实现（C01–C04 / GDI01）", "新增 §5.3 式(8)", "§5.3", GREEN),
-        ("预测性检验", "h=100 新增间隙：预测先冻结、事后再比", "已入稿，不称盲测", "§4.4", GREEN),
-        ("平台可信靠引用", "引 Krause 2021 [7]，自己只验特定几何", "已做", "§2.1", MBLUE),
-        ("官方没有 ≤1% 硬门槛", "1% 只是内部停止条件，正文从未当验收指标", "口径写进稿", "§3.1", AMBER),
+    # 左：能说 / 不能说
+    L = Inches(0.55); LW = Inches(6.02)
+    text(s, L, Inches(1.38), LW, Inches(0.24), "按现有证据，话只能这么说", size=10.5, color=NAVY, bold=True)
+    says = [
+        ("能说", "「相对 5 nm 离散参考，原公式在 36 条主结果上全部高估，最大 +204.85%。」",
+         "这是数值比较，参考值本身经过第 1–2 级检查。", GREEN, LGREEN),
+        ("能说", "「V2 把这 36 条的平均绝对偏差从 88.85% 降到 6.40%（沿槽）、30.63% 降到 4.42%（横槽）。」",
+         "但必须紧跟两句：这是回顾性评价（标定集含于主比较集）；最大绝对相对偏差仍有 10.50% / 18.71%。", GREEN, LGREEN),
+        ("不能说", "「原公式在真实压印过程中高估了 204.85%。」",
+         "没有第 5 级。真实过程还涉及两相、非稳态、图案边缘，本文都没碰。", RED, LAMBER),
+        ("不能说", "「我们的 K 是准确的。」",
+         "没有第 4 级。LBM 实现与边界格式若有系统偏差，第 1–3 级都查不出来。", RED, LAMBER),
     ]
-    y = Inches(1.44)
-    text(s, Inches(0.72), y, Inches(2.9), Inches(0.24), "文献里的惯例", size=9.5, color=GRAY, bold=True)
-    text(s, Inches(3.75), y, Inches(4.9), Inches(0.24), "本文的对应物", size=9.5, color=GRAY, bold=True)
-    text(s, Inches(8.85), y, Inches(2.0), Inches(0.24), "本周落稿", size=9.5, color=GRAY, bold=True)
-    text(s, Inches(11.20), y, Inches(1.5), Inches(0.24), "位置", size=9.5, color=GRAY, bold=True)
-    y = Inches(1.72); rh = Inches(0.66)
-    for i, (k, v, st, loc, col) in enumerate(rows):
-        fill = WHITE if i % 2 == 0 else LBLUE2
-        box(s, Inches(0.55), y, Inches(12.23), rh, fill=fill, line=LINE)
-        box(s, Inches(0.55), y, Inches(0.045), rh, fill=col)
-        text(s, Inches(0.74), y + Inches(0.19), Inches(2.95), Inches(0.32),
-             k, size=10, color=NAVY, bold=True, spacing=1.26)
-        text(s, Inches(3.75), y + Inches(0.16), Inches(4.95), Inches(0.38),
-             v, size=9.2, color=TXT, spacing=1.26)
-        text(s, Inches(8.85), y + Inches(0.19), Inches(2.3), Inches(0.32),
-             st, size=9, color=col, bold=True, spacing=1.26)
-        text(s, Inches(11.20), y + Inches(0.19), Inches(1.4), Inches(0.32),
-             loc, size=9, color=GRAY)
-        y = y + rh
+    y = Inches(1.66)
+    for tag, main, note, col, bg in says:
+        h = Inches(1.02)
+        box(s, L, y, LW, h, fill=bg, radius=True)
+        box(s, L, y, Inches(0.05), h, fill=col)
+        text(s, L + Inches(0.16), y + Inches(0.10), Inches(0.75), Inches(0.24),
+             tag, size=9.2, color=col, bold=True)
+        text(s, L + Inches(0.95), y + Inches(0.09), LW - Inches(1.12), Inches(0.44),
+             main, size=9.2, color=TXT, spacing=1.3)
+        text(s, L + Inches(0.95), y + Inches(0.60), LW - Inches(1.12), Inches(0.36),
+             note, size=8.2, color=SUB, spacing=1.24)
+        y = y + h + Inches(0.06)
 
-    box(s, Inches(0.55), Inches(5.90), Inches(6.0), Inches(0.86), fill=LGREEN, radius=True)
-    text(s, Inches(0.78), Inches(6.00), Inches(5.6), Inches(0.70),
-         [("落稿的三处零计算改动：", {'size': 9.5, 'bold': True, 'color': GREEN}),
-          ("\n① §3.2 同构句（引[7]）　② §2.1 Bouzidi 依据　③ 新增 §5.3 静态接入", {'size': 9.2, 'color': SUB})],
-         spacing=1.32)
-    box(s, Inches(6.79), Inches(5.90), Inches(6.0), Inches(0.86), fill=LAMBER, radius=True)
-    text(s, Inches(7.02), Inches(6.00), Inches(5.6), Inches(0.70),
-         [("有一条没照搬：", {'size': 9.5, 'bold': True, 'color': AMBER}),
-          ("\n官方看速度场 L2 误差，我们看总积分导度 K ⇒ 只说「结构同构」，不说「误差可比」。", {'size': 9.2, 'color': SUB})],
-         spacing=1.32)
+    # 右：换条件的真相（认错）
+    R = Inches(6.78); RW = Inches(6.00)
+    box(s, R, Inches(1.38), RW, Inches(4.78), fill=WHITE, line=AMBER, radius=True)
+    box(s, R, Inches(1.38), RW, Inches(0.05), fill=AMBER)
+    text(s, R + Inches(0.22), Inches(1.50), RW - Inches(0.44), Inches(0.26),
+         "「换条件」这条，我上一版写错了", size=11, color=AMBER, bold=True)
+    text(s, R + Inches(0.22), Inches(1.80), RW - Inches(0.44), Inches(0.42),
+         "我原先把 18 个几何当成「换条件验证」，这不成立——18 个是研究对象本身，其中 9 个还参与了 V2 标定。用开发集证明开发集，逻辑上是空的。",
+         size=8.6, color=DRED, spacing=1.34)
+
+    facts = [
+        ("18 几何（d/h 0.2–4.0）", "9 个直接进 V2 系数拟合，其余 9 个在选函数形式时也已可见 ⇒ 整体是开发集，不算验证"),
+        ("斜向 30/45/60°", "稿里原话：「内部自洽性，不构成对主值准确性的验证」"),
+        ("槽宽 60 / 240", "稿里原话：「来自已知开发结果的回顾性诊断」"),
+        ("h=100 新增间隙", "唯一接近（不在标定集、系数冻结），但稿里主动降级为「固定公式补充比较」，不认证盲测"),
+        ("三档驱动力 / 三档周期", "前提检验（线性、单胞），不是验证公式"),
+    ]
+    yy = Inches(2.32)
+    for k, v in facts:
+        text(s, R + Inches(0.22), yy, Inches(1.95), Inches(0.30),
+             k, size=8.2, color=NAVY, bold=True, spacing=1.2)
+        text(s, R + Inches(2.22), yy, Inches(3.56), Inches(0.44),
+             v, size=8.0, color=SUB, spacing=1.24)
+        yy = yy + Inches(0.46)
+
+    box(s, R + Inches(0.22), Inches(4.86), RW - Inches(0.44), Inches(1.16), fill=LAMBER, radius=True)
+    text(s, R + Inches(0.36), Inches(4.92), RW - Inches(0.72), Inches(1.06),
+         [("准确定位：", {'size': 8.8, 'bold': True, 'color': AMBER}),
+          ("环 B 只有半个——h=100 是唯一一次系数冻结下的新条件对照，换了 h、没换 d/w。有价值，但不认证盲测，也不证明全域。", {'size': 8.2, 'color': SUB}),
+          ("\n要补：在等宽矩形槽族内、看结果前冻结系数，选未开发的 h/d 做事前预测。换占空比或槽形会动到原式的等宽假设，属模型外，得先扩公式。", {'size': 8.2, 'color': SUB})],
+         spacing=1.28)
     footer(s, 3)
 
 

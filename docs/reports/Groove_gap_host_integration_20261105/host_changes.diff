@@ -1,0 +1,242 @@
+--- original_GDI_host
++++ new_GAP_host
+@@ -1,5 +1,6 @@
+ // SPDX-License-Identifier: GPL-3.0-or-later
+-// GDI-v1. Native porosityForce momentum assembly, physical pressure.
++// GAP-v1 development branch of the accepted GDI-v1 host; not GDI01.
++// Supplied old/new gap snapshot, fixed reference mesh, weighted continuity.
+ // No transport formula, direct D input, transient, convection or viscous term.
+ #include "argList.H"
+ #include "Time.H"
+@@ -11,6 +12,7 @@
+ #include "fvcGrad.H"
+ #include "fvcDiv.H"
+ #include "fvcFlux.H"
++#include "surfaceInterpolate.H"
+ #include "porosityForce.H"
+ #include "porosityModel.H"
+ #include "constrainHbyA.H"
+@@ -29,15 +31,15 @@
+ {
+     argList::noParallel();
+     argList::addBoolOption("auditOnly","Assemble and export audit evidence; never solve");
+-    argList::addBoolOption("solve","Explicitly solve the sealed GDI01 case");
+-    argList::addOption("runId","id","GDI01_v1_ prefixed run identity for solve mode");
++    argList::addBoolOption("solve","Explicitly solve one supplied gap snapshot; never advance time");
++    argList::addOption("runId","id","GAP01_v1_ prefixed run identity for solve mode");
+     #include "setRootCase.H"
+     #include "createTime.H"
+     #include "createMesh.H"
+     const bool audit=args.optionFound("auditOnly");
+     require(audit != args.optionFound("solve"),"Choose exactly one of -auditOnly or -solve; no default solve");
+     const word runId=args.optionLookupOrDefault<word>("runId","AUDIT_ONLY_NO_FLOW_RUN");
+-    require(audit || runId.find("GDI01_v1_")==0,"Solve mode needs a GDI01_v1_ run identity");
++    require(audit || runId.find("GAP01_v1_")==0,"Solve mode needs a new GAP01_v1_ run identity");
+     require(mesh.nCells()==512 && mesh.nGeometricD()==2 && mesh.nSolutionD()==2,"Require 512-cell xy empty mesh");
+     require(mesh.cellZones().size()==1,"Exactly one porous cellZone required");
+     const labelList& zone=mesh.cellZones()["groove"];
+@@ -53,29 +55,50 @@
+     const dictionary& mc=md.subDict("porosityForceCoeffs");
+     require(mc.lookup<word>("type")=="grooveDarcy" && mc.lookup<word>("cellZone")=="groove","Wrong native model/zone");
+     const dictionary& c=mc.subDict("grooveDarcyCoeffs");
+-    require(c.lookup<word>("conductanceModel")=="V2_published_rounded" && c.lookup<word>("gapMode")=="uniform","GDI01 requires uniform V2");
+-    const scalar gap=dimensionedScalar("mesaGap",dimLength,c).value();
++    require(c.lookup<word>("gapMode")=="field" && c.lookup<word>("gapField")=="mesaGap","GAP requires registered mesaGap field");
+     const scalar depth=dimensionedScalar("grooveDepth",dimLength,c).value();
+     const scalar width=dimensionedScalar("grooveWidth",dimLength,c).value();
+     const scalar period=dimensionedScalar("period",dimLength,c).value();
+-    const dimensionedScalar H("H",dimLength,gap+width/period*depth);
+-    require(gap==75e-9 && depth==100e-9 && width==120e-9 && period==240e-9,"Wrong GDI01 geometry inputs");
++    require(depth==100e-9 && width==120e-9 && period==240e-9,"GAP-v1 retains the GDI pattern geometry");
++    const dimensionedScalar b0("referenceThickness",dimLength,settings);
++    const dimensionedScalar gapDeltaT("gapDeltaT",dimTime,settings);
++    const word gapEpoch(settings.lookup<word>("gapEpoch"));
++    require(gdiFinite(b0.value()) && b0.value()>0 && gdiFinite(gapDeltaT.value()) && gapDeltaT.value()>0,"Invalid reference thickness or gapDeltaT");
++    volScalarField mesaGap(IOobject("mesaGap",runTime.name(),mesh,IOobject::MUST_READ,IOobject::AUTO_WRITE),mesh);
++    volScalarField previousMesaGap(IOobject("previousMesaGap",runTime.name(),mesh,IOobject::MUST_READ,IOobject::NO_WRITE),mesh);
++    require(mesaGap.dimensions()==dimLength && previousMesaGap.dimensions()==dimLength,"Both gap snapshots must have length dimensions");
++    forAll(mesaGap,i)
++        require(gdiFinite(mesaGap[i]) && mesaGap[i]>0 && gdiFinite(previousMesaGap[i]) && previousMesaGap[i]>0,"Nonpositive or nonfinite gap snapshot");
++    forAll(mesh.boundary(),pi)
++    {
++        const word expected(mesh.boundary()[pi].type()=="empty" ? "empty" : "zeroGradient");
++        require(mesaGap.boundaryField()[pi].type()==expected && previousMesaGap.boundaryField()[pi].type()==expected,"Gap snapshots require zeroGradient in plane and empty out of plane");
++    }
++    mesaGap.correctBoundaryConditions();previousMesaGap.correctBoundaryConditions();
++    const dimensionedScalar grooveStorage("grooveStorage",dimLength,width/period*depth);
++    volScalarField H(IOobject("H",runTime.name(),mesh,IOobject::NO_READ,IOobject::AUTO_WRITE),mesaGap+grooveStorage);
++    volScalarField Hdot(IOobject("Hdot",runTime.name(),mesh,IOobject::NO_READ,IOobject::AUTO_WRITE),(mesaGap-previousMesaGap)/gapDeltaT);
++    volScalarField thicknessRatio(IOobject("H_over_b0",runTime.name(),mesh),H/b0);
++    const scalarField frozenGap(mesaGap.primitiveField());
++    const scalar storageTotal=gSum(Hdot.primitiveField()*mesh.V())/b0.value();
++    const scalar Hmean=gSum(H.primitiveField()*mesh.V())/gSum(mesh.V());
+     const dimensionedScalar mu0("mu",dimensionSet(1,-1,-1,0,0,0,0),settings);
+     const dimensionedScalar rho0("rho",dimDensity,settings);
+     const dimensionedScalar nu0("nu",sqr(dimLength)/dimTime,settings);
+     const dimensionedScalar scaleU("velocityScale",dimVelocity,settings);
+     require(mu0.value()==0.001 && rho0.value()==1000 && nu0.value()==1e-6 && mag(mu0.value()/(rho0.value()*nu0.value())-1)<1e-12,"Wrong viscosity/density");
+     require(gdiFinite(scaleU.value()) && scaleU.value()>0,"Invalid normalization velocity");
+-    const scalar lx=24e-6,ly=48e-6,dp=24,G=dp/lx,Qs=scaleU.value()*H.value()*ly;
+-    require(mag(H.value()/125e-9-1)<1e-12 && mag(gSum(mesh.V())/(lx*ly*H.value())-1)<1e-10,"Wrong mesh volume/mean thickness");
++    const scalar lx=24e-6,ly=48e-6,dp=24,G=dp/lx;
++    const scalar Qs=max(scaleU.value()*Hmean*ly,mag(storageTotal));
++    require(mag(b0.value()/125e-9-1)<1e-12 && mag(gSum(mesh.V())/(lx*ly*b0.value())-1)<1e-10,"Reference mesh thickness must remain 125nm, independent of current H");
+     forAll(mesh.C(),i)
+     {
+         const vector q=mesh.C()[i];
+         const scalar ix=q.x()/(lx/16)-0.5,iy=q.y()/(ly/32)-0.5;
+         require(mag(ix-std::round(ix))<1e-10 && mag(iy-std::round(iy))<1e-10
+             && ix>-1e-10 && ix<15+1e-10 && iy>-1e-10 && iy<31+1e-10
+-            && mag(q.z()/H.value()-0.5)<1e-10
+-            && mag(mesh.V()[i]/(lx*ly*H.value()/512)-1)<1e-10,"Wrong cell geometry");
++            && mag(q.z()/b0.value()-0.5)<1e-10
++            && mag(mesh.V()[i]/(lx*ly*b0.value()/512)-1)<1e-10,"Wrong reference cell geometry");
+     }
+     volScalarField p(IOobject("p",runTime.name(),mesh,IOobject::MUST_READ,IOobject::AUTO_WRITE),mesh);
+     volVectorField U(IOobject("U",runTime.name(),mesh,IOobject::MUST_READ,IOobject::AUTO_WRITE),mesh);
+@@ -116,22 +139,26 @@
+         forAll(D,i) for(label k=0;k<3;++k) D[i](k,a)=response()[i][k]/(mu0.value()*mesh.V()[i]);
+     }
+     for(const tensor& d:D)
+-        require(gdiFinite(d.xx()) && gdiFinite(d.yy()) && d.xx()>d.yy() && d.yy()>0
++        require(gdiFinite(d.xx()) && gdiFinite(d.yy()) && d.xx()>0 && d.yy()>0
+             && mag(d.xy())/d.xx()<1e-12 && mag(d.yx())/d.xx()<1e-12
+-            && mag(d.zz())==0,"Wrong GDI01 cross-groove tensor response");
+-
+-    const fileName out=runTime.path()/(audit ? "GDI_audit" : "GDI_output");
++            && mag(d.zz())==0,"Require axis-aligned positive in-plane drag in GAP-v1");
++
++    const fileName out=runTime.path()/(audit ? "GAP_audit" : "GAP_output");
+     require(!isDir(out),"Refusing to overwrite output directory");mkDir(out);
+     std::ofstream coefficients((out/"coefficients.csv").c_str());coefficients<<std::setprecision(17);
+     coefficients<<"cell_id,H_m,Dxx_m_minus2,Dxy_m_minus2,Dxz_m_minus2,Dyx_m_minus2,Dyy_m_minus2,Dyz_m_minus2,Dzx_m_minus2,Dzy_m_minus2,Dzz_m_minus2,zone_member\n";
+-    forAll(D,i){coefficients<<i<<','<<H.value();for(label k=0;k<9;++k) coefficients<<','<<D[i][k];coefficients<<",1\n";}checkStream(coefficients);coefficients.close();
++    forAll(D,i){coefficients<<i<<','<<H[i];for(label k=0;k<9;++k) coefficients<<','<<D[i][k];coefficients<<",1\n";}checkStream(coefficients);coefficients.close();
++    std::ofstream gaps((out/"gap_snapshot.csv").c_str());gaps<<std::setprecision(17);
++    gaps<<"cell_id,mesaGap_m,previousMesaGap_m,H_m,Hdot_m_s,referenceThickness_m,gapDeltaT_s,plan_area_m2,storage_rate_m3_s\n";
++    forAll(H,i) gaps<<i<<','<<mesaGap[i]<<','<<previousMesaGap[i]<<','<<H[i]<<','<<Hdot[i]<<','<<b0.value()<<','<<gapDeltaT.value()<<','<<mesh.V()[i]/b0.value()<<','<<Hdot[i]*mesh.V()[i]/b0.value()<<'\n';
++    checkStream(gaps);gaps.close();
+     auto writeFieldsCSV=[&](const surfaceScalarField& phi,const surfaceScalarField& phiU)
+     {
+         std::ofstream cells((out/"cells.csv").c_str());cells<<std::setprecision(17);
+         cells<<"cell_id,x_m,y_m,z_m,volume_m3,p_Pa,Ux_m_s,Uy_m_s,Uz_m_s,Jx_m2_s,Jy_m2_s,Jz_m2_s\n";
+-        forAll(p,i){const vector x=mesh.C()[i],u=U[i],j=H.value()*u;cells<<i<<','<<x.x()<<','<<x.y()<<','<<x.z()<<','<<mesh.V()[i]<<','<<p[i]<<','<<u.x()<<','<<u.y()<<','<<u.z()<<','<<j.x()<<','<<j.y()<<','<<j.z()<<'\n';}checkStream(cells);
++        forAll(p,i){const vector x=mesh.C()[i],u=U[i],j=H[i]*u;cells<<i<<','<<x.x()<<','<<x.y()<<','<<x.z()<<','<<mesh.V()[i]<<','<<p[i]<<','<<u.x()<<','<<u.y()<<','<<u.z()<<','<<j.x()<<','<<j.y()<<','<<j.z()<<'\n';}checkStream(cells);
+         std::ofstream faces((out/"faces.csv").c_str());faces<<std::setprecision(17);
+-        faces<<"face_id,owner,neighbour,patch,x_m,y_m,z_m,Sx_m2,Sy_m2,Sz_m2,phi_m3_s,phi_U_m3_s\n";
++        faces<<"face_id,owner,neighbour,patch,x_m,y_m,z_m,Sx_m2,Sy_m2,Sz_m2,phi_m3_s,phi_J_from_U_m3_s\n";
+         auto face=[&](label fi,label own,label nei,const word& patch,const vector& x,const vector& s,scalar q,scalar qu)
+         {faces<<fi<<','<<own<<','<<nei<<','<<patch<<','<<x.x()<<','<<x.y()<<','<<x.z()<<','<<s.x()<<','<<s.y()<<','<<s.z()<<','<<q<<','<<qu<<'\n';};
+         forAll(mesh.neighbour(),fi) face(fi,mesh.owner()[fi],mesh.neighbour()[fi],"internal",mesh.Cf()[fi],mesh.Sf()[fi],phi[fi],phiU[fi]);
+@@ -142,17 +169,21 @@
+     bool converged=false;label lastOuter=0,lastLinear=0;scalar lastNorm=GREAT,lastTrue=GREAT,lastRaw=GREAT;
+     for(label outer=1;outer<=(audit ? 1 : 2000);++outer)
+     {
++        require(gMax(mag(mesaGap.primitiveField()-frozenGap))==0,"Gap epoch changed during pressure iterations");
+         const vectorField oldU(U.primitiveField());const scalarField oldP(p.primitiveField());
+         fvVectorMatrix momentum(-wrapper->source(rho,U));
+         require(momentum.dimensions()==dimForce && gMin(momentum.diag())>0,"Expected positive physical momentum matrix");
+         volScalarField rAU(1.0/momentum.A());
+         volVectorField HbyA(constrainHbyA(rAU*momentum.H(),U,p));
+         HbyA.correctBoundaryConditions();
+-        surfaceScalarField phiHat("phiHbyA",fvc::flux(HbyA));
++        surfaceScalarField faceWeight("face_H_over_b0",fvc::interpolate(thicknessRatio));
++        surfaceScalarField phiHat("phiHbyA",faceWeight*fvc::flux(HbyA));
+         p.primitiveFieldRef()=0;p.correctBoundaryConditions();
+         // Multiply the specified pressure equation by -1 for SPD assembly.
+         // Consequently canonical pressure flux = -pressure.flux().
+-        fvScalarMatrix pressure(-fvm::laplacian(rAU,p)==-fvc::div(phiHat));
++        // div_xy(H U) + Hdot = 0 on a fixed reference mesh of thickness b0.
++        // Matrix and corrected face flux must use exactly the same face weight.
++        fvScalarMatrix pressure(-fvm::laplacian(faceWeight*fvc::interpolate(rAU),p)==-fvc::div(phiHat)-Hdot/b0);
+         require(pressure.dimensions()==dimVolume/dimTime && pressure.symmetric() && gMin(pressure.D()())>0,"Invalid pressure matrix");
+         if(audit)
+         {
+@@ -160,11 +191,27 @@
+             matrix<<"cell_id,momentum_diag_kg_s,momentum_source_x_N,momentum_source_y_N,momentum_source_z_N,pressure_diagonal,pressure_source,rAU\n";
+             const scalarField diag(pressure.D());
+             forAll(p,i){matrix<<i<<','<<momentum.diag()[i]<<','<<momentum.source()[i].x()<<','<<momentum.source()[i].y()<<','<<momentum.source()[i].z()<<','<<diag[i]<<','<<pressure.source()[i]<<','<<rAU[i]<<'\n';}checkStream(matrix);matrix.close();
++            std::ofstream links((out/"pressure_links.csv").c_str());links<<std::setprecision(17);
++            links<<"face_id,owner,neighbour,upper,weight_H_over_b0,rAU_face,area_m2,deltaCoeff_m_minus1\n";
++            const surfaceScalarField rAUface(fvc::interpolate(rAU));
++            forAll(mesh.neighbour(),fi) links<<fi<<','<<mesh.owner()[fi]<<','<<mesh.neighbour()[fi]<<','<<pressure.upper()[fi]<<','<<faceWeight[fi]<<','<<rAUface[fi]<<','<<mesh.magSf()[fi]<<','<<mesh.deltaCoeffs()[fi]<<'\n';
++            checkStream(links);links.close();
++            // Algebraic operator probe only: evaluate flux, never solve for p.
++            // The same pressure-matrix flux expression is used by solve mode.
++            const scalarField initialP(p.primitiveField());
++            forAll(p,i) p[i]=sqr(mesh.C()[i].x()/lx)+mesh.C()[i].y()/ly;
++            p.correctBoundaryConditions();
++            const surfaceScalarField probeFlux(phiHat+pressure.flux());
++            std::ofstream fluxProbe((out/"pressure_flux_probe.csv").c_str());fluxProbe<<std::setprecision(17);
++            fluxProbe<<"face_id,owner_p_Pa,neighbour_p_Pa,corrected_depth_flux_m3_s\n";
++            forAll(mesh.neighbour(),fi) fluxProbe<<fi<<','<<p[mesh.owner()[fi]]<<','<<p[mesh.neighbour()[fi]]<<','<<probeFlux[fi]<<'\n';
++            checkStream(fluxProbe);fluxProbe.close();
++            p.primitiveFieldRef()=initialP;p.correctBoundaryConditions();
+             surfaceScalarField zeroPhi("zeroPhi",fvc::flux(U));writeFieldsCSV(zeroPhi,zeroPhi);
+             std::ofstream auditFile((out/"audit.json").c_str());auditFile<<std::setprecision(17)
+-                <<"{\"protocol_id\":\"GDI-v1\",\"case_id\":\"GDI01\",\"audit_only\":true,\"flow_solved\":false,\"solve_calls\":0,\"cells\":"<<mesh.nCells()<<",\"zone_cells\":"<<zone.size()
+-                <<",\"H_m\":"<<H.value()<<",\"volume_m3\":"<<gSum(mesh.V())<<",\"source_route\":\"native_porosityForce_source_rho_U\",\"model_type\":\"grooveDarcy\",\"momentum_dimensions\":\"force\",\"pressure_matrix_symmetric\":true,\"pressure_matrix_positive_diagonal\":true,\"initial_p_max\":0,\"initial_U_max\":0}\n";checkStream(auditFile);
+-            Info<<"GDI_AUDIT_COMPLETE: native assembly only; zero solve calls"<<nl;return 0;
++                <<"{\"protocol_id\":\"GAP-v1-development\",\"case_id\":\"GAP01\",\"gap_epoch\":\""<<gapEpoch<<"\",\"audit_only\":true,\"flow_solved\":false,\"solve_calls\":0,\"cells\":"<<mesh.nCells()<<",\"zone_cells\":"<<zone.size()
++                <<",\"H_mean_m\":"<<Hmean<<",\"storage_total_m3_s\":"<<storageTotal<<",\"reference_thickness_m\":"<<b0.value()<<",\"volume_m3\":"<<gSum(mesh.V())<<",\"source_route\":\"native_porosityForce_source_rho_U\",\"model_type\":\"grooveDarcy\",\"momentum_dimensions\":\"force\",\"pressure_matrix_symmetric\":true,\"pressure_matrix_positive_diagonal\":true,\"initial_p_max\":0,\"initial_U_max\":0}\n";checkStream(auditFile);
++            Info<<"GAP_AUDIT_COMPLETE: field and weighted continuity assembly; zero solve calls"<<nl;return 0;
+         }
+         scalar initialRaw;{const tmp<scalarField> residual=pressure.residual();initialRaw=gSum(mag(residual()));}
+         require(gdiFinite(initialRaw) && initialRaw>0,"Invalid zero-initial-pressure normalization");
+@@ -174,18 +221,21 @@
+         const scalar trueNorm=raw/initialRaw;
+         surfaceScalarField phi(IOobject("phi",runTime.name(),mesh,IOobject::NO_READ,IOobject::AUTO_WRITE),phiHat+pressure.flux());
+         U=HbyA-rAU*fvc::grad(p);U.correctBoundaryConditions();
+-        surfaceScalarField phiU(IOobject("phi_U",runTime.name(),mesh,IOobject::NO_READ,IOobject::AUTO_WRITE),fvc::flux(U));
++        surfaceScalarField phiU(IOobject("phi_J_from_U",runTime.name(),mesh,IOobject::NO_READ,IOobject::AUTO_WRITE),faceWeight*fvc::flux(U));
+         const volVectorField gradient(fvc::grad(p));
+         const tmp<vectorField> force=model.force(U,rho,mu);
+         scalar sumR2=0,maxR=0,sumDU2=0,maxDU=0,maxDP=0,energy=0;
+         scalarField imbalance(mesh.nCells(),0);
++        forAll(imbalance,i) imbalance[i]=Hdot[i]*mesh.V()[i]/b0.value();
+         forAll(U,i)
+         {
+             const vector residual=force()[i]/mesh.V()[i]+gradient[i];
+             const scalar du=mag(U[i]-oldU[i]);
+             require(gdiFinite(mag(residual)) && gdiFinite(du) && gdiFinite(p[i]),"Nonfinite iteration state");
+             sumR2+=magSqr(residual)*mesh.V()[i];maxR=max(maxR,mag(residual));
+-            sumDU2+=sqr(du)*mesh.V()[i];maxDU=max(maxDU,du);maxDP=max(maxDP,mag(p[i]-oldP[i]));energy+=(force()[i]&U[i]);
++            sumDU2+=sqr(du)*mesh.V()[i];maxDU=max(maxDU,du);maxDP=max(maxDP,mag(p[i]-oldP[i]));
++            // force() uses reference-cell volume; physical liquid volume is H/b0 times that.
++            energy+=thicknessRatio[i]*(force()[i]&U[i]);
+         }
+         scalar net=0,leak=0,Qout=0,fluxDiff=0,fluxScale=0;
+         forAll(mesh.neighbour(),fi){imbalance[mesh.owner()[fi]]+=phi[fi];imbalance[mesh.neighbour()[fi]]-=phi[fi];fluxDiff+=mag(phi[fi]-phiU[fi]);fluxScale+=mag(phi[fi]);}
+@@ -196,8 +246,12 @@
+         }
+         const scalar momL2=std::sqrt(sumR2/gSum(mesh.V()))/G,momMax=maxR/G;
+         const scalar duL2=std::sqrt(sumDU2/gSum(mesh.V()))/scaleU.value(),duMax=maxDU/scaleU.value(),dP=maxDP/dp;
+-        const scalar global=mag(net)/Qs,local=sum(mag(imbalance))/Qs,side=leak/Qs,flux=fluxDiff/max(fluxScale,scalar(1e-300));
+-        const scalar power=dp*Qout,energyError=mag(energy-power)/max(mag(power),scalar(1e-300));
++        const scalar global=mag(net+storageTotal)/Qs,local=sum(mag(imbalance))/Qs,side=leak/Qs,flux=fluxDiff/max(fluxScale,scalar(1e-300));
++        scalar power=-gSum(p.primitiveField()*Hdot.primitiveField()*mesh.V())/b0.value();
++        forAll(mesh.boundary(),pi)
++            if(mesh.boundary()[pi].type()!="empty")
++                forAll(mesh.boundary()[pi],li) power-=p.boundaryField()[pi][li]*phi.boundaryField()[pi][li];
++        const scalar energyError=mag(energy-power)/max(mag(power),scalar(1e-300));
+         history<<outer<<','<<perf.nIterations()<<','<<perf.finalResidual()<<','<<initialRaw<<','<<raw<<','<<trueNorm<<','<<momL2<<','<<momMax<<','<<duL2<<','<<duMax<<','<<dP<<','<<global<<','<<local<<','<<side<<','<<flux<<','<<energyError<<'\n';history.flush();checkStream(history);
+         lastOuter=outer;lastLinear=perf.nIterations();lastNorm=perf.finalResidual();lastTrue=trueNorm;lastRaw=raw;
+         const bool linearOK=gdiFinite(lastNorm)&&gdiFinite(lastTrue)&&lastNorm<=1e-12&&lastTrue<=1e-12&&lastLinear<=2000;
+@@ -212,14 +266,14 @@
+             const tmp<scalarField> residual=pressure.residual();
+             forAll(U,i){evidence<<i<<','<<oldU[i].x()<<','<<oldU[i].y()<<','<<oldU[i].z()<<','<<oldP[i]<<','<<momentum.diag()[i]<<','<<momentum.source()[i].x()<<','<<momentum.source()[i].y()<<','<<momentum.source()[i].z()<<','<<gradient[i].x()<<','<<gradient[i].y()<<','<<gradient[i].z()<<','<<force()[i].x()<<','<<force()[i].y()<<','<<force()[i].z()<<','<<residual()[i]<<'\n';}checkStream(evidence);evidence.close();
+             volVectorField J(IOobject("J",runTime.name(),mesh,IOobject::NO_READ,IOobject::AUTO_WRITE),H*U);
+-            runTime.setTime(1,1);p.write();U.write();J.write();phi.write();phiU.write();
++            runTime.setTime(1,1);p.write();U.write();J.write();phi.write();phiU.write();mesaGap.write();H.write();Hdot.write();
+             break;
+         }
+     }
+     std::ofstream stats((out/"solver.json").c_str());stats<<std::setprecision(17)
+-        <<"{\"protocol_id\":\"GDI-v1\",\"case_id\":\"GDI01\",\"run_id\":\""<<runId<<"\",\"solver\":\"grooveDarcyStaticFoam_Foundation13\",\"flow_solved\":true,\"converged\":"<<(converged?"true":"false")
++        <<"{\"protocol_id\":\"GAP-v1-development\",\"case_id\":\"GAP01\",\"gap_epoch\":\""<<gapEpoch<<"\",\"storage_total_m3_s\":"<<storageTotal<<",\"run_id\":\""<<runId<<"\",\"solver\":\"grooveDarcyGapFoam_Foundation13\",\"flow_solved\":true,\"converged\":"<<(converged?"true":"false")
+         <<",\"outer_iterations\":"<<lastOuter<<",\"iterations\":"<<lastLinear<<",\"normalized_residual\":"<<lastNorm<<",\"true_normalized_residual\":"<<lastTrue<<",\"raw_residual_L1_m3_s\":"<<lastRaw
+         <<",\"source_route\":\"native_porosityForce_source_rho_U\",\"model_type\":\"grooveDarcy\",\"porous_zone_cells\":512,\"pressure_matrix_sign\":-1,\"physical_time_advanced\":false,\"result_acceptance\":\"NOT_EVALUATED\"}\n";checkStream(stats);
+-    Info<<"GDI flow stage ended; external independent result acceptance required"<<nl;
++    Info<<"GAP snapshot stage ended; external independent result acceptance required"<<nl;
+     return converged?0:2;
+ }

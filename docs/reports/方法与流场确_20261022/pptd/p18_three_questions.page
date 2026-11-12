@@ -1,0 +1,152 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p18-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p18-topbar-title
+    bounds: [36, 8, 700, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 三个问题，请老师裁定
+  - elementType: text
+    elementId: p18-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 18 / 18
+  - elementType: shape
+    elementId: p18-q1
+    shapeName: roundRect
+    bounds: [60, 62, 268, 330]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p18-q1-chip
+    shapeName: rect
+    bounds: [80, 78, 150, 26]
+    fill: { type: solid, color: "#D9534F" }
+  - elementType: text
+    elementId: p18-q1-chiptext
+    bounds: [80, 80, 150, 22]
+    content:
+      fontSize: 12.5
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: 问题 ① 流场图
+  - elementType: text
+    elementId: p18-q1-title
+    bounds: [80, 116, 228, 52]
+    content:
+      fontSize: 14.5
+      bold: true
+      color: "#1A2230"
+      lineHeight: 1.35
+      text: 四张流场图是否收入正文？
+  - elementType: text
+    elementId: p18-q1-body
+    bounds: [80, 176, 228, 210]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.55
+      text: "A. 全部入正文（速度+剖面+耗散）<br/>B. 只入速度两张，剖面与耗散进补充材料（建议）<br/>C. 都不入，保持四张主图<br/><br/>注：若采用，须在图注声明渲染来源限度——能定位到算例与步数，但未能证明当时所用代码版本（unique_run_id_verified=false）。"
+  - elementType: shape
+    elementId: p18-q2
+    shapeName: roundRect
+    bounds: [346, 62, 268, 330]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p18-q2-chip
+    shapeName: rect
+    bounds: [366, 78, 150, 26]
+    fill: { type: solid, color: "#D9534F" }
+  - elementType: text
+    elementId: p18-q2-chiptext
+    bounds: [366, 80, 150, 22]
+    content:
+      fontSize: 12.5
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: 问题 ② 表述收紧
+  - elementType: text
+    elementId: p18-q2-title
+    bounds: [366, 116, 228, 52]
+    content:
+      fontSize: 14.5
+      bold: true
+      color: "#1A2230"
+      lineHeight: 1.35
+      text: 三处“说过了头”的表述是否按候选句收紧？
+  - elementType: text
+    elementId: p18-q2-body
+    bounds: [366, 176, 228, 210]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.55
+      text: "① §2.1 版本可复现承诺 → 改为“二进制哈希已存，源码/编译绑定待核”<br/>② “52 次运行” → 明确是地图+附加检查的统计范围<br/>③ 线性检查范围 → 限于基准几何与 2.5 nm<br/><br/>三句候选文案已备好，老师点头即可替换（建议：全部收紧）。"
+  - elementType: shape
+    elementId: p18-q3
+    shapeName: roundRect
+    bounds: [632, 62, 268, 330]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p18-q3-chip
+    shapeName: rect
+    bounds: [652, 78, 150, 26]
+    fill: { type: solid, color: "#D9534F" }
+  - elementType: text
+    elementId: p18-q3-chiptext
+    bounds: [652, 80, 150, 22]
+    content:
+      fontSize: 12.5
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: 问题 ③ 优先级
+  - elementType: text
+    elementId: p18-q3-title
+    bounds: [652, 116, 228, 52]
+    content:
+      fontSize: 14.5
+      bold: true
+      color: "#1A2230"
+      lineHeight: 1.35
+      text: 下一步先做什么？
+  - elementType: text
+    elementId: p18-q3-body
+    bounds: [652, 176, 228, 210]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.55
+      text: "A. 收紧表述 + 整理支持材料包 → 进入投稿准备（建议）<br/>B. 先恢复历史构建档案（源码哈希绑定）再投稿<br/>C. 直接开始投稿格式准备<br/><br/>补充：若老师对验证链任何一层有疑问，可当场调出原始 run 记录核对。"
+  - elementType: shape
+    elementId: p18-bottombar
+    shapeName: rect
+    bounds: [60, 408, 840, 56]
+    fill: { type: solid, color: "#0E3F8C" }
+  - elementType: text
+    elementId: p18-closing
+    bounds: [84, 418, 792, 38]
+    content:
+      fontSize: 15.5
+      bold: true
+      color: "#FFFFFF"
+      lineHeight: 1.4
+      text: 方法经得起追问，结果才值得被看——请老师确认后，我们按裁定推进。
+  - elementType: text
+    elementId: p18-footer
+    bounds: [60, 480, 840, 14]
+    content:
+      style: $tiny
+      text: 汇报完毕，感谢老师审阅 · SIM240 项目组 2026-10-22 · 全部数据可溯（52 run 索引 + 支持资料索引）

@@ -1,0 +1,29 @@
+--- docs/reports/SIM240_AI_CONTEXT.md (before)
++++ docs/reports/SIM240_AI_CONTEXT.md (after)
+@@ -1,15 +1,16 @@
+ # SIM240 AI CONTEXT
+ 
+-## C02已完成并满足SDI-v1，V2两主方向静态接口均已检查（2026-10-30）
+-
+-- 用户授权核查C02并分析已有结果。本轮确认 `CASE/interface_static_darcy_v1_1/runs/SDI_C02_v1_1_20261030_01/` 已完成：本机2026-10-30 02:02:08，两端退出0、无超时，二维86次CG、OpenFOAM34次PCG。单次tmux查询无服务器；完成依据execution.json、独立退出码、日志与原始输出。报告入口 `docs/reports/SDI_C02_results_20261030/REPORT.md`。
+-- 本次25份输入/二进制/源码与准备副本绑定哈希匹配，发布检查器1.1.0与启动留存副本一致；当前封装48文件不变、21库当前哈希匹配启动清单。按原SDI-v1检查，两端各23项与跨端4项共50个数值检查满足，无检查器/门槛改动。C02 interface_analysis.json记录NUMERICAL_GATE=PASS、RESULT_PASS=true、geometry_PASS=true（仅512单元合成平均域），physical_validation=NOT_EVALUATED、independent_human_acceptance=false。
+-- C02沿槽实际Umean约8.331211263609564e-7m/s，Q二维4.998726758166358e-18/OF4.998726758167961e-18m³/s，两端Q相对差3.20710e-13；压力最大相对解析偏差3.93019e-13/5.09666e-13；逐单元守恒相对量2.49873e-11/1.40979e-11，均低于1e-8；耗散/功率相对差约1.24e-13/4.44e-13。实际残差归一化7.80838e-13/4.40707e-13满足1e-12。
+-- 直接回读原生p/U/J/phi/phi_U，512单元与1072有效面数据和CSV逐项一致，维度及24/0Pa边界核对；独立本地算术重算Q、守恒、恢复K与耗散。证据independent_raw_audit.json、source_manifest.json、run_preservation.json。该复算不是独立人工验收，原始运行及result_acceptance不改。
+-- 与已完成C01直接读原始数据对照：尺寸/厚度/物性/网格/驱动/门槛一致，K/D主值成对交换。C02/C01实际Q比二维2.286886803584366、OF2.286886803585220，对应解析2.286886803584717；两例压力场最大差约1.10e-11/1.32e-11Pa，压力相同而流量交换符合预期。此为描述性静态流量比，不增新Gate，也不是挤压阻力比。详见C01_C02_comparison.json。
+-- 当前C01与C02的V2横槽/沿槽在这一个恒系数主轴平均问题、同一512网格上的接口检查均满足；不外推一般斜向/复杂压力/网格独立或物理准确性。原公式对照、真实沟槽独立参照、挤压/两相/运动、内置DarcyForchheimer源接入仍未验证；V=0时F/V不适用。旧C01严格零识别的NOT_EVALUATED记录及后续1.1版本证据保留。
+-- 本轮只分析已有C02并对照已有C01，未启动/重跑/编译/拟合/放宽门槛/准备或运行下一例/提交推送/对外发送。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。无需重启C02。
+-- 下一具体动作建议：准备SDI-v1 C03原公式横槽对照材料，维持相同平均定义、边界与门槛；本轮未执行该动作或交付启动命令，不自动继续。后续常规代码/结果工作GPT-6.1 Sol｜High；理论矛盾或最终物理裁决按协议GPT-6 Astra｜High。
++## C03原公式横槽材料与静态核对完成，保持未启动（2026-10-30）
++
++- 用户裁定仅准备SDI-v1 C03原公式横槽对照，保持边界、平均定义和验收门槛，暂不启动。新增独立包 `CASE/interface_static_darcy_v1_2/`，入口README.md、common/C03_SPEC.md；详细证据 `docs/reports/SDI_C03_preparation_20261030/REPORT.md`。此C03不是旧路线表Case03。
++- C03与C01同为槽沿y、x压差24/0Pa、G=1e6Pa/m、H=125nm、24×48μm、512单元，U=J/H，D=H K⁻¹；只将V2系数换为original_local_cubic。字典/网格逐字节对照，共同输入和原SDI-v1 thresholds/linear_solver逐项一致；不重复加壁面剪切或另一份阻力源。
++- 已核对两份C++、Make配置和两个二进制与C01哈希一致，复用原真实编译证据，本轮未新编译。C03路径checkMesh通过；二维audit-only及OF auditOnly退出0，仅检查输入/装配矩阵，无压力求解，initial_p_max=0。geometry_PASS=true仅指合成平均域，不是实际沟槽几何。
++- 检查器1.2.0只增加C03身份支持及版本说明，所有函数AST与1.1.0相同，保留既有几何修正。15项人造数据测试通过；只读已有C01/C02，各50项数值检查、全部指标/Gate与原始文件哈希和旧分析一致。原C01严格零识别未评价记录及后续修正证据保留。
++- 新封装绑定44文件、21运行库，默认只读preflight通过；launch_ready仅技术材料齐备，flow_run_authorized_by_preparation=false。planned_run_id=SDI_C03_v1_2_20261030_01，actual_run_id=null，run_completed=false，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=true（仅合成平均域）、physical_validation=NOT_EVALUATED、independent_human_acceptance=false。无runs目录、SDI_output、时间1场或新tmux会话。
++- C03解析预期（不是结果）：Kxx=6.518158783783783e-23m³、Dxx=1.917719468739877e15m⁻²，Ux约5.214527027027026e-7m/s、Q约3.1287162162162162e-18m³/s；C03/C01解析Q比1.4313684610462438仅描述性核对，不增门槛或声称物理改善。两例预期压力相同，真实准确性仍需独立沟槽/实验参考。
++- 原C01/C02两发布包及既有结果/报告223份旧文件集和哈希保持，详见preservation_verification.json。已完成C01、C02接口NUMERICAL_GATE=PASS、RESULT_PASS=true、geometry_PASS=true（仅合成平均域）状态保持，未重跑。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL不变。
++- 本轮只准备C03、静态检查和旧例只读回归，沿用scientific-writing组织报告；改动为新包/新报告与本状态/最新交接。无流动求解、新实际run_id、拟合、真实N8提取、物理放行、下一例启动、提交推送或对外发送。现有卡点为C03尚未获启动授权且无计算结果；独立准确性/网格证据缺口也未解除。
++- 下一具体动作：保持C03未启动，等待用户后续明确启动指令；届时仅该例两端，完成后按原SDI-v1另行读取原始证据并对照C01，不自动重试、C04或其他Gate。本轮不交付启动命令，无新增长算授权。下一阶段GPT-6.1 Sol｜High；疑难理论矛盾或最终物理裁决另按协议GPT-6 Astra｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）
+ 

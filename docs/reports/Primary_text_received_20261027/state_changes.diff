@@ -1,0 +1,50 @@
+--- before/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,13 +1,14 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：作者采用的GCI表与限定文字已同步，新增计算关闭（2026-10-27，当前接续入口）
+-
+-- 用户授权：按作者采用范围同步候选表和限定文字，保持新增计算关闭。入口`docs/reports/GCI_author_sync_20261027/REPORT.md`，修改前快照`before/`、差异`document_changes.diff`、核对`verification.json`。采用上一轮`GCI_decision_review_20261027/`已完成Astra独立复核的候选，本轮无新理论实质变更或严格界审定，未新增模型复核或声称主模型切换。
+-- 正式同步：`SIM240_中文稿_导师审阅版_20261022.md`§3.3指向S9/表S5，附录B更新表数量与映射；`SIM240_Supplementary_Methods_20261024/`的S9新增6项条件性GCI表、失败随数说明、渐近性限定和平板同分母比较，新`Table_S5_conditional_gci.csv`为已核候选逐字节副本。README/编号对照同步；原表S1—S4、旧证书、候选、归档与源码保持。正式稿仍待作者终审，不构成投稿或发布。
+-- 科学边界：不以同三点GCI比独立确认渐近区，不以p低于2直接判错；历史细T质量FAIL同时影响K_T、eta_T、A。G2平板解析比较仅限该工况/积分量；未引入原G1“13.5倍覆盖”、角点机制定论或第四格承诺。历史G2 Step3 FAIL/INCONCLUSIVE、5nm离散参考及全域严格误差界未建立保持。
+-- 验证范围：检查候选CSV一致、6行显示数值、3项失败依赖、正文仅3处指定替换、原S1—S8及S10—S11/历史S9段保持、链接与编号以及实际选定输入的字节保护，结果见本轮verification.json；不是新原场验收或新增数值验证。仅维护文档及状态，无编译、求解、真实N8提取、拟合、第二项、Git提交推送，无新run_id。
+-- 当前状态/卡点：旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。三篇原文与4组历史完整构建绑定仍缺；原资料合同见`Primary_text_build_contract_followup_20261027/MISSING_ITEMS.md`。表已补齐不等于参考资格闭合。
+-- 停止点/下一动作：本次同步任务完成；后续可只读核作者整稿及来源合同缺项。当前无启动命令或新增计算授权；第四点需另定合同/预算并获明确授权。一般文稿核对GPT-6.1 Sol｜High；理论实质或严格界再用GPT-6 Astra｜High。
++## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
++
++- 用户范围：`/home/dell/下载`刚下载的三篇，沿用最小资料合同，只读核方法原件/当前实现，保持新增计算关闭。入口`docs/reports/Primary_text_received_20261027/REPORT.md`、`intake.json`、`contract_receipt.json`、`current_implementation.json`；原件路径/大小/SHA、Crossref响应、页预览与核对结果均在该目录。
++- 实际收到：P9 Guo六页发表版（10.1103/PhysRevE.65.046308），P10 Celik四页发表版（10.1115/1.2960953）；指定页/公式与当前源码或旧作者稿的对应已核。P10六作者位于末页；式4上标21/式6内部12的符号不一致也保留在发表版。P9力密度F与FORCE加速度字段、ρ_lat系数、omega=1/tau及半步速度转换对应，只关所查当前实现关系，不绑定历史程序。
++- 第三份为正文[5]Dewangan–Datta2020，DOI10.1017/jfm.2020.134，35页，与目录既有无(1)副本SHA相同。只核首页/身份，不计新增独立理论证据；不是P8 Bouzidi，也不是正文[6]2018年文章。P8仍缺10.1063/1.1399290的完整8页；[6]2018年全文条件与四组完整历史构建绑定继续OPEN，未重新全机搜档。
++- 文件维护：正文附录C仅更新参考文献终校剩余清单；补充S11只更新P9/P10已核状态及[5]副本身份。此前作者采用的GCI表/限定文字已同步，见`GCI_author_sync_20261027/REPORT.md`；表S1—S5、正文科学段落/结果/理论附录、模型、源码、冻结协议、旧报告与历史FAIL保持。来源核实不等于数值参考合格或全图误差界。当前正式稿仍待作者终审。
++- 核对范围/权限：三份PDF提取exit0，9页新原件+1页旧文稿附录已渲染目视；原件、所查源码及选定旧证据字节保护见verification.json，不是全部源码/历史运行重验。无编译、求解、真实N8提取、拟合、第二项或Git提交推送，无新run_id；本轮无理论实质变更/严格界裁定，未触发新的Astra复核。
++- 状态：旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。历史G2 Step3 FAIL/INCONCLUSIVE及5nm离散参考口径保持。
++- 下一具体动作：取得真正P8及其q/两分支/时间层原文证据，取得[6]2018年原文及历史构建档案后按合同只读核对；本次补齐P9/P10不授权新计算。常规资料核对GPT-6.1 Sol｜High；假设改变、理论实质推广或严格误差界再用GPT-6 Astra｜High。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 
+--- before/AI_HANDOFF_20261015.md
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,13 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 第一篇：作者采用的GCI表与限定文字已同步，新增计算关闭（2026-10-27，当前接续入口）
+-
+-- 用户授权：按作者采用范围同步候选表和限定文字，保持新增计算关闭。入口`docs/reports/GCI_author_sync_20261027/REPORT.md`，修改前快照`before/`、差异`document_changes.diff`、核对`verification.json`。采用上一轮`GCI_decision_review_20261027/`已完成Astra独立复核的候选，本轮无新理论实质变更或严格界审定，未新增模型复核或声称主模型切换。
+-- 正式同步：`SIM240_中文稿_导师审阅版_20261022.md`§3.3指向S9/表S5，附录B更新表数量与映射；`SIM240_Supplementary_Methods_20261024/`的S9新增6项条件性GCI表、失败随数说明、渐近性限定和平板同分母比较，新`Table_S5_conditional_gci.csv`为已核候选逐字节副本。README/编号对照同步；原表S1—S4、旧证书、候选、归档与源码保持。正式稿仍待作者终审，不构成投稿或发布。
+-- 科学边界：不以同三点GCI比独立确认渐近区，不以p低于2直接判错；历史细T质量FAIL同时影响K_T、eta_T、A。G2平板解析比较仅限该工况/积分量；未引入原G1“13.5倍覆盖”、角点机制定论或第四格承诺。历史G2 Step3 FAIL/INCONCLUSIVE、5nm离散参考及全域严格误差界未建立保持。
+-- 验证范围：检查候选CSV一致、6行显示数值、3项失败依赖、正文仅3处指定替换、原S1—S8及S10—S11/历史S9段保持、链接与编号以及实际选定输入的字节保护，结果见本轮verification.json；不是新原场验收或新增数值验证。仅维护文档及状态，无编译、求解、真实N8提取、拟合、第二项、Git提交推送，无新run_id。
+-- 当前状态/卡点：旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。三篇原文与4组历史完整构建绑定仍缺；原资料合同见`Primary_text_build_contract_followup_20261027/MISSING_ITEMS.md`。表已补齐不等于参考资格闭合。
+-- 停止点/下一动作：本次同步任务完成；后续可只读核作者整稿及来源合同缺项。当前无启动命令或新增计算授权；第四点需另定合同/预算并获明确授权。一般文稿核对GPT-6.1 Sol｜High；理论实质或严格界再用GPT-6 Astra｜High。
++## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
++
++- 用户范围：`/home/dell/下载`刚下载的三篇，沿用最小资料合同，只读核方法原件/当前实现，保持新增计算关闭。入口`docs/reports/Primary_text_received_20261027/REPORT.md`、`intake.json`、`contract_receipt.json`、`current_implementation.json`；原件路径/大小/SHA、Crossref响应、页预览与核对结果均在该目录。
++- 实际收到：P9 Guo六页发表版（10.1103/PhysRevE.65.046308），P10 Celik四页发表版（10.1115/1.2960953）；指定页/公式与当前源码或旧作者稿的对应已核。P10六作者位于末页；式4上标21/式6内部12的符号不一致也保留在发表版。P9力密度F与FORCE加速度字段、ρ_lat系数、omega=1/tau及半步速度转换对应，只关所查当前实现关系，不绑定历史程序。
++- 第三份为正文[5]Dewangan–Datta2020，DOI10.1017/jfm.2020.134，35页，与目录既有无(1)副本SHA相同。只核首页/身份，不计新增独立理论证据；不是P8 Bouzidi，也不是正文[6]2018年文章。P8仍缺10.1063/1.1399290的完整8页；[6]2018年全文条件与四组完整历史构建绑定继续OPEN，未重新全机搜档。
++- 文件维护：正文附录C仅更新参考文献终校剩余清单；补充S11只更新P9/P10已核状态及[5]副本身份。此前作者采用的GCI表/限定文字已同步，见`GCI_author_sync_20261027/REPORT.md`；表S1—S5、正文科学段落/结果/理论附录、模型、源码、冻结协议、旧报告与历史FAIL保持。来源核实不等于数值参考合格或全图误差界。当前正式稿仍待作者终审。
++- 核对范围/权限：三份PDF提取exit0，9页新原件+1页旧文稿附录已渲染目视；原件、所查源码及选定旧证据字节保护见verification.json，不是全部源码/历史运行重验。无编译、求解、真实N8提取、拟合、第二项或Git提交推送，无新run_id；本轮无理论实质变更/严格界裁定，未触发新的Astra复核。
++- 状态：旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。历史G2 Step3 FAIL/INCONCLUSIVE及5nm离散参考口径保持。
++- 下一具体动作：取得真正P8及其q/两分支/时间层原文证据，取得[6]2018年原文及历史构建档案后按合同只读核对；本次补齐P9/P10不授权新计算。常规资料核对GPT-6.1 Sol｜High；假设改变、理论实质推广或严格误差界再用GPT-6 Astra｜High。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 

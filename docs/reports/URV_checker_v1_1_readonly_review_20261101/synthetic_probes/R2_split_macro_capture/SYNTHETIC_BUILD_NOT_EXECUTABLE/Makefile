@@ -1,0 +1,1 @@
+SYNTHETIC recipe fixture

@@ -1,0 +1,48 @@
+--- before/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,4 +1,12 @@
+ # SIM240 AI CONTEXT
++
++## 第一篇：Bouzidi P8 仍缺完整原文，当前插值实现已定位（2026-10-27，当前科研接续入口）
++
++- 用户范围：取得真正Bouzidi原文后按合同核q、线性插值两分支、时间层、静止壁和q=.5；新增计算继续关闭。本轮未取得合格原件，P8状态OPEN_ORIGINAL_NOT_RECEIVED_CURRENT_SOURCE_LOCATED，原页/式号不补造。入口`docs/reports/Bouzidi_P8_source_audit_20261027/REPORT.md`、`contract_receipt.json`、`current_implementation.json`、`public_fetch_log.json`。
++- 本轮直接取得尝试：AIP登记PDF链接返回403/HTML，HAL精确题名查询200/0条，Semantic Scholar DOI查询200但无OA PDF地址，CNAM作者实验室清单200仅提供身份/DOI；搜索摘要、第三方OCR和别文书目不计原件。局部文件名/最新下载检查未定位新原件，不声称全机不存在。未提交材料请求或购买/绕过访问限制。
++- 八份当前D2/OpenLB源码/配置已按原行号和SHA定位：q归一化、两个线性表达式、零壁速处理器及碰撞→传播→PostStream次序。原文符号/时间层对应仍待核；q=.5的系数代入不等于精度/稳定性证明。报告保留布尔权重并非短路if及setter回退条件的审查提示，不裁定历史计算错误、不修改实现。
++- 本轮仅新增上述报告/证据目录及维护本状态/最新交接；75份选定保护文件前后哈希核对见verification.json。未改正式稿/补充材料/模型/源码/合同/冻结协议/历史FAIL，无编译、求解、预检运行、真实N8提取、拟合、第二项、Git提交推送或新run_id。旧N8仍D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。P9/P10指定接收范围沿用上一轮，其他原文/构建缺口保持。
++- 下一具体动作：作者经出版社/学校图书馆取得DOI10.1063/1.1399290、3452—3459连续八页PDF（作者稿另标版本），放到本地后核身份/页数/SHA、目视固定壁面公式页并补六项原页/式号映射，再决定是否关闭P8；不需要新计算。未触发理论实质变更/严格界审定。下一步GPT-6.1 Sol｜High；出现实质矛盾或理论/严格界裁决再用GPT-6 Astra｜High。GitHub协作问题保留在下方入口，本轮未复核其平台状态。
+ 
+ ## 共享协作：完整截图已补齐，需GitHub核账号身份/邀请异常（2026-10-27，当前共享入口）
+ 
+@@ -8,7 +16,7 @@
+ - 原上传授权与8,637项清单保留，直接登录脚本未由代理运行，不能代替修复邀请老师功能。本轮未改账号配置/token scope/邮箱/密码/remote、未发送邀请、未提交/推送/编译/求解/真实N8提取/第二项，无新run_id。
+ - 科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD，旧FAIL保持。
+ 
+-## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
++## 第一篇：上一轮原文接收，P9/P10指定核对闭合，P8仍缺（2026-10-27）
+ 
+ - 用户范围：`/home/dell/下载`刚下载的三篇，沿用最小资料合同，只读核方法原件/当前实现，保持新增计算关闭。入口`docs/reports/Primary_text_received_20261027/REPORT.md`、`intake.json`、`contract_receipt.json`、`current_implementation.json`；原件路径/大小/SHA、Crossref响应、页预览与核对结果均在该目录。
+ - 实际收到：P9 Guo六页发表版（10.1103/PhysRevE.65.046308），P10 Celik四页发表版（10.1115/1.2960953）；指定页/公式与当前源码或旧作者稿的对应已核。P10六作者位于末页；式4上标21/式6内部12的符号不一致也保留在发表版。P9力密度F与FORCE加速度字段、ρ_lat系数、omega=1/tau及半步速度转换对应，只关所查当前实现关系，不绑定历史程序。
+--- before/AI_HANDOFF_20261015.md
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,4 +1,12 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
++
++## 第一篇：Bouzidi P8 仍缺完整原文，当前插值实现已定位（2026-10-27，当前科研接续入口）
++
++- 用户范围：取得真正Bouzidi原文后按合同核q、线性插值两分支、时间层、静止壁和q=.5；新增计算继续关闭。本轮未取得合格原件，P8状态OPEN_ORIGINAL_NOT_RECEIVED_CURRENT_SOURCE_LOCATED，原页/式号不补造。入口`docs/reports/Bouzidi_P8_source_audit_20261027/REPORT.md`、`contract_receipt.json`、`current_implementation.json`、`public_fetch_log.json`。
++- 本轮直接取得尝试：AIP登记PDF链接返回403/HTML，HAL精确题名查询200/0条，Semantic Scholar DOI查询200但无OA PDF地址，CNAM作者实验室清单200仅提供身份/DOI；搜索摘要、第三方OCR和别文书目不计原件。局部文件名/最新下载检查未定位新原件，不声称全机不存在。未提交材料请求或购买/绕过访问限制。
++- 八份当前D2/OpenLB源码/配置已按原行号和SHA定位：q归一化、两个线性表达式、零壁速处理器及碰撞→传播→PostStream次序。原文符号/时间层对应仍待核；q=.5的系数代入不等于精度/稳定性证明。报告保留布尔权重并非短路if及setter回退条件的审查提示，不裁定历史计算错误、不修改实现。
++- 本轮仅新增上述报告/证据目录及维护本状态/最新交接；75份选定保护文件前后哈希核对见verification.json。未改正式稿/补充材料/模型/源码/合同/冻结协议/历史FAIL，无编译、求解、预检运行、真实N8提取、拟合、第二项、Git提交推送或新run_id。旧N8仍D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。P9/P10指定接收范围沿用上一轮，其他原文/构建缺口保持。
++- 下一具体动作：作者经出版社/学校图书馆取得DOI10.1063/1.1399290、3452—3459连续八页PDF（作者稿另标版本），放到本地后核身份/页数/SHA、目视固定壁面公式页并补六项原页/式号映射，再决定是否关闭P8；不需要新计算。未触发理论实质变更/严格界审定。下一步GPT-6.1 Sol｜High；出现实质矛盾或理论/严格界裁决再用GPT-6 Astra｜High。GitHub协作问题保留在下方入口，本轮未复核其平台状态。
+ 
+ ## 共享协作：完整截图已补齐，需GitHub核账号身份/邀请异常（2026-10-27，当前共享入口）
+ 
+@@ -8,7 +16,7 @@
+ - 原上传授权与8,637项清单保留，直接登录脚本未由代理运行，不能代替修复邀请老师功能。本轮未改账号配置/token scope/邮箱/密码/remote、未发送邀请、未提交/推送/编译/求解/真实N8提取/第二项，无新run_id。
+ - 科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD，旧FAIL保持。
+ 
+-## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
++## 第一篇：上一轮原文接收，P9/P10指定核对闭合，P8仍缺（2026-10-27）
+ 
+ - 用户范围：`/home/dell/下载`刚下载的三篇，沿用最小资料合同，只读核方法原件/当前实现，保持新增计算关闭。入口`docs/reports/Primary_text_received_20261027/REPORT.md`、`intake.json`、`contract_receipt.json`、`current_implementation.json`；原件路径/大小/SHA、Crossref响应、页预览与核对结果均在该目录。
+ - 实际收到：P9 Guo六页发表版（10.1103/PhysRevE.65.046308），P10 Celik四页发表版（10.1115/1.2960953）；指定页/公式与当前源码或旧作者稿的对应已核。P10六作者位于末页；式4上标21/式6内部12的符号不一致也保留在发表版。P9力密度F与FORCE加速度字段、ρ_lat系数、omega=1/tau及半步速度转换对应，只关所查当前实现关系，不绑定历史程序。

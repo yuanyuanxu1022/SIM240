@@ -1,0 +1,35 @@
+--- v2/common.py
++++ v3/common.py
+@@ -10,7 +10,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parent
+-VERSION = "D4_PILOT_RECORD_V2_20261026_PREPARATION"
++VERSION = "D4_PILOT_RECORD_V3_20261026_PREPARATION"
+ FIRST = "B0MIN_MMS_mixed_N8"
+ SETTINGS = dict(ksp_rtol=1e-10, true_residual_target=1e-10,
+                 max_iterations=2000, restart=50)
+@@ -55,6 +55,10 @@
+     with Path(path).open("x") as f:
+         json.dump(value, f, indent=2, sort_keys=True, allow_nan=False)
+         f.write("\n")
++        f.flush();os.fsync(f.fileno())
++    fd=os.open(Path(path).parent,os.O_RDONLY|os.O_DIRECTORY)
++    try:os.fsync(fd)
++    finally:os.close(fd)
+ 
+ 
+ def load_old_plan():
+@@ -165,9 +169,9 @@
+ 
+ 
+ def template(work_parent, record_parent, cgroup_parent):
+-    c = dict(version=VERSION, planned_id=FIRST, run_id="PILOT_UNRELEASED_N8_v2",
+-             work_dir=str(Path(work_parent).resolve()/"PILOT_UNRELEASED_N8_v2"),
+-             record_dir=str(Path(record_parent).resolve()/"PILOT_UNRELEASED_N8_v2"),
++    c = dict(version=VERSION, planned_id=FIRST, run_id="PILOT_UNRELEASED_N8_v3",
++             work_dir=str(Path(work_parent).resolve()/"PILOT_UNRELEASED_N8_v3"),
++             record_dir=str(Path(record_parent).resolve()/"PILOT_UNRELEASED_N8_v3"),
+              cgroup_parent=str(Path(cgroup_parent).resolve()), status="DRAFT_NOT_AUTHORIZED",
+              authorized_to_execute=False, approval=None, source_lock_sha256=sha(HERE/"source_lock.json"),
+              physical_plan=load_old_plan(), solver_settings=SETTINGS.copy(), resource_limits=LIMITS.copy())

@@ -1,0 +1,31 @@
+--- SIM240_AI_CONTEXT.md before
++++ SIM240_AI_CONTEXT.md after
+@@ -1,17 +1,16 @@
+ # SIM240 AI CONTEXT
+ 
+-## S0横槽旧质量只读归因：已证实FMA路径改变，190点唯一归因未闭合，HOLD保持（2026-11-01）
+-
+-- 用户本轮范围：专项只读归因，查清累计/编译路径影响；证据与明确裁定前保持S0 HOLD，不自动重跑或进入S1。本轮入口`docs/reports/URV_S0_T_mass_readonly_attribution_20261101/REPORT.md`、summary.json、verified_machine_paths.json、provenance_comparison.json、arithmetic_probe.json及source_manifest.json。只读实际运行ELF/源码/记录并作算术核对；无C++编译、native调用、调试运行、验收重跑、源码/门槛修改或S1启动。peer-review证据边界，AI自审非独立人工科学终审。
+-- 实际绑定旧ELF SHA022e479f3270d5b43d8cd0dd629d82a05c18758c77c26409c21c0b6a4d2861a9（旧h75 P/T manifest均匹配），新ELF SHA a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1（S0构建/合同匹配）。旧/新源码质量累计语句相同，ELF .comment均GCC13.3.0，三静态库哈希相同；旧编译命令仍仅make dry-run证据，不假装重建完整旧构建环境。本结论直接检查实际ELF，不依赖猜测旧环境。
+-- 确定发现：旧mass最后一次乘加是FMA单次舍入；新mass先舍入单项乘积再相加。旧T0x3f661/旧P0x3fb16为vfmadd213pd，新T0x3fee8 vmulpd+0x3fef1 vaddpd，新P0x404b8 vmulpd+0x404c1 vaddpd；同一volume/mass打包项高64位mass偏移16已核。新增Neumaier统计共享已舍入单项质量，新指令数据流证实。因此“旧累计源码保留”没有保持机器运算路径等价，是实现层面的证据遗漏。volume同组也改变融合，本h75体积结果仍相同；不能全局关FMA而假定其他物理输出不受影响。
+-- 算术正证：相同输入的明确构造例（非历史部分和）融合与分开乘加差1个双精度末位单位，精确有理数一次舍入交叉核对融合结果。最终XZ密度切片按沿y不变假设延拓48层、依源码x/y/z顺序累加57600项：两方向旧/新/补偿末态总质量均重现已有记录，中途单元前缀累计P1处/T39处有尾数差异但末态总量相同。这些是空间求和前缀，不是历史时间步，不当作190点复现。
+-- 证据缺口：T保存步0,14,27,68,135,270,675,1350,2700,2953与190个差异时间点交集为空。原始材料无这些时点完整有序双精度rho或粒子分布；保存压力有限精度、其他时刻切片/全局均值/极值不能唯一恢复它们。故FMA机制及其同输入影响已确认，但“190点全部且仅由此产生”的严格历史归因NOT_ESTABLISHED；不从单个反例/小量级/其他保存场相同推定已完全解释。
+-- 明确裁定：S0 HOLD保持，P_RESULT_PASS=true、T_RESULT_PASS=false、S0_RESULT_PASS=false。旧T checker exit2、failure和完整差异记录不改，不加新容差或追认接受。前轮两条数值/几何/20保存帧复核通过保持；T20共同列中18一致、mass/mass_error各190行差异（最大质量差7.395570986446986e-32kg、相对误差列差1.0271626370072865e-14），来源记录见`URV_S0_results_review_20261101/`。
+-- 运行身份/合同保持：P=URV_S0_P_v1_2_20261101_01，T=URV_S0_T_v1_2_20261101_01；合同SHA eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a，approved仍仅用户已启动的这两条。S0_completed.json因T拒绝未生成；旧合同S0_started=false为交付前快照，实际两条已完成但整体未接受，不改封存。本轮1709份受保护既有文件前后保持，旧报告/原始数据/程序/配置/协议/检查器不改，无提交推送/外发项目材料。
+-- 科学边界保持：reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及GDI01既有结果不回写；F04多合同汇总仍后续单独处理。原准备/v1.1/v1.2封存与真实作者未使用声明及其核查范围限制保持。
+-- 下一具体动作：先审定最小补证/修复协议，限定旧质量观察量的旧舍入路径与必要密度输入证据，禁止全局改碰撞/力/速度浮点选项；任何隔离构建/诊断运行及新编号S0回归均需另行授权，本轮未准备或执行。原历史失败永久保留，未来只能另存新运行验收；在证据和裁定充分前继续HOLD，不自动进入S1。专项补证设计/裁定建议GPT-6 Astra｜High，不声称已切换模型。
+-
++## S0旧质量最小补证／修复协议已审定文本，未实现／构建／运行，HOLD保持（2026-11-01）
++
++- 用户本轮范围：审定最小补证／修复协议，限定旧质量运算路径及必要密度证据，保留原门槛；只准备协议，不执行构建或诊断运行。交付入口 `docs/reports/URV_S0_mass_repair_protocol_20261101/PROTOCOL.md`，附 protocol_spec.json、density_capture_schedule.json、review_record.json、source_manifest.json、verification.json。状态 PROTOCOL_REVIEWED_IMPLEMENTATION_UNVERIFIED；AI辅助协议审查，不是独立人工科学终审。未改 CASE 源码／检查器／二进制，未运行软件／算术重放测试、编译、原生零步或求解，未交付启动命令。
++- 方案限定：以后获准时，仅在隔离版本显式固定旧质量的三个逐次舍入乘法＋最后一次 FMA；每次 measure 从+0作空间累计，保留原遍历顺序。原 Neumaier 质量、rho−1账本、各自初态分母及所有物理／收敛运算不变；禁止全局改浮点编译选项。需实际编译后的P/T指令数据流核对，源码表达式不替代证明。
++- 密度证据计划已固定：T全部190差异步＋10个无差异保存场步，P原10保存场步；各方向单独捕获时间循环前initial_reference分母测量，与diagnostic step0分开。合计212份、每份57600个little-endian binary64完整三维rho，纯数据97,689,600字节（约93.16MiB），加有序核心坐标映射、位模式、phase和SHA。复制同次computeRho值，不从压力／切片重建、不重复计算rho；实际末步也捕获，缺预定帧即失败，不延算补齐。没有进行实际密度采集。
++- 接入发现与处置：checker v1.2 contracts.py 的原source_preparation_anchor固定原源码SHA，修复源码不能直接通过。后续仅在新检查器增加精确审核修订绑定分支，绑定旧seal、新源及最小diff；旧anchor、原check_results.py/evidence.py/read_fields.py、原数值common规则原字节保留。禁止删除来源约束／泛化白名单；R1/R2保持，F04多合同汇总仍范围外。
++- 未来最小运行仍两条新编号h75 P→T，使用同一修复二进制、同时产出补证；P也须重做本版本回归。独立离线重放两舍入路径并逐点对应旧D4／失败v1.2 mass与mass_error，完整20列精确回归和原数值／几何门保持；补偿列及物理输出另作不变性守卫。任一失败即停；本轮只规定条件，未来实现、构建／零步、真实执行绑定与用户启动分阶段另行授权，新run_id和binary SHA均为空。
++- 历史与当前状态：前轮实际旧ELF SHA022e479f3270d5b43d8cd0dd629d82a05c18758c77c26409c21c0b6a4d2861a9，新a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1的FMA差异证据保持；见URV_S0_T_mass_readonly_attribution_20261101/REPORT.md。旧P=URV_S0_P_v1_2_20261101_01 RESULT_PASS=true，旧T=URV_S0_T_v1_2_20261101_01 RESULT_PASS=false；380条差异／T checker exit2不改，S0 HOLD。旧授权合同SHA eb73d1ec7989cee26aecf1a43c9b8fd818a77fdd5d9ba8fef5e805d9451a5f4a不能挪用到新运行。
++- 核心裁定：未来全部原验收和专项补证通过，才可另存新修复版本S0接受记录；原v1.2失败永久保留。用新rho重现历史总量并不证明历史逐格输入相同，HISTORICAL_EXCLUSIVE_ATTRIBUTION仍NOT_ESTABLISHED；该历史证据限制不通过伪造或改容差解决。当前无新增计算或数值／物理验证；1739份受保护旧文件哈希保持，本轮仅文档／采样表／引用一致性检查与共享交接维护。
++- 科学边界保持：reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1、GDI01既有结果及原准备/v1.1/v1.2封存不回写；外部数据历史声明范围保持。无提交推送或对外发送项目材料。
++- 下一具体动作：如用户授权，按URV-MRP-v1隔离实现最小观察量修复、密度捕获与精确来源分支，完成编译／软件测试／指令审计及明确获准的零步检查；正式运行仍单独授权并由用户启动。常规实现建议GPT-6.1 Sol｜High；指令／证据矛盾与最终修复放行建议GPT-6 Astra｜High。当前不自动构建、运行、重跑或进入S1。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）
+ 

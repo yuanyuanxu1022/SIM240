@@ -1,0 +1,62 @@
+{
+  "scope": "Original fixed 26 records only; user requested remaining inputs, stop on new acceptance failure",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "reviewed_release_sha256": "f1531d4091a6279a5db2df5cff75875d279d4ffc981f52ae5502bedd98ffc292",
+  "accepted_existing": {
+    "h75_d100_P_coarse": "7099604c8b06f68340a8265394febec5fbb048ea50586cfa2989d0f2396046be",
+    "h75_d100_P_mid": "73af6dc9d1b2c42781648f193f9f4db03c3b30a14c3bf6ef1d0b453916c33af2",
+    "h75_d100_P_fine": "768adc9dde40d29bf750114c57508c3df8cdc52e643d77df0b34fd4c97843417",
+    "h75_d100_T_coarse": "42914513ad29eed814c3f6b65c49f563674b3d2ab55c11ffc32bda0cf2166e3b",
+    "h75_d100_T_mid": "0141a18c0de6d4b0782b7c90b431cd95c751507ff19ab549e61ea48986d3d40f",
+    "h75_d100_T_fine": "e65c7437d3c9bf05934f58340557a314fa799209d1ec1e52f3cacd389355aab7",
+    "h75_d100_T_tight": "0628814b3e2e0bcc8a1ac54f2dac6a19a2d1416ce5f764f9bcd71ccfbd518ed1",
+    "h75_d0_P_flat": "7dc462452c46c34cd49fc9839fd8b151b6fc1333084641f699e906d4bf3b69a6",
+    "h75_d0_T_flat": "7722aff92636e7618d21b885217222a2394d1c17f197570c25cd7d2cbaa5cca6"
+  },
+  "remaining": [
+    "h75_d100_P_tight",
+    "h50_d120_P_coarse",
+    "h50_d120_P_mid",
+    "h50_d120_P_fine",
+    "h50_d120_P_tight",
+    "h125_d120_P_coarse",
+    "h125_d120_P_mid",
+    "h125_d120_P_fine",
+    "h125_d120_P_tight",
+    "h25_d100_T_coarse",
+    "h25_d100_T_mid",
+    "h25_d100_T_fine",
+    "h25_d100_T_tight",
+    "h125_d120_T_coarse",
+    "h125_d120_T_mid",
+    "h125_d120_T_fine",
+    "h125_d120_T_tight"
+  ],
+  "points": [
+    "h75_d100_P",
+    "h75_d100_T",
+    "h25_d100_T",
+    "h50_d120_P",
+    "h125_d120_P",
+    "h125_d120_T"
+  ],
+  "known_consistency_failures": [
+    "h75_d100_T"
+  ],
+  "thresholds": {
+    "K_difference_percent": 2.0,
+    "A_difference_percent": 2.0,
+    "beta_difference_deg": 0.4,
+    "flat_K_percent": 0.1,
+    "flat_profile_percent": 0.1,
+    "grid_mid_coarse_percent": 1.0,
+    "grid_fine_mid_percent": 0.5,
+    "algebraic_change_percent": 0.05,
+    "section_spread_percent": 0.1,
+    "power_balance_percent": 0.1
+  },
+  "ordering_reason": "Finish fast P branches before remaining T branches; unchanged geometries/parameters",
+  "no_retry": true,
+  "no_refit": true,
+  "no_new_geometry_or_grid": true
+}

@@ -1,0 +1,74 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-441953dfbb42
+Exec   : blockMesh -case /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v1/prepared/h75_d0_P_flat
+Date   : Nov 10 2026
+Time   : 23:23:27
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 265308
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v1/prepared/h75_d0_P_flat
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading "blockMeshDict"
+
+Creating block mesh from
+    "system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Basic statistics
+    Number of internal faces : 0
+    Number of boundary faces : 6
+    Number of defined boundary faces : 6
+    Number of undefined boundary faces : 0
+
+Checking topology
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1.0000000000000001e-09
+    Block 0 cell size :
+        i : 6.2500000000000001e-10
+        j : 1.0000000000000001e-09
+        k : 6.2500000000000001e-10
+
+Detected cyclic patches; ordering boundary faces
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 0) (2.4000000000000003e-07 1.0000000000000003e-09 7.500000000000001e-08)
+  nPoints: 93170
+  nCells: 46080
+  nFaces: 184824
+  nInternalFaces: 91656
+----------------
+Patches
+----------------
+  patch 0 (start: 91656 size: 120) name: xMinus
+  patch 1 (start: 91776 size: 120) name: xPlus
+  patch 2 (start: 91896 size: 768) name: walls
+  patch 3 (start: 92664 size: 92160) name: frontBack
+
+End
+

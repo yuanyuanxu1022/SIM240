@@ -1,0 +1,136 @@
+--- SIM240_First_Paper_English_20261028.md.before
++++ SIM240_First_Paper_English_20261028.md
+@@ -1,10 +1,10 @@
+ # Directional conductance discrepancies of the local cubic law in confined rectangular grooves and empirical correction
+ 
+-**Author-review working manuscript; synchronized on 2026-11-07.** Existing results are used without new solver runs or fitting. Author scientific approval, venue formatting, declarations and access arrangements remain pending.
++**Author-review working manuscript; synchronized on 2026-11-09.** The bounded gradient-structure diagnostic for the supplementary two-width set is integrated with Supplementary S14. Existing main-map discrepancies, continuous upper bounds, V2 assessment and static interfacing retain their respective evidence scopes. Pre-merge snapshots and differences are in `PAPER1_mechanism_merge_20261109/`. Existing runs and offline diagnostics are used without new solver runs or fitting. Whole-manuscript scientific approval, venue formatting, declarations and access arrangements remain pending.
+ 
+ ## Abstract
+ 
+-The local cubic law is commonly used in reduced nanoimprint models, but its along- and across-groove conductances require separate assessment. Using the lattice Boltzmann method, we compute steady transport between a planar substrate and a periodically grooved wall, assuming a fixed gap, a fully filled Newtonian liquid domain and no-slip walls. The period is 240 nm, with equal groove and rib widths. The main dataset comprises 18 geometries and 36 principal-direction conductances on a 5 nm grid; four geometries also have 2.5 nm refinements to assess grid sensitivity.
++The local cubic law is commonly used in reduced nanoimprint models, but its along- and across-groove conductances require separate assessment. Using the lattice Boltzmann method, we compute steady transport between a planar substrate and a periodically grooved wall, assuming a fixed gap, a fully filled Newtonian liquid domain and no-slip walls. The main parameter map has a period of 240 nm, with equal groove and rib widths. The main dataset comprises 18 geometries and 36 principal-direction conductances on a 5 nm grid; four geometries also have 2.5 nm refinements to assess grid sensitivity.
+ 
+ Relative to the 5 nm discrete references, the local cubic law overestimates all main principal-direction results, with maximum relative discrepancies of +204.85% along and +54.19% across the grooves. At the reference geometry h=75 nm, d=100 nm, anisotropy ratios from the original law and the discrete reference are 3.70 and 2.21, respectively. Reconstructing mean flux directions under the same linear tensor relation for forcing at 45° to the groove axis gives a difference of 9.20°. Retrospective evaluation of the fixed empirical correction (V2) reduces the maximum absolute relative discrepancies to 10.50% along and 18.71% across the grooves, although the improvement assessment at one thin-gap transverse point changes with reference grid. A comparison in both directions at one additional gap also reduces absolute relative discrepancy with V2 coefficients unchanged.
+ 
+@@ -38,7 +38,7 @@
+ 
+ We compare both principal conductances of fully filled rectangular grooves against the local cubic law, quantify consequences for anisotropy and tensor-reconstructed flow direction, and assess the fixed empirical correction at the same discrete references. Ideal-Stokes upper bounds provide theoretical context; discrepancy magnitudes and grid sensitivity are reported separately.
+ 
+-For rectangular grooves of fixed period and width, we apply along-groove and across-groove forcing separately. The principal values obtained on a 5 nm grid serve as discrete references for the local cubic law under common geometry, flux definitions and fluid properties. We retrospectively evaluate the V2 correction. Refinements at four geometries characterize reference sensitivity, rather than certifying continuous-solution accuracy across the map.
++For rectangular grooves of fixed period and width, we apply along-groove and across-groove forcing separately. The principal values obtained on a 5 nm grid serve as discrete references for the local cubic law under common geometry, flux definitions and fluid properties. We retrospectively evaluate the V2 correction. Refinements at four geometries characterize reference sensitivity, rather than certifying continuous-solution accuracy across the map. A gradient-energy diagnostic on known development geometries at two groove widths provides a bounded quantitative interpretation of directional discrepancies under the tested conditions; see Section 5.1 and Supplementary S14.
+ 
+ The study concerns fixed gaps, fully filled Newtonian liquid and no-slip walls. **Free surfaces, wetting, trapped gas, real-resist rheology and moving molds are outside its scope.** These require separate models and evidence.
+ 
+@@ -50,7 +50,7 @@
+ 
+ The computational domain is one unit cell of periodic straight grooves. The pattern repeats in $x$, and the grooves extend along $y$. Along-groove transport is denoted by $\parallel$, corresponding to $K_{yy}$; across-groove transport is denoted by $\perp$, corresponding to $K_{xx}$.
+ 
+-The period is $P=240$ nm and groove width is $w=120$ nm, with equal groove and rib widths. The rib-to-substrate residual gap is $h$, and the groove roof is at height $h+d$, where $d$ is the groove depth. Liquid fills the entire available volume.
++The main parameter map uses period $P=240$ nm and groove width $w=120$ nm, with equal groove and rib widths. The rib-to-substrate residual gap is $h$, and the groove roof is at height $h+d$, where $d$ is the groove depth. Liquid fills the entire available volume.
+ 
+ ![Figure 1: process context and fully filled computational unit cell](../../figures/paper/Fig1_device_and_unitcell.png)
+ 
+@@ -74,7 +74,7 @@
+ 
+ Calculations use the OpenLB [7] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\tau=1$. The force term uses the Guo scheme [9]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with intersections obtained from the analytical geometry [7,8]. The scheme was formulated for fractional wall distances [8]; OpenLB also maintains implementation checks through analytical benchmarks and automated regression tests [7].
+ 
+-The in-plane dimensions are $L_x=L_y=240$ nm, exactly one pattern period. Boundaries are periodic in $x$ and $y$, with no slip at the substrate and mold. A uniform volume force is imposed with acceleration $a=1\times10^{5}$ m s⁻². The same amplitude is used throughout the main map; the reference-geometry check is described in §2.4. OpenLB `computeU` supplies the macroscopic velocity, including the half-time-step force correction consistent with the Guo scheme. The stopping rule uses a 1000-step flux window: main-flux relative standard deviation $\le10^{-6}$, relative range $\le5\times10^{-6}$, and, for principal-axis forcing, absolute cross-flux $\le10^{-12}$ m²/s. Its scope as a stopping rule, rather than an independent acceptance metric, is discussed in §3.1. Saved manifests contain binary hashes; parameters, results and logs are indexed in [Supplementary Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s1). Binding to historical application source, compiler configuration and OpenLB dependencies remains incomplete for some runs; this provenance limitation is retained in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10).
++For the main map, the in-plane dimensions are $L_x=L_y=240$ nm, exactly one pattern period. Boundaries are periodic in $x$ and $y$, with no slip at the substrate and mold. A uniform volume force is imposed with acceleration $a=1\times10^{5}$ m s⁻². The same amplitude is used throughout the main map; the reference-geometry check is described in §2.4. OpenLB `computeU` supplies the macroscopic velocity, including the half-time-step force correction consistent with the Guo scheme. The stopping rule uses a 1000-step flux window: main-flux relative standard deviation $\le10^{-6}$, relative range $\le5\times10^{-6}$, and, for principal-axis forcing, absolute cross-flux $\le10^{-12}$ m²/s. Its scope as a stopping rule, rather than an independent acceptance metric, is discussed in §3.1. Saved manifests contain binary hashes; parameters, results and logs are indexed in [Supplementary Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s1). Binding to historical application source, compiler configuration and OpenLB dependencies remains incomplete for some runs; this provenance limitation is retained in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10).
+ 
+ **The unit-cell reduction assumes an exactly repeating pattern.** One period represents the interior of the ideal periodic pattern and reduces the computational domain. This assumption does not cover mold edges, pattern junctions or actual supply conditions; those configurations have not been verified here.
+ 
+@@ -112,10 +112,13 @@
+ | Additional gap | 2 results at 5 nm for h=100 nm, d=100 nm | Fixed-form supplementary comparison |
+ | Build reproduction | 2 new records for h=75 nm, d=100 nm, paired with historical records | Single-geometry reproduction, not added comparison geometries |
+ | Legacy additional checks | 2 viscosity and 6 oblique results | Property response and internal tensor consistency |
+-
+-The formula-comparison set therefore contains 19 geometries and 46 discrete records (36+8+2), distinct from the 46-record legacy boundary-audit set (36+8+2 viscosity checks). The 46 records are neither 46 geometries nor 46 independent validations; the statistical denominator for the original 36 main records is unchanged. The original 52-row Table S1 is retained; added and build-comparison records are indexed in Supplementary Table S6.
+-
+-Supporting methods are numbered S1–S13. The [supplementary index](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-index) and the source manuscript Appendix B map text locations to supporting tables.
++| Supplementary gradient diagnostic | 10 target final states for two h75/d120 geometries at w60/240, plus 2 flat-channel controls | Known development set; reported separately in S14 and excluded from main statistics |
++
++The main-map and additional-gap formula-comparison set contains 19 geometries and 46 discrete records (36+8+2), distinct from the 46-record legacy boundary-audit set (36+8+2 viscosity checks). The 46 records are neither 46 geometries nor 46 independent validations; the statistical denominator for the original 36 main records is unchanged. The original 52-row Table S1 is retained; added and build-comparison records are indexed in Supplementary Table S6.
++
++To examine the velocity-gradient structure associated with the directional discrepancies, we additionally use two geometries from a known development set at $h=75$ nm and $d=120$ nm, with equal groove and ridge widths. The groove widths are $w=60$ and 240 nm, corresponding to physical periods $P=120$ and 480 nm. Along- and across-groove final states are available at grid spacings of 5 and 2.5 nm for both geometries, with additional 1.25 nm states for the narrow groove, giving ten target fields. Two existing directional flat-channel states at $h=75$ nm and a 5 nm grid provide postprocessing controls. This supplementary set is reported separately from the error statistics for the 18 geometries and 36 principal-direction conductances and is not treated as a prediction test on conditions withheld from development.
++
++Supporting methods are numbered S1–S14. The [supplementary index](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-index) and the source manuscript Appendix B map text locations to supporting tables.
+ 
+ ### 2.2 Definition of the transport coefficients
+ 
+@@ -168,9 +171,9 @@
+ 
+ For equal widths, their arithmetic average along the grooves and harmonic average across them give Eq. (3). At $d=0$, both recover the parallel-plate value $h^{3}/12$. With common local heights, boundaries and averaging definitions, these are the one-dimensional Reynolds cell relations [4].
+ 
+-**The construction remains an approximation to be assessed because it treats deep and shallow regions as independent local parallel-plate channels before combining their conductances.** The actual geometry also includes sidewalls and connections between the regions. Transverse viscous interactions and flow redistribution near steps are not explicitly resolved by this combination. Their respective contributions to overall transport have not been separated.
+-
+-Under the ideal-Stokes assumptions in Appendix E, Eq. (3) also bounds both principal conductances from above. This supplies neither discrepancy magnitudes nor the spatial-accuracy evidence needed for groove-flow references. We compare the local-plate construction against specified discrete references. Quantifying sidewall-shear and step-redistribution contributions requires local-field or dissipation decomposition, which has not been performed; no dominant mechanism is assigned here.
++The local model treats the deep and shallow regions as parallel plates and combines their conductances. The resolved groove also contains sidewalls and connections between these regions. Transverse viscous coupling and flow redistribution near the steps are not explicitly resolved by the local-plate construction. Section 5.1 uses a global gradient-energy decomposition on the separately reported two-width set to examine resistance in excess of this baseline. The decomposition does not treat sidewall and step effects as independently measurable causes.
++
++Under the ideal-Stokes assumptions in Appendix E, Eq. (3) bounds both principal conductances from above. This property supplies neither discrepancy magnitudes nor the spatial-accuracy evidence required for the groove-flow references. Discrepancy magnitudes are therefore reported against specified discrete references. The supplementary decomposition quantifies gradient terms grouped under explicit definitions; it does not establish that a spatial region or an independent mechanism controls the entire main parameter map.
+ 
+ Retaining dimensionless notation, define the original-law discrepancy and the signed corrected discrepancy by
+ 
+@@ -228,7 +231,10 @@
+ 
+ **Terminology.** We report **numerical verification** of consistency between the implementation, computed solutions and prescribed equations, including analytical benchmarks, grid sensitivity and periodic consistency. Each check has its own coverage and limits. An independent-solver comparison of resolved grooves would be a numerical cross-check; no such matched comparison has been completed. Independent implementations of the same static averaged model are compared in §5.3, which tests coefficient interfacing rather than resolved-groove accuracy. **Physical validation is outside this study:** the model has not been compared with experimental measurements of the target system. Unless explicitly qualified as physical validation, verification here concerns numerical checks. Conclusions describe discrepancies within this numerical model, rather than its fidelity to real imprint processes.
+ 
+----
++The supplementary diagnostic uses $R_{\mathrm{diag}}=\mathcal P_{\mathrm{diag}}/(A J^2)$, where $\mathcal P_{\mathrm{diag}}$ is integrated power, $A=P L_y$ is the projected area and $J$ is the depth-integrated flux. The driving resistance is $R=G/J=\mu/K$. This normalization compares power per projected area at the same $J$ across widths, using $R_i^{LC}=\mu/K_i^{LC}$ as the baseline. Native stress-moment dissipation, symmetric-strain dissipation reconstructed from velocity gradients, and gradient energy are retained separately. After checking invariance along the groove, slice correspondence and flux against the stored three-dimensional velocities, gradients are computed from the double-precision slices. Interior derivatives use central differences. Near-wall derivatives use a quadratic interpolant through the actual half-cell no-slip wall and two fluid nodes, with a half-cell odd extension as a sensitivity check. The interpolation order does not establish accuracy at step corners. The continuous identities, per-run provenance, both derivative treatments, all available grids and energy residuals are documented in [Supplementary S14](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s14).
++
++---
++
+ 
+ ## 3 Scope of confidence in the numerical references
+ 
+@@ -401,17 +407,21 @@
+ 
+ ## 5 Discussion
+ 
+-### 5.1 Limits of local-plate averaging and candidate mechanisms
+-
+-All sampled principal directions show positive discrepancy relative to the discrete references, with different magnitudes in the two directions. The local cubic law therefore overestimates flow capacity under the checked conditions. Global coefficients alone cannot identify which part of the flow dominates the discrepancy.
+-
+-The along-groove construction averages deep- and shallow-region parallel-plate conductances arithmetically, without resolving transverse viscous coupling or sidewall velocity changes. Sidewall shear and momentum exchange between regions are candidates for further investigation. Their flux or dissipation contributions have not been quantified; the present data do not establish a single drag mechanism explaining the entire overestimate.
+-
+-The across-groove construction combines local plate resistances in one-dimensional series, while the resolved flow also traverses step connections. Velocity redistribution and viscous dissipation there may affect total resistance. No independent local resistance fractions were measured, and dominance by the narrowest region has not been proved.
+-
+-Parameter trends also require qualification. In sampled depth sequences at fixed gap, along-groove discrepancy increases with $d/w$. Including the 25 nm gap, however, removes a monotonically decreasing gap dependence at some depths. At $d=100$ nm, the discrepancy rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm. A general rule that a particular mechanism strengthens as the gap narrows is therefore not established.
+-
+-These mechanisms require an independent dissipation decomposition or reference solutions under matching applicability conditions. Related squeeze-flow work on rectangular line gratings reports limitations of simple lubrication models [11], but its loading, filling state and comparison baseline differ. Its force ratios cannot directly explain the present fixed-gap coefficient discrepancies.
++### 5.1 Gradient structure and width dependence of the local-plate discrepancy
++
++Both directions in the main parameter map show conductance overestimation relative to the discrete references. Global coefficients determine this discrepancy but cannot by themselves identify the associated flow structure. To supplement the interpretation, we analyze the separately reported two-width set at $h=75$ nm and $d=120$ nm using normalization to a fixed depth-integrated flux. In the ideal Stokes model, the conductance discrepancy and normalized excess resistance satisfy $K_i^{LC}/K_i-1=R_i/R_i^{LC}-1$, allowing the discrepancy to be related to an energy excess over the local-plate baseline.
++
++For along-groove flow, the continuous excess separates into a squared transverse velocity-gradient term and the squared departure of the thickness-direction velocity derivative from the local-plate baseline. The latter includes changes in both profile shape and flux allocation between deep and shallow regions. In the 2.5 nm diagnostic, these terms account for approximately 41.9% and 58.1% of their positive sum in the narrow groove, compared with 73.2% and 26.8% in the wide groove. Although the relative share of the transverse-gradient term increases, its contribution normalized by the local-plate resistance decreases from approximately 1.775 to 0.532. The increased share therefore does not imply that widening increases this resistance contribution.
++
++For across-groove flow, constant sectional flux permits a decomposition into departure of the main-velocity thickness derivative from the local parabolic baseline, the streamwise gradient of the main velocity, and gradients of the vertical velocity. In the 2.5 nm diagnostic, these groups account for approximately 90.2%, 2.7% and 7.1% of their positive sum in the narrow groove, and 64.0%, 10.9% and 25.1% in the wide groove. The profile-derivative departure is the largest term in both conditions. The groups are constrained by incompressibility and are not independent causes. They also differ from a decomposition of actual local dissipation into shear and normal-strain components.
++
++The denominator of each reported share is the sum of the listed nonnegative terms, rather than the exact discrete driving excess resistance. For the primary derivative treatment, the largest absolute residual of this sum relative to the driving excess is approximately 1.56% among the 5 nm targets and 0.53% among the 2.5 nm targets. The largest difference in shares between the two near-wall derivative treatments is approximately 0.43 percentage points. The principal ordering of the terms is retained across the checked grids, but only two grids are available for the wide groove, and the historical grid target for the narrow groove was not met. The shares are therefore not claimed to be grid independent. The fraction of total dissipation assigned to corner neighborhoods also depends on the chosen radius and cannot be interpreted as an independent corner contribution.
++
++These results support a gradient-structure explanation that depends on direction and width under the tested conditions. Along-groove excess resistance involves both transverse gradients and departure from the local-plate baseline. In the specified across-groove decomposition, the profile-derivative departure is the largest term, while the relative shares of the remaining gradient terms also vary with width. This conclusion is specific to the baseline, decomposition and geometries examined and does not establish a unique physical attribution. Varying $w$ at fixed $h,d$ changes $h/w$ and $d/w$ simultaneously; this comparison cannot identify their separate effects or establish a unique controlling scale.
++
++Gap trends in the main map remain qualified. Including the 25 nm gap removes a monotonically decreasing along-groove discrepancy with increasing gap at some depths: at $d=100$ nm, the discrepancy rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm. The supplementary diagnostic does not explain all such changes. Related squeeze-flow work on rectangular line gratings reports limitations of simple lubrication models [11], but its loading, filling state and comparison baseline differ. Its force ratios cannot directly explain the present fixed-gap coefficient discrepancies.
++
++Derivations, per-run diagnostics and provenance are given in [Supplementary S14 and Table S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s14).
+ 
+ ### 5.2 Implications for reduced squeeze-flow models
+ 
+@@ -445,7 +455,7 @@
+ 
+ ### 5.4 Applicability and unverified conditions
+ 
+-Main-map responses and discrepancy ranges come from 18 geometries and 36 principal-direction results at period 240 nm, width 120 nm and equal groove/rib widths. The h=100 nm comparison adds one geometry, reported separately, giving 19 comparison geometries in total. They do not cover other area fractions, groove widths, pattern junctions or arbitrary continuous parameter combinations.
++Response and error statistics for the main parameter map come from 18 geometries and 36 principal-direction results at a fixed period of 240 nm, a fixed groove width of 120 nm and equal groove and ridge widths. The added $h=100$ nm geometry is reported separately, giving 19 comparison geometries. Two further geometries at $h=75$ nm, $d=120$ nm and $w=60$ and 240 nm support the supplementary mechanism diagnostic and are reported as a separate set; they do not change the main-map statistical scope. These results do not cover other duty cycles, pattern junctions or arbitrary continuous parameter combinations. The supplementary decomposition is limited by its baseline, gradient grouping and checked grids and cannot be extrapolated into mechanism fractions over the entire parameter domain.
+ 
+ Reported ratios, trends and anisotropy derive from saved 5 nm discrete records. Along-groove and across-groove results at each geometry share a binary, but different geometries belong to two program-identity groups. Pairing within one program does not guarantee cancellation of directional errors, and cross-geometry trends have not excluded build effects.
+ 
+@@ -468,6 +478,8 @@
+ **3.** Retrospective comparison using the published V2 coefficients reduces the along-groove mean absolute discrepancy from 88.85% to 6.40% and the transverse value from 30.63% to 4.42%, improving 35/36 main records. Maximum absolute relative discrepancies are 10.50% and 18.71%, respectively. At h=25 nm, d=100 nm, the local transverse improvement assessment changes between 5 and 2.5 nm references. The 6.9% maximum in the h≥50 nm subset is not a continuous applicability guarantee. Residual gap dependence must be assessed separately from model selection, parameter estimation and reference error.
+ 
+ **4.** With V2 coefficients fixed, the added h=100 nm, d=100 nm geometry gives transverse, longitudinal and anisotropy discrepancies of +4.39%, −2.03% and −6.15% against the 5 nm references. This fixed-form supplementary comparison does not establish general prediction accuracy. OpenFOAM interface checks in a static averaged model support tested units, directions and flux consistency, rather than independently validating resolved conductances or dynamic imprinting accuracy.
++
++**5.** In the separate two-width set at $h=75$ nm and $d=120$ nm, gradient-energy decomposition at a fixed depth-integrated flux shows width-dependent relative shares of transverse gradients and departure from the local-plate profile derivative for along-groove flow. For across-groove flow, departure of the main-velocity profile derivative is the largest term in the specified decomposition. This provides a quantitative structural interpretation of the directional discrepancy under the tested conditions, but establishes neither independent causal shares for sidewalls or corners, a unique controlling scale, nor accuracy across the full parameter domain.
+ 
+ ---
+ 

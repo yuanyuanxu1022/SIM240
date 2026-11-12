@@ -1,0 +1,32 @@
+{
+  "Ux_good_but_p_and_Uz_bad": {
+    "dominant": "Ux",
+    "residual": 5e-10,
+    "components": {
+      "Ux": 5e-10,
+      "Uz": 0.1,
+      "p": 0.1
+    },
+    "log_reports_converged": false,
+    "numeric_ok": true
+  },
+  "missing_p_and_Uz_and_End": {
+    "dominant": "Ux",
+    "residual": 5e-10,
+    "components": {
+      "Ux": 5e-10
+    },
+    "log_reports_converged": false,
+    "numeric_ok": true
+  },
+  "zero_dominant_residual": {
+    "dominant": "Ux",
+    "residual": 0.0,
+    "components": {
+      "Ux": 0.0
+    },
+    "log_reports_converged": false,
+    "numeric_ok": true
+  },
+  "scope": "Synthetic log calls to the actual frozen helper, not simulation output; numeric_ok demonstrates only C2 decision"
+}

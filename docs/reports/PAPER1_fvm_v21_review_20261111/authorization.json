@@ -1,0 +1,70 @@
+{
+  "action": "AUTHORIZE_NUMERICAL_EXECUTION_V21",
+  "date": "2026-11-11",
+  "authorized_by": "author (this session)",
+  "scheme": "A - control metadata only; code and all bound inputs untouched",
+  "reviewed_release_sha256": "f1531d4091a6279a5db2df5cff75875d279d4ffc981f52ae5502bedd98ffc292",
+  "authorized_release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "bound_before_authorization": {
+    "local": 212,
+    "external": 23,
+    "total": 235
+  },
+  "binding_dictionaries_identical": true,
+  "residual_hash_mismatches_from_disk": 0,
+  "changed_keys": [
+    "formal_review_status",
+    "numerical_execution_authorized"
+  ],
+  "added_keys": [
+    "reviewed_release_sha256"
+  ],
+  "changed_binding_keys": [],
+  "byte_size_before": 27495,
+  "byte_size_after": 27601,
+  "diff_lines": 3,
+  "code_changed": false,
+  "bound_inputs_changed": false,
+  "evidence_file": "AUTHORIZATION_DIFF_PROOF.md",
+  "pre_authorization_copy": {
+    "file": "release_manifest_before_authorization.json",
+    "sha256": "f1531d4091a6279a5db2df5cff75875d279d4ffc981f52ae5502bedd98ffc292"
+  },
+  "post_authorization_checks": {
+    "verify_release_passed": true,
+    "launch_gate_condition_true": true,
+    "synthetic_tests_passed": 46,
+    "synthetic_tests_total": 46,
+    "offline_reader_status": "INCOMPLETE",
+    "cases_not_executed": 26
+  },
+  "deliberately_not_updated": {
+    "PROTOCOL.md": "line 3 still reads PENDING_ASTRA_V21_RECHECK; release-bound, changing it would void the 235-identity proof",
+    "run_config.md": "line 3 same reason",
+    "verification.json": "kept as the review-time record",
+    "freeze_release.py": "hardcodes PENDING/false and omits reviewed_release_sha256; must not be re-run"
+  },
+  "runtime_evidence_at_authorization": {
+    "runtime_dirs": 0,
+    "reference_evidence_dirs": 0,
+    "run_id": null,
+    "solver_runs": 0,
+    "compile": false,
+    "mesh_tools_run": false,
+    "mapFields_run": false
+  },
+  "execution_order": [
+    "h75_d0_P_flat",
+    "h75_d0_T_flat",
+    "grooves coarse->mid->fine->tight (gated on both flats reaching LOCAL_CHECKS_PASS)"
+  ],
+  "preserved": {
+    "v1_T_flat_K_error_percent": -8.943434,
+    "v1_T_flat_verdict": "REFERENCE_CHECK_FAIL",
+    "reference_qualified": false,
+    "strict_error_bound_established": false,
+    "submission_ready": false,
+    "paper_numbers_changed": false,
+    "map36_evidence_sha256": "9fe4324f44dce2b9ce80749cfd3679e24ce9a13b3a6d7efbaf678612800e2201"
+  }
+}

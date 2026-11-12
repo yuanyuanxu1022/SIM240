@@ -1,0 +1,30 @@
+chore: 从仓库移除第二篇（液滴／两相路线）内容，改为仅存本地
+
+按作者要求，第二篇论文（液滴下压／两相填充路线）的全部内容不再上传到
+GitHub，仅保留在本机。第一篇（单相沟槽输运）的内容不受影响。
+
+移除范围（共 941 个文件，约 23.4 MB）：
+- CASE/09_dynamic_liquid_gas/            771 个（alpha_c、ab_diffusion、
+  source3d、target_prevalidation、laplace 扩展、actual_mobility 复核等）
+- CASE/07_filling_dynamics/               86 个（F2_dynamic_v1/v2/v3、
+  F2_z_compression_fast、F3_z_compression_dynamic 等）
+- grooveDNS/stage3_ex240_local/           59 个（phasefield_minimal_validation、
+  freesurface_minimal_validation、right_angle_freesurface、
+  step6G 接触角验证报告）
+- CASE/plans/ 液滴与润湿相关计划         10 个
+- CASE/D_series/D1_nanoimprint_droplet_filling/  9 个
+- CASE/08_droplet_inplane/                 3 个
+- docs/reports/D1_existing_run_check_20261016.{md,json}  2 个
+  （两相接触角 80°/104° 校准核对，明确属第二篇）
+
+保留不动的内容：
+- CASE/06_filling_dynamics/（34 个文件）：G3-h 高度扫描与单相压缩，
+  属第一篇，按作者选择保留。其中 generate_height_source.py 与
+  height_matrix.csv 完整保留，h50/h75/h125 生成源码可随时重新生成。
+- 第一篇的正文、补充材料、结论、验证报告、图表、参数与全部数值结论。
+
+`.gitignore` 同步新增上述第二篇路径的忽略规则，防止后续误入库。
+所有被移除的文件在本地磁盘上原样保留，只是不再纳入版本控制；如需恢复，
+可从本提交之前的 Git 历史中取回。
+
+不影响第一篇的任何数据、公式、图表、验证结论或投稿派生件。

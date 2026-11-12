@@ -1,0 +1,26 @@
+--- AI_HANDOFF_20261015.md before
++++ AI_HANDOFF_20261015.md after
+@@ -1,14 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 静态导度—阻力接口已审核，SDI-v1实施协议已准备（2026-10-30）
+-
+-- 用户授权审核平均速度/壁面阻力、确定接口方式并制定最小静态压力驱动协议。交付入口 `docs/reports/Static_Darcy_interface_protocol_20261030/README.md`；核心文件INTERFACE_REVIEW.md、PROTOCOL.md、protocol.json、EXPECTED_VALUES.md、analytic_checks.py/json及source_manifest.json。当前DESIGN_SPECIFIED_NOT_IMPLEMENTED_NOT_RUN，launch_ready=false；本轮是AI方法审核，不是独立人工科学验收。
+-- 选定恒定H=125nm的总Darcy阻力平均模型：U=J/H、D=H K^-1；二维端读K，拟新建的OpenFOAM Foundation 13压力应用读D并构造(μD)^-1。z一层empty，无再次解析的上下壁剪切，无第二份porosityForce。Mzz=0仅为二维运算嵌入，Dzz仍未定义，不声称竖向输运。未验证内置DarcyForchheimer运行接入，更非完整三维/两相计算。
+-- 审核依据：当前D2体积/平面平均定义、官方及本地OpenFOAM源码；推导了无滑移平板再加总Darcy阻力的解析反例。125nm平板四种系数的导度/目标约0.3746—0.6955，说明重复阻力风险，仅是解析反例而非真实沟槽/nanrPrint误差。37项输入、公式、积分/耗散与符号算术检查满足，11份来源绑定；无新流动验证。
+-- SDI-v1具体设计：24×48μm平均域、厚125nm、μ=0.001Pa·s、ρ=1000kg/m³；G=10^6Pa/m，x压差24Pa；16×32×1网格。两端压差、另两边零通量；固定主轴对角系数。首例仅C01（V2、槽沿y、x驱动）；原/V2×两槽向及零/反向/倍增/y驱动、一级加密已写预定检查清单，共9项设计，不是批量运行授权。主量解析误差/两实现差≤0.1%，守恒与横向泄漏等另列具体门槛；不是旧Gate门槛变更，线性场不作一般网格独立性证据。
+-- 已完成：协议、推导与解析预期值；源码可行性读取。未完成：两端新流动程序、编译、网格生成、短测、运行、独立结果验收。新run_id=null，协议中NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=null；没有新仿真、拟合、旧源码改动、长算命令/新授权或提交推送。旧D4_N8_diag_v3_1_20261026_v1及NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。
+-- 旧共用输入包及nanrPrint核查作为历史准备快照保留，未改其文件；旧state_sync回执仅对应当时状态，当前以本条及新目录state_sync.json为准。此次静态诊断尺寸/驱动不替未来挤压域冻结。挤压体积变化、总力口径、独立显式参考与新条件验证仍未解决。
+-- 下一具体动作：按SDI-v1实现独立二维压力程序、OpenFOAM平均Darcy应用和只读结果检查器，并做源码/字典/编译核对；完成后准备首例C01运行包。下一步建议GPT-6.1 Sol｜High；若实现暴露理论矛盾，转GPT-6 Astra｜High。当前无需要用户启动的长计算，不自动求解或推进Gate。
++## SDI-v1双程序已编译与静态核对，C01运行包已准备，未求解（2026-10-30）
++
++- 用户授权按SDI-v1实现两个最小程序、结果检查器、完成编译/静态核对并准备C01运行包。新增独立目录 `CASE/interface_static_darcy_v1/`；报告入口 `docs/reports/SDI_C01_implementation_20261030/REPORT.md`，运行入口CASE内README.md。未改现有D2/D3/nanrPrint源码、原始结果或原SDI-v1协议/输入包。
++- 已实现：二维C++17有限体积程序读K、零初值CG/对角预条件；OpenFOAM Foundation13平均Darcy压力应用读D、PCG/DIC、Pa压力、U=J/H，z单层empty，无另一份壁面剪切或porosityForce。只生成C01输入与网格。只读结果检查器从已完成CSV/原生场存在性/哈希/独立退出码重算压力、流量、恢复K、局部与全域守恒、侧漏、耗散和两端差异。
++- 已核实：两端编译退出0；512单元平均域blockMesh/checkMesh完成、最大非正交角0、体积约1.44e-16m³，Mesh OK；OpenFOAM auditOnly装配矩阵，确认对称/正对角/维度，未调用solve。检查器11项人造内存数据测试通过；不是实际流动结果。首次Info.precision审计输出API编译失败已修正，失败日志保留。证据CASE内reports/preparation.json、preparation_attempts/、checker_synthetic_tests.*。
++- C01采用24×48μm、H125nm、μ0.001Pa·s、V2槽沿y、x两端24Pa/0Pa、y不穿流。运行包 `common/release_manifest.json` 绑定50个文件与21个动态库；默认只读预检查通过，精简环境/2GiB下矩阵装配审计通过，临时副本改输入被拒绝。旧11份科学来源哈希未变；协议副本保留制定时状态文字，以本条/实施报告表示当前完成状态。
++- 当前C01：source_prepared=true、compile_checked=true、mesh_checked=true、matrix_assembly_audit=true、launch_ready=true（仅包已准备），run_completed=false、actual_run_id=null、NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=true（仅合成平均域）。本轮没有压力迭代/流动计算、新仿真run_id、拟合、重跑、Gate推进、提交推送或对外发送；没有独立人工科学验收。旧D4_N8_diag_v3_1_20261026_v1的NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。
++- 预留planned_run_id=SDI_C01_v1_20261030_01，tmux名称sdi-c01-v1-20261030。运行命令准备在CASE README；本轮未创建tmux会话/runs目录/SDI_output/时间1场。启动脚本默认预检查，显式--execute才顺序运行C01两端；每端300秒/2GiB/单进程，任一失败保留日志和退出码并停止，不重试、不自动验收、不进入其他算例。原文所有科学门槛保持。
++- 下一具体动作：用户在本机Linux普通终端启动C01；结束后新任务只读运行目录并分析，检查两端真实收敛/压力/流量/守恒/能量和原生场写出。未运行的实现风险仍保留，包已准备不等于C01通过。其他8项设计、显式沟槽参考、挤压体积/力口径均不自动进入。下一步建议GPT-6.1 Sol｜High；理论矛盾或最终物理裁决用GPT-6 Astra｜High。命令已准备/交付不等于用户已启动或长算已完成。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

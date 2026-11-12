@@ -1,0 +1,33 @@
+--- A1/urv_reference.cpp
++++ S1/urv_reference.cpp
+@@ -837,10 +837,7 @@
+   }
+   std::size_t nextFrame=1;
+ 
+-  mrp::DensityCapture capture(p.outputDirectory,p.runId,p.drive,rhoPhys,dx);
+-  capture.begin("initial_reference",0,0.0);
+-  const Measurement initial = measure(lattice, geometry, converter, p.drive, p.fx, p.fy,&capture);
+-  capture.finish(initial);
++  const Measurement initial = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+   const bool initialVolumePass = initial.fluidNodes == expectedFluidNodes
+     && std::abs(initial.volume - nominalVolume) / nominalVolume
+          <= volumeRoundoffTolerance;
+@@ -871,9 +868,7 @@
+       lattice.collideAndStream();
+       ++actualCollideAndStreamCalls;
+     }
+-    capture.begin("diagnostic",step,step*dt);
+-    const Measurement state = measure(lattice, geometry, converter, p.drive, p.fx, p.fy,&capture);
+-    capture.finish(state);
++    const Measurement state = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+     const T massError = (state.mass - initial.mass) / initial.mass;
+     const T correctedMassError =
+       (state.correctedMass - initial.correctedMass) / initial.correctedMass;
+@@ -931,7 +926,6 @@
+     }
+   }
+ 
+-  capture.actualFinal(finalStep);
+   const Measurement final = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+   writeFrame(finalStep,converged?"converged_final":"unconverged_final");
+   std::ofstream schedule(p.outputDirectory/"frame_schedule.csv");

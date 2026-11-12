@@ -1,0 +1,26 @@
+--- docs/reports/AI_HANDOFF_PORTABLE_20261104.md before
++++ docs/reports/AI_HANDOFF_PORTABLE_20261104.md after
+@@ -1,14 +1,14 @@
+ # SIM240 项目 — 便携交接单（跨电脑/跨 AI 使用）
+ 
+-## 分步审稿：§2.1求解器/体力/壁面候选已审读，尚未合入（2026-11-08）
+-
+-用户要求核方法文字与引用支持。入口 `docs/reports/PAPER1_methods_2p1_solver_review_20261108/REPORT.md`，含双语方法段/驱动子段候选、引用分工及saved_method_fields.json。当前D3Q19、ForcedBGK(BGK+PlainGuo)、τ1、Guo半步速度和静止Bouzidi线性方案与所查源码相符；旧46(main36/refinement8/viscosity2)原result字段全部q=.5、D3Q19_FORCE、ForcedBGK、τ1。字段重读不是新数值接受。q半链退化为半程反弹，不据插值格式选择宣称额外精度；删泛化精度句，[7]软件、[8]边界方法、[9]体力方法各司其职，历史构建绑定仍未补齐。
+-
+-本轮更正旧OpenLB验证惯例报告的一处解释：当前3D基准EXPECT_NEAR容差为errorFactor*1e-6的绝对容差，不是允许与期望值相差1–2倍；“因子级偏差”不得沿用，旧报告保持历史原文，纠正在本轮报告。官方基准/回归存在不替代本研究精度。Bouzidi最新接收报告已关闭指定原文—当前实现关系，勿回退成此前原文未取得。
+-
+-正式稿/原结果/源码/系数/门槛均未改，前轮摘要保持，引言/§2.1候选未合入；驱动候选不得覆盖原段停止判据和来源文字。62项输入无漂移。本轮无编译/求解/拟合/轨迹重验/新run_id/Gate/上传，无新长算授权；S4原FAIL、reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
+-
+-下一具体动作：审§2.1停止判据与历史运行可追溯性，区分停止条件、保存PASS与独立验收；若用户要求采用，再按子段范围同步双语。建议GPT-6.1 Sol High继续明确范围审读。
++## 分步审稿：§2.1停止条件与历史追溯候选已审读，尚未合入（2026-11-08）
++
++入口 `docs/reports/PAPER1_methods_2p1_stopping_provenance_review_20261108/REPORT.md`，含双语子段候选及saved_provenance_and_status.json。现稿已正确区分停止/独立验收；本轮补最近1000条滑动窗口、相对样本标准差/极差、窗口面内正交通量绝对峰值和首次同时达标；程序PASS是更宽内部检查合取，不等同正式NUMERICAL_GATE/RESULT_PASS/geometry_PASS或参考资格。历史h75/d100 dx1.25横槽确实converged=true但PASS=false/外部退出3，质量超限；与S4网格FAIL不同。
++
++重读S1的52manifest/result/独立退出：保存PASS/converged均true、外部退出均0、SHA与S1一致，四组22/22/6/2；清单均缺五项源码/依赖/编译绑定字段。当前src/Makefile固定注入5953d8a-dirty，日志标签不证明实际历史库commit。未重读52全部日志/诊断；独立验收报告的范围不扩大。新增S6入口补入候选，旧52清单范围不变。
++
++170项输入无漂移；正式稿/源码/原结果/阈值均未改，摘要既有合入保持，引言/§2.1候选未合入。本轮仅文字、代码逻辑与保存记录核对，无新求解/编译/拟合/轨迹重验/新run_id/Gate/上传，无新长算授权；S4原FAIL、reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
++
++下一具体动作：审§2.1单胞周期假设的成立条件与应用边界，随后审物性/τ/时间步；若用户要求采用，再按子段范围同步双语。建议GPT-6.1 Sol High继续明确范围审读。
+ 
+ ## 完整摘要已合入正式中英文工作稿（2026-11-07）
+ 

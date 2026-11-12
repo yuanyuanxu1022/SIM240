@@ -1,0 +1,30 @@
+--- AI_HANDOFF_PORTABLE_20261104.md.before
++++ AI_HANDOFF_PORTABLE_20261104.md
+@@ -1,16 +1,16 @@
+ # SIM240 项目 — 便携交接单（跨电脑/跨 AI 使用）
+ 
+-## §2.1 Mach数与Stokes假设已审，候选未合入（2026-11-08）
+-
+-用户要求区分低Mach证据与Stokes假设。本轮只审当前双语稿§2.1/2.4/3.1/附录E与当前补充S3，不采用旧记录重定数字。入口 `docs/reports/PAPER1_methods_2p1_mach_stokes_review_20261108/REPORT.md`；双语候选CANDIDATE_CN.md、CANDIDATE_EN.md未合入。
+-
+-判断：现稿5.7e−10～4.1e−7及0.05保持；“低约五个数量级”明确指最高值与0.05比较。“各算例/不可压缩区间”宜收紧为“补充S3所列已有记录满足采用的低Mach检查要求”，不扩展至未核新增记录，不当成误差界。当前源码用流场最大格子速度/格子声速计算Ma；不是材料声速实测，也不由Ma alone证明惯性可忽略。
+-
+-Stokes近似的惯性条件与Ma分开，通常需明确定义U/L的Re等依据；当前双语正文未列主地图Re定义/范围，不能用Reynolds平均模型名称或基准单几何力线性代替全图检查。未因此认定实际Re大或新增科学FAIL。本轮未计算Re；若后续要补量化说明先审已有记录，不自动新增仿真。附录E理想Stokes条件、离散参考及V2准确度仍分开。
+-
+-六项当前文稿/清单/源码输入哈希保持，见verification.json；仅阈值与现稿最高Ma数值的比例核对，非原始输出重算。只新增审读目录并同步两状态，无正式稿/源码/原数据修改、原始场/轨迹读取、编译/求解/拟合、新run_id、Gate、上传/投稿或长算命令。S4原FAIL与reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
+-
+-本轮审读完成，之前物性/τ/时间步与q段候选仍未合入。下一可审§2.1末黏度对照与运行清单/集合分工；如用户要求才另核Re或合入候选。建议GPT-6.1 Sol High；本轮无需新增算例。
++## §2.1末黏度对照与集合分工已审，候选未合入（2026-11-08）
++
++用户要求继续逐部分审读。本轮以当前双语§2.1末、当前补充说明及表S1/S6为准，不采用旧记录改数字。入口 `docs/reports/PAPER1_methods_2p1_viscosity_sets_review_20261108/REPORT.md`；双语候选CANDIDATE_CN.md、CANDIDATE_EN.md，均未合入正式稿。
++
++当前分类计数一致：表S1 main36/refinement8/viscosity2/oblique6合计52，主18几何、加密4旧几何；两黏度对照均h75/d100、dx5沿/横各1条。表S6为h100新增2条、h75构建复算2条及已有h75对照2条，不是6条全新结果。公式比较36+8+2h100=19几何46记录；边界审计36+8+2黏度的46另有身份。原36主统计不变。
++
++本段总体无计数错误，现有集合表及46说明可保留。建议回指主μ1e−3 Pa·s并明确μ15对照不进主偏差/改善统计、不是连续黏度验证；将52限定为表S1固定清单而非全部项目数据。候选仅补角色/范围，不新增对照“通过”结论。
++
++inventory_check.json仅为当前清单分组和几何/方向标识核对，非导度/黏度缩放复算或新验收。两正文、两补充及两当前CSV共6项SHA保持，见verification.json。仅新增审读目录、同步两状态；无正式稿/原数据/源码改动、原始运行或场读取、编译/求解/拟合、新run_id、Gate、上传/投稿或长算命令。S4原FAIL及reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
++
++本轮已审到§2.1末；物性、q、Mach及本段候选均未因审读自动合入。下一可进入§2.2，审深度积分通量J、驱动与K定义、量纲和归一化；不自动改稿或追加算例。建议GPT-6.1 Sol High。
+ 
+ ## 完整摘要已合入正式中英文工作稿（2026-11-07）
+ 

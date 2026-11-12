@@ -1,0 +1,73 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p15-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p15-topbar-title
+    bounds: [36, 8, 700, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 流场二/四：纵剖速度与跨槽耗散——台阶处发生了什么
+  - elementType: text
+    elementId: p15-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 15 / 18
+  - elementType: image
+    elementId: p15-fig2
+    src: assets/fig2_velocity_xz.png
+    bounds: [56, 54, 500, 236]
+  - elementType: text
+    elementId: p15-fig2-caption
+    bounds: [56, 293, 500, 30]
+    content:
+      style: $tiny
+      lineHeight: 1.35
+      text: 流场二：y=120 nm 纵剖速度， 沿槽 ⊗ 入纸面 vs 跨槽 → 向右；灰=固体模具；共用色标 0–1.8×10⁻⁴ m/s。
+  - elementType: image
+    elementId: p15-fig4
+    src: assets/fig4_dissipation_xz.png
+    bounds: [56, 331, 252, 180]
+  - elementType: text
+    elementId: p15-fig4-caption
+    bounds: [320, 331, 244, 180]
+    content:
+      style: $tiny
+      lineHeight: 1.4
+      text: 流场四：跨槽耗散率 ε（m²/s³），独立色标 0–32，同一 5 nm 采样足迹；黑线=名义台阶边界。
+  - elementType: shape
+    elementId: p15-note-card
+    shapeName: roundRect
+    bounds: [580, 54, 324, 457]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: text
+    elementId: p15-note-title
+    bounds: [598, 68, 288, 26]
+    content:
+      fontSize: 14
+      bold: true
+      color: "#1E4FA8"
+      text: 耗散图的定位（重要）
+  - elementType: text
+    elementId: p15-note-body
+    bounds: [598, 100, 288, 396]
+    content:
+      fontSize: 11.5
+      color: "#1A2230"
+      lineHeight: 1.6
+      text: "· 台阶附近的亮区=候选机制的位置（速度重分布、局部耗散集中）<br/><br/>· 本文未做角点耗散的网格独立性检验，也未做全域能量收支闭合<br/><br/>· 因此不把亮区直接等同于已量化的额外阻力机制——正文 §5.1 与图注均按此口径<br/><br/>· 若老师认为应展示，建议入正文时保留上述限定语句<br/><br/>· 每幅 1200 个液体样本，图注草稿已备中英双版"
+  - elementType: text
+    elementId: p15-footer
+    bounds: [56, 516, 500, 14]
+    content:
+      style: $tiny
+      text: 来源：figures/paraview/D2_publication_layout_20261017_v1/figures_v2

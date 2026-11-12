@@ -1,0 +1,104 @@
+--- before/SIM240_中文稿_导师审阅版_20261022.md
++++ docs/reports/SIM240_中文稿_导师审阅版_20261022.md
+@@ -261,7 +261,7 @@
+ 
+ 对间隙125 nm的槽深25→120 nm配对，两端均有加密结果：跨槽增幅由5 nm参考下的0.9405%变为2.5 nm参考下的0.8335%，沿槽对应39.1978%与39.0928%。两级比较支持该配对趋势在已检查分辨率上的一致性，但仍不能给出连续解误差界。
+ 
+-两级网格不能确定观测阶，也不能给出整个参数范围的误差上界。基准几何另有一套归档的三网格 GCI 分析 [10]，但**不将其细网格估计套用于全部生产网格样点**。
++两级网格比较仅表征已查几何的分辨率敏感性。h=75 nm、d=100 nm基准另有5、2.5、1.25 nm三网格历史数据，其按观测阶计算的条件性Richardson外推与GCI及运行限制见[补充材料 S9、表 S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s5)，方法参照 [10]。其中1.25 nm横槽记录未通过冻结质量门；本研究不以该表确认渐近区，不将细网格估计外推至全部生产网格样点。
+ 
+ ### 3.4 已知限制
+ 
+@@ -463,7 +463,7 @@
+ 
+ ## 附录 B　正文数字的可追溯性
+ 
+-D2/D3 主地图与附加检查的逐运行数据见[补充材料表 S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s1)（52 行）；原有 `docs/reports/第一篇_run_id索引_20261022.csv` 保留。下表将本地方法支持索引 S1—S11 对应到本稿采用的补充材料编号；四张补充数据表分别为表 S1—S4。
++D2/D3 主地图与附加检查的逐运行数据见[补充材料表 S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#table-s1)（52 行）；原有 `docs/reports/第一篇_run_id索引_20261022.csv` 保留。下表将本地方法支持索引 S1—S11 对应到本稿采用的补充材料编号；五张补充数据表分别为表 S1—S5；表 S5 补列历史基准的条件性 Richardson/GCI 估计。
+ 
+ 已核对：52 项均可定位原始 `steady/result.txt`，均记录 `PASS=true`；该记录不代替独立几何、网格或来源验收。
+ 
+@@ -477,7 +477,7 @@
+ | [S6](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s6) | 局部立方律的一维平均关系 | §2.3、式3 | — |
+ | [S7](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s7) | 双网格敏感性 | §2.3表2、§3.3表4 | 表S2 |
+ | [S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s8) | 周期复制与三驱动力检查 | §2.4 | 表S3 |
+-| [S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s9) | 平板基准与历史三网格 | §3.2—3.4 | 表S4 |
++| [S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s9) | 平板基准与历史三网格 | §3.2—3.4 | 表S4、S5 |
+ | [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s10) | 历史构建来源与日志 | §2.1、§3.4 | — |
+ | [S11](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s11) | 方法引文核实边界 | §2.1、§2.3及相关引文 | — |
+ 
+--- before/SUPPLEMENTARY_METHODS.md
++++ docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md
+@@ -2,7 +2,7 @@
+ 
+ 配套正文：`SIM240_中文稿_导师审阅版_20261022.md`。
+ 
+-编号版本：2026-10-24。作者审阅稿；本文件确定补充材料S1—S11及表S1—S4的编号与对应内容，尚未完成期刊版式验收或远端发布。所列数据来自既有D2/D3及历史基准，不纳入正在另行开展的D4扩展计算，也不替换正文原有V2修正关系。
++编号版本：2026-10-24；2026-10-27按作者采用范围增补表S5及限定文字。作者审阅稿；本文件确定补充材料S1—S11及表S1—S5的编号与对应内容，尚未完成期刊版式验收或远端发布。所列数据来自既有D2/D3及历史基准，不纳入正在另行开展的D4扩展计算，也不替换正文原有V2修正关系。
+ 
+ 记录的PASS、独立退出码、几何检查、网格证据和构建来源分别报告。编号完成不改变数值或物理验收状态。
+ 
+@@ -18,7 +18,7 @@
+ | S6 | 局部立方律的一维平均关系 | §2.3、式3 | — |
+ | S7 | 双网格敏感性 | §2.3表2、§3.3表4 | 表S2 |
+ | S8 | 周期复制与三驱动力检查 | §2.4 | 表S3 |
+-| S9 | 平板基准与历史三网格 | §3.2—3.4 | 表S4 |
++| S9 | 平板基准与历史三网格 | §3.2—3.4 | 表S4、S5 |
+ | S10 | 历史构建来源与日志 | §2.1、§3.4 | — |
+ | S11 | 方法引文核实边界 | 方法相关引文 | — |
+ 
+@@ -118,6 +118,29 @@
+ 
+ 后续方案C保存有PASS=true与独立exit0，但其初始manifest中formal_reference_accepted=false；本材料不替代未恢复的正式放行记录。历史基准的使用范围与源码/构建来源仍分别判断。
+ 
++<a id="table-s5"></a>
++
++**表 S5　历史基准的条件性 Richardson/GCI 估计（6项）**
++
++完整数值表：[Table_S5_conditional_gci.csv](Table_S5_conditional_gci.csv)。原始三格值与原记录状态另见表 S4。细、中、粗网格分别为1.25、2.5、5 nm，$r_{21}=r_{32}=2$，$F_s=1.25$。平板间隙为75 nm；沟槽基准为$h=75$ nm、$d=100$ nm、周期240 nm、槽宽120 nm。沿用原协议的$\rho=1000$ kg/m³、$\mu=1$ mPa·s、$a=10^5$ m/s²与$\tau=1$；[原协议](/home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_grid_convergence/STEP3_PROTOCOL.md)保存完整几何及参数。K单位m³；eta方向为该方向K除以同网格平板K，anisotropy为沿槽K除以横槽K，两者无量纲。方法参照配套正文[10]，原文版本核实范围见S11。
++
++| 指标 | p | 外推值 | ea (%) | e_ext (%) | GCI_fine (%) | 依赖历史细T失败点 |
++|---|---:|---:|---:|---:|---:|---|
++| K_smooth | 1.990910 | 3.515588485e-23 | 0.083855 | 0.028196 | 0.035235 | 否 |
++| K_parallel | 1.512988 | 9.754563861e-23 | 0.185350 | 0.100073 | 0.124966 | 否 |
++| K_perpendicular | 1.256172 | 4.339399834e-23 | 0.612125 | 0.442769 | 0.551022 | 是，FAIL/exit3 |
++| eta_parallel | 0.939763 | 2.773587499 | 0.101409 | 0.110564 | 0.138053 | 否 |
++| eta_perpendicular | 1.088414 | 1.233638776 | 0.527826 | 0.470801 | 0.585744 | 是，FAIL/exit3 |
++| anisotropy | 1.098181 | 2.248566102 | 0.424178 | 0.370433 | 0.464763 | 是，FAIL/exit3 |
++
++令$\phi_1$、$\phi_2$分别为细格和中格结果，采用统一符号定义外推值$\phi_{\mathrm{ext}}=\phi_1+(\phi_1-\phi_2)/(r^p-1)$，$e_a=|(\phi_1-\phi_2)/\phi_1|$，$e_{\mathrm{ext}}=|(\phi_{\mathrm{ext}}-\phi_1)/\phi_{\mathrm{ext}}|$，$GCI_{\mathrm{fine}}=F_s e_a/(r^p-1)$。表中误差与GCI列均以百分数报告；CSV保留原始三格值与完整精度。
++
++**失败记录随表披露：** 历史1.25 nm横槽运行相对质量指标为$1.1967043900362632\times10^{-10}$，超过冻结阈值$10^{-10}$，独立退出码3。K_perpendicular、eta_perpendicular与anisotropy均依赖该失败点。可计算的GCI不赋予该记录合格参考资格，不改变历史G2 Step 3的FAIL/INCONCLUSIVE判定。所列估计不外推其他几何，也不构成全参数域严格误差界。
++
++沿槽与横槽观测阶分别为1.513和1.256。观测阶低于形式阶本身不足以判定计算不合格，也不能确认渐近性。使用同组三点拟合p后，归档相邻GCI比化为细中结果之比，因此历史“asymptotic range confirmed”标签不作为独立渐近区证据。所报GCI为该三格链的条件性估计。
++
++对同一平板基准，细格积分K相对解析值的偏差为0.0271569%。将解析偏差与GCI统一以细格值归一，二者分别为0.0271495%与0.0352348%，估计幅度约为解析偏差的1.298倍。该比较仅支持此平板配置和积分量，不证明沟槽或其他几何具有相同的误差覆盖。
++
+ <a id="sm-s10"></a>
+ 
+ ## S10 历史构建来源与日志
+--- before/README.md
++++ docs/reports/SIM240_Supplementary_Methods_20261024/README.md
+@@ -9,9 +9,12 @@
+ - [表S2](Table_S2_refinement.csv)：8行双网格方向比较。
+ - [表S3](Table_S3_periodic_checks.csv)：18项基准周期复制/多力记录。
+ - [表S4](Table_S4_grid_archive.csv)：9行历史三网格记录，保留失败状态。
++- [表S5](Table_S5_conditional_gci.csv)：2026-10-27按作者采用范围增补的6项条件性Richardson/GCI估计；三项依赖历史细横槽失败点，限定说明见S9。
+ - `input_hashes.json`：编号前读取的支持资料及选定原始结果哈希。
+ - `REVISION_NOTE.md`与`verification.json`：本轮正文修改、编号和链接检查记录。
+ 
+ CSV方向：parallel/P为沿槽+y，perpendicular/T为跨槽+x，oblique为所标角度。K_m3/K5/K2_5单位m³；R单位Pa·s/m³；加速度单位m/s²；h/d/dx单位nm。K_change_percent和E5/E2_5单位为百分数，E_change_percentage_points单位为百分点。recorded_PASS是原文件记录值，不能替代本轮独立Gate结论。独立exit也不是整体通过结论。
+ 
+ 原始路径按项目根目录`/home/dell/yuanyuanxu/SIM240`解析。外移或公开打包时需重新核对路径映射与附件覆盖；本轮未复制大型场文件、第三方论文全文或历史可执行文件。
++
++2026-10-27的表S5/正文同步记录见[本次修订报告](../GCI_author_sync_20261027/REPORT.md)；既有verification.json是2026-10-24编号工作的历史记录，本次检查另存，不覆盖旧证书。
+--- before/SUPPLEMENT_NUMBER_MAP.csv
++++ docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENT_NUMBER_MAP.csv
+@@ -7,6 +7,6 @@
+ S6,S6,局部立方律的一维平均关系,sm-s6,SUPPLEMENTARY_METHODS.md,§2.3、式3,
+ S7,S7,双网格敏感性,sm-s7,SUPPLEMENTARY_METHODS.md,§2.3表2、§3.3表4,表S2
+ S8,S8,周期复制与三驱动力检查,sm-s8,SUPPLEMENTARY_METHODS.md,§2.4,表S3
+-S9,S9,平板基准与历史三网格,sm-s9,SUPPLEMENTARY_METHODS.md,§3.2—3.4,表S4
++S9,S9,平板基准与历史三网格,sm-s9,SUPPLEMENTARY_METHODS.md,§3.2—3.4,表S4、S5
+ S10,S10,历史构建来源与日志,sm-s10,SUPPLEMENTARY_METHODS.md,§2.1、§3.4,
+ S11,S11,方法引文核实边界,sm-s11,SUPPLEMENTARY_METHODS.md,§2.1、§2.3及相关引文,

@@ -1,0 +1,14 @@
+--- S1/contracts.py
++++ S2/contracts.py
+@@ -123,7 +123,10 @@
+     expected=anchor['native_source_sha256']
+     observed={Path(p).name:s for p,s in sources.items()}
+     if observed != expected:
+-        if bound.get('source_revision', {}).get('id') == 'URV-S1-A1-v1':
++        if bound.get('source_revision', {}).get('id') == 'URV-S2-S1-ELF-REUSE-v1':
++            from revision_s2_reuse import verify_s2_reuse
++            verify_s2_reuse(bound, observed, checker_case)
++        elif bound.get('source_revision', {}).get('id') == 'URV-S1-A1-v1':
+             from revision_s1 import verify_s1_revision
+             verify_s1_revision(bound, observed, checker_case)
+         else:

@@ -1,0 +1,30 @@
+--- before/AI_HANDOFF_20261015.md
++++ after/AI_HANDOFF_20261015.md
+@@ -1,17 +1,15 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## URV v1.1只读复核完成：两项残留待修、历史待确认、S0未启动（2026-11-01）
+-
+-- 用户范围：只读复核v1.1及合同要求，继续核实外部数据历史；获得真实确认后再准备S0正式执行绑定，不自动启动。新入口`docs/reports/URV_checker_v1_1_readonly_review_20261101/REPORT.md`、findings.json、verification.json、history_status.json。审查编号URV-v1.1-READONLY-20261101非求解run_id；实际新正式run_id=[]，没有生效合同、启动命令或正式运行目录。
+-- 当前结论：原70项测试本轮复跑全部通过，原F02差异先保存逻辑及20列完整样例在本轮范围成立；额外隔离人工检查复现F01/F03各一残留，执行准备HOLD。没有撤销或覆盖旧70通过记录，也不将其当所有输入边界充分证明。AI自审非独立人工验收；本轮只读，没有修改v1.1、原求解器、协议、测试或门槛。
+-- R1(HIGH，F01残留)：contracts.py:16—26的release_inputs遇任一运行/基准声明缺字段即返回[]，丢失已知有效保护路径；公开入口在binding拒绝前创建输出。人工对照保留有效P基准，仅删另一声明output_directory，正常组无写入，缺字段组在人工基准内创建analysis_malformed/failure.json，两者均exit2。只在新人工目录，不触及真实结果。需在任何mkdir/save前对声明解析失败停止，不以空保护集合继续，并增加“有效基准+不完整其他声明”组合测试；本轮未修。
+-- R2(MEDIUM，F03残留)：contracts.py:79—81只过滤合并式-D/-U宏token；人工完整捕获命令保留-DURV_PREPARATION_ONLY=0，再加入分离式-D URV_PREPARATION_ONLY=1并同步人工哈希，binding仍返回成功。只证实文本解析遗漏，没有调用编译器或测真实最终宏值，没有生成错误正式程序。需统一解析合并/分离的-D/-U再按唯一明确0校验；本轮未修。测试中的CONFIRMED/授权为人工元数据，不是作者确认。
+-- 原v1.1主要来源角色/依赖/逐条身份检查及正常合同路径保护仍有证据；F02差异保存先于原K1e-4/旧轨迹停止条件已核，旧P4343行、T2954行及人工失败例的完整20列报表均在。原numerics与reader主体七函数源码逐字节一致。新URV完整稳态结果端到端验收仍NOT_EVALUATED。F04多合同汇总仍为既有后续OPEN事项，未纳入本轮修订或提前授权。
+-- 封存/保护：原准备seal e0eb9a54c1c1168d25483a085e70462d04cfa76aeb4922dddbea17b07b1811cb及1432输入、新检查器seal df3003c57560576548e9b0988507bc2f7a63982522988d5a284cc75fdd0f35ce及21输入均匹配；原830文件、v1.1与前轮报告/历史输入等2606既有文件前后保持。原URV_PREPARATION_ONLY=1不动。本轮native编译0、求解0、实际VTK数据读取0；现有reader测试只导入并拒绝非法输出，不读场。未拟合、提交推送或对外发送项目材料。
+-- 外部历史：已查原v1.1 common、原历史记录、最新状态，没有新真实确认；已单独询问作者是否有新结论及核查范围，最后已收到的明确答复仍“尚不能确认，需要核查”，状态PENDING_AUTHOR_CHECK，以history_status.json快照为准。不能从本地无匹配或测试字段推定其他机器/未归档/他人数据未使用。两个候选h60/d80、h30/d80,w120/P240nm未认定已确认未见。
+-- S0原两条h75草案维持未生效，正式程序/配置SHA与批准编号未形成；h75/d100/w120/P=Ly240、dx5nm、H125nm，P=+y/T=+x，窗1013/上限58800、K差≤1e-4及完整20共同列口径不变。本轮没有准备生效绑定；即使后续历史获确认，仍需收口R1/R2并核验后再准备真实构建、逐条配置编号目录及独立退出/资源/原始产物合同，不自动启动。
+-- 新正式NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及NOT_EVALUATED/false/null、GDI01既有接入结果均保持。
+-- 当前停点：只读复核完成，新增证据仅报告/人工反例/现有测试复跑与共享状态维护，未新增流场或物理验证。下一具体任务可另授权隔离小版本仅修R1/R2并增加对应反例，保留v1.1封存；作者继续核查外部历史，二者满足后再进入S0正式执行绑定准备。F04后续汇总前单独处理。常规修订/复核建议GPT-6.1 Sol｜High；疑难理论/多证据矛盾/最终公式冻结依原规则GPT-6 Astra｜High。
++## 外部历史已收到作者未使用确认；R1/R2待修，S0未启动（2026-11-01）
++
++- 最新用户答复：“已核查，确认未用于选择系数或检验条件”。范围为h60/d80、h30/d80（w120/P240nm）的结果未用于选择V2系数或这两个检验条件。作者历史用途确认待办已收到明确答复；入口`docs/reports/URV_external_history_confirmation_20261101/RECEIPT.md`、author_declaration.json、S0_readiness_addendum.json。核查位置/来源未提供，独立外部历史审计未做；不扩展为从未见过数据、外部数据不存在或全局盲测证明。
++- 旧external_data_history.json、history_status.json及原封存内PENDING字段是当时快照，保留原字节；当前历史答复状态以新author_declaration.json为准，不改写旧证据或封存。答复仅确认历史用途，不包含启动、修订或构建授权。
++- v1.1只读复核证据保持：`docs/reports/URV_checker_v1_1_readonly_review_20261101/REPORT.md`、findings.json及synthetic_probes/。前轮70项测试通过；新增人工反例揭示R1/R2仍待修。本轮仅接收确认及维护状态，未重新运行测试、编译、求解或读取场数据，未改检查器、求解器、冻结协议、门槛或原始结果。
++- R1(HIGH/F01)：合同中任一运行/基准缺字段时release_inputs返回空集合，可能丢失有效旧目录保护，公开入口在拒绝合同前写出failure.json。需在任何mkdir/save前阻止解析失败，并增加“有效基准+其他不完整声明”组合测试。R2(MEDIUM/F03)：只检查合并式-D/-U，遗漏分离式-D URV_PREPARATION_ONLY=1；需统一解析两种写法，要求唯一明确0并拒绝冲突/重复/取消定义。人工解析探针未测真实最终宏值。两项本轮均未修，执行准备HOLD_R1_R2；F04仍为后续多合同汇总事项。
++- 原准备seal e0eb9a54c1c1168d25483a085e70462d04cfa76aeb4922dddbea17b07b1811cb与1432绑定、新检查器seal df3003c57560576548e9b0988507bc2f7a63982522988d5a284cc75fdd0f35ce与21绑定保持；本轮保护/核对见新目录verification.json。原URV_PREPARATION_ONLY=1不动。原两条S0 h75草案仍未生效；没有正式程序/配置SHA、批准run_id、启动命令或正式计算目录。simulation_authorized=false，approved_run_ids=[]，actual_formal_run_ids=[]，S0_started=false。
++- S0沿用h75/d100/w120/P=Ly240、dx5nm、H125nm，P=+y/T=+x，窗1013/上限58800、K差≤1e-4及完整20共同列。新正式NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及既有GDI01接入结果保持。
++- 当前停点：已记录作者未使用确认，无新增计算或数值/物理验证，无提交推送。下一具体动作是另行隔离修订R1/R2并增加对应反例、复核；通过后再准备S0两条h75回归的真实构建/配置/编号/目录及独立退出、资源、原始产物绑定，不自动启动。保留v1.1封存；不重复询问同一未使用结论，核查位置未提供如实保留。常规修订/复核建议GPT-6.1 Sol｜High。
++
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

@@ -1,0 +1,59 @@
+{
+  "case_id": "h75_d100_P_tight",
+  "prepared_state_verified_at": "2026-11-12T00:06:00+08:00",
+  "started": false,
+  "map_fields_run": false,
+  "compiled": false,
+  "solver_executed": false,
+  "new_run_id_created": false,
+  "target_case": {
+    "path": "CASE/paper1_fvm_stokes_reference_v2/prepared/h75_d100_P_tight",
+    "dx_nm": 0.3125,
+    "expected_cells": 307200,
+    "direction": "P",
+    "level": "tight",
+    "equation": "scalar_Poisson",
+    "seed_from": "h75_d100_P_fine",
+    "start_time": 0.5,
+    "end_time_cap": 250000,
+    "wall_clock_seconds": 43200,
+    "exit_trigger": {"p": "1e-11", "U": "1e-11", "v": "1e-11"},
+    "flat_zero_component_exception": false,
+    "has_runtime_dir": false,
+    "has_referenceEvidence": false,
+    "overwrite_risk": "none"
+  },
+  "preconditions": {
+    "release_manifest_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+    "flat_cases": {"h75_d0_P_flat": "LOCAL_CHECKS_PASS", "h75_d0_T_flat": "LOCAL_CHECKS_PASS"},
+    "seed_source_h75_d100_P_fine": {
+      "status": "LOCAL_CHECKS_PASS",
+      "issues": [],
+      "run_id": "h75_d100_P_fine_20261112T000343_78770122",
+      "independent_exit_code": 0,
+      "native_convergence": true,
+      "final_time": 2.5,
+      "K_m3": 9.755622669730348e-23,
+      "section_evidence": "exact y invariance of scalar model; not an independent mass test"
+    },
+    "solver_process_present": false,
+    "seed_bound_native_times": 1
+  },
+  "why_this_case": "P 已过 coarse/mid/fine（d21=0.079154%, d32=0.027980%, d32<=d21）。assess() 仍 NOT_ASSESSABLE，唯一缺项是 alg，必须由 tight 给出。这是 P 取得参考资格的最后一环。",
+  "post_fine_diagnostics": {
+    "delta_fine_official_percent": 0.804185780,
+    "delta_richardson_diagnostic_percent": 0.819596,
+    "delta_conservative_diagnostic_percent": 0.832407,
+    "observed_order_p": 1.5014,
+    "note": "全部为诊断，不进协议；delta 必须等 tight 通过后由 assess() 正式给出。"
+  },
+  "not_done": [
+    "未启动 tight",
+    "未跑 mapFields",
+    "未编译",
+    "未改阈值或冻结代码",
+    "未重跑 T 或 P 的已完成层"
+  ],
+  "expected_runtime_basis": "P fine 实测 3.95 s（含 blockMesh+checkMesh+mapFields+求解），同网格 307200 单元。tight 容差收紧 10 倍，预计秒级到十几秒，非 T 的 4053 s 量级。经验估计，不作工期承诺。",
+  "start_command_file": "h75_d100_P_tight_START_COMMAND.txt"
+}

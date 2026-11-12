@@ -1,0 +1,478 @@
+--- CASE/unseen_v2_reference_S3_reuse_v1/scripts/audit_S3_zero.py
++++ CASE/unseen_v2_reference_S3_reuse_v1_1/scripts/audit_S3_zero.py
+@@ -7,7 +7,7 @@
+ import time
+ 
+ CASE = Path(__file__).resolve().parents[1]
+-CHECKER = CASE.parent / 'unseen_v2_reference_checker_S3_reuse_v1'
++CHECKER = CASE.parent / 'unseen_v2_reference_checker_S3_reuse_v1_1'
+ sys.path.insert(0, str(CHECKER / 'analysis'))
+ from evidence import need, sha, kv, save, exact_parameters, check_boundary, close
+ from stage_s3 import (AUDIT_ID, ELF_SHA, MODES, verify_seal, validate_zero_plan,
+@@ -53,28 +53,8 @@
+ 
+ 
+ def audit_outputs(record):
+-    run = Path(record['output_directory']); cfg = kv(record['run_config_path'])
+-    p = exact_parameters(cfg); effective = kv(run/'effective_config.txt')
+-    need(effective['run_id'] == record['run_id'] and effective['mode'] == record['mode'], 'native identity mismatch')
+-    need(int(effective['window_steps']) == p['window'] and int(effective['maximum_steps']) == p['cap'], 'step arithmetic')
+-    need(close(float(effective['dt_s']), p['dt']), 'dt conversion')
+-    geo = None
+-    if record['mode'] != 'describe':
+-        geo = check_boundary(cfg, kv(run/'boundary_audit.txt'))
+-    if record['mode'] == 'initialize':
+-        result = kv(run/'result.txt')
+-        need(result['formal_simulation'] == 'false' and result['steps_completed'] == '0' and
+-             result['collide_and_stream_calls'] == '0', 'zero/steady output confusion')
+-        need(result['NUMERICAL_GATE'] == 'NOT_EVALUATED' and result['RESULT_PASS'] == 'false', 'zero scientific promotion')
+-        need(result['finite'] == result['geometry_PASS'] == result['q_audit_PASS'] == 'true', 'initial state flag failed')
+-        need(int(result['fluid_nodes']) == p['nodes'] and int(result['frames_written']) == 1, 'initial count/frame')
+-        need(close(float(result['fluid_volume_m3']), p['H']*p['P']*p['Ly'], rtol=1e-10), 'initial volume')
+-        need(close(float(result['corrected_mass']), 1000*p['nodes']*p['dx']**3), 'initial corrected mass')
+-        need(float(result['density_delta']) == 0 and float(result['max_density_deviation']) == 0, 'initial density')
+-        expected = [0., 0., 0.]; expected[1 if cfg['direction'] == 'P' else 0] = p['H']*p['a']*p['dt']/2
+-        need(close([float(v) for v in result['J_vector_m2_s'].split(',')], expected, rtol=1e-8, atol=1e-30), 'initial force direction/half-step flux')
+-        need(not (run/'diagnostics.csv').exists() and not (run/'mass_capture').exists(), 'unexpected steady/capture path')
+-    return geo
++    from zero_evidence import validate_zero_outputs
++    return validate_zero_outputs(record)
+ 
+ 
+ def execute(release, expected_sha, data):
+@@ -100,6 +80,8 @@
+             out = folder / ('field_readback_'+record['planned_case_id']+'.json')
+             log = folder / ('field_reader_'+record['planned_case_id']+'.log')
+             field_readback(Path(record['output_directory']), out, log, env)
++            from zero_evidence import validate_initial_readback
++            validate_initial_readback(record, out, folder)
+             result.update(field_readback=str(out), field_readback_sha256=sha(out))
+         need(unchanged(bound['inputs_sha256']) == before, 'zero audit changed bound inputs')
+         completed.append(result)
+
+--- CASE/unseen_v2_reference_S3_reuse_v1/scripts/prepare_S3.py
++++ CASE/unseen_v2_reference_S3_reuse_v1_1/scripts/prepare_S3.py
+@@ -1,7 +1,7 @@
+ """Prepare closed S3 identities/seals; no native/build/VTK process calls."""
+ from pathlib import Path
+ import json,sys,argparse
+-CASE=Path(__file__).resolve().parents[1];ROOT=CASE.parents[1];CHECKER=CASE.parent/'unseen_v2_reference_checker_S3_reuse_v1'
++CASE=Path(__file__).resolve().parents[1];ROOT=CASE.parents[1];CHECKER=CASE.parent/'unseen_v2_reference_checker_S3_reuse_v1_1'
+ sys.path.insert(0,str(CHECKER/'analysis'))
+ from evidence import need,sha,kv,save,exact_parameters
+ from stage_s3 import CASES,RUN_IDS,MODES,AUDIT_ID,REVISION,RESOURCES,verify_seal,verify_zero_receipt
+@@ -27,15 +27,19 @@
+ 
+ def view():
+     need(sha(S2_RELEASE)==S2_SHA,'S2 release changed')
+-    old=json.loads(S2_RELEASE.read_text());plan=json.loads((CASE/'evidence/identity_plan.json').read_text())
++    parent=Path('/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1/evidence/preparation_A.json');need(sha(parent)=='5d4e70d85d586b3cdf1ebca09f82f1f4abf90166642c34f1a5f4663cdeb4f02d', 'original S3 A changed')
++    old=json.loads(parent.read_text());plan=json.loads((CASE/'evidence/identity_plan.json').read_text())
+     anchor=CHECKER/'s3_revision/anchor.json';inputs=dict(old['inputs_sha256'])
+     for folder in [CASE/'scripts',CHECKER/'analysis',CHECKER/'common',CHECKER/'revision',CHECKER/'s1_revision',CHECKER/'s2_revision',CHECKER/'s3_revision',CHECKER/'tests']:
+         for p in folder.rglob('*'):
+             if p.is_file() and '__pycache__' not in p.parts:inputs[str(p)]=sha(p)
+-    for p in [S2_RELEASE,CASE/'evidence/identity_plan.json',CASE/'evidence/adoption.json',CASE/'evidence/baseline_references.json',CASE/'README.md',CHECKER/'README.md']:
++    for p in [parent,parent.with_suffix('.sha256'),S2_RELEASE,CASE/'evidence/identity_plan.json',CASE/'evidence/adoption.json',CASE/'evidence/baseline_references.json',CASE/'README.md',CHECKER/'README.md']:
+         inputs[str(p)]=sha(p)
+     scope=ROOT/'docs/reports/URV_S3_prerun_scope_review_20261103'
+     for p in scope.iterdir():
++        if p.is_file():inputs[str(p)]=sha(p)
++    review=ROOT/'docs/reports/URV_S3_A_readonly_review_20261103'
++    for p in review.iterdir():
+         if p.is_file():inputs[str(p)]=sha(p)
+     refs=json.loads((CASE/'evidence/baseline_references.json').read_text())
+     for ref in refs:
+
+--- CASE/unseen_v2_reference_S3_reuse_v1/scripts/run_S3.py
++++ CASE/unseen_v2_reference_S3_reuse_v1_1/scripts/run_S3.py
+@@ -11,7 +11,7 @@
+ import time
+ 
+ CASE = Path(__file__).resolve().parents[1]
+-CHECKER = CASE.parent / 'unseen_v2_reference_checker_S3_reuse_v1'
++CHECKER = CASE.parent / 'unseen_v2_reference_checker_S3_reuse_v1_1'
+ sys.path.insert(0, str(CHECKER / 'analysis'))
+ from evidence import need, sha, save, kv
+ from stage_s3 import (verify_seal, require_pristine, validate_formal_authority,
+
+--- CASE/unseen_v2_reference_checker_S3_reuse_v1/analysis/check_linearity.py
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/check_linearity.py
+@@ -8,7 +8,7 @@
+ 
+ def analyze(release,expected_sha,output):
+     bound=verify_seal(release,expected_sha);validate_formal_authority(bound)
+-    case=Path(__file__).resolve().parents[2]/'unseen_v2_reference_S3_reuse_v1'
++    case=Path(__file__).resolve().parents[2]/'unseen_v2_reference_S3_reuse_v1_1'
+     accepted={}
+     for r in bound['prepared_runs']:
+         p=case/'analysis_results'/r['run_id']/'acceptance.json'
+
+--- CASE/unseen_v2_reference_checker_S3_reuse_v1/analysis/contracts.py
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/contracts.py
+@@ -123,7 +123,7 @@
+     expected=anchor['native_source_sha256']
+     observed={Path(p).name:s for p,s in sources.items()}
+     if observed != expected:
+-        if bound.get('source_revision', {}).get('id') == 'URV-S3-S1-ELF-REUSE-v1':
++        if bound.get('source_revision', {}).get('id') == 'URV-S3-S1-ELF-REUSE-v1.1':
+             from revision_s3_reuse import verify_s3_reuse
+             verify_s3_reuse(bound, observed, checker_case)
+         elif bound.get('source_revision', {}).get('id') == 'URV-S2-S1-ELF-REUSE-v1':
+
+--- CASE/unseen_v2_reference_checker_S3_reuse_v1/analysis/revision_s3_reuse.py
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/revision_s3_reuse.py
+@@ -4,7 +4,7 @@
+ from evidence import need,sha
+ from s3_baselines import S2_RELEASE,S2_SHA,verify_baselines
+ 
+-REVISION='URV-S3-S1-ELF-REUSE-v1'
++REVISION='URV-S3-S1-ELF-REUSE-v1.1'
+ ELF_SHA='5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b'
+ 
+ def verify_s3_reuse(bound,observed,checker_case):
+@@ -18,6 +18,10 @@
+     binary=covered(bound['provenance']['native_binary'],bound['inputs_sha256'])
+     need(str(binary)==anchor['native_binary_path'] and sha(binary)==anchor['native_binary_sha256']==ELF_SHA,'S3 exact reused ELF required')
+     need(anchor['S2_release_path']==str(S2_RELEASE) and anchor['S2_release_sha256']==S2_SHA and sha(covered(str(S2_RELEASE),bound['inputs_sha256']))==S2_SHA,'S3 predecessor release mismatch')
++    parent=covered(anchor['parent_preparation_A_path'],bound['inputs_sha256'])
++    need(sha(parent)==anchor['parent_preparation_A_sha256']=='5d4e70d85d586b3cdf1ebca09f82f1f4abf90166642c34f1a5f4663cdeb4f02d','original S3 A lineage changed')
++    original=json.loads(parent.read_text())
++    need(all(bound['inputs_sha256'].get(p)==h for p,h in original['inputs_sha256'].items()),'original S3 A inputs dropped')
+     prior=json.loads(S2_RELEASE.read_text());need(bound['provenance']==prior['provenance'],'S3 genuine build provenance changed')
+     need(all(bound['inputs_sha256'].get(p)==h for p,h in prior['inputs_sha256'].items()),'S3 predecessor closure dropped')
+     # Reuse genuine old S2 lineage with its own checker/stage, without pretending S3 is S2.
+
+--- CASE/unseen_v2_reference_checker_S3_reuse_v1/analysis/stage_s3.py
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/stage_s3.py
+@@ -3,14 +3,14 @@
+ import json
+ from evidence import need, sha, kv
+ 
+-CASE = Path(__file__).resolve().parents[2] / 'unseen_v2_reference_S3_reuse_v1'
++CASE = Path(__file__).resolve().parents[2] / 'unseen_v2_reference_S3_reuse_v1_1'
+ STAGE = 'S3_REG_LINEARITY'
+-REVISION = 'URV-S3-S1-ELF-REUSE-v1'
++REVISION = 'URV-S3-S1-ELF-REUSE-v1.1'
+ ELF_SHA = '5c3836e97c99feab88cd8e41773237f6ff642a10558f151b11e112563382b07b'
+-AUDIT_ID = 'URV_S3_ZERO_20261103_01'
++AUDIT_ID = 'URV_S3_ZERO_v1_1_20261103_01'
+ MODES = ('describe', 'precheck', 'initialize')
+ CASES = tuple(f'URV1_U_REG_{d}_dx2p5_a{a}' for a in (50000, 200000) for d in ('P', 'T'))
+-RUN_IDS = tuple(f'URV_S3_{d}_a{a}_reuse_v1_20261103_01' for a in (50000, 200000) for d in ('P', 'T'))
++RUN_IDS = tuple(f'URV_S3_{d}_a{a}_reuse_v1_1_20261103_01' for a in (50000, 200000) for d in ('P', 'T'))
+ RESOURCES = dict(processes=1, threads=1, cuboids=1, overlap=3,
+     per_process_address_space_GiB=8, required_available_RAM_GiB=12,
+     required_initial_free_disk_GiB=100, required_before_each_run_free_disk_GiB=8,
+@@ -88,11 +88,14 @@
+             need(value.get('PASS') is True and value.get('actual_reader') is True and len(value['frames']) == 1,
+                  'S3 initial field not independently read')
+     manifest = bound_file(bound, audit['raw_manifest_path'], audit['raw_manifest_sha256'])
++    need(manifest == CASE / 'audits' / AUDIT_ID / 'audit_files_sha256.json', 'wrong zero raw manifest path')
+     for path, digest in json.loads(manifest.read_text()).items():
+         need(Path(path).resolve().is_relative_to(CASE / 'audits' / AUDIT_ID), 'zero output escape')
+         bound_file(bound, path, digest)
+     expected_files = json.loads(manifest.read_text())
+     folder = CASE / 'audits' / AUDIT_ID
++    from zero_evidence import validate_audit_records
++    validate_audit_records(bound, audit, released, folder)
+     actual_files = {str(p): sha(p) for p in folder.rglob('*') if p.is_file() and p not in (manifest, receipt)}
+     need(actual_files == expected_files, 'zero raw manifest file set/content mismatch')
+     return audit
+
+--- /dev/null
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/zero_evidence.py
+@@ -0,0 +1,126 @@
++"""R1/R2 pure file checks; no native execution, VTK imports, or authority grants."""
++from pathlib import Path
++import json
++import xml.etree.ElementTree as ET
++import numpy as np
++from evidence import need,sha,kv,rows,close,exact_parameters,check_boundary
++
++MODES=('describe','precheck','initialize')
++
++def load(path):return json.loads(Path(path).read_text())
++
++def regular(path):
++    p=Path(path)
++    need(p.is_absolute() and p.is_file() and str(p.resolve())==str(p),'noncanonical/missing zero file')
++    need(not any(x.is_symlink() for x in [p,*p.parents]),'zero evidence symlink refused')
++    return p
++
++def expected_initial(cfg):
++    p=exact_parameters(cfg);v=np.zeros(3);v[1 if cfg['direction']=='P' else 0]=p['H']*p['a']*p['dt']/2
++    return v
++
++def validate_zero_outputs(record):
++    run=Path(record['output_directory']);cfg=kv(regular(record['run_config_path']));p=exact_parameters(cfg)
++    mode=record['mode'];need(mode in MODES and cfg['mode']==mode,'zero forbids steady or mismatched mode')
++    need(record['run_id']==cfg['run_id'] and cfg['output_directory']==str(run),'zero config identity/output mismatch')
++    need(kv(regular(run/'run_manifest.txt'))==dict(run_id=record['run_id'],mode=mode),'zero manifest mismatch')
++    effective=kv(regular(run/'effective_config.txt'))
++    need(effective['run_id']==record['run_id'] and effective['mode']==mode,'native zero identity mismatch')
++    need(effective['formal_simulation']=='false','effective zero mode marked formal')
++    need(effective['direction']==('parallel' if cfg['direction']=='P' else 'perpendicular'),'effective direction mismatch')
++    values=dict(h_m=p['h'],d_m=p['d'],w_m=p['w'],Lx_m=p['P'],Ly_m=p['Ly'],phi=p['w']/p['P'],
++        dx_m=p['dx'],dt_s=p['dt'],nominal_volume_m3=p['P']*p['Ly']*p['H'],plan_area_m2=p['P']*p['Ly'],
++        acceleration_m_s2=p['a'],nu_m2_s=p['nu'])
++    for key,value in values.items():need(close(float(effective[key]),value),'effective physical conversion mismatch: '+key)
++    for key,value in dict(nx=p['nx'],ny=p['ny'],window_steps=p['window'],maximum_steps=p['cap']).items():
++        need(int(effective[key])==value,'effective exact grid/time mismatch: '+key)
++    # The native format has no lattice-force column. Check the implied conversion
++    # from independently checked a/dx/dt, then check its initial physical response.
++    f=float(effective['acceleration_m_s2'])*float(effective['dt_s'])**2/float(effective['dx_m'])
++    need(close(f,p['a']*p['dt']**2/p['dx']),'effective lattice force conversion')
++    process=load(regular(run/'process_receipt.json'))
++    need(process.get('independent_process_exit_code')==0 and process.get('timed_out') is False and
++         process.get('resource_stop_reason') is None,'zero native process failed/timed out/resource stop')
++    need(process.get('solver_wall_cap_seconds')==300 and np.isfinite(process['elapsed_seconds']) and process['elapsed_seconds']>=0,'zero process budget/elapsed evidence')
++    need(regular(run/'exit_code.txt').read_text().strip()=='0','zero independent exit file')
++    execution=kv(regular(run/'execution_audit.txt'))
++    need(execution['protocol']=='URV-v1' and execution['preparation_only_build']=='0' and execution['collide_and_stream_calls']=='0','nonzero advancement/wrong zero build')
++    need(regular(run/'run.log').stat().st_size>0,'missing zero native log')
++    need(not (run/'diagnostics.csv').exists() and not (run/'mass_capture').exists(),'unexpected steady/capture evidence in zero run')
++    geometry=None
++    if mode!='describe':geometry=check_boundary(cfg,kv(regular(run/'boundary_audit.txt')))
++    if mode=='initialize':
++        result=kv(regular(run/'result.txt'))
++        need(result['run_id']==record['run_id'],'initial result identity mismatch')
++        need(result['formal_simulation']=='false' and result['steps_completed']==result['collide_and_stream_calls']=='0','initial nonzero/steady result')
++        need(result['NUMERICAL_GATE']=='NOT_EVALUATED' and result['RESULT_PASS']=='false','zero scientific promotion')
++        need(result['finite']==result['geometry_PASS']==result['q_audit_PASS']=='true','initial state flag failed')
++        need(result['exit_code']=='0' and int(result['fluid_nodes'])==p['nodes'] and int(result['frames_written'])==1,'initial exit/node/frame count')
++        need(close(float(result['fluid_volume_m3']),p['P']*p['Ly']*p['H'],rtol=1e-10),'initial volume')
++        need(close(float(result['nominal_volume_m3']),p['P']*p['Ly']*p['H']),'initial nominal volume')
++        need(close(float(result['corrected_mass']),1000*p['nodes']*p['dx']**3),'initial corrected mass')
++        need(float(result['density_delta'])==float(result['max_density_deviation'])==0,'initial density')
++        J=np.asarray([float(v) for v in result['J_vector_m2_s'].split(',')]);need(J.shape==(3,) and close(J,expected_initial(cfg),rtol=1e-8,atol=1e-30),'initial force direction/half-step flux')
++        frames=rows(regular(run/'frame_index.csv'))
++        need(len(frames)==1 and int(frames[0]['step'])==0 and float(frames[0]['time_s'])==float(frames[0]['tstar'])==0 and frames[0]['reason']=='initial','initial native frame index')
++    return geometry
++
++def payload_closure(master,run):
++    run=Path(run);hashes={}
++    def visit(value):
++        p=regular(Path(value).absolute())
++        need(p.is_relative_to(run/'vtkData') and p.suffix in ('.pvd','.vtm','.vti'),'initial VTK payload escapes own run or unexpected format')
++        if str(p) in hashes:return
++        hashes[str(p)]=sha(p)
++        if p.suffix in ('.pvd','.vtm'):
++            for ds in ET.parse(p).getroot().iter('DataSet'):
++                if 'file' in ds.attrib:visit((p.parent/ds.attrib['file']).resolve())
++    visit(master);return hashes
++
++def validate_initial_readback(record,report,folder):
++    need(record['mode']=='initialize','field receipt for noninitialize call')
++    run=Path(record['output_directory']);cfg=kv(record['run_config_path']);p=exact_parameters(cfg)
++    report=regular(report);expected=Path(folder)/('field_readback_'+record['planned_case_id']+'.json')
++    need(report==expected,'readback belongs to another configuration/path')
++    process=load(regular(report.with_suffix('.process.json')))
++    need(process.get('independent_exit_code')==0 and process.get('timed_out') is False and np.isfinite(process['elapsed_seconds']) and process['elapsed_seconds']>=0,'field reader failed/timed out')
++    log=regular(Path(folder)/('field_reader_'+record['planned_case_id']+'.log'))
++    value=load(report)
++    need(value.get('PASS') is True and value.get('actual_reader') is True and value.get('solver_executed') is False and len(value['frames'])==1,'actual single initial field report required')
++    need(value['velocity_units']=='m/s' and value['pressure_units']=='Pa_periodic_perturbation' and value['dissipation_units']=='m2/s3','initial field units')
++    frame=value['frames'][0];need(frame['step']==0 and frame['unique_fluid_nodes']==p['nodes'],'wrong initial field frame/nodes')
++    raw=np.asarray([float(v) for v in kv(regular(run/'result.txt'))['J_vector_m2_s'].split(',')])
++    exported=np.asarray(frame['J_m2_s'],dtype=float);diagnostic=np.asarray(frame['diagnostic_J_m2_s'],dtype=float);error=np.asarray(frame['roundoff_bound_m2_s'],dtype=float)
++    need(all(v.shape==(3,) and np.isfinite(v).all() for v in (raw,exported,diagnostic,error)) and np.all(error>=0),'invalid field flux/roundoff evidence')
++    need(close(diagnostic,raw,rtol=1e-12,atol=1e-30) and np.all(np.abs(exported-raw)<=error),'field/own initial result flux mismatch')
++    need(close(exported,expected_initial(cfg),rtol=1e-6,atol=1e-30),'field force direction/half-step flux')
++    need(frame['pressure_range_Pa']==[0.,0.],'initial field not equilibrium pressure')
++    need(set(frame['arrays'])=={'material','velocity_m_s','pressure_Pa','dissipation_m2_s3'},'missing initial physical arrays')
++    masters=list((run/'vtkData').glob('*.pvd'));need(len(masters)==1,'one own VTK master required')
++    datasets=list(ET.parse(masters[0]).getroot().iter('DataSet'))
++    need(len(datasets)==1 and float(datasets[0].attrib['timestep'])==0,'initial VTK time/frame mapping')
++    payload=payload_closure(masters[0],run)
++    need(value.get('payload_sha256')==payload,'field payload closure differs from own initialization')
++    need(any(Path(p).suffix=='.vti' for p in payload),'no actual initial VTK payload')
++    return payload
++
++def validate_audit_records(bound,audit,released,folder):
++    """Reparse each zero record; do not trust counts or PASS booleans alone."""
++    plan=released['zero_prepared_runs'];records=audit['records']
++    need(len(records)==len(plan)==12,'twelve original zero records required')
++    need(audit['preparation_A_sha256']==released['preparation_A_sha256']==bound['preparation_A_sha256'],'audit original A mismatch')
++    need(audit.get('formal_simulation_started') is False and audit.get('next_stage_started') is False and
++         audit.get('NUMERICAL_GATE')=='NOT_EVALUATED' and audit.get('RESULT_PASS') is False,'zero receipt scientific/next-stage promotion')
++    seen=set()
++    for record,expected in zip(records,plan):
++        need(all(record.get(k)==expected[k] for k in ('planned_case_id','run_id','mode')) and record.get('output')==expected['output_directory'],'zero raw identity/output association mismatch')
++        need(record['native_exit_code']==0 and record['collide_and_stream_calls']==0,'zero summary failure/advancement')
++        validate_zero_outputs(expected)
++        if expected['mode']=='initialize':
++            report=Path(folder)/('field_readback_'+expected['planned_case_id']+'.json')
++            need(record.get('field_readback')==str(report) and record.get('field_readback_sha256')==sha(regular(report)),'wrong per-case readback reference')
++            need(str(report) not in seen,'duplicate field receipt');seen.add(str(report))
++            payload=validate_initial_readback(expected,report,folder)
++            for path,h in payload.items():
++                need(bound['inputs_sha256'].get(path)==h,'initial payload absent from bound raw evidence')
++    need(len(seen)==4,'four unique initial field readbacks required')
+
+--- /dev/null
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/tests/fixtures_zero_v1_1.py
+@@ -0,0 +1,54 @@
++"""Inert synthetic zero files; never a native/audit/reader result or real authority."""
++from pathlib import Path
++import json,copy,sys
++import numpy as np
++CHECK=Path(__file__).resolve().parents[1];CASE=CHECK.parent/'unseen_v2_reference_S3_reuse_v1_1'
++sys.path.insert(0,str(CHECK/'analysis'))
++from evidence import sha,kv,exact_parameters,geometry
++from stage_s3 import CASES,MODES,AUDIT_ID,ELF_SHA
++from zero_evidence import expected_initial,payload_closure
++LABEL='SYNTHETIC_SOFTWARE_ZERO_FIXTURE_NO_NATIVE_NO_READER_NO_AUTHORITY'
++def writekv(path,d):Path(path).write_text(''.join(str(k)+'='+str(v)+'\n' for k,v in d.items()))
++def writejson(path,d):Path(path).write_text(json.dumps(d)+'\n')
++class ZeroFixture:
++ def __init__(self,root):
++  self.root=Path(root).resolve();self.folder=self.root/'audits'/AUDIT_ID;self.folder.mkdir(parents=True)
++  self.release=self.root/'SYNTHETIC_AUTHORITY_PLACEHOLDER.json';writejson(self.release,dict(fixture=LABEL))
++  self.plan=[];self.records=[];self.fields=[]
++  for ident in CASES:
++   a=50000 if ident.endswith('a50000') else 200000;direction='P' if '_P_' in ident else 'T'
++   for mode in MODES:
++    run=self.folder/ident/mode;run.mkdir(parents=True);rid=f'ZERO_{AUDIT_ID}_{ident}_{mode}'
++    cfg=dict(mode=mode,run_id=rid,output_directory=str(run),direction=direction,dx_nm='2.5',h_nm='60.0',d_nm='80.0',w_nm='120',period_nm='240',Ly_nm='240',nu_m2_s='1e-06',acceleration_m_s2=str(a),window_tstar='0.75',max_time_H_diffusion='8',frame_tstar='0,0.01,0.02,0.05,0.1,0.2,0.5,1,2,4,8')
++    writekv(run/'run_config.txt',cfg);writekv(run/'run_manifest.txt',dict(run_id=rid,mode=mode));p=exact_parameters(cfg);g=geometry(cfg)
++    writekv(run/'effective_config.txt',dict(run_id=rid,mode=mode,direction='parallel' if direction=='P' else 'perpendicular',formal_simulation='false',h_m=p['h'],d_m=p['d'],w_m=p['w'],Lx_m=p['P'],Ly_m=p['Ly'],phi=.5,dx_m=p['dx'],dt_s=p['dt'],nominal_volume_m3=p['P']*p['Ly']*p['H'],plan_area_m2=p['P']*p['Ly'],window_steps=p['window'],maximum_steps=p['cap'],acceleration_m_s2=a,nu_m2_s=p['nu'],nx=p['nx'],ny=p['ny']))
++    writejson(run/'process_receipt.json',dict(fixture=LABEL,independent_process_exit_code=0,timed_out=False,resource_stop_reason=None,elapsed_seconds=1.,solver_wall_cap_seconds=300));(run/'exit_code.txt').write_text('0\n');(run/'run.log').write_text(LABEL+'\n');writekv(run/'execution_audit.txt',dict(protocol='URV-v1',preparation_only_build=0,collide_and_stream_calls=0))
++    if mode!='describe':
++     b={k:g[k] for k in ['material_0','material_1','material_2','material_3','candidate_links']};b.update(valid_distance_links=g['candidate_links'],installed_links=g['candidate_links'],q_min=.5,q_max=.5,installed_q_min=.5,installed_q_max=.5,geometric_fallback_count=0,missing_fluid_neighbour_fallback_count=0,unresolved_link_count=0,geometry_PASS='true',q_audit_PASS='true');writekv(run/'boundary_audit.txt',b)
++    rec=dict(planned_case_id=ident,run_id=rid,mode=mode,run_config_path=str(run/'run_config.txt'),run_config_sha256=sha(run/'run_config.txt'),output_directory=str(run));self.plan.append(rec)
++    saved=dict(planned_case_id=ident,run_id=rid,mode=mode,output=str(run),native_exit_code=0,collide_and_stream_calls=0,fixture=LABEL)
++    if mode=='initialize':
++     J=expected_initial(cfg)
++     writekv(run/'result.txt',dict(run_id=rid,formal_simulation='false',steps_completed=0,collide_and_stream_calls=0,NUMERICAL_GATE='NOT_EVALUATED',RESULT_PASS='false',finite='true',geometry_PASS='true',q_audit_PASS='true',exit_code=0,fluid_nodes=p['nodes'],frames_written=1,fluid_volume_m3=p['P']*p['Ly']*p['H'],nominal_volume_m3=p['P']*p['Ly']*p['H'],corrected_mass=1000*p['nodes']*p['dx']**3,density_delta=0,max_density_deviation=0,J_vector_m2_s=','.join(str(v) for v in J)))
++     (run/'frame_index.csv').write_text('step,time_s,tstar,reason\n0,0,0,initial\n')
++     vtk=run/'vtkData';(vtk/'data').mkdir(parents=True)
++     (vtk/'test.pvd').write_text('<VTKFile><Collection><DataSet timestep="0" file="data/test.vtm"/></Collection></VTKFile>')
++     (vtk/'data/test.vtm').write_text('<VTKFile><vtkMultiBlockDataSet><DataSet file="test.vti"/></vtkMultiBlockDataSet></VTKFile>')
++     (vtk/'data/test.vti').write_text(LABEL+'\n')
++     report=self.folder/('field_readback_'+ident+'.json');self.fields.append(report)
++     writejson(report,dict(fixture=LABEL,PASS=True,actual_reader=True,solver_executed=False,velocity_units='m/s',pressure_units='Pa_periodic_perturbation',dissipation_units='m2/s3',frames=[dict(step=0,unique_fluid_nodes=p['nodes'],J_m2_s=J.tolist(),diagnostic_J_m2_s=J.tolist(),roundoff_bound_m2_s=(abs(J)*1e-7+1e-50).tolist(),pressure_range_Pa=[0.,0.],arrays=['material','velocity_m_s','pressure_Pa','dissipation_m2_s3'])],payload_sha256=payload_closure(vtk/'test.pvd',run)))
++     writejson(report.with_suffix('.process.json'),dict(fixture=LABEL,independent_exit_code=0,timed_out=False,elapsed_seconds=.1));(self.folder/('field_reader_'+ident+'.log')).write_text(LABEL+'\n')
++     saved.update(field_readback=str(report),field_readback_sha256=sha(report))
++    self.records.append(saved)
++  self.audit=dict(fixture=LABEL,audit_id=AUDIT_ID,ZERO_STEP_AUDIT_PASS=True,binary_sha256=ELF_SHA,native_describe=4,native_precheck=4,native_initialize=4,initialized_frames_read=4,actual_time_steps=0,steady_mode_invocations=0,records=self.records,preparation_A_sha256='a'*64,audit_release_path=str(self.release),audit_release_sha256=sha(self.release),formal_simulation_started=False,next_stage_started=False,NUMERICAL_GATE='NOT_EVALUATED',RESULT_PASS=False)
++  self.refresh()
++ def refresh(self):
++  for r in self.records:
++   if r['mode']=='initialize' and Path(r['field_readback']).exists():r['field_readback_sha256']=sha(r['field_readback'])
++  self.manifest=self.folder/'audit_files_sha256.json';self.receipt=self.folder/'verification.json'
++  hashes={str(p):sha(p) for p in self.folder.rglob('*') if p.is_file() and p not in (self.manifest,self.receipt)};writejson(self.manifest,hashes)
++  self.audit.update(raw_manifest_path=str(self.manifest),raw_manifest_sha256=sha(self.manifest));writejson(self.receipt,self.audit)
++  self.bound=dict(preparation_A_sha256='a'*64,inputs_sha256={str(p):sha(p) for p in [self.release,*self.folder.rglob('*')] if p.is_file()},zero_audit_path=str(self.receipt),zero_audit_sha256=sha(self.receipt))
++  self.released=dict(fixture=LABEL,preparation_A_sha256='a'*64,zero_prepared_runs=self.plan)
++ def change_kv(self,path,key,value):d=kv(path);d[key]=str(value);writekv(path,d)
++ def change_json(self,path,change):d=json.loads(Path(path).read_text());change(d);writejson(path,d)
+
+--- CASE/unseen_v2_reference_checker_S3_reuse_v1/tests/test_s3.py
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/tests/test_s3.py
+@@ -2,7 +2,7 @@
+ from pathlib import Path
+ import contextlib,copy,io,json,sys,tempfile,types,unittest
+ from unittest.mock import patch
+-CHECKER=Path(__file__).resolve().parents[1];CASE=CHECKER.parent/'unseen_v2_reference_S3_reuse_v1'
++CHECKER=Path(__file__).resolve().parents[1];CASE=CHECKER.parent/'unseen_v2_reference_S3_reuse_v1_1'
+ sys.path.insert(0,str(CHECKER/'analysis'));sys.path.insert(0,str(CASE/'scripts'))
+ from evidence import EvidenceError,sha,kv
+ from contracts import verify_provenance
+
+--- /dev/null
++++ CASE/unseen_v2_reference_checker_S3_reuse_v1_1/tests/test_zero_v1_1.py
+@@ -0,0 +1,93 @@
++"""R1/R2 regression tests. Synthetic file fixtures; no process or real VTK calls."""
++from pathlib import Path
++import json,sys,tempfile,unittest
++from unittest.mock import patch
++from fixtures_zero_v1_1 import ZeroFixture
++from evidence import EvidenceError,kv
++from zero_evidence import validate_zero_outputs,validate_initial_readback
++import stage_s3 as stage
++
++class ZeroRevisionTests(unittest.TestCase):
++ def check(self,f):
++  f.refresh()
++  # Isolate raw-content verification from real authority. No real author/run record is made.
++  with patch.object(stage,'CASE',f.root),patch.object(stage,'verify_seal',return_value=f.released),patch.object(stage,'validate_zero_authority'):
++   return stage.verify_zero_receipt(f.bound)
++ def fixture(self):
++  t=tempfile.TemporaryDirectory(prefix='SYNTHETIC_S3_R1_R2_');self.addCleanup(t.cleanup);return ZeroFixture(t.name)
++ def reject(self,f):
++  with self.assertRaises((EvidenceError,KeyError,ValueError)):self.check(f)
++ def test_complete_twelve_records_and_four_readbacks(self):
++  f=self.fixture();self.check(f)
++  for r in f.plan:validate_zero_outputs(r)
++  self.assertEqual(len(f.fields),4)
++ def test_R1_all_effective_fields_across_three_modes(self):
++  mutations=dict(acceleration_m_s2='200000',direction='perpendicular',dx_m='5e-9',nu_m2_s='2e-6',formal_simulation='true',h_m='7e-8',d_m='9e-8',w_m='1e-7',Lx_m='3e-7',Ly_m='3e-7',phi='.4',dt_s='2e-12',nominal_volume_m3='1e-21',plan_area_m2='1e-14',nx=95,ny=95,window_steps=2591,maximum_steps=150527)
++  for mode in stage.MODES:
++   for key,value in mutations.items():
++    with self.subTest(mode=mode,key=key):
++     f=self.fixture();r=next(r for r in f.plan if r['mode']==mode);f.change_kv(Path(r['output_directory'])/'effective_config.txt',key,value)
++     with self.assertRaises((EvidenceError,ValueError)):validate_zero_outputs(r)
++ def test_R1_zero_effective_unknown_direction(self):
++  f=self.fixture();r=f.plan[0];f.change_kv(Path(r['output_directory'])/'effective_config.txt','direction','P');self.reject(f)
++ def test_R2_duplicate_readback_original_counterexample(self):
++  f=self.fixture()
++  for r in f.records:
++   if r['mode']=='initialize':r['field_readback']=str(f.fields[0])
++  self.reject(f)
++ def test_R2_zero_flux_original_counterexample(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d['frames'][0].update(J_m2_s=[0,0,0],roundoff_bound_m2_s=[1,1,1]));self.reject(f)
++ def test_R2_swapped_P_T_readbacks(self):
++  f=self.fixture();a=[r for r in f.records if r['mode']=='initialize'];a[0]['field_readback'],a[1]['field_readback']=a[1]['field_readback'],a[0]['field_readback'];self.reject(f)
++ def test_R2_wrong_record_run_id(self):
++  f=self.fixture();f.records[0]['run_id']='WRONG';self.reject(f)
++ def test_R2_wrong_record_output(self):
++  f=self.fixture();f.records[0]['output']=str(f.root);self.reject(f)
++ def test_R2_wrong_original_A(self):
++  f=self.fixture();f.audit['preparation_A_sha256']='b'*64;self.reject(f)
++ def test_R2_native_nonzero_exit(self):
++  f=self.fixture();p=Path(f.plan[0]['output_directory'])/'process_receipt.json';f.change_json(p,lambda d:d.update(independent_process_exit_code=3));self.reject(f)
++ def test_R2_native_timeout(self):
++  f=self.fixture();p=Path(f.plan[0]['output_directory'])/'process_receipt.json';f.change_json(p,lambda d:d.update(timed_out=True));self.reject(f)
++ def test_R2_native_resource_stop(self):
++  f=self.fixture();p=Path(f.plan[0]['output_directory'])/'process_receipt.json';f.change_json(p,lambda d:d.update(resource_stop_reason='synthetic'));self.reject(f)
++ def test_R2_nonzero_advancement(self):
++  f=self.fixture();p=Path(f.plan[0]['output_directory'])/'execution_audit.txt';f.change_kv(p,'collide_and_stream_calls',1);self.reject(f)
++ def test_R2_reader_nonzero_exit(self):
++  f=self.fixture();f.change_json(f.fields[0].with_suffix('.process.json'),lambda d:d.update(independent_exit_code=2));self.reject(f)
++ def test_R2_reader_timeout(self):
++  f=self.fixture();f.change_json(f.fields[0].with_suffix('.process.json'),lambda d:d.update(timed_out=True));self.reject(f)
++ def test_R2_missing_reader_process(self):
++  f=self.fixture();f.fields[0].with_suffix('.process.json').unlink();self.reject(f)
++ def test_R2_wrong_frame_step(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d['frames'][0].update(step=1));self.reject(f)
++ def test_R2_wrong_nodes(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d['frames'][0].update(unique_fluid_nodes=1));self.reject(f)
++ def test_R2_wrong_units(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d.update(velocity_units='lattice'));self.reject(f)
++ def test_R2_wrong_diagnostic_J(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d['frames'][0].update(diagnostic_J_m2_s=[0,0,0]));self.reject(f)
++ def test_R2_negative_roundoff(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d['frames'][0].update(roundoff_bound_m2_s=[-1,0,0]));self.reject(f)
++ def test_R2_nonfinite_flux(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d['frames'][0].update(J_m2_s=[float('nan'),0,0]));self.reject(f)
++ def test_R2_payload_cross_configuration(self):
++  f=self.fixture();other=json.loads(f.fields[1].read_text())['payload_sha256'];f.change_json(f.fields[0],lambda d:d.update(payload_sha256=other));self.reject(f)
++ def test_R2_unbound_payload(self):
++  f=self.fixture();f.change_json(f.fields[0],lambda d:d.update(payload_sha256={}));self.reject(f)
++ def test_R2_payload_tampered(self):
++  f=self.fixture();r=next(r for r in f.plan if r['mode']=='initialize');(Path(r['output_directory'])/'vtkData/data/test.vti').write_text('changed synthetic payload');self.reject(f)
++ def test_R2_VTK_future_frame(self):
++  f=self.fixture();r=next(r for r in f.plan if r['mode']=='initialize');p=Path(r['output_directory'])/'vtkData/test.pvd';p.write_text(p.read_text().replace('timestep="0"','timestep="1"'));self.reject(f)
++ def test_R2_initial_result_wrong_identity(self):
++  f=self.fixture();r=next(r for r in f.plan if r['mode']=='initialize');f.change_kv(Path(r['output_directory'])/'result.txt','run_id','WRONG');self.reject(f)
++ def test_R2_initial_result_wrong_half_force(self):
++  f=self.fixture();r=next(r for r in f.plan if r['mode']=='initialize');f.change_kv(Path(r['output_directory'])/'result.txt','J_vector_m2_s','0,0,0');self.reject(f)
++ def test_R2_native_frame_table_wrong_step(self):
++  f=self.fixture();r=next(r for r in f.plan if r['mode']=='initialize');(Path(r['output_directory'])/'frame_index.csv').write_text('step,time_s,tstar,reason\n1,0,0,initial\n');self.reject(f)
++ def test_R2_missing_native_record(self):
++  f=self.fixture();f.records.pop();self.reject(f)
++ def test_R2_extra_raw_file_stale_manifest(self):
++  f=self.fixture();self.check(f);(f.folder/'EXTRA').write_text('SYNTHETIC')
++  with patch.object(stage,'CASE',f.root),patch.object(stage,'verify_seal',return_value=f.released),patch.object(stage,'validate_zero_authority'),self.assertRaises(EvidenceError):stage.verify_zero_receipt(f.bound)
++if __name__=='__main__':unittest.main(verbosity=2)

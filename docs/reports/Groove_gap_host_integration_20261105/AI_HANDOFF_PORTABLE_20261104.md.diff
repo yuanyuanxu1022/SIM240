@@ -1,0 +1,30 @@
+--- AI_HANDOFF_PORTABLE_20261104.md before
++++ AI_HANDOFF_PORTABLE_20261104.md after
+@@ -1,18 +1,20 @@
+ # SIM240 项目 — 便携交接单（跨电脑/跨 AI 使用）
+ 
+-## OpenFOAM间隙依赖子类已核实：沿用grooveDarcy，隔离编译/装配通过（2026-11-05T11:01:07.344977+08:00）
++## 实际GDI宿主已接入间隙场和储液连续性：新分支编译/装配通过，未求解（2026-11-05T11:21:41.734757+08:00）
+ 
+-用户新要求：在porosityModel子类内直接根据实际间隙计算本项目K及d_i=h/K_i。已核现有`CASE/groove_porosity_model_v1`实现该职责，原/V2不改式不拟合；本机Foundation13。物理约定：K为m³，U为液体体积平均，J=HU，H=mesaGap+(width/period)*depth，D_i=H/K_i；若用户h指最小间隙，不能直接替代分子H。基准75/100nm等宽槽H125nm。类每次装配读取注册间隙场，不仅首次创建或每时间步刷新。
++用户要求针对实际宿主接入间隙字段和相应连续性，后表示忘记宿主名。依据既有实际运行/验收确定`grooveDarcyStaticFoam`/`GDI01_v1_20261030_01`，不是参考nanrPrint。报告`docs/reports/Groove_gap_host_integration_20261105/REPORT.md`、verification.json、assembly_checks.json、host_selection.json；新实现`CASE/groove_darcy_gap_v1/README.md`及application/grooveDarcyGapFoam.C、common/PROTOCOL.md、scripts/check_assembly.py和examples/。旧宿主/原子类/协议/结果288项指定文件哈希不变。
+ 
+-报告`docs/reports/Groove_porosity_refresh_20261105/REPORT.md`、verification.json、logs/assembly_checks.json。本轮新增`examples/fvModels.gapField`和`examples/HOST_GAP_FIELD.md`，README加入口；测试脚本仅补创建日志目录一行。首次隔离检查因日志目录不存在退出1保留checks.log；修正后10类正常/预期拒绝检查全部通过，41项纯系数检查通过，四组冻结系数最大相对差2.220446049250313e-16。实际重新编译并加载标准porosityForce；覆盖原/V2、0/90/45度、固定/场间隙和同时间步刷新。无PDE solve、无新run_id、无新流场/运动网格/两相/nanrPrint接入，不把装配PASS当物理或公式准确性。
++已接入：宿主先注册当前mesaGap，再读取previousMesaGap/gapDeltaT/gapEpoch；同一快照计算H=h+(w/P)d、Hdot=(h_new-h_old)/dt，由原生grooveDarcy实际消费当前h算K/D，迭代中冻结间隙。固定参考厚度b0=125nm，压力矩阵和校正面通量使用同一H_face/b0权重；连续性包含Hdot/b0，单元收支是sum(Q)+(Vcell/b0)*Hdot=0；耗散按当前液体体积、压力功含储量变化。没有改原/V2公式或系数。
+ 
+-构建在`tmp/groove_porosity_refresh_20261105`隔离副本，原C++、原库/检查程序、原构建日志、GDI01正式案例未覆盖。原298项文件中仅README与检查脚本2项授权改动，其余296项不变；本轮失败日志单独保留。现有C01—C04/GDI01仍是静态平均模型接口证据，非显式沟槽独立参考。
++验证：本机Foundation13实际编译通过，12类原生不求解检查得到预期结果（6正常、6指定原因拒绝）。正常例3072个储量单元、5856条内部面算子/试探压力通量核对；当前h到实际阻力、闭合/开启符号、H=b0且Hdot=0退回保存GDI01矩阵均通过。这里的试探压力为代数软件输入，不是求解压力；没有压力solve或时间推进。编译首轮缺头文件、夹具首轮已有polyMesh导致准备失败均保留，修正后重验，不修改科学门槛。
+ 
+-当前范围已满足“子类里直接计算K/H/D和更新间隙”的实现需求。下一具体动作：若接实际应用，先确定宿主路径/版本/速度与厚度归一化；随后最小接入已注册mesaGap字段。动态挤压还需宿主实现∂tH+div(HU)=0及储液/边界通量，子类刷新D不会自动排液。当前只支持全充液单相xy二维empty总未解析壁阻，不能直接叠加同一套真实上下壁剪切。没有新的仿真启动或下一Gate授权。
++当前限制：给定快照接入已实现/已编译/已装配检查；非均匀/闭合时新流场、实际Q/储量收支、动态能量/载荷、时间序列与空间/时间误差未验证。保留原x端24/0Pa、y无通量、z为空，不冒称四边环境压力或真实压印；不是两相/运动网格。程序有显式单快照求解分支但本轮未调用，无新formal run_id、无启动命令或正式运行授权。新分支NUMERICAL_GATE=NOT_EVALUATED/RESULT_PASS=false/geometry_PASS=null，不继承旧GDI01 PASS。
+ 
+-上一轮稿件主张—证据审查已完成，入口`docs/reports/PAPER1_claim_evidence_review_20261105/REPORT.md`；现稿限定相对5nm离散回顾性比较，来源/构建混杂/连续精度/独立预测边界保持。原S4 T中细1.328387035%>1%FAIL、S4_STAGE_ACCEPTED=false、reference_qualified=false、正式URV模型/物理未评价、strict_error_bound/submission_ready=false、F04 OPEN和历史FAIL不变。
++下一具体动作：为新分支准备受控流场验收输入/协议/绑定与独立检查器，检验求得压力、实际边界排液和储量变化；之后再按需要处理真实时间序列。不得只更新D却沿用div(U)=0，不在ALE/VOF中重复添加储液源。当前任务停在实现与不求解检查完成，不自动下一Gate或正式求解。
+ 
+-1.25服务器run_id仍`URV_S4_T_dx1p25_TGESRV_v1_20261104_01`，数据/构建复现已收尾，原构建acceptance仍NUMERICAL_GATE=NOT_EVALUATED/RESULT_PASS=false、geometry_PASS=true；本轮未重查服务器。0.625准备仍停`URV_S4_TGE_0p625_readiness_review_20261105_100032/INTERRUPTED_HANDOFF.md`，未完成未启动，不自动恢复零步/PERF/正式/S5。无提交推送。下一模型GPT-6.1 Sol｜High，用于指定宿主的最小接入与方程审查；未声称模型切换。
++上一轮porosity子类复核见`Groove_porosity_refresh_20261105/REPORT.md`；稿件主张—证据见`PAPER1_claim_evidence_review_20261105/REPORT.md`。现稿仍为相对5nm的离散回顾性比较；来源/构建混杂/参考精度/独立预测限制保持。原S4 T中细1.328387035%>1%FAIL、S4_STAGE_ACCEPTED=false、reference_qualified=false、正式URV模型/物理未评价、strict_error_bound/submission_ready=false、F04 OPEN及历史FAIL不变。
++
++服务器1.25条目仍`URV_S4_T_dx1p25_TGESRV_v1_20261104_01`，数据/构建复现已收尾，原构建acceptance NUMERICAL_GATE=NOT_EVALUATED/RESULT_PASS=false、geometry_PASS=true；本轮未查服务器或重跑。0.625仍停`URV_S4_TGE_0p625_readiness_review_20261105_100032/INTERRUPTED_HANDOFF.md`，未完成未启动，不自动恢复零步/PERF/正式/S5。未改旧门槛/论文、未拟合、未提交推送。下一模型GPT-6.1 Sol｜High用于受控流场验收准备；未声称模型切换。
+ 
+ 下列较早记录只作历史追溯，不覆盖以上最新停点。
+ 

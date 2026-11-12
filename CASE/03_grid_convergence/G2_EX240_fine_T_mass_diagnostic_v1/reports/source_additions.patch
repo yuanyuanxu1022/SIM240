@@ -1,0 +1,117 @@
+--- /home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_grid_convergence/build/generated/g2_ex240_dx1p25.cpp
++++ /home/dell/yuanyuanxu/SIM240/CASE/03_grid_convergence/G2_EX240_fine_T_mass_diagnostic_v1/src/fine_T_diagnostic.cpp
+@@ -1,4 +1,8 @@
+ #include <olb.h>
++
++// FINE_T_DIAGNOSTIC_BEGIN include
++#include "mass_ledger.h"
++// FINE_T_DIAGNOSTIC_END include
+ 
+ #include <algorithm>
+ #include <array>
+@@ -408,7 +412,11 @@
+   LATTICE& lattice,
+   GEOMETRY& geometry,
+   const UnitConverter<T, DESCRIPTOR>& converter,
+-  int drive)
++  int drive
++  // FINE_T_DIAGNOSTIC_BEGIN observer_parameter
++, fine_t_mass::Observer* observer = nullptr
++// FINE_T_DIAGNOSTIC_END observer_parameter
++  )
+ {
+   Measurement value;
+   const int section1 = drive == 0 ? nx / 8 : ny / 4;
+@@ -417,7 +425,13 @@
+   for (int iC = 0; iC < geometry.getLoadBalancer().size(); ++iC) {
+     auto& block = lattice.getBlock(iC);
+     auto& blockGeometry = geometry.getBlockGeometry(iC);
++    // FINE_T_DIAGNOSTIC_BEGIN shape
++if (observer) observer->shape(iC, block.getNx(), block.getNy(), block.getNz());
++// FINE_T_DIAGNOSTIC_END shape
+     block.forCoreSpatialLocations([&](LatticeR<3> latticeR) {
++      // FINE_T_DIAGNOSTIC_BEGIN material
++if (observer) observer->material(iC, latticeR[0], latticeR[1], latticeR[2], blockGeometry.getMaterial(latticeR));
++// FINE_T_DIAGNOSTIC_END material
+       if (blockGeometry.getMaterial(latticeR) != 1) {
+         return;
+       }
+@@ -455,6 +469,9 @@
+       if (coordinate == section2) {
+         value.sectionQ2 += mainVelocity * dx * dx;
+       }
++      // FINE_T_DIAGNOSTIC_BEGIN density
++if (observer) observer->density(rho, rhoPhys, dx);
++// FINE_T_DIAGNOSTIC_END density
+     });
+   }
+   for (int iD = 0; iD < 3; ++iD) {
+@@ -555,6 +572,12 @@
+     std::cerr << error.what() << '\n';
+     return 2;
+   }
++// FINE_T_DIAGNOSTIC_BEGIN restrict_target
++  if (p.drive != 0) {
++    std::cerr << "This isolated diagnostic accepts T only\n";
++    return 2;
++  }
++// FINE_T_DIAGNOSTIC_END restrict_target
+   if (singleton::mpi().getSize() != 1) {
+     std::cerr << "G2 requires exactly one MPI rank\n";
+     return 2;
+@@ -689,6 +712,9 @@
+        "pressure_min,pressure_max,window_rel_std,window_rel_span,"
+        "window_cross_abs_max,finite\n";
+ 
++// FINE_T_DIAGNOSTIC_BEGIN create_observer
++  fine_t_mass::Observer observer(p.outputDirectory);
++// FINE_T_DIAGNOSTIC_END create_observer
+   FluxWindow window;
+   T maxMassError = 0.0;
+   T maxDensityDeviation = 0.0;
+@@ -703,7 +729,14 @@
+     if (step > 0) {
+       lattice.collideAndStream();
+     }
+-    const Measurement state = measure(lattice, geometry, converter, p.drive);
++    // FINE_T_DIAGNOSTIC_BEGIN begin_step
++observer.begin(step);
++// FINE_T_DIAGNOSTIC_END begin_step
++    const Measurement state = measure(lattice, geometry, converter, p.drive
++      // FINE_T_DIAGNOSTIC_BEGIN observe_step
++, &observer
++// FINE_T_DIAGNOSTIC_END observe_step
++      );
+     const T massError = (state.mass - initial.mass) / initial.mass;
+     const T mach = state.maxLatticeSpeed / std::sqrt(T(1.0 / 3.0));
+     const T sectionDenominator = std::max(
+@@ -732,6 +765,10 @@
+                 << (window.full() ? windowCross : -1.0) << ','
+                 << state.finite << '\n';
+     finalStep = step;
++    // FINE_T_DIAGNOSTIC_BEGIN record
++observer.record(state, initial.mass, massError, maxMassError,
++                    dt, rhoPhys, dx, mach);
++// FINE_T_DIAGNOSTIC_END record
+     if (window.full()
+         && windowStd <= relativeStdTolerance
+         && windowSpan <= relativeSpanTolerance
+@@ -739,6 +776,9 @@
+       converged = true;
+       break;
+     }
++    // FINE_T_DIAGNOSTIC_BEGIN diagnostic_cutoff
++if (step == fine_t_mass::lastStep) break;
++// FINE_T_DIAGNOSTIC_END diagnostic_cutoff
+   }
+ 
+   const Measurement final = measure(lattice, geometry, converter, p.drive);
+@@ -834,5 +874,8 @@
+   std::cout << "case=" << p.caseId << " PASS=" << pass
+             << " step=" << finalStep << " J=" << mainJ
+             << " Keff=" << effectiveK << '\n';
++  // FINE_T_DIAGNOSTIC_BEGIN finish
++observer.finish(p.outputDirectory, finalStep, pass, maxMassError);
++// FINE_T_DIAGNOSTIC_END finish
+   return pass ? 0 : 3;
+ }

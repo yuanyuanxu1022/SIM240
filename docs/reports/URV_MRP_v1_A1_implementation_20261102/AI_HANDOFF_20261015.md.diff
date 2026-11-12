@@ -1,0 +1,30 @@
+--- AI_HANDOFF_20261015.md before
++++ AI_HANDOFF_20261015.md after
+@@ -1,16 +1,16 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## URV-MRP-v1隔离候选已构建，103项软件通过，体积指令伴随改变判FAIL，S0 HOLD（2026-11-02）
+-
+-- 用户本轮范围：按URV-MRP-v1隔离最小质量修复／密度捕获，完成构建、软件检查和指令审计；正式运行另授权，遇矛盾用GPT-6 Astra｜High裁定。已交付 `docs/reports/URV_MRP_v1_implementation_20261102/REPORT.md`，实际候选 `CASE/unseen_v2_reference_S0_mrp_v1/`、检查器 `CASE/unseen_v2_reference_checker_mrp_v1/`。没有调用流场程序describe/precheck/initialize/steady；原生零步未授权、未执行。无新正式run_id、runs目录、启动合同／命令或S1启动。
+-- 实现／构建已验证：主源码仅最小观察量diff，可逆核对完整恢复原v1.2；原Makefile、mass_stats.h字节保持，未全局改浮点选项。实际构建退出0，真实编译／依赖／静动态库／编译器记录在native/evidence/build_environment.json；当前ELF SHA6f83f1482473b6bd99f28b353c060282f031b2c394c2f4417196a8f40bd995ec。准备快照SHA e2a026a6c0e2c7c70bb621e4902a0db279758a67220168f5ed3ffb5b364c916d，1457项输入绑定，非启动合同，simulation_authorized=false、approved_run_ids=[]。
+-- 质量helper局部指令符合三次舍入乘法＋最后FMA；密度采集复制原computeRho同值，按实际核心顺序、initial_reference／diagnostic分别记录，保持212份原计划和实际末态同次输入。独立Python索引／重放实现及精确新源diff绑定分支已准备；原check_results.py/evidence.py/read_fields.py、common/13文件字节保持，原R1/R2及F02不放宽。真实流场采集／完成结果端到端检查尚无新材料验证；正式运行器未接入该失败候选。
+-- 软件检查：最终103项通过（旧77＋新26），software_tests_final.log。初始run方法名冲突中断和旧负例错误消息顺序失败日志保留，修复软件层后重试通过；未放宽旧断言。软件通过ctypes运行过不含OpenLB的C++人工rho=1夹具（software_fixture_build.json），不是流场程序执行／原生零步，不能声称完全未执行任何C++。构造FMA有理数反例、helper与独立顺序重放、初态分离、采样/坐标/phase/SHA/dtype/time/FP异常拒绝、新源diff拒绝、审计FAIL来源阻断均已覆盖。
+-- 静态审计明确FAIL：原v1.2 volume分开VMULPD+VADDPD，新候选volume最后乘加意外融合。0x421cd为capture非空，0x4288f为capture为空；不是分别P/T。direction只选择截面索引，P/T都可用两个主干。固定dx、57600项的软件体积求和末值相同，但196个空间前缀不同，首次ordinal15、1ULP（volume_arithmetic_guard.json）；不是时间步或实际流场差异。质量helper及其他所查正常局部数据流可分别报告，不能由此写全程序非质量等价；完整冷分支／传递内核等价仍未证明，见instruction_audit.json。
+-- 已按用户条件实际调用GPT-6 Astra｜High只读子任务作裁定，见ASTRA_RULING.md；未修改模型配置、未由子任务改源／编译／运行。裁定SOURCE_REVISION_AUDIT=FAIL、候选HOLD，不在本轮静默新增volume修复或重构。已交付VOLUME_ADDENDUM_DRAFT.md与proposed_volume_rounding.patch（仅单项volume局部double舍入屏障），NOT_ADOPTED_NOT_APPLIED；native构建后未再改源或重建。新checker精确来源分支另检查instruction_audit_status，当前FAIL明确拒绝正式来源放行。
+-- 当前结果分层：BUILD=PASS、software_tests=103/103；SOURCE_REVISION_AUDIT=FAIL、candidate/S0=HOLD。新URV_NUMERICAL_GATE、geometry_PASS、URV_RESULT_PASS仍NOT_EVALUATED，不能把静态FAIL写成未运行案例的数值FAIL。旧P=URV_S0_P_v1_2_20261101_01 RESULT_PASS=true、旧T=URV_S0_T_v1_2_20261101_01 RESULT_PASS=false，原380差异／checker exit2不回写。HISTORICAL_EXCLUSIVE_ATTRIBUTION=NOT_ESTABLISHED，未来新PASS也不补造历史rho。
+-- 1751份受保护既有文件前后保持；原协议／封存／数据／旧程序不改。reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED，旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1、GDI01既有结果和外部历史声明边界保持；F04范围外。未提交推送或对外发送项目材料。
+-- 下一具体动作：先审定并由用户采用具体volume附属修订；若采用，在另一隔离候选中只恢复该项原舍入路径，重新真实构建并核对所有相关分支，保留本次失败版本。当前不自动追加修改／构建／原生零步／正式计算或S1。实现准备建议GPT-6.1 Sol｜High；遇新实质矛盾或最终放行仍用GPT-6 Astra｜High。详见本轮REPORT.md及未采用补丁，无可交付启动命令。
++## URV-MRP-v1-A1已采用并在新候选恢复体积舍入，构建／107项软件／限定静态审计通过，S0 HOLD（2026-11-02）
++
++- 用户本轮明确采用体积附属修订，授权新隔离候选恢复该项舍入、重新构建与审计；新矛盾由GPT-6 Astra｜High裁定，正式运行另授权。采用原话、原协议／草案／补丁SHA见 `docs/reports/URV_MRP_v1_A1_implementation_20261102/adoption.json`；入口REPORT.md、instruction_audit.json、volume_all_prefixes.json、source_manifest.json、verification.json。原草案和上一FAIL不回写，本轮无原生describe/precheck/initialize/steady调用，无新正式run_id、runs目录、启动合同／命令或S1。
++- 新native `CASE/unseen_v2_reference_S0_mrp_v1_a1/`，新checker `CASE/unseen_v2_reference_checker_mrp_v1_a1/`。主源相对上一失败候选仅一处单项volume局部volatile double存取＋独立加法，完整diff与已采用补丁逐字一致；质量helper、mass_stats、capture_schedule、mrp_observer和Makefile字节保持，无全局浮点、物理、收敛或门槛改动。
++- 实际构建成功，ELF SHA c1fc2a1eeacced8f11a9bb045c25d70936b7be03fe5495a0b8f51789bd8fe8af，真实编译／依赖／库／编译器记录在native/evidence/build_environment.json。编译器、静态／运行库与前候选哈希相同；172条warning及类别与前候选一致，完整日志保留。新准备快照SHA ff30161162e19711c8f38c4c975ce6977319cff8960675ed51200d1d50cd3164，1459项输入绑定；非执行合同，simulation_authorized=false、approved_run_ids=[]。
++- 实际volume指令：capture非空421b3/421ea两乘、421ee/421f6单项double存取、421fe独立加；capture为空4288e/428bd两乘、428c1/428c9存取、428d1独立加。P/T均可进入两主干，非分别方向。质量helper三次乘法与308f4最终FMA保持；initial/diagnostic/final调用映射、rho同值复制、补偿两分支／densityIntegral／速度模长与压力／三个速度积分／两截面／归一化／质量误差减后除和停止源码逐项静态核对。26个选定computeRho/U/J/碰撞函数的归一化FP数据流／调用序列对v1.2和前失败候选均匹配。
++- 本次SOURCE_REVISION_AUDIT=PASS，严格限定已采用A1观察量源／指令／常量／构建绑定范围，不是完整传递机器形式证明或真实结果等价。冷异常路径未穷尽；选定内核比较含重定位／偏移归一化，不能声称完整寻址等价。本次所查未发现新矛盾，未再次调用Astra；上轮Astra裁定保留并落实，无模型配置修改。
++- 全部57600个体积空间前缀对原分开乘加参考0差异；旧融合负对照仍196差异（首次ordinal15），最终值恰同不能替代该检查。最终107项软件通过（旧103＋A1四项），software_tests.log；含实际新构建来源正例及人工FAIL视图拒绝负例，原断言不放宽。软件运行过无OpenLB的C++合成夹具，不是native流场／零步。新checker analysis/和common/全保持前MRP原字节，revision仅绑定此次新源／最小diff／采用／限定审计；源匹配与instruction_audit_status=PASS均不授权执行。
++- 原生零步、实际稳态密度采集、完整两方向回归／独立完成结果验收未执行。initialize目前capture为空，未来零步只检初态统计／几何，不能冒充steady路径捕获端到端验证。新URV_NUMERICAL_GATE、geometry_PASS、URV_RESULT_PASS仍NOT_EVALUATED；S0 HOLD。旧v1.2 P=URV_S0_P_v1_2_20261101_01接受、T=URV_S0_T_v1_2_20261101_01拒绝及380条差异／exit2不变；旧MRP v1候选ELF6f83f1482473b6bd99f28b353c060282f031b2c394c2f4417196a8f40bd995ec及其静态FAIL完整保留，历史唯一归因NOT_ESTABLISHED。
++- 1835份受保护既有文件前后不变。reference_qualified=false、strict_error_bound_established=false、submission_ready=false、MODEL_COMPARISON/physical_validation=NOT_EVALUATED；旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1、GDI01、原准备/v1.1/v1.2封存和外部历史声明范围保持；F04仍范围外。无提交推送或外发项目材料。
++- 下一具体动作：明确获准后，对这份A1二进制做两方向原生零步接入审计（初始化／几何／统计／来源），明确steady捕获路径实际接入核对，再据实准备S0新身份与绑定；正式运行仍需另行授权由用户启动。当前不自动原生调用、回归、扩算或进入S1。建议GPT-6.1 Sol｜High；若新指令／证据矛盾，按用户指定GPT-6 Astra｜High裁定。编译／静态PASS与S0接受严格分开。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

@@ -1,0 +1,46 @@
+--- before/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,12 +1,13 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：GCI争议独立复核完成，推荐A候选表，暂不加第四格（2026-10-27，当前接续入口）
+-
+-- 用户范围：裁定Celik/GCI报告与是否新增0.625 nm。已调用GPT-6 Astra｜High独立只读复核，主代理另从9份原始result/退出码重算6项。入口`docs/reports/GCI_decision_review_20261027/REPORT.md`，候选`CANDIDATE_TEXT.md`、`candidate_gci_table.csv`，算术与保护见`recomputed.json`/`verification.json`。正式稿、补充、旧报告、源码、冻结协议与归档未改。
+-- 结论：推荐A补最小条件性GCI表，暂不新增计算。同组三点GCI比退化为|细/中|，无独立渐近证据但非必然PASS；p低于2不等于未渐近或算错。0.625仍等比，第四点价值在独立预测检验；p稳定不唯一证明角点机制。原三维同域细化的节点/内存约8倍、同物理时长工作量尺度约32倍，非实际预算。
+-- 报告纠错：G1“13.5倍覆盖”混用了外推误差与细格GCI；细格同分母约1.145倍，历史粗/中FAIL保持，不新增合格校准。G2平板同分母覆盖1.297808，仅此工况。短窗rel_std不构成剩余迭代误差界；Ma变不推出不按dx²缩放。6项ea实际0.083855%—0.612125%；eta_parallel p=0.939762729。细T质量FAIL同时影响K_T、eta_T、A三行。
+-- 保护/权限：27份实际读取输入SHA不变，未重新验收全部原始场或完整时间序列。无编译、求解、真实N8提取、第二项、Git提交推送，无新run_id。旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD；历史G2 Step3 FAIL/INCONCLUSIVE与5nm参考口径保持。
+-- 下一具体动作：按作者采用范围将候选表及限定文字同步正式稿/补充；保留旧标签历史记录，若改工具另建版本。第四点/独立参考须另定验证合同、资源预算及明确启动授权。三篇原件及4组历史完整构建绑定仍缺，原资料任务见`Primary_text_build_contract_followup_20261027/MISSING_ITEMS.md`。当前无启动命令。常规小范围同步GPT-6.1 Sol｜High，理论实质或严格界再用GPT-6 Astra｜High。
++## 第一篇：作者采用的GCI表与限定文字已同步，新增计算关闭（2026-10-27，当前接续入口）
++
++- 用户授权：按作者采用范围同步候选表和限定文字，保持新增计算关闭。入口`docs/reports/GCI_author_sync_20261027/REPORT.md`，修改前快照`before/`、差异`document_changes.diff`、核对`verification.json`。采用上一轮`GCI_decision_review_20261027/`已完成Astra独立复核的候选，本轮无新理论实质变更或严格界审定，未新增模型复核或声称主模型切换。
++- 正式同步：`SIM240_中文稿_导师审阅版_20261022.md`§3.3指向S9/表S5，附录B更新表数量与映射；`SIM240_Supplementary_Methods_20261024/`的S9新增6项条件性GCI表、失败随数说明、渐近性限定和平板同分母比较，新`Table_S5_conditional_gci.csv`为已核候选逐字节副本。README/编号对照同步；原表S1—S4、旧证书、候选、归档与源码保持。正式稿仍待作者终审，不构成投稿或发布。
++- 科学边界：不以同三点GCI比独立确认渐近区，不以p低于2直接判错；历史细T质量FAIL同时影响K_T、eta_T、A。G2平板解析比较仅限该工况/积分量；未引入原G1“13.5倍覆盖”、角点机制定论或第四格承诺。历史G2 Step3 FAIL/INCONCLUSIVE、5nm离散参考及全域严格误差界未建立保持。
++- 验证范围：检查候选CSV一致、6行显示数值、3项失败依赖、正文仅3处指定替换、原S1—S8及S10—S11/历史S9段保持、链接与编号以及实际选定输入的字节保护，结果见本轮verification.json；不是新原场验收或新增数值验证。仅维护文档及状态，无编译、求解、真实N8提取、拟合、第二项、Git提交推送，无新run_id。
++- 当前状态/卡点：旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。三篇原文与4组历史完整构建绑定仍缺；原资料合同见`Primary_text_build_contract_followup_20261027/MISSING_ITEMS.md`。表已补齐不等于参考资格闭合。
++- 停止点/下一动作：本次同步任务完成；后续可只读核作者整稿及来源合同缺项。当前无启动命令或新增计算授权；第四点需另定合同/预算并获明确授权。一般文稿核对GPT-6.1 Sol｜High；理论实质或严格界再用GPT-6 Astra｜High。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 
+--- before/AI_HANDOFF_20261015.md
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,12 +1,13 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 第一篇：GCI争议独立复核完成，推荐A候选表，暂不加第四格（2026-10-27，当前接续入口）
+-
+-- 用户范围：裁定Celik/GCI报告与是否新增0.625 nm。已调用GPT-6 Astra｜High独立只读复核，主代理另从9份原始result/退出码重算6项。入口`docs/reports/GCI_decision_review_20261027/REPORT.md`，候选`CANDIDATE_TEXT.md`、`candidate_gci_table.csv`，算术与保护见`recomputed.json`/`verification.json`。正式稿、补充、旧报告、源码、冻结协议与归档未改。
+-- 结论：推荐A补最小条件性GCI表，暂不新增计算。同组三点GCI比退化为|细/中|，无独立渐近证据但非必然PASS；p低于2不等于未渐近或算错。0.625仍等比，第四点价值在独立预测检验；p稳定不唯一证明角点机制。原三维同域细化的节点/内存约8倍、同物理时长工作量尺度约32倍，非实际预算。
+-- 报告纠错：G1“13.5倍覆盖”混用了外推误差与细格GCI；细格同分母约1.145倍，历史粗/中FAIL保持，不新增合格校准。G2平板同分母覆盖1.297808，仅此工况。短窗rel_std不构成剩余迭代误差界；Ma变不推出不按dx²缩放。6项ea实际0.083855%—0.612125%；eta_parallel p=0.939762729。细T质量FAIL同时影响K_T、eta_T、A三行。
+-- 保护/权限：27份实际读取输入SHA不变，未重新验收全部原始场或完整时间序列。无编译、求解、真实N8提取、第二项、Git提交推送，无新run_id。旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD；历史G2 Step3 FAIL/INCONCLUSIVE与5nm参考口径保持。
+-- 下一具体动作：按作者采用范围将候选表及限定文字同步正式稿/补充；保留旧标签历史记录，若改工具另建版本。第四点/独立参考须另定验证合同、资源预算及明确启动授权。三篇原件及4组历史完整构建绑定仍缺，原资料任务见`Primary_text_build_contract_followup_20261027/MISSING_ITEMS.md`。当前无启动命令。常规小范围同步GPT-6.1 Sol｜High，理论实质或严格界再用GPT-6 Astra｜High。
++## 第一篇：作者采用的GCI表与限定文字已同步，新增计算关闭（2026-10-27，当前接续入口）
++
++- 用户授权：按作者采用范围同步候选表和限定文字，保持新增计算关闭。入口`docs/reports/GCI_author_sync_20261027/REPORT.md`，修改前快照`before/`、差异`document_changes.diff`、核对`verification.json`。采用上一轮`GCI_decision_review_20261027/`已完成Astra独立复核的候选，本轮无新理论实质变更或严格界审定，未新增模型复核或声称主模型切换。
++- 正式同步：`SIM240_中文稿_导师审阅版_20261022.md`§3.3指向S9/表S5，附录B更新表数量与映射；`SIM240_Supplementary_Methods_20261024/`的S9新增6项条件性GCI表、失败随数说明、渐近性限定和平板同分母比较，新`Table_S5_conditional_gci.csv`为已核候选逐字节副本。README/编号对照同步；原表S1—S4、旧证书、候选、归档与源码保持。正式稿仍待作者终审，不构成投稿或发布。
++- 科学边界：不以同三点GCI比独立确认渐近区，不以p低于2直接判错；历史细T质量FAIL同时影响K_T、eta_T、A。G2平板解析比较仅限该工况/积分量；未引入原G1“13.5倍覆盖”、角点机制定论或第四格承诺。历史G2 Step3 FAIL/INCONCLUSIVE、5nm离散参考及全域严格误差界未建立保持。
++- 验证范围：检查候选CSV一致、6行显示数值、3项失败依赖、正文仅3处指定替换、原S1—S8及S10—S11/历史S9段保持、链接与编号以及实际选定输入的字节保护，结果见本轮verification.json；不是新原场验收或新增数值验证。仅维护文档及状态，无编译、求解、真实N8提取、拟合、第二项、Git提交推送，无新run_id。
++- 当前状态/卡点：旧N8仍D4_N8_diag_v3_1_20261026_v1；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。三篇原文与4组历史完整构建绑定仍缺；原资料合同见`Primary_text_build_contract_followup_20261027/MISSING_ITEMS.md`。表已补齐不等于参考资格闭合。
++- 停止点/下一动作：本次同步任务完成；后续可只读核作者整稿及来源合同缺项。当前无启动命令或新增计算授权；第四点需另定合同/预算并获明确授权。一般文稿核对GPT-6.1 Sol｜High；理论实质或严格界再用GPT-6 Astra｜High。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 

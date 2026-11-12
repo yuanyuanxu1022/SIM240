@@ -1,0 +1,43 @@
+wmake application
+g++ -std=c++14 -m64 -DLIB_NAME=libNULL.so -Dlinux64 -DWM_ARCH_OPTION=64 -DWM_DP -DWM_LABEL_SIZE=32 -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-attributes -O3  -DNoRepository -ftemplate-depth-256 -I/home/dell/OpenFOAM/OpenFOAM-13/src/finiteVolume/lnInclude -I/home/dell/OpenFOAM/OpenFOAM-13/src/meshTools/lnInclude -I/home/dell/OpenFOAM/OpenFOAM-13/src/fvModels/general/lnInclude -IlnInclude -I. -I/home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude -I/home/dell/OpenFOAM/OpenFOAM-13/src/OSspecific/POSIX/lnInclude   -fPIC -c grooveDarcyStaticFoam.C -o Make/linux64GccDPInt32Opt/grooveDarcyStaticFoam.o
+grooveDarcyStaticFoam.C:25:13: error: ambiguating new declaration of ‘bool finite(Foam::scalar)’
+   25 | static bool finite(scalar x) {return std::isfinite(x);}
+      |             ^~~~~~
+In file included from /usr/include/features.h:502,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:679,
+                 from /usr/include/c++/13/cstddef:49,
+                 from /home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/Hasher.H:47,
+                 from /home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/string.H:49,
+                 from /home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/stringList.H:41,
+                 from /home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/argList.H:79,
+                 from grooveDarcyStaticFoam.C:4:
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:183:1: note: old declaration ‘int finite(double)’
+  183 | __MATHDECL_ALIAS (int,finite,, (_Mdouble_ __value), finite)
+      | ^~~~~~~~~~~~~~~~
+In file included from /home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/List.H:43,
+                 from /home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/stringList.H:42:
+grooveDarcyStaticFoam.C: In function ‘int main(int, char**)’:
+/home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/UList.H:435:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  435 |     for (Foam::label i=0; i<(list).size(); i++)
+      |     ^~~
+grooveDarcyStaticFoam.C:162:13: note: in expansion of macro ‘forAll’
+  162 |             forAll(p,i)matrix<<i<<','<<momentum.diag()[i]<<','<<momentum.source()[i].x()<<','<<momentum.source()[i].y()<<','<<momentum.source()[i].z()<<','<<diag[i]<<','<<pressure.source()[i]<<','<<rAU[i]<<'\n';checkStream(matrix);matrix.close();
+      |             ^~~~~~
+grooveDarcyStaticFoam.C:162:212: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  162 |             forAll(p,i)matrix<<i<<','<<momentum.diag()[i]<<','<<momentum.source()[i].x()<<','<<momentum.source()[i].y()<<','<<momentum.source()[i].z()<<','<<diag[i]<<','<<pressure.source()[i]<<','<<rAU[i]<<'\n';checkStream(matrix);matrix.close();
+      |                                                                                                                                                                                                                    ^~~~~~~~~~~
+/home/dell/OpenFOAM/OpenFOAM-13/src/OpenFOAM/lnInclude/UList.H:435:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  435 |     for (Foam::label i=0; i<(list).size(); i++)
+      |     ^~~
+grooveDarcyStaticFoam.C:213:13: note: in expansion of macro ‘forAll’
+  213 |             forAll(U,i)evidence<<i<<','<<oldU[i].x()<<','<<oldU[i].y()<<','<<oldU[i].z()<<','<<oldP[i]<<','<<momentum.diag()[i]<<','<<momentum.source()[i].x()<<','<<momentum.source()[i].y()<<','<<momentum.source()[i].z()<<','<<gradient[i].x()<<','<<gradient[i].y()<<','<<gradient[i].z()<<','<<force()[i].x()<<','<<force()[i].y()<<','<<force()[i].z()<<','<<residual()[i]<<'\n';checkStream(evidence);evidence.close();
+      |             ^~~~~~
+grooveDarcyStaticFoam.C:213:377: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  213 |             forAll(U,i)evidence<<i<<','<<oldU[i].x()<<','<<oldU[i].y()<<','<<oldU[i].z()<<','<<oldP[i]<<','<<momentum.diag()[i]<<','<<momentum.source()[i].x()<<','<<momentum.source()[i].y()<<','<<momentum.source()[i].z()<<','<<gradient[i].x()<<','<<gradient[i].y()<<','<<gradient[i].z()<<','<<force()[i].x()<<','<<force()[i].y()<<','<<force()[i].z()<<','<<residual()[i]<<'\n';checkStream(evidence);evidence.close();
+      |                                                                                                                                                                                                                                                                                                                                                                                         ^~~~~~~~~~~
+grooveDarcyStaticFoam.C: At global scope:
+grooveDarcyStaticFoam.C:25:13: warning: ‘bool finite(Foam::scalar)’ defined but not used [-Wunused-function]
+   25 | static bool finite(scalar x) {return std::isfinite(x);}
+      |             ^~~~~~
+make: *** [/home/dell/OpenFOAM/OpenFOAM-13/wmake/rules/General/transform:26: Make/linux64GccDPInt32Opt/grooveDarcyStaticFoam.o] Error 1

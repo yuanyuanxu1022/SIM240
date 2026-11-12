@@ -1,0 +1,35 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-ced05121dd03
+Exec   : /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/bin/grooveDarcyStaticFoam -case /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/negative_audits/wrong_units -auditOnly
+Date   : Oct 30 2026
+Time   : 20:39:08
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 780213
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_static_v1/build/negative_audits/wrong_units
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+
+--> FOAM FATAL ERROR: 
+p must be Pa, U must be m/s
+
+    From function void require(bool, const char*)
+    in file grooveDarcyStaticFoam.C at line 24.
+
+FOAM exiting
+

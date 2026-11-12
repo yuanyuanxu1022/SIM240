@@ -1,0 +1,25 @@
+--- docs/reports/AI_HANDOFF_20261015.md before
++++ docs/reports/AI_HANDOFF_20261015.md after
+@@ -1,13 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## C03启动命令已核对并准备交付，尚未由AI启动（2026-10-30）
+-
+-- 用户本轮要求“给出c03代码我”，结合上下文交付C03单例启动命令，由用户在本机Linux终端执行；不是AI代执行。命令、核对时间及边界见 `docs/reports/SDI_C03_launch_command_20261030.json`。command_prepared_for_delivery=true，不代表用户已执行或计算已完成。
+-- 本轮只读preflight通过：44发布文件及21运行库匹配，C03启动脚本/预留编号核对，bash语法检查通过，预留运行目录不存在、sdi_c03会话未占用。planned_run_id=SDI_C03_v1_2_20261030_01，actual_run_id=null；AI未启动求解/建立tmux会话，用户执行状态待下一次核查。
+-- C03包 `CASE/interface_static_darcy_v1_2/`、原准备报告 `docs/reports/SDI_C03_preparation_20261030/REPORT.md` 保持；原公式横槽（槽沿y，驱动x），24/0Pa、H=125nm、24×48μm、512单元、U=J/H、D=H K⁻¹及原SDI-v1门槛均不改。两个程序复用既有编译，检查器1.2.0、15项功能测试和C01/C02各50项回归仍为准备阶段既有证据，本轮未重新编译、静态求解审计或重跑测试。
+-- 当前C03 run_completed=false、NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=true仅指准备阶段合成平均域静态核对；physical_validation=NOT_EVALUATED。前轮未找到运行证据的报告 `docs/reports/SDI_C03_status_check_20261030/REPORT.md` 保留为核查时快照。解析Q及倍率不是实际结果，尚未开展C03/C01实际结果对照。
+-- 本轮只新增命令核对回执并同步本状态/最新交接，未改封装、源码、系数、输入、边界、门槛或原始结果，无求解/重跑/拟合/真实N8提取/Git提交推送/对外发送。C01/C02既有接口通过状态及C01严格零识别历史记录保持；旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL不变。
+-- 下一具体动作：用户在本机终端执行本轮单条tmux命令后返回终端输出（无输出也说明）；再按新任务单次核查启动/完成状态。只运行C03的两个程序，失败/超时停，不自动重试或启动C04。完成后另按原SDI-v1核原始输出、完整日志和独立退出码，再与C01对照。本轮不等待或轮询计算；用户请求仅覆盖单例命令交付，未授权AI启动或其他长算。启动状态核查GPT-6.1 Sol｜Low；完整结果分析GPT-6.1 Sol｜High。
++## C03已实际运行完成，尚待SDI-v1完整结果验收（2026-10-30）
++
++- 用户本轮要求核查C03启动状态。本轮确认实际run_id=SDI_C03_v1_2_20261030_01，路径 `CASE/interface_static_darcy_v1_2/runs/SDI_C03_v1_2_20261030_01/`，execution.json为completed；本机2026-10-30 05:39:42开始并结束。两端独立退出0、无超时，二维约0.009s、OpenFOAM约0.033s；原始输出及完整日志已生成。证据入口 `docs/reports/SDI_C03_startup_check_20261030/STATUS.md`、snapshot.json。
++- 已核25份运行绑定文件、44份原发布文件、21个运行库哈希匹配。两端CSV/solver.json和OpenFOAM原生p/U/J/phi/phi_U均存在。二维自报106次迭代、OF40次，均flow_solved=true、converged=true；自报收敛/退出0不代表完成独立科学验收。单次检查无对应进程、默认tmux无服务器，无持续轮询。
++- C03 run_completed=true，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null；geometry_PASS=true仅沿用准备阶段合成平均域静态核对，completed_run_geometry_PASS=null、physical_validation=NOT_EVALUATED。原execution.json result_acceptance=NOT_EVALUATED未改。本轮仅状态/完成证据核查，未调用完整SDI-v1检查器，未逐项评价压力/流量/守恒/耗散，也未进行C03/C01实际对照。
++- 准备包 `CASE/interface_static_darcy_v1_2/` 和原准备报告 `docs/reports/SDI_C03_preparation_20261030/REPORT.md` 保持。原公式横槽（槽沿y、驱动x），与C01保持24/0Pa、H=125nm、24×48μm、512单元、U=J/H、D=H K⁻¹及原SDI-v1门槛；预备版本1.2.0/15项功能测试/C01-C02回归为既有证据，不冒充C03本轮验收。冻结包README/release的未运行状态是准备时快照，当前实际执行状态以本条及execution.json为准。
++- 本轮仅新增SDI_C03_startup_check_20261030状态/快照/前后保护核验并同步本状态/最新交接；40份C03原始运行文件集和哈希保持，见verification.json，更新回执state_sync.json。AI未启动或重跑求解、未编译/拟合/改源码输入门槛/真实N8提取/Git提交推送/对外发送，无新增CFD计算或物理放行。
++- C01/C02既有接口通过状态和C01严格零几何识别历史记录保持；旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL不变。
++- 下一具体动作：GPT-6.1 Sol｜High按原SDI-v1分析已完成C03原始结果并与C01同方向对照，分别报告各Gate及证据限制；当前卡点是完整数值验收和对照尚未执行，不是尚未启动。无需重启C03，不自动重试、启动C04或其他Gate，不新增长算授权。本轮核查任务已完成。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

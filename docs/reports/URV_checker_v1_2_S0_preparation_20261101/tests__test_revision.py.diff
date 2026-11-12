@@ -1,0 +1,13 @@
+--- v1.1/tests/test_revision.py
++++ v1.2/tests/test_revision.py
+@@ -134,8 +134,9 @@
+             root=Path(tmp);raw,out,ref,K=self.regression(root,changed=True);out.rmdir()
+             def fail_with_real_comparison(run,release,anchor,owned):
+                 return checker.regression_check(run,ref,K,owned)
++            release=root/'SYNTHETIC_PATH_DECLARATIONS_ONLY.json';release.write_text('{}')
+             with patch.object(checker,'_check_run',side_effect=fail_with_real_comparison):
+-                with self.assertRaises(EvidenceError):checker.check_run(raw,root/'unused_release','synthetic',out)
++                with self.assertRaises(EvidenceError):checker.check_run(raw,release,'synthetic',out)
+             self.assertTrue((out/'failure.json').exists());self.assertTrue((out/'regression_comparison.json').exists())
+             self.assertFalse((out/'acceptance.json').exists())
+ 

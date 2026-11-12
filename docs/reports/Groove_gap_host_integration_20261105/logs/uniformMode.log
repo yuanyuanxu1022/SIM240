@@ -1,0 +1,34 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-ced05121dd03
+Exec   : /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_gap_v1/build/bin/grooveDarcyGapFoam -case /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_gap_v1/build/checks_20261105T111806_393850/uniformMode -auditOnly
+Date   : Nov 05 2026
+Time   : 11:18:07
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 2722196
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_gap_v1/build/checks_20261105T111806_393850/uniformMode
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+
+--> FOAM FATAL ERROR: 
+GAP requires registered mesaGap field
+
+    From function void require(bool, const char*)
+    in file grooveDarcyGapFoam.C at line 26.
+
+FOAM exiting
+

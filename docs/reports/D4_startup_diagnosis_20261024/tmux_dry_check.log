@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py", line 119, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py", line 114, in main
+    selected,batch,resources=validate_ready(a.batch_id,release)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py", line 66, in validate_ready
+    selected=validate_table();validate_binding(release);runtime_environment(release)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/run_remaining.py", line 47, in validate_binding
+    if not Path(p).is_file() or sha(p)!=h:raise RuntimeError('bound input changed: '+p)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: bound input changed: CASE/D_series/D4_variable_groove_transport_20261023/development_completion_plan_20261024/case_budget26.csv

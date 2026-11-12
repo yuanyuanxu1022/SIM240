@@ -1,0 +1,26 @@
+--- docs/reports/SIM240_AI_CONTEXT.md before
++++ docs/reports/SIM240_AI_CONTEXT.md after
+@@ -1,14 +1,14 @@
+ # SIM240 AI CONTEXT
+ 
+-## 分步审稿：§2.1采样矩阵与表1候选已审读，尚未合入（2026-11-08）
+-
+-用户要求核标题/计数/缺项与新增结果。入口 `docs/reports/PAPER1_methods_2p1_matrix_review_20261108/REPORT.md`，含双语表1候选及matrix_recount.json。表1数字均正确，3/5/5/5几何、6/10/10/10导度结果，共18/36；两稿逐行匹配保存标量表，36个ID与补充S1的main组一致。建议标题明确主比较/5nm，末列改主方向导度结果数，槽深列改主比较采用的槽深；不将h100追加改变旧主分母。
+-
+-缺项仅核实本主矩阵h25/d75、h25/d120未采样，未穷查工程全部历史或缺项原因；原“未计算”改为主矩阵范围表述。删除“覆盖”解释框，用几何组合与网格间距分开说明。4旧几何8加密及h100/d100新1几何2结果均另列，h75构建复现不增样本；总19/46与旧S1 52及旧边界46分别保持。实际S6文件为Table_S6_added_gap_build_comparison.csv，六记录不是六新几何。
+-
+-8项输入无漂移；正式中英文表1/正文/补充/原结果不改，引言及§2.1候选尚未合入，摘要既有合入保持。本轮只有文字与已有清单计数核对，无新求解/编译/拟合/场处理/保留结果读取/run_id/Gate/上传；S4原FAIL、reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持，无新运行授权。
+-
+-下一具体动作：审§2.1求解器设置、体力项及壁面处理的文字与引用边界；若用户要求采用，再同步双语表1及前后文，保留18/36主统计。建议GPT-6.1 Sol High继续明确范围审读。
++## 分步审稿：§2.1求解器/体力/壁面候选已审读，尚未合入（2026-11-08）
++
++用户要求核方法文字与引用支持。入口 `docs/reports/PAPER1_methods_2p1_solver_review_20261108/REPORT.md`，含双语方法段/驱动子段候选、引用分工及saved_method_fields.json。当前D3Q19、ForcedBGK(BGK+PlainGuo)、τ1、Guo半步速度和静止Bouzidi线性方案与所查源码相符；旧46(main36/refinement8/viscosity2)原result字段全部q=.5、D3Q19_FORCE、ForcedBGK、τ1。字段重读不是新数值接受。q半链退化为半程反弹，不据插值格式选择宣称额外精度；删泛化精度句，[7]软件、[8]边界方法、[9]体力方法各司其职，历史构建绑定仍未补齐。
++
++本轮更正旧OpenLB验证惯例报告的一处解释：当前3D基准EXPECT_NEAR容差为errorFactor*1e-6的绝对容差，不是允许与期望值相差1–2倍；“因子级偏差”不得沿用，旧报告保持历史原文，纠正在本轮报告。官方基准/回归存在不替代本研究精度。Bouzidi最新接收报告已关闭指定原文—当前实现关系，勿回退成此前原文未取得。
++
++正式稿/原结果/源码/系数/门槛均未改，前轮摘要保持，引言/§2.1候选未合入；驱动候选不得覆盖原段停止判据和来源文字。62项输入无漂移。本轮无编译/求解/拟合/轨迹重验/新run_id/Gate/上传，无新长算授权；S4原FAIL、reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
++
++下一具体动作：审§2.1停止判据与历史运行可追溯性，区分停止条件、保存PASS与独立验收；若用户要求采用，再按子段范围同步双语。建议GPT-6.1 Sol High继续明确范围审读。
+ 
+ ## 完整摘要已合入正式中英文工作稿（2026-11-07）
+ 

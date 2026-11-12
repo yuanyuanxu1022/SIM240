@@ -1,0 +1,113 @@
+--- v3/readback.py
++++ v3.1/readback.py
+@@ -4,6 +4,29 @@
+ from pathlib import Path
+ import numpy as np
+ import hashlib
++
++# Deliberately independent of the execution writer/solver. Fail before dispatch.
++ARRAY_KIND_BY_PARENT={
++    'REAL_DIAGNOSTIC_UNVERIFIED':'REAL_DIAGNOSTIC_UNVERIFIED',
++    'SYNTHETIC_PROCESS_NOT_PDE':'SYNTHETIC_MANUAL_ARRAYS_NOT_PDE',
++}
++
++
++def validate_array_kinds(system,solution):
++    a,b=system.get('record_kind'),solution.get('record_kind')
++    if not isinstance(a,str) or a not in ARRAY_KIND_BY_PARENT.values() or a!=b:
++        raise ValueError('ARRAY_RECORD_KIND_UNKNOWN_MISSING_OR_MISMATCHED')
++    return a
++
++
++def validate_record_kinds(started,capture,system=None,solution=None):
++    a,b=started.get('kind'),capture.get('kind')
++    if not isinstance(a,str) or a not in ARRAY_KIND_BY_PARENT or a!=b:
++        raise ValueError('PARENT_RECORD_KIND_UNKNOWN_MISSING_OR_MISMATCHED')
++    if system is not None or solution is not None:
++        if system is None or solution is None or validate_array_kinds(system,solution)!=ARRAY_KIND_BY_PARENT[a]:
++            raise ValueError('PARENT_ARRAY_RECORD_KIND_MISMATCHED')
++    return a
+ 
+ 
+ def load_json(path):
+@@ -49,9 +72,10 @@
+     return data, spec["metadata"]
+ 
+ 
+-def check(work):
++def _check_arrays(work):
+     system, meta = read_group(Path(work)/"system")
+-    raw, _ = read_group(Path(work)/"solution")
++    raw, rawmeta = read_group(Path(work)/"solution")
++    validate_array_kinds(meta,rawmeta)
+     row, col, val = (system[k] for k in ("csr_indptr", "csr_indices", "csr_values"))
+     shape = tuple(meta["matrix_shape"])
+     if (len(shape) != 2 or shape[0] != shape[1] or row.dtype.kind != "i" or col.dtype.kind != "i"
+@@ -115,6 +139,15 @@
+                 RESULT_PASS=False, geometry_PASS=None, prediction_permission="HOLD")
+ 
+ 
++def check(work,*,record=None):
++    result=_check_arrays(work)
++    if record is not None:
++        result['capture_checks']=check_capture(record,work)
++    elif result['record_kind']=='REAL_DIAGNOSTIC_UNVERIFIED':
++        raise ValueError('REAL_RECORD_REQUIRES_INDEPENDENT_PARENT_CAPTURE')
++    return result
++
++
+ def main():
+     parser=argparse.ArgumentParser(description="Read saved arrays only; never solves")
+     parser.add_argument("work_dir",type=Path)
+@@ -126,11 +159,7 @@
+         result=check_archive(a.record_dir)
+         if str(a.work_dir.resolve())!=str((a.record_dir/'archive').resolve()):raise ValueError('ARCHIVE_PATH_NOT_BOUND')
+         print(json.dumps(result,indent=2,allow_nan=False));return 0
+-    result=check(a.work_dir)
+-    if a.record_dir:
+-        result['capture_checks']=check_capture(a.record_dir,a.work_dir)
+-    elif result['record_kind']=='REAL_DIAGNOSTIC_UNVERIFIED':
+-        raise ValueError('REAL_RECORD_REQUIRES_INDEPENDENT_PARENT_CAPTURE')
++    result=check(a.work_dir,record=a.record_dir)
+     print(json.dumps(result,indent=2,allow_nan=False))
+     return 0 if result["status"]=="DIAGNOSTIC_READBACK_PASS" else 1
+ 
+@@ -140,6 +169,7 @@
+     record,work=Path(record),Path(work)
+     load=lambda name:load_json(record/name)
+     c,s,m=(load(name) for name in ('contract.json','STARTED.json','capture_manifest.json'))
++    validate_record_kinds(s,m)
+     digest=hashlib.sha256(json.dumps(c,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
+     if (str(record.resolve())!=c['record_dir']
+             or any(x['contract_sha256']!=digest or x['run_id']!=c['run_id'] for x in (s,m))
+@@ -170,10 +200,11 @@
+             raise ValueError('CAPTURED_FILE_CHANGED:'+name)
+     system,meta=read_group(work/'system')
+     raw,rawmeta=read_group(work/'solution')
++    validate_record_kinds(s,m,meta,rawmeta)
+     if m['kind']=='REAL_DIAGNOSTIC_UNVERIFIED':
+         lock=load_json(record/'source_lock.json')
+-        protocol=[h for p,h in lock['files'].items() if p.endswith('/pilot_record_v3_20261026/DIAGNOSTIC_CONTRACT.md')]
+-        if (c.get('version')!='D4_PILOT_RECORD_V3_20261026_PREPARATION'
++        protocol=[h for p,h in lock['files'].items() if p.endswith('/pilot_record_v3_1_20261026/DIAGNOSTIC_CONTRACT.md')]
++        if (c.get('version')!='D4_PILOT_RECORD_V3_1_20261026_PREPARATION'
+                 or c.get('planned_id')!='B0MIN_MMS_mixed_N8' or c.get('status')!='APPROVED_DIAGNOSTIC_ONLY'
+                 or c.get('authorized_to_execute') is not True or not isinstance(c.get('approval'),dict)
+                 or not c['approval'].get('authorization_text','').strip() or len(protocol)!=1
+@@ -199,7 +230,7 @@
+             if dofs.ndim!=2 or dofs.shape[1]!=width or dofs.dtype.kind!='i' or np.any(dofs<0) or np.any(dofs>=len(raw['reconstructed_solution'])):
+                 raise ValueError('CELL_DOF_MAP_INVALID')
+         check_cell_maps(system,raw)
+-        check_required_records(record,work,c,s,m,check(work))
++        check_required_records(record,work,c,s,m,_check_arrays(work))
+     return dict(status='CAPTURE_BINDING_PASS',kind=m['kind'],all_work_files_hashed=len(actual))
+ 
+ 
+@@ -219,6 +250,7 @@
+     record=Path(record)
+     c=load_json(record/'contract.json');s=load_json(record/'STARTED.json')
+     m=load_json(record/'capture_manifest.json');a=load_json(record/'archive_manifest.json')
++    validate_record_kinds(s,m)
+     if (str(record.resolve())!=c['record_dir'] or m.get('archive_status')!='ARCHIVE_COMPLETE'
+             or m.get('archive_error') or m.get('inventory_error') or m.get('children_stopped') is not True
+             or any(v.get('contract_sha256')!=object_sha(c) or v.get('run_id')!=c['run_id'] for v in (s,m,a))

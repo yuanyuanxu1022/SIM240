@@ -1,0 +1,16 @@
+FoamFile
+{ format ascii; class dictionary; object controlDict; }
+
+application paper1StokesReference;
+startFrom startTime;
+startTime 0.5;
+stopAt endTime;
+endTime 400000;
+deltaT 1;
+writeControl timeStep;
+writeInterval 100;
+purgeWrite 1;
+writeFormat ascii;
+writePrecision 17;
+writeCompression off;
+runTimeModifiable false;

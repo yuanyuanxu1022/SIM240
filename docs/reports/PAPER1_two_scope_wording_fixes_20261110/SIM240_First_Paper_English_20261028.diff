@@ -1,0 +1,20 @@
+--- before/docs/reports/SIM240_First_Paper_English_20261028.md
++++ docs/reports/SIM240_First_Paper_English_20261028.md
+@@ -250,7 +250,7 @@
+ 
+ ### 3.1 Convergence and conservation criteria
+ 
+-Steady state is assessed over 1000 consecutive flux samples: main-flux relative standard deviation ≤$10^{-6}$ and relative range ≤$5\times10^{-6}$. Principal-axis forcing also requires absolute cross-flux ≤$10^{-12}$ m²/s. Oblique forcing generates a physical cross-flux, so a relative-standard-deviation criterion is used instead. Mass, density, Mach number and boundary-link diagnostics are recorded separately from flux convergence.
++Steady state is assessed over 1000 consecutive flux samples: main-flux relative standard deviation ≤$10^{-6}$ and relative range ≤$5\times10^{-6}$. Principal-axis forcing also requires absolute cross-flux ≤$10^{-12}$ m²/s. Oblique forcing generates a physical cross-flux, so a relative-standard-deviation criterion is used instead. Mass, density, Mach number and boundary-link diagnostics are recorded separately from flux convergence. Passing these checks does not establish an error bound for conductance relative to the continuous solution.
+ 
+ All 36 principal-direction samples meet those thresholds. **They are stopping criteria, rather than independent acceptance metrics.** The program exits at the first window satisfying them, so satisfaction at termination follows from the stopping construction.
+ 
+@@ -323,7 +323,7 @@
+ 
+ **Figure 2.** Transport coefficients and anisotropy of the rectangular groove array using 5 nm discrete references. (a) $K_{yy}$ (filled symbols) and $K_{xx}$ (open symbols) against depth, grouped by four gaps. Across the sampled depths at each gap, $K_{xx}$ varies by less than 4%; uncomputed geometries are excluded. At $h=25$ nm, only $d=25$, 50 and 100 nm were sampled. (b) Anisotropy $A=K_{yy}/K_{xx}$ on a logarithmic ordinate; the dotted line marks $A=1$.
+ 
+-### 4.2 The local cubic law overestimates all 36 samples
++### 4.2 The local cubic law overestimates all 36 principal-direction results at 5 nm
+ 
+ Pointwise comparison of Eq. (3) against the 5 nm production-grid references gives positive relative discrepancies in both directions at all 18 geometries (Table 6). This result is specific to the sampled conditions and reference resolution.
+ 

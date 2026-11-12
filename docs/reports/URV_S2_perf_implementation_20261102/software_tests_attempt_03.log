@@ -1,0 +1,62 @@
+test_both_prepared_dirs_pristine (__main__.AuthorityAndIsolationTests.test_both_prepared_dirs_pristine) ... ok
+test_default_main_is_readonly (__main__.AuthorityAndIsolationTests.test_default_main_is_readonly) ... ok
+test_external_hash_required (__main__.AuthorityAndIsolationTests.test_external_hash_required) ... ok
+test_failed_P_blocks_T_and_consumes_attempt (__main__.AuthorityAndIsolationTests.test_failed_P_blocks_T_and_consumes_attempt) ... ERROR
+test_formal_or_zero_authority_rejected (__main__.AuthorityAndIsolationTests.test_formal_or_zero_authority_rejected) ... ok
+test_frozen_B_live_readonly (__main__.AuthorityAndIsolationTests.test_frozen_B_live_readonly) ... ok
+test_independent_checker_has_no_controller_import (__main__.AuthorityAndIsolationTests.test_independent_checker_has_no_controller_import) ... ok
+test_materialized_pair_config_whitelist (__main__.AuthorityAndIsolationTests.test_materialized_pair_config_whitelist) ... ok
+test_preparation_rejected_before_Popen_or_marker (__main__.AuthorityAndIsolationTests.test_preparation_rejected_before_Popen_or_marker) ... ok
+test_pristine_and_symlink_ancestors (__main__.AuthorityAndIsolationTests.test_pristine_and_symlink_ancestors) ... ok
+test_raw_hash_detects_tampering (__main__.AuthorityAndIsolationTests.test_raw_hash_detects_tampering) ... ok
+test_Mach_and_Re_guards (__main__.DiagnosticTests.test_Mach_and_Re_guards) ... ok
+test_corrected_mass_guard (__main__.DiagnosticTests.test_corrected_mass_guard) ... ok
+test_density_guard_cannot_be_erased_by_later_good_row (__main__.DiagnosticTests.test_density_guard_cannot_be_erased_by_later_good_row) ... ok
+test_diagnostic_truncation_detected (__main__.DiagnosticTests.test_diagnostic_truncation_detected) ... ok
+test_direction_projection (__main__.DiagnosticTests.test_direction_projection) ... ok
+test_ledger_corruption_rejected (__main__.DiagnosticTests.test_ledger_corruption_rejected) ... ok
+test_mass_units_rejected (__main__.DiagnosticTests.test_mass_units_rejected) ... ok
+test_missing_baseline_rejected (__main__.DiagnosticTests.test_missing_baseline_rejected) ... ok
+test_nonfinite_and_flag_rejected (__main__.DiagnosticTests.test_nonfinite_and_flag_rejected) ... ok
+test_partial_line_preserved_until_newline (__main__.DiagnosticTests.test_partial_line_preserved_until_newline) ... ok
+test_premature_window_metrics_rejected (__main__.DiagnosticTests.test_premature_window_metrics_rejected) ... ok
+test_skipped_or_duplicate_step_rejected (__main__.DiagnosticTests.test_skipped_or_duplicate_step_rejected) ... ok
+test_window_sentinels_valid (__main__.DiagnosticTests.test_window_sentinels_valid) ... ok
+test_actual_start_plus_512_not_nominal_end (__main__.IntervalAndOutcomeTests.test_actual_start_plus_512_not_nominal_end) ... ok
+test_backward_progress_is_rejected (__main__.IntervalAndOutcomeTests.test_backward_progress_is_rejected) ... ok
+test_burst_at_stop_insufficient (__main__.IntervalAndOutcomeTests.test_burst_at_stop_insufficient) ... ok
+test_changed_prefix_rejected (__main__.IntervalAndOutcomeTests.test_changed_prefix_rejected) ... ok
+test_excessive_sample_rate_rejected (__main__.IntervalAndOutcomeTests.test_excessive_sample_rate_rejected) ... ok
+test_faked_KILL_without_grace_is_rejected (__main__.IntervalAndOutcomeTests.test_faked_KILL_without_grace_is_rejected) ... ok
+test_native_final_output_is_HOLD (__main__.IntervalAndOutcomeTests.test_native_final_output_is_HOLD) ... ok
+test_normal_exit_is_HOLD (__main__.IntervalAndOutcomeTests.test_normal_exit_is_HOLD) ... ok
+test_overlap_allowed (__main__.IntervalAndOutcomeTests.test_overlap_allowed) ... ok
+test_post_exit_rows_cannot_create_intervals (__main__.IntervalAndOutcomeTests.test_post_exit_rows_cannot_create_intervals) ... ok
+test_resource_violation_rejected (__main__.IntervalAndOutcomeTests.test_resource_violation_rejected) ... ok
+test_source_drift_rejected (__main__.IntervalAndOutcomeTests.test_source_drift_rejected) ... ok
+test_sufficient_not_scientific_pass (__main__.IntervalAndOutcomeTests.test_sufficient_not_scientific_pass) ... ok
+test_target_delayed_or_wall_flag_erased_rejected (__main__.IntervalAndOutcomeTests.test_target_delayed_or_wall_flag_erased_rejected) ... ok
+test_TERM_KILL_grace (__main__.MonitorTests.test_TERM_KILL_grace) ... ok
+test_bad_resource_stops (__main__.MonitorTests.test_bad_resource_stops) ... ok
+test_bad_row_stops (__main__.MonitorTests.test_bad_row_stops) ... ok
+test_fixed_resource_boundaries (__main__.MonitorTests.test_fixed_resource_boundaries) ... ok
+test_target_stop (__main__.MonitorTests.test_target_stop) ... ok
+test_unexpected_exit (__main__.MonitorTests.test_unexpected_exit) ... ok
+test_user_stop (__main__.MonitorTests.test_user_stop) ... ok
+test_wall_stop_without_new_rows (__main__.MonitorTests.test_wall_stop_without_new_rows) ... ok
+
+======================================================================
+ERROR: test_failed_P_blocks_T_and_consumes_attempt (__main__.AuthorityAndIsolationTests.test_failed_P_blocks_T_and_consumes_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/tests/test_perf.py", line 321, in test_failed_P_blocks_T_and_consumes_attempt
+    result=runner.execute('TEST_ONLY','0'*64,data)
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/scripts/run_perf.py", line 169, in execute
+    thread_environment={k:env[k] for k in ['OMP_NUM_THREADS','OPENBLAS_NUM_THREADS',
+                          ~~~^^^
+KeyError: 'OMP_NUM_THREADS'
+
+----------------------------------------------------------------------
+Ran 46 tests in 0.618s
+
+FAILED (errors=1)

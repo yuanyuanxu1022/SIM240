@@ -1,0 +1,28 @@
+--- docs/reports/AI_HANDOFF_20261015.md before
++++ docs/reports/AI_HANDOFF_20261015.md after
+@@ -1,16 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## C04原公式沿槽包静态核对完成，启动命令已备、实际执行待确认（2026-10-30）
+-
+-- 用户明确授权准备C04、保持原SDI-v1边界/平均定义/门槛，静态核对后交付启动命令；本轮不由AI启动。新独立包 `CASE/interface_static_darcy_v1_3/`，入口README.md、common/C04_SPEC.md；详细证据 `docs/reports/SDI_C04_preparation_20261030/REPORT.md`。C04是SDI原公式沿槽例，不是旧路线表参数扫描Case04。
+-- C04原公式、槽沿x、驱动沿x；与C02作同方向原/V2对照，与C03作同公式方向对照。保持24/0Pa、24×48μm、H=125nm、μ=0.001Pa·s、512单元、U=J/H及D=H K⁻¹、总阻力不重复加壁面剪切。Kxx=2.4088541666666665e-22、Kyy=6.518158783783783e-23m³；K/D相对C03同时交换。原协议thresholds和linear_solver逐项相同，10份边界/网格/离散字典与C02相同。
+-- 两份C++、两份Make和两个二进制与C01哈希相同，复用真实编译证据，本轮未新编译。C04路径checkMesh通过；二维audit-only及OF auditOnly退出0，仅矩阵装配、初始压力0、flow_solved=false，无压力迭代。准备几何通过仅指合成平均域。
+-- 检查器1.3.0只扩展C04支持及版本说明，全部函数AST与1.2.0相同；15项人造功能测试通过，完整日志留存。只读C01/C02/C03旧结果，各50项指标、Gate和原始文件哈希与旧分析逐项一致，仅忽略版本元数据；无CFD重跑。证据regression_comparison.json和包内reports/functional_tests.log/json。
+-- 新封装46文件、21运行库绑定，默认只读preflight通过。命令身份/bash语法核对通过，sdi_c04会话未占用、预留运行目录不存在。planned_run_id=SDI_C04_v1_3_20261030_01，actual_run_id=null、run_completed=false，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=true（仅准备阶段合成平均域）、physical_validation=NOT_EVALUATED、independent_human_acceptance=false。命令回执launch_command.json，不调用C03脚本或复用C03编号；材料/命令已备不等于实际执行。
+-- C04解析预期（不是结果）：Ux约1.927083333333333e-6m/s、Jx约2.4088541666666664e-13m²/s、Q约1.15625e-17m³/s；C04/C02解析Q比2.3130890243424327，C04/C03为3.6956052262174715，仅描述性预期、不增倍率Gate或物理准确性结论。
+-- C01—C03旧包/运行及相关报告346份文件集和哈希保持，见preservation_before.json、verification.json。本轮仅新包/准备报告/命令回执及本状态、最新交接，state_sync.json留存更新；未创建C04 runs、时间1或SDI_output，AI未执行求解/重跑/拟合/真实N8提取/建立tmux会话/提交推送/对外发送。C01/C02/C03既有局部接口通过及C03/C01对照保留，C01历史严格零几何识别记录不覆盖。
+-- 真实沟槽独立参照、一般斜向/复杂压力、网格独立、严格误差界、未拟合新条件、挤压/两相/动态及内置DarcyForchheimer接入仍未验证。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD和历史FAIL不变。
+-- 下一具体动作：用户在本机终端执行本轮单条sdi_c04 tmux命令并返回输出（无输出也说明），随后单次核查启动/完成状态；完成后另按原SDI-v1分析C04并对照C02/C03。只允许该例两端、失败/超时即停、不重试、不自动进入C05或其他Gate。命令交付后Codex停止本任务，不等待或轮询；用户请求不授予AI代启动或其他长算权限。启动核查GPT-6.1 Sol｜Low；完整结果分析GPT-6.1 Sol｜High。
++## C04已实际运行完成，尚待原SDI-v1完整结果验收（2026-10-30）
++
++- 用户本轮要求核查C04启动状态。确认实际run_id=SDI_C04_v1_3_20261030_01，目录 `CASE/interface_static_darcy_v1_3/runs/SDI_C04_v1_3_20261030_01/`，execution.json status=completed；北京时间2026-10-30 15:37:24.982754开始、15:37:25.020567结束。二维/OF独立退出0、无超时，记录耗时约0.0048/0.0326s。入口 `docs/reports/SDI_C04_startup_check_20261030/STATUS.md`、snapshot.json。
++- 本轮25份运行绑定文件、46份原发布文件、21个运行库哈希匹配，两端CSV/solver.json、完整日志及原生p/U/J/phi/phi_U均存在。二维自报90次、OF32次迭代，flow_solved=true、converged=true；自报收敛或退出0不等于独立验收通过。单次检查无对应进程，默认tmux socket无服务器，无持续轮询。
++- C04 run_completed=true，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null；geometry_PASS=true仅沿用准备阶段合成平均域静态核对，completed_run_geometry_PASS=null、physical_validation=NOT_EVALUATED。原execution.json result_acceptance=NOT_EVALUATED未改。本轮未调用完整SDI-v1检查器，未逐项检验全部压力/U/J/Q、守恒、恢复K或耗散，未进行C04/C02/C03实际对照。
++- 准备包 `CASE/interface_static_darcy_v1_3/`、原准备报告 `docs/reports/SDI_C04_preparation_20261030/REPORT.md` 保持。C04原公式、槽沿x/驱动x；24/0Pa、24×48μm、H=125nm、μ=0.001Pa·s、512网格、U=J/H、D=H K⁻¹与原SDI-v1门槛不变。准备版本1.3.0、15项功能测试和旧例回归仍为既有准备证据，不冒充C04本轮验收。冻结包未运行文字保留为准备时快照，当前执行状态以本条和原execution.json为准。
++- 本轮仅新增SDI_C04_startup_check_20261030状态/快照/前后保护核验并同步本状态/最新交接；40份C04原始运行文件集和SHA256保持，见verification.json，更新回执state_sync.json。AI未启动/重跑/编译/拟合/改源码输入或门槛/真实N8提取/Git提交推送/对外发送，无新增CFD计算或物理放行。
++- C01/C02/C03既有局部接口通过与C03/C01实际对照、历史严格零几何识别记录保持；旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD及历史FAIL不变。
++- 下一具体动作：GPT-6.1 Sol｜High按原SDI-v1完整分析已完成C04，与C02作同方向原/V2对照、与C03作原公式方向对照，分别报告Gate和证据范围。当前卡点是完整验收/实际对照未执行，不是尚未启动。无需重启C04，不自动重试、启动C05或其他Gate，不新增长算授权。本轮启动核查任务已完成。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

@@ -1,0 +1,192 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p09-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p09-topbar-title
+    bounds: [36, 8, 640, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 单位换算链：先定物理黏度，时间步唯一确定
+  - elementType: text
+    elementId: p09-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 9 / 18
+  - elementType: shape
+    elementId: p09-step1
+    shapeName: roundRect
+    bounds: [60, 70, 400, 128]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: text
+    elementId: p09-step1-label
+    bounds: [84, 82, 60, 22]
+    content:
+      fontSize: 12
+      bold: true
+      color: "#FFFFFF"
+      text: 第 1 步
+  - elementType: shape
+    elementId: p09-step1-chip
+    shapeName: rect
+    bounds: [84, 76, 68, 28]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p09-step1-chiptext
+    bounds: [84, 78, 68, 24]
+    content:
+      fontSize: 12
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ①格子黏度
+  - elementType: text
+    elementId: p09-step1-formula
+    bounds: [84, 108, 352, 32]
+    content:
+      fontSize: 17
+      bold: true
+      color: "#0E3F8C"
+      text: "ν* = c²ₛ(τ−½) = (1/3)(1/2) = 1/6"
+  - elementType: text
+    elementId: p09-step1-note
+    bounds: [84, 146, 352, 44]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: τ=1 时格子黏度取 1/6；<br/>全文统一，加密网格时保持不变。
+  - elementType: shape
+    elementId: p09-step2
+    shapeName: roundRect
+    bounds: [500, 70, 400, 128]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p09-step2-chip
+    shapeName: rect
+    bounds: [524, 76, 68, 28]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p09-step2-chiptext
+    bounds: [524, 78, 68, 24]
+    content:
+      fontSize: 12
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ②时间步
+  - elementType: text
+    elementId: p09-step2-formula
+    bounds: [524, 106, 356, 36]
+    content:
+      fontSize: 15
+      bold: true
+      color: "#0E3F8C"
+      text: "Δt=(τ−½)Δx²/(3ν)=4.1667×10⁻¹² s"
+  - elementType: text
+    elementId: p09-step2-note
+    bounds: [524, 146, 352, 44]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: ν=1.0×10⁻⁶ m²/s、Δx=5 nm 代入；<br/>物理黏度先行设定，Δt 由换算唯一确定（式 1）。
+  - elementType: shape
+    elementId: p09-step3
+    shapeName: roundRect
+    bounds: [60, 218, 400, 128]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: shape
+    elementId: p09-step3-chip
+    shapeName: rect
+    bounds: [84, 224, 68, 28]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p09-step3-chiptext
+    bounds: [84, 226, 68, 24]
+    content:
+      fontSize: 12
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ③动力黏度
+  - elementType: text
+    elementId: p09-step3-formula
+    bounds: [84, 256, 352, 32]
+    content:
+      fontSize: 17
+      bold: true
+      color: "#0E3F8C"
+      text: "μ = ρν = 1000 × 10⁻⁶ = 10⁻³ Pa·s"
+  - elementType: text
+    elementId: p09-step3-note
+    bounds: [84, 294, 352, 44]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: ρ=1000 kg/m³；<br>两个 μ=15 mPa·s 黏度对照工况分列，不与主地图混用。
+  - elementType: shape
+    elementId: p09-step4
+    shapeName: roundRect
+    bounds: [500, 218, 400, 128]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: shape
+    elementId: p09-step4-chip
+    shapeName: rect
+    bounds: [524, 224, 68, 28]
+    fill: { type: solid, color: "#0E3F8C" }
+  - elementType: text
+    elementId: p09-step4-chiptext
+    bounds: [524, 226, 68, 24]
+    content:
+      fontSize: 12
+      bold: true
+      color: "#FFFFFF"
+      align: [center, top]
+      text: ④速度提取
+  - elementType: text
+    elementId: p09-step4-formula
+    bounds: [524, 256, 352, 32]
+    content:
+      fontSize: 15
+      bold: true
+      color: "#0E3F8C"
+      text: "computeU 含半时间步 Guo 力修正"
+  - elementType: text
+    elementId: p09-step4-note
+    bounds: [524, 294, 352, 44]
+    content:
+      fontSize: 11.5
+      color: "#4A5568"
+      lineHeight: 1.4
+      text: 与所用体力方案一致；<br/>τ 敏感性未扫描，正文已如实声明。
+  - elementType: shape
+    elementId: p09-bottombar
+    shapeName: rect
+    bounds: [60, 366, 840, 74]
+    fill: { type: solid, color: "#0E3F8C" }
+  - elementType: text
+    elementId: p09-conclusion
+    bounds: [84, 380, 792, 46]
+    content:
+      fontSize: 14.5
+      bold: true
+      color: "#FFFFFF"
+      lineHeight: 1.45
+      text: 这一链条的意义：格子单位与物理单位不脱节——审稿人若复算 Δt，会得到与正文一致的 4.1667×10⁻¹² s；<br>加密到 2.5 nm 时按同一式调整，物理黏度与 τ 不变。
+  - elementType: text
+    elementId: p09-footer
+    bounds: [60, 452, 840, 14]
+    content:
+      style: $tiny
+      text: 稿件位置：§2.1 式 (1) · 换算核验：支持资料索引 S2（当前源码 25–43 行可对）

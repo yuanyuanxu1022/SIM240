@@ -1,0 +1,77 @@
+--- baseline/urv_reference.cpp
++++ revision/urv_reference.cpp
+@@ -1,5 +1,6 @@
+ #include <olb.h>
+ #include "mass_stats.h"
++#include "mrp_observer.h"
+ 
+ #ifndef URV_PREPARATION_ONLY
+ #define URV_PREPARATION_ONLY 1
+@@ -106,7 +107,7 @@
+ struct Measurement {
+   long long fluidNodes = 0;
+   T volume = 0.0;
+-  T mass = 0.0; // Original sequential mass, retained verbatim.
++  T mass = 0.0; // Legacy binary64 rounding path explicitly fixed by URV-MRP-v1.
+   T correctedMass = 0.0;
+   T densityDelta = 0.0;
+   T densityIntegral = 0.0;
+@@ -522,7 +523,8 @@
+   const UnitConverter<T, DESCRIPTOR>& converter,
+   int drive,
+   T fx,
+-  T fy)
++  T fy,
++  mrp::DensityCapture* capture = nullptr)
+ {
+   Measurement value;
+   NeumaierSum correctedMass;
+@@ -541,13 +543,15 @@
+       T uLat[3]{};
+       cell.computeU(uLat);
+       const T rho = cell.computeRho();
++      if (capture) capture->append(iC,latticeR[0],latticeR[1],latticeR[2],rho);
+       const T speedLat = std::sqrt(
+         uLat[0] * uLat[0] + uLat[1] * uLat[1] + uLat[2] * uLat[2]);
+       const T pressure = converter.getPhysPressure(
+         (rho - 1.0) / descriptors::invCs2<T, DESCRIPTOR>());
+       ++value.fluidNodes;
+-      value.volume += dx * dx * dx;
+-      value.mass += rho * rhoPhys * dx * dx * dx;
++      const volatile T roundedCellVolume = dx * dx * dx;
++      value.volume += roundedCellVolume;
++      value.mass = mrp::legacyMass(rho, rhoPhys, dx, value.mass);
+       correctedMass.add(rho * rhoPhys * dx * dx * dx);
+       densityDelta.add(rho - 1.0);
+       value.densityIntegral += rho * dx * dx * dx;
+@@ -833,7 +837,10 @@
+   }
+   std::size_t nextFrame=1;
+ 
+-  const Measurement initial = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
++  mrp::DensityCapture capture(p.outputDirectory,p.runId,p.drive,rhoPhys,dx);
++  capture.begin("initial_reference",0,0.0);
++  const Measurement initial = measure(lattice, geometry, converter, p.drive, p.fx, p.fy,&capture);
++  capture.finish(initial);
+   const bool initialVolumePass = initial.fluidNodes == expectedFluidNodes
+     && std::abs(initial.volume - nominalVolume) / nominalVolume
+          <= volumeRoundoffTolerance;
+@@ -864,7 +871,9 @@
+       lattice.collideAndStream();
+       ++actualCollideAndStreamCalls;
+     }
+-    const Measurement state = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
++    capture.begin("diagnostic",step,step*dt);
++    const Measurement state = measure(lattice, geometry, converter, p.drive, p.fx, p.fy,&capture);
++    capture.finish(state);
+     const T massError = (state.mass - initial.mass) / initial.mass;
+     const T correctedMassError =
+       (state.correctedMass - initial.correctedMass) / initial.correctedMass;
+@@ -922,6 +931,7 @@
+     }
+   }
+ 
++  capture.actualFinal(finalStep);
+   const Measurement final = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+   writeFrame(finalStep,converged?"converged_final":"unconverged_final");
+   std::ofstream schedule(p.outputDirectory/"frame_schedule.csv");

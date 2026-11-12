@@ -1,0 +1,22 @@
+--- docs/reports/D4_remaining14_intake_20261024/before_state_sync/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,7 +1,8 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：D4余14项执行入口与运行前核查完成，待用户启动（2026-10-24，当前入口）
+-
++## 第一篇：D4余14项准备就绪，本机尚无正式结果可验收（2026-10-24，当前入口）
++
++- 本轮结果接收检查（北京时间2026-10-24 04:37）：规范results/development_remaining14_20261024_v1目录及tmux会话d4-dev14-20261024均不存在；规范结果仍只有基础8和筛选6的两个旧批次。入口 `docs/reports/D4_remaining14_intake_20261024/STATUS.md`、intake.json。本轮未开展14项数值/几何/流场验收，正式三类状态保持NOT_EVALUATED/false；没有新增计算或物理验证。仅本机快照，不判其他机器运行状态；未重跑或持续轮询。原准备/命令/许可保持，release文件摘要匹配，但本轮未重核全部2611绑定。
+ - 用户明确授权“准备首批14项的执行入口和运行前核查，尚未启动计算”。当前入口 `CASE/D_series/D4_variable_groove_transport_20261023/development_remaining14_20261024/PREPARATION_STATUS.md`，PROTOCOL/policy、run_remaining.py、stage_cases.csv、14份launch_configs与本机release已准备并审查；NEXT_COMMAND.txt仅交付用户手动启动，本轮没有执行命令或创建正式结果batch。
+ - 白名单仅余14主开发：h75/w60深25/50/100/120×P/T共8，h75/w240深25/50/100×P/T共6；dx5、P=Ly=2w、φ.5、a1e5/ρ1000/ν1e−6/μ.001/τ1保持。排除已完成首6项及所有legacy/smooth/regression/linearity/grid/prediction；原60项预算不增加。规范正式结果仍仅基础8+筛选6=14，主开发2/16、细格0/12、预测20未进入。
+ - 复用已验收筛选的C++源码/binary：原SHA一致、make --question退出0，本轮没有重编译。14项describe+14项precheck实际零步通过（7种不同几何），独立节点/18方向边界连接/q=.5及无fallback/unresolved符合；统计窗1013步、各深度最大步数与14配置核对。28个检查run_id保留在evidence/zero_step_checks，不是28项流动结果，collideAndStream合计0。
+@@ -9,7 +10,7 @@
+ - release_id D4_remaining14_local_release_20261024_v1，绑定2611个去重输入，SHA256=9606906a7ea18c5ec47f1728eeb7d9af48990e17955167f79019c6ec1e3358c9；原2276保护是其来源之一，集合不相加。绑定原源码/binary/依赖/库/协议、首6验收、旧方案、新调度/协议/白名单/配置/零步和审查证据；运行每项前后核绑定与OpenLB提交。G4 v1锁、旧协议/FAIL与所有原始结果保持；无GitHub推送。
+ - 本机单进程单MPI rank；每项前可用RAM≥2GiB、磁盘≥7GiB，准备快照满足，tmux/time可用。fixed batch_id=development_remaining14_20261024_v1、tmux=d4-dev14-20261024；已存在批次/相同case正式结果拒绝覆盖或续跑。只防本入口重入，不声称控制所有手工启动。配置生成后须逐字节匹配准备模板；失败/绑定变化/资源不足即停，不重试。
+ - 正确唯一命令在本阶段NEXT_COMMAND.txt；命令已准备/交付，不等于已启动。正式输出预定D4/results/development_remaining14_20261024_v1，每项保存manifest/完整配置/日志/资源/独立exit/CSV/VTK/输入后核对，批次另有stage_manifest/progress/exit/completion。全部14结束后independent_acceptance=pending，不自动分析/拟合/网格/预测。原RESULT_PASS=false保持，完成后按冻结协议独立验收。
+-- 下一具体动作由用户在本机终端手动启动所交付tmux命令，计算完成后再发起14项独立验收；Codex不等待长算、不轮询、不复跑首6项。12项开发细格和20预测继续关闭；网格/资源分批草案仍在development_completion_plan_20261024，最大细格RAM≥22GiB和长时预算另审。后续重拟合须新v2并在保留预测流动结果产生前新冻结。
++- 下一具体动作：若仍在本机计算，由用户手动启动此前交付的tmux命令，完成后再发起14项独立验收；若已在别处计算，先提供运行机器/完整结果目录并归档；Codex不等待长算、不轮询、不复跑首6项。12项开发细格和20预测继续关闭；网格/资源分批草案仍在development_completion_plan_20261024，最大细格RAM≥22GiB和长时预算另审。后续重拟合须新v2并在保留预测流动结果产生前新冻结。
+ - 其他第一篇与第二篇状态完整保留；新检查/绑定/状态差异与最终保护见本阶段evidence。原方案preparation/verification中“尚无runner/许可”是绑定历史快照，未改字节，本段与当前PREPARATION_STATUS更新现状。
+ 
+ ## 第一篇：G4主候选v1已冻结，双向权衡与参数稳定性审查完成（2026-10-24，当前入口）

@@ -1,0 +1,39 @@
+pageType: cover
+background: "#0E3F8C"
+elements:
+  - elementType: shape
+    elementId: cover-accent-bar
+    shapeName: rect
+    bounds: [80, 150, 64, 6]
+    fill: { type: solid, color: "#3D7BD9" }
+  - elementType: text
+    elementId: cover-kicker
+    bounds: [80, 176, 560, 30]
+    content:
+      style: $small
+      text: 第一篇论文 · 投稿前方法确认材料
+  - elementType: text
+    elementId: cover-title
+    bounds: [80, 210, 800, 130]
+    content:
+      fontSize: 40
+      bold: true
+      color: "#FFFFFF"
+      lineHeight: 1.25
+      fontFamily: { ea: "Microsoft YaHei", latin: "Arial" }
+      text: 研究方法与流场图<br/>请老师逐项确认
+  - elementType: text
+    elementId: cover-subtitle
+    bounds: [80, 352, 800, 58]
+    content:
+      fontSize: 15
+      color: "#C7D6EE"
+      lineHeight: 1.4
+      text: 纳米沟槽方向性输运研究（全充液单相 · OpenLB 直接数值模拟）<br/>方法链条 · 验证证据 · 流场过目 · 待裁三问
+  - elementType: text
+    elementId: cover-meta
+    bounds: [80, 460, 800, 22]
+    content:
+      style: $tiny
+      color: "#9DB4D8"
+      text: SIM240 项目组 · 2026 年 10 月 22 日 · 稿件版本：导师审阅版 20261022

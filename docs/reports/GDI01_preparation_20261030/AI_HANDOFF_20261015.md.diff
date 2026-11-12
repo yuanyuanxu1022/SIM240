@@ -1,0 +1,28 @@
+--- AI_HANDOFF_20261015.md.before
++++ AI_HANDOFF_20261015.md
+@@ -1,15 +1,15 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## grooveDarcy最小定间隙接入协议与挤压接口已准备，未启动（2026-10-30）
+-
+-- 用户本轮授权协议与已有静态对照材料，随后明确挤压连续性/间隙更新接口；不启动流场。新入口`docs/reports/GrooveDarcy_static_protocol_20261030/README.md`、PROTOCOL.md、SQUEEZE_INTERFACE.md及protocol.json（GDI-v1）。
+-- 首例GDI01对照旧C01（V2横槽），保持24/0Pa、24×48μm、h_m=75nm、H=b=125nm、μ=0.001Pa·s、16×32×1。正式阻力cellZone必须覆盖全部512单元，不能复用旧代数测试的256单元半区。宿主拟用标准porosityForce装配总阻力并进行稳态动量—压力耦合，不加惯性/面内黏性/厚度剪切/第二份阻力。
+-- 原SDI-v1 thresholds和linear_solver逐项保持；迹分裂须外迭代，新增预先指定完整动量残差与外迭代变化守卫，不能用单次压力残差判整个解收敛。GDI01解析Ux约3.643036135654074e-07m/s、Q约2.185821681392444e-18m³/s；EXPECTED_VALUES.md和reference_values.json明确区分解析预期、旧实际CSV与不存在的新结果。
+-- 本轮只读核对4个旧run_id/退出码/已验收记录/原始哈希，复算8组已有CSV；78份输入/源/参考绑定通过，454份原包/子类/协议/报告文件哈希未改。旧C01几何识别历史和四例既有PASS保持，未重跑旧例或旧检查器；纯算术不是新增流场验收。
+-- 子类CASE/groove_porosity_model_v1仍保留此前编译/原生wrapper装配证据，源码与库当前哈希核对一致；本轮没有再编译或重跑装配测试。新grooveDarcyStaticFoam宿主源码、全域正式包和GDI结果读取器尚未实现：无新run_id，launch_ready=false，simulation_authorized=false，新NUMERICAL_GATE/RESULT_PASS/geometry_PASS均未评价。
+-- 挤压接口选择固定平面参考网格的全充液平均路线：宿主注册更新mesaGap，统一间隙快照驱动H/K/D与∂tH+div(HU)=0，正闭合∂tH=−V；变H时面通量按H/b0相容转换。接口已定义但动态连续性/间隙推进/力积分未实现，速度/时间步/资源和动态门槛未冻结；不能重复加入ALE体积变化或把Δp/Q当F/V。
+-- 改动仅新协议目录、本状态和最新交接。无新宿主实现/编译/求解/拟合/C05或其他正式运行/提交推送/对外发送。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD及历史FAIL保持。
+-- 当前任务准备完成。下一具体动作：按GDI-v1实现最小动量—压力宿主、独立验收适配器和全512单元GDI01包，再编译/不求解审计；完成准备后另交付用户启动命令，不自动运行、进入其他映射或挤压。无新增长算授权。常规实现GPT-6.1 Sol｜High；疑难物理/最终冻结按协议GPT-6 Astra｜High。
++## GDI01宿主/检查器/全域包已实现，编译与不求解审计完成，未启动（2026-10-30）
++
++- 用户本轮授权按GDI-v1实现最小动量—压力宿主、独立结果检查器和全512单元GDI01包，完成编译与不求解审计，暂不启动流场。新包`CASE/groove_darcy_static_v1/`，主入口`docs/reports/GDI01_preparation_20261030/REPORT.md`。
++- 宿主grooveDarcyStaticFoam通过标准porosityForce的source(rho,U)装配物理动量；不含K公式/输入D驱动，无惯性、黏性Laplacian或重复壁面阻力。采用迹分裂外迭代与完整动量/变化守卫；压力方程整体乘−1后以对应通量符号修正，物理方程/原门槛不变。初始p/U为零，GDI01保持75nm间隙、125nm平均厚度、24/0Pa、24×48μm、512全域单元。
++- 宿主本轮实际编译成功（Foundation13、linux64GccDPInt32Opt）；原grooveDarcy库与源码逐字节复用/绑定，未重编译原子类。两次开发期编译错误及修正日志保留。checkMesh通过；实际auditOnly加载标准wrapper/子类、核全域系数/矩阵，solve_calls=0。14项检查器测试和8组旧CSV逐项回归通过；4类非法输入均只执行auditOnly并按预定原因拒绝。
++- 独立检查器为GDI-1.0.0，真实GDI身份；沿用原SDI3个纯函数且AST不变，额外从压力重建梯度、复算模型力/矩阵/延期源/完整动量/外迭代变化/压力残差—面通量/能量，读取原生场并对照C01两端。人工内存测试不当作流场证据；新求解分支和整条真实新结果验收仍未运行验证。
++- 发布common/release_manifest.json封存71份包文件、36个ldd运行库；默认run_gdi01.py只读预检通过，不创建runs或run_id。执行分支需显式execute及新GDI01_v1_编号，300秒超时、2GiB地址空间、失败停/不重试/不自动验收或下一例；峰值RSS未测。准备代码/编译/静态审计与运行授权分开，本轮未交付tmux命令。
++- 474份旧包/子类/冻结协议/报告文件哈希保持。C01–C04既有局部接口验收和历史FAIL保持；新GDI无流场run_id，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=null、physical_validation=NOT_EVALUATED、independent_human_acceptance=false。冻结GDI-v1副本保留历史未实现字段，当前阶段以本准备报告和reports/preparation.json为准。
++- 本轮仅新建上述包/准备报告并维护本状态和最新交接。无PDE求解、旧例重跑、拟合、挤压推进、下一Gate、提交推送或对外发送。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD不变。
++- 当前任务已完成，停在准备完成且未启动。下一具体动作：用户另定GDI01启动时机，届时交付已绑定的新编号命令、用户独立运行，完成后只读验收；不自动启动/重试或进入GDI02、C05、挤压和独立参考。无新增长算授权。常规核查/命令GPT-6.1 Sol｜Low，完整结果审核GPT-6.1 Sol｜High，疑难物理/最终冻结按Astra｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

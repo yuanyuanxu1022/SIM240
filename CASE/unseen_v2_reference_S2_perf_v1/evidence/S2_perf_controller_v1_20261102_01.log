@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/scripts/run_perf.py", line 210, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/scripts/run_perf.py", line 199, in main
+    data=inspect(args.release,args.expected_sha256)
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/scripts/run_perf.py", line 112, in inspect
+    pristine(data['prepared_benchmark_runs'])
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/analysis/perf_contract.py", line 240, in pristine
+    need(sorted(p.name for p in run.iterdir())==['run_config.txt','run_manifest.txt'],
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         'output already used; no restart/overwrite')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S2_perf_v1/analysis/perf_contract.py", line 36, in need
+    raise ValueError(message)
+ValueError: output already used; no restart/overwrite

@@ -1,0 +1,26 @@
+--- SIM240_AI_CONTEXT.md before
++++ SIM240_AI_CONTEXT.md after
+@@ -1,14 +1,14 @@
+ # SIM240 AI CONTEXT
+ 
+-## SDI-v1双程序已编译与静态核对，C01运行包已准备，未求解（2026-10-30）
+-
+-- 用户授权按SDI-v1实现两个最小程序、结果检查器、完成编译/静态核对并准备C01运行包。新增独立目录 `CASE/interface_static_darcy_v1/`；报告入口 `docs/reports/SDI_C01_implementation_20261030/REPORT.md`，运行入口CASE内README.md。未改现有D2/D3/nanrPrint源码、原始结果或原SDI-v1协议/输入包。
+-- 已实现：二维C++17有限体积程序读K、零初值CG/对角预条件；OpenFOAM Foundation13平均Darcy压力应用读D、PCG/DIC、Pa压力、U=J/H，z单层empty，无另一份壁面剪切或porosityForce。只生成C01输入与网格。只读结果检查器从已完成CSV/原生场存在性/哈希/独立退出码重算压力、流量、恢复K、局部与全域守恒、侧漏、耗散和两端差异。
+-- 已核实：两端编译退出0；512单元平均域blockMesh/checkMesh完成、最大非正交角0、体积约1.44e-16m³，Mesh OK；OpenFOAM auditOnly装配矩阵，确认对称/正对角/维度，未调用solve。检查器11项人造内存数据测试通过；不是实际流动结果。首次Info.precision审计输出API编译失败已修正，失败日志保留。证据CASE内reports/preparation.json、preparation_attempts/、checker_synthetic_tests.*。
+-- C01采用24×48μm、H125nm、μ0.001Pa·s、V2槽沿y、x两端24Pa/0Pa、y不穿流。运行包 `common/release_manifest.json` 绑定50个文件与21个动态库；默认只读预检查通过，精简环境/2GiB下矩阵装配审计通过，临时副本改输入被拒绝。旧11份科学来源哈希未变；协议副本保留制定时状态文字，以本条/实施报告表示当前完成状态。
+-- 当前C01：source_prepared=true、compile_checked=true、mesh_checked=true、matrix_assembly_audit=true、launch_ready=true（仅包已准备），run_completed=false、actual_run_id=null、NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=true（仅合成平均域）。本轮没有压力迭代/流动计算、新仿真run_id、拟合、重跑、Gate推进、提交推送或对外发送；没有独立人工科学验收。旧D4_N8_diag_v3_1_20261026_v1的NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。
+-- 预留planned_run_id=SDI_C01_v1_20261030_01，tmux名称sdi-c01-v1-20261030。运行命令准备在CASE README；本轮未创建tmux会话/runs目录/SDI_output/时间1场。启动脚本默认预检查，显式--execute才顺序运行C01两端；每端300秒/2GiB/单进程，任一失败保留日志和退出码并停止，不重试、不自动验收、不进入其他算例。原文所有科学门槛保持。
+-- 下一具体动作：用户在本机Linux普通终端启动C01；结束后新任务只读运行目录并分析，检查两端真实收敛/压力/流量/守恒/能量和原生场写出。未运行的实现风险仍保留，包已准备不等于C01通过。其他8项设计、显式沟槽参考、挤压体积/力口径均不自动进入。下一步建议GPT-6.1 Sol｜High；理论矛盾或最终物理裁决用GPT-6 Astra｜High。命令已准备/交付不等于用户已启动或长算已完成。
++## C01用户运行已完成，静态接口诊断满足；原检查器几何识别问题已留证（2026-10-30）
++
++- 用户授权核查C01启动状态并分析已有结果。本轮确认 `CASE/interface_static_darcy_v1/runs/SDI_C01_v1_20261030_01/` 已完成：本机2026-10-30 01:31:38，两端退出0、均无超时；二维96次CG、OpenFOAM39次PCG。单次tmux检查无服务器；完成判断依据execution.json、退出码、日志与原始输出，不是会话消失。分析入口 `docs/reports/SDI_C01_results_20261030/REPORT.md`。
++- 25份本次输入/二进制/源码及准备副本绑定哈希匹配，原封装50文件保持，21库当前哈希匹配启动清单。已直接回读OpenFOAM原生p/U/J/phi/phi_U，512单元和1072有效面数据与CSV逐项一致；维度与24/0Pa边界核对。独立本地算术脚本重算Q、守恒、恢复K与耗散，非独立人工验收。证据source_manifest.json、independent_raw_audit.json、status_snapshot.json。
++- 原封装检查器因要求面向量非主分量严格为0，误拒OpenFOAM的浮点几何：294/1072面、最大非主相对量5.4398e-14；原NOT_EVALUATED结果保留于interface_analysis.json。未改封装/数据/协议，在报告目录独立版本check_results_geometry_v1_1.py中重用已有1e-10归一化几何容差识别主轴，其余科学门槛未变；差异/哈希见checker_geometry_repair.diff和checker_repair_record.json。11原测试+2几何识别测试共13项满足，拒绝真实1e-5倾斜。原发布包仍含此识别缺陷，后续须版本化纳入修正，不能静默修改封装。
++- 经该分析版本，C01两端各23项和跨端4项，共50数值检查满足。Umean约3.643036135654074e-7m/s，Q约2.185821681393e-18m³/s，两端Q相对差5.28661e-14；压力最大相对解析偏差二维1.56912e-13/OF1.37538e-13；逐单元守恒相对量2.38312e-11/1.18123e-11，均低于1e-8门槛；耗散/功率相对差约2.8e-13/2.2e-13。详细interface_analysis_geometry_v1_1.json；不把50项称独立物理验证。
++- 当前仅SDI-v1 C01：run_completed=true、NUMERICAL_GATE=PASS、RESULT_PASS=true、geometry_PASS=true（512单元合成平均域），physical_validation=NOT_EVALUATED、independent_human_acceptance=false。V2横槽的这一个恒系数静态接口成立，不能外推沿槽/原公式/斜向/复杂压力、真实沟槽、挤压或两相精度；V=0时F/V不适用。旧D4_N8_diag_v3_1_20261026_v1的NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null及reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。
++- 本轮只分析用户已完成的这一例并修正报告目录的后处理识别，未编译/启动/重跑/持续轮询/拟合/变更科学门槛/推进下一Gate/提交推送或对外发送。原始run_manifest、execution.json、CSV、原生场、日志及封装完全保留；其result_acceptance原始NOT_EVALUATED不改，分析结论在独立报告。
++- 下一具体动作：先将识别修正纳入新的检查器发布记录，再准备C02槽向交换的单例材料；本轮仅建议，不自动修改发布或启动下一例。无需用户重复启动C01。常规代码/结果工作建议GPT-6.1 Sol｜High；若出现理论矛盾或最终物理裁决按项目协议GPT-6 Astra｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）
+ 

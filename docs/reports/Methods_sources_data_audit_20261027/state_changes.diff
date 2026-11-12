@@ -1,0 +1,54 @@
+--- docs/reports/SIM240_AI_CONTEXT.md.before
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,14 +1,15 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：限定修订及理论短附录已同步正式工作稿（2026-10-27，当前接续入口）
+-
+-- 用户范围：按本轮“同步正式稿”指令执行；未见另列的已选编号或排除项，首条进度已说明按全部已交付24项及附录同步。当前正文仍为`docs/reports/SIM240_中文稿_导师审阅版_20261022.md`，现标题明确相对于5nm离散参考，标“正式工作稿，作者终审待完成”。记录入口`docs/reports/Paper_formal_sync_20261027/REVISION_NOTE.md`、`sync_status.json`及`applied_items.csv`；不伪造逐项人工科学核验或最终签字。
+-- 同步内容：候选24项及附录E已写入当前稿；标题/摘要/四结论/图注的参考限定、四几何敏感性与已有h125配对增幅、式7空间均匀系数/常黏度/闭合速度/过压条件、附录C待核数据声明及非研究文字清理。附录D.7作为候选准备历史，D.8记本轮同步；主式1—7、V2系数、8张主数值表、参考文献及附录E推导/式E1—E6保持候选或原稿对应字节。
+-- 版本与证据：同步前全文在`Paper_formal_sync_20261027/before/`，差异`manuscript_changes.diff`。原候选`SIM240_中文稿_限定措辞与理论附录候选_20261027.md`及候选包原字节保留；原终审/候选证书绑定同步前基稿SHA，作为历史证据保留，当前正文用本轮验证，不重写旧证书。
+-- 已核/失败边界：本轮`verification.json`18项文档检查通过，476份选定既有来源/候选产物不变（有意排除获授权修改的正文，原稿另存快照）；无断链、24项落位、主/附录公式与数值表保护。首次仅报告自引用文件尚未生成的链接检查失败，修正检查器产物时序，`verification_initial.json/log`保留；正文和科学记录未因此变化。这些不是新数学/数值精度验收。
+-- 理论与科学停点：只同步已有假设和推导，无理论实质推广或严格误差界审定，未触发新的Astra复核、不声称实际切换。最终作者科学审定、连续解精度/全图空间证据、历史构建来源、部分引文、数据公开声明及嵌入版式仍未闭合。V2仍回顾性，未换G4。
+-- 权限：无新求解run_id；N8仍`D4_N8_diag_v3_1_20261026_v1`、ONE_N8_DIAGNOSTIC_ACCEPTED，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/保留评分/Git提交推送，不给启动命令；G4锁、数值阈值、历史FAIL保持。
+-- 下一具体动作：以当前工作稿核对未闭合的方法引文/来源说明、实际数据声明和图件嵌入版式；作者最终科学审定另记，不因文本已同步认定可投稿。常规文稿工作建议GPT-6.1 Sol｜High；假设改变、理论实质推广或严格误差界使用GPT-6 Astra｜High复核。新增数值补证需另定范围和运行授权。
++## 第一篇：方法引文、来源及数据声明核对完成，具体证据缺口保留（2026-10-27，当前接续入口）
++
++- 用户范围：核对当前稿未闭合方法引文、来源说明和数据声明；必要理论实质变更再建议GPT-6 Astra｜High复核。本轮只核资料与作事实订正，无假设/理论推广或严格误差界审定，未触发新理论复核、不声称实际切换。入口`docs/reports/Methods_sources_data_audit_20261027/REPORT.md`、`citation_audit.json`、`provenance.json`、`availability.json`和`closeout.json`。
++- 已订正：正文7处、方法补充2处；[6]正式题名改为Flow through microchannels with topographically patterned wall: A spectral theory for arbitrary groove depths，补DOI10.1016/j.euromechflu.2018.02.004（70卷73—84页、2018），作者机构目录与Crossref一致。引言不再用本轮未取得全文的幅度适用断言；S10/S11区分方法身份、当前代码与历史构建/全文核验。附录C记实际私有共享访问及未同步范围。当前正文仍`SIM240_中文稿_导师审阅版_20261022.md`，仍V2；摘要、结果/讨论/结论、数值表、主式1—7及附录E均不变。
++- 引文证据边界：[4]印刷p15式23/24再次目视核对；[7]最终卷页2021/81/258—288及当前OpenLB代码可核；[8]出版社元数据/摘要可核但AIP全文403；[9]元数据和当前PlainGuo/FORCE/2可核但APS全文401。[10]已读ASME官网方法文稿PDF6—7页式3—7，但四作者文稿不冒充六作者2008期刊版逐页核验。剩余全文/版本缺口具体保留；本轮非全11篇文献终审。
++- 构建来源：52份指定manifest缺源码哈希、编译器/参数和OpenLB提交字段，仍为22/22/6/2四组二进制哈希；现存D2/D3二进制分别匹配22/6项记录，仅身份、未执行。当前源树/固定注入5953d8a-dirty不能证明历史依赖，完整构建来源仍不闭合。
++- 数据访问：GitHub API确认共享仓库仍private、main仍f11c0f20f6aaadf6920b95390855ec418cf8ae42；8591清单路径在固定远端树均存在，446份选定文件字节/清单/远端blob一致，非全8591重新逐字节核验。52项结果/manifest/退出及日志映射、4绘图输入与当前一致；2绘图脚本和6图件更新未在该快照，当前正文与编号补充未纳入。事实访问说明已写，不承诺公开/DOI/按请求提供；最终数据安排待作者。未改远端或推送。
++- 已核/工具失败：`verification.json`20项范围检查通过，515份去重选定既有来源/记录保持，before快照和diff可追溯。首次误把稀疏检出未展开文件当本地缺失，另有链接行号解析误报，均修正工具并保留initial记录；不是远端数据丢失或科学FAIL。源码/原始数据/历史FAIL/G4锁及阈值不变，旧绑定报告保留历史，不改旧SHA证书。
++- 科学与权限：无新run_id；旧N8仍D4_N8_diag_v3_1_20261026_v1、ONE_N8_DIAGNOSTIC_ACCEPTED；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/评分/投稿，无新运行命令。
++- 下一具体动作：优先合法补齐[8]/[9]原文与[10]发表版对应证据、查与历史二进制关联的构建档案，并由作者决定最终数据访问/公开安排；[6]如恢复幅度条件先实读全文。随后核图件嵌入和版式。常规核对建议GPT-6.1 Sol｜High；若进入假设改变/理论实质推广/严格误差界，再用GPT-6 Astra｜High复核，不自动新增计算。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 
+--- docs/reports/AI_HANDOFF_20261015.md.before
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,14 +1,15 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 第一篇：限定修订及理论短附录已同步正式工作稿（2026-10-27，当前接续入口）
+-
+-- 用户范围：按本轮“同步正式稿”指令执行；未见另列的已选编号或排除项，首条进度已说明按全部已交付24项及附录同步。当前正文仍为`docs/reports/SIM240_中文稿_导师审阅版_20261022.md`，现标题明确相对于5nm离散参考，标“正式工作稿，作者终审待完成”。记录入口`docs/reports/Paper_formal_sync_20261027/REVISION_NOTE.md`、`sync_status.json`及`applied_items.csv`；不伪造逐项人工科学核验或最终签字。
+-- 同步内容：候选24项及附录E已写入当前稿；标题/摘要/四结论/图注的参考限定、四几何敏感性与已有h125配对增幅、式7空间均匀系数/常黏度/闭合速度/过压条件、附录C待核数据声明及非研究文字清理。附录D.7作为候选准备历史，D.8记本轮同步；主式1—7、V2系数、8张主数值表、参考文献及附录E推导/式E1—E6保持候选或原稿对应字节。
+-- 版本与证据：同步前全文在`Paper_formal_sync_20261027/before/`，差异`manuscript_changes.diff`。原候选`SIM240_中文稿_限定措辞与理论附录候选_20261027.md`及候选包原字节保留；原终审/候选证书绑定同步前基稿SHA，作为历史证据保留，当前正文用本轮验证，不重写旧证书。
+-- 已核/失败边界：本轮`verification.json`18项文档检查通过，476份选定既有来源/候选产物不变（有意排除获授权修改的正文，原稿另存快照）；无断链、24项落位、主/附录公式与数值表保护。首次仅报告自引用文件尚未生成的链接检查失败，修正检查器产物时序，`verification_initial.json/log`保留；正文和科学记录未因此变化。这些不是新数学/数值精度验收。
+-- 理论与科学停点：只同步已有假设和推导，无理论实质推广或严格误差界审定，未触发新的Astra复核、不声称实际切换。最终作者科学审定、连续解精度/全图空间证据、历史构建来源、部分引文、数据公开声明及嵌入版式仍未闭合。V2仍回顾性，未换G4。
+-- 权限：无新求解run_id；N8仍`D4_N8_diag_v3_1_20261026_v1`、ONE_N8_DIAGNOSTIC_ACCEPTED，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/保留评分/Git提交推送，不给启动命令；G4锁、数值阈值、历史FAIL保持。
+-- 下一具体动作：以当前工作稿核对未闭合的方法引文/来源说明、实际数据声明和图件嵌入版式；作者最终科学审定另记，不因文本已同步认定可投稿。常规文稿工作建议GPT-6.1 Sol｜High；假设改变、理论实质推广或严格误差界使用GPT-6 Astra｜High复核。新增数值补证需另定范围和运行授权。
++## 第一篇：方法引文、来源及数据声明核对完成，具体证据缺口保留（2026-10-27，当前接续入口）
++
++- 用户范围：核对当前稿未闭合方法引文、来源说明和数据声明；必要理论实质变更再建议GPT-6 Astra｜High复核。本轮只核资料与作事实订正，无假设/理论推广或严格误差界审定，未触发新理论复核、不声称实际切换。入口`docs/reports/Methods_sources_data_audit_20261027/REPORT.md`、`citation_audit.json`、`provenance.json`、`availability.json`和`closeout.json`。
++- 已订正：正文7处、方法补充2处；[6]正式题名改为Flow through microchannels with topographically patterned wall: A spectral theory for arbitrary groove depths，补DOI10.1016/j.euromechflu.2018.02.004（70卷73—84页、2018），作者机构目录与Crossref一致。引言不再用本轮未取得全文的幅度适用断言；S10/S11区分方法身份、当前代码与历史构建/全文核验。附录C记实际私有共享访问及未同步范围。当前正文仍`SIM240_中文稿_导师审阅版_20261022.md`，仍V2；摘要、结果/讨论/结论、数值表、主式1—7及附录E均不变。
++- 引文证据边界：[4]印刷p15式23/24再次目视核对；[7]最终卷页2021/81/258—288及当前OpenLB代码可核；[8]出版社元数据/摘要可核但AIP全文403；[9]元数据和当前PlainGuo/FORCE/2可核但APS全文401。[10]已读ASME官网方法文稿PDF6—7页式3—7，但四作者文稿不冒充六作者2008期刊版逐页核验。剩余全文/版本缺口具体保留；本轮非全11篇文献终审。
++- 构建来源：52份指定manifest缺源码哈希、编译器/参数和OpenLB提交字段，仍为22/22/6/2四组二进制哈希；现存D2/D3二进制分别匹配22/6项记录，仅身份、未执行。当前源树/固定注入5953d8a-dirty不能证明历史依赖，完整构建来源仍不闭合。
++- 数据访问：GitHub API确认共享仓库仍private、main仍f11c0f20f6aaadf6920b95390855ec418cf8ae42；8591清单路径在固定远端树均存在，446份选定文件字节/清单/远端blob一致，非全8591重新逐字节核验。52项结果/manifest/退出及日志映射、4绘图输入与当前一致；2绘图脚本和6图件更新未在该快照，当前正文与编号补充未纳入。事实访问说明已写，不承诺公开/DOI/按请求提供；最终数据安排待作者。未改远端或推送。
++- 已核/工具失败：`verification.json`20项范围检查通过，515份去重选定既有来源/记录保持，before快照和diff可追溯。首次误把稀疏检出未展开文件当本地缺失，另有链接行号解析误报，均修正工具并保留initial记录；不是远端数据丢失或科学FAIL。源码/原始数据/历史FAIL/G4锁及阈值不变，旧绑定报告保留历史，不改旧SHA证书。
++- 科学与权限：无新run_id；旧N8仍D4_N8_diag_v3_1_20261026_v1、ONE_N8_DIAGNOSTIC_ACCEPTED；NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译/求解/真实N8提取/拟合/评分/投稿，无新运行命令。
++- 下一具体动作：优先合法补齐[8]/[9]原文与[10]发表版对应证据、查与历史二进制关联的构建档案，并由作者决定最终数据访问/公开安排；[6]如恢复幅度条件先实读全文。随后核图件嵌入和版式。常规核对建议GPT-6.1 Sol｜High；若进入假设改变/理论实质推广/严格误差界，再用GPT-6 Astra｜High复核，不自动新增计算。
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 

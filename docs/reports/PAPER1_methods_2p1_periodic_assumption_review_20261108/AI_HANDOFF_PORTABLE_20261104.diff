@@ -1,0 +1,26 @@
+--- docs/reports/AI_HANDOFF_PORTABLE_20261104.md before
++++ docs/reports/AI_HANDOFF_PORTABLE_20261104.md after
+@@ -1,14 +1,14 @@
+ # SIM240 项目 — 便携交接单（跨电脑/跨 AI 使用）
+ 
+-## 分步审稿：§2.1停止条件与历史追溯候选已审读，尚未合入（2026-11-08）
+-
+-入口 `docs/reports/PAPER1_methods_2p1_stopping_provenance_review_20261108/REPORT.md`，含双语子段候选及saved_provenance_and_status.json。现稿已正确区分停止/独立验收；本轮补最近1000条滑动窗口、相对样本标准差/极差、窗口面内正交通量绝对峰值和首次同时达标；程序PASS是更宽内部检查合取，不等同正式NUMERICAL_GATE/RESULT_PASS/geometry_PASS或参考资格。历史h75/d100 dx1.25横槽确实converged=true但PASS=false/外部退出3，质量超限；与S4网格FAIL不同。
+-
+-重读S1的52manifest/result/独立退出：保存PASS/converged均true、外部退出均0、SHA与S1一致，四组22/22/6/2；清单均缺五项源码/依赖/编译绑定字段。当前src/Makefile固定注入5953d8a-dirty，日志标签不证明实际历史库commit。未重读52全部日志/诊断；独立验收报告的范围不扩大。新增S6入口补入候选，旧52清单范围不变。
+-
+-170项输入无漂移；正式稿/源码/原结果/阈值均未改，摘要既有合入保持，引言/§2.1候选未合入。本轮仅文字、代码逻辑与保存记录核对，无新求解/编译/拟合/轨迹重验/新run_id/Gate/上传，无新长算授权；S4原FAIL、reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
+-
+-下一具体动作：审§2.1单胞周期假设的成立条件与应用边界，随后审物性/τ/时间步；若用户要求采用，再按子段范围同步双语。建议GPT-6.1 Sol High继续明确范围审读。
++## 分步审稿：§2.1单胞周期假设候选已审读，尚未合入（2026-11-08）
++
++入口 `docs/reports/PAPER1_methods_2p1_periodic_assumption_review_20261108/REPORT.md`。原文已排除外缘/接缝/供液，边界基本正确；本轮补几何、物性、均匀驱动与周期面匹配条件，定位理想规则图案的局部导度。周期复制只检查相同物理周期下数值一致性，不是改变P或真实器件RVE收敛；不确定距边缘多少周期后可忽略影响。
++
++本轮核TableS3及18保存result的Nx2/4/8参数、K/R，复现基准R变化0/0及8.715e−14/3.808e−14；不是新轨迹/几何接受。重读版图解析报告记载的50µm宏块与80nm接缝，明确全版图非无例外240nm微周期；未重解析OAS/测实物/算接缝。当前D2确有x/y周期、z固壁；本文不包含真实进出口/液滴供液响应。
++
++27项输入无漂移；正式稿/边界/原数据/协议未改，摘要既有合入保持，引言/§2.1候选未合入。无编译/求解/拟合/新场处理/新run_id/Gate/上传，无新长算或边缘仿真授权；S4原FAIL、reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持。
++
++下一具体动作：审§2.1物性、τ及时间步换算，检查参数设定顺序与加密时保持量。若用户要求采用，再同步双语单胞段。建议GPT-6.1 Sol High继续明确范围审读，非本轮新理论冻结。
+ 
+ ## 完整摘要已合入正式中英文工作稿（2026-11-07）
+ 

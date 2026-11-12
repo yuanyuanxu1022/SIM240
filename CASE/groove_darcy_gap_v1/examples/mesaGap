@@ -1,0 +1,11 @@
+FoamFile { format ascii; class volScalarField; object mesaGap; }
+dimensions [0 1 0 0 0 0 0];
+internalField uniform 75e-9;
+boundaryField
+{
+    xLow { type zeroGradient; }
+    xHigh { type zeroGradient; }
+    yLow { type zeroGradient; }
+    yHigh { type zeroGradient; }
+    frontAndBack { type empty; }
+}

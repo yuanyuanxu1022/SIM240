@@ -1,0 +1,17 @@
+--- v1/read_fields.py
++++ v1.1/read_fields.py
+@@ -101,6 +101,14 @@
+ if __name__=='__main__':
+     ap=argparse.ArgumentParser();ap.add_argument('--run',type=Path,required=True);ap.add_argument('--out',type=Path,required=True)
+     args=ap.parse_args()
++    from contracts import output_location
++    # The standalone reader obeys the same no-write rule on an illegal target.
++    try:
++        args.out=output_location(args.out,[args.run])
++    except Exception as e:
++        import sys
++        print(type(e).__name__+': '+str(e),file=sys.stderr)
++        raise SystemExit(2)
+     try:
+         receipt=audit(args.run);save(args.out,receipt)
+     except Exception as e:

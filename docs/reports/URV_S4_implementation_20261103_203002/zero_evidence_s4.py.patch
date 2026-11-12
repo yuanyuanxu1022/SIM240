@@ -1,0 +1,17 @@
+--- /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/zero_evidence.py
++++ /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/zero_evidence_s4.py
+@@ -107,7 +107,7 @@
+ def validate_audit_records(bound,audit,released,folder):
+     """Reparse each zero record; do not trust counts or PASS booleans alone."""
+     plan=released['zero_prepared_runs'];records=audit['records']
+-    need(len(records)==len(plan)==12,'twelve original zero records required')
++    need(len(records)==len(plan)==18,'eighteen original zero records required')
+     need(audit['preparation_A_sha256']==released['preparation_A_sha256']==bound['preparation_A_sha256'],'audit original A mismatch')
+     need(audit.get('formal_simulation_started') is False and audit.get('next_stage_started') is False and
+          audit.get('NUMERICAL_GATE')=='NOT_EVALUATED' and audit.get('RESULT_PASS') is False,'zero receipt scientific/next-stage promotion')
+@@ -123,4 +123,4 @@
+             payload=validate_initial_readback(expected,report,folder)
+             for path,h in payload.items():
+                 need(bound['inputs_sha256'].get(path)==h,'initial payload absent from bound raw evidence')
+-    need(len(seen)==4,'four unique initial field readbacks required')
++    need(len(seen)==6,'six unique initial field readbacks required')

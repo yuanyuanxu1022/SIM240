@@ -1,0 +1,19 @@
+--- AI_HANDOFF_PORTABLE_20261104.md.before
++++ docs/reports/AI_HANDOFF_PORTABLE_20261104.md
+@@ -1,4 +1,16 @@
+ # SIM240 项目 — 便携交接单（跨电脑/跨 AI 使用）
++
++## 最近工作四项对照与双语候选完成，尚未合入（2026-11-09）
++
++用户提出优先补最近工作比较。本轮已完成Ng2017、Mohammadi–Floryan2013、Stroock2002的几何/驱动/归一化/已知结论对照，并复读Tran2021示例条件。入口 `docs/reports/PAPER1_nearest_work_comparison_20261109/REPORT.md`，含FOUR_WAY_COMPARISON.md/CSV、CANDIDATE_CN.md、CANDIDATE_EN.md、候选REFERENCES/BibTeX、source_manifest、访问日志及verification。当前仅候选，正式稿仍11条书目，预留12—15依首次出现为Ng/Stroock/Mohammadi/Tran，未正式生效；拟在§1.2第二段后插入，合入时还应同步S11阅读层级。
++
++关键比较：Ng沿槽式18总流量含槽腔，式21滑移只用清流层qI，不能直接替代本文全流体积分K；同形双槽壁也不是一平一槽的现成匹配解。Stroock分析一平一小幅正弦壁，K为无量纲响应函数且方向按波矢标记，不能按同名符号套用。Mohammadi仅核出版社摘要，不认证其完整归一化或精度；Tran压力驱动局部滑移与无滑移正弦剪切属不同示例，不拼接成同条件参考。几何不同不自动证明创新足够，当前未建立一平一矩形槽壁同条件已有解的逐点排名或具体表格/分解首创性，不采用“重复风险不高”的无据判断。
++
++状态纠错见STATUS_CORRECTIONS.md：两份当前正文均已有E.1/E1—E8、§6均五条，不能说英文尚未同步E.1；PPT为14页，第11页六条已含新增间隙/静态接入及梯度诊断，独立结论文件§3.1旧PPT映射过时。已给当前内容映射候选，未改该文件、PPT、正文结论组织或现有MANIFEST。A范围合入及其后两位小数/标题修正继续有效，当前两稿SHA仍为5ded9b81…/7de188ea…。
++
++59项来源/身份/候选编号/文件状态检查通过、0失败，不是59项科学验证。11份保护输入SHA无漂移，正式四稿、独立结论、MANIFEST、PPT等均未改；Ng/Stroock普通下载403但网页PDF可读，未伪称保存本地PDF；Mohammadi仅摘要。本轮只新增比较目录并同步两状态，无新run_id、编译/求解/拟合/原场处理/保留集读取、提交推送或投稿。S4/D4既有FAIL及reference_qualified=false、strict_error_bound_established=false、submission_ready=false保持，无0.625/S5/新几何长算授权。
++
++本轮四项对照与候选交付完成，不等于正式稿文献补齐或唯一投稿障碍已解除。下一具体动作可按候选定点同步§1.2、[12]—[15]与S11，并单独校正旧结论映射；若要声称更强同条件精度/首创，需要先完成相应已有解适配判别。明确范围文字用GPT-6.1 Sol High；疑难边值问题映射或冻结强主张用GPT-6 Astra High，未声称实际切换。
+ 
+ ## A范围基础下界已合入，并经复核修正呈现（2026-11-09）
+ 

@@ -1,0 +1,202 @@
+--- D4/original
++++ URV/isolated
+@@ -1,4 +1,9 @@
+ #include <olb.h>
++#include "mass_stats.h"
++
++#ifndef URV_PREPARATION_ONLY
++#define URV_PREPARATION_ONLY 1
++#endif
+ 
+ #include <algorithm>
+ #include <array>
+@@ -23,6 +28,16 @@
+ namespace {
+ 
+ using T = double;
++using fine_t_stat::NeumaierSum;
++long long actualCollideAndStreamCalls = 0;
++struct ExecutionAudit {
++  std::filesystem::path directory;
++  ~ExecutionAudit() {
++    std::ofstream out(directory/"execution_audit.txt");
++    out << "protocol=URV-v1\npreparation_only_build=" << URV_PREPARATION_ONLY
++        << "\ncollide_and_stream_calls=" << actualCollideAndStreamCalls << "\n";
++  }
++};
+ using DESCRIPTOR = descriptors::D3Q19<descriptors::FORCE>;
+ 
+ // Isolated D4 parameterization of the D2 kernel. See the new protocol.
+@@ -91,7 +106,9 @@
+ struct Measurement {
+   long long fluidNodes = 0;
+   T volume = 0.0;
+-  T mass = 0.0;
++  T mass = 0.0; // Original sequential mass, retained verbatim.
++  T correctedMass = 0.0;
++  T densityDelta = 0.0;
+   T densityIntegral = 0.0;
+   T maxDensityDeviation = 0.0;
+   T maxLatticeSpeed = 0.0;
+@@ -181,6 +198,9 @@
+   p.mode=c.at("mode");
+   if (p.mode!="describe" && p.mode!="precheck" && p.mode!="initialize" && p.mode!="steady")
+     throw std::runtime_error("invalid mode");
++#if URV_PREPARATION_ONLY
++  if (p.mode=="steady") throw std::runtime_error("URV-v1 preparation build: formal time stepping is disabled");
++#endif
+   p.runId=c.at("run_id");
+   if (p.runId.empty() || p.runId.size()>220 || !std::all_of(p.runId.begin(),p.runId.end(),[](unsigned char v){return std::isalnum(v)||v=='_'||v=='-'||v=='.';}))
+     throw std::runtime_error("invalid run_id");
+@@ -505,6 +525,8 @@
+   T fy)
+ {
+   Measurement value;
++  NeumaierSum correctedMass;
++  NeumaierSum densityDelta;
+   const int section1 = drive == 0 ? nx / 8 : ny / 4;
+   const int section2 = drive == 0 ? nx / 2 : 3 * ny / 4;
+   lattice.setProcessingContext(ProcessingContext::Evaluation);
+@@ -526,6 +548,8 @@
+       ++value.fluidNodes;
+       value.volume += dx * dx * dx;
+       value.mass += rho * rhoPhys * dx * dx * dx;
++      correctedMass.add(rho * rhoPhys * dx * dx * dx);
++      densityDelta.add(rho - 1.0);
+       value.densityIntegral += rho * dx * dx * dx;
+       value.maxDensityDeviation = std::max(
+         value.maxDensityDeviation, std::abs(rho - 1.0));
+@@ -555,6 +579,10 @@
+       }
+     });
+   }
++  value.correctedMass = correctedMass.value();
++  value.densityDelta = densityDelta.value();
++  value.finite = value.finite && std::isfinite(value.correctedMass)
++    && std::isfinite(value.densityDelta);
+   for (int iD = 0; iD < 3; ++iD) {
+     value.meanVelocity[iD] = value.integratedVelocity[iD] / value.volume;
+     value.fluxJ[iD] = value.integratedVelocity[iD] / areaPlan;
+@@ -665,6 +693,7 @@
+       throw std::runtime_error("refusing to overwrite existing output");
+     effectiveConfig(p);
+   } catch (const std::exception& e) {std::cerr<<e.what()<<'\n';return 2;}
++  ExecutionAudit executionAudit{p.outputDirectory};
+   if (p.mode=="describe") return 0;
+   singleton::directories().setOutputDir((p.outputDirectory.string() + "/").c_str());
+ 
+@@ -793,7 +822,13 @@
+       <<"geometry_PASS="<<geometryPass<<'\n'<<"q_audit_PASS="<<boundaryAudit.pass<<'\n'
+       <<"finite="<<zero.finite<<'\n'<<"fluid_nodes="<<zero.fluidNodes<<'\n'
+       <<"fluid_volume_m3="<<zero.volume<<'\n'<<"nominal_volume_m3="<<nominalVolume<<'\n'
+-      <<"frames_written="<<written.size()<<'\n';
++      <<"frames_written="<<written.size()<<'\n'
++      <<"mass="<<zero.mass<<'\n'<<"corrected_mass="<<zero.correctedMass<<'\n'
++      <<"density_delta="<<zero.densityDelta<<'\n'
++      <<"J_vector_m2_s="<<zero.fluxJ[0]<<','<<zero.fluxJ[1]<<','<<zero.fluxJ[2]<<'\n'
++      <<"max_density_deviation="<<zero.maxDensityDeviation<<'\n'
++      <<"max_Mach="<<zero.maxLatticeSpeed/std::sqrt(T(1.0/3.0))<<'\n'
++      <<"exit_code="<<(zero.finite?0:3)<<'\n';
+     return zero.finite?0:3;
+   }
+   std::size_t nextFrame=1;
+@@ -807,10 +842,15 @@
+     << "step,J,rho,Mach,mass,time_s,mass_error,max_density_deviation,"
+        "Jx,Jy,Jz,Q_section1,Q_section2,section_relative_difference,"
+        "pressure_min,pressure_max,window_rel_std,window_rel_span,"
+-       "window_cross_abs_max,finite\n";
++       "window_cross_abs_max,finite,corrected_mass,corrected_mass_error,"
++       "delta_mass_error,mass_ledger_agreement,density_delta\n";
+ 
+   FluxWindow window;
+-  T maxMassError = 0.0;
++  T maxMassError = 0.0; // Legacy ledger has its own unchanged denominator.
++  T maxCorrectedMassError = 0.0;
++  T maxDeltaMassError = 0.0;
++  T maxMassLedgerAgreement = 0.0;
++  bool allMeasurementsFinite = true;
+   T maxDensityDeviation = 0.0;
+   T maxMach = 0.0;
+   T windowStd = std::numeric_limits<T>::infinity();
+@@ -822,9 +862,16 @@
+   for (int step = 0; step <= maximumSteps; ++step) {
+     if (step > 0) {
+       lattice.collideAndStream();
++      ++actualCollideAndStreamCalls;
+     }
+     const Measurement state = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+     const T massError = (state.mass - initial.mass) / initial.mass;
++    const T correctedMassError =
++      (state.correctedMass - initial.correctedMass) / initial.correctedMass;
++    const T deltaMassError =
++      (state.densityDelta - initial.densityDelta)
++      / (initial.fluidNodes + initial.densityDelta);
++    const T massLedgerAgreement = std::abs(correctedMassError - deltaMassError);
+     const T mach = state.maxLatticeSpeed / std::sqrt(T(1.0 / 3.0));
+     const T sectionDenominator = std::max(
+       std::abs(state.sectionQ1), std::abs(state.sectionQ2));
+@@ -837,6 +884,12 @@
+       window.metrics(windowStd, windowSpan, windowCross);
+     }
+     maxMassError = std::max(maxMassError, std::abs(massError));
++    maxCorrectedMassError = std::max(maxCorrectedMassError, std::abs(correctedMassError));
++    maxDeltaMassError = std::max(maxDeltaMassError, std::abs(deltaMassError));
++    maxMassLedgerAgreement = std::max(maxMassLedgerAgreement, massLedgerAgreement);
++    allMeasurementsFinite = allMeasurementsFinite && state.finite
++      && std::isfinite(massError) && std::isfinite(correctedMassError)
++      && std::isfinite(deltaMassError) && std::isfinite(massLedgerAgreement);
+     maxDensityDeviation = std::max(
+       maxDensityDeviation, state.maxDensityDeviation);
+     maxMach = std::max(maxMach, mach);
+@@ -851,7 +904,9 @@
+                 << (window.full() ? windowStd : -1.0) << ','
+                 << (window.full() ? windowSpan : -1.0) << ','
+                 << (window.full() ? windowCross : -1.0) << ','
+-                << state.finite << '\n';
++                << state.finite << ',' << state.correctedMass << ','
++                << correctedMassError << ',' << deltaMassError << ','
++                << massLedgerAgreement << ',' << state.densityDelta << '\n';
+     const T actualTstar=nuPhys*step*dt/(mesaGap*mesaGap);
+     while (nextFrame<p.frameTimes.size() && actualTstar+1e-12>=p.frameTimes[nextFrame]) {
+       writeFrame(step,"scheduled");
+@@ -890,7 +945,9 @@
+     && materialUnchanged
+     && final.finite
+     && converged
+-    && maxMassError < massTolerance
++    && allMeasurementsFinite
++    && maxCorrectedMassError < massTolerance
++    && maxMassLedgerAgreement <= 1.0e-13
+     && maxDensityDeviation <= densityTolerance
+     && maxMach < machTolerance
+     && windowCross <= crossFluxTolerance
+@@ -899,10 +956,12 @@
+ 
+   std::ofstream summary(p.outputDirectory / "result_summary.csv");
+   summary << std::setprecision(17)
+-          << "Case,direction,dx,tau,force,J,Keff,R_eff,Mach,mass_error\n"
++          << "Case,direction,dx,tau,force,J,Keff,R_eff,Mach,mass_error,"
++             "legacy_mass_error,mass_ledger_agreement\n"
+           << p.caseId << ',' << p.directionName << ',' << dx << ',' << tau << ','
+           << acceleration << ',' << mainJ << ',' << effectiveK << ','
+-          << resistance << ',' << maxMach << ',' << maxMassError << '\n';
++          << resistance << ',' << maxMach << ',' << maxCorrectedMassError
++          << ',' << maxMassError << ',' << maxMassLedgerAgreement << '\n';
+ 
+   std::ofstream result(p.outputDirectory / "result.txt");
+   result << std::setprecision(17) << std::boolalpha
+@@ -948,7 +1007,13 @@
+          << boundaryAudit.geometricFallbacks
+               + boundaryAudit.missingFluidNeighbourFallbacks << '\n'
+          << "unresolved_links=" << boundaryAudit.unresolvedLinks << '\n'
+-         << "max_mass_abs_relative=" << maxMassError << '\n'
++         << "mass_gate_statistic=Neumaier_physical_mass\n"
++         << "max_mass_abs_relative=" << maxCorrectedMassError << '\n'
++         << "legacy_max_mass_abs_relative=" << maxMassError << '\n'
++         << "legacy_mass_gate_PASS=" << (maxMassError < massTolerance) << '\n'
++         << "max_delta_mass_abs_relative=" << maxDeltaMassError << '\n'
++         << "max_mass_ledger_agreement=" << maxMassLedgerAgreement << '\n'
++         << "all_measurements_finite=" << allMeasurementsFinite << '\n' 
+          << "max_density_deviation=" << maxDensityDeviation << '\n'
+          << "max_Mach=" << maxMach << '\n'
+          << "pressure_range_Pa=" << final.pressureMin << ',' << final.pressureMax << '\n'

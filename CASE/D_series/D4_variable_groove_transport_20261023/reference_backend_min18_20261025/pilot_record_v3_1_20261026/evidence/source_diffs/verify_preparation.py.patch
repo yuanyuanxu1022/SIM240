@@ -1,0 +1,26 @@
+--- v3/verify_preparation.py
++++ v3.1/verify_preparation.py
+@@ -39,10 +39,12 @@
+     assert '"execution_contract": contract' in assembly
+     assert 'plan["execution_authorized"] =' not in assembly
+     tests=json.loads((HERE/'evidence/test_summary.json').read_text())
+-    assert tests['status']=='PASS_NO_PDE_TESTS' and not tests['forbidden_backend_modules_loaded']
+-    assert not changed and not old_changed and not review_changed and not previous_changed
++    assert tests['status']=='PASS_TARGETED_NO_SOLVE_TESTS' and not tests['forbidden_backend_modules_loaded']
++    prior_v3=json.loads((REPO/'docs/reports/D4_pilot_v3_review_20261026/review_inputs_sha256.json').read_text())
++    prior_v3_changed=[p for p,v in prior_v3.items() if sha(REPO/p)!=v]
++    assert not changed and not old_changed and not review_changed and not previous_changed and not prior_v3_changed
+     archives=[]
+-    for manifest in (HERE/'evidence').rglob('capture_manifest.json'):
++    for manifest in (ROOT/'pilot_record_v3_20261026/evidence').rglob('capture_manifest.json'):
+         m=json.loads(manifest.read_text());record=manifest.parent
+         if m.get('archive_status')!='ARCHIVE_COMPLETE':continue
+         a=json.loads((record/'archive_manifest.json').read_text())
+@@ -58,6 +60,7 @@
+         source_changed=changed,protected_paths=len(protected),protected_changed=old_changed,
+         terminal_review_inputs=len(terminal),terminal_inputs_changed=review_changed,
+         prior_v2_files=len(previous),prior_v2_changed=previous_changed,
++        prior_v3_files=len(prior_v3),prior_v3_changed=prior_v3_changed,
+         independently_hashed_synthetic_archives=archives,
+         original_plan_execution_false_rows=len(rows),new_template_execution=False,
+         no_PDE_tests=tests,real_backend_end_to_end='NOT_TESTED',

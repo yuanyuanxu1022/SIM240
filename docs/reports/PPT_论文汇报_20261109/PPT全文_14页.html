@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>论文汇报 PPT 全文 · 14 页</title>
+<style>
+  :root{
+    --ink:#1a1a18; --ink2:#5f5e5a; --ink3:#8a8880;
+    --line:#e4e2da; --bg:#faf9f6; --card:#ffffff;
+    --accent:#185FA5; --accent-bg:#E6F1FB;
+    --warn:#993C1D; --warn-bg:#FAECE7;
+    --ok:#0F6E56; --ok-bg:#E1F5EE;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:48px 28px 80px;}
+
+  header.top{border-bottom:1px solid var(--line); padding-bottom:28px; margin-bottom:8px;}
+  header.top h1{font-size:26px; font-weight:600; margin:0 0 10px; letter-spacing:-0.2px;}
+  header.top .sub{font-size:15px; color:var(--ink2); margin:0 0 16px;}
+  .meta{display:flex; flex-wrap:wrap; gap:8px;}
+  .meta span{
+    font-size:12px; color:var(--ink2); background:var(--card);
+    border:1px solid var(--line); border-radius:20px; padding:3px 11px;
+  }
+
+  nav.toc{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:20px 24px; margin:28px 0 40px;
+  }
+  nav.toc h2{font-size:13px; font-weight:600; color:var(--ink2); margin:0 0 14px; letter-spacing:0.5px;}
+  nav.toc ol{margin:0; padding-left:0; list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:4px 32px;}
+  nav.toc li{font-size:14px; padding:3px 0;}
+  nav.toc a{color:var(--ink); text-decoration:none; display:flex; gap:10px; align-items:baseline;}
+  nav.toc a:hover{color:var(--accent);}
+  nav.toc .n{color:var(--ink3); font-size:12px; min-width:22px; font-variant-numeric:tabular-nums;}
+
+  section.slide{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:0; margin:0 0 36px; overflow:hidden;
+  }
+  .slide-head{
+    display:flex; align-items:flex-start; gap:16px;
+    padding:24px 28px 18px; border-bottom:1px solid var(--line);
+  }
+  .page-no{
+    flex:0 0 auto; width:38px; height:38px; border-radius:9px;
+    background:var(--accent-bg); color:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; font-weight:600; font-variant-numeric:tabular-nums;
+  }
+  .slide-title{flex:1 1 auto; min-width:0;}
+  .slide-title h3{font-size:19px; font-weight:600; margin:0 0 4px; line-height:1.4;}
+  .slide-title p{font-size:14px; color:var(--ink2); margin:0; line-height:1.6;}
+  .tag{
+    flex:0 0 auto; font-size:11px; color:var(--ink3);
+    border:1px solid var(--line); border-radius:20px; padding:2px 10px; margin-top:4px; white-space:nowrap;
+  }
+  .tag.changed{color:var(--accent); border-color:var(--accent); background:var(--accent-bg);}
+
+  img.shot{
+    display:block; width:100%; height:auto; background:#fff;
+    border-bottom:1px solid var(--line);
+  }
+
+  .body{padding:22px 28px 26px;}
+
+  .kv{
+    display:grid; grid-template-columns:auto 1fr; gap:6px 18px;
+    font-size:14px; margin:0 0 16px;
+  }
+  .kv dt{color:var(--ink2); white-space:nowrap;}
+  .kv dd{margin:0;}
+
+  .block{margin:0 0 18px;}
+  .block:last-child{margin-bottom:0;}
+  .block h4{
+    font-size:13px; font-weight:600; color:var(--ink2); margin:0 0 8px;
+    letter-spacing:0.3px;
+  }
+  .block p{margin:0 0 8px; font-size:14.5px;}
+  .block p:last-child{margin-bottom:0;}
+  .block ul{margin:0; padding-left:20px; font-size:14.5px;}
+  .block li{margin-bottom:5px;}
+  .block li:last-child{margin-bottom:0;}
+
+  .num{font-variant-numeric:tabular-nums; font-weight:600; color:var(--ink);}
+  .hl{background:#FAEEDA; padding:0 3px; border-radius:2px;}
+
+  .note{
+    font-size:13.5px; line-height:1.7; border-left:3px solid var(--line);
+    padding:2px 0 2px 14px; color:var(--ink2); margin:16px 0 0;
+  }
+  .note.warn{border-left-color:#F0997B; background:var(--warn-bg); padding:12px 14px; border-radius:0 6px 6px 0; color:#4A1B0C;}
+  .note.ok{border-left-color:#9FE1CB; background:var(--ok-bg); padding:12px 14px; border-radius:0 6px 6px 0; color:#04342C;}
+  .note strong{color:inherit;}
+
+  footer.end{
+    text-align:center; font-size:12.5px; color:var(--ink3);
+    border-top:1px solid var(--line); padding-top:24px; margin-top:44px; line-height:1.9;
+  }
+
+  @media (max-width:720px){
+    .wrap{padding:28px 16px 60px;}
+    nav.toc ol{grid-template-columns:1fr;}
+    .slide-head{padding:18px 18px 14px; gap:12px;}
+    .body{padding:18px 18px 20px;}
+    .kv{grid-template-columns:1fr;}
+    .kv dt{font-size:13px; color:var(--ink3);}
+  }
+  @media print{
+    body{background:#fff;}
+    section.slide{break-inside:avoid; border:1px solid #ddd;}
+    nav.toc{break-after:page;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>有限间隙矩形沟槽中局部立方律的双向导度偏差及经验修正</h1>
+  <p class="sub">论文汇报 · 全文 14 页 · 一个可以证明的必然性：局部立方律为什么一定高估，以及它到底松了多少</p>
+  <div class="meta">
+    <span>14 页</span>
+    <span>指纹 e07f421a</span>
+    <span>236,430 字节</span>
+    <span>2026-11-09 20:50 生成</span>
+    <span>数字口径与稿件一致</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <h2>目录</h2>
+  <ol>
+    <li><a href="#p1"><span class="n">01</span>封面</a></li>
+    <li><a href="#p2"><span class="n">02</span>研究问题与对象</a></li>
+    <li><a href="#p3"><span class="n">03</span>这个公式是怎么来的</a></li>
+    <li><a href="#p4"><span class="n">04</span>先证明一件事：高估不是偶然</a></li>
+    <li><a href="#p5"><span class="n">05</span>怎么把这个必然性量出来</a></li>
+    <li><a href="#p6"><span class="n">06</span>问题②　到底高估多少</a></li>
+    <li><a href="#p7"><span class="n">07</span>地板在哪里：真实值夹在两堵墙之间</a></li>
+    <li><a href="#p8"><span class="n">08</span>高估这么多，实际意味着什么</a></li>
+    <li><a href="#p9"><span class="n">09</span>修正：能压到多少，哪里压不动</a></li>
+    <li><a href="#p10"><span class="n">10</span>问题③　两个方向是否等幅</a></li>
+    <li><a href="#p11"><span class="n">11</span>六条结论</a></li>
+    <li><a href="#p12"><span class="n">12</span>四条边界</a></li>
+    <li><a href="#p13"><span class="n">13</span>还需回答的问题</a></li>
+    <li><a href="#p14"><span class="n">14</span>这张数表怎么用</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section class="slide" id="p1">
+  <div class="slide-head">
+    <div class="page-no">01</div>
+    <div class="slide-title">
+      <h3>封面</h3>
+      <p>一个可以证明的必然性：局部立方律为什么一定高估，以及它到底松了多少</p>
+    </div>
+    <div class="tag">提问</div>
+  </div>
+  <img class="shot" src="preview/p1.png" alt="第 1 页 封面">
+  <div class="body">
+    <dl class="kv">
+      <dt>栏目</dt><dd>研究汇报 ｜ 论文内容与结论</dd>
+      <dt>标题</dt><dd><strong>有限间隙矩形沟槽中局部立方律的双向导度偏差及经验修正</strong></dd>
+      <dt>副题</dt><dd>一个可以证明的必然性：局部立方律为什么一定高估，以及它到底松了多少</dd>
+      <dt>落款</dt><dd>汇报人：＿＿＿＿　　日期：2026 年 11 月</dd>
+    </dl>
+    <p class="note">封面用「证明口吻」而不是「测量口吻」，是为了跟第 4 页的定理页对上——先立一个能证明的命题，再谈量出来多少。</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide" id="p2">
+  <div class="slide-head">
+    <div class="page-no">02</div>
+    <div class="slide-title">
+      <h3>研究问题与对象</h3>
+      <p>固定、全充液矩形沟槽中，局部立方律对两个方向导度的描述准不准</p>
+    </div>
+    <div class="tag">提问</div>
+  </div>
+  <img class="shot" src="preview/p2.png" alt="第 2 页 研究问题与对象">
+  <div class="body">
+    <div class="block">
+      <h4>核心研究问题</h4>
+      <p>固定、全充液矩形沟槽中，局部立方律对沿槽与横槽导度的描述与显式 OpenLB 计算相差多少；本研究标定的经验修正 V2 能改善多少？</p>
+    </div>
+    <div class="block">
+      <h4>三块内容</h4>
+      <ul>
+        <li><strong>1　研究对象 · 几何与主方向</strong>：矩形沟槽阵列，周期 P = 240 nm，槽与凸台等宽（槽宽 w = 120 nm）。间隙 h 与槽深 d 为变化量。比较两个主方向：沿槽 Kyy 与横槽 Kxx。</li>
+        <li><strong>2　物理条件 · 算的是哪一种流动</strong>：固定间隙、全充液、单相牛顿液体、壁面无滑移、稳态。即液体已充满沟槽之后的稳态输运，不涉及填充过程、自由表面或接触角。</li>
+        <li><strong>3　被评价公式 · 局部立方律</strong>：把图案化表面当作局部平板组合、用间隙 h 的立方关系估算通流能力的简化式。它未显式解析侧壁与台阶处流动，故两个方向须分别检验。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>这一页留下三个问题</h4>
+      <ul>
+        <li>① 为什么它必然高估？　→ 第 4 页</li>
+        <li>② 到底高估多少？　→ 第 6 页</li>
+        <li>③ 两个方向是否等幅？　→ 第 10 页</li>
+      </ul>
+    </div>
+    <p class="note">底部只埋伏笔、不提前给结论，是为了避免后面「先给答案再解释」的倒叙。</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="p3">
+  <div class="slide-head">
+    <div class="page-no">03</div>
+    <div class="slide-title">
+      <h3>这个公式是怎么来的</h3>
+      <p>只有两步：先从两块平行平板算出 h³/12，再把深浅两区按两种方式拼起来</p>
+    </div>
+    <div class="tag">立论</div>
+  </div>
+  <img class="shot" src="preview/p3.png" alt="第 3 页 公式推导">
+  <div class="body">
+    <div class="block">
+      <h4>第一步　最简单的通道：两块平行平板</h4>
+      <p>液体被压着向前流，速度呈抛物线：中间快，贴壁为零。</p>
+      <ul>
+        <li><strong>1 算流量</strong>：把这条抛物线沿高度积分，得到单位宽度的流量　<em>q = (h³ / 12μ) · (Δp / L)</em></li>
+        <li><strong>2 取名导度</strong>：把驱动项除掉，剩下的就是几何决定的通流能力　<em>K = h³ / 12</em>（单位 m³）</li>
+        <li><strong>3 看那个三次方</strong>：这就是「立方律」三个字的来历——<strong>h 翻一倍 → 流量涨 8 倍</strong></li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>第二步　沟槽是深浅交替的，把两段拼起来——两个方向拼法不同</h4>
+      <ul>
+        <li><strong>沿槽方向：并排走，各走各的（算术平均）</strong>。两条车道同时通车，深区和浅区互不干扰、各自承担流量，所以把两者的导度加起来再平均。<br><em>Kyy = [ (h+d)³ + h³ ] / 24</em></li>
+        <li><strong>横槽方向：接力走，一个接一个（调和平均）</strong>。必须先跨深区、再跨浅区，两段串联在同一条路上，慢的那段拖住整体，所以把阻力相加。<br><em>Kxx = (h+d)³·h³ / { 6[(h+d)³ + h³] }</em></li>
+      </ul>
+    </div>
+    <p class="note warn">「局部」两个字的含义：每一处高度都当成一块独立平板，再按并联或串联拼起来。<strong>拼法本身没错——错在拼的时候，台阶和竖墙这些界面被抹掉了。</strong></p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide" id="p4">
+  <div class="slide-head">
+    <div class="page-no">04</div>
+    <div class="slide-title">
+      <h3>先证明一件事：高估不是偶然</h3>
+      <p>理想连续 Stokes 模型里，局部立方律给出上界、h³/12 给出下界；只有无槽平板（d = 0）时三者合一</p>
+    </div>
+    <div class="tag">立论</div>
+  </div>
+  <img class="shot" src="preview/p4.png" alt="第 4 页 定理页">
+  <div class="body">
+    <div class="block">
+      <h4>两张图的差别，就是误差的来源</h4>
+      <p><strong>局部模型的假设</strong>：每一处高度都是一对独立平行平板——自由流动，无侧壁。</p>
+      <p><strong>真实几何</strong>：液体还要绕过台阶、贴着竖壁走。红标处 = 竖壁与台阶，平行平板模型里不存在这些界面。</p>
+      <p>多出来的界面带来额外黏性剪切与台阶处的速度重分布；真实流动因此多耗散一部分能量，同样压差只能给出更小的通量。</p>
+    </div>
+    <div class="block">
+      <h4>定理（附录 E）：上界与下界</h4>
+      <p><em>h³/12 ≤ Kyy ≤ Kyy<sup>LCL</sup></em>　　<em>h³/12 ≤ Kxx ≤ Kxx<sup>LCL</sup></em>　　d = 0 时三者合一</p>
+    </div>
+    <div class="block">
+      <h4>怎么证（三步）</h4>
+      <ul>
+        <li><strong>1 截面不等式</strong>：对任意高度 H(x)，Cauchy–Schwarz 给出 ∫|∂zU|²dz ≥ 12q²/H³</li>
+        <li><strong>2 能量恒等式</strong>：耗散 D = P·K——通量与耗散是同一个量</li>
+        <li><strong>3 加权平均</strong>：合并两步得 K ≤ ⟨H³⟩/12 与 K ≤ 1/(12⟨H⁻³⟩)，右端正是式（3）</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>这个定理买到了什么</h4>
+      <ul>
+        <li>方向不必再测——只要 d &gt; 0，高估是必然的</li>
+        <li>要测的只剩幅度——定理不给数字</li>
+        <li>修正结构自洽——V2 因子恒小于 1，不破坏上界</li>
+      </ul>
+    </div>
+    <p class="note warn"><strong>边界</strong>：定理针对理想连续 Stokes 问题，不保证 5 nm 离散解的误差，也不给出偏差幅度、方向比偏差的符号或 V2 的准确度。<strong>它解释「为什么偏」，不解释「偏多少」。</strong></p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide" id="p5">
+  <div class="slide-head">
+    <div class="page-no">05</div>
+    <div class="slide-title">
+      <h3>怎么把这个必然性量出来</h3>
+      <p>定理说方向、不给幅度——所以必须把同一几何的真实流动算出来，再逐点对比</p>
+    </div>
+    <div class="tag">立论</div>
+  </div>
+  <img class="shot" src="preview/p5.png" alt="第 5 页 方法与数据规模">
+  <div class="body">
+    <div class="block">
+      <h4>四个方法要素</h4>
+      <dl class="kv">
+        <dt>求解器</dt><dd>OpenLB 格子玻尔兹曼；D3Q19 速度集，单松弛 BGK，τ = 1</dd>
+        <dt>驱动方式</dt><dd>Guo 体力项；等效压差驱动，读稳态通量</dd>
+        <dt>壁面处理</dt><dd>Bouzidi 插值反弹；主、加密、黏度对照 q = 0.5，无一例外</dd>
+        <dt>离散参考</dt><dd>5 nm 网格为主；4 种几何另加密到 2.5 nm</dd>
+      </dl>
+    </div>
+    <div class="block">
+      <h4>数据规模：主集合 + 加密 + 新增</h4>
+      <p><span class="num">18</span> 种几何 · <span class="num">36</span> 条主方向结果（5 nm）　→　<span class="num">+8</span> 条（2.5 nm 加密，4 种几何）　→　<span class="num">+2</span> 条（新增间隙 h = 100 nm）　→　<span class="num">19</span> 种几何 · <span class="num">46</span> 条比较记录</p>
+    </div>
+    <div class="block">
+      <h4>两条必须说清的限制</h4>
+      <ul>
+        <li><strong>5 nm 不是真值</strong>：它是同一离散分辨率下的参考；连续解精度由解析基准、收敛与加密对照另行支撑。</li>
+        <li><strong>加密只覆盖 4 种几何</strong>：沿槽变化 ≤ 1.33 个百分点；横槽最坏 (h,d)=(25,100) 由 16.36% 变 21.76%。</li>
+      </ul>
+    </div>
+    <p class="note warn"><strong>46 条比较记录 ≠ 46 种几何 ≠ 46 次独立验证。</strong>主比较统计的分母仍是 36 条；8 条加密与 2 条新增单独报告。</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide" id="p6">
+  <div class="slide-head">
+    <div class="page-no">06</div>
+    <div class="slide-title">
+      <h3>问题②　到底高估多少</h3>
+      <p>18 种几何、36 条主方向结果全部为正——这不是新发现，是定理该有的样子</p>
+    </div>
+    <div class="tag">结果</div>
+  </div>
+  <img class="shot" src="preview/p6.png" alt="第 6 页 偏差幅度">
+  <div class="body">
+    <div class="block">
+      <h4>沿槽方向 Kyy　<span style="color:var(--ok);font-weight:600;">18 / 18 高估</span></h4>
+      <p>相对 5 nm 离散参考的偏差范围：<span class="hl"><span class="num">+10.30%</span> → <span class="num">+204.85%</span></span></p>
+      <ul>
+        <li>最大偏差处：h = 50 nm，d = 120 nm——模型值约为参考的 3.05 倍</li>
+        <li>最小偏差处：h = 125 nm，d = 25 nm——高估幅度最温和的点</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>横槽方向 Kxx　<span style="color:var(--ok);font-weight:600;">18 / 18 高估</span></h4>
+      <p>相对 5 nm 离散参考的偏差范围：<span class="hl"><span class="num">+8.11%</span> → <span class="num">+54.19%</span></span></p>
+      <ul>
+        <li>最大偏差处：h = 125 nm，d = 120 nm——模型值约为参考的 1.54 倍</li>
+        <li>最小偏差处：h = 25 nm，d = 25 nm——高估幅度最温和的点</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>参数趋势（稿内 §4.2）</h4>
+      <p>固定间隙时，沿槽偏差随 d/w 增大而增大；但加入 h = 25 nm 后不再单调——d = 100 nm 时沿槽偏差由 h = 25 的 139.14% 升到 h = 50 的 154.24%，再降到 144.95% 与 108.38%。</p>
+    </div>
+    <p class="note">口径：偏差 =（局部立方律导度 / OpenLB 离散导度 − 1）× 100%，正值表示公式偏高；每方向 18 条、合计 36 条。本页范围只属于这 18 种几何与 5 nm 参考，不代表连续参数域；8 条加密与 2 条新增单列，不并入统计。</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide" id="p7">
+  <div class="slide-head">
+    <div class="page-no">07</div>
+    <div class="slide-title">
+      <h3>地板在哪里：真实值夹在两堵墙之间</h3>
+      <p>上界是天花板（原公式）；把槽腔封死、只留 h 厚贯通层，就得到地板 h³/12。两堵墙之间才是真实值</p>
+    </div>
+    <div class="tag">结果</div>
+  </div>
+  <img class="shot" src="preview/p7.png" alt="第 7 页 可行区间">
+  <div class="body">
+    <dl class="kv">
+      <dt>地板</dt><dd><strong>K ≥ h³/12</strong>　槽腔封死后剩下的那层——只保留贯通 h 层的平行平板通流，是最保守的可容许状态。</dd>
+      <dt>天花板</dt><dd><strong>K ≤ K<sup>LCL</sup></strong>　原公式（附录 E 上界）——把槽深整个当成完全贯通的平板层，所以只会偏高。</dd>
+      <dt>两堵墙差多远</dt><dd>r = (h + d)/h。沿槽 <strong>(1 + r³)/2</strong>；横槽 <strong>2r³/(1 + r³) &lt; 2</strong>。r = 5 时得 63.00 与 1.984。<strong>横槽无论槽多深，上界最多是地板的 2 倍；沿槽没有这个上限——所以沿槽才松到 63 倍。</strong></dd>
+      <dt>实测站在哪</dt><dd>不是中点。46 条记录全在区间内；两方向各 <strong>11/18</strong> 个几何更靠地板。平均：地板低估 58.17/23.84%、原公式高估 88.85/30.63%（沿槽/横槽）。</dd>
+    </dl>
+    <p class="note warn">区间能说什么：它<strong>不含槽宽 w</strong>，所以解释不了宽度依赖；横槽区间窄（≤2 倍）也<strong>不等于预测准</strong>——横槽实测仍有 +54.19% 的高估。<strong>区间是理论约束与比较基线，不是点预测。</strong>本页由式（3）与 h³/12 直接化简，未新增计算。</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide" id="p8">
+  <div class="slide-head">
+    <div class="page-no">08</div>
+    <div class="slide-title">
+      <h3>高估这么多，实际意味着什么</h3>
+      <p>把 m³ 换成人能感知的数：这块沟槽相当于多高的缝、同样压差下流量偏大几倍</p>
+    </div>
+    <div class="tag">结果</div>
+  </div>
+  <img class="shot" src="preview/p8.png" alt="第 8 页 工程含义">
+  <div class="body">
+    <div class="block">
+      <h4>导度换算成「相当于多高的光滑缝」</h4>
+      <p>平板关系 K = h³/12，反过来 H = (12K)<sup>⅓</sup>；75 nm 平板算回去正好 75.0 nm，可当校验。</p>
+      <dl class="kv">
+        <dt>平板 75 nm</dt><dd><span class="num">75.0 nm</span></dd>
+        <dt>沿槽 实际</dt><dd><span class="num">105.7 nm</span></dd>
+        <dt>沿槽 公式</dt><dd><span class="num">142.5 nm</span></dd>
+        <dt>横槽 实际</dt><dd><span class="num">81.1 nm</span></dd>
+        <dt>横槽 公式</dt><dd><span class="num">92.1 nm</span></dd>
+      </dl>
+      <p>真实几何最高处 h+d = 175 nm、最低处 75 nm。沿槽实际只兑现到 106 nm，公式以为兑现到 142 nm。</p>
+      <p><strong>差的 36 nm 就是台阶竖墙的代价</strong>：公式几乎全额兑现了深槽，实际没有。横槽只差 11 nm（81 对 92），串联机制下最薄那段本来就在卡着。</p>
+    </div>
+    <div class="block">
+      <h4>同样压差下　公式算出的流量偏大</h4>
+      <p>基准几何 h = 75、d = 100 nm；倍数 = 1 + 偏差。</p>
+      <ul>
+        <li>沿槽　<span class="num">× 2.45</span>（偏差 +144.95%）</li>
+        <li>横槽　<span class="num">× 1.47</span>（偏差 +46.51%）</li>
+        <li>全 18 个几何的平均：沿槽 ×1.89、横槽 ×1.31</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>同样流量下　公式以为的压力只要这么多</h4>
+      <p>把偏差翻过来：1 ÷（1 + 偏差）</p>
+      <ul>
+        <li>沿槽　<span class="num">41%</span>（少估 59%）</li>
+        <li>横槽　<span class="num">68%</span>（少估 32%）</li>
+      </ul>
+      <p>含义：公式偏乐观，照它估的推动条件会偏松。</p>
+    </div>
+    <p class="note">一句话：高估的是「过流能力」，所以流量跟着一起高估——公式让这块图案看起来比实际好流。<br>口径：基准几何 h=75/d=100 nm、Δx=5 nm；流量倍数 = 1+ε、压力比 = 1/(1+ε)，<strong>是同一组数的两种读法，不是实测流量差</strong>。单相全充液稳态，不涉及填充快慢。</p>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide" id="p9">
+  <div class="slide-head">
+    <div class="page-no">09</div>
+    <div class="slide-title">
+      <h3>修正：能压到多少，哪里压不动</h3>
+      <p>答案是能压下来——沿槽均值从 88.85% 降到 6.40%，但最坏点仍在 10.50% / 18.71%</p>
+    </div>
+    <div class="tag">结果</div>
+  </div>
+  <img class="shot" src="preview/p9.png" alt="第 9 页 V2 修正">
+  <div class="body">
+    <div class="block">
+      <h4>修得动的地方（沿用本研究标定的 V2 系数，不重新拟合）</h4>
+      <ul>
+        <li><span class="num">35 / 36</span>　条绝对偏差减小</li>
+        <li><span class="num">88.85% → 6.40%</span>　沿槽平均绝对偏差</li>
+        <li><span class="num">30.63% → 4.42%</span>　横槽平均绝对偏差</li>
+      </ul>
+      <p>但注意选点：h ≥ 50 nm 子集的横槽最大偏差只有 6.92%（15 点），全 18 点是 18.71%。<strong>6.92% 不能当成适用范围承诺。</strong></p>
+    </div>
+    <div class="block">
+      <h4>修不动的地方（两处例外，都不是小数点级别的差别）</h4>
+      <ul>
+        <li><strong>① 最坏点仍在</strong>：残差最大 10.50%（沿槽）/ 18.71%（横槽），改善只是把最坏从 204.85% 压到 18.71%，不是压进噪声。</li>
+        <li><strong>② 换参考就翻案</strong>：(h,d)=(25,100) 横槽：5 nm 参考下 16.36%→18.71%（变差），2.5 nm 参考下 21.76%→14.94%（变好）。<strong>结论跟着参考网格走。</strong></li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>为什么修不满：三重原因分不开</h4>
+      <p>F 只含 d/w、不含 h，而残差随 h 变化。是模型缺项、参数估计，还是参考误差？现有记录分不开其中任何一项。</p>
+      <p>另有硬约束：<strong>9 个标定几何与 9 个扩展几何恰好对应两组不同构建程序，构建差异与几何效应完全重合，无法分离。</strong>扩展数据在选型时已可见，残差只能作回顾性描述，不构成独立预测精度。</p>
+    </div>
+    <p class="note">下一页：修正只能压低「多少」，压不回「朝哪」——两方向不等幅的后果，才是更难修的。</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide" id="p10">
+  <div class="slide-head">
+    <div class="page-no">10</div>
+    <div class="slide-title">
+      <h3>问题③　两个方向是否等幅</h3>
+      <p>答案是不等。基准几何 h = 75 nm、d = 100 nm：错的不只是「多少」，还有「朝哪」</p>
+    </div>
+    <div class="tag">结果</div>
+  </div>
+  <img class="shot" src="preview/p10.png" alt="第 10 页 各向异性">
+  <div class="body">
+    <div class="block">
+      <h4>方向比 A = Kyy / Kxx（同一几何、同一参考下两个比值）</h4>
+      <p>OpenLB 离散参考 <span class="num">2.21</span>　　局部立方律原公式 <span class="num">3.70</span></p>
+      <p><strong>模型高估约 67%</strong>——相对增幅，不是百分点。仅此基准几何，不推广到其他几何。</p>
+    </div>
+    <div class="block">
+      <h4>45° 驱动下重建的平均流向（同一线性张量关系，两组主导度各自重建）</h4>
+      <p>原公式重建与 OpenLB 重建两条线夹角 <span class="num">9.20°</span>（示意，非按比例）。</p>
+    </div>
+    <div class="block">
+      <h4>这意味着什么</h4>
+      <p>降阶模型若只用单一系数、或沿用局部立方律给出的各向异性，45° 方向上的通量会被指到差 <strong>9.2°</strong> 的方向。<strong>填充前沿位置与困气位置都依此确定</strong>——这是本文最可操作的一条后果。</p>
+    </div>
+    <p class="note warn"><strong>边界</strong>：方向由同一线性张量关系重建，不是实验测得的流向误差；9.20° 是角差，不是填充预测；动态挤压与填充过程本文未验证，不对其作断言。</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide" id="p11">
+  <div class="slide-head">
+    <div class="page-no">11</div>
+    <div class="slide-title">
+      <h3>六条结论</h3>
+      <p>三个问题答完，连同立论与两条补充对照，收成六条</p>
+    </div>
+    <div class="tag changed">本次补齐</div>
+  </div>
+  <img class="shot" src="preview/p11.png" alt="第 11 页 六条结论">
+  <div class="body">
+    <div class="block">
+      <h4>一　定位</h4>
+      <p>固定周期与槽宽的全充液矩形沟槽中，评价局部立方律的双向偏差、各向异性后果与本研究标定的 V2 修正的表现。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 不是首创，是这一族几何上的配套定量评价。</p>
+    </div>
+    <div class="block">
+      <h4>二　原公式偏差</h4>
+      <p>36 条 5 nm 主方向结果全部高估：沿槽 <span class="num">+10.30%</span> 至 <span class="num">+204.85%</span>，横槽 <span class="num">+8.11%</span> 至 <span class="num">+54.19%</span>（Δx = 5 nm）。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 方向由附录 E 定理保证；幅度是这 18 种几何的实测范围。</p>
+    </div>
+    <div class="block">
+      <h4>三　基准各向异性</h4>
+      <p>h=75、d=100 时，OpenLB 比 <span class="num">2.21</span>、原公式 <span class="num">3.70</span>，相对高估约 <span class="num">67%</span>；45° 驱动流向差 <span class="num">9.20°</span>。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 67% 是相对增幅、仅此基准几何；两个主值与比值都须检查。</p>
+    </div>
+    <div class="block">
+      <h4>四　V2 回顾性改善</h4>
+      <p><span class="num">35/36</span> 条改善；沿槽平均绝对偏差 <span class="num">88.85%→6.40%</span>，横槽 <span class="num">30.63%→4.42%</span>；最坏 <span class="num">10.50% / 18.71%</span>。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 回顾性比较，非独立预测；h=25、d=100 横槽的改善判断随参考网格改变。</p>
+    </div>
+    <div class="block">
+      <h4>五　新增间隙与静态接入</h4>
+      <p>补算 h=100 nm（不在原标定集，沿用本研究标定的 V2 系数、未重拟合），数值按沿槽/横槽排：原公式 <span class="num">+126.62%/+49.43%</span>，V2 <span class="num">−2.03%/+4.39%</span>；方向比 A 偏差 <span class="num">−6.15%</span>；静态接入后出口流量降 <span class="num">56.77%/30.14%</span>。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 称「新增间隙固定公式对照」、不称盲测；程序间一致 ≠ 导度准确；不是动态挤压、载荷或填充时间的证据。</p>
+    </div>
+    <div class="block">
+      <h4>六　理论上界与机制诊断</h4>
+      <p>理想连续模型中 <span class="num">h³/12 ≤ K ≤ 原公式</span>，仅 d=0 三者合一；46 条记录（36＋8＋2）均落在界内。两宽度组的梯度诊断给出方向性结构。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 上界只对连续模型；机制诊断限于指定基线、分解与几何；46 条不是 46 次独立验证。</p>
+    </div>
+    <p class="note ok">本页为 2026-11-09 晚由五条补为六条：新增第五条（原 PPT 无对应），原「理论上界」并入第六条。</p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide" id="p12">
+  <div class="slide-head">
+    <div class="page-no">12</div>
+    <div class="slide-title">
+      <h3>四条边界：六条结论各自能说到哪一步</h3>
+      <p>不是结果不可信，而是把可说的范围划清楚</p>
+    </div>
+    <div class="tag">收束</div>
+  </div>
+  <img class="shot" src="preview/p12.png" alt="第 12 页 四条边界">
+  <div class="body">
+    <div class="block">
+      <h4>① 5 nm 是离散参考，不是真值</h4>
+      <p>最薄间隙 h=25 nm 在该网格下 h/Δx = 5（壁面半格插值）。加密到 2.5 nm 后，沿槽变 <strong>−0.386%</strong>、横槽变 <strong>−4.431%</strong>；0.625 nm 的核查因内存限制未完成。连续解误差至今未定。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 所以说的是「相对 5 nm 参考的偏差」，不是「真实误差」。</p>
+    </div>
+    <div class="block">
+      <h4>② V2 是回顾性比较，不是独立预测</h4>
+      <p>9 个标定几何与 9 个扩展几何恰好对应两组不同构建程序；扩展数据在选型时已可见。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ V2 的精度主张只到「在标定几何族内回顾性残差」，不构成盲测。</p>
+    </div>
+    <div class="block">
+      <h4>③ S4 薄隙网格控制未通过</h4>
+      <p>h=30 nm、d=80 nm 的薄隙网格加密控制残差 <strong>1.328%</strong>，超过 1% 门槛。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ 历史 FAIL 原样保留，不改写为 PASS；它与主地图的 h=25、d=100 是两个几何。</p>
+    </div>
+    <div class="block">
+      <h4>④ w 恒定，d/w 与 d 完全共线</h4>
+      <p>w 恒为 120 nm，d/w 只能取 0.208 / 0.417 / 0.625 / 0.833 / 1.000，与 d 严格同步。</p>
+      <p style="color:var(--ink2);font-size:14px;">→ V2 的 F(d/w) 在本文数据里与「任何只含 d 的函数」不可区分；<strong>w 的作用从未被检验。</strong></p>
+    </div>
+    <p class="note">下一页：边界说的是「不能说」，还有一类是「还不知道」——三类分开列，才知道下一步往哪走。</p>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="slide" id="p13">
+  <div class="slide-head">
+    <div class="page-no">13</div>
+    <div class="slide-title">
+      <h3>还需回答的问题</h3>
+      <p>三类分法：能答但受噪声限 / 设计上分不开 / 必须新算</p>
+    </div>
+    <div class="tag">开放</div>
+  </div>
+  <img class="shot" src="preview/p13.png" alt="第 13 页 三类疑问">
+  <div class="body">
+    <div class="block">
+      <h4>甲　受分辨率所限（能答，但答案本身带噪声）</h4>
+      <ul>
+        <li><strong>h = 25 为什么反常</strong>：d=100 时沿槽偏差 139%→154%→145%→108%，非单调。h=25 仅 h/Δx=5，疑为网格偏置，未证实。</li>
+        <li><strong>真实误差到底多大</strong>：2.5 nm 显示横槽 −4.43%；0.625 nm 因内存未完成。连续解误差始终未定。</li>
+        <li><strong>V2 残差为何随 h 变</strong>：因子缺 h、参数估计、参考误差三者混在一起，现有记录分不开。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>乙　设计上分不开（补算也救不回，只能声明）</h4>
+      <ul>
+        <li><strong>构建与几何完全重合</strong>：9 标定全属旧构建、9 扩展全属新构建。分离二者需交叉设计，现有数据不可能。</li>
+        <li><strong>w 的作用从未检验</strong>：w 恒 120 nm，d/w 与 d 共线——F(d/w) 在本数据里不可辨识。</li>
+        <li><strong>其他图案未覆盖</strong>：其他占空比、其他槽宽、图案交界均无数据。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>丙　必须新算（这是下一步的入口）</h4>
+      <ul>
+        <li><strong>上界为何松紧悬殊</strong>：沿槽松到 3.05 倍、横槽只松 1.54 倍。定理只给方向不给幅度——这是最值得追的一条。</li>
+        <li><strong>耗散究竟在哪产生</strong>：侧壁剪切？台阶再分布？需局部耗散分解，现有结果不能判定。</li>
+        <li><strong>9.2° 真的影响工艺吗</strong>：需要动态挤压或填充模型验证，本文范围外。</li>
+      </ul>
+    </div>
+    <p class="note">汇报口径：甲类说「知道，但受噪声限」；乙类说「设计上分不开，已如实声明」；丙类说「这就是下一步」。<strong>三类都不辩解，只陈述事实。</strong></p>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="slide" id="p14">
+  <div class="slide-head">
+    <div class="page-no">14</div>
+    <div class="slide-title">
+      <h3>这张数表怎么用：三个能、四个前提、五条红线</h3>
+      <p>等效缝高把导度翻译成厚度——但它只能翻译已有结果，不能新增结果</p>
+    </div>
+    <div class="tag">附录</div>
+  </div>
+  <img class="shot" src="preview/p14.png" alt="第 14 页 数表使用条件">
+  <div class="body">
+    <div class="block">
+      <h4>能用来做这三件事</h4>
+      <ul>
+        <li><strong>① 估流量</strong>　同压差下　Q = Q<sub>平板</sub> × (H/h)³</li>
+        <li><strong>② 估压差</strong>　同流量下　Δp = Δp<sub>平板</sub> × (h/H)³</li>
+        <li><strong>③ 看方向差</strong>　两个 H 相除，三次方就是各向异性比</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h4>用之前必须成立的四个前提</h4>
+      <dl class="kv">
+        <dt>物理</dt><dd>单相／全充液／稳态／无自由面</dd>
+        <dt>流体</dt><dd>牛顿、恒黏度（黏度只作比例因子）</dd>
+        <dt>图案</dt><dd>w=120 nm、P=240 nm、占空比 0.5 固定</dd>
+        <dt>格点</dt><dd>(h,d) 落在已算格点上；<strong>插值＝猜测</strong></dd>
+      </dl>
+    </div>
+    <div class="block">
+      <h4>明确不能用的五条红线</h4>
+      <ul>
+        <li><strong>① 不能说「更准」</strong>：H 与 K 一一对应、信息量完全相同。让数好懂，不让数变准。</li>
+        <li><strong>② 不能算填充</strong>：填充速度、前沿、困气属瞬态两相，本表是定常单相。</li>
+        <li><strong>③ 不能换图案</strong>：w 全程固定 120 nm，d/w 与 d 共线，「w 的影响」从未检验。</li>
+        <li><strong>④ 不能当真实误差</strong>：5 nm 是离散参考、不是连续解真值；h=25 仅 h/Δx=5。</li>
+        <li><strong>⑤ 不能两方向平均</strong>：平均值不对应任何物理流道。分开报，或按流向投影。</li>
+      </ul>
+    </div>
+    <p class="note warn">一句话红线：<strong>H 只能「翻译」已有结果，不能「新增」结果。</strong><br>基准几何 h=75 / d=100：沿槽 105.67 nm（2.80×）　横槽 81.12 nm（1.27×）</p>
+  </div>
+</section>
+
+<footer class="end">
+  SIM240 ｜ 第一篇论文汇报　·　14 页<br>
+  数字口径与 <code>PAPER1_conclusions_current_20261109.md</code>（六条版）一致，一字不改<br>
+  第 11 页为 2026-11-09 晚由五条补为六条；第 12 页标题同步
+</footer>
+
+</div>
+</body>
+</html>

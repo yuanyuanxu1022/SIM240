@@ -1,0 +1,114 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "revision": "v3_refined_mesh_remedy",
+  "derived_from": "paper1_fvm_stokes_reference_v2 (untouched)",
+  "refined_dx_nm": 0.15625,
+  "cases": [
+    {
+      "case_id": "h25_d100_T_refined",
+      "h_nm": 25,
+      "d_nm": 100,
+      "w_nm": 120,
+      "P_nm": 240,
+      "Ly_nm": 1,
+      "dx_nm": 0.15625,
+      "direction": "T",
+      "level": "refined",
+      "nu_m2_s": 1e-06,
+      "rho_kg_m3": 1000,
+      "acceleration_m_s2": 100000.0,
+      "expected_cells": 737280,
+      "expected_V_m3": 1.8000000000000002e-23,
+      "Aplan_m2": 2.4e-16,
+      "equation": "vector_Stokes",
+      "transient": false,
+      "advection": false,
+      "tolerance_tightened": false,
+      "seed_from": "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h25_d100_T_fine",
+      "seed_time": "25672.5",
+      "seed_method": "mapFields -consistent -mapMethod interpolate",
+      "seed_source_receipt_sha256": "94e8bf79312a63af6759b3aeee374da531268fab8c4b298782bc6af87e5dc24b",
+      "seed_note": "Initial field only.  Steady Stokes has a unique solution; the initial field sets the iteration count, not the answer.  All acceptance metrics are recomputed from the refined-mesh field.",
+      "start_time": 0.5,
+      "end_time_cap": 400000,
+      "wall_clock_seconds": 86400,
+      "exit_trigger": {
+        "p": "1e-10",
+        "U": "1e-10",
+        "v": "1e-10"
+      },
+      "flat_zero_component_exception": false,
+      "execution_authorized": false,
+      "solver_executed": false,
+      "purpose": "mesh remedy for the v2 fine-level power-balance failure",
+      "supersedes": "h25_d100_T_fine"
+    }
+  ],
+  "sha256": {
+    "prepared/h25_d100_T_refined/0/U": "08e3860035c1464fcadbaf899d7d1ac57735c800aaffc08ecc148ecb156fb46b",
+    "prepared/h25_d100_T_refined/0/p": "f9e024ec6439666a160cb6744d0999b932e9c33795942cbc96bca826916d1cd4",
+    "prepared/h25_d100_T_refined/case.json": "310c5aeebc40b1ae2895e1d8625902b1075c18ef22ecaeaa0430f6014f419678",
+    "prepared/h25_d100_T_refined/constant/referenceProperties": "31992afbac6bb21bde98d36f2cd60f30c922e2f0d460875320b4336129e28655",
+    "prepared/h25_d100_T_refined/system/blockMeshDict": "86d3b591151dcdd4862f9c9b9271ec98352cdf7a73e20ad0ebfdf57aaab8601b",
+    "prepared/h25_d100_T_refined/system/controlDict": "e3ffd3156557507aa22e04cf5e477154b0a06cec760bbd823824ecea85ae06cb",
+    "prepared/h25_d100_T_refined/system/fvSchemes": "4ff152fddffa294811cb2b0c585b0422a6a889adf1b6c083d65e3e733ec6979e",
+    "prepared/h25_d100_T_refined/system/fvSolution": "c9b48d2b951ebf6b034cb54b9c4cb0a85a37087cd38a368017a6e2eef263f9ff"
+  },
+  "solver_path": "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/bin/paper1StokesReference",
+  "solver_sha256": "73b1f633b96f0074abcd30358e83b57790f00c29aef1ef493f08345f3453f352",
+  "acceptance_rule": {
+    "version": "v2.1_stopping_fix",
+    "name": "full_fields_v2_1",
+    "declared_residuals": {
+      "normal": {
+        "p": 1e-10,
+        "U": 1e-10,
+        "v": 1e-10
+      },
+      "tight": {
+        "p": 1e-11,
+        "U": 1e-11,
+        "v": 1e-11
+      }
+    },
+    "branches": {
+      "groove": {
+        "controls": {
+          "P": [
+            "v"
+          ],
+          "T": [
+            "Ux",
+            "Uz",
+            "p"
+          ]
+        }
+      },
+      "flat_P": {
+        "controls": [
+          "v"
+        ]
+      },
+      "flat_T": {
+        "controls": [
+          "Ux",
+          "p"
+        ],
+        "negligible_ratio": 1e-09,
+        "flat_K_percent": 0.1,
+        "flat_profile_percent": 0.1
+      }
+    },
+    "iteration_cap_acceptance": true,
+    "residual_comparison": "strict_less_than",
+    "parser": "fixed_solver_first_solve_per_outer_cycle",
+    "zero_exception_scope": "d=0 and direction=T only"
+  },
+  "thresholds": {
+    "power_balance_percent": 0.1,
+    "section_spread_percent": 0.1,
+    "section_vs_volume_percent": 0.1,
+    "grid_refined_fine_percent": 0.5
+  },
+  "note": "Acceptance ceilings are inherited from v2 unchanged.  A refined case is accepted only if power_balance_percent <= 0.1 %, the same ceiling that h25_d100_T_fine failed."
+}

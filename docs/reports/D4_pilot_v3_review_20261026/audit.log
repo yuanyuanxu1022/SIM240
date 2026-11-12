@@ -1,0 +1,67 @@
+{
+  "source_lock": {
+    "count": 356,
+    "mismatches": []
+  },
+  "v3_artifacts": {
+    "count": 318,
+    "mismatches": []
+  },
+  "v2_package": {
+    "count": 359,
+    "mismatches": []
+  },
+  "protected_history": {
+    "count": 4233,
+    "mismatches": []
+  },
+  "earlier_terminal_inputs": {
+    "count": 138,
+    "mismatches": []
+  },
+  "kind_counterexample": {
+    "method": "in-memory metadata injection into saved SYNTHETIC capture only",
+    "changed_field": "capture_manifest.kind",
+    "replacement": "UNKNOWN_REVIEW_INJECTION",
+    "observed": {
+      "status": "CAPTURE_BINDING_PASS",
+      "kind": "UNKNOWN_REVIEW_INJECTION",
+      "all_work_files_hashed": 22
+    },
+    "expected": "reject unknown/inconsistent kind before choosing real or synthetic validation",
+    "files_changed": false,
+    "real_record_or_approval_created": false
+  },
+  "proposed_paths": {
+    "work_mount": {
+      "path": "/run/user/1000/sim240_pilot_n8_work_20261026",
+      "exists": false,
+      "nearest_existing_ancestor": "/run/user/1000",
+      "ancestor_mount": {
+        "mount_id": "2507",
+        "device": "0:74",
+        "mount_point": "/run/user/1000",
+        "filesystem": "tmpfs",
+        "st_dev": 74
+      },
+      "ancestor_writable": true,
+      "ancestor_available_bytes": 3329331200
+    },
+    "record_parent": {
+      "path": "/home/dell/yuanyuanxu/SIM240_runtime_records/reference_pilot_n8_20261026",
+      "exists": false,
+      "nearest_existing_ancestor": "/home/dell/yuanyuanxu",
+      "ancestor_mount": {
+        "mount_id": "33",
+        "device": "259:2",
+        "mount_point": "/",
+        "filesystem": "ext4",
+        "st_dev": 66306
+      },
+      "ancestor_writable": true,
+      "ancestor_available_bytes": 361814294528
+    }
+  },
+  "MemAvailable_bytes": 18028695552,
+  "status": "REVIEW_HOLD_ONE_SCHEMA_FIX_AND_VOLUME_PREPARATION"
+}

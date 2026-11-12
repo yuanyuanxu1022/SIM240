@@ -1,0 +1,12 @@
+--- current_failed_candidate/urv_reference.cpp
++++ proposed_next_candidate/urv_reference.cpp
+@@ -549,7 +549,8 @@
+       const T pressure = converter.getPhysPressure(
+         (rho - 1.0) / descriptors::invCs2<T, DESCRIPTOR>());
+       ++value.fluidNodes;
+-      value.volume += dx * dx * dx;
++      const volatile T roundedCellVolume = dx * dx * dx;
++      value.volume += roundedCellVolume;
+       value.mass = mrp::legacyMass(rho, rhoPhys, dx, value.mass);
+       correctedMass.add(rho * rhoPhys * dx * dx * dx);
+       densityDelta.add(rho - 1.0);

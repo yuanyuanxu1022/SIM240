@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design for Emerging and Nanoscale Manufacturing: Nanoimprint lithography process modeling</title>
+  <meta name="description" content="Nanoimprint lithography process modeling">
+  <meta name="author" content="Hayden Taylor">
+  <link rel="icon" href="/images/hktfavicon.ico">
+  <link rel="stylesheet" href="/assets/css/site.css?v=1793073016">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header class="titlepanel">
+      <h1 class="panel-title">Nanoimprint<br>lithography<br>process modeling</h1>
+    </header>
+    
+    <div class="banner">
+      
+        
+        <img src="/images/hkt_research_image_12.jpg" width="240" height="240" style="width: 33.333333333333336%" alt="">
+        
+      
+        
+        <img src="/images/hkt_research_image_3.jpg" width="240" height="240" style="width: 33.333333333333336%" alt="">
+        
+      
+        
+        <img src="/images/hkt_research_image_14.jpg" width="240" height="240" style="width: 33.333333333333336%" alt="">
+        
+      
+    </div>
+    
+    <nav class="sitenav" aria-label="Main">
+      
+<ul>
+  
+    
+    <li><a href="/">Home</a></li>
+  
+    
+    <li><a href="/people.html">People</a></li>
+  
+    
+    <li><a href="/research.html">Research</a></li>
+  
+    
+    <li><a href="/publications.html">Publications</a></li>
+  
+    
+    <li><a href="/education.html">Education</a></li>
+  
+    
+    <li><a href="/software.html">Software</a></li>
+  
+    
+    <li><a href="/OpenCAL.html">OpenCAL</a></li>
+  
+    
+    <li><a href="/how-we-work.html">How we work</a></li>
+  
+    
+    <li><a href="/contact.html">Contact</a></li>
+  
+</ul>
+
+    </nav>
+    <main id="main" tabindex="-1">
+      <h2>Contact mechanics in nanoscale patterning</h2>
+<p>Patterning materials at the micrometer and nanometer scales is essential to semiconductor manufacturing, displays and flexible electronics. As features shrink, projection photolithography becomes increasingly diffraction-limited and expensive, and many patterning processes instead rely on mechanical contact to deform a material: nanoimprint lithography, gravure and flexographic printing, and transfer processes that exploit rate-dependent adhesion. What these processes have in common is that the patterns are many orders of magnitude larger in lateral extent than the thickness of the film being patterned. That makes them well suited to Green’s-function and boundary-element methods, which describe a surface or film by its deformation in response to a localized load, and which make it computationally affordable to simulate chip-scale and larger designs.</p>
+<h2>Nanoimprint lithography (NIL) process modeling</h2>
+<p>In NIL, a nanopatterned stamp or template deforms a thermoplastic polymer or UV-curing resin to transfer a design to a substrate such as a silicon wafer. NIL can lower patterning costs substantially, but it exhibits strong, systematic pattern dependences: templates with large or varied feature sizes, shapes or densities deflect elastically during imprinting, and the resulting variations in residual-layer thickness, incomplete cavity filling and etch depth propagate to critical device dimensions. Without a predictive model, process development has been highly experimental, and a systematic, layout-driven defect could mean remaking a template at a cost often exceeding $100K.</p>
+<p>Our simulation approach borrows analytical point-load response functions of the kind developed for contact problems in tribology. The stamp is represented by its elastic response to a localized load and the resist by thin-film viscous flow, and an iterative algorithm finds the evolving contact-pressure distribution between them, from which the deformed resist shape follows directly. The method is at least 1000 times faster than finite-element simulation and lets complex chip-scale layouts be abstracted simply, so that numerical simulation becomes a practical way to evaluate a layout for NIL. The framework has been extended to capture the surface tension of the imprinted material, directional effects in roller-based imprint, and droplet-dispensed UV-NIL at feature, droplet and template scales.</p>
+<p>The same mechanics supports design. Backside grooves can raise a stamp’s bending compliance to absorb wafer nanotopography, and a computational framework for two-layered elastic stamps (a <em>Journal of Applied Physics</em> Featured Article) shows how stamp architecture can equalize residual-layer thickness while conforming to rough or curved substrates; the same framework applies to microcontact printing and to manufacturable, micropatterned dry adhesives. A simple razor-blade test measures the energy needed to demold a stamp.</p>
+<h2>Simprint Nanotechnologies</h2>
+<p>The simulation technique is the subject of two issued US patents and received the 2009 Software in Design Innovation Award from the Institution of Engineering and Technology. It was spun out in 2010 as Simprint Nanotechnologies, whose software was used by Canon and by Toshiba Memory (now Kioxia) to guide the early development of NIL processes for manufacturing NAND flash memory. Interest in NIL has since grown again for producing metasurfaces, metalenses and optical waveguides for augmented- and virtual-reality hardware, where spatially varied nanopatterns make fast process modeling especially valuable.</p>
+<p class="caption">Banner: simulated pattern-dependent residual-layer thickness and stamp deflection for nanoimprint test layouts.</p>
+<p><strong>Key publications</strong></p>
+<p>[<a href="publications.html#J28">J28</a>] <strong>H.K. Taylor</strong> and R.D. O’Rorke, “A computational design framework for two-layered elastic stamps in nanoimprint lithography and microcontact printing”, <em>Journal of Applied Physics</em>, vol. 125, 094901, 2019. <a href="https://doi.org/10.1063/1.5081495" rel="noopener" target="_blank">doi: 10.1063/1.5081495</a>. Selected as a Featured Article: see the <a href="https://doi.org/10.1063/1.5097053" rel="noopener" target="_blank">AIP Scilight</a> about the work.</p>
+<p>[<a href="publications.html#J14">J14</a>] <strong>H.K. Taylor</strong>, “Simulation and mitigation of process and pattern dependencies in nanoimprint lithography”, <em>Journal of Photopolymer Science and Technology</em>, vol. 24, no. 1, pp. 47-55, 2011. <a href="http://dx.doi.org/10.2494/photopolymer.24.47" rel="noopener" target="_blank">doi:10.2494/photopolymer.24.47</a> (Accompanying an invited <a href="./pdf/Taylor_PST_2011_presentation.pdf" rel="noopener" target="_blank">talk</a> at the Photopolymer Science and Technology Conference, Chiba, Japan, June 2011).</p>
+<p>[<a href="publications.html#J12">J12</a>] <strong>H.K. Taylor</strong>, D.S. Boning, and C. Iliescu, “A razor-blade test of the demolding energy in a thermoplastic embossing process”, <em>Journal of Micromechanics and Microengineering</em>, vol. 21, 067002, 2011. <a href="http://dx.doi.org/10.1088/0960-1317/21/6/067002" rel="noopener" target="_blank">doi:10.1088/0960-1317/21/6/067002</a></p>
+<p>[<a href="publications.html#J11">J11</a>] <strong>H.K. Taylor</strong>, K. Smistrup, and D.S. Boning, “Modeling and simulation of stamp deflections in nanoimprint lithography: exploiting backside grooves to enhance residual layer thickness uniformity”, <em>Microelectronic Engineering</em>, vol. 88, pp. 2154-2157, 2011. <a href="http://dx.doi.org/10.1016/j.mee.2010.12.090" rel="noopener" target="_blank">doi:10.1016/j.mee.2010.12.090</a> (presented at <em>Micro- and Nano-Engineering</em>, Genoa, Italy, Sep. 2010: <a href="./pdf/Taylor_MNE_2010.pdf" rel="noopener" target="_blank">abstract .pdf</a> | <a href="./pdf/Taylor_MNE_2010_poster.pdf" rel="noopener" target="_blank">poster .pdf</a>)</p>
+<p>[<a href="publications.html#NC23">NC23</a>] <strong>H.K. Taylor</strong>, “Defectivity prediction for droplet-dispensed UV nanoimprint lithography, enabled by fast simulation of resin flow at feature, droplet, and template scales”, <em>Proc. SPIE</em>, vol. 9777, 97770E, 2015. (invited) <a href="http://dx.doi.org/10.1117/12.2218757" rel="noopener" target="_blank">doi:10.1117/12.2218757</a></p>
+<p>[<a href="publications.html#NC22">NC22</a>] <strong>H.K. Taylor</strong>, “Enabling layout and process optimization with fast, full-field simulation of droplet-dispensed UV-NIL”, presented at Nanoimprint and Nanoprint Technology, Napa, CA, Oct. 2015 (invited). <a href="./pdf/Taylor_NNT_2015_abstract.pdf" rel="noopener" target="_blank">abstract .pdf</a> | <a href="./pdf/Taylor_NNT_2015_presentation.pdf" rel="noopener" target="_blank">presentation .pdf</a></p>
+<p>[<a href="publications.html#C4">C4</a>] <strong>H.K. Taylor</strong>, “Fast Simulation of Pattern Formation and Process Dependencies in Roller Nanoimprint Lithography”, presented at Materials Research Society Fall Meeting, Boston, MA, Nov. 2012. <a href="http://dx.doi.org/10.1557/opl.2013.49" rel="noopener" target="_blank">doi:10.1557/opl.2013.49</a></p>
+<p>[<a href="publications.html#NC14">NC14</a>] <strong>H.K. Taylor</strong>, “Simulation of roll-to-roll and roll-to-plate NIL: modeling the effects of process speed, imprinting load, roller elasticity, and pattern design”, presented at <em>Nanoimprint and Nanoprint Technology</em>, Napa, CA, Oct. 2012. <a href="./pdf/Taylor_NNT_abstract_2012.pdf" rel="noopener" target="_blank">abstract .pdf</a></p>
+<p>[<a href="publications.html#NC13">NC13</a>] <strong>H.K. Taylor</strong> and E.J. Wong, “Fast simulation of nanoimprint lithography: modeling capillary pressures during resist deformation”, presented at <em>Nanoimprint and Nanoprint Technology</em>, Jeju, Korea, Oct. 2011. <a href="./pdf/Taylor_NNT_abstract_2011.pdf" rel="noopener" target="_blank">abstract .pdf</a></p>
+<p>[<a href="publications.html#NC12">NC12</a>] D.S. Boning, A.B. Kahng, <strong>H.K. Taylor</strong>, and Y.-K. Wu, “Chip-scale simulation of residual layer thickness uniformity in thermal nanoimprint lithography: evaluating stamp cavity-height and ‘dummy-fill’ selection strategies”, presented at <em>Nanoimprint and Nanoprint Technology</em>, Copenhagen, Denmark, Oct. 2010. <a href="./pdf/Taylor_Wu_NNT_2010.pdf" rel="noopener" target="_blank">abstract .pdf</a> | <a href="./ppt/Taylor_NNT_presentation_2010.pptx">presentation .pptx</a></p>
+<p>[<a href="publications.html#NC11">NC11</a>] <strong>H.K. Taylor</strong>, K. Smistrup, and D.S. Boning, “Modeling the enhancement of nanoimprint stamp bending compliance by backside grooves: mitigating the impact of wafer nanotopography on residual layer thickness”, presented at <em>Nanoimprint and Nanoprint Technology</em>,Copenhagen, Denmark, Oct. 2010. <a href="./pdf/Taylor_Smistrup_NNT_2010.pdf" rel="noopener" target="_blank">abstract .pdf</a> | <a href="./pdf/Taylor_Smistrup_NNT_2010_poster.pdf" rel="noopener" target="_blank">poster .pdf</a></p>
+<p>[<a href="publications.html#NC10">NC10</a>] <strong>H.K. Taylor</strong> and D.S. Boning, “Towards nanoimprint lithography-aware layout design checking”, <em>Proc. SPIE</em>, vol. 7641, 764129, 2010. <a href="http://dx.doi.org/10.1117/12.846499" rel="noopener" target="_blank">doi:10.1117/12.846499</a> | <a href="./pdf/Taylor_SPIE_7641_2010_presentation.pdf" rel="noopener" target="_blank"> presentation .pdf</a></p>
+<p>[<a href="publications.html#NC9">NC9</a>] <strong>H.K. Taylor</strong> and D.S. Boning, “Fast simulation of pattern dependencies in thermal nanoimprint lithography”, presented at <em>Nanoimprint and Nanoprint Technology</em>, San Jose, CA, Nov. 2009. <a href="./pdf/Taylor_NNT_abstract_2009.pdf" rel="noopener" target="_blank">abstract .pdf</a> | <a href="./pdf/Taylor_NNT_presentation_2009.pdf" rel="noopener" target="_blank"> presentation .pdf</a></p>
+<p>[<a href="publications.html#P2">P2</a>] <strong>H.K. Taylor</strong> and D.S. Boning, “Method and Apparatus for Embossing a Deformable Body”, US Patent 8,585,954, issued 19 November, 2013.</p>
+
+
+      
+
+
+
+
+
+  
+  
+  
+  
+  <nav class="project-nav" aria-label="Research projects">
+    <a class="prev" href="/condensate-shedding.html"><span class="dir">Previous project</span> <span class="name">Condensate shedding for tropical air conditioning</span></a>
+    <a class="next" href="/2d-exfoliation.html"><span class="dir">Next project</span> <span class="name">Exfoliation and transfer of two-dimensional materials</span></a>
+  </nav>
+
+
+    </main>
+  </div>
+  <script src="/assets/js/site.js?v=1793073016" defer></script>
+  <!-- Statcounter (invisible counter) -->
+<script>var sc_project=7684032; var sc_invisible=1; var sc_security="aff82079";</script>
+<script src="https://www.statcounter.com/counter/counter.js" async></script>
+
+</body>
+</html>

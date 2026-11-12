@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-11-11T17:21:09+08:00",
+  "status": "PREPARED_NOT_STARTED",
+  "case_id": "h75_d100_T_fine",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "binding_drift": [],
+  "flat_status": {
+    "P": "LOCAL_CHECKS_PASS",
+    "T": "LOCAL_CHECKS_PASS"
+  },
+  "source_status": "LOCAL_CHECKS_PASS",
+  "source_case": "h75_d100_T_mid",
+  "source_run_id": "h75_d100_T_mid_20261111T165012_e5ad708d",
+  "source_receipt_sha256": "0141a18c0de6d4b0782b7c90b431cd95c751507ff19ab549e61ea48986d3d40f",
+  "source_time": "22796.5",
+  "source_field_sha256": {
+    "22796.5/U": "de5a25e1a7e53ace65037a02951a5d5c535694669acc7c4e5be3234e4337c0f6",
+    "22796.5/p": "b517d5e707a65e41206472481116e559c5cfef16533f9d325db062a7b922c840",
+    "22796.5/phi": "f66cffe47fdd2b2b0549c6a8d3f0383bbcd3a8441e16cd85736b4ff790851d10"
+  },
+  "source_mesh_sha256": {
+    "points": "c15c36984fbdbc118781d6d2dd78cb627b51061b8136aba4626b1e9dca03a350",
+    "faces": "898002949edec64ddcb4501946fb277da338238fe32f6888da227554a19f5a5b",
+    "owner": "42bacfeb75d350ada3c63e9c9a2290b035fdcc247f3ec2d8763fb04042c06d30",
+    "neighbour": "cbc1d8c4cf0e445e10e8be55df9e2381e6957e72b9743ead4d647bb21ecccd31",
+    "boundary": "ac45021c6ed1a2f4b4445804de20c07283c82e562b843953ed85c1176364f364"
+  },
+  "source_coarse_chain_independently_verified": true,
+  "source_K_m3": 4.3436288503204486e-23,
+  "coarse_mid_change_percent": 0.194278708111717,
+  "target_cells": 307200,
+  "target_dx_nm": 0.3125,
+  "start_time": 0.5,
+  "end_time_cap": 200000,
+  "solver_wall_seconds": 43200,
+  "target_runtime_exists": false,
+  "target_evidence_exists": false,
+  "session": "v21_g3",
+  "session_already_exists": false,
+  "command": "tmux new-session -d -s v21_g3 'source /opt/openfoam13/etc/bashrc && cd /home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2 && exec python3 run_one.py --case h75_d100_T_fine --execute'",
+  "command_executed": false,
+  "new_solver_runs": 0,
+  "new_mapping_or_mesh_runs": 0,
+  "post_run_requirements": {
+    "fine_mid_change_percent": 0.5,
+    "decreasing_grid_change": true,
+    "small_change_exception_percent": 0.05,
+    "power_balance_percent": 0.1,
+    "section_spread_percent": 0.1,
+    "section_vs_volume_percent": 0.1,
+    "full_coupled_residual_strictly_less_than": 1e-10
+  },
+  "address_space_limit_GiB": 4
+}

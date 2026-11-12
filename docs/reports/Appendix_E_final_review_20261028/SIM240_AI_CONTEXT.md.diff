@@ -1,0 +1,25 @@
+--- before/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,12 +1,20 @@
+ # SIM240 AI CONTEXT
++
++## 第一篇：附录E与限定结论已取得Astra书面终审意见（2026-10-28，当前科研停点）
++
++- 用户明确授权指定范围理论终审，新增计算关闭。指定GPT-6 Astra｜High任务`/root/appendix_e_final_astra`已保存完整`docs/reports/Appendix_E_final_review_20261028/ASTRA_REVIEW.md`，裁定“可限定冻结”；E1—E6及式7条件推论未发现实质错误，无阻塞必改项。四项结论仅按5nm保存记录/回顾性V2保留，不升级连续精度、机制份额或独立预测。作者最终科学采用仍待记录。
++- 模型写完书面意见后触及使用额度限制，任务以错误结束，未生成原计划astra_verdict.json；原意见对该JSON的引用/已写表述不成立。主代理`review_receipt.json`如实记录缺项，不伪称模型正常结束或代写其签名回执。现有书面证明可供采用；汇总和精确边界见本目录REPORT.md。
++- 主稿/补充/公式/数字本轮未改。C-E1—C-E4为可选数学解释，涉及台阶开域/弱解、积分能量、跨槽常通量及正导度，非新增假设或计算条件。52项K/PASS/SHA读回匹配（15项K十进制写法不同但双精度值相同）、131份既有result/manifest哈希相同；625份选定共享来源前后保护见verification.json，不等于数值精度复验或完整历史构建恢复。
++- 下一具体动作：作者/导师记录限定范围采用，可选合并解释文字；普通作者资料、英文同步和嵌图排版使用GPT-6.1 Sol｜High。只有改变假设、实质理论推广或审定严格数值误差界时再用Astra｜High。四组完整历史构建仍OPEN，[6]接收稿已核但最终发表版对应仍待；不重复要求取得已核原文。
++- 无编译/求解/拟合/夹具/重画/真实N8提取/第二项/Git提交推送/新run_id，无新启动命令。旧N8仍D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD；细横槽FAIL/exit3保持。GitHub仍沿上一轮025eac0c7f752c4a023ebc64db0950fa6b7c98b5快照，本轮审查未上传。
+ 
+ ## GitHub：第一篇当前全文与配套材料已上传，剩余事项已更新（2026-10-28，当前共享/资料入口）
+ 
+ - 用户明确要求上传第一篇文章全部现有内容并盘点下一步；目标沿用原私有`yuanyuanxu1022/SIM240_code_figures_data`，API重核private=true及push权限。仅在独立共享副本提交推送main，提交`025eac0c7f752c4a023ebc64db0950fa6b7c98b5`、父提交`dccaca7af38a35c37cbddb74109621e1d2255abd`；远端HEAD、父提交及241个变更路径/逐项blob SHA已核，工作区干净。未从主项目或参考仓库push、未改账号/remote/权限或邀请老师。
+ - 新入口`05_第一篇文章/README.md`：当前中文全文、方法S1—S11/表S1—S5、四主图三格式和代码、选择的证据记录及79条表内运行入口；现存英文稿明确标2026-10-19历史未同步版。228份原字节副本+2份仅适配链接的阅读版及入口/清单/检查，共241路径；复用397份既存来源（约228MB），总来源清单8608→8836行。228份副本/397份源字节与Git身份、543条阅读入口链接、296公式片段/附录E保持及远端blob核对见`docs/reports/GITHUB_FIRST_PAPER_COMPLETE_20261028/REPORT.md`、source_files.json、publish.json、verification.json。
+ - 本次明确包括正文，取代前次“未上传正文”的范围；第三方论文原件/全文/页图、账号资料、编译产物、第二篇和真实N8原始场不收入本轮。原件局部本机路径保留出处，阅读版映射共享文件；不是所有历史档案/全文和全部大场的完整可移植复现证明。旧恢复性报告的强断言由历史构建裁决覆盖，旧盘点M1缺原文由当前接收记录覆盖，不按旧快照重复列缺。
+-- 最新剩余清单`docs/reports/GITHUB_FIRST_PAPER_COMPLETE_20261028/NEXT_STEPS.md`及仓库`05_第一篇文章/材料覆盖与缺口.md`：作者/导师最终采用与附录E指定范围Astra｜High终审；作者单位/基金/冲突/CRediT/AI声明；英文同步与最终嵌图版式；实际固定版本/访问方式的数据声明；[6]最终发表版对应；四组历史来源若能补档继续按合同核。正文附录C仍记录f11c0f2旧日期快照，本轮未改其历史说明，最终声明需采用本次实际覆盖版本。当前私有分享不等于公开数据/DOI或投稿就绪。
+-- 连续定量精度、全图统一误差、独立预测或机制份额仅在确需升级主张时另立参考合同；不自动重算或做N8。原文稿/公式本轮未改，无编译/求解/拟合/重画/夹具/真实N8提取/第二项/新run_id；旧N8仍D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD；细横槽FAIL/exit3保持，未重新验收。普通资料收尾GPT-6.1 Sol｜High，附录E或公式/结论最终冻结再按Astra｜High指定范围处理。
++- 最新剩余清单`docs/reports/GITHUB_FIRST_PAPER_COMPLETE_20261028/NEXT_STEPS.md`及仓库`05_第一篇文章/材料覆盖与缺口.md`：作者/导师最终采用（附录E限定书面意见已取得，见顶部）；作者单位/基金/冲突/CRediT/AI声明；英文同步与最终嵌图版式；实际固定版本/访问方式的数据声明；[6]最终发表版对应；四组历史来源若能补档继续按合同核。正文附录C仍记录f11c0f2旧日期快照，本轮未改其历史说明，最终声明需采用本次实际覆盖版本。当前私有分享不等于公开数据/DOI或投稿就绪。
++- 连续定量精度、全图统一误差、独立预测或机制份额仅在确需升级主张时另立参考合同；不自动重算或做N8。原文稿/公式本轮未改，无编译/求解/拟合/重画/夹具/真实N8提取/第二项/新run_id；旧N8仍D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD；细横槽FAIL/exit3保持，未重新验收。普通资料收尾GPT-6.1 Sol｜High；本轮附录E限定书面审查见顶部，后续实质理论改变/严格数值界另用Astra｜High。
+ 
+ ## 第一篇：三段历史构建限定文字已按作者范围同步，最终理论冻结仍未执行（2026-10-28，当前停点）
+ 

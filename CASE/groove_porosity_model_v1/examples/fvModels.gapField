@@ -1,0 +1,35 @@
+FoamFile { format ascii; class dictionary; object fvModels; }
+// Foundation 13 fragment: host must register and update mesaGap [m].
+// No flow run, moving mesh, phase model or continuity coupling is supplied.
+grooveResistance
+{
+    type porosityForce;
+    porosityForceCoeffs
+    {
+        cellZone groove;
+        type grooveDarcy;
+        grooveDarcyCoeffs
+        {
+            conductanceModel V2_published_rounded; // or original_local_cubic
+            gapMode field;
+            gapField mesaGap;
+            // No uniform mesaGap entry and no manually supplied d/f/H.
+            grooveDepth [0 1 0 0 0 0 0] 100e-9;
+            grooveWidth [0 1 0 0 0 0 0] 120e-9;
+            period [0 1 0 0 0 0 0] 240e-9;
+            velocityAverage fluidVolume;
+            wallResistance totalUnresolved;
+            coordinateSystem
+            {
+                type cartesian;
+                origin (0 0 0);
+                coordinateRotation
+                {
+                    type axesRotation;
+                    e1 (0 1 0);  // along groove: global +y
+                    e2 (-1 0 0); // across groove: global -x
+                }
+            }
+        }
+    }
+}

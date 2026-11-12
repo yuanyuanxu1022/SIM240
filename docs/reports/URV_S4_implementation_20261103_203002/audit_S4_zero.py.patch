@@ -1,0 +1,62 @@
+--- /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/scripts/audit_S3_zero.py
++++ /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/scripts/audit_S4_zero.py
+@@ -1,4 +1,4 @@
+-"""Prepare/inspect twelve zero calls; --execute requires a zero-only release."""
++"""Prepare/inspect eighteen zero calls; --execute requires a zero-only release."""
+ from pathlib import Path
+ import argparse
+ import json
+@@ -7,12 +7,12 @@
+ import time
+ 
+ CASE = Path(__file__).resolve().parents[1]
+-CHECKER = CASE.parent / 'unseen_v2_reference_checker_S3_reuse_v1_1'
++CHECKER = CASE.parent / 'unseen_v2_reference_checker_S4_reuse_v1'
+ sys.path.insert(0, str(CHECKER / 'analysis'))
+ from evidence import need, sha, kv, save, exact_parameters, check_boundary, close
+-from stage_s3 import (AUDIT_ID, ELF_SHA, MODES, verify_seal, validate_zero_plan,
++from stage_s4 import (AUDIT_ID, ELF_SHA, MODES, verify_seal, validate_zero_plan,
+                       validate_zero_authority, unchanged, require_pristine)
+-from run_S3 import resources, process_environment, child_limits, native_process, output_hashes
++from run_S4 import resources, process_environment, child_limits, native_process, output_hashes
+ 
+ 
+ def call_native(binary, record, env):
+@@ -53,7 +53,7 @@
+ 
+ 
+ def audit_outputs(record):
+-    from zero_evidence import validate_zero_outputs
++    from zero_evidence_s4 import validate_zero_outputs
+     return validate_zero_outputs(record)
+ 
+ 
+@@ -80,7 +80,7 @@
+             out = folder / ('field_readback_'+record['planned_case_id']+'.json')
+             log = folder / ('field_reader_'+record['planned_case_id']+'.log')
+             field_readback(Path(record['output_directory']), out, log, env)
+-            from zero_evidence import validate_initial_readback
++            from zero_evidence_s4 import validate_initial_readback
+             validate_initial_readback(record, out, folder)
+             result.update(field_readback=str(out), field_readback_sha256=sha(out))
+         need(unchanged(bound['inputs_sha256']) == before, 'zero audit changed bound inputs')
+@@ -91,8 +91,8 @@
+     files = {str(folder/relative): digest for relative, digest in output_hashes(folder).items()}
+     manifest = folder/'audit_files_sha256.json'; save(manifest, files)
+     save(folder/'verification.json', dict(audit_id=AUDIT_ID, ZERO_STEP_AUDIT_PASS=True,
+-        binary_sha256=ELF_SHA, native_describe=4, native_precheck=4, native_initialize=4,
+-        initialized_frames_read=4, actual_time_steps=0, steady_mode_invocations=0, records=completed,
++        binary_sha256=ELF_SHA, native_describe=6, native_precheck=6, native_initialize=6,
++        initialized_frames_read=6, actual_time_steps=0, steady_mode_invocations=0, records=completed,
+         raw_manifest_path=str(manifest), raw_manifest_sha256=sha(manifest),
+         preparation_A_sha256=bound['preparation_A_sha256'], audit_release_path=str(release),
+         audit_release_sha256=expected_sha, density_capture='NOT_APPLICABLE_S0_ONLY',
+@@ -113,7 +113,7 @@
+             execute(path, args.release_sha256, data)
+         else:
+             print(json.dumps(dict(ZERO_PLAN_BINDING_CHECK=True, solver_executed=False,
+-                planned_native_calls=len(records), planned_initial_field_reads=4,
++                planned_native_calls=len(records), planned_initial_field_reads=6,
+                 native_zero_step_authorized=data.get('native_zero_step_authorized', False))))
+         return 0
+     except Exception as error:

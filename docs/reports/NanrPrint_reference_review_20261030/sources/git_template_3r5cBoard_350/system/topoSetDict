@@ -1,0 +1,329 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                  |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name    channelSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (0e-6 0e-6 0.1e-6) (250e-6 3000e-6 1.1e-6); } // channel
+    }
+    {
+        name    channelZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set channelSet; }
+    }
+    {
+        name    R123OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (250e-6 2000e-6 0.1e-6) (1250e-6 3000e-6 1.1e-6); } // 123OAS
+    }
+    {
+        name    R123OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set R123OASSet; }
+    }
+    {
+        name    HOAS1Set;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (1250e-6 2000e-6 0.1e-6) (2250e-6 3000e-6 1.1e-6); } // HOAS1
+    }
+    {
+        name    HOAS1Zone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set HOAS1Set; }
+    }
+    {
+        name    R113OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (2250e-6 2000e-6 0.1e-6) (3250e-6 3000e-6 1.1e-6); } // 113OAS
+    }
+    {
+        name    R113OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set R113OASSet; }
+    }
+    {
+        name    HOAS2Set;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (3250e-6 2000e-6 0.1e-6) (4250e-6 3000e-6 1.1e-6); } // HOAS2
+    }
+    {
+        name    HOAS2Zone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set HOAS2Set; }
+    }
+    {
+        name    R15OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (4250e-6 2000e-6 0.1e-6) (5250e-6 3000e-6 1.1e-6); } // 15OAS
+    }
+    {
+        name    R15OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set R15OASSet; }
+    }
+    {
+        name    EC1XT400OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (250e-6 1000e-6 0.1e-6) (1250e-6 2000e-6 1.1e-6); } // EC1XT400OAS
+    }
+    {
+        name    EC1XT400OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set EC1XT400OASSet; }
+    }
+    {
+        name    EC1XT350OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (1250e-6 1000e-6 0.1e-6) (2250e-6 2000e-6 1.1e-6); } // EC1XT350OAS
+    }
+    {
+        name    EC1XT350OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set EC1XT350OASSet; }
+    }
+    {
+        name    EC1XT300OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (2250e-6 1000e-6 0.1e-6) (3250e-6 2000e-6 1.1e-6); } // EC1XT300OAS
+    }
+    {
+        name    EC1XT300OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set EC1XT300OASSet; }
+    }
+    {
+        name    EC1XT280OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (3250e-6 1000e-6 0.1e-6) (4250e-6 2000e-6 1.1e-6); } // EC1XT280OAS
+    }
+    {
+        name    EC1XT280OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set EC1XT280OASSet; }
+    }
+    {
+        name    EC1XT240OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (4250e-6 1000e-6 0.1e-6) (5250e-6 2000e-6 1.1e-6); } // EC1XT240OAS
+    }
+    {
+        name    EC1XT240OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set EC1XT240OASSet; }
+    }
+    {
+        name    K400OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (250e-6 0e-6 0.1e-6) (1250e-6 1000e-6 1.1e-6); } // K400OAS
+    }
+    {
+        name    K400OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set K400OASSet; }
+    }
+    {
+        name    K350OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (1250e-6 0e-6 0.1e-6) (2250e-6 1000e-6 1.1e-6); } // K350OAS
+    }
+    {
+        name    K350OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set K350OASSet; }
+    }
+    {
+        name    K300OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (2250e-6 0e-6 0.1e-6) (3250e-6 1000e-6 1.1e-6); } // K300OAS
+    }
+    {
+        name    K300OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set K300OASSet; }
+    }
+    {
+        name    K280OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (3250e-6 0e-6 0.1e-6) (4250e-6 1000e-6 1.1e-6); } // K280OAS
+    }
+    {
+        name    K280OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set K280OASSet; }
+    }
+    {
+        name    K240OASSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo { box (4250e-6 0e-6 0.1e-6) (5250e-6 1000e-6 1.1e-6); } // K240OAS
+    }
+    {
+        name    K240OASZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo { set K240OASSet; }
+    }
+);
+
+zoneMotionCoeffs
+{
+    channelZone
+    {
+        finalDisp       -0.945e-6;
+        moveDuration    1.0;
+    }
+    R123OASZone
+    {
+        finalDisp       -0.945e-6;
+        moveDuration    1.0;
+    }
+    HOAS1Zone
+    {
+        finalDisp       -0.945e-6;
+        moveDuration    1.0;
+    }
+    R113OASZone
+    {
+        finalDisp       -0.945e-6;
+        moveDuration    1.0;
+    }
+    HOAS2Zone
+    {
+        finalDisp       -0.945e-6;
+        moveDuration    1.0;
+    }
+    R15OASZone
+    {
+        finalDisp       -0.945e-6;
+        moveDuration    1.0;
+    }
+    EC1XT400OASZone
+    {
+        finalDisp       -0.94e-6;
+        moveDuration    1.0;
+    }
+    EC1XT350OASZone
+    {
+        finalDisp       -0.94e-6;
+        moveDuration    1.0;
+    }
+    EC1XT300OASZone
+    {
+        finalDisp       -0.935e-6;
+        moveDuration    1.0;
+    }
+    EC1XT280OASZone
+    {
+        finalDisp       -0.935e-6;
+        moveDuration    1.0;
+    }
+    EC1XT240OASZone
+    {
+        finalDisp       -0.935e-6;
+        moveDuration    1.0;
+    }
+    K400OASZone
+    {
+        finalDisp       -0.92e-6;
+        moveDuration    1.0;
+    }
+    K350OASZone
+    {
+        finalDisp       -0.70e-6;
+        moveDuration    1.0;
+    }
+    K300OASZone
+    {
+        finalDisp       -0.92e-6;
+        moveDuration    1.0;
+    }
+    K280OASZone
+    {
+        finalDisp       -0.70e-6;
+        moveDuration    1.0;
+    }
+    K240OASZone
+    {
+        finalDisp       -0.92e-6;
+        moveDuration    1.0;
+    }
+}
+
+// ************************************************************************* //

@@ -1,0 +1,81 @@
+--- docs/reports/SIM240_中文稿_导师审阅版_20261022.md.before
++++ docs/reports/SIM240_中文稿_导师审阅版_20261022.md
+@@ -42,7 +42,7 @@
+ 
+ 以等效输运系数描述未解析图案，在压印建模中已是常规做法：Jain 等将各向异性输运用于图案化模板下的液体流动计算，后续压印模型也沿用这一处理 [1–3]。Patir 与 Cheng 的平均流模型给出了流量因子的来源，其条纹平均关系正是本文比较的对象之一 [4]。
+ 
+-受限沟槽的有效输运张量本身已有解析与数值研究。Dewangan 与 Datta 采用谱分析结合区域摄动，建立了张量关系并对代表形貌作了数值评价 [5]；同一作者对正弦沟槽给出了不限制幅度的半解析谱解 [6]。这些工作说明"沟槽带来各向异性输运"本身不是新发现。
++受限沟槽的有效输运张量本身已有解析与数值研究。Dewangan 与 Datta 采用谱分析结合区域摄动，建立了张量关系并对代表形貌作了数值评价 [5]；同一作者还对带图案化壁面的微通道流动进行了槽深相关的谱理论研究 [6]。这些工作说明"沟槽带来各向异性输运"本身不是新发现。
+ 
+ 本文比较局部立方律与显式数值主值的偏差幅度及方向差异，并检查经验修正的剩余残差。理想Stokes模型中的主导度上界另见附录E；本文不把正偏差本身作为新颖性的充分依据。当前比较以5 nm离散结果为参考，为评价降阶模型提供数值证据，尚不能据此认定其已具备工艺预测精度。
+ 
+@@ -422,7 +422,7 @@
+ 
+ [5] Dewangan M.K., Datta S. Effective permeability tensor of confined flows with wall grooves of arbitrary shape. *J. Fluid Mech.*, 2020, **891**: A12. DOI: 10.1017/jfm.2020.134
+ 
+-[6] Dewangan M.K., Datta S. Semi-analytical solution for flow in a sinusoidal grooved channel. *Eur. J. Mech. B/Fluids*, 2018, **70**: 73–84.
++[6] Dewangan M.K., Datta S. Flow through microchannels with topographically patterned wall: A spectral theory for arbitrary groove depths. *Eur. J. Mech. B/Fluids*, 2018, **70**: 73–84. DOI: 10.1016/j.euromechflu.2018.02.004
+ 
+ [7] Krause M.J., Kummerländer A., Avis S.J., et al. OpenLB — Open source lattice Boltzmann code. *Comput. Math. Appl.*, 2021, **81**: 258–288. DOI: 10.1016/j.camwa.2020.04.033
+ 
+@@ -434,7 +434,7 @@
+ 
+ [11] Teyssèdre H., Gilormini P., Régnier G. Limitations of simple flow models for the simulation of nanoimprint. *Int. Polym. Process.*, 2013, **28**(1): 72–78. DOI: 10.3139/217.2673
+ 
+-> **注**：[6] 的卷期页码沿用项目台账，其题名与完整书目需在投稿前按原文核对。原文对正弦沟槽采用半解析谱方法、不限制幅度，与 [5] 的小参数渐近解适用条件不同，正文未将二者合并表述。
++> **注**：[6]的正式题名、作者、年份、卷号、页码与DOI已对照Crossref登记及作者所在机构出版目录核对。本轮未取得其全文，书目核验不等于完整适用条件核验；正文不再据此给出未经本轮原文确认的幅度范围。方法引文的核验层次与剩余缺口见补充材料S11。
+ 
+ ---
+ 
+@@ -494,11 +494,13 @@
+ | 基金资助 | 同上 |
+ | 致谢 | 同上 |
+ | 利益冲突声明 | 需全体作者确认；不可代写"无冲突" |
+-| 数据可用性声明 | 需按实际文件与访问记录核对公开范围、仓库版本和访问条件；是否需要 DOI 按目标期刊要求确认 |
++| 数据可用性声明 | 已核私有共享快照及其覆盖范围，见本附录下方说明；最终公开范围、访问方式和持久标识仍待作者确认 |
+ | AI 使用声明 | 需按实际用途如实描述工具、环节与人工复核方式 |
+ | 作者贡献声明（CRediT） | 需作者确认分工 |
+ | 图件嵌入与版式 | 4 张图需按目标期刊要求嵌入并核对分辨率、字体、字号 |
+-| 参考文献终校 | [6] 的题名与卷期待按原文核对 |
++| 参考文献终校 | [6]书目信息已核；[8]、[9]全文公式及[10]期刊发表版的完整核对仍有缺口，范围见补充材料S11 |
++
++截至2026-10-27，部分代码、图片和原始数据已保存于私有仓库[SIM240_code_figures_data](https://github.com/yuanyuanxu1022/SIM240_code_figures_data)，本轮核对版本为提交[f11c0f20f6aaadf6920b95390855ec418cf8ae42](https://github.com/yuanyuanxu1022/SIM240_code_figures_data/commit/f11c0f20f6aaadf6920b95390855ec418cf8ae42)。该版本仅对有权限的人员开放，不是公众可下载的数据发布。本轮已核对其所选D2/D3运行记录及主要绘图输入；当前正文、方法补充材料和当日更新的部分图件/脚本尚未纳入该固定快照。共享包不等于本文全部材料和历史构建环境的完整复现档案。最终公开范围、访问方式及是否采用DOI等持久标识，仍需作者按实际文件和目标期刊要求确认。逐项覆盖与核验范围见 `Methods_sources_data_audit_20261027/REPORT.md`。
+ 
+ ---
+ 
+@@ -579,6 +581,10 @@
+ 
+ 按用户本轮同步指令，将已交付候选的24项定点修订及附录E写入本稿；本轮未收到排除项，按整体同步执行，未另行记录逐项人工科学核验。候选文件和原准备证据保留，同步前本稿保存在 `Paper_formal_sync_20261027/before/`。标题、摘要、结论与图注均沿用限定稿的参考口径；主式（1）—（7）、V2系数、原数值表和参考文献保持，附录E的假设、推导和式（E1）—（E6）不变。只调整候选/历史记录标识以反映本次同步，没有理论实质变更或严格数值误差界审定。最终作者科学审定、引文与来源缺口、数据声明及图件嵌入仍待完成。验证与改动记录见 `Paper_formal_sync_20261027/REVISION_NOTE.md` 和 `verification.json`；无新求解、编译、拟合、真实N8提取或数值/物理Gate放行。
+ 
++### D.9 方法引文、来源说明及数据访问范围核对（2026-10-27）
++
++核对[4]、[6]—[10]的方法身份、已取得原文和当前实现证据，订正[6]题名并补DOI；在未取得全文的情况下，将其研究内容收窄到已核书目支持的描述。附录C记实际私有仓库版本、受限访问、选定数据覆盖及未同步内容；补充材料S10/S11区分当前二进制/源码、历史构建绑定和文献原文核验层次。原数值表、公式、系数、结果与结论不变。详细证据、访问失败和未闭合项见 `Methods_sources_data_audit_20261027/REPORT.md`。本轮不改变理论假设、数值判据、历史FAIL或投稿状态，没有新计算或发布。
++
+ ---
+ 
+ ## 附录 E　理想Stokes模型下局部立方律的上界性质
+--- docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md.before
++++ docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md
+@@ -128,12 +128,19 @@
+ 
+ 日志中的5953d8a-dirty字符串在当前Makefile中固定注入；当前源树CITATION.cff自标1.9.0，二者都不能独立证明每个历史运行所用的实际库版本。现有参数、输出、二进制哈希和日志可追溯，不等于完整历史源码与依赖环境已恢复。
+ 
++2026-10-27复核：上述52份指定运行清单仍缺少这些源码/构建绑定字段，二进制哈希仍分为22/22/6/2四组。本机当前可定位的D2与D3两个二进制分别匹配其中22项与6项运行的记录哈希；这只确认现存二进制的身份，不能证明其历史源码、编译器或依赖版本。当前OpenLB源码快照和Makefile可检查实现，但不能用固定注入的版本字符串补成历史来源证据。核对范围见[本轮来源报告](../Methods_sources_data_audit_20261027/REPORT.md)及`provenance.json`。
++
+ <a id="sm-s11"></a>
+ 
+ ## S11 方法引文核实边界
+ 
+-文献编号沿用配套正文，不另设与正文冲突的编号。[4]的一维平均关系有指定原文页核对；[7]软件论文身份可由OpenLB官方文献目录定位，当前实现另以源码核查；[9]Guo论文的公开题名、作者、年份和摘要曾核对，半步力修正另有当前实现证据。这些均不自动绑定历史运行版本。
++2026-10-27更新；文献编号沿用配套正文。以下是来源核对范围，不是对本项目精度的统一放行：
+ 
+-[8]Bouzidi原文全文在上一轮核对中未取得；[10]GCI对应的历史原始值与失败记录可定位，但该轮未重做全部方法/文献公式审计。[6]完整书目仍按正文待核状态处理。补充材料编号完成不意味着全部引文支持已经闭合。
++- **[4] Patir–Cheng**：现有合法本地全文的印刷第15页式（23）（24）已再次目视核对，支持一维Reynolds模型内的调和/算术平均关系。不能据此将局部模型视为显式台阶域精确解或唯一耗散机制。
++- **[6] Dewangan–Datta 2018**：正式题名为 *Flow through microchannels with topographically patterned wall: A spectral theory for arbitrary groove depths*，European Journal of Mechanics–B/Fluids 70，73–84，DOI 10.1016/j.euromechflu.2018.02.004。Crossref及[作者机构出版目录](https://web.iitd.ac.in/~subhra.datta/publications1.html)一致；本轮未取得全文，书目问题已订正，具体幅度条件不标为已完成全文核验。
++- **[7] OpenLB**：Crossref核得2021年、81卷258–288页，[软件官方目录](https://www.openlb.net/articles/)可定位同一DOI；官网旧目录使用2020年条目，按最终卷页采用2021年。软件论文身份不证明各历史运行使用了哪个OpenLB版本。
++- **[8] Bouzidi**：Crossref的出版社登记元数据/摘要支持反弹结合空间插值的方案身份，题名、作者、2001年、13(11)卷3452–3459页与DOI相符。AIP全文请求被拒绝，本轮未逐式比较原文与项目实现；q=.5等项目事实由保存记录和当前实现另核，不以摘要保证任意壁距的精度。
++- **[9] Guo**：Crossref核对PRE65(4)、046308、2002年及DOI。当前OpenLB的`ForcedBGKdynamics`明确使用`forcing::PlainGuo`，`ForcedMomentum::computeU`加入`FORCE/2`，支持当前实现描述；APS全文接口返回401，本轮未逐式核原文，当前源码也不自动绑定所有历史二进制。
++- **[10] GCI**：已取得[ASME官网方法文稿](https://www.asme.org/wwwasmeorg/media/resourcefiles/shop/journals/jfenumaccuracy.pdf)，实际查看PDF第6—7页（文稿页4—5）的步骤3—5及式（3）—（7），支持三格、观测阶、外推值和GCI的定义。该文稿列四位作者，与2008年期刊发表版的书目信息并非同一版，不能冒称逐页核对了期刊发表版。正文保留发表版引文；完整版本对应尚未闭合。方法有依据不使历史质量FAIL转为通过，也不建立全图严格误差界。
+ 
+-完整逐项核对和访问范围见[本地审计报告](/home/dell/yuanyuanxu/SIM240/docs/reports/Methods_support_audit_20261022/REPORT.md)。本文件及表格未在本轮同步远端；第三方资料和原始场数据是否纳入公开包，仍需按实际权利与最终文件范围核准。
++全文、元数据、当前源码、保存输出、历史构建与科学验收分别记录；未取得全文不等于文献不存在。完整访问记录、原始页预览及逐项裁定见[本轮核对报告](../Methods_sources_data_audit_20261027/REPORT.md)。本地原始支持记录[旧审计报告](../Methods_support_audit_20261022/REPORT.md)保留当时范围，不覆盖旧证书。第三方文献及本轮证据没有发布到共享仓库。

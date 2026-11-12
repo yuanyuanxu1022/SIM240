@@ -1,0 +1,179 @@
+{
+  "status": "STOPPED_ON_FAILURE",
+  "execution_status": "STOPPED_ON_FAILURE",
+  "all_planned_records_finished": false,
+  "execution_closed": true,
+  "comparison_evaluable": false,
+  "automatic_followup_authorized": false,
+  "scientific_gate": "NOT_A_GLOBAL_REFERENCE_QUALIFICATION",
+  "cases": {
+    "h75_d100_P_coarse": {
+      "case_id": "h75_d100_P_coarse",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d100_P_mid": {
+      "case_id": "h75_d100_P_mid",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d100_P_fine": {
+      "case_id": "h75_d100_P_fine",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d100_T_coarse": {
+      "case_id": "h75_d100_T_coarse",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d100_T_mid": {
+      "case_id": "h75_d100_T_mid",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d100_T_fine": {
+      "case_id": "h75_d100_T_fine",
+      "status": "NOT_EXECUTED"
+    },
+    "h25_d100_T_coarse": {
+      "case_id": "h25_d100_T_coarse",
+      "status": "NOT_EXECUTED"
+    },
+    "h25_d100_T_mid": {
+      "case_id": "h25_d100_T_mid",
+      "status": "NOT_EXECUTED"
+    },
+    "h25_d100_T_fine": {
+      "case_id": "h25_d100_T_fine",
+      "status": "NOT_EXECUTED"
+    },
+    "h50_d120_P_coarse": {
+      "case_id": "h50_d120_P_coarse",
+      "status": "NOT_EXECUTED"
+    },
+    "h50_d120_P_mid": {
+      "case_id": "h50_d120_P_mid",
+      "status": "NOT_EXECUTED"
+    },
+    "h50_d120_P_fine": {
+      "case_id": "h50_d120_P_fine",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_P_coarse": {
+      "case_id": "h125_d120_P_coarse",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_P_mid": {
+      "case_id": "h125_d120_P_mid",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_P_fine": {
+      "case_id": "h125_d120_P_fine",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_T_coarse": {
+      "case_id": "h125_d120_T_coarse",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_T_mid": {
+      "case_id": "h125_d120_T_mid",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_T_fine": {
+      "case_id": "h125_d120_T_fine",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d100_P_tight": {
+      "case_id": "h75_d100_P_tight",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d100_T_tight": {
+      "case_id": "h75_d100_T_tight",
+      "status": "NOT_EXECUTED"
+    },
+    "h25_d100_T_tight": {
+      "case_id": "h25_d100_T_tight",
+      "status": "NOT_EXECUTED"
+    },
+    "h50_d120_P_tight": {
+      "case_id": "h50_d120_P_tight",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_P_tight": {
+      "case_id": "h125_d120_P_tight",
+      "status": "NOT_EXECUTED"
+    },
+    "h125_d120_T_tight": {
+      "case_id": "h125_d120_T_tight",
+      "status": "NOT_EXECUTED"
+    },
+    "h75_d0_P_flat": {
+      "case_id": "h75_d0_P_flat",
+      "status": "LOCAL_CHECKS_PASS",
+      "issues": [],
+      "metrics": {
+        "K_m3": 3.5161132812500276e-23,
+        "J_m2_s": 3.516113281250028e-12,
+        "kappa_m2": 4.688151041666703e-16,
+        "Href_m": 7.500000000000002e-08,
+        "fluid_volume_m3": 1.8000000000000005e-23,
+        "drive_power_W": 8.438671875000067e-20,
+        "viscous_dissipation_W": 8.436914062500133e-20,
+        "power_balance_percent": 0.02083044021585767,
+        "section_flux_spread_percent": 0.0,
+        "section_evidence": "exact y invariance of scalar model; not an independent mass test",
+        "flat_K_error_percent": 0.013888888889623807,
+        "flat_profile_L2_percent": 0.009509072159519532
+      }
+    },
+    "h75_d0_T_flat": {
+      "case_id": "h75_d0_T_flat",
+      "status": "REFERENCE_CHECK_FAIL",
+      "issues": [
+        "steady stopping criterion not reached",
+        "steady convergence not verified in actual log",
+        "power vs dissipation exceeds 0.1 percent",
+        "flat analytic comparison exceeds 0.1 percent"
+      ],
+      "metrics": {
+        "K_m3": 3.201207397052707e-23,
+        "J_m2_s": 3.201207397052707e-12,
+        "kappa_m2": 4.2682765294036075e-16,
+        "Href_m": 7.500000000000002e-08,
+        "fluid_volume_m3": 1.8000000000000005e-23,
+        "drive_power_W": 7.682897752926496e-20,
+        "viscous_dissipation_W": 6.994295951165268e-20,
+        "power_balance_percent": 8.96278753025096,
+        "section_flux_spread_percent": 1.1574252256205334e-11,
+        "section_flux_mean_m3_s": 3.2012073970527077e-21,
+        "section_vs_volume_percent": 2.220446049250313e-14,
+        "section_evidence": "corrected finite-volume face flux",
+        "flat_K_error_percent": 8.943434039389707,
+        "flat_profile_L2_percent": 9.073406726589681
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "point": "h75_d100_P",
+      "status": "NOT_ASSESSABLE"
+    },
+    {
+      "point": "h75_d100_T",
+      "status": "NOT_ASSESSABLE"
+    },
+    {
+      "point": "h25_d100_T",
+      "status": "NOT_ASSESSABLE"
+    },
+    {
+      "point": "h50_d120_P",
+      "status": "NOT_ASSESSABLE"
+    },
+    {
+      "point": "h125_d120_P",
+      "status": "NOT_ASSESSABLE"
+    },
+    {
+      "point": "h125_d120_T",
+      "status": "NOT_ASSESSABLE"
+    }
+  ],
+  "selected_six_all_pass": false
+}

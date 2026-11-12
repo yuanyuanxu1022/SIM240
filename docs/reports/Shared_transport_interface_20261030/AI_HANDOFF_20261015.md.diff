@@ -1,0 +1,25 @@
+--- AI_HANDOFF_20261015.md before task
++++ AI_HANDOFF_20261015.md after task
+@@ -1,13 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## nanrPrint 参考核查完成：无本项目现成 OpenFOAM 算例，共用问题仍为草案（2026-10-30）
+-
+-- 用户明确“没有openfoam代码”，并提供私有参考仓库 `junjieli2/nanrPrint` 要求继续参考。本轮只读核远端 HEAD `381bc94bc4b99631af7d7d9e9538b565beeb9a5f`，取得完整树及23个定点文件，Git blob逐一与该提交一致；未fetch/checkout/改remote/推送。入口 `docs/reports/NanrPrint_reference_review_20261030/REPORT.md`、`source_manifest.json`、`review.json`。不再把“核本项目现有OpenFOAM程序”当下一步前提。
+-- 已核候选 `git_template_3r5cBoard_350` 为liquid/air compressibleVoF，EC1XT240通过porosityForce/DarcyForchheimer设置d=(5e16,0,0)、f=0；5.25×3.00mm×1μm网格(525,300,1)，EC240为内部1mm方区，不能将子区四边当外恒压边界，也不能当显式纳米沟槽独立参照。d来源/与K换算未证；y分量零仅为该项附加阻力零。位移参数虽存在，已读入口及本机标准源码未找到完整消费/运动耦合链，运动实际生效未验证；不据此判绝对无其他实现。参考Allrun未执行。
+-- 本机PATH已有OpenFOAM-13工具入口，未验证运行/兼容；参考文件头混用13/v2412，目标字典布局需核。此前OpenCFD接口资料不等于本机兼容。二维端已有G5A一维与D3二维矩形级数/差分/修正传播基础，本轮只读源码/说明，未重验旧输出或运行顶层会读写历史结果的脚本。
+-- 共用草案：全充液单相瞬时挤压，h75/d100/w120/P240nm已见基准作接口检查，非留出样本；长方形2:1为候选，长宽/周期数/V/物性/边缘/力口径/资源/门槛未定。主量R_sq=F_net/V，次量槽沿短/长边阻力比，压力与守恒为诊断。先核静态压力驱动K→阻力接口，再定挤压体积变化实现；K(m³)与d(m⁻²)不得直接互填或重复计壁面耗散。两平台同K接近仅支持一致性；应用精度仍需同条件合格显式沟槽参照与新条件检验。未冻结路线或新增公式。
+-- 修改仅为上述本地核查报告/资料/草案及本状态与最新交接；无源码改动/编译/网格生成/短测/求解/拟合/重跑/新仿真run_id/下一Gate/提交推送/对外发送/长算启动或新授权。新增的是来源/静态核查，无新增数值或物理验证。旧D4_N8_diag_v3_1_20261026_v1及其NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。
+-- 当前卡点是平均定义/总阻力与附加阻力映射、运动体积源、同条件独立参考及资源。下一具体动作：独立新目录准备共用输入表与系数适配说明，优先审核定间隙压力驱动接口，再准备瞬时挤压协议；不得自动启动计算。常规实现准备GPT-6.1 Sol｜High；疑难理论/矛盾裁决或最终冻结按项目协议建议GPT-6 Astra｜High。
++## 共用输入与导度—阻力接口已准备：未冻结、未运行（2026-10-30）
++
++- 用户授权准备二维模型/OpenFOAM共用输入表和导度—阻力接口。本轮交付入口 `docs/reports/Shared_transport_interface_20261030/README.md`，人读表COMMON_INPUTS.md、接口说明CONDUCTANCE_RESISTANCE_INTERFACE.md、数值示例COEFFICIENT_EXAMPLES.md及common_inputs.json/coefficient_examples.json、标准库复算脚本prepare_inputs.py、来源清单source_manifest.json与verification.json。状态PREPARATION_ONLY_NOT_FROZEN_NOT_RUN、launch_ready=false；不是OpenFOAM可运行字典或放行协议。
++- 已从现行稿§2.2/2.3/4.4及D2当前源码核J(m²/s)、K(m³)和公布舍入V2；两个原始h75_d100_dx5_P/T的steady/result.txt重读并绑定哈希，仅作既有5nm输入诊断。K由原公式/V2/既有OpenLB各两槽向形成6行条件性换算；准备算术、原始几何/储液厚度、方向交换与K/κ/D恒等式检查满足，不是流动基准或科学Gate通过，不补齐历史构建绑定。
++- 共用基准h75/d_g100/w120/P240nm；H_store=125nm、H_env=175nm、φ_g=0.5与包络体积流体比5/7分别列明。固定x短边、y长边，候选Ly/Lx=2；槽沿y时Kxx=K_perp/Kyy=K_parallel，槽沿x时交换。μ=1e-3Pa·s、ρ=1000kg/m³仅为从D2提出的物性候选。绝对长宽/周期数/边缘相位/V或静态G/完整边界/网格/资源/门槛为待定，不用0伪填未知。
++- 接口约定候选Ubar_f=J/H_store，只有相同平均定义且Darcy承担全部未解析平均阻力时D_2D=H_store K_2D^-1；不能直接叠加到已解析无滑移壁面，Dzz/完整竖向模型仍null。记录每体积−μDU、每质量−νDU及压力Pa/运动学压力换算；不把μ/K直接填d。挤压四外边零过压与静态压差/周期体力检查分阶段，不能混用。正闭合须满足−div(K grad p_g)=μV及体积收支；旧D3的符号/abs约定只记录风险，未改旧脚本。压力载荷与三维总应力分项，统一后才用F_net/V与槽向阻力比。
++- nanrPrint仍仅作参考：上轮固定提交381bc94bc4b99631af7d7d9e9538b565beeb9a5f、23份来源副本和核查报告见 `docs/reports/NanrPrint_reference_review_20261030/REPORT.md`。本轮未新核远端；其单层液气等效阻力配置不作显式沟槽参照，位移消费链/版本兼容仍未验证。独立同条件显式挤压参照与新条件检验仍是准确性主张缺口，不把双平台一致性当准确性。
++- 本轮修改仅新增上述准备目录及同步本状态/最新交接；没有原求解器改动、编译、网格生成、短测、流动求解、拟合、重跑、下一Gate、新仿真run_id、提交推送、对外发送或长算启动/新授权。新增为文件与系数算术复核，无新增数值流动/物理验证。旧D4_N8_diag_v3_1_20261026_v1及其NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null保持；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD与历史FAIL保持。
++- 当前卡点：125nm平均定义与OpenFOAM速度/源项的严格对应、总阻力或解析壁面路线、真实体积变化、资源/边界与参考。下一具体动作：审核接口物理口径并形成静态压力驱动检查的实施协议；正式公式/结论终审按项目协议建议GPT-6 Astra｜High；常规准备GPT-6.1 Sol｜High。没有交付长算命令，不自动进入求解或放行。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

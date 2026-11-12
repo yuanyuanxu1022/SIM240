@@ -1,0 +1,1445 @@
+--- before/第一篇论文_第1章引言草稿_20261017.md
++++ docs/reports/第一篇论文_第1章引言草稿_20261017.md
+@@ -2,7 +2,8 @@
+ 
+ > 目标期刊：Physics of Fluids（二区优先）／Microelectronic Engineering（三区备选）
+ > 语言：英文（投稿正文语言）
+-> 日期：2026-10-17
++> 日期：2026-10-17；证据口径修订：2026-10-18
++> 本轮修订依据：`SIM240_single_phase_audit_20261018/REPORT.md`；核心结论与修正验证台账见 `SIM240_manuscript_revision_20261018/CORE_CLAIMS.md`。仅为待作者确认的工作稿，不代表投稿放行。
+ > 状态：**可送老师审阅的完整草稿**，非定稿。文中 `[n]` 对应文末参考文献表。
+ > ⚠ 查新纪律：全文**未使用 "first" / "for the first time" / "no one has"**。任务 C（WoS 被引列表）完成前不得添加此类措辞。
+ 
+@@ -20,12 +21,12 @@
+ 
+ ### ¶2　介尺度模型与所依赖的闭合关系
+ 
+-Simulating the flow at the scale of a full field while resolving each nanometre feature is not feasible, and it is not necessary: the lateral scale is five orders of magnitude larger than the gap, so the lubrication approximation applies [2,3]. The template pattern is then represented not by resolved geometry but by an effective permeability tensor $\mathbf{K}$ that maps the macroscopic pressure gradient to the gap-averaged flux,
++Simulating the flow at the scale of a full field while resolving each nanometre feature is not feasible, and it is not necessary: the lateral scale is five orders of magnitude larger than the gap, so the lubrication approximation applies [2,3]. The template pattern is then represented not by resolved geometry but by an effective permeability tensor $\mathbf{K}$ that maps the macroscopic pressure gradient to the depth-integrated flux,
+ $$
+ \mathbf{q} = -\frac{\mathbf{K}}{\mu}\nabla_\parallel p , \qquad
+ \frac{\partial h}{\partial t} + \nabla_\parallel\!\cdot\mathbf{q} = 0 ,
+ $$
+-where $\mu$ is the resist viscosity and $\nabla_\parallel$ is the in-plane gradient [2,4]. For a line-and-space pattern the two principal components of $\mathbf{K}$ follow from two elementary rules. Along the grooves the pressure gradient is common to all stripes, so the fluxes add: the cubic conductances are averaged arithmetically. Across the grooves the flux is common and the pressure drops add: the conductances are averaged harmonically. For a pattern of period $P$, groove width $w$ and groove depth $d$, with a residual gap $h$ under the protrusions, these rules give
++where $\mu$ is the resist viscosity and $\nabla_\parallel$ is the in-plane gradient [2,4]. For a line-and-space pattern the two principal components of $\mathbf{K}$ follow from two elementary rules. Along the grooves the pressure gradient is common to all stripes, so the fluxes add: the cubic conductances are averaged arithmetically. Across the grooves the flux is common and the pressure drops add: the conductances are averaged harmonically. For an equal-width line-and-space pattern ($w/P=1/2$) of period $P$, groove width $w$ and groove depth $d$, with a residual gap $h$ under the protrusions, these rules give
+ 
+ $$
+ K_\parallel^{\rm mod}=\frac{1}{24}\left[(h+d)^3+h^3\right],
+@@ -36,46 +37,66 @@
+ 
+ as the transport coefficients per unit width. Equation (1) is the arithmetic–harmonic ("stripe") average, which is mathematically identical to the local cubic law routinely used for patterned channels [3]; the form employed in imprint modeling follows the same construction [2,4].
+ 
+-Equation (1) is attractive precisely because it is closed-form and requires no computation. It is, however, a one-dimensional construction applied to a two-dimensional cross-section, and it therefore discards two things. The arithmetic average treats each stripe as an independent parallel-plate channel, so it omits the shear on the vertical side walls of a groove. The harmonic average treats the protrusion and the groove as two resistors in series, so it omits the additional dissipation where the flow contracts into and expands out of the groove. Both omissions are largest exactly where the geometry is least slender — that is, at the deep grooves and thin gaps that occur near the end of an imprint cycle.
+-
+-### ¶3　该闭合被广泛沿用，但其自身从未被定量检验
+-
+-The closure has been adopted and extended repeatedly, but always as an input. Jain et al. [2] introduced the anisotropic permeability into a multi-drop spreading model for line-and-space templates; their comparison with experiment was qualitative, aimed at reproducing the observed directionality of spreading rather than at testing the magnitude of $\mathbf{K}$. Ban and Bonnecaze [4] subsequently showed that permeability alone cannot reproduce the measured flow front and added an anisotropic capillary-pressure boundary condition derived from Surface Evolver calculations; their key finding is that both anisotropic permeability and anisotropic capillary pressure are required, and their quantitative checks concern the capillary pressure, not the permeability. The same group later extended the framework to templates carrying several pattern regions [5], where a change of pattern orientation from 0° to 90° is handled by interchanging $k_{xx}$ and $k_{yy}$ — an operation that presumes the tensor transformation law holds.
+-
+-In this line of work, and in the wider literature on patterned-template filling, the two components of $\mathbf{K}$ are carried through the analysis without independent verification against a resolved flow field. It should be emphasized that this is not a criticism of the modeling strategy: replacing several thousand sub-resolution features by an effective tensor is the only tractable route, and the strategy has been productive. The open question is narrower and entirely quantitative: for the rectangular grooves actually used in imprint templates, over the range of gaps encountered during filling, how large is the error of Eq. (1)? We note that numerically checking an averaged flow model against resolved solutions is itself an established practice in the tribology literature, where flow-factor and roughness-averaged models have been compared with Navier–Stokes and lattice-Boltzmann solutions [6,7]. The contribution sought here is therefore not the comparison methodology, but the error law for this particular geometry and its correction.
++Equation (1) is attractive precisely because it is closed-form and requires no computation. It is, however, a one-dimensional construction applied to a two-dimensional cross-section, and it therefore discards two things. The arithmetic average treats each stripe as an independent parallel-plate channel, so it omits the shear on the vertical side walls of a groove. The harmonic average treats the protrusion and the groove as two resistors in series, so it omits the additional dissipation where the flow contracts into and expands out of the groove. These neglected spatial variations motivate candidate explanations for closure bias. Their separate quantitative contributions are not established by the present coefficient comparisons.
++
++### ¶3　已核实的模型沿用与本研究的窄问题
++
++Ban and Bonnecaze [4] retained the effective-permeability description used in imprint modeling and introduced a structure-dependent capillary-pressure boundary condition derived from Surface Evolver calculations. Their equations (9) and (10) prescribe the directional permeability, whereas the comparison in their Fig. 7 tests the capillary-pressure approximation. Their subsequent study [5] used this framework to investigate droplet placement beneath templates containing different pattern regions, including orthogonal line-and-space patterns. For the orthogonal regions, the principal permeability components are interchanged. This application of directional coefficients motivates their accurate determination; it is not an independent validation of their magnitudes for the fully filled rectangular cell considered here.
++
++These studies distinguish hydraulic transport from capillary driving. Droplet spreading depends on both, so agreement in front shape alone does not isolate the accuracy of the permeability closure. The present fixed-gap, fully filled calculations address that narrower hydraulic question without a moving liquid-air interface. The literature search remains incomplete, and this distinction does not establish the absence of earlier resolved-flow comparisons or make tensor-coordinate transformations a new physical result.
++
++The closure itself is not peculiar to imprint modeling. For a one-dimensional profile it is not merely analogous to the pressure flow factor of the average flow model of Patir and Cheng [12]; under the four conditions listed in Sec. II it is the same object, and for a square wave the identity is exact rather than approximate. The resolved calculations evaluate the same functional — mean flux over mean gradient — under a different operator, Stokes rather than Reynolds, so the difference between the two is a property of the approximation and not of the averaging. The accuracy of that model has been examined in tribology for four decades, and the studies divide by what they take as the reference solution. Where the reference is the Reynolds equation itself — as in the original flow-factor determination [12] and in the comparison of averaging schemes for textured contacts [13] — the comparison measures the upscaling error alone, holding fixed the inability of the Reynolds equation to represent the flow at a sharp corner. Where the reference is a resolved Stokes or Navier–Stokes solution, the two errors are measured together; this has been done for longitudinal and transverse roughness in elastohydrodynamic contacts [14], for a single surface defect [6], and for Gaussian random roughness [7]. For rectangular grooves the resolved-flow comparison also exists, but it is stated as a force, not as a transport coefficient. Teyssèdre et al. [15] solved the Stokes problem by finite elements on a rectangular line grating, that is, on the present geometry, for shape ratios up to $h/L=2.4$ spanning the range used here, and found the imprint force to exceed the lubrication estimate by a factor of two to eighty, rising as the gap opens. That ratio and the one reported below are not the same measurement — theirs is a squeeze flow in which the polymer must turn into the cavity, ours a pressure-driven conductance at fixed geometry — but both trace to the corner flow that the lubrication approximation omits. They concluded that simplified flow models cannot be used above $h/L=0.1$, and the same work simulated capillary filling of such a groove with a moving contact line. What that study does not report is the transport tensor itself: neither of its two principal values, nor the ratio between them. Anisotropic filling of rectangular cavities has been observed directly [16], the front advancing faster along the cavity than across it, but it yields no transport coefficient. Models carrying an anisotropic $\mathbf{K}$ do exist [2,4,5], yet none of them examines the values of $k_{xx}$ and $k_{yy}$ themselves; one handles a 90° change of pattern orientation by interchanging the two components [5], an operation that presumes the tensor transformation law rather than testing it. What is absent, therefore, is not the practice of checking an averaged model against a resolved solution, nor the recognition that the averaged model fails at these gaps, but a separately quantified error for each of the two principal coefficients on a sharp-edged geometry at finite gap, and how that error propagates into the squeeze-film pressure and the drainage it drives. An error in the anisotropy ratio alone does not answer that question, because the two components enter the lubrication flux with separate weights along and across the pattern.
++
++It should be emphasized that this is not a criticism of the modeling strategy: replacing several thousand sub-resolution features by an effective tensor is the only tractable route, and the strategy has been productive. The contribution sought here is therefore not the comparison methodology, but the error law for this particular geometry, at the gaps actually traversed during filling, and its correction.
+ 
+ ### ¶4　为什么解析路线补不上这一格
+ 
+-One might expect the gap to be filled analytically instead. For smoothly undulating walls such analyses exist and are accurate: spectral and domain-perturbation treatments yield closed-form permeability tensors for grooves of arbitrary depth [8,9], and they recover the classical asymptotic results in the thin- and thick-channel limits. These methods, however, rest on a Fourier representation of the wall shape, and the rectangular profile used in imprint templates is not represented by such a series in a usable way. Its Fourier coefficients decay only as $1/n$, so every spectral sum in which the correction is weighted by a single power of $n$ fails to converge — including $S_1=\sum_n n\,|g_n|^2$, on which the leading correction depends [8]. Dewangan and Datta accordingly state that their approach "does not specialize meaningfully to the rectangular topography, because of its jump discontinuity" [8]. The underlying difficulty is general. In a second-order domain-perturbation analysis of periodic surfaces, an ideal square-groove profile produces Fourier coefficients decaying as $1/m$, whereupon two diagonal entries of the mobility tensor diverge and the predicted slip becomes unbounded; the authors of that analysis conclude that the mobility formula "should not be used for surfaces with corners or vertical slopes", and sharpen this to the requirement that the surface be twice continuously differentiable [10].
+-
+-This is a statement about a class of asymptotic methods, not a claim that no analytical description of a rectangular groove is possible — particular limits (very shallow corrugations, or the thin-film limit in which the groove merely adds a slip length) remain accessible to analysis. What it does mean is that for the geometry of interest here — grooves of depth comparable to the groove width, under a residual gap of the same order — the value of $\mathbf{K}$ cannot be obtained by perturbing around a smooth profile, and must instead be obtained by solving the flow in the actual geometry. The same conclusion follows from the failure of the slender-gap premise: with $h/P\approx0.31$ at a typical mid-cycle gap, and $d/w$ of order unity, neither the thin-gap nor the shallow-groove asymptote applies.
++One might expect the gap to be filled analytically instead. For smoothly undulating walls such analyses exist and are accurate: spectral and domain-perturbation treatments yield closed-form permeability tensors for grooves of arbitrary depth [8,9], and they recover the classical asymptotic results in the thin- and thick-channel limits. These methods, however, rest on a Fourier representation of the wall shape, and the rectangular profile used in imprint templates is not represented by such a series in a usable way. Its Fourier coefficients decay only as $1/n$, so every spectral sum in which the correction is weighted by a single power of $n$ fails to converge — including $S_1=\sum_n n\coth(nH)\,|g_n|^2$, on which the leading correction depends [8] ($H$ the channel half-gap, $g_n$ the Fourier coefficients of the wall). Dewangan and Datta accordingly state that their approach "does not specialize meaningfully to the rectangular topography, because of its jump discontinuity" [8]. The underlying difficulty is general. In a second-order domain-perturbation analysis of periodic surfaces, an ideal square-groove profile produces Fourier coefficients decaying as $1/m$, whereupon two diagonal entries of the mobility tensor diverge and the predicted slip becomes unbounded; the authors of that analysis conclude that the mobility formula "should not be used for surfaces with corners or vertical slopes", and sharpen this to the requirement that the surface be twice continuously differentiable [10].
++
++This is a statement about a class of asymptotic methods, not a claim that no analytical description of a rectangular groove is possible — particular limits (very shallow corrugations, or the thin-film limit in which the groove merely adds a slip length) remain accessible to analysis. What it does mean is that for the geometry of interest here — grooves of depth comparable to the groove width, under a residual gap of the same order — the cited smooth-profile approximations do not establish the accuracy of the present closure. Explicit-geometry numerical solutions provide one route to assessing it; other analytical or numerical formulations are not excluded. The same conclusion follows from the failure of the slender-gap premise: with $h/P\approx0.31$ at the representative fixed gap, and $d/w$ of order unity, neither the thin-gap nor the shallow-groove asymptote applies.
+ 
+ ### ¶5　本文做什么、结论是什么
+ 
+-This paper therefore determines $\mathbf{K}$ directly. We solve the steady incompressible flow in an explicitly resolved periodic rectangular groove, using the lattice Boltzmann method on a grid fine enough to resolve the groove corners, and extract $K_\parallel$ and $K_\perp$ from the flux driven by a prescribed body force. The geometry is fixed to the imprint-relevant values $P=240$ nm and $w=120$ nm, with groove depth $d\in[25,120]$ nm and residual gap $h\in[25,125]$ nm; the closure of Eq. (1) is evaluated for the same geometry under the same driving and the same normalization, so that the comparison isolates the closure error rather than a difference in convention. Forty-eight cases were computed, each passing a set of numerical gates (mass drift, Mach number, window convergence, section consistency, and agreement with the analytic parallel-plate limit).
+-
+-Three results emerge.
+-
+-(i) *The closure is systematically optimistic, and the error is a function of geometry rather than of scale.* Both components are overestimated in every one of the thirty-six cases, and the overestimate grows monotonically as the groove becomes deeper relative to the gap and to its own width. Across that map the along-groove error rises from +10% to +205%, and the across-groove error from +8% to +54%. At the reference geometry ($h=75$ nm, $d=100$ nm) the closure predicts an anisotropy ratio $K_\parallel/K_\perp=3.70$ where the resolved flow gives $2.21$. The closure thus misrepresents not only the magnitude of the transport but the degree of directionality, which is the quantity that determines the shape of the filling front.
+-
+-(ii) *The two components fail for different reasons, and the reasons are separable.* The along-groove error is governed mainly by $d/H_{\rm ref}$, where $H_{\rm ref}=h+\varphi d$ is the volume-equivalent height and $\varphi=w/P$; it is the side-wall shear omitted by the arithmetic average. The across-groove error is governed mainly by $d/w$ and is nearly independent of $h$; it is the step dissipation omitted by the series average. This separation is what makes a compact correction possible.
+-
+-(iii) *The error can be removed by two dimensionless factors, and the correction transfers to geometries that were not used to fit it.* Multiplying Eq. (1) by
+-$$
+-F_\parallel=\frac{1}{1+1.7207\,(d/H_{\rm ref})^{1.8046}},
++This paper evaluates the depth-integrated transport tensor for steady, fully filled flow in explicitly represented periodic rectangular grooves. The period is $P=240$ nm and the width is $w=120$ nm. Eighteen sampled geometries span $h=25$–$125$ nm and $d=25$–$120$ nm; they do not form a complete Cartesian grid over those ranges. The error map contains 36 principal-direction calculations. Four refinement runs, two viscosity checks and six oblique-drive runs bring the total to 48, not 48 independent geometries. The existing-output audit found no exceedance of the selected run diagnostics and numerical gates. The analytic parallel-plate benchmark is a separate check, not an exact solution against which every grooved case was validated.
++
++Three conclusions follow within this scope.
++
++(i) *The original closure overestimates both transport components at every sampled geometry.* Relative to the computed coefficients, its errors range from +10.30% to +204.85% along the grooves and from +8.11% to +54.19% across them. At $h=75$ nm and $d=100$ nm, it predicts an anisotropy ratio of 3.70, compared with 2.21 from the resolved calculation. These are observed sample discrepancies, not universal bounds over a continuous parameter domain; the numerical reference retains geometry-dependent discretization uncertainty.
++
++(ii) *Unequal errors in the principal values also affect oblique flow direction.* With the driving angle $\theta$ and flux angle $\beta$ both measured from the groove axis, the linear tensor prediction is $\tan\beta=(K_\perp/K_\parallel)\tan\theta$. At $\theta=45^\circ$ for the reference geometry, the DNS principal values predict $\beta=24.3424^\circ$, whereas the original closure predicts $15.1412^\circ$, a difference of $-9.2012^\circ$. The six oblique-drive simulations test the tensor relation using DNS principal values. They do not validate the original closure values, rotated-wall discretizations, or a moving liquid front.
++
++(iii) *A data-informed empirical revision reduces sampled residuals, without establishing a continuous-domain prediction guarantee.* The original correction was fitted on nine geometries, $h\in\{50,75,125\}$ nm and $d\in\{25,50,100\}$ nm,
++$$
++F_\parallel^{\rm V1}=\frac{1}{1+1.7207(d/H_{\rm ref})^{1.8046}},
+ \qquad
+-F_\perp=\frac{1}{1+0.53\,(d/w)^{0.83}},
+-\tag{2}
+-$$
+-reduces the along-groove error from +66…+99% to within ±17% and the across-groove error from +34…+41% to within ±4%, on a holdout groove depth ($d=75$ nm) that was excluded from the fit. The stated validity domains are $h\in[50,125]$ nm with $d/w\le1$ for $F_\perp$ (±10%) and $d/w\le0.83$ for $F_\parallel$ (±20%), with a lower bound of $h=50$ nm; the departure of $F_\parallel$ at $d/w=1$ (±40%) marks where the side-wall correction itself begins to fail, and is reported rather than fitted away.
+-
+-Two further checks support the interpretation of $\mathbf{K}$. First, grooves rotated by 30°, 45° and 60° reproduce both the tensor rotation law $K(\theta)=K_\parallel\cos^2\theta+K_\perp\sin^2\theta$ and the flow deflection $\tan\phi=(K_\perp/K_\parallel)\tan\theta$ to better than $10^{-4}$%, so treating $\mathbf{K}$ as a rank-two tensor — the premise implicit in interchanging components between orthogonal patterns [5] — is legitimate; what the closure gets wrong is the magnitude of the principal values, not the transformation. Second, increasing the viscosity fifteen-fold changes $\mathbf{K}$ by 0.0006% while scaling the flux by exactly $1/15$, confirming that $\mathbf{K}$ is a purely geometric quantity for a Newtonian resist, so that Eqs. (1) and (2) carry over to any Newtonian imprint resist without recomputation.
++F_\perp^{\rm V1}=\frac{1}{1+0.5276(d/w)^{0.8259}},
++\quad H_{\rm ref}=h+d/2.
++\tag{2a}
++$$
++Its original withheld-depth check at $d=75$ nm gave maximum absolute residuals of approximately 17% parallel and 4% perpendicular. However, the parallel residual is +28.09% at the calibration point $h=125$, $d=100$ nm and +38.58% at $h=125$, $d=120$ nm. These observations do not justify a continuous-domain ±20% accuracy claim.
++
++The current relation adopted for this manuscript is the revised model V2,
++$$
++F_\parallel^{\rm V2}=\frac{1}{1+1.7685(d/w)^{1.6331}},
++\qquad
++F_\perp^{\rm V2}=\frac{1}{1+0.4900(d/w)^{0.6990}}.
++\tag{2b}
++$$
++The accompanying implementation minimizes the maximum absolute relative transport residual on the original nine calibration geometries. It also reports a least-squares sensitivity comparison. Evaluation of the rounded coefficients in Eq. (2b) gives maximum absolute residuals of 10.505% across the 18 sampled parallel geometries and 6.921% across the 15 sampled perpendicular geometries with $h\ge50$ nm. The excluded perpendicular point at $h=25$, $d=100$ nm has a residual of −18.705%; exclusion is a reported limitation, not evidence of validated accuracy below that gap. All sampled widths and periods remain $w=120$ nm and $P=240$ nm.
++
++The depth $d=75$ nm is excluded from coefficient estimation, but its results were available during model selection. Its V2 residuals, approximately −8.45% to +9.33% parallel and −1.19% to +3.86% perpendicular, are therefore retrospective withheld-from-fit checks, not independent final tests of the revised model. The variable, fitting objective and proposed scope were chosen with extension data available. V2 is consequently a data-informed, exploratory model revision even though it is now the formula adopted in the manuscript. The remaining dependence on $h$ is not removed; a one-variable fit is not evidence that $h$ has no physical influence.
++
++The reported maxima describe discrete samples, include neither numerical-reference uncertainty nor an interpolation guarantee, and do not support extrapolation beyond the sampled gap/depth, width or duty-cycle conditions. Availability of a fitting script and agreement of exported coefficients with residual tables are distinct from independently reproducing the optimization. The least-squares comparison tests objective sensitivity for the same selected form; it does not by itself isolate the causal benefit of changing variables. No separate traction or energy budget identifies the physical origin of the remaining residuals.
++
++Side-wall shear and flow redistribution near steps remain plausible explanations for directional differences. The coefficient fits and field images do not separate or quantify their contributions; no validated traction partition or energy-balance closure is claimed. Likewise, the two available spot refinements do not provide a full-map uncertainty bound.
+ 
+ ### ¶6　范围声明（主动划界）
+ 
+-The scope of the results is deliberately restricted, and the restrictions are worth stating at the outset. The calculations describe a fully filled, single-phase, Newtonian liquid in a fixed gap, so they represent the quasi-static limit of the filling process rather than the squeeze flow itself; the film is continuous, with no free surface, no trapped gas, and no contact line. Partial filling, wetting and capillary effects, gas entrapment and the rate dependence of the closing motion are outside the present treatment. This boundary is not incidental: once a gas phase occupies part of the pore space, the transport coefficient is no longer a purely geometric quantity but becomes a saturation-dependent relative permeability whose parameters require separate determination [11]. Within the stated scope, however, the results are independent of the resist viscosity and of the particular Newtonian resist used, and the correction of Eq. (2) applies region by region to templates carrying patterns of different depth — a case of practical interest, since a single template often mixes several feature sizes [5].
+-
+-The remainder of the paper is organized as follows. Section 2 defines the geometry, the governing equations, the lattice Boltzmann formulation and the procedure used to extract $\mathbf{K}$. Section 3 reports the verification of the solver and the numerical uncertainty of the extracted coefficients. Section 4 presents the resolved transport coefficients over the parameter domain, and Section 5 compares them with the closure of Eq. (1) and derives Eq. (2). Section 6 discusses the physical origin of the two error mechanisms, and Section 7 concludes.
++The results concern a continuous, incompressible, Newtonian liquid with no-slip walls in a fixed, fully filled, ideal periodic geometry. At the reference geometry, increasing viscosity from 1 to 15 mPa s changes the extracted coefficients by −0.000644% and −0.000283% in the parallel and perpendicular directions, respectively, while reducing flux by approximately fifteen-fold. This is a consistency check of the assumed linear transport model, not a validation for all real resists.
++
++Fixed-gap coefficients may supply local inputs to a future slowly varying squeeze-flow model, provided its scale separation, conservation law and boundary conditions are independently justified. The present calculations do not validate dynamic filling, free surfaces, wetting, trapped gas, real-resist slip or rheology, pattern junctions, or other groove widths and duty cycles. The restriction to a single phase is not cosmetic. Once a gas phase occupies part of the void, saturation enters as an independent variable and the transport coefficient ceases to be a property of the geometry alone, becoming a relative permeability that must be calibrated against a saturation curve [11]; the same step introduces a viscosity ratio and a capillary number that the present comparison does not contain. No independent same-geometry solver or experimental comparison is claimed.
++
++The remainder of the paper defines the model and extraction procedure, reports numerical verification with its unresolved provenance limits, presents the sampled closure discrepancies, and evaluates a data-informed empirical correction with explicitly limited sample support. Mechanistic interpretation is discussed as a hypothesis rather than a completed dissipation decomposition.
+ 
+ ---
+ 
+@@ -94,6 +115,11 @@
+ | [9] | Dewangan M.K., Datta S., *Flow through microchannels with topographically patterned wall: a spectral theory for arbitrary groove depths*, Eur. J. Mech. B/Fluids **70**, 73–84 (2018) | 10.1016/j.euromechflu.2018.02.004 | ⚠ 仅见摘要（闭源） |
+ | [10] | Kamrin K., Bazant M.Z., Stone H.A., *Effective slip boundary conditions for arbitrary periodic surfaces: the surface mobility tensor*, J. Fluid Mech. **658**, 409–437 (2010) | 10.1017/s0022112010001801 | ✅ 全文已核（arXiv:0911.1328v2，30 页；**方波反例在 §4.1，C² 判据在 §4.2**） |
+ | [11] | Cochrane A., Tjiptowidjojo K., Bonnecaze R.T., Schunk P.R., *Multiphase model for nanoimprint lithography*, Int. J. Multiphase Flow **104**, 9–19 (2018) | 10.1016/j.ijmultiphaseflow.2018.03.014 | ✅ 全文已核（2026-10-17） |
++| [12] | Patir N., Cheng H.S., *An average flow model for determining effects of three-dimensional roughness on partial hydrodynamic lubrication*, J. Lubr. Technol. **100**(1), 12–17 (1978) | 10.1115/1.3453103 | ✅ **全文已核（2026-10-18，`raw/patir1978_JLubrTech_100_12-17.pdf`）**。第 15 页明写"flow factors, which are obtained by numerical flow simulation"；**式(23) 横向 φ_x=1/[h³E(1/h_T³)]（调和）、式(24) 纵向 φ_x=E(h_T³)/h³（算术）**，两式由"comparing the stochastic Reynolds equations [3,6,8] with the average Reynolds equation"**解析导出**，其数值模拟（在模型轴承上用有限差分求解式(18)的 Reynolds 方程，约 10 个统计等价粗糙面取平均）与之吻合；**故参考解为 Reynolds 方程自身，非 Stokes** |
++| [13] | Rom M., König F., Müller S., Jacobs G., *Why homogenization should be the averaging method of choice in hydrodynamic lubrication*, Appl. Eng. Sci. **7**, 100055 (2021) | 10.1016/j.apples.2021.100055 | ✅ 全文已核（OA，21 页；**参考解为细网格 Reynolds，见其 §4.1**） |
++| [14] | Lubrecht A.A., ten Napel W.E., Bosma R., *The influence of longitudinal and transverse roughness on the elastohydrodynamic lubrication of circular contacts*, J. Tribol. **110**(3), 421–426 (1988) | 10.1115/1.3261645 | ⚠ 仅见摘要（闭源）；摘要明写"与流量因子法的预测作比较" |
++| [15] | Teyssèdre H., Gilormini P., Régnier G., *Limitations of simple flow models for the simulation of nanoimprint*, Int. Polym. Process. **28**(1), 72–78 (2013)；同作者博士论文 *Simulation du procédé de nanoimpression thermique sur silicium revêtu d'un film polymère ultramince*, Arts et Métiers ParisTech, 2013-11-12（该博士论文参考文献表第 [67] 条自记为 **2012**，与 Crossref 的 print 日期 2013-03 不符，在线版 2013-08-22；**以 Crossref 的 2013 为准**） | 10.3139/217.2673 | ✅ **全文已核（博士论文 178 页，`raw/teyssedre2013_PhD_ArtsetMetiers.pdf`，§3.1.4 即该文）**。**几何=矩形截面线栅半周期**（Fig. 3.4）；**参考解=Abaqus 平面应变 Stokes 有限元**；h₀/L=0.8/1.6/2.4，**F/F_L 在 2 至 80 倍之间，间隙越大偏差越大**（初始约 7 倍，接触模顶后由 3 倍跃至 12 倍，完全填充于 h/L≈0.3）；结论"不能对 h/L>0.1 使用简化流动模型"。**只给力，不给 K，无各向异性**；全文 0 次出现 permeability/anisotropy，0 次引用 Patir–Cheng；§4.4.4 另做**带自由表面与移动接触线的毛细填充**仿真 |
++| [16] | Wang Q., Hiroshima H., *Anisotropic filling phenomenon of cavities in UV nanoimprint lithography*, J. Vac. Sci. Technol. B **29**(6), 06FC19 (2011) | 10.1116/1.3662889 | ⚠ 仅见摘要（闭源）；实验观测矩形腔沿长度方向收缩更快 |
+ 
+ ---
+ 
+@@ -104,7 +130,7 @@
+ | 段 | 干什么 | 关键取舍 |
+ |---|---|---|
+ | ¶1 | 立场景：填充是瓶颈，且发生在"纳米间隙 + 深槽"的二元尺度里 | 只引 [1] 的工艺数字，且写"在竞争性工艺条件下"，不写成通用规格 |
+-| ¶2 | 给闭合：先给润滑方程，再从"通量相加/压降相加"两条物理规则**推**出式(1) | **不从文献抄公式，而是自己推**——这样¶2 的结论（漏掉侧壁剪切、漏掉台阶耗散）是自然推出的，不是事后归因 |
++| ¶2 | 明确局部立方律及其省略的空间变化 | 省略项提示候选解释，不等于已量化机制 |
+ | ¶3 | 说清"被沿用但未被检验"，并**主动承认这不是批评** | 关键一段。先立"策略合理"，再收窄到"只是定量误差没人给" |
+ | ¶4 | 回答"为什么不能解析补上" | 这是本轮新增的核心，也是最能挡住"为什么没人做"的一问 |
+ | ¶5 | 三条结论 + 两个支撑验证 | 数字全部可追溯到 `error_table.csv` / 各 summary.csv |
+@@ -120,20 +146,101 @@
+ | ❌ "所有解析方法对矩形槽都不可用" | 加限定句："这是关于**一类**渐近方法的陈述，不是说不存在任何解析描述" | ¶4 第 2 句 |
+ | ❌ 把 Kamrin [10] 说成"压力驱动矩形槽无解" | 只引其"带尖角/垂直壁不适用"的判据，并区分为剪切驱动背景 | ¶4 |
+ | ✅ 可用窄主张 | ¶3 末句改为"contribution sought here is not the comparison methodology, but the error law…" | ¶3 末 |
+-
+-### 三、需要您确认或补做的 5 处
+-
+-1. **¶4 关于 $S_1$ 发散的表述** —— 已改为安全写法：**"$1/n$ 衰减 → 加权谱和不收敛"作为初等数学事实直接陈述（不挂引用）**，$S_1$ 的定义与"主导修正依赖 $S_1$"引 [8]，Dewangan"矩形槽给不出有意义结果"用其 §4.4 原话直引 [8]。这样即使审稿人追问，我们引的是作者原话，不是自己的推论。
+-
+-   > 原草稿曾写成"$S_1$ 发散，故渗透率无界 [8]"，这属于把我们的推论挂在别人名下。已改。
+-
+-2. **¶5 的 +205%** —— 取自 h=50/d=120/P 档（实测 204.8%）。这一档在 d/w=1，已超出 $F_\parallel$ 的严格适用域，但作为**误差上界**报告是恰当的。若希望只报标定域内的数，可改为 +154%（h=50/d=100）。
+-
+-3. **式 (1) 的系数** —— 我写成 $K_\parallel=(1/24)[(h+d)^3+h^3]$、$K_\perp=(1/6)(h+d)^3h^3/[(h+d)^3+h^3]$，与项目 `Kmod()` 实现一致（`v/12`，算术时 v=(hg³+hl³)/2）。**请核对与 Jain 原文的归一化对应**：Jain 的 $k$ 无量纲、平壁极限 $=h^2$；本文 $K$ 是 m³ 口径。若正文要与 Jain 的 $k_{xx},k_{yy}$ 逐式对照，需加一句换算（$k_D=H_0^2k/12$，$K=H_{\rm ref}k_D$，见范围文档 §4）。
+-
+-4. **[6] Brenner 2007 未取全文** —— 目前只按书目+摘要引用，且用法极轻（只说"存在此类比较先例"）。若要更稳，可降级为脚注，或改引 [7]（已核全文）。
+-
+-5. **$h/P\approx0.31$** —— 按 h=75、P=240 算得 0.3125。这是基准点而非全域，正文已写 "at a typical mid-cycle gap"。
++| ❌ **"没人用数值校核过润滑理论"**（原计划想写） | **不成立**。[15] 已用 FEM 在 NIL 周期牛顿图案上校核润滑理论对**压印力**的预测 | ¶3 新增段 |
++| ✅ 改为 | "校核本身不是空白；空白是**矩形直角槽 + 有限间隙下 K 两个主分量的误差**" | ¶3 末 |
++| ❌ "这个闭合是纳米压印特有的" | **不成立**。它就是一维横向形貌下的 Patir–Cheng 压力流量因子 [12] | ¶3 新增段首句 |
++| ❌ 把 [13] 当作"已量化闭合误差" | 必须补"其参考解为细网格 Reynolds，Reynolds 近似误差被固定" | ¶3 新增段 |
++
++### 三、本轮核心修订与待核项
++
++- 误差范围来自18几何、36方向工况；48是包含补充检查的运行数。
++- 修正关系：用户明确沿用V2，但不标为“验证定稿”。舍入公式在18个沿槽样点最大绝对残差10.505%；在15个h≥50 nm跨槽样点为6.921%，不含h25处约−18.705%的失配。d75为未参与系数拟合的回顾检查，不是V2的独立最终测试。实现与输出已存在，本轮未运行优化器；当前验证口径见CORE_CLAIMS.md，公式编号为(2a)/(2b)。
++- 机制归因、全域网格误差界和任意胶体/填充过程推广均未验证。
++- 文献元数据的旧“已核”标记是项目历史记录，不代表本轮新的人工作者确认。查新覆盖与全文范围仍须逐项核对；不得将未找到先例写为不存在先例。
++- 图1文件已存在，最终排版仍须检查；不再列为“尚未制作”。
++
++### 三·补三　等价性的口径升级：从"谱系"到"恒等 + 四条条件"（2026-10-18 15:40）
++
++**改了什么**：此前 ¶3 写"its two components are the two limiting orientations of the pressure flow factor"——
++这是**只讲方向性、没给证明**的写法，正是用户指出的风险：凭方向性认定同一数学对象，审稿人可以一路追问。
++
++**现在**：¶3 改为"under the four conditions listed in Sec. II **it is the same object, and for a square wave
++the identity is exact rather than approximate**"；**四条件与代数推导移入第 2 章 §G**（那里本就讨论归一化与误差定义）。
++
++**为什么能这样写**（依据见 `Jain_citation_audit_20261017/LITERATURE_COMPARISON_AND_CLAIM_BOUNDARY_20261018.md` §3）：
++
++| 项 | 结论 |
++|---|---|
++| PC 的定义 | $\phi_x=\langle q_x\rangle/q_{\rm smooth}$，即同梯度下粗糙面与光滑面的平均流量之比 |
++| 换成单位宽度渗透率 | $K^{\rm PC}_x=\phi_x h^3/12$ |
++| 等占空比方波 | $K^{\rm PC}_\parallel=\frac{1}{12}\frac{h^3+(h+d)^3}{2}$、$K^{\rm PC}_\perp=\frac{1}{12}\frac{2}{h^{-3}+(h+d)^{-3}}$ |
++| 与式(1) 比较 | **代数恒等**；12 档数值核，相对差 **0.00e+00**（双精度） |
++
++**四条条件**（缺一不可，已写入 §G）：① 一维形貌；② Reynolds 在单元内局部成立；③ 单相牛顿、无滑移、无自由面；
++④ 两侧同一 $h$ 定义与同一单位宽度归一化。**条件 ② 正是本文要检验的那一条。**
++
++**关键区分（全文立论的基础，必须反复守住）**：
++- $K^{\rm PC}$ = 式(1)：**同一泛函，Reynolds 算子**；
++- $K^{\rm DNS}$（本文实测）：**同一泛函（平均通量/平均梯度），Stokes 算子**。
++⇒ 两者**同定义、不同算子**。故 $E=(K^{\rm Eq.(1)}-K^{\rm DNS})/K^{\rm DNS}$ **精确地**是"Reynolds 导出的流量因子相对 Stokes 解的偏差"，
++既不掺平均化误差（PC 已把平均化做完，一维下为恒等），也不掺口径差异（两边同定义）。
++**所以本文不是"重新表达一个已知系数"，而是用更忠实的算子重算同一个系数、量出它自身的不确定度。**
++
++**引用编号**：四条件与推导在 §G，¶3 只作前向引用（"Sec. II"），**不新增文献编号**。
++$k_{xx},k_{yy}$ 与 [5] 的互换操作，属"应用未检验"，见对照表丁类。
++
++---
++
++### 三·补二　Patir–Cheng 谱系补段（2026-10-18 补，重要）
++
++**为什么加这一段**：查新（TS3/TS4 重跑）发现我们这个闭合在摩擦学里叫 **Patir–Cheng 压力流量因子**，
++1988 年就有人做过"纵向 vs 横向粗糙度 + 数值 vs 流量因子"的对比 [14]。
++若不主动交代，摩擦学背景的审稿人第一反应就是"这不是新鲜事"，而被动应答会比主动承认吃亏。
++
++**补段的核心结构（四层递进）**：
++1. **溯源**：一维横向形貌下，本闭合 = Patir–Cheng 流量因子；沿流算术、横向调和是同一构造的两个极限取向 [12]。
++2. **按参考解分类**（这是全段最有力的一句）：
++   - 以 **Reynolds 自身**为真值 → 只测**平均化误差**，Reynolds 在直角处的失效被**固定住**（[12] 原始、[13] 同质化对比）；
++   - 以 **Stokes/N–S** 为真值 → 两种误差一起测，但几何是 EHL 纹理 [14]、**单缺陷** [6]、**高斯随机粗糙面** [7]，
++     **没有一个是周期矩形直角槽 + 有限间隙**。
++3. **NIL 侧同理分叉**：[15] 用 FEM 校核润滑理论对**压印力**的预测（有力学结论，无 K）；
++   [16] 实验观测到矩形腔各向异性填充（有现象，无系数）。
++4. **收束**：缺的不是"校核"这件事，而是**K 两个主分量在填充间隙范围内的误差**。
++
++**这一段顺手解决的两件事**：
++- 消掉了原 ¶3 里那句"numerically checking … is itself an established practice [6,7]"——它与新段落重复。
++- 给 [11] 找到了正文引用位置（¶6 的双相边界），否则 [11] 会成为悬空引用。
++
++**✅ 已核（2026-10-18，用户提供全文）**：
++- **[12] Patir & Cheng 1978 全文已核**（6 页 PDF）。三条关键：
++  ① 第 15 页原文"flow factors, which are obtained by numerical **flow simulation**"——**此前引用的二手描述属实**；
++  ② **式(23)/(24) 正是调和与算术两条极限**：横向 φ_x=1/[h³E(1/h_T³)]、纵向 φ_x=E(h_T³)/h³，
++     且两式由"comparing the stochastic Reynolds equations [3,6,8] with the average Reynolds equation"**解析导出**，
++     不是拟合出来的 ⇒ **在本课题的一维槽形下，"沿槽算术/跨槽调和"在 Reynolds 近似内是恒等式**，
++     因此式(1) 与 DNS 的差值**全部来自 Reynolds 在直角处失效，与平均化本身无关**（已升级为正式陈述，见三·补三）；
++  ③ 其数值模拟求解的是式(18)的 **Reynolds 方程**（有限差分，模型轴承，约 10 个统计等价面取平均），
++     **参考解是 Reynolds 自身，不是 Stokes** ⇒ 归入"甲类"，与 [13] 同。
++- **[15] Teyssèdre 2013 全文已核**（博士论文 178 页，§3.1.4 即 IPP 那篇）。**这一条改变了我们的定位**：
++  几何就是**矩形截面线栅半周期**（Fig. 3.4），参考解是 **Abaqus 平面应变 Stokes 有限元**，
++  **h₀/L 覆盖 0.8–2.4，正落在本课题 h/L≈0.2–1.0 的区间内**；
++  结论是 **F/F_L 在 2 至 80 倍之间**，并明说"不能对 h/L>0.1 使用简化流动模型"。
++  ⇒ **原稿"尚未有人在矩形直角槽 + 有限间隙下做 Stokes 校核"的说法不成立，已删除并改写**（见下）。
++
++**⚠ 仍需补的核**：
++- [14] Lubrecht 1988、[16] Wang & Hiroshima 2011 **仍仅见摘要**。
++- **[15] 需在正文中注意的边界**：该文给的是**力**，不是输运张量；**二维平面应变**（无法区分沿槽/跨槽）；
++  全文 **0 次**出现 permeability / anisotropy，**0 次**引用 Patir–Cheng。
++  故它证明"平均化在直角槽有限间隙下失效"这一**物理事实**，但不提供 **K 的两个主分量**。
++
++**因 [15] 全文而做的一处实质改写（2026-10-18）**：
++¶3 原句"…but not, in the sources examined here, for periodic rectangular grooves at a finite gap"
++**与紧随其后的 [15] 引用自相矛盾**（[15] 做的正是这件事），已删。
++改为先承认"[15] 已在本几何上以 Stokes 为参考做了校核"，再收窄到
++**"缺的是 K 的两个主分量及其各向异性，而这恰是二维/三维填充计算真正要用的量"**。
++
++**篇幅影响**：引言由 2,090 词增至 **2,419 词**（+329）。若期刊要求压缩，本段可压到约 150 词，
++删去第 2 层的三个例子（[14]/[6]/[7]）只保留"[12][13] 以 Reynolds 为真值、[15][16] 在 NIL 侧"两句；
++但**第 1 层的溯源与第 4 层的收束必须保留**。
+ 
+ ### 三·补　关于 [10] 的引用定位（2026-10-17 补，重要）
+ 
+@@ -150,11 +257,11 @@
+ 
+ - **任务 C（WoS/Scopus 查 Jain 2017 被引列表）** —— 完成后才能决定是否允许任何强化的新颖性表述。当前草稿在无 C 的情况下**已经可以安全使用**。
+ - **[9] Dewangan 2018 全文** —— 目前只引其"存在任意深度谱理论"这一事实，摘要足够；若正文要具体比较其精度，需全文。
+-- **FIG. 1（装置示意）** —— ¶1、¶2 需要一张几何图，目前只有 ParaView 场图，没有示意图。
++- **FIG. 1（装置示意）** —— 文件已存在，最终稿需核对图注、单位与引用位置。
+ 
+ ### 五、篇幅（实测）
+ 
+-正文 **约 1,900 词**（剔除公式；含公式符号的粗略计数约 2,030）。
++正文已按2026-10-18证据审查修订；以下篇幅压缩建议是旧稿记录，旧词数不再代表当前稿。
+ 
+ - **Physics of Fluids**：其引言常见 800–1,500 词，本篇偏长。可接受但建议压到 1,500 以内，删减方案见下。
+ - **Microelectronic Engineering**：更短，建议压到 1,000–1,200 词。
+--- before/第一篇论文_第2章方法草稿_20261017.md
++++ docs/reports/第一篇论文_第2章方法草稿_20261017.md
+@@ -2,7 +2,7 @@
+ 
+ > 目标期刊：Physics of Fluids（二区优先）／Microelectronic Engineering（三区备选）
+ > 日期：2026-10-17
+-> 状态：**中英双语同步草稿**，所有数字均从源码与结果文件实测，出处见文末「数据溯源表」
++> 状态：中英双语工作稿；2026-10-18按现有输出审查修订。当前源码与历史构建的绑定尚不完整，不能把本轮读到的源码等同于全部历史运行版本。核心口径见 `SIM240_manuscript_revision_20261018/CORE_CLAIMS.md`。
+ > 与第 1 章共用文献编号：本章新增 [12]–[16]，接续引言 [1]–[11]
+ 
+ ---
+@@ -17,7 +17,7 @@
+ 
+ The geometry is non-dimensionalized internally by the period, and two ratios fix the problem: the dimensionless gap $h/P$ and the groove aspect ratio $d/w$. All results are reported for the imprint-relevant period $P=240$ nm and groove width $w=120$ nm (so the duty cycle is $w/P=0.5$), with $h$ and $d$ varied over the ranges given in Sec. II E. The reference geometry used for illustration throughout the paper is $h=75$ nm, $d=100$ nm, for which $h/P=0.3125$.
+ 
+-Because the gap is five orders of magnitude smaller than the lateral extent of a printed field, inertia is negligible and the flow is in the Stokes regime. The Reynolds number based on gap height and the largest computed velocity does not exceed $10^{-3}$, and the Mach number of the lattice Boltzmann solution is below $4\times10^{-7}$ throughout (Sec. II F). The calculation therefore represents the quasi-static limit of the imprint process: the gap is held fixed and the steady flow driven by a prescribed pressure gradient is computed, rather than the transient squeeze that closes the gap. Justification for this separation is given in section 2.2.
++The calculations target low-inertia, low-compressibility flow. Reynolds number and lattice Mach number address different issues: low Mach number alone does not establish negligible inertia. The fixed-gap cell problem supplies transport coefficients; it does not by itself validate a quasi-static approximation to a moving imprint process.
+ 
+ ### 中文
+ 
+@@ -25,7 +25,7 @@
+ 
+ 几何在程序内部以周期无量纲化，问题由两个比值确定：无量纲间隙 $h/P$ 与槽的深宽比 $d/w$。全部结果均在压印相关周期 $P=240$ nm、槽宽 $w=120$ nm（占空比 $w/P=0.5$）下报告，$h$ 与 $d$ 在 Sec. II E 给出的范围内变化。全文用于示意的基准几何为 $h=75$ nm、$d=100$ nm，对应 $h/P=0.3125$。
+ 
+-由于间隙比一个曝光场的横向尺度小五个数量级，惯性可忽略，流动处于 Stokes 区。以间隙高度与最大计算速度定义的 Reynolds 数不超过 $10^{-3}$；格点 Boltzmann 解的马赫数全程低于 $4\times10^{-7}$（见 Sec. II F）。因此本计算对应压印过程的**准静态极限**：固定间隙，计算在给定压力梯度驱动下的稳态流动，而非闭合间隙的瞬态挤压过程。这一分离的依据见 Sec. II B。
++本计算针对低惯性、低可压缩效应的流动。Reynolds数与格点马赫数检验的是不同问题：小马赫数本身不能证明惯性可忽略。固定间隙单胞给出输运系数，不等于已经验证移动压印过程的准静态近似。
+ 
+ ---
+ 
+@@ -33,7 +33,7 @@
+ 
+ ### EN
+ 
+-At the scale of a printed field, the resist film obeys the Reynolds lubrication equation with an effective permeability tensor. Writing $H$ for the local gap, $\mathbf{q}$ for the gap-averaged flux per unit width and $\nabla_\parallel$ for the in-plane gradient,
++At the scale of a printed field, the resist film obeys the Reynolds lubrication equation with an effective permeability tensor. Writing $H$ for the local gap, $\mathbf{q}$ for the depth-integrated flux per unit width and $\nabla_\parallel$ for the in-plane gradient,
+ 
+ $$
+ \frac{\partial H}{\partial t} + \nabla_\parallel\cdot\mathbf{q} = 0,
+@@ -44,7 +44,7 @@
+ 
+ which is the form used in imprint modeling [2,4] and is the two-scale reduction of the Stokes equations for a thin film.
+ 
+-Equation (3) separates the problem into two parts. The tensor $\mathbf{K}(h,d)$ depends only on the local cross-section, while the evolution of the gap $H(t)$ and of the pressure field is set by the imposed closing motion and the boundary conditions at the liquid front. The present work determines $\mathbf{K}$ and nothing else: $h$ and $d$ are held fixed, the flow is driven by a uniform body force, and the steady state is computed. This is not an approximation to the filling process but a decomposition of it, and it is the standard route in this literature — the permeability is tabulated once as a function of geometry, then used inside a transient lubrication solver [2,4,5]. A direct simulation of the closing gap would require resolving a moving boundary and a free surface, and would not separate the geometric error of $\mathbf{K}$ from the errors of the moving-boundary treatment.
++Equation (3) separates the problem into two parts. The tensor $\mathbf{K}(h,d)$ depends only on the local cross-section, while the evolution of the gap $H(t)$ and of the pressure field is set by the imposed closing motion and the boundary conditions at the liquid front. The present work determines $\mathbf{K}$ and nothing else: $h$ and $d$ are held fixed, the flow is driven by a uniform body force, and the steady state is computed. Using these coefficients in a transient lubrication solver [2,4,5] additionally requires appropriate scale separation, conservation and macroscopic boundary conditions; that coupled reduction is not validated here. A direct simulation of the closing gap would require resolving a moving boundary and a free surface, and would not separate the geometric error of $\mathbf{K}$ from the errors of the moving-boundary treatment.
+ 
+ In the calculations the pressure gradient is imposed as a body force. A uniform acceleration $\mathbf{a}$ acting on a liquid of density $\rho$ is equivalent to a pressure gradient $\mathbf{G}=\rho\mathbf{a}$, so that
+ 
+@@ -55,7 +55,7 @@
+ \tag{4}
+ $$
+ 
+-where $\mathbf{J}$ is the flux per unit width obtained by integrating the velocity over the fluid volume and dividing by the plan area. With $\rho=1000$ kg m⁻³ and $|\mathbf{a}|=10^{5}$ m s⁻², the imposed gradient is $G=10^{8}$ Pa m⁻¹, which produces gap-averaged velocities of order $10^{-4}$ m s⁻¹ and keeps the lattice Mach number far below its stability limit. Since $\mathbf{K}$ is extracted from a linear constitutive relation, its value is independent of the magnitude of $\mathbf{G}$ provided the flow remains in the Stokes regime; this is verified in Sec. II F.
++where $\mathbf{J}$ is the flux per unit width obtained by integrating the velocity over the fluid volume and dividing by the plan area. With $\rho=1000$ kg m⁻³ and $|\mathbf{a}|=10^{5}$ m s⁻², the imposed gradient is $G=10^{8}$ Pa m⁻¹, which produces gap-averaged velocities of order $10^{-4}$ m s⁻¹ and keeps the lattice Mach number far below its stability limit. Since $\mathbf{K}$ is extracted from a linear constitutive relation, its value is independent of the magnitude of $\mathbf{G}$ provided the flow remains in the Stokes regime; the available consistency checks and their limits are reported in Sec. III E.
+ 
+ ### 中文
+ 
+@@ -70,7 +70,7 @@
+ 
+ 这正是压印建模中使用的形式 [2,4]，也是薄膜 Stokes 方程的双尺度约化。
+ 
+-式 (3) 把问题分成两部分：张量 $\mathbf{K}(h,d)$ 只取决于局部横截面；间隙 $H(t)$ 与压力场的演化则由外加闭合运动和液面前沿的边界条件决定。本文**只确定 $\mathbf{K}$**：固定 $h$ 与 $d$，以均匀体力驱动，求稳态。这不是对填充过程的近似，而是对它的**分解**，也是本领域通行做法——渗透率先作为几何的函数制表，再放进瞬态润滑求解器 [2,4,5]。若直接模拟闭合间隙，需处理移动边界与自由液面，反而无法把 $\mathbf{K}$ 的几何误差与移动边界处理的误差分开。
++式 (3) 把局部输运系数与宏观间隙、压力演化联系起来。本文只求固定几何、均匀体力下的稳态 $\mathbf{K}$。把该系数用于瞬态润滑模型 [2,4,5]，还须满足尺度分离、质量守恒与适当宏观边界条件；本文并未验证这一耦合近似或完整填充过程。
+ 
+ 计算中压力梯度以体力形式施加。密度为 $\rho$ 的液体受均匀加速度 $\mathbf{a}$ 作用，等效于压力梯度 $\mathbf{G}=\rho\mathbf{a}$，故
+ 
+@@ -81,7 +81,7 @@
+ \tag{4}
+ $$
+ 
+-其中 $\mathbf{J}$ 为单位宽度通量，由速度在流体体积上积分再除以平面面积得到。取 $\rho=1000$ kg m⁻³、$|\mathbf{a}|=10^{5}$ m s⁻²，则外加梯度 $G=10^{8}$ Pa m⁻¹，产生的间隙平均速度量级为 $10^{-4}$ m s⁻¹，格点马赫数远低于稳定上限。由于 $\mathbf{K}$ 由线性本构关系提取，只要流动仍在 Stokes 区，其值与 $\mathbf{G}$ 的大小无关——这一点在 Sec. II F 中检验。
++其中 $\mathbf{J}$ 为单位宽度通量，由速度在流体体积上积分再除以平面面积得到。取 $\rho=1000$ kg m⁻³、$|\mathbf{a}|=10^{5}$ m s⁻²，则外加梯度 $G=10^{8}$ Pa m⁻¹，产生的间隙平均速度量级为 $10^{-4}$ m s⁻¹，格点马赫数远低于稳定上限。由于 $\mathbf{K}$ 由线性本构关系提取，只要流动仍在 Stokes 区，其值与 $\mathbf{G}$ 的大小无关——已有自洽检查及其限制见第3章E节。
+ 
+ ---
+ 
+@@ -151,7 +151,7 @@
+ 
+ The domain is one period in $x$ and $y$, discretized with $\Delta x=5$ nm, giving $48\times48$ nodes per period and a working resolution of $h/\Delta x=15$ at the reference geometry. The number of periods is therefore one in each direction, which is legitimate because the pattern is periodic and the flow is driven uniformly: a single period with periodic boundary conditions is an exact representation, not an approximation. Periodicity is imposed on all three velocity components and on the density at the $x$ and $y$ faces. The substrate and the mold surfaces are no-slip, imposed with the interpolated bounce-back scheme described above. In the $z$ direction the domain is closed by the substrate at $z=0$ and by the mold surface at $z=h$ over the ribs and $z=h+d$ over the grooves; there is no free surface and no inflow or outflow boundary, since the driving is volumetric.
+ 
+-The resolution was chosen from two competing requirements. The groove depth must be resolved finely enough to represent the corner region, where the dissipation that the paper quantifies is generated; and the total cost must allow the full geometric matrix, including the holdout and extension batches, to be computed. At $\Delta x=5$ nm the reference geometry has 15 cells across the gap and 20 across the groove depth. The sensitivity of the extracted coefficients to this choice, and the confirmation that the discretization is in its asymptotic range, are quantified in Sec. II F.
++The production grid is 5 nm, with 15 cells across the reference gap and 20 across its groove depth. At the added h=25 nm samples, only five grid intervals span the gap. Existing refinement evidence is reported in Sec. III for specific geometries; local corner-field convergence and a full-map error bound have not been established.
+ 
+ Steady state is declared when the flux has converged in a window of 1000 consecutive steps, with the relative standard deviation of both the streamwise and the cross-stream flux below $10^{-6}$ and the relative span below $5\times10^{-6}$, and the run is stopped at 60 000 steps if this is not reached. In practice all reported cases converged well within the limit.
+ 
+@@ -159,7 +159,7 @@
+ 
+ 计算域在 $x$、$y$ 方向各取一个周期，以 $\Delta x=5$ nm 离散，每周期 $48\times48$ 个节点，基准几何下工作分辨率为 $h/\Delta x=15$。因此每个方向只有**一个周期**；这是合法的，因为图案周期、驱动均匀，**单周期加周期边界是精确表示而非近似**。三个速度分量与密度在 $x$、$y$ 两对面均施加周期性。基板与模具表面为无滑移，按上节的插值反弹格式施加。$z$ 方向由 $z=0$ 的基板与模具表面封闭——凸台下方 $z=h$、槽内 $z=h+d$；由于驱动是体积力，域内**没有自由液面，也没有进出流边界**。
+ 
+-分辨率由两个相互竞争的要求决定：槽深必须细到足以刻画角部区域（本文量化的耗散在此产生），而总计算量必须允许完成整个几何矩阵（含留出考场与扩展批次）。在 $\Delta x=5$ nm 下，基准几何沿间隙 15 个网格、沿槽深 20 个网格。该取值对提取系数的影响、以及离散确实处于渐近区间的确认，在 Sec. II F 中定量给出。
++生产网格为5 nm，基准点间隙与槽深分别有15与20个网格间隔；新增h=25 nm样点的间隙仅有5个间隔。第3章按具体几何报告既有加密证据，尚未建立局部角场收敛或全地图误差上界。
+ 
+ 稳态判据为：通量在连续 1000 步的窗口内收敛，流向与横向通量的相对标准差均低于 $10^{-6}$、相对极差低于 $5\times10^{-6}$；若未达到，则在 60 000 步时停止。实际所有报告算例均远早于此收敛。
+ 
+@@ -169,97 +169,93 @@
+ 
+ ### EN
+ 
+-TABLE I lists every case computed in this study, and it is worth being precise about what the 48 entries contain. The **calibration matrix** covers $d\in\{25,50,100\}$ nm crossed with $h\in\{50,75,125\}$ nm in both principal directions: nine geometries, eighteen cases. **Three further geometric batches** extend the domain and are used to test the correction derived from the calibration set rather than to fit it: a groove depth $d=75$ nm at three gaps (the holdout), a column at $d=120$ nm, which is $d/w=1$ (the aspect-ratio limit), and a row at $h=25$ nm (the lower-gap limit). These four batches together constitute the geometric error map: eighteen geometries, thirty-six cases. The remaining twelve entries do not enter the error map. Four repeat two of the map geometries at $\Delta x=2.5$ nm to establish the resolution sensitivity of Sec. II F(iii); six rotate the groove to 30°, 45° and 60° at two gaps to test the tensor transformation law; two repeat the reference geometry at fifteen-fold viscosity to test the independence of $\mathbf{K}$ from $\mu$. All 48 runs passed the verification gates of Sec. II F.
+-
+-**TABLE I.** Computed cases. All at $P=240$ nm, $w=120$ nm, $\Delta x=5$ nm. Each entry is one calculation in each of the two principal directions.
+-
+-| Batch | $d$ (nm) | $h$ (nm) | Cases | Role |
+-|---|---|---|---|---|
+-| Calibration | 25, 50, 100 | 50, 75, 125 | 18 | Fit of the correction, error map |
+-| Holdout | 75 | 50, 75, 125 | 6 | Blind test of the correction |
+-| Aspect-ratio limit | 120 | 50, 75, 125 | 6 | $d/w=1$, validity boundary |
+-| Lower-gap limit | 25, 50, 100 | 25 | 6 | $h=25$ nm, validity boundary |
+-| Grid refinement | 100 | 50, 125 | 4 | Resolution check, $\Delta x=2.5$ nm |
+-| Oblique | 100 | 50, 75 | 6 | Tensor rotation, 30°/45°/60° |
+-| Viscosity check | 100 | 75 | 2 | $\mu$ varied by 15× |
+-| **Total** | | | **48** | |
+-
+-Three supplementary sets are not part of the geometric error map. Six oblique cases rotate the whole groove by 30°, 45° and 60° relative to the driving direction, and are used to test the tensor transformation law. Two cases repeat the reference geometry with the kinematic viscosity raised fifteen-fold, $\nu=1.5\times10^{-5}$ m² s⁻¹, to test the independence of $\mathbf{K}$ from $\mu$. Both are reported in Sec. IV.
+-
+-### 中文
+-
+-TABLE I 列出了本研究的全部算例，其中 **48 这个数字的构成需要说清**。**标定矩阵**为 $d\in\{25,50,100\}$ nm 与 $h\in\{50,75,125\}$ nm 的交叉，两个主方向各一，共九种几何、十八个算例。**另有三批几何**用于扩展定义域并**检验**由标定集导出的修正关系（而非用于拟合）：槽深 $d=75$ nm 配三个间隙（留出考场）、$d=120$ nm 即 $d/w=1$ 的一列（深宽比上限）、以及 $h=25$ nm 的一行（间隙下限）。**这四批合起来就是几何误差地图：十八种几何、三十六个算例。** 其余十二个算例不进入误差地图——四个把地图中两种几何重复于 $\Delta x=2.5$ nm，用于建立 Sec. II F(iii) 的分辨率敏感性；六个把整条槽相对驱动方向旋转 30°、45°、60°（两个间隙），用于检验张量变换律；两个在基准几何上把黏度提高十五倍，用于检验 $\mathbf{K}$ 与 $\mu$ 的无关性。**48 次运行全部通过 Sec. II F 的验证门禁。**
+-
+-**TABLE I.** 计算算例。均为 $P=240$ nm、$w=120$ nm、$\Delta x=5$ nm；每格对应两个主方向各一个算例。
+-
+-| 批次 | $d$ (nm) | $h$ (nm) | 算例数 | 作用 |
+-|---|---|---|---|---|
+-| 标定 | 25, 50, 100 | 50, 75, 125 | 18 | 修正关系拟合、误差地图 |
+-| 留出 | 75 | 50, 75, 125 | 6 | 修正关系的盲测 |
+-| 深宽比上限 | 120 | 50, 75, 125 | 6 | $d/w=1$，适用边界 |
+-| 间隙下限 | 25, 50, 100 | 25 | 6 | $h=25$ nm，适用边界 |
+-| 网格加密 | 100 | 50, 125 | 4 | 分辨率检查，$\Delta x=2.5$ nm |
+-| 斜槽 | 100 | 50, 75 | 6 | 张量旋转，30°/45°/60° |
+-| 黏度对照 | 100 | 75 | 2 | $\mu$ 变化 15 倍 |
+-| **合计** | | | **48** | |
+-
+-另有三个补充集合不属于几何误差地图：六个斜槽算例把整条槽相对驱动方向旋转 30°、45°、60°，用于检验张量变换律；两个算例在基准几何下把运动黏度提高十五倍（$\nu=1.5\times10^{-5}$ m² s⁻¹），用于检验 $\mathbf{K}$ 与 $\mu$ 的无关性。两者均在 Sec. IV 报告。
+-
+----
+-
+-### F. Verification and numerical uncertainty ／ 验证与数值不确定度
+-
+-> ⚠ **PoF 结构提示**：本节内容与第 3 章重复。定稿建议压缩为一句并指向 Sec. III，届时本节删除、G. 前移为 F.。
+-
+-### EN
+-
+-Four independent checks establish that the extracted coefficients are numerically converged and physically correct. They are reported separately because they test different things, and none of them substitutes for another.
+-
+-**(i) Parallel-plate limit.** With the grooves removed ($d=0$) the geometry degenerates to two parallel plates and $K$ is known exactly, $K_0=h^3/12$. Three grids give relative errors of $0.444\%$, $0.111\%$ and $0.0272\%$ at $\Delta x=5$, $2.5$ and $1.25$ nm, giving successive error ratios of $4.00$ and $4.08$ — i.e. clean second-order convergence. This is the behaviour expected for a planar wall at $q=1/2$, where the boundary treatment introduces no displacement error; it also shows that the bulk discretization of the parabolic profile is second order. At the finest grid the error is essentially at the level of that bulk discretization.
+-
+-**(ii) Grid convergence on the patterned geometry.** A three-grid study at the reference geometry gives a Richardson-extrapolated convergence order and a Grid Convergence Index that are collected in TABLE II. For the two principal components the fine-grid GCI is $0.125\%$ for $K_\parallel$ and $0.551\%$ for $K_\perp$, and $0.465\%$ for their ratio. The observed order is below two for both components, and lowest for $K_\perp$ ($p=1.256$). The pattern is consistent with the difference between the two geometries rather than with a defect of the boundary scheme: in the parallel-plate case, where the same code and the same boundary treatment return $p=1.991$ and a fine-grid GCI of $0.035\%$, the solution is a parabola and the wall is a straight line. In the patterned geometry the solution has an interior singularity at the groove corners, where the wall-normal velocity gradient is discontinuous; the error there is dominated by the corner neighbourhood, which converges more slowly than the bulk and pulls the apparent order down. This is a property of the geometry, not of the discretization, and it is why the GCI rather than the formal order is used to bound the uncertainty — and why the grid-refinement study in check (iii) is reported alongside it.
+-
+-**TABLE II.** Grid convergence at the reference geometry ($h=75$ nm, $d=100$ nm), three grids.
+-
+-| Quantity | Observed order $p$ | Extrapolated value (m³) | ${\rm GCI}_{\rm fine}$ (%) |
+-|---|---|---|---|
+-| $K_\parallel$ | 1.513 | $9.7546\times10^{-23}$ | 0.125 |
+-| $K_\perp$ | 1.256 | $4.3394\times10^{-23}$ | 0.551 |
+-| $K_\parallel/K_\perp$ | 1.098 | 2.249 | 0.465 |
+-
+-**(iii) Resolution sensitivity of the reported coefficients.** Repeating two of the matrix geometries at $\Delta x=2.5$ nm — the deepest groove at the smallest gap ($h=50$, $d=100$ nm) and the shallowest groove at the largest gap ($h=125$, $d=25$ nm), i.e. the two extremes of the matrix — changes $K$ by $0.33\%$ and $0.52\%$ for the streamwise component and by $0.72\%$ and $2.16\%$ for the cross-stream component. The cross-stream coefficient is the more sensitive of the two, as expected: it is controlled by the step dissipation at the groove mouth, which is the feature most affected by the corner discretization. These changes are an order of magnitude smaller than the closure errors reported in Sec. IV, which is the relevant comparison.
+-
+-**(iv) In-run gates.** Every case must satisfy, at steady state: mass drift below $10^{-10}$ relative; maximum density deviation below $10^{-6}$; maximum lattice Mach number below $0.05$; agreement between the fluxes across two interior sections within $10^{-5}$ relative; vanishing of the cross-stream flux within $10^{-12}$; and invariance of the material distribution. All 48 cases passed. The measured Mach numbers are of order $10^{-7}$ and the mass drift is at round-off level (typically reported as exactly zero), confirming that the compressibility error of the LBM is negligible at these velocities — which matters because the method is only formally incompressible in the limit of vanishing Mach number.
+-
+-The residual numerical uncertainty in $\mathbf{K}$ is therefore below about $0.6\%$ for the streamwise component and $2.2\%$ for the cross-stream component, against closure errors of 10–205% (Sec. IV). Numerical error is thus not a limiting factor in any conclusion of this paper, and the error map reported below is a property of the closure, not of the discretization.
+-
+-### 中文
+-
+-四项独立检查确认提取的系数在数值上已收敛、在物理上正确。它们分列报告，因为检验的对象不同，且互不可替代。
+-
+-**(i) 平行平板极限。** 去掉沟槽（$d=0$）后几何退化为两块平行平板，$K$ 有精确解 $K_0=h^3/12$。三个网格在 $\Delta x=5$、$2.5$、$1.25$ nm 下给出相对误差 $0.444\%$、$0.111\%$、$0.0272\%$，相邻误差比分别为 $4.00$ 与 $4.08$——即**干净的二阶收敛**。这正是平面壁在 $q=1/2$ 处应有的行为：边界处理不引入位移误差；同时也说明抛物型剖面的体相离散是二阶的。最细网格上的误差已基本处于该体相离散的水平。
+-
+-**(ii) 带图案几何的网格收敛。** 基准几何的三网格研究给出 Richardson 外推收敛阶与 Grid Convergence Index：$K_\parallel$ 与 $K_\perp$ 的数值见 TABLE II。两个分量的观测阶都低于 2，其中 $K_\perp$ 最低（$p=1.256$）。这一现象反映的是**两种几何的差别**，而非格式的缺陷：在平行平板情形，同一套代码、同一套边界处理给出 $p=1.991$、${\rm GCI}=0.035\%$，因为解是抛物线、壁面是直线。而在带图案的几何中，解在**槽角处存在内点奇异**——角点两侧的壁法向速度梯度不连续——该邻域的误差主导整体，且收敛慢于体相，把表观阶拉低了。这是**几何的性质，不是离散的性质**；也正因如此，本文用 GCI 而非形式阶来界定不确定度，并在检查 (iii) 中并列报告分辨率敏感性。
+-
+-**TABLE II.** 基准几何（$h=75$ nm、$d=100$ nm）的三网格收敛。
+-
+-| 量 | 观测阶 $p$ | 外推值 (m³) | ${\rm GCI}_{\rm fine}$ (%) |
+-|---|---|---|---|
+-| $K_\parallel$ | 1.513 | $9.7546\times10^{-23}$ | 0.125 |
+-| $K_\perp$ | 1.256 | $4.3394\times10^{-23}$ | 0.551 |
+-| $K_\parallel/K_\perp$ | 1.098 | 2.249 | 0.465 |
+-
+-**(iii) 报告系数对分辨率的敏感性。** 把矩阵中两种几何在 $\Delta x=2.5$ nm 下重算，流向分量变化 $0.33\%$ 与 $0.52\%$，横向分量变化 $0.72\%$ 与 $2.16\%$。横向系数更敏感，这与预期一致：它由槽口的台阶耗散控制，而台阶恰是受角部离散影响最大的特征。这些变化比 Sec. IV 报告的闭合误差小一个数量级——这是应当对比的尺度。
+-
+-**(iv) 运行内门禁。** 每个算例在稳态时必须满足：质量漂移相对值低于 $10^{-10}$；密度最大偏差低于 $10^{-6}$；格点马赫数最大值低于 $0.05$；两个内部截面的通量相对差低于 $10^{-5}$；横向通量在 $10^{-12}$ 内消失；材料分布不变。**48 个算例全部通过。** 实测马赫数量级为 $10^{-7}$，质量漂移处于舍入水平（通常报告为精确零），说明 LBM 的可压缩性误差在这些速度下可忽略——这一点重要，因为该方法只在马赫数趋于零的极限下才是形式上不可压的。
+-
+-因此 $\mathbf{K}$ 的残余数值不确定度为：流向分量约低于 $0.6\%$，横向分量约低于 $2.2\%$；而闭合误差为 10–205%（Sec. IV）。**数值误差不是本文任何结论的限制因素**，下面的误差地图刻画的是闭合关系的性质，不是离散的性质。
++The 48 existing formal runs comprise 36 principal-direction map cases at 18 geometries, four refinement runs, two viscosity checks and six oblique-drive checks. The map is not a complete grid over its enclosing parameter ranges. The nine calibration geometries belong to the original V1 model development. The d=75 nm batch provides the original V1 withheld-depth check; d=120 nm and h=25 nm provide extension checks. V2 is now the adopted empirical formula; these already visible batches remain retrospective evaluation data, not independent final tests. Selected output checks for all 48 runs are documented in Sec. III F; they do not establish complete source/build provenance.
++
++**TABLE I.** Existing calculations at P=240 nm and w=120 nm. Counts are runs, not geometries. The grid is 5 nm except in the refinement batch. P and T denote parallel and perpendicular driving; oblique cases instead change the driving vector with the groove fixed.
++
++| Batch | Geometry (h,d in nm) | Runs | Role |
++|---|---|---:|---|
++| V1 calibration | h={50,75,125}, d={25,50,100} | 18 | Nine geometries, P/T |
++| Original V1 holdout | h={50,75,125}, d=75 | 6 | Three withheld-depth geometries, P/T |
++| Depth extension | h={50,75,125}, d=120 | 6 | Three extension geometries, P/T |
++| Gap extension | h=25, d={25,50,100} | 6 | Three extension geometries, P/T |
++| Refinement | (h,d)=(50,100) and (125,25) | 4 | 2.5 nm, P/T; not new geometries |
++| Oblique driving | h={50,75}, d=100 | 6 | Driving angles 30°,45°,60° from Y |
++| Viscosity | h=75, d=100 | 2 | μ=15 mPa s, P/T |
++| Total | | 48 | |
++
++### 中文
++
++48次既有正式运行由18种几何的36个主方向地图工况、4个加密、2个黏度对照和6个斜向驱动组成。外框范围不代表完整交叉矩阵。九种标定几何用于原V1开发；d=75 nm为原V1留出深度检验，d=120 nm与h=25 nm为扩展检查。V2现已作为当前经验公式采用，但这些已可见数据仍只能作回顾性评价，不能重新称为独立最终测试。第3章报告48次运行的所选输出检查，不据此宣称历史源码/构建绑定完整。
++
++**TABLE I.** P=240 nm、w=120 nm；数量按运行而非独立几何计。除加密组外网格为5 nm。P/T为沿槽/跨槽驱动；斜向组保持沟槽不动，只改变驱动力。
++
++| 批次 | 几何（h,d单位nm） | 运行数 | 作用 |
++|---|---|---:|---|
++| V1标定 | h={50,75,125}, d={25,50,100} | 18 | 九几何，P/T |
++| 原V1留出 | h={50,75,125}, d=75 | 6 | 三留出深度几何，P/T |
++| 槽深扩展 | h={50,75,125}, d=120 | 6 | 三扩展几何，P/T |
++| 间隙扩展 | h=25, d={25,50,100} | 6 | 三扩展几何，P/T |
++| 加密 | (h,d)=(50,100)、(125,25) | 4 | 2.5 nm，P/T；不是新几何 |
++| 斜向驱动 | h={50,75}, d=100 | 6 | 驱动相对Y轴30°、45°、60° |
++| 黏度 | h=75, d=100 | 2 | μ=15 mPa·s，P/T |
++| 合计 | | 48 | |
++
++---
++
++### F. Verification scope ／ 验证范围
++
++### EN
++
++Verification is reported in Sec. III. The analytic limit, geometry-specific refinement, tensor/viscosity consistency and output audit are distinct checks. Neither steady-state convergence nor agreement of internal consistency relations establishes a universal spatial-error bound or physical validation. For reference, TABLE II retains the archived fine-grid estimates, conditional on the batch-provenance reconciliation in Sec. III D3; they must not be assigned to the 5 nm production grid.
++
++**TABLE II.** Archived three-grid estimates at h=75 nm, d=100 nm. Fine grid: 1.25 nm, not 5 nm.
++
++| Quantity | Observed order | Fine-grid GCI (%) |
++|---|---:|---:|
++| Parallel K | 1.513 | 0.125 |
++| Perpendicular K | 1.256 | 0.551 |
++| Anisotropy ratio | 1.098 | 0.465 |
++
++### 中文
++
++验证见第3章。解析极限、具体几何加密、张量/黏度自洽性与输出审计是不同层面的检查。达到稳态或满足内部自洽关系，都不等于获得普遍空间误差上界或物理确认。TABLE II保留归档的细网格估计，但须结合第3章D3的批次来源限制；不能移用于5 nm生产网格。
++
++**TABLE II.** h=75 nm、d=100 nm归档三网格估计；fine对应1.25 nm，不是5 nm。
++
++| 量 | 观测阶 | 细网格GCI（%） |
++|---|---:|---:|
++| 沿槽K | 1.513 | 0.125 |
++| 跨槽K | 1.256 | 0.551 |
++| 各向异性比 | 1.098 | 0.465 |
+ 
+ ---
+ 
+ ### G. From coefficients to the closure comparison ／ 从系数到闭合对比
+ 
+ ### EN
++
++**Relation to the flow factor of the average flow model.** Before the normalization is fixed, the object being compared has to be identified. The closure of Eq. (1) is not merely analogous to the pressure flow factor of Patir and Cheng [12]; under four conditions it is the same quantity.
++
++The flow factor is defined as the ratio of the mean unit flow over a rough element to that of a smooth element at the same mean pressure gradient,
++$$\phi_x=\frac{\langle q_x\rangle}{q_{\rm smooth}},\qquad q_{\rm smooth}=-\frac{h^3}{12\mu}\frac{\partial \bar p}{\partial x}.$$
++Writing it as a permeability per unit width in the form of Eq. (3), $K^{\rm PC}_x\equiv \phi_x h^3/12$, the two general relations of that model are
++$$
++\phi_x=\frac{E(h_T^3)}{h^3}\ \ \text{(longitudinal)},\qquad
++\phi_x=\frac{1}{h^3E\!\left(1/h_T^3\right)}\ \ \text{(transverse)} .
++$$
++For a square wave of equal land and groove, $h_T=h$ over half the period and $h_T=h+d$ over the other half, so that
++$E(h_T^3)=\tfrac12[h^3+(h+d)^3]$ and $E(1/h_T^3)=\tfrac12[h^{-3}+(h+d)^{-3}]$. Substitution gives
++$$
++K^{\rm PC}_\parallel=\frac{1}{12}\cdot\frac{h^3+(h+d)^3}{2},
++\qquad
++K^{\rm PC}_\perp=\frac{1}{12}\cdot\frac{2}{h^{-3}+(h+d)^{-3}},
++$$
++which are algebraically the two entries of Eq. (1). The identity was also verified numerically on twelve of the sampled geometries: substituting the tabulated $h$ and $d$ gives a relative difference of zero to double precision.
++
++**The four conditions.** The identity holds if and only if (i) the topography is one-dimensional, so that the two principal directions decouple; (ii) the Reynolds approximation is locally valid within the element; (iii) the fluid is a single Newtonian phase with no slip and no free surface; and (iv) the same reference height and the same per-unit-width normalization are used on both sides. Condition (ii) is the one this work tests, and the sharp edges of the present geometry are precisely where it fails.
++
++**What the resolved calculations add.** Because Eq. (1) equals $K^{\rm PC}$, and because $K^{\rm DNS}$ is obtained from the same functional — mean flux divided by mean gradient — but under a different operator, the relative error of Eq. (8) measures the departure of the Reynolds-derived flow factor from the Stokes solution, with the upscaling step held fixed. It is therefore not a re-expression of a known coefficient. It is a second evaluation of that coefficient with a more faithful operator, and it isolates the error that the coefficient carries in this geometry.
+ 
+ Two normalization choices must be stated explicitly, because the comparison with Eq. (1) is only meaningful if both sides are defined the same way.
+ 
+@@ -271,7 +267,7 @@
+ \tag{7}
+ $$
+ 
+-with $\varphi=0.5$ for the present geometry. $H_{\rm ref}$ therefore varies with each geometry — from $62.5$ nm to $175$ nm across the matrix — and is computed pointwise rather than fixed at the reference value of $125$ nm.
++with $\varphi=0.5$ for the present geometry. $H_{\rm ref}$ therefore varies with each geometry — from $37.5$ nm to $185$ nm across the matrix — and is computed pointwise rather than fixed at the reference value of $125$ nm.
+ 
+ Second, the closure of Eq. (1) is evaluated with the same $h$ and $d$ as the simulation and compared to the computed $K$ through the relative error
+ 
+@@ -280,7 +276,7 @@
+ \tag{8}
+ $$
+ 
+-reported separately for each principal direction. Because both $K^{\rm mod}$ and $K^{\rm DNS}$ are computed for the same geometry, the same driving and the same normalization, $E$ isolates the error of the closure itself. It absorbs neither a difference in the definition of $K$ nor a difference in the reference height, and it does not depend on the viscosity (Sec. IV).
++reported separately for each principal direction. Because both $K^{\rm mod}$ and $K^{\rm DNS}$ are computed for the same geometry, the same driving and the same normalization, $E$ measures the discrepancy relative to the discrete numerical reference; interpreting it as closure error also requires accounting for the uncertainty of that reference. It absorbs neither a difference in the definition of $K$ nor a difference in the reference height, and it does not depend on the viscosity (Sec. IV).
+ 
+ Equation (1) is reproduced here in the form used for comparison, with $\varphi=1/2$ evaluated explicitly:
+ 
+@@ -305,7 +301,7 @@
+ \tag{7}
+ $$
+ 
+-本几何 $\varphi=0.5$，故 $H_{\rm ref}$ 随每种几何而变——矩阵内从 $62.5$ nm 到 $175$ nm——按**逐档计算**，不固定为基准点的 $125$ nm。
++本几何 $\varphi=0.5$，故 $H_{\rm ref}$ 随每种几何而变——矩阵内从 $37.5$ nm 到 $185$ nm——按**逐档计算**，不固定为基准点的 $125$ nm。
+ 
+ **其二，闭合关系与误差定义。** 式 (1) 用与仿真相同的 $h$、$d$ 求值，并通过相对误差与计算值比较：
+ 
+@@ -314,7 +310,7 @@
+ \tag{8}
+ $$
+ 
+-两个主方向分别报告。由于 $K^{\rm mod}$ 与 $K^{\rm DNS}$ 针对同一几何、同一驱动、同一归一化，$E$ 隔离的正是**闭合关系自身**的误差；它既不含 $K$ 定义口径的差异，也不含参考高度的差异，且与黏度无关（Sec. IV）。
++两个主方向分别报告。由于 $K^{\rm mod}$ 与 $K^{\rm DNS}$ 针对同一几何、同一驱动、同一归一化，$E$ 衡量相对于离散数值参考解的偏差；解释为闭合误差时仍须计入参考解的不确定度；它既不含 $K$ 定义口径的差异，也不含参考高度的差异，且与黏度无关（Sec. IV）。
+ 
+ 式 (1) 按对比所用形式重写如下，其中 $\varphi=1/2$ 已显式代入：
+ 
+@@ -339,141 +335,11 @@
+ | [15] | Roache P.J., *Verification and Validation in Computational Science and Engineering*, Hermosa Publishers, **Albuquerque, NM** (1998) | 无 DOI | ✅ **已核**（NASA Glenn V&V 书目 + ASCE 引用；出版社与出版地确认） |
+ | [16] | Patir N., Cheng H.S., *An average flow model for determining effects of three-dimensional roughness on partial hydrodynamic lubrication*, J. Lubr. Technol. **100**, 12–17 (1978) | 10.1115/1.3453103 | ⚠ 仅书目（可选对照，未取全文） |
+ 
+-### 核查结果（2026-10-17，逐条）
+-
+-**① [13] 作者纠错——原文写错了**
+-
+-初稿把第三作者写成 **"Ladd A.J.C."**，**这是错的**。 Crossref 与 OpenLB 参考文献列表均为：
+-
+-> Bouzidi M., Firdaouss M., **Lallemand P.**
+-
+-Ladd 是另一位做 bounce-back 边界的作者（Ladd 1994），与本篇无关。**已改。**
+-
+-**② [13] 精度声明——原文说得过强**
+-
+-初稿写 "second-order accurate for the velocity field"。但 **OpenLB User Guide（Release 1.5）明确把 Bouzidi 标为 first order**：
+-
+-> `Bouzidi   non-local   first order   References [11]`
+-
+-而 OpenLB 主论文的边界方法表同样标注：
+-
+-> `Bouzidi (first order)   [38]   bouzidi`
+-
+-真实情况分两层，必须说清：
+-- **一般 $q\neq1/2$ 情形**：OpenLB 的线性插值版本是一阶（这是官方标注的含义）；
+-- **本问题**：$\Delta x=5$ nm 整除所有 $h$、$d$，故 $q\equiv1/2$，格式退化为半步反弹，对轴向对齐直壁**不引入几何误差**。
+-
+-因此 §2.3 已改为"$q=1/2$ 退化为半步反弹、壁面不偏移"，而**不再声称泛用的二阶精度**。这样既不与 OpenLB 官方文档冲突，又把我们真正依赖的性质说准了。
+-
+-**③ [14] Guo 力项——确认正确**
+-
+-OpenLB 主论文"Force models"表：
+-
+-> `Guo   [47]   forced`
+-
+-即 OpenLB 的 `forced`（及 `ForcedBGKdynamics`）采用 **Guo 等 2002 的力项**。本项目代码用 `ForcedBGKdynamics`，故 [14] 引用成立，**无需改为其他方案**。
+-
+-**④ [15] Roache——补全出版地**
+-
+-NASA Glenn 的 V&V 书目与 ASCE 引用均作：*Hermosa Publishers, Albuquerque, New Mexico, 1998*。GCI 方法即出自该书第 5 章。**已补出版地。**
+-
+-**⑤ [12] OpenLB 论文——补全作者**
+-
+-初稿写 "Krause M.J., et al."，Crossref 显示共 **14 位作者**。已改为"Krause M.J., Kummerländer A., Avis S.J., et al."，卷 81、页 258–288 确认无误。
+-
+----
+-
+-## 本章核查记录（2026-10-17，方法学引用逐条）
+-
+-| 项 | 初稿 | 核查后 | 依据 |
+-|---|---|---|---|
+-| **[13] 第三作者** | Ladd A.J.C. | **Lallemand P.** | Crossref `10.1063/1.1399290`；OpenLB 参考文献 [38] |
+-| **[13] 精度** | "second-order accurate" | **不声称泛用二阶**；改为"$q=1/2$ 退化为半步反弹、壁面不偏移" | OpenLB User Guide 1.5：`Bouzidi non-local first order`；OpenLB 主论文：`Bouzidi (first order)` |
+-| **[13] 卷期页** | 13, 3452–3459 | **13(11), 3452–3459** | Crossref |
+-| **[14] 是否适用** | 待核 | **确认适用**：OpenLB 力模型表 `Guo [47] forced`，代码用 `ForcedBGKdynamics` | OpenLB 主论文 §Force models |
+-| **[15] 出版地** | 缺 | **Albuquerque, NM** | NASA Glenn V&V 书目；ASCE 引用 |
+-| **[12] 作者数** | "et al." | 14 位，补前三位 | Crossref |
+-
+-**由此产生的正文改动（不止改书目）**：
+-
+-1. **§2.3 边界段重写**。原稿说"插值格式消除一阶误差"，暗示我们用到了插值的分数距离能力。**实际不是**：$\Delta x=5$ nm 整除所有 $h,d$，$q\equiv1/2$，插值退化为半步反弹。真实理由是**阶梯近似会偏移 $\Delta x/2=2.5$ nm**，对 $h=25$ nm 档是 10% 几何误差，且该误差与 $h$ 相关，会污染误差地图。已按此重写。
+-2. **§2.6(i) 平板极限**。原稿说"二阶收敛与插值反弹格式相符"，其实应说"与 $q=1/2$ 平面壁的应有行为相符，且证明体相离散是二阶"。
+-3. **§2.6(ii) 观测阶**。原稿把 $p=1.26\!-\!1.51$ 归因于"角部残差收敛慢"（含糊）。改为明确机制：**槽角是解的内点奇异**（角点两侧壁法向速度梯度不连续），误差由该邻域主导；并点明同一代码在平板情形给出 $p=1.991$，说明**不是格式缺陷而是几何性质**。
+-
+-> 这三条合起来，把"数值方法"这一节从"照着文献写"变成"对本项目实际做法的准确描述"。**如果只改书目不改正文，审稿人一比对 OpenLB 文档就会发现矛盾。**
+-
+-## 数据溯源表（每个数字对应哪个文件）
+-
+-| 本节数字 | 取值 | 来源 |
+-|---|---|---|
+-| $P=240$ nm, $w=120$ nm, 槽 x∈[60,180] | — | `d2_groove_error_map.cpp`: `lx=ly=240e-9`, `grooveStart=60e-9`, `grooveEnd=180e-9` |
+-| $\Delta x=5$ nm, $\tau=1$, $\nu=10^{-6}$ m²/s | — | 同上: `dx`, `tau`, `nuPhys` |
+-| $\Delta t=4.1667\times10^{-12}$ s | 4.166667e-12 | 由 `dt=(tau-0.5)*dx*dx/(3*nu)` 复算 |
+-| $\nu^\ast=1/6$ | 0.166667 | 由 `nu*dt/dx²` 复算 |
+-| $G=10^{8}$ Pa/m | — | `acceleration=1e5`, $\rho=1000$ ⇒ $\rho a$ |
+-| 48×48 节点/周期 | 48 | `lx/dx = 240/5` |
+-| $h/\Delta x=15$（基准） | 15 | 75/5 |
+-| 平板极限误差 0.444% / 0.111% / 0.0272% | 0.004444 / 0.0011104 / 0.00027157 | `G2_EX240_grid_convergence/.../runs/dx{5,2p5,1p25}/Smooth75/steady/result.txt` 的 `K_relative_error` |
+-| 二阶收敛比 4.00 / 4.08 | 4.00 / 4.08 | 上述误差比值；对应 $q=1/2$ 半步反弹的平面壁情形 |
+-| GCI: $K_\parallel$ 1.513 / 0.125% | 1.51299 / 0.124966 | `G2_GRID_CONVERGENCE_REPORT.md` §Richardson and GCI 表 |
+-| GCI: $K_\perp$ 1.256 / 0.551% | 1.25617 / 0.551022 | 同上 |
+-| GCI: A 1.098 / 0.465% | 1.09818 / 0.464763 | 同上 |
+-| 网格敏感性 0.33 / 0.52 / 0.72 / 2.16% | — | `D2_groove_error_map/results/analysis/grid_sensitivity.csv`（4 行 4 列） |
+-| $h=75$, $d=100$ ⇒ $h/P=0.3125$ | 0.3125 | 75/240 |
+-| $H_{\rm ref}$ 范围 62.5–175 nm | — | $h+0.5d$，$h\in[25,125]$、$d\in[25,100]$ 组合的最小/最大 |
+-| Ma ≤ 3.4×10⁻⁷ | 3.445e-7 | `h125_d25_dx5_P/steady/result.txt`: `max_Mach` |
+-| mass drift = 0 | 0 | 同文件 `max_mass_abs_relative=0` |
+-| 收敛判据 1e-6 / 5e-6 / 1000 步 / 60000 步 | — | `d2_groove_error_map.cpp`: `relativeStdTolerance`, `relativeSpanTolerance`, `convergenceWindow`, `maximumSteps` |
+-| 门禁 1e-10 / 1e-6 / 0.05 / 1e-5 / 1e-12 | — | 同上: `massTolerance`, `densityTolerance`, `machTolerance`, `sectionTolerance`, `crossFluxTolerance` |
+-
+----
+-
+-## 写作说明（不进正文）
+-
+-### 一、本章的四个写作决策
+-
+-**① 2.2 先解释"为什么拆成两块"，再给公式。**
+-
+-方法章最容易犯的错是一上来就摆方程。这里 §2.2 第一段先说明式 (3) 把问题分成"局部横截面决定的 $\mathbf{K}$"和"外加闭合决定的 $H(t)$"，然后明确"本文只做前者"。这样审稿人不会问"你们为什么不模拟下压过程"——因为我们已经回答了：不是近似，是分解，而且是本领域通行做法。
+-
+-**② 2.3 花了一整段解释为什么必须用插值反弹。**
+-
+-原本可以一句"walls are no-slip with Bouzidi bounce-back"了事。但这样会留下一个隐患：审稿人可能问"直角槽用阶梯近似行不行"。我写清了理由——**阶梯近似会把等效壁面偏移至多半个网格，而这恰好会污染本文要量化的角部耗散**。这句话把数值方法选择和论文主旨绑在一起了。
+-
+-**③ 2.6 明确写"数值误差不是限制因素"。**
+-
+-这是防守性的一段。误差 10–205% 对数值不确定度 0.6–2.2%，差一个数量级以上。审稿人如果质疑"你的误差会不会是数值误差"，这一句就够了。
+-
+-**④ 2.7 把归一化单独立节。**
+-
+-因为与 Jain 的对比最容易在归一化上出错（他们的 $k$ 无量纲、我们有量纲；他们的 $h$ 对应我们的 $h$、$d$ 却是另一回事）。单独立节 + 明确写"$E$ 不含定义差异"= 提前堵住这条质疑。
+-
+-### 二、必须回填的五处
+-
+-| # | 位置 | 问题 | 怎么补 |
+-|---|---|---|---|
+-| 1 | §2.3 | ~~[13][14][15] 未逐字核对~~ | ✅ **已完成（2026-10-17）**：Crossref 逐一核对卷期页；发现并修正 [13] 作者错（Ladd→**Lallemand**）与精度声明过强（**OpenLB 标 first order**）；确认 [14] Guo 即 OpenLB `forced` 方案；[15] 补出版地。详见文末「核查结果」。 |
+-| 2 | §2.6(ii) | ditto | ✅ **已修**：改为两个主分量 GCI 分别为 0.125% 与 0.551%、比值 0.465%，平板情形 1.991/0.035% 单列作参照（详见下方"已修正记录"）
+-| 4 | TABLE I | ditto | ✅ **已核**：`run_mu_check.sh` 确认 `NU_MU15=1.5e-5` |
+-| 3 | §2.4 | 未说明**为什么不用更细的 $\Delta x$ 跑全矩阵** | 可加一句工作量的量级估计；或直接说"36 档 × 2 方向，$\Delta x=2.5$ 的成本约 ×8 不可承受" |
+-| 5 | §2.6(iii) | 4 个敏感性数字的顺序对应哪两种几何，正文未点明 | 补一句"h50/d100 and h125/d25" |
+-
+-### 三、已修正记录（2026-10-17 写作中自查发现）
+-
+-**§2.6(ii) 曾有一处数据串号，已修**：
+-
+-- 初稿误写：`p=1.991 and GCI_fine=0.035% for K_parallel`
+-- 实际：$p=1.991$、${\rm GCI}=0.0352\%$ 属于 **$K_{\rm smooth}$**（平板极限）；$K_\parallel$ 为 $p=1.513$、${\rm GCI}=0.125\%$；$K_\perp$ 为 $p=1.256$、${\rm GCI}=0.551\%$。
+-- 现文已改为"两个主分量分别为 0.125% 与 0.551%，比值 0.465%；平板情形的 1.991/0.035% 作为参照单列"，与 TABLE II 一致。
+-
+-> 教训：GCI 表里 $K_{\rm smooth}$ 与 $K_\parallel$ 相邻，抄数时极易串行。此类问题建议**每写一个数字就回表核一次**，不要凭记忆连写。
+-
+-### 四、篇幅
+-
+-英文正文（7 个 EN 块，剔除公式）约 **2,376 词**（2026-10-17 22:50 实测，含 §E 算例构成改写后）；中文对应 **2,962 字**（实测）。方法章通常占全文 20–25%，与引言（1,950 词）配比合理。若期刊篇幅紧张，压缩优先级：§2.4 第 3 段（收敛判据可移附录）→ §2.6(ii) 的观测阶解释 → §2.7 第 2 段（归一化的展开论证）。
+-
+-### 五、双语对照的使用建议
+-
+-- **投稿用英文**：直接用 EN 段，中文段作为老师的审阅辅助。
+-- **组会/中期检查用中文**：用中文段，术语保持与英文一致（首次出现给英文原词）。
+-- 两段的公式编号、表格编号、数值**完全一致**，改一处必须同步改另一处。
++## 当前复核说明（不进正文）
++
++- 保留原文献编号与已归档书目信息；历史“已核”不是本轮新的人工作者核验。
++- 本轮纠正了TABLE I加密几何、斜向驱动方式、批次角色及全矩阵H_ref范围。
++- 全地图H_ref为37.5–185 nm；原九种标定几何的62.5–175 nm仅适用于该子集。
++- 全部数值来源与批次限制见第3章及 SIM240_single_phase_audit_20261018/REPORT.md。不再用两几何网格变化给全域精度保证，不用低Mach代替低Re验证。
++- 旧稿“角点内点奇异已证明”“数值误差不限制任何结论”和“原始源码完整绑定”的解释已撤回。角点正则性/边界处理可能影响观测阶，现有证据不能唯一归因。
++- 原稿备份在 SIM240_manuscript_revision_20261018/before/。未修改求解器、拟合脚本、冻结协议或原始结果。
+--- before/第一篇论文_第3章验证草稿_20261017.md
++++ docs/reports/第一篇论文_第3章验证草稿_20261017.md
+@@ -3,7 +3,7 @@
+ > 目标期刊：Physics of Fluids（二区优先）／Microelectronic Engineering（三区备选）
+ > 日期：2026-10-17
+ > 结构：中英双语对照（EN 段投稿用，中文段供审阅）
+-> ⚠ **本章包含两处必须如实报告的负面记录**（Sec. III D 单档 FAIL、Sec. III G 未做的跨文献对齐），不作美化、不改写为 PASS
++> 2026-10-18证据修订：区分旧细T失败、新方案C输出与缺失的独立放行记录；保留无跨求解器验证的限制。本文为工作稿，不是新Gate放行。
+ > 文献编号：接续第 1–2 章（[1]–[16]），本章新增 [17]–[18]
+ 
+ ---
+@@ -14,29 +14,15 @@
+ 
+ ### EN
+ 
+-The credibility of an error map such as the one reported in section 5 rests entirely on whether the coefficients in it are trustworthy. We therefore separate the checks into four layers, each answering a different question, and none of them substitutable for another:
+-
+-| Layer | Question | Method | Result |
+-|---|---|---|---|
+-| **I. Analytic limit** | Does the code solve the right equation? | Degenerate the geometry to a case with an exact solution | Sec. III C: error 0.027–0.44%, second order |
+-| **II. Discretization** | How large is the numerical error at the production grid? | Three-grid Richardson extrapolation, GCI, spot refinement | Sec. III D: GCI 0.13–0.55%; refinement 0.33–2.2% |
+-| **III. Physical consistency** | Does the extracted quantity obey the laws it must? | Tensor rotation law, viscosity independence, linear response | Sec. III E: 6/6 within $10^{-4}$%, $\mu$-independent to 0.0006% |
+-| **IV. Data chain** | Are the numbers in the paper the numbers the code produced? | Independent recomputation from raw output, no shared code | Sec. III F: 0 discrepancies in 120 quantities |
+-
+-Two things are deliberately reported as **not** established, and are stated here rather than left for a referee to discover: one of the nine grid-convergence runs fails one gate by 20% (Sec. III D 3), and no cross-code comparison against an independent solver has been performed (Sec. III G).
+-
+-### 中文
+-
+-第 5 章那张误差地图是否可信，完全取决于其中的系数是否可信。因此本文把检查分成**四层**，每层回答不同的问题，且互不可替代：
+-
+-| 层 | 问题 | 方法 | 结果 |
+-|---|---|---|---|
+-| **I. 解析极限** | 代码解的是不是正确的方程？ | 把几何退化到有精确解的情形 | Sec. III C：误差 0.027–0.44%，二阶 |
+-| **II. 离散** | 生产网格上的数值误差有多大？ | 三网格 Richardson 外推、GCI、点加密 | Sec. III D：GCI 0.13–0.55%；加密 0.33–2.2% |
+-| **III. 物理自洽** | 提取的量是否遵守它必须遵守的规律？ | 张量旋转律、黏度无关性、线性响应 | Sec. III E：6/6 在 $10^{-4}$% 内；黏度无关至 0.0006% |
+-| **IV. 数据链** | 论文里的数字是不是代码算出来的数字？ | 不共享代码，从原始输出独立重算 | Sec. III F：120 项量 0 处不一致 |
+-
+-有两件事**特意作为"未确立"报告**，写在这里而不是留给审稿人自己发现：九个网格收敛算例中有一档以 20% 之差未过一项门禁（Sec. III D 3）；未做与独立求解器的跨代码比对（Sec. III G）。
++Verification is separated into an analytic-limit check, geometry-specific discretization checks, internal tensor/viscosity consistency checks and an existing-output audit. The parallel-plate benchmark is not a nonzero-groove reference solution. Spot refinement does not establish a full-map error bound. Tensor predictions use principal coefficients obtained with the same solver and therefore are not independent external validation. The audit checks recorded outputs, not a complete historical source/build/environment chain.
++
++The archived fine transverse run failed its mass gate. A later scheme-C run has passing raw output, but its historically cited independent release document is currently unavailable at the recorded path (Sec. III D3). Neither record is silently substituted for the other. No same-geometry cross-solver or experimental comparison has been performed.
++
++### 中文
++
++验证分为解析极限、具体几何离散检查、张量/黏度内部自洽性、既有输出审计。平板基准不是非零沟槽的参考解；点加密不能给全地图误差上界；张量预测采用同一求解器得到的主值，因此不是外部独立物理确认；输出审计不等于完整历史源码—构建—环境链验收。
++
++旧细跨槽运行未过质量门禁。后续方案C有通过的原始输出，但历史引用的独立放行报告目前在所记路径不可得（第D3节）。两条记录不得互相静默替换。尚无同几何跨求解器或实验比较。
+ 
+ ---
+ 
+@@ -48,9 +34,9 @@
+ 
+ **Smooth75** is the parallel-plate limit: the groove is removed ($d=0$), leaving two flat plates separated by $h=75$ nm. The exact mobility is $K_0=h^3/12=3.515625\times10^{-23}$ m³, so this case tests the bulk solver and the wall treatment against a closed-form answer with no geometric complication.
+ 
+-**EX240_parallel and EX240_perpendicular** are the reference patterned geometry ($h=75$ nm, $d=100$ nm) driven along and across the grooves. These carry the corner singularity and the step, so they are the cases the grid study must convince us about.
+-
+-All three are computed on the same three grids, $\Delta x=5$, $2.5$ and $1.25$ nm. The nominal volume and the number of fluid nodes are held consistent by the analytic geometry indicator, so that the grid sequence compares discretizations of the same physical domain rather than slightly different ones.
++**EX240_parallel and EX240_perpendicular** are the reference patterned geometry ($h=75$ nm, $d=100$ nm) driven along and across the grooves. These include corners and steps absent from the planar benchmark and therefore require separate refinement evidence.
++
++All three are computed on the same three grids, $\Delta x=5$, $2.5$ and $1.25$ nm. The nominal physical volume is held consistent by the analytic geometry indicator while the fluid-node count changes with refinement, so that the grid sequence compares discretizations of the same physical domain rather than slightly different ones.
+ 
+ ### 中文
+ 
+@@ -58,9 +44,9 @@
+ 
+ **Smooth75** 是平行平板极限：去掉沟槽（$d=0$），只留间距 $h=75$ nm 的两块平板。精确解为 $K_0=h^3/12=3.515625\times10^{-23}$ m³，故该算例在无任何几何复杂性的条件下，以闭式解检验体相求解器与壁面处理。
+ 
+-**EX240_parallel 与 EX240_perpendicular** 是基准带图案几何（$h=75$ nm、$d=100$ nm），分别沿槽与跨槽驱动。它们携带角点奇异与台阶，正是网格研究必须说服我们的对象。
+-
+-三者均在相同三套网格上计算：$\Delta x=5$、$2.5$、$1.25$ nm。解析几何指示函数保证三套网格的名义体积与流体节点数一致，从而使网格序列比较的是**同一物理域的不同离散**，而非略有差别的域。
++**EX240_parallel 与 EX240_perpendicular** 是基准带图案几何（$h=75$ nm、$d=100$ nm），分别沿槽与跨槽驱动。它们包含平板基准所没有的角部和台阶，因此需要单独的加密证据。
++
++三者均在相同三套网格上计算：$\Delta x=5$、$2.5$、$1.25$ nm。解析几何指示函数保持三套网格的名义物理体积一致，而流体节点数随加密变化，从而使网格序列比较的是**同一物理域的不同离散**，而非略有差别的域。
+ 
+ ---
+ 
+@@ -102,11 +88,11 @@
+ 
+ #### EN
+ 
+-TABLE III lists the three-grid transport results. All six metrics are monotonic in the grid spacing, which is the precondition for applying Richardson extrapolation.
++TABLE III preserves the archived three-grid numerical values, subject to the provenance limits in Sec. III D3. Here $\Gamma_i=K_i/K_{\rm smooth}$ compares with the numerically computed flat gap of height h; it is not the equal-volume efficiency $\eta_i=K_i/(H_{\rm ref}^3/12)$. Monotonic changes support extrapolation checks but do not alone prove asymptotic convergence.
+ 
+ **TABLE III.** Transport coefficients at three grids, reference geometry.
+ 
+-| $\Delta x$ (nm) | $K_{\rm smooth}$ (m³) | $K_\parallel$ (m³) | $K_\perp$ (m³) | $\eta_\parallel$ | $\eta_\perp$ | $K_\parallel/K_\perp$ |
++| $\Delta x$ (nm) | $K_{\rm smooth}$ (m³) | $K_\parallel$ (m³) | $K_\perp$ (m³) | $\Gamma_\parallel$ | $\Gamma_\perp$ | $K_\parallel/K_\perp$ |
+ |---:|---:|---:|---:|---:|---:|---:|
+ | 5 | $3.531250\times10^{-23}$ | $9.834076\times10^{-23}$ | $4.449022\times10^{-23}$ | 2.78487 | 1.25990 | 2.21039 |
+ | 2.5 | $3.519529\times10^{-23}$ | $9.782424\times10^{-23}$ | $4.385294\times10^{-23}$ | 2.77947 | 1.24599 | 2.23073 |
+@@ -114,11 +100,11 @@
+ 
+ #### 中文
+ 
+-TABLE III 给出三网格的输运结果。六项指标均随网格加密单调变化，这是应用 Richardson 外推的前提。
++TABLE III保留归档三网格数值，来源限制见D3。这里$\Gamma_i=K_i/K_{\rm smooth}$是相对于间隙h平板数值解的增强比，不是等体积效率$\eta_i=K_i/(H_{\rm ref}^3/12)$。单调变化可支持外推检查，但本身不足以证明进入渐近区间。
+ 
+ **TABLE III.** 基准几何在三套网格上的输运系数。
+ 
+-| $\Delta x$ (nm) | $K_{\rm smooth}$ (m³) | $K_\parallel$ (m³) | $K_\perp$ (m³) | $\eta_\parallel$ | $\eta_\perp$ | $K_\parallel/K_\perp$ |
++| $\Delta x$ (nm) | $K_{\rm smooth}$ (m³) | $K_\parallel$ (m³) | $K_\perp$ (m³) | $\Gamma_\parallel$ | $\Gamma_\perp$ | $K_\parallel/K_\perp$ |
+ |---:|---:|---:|---:|---:|---:|---:|
+ | 5 | $3.531250\times10^{-23}$ | $9.834076\times10^{-23}$ | $4.449022\times10^{-23}$ | 2.78487 | 1.25990 | 2.21039 |
+ | 2.5 | $3.519529\times10^{-23}$ | $9.782424\times10^{-23}$ | $4.385294\times10^{-23}$ | 2.77947 | 1.24599 | 2.23073 |
+@@ -137,13 +123,13 @@
+ | $K_{\rm smooth}$ | 1.991 | $3.515588\times10^{-23}$ | 0.035% | 0.140% | 0.9992 |
+ | $K_\parallel$ | 1.513 | $9.754564\times10^{-23}$ | 0.125% | 0.356% | 0.9981 |
+ | $K_\perp$ | 1.256 | $4.339400\times10^{-23}$ | 0.551% | 1.308% | 0.9939 |
+-| $\eta_\parallel$ | 0.940 | 2.77359 | 0.138% | 0.265% | 0.9990 |
+-| $\eta_\perp$ | 1.088 | 1.23364 | 0.586% | 1.239% | 0.9947 |
++| $\Gamma_\parallel$ | 0.940 | 2.77359 | 0.138% | 0.265% | 0.9990 |
++| $\Gamma_\perp$ | 1.088 | 1.23364 | 0.586% | 1.239% | 0.9947 |
+ | $K_\parallel/K_\perp$ | 1.098 | 2.24857 | 0.465% | 0.999% | 1.0043 |
+ 
+-All six quantities are in the asymptotic range (ratio of the two GCI values close to unity, between 0.994 and 1.004), which justifies using the extrapolated values as the error estimates.
+-
+-The apparent orders for the two patterned cases are below two, and lowest for $K_\perp$ ($p=1.256$). The pattern is informative rather than troubling. In the parallel-plate case the solution is a parabola and the wall a straight line, and the same code returns $p=1.991$. In the patterned geometry the solution has an **interior singularity at the groove corners**: on one side of a corner the wall is parallel to the flow, on the other it is perpendicular, so the wall-normal velocity gradient jumps. The local error is therefore dominated by the corner neighbourhood, which converges more slowly than the bulk, and the apparent order of the integral quantity is dragged below the bulk order. This is a property of the geometry rather than a defect of the scheme, and it is why the GCI, and not the formal order, is used to bound the uncertainty — and why the independent refinement check in Sec. III D 4 is reported alongside.
++The archived asymptotic-ratio checks are near unity. These estimates apply to the reference geometry and depend on the accepted grid sequence. Fine and medium denote 1.25 and 2.5 nm, respectively, not the production grid. Applying the same fitted orders and safety factor of 1.25 gives conditional coarse-grid (5 nm) GCI estimates of approximately 1.01% for parallel K and 3.08% for perpendicular K. These are arithmetic estimates, not a new release or a bound for other geometries.
++
++The observed orders below two may reflect corner regularity, boundary treatment or other discretization effects. No local error decomposition establishes which contribution dominates. A boundary corner must not be labeled an established interior singularity merely from the observed integral convergence order.
+ 
+ #### 中文
+ 
+@@ -156,41 +142,37 @@
+ | $K_{\rm smooth}$ | 1.991 | $3.515588\times10^{-23}$ | 0.035% | 0.140% | 0.9992 |
+ | $K_\parallel$ | 1.513 | $9.754564\times10^{-23}$ | 0.125% | 0.356% | 0.9981 |
+ | $K_\perp$ | 1.256 | $4.339400\times10^{-23}$ | 0.551% | 1.308% | 0.9939 |
+-| $\eta_\parallel$ | 0.940 | 2.77359 | 0.138% | 0.265% | 0.9990 |
+-| $\eta_\perp$ | 1.088 | 1.23364 | 0.586% | 1.239% | 0.9947 |
++| $\Gamma_\parallel$ | 0.940 | 2.77359 | 0.138% | 0.265% | 0.9990 |
++| $\Gamma_\perp$ | 1.088 | 1.23364 | 0.586% | 1.239% | 0.9947 |
+ | $K_\parallel/K_\perp$ | 1.098 | 2.24857 | 0.465% | 0.999% | 1.0043 |
+ 
+-六项量均处于渐近区间（两个 GCI 之比接近 1，介于 0.994–1.004），这为"用外推值作为误差估计"提供了依据。
+-
+-两个带图案算例的表观阶低于 2，其中 $K_\perp$ 最低（$p=1.256$）。这一规律有信息量而非令人担忧。在平行平板情形，解是抛物线、壁面是直线，同一代码给出 $p=1.991$。而在带图案几何中，解在**槽角处存在内点奇异**：角点一侧壁面平行于流动，另一侧垂直于流动，壁法向速度梯度发生跳跃。局部误差因此由角点邻域主导，该邻域收敛慢于体相，把积分量的表观阶拉低了。这是**几何的性质而非格式的缺陷**，也正是用 GCI 而非形式阶来界定不确定度、并并列报告 Sec. III D 4 独立加密检查的原因。
+-
+-#### 3. One gate not passed: recorded as it is ／ 一处未通过的门禁：如实记录
++归档渐近比接近1；这些估计只适用于基准几何，且取决于网格序列的来源与验收。fine和medium分别为1.25和2.5 nm，并非生产网格。沿用相同拟合阶与1.25安全系数，5 nm粗网格GCI的条件算术估计约为沿槽1.01%、跨槽3.08%；这不是本轮新放行，也不是其他几何的界限。
++
++低于2的观测阶可能与角部正则性、边界处理及其他离散效应有关。现有局部误差分解不足以确定主导来源，不能仅凭积分量观测阶，把边界角点说成已证明的“内点奇异”。
++
++#### 3. Fine transverse reference: distinct evidence states ／ 细跨槽参考：三类记录分开
+ 
+ #### EN
+ 
+-One of the nine runs does not pass its verification gate, and we state this explicitly rather than rounding it away.
+-
+-The run is EX240_perpendicular at $\Delta x=1.25$ nm. It converges (29548 steps, window criteria met) and passes every gate except mass conservation: the maximum relative mass drift reaches $1.197\times10^{-10}$, against a tolerance of $10^{-10}$. The exceedance is 20%. Every other gate on that run is satisfied by a wide margin — maximum density deviation $1.7\times10^{-9}$, maximum Mach number $3.1\times10^{-8}$, section-to-section flux difference $5.0\times10^{-9}$, unresolved lattice links zero.
+-
+-The failure is understood and is a property of the test rather than of the solution. Mass drift grows monotonically with grid refinement across the sequence, from exactly zero at $\Delta x=5$ nm, through $8.5\times10^{-12}$ at $2.5$ nm, to $1.2\times10^{-10}$ at $1.25$ nm — roughly an order of magnitude per halving. The number of time steps grows as $\Delta x^{-2}$ (2940, 8699, 29548 in the three runs), so the accumulated round-off in the mass sum grows with the step count, while the tolerance was set at a fixed $10^{-10}$ for the production grid. At $1.25$ nm the run executes ten times as many steps as at $5$ nm, and the drift crosses the fixed threshold. In absolute terms the drift corresponds to a relative density error of order $10^{-10}$, which is at the level of double-precision accumulation over $3\times10^{4}$ updates.
+-
+-We have deliberately left this record as a failure rather than reclassifying it. Two consequences follow, and we state both. First, the fine-grid $K_\perp$ value enters the GCI calculation above, so the uncertainty estimate for $K_\perp$ is computed from a run that did not pass all gates; the effect is bounded, since the other five quantities in TABLE IV come from runs that did pass, and the GCI for $K_\perp$ (0.551%) is itself small. Second, the production grid used for the whole error map, and for the two supplementary sets as well, is $\Delta x=5$ nm, at which the mass drift is zero or of order $10^{-13}$ and every gate passes; the adequacy of that grid is therefore not affected by this record. The relevant question for the paper is whether $5$ nm is fine enough, and that is answered by Sec. III C and Sec. III D 4, not by the fine-grid gate.
++The original EX240_perpendicular run at 1.25 nm remains a historical FAIL: its recorded maximum relative mass drift was $1.1967043900362632\times10^{-10}$ against a $10^{-10}$ threshold. More time steps and accumulated round-off are not, by themselves, a demonstrated root cause.
++
++The later scheme-C run, fine_t_C_20261014T151036+0800, has result PASS=true, independent exit code 0, revised-statistic maximum mass drift $2.2041198252431699\times10^{-14}$, legacy-ledger drift $1.1967043900362632\times10^{-10}$ and $K_\perp=4.3586133688217411\times10^{-23}$ m³. This establishes what those existing outputs report; it does not retroactively pass the old run.
++
++Project records cite an independent scheme-C release, but CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md is currently missing. The run's earlier completion record says formal_reference_accepted=false and scientific_review_required=true; it cannot override a later historical review, nor can an absent review be treated as reverified. A later environment hash mismatch is a third, separate status. Until the release record and exact input bindings are reconciled, TABLES III–IV remain archived, conditional estimates, not a newly accepted grid sequence. Perpendicular K, its smooth-reference gain and the anisotropy ratio all depend on the fine transverse input.
+ 
+ #### 中文
+ 
+-九个算例中有一个未通过其验证门禁，我们明确写出这一点，而不把它四舍五入掉。
+-
+-该算例为 $\Delta x=1.25$ nm 的 EX240_perpendicular。它**已收敛**（29548 步，窗口判据满足），除质量守恒外所有门禁均通过：最大相对质量漂移达 $1.197\times10^{-10}$，而容差为 $10^{-10}$，**超出 20%**。该算例其余门禁均有很大裕度——密度最大偏差 $1.7\times10^{-9}$、最大马赫数 $3.1\times10^{-8}$、截面间通量差 $5.0\times10^{-9}$、未解析格点连线为零。
+-
+-这一失败可以解释，且属于**测试本身的性质而非解的性质**。质量漂移沿网格序列单调增大：$\Delta x=5$ nm 时恰为零，$2.5$ nm 时 $8.5\times10^{-12}$，$1.25$ nm 时 $1.2\times10^{-10}$——每加密一倍约涨一个数量级。时间步数按 $\Delta x^{-2}$ 增长（三档分别为 2940、8699、29548 步），质量求和的累积舍入随步数增长，而容差当初是按生产网格设定的固定值 $10^{-10}$。在 $1.25$ nm 下执行的步数是 $5$ nm 下的十倍，漂移便越过了这一固定阈值。折成绝对量，该漂移对应 $10^{-10}$ 量级的相对密度误差，相当于在 $3\times10^{4}$ 次更新上双精度累积的水平。
+-
+-我们**特意把这条记录保留为失败**，而不重新归类。由此产生两个后果，一并说明。其一，最细网格的 $K_\perp$ 值参与了上述 GCI 计算，故 $K_\perp$ 的不确定度估计来自一个未过全部门禁的算例；影响是有界的——TABLE IV 中其余五个量来自全部通过门禁的算例，且 $K_\perp$ 的 GCI 本身只有 0.551%。其二，整个误差地图（以及两个补充集）所用的生产网格是 $\Delta x=5$ nm，该网格上质量漂移为零或 $10^{-13}$ 量级、全部门禁通过，故**生产网格的适用性不受本条记录影响**。本文真正要回答的问题是"5 nm 够不够细"，这由 Sec. III C 与 Sec. III D 4 回答，而不是由最细网格的门禁回答。
++旧EX240_perpendicular、1.25 nm运行仍保留历史FAIL：最大相对质量漂移为$1.1967043900362632\times10^{-10}$，阈值为$10^{-10}$。步数更多、舍入累积只是可能解释，不能单凭这些现象认定根因。
++
++后续方案C的run_id为fine_t_C_20261014T151036+0800：result记PASS=true、独立退出码0，新统计最大质量漂移$2.2041198252431699\times10^{-14}$、旧账本$1.1967043900362632\times10^{-10}$，$K_\perp=4.3586133688217411\times10^{-23}$ m³。这说明既有原始输出的记录，不把旧运行反写为通过。
++
++项目记载方案C已有独立放行，但所引用的CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md当前缺失。运行的早期completion仍记formal_reference_accepted=false、scientific_review_required=true；它不能覆盖后来的历史审查，也不能在报告缺失时声称本轮已重新核实放行。之后的环境哈希不匹配是第三条独立状态。恢复/定位放行记录并核对输入绑定前，TABLE III–IV仅保留为有来源限制的归档估计，不构成本轮新验收。跨槽K、其平板增强比及各向异性比均依赖细跨槽输入。
+ 
+ #### 4. Independent refinement check ／ 独立加密检查
+ 
+ #### EN
+ 
+-Because the three-grid study is confined to one geometry, two further geometries were recomputed at $\Delta x=2.5$ nm: the deepest groove at the smallest gap ($h=50$, $d=100$ nm) and the shallowest groove at the largest gap ($h=125$, $d=25$ nm), i.e. the two extremes of the matrix.
++Because the three-grid study is confined to one geometry, two further geometries were recomputed at $\Delta x=2.5$ nm: ($h=50$, $d=100$ nm) and ($h=125$, $d=25$ nm), which were extremes of the original calibration set but do not cover the later h=25 nm or d=120 nm extensions.
+ 
+ **TABLE V.** Effect of halving the grid on the reported coefficients, two geometries.
+ 
+@@ -199,13 +181,11 @@
+ | $h=50$, $d=100$ nm | 0.52% | 2.16% |
+ | $h=125$, $d=25$ nm | 0.33% | 0.72% |
+ 
+-The cross-stream coefficient is the more sensitive of the two, consistent with its lower apparent order and with its physical origin: it is controlled by the dissipation at the step where the flow contracts into and expands out of the groove, which is the feature most affected by the corner discretization.
+-
+-These changes are the appropriate yardstick for the rest of the paper. The closure errors reported in section 5 span 10% to 205%; the discretization contributes at most 2.2%. The ratio is at least five, and at the deep end of the matrix more than thirty. Any conclusion drawn from the error map therefore cannot be an artifact of the grid.
++At these two geometries the perpendicular coefficient changes more than the parallel coefficient. The changes in TABLE V use the finer-grid value as denominator. They are two-grid sensitivities, not total discretization uncertainties, and their maximum cannot be assigned to every map point. Large closure discrepancies remain informative, but smaller differences and accuracy claims for a corrected model require geometry-matched uncertainty evidence.
+ 
+ #### 中文
+ 
+-由于三网格研究只覆盖一种几何，另有两种几何在 $\Delta x=2.5$ nm 下重算：最小间隙下的最深槽（$h=50$、$d=100$ nm）与最大间隙下的最浅槽（$h=125$、$d=25$ nm），即矩阵的两个极端。
++由于三网格研究只覆盖一种几何，另有两种几何在 $\Delta x=2.5$ nm 下重算：（$h=50$、$d=100$ nm）与（$h=125$、$d=25$ nm）。它们是原标定集的边缘点，不覆盖后加入的h=25 nm或d=120 nm扩展。
+ 
+ **TABLE V.** 网格加密一倍对报告系数的影响（两种几何）。
+ 
+@@ -214,135 +194,109 @@
+ | $h=50$、$d=100$ nm | 0.52% | 2.16% |
+ | $h=125$、$d=25$ nm | 0.33% | 0.72% |
+ 
+-横向系数更敏感，这与其较低的表观阶一致，也与其物理来源一致：它由流动收缩进、扩张出槽口处的台阶耗散控制，而台阶正是受角点离散影响最大的特征。
+-
+-这些变化是本文其余部分的**恰当标尺**。第 5 章报告的闭合误差跨 10%–205%，而离散最多贡献 2.2%。两者相差至少五倍，在矩阵深端超过三十倍。因此由误差地图得出的任何结论，都不可能是网格的假象。
+-
+----
+-
+-### E. Layer III: physical consistency ／ 层 III：物理自洽性
+-
+-### EN
+-
+-Three independent physical statements are tested. Each is a relation that the computed $\mathbf{K}$ must satisfy if the extraction and the solver are both correct, and each is checked against a prediction that does not come from the simulation itself.
+-
+-**(i) The tensor rotation law.** If $\mathbf{K}$ is a rank-two tensor, then a groove rotated by $\theta$ relative to the driving direction must return $K(\theta)=K_\parallel\cos^2\theta+K_\perp\sin^2\theta$, and the flow must be deflected by $\phi$ with $\tan\phi=(K_\perp/K_\parallel)\tan\theta$. Six cases — $\theta=30°$, $45°$, $60°$ at two geometries — reproduce both relations with the parameters $K_\parallel$ and $K_\perp$ taken from the *unrotated* simulations, i.e. with no free parameter. Agreement is better than $10^{-4}$% in all six. At $\theta=45°$ the computed deflection is $24.3424°$ and the predicted value $24.3424°$; the four-figure agreement is not a fit.
+-
+-**(ii) Independence from viscosity.** If $\mathbf{K}$ is a purely geometric quantity, raising $\mu$ must leave $\mathbf{K}$ unchanged while scaling the flux in inverse proportion. Repeating the reference geometry with the kinematic viscosity raised fifteen-fold, $\nu=1.5\times10^{-5}$ m² s⁻¹ ($\mu=15$ mPa s, the order of a commercial high-viscosity imprint resist), changes $K_\parallel$ by $0.0006\%$ and $K_\perp$ by $0.0003\%$, while the flux falls by exactly the factor fifteen (ratio 15.000). This is the quantitative justification for treating $\mathbf{K}$ as a geometric property in section 2.2, and it is what allows the error map to be carried over to any Newtonian resist without recomputation.
+-
+-**(iii) Linearity of the response.** The extraction uses $K=\mu J/(\rho a)$, which presumes the flux is linear in the driving. Because the Mach number stays at $3\times10^{-7}$ or below in every case, the flow is in the incompressible limit by three orders of magnitude, and the lattice Boltzmann solution is in its linear regime. The gate on the cross-stream flux — which must vanish when the drive is aligned with a principal axis — is met to $2\times10^{-22}$ m³ s⁻¹ in the worst case, confirming that the driving produces no spurious transverse response.
+-
+-### 中文
+-
+-检验三条独立的物理陈述。每一条都是"若提取方式与求解器均正确，则计算出的 $\mathbf{K}$ 必须满足"的关系，且每一条都对照一个**不来自本次仿真**的预测进行核查。
+-
+-**(i) 张量旋转律。** 若 $\mathbf{K}$ 是二阶张量，则相对驱动方向旋转 $\theta$ 后必须给出 $K(\theta)=K_\parallel\cos^2\theta+K_\perp\sin^2\theta$，且流向偏转满足 $\tan\phi=(K_\perp/K_\parallel)\tan\theta$。六个算例——两种几何下的 $\theta=30°$、$45°$、$60°$——在 $K_\parallel$、$K_\perp$ **取自未旋转仿真**（即无任何自由参数）的条件下同时复现两式，六个全部优于 $10^{-4}$%。$\theta=45°$ 时计算偏转角 $24.3424°$、预测值 $24.3424°$；四位有效数字相符不是拟合出来的。
+-
+-**(ii) 与黏度无关。** 若 $\mathbf{K}$ 是纯几何量，提高 $\mu$ 必须使 $\mathbf{K}$ 不变、同时使流量按反比缩放。在基准几何下把运动黏度提高十五倍（$\nu=1.5\times10^{-5}$ m² s⁻¹，即 $\mu=15$ mPa·s，商品高黏压印胶的量级），$K_\parallel$ 变化 $0.0006\%$、$K_\perp$ 变化 $0.0003\%$，而流量恰按 15 倍下降（比值 15.000）。这既是 §2.2 把 $\mathbf{K}$ 当作几何性质处理的定量依据，也是误差地图可以不经重算而适用于任意牛顿胶的原因。
+-
+-**(iii) 响应的线性。** 提取采用 $K=\mu J/(\rho a)$，前提是通量对驱动线性。由于所有算例中马赫数均在 $3\times10^{-7}$ 以下，流动处于不可压极限三个数量级之内，格点 Boltzmann 解处在其线性区间。横向通量的门禁——驱动沿主轴时必须消失——最差情形满足到 $2\times10^{-22}$ m³ s⁻¹，确认驱动未引发虚假的横向响应。
+-
+----
+-
+-### F. Layer IV: independent audit of the data chain ／ 层 IV：数据链的独立复核
+-
+-### EN
+-
+-The error map is built by post-processing raw solver output through a chain of scripts, and a chain is where silent errors live: a column read from the wrong field, a unit applied twice, a summary file rebuilt from a stale run. The data chain was therefore audited by recomputing every reported quantity from the deepest available level — the per-run `result.txt` files — using formulas written independently, without calling any project script.
+-
+-**TABLE VI.** Independent recomputation against the reported values.
+-
+-| Quantity | Count | Result |
++这两个几何的跨槽系数变化较大。TABLE V以较细网格值为分母；这些数是两网格敏感性，不是总离散不确定度，不能把其中最大值赋给全地图。大幅闭合偏差仍有信息量，但较小差异及修正公式的精度承诺需要与对应几何相匹配的不确定度证据。
++
++---
++
++### E. Layer III: internal consistency ／ 层III：内部自洽性
++
++### EN
++
++**Oblique driving.** The D3 tests keep grooves aligned with Y and vary the force components as $a_x=a\sin\theta$, $a_y=a\cos\theta$. With $\theta$ and the flux angle $\beta$ measured from Y, the principal-coefficient prediction is $K_{\rm drive}=K_\parallel\cos^2\theta+K_\perp\sin^2\theta$ and $\tan\beta=(K_\perp/K_\parallel)\tan\theta$. Six runs at two geometries agree with the DNS-principal-value predictions within the reported $10^{-4}$% tolerance. This checks superposition and extraction within the same numerical model, not the Jain coefficients. At h=75 nm, d=100 nm and θ=45°, DNS principal values predict β=24.3424°; Jain predicts 15.1412°. Thus a correct tensor transformation does not imply a correct predicted flow direction. No rotated-wall or multi-pattern-junction test is claimed.
++
++**Viscosity.** At h=75 nm, d=100 nm, increasing μ from 1 to 15 mPa s changes K by −0.0006444% parallel and −0.0002832% perpendicular; the original-to-high-viscosity flux ratios are 15.0000967 and 15.0000425. This supports the expected scaling under the stated Newtonian, no-slip, low-inertia assumptions. It is not validation of arbitrary real-resist rheology, and the μ=1 field images must retain their actual physical labels.
++
++**Linearity and symmetry.** Low Mach number limits compressibility effects but does not establish negligible inertia or force–flux linearity. A small cross-component response under principal-axis forcing tests symmetry, not the slope over multiple force amplitudes. No full-map force-amplitude validation is inferred from these checks.
++
++### 中文
++
++**斜向驱动。** D3保持槽沿Y，改变体力分量$a_x=a\sin\theta$、$a_y=a\cos\theta$。驱动角θ和通量角β均从Y轴量起，主值预测为$K_{\rm drive}=K_\parallel\cos^2\theta+K_\perp\sin^2\theta$、$\tan\beta=(K_\perp/K_\parallel)\tan\theta$。两种几何的6次运行在所报告的$10^{-4}$%容差内与DNS主值预测一致。这检验同一数值模型的叠加与提取，不检验Jain主值。h75/d100、θ=45°时，DNS主值预测β=24.3424°，Jain为15.1412°；张量变换正确不代表代入错误主值后的流向正确。未验证旋转槽壁或多图案交界。
++
++**黏度。** h75/d100下，μ从1增至15 mPa·s，K的沿槽/跨槽变化分别为−0.0006444%、−0.0002832%；原黏度与高黏度的通量比分别为15.0000967、15.0000425。这支持既定牛顿、无滑移、低惯性条件下的比例关系，不验证任意真实胶流变。μ=1原场图片必须保留其真实物性标签。
++
++**线性与对称性。** 小马赫数限制可压缩效应，但不证明无惯性或力—通量线性。主轴驱动时横向响应很小检验的是对称性，不是多个驱动力幅值下的斜率。不得由此推断全地图已做驱动力幅值验证。
++
++---
++
++### F. Layer IV: existing-output audit ／ 层IV：既有输出审计
++
++### EN
++
++The earlier 120-quantity crosscheck concerned the original map subset and selected derived quantities, not all current reported quantities. The later audit reads per-run results, independent exit codes, manifests and diagnostics without calling the original analysis scripts. It covers 48 formal runs and scans 228211 diagnostic rows. Selected checks found no violations of finite-value, mass, density, Mach, final convergence-window, section-consistency, geometry/q and fallback/unresolved-link requirements. It independently recomputes the closure comparison over all 36 map-direction cases and evaluates the published rounded correction formulas. It does not reproduce the later minimax optimization or establish complete historical source/build/environment binding.
++
++**TABLE VI.** Scope of the existing-output audit.
++
++| Group | Runs | Scope |
+ |---|---:|---|
+-| $K^{\rm DNS}$ (resolved coefficients) | 18 | identical |
+-| $K^{\rm mod}$ (closure values, arithmetic/harmonic average recomputed) | 18 | identical |
+-| $E$ (relative error) | 18 | identical |
+-| $A^{\rm DNS}$, $A^{\rm mod}$ (anisotropy) | 18 | identical |
+-| $H_{\rm ref}$, $\eta$ | 18 | identical |
+-| $\hat S$ (elasticity coefficients) | 24 | identical |
+-| Holdout predictions ($d=75$ nm) | 6 | identical to $2\times10^{-5}$ relative |
+-| **Total** | **120** | **0 discrepancies** |
+-
+-The audit also caught a real defect in the post-processing, which is worth recording because it shows the audit was not a formality: at one point a summarization script read a field under the wrong name (`completed_steps` instead of `steps_completed`), silently leaving the step count empty, and a subsequent rebuild of the summary table truncated it to a header line only. Both faults were in the analysis layer, not in the solver, and both were repaired; the rebuilt table was then verified against the per-run outputs and found identical to the originally reported values, confirming that no data were lost. No value in this paper depends on the summary file alone — every number traces to a per-run output.
+-
+-### 中文
+-
+-误差地图是原始求解器的输出经一串脚本后处理得到的，而**链条正是隐蔽错误的栖身之处**：从错误的字段读了一列、某个单位被乘了两次、汇总表由过期算例重建。因此我们审计了整条数据链——从**最底层**（每次运行的 `result.txt`）出发，用独立写出的公式重算每一个报告量，**不调用任何项目脚本**。
+-
+-**TABLE VI.** 独立重算与报告值比对。
+-
+-| 量 | 数量 | 结果 |
++| Error map | 36 | 18 geometries, two principal directions; closure/residual arithmetic |
++| Refinement | 4 | Two repeated geometries, 2.5 nm |
++| Viscosity | 2 | Reference geometry, μ=15 mPa s |
++| Oblique drive | 6 | Two geometries, three angles |
++| Total | 48 | Recorded results/exits/selected diagnostics, not new solver runs |
++
++### 中文
++
++早期120项复核针对原始地图子集及选定派生量，不覆盖当前全部报告量。后续审计独立读取逐run结果、退出码、manifest与诊断，不调用原分析脚本，覆盖48次正式运行、228211行诊断；所查有限性、质量、密度、Mach、末态收敛窗口、截面、几何/q、fallback与未解析连线要求未见超限。审计独立重算36个地图方向工况的闭合比较及已给出的舍入修正公式残差，但不复现后续minimax优化，也不建立完整历史源码—构建—环境绑定。
++
++**TABLE VI.** 既有输出审计范围。
++
++| 组 | 运行数 | 范围 |
+ |---|---:|---|
+-| $K^{\rm DNS}$（实测系数） | 18 | 一致 |
+-| $K^{\rm mod}$（闭合值，算术/调和平均独立重算） | 18 | 一致 |
+-| $E$（相对误差） | 18 | 一致 |
+-| $A^{\rm DNS}$、$A^{\rm mod}$（各向异性） | 18 | 一致 |
+-| $H_{\rm ref}$、$\eta$ | 18 | 一致 |
+-| $\hat S$（弹性系数） | 24 | 一致 |
+-| 留出预测（$d=75$ nm） | 6 | 相对差 $\le2\times10^{-5}$ |
+-| **合计** | **120** | **0 处不一致** |
+-
+-审计还查出一处后处理中的真实缺陷，值得记录，因为它说明这次审计不是走过场：曾有一个汇总脚本以错误字段名读取（写 `completed_steps` 而文件里是 `steps_completed`），导致步数被静默留空；随后一次汇总表重建又把该表截断为只剩表头。两处缺陷都在**分析层**而非求解器，均已修复；重建后的表与每次运行的输出逐项核对，与原先报告的值完全一致，确认无数据损失。本文没有任何数值仅依赖汇总文件——每个数字都可追溯到单次运行的输出。
+-
+----
+-
+-### G. What was not done ／ 未做的验证：如实说明
+-
+-### EN
+-
+-Two gaps remain, and stating them is more useful than letting a referee find them.
+-
+-**Cross-code comparison.** No independent solver was run on this geometry. The verification above is internal: it establishes that this code solves this equation correctly on this grid, not that a different discretization of the Navier–Stokes equations would return the same $K$. A comparison against a body-fitted finite-element solution at one or two geometries would close this gap, and is the natural next step; it is not claimed here.
+-
+-**Cross-literature reproduction.** We have not reproduced an independent published solution on a geometry where one exists. The natural candidate is the spectral theory for *sinusoidal* grooves [8,9], which would test the solver against an external analytic result rather than against an internal consistency relation. This was not done because the sinusoidal geometry is not the one of interest and would have required a separate geometry implementation. The reader should therefore regard the verification as establishing numerical control of the present calculations, not as a validation against independent simulation.
+-
+-What the four layers do establish is the following, and we state it narrowly: the code reproduces a closed-form mobility to 0.44% at the production grid; the discretization contributes at most 2.2% to the reported coefficients, against closure errors of 10–205%; the extracted tensor obeys the rotation law to $10^{-4}$% and is independent of viscosity to $10^{-5}$; and every reported number traces to a raw solver output through an audited chain.
+-
+-### 中文
+-
+-还有两处缺口，把它们说出来比留给审稿人发现更有用。
+-
+-**跨代码比对未做。** 本文没有在同一几何上运行独立求解器。上述验证是**内部**的：它确立的是"本代码在本网格上正确求解本方程"，而不是"Navier–Stokes 方程的另一种离散会给出同样的 $K$"。在一到两种几何上与贴体有限元解比对可以补上这一缺口，这是自然的下一步，但本文**不作此声称**。
+-
+-**跨文献复现未做。** 我们没有在有独立已发表解的几何上做复现。自然的候选是**正弦槽**的谱理论 [8,9]——它能以外部解析结果（而非内部自洽关系）检验求解器。未做的原因是正弦几何并非本文关心的对象，需要另做一套几何实现。因此读者应把本章的验证理解为"确立了本次计算的数值可控性"，而**不是**"与独立仿真完成了确认"。
+-
+-四层验证**确实**确立的是以下内容，我们窄口径地表述：代码在生产网格上以 0.44% 复现闭式迁移率；离散对报告系数的贡献最多 2.2%，而闭合误差为 10%–205%；提取的张量满足旋转律至 $10^{-4}$%、与黏度无关至 $10^{-5}$；且每个报告数字都经审计链条追溯到原始求解器输出。
+-
+----
+-
+-### H. Summary of numerical uncertainty ／ 数值不确定度汇总
+-
+-### EN
+-
+-**TABLE VII.** Uncertainty budget for the reported coefficients.
+-
+-| Source | Effect on $K_\parallel$ | Effect on $K_\perp$ | Basis |
++| 误差地图 | 36 | 18几何、两个主方向；闭合与残差算术 |
++| 加密 | 4 | 两重复几何，2.5 nm |
++| 黏度 | 2 | 基准几何，μ=15 mPa·s |
++| 斜向驱动 | 6 | 两几何、三个角度 |
++| 合计 | 48 | 既有结果/退出/所选诊断；不是新仿真 |
++
++来源：SIM240_single_phase_audit_20261018/check_existing.py、evidence.json及REPORT.md；输入哈希保留于原审计快照。既往汇总字段错误已修复，不再作为当前未解决缺陷。
++
++---
++
++### G. Remaining limits ／ 未完成的验证与外推限制
++
++### EN
++
++No independent solver or published nonzero-groove reference has been reproduced for the present geometry. The available checks support numerical credibility within their stated configurations, not proof that every map point is spatially converged. The h=25 nm and d=120 nm extensions lack geometry-matched refinement in the audited set. Historical build/source provenance and the missing scheme-C release record remain unresolved.
++
++The correction-model evidence has a separate hierarchy: calibration residuals, the original V1 withheld-depth test, retrospective V2 evaluation, grouped internal cross-validation, and genuinely unseen-condition testing are not interchangeable. The latter two have not been completed in this revision. Neither a sample maximum nor a post hoc tolerance is a guaranteed continuous-domain prediction bound.
++
++### 中文
++
++尚未针对当前几何完成独立求解器或已发表非零沟槽参考解复现。既有检查支持相应配置下的数值可信度，不证明每个地图点均空间收敛。所审数据中h=25 nm与d=120 nm扩展缺少对应几何加密；历史构建/源码来源及方案C缺失放行记录仍待补齐。
++
++修正模型还需单独分层：标定残差、原V1留出深度检验、V2回顾性评价、几何分组内部交叉验证和真正未见条件测试不可互换。后两项本轮未做。样点最大残差或事后选择的容差，都不是连续域预测保证。
++
++---
++
++### H. Numerical evidence summary ／ 数值证据汇总
++
++### EN
++
++**TABLE VII.** Available checks and their limits; not an additive uncertainty budget.
++
++| Check | Parallel K | Perpendicular K | Scope |
+ |---|---:|---:|---|
+-| Grid discretization (production grid) | 0.33–0.52% | 0.72–2.16% | Sec. III D 4, two geometries |
+-| GCI at the reference geometry | 0.125% | 0.551% | TABLE IV |
+-| Wall representation (analytic vs staircase) | eliminated | eliminated | §2.3; $q=1/2$ in all cases |
+-| Compressibility (Mach) | $<10^{-6}$% | $<10^{-6}$% | Ma $\le3.4\times10^{-7}$ |
+-| Mass drift | $\le10^{-10}$ relative | $\le10^{-10}$ relative | Sec. III D 3 |
+-| **Combined, conservative** | **$\approx0.6\%$** | **$\approx2.2\%$** | sum of the two largest |
+-| **Closure error (section 5)** | **10–205%** | **12–54%** | error map |
+-
+-The last two rows are the comparison that matters. The numerical uncertainty is smaller than the smallest closure error by a factor of at least five, and smaller than the largest by two orders of magnitude. No conclusion of this paper turns on the numerical error.
+-
+-### 中文
+-
+-**TABLE VII.** 报告系数的不确定度预算。
+-
+-| 来源 | 对 $K_\parallel$ 的影响 | 对 $K_\perp$ 的影响 | 依据 |
++| 5→2.5 nm sensitivity | 0.33–0.52% | 0.72–2.16% | Only h50/d100 and h125/d25; finer-value denominator |
++| Archived fine-grid GCI | 0.125% | 0.551% | h75/d100, 1.25 nm; D3 provenance limitation |
++| Conditional coarse-grid GCI | ≈1.01% | ≈3.08% | h75/d100, 5 nm; same archived fit, not new release |
++| Iterative/operational gates | Selected checks passed | Selected checks passed | 48 existing formal runs; not spatial uncertainty |
++| Closure discrepancy | +10.30–+204.85% | +8.11–+54.19% | 18 sampled geometries, production grid |
++
++No combined full-map uncertainty is estimated from these heterogeneous checks. Wall-location auditing does not remove every boundary-discretization error, and Mach/mass diagnostics are not direct percentage error bars on K.
++
++### 中文
++
++**TABLE VII.** 已有检查及其限制；不是可相加的不确定度预算。
++
++| 检查 | 沿槽K | 跨槽K | 范围 |
+ |---|---:|---:|---|
+-| 网格离散（生产网格） | 0.33–0.52% | 0.72–2.16% | Sec. III D 4，两种几何 |
+-| 基准几何的 GCI | 0.125% | 0.551% | TABLE IV |
+-| 壁面表示（解析 vs 阶梯） | 已消除 | 已消除 | §2.3；全部算例 $q=1/2$ |
+-| 可压缩性（马赫数） | $<10^{-6}$% | $<10^{-6}$% | Ma $\le3.4\times10^{-7}$ |
+-| 质量漂移 | $\le10^{-10}$ 相对 | $\le10^{-10}$ 相对 | Sec. III D 3 |
+-| **合并（保守）** | **$\approx0.6\%$** | **$\approx2.2\%$** | 两个最大项之和 |
+-| **闭合误差（第 5 章）** | **10–205%** | **12–54%** | 误差地图 |
+-
+-最后两行才是关键对比。数值不确定度比**最小**的闭合误差还小至少五倍，比最大的小两个数量级。本文没有任何结论依赖于数值误差。
++| 5→2.5 nm敏感性 | 0.33–0.52% | 0.72–2.16% | 仅h50/d100、h125/d25；较细值作分母 |
++| 归档细网格GCI | 0.125% | 0.551% | h75/d100、1.25 nm；有D3来源限制 |
++| 条件粗网格GCI | ≈1.01% | ≈3.08% | h75/d100、5 nm；沿用归档拟合，不是新放行 |
++| 迭代/运行门禁 | 所选检查通过 | 所选检查通过 | 48次既有正式运行；非空间不确定度 |
++| 闭合偏差 | +10.30–+204.85% | +8.11–+54.19% | 18种采样几何、生产网格 |
++
++不把这些异质检查合成为全地图误差界。壁面位置审计不消除全部边界离散误差；Mach/质量诊断也不是K的直接百分比误差条。
+ 
+ ---
+ 
+@@ -367,85 +321,10 @@
+ 
+ ---
+ 
+-## 本章核查记录（2026-10-17）
+-
+-| 项 | 数值 | 来源文件 |
+-|---|---|---|
+-| Smooth75 三网格 $K$ | 3.5312498715575052e-23 / 3.5195285780093276e-23 / 3.5165797338982587e-23 | `runs/dx{5,2p5,1p25}/Smooth75/steady/result.txt` 的 `K_LBM_m3` |
+-| Smooth75 相对误差 | 0.0044444 / 0.0011104 / 0.00027157 | 同上 `K_relative_error` |
+-| $K_0$ 精确值 | 3.515625e-23 | $h^3/12$，$h=75$ nm |
+-| TABLE III 三网格系数 | 见文 | `g2_grid_summary.csv` |
+-| TABLE IV 阶与 GCI | 见文 | `g2_richardson_gci.csv`（`apparent_order_p`, `GCI_fine_percent`） |
+-| **单档 FAIL** | EX240_perp @ dx1.25：`PASS=false`、`max_mass_abs_relative=1.1967043900362632e-10` | `runs/dx1p25/EX240_perpendicular/steady/result.txt` |
+-| 该档其他门禁 | density 1.6636e-9；Mach 3.1455e-8；section diff 5.04e-9；unresolved 0 | 同上 |
+-| 步数序列 | 2940 / 8699 / 29548 | `g2_grid_summary.csv` 的 `convergence_step` |
+-| 网格敏感性 | 0.522/2.158（h50d100）、0.331/0.718（h125d25） | `D2/results/analysis/grid_sensitivity.csv` |
+-| 斜槽 6/6 | $\varphi$: 14.6385/24.3424/38.0821（h75），8.3874/14.3259/23.8612（h50） | `D3/results/D3_OBLIQUE_ACCEPTANCE_20261016.md` |
+-| 黏度对照 | $K_\parallel$ 差 0.0006%、$K_\perp$ 差 0.0003%、流量比 15.000 | `D2/results/mu_check.log` 与 `summary.csv` 复算 |
+-| 独立复核 120 项 | 0 处不一致 | `D2/results/analysis/CODE_REVIEW_20261017.md` §4 |
+-| Ma 范围 | ≤3.445e-7 | `h125_d25_dx5_P/steady/result.txt` 等 |
+-
+-### 一处需要说明的口径
+-
+-**G2 Step 3 批次的整体状态是 FAIL/INCONCLUSIVE**（`batch_status.txt`: `STEADY_MATRIX=FAIL`；`G2_GRID_CONVERGENCE_REPORT.md`: "nine-run numerical gate: FAIL"、"recommended production grid: none"）。原因即 Sec. III D 3 记录的单档质量漂移。
+-
+-**但这不影响本文使用 $\Delta x=5$ nm 作为生产网格**，理由独立于该批次的门禁结论：
+-1. $\Delta x=5$ nm 下九档全部 PASS，质量漂移为零或 $10^{-13}$ 量级；
+-2. 平板极限在 $\Delta x=5$ nm 的误差为 0.444%（Sec. III C），这是有精确解可对照的**绝对**精度；
+-3. 网格敏感性研究显示 $5\to2.5$ nm 的系数变化 ≤2.16%（Sec. III D 4），比闭合误差小一个数量级以上。
+-
+-**论文中不得写"网格无关性已通过 Step 3 门禁"**——应按上述三点陈述，并保留 Sec. III D 3 的失败记录。
+-
+----
+-
+-## 写作说明（不进正文）
+-
+-### 一、本章的五个写作决策
+-
+-**① 开头就摆出四层表，并把两处负面记录提前"认领"。**
+-
+-审稿人最不信任的是"报喜不报忧"。Sec. III A 的表格后面紧跟一句"有两件事特意作为未确立报告"，读者一进门就知道我们没藏东西。这比把问题埋到附录里更能建立信任。
+-
+-**② Sec. III D 3 单独设节讲那一处 FAIL，写清"为什么失败""影响多大""为什么生产网格不受影响"。**
+-
+-这是全章最需要拿捏的部分。处理原则：
+-- **不美化**：明写 PASS=false、超出 20%、"保留为失败而不重新归类"；
+-- **讲清机理**：步数按 $\Delta x^{-2}$ 增长 → 累积舍入增长 → 固定阈值被越过；
+-- **划清影响范围**：只影响 $K_\perp$ 的 GCI 输入，不影响生产网格；
+-- **给出替代依据**：生产网格的适用性由平板极限 0.444% 与敏感性 ≤2.16% 独立支撑。
+-
+-**③ Sec. III C 主动限制自己的结论。**
+-
+-平板极限跑出漂亮二阶，很容易顺手写"本格式二阶精度"。但 OpenLB 官方标 Bouzidi 为一阶。所以写的是"这是 $q=1/2$ 平面壁的行为，**不**意味着插值反弹全局二阶"。**主动收窄**能避免被审稿人抓，反而显得专业。
+-
+-**④ Sec. III E 三条物理检验都强调"预测不来自本次仿真"。**
+-
+-旋转律用**未旋转**的 $K_\parallel$、$K_\perp$ 作参数，黏度无关性用 Darcy 关系的反比预测，横向通量用"驱动沿主轴应为零"。这三条都是**外部可预测**的，不是自己拟合自己。
+-
+-**⑤ Sec. III G 明写两个"未做"。**
+-
+-跨代码比对、跨文献复现（正弦槽）都没做。写出来并说明"这是自然的下一步"，比让审稿人自己发现强。
+-
+-### 二、必须处理的两处
+-
+-| # | 问题 | 状态 |
+-|---|---|---|
+-| 1 | **[18] 原引 Lallemand & Luo 2003 是错的**（讲移动边界，与半步反弹无关） | ✅ **已改**为 Ladd 1994, JFM **271, 285–309**；并纠正"285–311"的页码误记（311 是 Part 2 起始页）。**建议最终删除 [18]**，因 §2.3 论证不依赖它 |
+-| 2 | **[17] Celik 2008** | ✅ **已核**：J. Fluids Eng. 130(7), 078001 (2008) |
+-
+-### 三、与第 2 章的分工（避免重复）
+-
+-| 内容 | 在第 2 章 | 在第 3 章 |
+-|---|---|---|
+-| 几何、方程、LBM 格式 | ✅ 全在 §2.1–2.4 | 只提配置名（Smooth75 / EX240_*） |
+-| 参数矩阵 | ✅ §2.5 Table 1 | 不重复 |
+-| 门禁阈值 | ✅ Sec. II D 末段 | 只报结果（TABLE VI） |
+-| 网格收敛数据 | ❌ | ✅ 全在 Sec. III D |
+-| 物理自洽 | ❌ | ✅ Sec. III E |
+-| 数据链审计 | ❌ | ✅ Sec. III F |
+-
+-> ⚠ 第 2 章 §2.6 目前写了"验证与数值不确定度"，与本章**内容重叠**。定稿时二选一：把 §2.6 压缩为一句"验证见第 3 章"，或把本章并入 §2.6。**建议前者**——方法章不承担验证职能，是更常见的期刊结构。
+-
+-### 四、篇幅
+-
+-英文正文约 **2,850 词**（8 节，实测），中文 **3,942 字**（实测）。含 7 张表。
++## 修订与来源说明（不进正文）
++
++- 旧正文及解释完整备份于 SIM240_manuscript_revision_20261018/before/；不覆盖历史FAIL、原始结果或冻结门槛。
++- 表III/IV保留归档数值，未静默更换细T批次。方案C原始路径为 CASE/03_grid_convergence/G2_EX240_fine_T_statfix_C_v1/runs/fine_t_C_20261014T151036+0800/。
++- 当前证据入口为 SIM240_single_phase_audit_20261018/REPORT.md 和 evidence.json；正文新加的条件粗GCI只是既有三网格数据的算术换算。
++- 原稿“其余五量不受细T影响”“生产网格完全不受影响”“最多2.2%”等解释已撤回。角点机制、线性范围和模型适用域须各自提供证据。
++- 本轮未运行求解器，未复现minimax，未做人工作者确认或投稿放行。文献表历史“已核”状态不代表本轮重新逐篇核验。
+--- before/PoF投稿包_前置材料与格式对照_20261017.md
++++ docs/reports/PoF投稿包_前置材料与格式对照_20261017.md
+@@ -3,7 +3,7 @@
+ > 目标期刊：**Physics of Fluids**（AIP Publishing）
+ > 日期：2026-10-17
+ > 依据：AIP Publishing 官方作者指南（`publishing.aip.org/resources/researchers/author-instructions/`）+ 实际 PoF 论文结构核对
+-> 用途：把第 1–3 章草稿转成 PoF 可直接投稿的形态
++> 用途：组织第1–3章工作稿；2026-10-18仅修订科学结论与验证口径，未复核现行投稿规则，不代表可直接投稿。
+ 
+ ---
+ 
+@@ -36,7 +36,7 @@
+ 
+ ---
+ 
+-## 二、Front matter（可直接用）
++## 二、Front matter（待作者确认的工作稿）
+ 
+ ### 2.1 Title
+ 
+@@ -46,16 +46,16 @@
+ 
+ **备选 A**（更强调定量）：
+ 
+-> **How much does the stripe-average closure err in rectangular imprint grooves? A direct numerical answer over 36 geometries**
+-
+-**备选 B**（更强调可移植性）：
+-
+-> **A verified two-factor correction to the arithmetic–harmonic permeability closure for rectangular grooves**
++> **How much does the stripe-average closure err in rectangular imprint grooves? A direct numerical answer over 18 sampled geometries**
++
++**备选 B**（更强调受限经验修正）：
++
++> **Sampled errors and empirical corrections of the arithmetic–harmonic permeability closure for rectangular grooves**
+ 
+ **取舍理由**：
+ - 三个都不用 "first"、"novel"、"unprecedented"。
+ - 推荐版把"对象（rectangular imprint grooves）+ 动作（systematic error）+ 交付（closure）"三件事说全，检索友好。
+-- 备选 A 带问号，PoF 接受但偏少见；备选 B 把"verified"放前面容易被追问"验到什么程度"，而我们的跨代码验证尚未做（§3.6），故不首选。
++- 备选A明确18种采样几何；备选B不再使用verified，避免把局部留出成绩包装成完整预测验证。
+ 
+ ### 2.2 Authors & Affiliations
+ 
+@@ -68,11 +68,11 @@
+ 
+ > 注：AIP 要求提供 ORCID。投稿前需确认每位作者的 ORCID 已关联。
+ 
+-### 2.3 Abstract（240 词，符合 ≤250 限制）
+-
+-> Jet-and-flash nanoimprint lithography fills nanoscale grooves by pressing a patterned mold into a thin resist film. Modeling a printed field requires replacing several thousand sub-resolution grooves with an effective permeability tensor, and the closure conventionally used for line-and-space patterns is the arithmetic-harmonic average of the cubic conductance. It is a one-dimensional construction applied to a two-dimensional cross-section: it omits the shear on the groove side walls and the dissipation where the flow contracts into and leaves a groove. We quantify both omissions by solving the steady Stokes flow in explicitly resolved rectangular grooves with the lattice Boltzmann method, over groove depths of 25 to 120 nm and residual gaps of 25 to 125 nm at a 240 nm period, extracting the along- and across-groove permeabilities from the flux driven by a body force. In all 36 cases of the error map the closure overestimates transport, and the error grows monotonically with groove depth, reaching 205% along the grooves and 54% across them. At the reference geometry the closure predicts an anisotropy ratio of 3.70 where the resolved flow gives 2.21, so it misrepresents both the magnitude of transport and the directionality that sets the filling front. The two errors have distinct geometric origins, one scaling with groove depth relative to the volume-equivalent height and the other with groove depth relative to its width, which allows each to be removed by a single dimensionless factor. Applied together, the factors reduce the errors to within 17% and 4%, including on a groove depth excluded from the fit.
+-
+-**自查**：240 词 ✓｜单段 ✓｜无引用 ✓｜无显示公式 ✓｜无图表 ✓｜无 "first" ✓
++### 2.3 Abstract（证据约束修订稿）
++
++> Effective transport models for nanoimprint lithography replace unresolved grooves with an anisotropic permeability closure. We assess the arithmetic–harmonic local-cubic-law closure using steady, fully filled Newtonian flow in ideal rectangular grooves. At a period of 240 nm and width of 120 nm, the map contains 18 sampled geometries and 36 principal-direction calculations, spanning gaps of 25–125 nm and depths of 25–120 nm without covering every combination. The closure overestimates the computed transport coefficients by 10.30–204.85% along the grooves and 8.11–54.19% across them. At the reference geometry, it predicts an anisotropy ratio of 3.70 rather than 2.21, producing a 9.20° difference in the flux-angle prediction for 45° forcing. Geometry-specific refinement and internal consistency checks support the comparisons but do not establish a full-map uncertainty bound. The adopted correction uses groove aspect ratio and coefficients fitted on nine geometries. With published rounded coefficients, maximum absolute residuals are 10.505% over the 18 parallel samples and 6.921% over the 15 perpendicular samples with gaps of at least 50 nm. A perpendicular sample at a 25 nm gap retains a −18.705% residual. Model selection followed access to extension results; these evaluations are retrospective, not independent final prediction tests or continuous-domain guarantees. Side-wall shear and step-region redistribution remain candidate mechanisms rather than quantitatively separated contributions. The results concern fixed-gap, no-slip transport and do not validate dynamic filling or universal transfer to real resists.
++
++**本轮检查**：226个空白分隔词；单段；无显示公式或引用。明确V2采用范围与事后评价性质，仍待作者确认。
+ 
+ ### 2.4 Keywords
+ 
+@@ -140,7 +140,7 @@
+ 
+ **建议**：把 §2.6 压成一句，放在 §2.4 末：
+ 
+-> All calculations are verified as described in Sec. III; the numerical uncertainty of the extracted coefficients is below 0.6% for $K_\parallel$ and 2.2% for $K_\perp$.
++> Numerical verification and its geometry-specific limitations are reported in Sec. III; no full-map discretization-error bound is claimed.
+ 
+ 然后第 2 章的 §2.7 顺延为 `F.`.
+ 
+@@ -244,6 +244,6 @@
+ 
+ ## 七、一句话总结
+ 
+-我们的稿子在**内容和诚实度**上已经超过多数投稿（有完整验证、有负面记录、有明确适用边界），差的全是**格式层**：罗马数字编号、TABLE/FIG 大写、必需的声明三项、以及一份已经写好的 240 词摘要。
++当前完成的是三章及摘要的证据约束修订，不是投稿准备完成。参考解不确定度、来源链、修正预测验证及作者确认仍待补齐，不能把剩余工作概括为只有格式。期刊规则是旧查阅记录，正式投稿前须重新核对。
+ 
+ **最需要提防的不是格式，而是网上那些"投稿技巧"**——特别是让你在摘要里写 "this is the first study" 的，照做会直接毁掉查新成果。
+--- before/SIM240_第一篇范围重定位_纯液体单相_20261016.md
++++ CASE/plans/SIM240_第一篇范围重定位_纯液体单相_20261016.md
+@@ -1,5 +1,6 @@
+-# 第一篇范围定位 v2.0（2026-10-16 晚，依据 32 项审查报告修订）
++# 第一篇范围定位 v2.1（2026-10-18，核心结论与验证口径修订）
+ 
++> v2.1仅调整证据与写作口径，不改物理范围、冻结门槛或运行权限。依据：`docs/reports/SIM240_single_phase_audit_20261018/REPORT.md`；修订台账：`docs/reports/SIM240_manuscript_revision_20261018/CORE_CLAIMS.md`。
+ > v2.0 修订依据：`docs/reports/SIM240_first_paper_scope_review_20261016.md`（S01–S12、S23–S26 及配套 C01–C06 的"必须改/文档维护"项）。
+ > v1.x 的历史方案、旧措辞不再有效，原文件 SHA256 与逐条锚点已由审查报告 JSON 存档，可溯源。
+ > 内容补充：2026-10-16审读六篇新下载论文后增加§12，并澄清角度补充的科学目标；没有改变首篇物理范围、现有运行参数或补算权限。
+@@ -8,13 +9,13 @@
+ 
+ > 第一篇研究**理想周期矩形沟槽与平基板之间、全充液、固定间隙下的牛顿单相输运**。采用显式几何 OpenLB 计算两个主方向的输运系数 **K∥(h,d)、K⟂(h,d)**，报告数值不确定度，并与 **Jain 2017 / 局部立方律这一等价闭合**在统一方向、驱动和归一化下比较。
+ >
+-> 当前参数：P=240 nm、w=120 nm、**标定域 h∈[50,125] nm、d∈[25,100] nm（22 档）**；适用范围边界检验：h=25 行（6 档）、d=75 留出考场（6 档）、d=120 即 d/w=1 列（6 档），共 **48 档 DNS 全部 PASS**。已产出经验证的两因子修正：跨槽 h∈[50,125]、d/w≤1 内 ±10%（18/18）；沿槽 h∈[50,125]、d/w≤0.83 内 ±20%（d/w=1 处 ±40%）；两式下界 h=50 nm。
++> 当前参数P=240 nm、w=120 nm。18几何×2方向=36地图运行，另有4加密、2黏度、6斜向驱动，共48次。所选输出审计未见超限，但不是完整历史构建放行。原闭合沿槽偏差+10.30%～+204.85%、跨槽+8.11%～+54.19%。用户最新明确“沿用V2，统一验证口径”：V2为当前正文经验公式，V1保留为历史对照。V2舍入系数的18个沿槽样点最大绝对残差10.505%；跨槽仅15个h≥50 nm样点为6.921%，h25/d100跨槽为−18.705%。这些不是连续域界限。新增analysis_fit_v2.py及输出已存在；本轮检查实现与系数/残差算术，不声称独立复现优化。d75虽不参加系数拟合，模型选择时其结果已可见，故V2评价不是独立最终测试。原V1的连续域±20%保证撤回。
+ >
+ > 固定间隙 K 为未来缓慢挤压模型提供局部输运参数，**本篇不验证完整动态填充**；部分充液、压速、两相润湿与困气后置。已有结果限于连续介质、无滑移及低 Re 条件，不作实验真值或所有 UV 胶的普适结论。
+ >
+ > **论文可用措辞（2026-10-17 引文筛查两轮后定稿）**：「本文在统一几何、驱动和通量定义下，对全充液矩形沟槽中局部立方律闭合的方向性输运误差作定量评估。」不预设首次，也不预设所有工况均失效。
+ > **"未发现先例"的窄主张（只允许写到这个程度，不得更宽）**：本次检索**未发现针对 Jain 等价局部立方律、全充液矩形直角槽方向 K 的系统误差标定**。⚠ 不得宽泛声称"沟槽有效渗透率从未被数值验证"——Dewangan & Datta 2020（JFM 891）已对任意形貌的有效渗透率理论做过数值评估（含角点/三角波/梯形）；也不得写"Jain 公式从无人改进"——Ban 系列（2018 会议稿 + 2020/2021 期刊）改进过毛细压力边界、Cochrane 2018 扩展过两相相对渗透率（均为相邻而非同一对象）。
+-> **查新状态：Jain 引文追踪两轮完成**（Semantic Scholar 9 + OpenCitations 11，去重 12 期刊 + 1 会议稿；8 项候选逐条分级，Yin 2018 与 Ban 2018 全文已读；判据 a/b/c 均无命中）。缺口仍在：Google Scholar Cited by 列表（CAPTCHA）、Ban 2020/2021 与 Cochrane 2018 期刊全文、Kuo 2026 全文、任务 B/C/D——**完成前仍不得写"首次"。**
++> **查新状态**：以`docs/reports/Jain_citation_audit_20261017/STATUS_20261017.md`为准。A已有公开索引清单，2026-10-18追加OpenAlex12条；B据报告执行18组、归档仍不完整；Scholar清单、C传统库被引与主题检索、D Asta仍有缺口。Ban2020/2021、Cochrane2018、Dewangan2020全文已归档，不再列为尚未取得；文件可得不等于所有候选已全文排除。有限检索不授权“首次”。
+ 
+ ## 2 范围（唯一执行口径）
+ 
+@@ -23,8 +24,8 @@
+ | 全充液（α=1）显式矩形沟槽，两个主方向 K∥(h,d)、K⟂(h,d) | **第一篇 ✔** |
+ | 与 Jain/局部立方律闭合的定量误差比较（统一方向/驱动/归一化） | **第一篇 ✔** |
+ | 偏差来源解释、修正关系 | 第一篇，**待检验产出** |
+-| **角度补充：闭合误差对斜向输运流量与流向的影响**；张量旋转是坐标变换关系，本身不是新物理，也不是Jain独有假设 | 待定补充；先用两主值作线性张量推断。如需数值核查，可优先固定沟槽、改变体力方向；旋转槽几何须另审周期相容性。原角度建议不构成补算授权，见§12 |
+-| **旋转角（斜）槽（§12.4）** | 应用补充（非独立创新）：张量旋转只是坐标变换；斜槽 DNS 的用途=实现验证 + 工程后果展示（偏差会不会把流向也预测偏）。**已完成（2026-10-16 晚）**：`CASE/D_series/D3_oblique_groove_tensor_check/` 6 档全 exit=0；张量旋转律 K(θ)=K∥cos²θ+K⟂sin²θ 与偏转角 tanφ=(K⟂/K∥)tanθ 在 6 档上以 <1e-4% 精度命中 DNS——K 是合格张量，Jain 张量性假设通过，流向预测不偏（偏的是幅值，见主矩阵）。详见 `results/D3_OBLIQUE_ACCEPTANCE_20261016.md` |
++| **角度补充：闭合误差对斜向流量与流向的影响** | 应用补充。固定槽向、改变体力的6次D3运行已有输出；张量坐标变换本身不是独立创新。 |
++| **D3证据边界** | DNS主值预测与6次斜向驱动相符，不证明Jain主值或其流向正确。h75/d100、驱动相对槽轴45°时，DNS主值预测通量角24.3424°，Jain为15.1412°。未验证旋转槽壁、多图案接缝或液滴前沿。 |
+ | 部分充液（α<1）、液区形状与边界族 | 后置（后续问题） |
+ | 下压压速效应、完整动态填充 | 后置（R3 方向） |
+ | 两相润湿、毛细、困气、接触角 | 第二篇 |
+@@ -44,7 +45,7 @@
+ J = K·G/μ，　Q = W·J = W·K·G/μ。
+ 
+ - K 是**输运系数**（m³ 口径），不是流量；每次报告必须写清 J / Q / K 各自的单位。
+-- 参考高度按几何逐档计算：**H_ref = V_f/A_plan = h + φ·d，φ=w/P=0.5**。125 nm 只对应基准点 (h=75,d=100)；矩阵九档的 H_ref 从 62.5 到 175 nm 逐项计算，**不得把 125 写成全局常量**。
++- 参考高度按几何逐档计算：**H_ref = V_f/A_plan = h + φ·d，φ=w/P=0.5**。125 nm 只对应基准点 (h=75,d=100)；原九几何标定集H_ref为62.5–175 nm；扩展后18几何为37.5–185 nm，均逐项计算，**不得把 125 写成全局常量**。
+ - 与 Jain 的换算：其小写 k 无量纲、大写 K 为 m² 渗透率；维度化 k_D = H0²·k_Jain/12，本项目 K = H_ref·k_D。与 Jain 比较时**两边必须用同一归一化**。
+ - 基准换算值（自推，非原文数值）：(h=75,d=100,δ=1) 时 k_D,∥=1.927083333333333e-15 m²、k_D,⟂=5.214527027027027e-16 m²。
+ 
+@@ -61,13 +62,13 @@
+ | 分级 | 内容 |
+ |---|---|
+ | ✅ 已有证据 | Smooth75 平板极限（旧管线）、G2 三点网格收敛（h75/d100）、Jain 全文公式页核对、D2 代表点复现（P 方向全列一致） |
+-| ⏳ 待独立验收 | D2 矩阵 9 几何×2 方向 + 2 复核几何的全部门禁（源码/构建绑定、独立退出、几何/q、质量、Ma/Re、收敛与网格敏感性） |
++| ✅ 所选输出复核；仍有限制 | 48次正式运行的所选诊断、结果与独立退出已查；36地图方向工况闭合/修正残差已重算。完整历史源码/构建/环境绑定及全域数值不确定度未确立。 |
+ | ❓ 机制假说 | 沿槽侧壁耗散、跨槽台阶耗散——仅 K 随 d 变化**不足以**独立证明，需速度形状对比与分区耗散积分 |
+-| ✍ 写作计划 | 骨架、素材库、主图——不得提前写"已全部验证" |
++| ✍ 当前写作 | 三章、摘要与核心口径已修订；统一四图已有产物。待作者审阅，不代表机制/公式/全部来源已验证。 |
+ 
+ **新旧细网格批次必须分开记录**（S06）：
+ 1. 历史旧批次 dx=1.25/T：PASS=false、独立 exit=3，**永远保留为 FAIL**；
+-2. **新方案 C**（`fine_t_C_20261014T151036+0800`）：有独立放行记录（`CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md`，NUMERICAL_GATE=PASS、RESULT_PASS=true、exit 0），可在该记录限定条件下作正式参考；
++2. **新方案C**（`fine_t_C_20261014T151036+0800`）：原始result PASS=true、独立exit0存在；历史记载已有独立放行，但所引`CASE/reports/fine_T_C_release_20261014_v1/RELEASE.md`当前不存在。早期completion未接受状态、历史放行记载、本轮原始输出检查分开报告；来源补齐前不声称本轮重核完整放行。
+ 3. 2026-10-15 环境快照因 libudev 哈希不匹配失败，不能声称当前环境已完整复现——但也不把方案 C 的放行反写为旧 FAIL。
+ 引用细网格数值时必须写明来自哪个批次，不与 dx=2.5 表混编。
+ 
+@@ -89,8 +90,8 @@
+ - 方向误差定义：**E_i = (K_model,i − K_ref,i)/K_ref,i**，i∈{∥,⟂}，正号=模型高估。例：预测/参考=2.46 ⇒ E≈**+146%**，不得与"高估 2.46 倍"混写。
+ - 容许误差阈值须来自目标用途或明确工程标准，**不得看完结果再挑**；"失准"须先区分模型偏差与参考解不确定度。
+ - 九点 = **首轮采样误差表**。插值等值线不增加证据；连续失效边界、机制归因、修正公式分别是独立的待检验产出，**不提前承诺九点直接产出三层贡献全部数据**。
+-- 固定 w/P=0.5 时 h/P、d/w、d/h 只有两个独立自由度：主图用 **(h/P, d/P)** 或 **(h/P, d/w)** 两轴；当前覆盖域 h/P∈[0.208,0.521]、d/w∈[0.208,0.833]（无量纲）。
+-- 修正公式是候选产出：先约束维度、正值与 d→0 极限，低复杂度表达，**按完整几何留出或交叉验证**；同一几何的 P/T 两方向互训互测不构成独立几何验证，网格复核也不是新几何留出集。证据不足时，可靠误差标定+机制分析可先成文，不为"三层贡献"硬造公式。
++- 固定 w/P=0.5 时 h/P、d/w、d/h 只有两个独立自由度：主图用 **(h/P, d/P)** 或 **(h/P, d/w)** 两轴；原标定集外框h/P∈[0.208,0.521]、d/w∈[0.208,0.833]；扩展集外框h/P∈[0.104,0.521]、d/w∈[0.208,1]。外框不等于完整交叉采样或连续验证域。
++- 修正公式是候选产出：先约束维度、正值与 d→0 极限，低复杂度表达，**按完整几何留出或交叉验证**；同一几何的 P/T 两方向互训互测不构成独立几何验证，网格复核也不是新几何留出集。证据不足时，可靠误差标定+受限经验比较可先成文；机制仍按§12.3暂缓，不为"三层贡献"硬造公式。
+ 
+ ## 10 耗散分析的表述纪律（S19/S20/S21 修订）
+ 
+@@ -98,12 +99,13 @@
+ - 固定 G 下，K 越大 → J 越大 → 总耗散功率也越大：**"总耗散更大"不能解释成"阻力更大"**。正确比较：同流量比所需压力，或采用除以流量平方的阻力指标，或明确归一化的耗散分布。
+ - `energy_dissipation.csv` 是每切片平均 Φ，不是各切片总功率，**不能直接相加当全域耗散**。能量闭合公式（自推）D=∫2μE:E dV = G·A_plan·J、K_energy=μD/(G²A_plan) 属**待验收项**；且流量与耗散出自同一数值场，交叉核对不是独立实验验证。
+ 
+-## 11 下一动作（按审查报告 §6 顺序）
++## 11 当前下一动作（2026-10-18）
+ 
+-1. ✅ 本轮完成：文字/定义修订（本文件 + 冻结卡 + 对比口径 + 判对清单）。
+-2. ⏳ 批次结束后：独立验收报告（不靠 DONE 或汇总表单列 PASS 放行）。
+-3. 之后：按误差 vs 不确定度决定补证范围（非零沟槽对齐、能量闭合、机制分区、边界补点、独立留出）。
+-4. 并行：Jain 后续引文、受限矩形沟槽的显式输运/润滑误差研究、传统数据库人工核查 + Asta 交叉——完成前不写"首次"。
++1. 本轮完成三章/摘要/范围的证据口径修订；待人工作者确认，不是投稿放行。
++2. 沿用V2，保留V1历史对照；V2仍属数据知情的探索性修订。拟合实现已由另一工作流补充；下一步补优化成功/收敛与环境记录，再作完整几何分组内部交叉验证。本轮不运行优化或新仿真。
++3. 定位方案C缺失的独立放行报告，核对历史源码/构建绑定。现有两几何网格敏感性不作为全地图上界。
++4. 若需对未见条件或连续域承诺精度，另拟最少网格/独立参考/冻结后测试设计；未经授权不启动。保持12.3暂缓，不自动扩展两相。
++5. 查新按最新STATUS补覆盖/归档，有限检索不得转成普遍新颖性结论。
+ 
+ ## 12 六篇文献带来的内容改进（研究设计，待检验）
+ 
+@@ -149,7 +151,7 @@
+ | 12.3 机制收支 | ➖ **暂缓（用户 2026-10-16 晚定：先不做）** | 需新增壁面 p′ 与黏性牵引积分 + 分区耗散后处理；恢复时按证据推进，"机制"在证据前一律标待检验假说 |
+ | 12.4 斜角工程后果 | ✅ 采纳但**降级为补充** | D3 case 已建（6 档）；定位=实现验证 + 工程后果展示，**不得作为独立创新卖点**（张量旋转只是坐标变换） |
+ 
+-执行顺序（已按用户裁定更新）：验收后立即做 12.1+12.2（纯后处理）→ 12.4 可选 → 12.3 暂缓，后续视需要单独立项。
++当前状态：12.1/12.2已有后处理、12.4已有D3输出；这些不等于其旧解释全部成立。固定G和μ下正S_h意味着增大h提高通量；η是相对通流能力，不是死空间体积分数。12.3继续暂缓。
+ 
+ ## 13 投稿目标与证据安排（用户2026-10-16最新裁定）
+ 
+@@ -159,5 +161,5 @@
+ - 当前研究仍是真单相、全充液、固定间隙的方向性输运。**保留§12最新裁定：12.1/12.2先用验收数据后处理，12.3机制收支暂缓，12.4仅作补充。** 不因投稿目标自动恢复机制积分或启动D3。
+ - 对二区最值得追求的是至少一条有文献差别、有物理解释、在相应范围内能预测的结论；例如明确局部立方律误差由什么几何比控制，并检验它在未用于建模的几何上是否成立。此为研究目标，不预设结果。
+ - 九点误差、区间敏感性、等体积效率都是支撑证据；角度坐标变换及同批数据换算不能独立充当新增物理贡献。需区分几何闭合误差与数值不确定度，查新尚未完成。
+-- 下一阶段先完成现有矩阵独立验收和无需新算例的分析，再判断能否形成上述核心结论。若证据不足，应提出具体缺口与最少补证方案；**用户本条偏好不等于授权额外长计算**，不为冲区无边界扩展物理。
++- 已有输出复核与分析按§6记录；下一阶段先审阅修订结论、补来源与公式验证口径，再判断是否需要最少补证。若证据不足，应提出具体缺口与最少补证方案；**用户本条偏好不等于授权额外长计算**，不为冲区无边界扩展物理。
+ - 达不到有说服力的二区稿件水平时，按用户已接受的三区路径组织投稿，不强行把经验拟合包装成普适定律。分区初筛来源、版本与政策见[选刊评估](../../docs/reports/SIM240_journal_target_assessment_20261016.md)。

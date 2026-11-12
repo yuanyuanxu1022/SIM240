@@ -1,0 +1,100 @@
+--- SIM240_First_Paper_English_20261028.md.before
++++ docs/reports/SIM240_First_Paper_English_20261028.md
+@@ -29,6 +29,12 @@
+ Effective transport coefficients for unresolved patterns are established in imprint modeling. Jain et al. used anisotropic transport for flow beneath patterned templates, and subsequent models retained this treatment [1–3]. The average-flow model of Patir and Cheng provides a flow-factor framework whose stripe averages are among the relations examined here [4].
+ 
+ Effective transport tensors in confined grooves have also been studied analytically and numerically. Dewangan and Datta combined spectral analysis with domain perturbation to establish tensor relations and evaluate representative topographies [5]. The same authors studied along-groove flow between a sinusoidal wall and a planar wall. Their full spectral method does not assume small amplitude; separate asymptotic approximations have their own limiting conditions [6]. Groove-induced transport anisotropy is therefore not itself a new finding.
++
++Semi-analytical studies of directional flow in rectangular grooves are available. Ng [7] used domain decomposition and eigenfunction matching to solve no-slip pressure-driven Stokes flow between two rectangular-grooved walls, examining pattern phase shifts and wall spacing. This differs from the present flat-wall/grooved-wall problem; the mid-plane of his symmetric configuration cannot replace the present no-slip plate. Moreover, his longitudinal effective slip length uses only the clear-layer flux between the wall envelopes, explicitly excluding cavity flux, so the slip length alone does not provide the present conductance integrated over all fluid.
++
++The pressure-loss study of Mohammadi and Floryan [8] uses a Fourier framework for the two wall shapes, permits a planar wall, and includes rectangular grooves in tests of geometry reduction. Rectangular shape alone therefore cannot exclude that study. Detailed parameter results mainly concern small-amplitude sinusoidal grooves and distinguish changes in mean wall position from geometry-induced flow modulation. The leading-mode approximation, the full numerical solution and the displayed parameter range must be distinguished. A matched comparison at the present rectangular geometry, low-inertia conditions, reference scales and flux definition has not been established here; these results are not adopted directly as a pointwise accuracy benchmark.
++
++Stroock et al. [9] analyzed pressure-driven Stokes flow between a flat wall and a sinusoidally modulated wall of small amplitude, describing anisotropic effective boundary conditions and transverse flow induced by oblique grooves, with an experimental check. Directional response, wall-confinement effects and anisotropy-induced flow deflection are therefore not presented as new findings here. Our assessment remains limited to local-cubic-law discrepancies and their consequences for a specified rectangular family, supplemented by a gradient-structure diagnostic under a defined decomposition on a separate set. Differences in geometry or grouping alone do not establish priority.
+ 
+ The compared problems and coefficient definitions differ. Jain et al. [1] use anisotropic transport in a patterned-template process model; here the comparison is restricted to fixed, fully filled cells. Patir–Cheng [4, p. 15, Eqs. (23)–(24)] gives harmonic and arithmetic flow-factor averages within a local Reynolds model; the reference-height normalization must be restored before comparison with the present conductance in m³. Dewangan–Datta [5, §§4.1–4.2] compares smooth and triangular profiles with finite-element solutions. Its §4 identifies divergent spectral sums for a square-wave profile, so the affected expressions are not a matched solution for the present rectangular steps. Our contribution is a paired assessment of directional discrepancies, anisotropy consequences and fixed-correction performance for this rectangular family, without a priority claim. Source-check scopes are given in Supplementary S11.
+ 
+@@ -72,7 +78,7 @@
+ 
+ **Note:** For all geometries listed, the groove width $w=120$ nm, the period $P=240$ nm and equal groove/rib widths (area fraction 0.5) are fixed; only the gap $h$ and the depth $d$ vary. This table lists only the 18 main comparison geometries and their 36 principal-direction results on the 5 nm grid, one per direction at each geometry. The 2.5 nm refinements, the added h=100 nm geometry and other controls are excluded. Unsampled combinations, other groove widths, periods and area fractions are outside this table's coverage.
+ 
+-Calculations use the OpenLB [7] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\tau=1$. The force term uses the Guo scheme [9]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with intersections obtained from the analytical geometry [7,8]. The scheme was formulated for fractional wall distances [8]; OpenLB also maintains implementation checks through analytical benchmarks and automated regression tests [7].
++Calculations use the OpenLB [10] D3Q19 velocity set and a body-force-corrected single-relaxation-time BGK model with $\tau=1$. The force term uses the Guo scheme [11]. Solid walls use Bouzidi–Firdaouss–Lallemand interpolated bounce-back, with intersections obtained from the analytical geometry [10,12]. The scheme was formulated for fractional wall distances [12]; OpenLB also maintains implementation checks through analytical benchmarks and automated regression tests [10].
+ 
+ For the main map, the in-plane dimensions are $L_x=L_y=240$ nm, exactly one pattern period. Boundaries are periodic in $x$ and $y$, with no slip at the substrate and mold. A uniform volume force is imposed with acceleration $a=1\times10^{5}$ m s⁻². The same amplitude is used throughout the main map; the reference-geometry check is described in §2.4. OpenLB `computeU` supplies the macroscopic velocity, including the half-time-step force correction consistent with the Guo scheme. The stopping rule uses a 1000-step flux window: main-flux relative standard deviation $\le10^{-6}$, relative range $\le5\times10^{-6}$, and, for principal-axis forcing, absolute cross-flux $\le10^{-12}$ m²/s. Its scope as a stopping rule, rather than an independent acceptance metric, is discussed in §3.1. Saved manifests contain binary hashes; parameters, results and logs are indexed in [Supplementary Table S1](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s1). Binding to historical application source, compiler configuration and OpenLB dependencies remains incomplete for some runs; this provenance limitation is retained in [S10](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s10).
+ 
+@@ -149,6 +155,8 @@
+ $$
+ 
+ Here, $\langle u_i\rangle_\Omega$ is the fluid-volume-averaged velocity and $\kappa_i$ is conventional permeability in m². **All comparisons here use $K_i$** to avoid additional differences from reference sections. Literature comparisons or conversions to m² must check the other study’s height definition.
++
++Here, $H_{\rm ref}=V_f/A_{\rm plan}=h+d/2$ is the geometric mean aperture for equal groove and ridge widths, used to convert between mean velocity, depth-integrated flux and $\kappa$; it differs from an equivalent smooth-channel opening defined by matching hydraulic resistance, such as $EC_h$ in Mohammadi and Floryan [8], Section 4.4.2.
+ 
+ ### 2.3 Local cubic law and discrepancy definitions
+ 
+@@ -262,7 +270,7 @@
+ | 2.5 | $3.519529\times10^{-23}$ | $3.515625\times10^{-23}$ | 0.111% |
+ | 1.25 | $3.516580\times10^{-23}$ | $3.515625\times10^{-23}$ | 0.0272% |
+ 
+-Halving the spacing reduces the error by approximately a factor of four. The analytical-comparison/refinement structure is consistent with OpenLB Poiseuille benchmarks and regression tests [7], although the metric here is integrated conductance rather than a velocity-field L2 norm. This tests total integrated-transport error in the planar configuration, including velocity discretization and quadrature. **It cannot be attributed entirely to bulk or boundary treatment.** Nor does it establish second-order accuracy of interpolated bounce-back at arbitrary fractional wall distances: these calculations use only $q=1/2$.
++Halving the spacing reduces the error by approximately a factor of four. The analytical-comparison/refinement structure is consistent with OpenLB Poiseuille benchmarks and regression tests [10], although the metric here is integrated conductance rather than a velocity-field L2 norm. This tests total integrated-transport error in the planar configuration, including velocity discretization and quadrature. **It cannot be attributed entirely to bulk or boundary treatment.** Nor does it establish second-order accuracy of interpolated bounce-back at arbitrary fractional wall distances: these calculations use only $q=1/2$.
+ 
+ ### 3.3 Grid resolution in grooved geometries
+ 
+@@ -281,7 +289,7 @@
+ 
+ At a gap of 125 nm, refinements exist at both depths 25 and 120 nm. The across-groove gain changes from 0.9405% with the 5 nm reference to 0.8335% with the 2.5 nm reference; the along-groove gains are 39.1978% and 39.0928%. This supports consistency of the paired trend at the checked resolutions, without providing a continuous-solution error bound.
+ 
+-Two-grid comparisons characterize resolution sensitivity only for the checked geometries. Historical data at h=75 nm and d=100 nm also use 5, 2.5 and 1.25 nm grids. Conditional Richardson extrapolation and GCI based on observed order, together with run limitations, are reported in [S9 and Table S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s5), following [10]. The 1.25 nm transverse record failed the frozen mass gate. We do not use the table to confirm an asymptotic range or extend its fine-grid estimates to every production sample.
++Two-grid comparisons characterize resolution sensitivity only for the checked geometries. Historical data at h=75 nm and d=100 nm also use 5, 2.5 and 1.25 nm grids. Conditional Richardson extrapolation and GCI based on observed order, together with run limitations, are reported in [S9 and Table S5](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#table-s5), following [13]. The 1.25 nm transverse record failed the frozen mass gate. We do not use the table to confirm an asymptotic range or extend its fine-grid estimates to every production sample.
+ 
+ The S0–S4 control chain is indexed separately in [S12 and Table S8](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s12): S0 implementation/statistic regression at h=75 nm, d=100 nm, S1 analytical plate checks, grid and forcing checks at h=60 nm, d=80 nm, and grid checks at h=30 nm, d=80 nm. The thin-gap transverse medium-to-fine change is 1.328387035%, exceeding its original 1% criterion, so stage S4 remains FAIL. This differs from the historical mass failure at h=75 nm, d=100 nm. Control geometries are excluded from the main comparison set, and their grid changes are not error bars for other geometries.
+ 
+@@ -419,7 +427,7 @@
+ 
+ These results support a gradient-structure explanation that depends on direction and width under the tested conditions. Along-groove excess resistance involves both transverse gradients and departure from the local-plate baseline. In the specified across-groove decomposition, the profile-derivative departure is the largest term, while the relative shares of the remaining gradient terms also vary with width. This conclusion is specific to the baseline, decomposition and geometries examined and does not establish a unique physical attribution. Varying $w$ at fixed $h,d$ changes $h/w$ and $d/w$ simultaneously; this comparison cannot identify their separate effects or establish a unique controlling scale.
+ 
+-Gap trends in the main map remain qualified. Including the 25 nm gap removes a monotonically decreasing along-groove discrepancy with increasing gap at some depths: at $d=100$ nm, the discrepancy rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm. The supplementary diagnostic does not explain all such changes. Related squeeze-flow work on rectangular line gratings reports limitations of simple lubrication models [11], but its loading, filling state and comparison baseline differ. Its force ratios cannot directly explain the present fixed-gap coefficient discrepancies.
++Gap trends in the main map remain qualified. Including the 25 nm gap removes a monotonically decreasing along-groove discrepancy with increasing gap at some depths: at $d=100$ nm, the discrepancy rises from 139.14% at $h=25$ nm to 154.24% at $h=50$ nm. The supplementary diagnostic does not explain all such changes. Related squeeze-flow work on rectangular line gratings reports limitations of simple lubrication models [14], but its loading, filling state and comparison baseline differ. Its force ratios cannot directly explain the present fixed-gap coefficient discrepancies.
+ 
+ Derivations, per-run diagnostics and provenance are given in [Supplementary S14 and Table S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s14).
+ 
+@@ -584,6 +592,8 @@
+ 
+ ## References
+ 
++References are numbered in order of first appearance; source-reading scopes and limits are recorded in Supplementary S11.
++
+ [1] Jain A., Spann A., Cochrane A., Schunk P.R., Bonnecaze R.T. Fluid flow in UV nanoimprint lithography with patterned templates. *Microelectron. Eng.*, 2017, **173**: 62–70. DOI: 10.1016/j.mee.2017.04.001
+ 
+ [2] Ban Y.H., Bonnecaze R.T. Optimal placement of droplets for UV nanoimprint lithography. *J. Vac. Sci. Technol. B*, 2020, **38**(2): 022601. DOI: 10.1116/6.0000030
+@@ -596,15 +606,21 @@
+ 
+ [6] Dewangan M.K., Datta S. Flow through microchannels with topographically patterned wall: A spectral theory for arbitrary groove depths. *Eur. J. Mech. B/Fluids*, 2018, **70**: 73–84. DOI: 10.1016/j.euromechflu.2018.02.004
+ 
+-[7] Krause M.J., Kummerländer A., Avis S.J., et al. OpenLB — Open source lattice Boltzmann code. *Comput. Math. Appl.*, 2021, **81**: 258–288. DOI: 10.1016/j.camwa.2020.04.033
+-
+-[8] Bouzidi M., Firdaouss M., Lallemand P. Momentum transfer of a Boltzmann-lattice fluid with boundaries. *Phys. Fluids*, 2001, **13**(11): 3452–3459. DOI: 10.1063/1.1399290
+-
+-[9] Guo Z., Zheng C., Shi B. Discrete lattice effects on the forcing term in the lattice Boltzmann method. *Phys. Rev. E*, 2002, **65**(4): 046308. DOI: 10.1103/PhysRevE.65.046308
+-
+-[10] Celik I.B., Ghia U., Roache P.J., et al. Procedure for estimation and reporting of uncertainty due to discretization in CFD applications. *J. Fluids Eng.*, 2008, **130**(7): 078001. DOI: 10.1115/1.2960953
+-
+-[11] Teyssèdre H., Gilormini P., Régnier G. Limitations of simple flow models for the simulation of nanoimprint. *Int. Polym. Process.*, 2013, **28**(1): 72–78. DOI: 10.3139/217.2673
++[7] Ng C.-O. Effective slip for Stokes flow between two grooved walls with an arbitrary phase shift. *Fluid Dyn. Res.*, 2017, **49**(2): 025516. DOI: 10.1088/1873-7005/aa5b58
++
++[8] Mohammadi A., Floryan J.M. Pressure losses in grooved channels. *J. Fluid Mech.*, 2013, **725**: 23–54. DOI: 10.1017/jfm.2013.184
++
++[9] Stroock A.D., Dertinger S.K., Whitesides G.M., Ajdari A. Patterning Flows Using Grooved Surfaces. *Anal. Chem.*, 2002, **74**(20): 5306–5312. DOI: 10.1021/ac0257389
++
++[10] Krause M.J., Kummerländer A., Avis S.J., et al. OpenLB — Open source lattice Boltzmann code. *Comput. Math. Appl.*, 2021, **81**: 258–288. DOI: 10.1016/j.camwa.2020.04.033
++
++[11] Guo Z., Zheng C., Shi B. Discrete lattice effects on the forcing term in the lattice Boltzmann method. *Phys. Rev. E*, 2002, **65**(4): 046308. DOI: 10.1103/PhysRevE.65.046308
++
++[12] Bouzidi M., Firdaouss M., Lallemand P. Momentum transfer of a Boltzmann-lattice fluid with boundaries. *Phys. Fluids*, 2001, **13**(11): 3452–3459. DOI: 10.1063/1.1399290
++
++[13] Celik I.B., Ghia U., Roache P.J., et al. Procedure for estimation and reporting of uncertainty due to discretization in CFD applications. *J. Fluids Eng.*, 2008, **130**(7): 078001. DOI: 10.1115/1.2960953
++
++[14] Teyssèdre H., Gilormini P., Régnier G. Limitations of simple flow models for the simulation of nanoimprint. *Int. Polym. Process.*, 2013, **28**(1): 72–78. DOI: 10.3139/217.2673
+ 
+ > **Reference-version note:** the title, authors, year, volume, pages and DOI of [6] have been checked. Its complete accepted manuscript was received on 2026-10-28 and checked for geometry, along-groove direction, no-slip conditions in the main problem, amplitude conditions and quantity definitions. The full spectral method must be distinguished from small-amplitude and other asymptotic approximations. This paper does not directly verify numerical accuracy for transverse flow in the present rectangular grooves. The received accepted manuscript has not been matched page by page to the journal version of record. Locators and remaining limits are in S11.
+ 

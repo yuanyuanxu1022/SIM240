@@ -1,0 +1,10 @@
+--- before/AI_HANDOFF_20261015.md
++++ after/AI_HANDOFF_20261015.md
+@@ -2,6 +2,7 @@
+ 
+ ## URV v1.2修订与S0输入绑定已准备；正式启动授权关闭（2026-11-01）
+ 
++- 最新只读复核（2026-11-01）：`docs/reports/URV_S0_readonly_prelaunch_20261101/verification.json`。1568绑定项与两条仅输入目录保持，当前RAM/磁盘达到原门槛；资源只作当时快照。用户最新仍为“获准启动后……当前保持未启动”的条件安排，已询问是否现在授权两条S0、仅交付合同命令由用户手动启动，截至该快照未收到明确答复。未另存生效launch合同或交付启动命令，S0仍未启动；本轮无新增编译、零步、数值/物理验证。
+ - 用户最新授权：隔离最小修订R1/R2并验证，通过后准备S0两条h75正式执行绑定，保持不自动启动。本轮入口`docs/reports/URV_checker_v1_2_S0_preparation_20261101/REPORT.md`、verification.json；新检查器`CASE/unseen_v2_reference_checker_v1_2/`，新native/S0包`CASE/unseen_v2_reference_S0_v1_2/`。旧准备包、v1.1及旧报告封存保留。使用peer-review做本地软件/协议自审，非独立人工验收。
+ - R1/R2=ADDRESSED_AND_TESTED：声明解析不完整在任何mkdir/save前停止，不回退为空保护；合并/分离-D/-U统一识别，要求目标宏唯一明确0，拒绝冲突/重复/取消定义。77项检查器测试及6项人工运行器测试通过。首轮3失败日志保留：旧缺失合同测试在新保护处提前拒绝，仅调整4个软件fixture为显式人工声明，原物理断言保持。check_results/evidence/read_fields与common全字节不变；F02完整差异先保存不变，F04多合同汇总仍OPEN后续单独处理。
+ - 新native实际编译退出0，源码cpp/h与原准备版逐字节一致；仅新目录Makefile将URV_PREPARATION_ONLY=1改0。原准备版仍1。OpenLB HEAD 882924a9cfc8dcdf82909e39530789cb6f5ebcc4；新binary SHA a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1。真实编译/链接/编译器/1390项项目依赖/3静态库/15动态库均捕获，不补证历史构建环境或承诺可移植镜像。

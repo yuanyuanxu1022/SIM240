@@ -1,0 +1,61 @@
+{
+  "v1": {
+    "release_sha256": "ac4ca62528d63e79eacd9b4c099f83a843c385fc330be28fe670d27a7565b633",
+    "local": 210,
+    "external": 22,
+    "drift": [],
+    "review_status": "ASTRA_FINAL_STATIC_RECHECK_COMPLETE",
+    "runtime_dirs": 2,
+    "evidence_dirs": 2,
+    "solver_source_sha256": "7936bc254f6d1577a72adaff9b627e102ed1600f282fbbd9a179fe7a3ace5c84",
+    "binary_sha256": "73b1f633b96f0074abcd30358e83b57790f00c29aef1ef493f08345f3453f352"
+  },
+  "v2": {
+    "release_sha256": "68453dac9777b701b2f044ad168e4631694b7c553c7553fbef0c0b041beb53e1",
+    "local": 211,
+    "external": 22,
+    "drift": [],
+    "review_status": "PENDING_ASTRA_V2_RECHECK",
+    "runtime_dirs": 0,
+    "evidence_dirs": 0,
+    "solver_source_sha256": "7936bc254f6d1577a72adaff9b627e102ed1600f282fbbd9a179fe7a3ace5c84",
+    "binary_sha256": "73b1f633b96f0074abcd30358e83b57790f00c29aef1ef493f08345f3453f352"
+  },
+  "long_flat_log": {
+    "path": "CASE/_scratch_T_long/log.solver",
+    "sha256": "e25a46cec5e8f22dff1717f622c1fd302a63db4366cd039f639305f5b4774595",
+    "native_string": false,
+    "last_lines": [
+      "REFERENCE_EQUATION vector_Stokes_no_inertia",
+      "Reference evidence exported; this is NOT acceptance.",
+      "End"
+    ],
+    "residuals": {
+      "Ux": {
+        "count": 40000,
+        "last": 5.535219965655917e-11,
+        "last1000_min": 5.535219965655917e-11,
+        "last1000_max": 8.235205296078147e-11
+      },
+      "Uz": {
+        "count": 40000,
+        "last": 3.9906038532643186e-10,
+        "last1000_min": 3.298847185780661e-10,
+        "last1000_max": 5.008926804519973e-09
+      },
+      "p": {
+        "count": 40000,
+        "last": 5.253499464225187e-13,
+        "last1000_min": 5.487460247959853e-14,
+        "last1000_max": 1.7361051192741338e-12
+      }
+    }
+  },
+  "scope": "Read-only current releases and existing completed diagnostic log; no solver execution or frozen source edits",
+  "independent_unit_tests": {
+    "count": 21,
+    "passed": 21,
+    "exit_code": 0,
+    "scope": "synthetic code tests, not physical qualification"
+  }
+}

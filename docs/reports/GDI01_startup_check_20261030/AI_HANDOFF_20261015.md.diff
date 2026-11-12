@@ -1,0 +1,25 @@
+--- AI_HANDOFF_20261015.md.before
++++ AI_HANDOFF_20261015.md
+@@ -1,14 +1,13 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## GDI01绑定核查通过，待启动命令已交付，当前保持未启动（2026-10-30）
+-
+-- 本轮按用户“绑定核查与命令交付；当前保持未启动”处理，只读取核对并准备命令，没有执行。入口`docs/reports/GDI01_launch_binding_20261030/STATUS.md`和launch_binding.json；command.txt为待用户获准启动时执行的命令。
+-- 拟用run_id=GDI01_v1_20261030_01、会话gdi01；actual_run_id=null，拟用运行目录不存在，没有GDI求解/运行器进程和同名tmux会话。本轮核对时间见launch_binding.json；不是未来持续状态保证。
+-- 已用命令指定的/home/dell/miniconda3/bin/python3执行默认只读预检，退出0，71份包文件和36个运行库哈希一致；发布清单SHA已绑定。bash -n检查命令语法，不执行tmux new-session/execute/宿主solve；源、二进制、输入、门槛不改。
+-- 实施入口仍CASE/groove_darcy_static_v1/，准备证据GDI01_preparation_20261030/REPORT.md：实际编译、全512单元、标准porosityForce/grooveDarcy、14项检查器测试、8组旧CSV回归、4个非法输入不求解拒绝均有记录。求解分支和新结果完整验收尚未真实运行验证，峰值RSS未测。
+-- GDI01保持V2横槽、75nm槽顶间隙/125nm平均厚度、24/0Pa、24×48μm及GDI-v1原门槛；300秒/2GiB、失败停、不自动重试/分析/下一例。新NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=null、physical_validation=NOT_EVALUATED；命令交付不等于启动、完成或通过。
+-- 本轮仅新建绑定/命令交付记录并维护本状态及最新交接；无编译、PDE求解、旧例重跑、拟合、挤压推进、提交推送或对外发送。旧C01–C04既有接口验收、旧D4_N8_diag_v3_1_20261026_v1及其Gate/历史FAIL保持；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD不变。
+-- 当前停点：命令已交付，保持未启动，无AI代启动或新增长算授权。下一具体动作是用户获准后在本机终端执行已交付的单条命令；实际启动后再核查状态，结束后按GDI-v1只读验收并对照C01，不自动进入GDI02/C05或挤压。启动核查GPT-6.1 Sol｜Low，完整结果审核GPT-6.1 Sol｜High。
++## GDI01已实际运行完成，待独立结果验收（2026-10-30）
++
++- 用户本轮仅要求核查实际启动状态。已核实run_id=GDI01_v1_20261030_01，开始2026-10-30T21:13:27.775469+08:00、结束2026-10-30T21:13:27.840866+08:00（北京时间）；execution.json为completed，独立退出0、未超时，求解进程约0.065355秒。入口`docs/reports/GDI01_startup_check_20261030/STATUS.md`及snapshot.json。
++- solver.json报告收敛，21次外迭代、末次35次压力迭代，归一化残差约7.85722e-13、真归一化残差约7.86005e-13；这些仅为程序报告值。本轮未调用独立结果检查器，不能据退出0或reported_converged升级验收。
++- 原生p/U/J/phi/phi_U及GDI_output的cells/faces/coefficients/momentum_residual/iteration_history/solver均存在；48份绑定输入哈希满足，运行发布清单与已交付命令记录一致。核查时无GDI求解/运行器进程，无gdi01会话；会话退出与完成记录相符，不再描述为未启动。
++- 原运行目录`CASE/groove_darcy_static_v1/runs/GDI01_v1_20261030_01/`；GDI-v1、GDI-1.0.0检查器、V2横槽、75/125nm、24/0Pa、24×48μm及512单元保持。原execution/result_acceptance=NOT_EVALUATED不改；新NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=null、physical_validation=NOT_EVALUATED。
++- 本轮仅新增状态核对/保护记录和维护本状态/最新交接，无代启动、重试、编译、源码/门槛修改、拟合、下一例、提交推送或对外发送。原始运行文件哈希前后核对保持；旧C01–C04验收和D4历史Gate/FAIL保持，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD不变。
++- 当前停点：GDI01真实流场运行完成，独立验收待做。下一具体动作按GDI-v1读取已有结果、完整核质量/力平衡/能量/原生场/绑定，并与C01二维和旧OF对照；不自动重跑/进入GDI02、C05、挤压或独立参考。完整结果审核GPT-6.1 Sol｜High；本轮无新增长算授权。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

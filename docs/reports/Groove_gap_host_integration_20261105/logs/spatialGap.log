@@ -1,0 +1,31 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-ced05121dd03
+Exec   : /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_gap_v1/build/bin/grooveDarcyGapFoam -case /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_gap_v1/build/checks_20261105T111806_393850/spatialGap -auditOnly
+Date   : Nov 05 2026
+Time   : 11:18:06
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 2722177
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/groove_darcy_gap_v1/build/checks_20261105T111806_393850/spatialGap
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Selecting finite volume model type porosityForce
+    Name: grooveResistance
+Porosity region grooveResistance:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+GAP_AUDIT_COMPLETE: field and weighted continuity assembly; zero solve calls

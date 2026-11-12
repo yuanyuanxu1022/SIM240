@@ -1,0 +1,44 @@
+--- before/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,12 +1,12 @@
+ # SIM240 AI CONTEXT
+ 
+-## 共享仓库：新目标已指定，上传清单已备，访问待解决（2026-10-27，当前共享入口）
+-
+-- 用户明确选择`https://github.com/25yuanyuanxu-source/SIM240-data`作为新的共享上传目标。入口`docs/reports/New_share_target_20261027/REPORT.md`、`target_check.json`及`upload_files_DRAFT.csv`。以此前已审查共享包固定提交f11c0f20f6aaadf6920b95390855ec418cf8ae42为准备基线，未把新论文正文/第三方原文或全部最新主项目追加到发布范围。
+-- 访问现状：当前CLI账号yuanyuanxu1022；目标GraphQL无法解析、REST404，仓库存在性/可见性/分支/写权限未核。Browser无可用连接，未更换账号或凭据。404不等于仓库不存在或一定私有。
+-- 已准备/核实：旧共享副本HEAD与GitHub旧远端main均为上述提交，工作树干净。完整候选清单8,637文件，现有来源清单8,591行，额外46仓库文件；逐路径绑定源提交与Git blob SHA-1，非本轮全量SHA-256重验。目录分组及清单SHA见本轮记录。
+-- 下一动作：让yuanyuanxu1022可访问目标并有写权限，或提供正确可访问地址后，先核目标可见性、已有分支/文件与覆盖冲突，再继续准备转移；不强制覆盖历史。当前未改remote、未提交/推送、目标未上传。没有新增计算授权或启动命令。
+-- 科研状态沿用下方原文接收入口：P9/P10指定核对已闭合，P8/[6]2018原文及历史构建绑定仍缺；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译、求解、真实N8提取、第二项或新run_id。
++## 共享仓库：再次复查仍不可访问，账号地址也404，无目标邀请（2026-10-27，当前共享入口）
++
++- 用户已授权核查并继续向25yuanyuanxu-source/SIM240-data上传既定共享包，不需重复审批既定范围。入口`docs/reports/New_share_target_recheck_20261027/REPORT.md`、`access_recheck.json`；原准备清单与报告保留在`New_share_target_20261027/`。
++- 本轮实际证据：当前账号yuanyuanxu1022；目标REST404、所属账号资料查询404；待接受邀请中没有该目标；SSH只读ls-remote返回Repository not found/exit128；浏览器连接空。旧私有共享仓库可读，pull/push/admin=true，登录可用于旧仓库。新目标存在性/可见性/内容/分支/写权限仍未核，不能把404原因定为一定私有或账号不存在。
++- 本地上传基线仍f11c0f20f6aaadf6920b95390855ec418cf8ae42、工作树干净；8,637项清单SHA不变，8,591来源登记+46仓库附加文件范围保持。未切换账号、改remote、创建提交、推送或改向其他仓库发布。
++- 下一具体动作：请用户从能打开的GitHub仓库页复制准确完整网址；若确为该私有目标，取得yuanyuanxu1022写权限并核目标邀请后，先查现有分支/内容/冲突，再继续已授权上传。澄清问题已提出，不能将未回复视为已解决访问。当前无启动命令。
++- 无新计算/编译/真实N8提取/第二项或新run_id。科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD，旧FAIL保持。
+ 
+ ## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
+ 
+--- before/AI_HANDOFF_20261015.md
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,12 +1,12 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 共享仓库：新目标已指定，上传清单已备，访问待解决（2026-10-27，当前共享入口）
+-
+-- 用户明确选择`https://github.com/25yuanyuanxu-source/SIM240-data`作为新的共享上传目标。入口`docs/reports/New_share_target_20261027/REPORT.md`、`target_check.json`及`upload_files_DRAFT.csv`。以此前已审查共享包固定提交f11c0f20f6aaadf6920b95390855ec418cf8ae42为准备基线，未把新论文正文/第三方原文或全部最新主项目追加到发布范围。
+-- 访问现状：当前CLI账号yuanyuanxu1022；目标GraphQL无法解析、REST404，仓库存在性/可见性/分支/写权限未核。Browser无可用连接，未更换账号或凭据。404不等于仓库不存在或一定私有。
+-- 已准备/核实：旧共享副本HEAD与GitHub旧远端main均为上述提交，工作树干净。完整候选清单8,637文件，现有来源清单8,591行，额外46仓库文件；逐路径绑定源提交与Git blob SHA-1，非本轮全量SHA-256重验。目录分组及清单SHA见本轮记录。
+-- 下一动作：让yuanyuanxu1022可访问目标并有写权限，或提供正确可访问地址后，先核目标可见性、已有分支/文件与覆盖冲突，再继续准备转移；不强制覆盖历史。当前未改remote、未提交/推送、目标未上传。没有新增计算授权或启动命令。
+-- 科研状态沿用下方原文接收入口：P9/P10指定核对已闭合，P8/[6]2018原文及历史构建绑定仍缺；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。无编译、求解、真实N8提取、第二项或新run_id。
++## 共享仓库：再次复查仍不可访问，账号地址也404，无目标邀请（2026-10-27，当前共享入口）
++
++- 用户已授权核查并继续向25yuanyuanxu-source/SIM240-data上传既定共享包，不需重复审批既定范围。入口`docs/reports/New_share_target_recheck_20261027/REPORT.md`、`access_recheck.json`；原准备清单与报告保留在`New_share_target_20261027/`。
++- 本轮实际证据：当前账号yuanyuanxu1022；目标REST404、所属账号资料查询404；待接受邀请中没有该目标；SSH只读ls-remote返回Repository not found/exit128；浏览器连接空。旧私有共享仓库可读，pull/push/admin=true，登录可用于旧仓库。新目标存在性/可见性/内容/分支/写权限仍未核，不能把404原因定为一定私有或账号不存在。
++- 本地上传基线仍f11c0f20f6aaadf6920b95390855ec418cf8ae42、工作树干净；8,637项清单SHA不变，8,591来源登记+46仓库附加文件范围保持。未切换账号、改remote、创建提交、推送或改向其他仓库发布。
++- 下一具体动作：请用户从能打开的GitHub仓库页复制准确完整网址；若确为该私有目标，取得yuanyuanxu1022写权限并核目标邀请后，先查现有分支/内容/冲突，再继续已授权上传。澄清问题已提出，不能将未回复视为已解决访问。当前无启动命令。
++- 无新计算/编译/真实N8提取/第二项或新run_id。科研状态沿用下方原文接收入口；旧N8 run_id=D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD，旧FAIL保持。
+ 
+ ## 第一篇：新下载原件已接收，P9/P10指定核对闭合，P8仍缺（2026-10-27，当前接续入口）
+ 

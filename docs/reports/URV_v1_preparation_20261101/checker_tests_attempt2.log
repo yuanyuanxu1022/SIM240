@@ -1,0 +1,43 @@
+test_K_wrong_dimensions (test_checker.CheckerTests.test_K_wrong_dimensions) ... ok
+test_Mach_strict_boundary (test_checker.CheckerTests.test_Mach_strict_boundary) ... ok
+test_Re_guard (test_checker.CheckerTests.test_Re_guard) ... ok
+test_aggregate_missing_data (test_checker.CheckerTests.test_aggregate_missing_data) ... ok
+test_aggregate_separates_valid_reference_and_model_degradation (test_checker.CheckerTests.test_aggregate_separates_valid_reference_and_model_degradation) ... FAIL
+test_bad_grid_does_not_score (test_checker.CheckerTests.test_bad_grid_does_not_score) ... ok
+test_breakpoints_and_percentage_points (test_checker.CheckerTests.test_breakpoints_and_percentage_points) ... ok
+test_direction_swap_rejected (test_checker.CheckerTests.test_direction_swap_rejected) ... ok
+test_duplicate_case_rejected (test_checker.CheckerTests.test_duplicate_case_rejected) ... ok
+test_failed_linearity_suppresses_scoring (test_checker.CheckerTests.test_failed_linearity_suppresses_scoring) ... ok
+test_geometry_from_known_exact_groove (test_checker.CheckerTests.test_geometry_from_known_exact_groove) ... ok
+test_grid_second_order_known_sequence (test_checker.CheckerTests.test_grid_second_order_known_sequence) ... ok
+test_grid_uncertainty_is_not_rigorous_bound (test_checker.CheckerTests.test_grid_uncertainty_is_not_rigorous_bound) ... ok
+test_historical_P_and_T_windows_readonly (test_checker.CheckerTests.test_historical_P_and_T_windows_readonly) ... ok
+test_incomplete_window_rejected (test_checker.CheckerTests.test_incomplete_window_rejected) ... ok
+test_late_stop_rejected (test_checker.CheckerTests.test_late_stop_rejected) ... ok
+test_mass_ledgers_disagree (test_checker.CheckerTests.test_mass_ledgers_disagree) ... ok
+test_mass_violation_even_when_summary_claims_pass (test_checker.CheckerTests.test_mass_violation_even_when_summary_claims_pass) ... ok
+test_missing_new_mass_column (test_checker.CheckerTests.test_missing_new_mass_column) ... ok
+test_missing_step (test_checker.CheckerTests.test_missing_step) ... ok
+test_nonfinite_hidden_earlier (test_checker.CheckerTests.test_nonfinite_hidden_earlier) ... ok
+test_physical_mass_and_delta_independently_recomputed (test_checker.CheckerTests.test_physical_mass_and_delta_independently_recomputed) ... ok
+test_q_and_geometry_corruption (test_checker.CheckerTests.test_q_and_geometry_corruption) ... ok
+test_sensitivity_exhaustive_oracle (test_checker.CheckerTests.test_sensitivity_exhaustive_oracle) ... ok
+test_sensitivity_improve_degrade_inconclusive (test_checker.CheckerTests.test_sensitivity_improve_degrade_inconclusive) ... ok
+test_smooth_analytic_link_count (test_checker.CheckerTests.test_smooth_analytic_link_count) ... ok
+test_statistical_summary_does_not_override_trajectory (test_checker.CheckerTests.test_statistical_summary_does_not_override_trajectory) ... ok
+test_synthetic_positive_trajectory (test_checker.CheckerTests.test_synthetic_positive_trajectory) ... ok
+test_untrusted_release (test_checker.CheckerTests.test_untrusted_release) ... ok
+
+======================================================================
+FAIL: test_aggregate_separates_valid_reference_and_model_degradation (test_checker.CheckerTests.test_aggregate_separates_valid_reference_and_model_degradation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_v1/tests/test_checker.py", line 178, in test_aggregate_separates_valid_reference_and_model_degradation
+    self.assertFalse(summary['primary_practical_support'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.187s
+
+FAILED (failures=1)

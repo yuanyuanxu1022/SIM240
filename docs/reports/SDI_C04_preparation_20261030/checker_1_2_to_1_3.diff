@@ -1,0 +1,20 @@
+--- checker-1.2.0
++++ checker-1.3.0
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Checker 1.2.0: read completed C01, C02 or C03 outputs; never import or launch a flow solver."""
++"""Checker 1.3.0: read completed C01, C02, C03 or C04 outputs; never import or launch a flow solver."""
+ import argparse
+ import csv
+ import hashlib
+@@ -7,8 +7,8 @@
+ import math
+ from pathlib import Path
+ 
+-CHECKER_VERSION = "1.2.0"
+-SUPPORTED_CASES = {"C01", "C02", "C03"}
++CHECKER_VERSION = "1.3.0"
++SUPPORTED_CASES = {"C01", "C02", "C03", "C04"}
+ 
+ 
+ def sha(path):

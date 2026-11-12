@@ -1,0 +1,58 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+// 平板通道基准：h = 75 nm，x 周期 240 nm，y 向单层（empty）
+// 全用 nm 单位，convertToMeters 1e-9
+convertToMeters 1e-9;
+
+vertices
+(
+    (  0  0  0)   // 0
+    (240  0  0)   // 1
+    (240  1  0)   // 2
+    (  0  1  0)   // 3
+    (  0  0 75)   // 4
+    (240  0 75)   // 5
+    (240  1 75)   // 6
+    (  0  1 75)   // 7
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (48 1 60) simpleGrading (1 1 1)
+);
+
+boundary
+(
+    inlet
+    {
+        type cyclic;
+        neighbourPatch outlet;
+        faces ((0 3 7 4));
+    }
+    outlet
+    {
+        type cyclic;
+        neighbourPatch inlet;
+        faces ((1 2 6 5));
+    }
+    bottom
+    {
+        type wall;
+        faces ((0 1 2 3));
+    }
+    top
+    {
+        type wall;
+        faces ((4 5 6 7));
+    }
+    frontAndBack
+    {
+        type empty;
+        faces ((0 1 5 4) (3 2 6 7));
+    }
+);

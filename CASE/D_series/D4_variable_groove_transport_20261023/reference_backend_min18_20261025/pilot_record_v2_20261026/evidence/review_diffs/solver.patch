@@ -1,0 +1,101 @@
+--- CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/execution_record_review_20261026/recorded_solver.py
++++ CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/pilot_record_v2_20261026/solver.py
+@@ -1,7 +1,7 @@
+ """Review-only solver v2 with failure snapshot callback; never solved here.
+ 
+-The frozen 18-case whitelist denies every KSP call. This independent version
+-preserves the previous candidate untouched and adds pre-backsub failure data.
++The immutable physical plan remains False. A separate versioned contract is
++required by the public entry; no approved packet or real solve exists here.
+ """
+ 
+ from dataclasses import dataclass
+@@ -44,22 +44,17 @@
+ 
+ 
+ def check_release(system, config, release):
+-    """Fail closed before any PETSc solver object is created."""
+-    if not isinstance(config, DiagnosticGMRES):
+-        raise CandidateRejected("SOLVER_SETTINGS_REQUIRED")
++    from common import validate, digest, expected_system, SETTINGS
++    validate(release, execution=True)
+     config.validate()
+-    if not isinstance(system, dict) or "item" not in system:
+-        raise CandidateRejected("PRECHECKED_SYSTEM_REQUIRED")
+-    item = system["item"]
+-    plan = item["plan"]
+-    if plan.get("execution_authorized") is not True:
+-        raise CandidateRejected("FROZEN_WHITELIST_DENIES_SOLVE")
+-    if not isinstance(release, Mapping) or release.get("status") != "APPROVED_FOR_RECTANGLE_SOLVE":
+-        raise CandidateRejected("REVIEWED_RELEASE_REQUIRED")
+-    if (release.get("planned_id") != plan["planned_id"]
+-            or release.get("matrix_csr_sha256") != system.get("matrix_csr_sha256")
+-            or release.get("rhs_sha256_before_projection") != system.get("rhs_sha256_before_projection")):
+-        raise CandidateRejected("RELEASE_INPUT_BINDING_MISMATCH")
++    if digest(vars(config)) != digest(SETTINGS):
++        raise CandidateRejected("SOLVER_CONFIGURATION_NOT_BOUND")
++    if digest(system["execution_contract"]) != digest(release):
++        raise CandidateRejected("SYSTEM_CONTRACT_MISMATCH")
++    old = expected_system()
++    for key in ("matrix_csr_sha256", "rhs_sha256_before_projection"):
++        if system[key] != old[key]:
++            raise CandidateRejected("ASSEMBLY_DIFFERS_FROM_BOUND_PREFLIGHT:"+key)
+     if not system["gauge"]["right_and_transpose_nullspaces_attached"]:
+         raise CandidateRejected("PRESSURE_NULLSPACE_NOT_ATTACHED")
+ 
+@@ -75,15 +70,22 @@
+     if not callable(failure_sink):
+         raise CandidateRejected("DURABLE_FAILURE_SINK_REQUIRED")
+     from petsc4py import PETSc
++    return _solve_core(system, config, failure_sink, PETSc)
++
++
++def _solve_core(system, config, failure_sink, PETSc):
++    """Internal engine. Tests supply non-PETSc objects explicitly marked fake."""
+ 
+     A, b = system["matrix"], system["rhs"]
+     item = system["item"]
+-    ksp = PETSc.KSP().create(comm=PETSc.COMM_SELF)
++    ksp = None
+     x = None
+     algebraic_x = None
+     diagnostics = {}
+-    stage = "KSP_CONFIGURATION"
++    stage = "KSP_CREATION"
+     try:
++        ksp = PETSc.KSP().create(comm=PETSc.COMM_SELF)
++        stage = "KSP_CONFIGURATION"
+         ksp.setType(PETSc.KSP.Type.GMRES)
+         ksp.getPC().setType(PETSc.PC.Type.NONE)
+         ksp.setNormType(PETSc.KSP.NormType.UNPRECONDITIONED)
+@@ -152,13 +154,18 @@
+         # vector mislabeled as algebraic. Before the copy exists, x is still
+         # algebraic because MPC backsubstitution has not yet been reached.
+         source = algebraic_x if algebraic_x is not None else x
+-        snapshot = None if source is None else np.asarray(source.array, dtype=np.float64).copy()
+-        failure_details = dict(diagnostics)
++        try:
++            snapshot = None if source is None else np.asarray(source.array, dtype=np.float64).copy()
++            snapshot_error = None
++        except Exception as snapshot_exc:
++            snapshot = None
++            snapshot_error = type(snapshot_exc).__name__+":"+str(snapshot_exc)
++        failure_details = dict(diagnostics, snapshot_error=snapshot_error)
+         if isinstance(exc, CandidateSolveFailure):
+             failure_details.update(exc.diagnostics)
+-        for label, get in (("ksp_reason_if_available", ksp.getConvergedReason),
+-                           ("ksp_iterations_if_available", ksp.getIterationNumber),
+-                           ("ksp_history_if_available", ksp.getConvergenceHistory)):
++        for label, get in (("ksp_reason_if_available", lambda: ksp.getConvergedReason()),
++                           ("ksp_iterations_if_available", lambda: ksp.getIterationNumber()),
++                           ("ksp_history_if_available", lambda: ksp.getConvergenceHistory())):
+             try:
+                 value = get()
+                 failure_details[label] = (np.asarray(value, dtype=np.float64).tolist()
+@@ -174,4 +181,5 @@
+             raise RuntimeError("FAILURE_ARCHIVE_FAILED; original=" + repr(exc)) from archive_exc
+         raise
+     finally:
+-        ksp.destroy()
++        if ksp is not None:
++            ksp.destroy()

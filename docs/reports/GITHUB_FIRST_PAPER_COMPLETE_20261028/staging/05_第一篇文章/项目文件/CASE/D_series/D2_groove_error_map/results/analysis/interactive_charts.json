@@ -1,0 +1,44 @@
+[
+  {
+    "type": "heatmap",
+    "title": "沿槽：模型误差随槽深放大近 10 倍（+17%→+154%）",
+    "subtitle": "Jain 型闭合 vs DNS（dx=5 nm）；误差 =（模型−DNS）÷DNS×100%；数据源 D2 矩阵 error_table.csv",
+    "x_axis": "h_nm",
+    "y_axis": [
+      "d_25nm",
+      "d_50nm",
+      "d_100nm"
+    ],
+    "transform_code": "sub = df[df['dir']=='P'][['h_nm','d_nm','e_pct']].copy(); result = sub.pivot_table(index='h_nm', columns='d_nm', values='e_pct', aggfunc='first').reset_index(); result = result.rename(columns={25:'d_25nm',50:'d_50nm',100:'d_100nm'})",
+    "annotation": "发现：Jain/局部立方律闭合在沿槽方向 9 个几何上全面高估通流能力，且误差随槽深单调放大——浅槽(25 nm)仅 +10~17%，真实模具槽深(100 nm)高达 +108~154%。证据：误差最狠的一格是 h=50 nm、d=100 nm（+154%），模型给出的是 DNS 真实值的约 2.5 倍。物理解释（待机制证据支撑）：模型把槽内流动当作无侧壁的分层流，忽略侧壁剪切耗散；槽越深、被忽略的侧壁面积越大。边界：本图仅含 P（沿槽）方向 9 个 dx=5 nm 稳态 DNS 点，全部通过质量门禁（≤1e-10）与网格复核（0.3–2.2%）。"
+  },
+  {
+    "type": "heatmap",
+    "title": "跨槽：模型高估 12%–49%，槽深主导、间隙次要",
+    "subtitle": "Jain 型闭合 vs DNS（dx=5 nm）；误差 =（模型−DNS）÷DNS×100%；数据源 D2 矩阵 error_table.csv",
+    "x_axis": "h_nm",
+    "y_axis": [
+      "d_25nm",
+      "d_50nm",
+      "d_100nm"
+    ],
+    "transform_code": "sub = df[df['dir']=='T'][['h_nm','d_nm','e_pct']].copy(); result = sub.pivot_table(index='h_nm', columns='d_nm', values='e_pct', aggfunc='first').reset_index(); result = result.rename(columns={25:'d_25nm',50:'d_50nm',100:'d_100nm'})",
+    "annotation": "发现：跨槽方向同样全面高估（+12~49%），但幅度约为沿槽方向的一半；误差随槽深增大、对间隙 h 的依赖很弱。证据：d=100 nm 三档误差 +37/+44/+49%，d=25 nm 三档 +12/+13/+14%——跨槽误差几乎只由槽深决定。物理解释（待机制证据支撑）：流体绕直角台阶的额外耗散被串联平均（调和平均）公式忽略，即使浅槽 25 nm 仍有 +12% 的台阶效应。边界：本图仅含 T（跨槽）方向 9 个 dx=5 nm 稳态 DNS 点，与 P 方向同批次、同门禁。"
+  },
+  {
+    "type": "bar",
+    "title": "模型把方向性夸大：深槽处各向异性高估近一倍",
+    "subtitle": "A = K∥÷K⟂；DNS（dx=5 nm）vs Jain 型闭合；9 个几何按 h、d 排列",
+    "x_axis": "geo",
+    "y_axis": [
+      "a_dns",
+      "a_model"
+    ],
+    "series_names": [
+      "DNS 实测",
+      "模型（Jain/局部立方律）"
+    ],
+    "transform_code": "tmp = df[['h_nm','d_nm','a_dns','a_model']].drop_duplicates(subset=['h_nm','d_nm']).copy(); tmp = tmp.sort_values(['h_nm','d_nm']); tmp['geo'] = 'h' + tmp['h_nm'].astype(int).astype(str) + '/d' + tmp['d_nm'].astype(int).astype(str); result = tmp[['geo','a_dns','a_model']]",
+    "annotation": "发现：模型在全部 9 个几何上系统性高估各向异性比 A，深槽+薄间隙区偏差最大——h50/d100 处模型预测 7.26、DNS 实测 3.92（高估 85%）。证据：偏差随槽深单调放大（d=25 nm 时两值几乎重合，d=100 nm 时全面拉开）；随间隙减小而增大。边界：A 是沿槽/跨槽 K 的比值，单位约去，是压印填充方向性最直接的无量纲指标；直接引用模型 A 做模板设计会夸大沿槽导流收益。"
+  }
+]

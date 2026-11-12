@@ -1,0 +1,12 @@
+FoamFile
+{ format ascii; class volScalarField; object v; }
+
+dimensions [0 1 -1 0 0 0 0];
+internalField uniform 0;
+boundaryField
+{
+    xMinus { type cyclic; }
+    xPlus { type cyclic; }
+    walls { type fixedValue; value uniform 0; }
+    frontBack { type empty; }
+}

@@ -1,0 +1,10 @@
+--- v2/worker.py
++++ v3/worker.py
+@@ -98,6 +98,7 @@
+         stage(work,'RESULT_RECORD')
+         bridge=load(ROOT/'result_adapter_review_20261026/bridge.py','d4_v2_result_bridge')
+         bundle=bridge.build_raw_bundle(item,result)
++        bundle['periodic_coefficients']=np.asarray([pair['coefficient'] for pair in item['stats']['periodic_link_audit']['pairs']],dtype=np.float64)
+         arrays(work/'solution',bundle,dict(record_kind='REAL_DIAGNOSTIC_UNVERIFIED',contract_sha256=digest(c)))
+         write_json(work/'solver_diagnostics.json',result['diagnostics'])
+         write_json(work/'worker_completion.json',dict(status='SOLVER_EXITED_UNVERIFIED',run_id=c['run_id'],

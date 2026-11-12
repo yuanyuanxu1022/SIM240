@@ -1,0 +1,27 @@
+{
+  "status": "PASS_ISOLATED_PYTHON_PURE_PRECHECK",
+  "prefix": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend",
+  "executable": "/home/dell/yuanyuanxu/SIM240/CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/.backend/bin/python",
+  "resources": {
+    "work_volume": {
+      "mechanism": "preexisting_dedicated_tmpfs",
+      "capacity_bytes": 536870912,
+      "note": "kernel filesystem capacity; inode/metadata exhaustion may fail earlier"
+    },
+    "record_volume": {
+      "identity": {
+        "mount_id": "33",
+        "device": "259:2",
+        "mount_point": "/",
+        "filesystem": "ext4",
+        "st_dev": 66306
+      },
+      "available_bytes": 361666727936,
+      "persistence_scope": "local filesystem and fsync; not a power-loss or hardware guarantee"
+    },
+    "MemAvailable_bytes": 15523291136,
+    "record_disk_available_bytes": 361666727936
+  },
+  "forbidden_backend_modules_loaded": [],
+  "real_solver_called": false
+}

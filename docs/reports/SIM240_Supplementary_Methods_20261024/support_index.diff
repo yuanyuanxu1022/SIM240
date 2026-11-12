@@ -1,0 +1,37 @@
+--- support_index_before
++++ support_index_after
+@@ -3,6 +3,25 @@
+ 对应稿件：`docs/reports/SIM240_中文稿_导师审阅版_20261022.md`，重点为§2及其直接指向的§3。
+ 
+ 本索引是本地证据入口，不是已经发布或完成投稿打包的补充材料。数字、文件存在、原始输出的自报PASS、构建来源及独立验收分别处理。已核项目与缺口详见同目录`REPORT.md`与`support_audit.json`。
++
++
++## 与配套补充材料的编号对应（2026-10-24）
++
++以下对应只固定编号和定位；本目录原报告及 JSON 核对记录保留为原审计快照，不追溯改写为本轮结果。正文已采用三处限定句，补充材料的作者审阅版本见下表。
++
++| 原索引 | 补充材料 | 内容 | 数据表 |
++|---|---|---|---|
++| S1 | [S1](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s1) | 几何、采样与运行清单 | 表S1 |
++| S2 | [S2](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s2) | 当前数值实现与物性换算 | — |
++| S3 | [S3](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s3) | 边界连线与低Mach诊断 | — |
++| S4 | [S4](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s4) | 停止条件与统计 | — |
++| S5 | [S5](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s5) | 通量、输运系数与参考高度 | — |
++| S6 | [S6](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s6) | 局部立方律的一维平均关系 | — |
++| S7 | [S7](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s7) | 双网格敏感性 | 表S2 |
++| S8 | [S8](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s8) | 周期复制与三驱动力检查 | 表S3 |
++| S9 | [S9](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s9) | 平板基准与历史三网格 | 表S4 |
++| S10 | [S10](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s10) | 历史构建来源与日志 | — |
++| S11 | [S11](../SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s11) | 方法引文核实边界 | — |
+ 
+ ## S1 几何来源、方向与采样组合（§2.1、表1）
+ 
+@@ -82,7 +101,7 @@
+ - 部分result的case标签将dx2.5简写为dx2；manifest标签、目录、数值dx及共享日志标记可联合定位。保留原文件，不修改历史名称。
+ - 运行日志中的5953d8a-dirty字符串在当前Makefile中被固定注入，不能独立证明实际OpenLB版本。当前源树的CITATION.cff自标1.9.0，也不能反推所有历史运行使用这一版本。
+ 
+-因此正文“每次运行均保存提交标识、编译配置并可据以复现”超出当前核实范围，需按REPORT候选句收紧。没有据此判定已存数值无效。
++原审计发现正文“每次运行均保存提交标识、编译配置并可据以复现”超出核实范围；2026-10-24已按REPORT候选句收紧，并指向补充材料S10。历史来源缺口继续保留，没有据此判定已存数值无效。
+ 
+ ## S11 方法引文的核实边界
+ 

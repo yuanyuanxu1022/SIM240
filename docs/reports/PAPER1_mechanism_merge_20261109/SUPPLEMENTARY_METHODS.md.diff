@@ -1,0 +1,79 @@
+--- SUPPLEMENTARY_METHODS.md.before
++++ SUPPLEMENTARY_METHODS.md
+@@ -2,7 +2,7 @@
+ 
+ 配套正文：`SIM240_中文稿_导师审阅版_20261022.md`；同步英文正文为`SIM240_First_Paper_English_20261028.md`，英文补充材料为本目录`SUPPLEMENTARY_METHODS_EN_20261028.md`。
+ 
+-编号版本：2026-10-24；本轮同步日期2026-11-07。保留S1—S11及表S1—S5，新增S12控制证据、S13静态平均模型接入，以及表S6—S8。所列数据来自既有D2/D3、历史基准和已完成的后续控制检查，不纳入另行开展的D4保留结果，不替换V2。代码和小型数据的已核私有快照为e05b3f21171ce52a66af41dfe172e79c0a099c20，入口 `07_第一篇代码数据更新_20261107/`；本轮稿件和补充修订未新增上传。审稿访问与最终期刊格式仍待作者确定。
++编号版本：2026-10-24；本轮同步日期2026-11-09。保留S1—S13及表S1—S8，新增S14两宽度补充组的梯度结构诊断及表S9。既有数据来自D2/D3、历史基准和已完成的后续控制检查；S14仅使用已知D4开发末态，不读取保留预测结果、不替换V2。代码和小型数据的已核私有快照仍为e05b3f21171ce52a66af41dfe172e79c0a099c20，入口 `07_第一篇代码数据更新_20261107/`；本轮稿件和补充修订未新增上传。审稿访问与最终期刊格式仍待作者确定。
+ 
+ 记录的PASS、独立退出码、几何检查、网格证据和构建来源分别报告。编号完成不改变数值或物理验收状态。
+ 
+@@ -23,6 +23,7 @@
+ | S11 | 方法引文核实边界 | 方法相关引文 | — |
+ | S12 | 后续控制证据及失败记录 | §3.3—3.4 | 表S8 |
+ | S13 | 静态平均模型接入 | §5.3 | — |
++| S14 | 两宽度补充组的梯度结构诊断 | §2.1、§2.4、§5.1、§5.4、§6 | 表S9 |
+ 
+ <a id="sm-s1"></a>
+ 
+@@ -234,3 +235,59 @@
+ 在h75/d100、w120、P240 nm下，以平均厚度125 nm将K（m³）转换为平均速度与动量阻力：J=−K∇p/μ、u_bar=J/H_bar、D=H_bar K⁻¹（m⁻²）。C01—C04各比较二维与OpenFOAM平均压力实现，GDI01比较V2横槽实际动量源与C01基线；共九端保存出口记录，不是五组各自都有两端。
+ 
+ 合成平均域24×48 μm、16×32×1单元、μ=0.001 Pa·s、驱动端表压24/0 Pa、另一方向无通量，壁面静止。换原公式为V2后，横/沿槽出口流量下降30.14%/56.77%。原九端faces.csv求和、接受与执行绑定见[主张终审](../PAPER1_claim_final_review_20261105/REPORT.md)、[重算出口表](../PAPER1_claim_final_review_20261105/recomputed_outlet9.csv)；单位、槽附着方向及接口约束见正文式（8）。它只支持已测静态接入一致，不是显式沟槽导度、实验或动态压印准确性证据。
++
++<a id="sm-s14"></a>
++
++## S14 两宽度补充组的梯度结构诊断
++
++本节对应正文§2.1、§2.4及§5.1。诊断组为h75/d120、槽/凸台等宽、w60/240 nm（P120/480 nm）；两方向5/2.5 nm及窄槽1.25 nm共10份目标末态，另2份h75平板5 nm末态为后处理控制。主图18几何36结果、新增间隙和本补充组分别报告。
++
++### S14.1 定义与连续分解
++
++沿用附录E的固定全充液、不可压缩、常黏度牛顿Stokes流、静止无滑移固壁及周期条件。截面Ω在xz平面，槽沿y，周期P=2w，H(x)=h或h+d。令归一化速度为 $\boldsymbol v=\boldsymbol u/J$，单位m⁻¹；它不同于正文闭合速度V和附录E的 $\boldsymbol U=\mu\boldsymbol u/G$。定义
++
++\[
++R_{\rm grad}=\frac\mu P\int_\Omega |\nabla\boldsymbol v|^2\,dA,
++\quad R_i^{LC}=\mu/K_i^{LC},\quad R=G/J.
++\]
++
++在上述连续条件下，Stokes能量关系给出 $R_{\rm grad}=R$。物理耗散采用 $2\mu D:D$，其中 $D=(\nabla\boldsymbol u+\nabla\boldsymbol u^T)/2$；其全域积分等于梯度能量，但两者不逐点相等。
++
++沿槽取 $v=u_y/J$ 和 $b=z(H-z)/(2K_\parallel^{LC})$。由于 $P^{-1}\int_\Omega v\,dA=1$，沿z分部积分给出 $\int_\Omega \partial_z v\partial_z b\,dA=\int_\Omega (\partial_z b)^2\,dA=P/K_\parallel^{LC}$，从而
++
++\[
++R-R_\parallel^{LC}=\frac\mu P\int_\Omega
++\left[(\partial_xv)^2+(\partial_zv-\partial_zb)^2\right]dA.\tag{S14.1}
++\]
++
++第二项为速度剖面的厚度导数偏离，兼含剖面形状与局部通量分配变化。
++
++横槽取 $v=u_x/J$、$s=u_z/J$ 和 $c=6z(H-z)/H^3$。无散度及无滑移条件使 $\int_0^{H(x)}v\,dz=1$ 对几乎处处x成立；可由固体内延零后的弱散度条件证明，覆盖台阶。逐列有 $\int \partial_z v\partial_z c\,dz=\int (\partial_z c)^2\,dz=12/H^3$，故
++
++\[
++R-R_\perp^{LC}=\frac\mu P\int_\Omega
++\left[(\partial_zv-\partial_zc)^2+(\partial_xv)^2+
++(\partial_xs)^2+(\partial_zs)^2\right]dA.\tag{S14.2}
++\]
++
++表中按剖面导数偏离、主速度沿程梯度及垂直速度梯度三组报告，最后一组包括最后两项。不可压缩约束 $\partial_xv=-\partial_zs$ 表明这些组并非独立机制，也非唯一归组。
++
++b与c可在台阶处沿x不连续，推导只使用逐列z导数；它们没有被当成完整Stokes可容许试探场。真实速度仍须满足所有竖壁零迹，弱解有限能量即可，无需角点经典二阶可导。平板极限d=0使右端为零，并恢复 $K=h^3/12$。
++
++### S14.2 离散实现与数值界限
++
++以保存的J归一化各末态，按当前诊断脚本构造两种壁邻梯度和节点积分。每个正项除以RLC得s_j，S=Σs_j，驱动差额E=R/RLC−1。份额定义为100s_j/S%，余额为100(S−E)/E%；未把S调整为E。正文取2.5 nm作为两宽度均有的比较档位，同时保留5 nm及窄槽1.25 nm；选择该档位不认证最细网格或连续参考资格。
++
++应变总功率相对输入功的余额使用另一分母Pin，不能与上述额外阻力余额混用。主模板10目标的前者为−0.5803%至+0.00259%；后者5 nm最坏绝对值1.5555%，2.5 nm最坏0.5336%。宽槽仅两档网格，窄槽历史网格目标未通过。两模板份额最大差0.4252个百分点，不是份额误差界。完整原生应力矩功率、两种速度梯度功率及离散散度均保留，避免只展示较小余额。
++
++角点区域按r/h=1/8、1/4、1/2的三种半径报告，并同时给出体积分数。区域功率描述功率位置，不等于相对局部模型的新增阻力，更不提供独立因果贡献。主文不据某一半径称角点主导。
++
++### S14.3 逐运行数据与来源
++
++<a id="table-s9"></a>
++
++**表 S9　两宽度补充组逐运行梯度诊断（10份目标末态，主模板）**
++
++[Table_S9_mechanism_diagnostic.csv](Table_S9_mechanism_diagnostic.csv)保留run_id、几何/周期/网格、R/RLC、各正项/RLC、正项和S、驱动差额E、各项份额与两种余额的完整精度。P为沿槽，T为横槽；不适用的分量留空，不记为零。另一模板及2份平板控制保留于下列完整诊断表，不混入本表10目标。
++
++完整逐运行身份与场核查见 [field_checks.csv](../PAPER1_mechanism_offline_20261109/field_checks.csv)；原生及两模板功率见 [power_checks.csv](../PAPER1_mechanism_offline_20261109/power_checks.csv)；正项与全部余额见 [positive_excess_diagnostic.csv](../PAPER1_mechanism_offline_20261109/positive_excess_diagnostic.csv)；六应变分量见 [strain_components.csv](../PAPER1_mechanism_offline_20261109/strain_components.csv)；三半径空间分区见 [spatial_regions.csv](../PAPER1_mechanism_offline_20261109/spatial_regions.csv)。读取与导数实现见 [diagnose_fields.py](../PAPER1_mechanism_offline_20261109/diagnose_fields.py)，输入SHA见 [source_manifest.json](../PAPER1_mechanism_offline_20261109/source_manifest.json)，诊断范围见 [REPORT.md](../PAPER1_mechanism_offline_20261109/REPORT.md)。这些是已知开发末态的离线诊断，不是新增运行或独立预测验证。

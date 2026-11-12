@@ -1,0 +1,165 @@
+{
+  "checked_at": "2026-11-11T21:19:14+08:00",
+  "records": {
+    "coarse": {
+      "result": {
+        "case_id": "h75_d100_T_coarse",
+        "status": "LOCAL_CHECKS_PASS",
+        "issues": [],
+        "metrics": {
+          "K_m3": 4.3520840229361454e-23,
+          "J_m2_s": 4.352084022936146e-12,
+          "kappa_m2": 3.4816672183489154e-16,
+          "Href_m": 1.2500000000000002e-07,
+          "fluid_volume_m3": 3.0000000000000006e-23,
+          "drive_power_W": 1.044500165504675e-19,
+          "viscous_dissipation_W": 1.0407948781589883e-19,
+          "power_balance_percent": 0.35474262887228436,
+          "section_flux_spread_percent": 5.351921560290107e-11,
+          "section_flux_mean_m3_s": 4.352028519579158e-21,
+          "section_vs_volume_percent": 0.0012753282495281404,
+          "section_evidence": "corrected finite-volume face flux"
+        }
+      },
+      "run_id": "h75_d100_T_coarse_20261111T162843_a1e0527f",
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 9.996596146092063e-11,
+          "Uz": 7.672219900756323e-11,
+          "p": 1.5223554489503108e-12
+        },
+        "outer_iterations": 11403,
+        "final_time": 11403,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      },
+      "receipt_sha256": "42914513ad29eed814c3f6b65c49f563674b3d2ab55c11ffc32bda0cf2166e3b",
+      "solver_elapsed_seconds": 205.19555683799263
+    },
+    "mid": {
+      "result": {
+        "case_id": "h75_d100_T_mid",
+        "status": "LOCAL_CHECKS_PASS",
+        "issues": [],
+        "metrics": {
+          "K_m3": 4.3436288503204486e-23,
+          "J_m2_s": 4.343628850320449e-12,
+          "kappa_m2": 3.4749030802563587e-16,
+          "Href_m": 1.2500000000000002e-07,
+          "fluid_volume_m3": 3.0000000000000006e-23,
+          "drive_power_W": 1.0424709240769079e-19,
+          "viscous_dissipation_W": 1.040910258661026e-19,
+          "power_balance_percent": 0.14970829208150738,
+          "section_flux_spread_percent": 3.500378494426623e-11,
+          "section_flux_mean_m3_s": 4.343620027229749e-21,
+          "section_vs_volume_percent": 0.0002031271778557553,
+          "section_evidence": "corrected finite-volume face flux"
+        }
+      },
+      "run_id": "h75_d100_T_mid_20261111T165012_e5ad708d",
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 9.998234570394492e-11,
+          "Uz": 7.508953840631258e-11,
+          "p": 1.3238379475538746e-12
+        },
+        "outer_iterations": 22796,
+        "final_time": 22796.5,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      },
+      "receipt_sha256": "0141a18c0de6d4b0782b7c90b431cd95c751507ff19ab549e61ea48986d3d40f",
+      "solver_elapsed_seconds": 1144.3507127300109
+    },
+    "fine": {
+      "result": {
+        "case_id": "h75_d100_T_fine",
+        "status": "LOCAL_CHECKS_PASS",
+        "issues": [],
+        "metrics": {
+          "K_m3": 4.340041663047474e-23,
+          "J_m2_s": 4.340041663047475e-12,
+          "kappa_m2": 3.4720333304379786e-16,
+          "Href_m": 1.2500000000000002e-07,
+          "fluid_volume_m3": 3.0000000000000006e-23,
+          "drive_power_W": 1.0416099991313939e-19,
+          "viscous_dissipation_W": 1.0409234712070969e-19,
+          "power_balance_percent": 0.06591026630595742,
+          "section_flux_spread_percent": 2.905231729869499e-11,
+          "section_flux_mean_m3_s": 4.34004023673064e-21,
+          "section_vs_volume_percent": 3.2864127719189895e-05,
+          "section_evidence": "corrected finite-volume face flux"
+        }
+      },
+      "run_id": "h75_d100_T_fine_20261111T172454_09d491e9",
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 9.998991633335482e-11,
+          "Uz": 7.499132011446804e-11,
+          "p": 7.66105777300368e-13
+        },
+        "outer_iterations": 65970,
+        "final_time": 65970.5,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      },
+      "receipt_sha256": "e65c7437d3c9bf05934f58340557a314fa799209d1ec1e52f3cacd389355aab7",
+      "solver_elapsed_seconds": 12764.342481693006
+    }
+  },
+  "binding_drift": [],
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "grid_d21_percent": 0.194278708111717,
+  "grid_d32_percent": 0.08258503193038225,
+  "grid_criteria_pass": true,
+  "observed_p_diagnostic_only": 1.2369811434167244,
+  "Richardson_diagnostic_only": 4.337398287682627e-23,
+  "K5_m3": 4.4490220210459354e-23,
+  "delta_fine_preview_only_percent": 2.5110440511747933,
+  "alternative_reference_previews_diagnostic_only": {
+    "coarse": 2.2273926146396006,
+    "mid": 2.426385272712972,
+    "fine": 2.5110440511747933,
+    "Richardson_diagnostic_only": 2.5735181774820814
+  },
+  "frozen_point_decision": {
+    "point": "h75_d100_T",
+    "status": "NOT_ASSESSABLE"
+  },
+  "tight_status": "NOT_EXECUTED",
+  "reference_qualified_for_this_point": false,
+  "new_solver_runs": 0,
+  "next_layer_started": false,
+  "independent_fine_cell_integrals": {
+    "cell_count": 307200,
+    "V_m3": 3.0000000000000006e-23,
+    "J_m2_s": 4.340041663047475e-12,
+    "K_m3": 4.340041663047474e-23,
+    "power_balance_percent": 0.06591026630595742
+  },
+  "wording_corrections": [
+    "d32 is a grid-to-grid change, not a certified remaining uncertainty",
+    "OpenLB comparison remains NOT_ASSESSABLE until tight qualifies the reference",
+    "K_R is an ideal-Stokes numerical reference, not physical truth",
+    "Richardson and observed p are diagnostic only; no asymptotic-error certificate",
+    "tight is a frozen solver-stability check, not unique proof excluding iteration error"
+  ]
+}

@@ -1,0 +1,1241 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+    volScalarFieldValue alpha.liquid 0
+    volScalarFieldValue moldMask 0
+);
+
+regions
+(
+    cylinderToCell
+    {
+        p1     (5100e-6 100e-6 0.1e-6);
+        p2     (5100e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 100e-6 0.1e-6);
+        p2     (4750e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 100e-6 0.1e-6);
+        p2     (4400e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 100e-6 0.1e-6);
+        p2     (4050e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 100e-6 0.1e-6);
+        p2     (3700e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 100e-6 0.1e-6);
+        p2     (3350e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 100e-6 0.1e-6);
+        p2     (3000e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 100e-6 0.1e-6);
+        p2     (2650e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 100e-6 0.1e-6);
+        p2     (2300e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 100e-6 0.1e-6);
+        p2     (1950e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 100e-6 0.1e-6);
+        p2     (1600e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 100e-6 0.1e-6);
+        p2     (1250e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 100e-6 0.1e-6);
+        p2     (900e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 100e-6 0.1e-6);
+        p2     (550e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 100e-6 0.1e-6);
+        p2     (200e-6 100e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 450e-6 0.1e-6);
+        p2     (5100e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 450e-6 0.1e-6);
+        p2     (4750e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 450e-6 0.1e-6);
+        p2     (4400e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 450e-6 0.1e-6);
+        p2     (4050e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 450e-6 0.1e-6);
+        p2     (3700e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 450e-6 0.1e-6);
+        p2     (3350e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 450e-6 0.1e-6);
+        p2     (3000e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 450e-6 0.1e-6);
+        p2     (2650e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 450e-6 0.1e-6);
+        p2     (2300e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 450e-6 0.1e-6);
+        p2     (1950e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 450e-6 0.1e-6);
+        p2     (1600e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 450e-6 0.1e-6);
+        p2     (1250e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 450e-6 0.1e-6);
+        p2     (900e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 450e-6 0.1e-6);
+        p2     (550e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 450e-6 0.1e-6);
+        p2     (200e-6 450e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 800e-6 0.1e-6);
+        p2     (5100e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 800e-6 0.1e-6);
+        p2     (4750e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 800e-6 0.1e-6);
+        p2     (4400e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 800e-6 0.1e-6);
+        p2     (4050e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 800e-6 0.1e-6);
+        p2     (3700e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 800e-6 0.1e-6);
+        p2     (3350e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 800e-6 0.1e-6);
+        p2     (3000e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 800e-6 0.1e-6);
+        p2     (2650e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 800e-6 0.1e-6);
+        p2     (2300e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 800e-6 0.1e-6);
+        p2     (1950e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 800e-6 0.1e-6);
+        p2     (1600e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 800e-6 0.1e-6);
+        p2     (1250e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 800e-6 0.1e-6);
+        p2     (900e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 800e-6 0.1e-6);
+        p2     (550e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 800e-6 0.1e-6);
+        p2     (200e-6 800e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 1150e-6 0.1e-6);
+        p2     (5100e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 1150e-6 0.1e-6);
+        p2     (4750e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 1150e-6 0.1e-6);
+        p2     (4400e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 1150e-6 0.1e-6);
+        p2     (4050e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 1150e-6 0.1e-6);
+        p2     (3700e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 1150e-6 0.1e-6);
+        p2     (3350e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 1150e-6 0.1e-6);
+        p2     (3000e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 1150e-6 0.1e-6);
+        p2     (2650e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 1150e-6 0.1e-6);
+        p2     (2300e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 1150e-6 0.1e-6);
+        p2     (1950e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 1150e-6 0.1e-6);
+        p2     (1600e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 1150e-6 0.1e-6);
+        p2     (1250e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 1150e-6 0.1e-6);
+        p2     (900e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 1150e-6 0.1e-6);
+        p2     (550e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 1150e-6 0.1e-6);
+        p2     (200e-6 1150e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 1500e-6 0.1e-6);
+        p2     (5100e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 1500e-6 0.1e-6);
+        p2     (4750e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 1500e-6 0.1e-6);
+        p2     (4400e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 1500e-6 0.1e-6);
+        p2     (4050e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 1500e-6 0.1e-6);
+        p2     (3700e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 1500e-6 0.1e-6);
+        p2     (3350e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 1500e-6 0.1e-6);
+        p2     (3000e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 1500e-6 0.1e-6);
+        p2     (2650e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 1500e-6 0.1e-6);
+        p2     (2300e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 1500e-6 0.1e-6);
+        p2     (1950e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 1500e-6 0.1e-6);
+        p2     (1600e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 1500e-6 0.1e-6);
+        p2     (1250e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 1500e-6 0.1e-6);
+        p2     (900e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 1500e-6 0.1e-6);
+        p2     (550e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 1500e-6 0.1e-6);
+        p2     (200e-6 1500e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 1850e-6 0.1e-6);
+        p2     (5100e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 1850e-6 0.1e-6);
+        p2     (4750e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 1850e-6 0.1e-6);
+        p2     (4400e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 1850e-6 0.1e-6);
+        p2     (4050e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 1850e-6 0.1e-6);
+        p2     (3700e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 1850e-6 0.1e-6);
+        p2     (3350e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 1850e-6 0.1e-6);
+        p2     (3000e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 1850e-6 0.1e-6);
+        p2     (2650e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 1850e-6 0.1e-6);
+        p2     (2300e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 1850e-6 0.1e-6);
+        p2     (1950e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 1850e-6 0.1e-6);
+        p2     (1600e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 1850e-6 0.1e-6);
+        p2     (1250e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 1850e-6 0.1e-6);
+        p2     (900e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 1850e-6 0.1e-6);
+        p2     (550e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 1850e-6 0.1e-6);
+        p2     (200e-6 1850e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 2200e-6 0.1e-6);
+        p2     (5100e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 2200e-6 0.1e-6);
+        p2     (4750e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 2200e-6 0.1e-6);
+        p2     (4400e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 2200e-6 0.1e-6);
+        p2     (4050e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 2200e-6 0.1e-6);
+        p2     (3700e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 2200e-6 0.1e-6);
+        p2     (3350e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 2200e-6 0.1e-6);
+        p2     (3000e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 2200e-6 0.1e-6);
+        p2     (2650e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 2200e-6 0.1e-6);
+        p2     (2300e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 2200e-6 0.1e-6);
+        p2     (1950e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 2200e-6 0.1e-6);
+        p2     (1600e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 2200e-6 0.1e-6);
+        p2     (1250e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 2200e-6 0.1e-6);
+        p2     (900e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 2200e-6 0.1e-6);
+        p2     (550e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 2200e-6 0.1e-6);
+        p2     (200e-6 2200e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 2550e-6 0.1e-6);
+        p2     (5100e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 2550e-6 0.1e-6);
+        p2     (4750e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 2550e-6 0.1e-6);
+        p2     (4400e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 2550e-6 0.1e-6);
+        p2     (4050e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 2550e-6 0.1e-6);
+        p2     (3700e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 2550e-6 0.1e-6);
+        p2     (3350e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 2550e-6 0.1e-6);
+        p2     (3000e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 2550e-6 0.1e-6);
+        p2     (2650e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 2550e-6 0.1e-6);
+        p2     (2300e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 2550e-6 0.1e-6);
+        p2     (1950e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 2550e-6 0.1e-6);
+        p2     (1600e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 2550e-6 0.1e-6);
+        p2     (1250e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 2550e-6 0.1e-6);
+        p2     (900e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 2550e-6 0.1e-6);
+        p2     (550e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 2550e-6 0.1e-6);
+        p2     (200e-6 2550e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (5100e-6 2900e-6 0.1e-6);
+        p2     (5100e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4750e-6 2900e-6 0.1e-6);
+        p2     (4750e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4400e-6 2900e-6 0.1e-6);
+        p2     (4400e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (4050e-6 2900e-6 0.1e-6);
+        p2     (4050e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3700e-6 2900e-6 0.1e-6);
+        p2     (3700e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3350e-6 2900e-6 0.1e-6);
+        p2     (3350e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (3000e-6 2900e-6 0.1e-6);
+        p2     (3000e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2650e-6 2900e-6 0.1e-6);
+        p2     (2650e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (2300e-6 2900e-6 0.1e-6);
+        p2     (2300e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1950e-6 2900e-6 0.1e-6);
+        p2     (1950e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1600e-6 2900e-6 0.1e-6);
+        p2     (1600e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (1250e-6 2900e-6 0.1e-6);
+        p2     (1250e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (900e-6 2900e-6 0.1e-6);
+        p2     (900e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (550e-6 2900e-6 0.1e-6);
+        p2     (550e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+    cylinderToCell
+    {
+        p1     (200e-6 2900e-6 0.1e-6);
+        p2     (200e-6 2900e-6 1.1e-6);
+        radius 52e-6;
+        fieldValues (
+            volScalarFieldValue alpha.liquid 1
+        );
+    }
+);
+
+// ************************************************************************* //

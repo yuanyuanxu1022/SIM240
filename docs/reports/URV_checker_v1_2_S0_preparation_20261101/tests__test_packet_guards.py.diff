@@ -1,0 +1,36 @@
+--- v1.1/tests/test_packet_guards.py
++++ v1.2/tests/test_packet_guards.py
+@@ -42,6 +42,7 @@
+         completion=dict(release_sha256='synthetic-anchor',independent_process_exit_code=0,
+             inputs_unchanged=True,inputs_after_sha256={},planned_case_id='URV1_H75_P_dx5_a100000',
+             run_id='SYNTHETIC',output_sha256={})
++        (folder/'SYNTHETIC_PATH_DECLARATIONS_ONLY.json').write_text('{}')
+         return run,completion
+ 
+     def test_missing_raw_files_cannot_pass(self):
+@@ -51,7 +52,7 @@
+             # Only the release layer is replaced; this test targets packet completeness.
+             with patch.object(checker,'binding',return_value={'inputs_sha256':{}}):
+                 with self.assertRaisesRegex(EvidenceError,'incomplete output manifest'):
+-                    checker.check_run(run,Path('unused'),'synthetic-anchor',folder/'analysis')
++                    checker.check_run(run,folder/'SYNTHETIC_PATH_DECLARATIONS_ONLY.json','synthetic-anchor',folder/'analysis')
+ 
+     def test_nonzero_independent_exit_cannot_pass(self):
+         with tempfile.TemporaryDirectory() as temp:
+@@ -59,7 +60,7 @@
+             (run/'completion.json').write_text(json.dumps(c))
+             with patch.object(checker,'binding',return_value={'inputs_sha256':{}}):
+                 with self.assertRaisesRegex(EvidenceError,'independent exit'):
+-                    checker.check_run(run,Path('unused'),'synthetic-anchor',folder/'analysis')
++                    checker.check_run(run,folder/'SYNTHETIC_PATH_DECLARATIONS_ONLY.json','synthetic-anchor',folder/'analysis')
+ 
+     def test_postrun_source_map_cannot_be_truncated(self):
+         with tempfile.TemporaryDirectory() as temp:
+@@ -67,6 +68,6 @@
+             (run/'completion.json').write_text(json.dumps(c))
+             with patch.object(checker,'binding',return_value={'inputs_sha256':{'missing':'sha'}}):
+                 with self.assertRaisesRegex(EvidenceError,'post-run input binding incomplete'):
+-                    checker.check_run(run,Path('unused'),'synthetic-anchor',folder/'analysis')
++                    checker.check_run(run,folder/'SYNTHETIC_PATH_DECLARATIONS_ONLY.json','synthetic-anchor',folder/'analysis')
+ 
+ if __name__=='__main__': unittest.main(verbosity=2)

@@ -1,0 +1,24 @@
+--- before/SIM240_AI_CONTEXT.md
++++ SIM240_AI_CONTEXT.md
+@@ -1,13 +1,13 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：历史构建矛盾已由Astra只读复核，四组完整来源仍OPEN（2026-10-28，当前科研停点）
+-
+-- 用户“下一步”承接现存来源矛盾；按用户指定实际调用GPT-6 Astra｜High（任务`/root/historical_build_adjudication`）只读复核，主代理另核52份原manifest/result及既存残差CSV，未执行旧审计/拟合/求解脚本。入口`docs/reports/Historical_build_adjudication_20261028/REPORT.md`、`ASTRA_REVIEW.md`、`evidence/existing_run_ledger.json`、`verdict.json`；这是内部作者意见，不是人工最终采用或附录E理论冻结。
+-- 当前准确分组为四SHA：285f…22项=标定主图18+加密4；5761…22项=扩展主图18+加密4；85cc…6项=独立D3；efd2…2项=黏度。现存程序匹配28=22+6，只确认二进制身份；不得合并称单一新构建B。52份原记录缺五个源码/构建字段；今日源码mtime、OpenLB HEAD、.d路径和config.mk不足以补完整历史绑定，四组保持OPEN，不回填manifest。
+-- 已撤回旧恢复性报告的过强推断：“28项完整绑定”“旧源码永久不可恢复”“同程序P/T保证比值误差抵消”“单几何吻合即排除全图差异/不吻合必全图重算”。旧报告/JSON作为历史比较对象原字节保留，当前结论由本裁决覆盖。字段集合一致不证明改动落在数值逻辑；未找回不等于不存在；本轮不判定程序差异已改变物理结果。
+-- 主图9标定几何/18方向为285f…，9扩展几何/18方向为5761…，分组和程序身份完全重合；缺同条件跨这两组对照，潜在版本效应无法从现有主图单独识别。d75是标定范围内留出，d120/h25是范围外扩展，不能统称外推或断言误差必然更大。每个几何P/T同SHA、8项细粗方向配对同SHA均已核；这些事实不保证误差抵消或全图精度。既存优化参数CSV摘要与正文公布舍入系数口径分开，不替换−18.71%等正文数字。
+-- 当前稿已明确V2回顾性、非独立预测；保存5nm记录及其派生比较可保留，跨几何作用/趋势应披露未排除程序差异。新增`CANDIDATE_TEXT.md`含S10来源、V2分组及跨几何限制三段，**仅候选，未同步正式稿/S11或公式/结果/图件**。下一具体动作是按作者采用范围合并候选；不自动重跑、编译、全图重算或升级精度主张。常规文字同步建议GPT-6.1 Sol｜High；新增实质理论裁决/最终冻结仍用Astra｜High。
+-- 本轮只新增本裁决目录与更新当前状态/交接；源码、旧报告/JSON、合同、原始结果/历史FAIL及正式稿/补充字节保护见verification.json。无编译/求解/真实N8提取/数值夹具/重拟合/第二项/Git提交推送/新run_id，无启动命令或长算授权。旧N8仍D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD；最细横槽历史FAIL/exit3保持，未重新验收。
++## 第一篇：三段历史构建限定文字已按作者范围同步，最终理论冻结仍未执行（2026-10-28，当前停点）
++
++- 用户本轮明确采用C1/C2/C3：C1合并补充S10末段，C2合并正文§4.4回顾性段，C3插入§5.3范围/局限段；未收到排除条目。正式稿2处、补充材料1处，三段核心文字均已落位；整篇稿件最终科学签字不由本次写入代替。入口`docs/reports/Historical_build_text_sync_20261028/REVISION_NOTE.md`、`author_scope.json`、`document_changes.json/.diff`、`verification.json`，前稿在before/。
++- 本轮仅落实前轮GPT-6 Astra｜High历史构建裁决，未新增模型裁决或理论推导。公式/系数/结果数字/正文表行、摘要/结论/参考文献和附录E保持；补充仅S10末段改变，S11与表S1—S5不改。候选与旧裁决报告保留历史字节，当前采用状态由本同步记录补充。
++- 四组SHA仍22/22/6/2：285f…为标定主图18+加密4，5761…为扩展主图18+加密4，85cc…为独立D3六项，efd2…为黏度两项。现存匹配28=22+6只确认二进制身份，mtime/今日HEAD/.d/config.mk不补完整历史构建关联，四组仍OPEN，不回填manifest。原裁决入口`docs/reports/Historical_build_adjudication_20261028/REPORT.md`、`ASTRA_REVIEW.md`与verdict.json。
++- 正式稿现已说明主图9标定/9扩展几何的程序身份完全分区、d75范围内留出而d120/h25范围外扩展、潜在构建效应不能由现有记录单独识别。同几何P/T同SHA不保证误差抵消，单点对照也不证明全图等价；不能据此判定已知物理偏差或自动决定重算。5nm保存记录比较及V2回顾性评价保留，未升级连续精度或独立预测主张。
++- 本轮只改上述两份文稿、更新本状态/最新交接并新增同步记录；选定来源哈希及公式/附录E等保护见verification.json。无编译/求解/真实N8提取/数值夹具/拟合/重画/第二项/Git提交推送/新run_id，无启动命令或长算授权。旧N8仍D4_N8_diag_v3_1_20261026_v1，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD；细横槽历史FAIL/exit3保持，未重新验收。
++- 三段同步任务完成。附录E及公式/结论最终理论冻结仍须另按GPT-6 Astra｜High审查范围处理，不自动开始；普通核稿GPT-6.1 Sol｜High无需切换。后续作者声明、最终数据覆盖/排版及整篇科学采用保持各自待办，不因文字同步关闭。
+ 
+ ## 第一篇：[6]2018接收稿已取得，M1指定适用条件已核（2026-10-28，当前资料接续入口）
+ 

@@ -1,0 +1,449 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      fvModels;
+}
+
+
+channelPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        channelZone;
+
+        type            DarcyForchheimer;
+
+        d               (0 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // channel
+
+R123OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        R123OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (0 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // 123OAS
+
+HOAS1Porosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        HOAS1Zone;
+
+        type            DarcyForchheimer;
+
+        d               (0 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // HOAS1
+
+R113OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        R113OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (0 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // 113OAS
+
+HOAS2Porosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        HOAS2Zone;
+
+        type            DarcyForchheimer;
+
+        d               (0 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // HOAS2
+
+R15OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        R15OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (0 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // 15OAS
+
+EC1XT400OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        EC1XT400OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (1e15 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // EC1XT400OAS
+
+EC1XT350OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        EC1XT350OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (5e15 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // EC1XT350OAS
+
+EC1XT300OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        EC1XT300OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (1e16 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // EC1XT300OAS
+
+EC1XT280OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        EC1XT280OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (3e16 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // EC1XT280OAS
+
+EC1XT240OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        EC1XT240OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (5e16 0 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // EC1XT240OAS
+
+K400OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        K400OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (1e16 1e15 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // K400OAS
+
+K350OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        K350OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (5e16 5e16 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // K350OAS
+
+K300OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        K300OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (1e16 1e15 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // K300OAS
+
+K280OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        K280OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (5e16 5e16 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // K280OAS
+
+K240OASPorosity
+{
+    type            porosityForce;
+
+    porosityForceCoeffs
+    {
+        cellZone        K240OASZone;
+
+        type            DarcyForchheimer;
+
+        d               (1e16 1e15 0);
+        f               (0 0 0);
+
+        coordinateSystem
+        {
+            type    cartesian;
+            origin  (0 0 0);
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+    }
+} // K240OAS
+
+
+
+
+// ************************************************************************* //

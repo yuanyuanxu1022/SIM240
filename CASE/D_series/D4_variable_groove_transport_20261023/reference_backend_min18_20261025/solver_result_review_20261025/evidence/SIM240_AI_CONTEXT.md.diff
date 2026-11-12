@@ -1,0 +1,22 @@
+--- docs/reports/SIM240_AI_CONTEXT.md.before
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,12 +1,12 @@
+ # SIM240 AI CONTEXT
+ 
+-## 第一篇：约化压力向量已接入待审求解入口，9项预检完成，未求解（2026-10-25，当前入口）
+-
+-- 用户授权“将正确的约化压力向量纳入待审求解入口并做运行前核查，继续不启动求解”。新入口 `CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solve_entry_review_20261025/README.md`、`entry.py`、`evidence/preflight_all9.json`、`independent_review.json`。承接前一`pressure_assembly_audit_20261025` 9项真实矩阵/RHS记录；旧实际网格接口、原18项白名单和G4候选锁不改。仅9项P2/P1混合矩形适用，标量9项未接入。
+-- 新接口在实际MPC中核压力主从对应，清零从属压力位置并正规化，再核`A n`、`Aᵀ n`、`nᵀ b`，PETSc测试通过后才将一个预期常压向量登记为矩阵右/转置零空间并投影右端；静态MPC回填核物理P1压力常数。9/9独立预检exit0且矩阵CSR/RHS哈希与前一审查逐项一致。最大右/左相对残差分别1.7091531021232052e-19/1.964428335753306e-19，RHS兼容偏差0，回填最大差6.938893903907228e-18。1e-10为沿用旧接口的本地预检拒绝值，非待审协议生效；未谱证仅有一个零模。
+-- 6个负例全部拒绝：旧错误常压向量、不相容压力右端、标量问题及`--solve`/`--execute`/`--mode solve`。命令行仅preflight；无KSP、solve调用、物理场、正式run_id或运行命令。独立无后端审查9/9、原保护清单4233路径和上轮接口包19文件哈希均通过；隔离环境版本及来源/几何/驱动/积分阶数记录。预检组装耗时不是未来求解资源保证。
+-- 此项是求解前接口检查，不是矩形数值参考计算或物理验证：NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，预测HOLD；原18项矩形参考DRAFT_v2仍未生效。旧压力向量不能直接用于组装矩阵，前一失败证据保留；G4 v1和窄槽网格FAIL保持。未编译或启动OpenLB、未求解、未改协议/门槛、未拟合或推送GitHub。
+-- 下一具体动作：若另有求解任务授权，先审查求解器/真实残差/压力去均值、周期迹和原始输出记录/资源预算，再由用户决定是否启动矩形参考计算；本轮没有放行计算、沟槽、NS或预测。
++## 第一篇：待审可调用求解候选与结果记录合同完成静态审查，仍未求解（2026-10-25，当前入口）
++
++- 用户授权继续审查“可调用的求解代码和结果记录方案”，同时确认既有预检、仍不求解。新入口 `CASE/D_series/D4_variable_groove_transport_20261023/reference_backend_min18_20261025/solver_result_review_20261025/README.md`、`candidate_solver.py`、`record_contract.json`、`evidence/static_review.json`和`independent_review.json`。前一9项真实组装/压力预检独立结论保持PASS，本轮读取确认而未重复组装矩阵或进行PDE求解。
++- 原`solve_entry_review_20261025/entry.py`只到组装/零空间登记，无KSP/solve与结果写出。新独立候选函数显式列GMRES+无预条件器的诊断路径、KSP报告与真实`‖b−Ax‖/‖b‖`分离、收敛失败拒绝、周期回填后P1面积去均值；唯一solve调用位于`check_release`后。当前18项冻结白名单`execution_authorized=false`，9个混合问题静态调用门禁均在创建KSP前拒绝；新/旧候选源码均未执行求解，无KSP实例、正式run_id、场、通量或求解退出码。无预条件器方案未证明最细104943矩阵的时间/内存可行，不是生产解法冻结。
++- 本轮静态建网/空间9项核原P1压力与MPC重建空间自由度顺序逐点相同，最大坐标差0；本机PETSc相关API存在但未构造KSP。新审查脚本避免上轮接口目录`inspect.py`潜在遮蔽标准库。独立无后端复核9项静态映射/9项冻结拒绝/一处受门禁solve调用、旧4233路径及上轮接口包19文件哈希均通过；这不是求解分支的运行测试。
++- 新`record_contract.json`为`DRAFT_NOT_APPROVED_NOT_A_RESULT`，列求解前10组、求解后16组和失败时6组必备证据：输入/版本/网格/周期/参数绑定，独立退出码和完整日志，原始双精度网格与场、真实残差、压力原值与面积去均值、周期迹、通量、能量、资源/哈希及独立验收。实际run_id、exit、原始结果与真实残差仍全为空。独立运行器、写出器、泛函提取/验收及9项标量求解路径未实现；原DRAFT_v2与候选阈值未启用，运行预算未验。NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、预测HOLD，G4 v1和旧网格FAIL保持。
++- 下一具体动作：若继续准备，先审可行的预条件/资源与独立进程日志/原始结果写出，再形成可复核的运行版本和独立验收器；仍需新协议/运行授权才可启动矩形求解。此轮无OpenLB编译/推进、PDE求解、重拟合、Git提交或推送。
+ 
+ 
+ ## 第一篇：首批中网格6项独立验收PASS的历史证据（2026-10-24；最新网格结论见顶部）

@@ -1,0 +1,132 @@
+{
+  "run_id": "h25_d100_T_refined_20261112T030700_985949d3",
+  "case_id": "h25_d100_T_refined",
+  "study": "v3_refined_mesh_remedy",
+  "solver_sha256": "73b1f633b96f0074abcd30358e83b57790f00c29aef1ef493f08345f3453f352",
+  "solver_path": "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/bin/paper1StokesReference",
+  "openfoam_version": "13",
+  "execution_scope": "this case only",
+  "solver_converged": true,
+  "commands": [
+    {
+      "argv": [
+        "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/blockMesh",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v3_refined/prepared/h25_d100_T_refined"
+      ],
+      "independent_exit_code": 0,
+      "elapsed_seconds": 7.333461829999578,
+      "wall_limit_seconds": 600
+    },
+    {
+      "argv": [
+        "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/checkMesh",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v3_refined/prepared/h25_d100_T_refined"
+      ],
+      "independent_exit_code": 0,
+      "elapsed_seconds": 33.942728057998465,
+      "wall_limit_seconds": 600
+    },
+    {
+      "argv": [
+        "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/mapFields",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h25_d100_T_fine",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v3_refined/prepared/h25_d100_T_refined",
+        "-sourceTime",
+        "25672.5",
+        "-consistent",
+        "-mapMethod",
+        "interpolate",
+        "-noFunctionObjects"
+      ],
+      "independent_exit_code": 0,
+      "elapsed_seconds": 9.640310573988245,
+      "wall_limit_seconds": 1800
+    },
+    {
+      "argv": [
+        "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/checkMesh",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v3_refined/prepared/h25_d100_T_refined"
+      ],
+      "independent_exit_code": 0,
+      "elapsed_seconds": 33.993512475004536,
+      "wall_limit_seconds": 600
+    },
+    {
+      "argv": [
+        "/usr/bin/time",
+        "-v",
+        "-o",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v3_refined/prepared/h25_d100_T_refined/runtime/resource.txt",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/bin/paper1StokesReference",
+        "-case",
+        "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v3_refined/prepared/h25_d100_T_refined"
+      ],
+      "independent_exit_code": 0,
+      "elapsed_seconds": 40436.09426342801,
+      "wall_limit_seconds": 86400
+    }
+  ],
+  "seed": {
+    "seed_from": "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h25_d100_T_fine",
+    "source_time": "25672.5",
+    "source_run_id": "h25_d100_T_fine_20261112T005348_96607ba3",
+    "source_receipt_sha256": "94e8bf79312a63af6759b3aeee374da531268fab8c4b298782bc6af87e5dc24b",
+    "source_final_field_sha256": {
+      "25672.5/U": "8d633052794f16b1f7b9b1b915609b28d2b9580acd9706ac3033e1a0fdc14b67",
+      "25672.5/p": "93efdfb491da04230ee94930db747fccbb5c326a0bc4acb88fd4b7e2d35055c3",
+      "25672.5/phi": "6d964347e74891033d53bf51bd642d7fb9931363a7dbd69e72d136c52c6e88ae"
+    },
+    "target_time": 0.5,
+    "target_field_sha256": {
+      "U": "98d5846393ba045cce766eb2b8412966ffab63284dc2fcc9151e72b25f352ecf",
+      "p": "39eccd636a51267ef2b0a37cd8f150abe12a6751be103ef569489f91c7e6d064"
+    },
+    "map_exit_code": 0,
+    "map_log_sha256": "0593c8648009be0526e95856ea3da3d6043a42093aede95f4ff6275f5eebfca4",
+    "note": "Initial field only; steady Stokes has a unique solution, so this sets the iteration count, not the answer.  Acceptance metrics are recomputed from the refined-mesh field."
+  },
+  "independent_exit_code": 0,
+  "stopping": {
+    "criterion": "full_fields_v2_1",
+    "actual_stop_reason": "native_convergence",
+    "post_hoc_acceptance": "accepted",
+    "reasons": [],
+    "components": {
+      "Ux": 4.402513670047701e-11,
+      "Uz": 9.999735489393598e-11,
+      "p": 5.262901347634655e-13
+    },
+    "outer_iterations": 55545,
+    "final_time": 55545.5,
+    "threshold": 1e-10,
+    "log_reports_converged": true,
+    "ends_with_End": true,
+    "flat_exception_used": false
+  },
+  "metrics": {
+    "K_m3": 2.068488297207203e-24,
+    "J_m2_s": 2.068488297207203e-13,
+    "power_balance_percent": 0.059373400724216374,
+    "section_flux_spread_percent": 3.4592761957687774e-10,
+    "section_vs_volume_percent": 4.353912080867772e-05
+  },
+  "native_field_sha256": {
+    "55545.5/U": "ccf0befd18e02c4baba7e106688ca923094e42409ea80b9840c8eec98f0e7b00",
+    "55545.5/p": "41b08caf8cf1e36258fb2f939b9a18da233170ae909af7c70f030660689bd777",
+    "55545.5/phi": "345d21f69b3f17792be9326659531e529385a189862eafe8281a63a234c8956b"
+  },
+  "runtime_logs_sha256": {
+    "resource.txt": "2fa5ed6624094ccb7c2520e1b9f4710e44e5cb963ea06a5555837f648ef9c3a0",
+    "log.blockMesh": "64217c6ca2b0f322a001287fef5f88f67e95bb2ca9545c9b5c3e1ee11870af3c",
+    "log.mapFields": "0593c8648009be0526e95856ea3da3d6043a42093aede95f4ff6275f5eebfca4",
+    "log.solver": "b4c8fe62b23e6b15e6d08b4b79c907d1dc8c9c6ff4ce40ee51938436f4c867db",
+    "log.checkMesh": "ac2ecbb7508828d090dde4c6082e6d9eb64ff20cdb798896fc5849d45c452c74",
+    "prepared_manifest_snapshot.json": "0a843daaba5a44eabde81c66e7159e6d730142018caf38419a57ae14cd4054e7",
+    "log.checkMesh.seeded": "3901fbe58ef1a1f74537ce4d7909ac5d175c3ae0638b881cd3087134b3aef6d7",
+    "exit_code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}

@@ -1,0 +1,36 @@
+FoamFile { format ascii; class dictionary; object fvModels; }
+// Dictionary fragment for Foundation 13. NOT a runnable or accepted flow case.
+// Load libgroovePorosity.so in controlDict libs first; create cellZone groove.
+grooveResistance
+{
+    type porosityForce;
+    porosityForceCoeffs
+    {
+        cellZone groove;
+        type grooveDarcy;
+        grooveDarcyCoeffs
+        {
+            conductanceModel V2_published_rounded; // or original_local_cubic
+            gapMode uniform;
+            mesaGap [0 1 0 0 0 0 0] 75e-9;
+            // Alternative: gapMode field; gapField mesaGap;
+            // Remove uniform mesaGap entry. Host must register/update length field.
+            grooveDepth [0 1 0 0 0 0 0] 100e-9;
+            grooveWidth [0 1 0 0 0 0 0] 120e-9;
+            period [0 1 0 0 0 0 0] 240e-9;
+            velocityAverage fluidVolume;
+            wallResistance totalUnresolved;
+            coordinateSystem
+            {
+                type cartesian;
+                origin (0 0 0);
+                coordinateRotation
+                {
+                    type axesRotation;
+                    e1 (0 1 0); // local x: along groove; for groove along y use (0 1 0)
+                    e2 (-1 0 0); // local y: transverse; paired along-y choice (-1 0 0)
+                }
+            }
+        }
+    }
+}

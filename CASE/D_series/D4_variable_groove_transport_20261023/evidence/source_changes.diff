@@ -1,0 +1,383 @@
+--- historical_D2.cpp
++++ new_variable_groove.cpp
+@@ -13,6 +13,10 @@
+ #include <stdexcept>
+ #include <string>
+ #include <vector>
++#include <map>
++#include <set>
++#include <sstream>
++#include <cctype>
+ 
+ using namespace olb;
+ 
+@@ -21,21 +25,21 @@
+ using T = double;
+ using DESCRIPTOR = descriptors::D3Q19<descriptors::FORCE>;
+ 
+-// Physical and lattice parameters. dx, mesaGap and grooveDepth are
+-// runtime-configurable for the D2 error-map matrix (set in parseParameters).
++// Isolated D4 parameterization of the D2 kernel. See the new protocol.
++// Boundary, collision, force and flux definitions are retained.
+ T dx = 5.0e-9;
+ constexpr T tau = 1.0;
+ constexpr T rhoPhys = 1000.0;
+ T nuPhys = 1.0e-6;
+ T muPhys = rhoPhys * nuPhys;
+-constexpr T acceleration = 1.0e5;
+-constexpr T lx = 240.0e-9;
+-constexpr T ly = 240.0e-9;
++T acceleration = 1.0e5;
++T lx = 240.0e-9;
++T ly = 240.0e-9;
+ T mesaGap = 75.0e-9;
+ T grooveDepth = 100.0e-9;
+-constexpr T grooveStart = 60.0e-9;
+-constexpr T grooveEnd = 180.0e-9;
+-constexpr T areaPlan = lx * ly;
++T grooveStart = 60.0e-9;
++T grooveEnd = 180.0e-9;
++T areaPlan = lx * ly;
+ T nominalVolume = areaPlan * mesaGap
+   + (grooveEnd - grooveStart) * ly * grooveDepth;
+ T referenceHeight = nominalVolume / areaPlan;
+@@ -44,8 +48,8 @@
+ int nx = 48;
+ int ny = 48;
+ constexpr int overlap = 3;
+-constexpr int convergenceWindow = 1000;
+-constexpr int maximumSteps = 60000;
++int convergenceWindow = 1000;
++int maximumSteps = 60000;
+ constexpr T relativeStdTolerance = 1.0e-6;
+ constexpr T relativeSpanTolerance = 5.0e-6;
+ constexpr T massTolerance = 1.0e-10;
+@@ -59,6 +63,9 @@
+ struct Parameters {
+   std::string mode;
+   std::string caseId;
++  std::string runId;
++  std::vector<T> frameTimes;
++  std::filesystem::path configFile;
+   std::string directionName;
+   int drive = -1;
+   double thetaDeg = 0.0;
+@@ -134,76 +141,114 @@
+   }
+ };
+ 
+-void applyGeometry(double dxNm, double hNm, double dNm, double nuValue = 1.0e-6)
+-{
+-  dx = dxNm * 1.0e-9;
+-  mesaGap = hNm * 1.0e-9;
+-  grooveDepth = dNm * 1.0e-9;
+-  nuPhys = nuValue;
+-  muPhys = rhoPhys * nuPhys;
+-  nx = static_cast<int>(std::round(lx / dx));
+-  ny = static_cast<int>(std::round(ly / dx));
+-  nominalVolume = areaPlan * mesaGap
+-    + (grooveEnd - grooveStart) * ly * grooveDepth;
+-  referenceHeight = nominalVolume / areaPlan;
+-  smoothK0 = mesaGap * mesaGap * mesaGap / 12.0;
+-  dt = (tau - 0.5) * dx * dx / (3.0 * nuPhys);
++
++std::map<std::string,std::string> readConfig(const std::filesystem::path& path)
++{
++  std::ifstream file(path);
++  if (!file) throw std::runtime_error("cannot read configuration/manifest");
++  std::map<std::string,std::string> values;
++  std::string line;
++  while (std::getline(file,line)) {
++    if (line.empty() || line[0]=='#') continue;
++    const auto pos=line.find('=');
++    if (pos==std::string::npos || pos==0) throw std::runtime_error("invalid key=value record");
++    const auto key=line.substr(0,pos);
++    if (!values.emplace(key,line.substr(pos+1)).second) throw std::runtime_error("duplicate key: "+key);
++  }
++  return values;
++}
++
++double number(const std::map<std::string,std::string>& c,const std::string& key)
++{
++  std::size_t used=0;
++  const auto& value=c.at(key);
++  const double v=std::stod(value,&used);
++  if (used!=value.size() || !std::isfinite(v)) throw std::runtime_error("invalid finite number: "+key);
++  return v;
+ }
+ 
+ Parameters parseParameters(int argc, char* argv[])
+ {
+-  if (argc != 7 && argc != 8) {
+-    throw std::runtime_error(
+-      "usage: executable precheck|steady P|T|<angle_deg> OUTPUT_DIRECTORY dx_nm h_nm d_nm [nu_m2_s]");
+-  }
++  if (argc!=2) throw std::runtime_error("usage: variable_groove_transport CONFIG.txt");
+   Parameters p;
+-  p.mode = argv[1];
+-  const std::string direction = argv[2];
+-  p.outputDirectory = argv[3];
+-  const double dxNm = std::stod(argv[4]);
+-  const double hNm = std::stod(argv[5]);
+-  const double dNm = std::stod(argv[6]);
+-  double nuValue = 1.0e-6;
+-  if (argc == 8) {
+-    nuValue = std::stod(argv[7]);
+-  }
+-  applyGeometry(dxNm, hNm, dNm, nuValue);
+-  if (p.mode != "precheck" && p.mode != "steady") {
+-    throw std::runtime_error("mode must be precheck or steady");
+-  }
+-  if (direction == "P") {
+-    p.thetaDeg = 0.0;
+-    p.fx = 0.0;
+-    p.fy = 1.0;
+-    p.drive = 1;
+-    p.directionName = "parallel";
+-  }
+-  else if (direction == "T") {
+-    p.thetaDeg = 90.0;
+-    p.fx = 1.0;
+-    p.fy = 0.0;
+-    p.drive = 0;
+-    p.directionName = "perpendicular";
+-  }
+-  else {
+-    try {
+-      p.thetaDeg = std::stod(direction);
+-    }
+-    catch (...) {
+-      throw std::runtime_error("direction must be P, T or an angle in degrees");
+-    }
+-    if (p.thetaDeg < -90.0 || p.thetaDeg > 90.0) {
+-      throw std::runtime_error("angle must be within [-90, 90] degrees");
+-    }
+-    const double thetaRad = p.thetaDeg * std::acos(-1.0) / 180.0;
+-    p.fx = std::sin(thetaRad);
+-    p.fy = std::cos(thetaRad);
+-    p.drive = std::abs(p.fx) > std::abs(p.fy) ? 0 : 1;
+-    p.directionName = "angle" + std::to_string(p.thetaDeg);
+-  }
+-  p.caseId = "D2-" + direction + "-h" + std::to_string(int(hNm)) + "-d"
+-    + std::to_string(int(dNm)) + "-dx" + std::to_string(int(dxNm));
++  p.configFile=std::filesystem::absolute(argv[1]);
++  const auto c=readConfig(p.configFile);
++  const std::set<std::string> allowed={"mode","run_id","output_directory","direction",
++    "dx_nm","h_nm","d_nm","w_nm","period_nm","Ly_nm","nu_m2_s",
++    "acceleration_m_s2","window_tstar","max_time_H_diffusion","frame_tstar"};
++  for (const auto& [key,value]:c) if (!allowed.count(key)) throw std::runtime_error("unknown key: "+key);
++  for (const auto& key:allowed) if (!c.count(key)) throw std::runtime_error("missing key: "+key);
++  p.mode=c.at("mode");
++  if (p.mode!="describe" && p.mode!="precheck" && p.mode!="initialize" && p.mode!="steady")
++    throw std::runtime_error("invalid mode");
++  p.runId=c.at("run_id");
++  if (p.runId.empty() || p.runId.size()>220 || !std::all_of(p.runId.begin(),p.runId.end(),[](unsigned char v){return std::isalnum(v)||v=='_'||v=='-'||v=='.';}))
++    throw std::runtime_error("invalid run_id");
++  p.caseId=p.runId;
++  if (c.at("output_directory").empty()) throw std::runtime_error("empty output directory");
++  p.outputDirectory=std::filesystem::absolute(c.at("output_directory"));
++  dx=number(c,"dx_nm")*1e-9;
++  mesaGap=number(c,"h_nm")*1e-9;
++  grooveDepth=number(c,"d_nm")*1e-9;
++  const T width=number(c,"w_nm")*1e-9;
++  lx=number(c,"period_nm")*1e-9;
++  ly=number(c,"Ly_nm")*1e-9;
++  nuPhys=number(c,"nu_m2_s");
++  acceleration=number(c,"acceleration_m_s2");
++  if (!(dx>0 && mesaGap>0 && grooveDepth>=0 && width>0 && lx>width && ly>0 && nuPhys>0 && acceleration>0))
++    throw std::runtime_error("nonpositive/invalid geometry or material");
++  grooveStart=(lx-width)/2;
++  grooveEnd=(lx+width)/2;
++  for (const T length: {lx,ly,mesaGap,grooveDepth,width,grooveStart}) {
++    const T n=length/dx;
++    if (n>100000 || std::abs(n-std::round(n))>1e-8)
++      throw std::runtime_error("geometry must align with lattice cell boundaries");
++  }
++  nx=static_cast<int>(std::llround(lx/dx));
++  ny=static_cast<int>(std::llround(ly/dx));
++  if (nx<16 || ny<16) throw std::runtime_error("too few periodic cells for section checks");
++  areaPlan=lx*ly;
++  nominalVolume=areaPlan*mesaGap+width*ly*grooveDepth;
++  referenceHeight=nominalVolume/areaPlan;
++  smoothK0=mesaGap*mesaGap*mesaGap/12;
++  muPhys=rhoPhys*nuPhys;
++  dt=(tau-.5)*dx*dx/(3*nuPhys);
++  const T window=number(c,"window_tstar"), cap=number(c,"max_time_H_diffusion");
++  if (!(window>0 && cap>window)) throw std::runtime_error("invalid observation times");
++  const T windowSteps=std::ceil(window*mesaGap*mesaGap/(nuPhys*dt)-1e-9);
++  const T capSteps=std::ceil(cap*std::pow(mesaGap+grooveDepth,2)/(nuPhys*dt)-1e-9);
++  if (!(windowSteps>=2 && capSteps>windowSteps && capSteps<2000000000)) throw std::runtime_error("invalid step limits");
++  convergenceWindow=static_cast<int>(windowSteps);
++  maximumSteps=static_cast<int>(capSteps);
++  const auto direction=c.at("direction");
++  if (direction=="P") {p.drive=1;p.fx=0;p.fy=1;p.directionName="parallel";}
++  else if (direction=="T") {p.drive=0;p.fx=1;p.fy=0;p.directionName="perpendicular";}
++  else throw std::runtime_error("direction must be P or T");
++  std::stringstream frames(c.at("frame_tstar"));
++  std::string part;
++  while (std::getline(frames,part,',')) {
++    std::map<std::string,std::string> value{{"time",part}};
++    const T t=number(value,"time");
++    if (t<0 || (!p.frameTimes.empty() && t<=p.frameTimes.back())) throw std::runtime_error("frame times must be increasing nonnegative");
++    p.frameTimes.push_back(t);
++  }
++  if (p.frameTimes.empty() || p.frameTimes.front()!=0 || c.at("frame_tstar").back()==',')
++    throw std::runtime_error("frame schedule must begin at zero and have no trailing comma");
+   return p;
++}
++
++void effectiveConfig(const Parameters& p)
++{
++  std::ofstream out(p.outputDirectory/"effective_config.txt");
++  out<<std::setprecision(17)<<"run_id="<<p.runId<<'\n'<<"mode="<<p.mode<<'\n'
++    <<"h_m="<<mesaGap<<'\n'<<"d_m="<<grooveDepth<<'\n'<<"w_m="<<grooveEnd-grooveStart<<'\n'
++    <<"Lx_m="<<lx<<'\n'<<"Ly_m="<<ly<<'\n'<<"phi="<<(grooveEnd-grooveStart)/lx<<'\n'
++    <<"dx_m="<<dx<<'\n'<<"dt_s="<<dt<<'\n'<<"nx="<<nx<<'\n'<<"ny="<<ny<<'\n'
++    <<"nominal_volume_m3="<<nominalVolume<<'\n'<<"plan_area_m2="<<areaPlan<<'\n'
++    <<"window_steps="<<convergenceWindow<<'\n'<<"maximum_steps="<<maximumSteps<<'\n'
++    <<"acceleration_m_s2="<<acceleration<<'\n'<<"nu_m2_s="<<nuPhys<<'\n'
++    <<"formal_simulation="<<(p.mode=="steady"?"true":"false")<<'\n'
++    <<"direction="<<p.directionName<<'\n';
+ }
+ 
+ T wrapX(T x)
+@@ -266,7 +311,7 @@
+           continue;
+         }
+         const T xHit = origin[0] + lambda * direction[0];
+-        const bool horizontalExists = wallZ == mesaGap ? !inGroove(xHit) : inGroove(xHit);
++        const bool horizontalExists = grooveDepth == 0.0 || (wallZ == mesaGap ? !inGroove(xHit) : inGroove(xHit));
+         if (horizontalExists) {
+           accept(lambda);
+         }
+@@ -609,17 +654,18 @@
+     return 2;
+   }
+   if (singleton::mpi().getSize() != 1) {
+-    std::cerr << "D2 requires exactly one MPI rank\n";
++    std::cerr << "variable groove solver currently requires exactly one MPI rank\n";
+     return 2;
+   }
+-  if (!std::filesystem::exists(p.outputDirectory / "run_manifest.txt")) {
+-    std::cerr << "pre-run manifest is required\n";
+-    return 2;
+-  }
+-  if (std::filesystem::exists(p.outputDirectory / "result.txt")) {
+-    std::cerr << "refusing to overwrite existing result\n";
+-    return 2;
+-  }
++  try {
++    const auto manifest=readConfig(p.outputDirectory/"run_manifest.txt");
++    if (manifest.at("run_id")!=p.runId || manifest.at("mode")!=p.mode)
++      throw std::runtime_error("manifest run_id/mode mismatch");
++    if (std::filesystem::exists(p.outputDirectory/"result.txt") || std::filesystem::exists(p.outputDirectory/"effective_config.txt"))
++      throw std::runtime_error("refusing to overwrite existing output");
++    effectiveConfig(p);
++  } catch (const std::exception& e) {std::cerr<<e.what()<<'\n';return 2;}
++  if (p.mode=="describe") return 0;
+   singleton::directories().setOutputDir((p.outputDirectory.string() + "/").c_str());
+ 
+   const T domainTop = mesaGap + grooveDepth + 4.0 * dx;
+@@ -670,6 +716,7 @@
+     std::ofstream result(p.outputDirectory / "result.txt");
+     result << std::setprecision(17) << std::boolalpha
+            << "case=" << p.caseId << '\n'
++           << "run_id=" << p.runId << '\n'
+            << "direction=" << p.directionName << '\n'
+            << "formal_simulation=false\n"
+            << "collide_and_stream_calls=0\n"
+@@ -710,7 +757,7 @@
+     converter.getLatticeRelaxationFrequency());
+   lattice.initialize();
+ 
+-  SuperVTMwriter3D<T> writer("g2_ex240_" + p.directionName, overlap);
++  SuperVTMwriter3D<T> writer("variable_groove_" + p.directionName, overlap);
+   SuperGeometryF3D<T> material(geometry);
+   material.getName() = "material";
+   SuperLatticePhysVelocity3D<T, DESCRIPTOR> velocity(lattice, converter);
+@@ -724,7 +771,32 @@
+   writer.addFunctor(pressure);
+   writer.addFunctor(dissipation);
+   writer.createMasterFile();
+-  writer.write(0);
++  std::ofstream frameIndex(p.outputDirectory/"frame_index.csv");
++  frameIndex<<"step,time_s,tstar,reason\n"<<std::setprecision(17);
++  std::set<int> written;
++  auto writeFrame=[&](int step,const std::string& reason) {
++    if (written.insert(step).second) {
++      lattice.setProcessingContext(ProcessingContext::Evaluation);
++      writer.write(step);
++      frameIndex<<step<<','<<step*dt<<','<<nuPhys*step*dt/(mesaGap*mesaGap)<<','<<reason<<'\n';
++      frameIndex.flush();
++    }
++  };
++  writeFrame(0,"initial");
++  if (p.mode=="initialize") {
++    const auto zero=measure(lattice,geometry,converter,p.drive,p.fx,p.fy);
++    writeFinalProfiles(lattice,geometry,converter,p);
++    std::ofstream result(p.outputDirectory/"result.txt");
++    result<<std::setprecision(17)<<std::boolalpha<<"run_id="<<p.runId<<'\n'
++      <<"formal_simulation=false\ncollide_and_stream_calls=0\nsteps_completed=0\n"
++      <<"NUMERICAL_GATE=NOT_EVALUATED\nRESULT_PASS=false\n"
++      <<"geometry_PASS="<<geometryPass<<'\n'<<"q_audit_PASS="<<boundaryAudit.pass<<'\n'
++      <<"finite="<<zero.finite<<'\n'<<"fluid_nodes="<<zero.fluidNodes<<'\n'
++      <<"fluid_volume_m3="<<zero.volume<<'\n'<<"nominal_volume_m3="<<nominalVolume<<'\n'
++      <<"frames_written="<<written.size()<<'\n';
++    return zero.finite?0:3;
++  }
++  std::size_t nextFrame=1;
+ 
+   const Measurement initial = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+   const bool initialVolumePass = initial.fluidNodes == expectedFluidNodes
+@@ -780,6 +852,11 @@
+                 << (window.full() ? windowSpan : -1.0) << ','
+                 << (window.full() ? windowCross : -1.0) << ','
+                 << state.finite << '\n';
++    const T actualTstar=nuPhys*step*dt/(mesaGap*mesaGap);
++    while (nextFrame<p.frameTimes.size() && actualTstar+1e-12>=p.frameTimes[nextFrame]) {
++      writeFrame(step,"scheduled");
++      ++nextFrame;
++    }
+     finalStep = step;
+     if (window.full()
+         && windowStd <= relativeStdTolerance
+@@ -791,7 +868,13 @@
+   }
+ 
+   const Measurement final = measure(lattice, geometry, converter, p.drive, p.fx, p.fy);
+-  writer.write(finalStep);
++  writeFrame(finalStep,converged?"converged_final":"unconverged_final");
++  std::ofstream schedule(p.outputDirectory/"frame_schedule.csv");
++  schedule<<"requested_tstar,target_step,reached\n"<<std::setprecision(17);
++  for (T target:p.frameTimes) {
++    const auto targetStep=static_cast<long long>(std::ceil(target*mesaGap*mesaGap/(nuPhys*dt)-1e-9));
++    schedule<<target<<','<<targetStep<<','<<(targetStep<=finalStep)<<'\n';
++  }
+   writeFinalProfiles(lattice, geometry, converter, p);
+   const auto finalMaterials = countMaterials(geometry);
+   const bool materialUnchanged = finalMaterials == initialMaterials;
+@@ -825,7 +908,15 @@
+   result << std::setprecision(17) << std::boolalpha
+          << "case=" << p.caseId << '\n'
+          << "direction=" << p.directionName << '\n'
++         << "run_id=" << p.runId << '\n'
++         << "formal_simulation=true\n"
++         << "geometry_PASS=" << geometryPass << '\n'
++         << "NUMERICAL_GATE=" << (pass?"PASS":"FAIL") << '\n'
++         << "RESULT_PASS=false\n"
+          << "PASS=" << pass << '\n'
++         << "frames_written=" << written.size() << '\n'
++         << "window_steps=" << convergenceWindow << '\n'
++         << "maximum_steps=" << maximumSteps << '\n' 
+          << "converged=" << converged << '\n'
+          << "steps_completed=" << finalStep << '\n'
+          << "Lx_m=" << lx << '\n'
+@@ -865,7 +956,7 @@
+          << final.fluxJ[2] << '\n'
+          << "J_main_m2_s=" << mainJ << '\n'
+          << "Keff_m3=" << effectiveK << '\n'
+-         << "K0_smooth_h75_m3=" << smoothK0 << '\n'
++         << "K0_smooth_h_m3=" << smoothK0 << '\n'
+          << "Keff_over_K0=" << effectiveK / smoothK0 << '\n'
+          << "R_eff_Pa_s_per_m3=" << resistance << '\n'
+          << "Q_sections_m3_s=" << final.sectionQ1 << ',' << final.sectionQ2 << '\n'

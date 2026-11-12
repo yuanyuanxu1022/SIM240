@@ -1,0 +1,99 @@
+{
+  "checked_at": "2026-11-11T23:39:57+08:00",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "binding_drift": [],
+  "P_coarse": {
+    "result": {
+      "case_id": "h75_d100_P_coarse",
+      "status": "LOCAL_CHECKS_PASS",
+      "issues": [],
+      "metrics": {
+        "K_m3": 9.766083321436146e-23,
+        "J_m2_s": 9.766083321436146e-12,
+        "kappa_m2": 7.812866657148914e-16,
+        "Href_m": 1.2500000000000002e-07,
+        "fluid_volume_m3": 3.0000000000000006e-23,
+        "drive_power_W": 2.3438599971446753e-19,
+        "viscous_dissipation_W": 2.3413833289249327e-19,
+        "power_balance_percent": 0.10566621823656641,
+        "section_flux_spread_percent": 0.0,
+        "section_evidence": "exact y invariance of scalar model; not an independent mass test"
+      }
+    },
+    "independent_integrals": {
+      "count": 19200,
+      "cell_volume_m3": 1.5625e-27,
+      "J_m2_s": 9.766083321436145e-12,
+      "K_m3": 9.766083321436144e-23,
+      "relative_vs_reader": -2.220446049250313e-16
+    },
+    "run_id": "h75_d100_P_coarse_20261111T231527_172b0354",
+    "stopping": {
+      "criterion": "full_fields_v2_1",
+      "actual_stop_reason": "native_convergence",
+      "post_hoc_acceptance": "accepted",
+      "reasons": [],
+      "components": {
+        "v": 2.8305412160253768e-14
+      },
+      "outer_iterations": 2,
+      "final_time": 2,
+      "threshold": 1e-10,
+      "log_reports_converged": true,
+      "ends_with_End": true,
+      "flat_exception_used": false
+    },
+    "receipt_sha256": "7099604c8b06f68340a8265394febec5fbb048ea50586cfa2989d0f2396046be",
+    "elapsed_seconds": 0.16778310599329416
+  },
+  "P_coarse_delta_diagnostic_only_percent": 0.6962119303064451,
+  "P_official": {
+    "point": "h75_d100_P",
+    "status": "NOT_ASSESSABLE"
+  },
+  "T_official": {
+    "point": "h75_d100_T",
+    "status": "FAIL",
+    "grid_mid_coarse_percent": 0.194278708111717,
+    "grid_fine_mid_percent": 0.08258503193038225,
+    "algebraic_change_percent": 0.00015755683335783033,
+    "reference_accepted": true,
+    "delta_K_percent": 2.5110440511747933,
+    "Kref_m3": 4.340041663047474e-23,
+    "LC_error_percent": 50.186548651859944,
+    "V2_error_percent": 4.925148722420958,
+    "V2_improved": true
+  },
+  "T_tight_local": {
+    "case_id": "h75_d100_T_tight",
+    "status": "LOCAL_CHECKS_PASS",
+    "issues": [],
+    "metrics": {
+      "K_m3": 4.3400348250152633e-23,
+      "J_m2_s": 4.340034825015264e-12,
+      "kappa_m2": 3.47202786001221e-16,
+      "Href_m": 1.2500000000000002e-07,
+      "fluid_volume_m3": 3.0000000000000006e-23,
+      "drive_power_W": 1.0416083580036632e-19,
+      "viscous_dissipation_W": 1.0409201905846488e-19,
+      "power_balance_percent": 0.06606777045581325,
+      "section_flux_spread_percent": 1.889443660455014e-12,
+      "section_flux_mean_m3_s": 4.340033398699754e-21,
+      "section_vs_volume_percent": 3.2864148946654126e-05,
+      "section_evidence": "corrected finite-volume face flux"
+    }
+  },
+  "new_solver_runs": 0,
+  "T_tight_independent_integral": {
+    "cells": 307200,
+    "K_m3": 4.3400348250152633e-23
+  },
+  "P_coarse_drop_needed_to_reach_two_percent_diagnostic": 1.2782235977387923,
+  "wording_corrections": [
+    "P and T share geometry and finite-volume framework but use scalar and pressure-coupled solver branches",
+    "P coarse diagnostic delta does not qualify the P reference",
+    "T tight is now completed; formal T comparison is FAIL with reference accepted",
+    "T refinement cannot supply a probability or error bound for uncomputed P grids",
+    "Do not manufacture global NUMERICAL_GATE/RESULT_PASS/geometry_PASS fields from this reader"
+  ]
+}

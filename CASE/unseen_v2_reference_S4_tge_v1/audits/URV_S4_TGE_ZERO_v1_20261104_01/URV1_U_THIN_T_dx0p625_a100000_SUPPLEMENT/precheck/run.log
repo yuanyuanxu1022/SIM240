@@ -1,0 +1,67 @@
+
+    ┃
+    ┃  ┏━━━━┓      ▁▁▁▁                   ▁▁    ▁▁▁▁
+    ┃  ┃    ┃     ╱ ▁▁ ╲▁▁▁▁  ▁▁▁  ▁▁▁▁  ╱ ╱   ╱ ▁▁ ╲
+ ┏━━╋━┓┃    ┃    ╱ ╱ ╱ ╱ ▁▁ ╲╱ ▁ ╲╱ ▁▁ ╲╱ ╱   ╱ ╱▁╱ ╱
+ ┃  ┗━╋╋━━━━┻┓  ╱ ╱▁╱ ╱ ╱▁╱ ╱  ▁▁╱ ╱ ╱ ╱ ╱▁▁▁╱ ╱▁╱ ╱
+ ┃    ┃┃     ┃  ╲▁▁▁▁╱ ▁▁▁▁╱╲▁▁▁╱▁╱ ╱▁╱▁▁▁▁▁╱▁▁▁▁▁╱
+ ┗━━━━┛┃     ┃      ╱▁╱ ==========================>>
+       ┗━━━━━┛
+
+[initialize] Version  : 882924a9cfc8
+[initialize] Platform : CPU_SISD
+[initialize] Parallel : MPI
+[initialize] MPI      : 1 ranks
+[ThreadPool] Sucessfully initialized, numThreads=1
+[Directories] Directory ./tmp/ created.
+[Directories] Directory ./tmp/imageData/ created.
+[Directories] Directory ./tmp/imageData/data/ created.
+[Directories] Directory ./tmp/vtkData/ created.
+[Directories] Directory ./tmp/vtkData/data/ created.
+[Directories] Directory ./tmp/gnuplotData/ created.
+[Directories] Directory ./tmp/gnuplotData/data/ created.
+[Directories] Directory ./tmp/introspectionData/ created.
+[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck/imageData/ created.
+[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck/imageData/data/ created.
+[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck/vtkData/ created.
+[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck/vtkData/data/ created.
+[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck/gnuplotData/ created.
+[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck/gnuplotData/data/ created.
+[Directories] Directory /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_tge_v1/audits/URV_S4_TGE_ZERO_v1_20261104_01/URV1_U_THIN_T_dx0p625_a100000_SUPPLEMENT/precheck/introspectionData/ created.
+[core] (Rank 0): Terminating...
+Uncaught exception: std::bad_alloc
+
+This is an unexpected error.
+If you believe this is a bug in OpenLB, please open an issue at:
+  https://gitlab.com/openlb/public
+
+Other support channels:
+  - User Forum:       https://www.openlb.net/forum
+  - Spring School:    https://www.openlb.net/spring-school
+  - Consortium:       https://www.openlb.net/consortium
+
+[dell-OptiPlex-Tower-Plus-7010:1944674] *** Process received signal ***
+[dell-OptiPlex-Tower-Plus-7010:1944674] Signal: Aborted (6)
+[dell-OptiPlex-Tower-Plus-7010:1944674] Signal code:  (-6)
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x7b93f7645330]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 1] /lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x11c)[0x7b93f769ec0c]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 2] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0x1e)[0x7b93f764527e]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 3] /lib/x86_64-linux-gnu/libc.so.6(abort+0xdf)[0x7b93f76288ff]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 4] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0xb7d20)[0x583d41d21d20]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xbb0da)[0x7b93f7abb0da]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(_ZSt10unexpectedv+0x0)[0x7b93f7aa5a55]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 7] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xbb391)[0x7b93f7abb391]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 8] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xa5ac8)[0x7b93f7aa5ac8]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [ 9] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0x7da35)[0x583d41ce7a35]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [10] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0x80223)[0x583d41cea223]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [11] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0x80780)[0x583d41cea780]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [12] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0x80e91)[0x583d41ceae91]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [13] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0x8173a)[0x583d41ceb73a]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [14] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0xb0298)[0x583d41d1a298]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [15] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0xb04b3)[0x583d41d1a4b3]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [16] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0xb3ed3)[0x583d41d1ded3]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [17] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0x23637)[0x583d41c8d637]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [18] /lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca)[0x7b93f762a1ca]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [19] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b)[0x7b93f762a28b]
+[dell-OptiPlex-Tower-Plus-7010:1944674] [20] /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S1_a1_v1/build/urv_reference(+0x26e25)[0x583d41c90e25]
+[dell-OptiPlex-Tower-Plus-7010:1944674] *** End of error message ***

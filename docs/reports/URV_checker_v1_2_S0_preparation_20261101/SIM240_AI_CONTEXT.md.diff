@@ -1,0 +1,30 @@
+--- before/SIM240_AI_CONTEXT.md
++++ after/SIM240_AI_CONTEXT.md
+@@ -1,14 +1,18 @@
+ # SIM240 AI CONTEXT
+ 
+-## 外部历史已收到作者未使用确认；R1/R2待修，S0未启动（2026-11-01）
+-
+-- 最新用户答复：“已核查，确认未用于选择系数或检验条件”。范围为h60/d80、h30/d80（w120/P240nm）的结果未用于选择V2系数或这两个检验条件。作者历史用途确认待办已收到明确答复；入口`docs/reports/URV_external_history_confirmation_20261101/RECEIPT.md`、author_declaration.json、S0_readiness_addendum.json。核查位置/来源未提供，独立外部历史审计未做；不扩展为从未见过数据、外部数据不存在或全局盲测证明。
+-- 旧external_data_history.json、history_status.json及原封存内PENDING字段是当时快照，保留原字节；当前历史答复状态以新author_declaration.json为准，不改写旧证据或封存。答复仅确认历史用途，不包含启动、修订或构建授权。
+-- v1.1只读复核证据保持：`docs/reports/URV_checker_v1_1_readonly_review_20261101/REPORT.md`、findings.json及synthetic_probes/。前轮70项测试通过；新增人工反例揭示R1/R2仍待修。本轮仅接收确认及维护状态，未重新运行测试、编译、求解或读取场数据，未改检查器、求解器、冻结协议、门槛或原始结果。
+-- R1(HIGH/F01)：合同中任一运行/基准缺字段时release_inputs返回空集合，可能丢失有效旧目录保护，公开入口在拒绝合同前写出failure.json。需在任何mkdir/save前阻止解析失败，并增加“有效基准+其他不完整声明”组合测试。R2(MEDIUM/F03)：只检查合并式-D/-U，遗漏分离式-D URV_PREPARATION_ONLY=1；需统一解析两种写法，要求唯一明确0并拒绝冲突/重复/取消定义。人工解析探针未测真实最终宏值。两项本轮均未修，执行准备HOLD_R1_R2；F04仍为后续多合同汇总事项。
+-- 原准备seal e0eb9a54c1c1168d25483a085e70462d04cfa76aeb4922dddbea17b07b1811cb与1432绑定、新检查器seal df3003c57560576548e9b0988507bc2f7a63982522988d5a284cc75fdd0f35ce与21绑定保持；本轮保护/核对见新目录verification.json。原URV_PREPARATION_ONLY=1不动。原两条S0 h75草案仍未生效；没有正式程序/配置SHA、批准run_id、启动命令或正式计算目录。simulation_authorized=false，approved_run_ids=[]，actual_formal_run_ids=[]，S0_started=false。
+-- S0沿用h75/d100/w120/P=Ly240、dx5nm、H125nm，P=+y/T=+x，窗1013/上限58800、K差≤1e-4及完整20共同列。新正式NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，MODEL_COMPARISON/physical_validation=NOT_EVALUATED。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1及既有GDI01接入结果保持。
+-- 当前停点：已记录作者未使用确认，无新增计算或数值/物理验证，无提交推送。下一具体动作是另行隔离修订R1/R2并增加对应反例、复核；通过后再准备S0两条h75回归的真实构建/配置/编号/目录及独立退出、资源、原始产物绑定，不自动启动。保留v1.1封存；不重复询问同一未使用结论，核查位置未提供如实保留。常规修订/复核建议GPT-6.1 Sol｜High。
++## URV v1.2修订与S0输入绑定已准备；正式启动授权关闭（2026-11-01）
++
++- 用户最新授权：隔离最小修订R1/R2并验证，通过后准备S0两条h75正式执行绑定，保持不自动启动。本轮入口`docs/reports/URV_checker_v1_2_S0_preparation_20261101/REPORT.md`、verification.json；新检查器`CASE/unseen_v2_reference_checker_v1_2/`，新native/S0包`CASE/unseen_v2_reference_S0_v1_2/`。旧准备包、v1.1及旧报告封存保留。使用peer-review做本地软件/协议自审，非独立人工验收。
++- R1/R2=ADDRESSED_AND_TESTED：声明解析不完整在任何mkdir/save前停止，不回退为空保护；合并/分离-D/-U统一识别，要求目标宏唯一明确0，拒绝冲突/重复/取消定义。77项检查器测试及6项人工运行器测试通过。首轮3失败日志保留：旧缺失合同测试在新保护处提前拒绝，仅调整4个软件fixture为显式人工声明，原物理断言保持。check_results/evidence/read_fields与common全字节不变；F02完整差异先保存不变，F04多合同汇总仍OPEN后续单独处理。
++- 新native实际编译退出0，源码cpp/h与原准备版逐字节一致；仅新目录Makefile将URV_PREPARATION_ONLY=1改0。原准备版仍1。OpenLB HEAD 882924a9cfc8dcdf82909e39530789cb6f5ebcc4；新binary SHA a9fe019114558653d3eb95eda7350786766ea41c50485f69cfa0a822cdc8b6a1。真实编译/链接/编译器/1390项项目依赖/3静态库/15动态库均捕获，不补证历史构建环境或承诺可移植镜像。
++- 零步审计URV_S0_ZERO_20261101_01（非正式求解run_id）：P/T各describe、precheck，共4次退出0，实际推进0步、initialize0、新场读取0。独立几何57600核心流体节点、32448链接、q=.5、fallback/unresolved0，窗1013/上限58800、dt4.166666666666667e-12s；原24初始化证据保留，未在新构建重复。零步通过不是正式稳态验收。
++- S0具体输入绑定`CASE/unseen_v2_reference_S0_v1_2/evidence/S0_prepared_binding.json`（SHA a836c5f4368ed5d80d1a585abde3a353848d4555094ba2556b14fd3d883cb846，1568项输入）；kind=PREPARED_EXECUTION_BINDING_NOT_LAUNCH_RELEASE。prepared_run_ids=[URV_S0_P_v1_2_20261101_01,URV_S0_T_v1_2_20261101_01]，对应原矩阵URV1_H75_P/T_dx5_a100000，runs/各编号/steady仅run_config.txt+run_manifest.txt。simulation_authorized=false、approved_run_ids=[]、approved_runs=[]、actual_formal_run_ids=[]、S0_started=false。输入完整封存不等于启动合同已生效；原旧草案不改写。
++- 外层scripts/run_S0.py默认只读，实际只读核对exit0；当前绑定加--execute的拒绝检查exit2、未调用native且未建启动标记，两个新包73文件不变。人工运行器6测试覆盖native失败/超时、输入变化、独立检查失败、无启动许可和不进入S1；不是实际求解。未来单条失败即停，第一条未通过不启动第二条，不重试/进入下一阶段。
++- S0保持h75/d100/w120/P=Ly240、dx5nm、H125nm，P沿槽+y、T横槽+x、a1e5m/s²。旧K分别9.834076003216204e-23、4.449022023188299e-23m³；K差≤1e-4及完整20共同列口径不变，保存差异后未解释即HOLD。单进程/线程/cuboid、overlap3、AS8GiB、单条3600s；启动前RAM≥12GiB、首批磁盘≥100GiB，每条前≥8GiB。完整原始产物/VTK、独立退出、前后来源哈希及独立检查由运行器负责。
++- 外部历史沿用真实作者答复“已核查，确认未用于选择系数或检验条件”，author_declaration.json已绑定；两候选h60/d80、h30/d80,w120/P240nm未用于选V2系数或这两个条件。核查位置未提供、未独立外部审计，不扩大为从未接触或数据不存在；原PENDING快照保留。
++- 保护：本轮2410既有项不变；重核旧2606保护项/1686历史项全匹配（重叠不累加）。原准备seal e0eb9a54c1c1168d25483a085e70462d04cfa76aeb4922dddbea17b07b1811cb及1432项、v1.1 seal df3003c57560576548e9b0988507bc2f7a63982522988d5a284cc75fdd0f35ce及21项保持。新v1.2 seal 2426d52bbcc7bf58f79486cf974eee9f640f0c3edc1e4beea780c107d704b1d1。未拟合、提交推送或外发。
++- 当前停点：修订、编译、零步和输入绑定准备完成，正式求解0。新正式NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false，MODEL_COMPARISON/physical_validation=NOT_EVALUATED。新URV完整稳态端到端验收未做。旧细T FAIL、C/h75限定资格、V2/G4锁、D4预测HOLD、旧N8 D4_N8_diag_v3_1_20261026_v1与GDI01既有接入结果保持。
++- 下一具体动作：S0获得真实启动许可后，复核该准备绑定/配置/资源，另存有真实授权证据的launch合同及独立SHA，使approved记录与prepared记录逐条一致，再交付一条绑定tmux命令；本轮没有启动命令、tmux或自动启动。不得改写当前准备封存或复制测试授权。启动核查可用GPT-6.1 Sol｜High（单纯进程查询Low），完成后按原URV-v1独立验收，仍不自动进入S1。
+ 
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017已核身份（2026-10-29）

@@ -1,0 +1,16 @@
+independent initial-field reread PASS URV1_U_THIN_P_dx5_a100000
+independent initial-field reread PASS URV1_U_THIN_T_dx5_a100000
+independent initial-field reread PASS URV1_U_THIN_P_dx2p5_a100000
+independent initial-field reread PASS URV1_U_THIN_T_dx2p5_a100000
+independent initial-field reread PASS URV1_U_THIN_P_dx1p25_a100000
+independent initial-field reread PASS URV1_U_THIN_T_dx1p25_a100000
+Traceback (most recent call last):
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S4_zero_results_review_20261103_220122/review_existing.py", line 292, in <module>
+    main()
+    ~~~~^^
+  File "/home/dell/yuanyuanxu/SIM240/docs/reports/URV_S4_zero_results_review_20261103_220122/review_existing.py", line 263, in main
+    need(len(readers) == 4, 'exact six saved-field rereads required')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/evidence.py", line 16, in need
+    raise EvidenceError(message)
+evidence.EvidenceError: exact six saved-field rereads required

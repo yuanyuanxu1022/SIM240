@@ -1,0 +1,151 @@
+--- before/docs/reports/SIM240_中文稿_导师审阅版_20261022.md
++++ docs/reports/SIM240_中文稿_导师审阅版_20261022.md
+@@ -212,7 +212,7 @@
+ 
+ **与主地图的交叉核对。** $N_x=2$ 在 2.5 nm 网格、$1\times10^5$ m s⁻² 下给出 $K_{yy}=9.7824236970\times10^{-23}$ m³，与归档三网格分析中 2.5 nm 网格的基准值高度一致（相对差 $6.9\times10^{-14}$）。这一比较支持该基准点的批次间结果一致性，不据此外推全部工况的来源一致性。
+ 
+-**术语界定。** 本文所做的是**数值验证（verification）**——确认离散解正确求解了所设定的方程，包含解析极限、网格收敛与周期一致性检查。本文**不涉及物理验证（validation）**——没有与实验测量或独立求解器结果作对照。文中"验证"一词均指前者。因此本文的结论限于"在这个数值模型内，局部立方律偏差有多大"，不涉及该模型对真实压印过程的保真度。
++**术语界定。** 本文报告的是**数值验证（verification）**检查——检查离散实现及数值解与所设定方程的一致性，包括解析基准、网格敏感性与周期一致性；各项检查的覆盖范围和限制分别报告。独立求解器对照属于数值交叉核验，不能单独建立物理验证；本文尚未完成同几何的独立求解器对照。本文**不涉及物理验证（validation）**——尚未与目标物理系统的实验测量等证据作比较。除明确写作"物理验证"外，文中"验证"均指数值验证。因此本文的结论限于"在这个数值模型内，局部立方律偏差有多大"，不涉及该模型对真实压印过程的保真度。
+ 
+ ---
+ 
+@@ -449,11 +449,11 @@
+ 
+ **图 1**　压印工艺与计算单胞的几何。(a) 工艺三阶段：滴胶→下压填充→固化脱模；(b) 单胞横截面，槽宽 $w$、槽深 $d$、间隙 $h$、周期 $P$，计算域为全充液、无自由液面；(c) 俯视图与坐标约定，槽沿 $y$ 延伸，故 $K_{yy}$ 为沿槽、$K_{xx}$ 为跨槽。
+ 
+-**图 2**　矩形沟槽阵列的显式输运系数与各向异性。(a) $K_{yy}$（实心）与 $K_{xx}$（空心）随槽深的**变化**，四个间隙各一组；$K_{xx}$ 曲线接近水平，即对槽深弱依赖。(b) 各向异性比 $A=K_{yy}/K_{xx}$，对数纵轴，点线为 $A=1$。
+-
+-**图 3**　局部立方律的相对误差随间隙变化（按槽深分组）。用于说明误差随哪些变量走。
+-
+-**图 4**　局部立方律相对误差的 $d$–$h$ 分布。空白格为未计算几何，**不得填补或插值**。
++**图 2**　矩形沟槽阵列的显式输运系数与各向异性。(a) $K_{yy}$（实心）与 $K_{xx}$（空心）随槽深的**变化**，四个间隙各一组；$K_{xx}$ 在各间隙已采样槽深上的变化小于4%，该范围不包含未计算几何。$h=25$ nm时仅采样 $d=25$、50、100 nm。(b) 各向异性比 $A=K_{yy}/K_{xx}$，对数纵轴，点线为 $A=1$。
++
++**图 3**　局部立方律的相对误差随间隙变化（按槽深分组）。局部立方律见式（3），误差定义见式（4）；两面板纵轴均为对数且范围不同。用于说明误差的参数依赖。
++
++**图 4**　局部立方律相对误差的 $d$–$h$ 分布。两面板采用各自的色标，颜色深浅不能跨面板直接比较。斜线格为未计算几何，**不得填补或插值**。
+ 
+ > **可选图**（未列入正文）：`figures/paraview/D2_publication_layout_20261017_v1/figures_v2/` 下有 P/T 速度场与耗散场图，可补充展示速度与耗散分布；成品图本身不能替代阻力或耗散贡献的独立分解。但其渲染清单标注 `unique_run_id_verified = false`，即**能定位到算例与步数（P: 4329 步、T: 2940 步），但未能证明当时使用的代码版本**。若采用，须在图注或数据声明中如实说明这一来源限度。
+ 
+@@ -480,7 +480,7 @@
+ | [S11](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md#sm-s11) | 方法引文核实边界 | §2.1、§2.3及相关引文 | — |
+ 
+ 
+-本轮复算与本稿一致的关键量：三网格 9 个系数、平壁三网格误差、4 个几何的加密变化、表 4 的 6 个倍率、表 5 的 4 个误差端点、36 个 $\eta$ 值、36 个闭合误差、V2 残差 3 项、各向异性与流向 2 项。
++既有复算与本稿一致的关键量：三网格 9 个系数、平壁三网格误差、4 个几何的加密变化、表 5 的 6 个倍率、表 6 的 4 个误差端点、36 个 $\eta$ 值、36 个闭合误差、V2 残差 3 项、各向异性与流向 2 项。
+ 
+ ---
+ 
+@@ -563,3 +563,7 @@
+ ### D.5 方法承诺与补充材料编号（2026-10-24）
+ 
+ 按 `Methods_support_audit_20261022/REPORT.md` 的三处候选句，收紧历史构建可复现承诺、52 项运行的统计范围与基准几何线性检查的外推范围；同步本附录对应表述。补充材料 S1—S11 与原支持索引一一对应，表 S1—S4 分列 52 项 D2/D3 清单、8 行双网格比较、18 行周期/多力记录、9 行历史三网格记录。编号对照及本轮核对见 `SIM240_Supplementary_Methods_20261024/REVISION_NOTE.md` 与 `verification.json`。没有新仿真或来源缺口补造；本次编号不表示远端发布、投稿就绪或数值/物理验收升级。
++
++### D.6 图文小范围订正（2026-10-27）
++
++按只读核对清单，收紧图2的已采样槽深范围说明；图3纵轴改为不依赖公式编号的局部立方律误差名称，图注分别指向式（3）和式（4）；图4图注明确独立色标与斜线缺失格。附录B的倍率和误差端点分别指向表5、表6；§2.4区分数值验证、独立求解器交叉核验与物理验证。公式、系数、正文表值、摘要、结果与结论保持原样。修改前文件、图件重新导出及核对记录见 `Paper_text_figure_corrections_20261027/REVISION_NOTE.md`。本次不构成最终理论冻结或数值/物理验收放行。
+--- before/figures/paper/make_fig4.py
++++ figures/paper/make_fig4.py
+@@ -57,7 +57,7 @@
+ ax1.text(126, 12.5, r"$K_\parallel$", fontsize=9.5, color="#0C447C", ha="right", va="center")
+ ax1.text(126, 3.3, r"$K_\perp$", fontsize=9.5, color="#0C447C", ha="right", va="center")
+ 
+-ax1.text(78, 24.2, r"$K_\perp$ varies $<4\%$ over the whole range of $d$",
++ax1.text(78, 24.2, r"$K_\perp$ varies $<4\%$ over the sampled depths",
+          fontsize=6.3, color="#5F5E5A", ha="left", va="center")
+ 
+ leg = ax1.legend(fontsize=6.4, frameon=False, loc="upper left", ncol=2,
+--- before/figures/paper/make_fig7_fig8.py
++++ figures/paper/make_fig7_fig8.py
+@@ -77,7 +77,7 @@
+     ax.set_xlim(14, 138)
+     ax.set_xticks(HS)
+     ax.set_xlabel(r"gap $h$ (nm)", fontsize=8.2)
+-    ax.set_ylabel(r"error of Eqs. (1)  (%)", fontsize=8.2)
++    ax.set_ylabel(r"local cubic-law error  (%)", fontsize=8.2)
+     ax.set_title(lab, fontsize=8.6, pad=5)
+     ax.spines["top"].set_visible(False)
+     ax.spines["right"].set_visible(False)
+--- before/figures/paper/Fig4_caption_and_record.md
++++ figures/paper/Fig4_caption_and_record.md
+@@ -2,11 +2,11 @@
+ 
+ ## 英文正式图注
+ 
+-**FIG. 4.** Resolved transport coefficients of the rectangular groove array at $P=240$ nm, $w=120$ nm. (a) Along-groove $K_\parallel$ (filled symbols, solid lines) and across-groove $K_\perp$ (open symbols, dashed lines) against groove depth $d$, at four residual gaps. (b) Anisotropy ratio $A=K_\parallel/K_\perp$ on a logarithmic ordinate; the dotted line marks $A=1$. Coefficients are given per unit width, in m³; division by the equivalent-volume height $H_{\rm ref}=h+\varphi d$ gives the three-dimensional permeability in m², consistent with the volume-averaged velocity $\bar u=J/H_{\rm ref}$ defined in Sec. II. Within the sampled depth range the $K_\perp$ curves in (a) are nearly horizontal: at fixed gap $K_\perp$ varies by at most 3.7% over the sampled depths (largest at $h=25$ nm, where the sampled depths are only $d=25$, $50$ and $100$ nm). The depth is the abscissa because it is the variable that the along-groove coefficient follows; the gap is the variable that the across-groove coefficient follows, and it enters only through the series label. The matrix is not a full rectangle: at $h=25$ nm only $d\le100$ nm was computed.
++**FIG. 4.** Resolved transport coefficients of the rectangular groove array at $P=240$ nm, $w=120$ nm. (a) Along-groove $K_\parallel$ (filled symbols, solid lines) and across-groove $K_\perp$ (open symbols, dashed lines) against groove depth $d$, at four residual gaps. (b) Anisotropy ratio $A=K_\parallel/K_\perp$ on a logarithmic ordinate; the dotted line marks $A=1$. Coefficients are given per unit width, in m³; division by the equivalent-volume height $H_{\rm ref}=h+\varphi d$ gives the three-dimensional permeability in m², consistent with the volume-averaged velocity $\bar u=J/H_{\rm ref}$ defined in Sec. II. Within the sampled depth range the $K_\perp$ curves in (a) are nearly horizontal: at fixed gap $K_\perp$ varies by at most 3.7% over the sampled depths (largest at $h=25$ nm, where the sampled depths are only $d=25$, $50$ and $100$ nm). The depth is the abscissa because it is the variable that the along-groove coefficient follows; the gap is the variable that the across-groove coefficient follows, and it enters only through the series label. The matrix is not a full rectangle: at $h=25$ nm only $d=25$, $50$ and $100$ nm were computed.
+ 
+ ## 中文对照
+ 
+-**图 4.** $P=240$ nm、$w=120$ nm 矩形沟槽阵列的解析输运系数。(a) 沿槽 $K_\parallel$（实心符号、实线）与跨槽 $K_\perp$（空心符号、虚线）随槽深 $d$ 的变化，四个残余间隙各一组。(b) 各向异性比 $A=K_\parallel/K_\perp$，纵轴对数；点线标 $A=1$。系数按单位宽度定义，单位 m³；除以等体积高度 $H_{\rm ref}=h+\varphi d$ 即为三维渗透率（m²），与 Sec. II 定义体积平均速度 $\bar u=J/H_{\rm ref}$ 一致。在所采样深度范围内，(a) 中 $K_\perp$ 曲线接近水平：固定间隙时 $K_\perp$ 在已算深度上的变化不超过 3.7%（$h=25$ nm 处最大，该档仅算了 $d=25$、$50$、$100$ nm）。横轴取槽深，因为这是沿槽系数所跟随的变量；跨槽系数跟随的是间隙，只通过曲线的组别标签体现。矩阵并非完整矩形：$h=25$ nm 处只算了 $d\le100$ nm。
++**图 4.** $P=240$ nm、$w=120$ nm 矩形沟槽阵列的显式数值输运系数。(a) 沿槽 $K_\parallel$（实心符号、实线）与跨槽 $K_\perp$（空心符号、虚线）随槽深 $d$ 的变化，四个残余间隙各一组。(b) 各向异性比 $A=K_\parallel/K_\perp$，纵轴对数；点线标 $A=1$。系数按单位宽度定义，单位 m³；除以等体积高度 $H_{\rm ref}=h+\varphi d$ 即为三维渗透率（m²），与 Sec. II 定义体积平均速度 $\bar u=J/H_{\rm ref}$ 一致。在所采样深度范围内，(a) 中 $K_\perp$ 曲线接近水平：固定间隙时 $K_\perp$ 在已算深度上的变化不超过 3.7%（$h=25$ nm 处最大，该档仅算了 $d=25$、$50$、$100$ nm）。横轴取槽深，因为这是沿槽系数所跟随的变量；跨槽系数跟随的是间隙，只通过曲线的组别标签体现。矩阵并非完整矩形：$h=25$ nm 处只算了 $d=25$、$50$、$100$ nm。
+ 
+ ---
+ 
+@@ -46,3 +46,7 @@
+ 3. 审稿人一眼能看到"虚线几乎不动、实线显著在动"，这是全文后续论证（两个分量的误差需分别描述）的图形基础。**注意：外观上的"不动/在动"只是图示；它不能识别误差的局部物理来源。**
+ 
+ **若审稿人要求**：可补一张横轴取 $h$ 的版本作为补充材料（`make_fig4.py` 改两行即可），但那会削弱主图的表达力，不建议作为主图。
++
++## 2026-10-27 定点订正
++
++对应当前中文导师审阅稿图2，文件名沿用旧Fig4。图内范围说明改为“over the sampled depths”，明确仅指各间隙已采样的槽深；图注列明h=25 nm仅计算d=25、50、100 nm。数据、单位、归一化与曲线不变。此次导出环境与检查见 `docs/reports/Paper_text_figure_corrections_20261027/REVISION_NOTE.md`；不表示期刊版式或科学验收通过。
+--- before/figures/paper/Fig7_Fig8_caption_and_record.md
++++ figures/paper/Fig7_Fig8_caption_and_record.md
+@@ -33,7 +33,7 @@
+ 
+ 误差定义：
+ $$E=\frac{K_{\rm stripe}-K_{\rm DNS}}{K_{\rm DNS}}\times100\%$$
+-其中条纹平均按式(1)：
++其中局部立方律为（对应当前中文稿式（3），误差定义见式（4））：
+ $$K_\parallel=\frac{1}{12}\cdot\frac{h^3+(h+d)^3}{2},\qquad
+ K_\perp=\frac{1}{12}\cdot\frac{2}{h^{-3}+(h+d)^{-3}}$$
+ （单位 $10^{-27}\,$m$^3$，按单位宽度定义。）
+@@ -42,7 +42,7 @@
+ 
+ ## Fig 7 图注（英文）
+ 
+-> **FIG. 7.** Error of the stripe-average closure, Eqs. (1), against the resolved coefficients,
++> **FIG. 7.** Relative error of the local cubic-law closure against the resolved coefficients,
+ > as a function of the gap $h$, for each groove depth $d$. (a) Along the grooves, $K_\parallel$;
+ > (b) across the grooves, $K_\perp$. Note the logarithmic ordinate and the different vertical ranges.
+ > Along the grooves the error decreases with $h$ at most depths, while across the grooves it increases
+@@ -123,3 +123,7 @@
+ 
+ **注意**：Fig 8 两个面板色标不同（0–220 与 0–60），图注已明写"each panel has its own colour scale"。
+ **不要在正文里跨面板比较颜色深浅**，只能比较数字。
++
++## 2026-10-27 定点订正
++
++旧Fig7对应当前中文导师审阅稿图3，旧Fig8对应图4。图3纵轴改为“local cubic-law error (%)”，不再使用与当前正文不一致的旧式号；当前正文模型为式（3），误差定义为式（4）。图4的独立色标与未采样斜线格说明保留。本次仅重新导出旧Fig7，旧Fig8的PNG/PDF/SVG保持原字节。导出环境与检查见 `docs/reports/Paper_text_figure_corrections_20261027/REVISION_NOTE.md`。
+--- before/docs/reports/SIM240_AI_CONTEXT.md
++++ docs/reports/SIM240_AI_CONTEXT.md
+@@ -1,4 +1,13 @@
+ # SIM240 AI CONTEXT
++
++## 第一篇当前稿：图文定点订正完成，求解与真实N8提取保持关闭（2026-10-27，当前接续入口）
++
++- 范围：用户授权按上一轮只读核对清单小范围订正。正文仍为`docs/reports/SIM240_中文稿_导师审阅版_20261022.md`及原V2关系，未将后续G4候选写入正文；不涉及公式/结论最终理论冻结或严格误差界审定。
++- 改动：当前图2（旧Fig4）限定已采样槽深；当前图3（旧Fig7）纵轴去除不一致旧式号，改为局部立方律误差名称，图注指向现稿式3/式4；图4图注保留独立色标/斜线缺失格；附录B倍率/端点改指表5/表6；§2.4区分数值验证、独立求解器交叉核验与物理验证。两份脚本、两份独立图注及六份选定PNG/PDF/SVG同步；图1/旧Fig8保持原字节。
++- 证据入口：`docs/reports/Paper_text_figure_corrections_20261027/REVISION_NOTE.md`、`verification.json`、`render_comparison.json`、`visual_QA.json`、`changes.diff`与before快照。验证范围是文本/绘图对象/导出/来源保护；选定原始来源436份受保护，不冒充历史全项目重验。摘要、结果、讨论、结论、公式及原表行保持；人工作者最终审阅与嵌入正文后的版式仍待做。
++- 科学停点：没有新求解run_id；源诊断run_id仍`D4_N8_diag_v3_1_20261026_v1`，仅ONE_N8_DIAGNOSTIC_ACCEPTED。N8的NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。旧FAIL、G4冻结锁与参考缺口保留。
++- 权限/接续：无OpenLB/有限元后端编译或求解、真实N8提取、第二项、拟合或预测评分；本轮未提交或推送。下一具体动作是作者/导师审阅本次订正稿，再按新范围核图件嵌入版式、未闭合引文与数据公开声明。没有新增计算授权或启动命令；如进入公式/结论最终理论冻结或严格误差界审定，建议GPT-6 Astra｜High另行终审，未声称已切换。
++
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 
+--- before/docs/reports/AI_HANDOFF_20261015.md
++++ docs/reports/AI_HANDOFF_20261015.md
+@@ -1,4 +1,13 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
++
++## 第一篇当前稿：图文定点订正完成，求解与真实N8提取保持关闭（2026-10-27，当前接续入口）
++
++- 范围：用户授权按上一轮只读核对清单小范围订正。正文仍为`docs/reports/SIM240_中文稿_导师审阅版_20261022.md`及原V2关系，未将后续G4候选写入正文；不涉及公式/结论最终理论冻结或严格误差界审定。
++- 改动：当前图2（旧Fig4）限定已采样槽深；当前图3（旧Fig7）纵轴去除不一致旧式号，改为局部立方律误差名称，图注指向现稿式3/式4；图4图注保留独立色标/斜线缺失格；附录B倍率/端点改指表5/表6；§2.4区分数值验证、独立求解器交叉核验与物理验证。两份脚本、两份独立图注及六份选定PNG/PDF/SVG同步；图1/旧Fig8保持原字节。
++- 证据入口：`docs/reports/Paper_text_figure_corrections_20261027/REVISION_NOTE.md`、`verification.json`、`render_comparison.json`、`visual_QA.json`、`changes.diff`与before快照。验证范围是文本/绘图对象/导出/来源保护；选定原始来源436份受保护，不冒充历史全项目重验。摘要、结果、讨论、结论、公式及原表行保持；人工作者最终审阅与嵌入正文后的版式仍待做。
++- 科学停点：没有新求解run_id；源诊断run_id仍`D4_N8_diag_v3_1_20261026_v1`，仅ONE_N8_DIAGNOSTIC_ACCEPTED。N8的NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，reference_qualified=false、strict_error_bound_established=false、submission_ready=false，预测HOLD。旧FAIL、G4冻结锁与参考缺口保留。
++- 权限/接续：无OpenLB/有限元后端编译或求解、真实N8提取、第二项、拟合或预测评分；本轮未提交或推送。下一具体动作是作者/导师审阅本次订正稿，再按新范围核图件嵌入版式、未闭合引文与数据公开声明。没有新增计算授权或启动命令；如进入公式/结论最终理论冻结或严格误差界审定，建议GPT-6 Astra｜High另行终审，未声称已切换。
++
+ 
+ ## 第一篇：提取器v2四项修订及人工验证完成，实际N8仍关闭（2026-10-26，当前入口/停点）
+ 

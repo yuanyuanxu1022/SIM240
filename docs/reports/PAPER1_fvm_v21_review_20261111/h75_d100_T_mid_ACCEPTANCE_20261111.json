@@ -1,0 +1,202 @@
+{
+  "checked_at": "2026-11-11T17:12:16+08:00",
+  "status": "MID_LOCAL_AND_COARSE_MID_COMPARISON_PASS",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "records": {
+    "coarse": {
+      "case_id": "h75_d100_T_coarse",
+      "dx_nm": 1.25,
+      "result": {
+        "case_id": "h75_d100_T_coarse",
+        "status": "LOCAL_CHECKS_PASS",
+        "issues": [],
+        "metrics": {
+          "K_m3": 4.3520840229361454e-23,
+          "J_m2_s": 4.352084022936146e-12,
+          "kappa_m2": 3.4816672183489154e-16,
+          "Href_m": 1.2500000000000002e-07,
+          "fluid_volume_m3": 3.0000000000000006e-23,
+          "drive_power_W": 1.044500165504675e-19,
+          "viscous_dissipation_W": 1.0407948781589883e-19,
+          "power_balance_percent": 0.35474262887228436,
+          "section_flux_spread_percent": 5.351921560290107e-11,
+          "section_flux_mean_m3_s": 4.352028519579158e-21,
+          "section_vs_volume_percent": 0.0012753282495281404,
+          "section_evidence": "corrected finite-volume face flux"
+        }
+      },
+      "independent_integrals": {
+        "cell_count": 19200,
+        "fluid_volume_m3": 3.0000000000000006e-23,
+        "J_m2_s": 4.352084022936146e-12,
+        "K_m3": 4.3520840229361454e-23,
+        "drive_power_W": 1.044500165504675e-19,
+        "dissipation_W": 1.0407948781589883e-19,
+        "power_balance_percent": 0.35474262887228436,
+        "section_count": 193,
+        "section_flux_spread_percent": 5.351921560290107e-11,
+        "section_vs_volume_percent": 0.0012753282495281404
+      },
+      "run_id": "h75_d100_T_coarse_20261111T162843_a1e0527f",
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 9.996596146092063e-11,
+          "Uz": 7.672219900756323e-11,
+          "p": 1.5223554489503108e-12
+        },
+        "outer_iterations": 11403,
+        "final_time": 11403,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      },
+      "receipt_sha256": "42914513ad29eed814c3f6b65c49f563674b3d2ab55c11ffc32bda0cf2166e3b",
+      "seed": null,
+      "solver_elapsed_seconds": 205.19555683799263
+    },
+    "mid": {
+      "case_id": "h75_d100_T_mid",
+      "dx_nm": 0.625,
+      "result": {
+        "case_id": "h75_d100_T_mid",
+        "status": "LOCAL_CHECKS_PASS",
+        "issues": [],
+        "metrics": {
+          "K_m3": 4.3436288503204486e-23,
+          "J_m2_s": 4.343628850320449e-12,
+          "kappa_m2": 3.4749030802563587e-16,
+          "Href_m": 1.2500000000000002e-07,
+          "fluid_volume_m3": 3.0000000000000006e-23,
+          "drive_power_W": 1.0424709240769079e-19,
+          "viscous_dissipation_W": 1.040910258661026e-19,
+          "power_balance_percent": 0.14970829208150738,
+          "section_flux_spread_percent": 3.500378494426623e-11,
+          "section_flux_mean_m3_s": 4.343620027229749e-21,
+          "section_vs_volume_percent": 0.0002031271778557553,
+          "section_evidence": "corrected finite-volume face flux"
+        }
+      },
+      "independent_integrals": {
+        "cell_count": 76800,
+        "fluid_volume_m3": 3.0000000000000006e-23,
+        "J_m2_s": 4.343628850320449e-12,
+        "K_m3": 4.343628850320449e-23,
+        "drive_power_W": 1.0424709240769079e-19,
+        "dissipation_W": 1.040910258661026e-19,
+        "power_balance_percent": 0.14970829208150738,
+        "section_count": 385,
+        "section_flux_spread_percent": 3.500378494426623e-11,
+        "section_vs_volume_percent": 0.0002031271778557553
+      },
+      "run_id": "h75_d100_T_mid_20261111T165012_e5ad708d",
+      "stopping": {
+        "criterion": "full_fields_v2_1",
+        "actual_stop_reason": "native_convergence",
+        "post_hoc_acceptance": "accepted",
+        "reasons": [],
+        "components": {
+          "Ux": 9.998234570394492e-11,
+          "Uz": 7.508953840631258e-11,
+          "p": 1.3238379475538746e-12
+        },
+        "outer_iterations": 22796,
+        "final_time": 22796.5,
+        "threshold": 1e-10,
+        "log_reports_converged": true,
+        "ends_with_End": true,
+        "flat_exception_used": false
+      },
+      "receipt_sha256": "0141a18c0de6d4b0782b7c90b431cd95c751507ff19ab549e61ea48986d3d40f",
+      "seed": {
+        "seed_from": "h75_d100_T_coarse",
+        "source_run_id": "h75_d100_T_coarse_20261111T162843_a1e0527f",
+        "source_receipt_sha256": "42914513ad29eed814c3f6b65c49f563674b3d2ab55c11ffc32bda0cf2166e3b",
+        "source_release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+        "source_time": "11403",
+        "source_field_sha256": {
+          "11403/U": "3b846b22ec2ab209985695b3fc48d0368ca6e46009eae5a2636b038d3181ee94",
+          "11403/p": "05389e79245c5655cf1a14172f0c5555acb5d2dce081c323a55efffe7e488648",
+          "11403/phi": "9ecd4d33e8e924a6a5e4b1a3ba7e46a5a5f8eaa278572f85c41c4ce7227bea59"
+        },
+        "source_mesh_sha256": {
+          "points": "7118f161cf4fa8bc86b81faefc52a758069a6c5673980e4134c4474c37a9a9f6",
+          "faces": "423004cdab087c66c3f35e05c5b217f2d1767c0ebb9d3ecbbdf06af455f5420a",
+          "owner": "a558d9cb71dfe2acc43561c26d375ca67f65f560d94d786726eb78573a09dacc",
+          "neighbour": "27c86f71fbed862f2369d581e5e3f26b8775c8cd59bf715af688363e37b243ba",
+          "boundary": "a4342c61122a787cdff558b2c3f93426a6dbcb6f889413fd66d32f9e9e6c6eb5"
+        },
+        "target_time": 0.5,
+        "target_field_sha256": {
+          "U": "481637a2cb7bea0aecbaf6743edabc8c0b2ac77d08e026ab107bc45f6b552227",
+          "p": "19233e8ad48e84be0b95622f5b8361a77b32ffa7b0ba3931dbb34afbcab40349"
+        },
+        "map_tool_path": "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/mapFields",
+        "map_tool_sha256": "b86bfd7b9959c0b722b5d255e996a25005d28dcf00bd28d9d268aeb7d4ccb44f",
+        "map_argv": [
+          "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/mapFields",
+          "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h75_d100_T_coarse",
+          "-case",
+          "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h75_d100_T_mid",
+          "-sourceTime",
+          "11403",
+          "-consistent",
+          "-mapMethod",
+          "interpolate",
+          "-noFunctionObjects"
+        ],
+        "map_exit_code": 0,
+        "map_log_sha256": "c670056c011f617eb9bf65240f030c0653742c6cecd724958eb54beafc141838",
+        "mesh_exit_code": 0,
+        "mesh_log_sha256": "c0af417ce9f0043d2eb5ee2b6394d3c8a6aa6f28839e38cd1b8b1ec82cc57385",
+        "commands": [
+          {
+            "argv": [
+              "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/mapFields",
+              "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h75_d100_T_coarse",
+              "-case",
+              "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h75_d100_T_mid",
+              "-sourceTime",
+              "11403",
+              "-consistent",
+              "-mapMethod",
+              "interpolate",
+              "-noFunctionObjects"
+            ],
+            "independent_exit_code": 0,
+            "elapsed_seconds": 0.8670635729940841,
+            "wall_limit_seconds": 900
+          },
+          {
+            "argv": [
+              "/opt/openfoam13/platforms/linux64GccDPInt32Opt/bin/checkMesh",
+              "-case",
+              "/home/dell/yuanyuanxu/SIM240/CASE/paper1_fvm_stokes_reference_v2/prepared/h75_d100_T_mid"
+            ],
+            "independent_exit_code": 0,
+            "elapsed_seconds": 0.8699633899959736,
+            "wall_limit_seconds": 900
+          }
+        ]
+      },
+      "solver_elapsed_seconds": 1144.3507127300109
+    }
+  },
+  "grid_comparison": {
+    "formula": "abs(Kmid/Kcoarse - 1) * 100%",
+    "signed_change_percent": -0.1942787081117059,
+    "absolute_change_percent": 0.1942787081117059,
+    "threshold_percent": 1.0,
+    "passed": true
+  },
+  "binding_drift": [],
+  "seed_chain_verified": true,
+  "qualified_reference": false,
+  "comparison_with_OpenLB_not_scored": true,
+  "new_solver_runs": 0,
+  "next_layer_started": false
+}

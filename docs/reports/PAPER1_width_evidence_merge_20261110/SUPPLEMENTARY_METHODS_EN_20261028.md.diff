@@ -1,0 +1,142 @@
+--- docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md before
++++ docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md after
+@@ -2,7 +2,7 @@
+ 
+ Companion Chinese manuscript: `SIM240_中文稿_导师审阅版_20261022.md`. The synchronized English manuscript is `SIM240_First_Paper_English_20261028.md`; the English supplement in this directory is `SUPPLEMENTARY_METHODS_EN_20261028.md`.
+ 
+-Numbering version: 2026-10-24; synchronized on 2026-11-09. S1–S13 and Tables S1–S8 are retained, with S14 for the supplementary two-width gradient-structure diagnostic and Table S9 added. Existing sources are D2/D3 records, historical benchmarks and completed later controls; S14 uses only known D4 development final states, excludes reserved prediction results and does not replace V2. The checked private code/small-data snapshot remains e05b3f21171ce52a66af41dfe172e79c0a099c20 under `07_第一篇代码数据更新_20261107/`; the present manuscript and supplement revision have not been newly uploaded. Reviewer access and final venue formatting remain for the authors to determine.
++Numbering version: 2026-10-24; synchronized on 2026-11-10. S1–S14 and Tables S1–S9 are retained; paired-width conductance-factor and anisotropy diagnostics, Figure S1 and Tables S10–S13 are appended to S14. Existing sources are D2/D3 records, historical benchmarks and completed later controls; S14 uses only known D4 development final states, excludes reserved prediction results and does not replace V2. The checked private code/small-data snapshot remains e05b3f21171ce52a66af41dfe172e79c0a099c20 under `07_第一篇代码数据更新_20261107/`; the present manuscript and supplement revision have not been newly uploaded. Reviewer access and final venue formatting remain for the authors to determine.
+ 
+ Recorded PASS, independent exit code, geometry checks, grid evidence and build provenance are reported separately. Supplementary numbering changes neither numerical nor physical acceptance status.
+ 
+@@ -23,7 +23,7 @@
+ | S11 | Method-citation scope | Method citations | — |
+ | S12 | Later controls and failure records | §3.3–3.4 | Table S8 |
+ | S13 | Static averaged-model interfacing | §5.3 | — |
+-| S14 | Gradient-structure diagnostic for the two-width set | §§2.1, 2.4, 5.1, 5.4, 6 | Table S9 |
++| S14 | Gradient-structure diagnostic for the two-width set | §§2.1, 2.4, 4.3, 5.1, 5.4, 6 | Tables S9–S13; Figure S1 |
+ 
+ <a id="sm-s1"></a>
+ 
+@@ -294,3 +294,121 @@
+ [Table_S9_mechanism_diagnostic.csv](Table_S9_mechanism_diagnostic.csv) retains run_id, geometry/period/grid, R/RLC, each positive term/RLC, their sum S, driving excess E, component shares and both residual types at full precision. P denotes along-groove and T across-groove flow. Inapplicable components are blank rather than zero. The alternative derivative treatment and two flat-channel controls remain in the complete diagnostic tables linked below and are excluded from these ten target rows.
+ 
+ Per-run identities and field checks are in [field_checks.csv](../PAPER1_mechanism_offline_20261109/field_checks.csv); native and both reconstructed power estimates in [power_checks.csv](../PAPER1_mechanism_offline_20261109/power_checks.csv); all positive terms and residuals in [positive_excess_diagnostic.csv](../PAPER1_mechanism_offline_20261109/positive_excess_diagnostic.csv); six strain components in [strain_components.csv](../PAPER1_mechanism_offline_20261109/strain_components.csv); and all three spatial-partition radii in [spatial_regions.csv](../PAPER1_mechanism_offline_20261109/spatial_regions.csv). The reader and derivative implementation are in [diagnose_fields.py](../PAPER1_mechanism_offline_20261109/diagnose_fields.py), input hashes in [source_manifest.json](../PAPER1_mechanism_offline_20261109/source_manifest.json), and diagnostic scope in [REPORT.md](../PAPER1_mechanism_offline_20261109/REPORT.md). These are offline diagnostics of known development final states, not new runs or independent prediction tests.
++
++
++<a id="sm-s14-paired"></a>
++
++### S14.4 Paired-width relations for conductance factors and anisotropy
++
++The paired analysis uses eight existing directional records: two widths, two principal directions and grid spacings of 5 and 2.5 nm, representing two physical geometries. These known development records are not included in the statistics for the original 18 geometries and 36 principal-direction conductances. Tables S10–S13 retain all selected grids and both derivative stencils. Grid resolutions are not treated as independent replicates, and no statistical confidence intervals are constructed.
++
++Define
++
++\[
++F_i=\frac{K_i^\Delta}{K_i^{LC}},\qquad
++a_i=F_i^{-1},\qquad r_i=a_i-1,\qquad
++B=\frac{A_{LC}}{A_\Delta}=\frac{a_\parallel}{a_\perp}
++=\frac{1+r_\parallel}{1+r_\perp}.\tag{S14.3}
++\]
++
++If both directions share a positive multiplier $c$, their corrected relative discrepancies are $c a_i-1$. Allowing each geometry to use its own most favorable $c$, the smallest attainable maximum absolute relative discrepancy is
++
++\[
++c_* =\frac{2}{a_\parallel+a_\perp},\qquad
++E_* = \min_{c>0}\max_{i\in\{\parallel,\perp\}}|c a_i-1|
++=\frac{|a_\parallel-a_\perp|}{a_\parallel+a_\perp}
++=\frac{|B-1|}{B+1}.\tag{S14.4}
++\]
++
++At $c_*$, the directional residuals have equal magnitudes and opposite signs. This is an algebraic minimax relation for two positive values, not a new fit, a physical conductance bound or a continuous-solution error bound. It requires the known discrete conductances and is used only as a retrospective diagnostic. It does not constrain V2, which uses separate directional factors. On the 2.5 nm grid, $100E_*$ is 51.08% and 14.38% for the narrow and wide grooves, respectively; the corresponding 5 nm values are 51.31% and 14.79%.
++
++To connect this diagnostic to the gradient decomposition, let $s_{ij}$ be positive term $j$ for direction $i$, divided by that direction's $R_i^{LC}$, and let $S_i=\sum_j s_{ij}$. Retain $b_i=r_i-S_i$. Here $b_i$ is a residual, distinct from the local-plate velocity baseline $b(x,z)$ in Eq. (S14.1). Then
++
++\[
++B=\frac{1+S_\parallel+b_\parallel}{1+S_\perp+b_\perp}.\tag{S14.5}
++\]
++
++Table S13 uses $b_i=r_i-S_i$, the negative of the existing S14 convention for the positive-term sum minus drive excess; their absolute values agree. This residual is distinct from the total input-power balance. If $b_i$ is omitted and $B$ is reconstructed from positive-term sums alone, its relative differences from the scalar value are −0.24571%/−0.29939% for the narrow/wide grooves at 5 nm and −0.05870%/−0.10723% at 2.5 nm using the primary stencil. The alternative stencil gives −1.29032%/−0.16379% and −0.28858%/+0.01337%, respectively. These quantities come from the same known fields; their numerical agreement is not independent validation or a certification of continuous accuracy.
++
++### S14.5 Paired-width figure and summary tables
++
++<a id="figure-s1"></a>
++
++![Four panels compare groove widths of 60 and 240 nm. In (a), the required conductance factors differ between directions, with a particularly low parallel factor for the narrow groove; corresponding points from the two grids are close. In (b), the local cubic law gives an anisotropy ratio of 4.908 at both widths, compared with approximately 1.589 and 3.674 at 2.5 nm. Panels (c) and (d) use a common vertical scale for directional gradient-excess contributions relative to each direction's own local-plate resistance. Parallel excess in the narrow groove is largest. Stacked positive sums and drive-derived excesses are shown separately rather than forced to coincide. Tables S10–S13 provide the full values and limitations.](figures/Figure_S1_paired_widths_EN.png)
++
++**Figure S1. Directional conductance factors, anisotropy and gradient excess for an unchanged local aperture distribution.** The geometries have $h=75$ nm, $d=120$ nm and equal groove and ridge widths; $w=60/240$ nm corresponds to $P=120/480$ nm. (a) Conductance factors $F_i$ relative to the local cubic law. Circles denote parallel flow and squares transverse flow; open markers denote 5 nm and filled markers 2.5 nm. The dashed line marks $F_i=1$. (b) Anisotropy ratios from the same principal values and the common $A_{LC}$; grid symbols follow (a). Small horizontal offsets within a width category separate symbols and do not represent additional widths. (c,d) Nonnegative gradient-excess contributions for parallel and transverse flow using the primary stencil at 2.5 nm, divided by each direction's own $R_i^{LC}$. Both panels use the same vertical limits. These are dimensionless absolute contributions, not fractions of the positive-term sum; directional groupings differ. Stacked heights show $S_i$, and black diamonds show $r_i=K_i^{LC}/K_i^\Delta-1$, retaining their residual. No interpolation or statistical error bars are shown. Tables S10–S13 provide all values, the alternative stencil and the 5 nm decomposition. The historical narrow-groove grid target remains failed; the wide groove has only two grids. Continuous accuracy and a unique mechanism are not established.
++
++[PDF](figures/Figure_S1_paired_widths_EN.pdf) · [SVG](figures/Figure_S1_paired_widths_EN.svg)
++
++<a id="table-s10"></a>
++
++**Table S10. Conductance factors and anisotropy**
++
++[Table_S10_paired_width_conductance.csv](Table_S10_paired_width_conductance.csv)
++
++| w (nm) | Δx (nm) | F_P | F_T | A_Δ | B=A_LC/A_Δ |
++| --- | --- | --- | --- | --- | --- |
++| 60 | 5 | 0.19284 | 0.59930 | 1.57930 | 3.10784 |
++| 60 | 2.5 | 0.19101 | 0.58994 | 1.58922 | 3.08845 |
++| 240 | 5 | 0.58047 | 0.78205 | 3.64311 | 1.34726 |
++| 240 | 2.5 | 0.57915 | 0.77365 | 3.67428 | 1.33583 |
++
++F_i=K_i^Δ/K_i^LC, A_Δ=K_P^Δ/K_T^Δ, and A_LC=4.90822394. F is calculated from existing conductances; it is not a newly calibrated V2 factor.
++
++<a id="table-s11"></a>
++
++**Table S11. Auxiliary diagnostic for a common multiplier**
++
++[Table_S11_common_multiplier.csv](Table_S11_common_multiplier.csv)
++
++| w (nm) | Δx (nm) | 100(B−1) (%) | c_* | 100E_* (%) |
++| --- | --- | --- | --- | --- |
++| 60 | 5 | 210.78 | 0.29178 | 51.31 |
++| 60 | 2.5 | 208.85 | 0.28859 | 51.08 |
++| 240 | 5 | 34.73 | 0.66635 | 14.79 |
++| 240 | 2.5 | 33.58 | 0.66242 | 14.38 |
++
++Each geometry is allowed its own optimal common multiplier: c_*=2/(a_P+a_T), E_*=|a_P−a_T|/(a_P+a_T), a_i=1/F_i. E_* is the smallest attainable maximum absolute relative discrepancy across the two discrete principal conductances. It is neither a physical conductance bound nor a continuous-solution error bound, and does not constrain models with separate directional factors.
++
++<a id="table-s12"></a>
++
++**Table S12. Absolute normalized gradient-excess contributions (2.5 nm, primary stencil)**
++
++[Table_S12_gradient_excess.csv](Table_S12_gradient_excess.csv)
++
++| w (nm) | Direction | Profile departure | Cross-groove gradient | Streamwise gradient | Vertical-velocity gradients | S_i | r_i | b_i=r_i−S_i |
++| --- | --- | --- | --- | --- | --- | --- | --- | --- |
++| 60 | P | 2.45739 | 1.77488 | — | — | 4.23227 | 4.23524 | +0.00296 |
++| 60 | T | 0.62678 | — | 0.01903 | 0.04932 | 0.69514 | 0.69510 | -0.00004 |
++| 240 | P | 0.19485 | 0.53205 | — | — | 0.72689 | 0.72666 | -0.00023 |
++| 240 | T | 0.18837 | — | 0.03202 | 0.07374 | 0.29414 | 0.29257 | -0.00156 |
++
++Each contribution is divided by its own directional R_i^LC and is dimensionless; it is not divided by the positive-term sum. The parallel profile term also includes changes in flux allocation. Groupings differ between directions. A dash denotes an inapplicable group, not a measured zero. Here r_i=K_i^LC/K_i^Δ−1, S_i is the sum of nonnegative terms, and b_i retains its sign. S_i has not been rescaled to r_i.
++
++<a id="table-s13"></a>
++
++**Table S13. Signed residuals for both grids and derivative stencils**
++
++[Table_S13_gradient_residuals.csv](Table_S13_gradient_residuals.csv)
++
++| w (nm) | Δx (nm) | Stencil | Direction | S_i | r_i | b_i=r_i−S_i | 100b_i/r_i (%) |
++| --- | --- | --- | --- | --- | --- | --- | --- |
++| 60 | 5 | wall_quadratic | P | 4.16922565 | 4.18575927 | +0.01653362 | +0.39500 |
++| 60 | 5 | wall_quadratic | T | 0.66738069 | 0.66860374 | +0.00122305 | +0.18293 |
++| 60 | 5 | odd_extension | P | 4.07591319 | 4.18575927 | +0.10984608 | +2.62428 |
++| 60 | 5 | odd_extension | T | 0.65460867 | 0.66860374 | +0.01399507 | +2.09318 |
++| 60 | 2.5 | wall_quadratic | P | 4.23227131 | 4.23523582 | +0.00296451 | +0.07000 |
++| 60 | 2.5 | wall_quadratic | T | 0.69513565 | 0.69510049 | -0.00003516 | -0.00506 |
++| 60 | 2.5 | odd_extension | P | 4.20149630 | 4.23523582 | +0.03373952 | +0.79664 |
++| 60 | 2.5 | odd_extension | T | 0.68905029 | 0.69510049 | +0.00605019 | +0.87041 |
++| 240 | 5 | wall_quadratic | P | 0.72339357 | 0.72272847 | -0.00066510 | -0.09203 |
++| 240 | 5 | wall_quadratic | T | 0.28302368 | 0.27868877 | -0.00433491 | -1.55547 |
++| 240 | 5 | odd_extension | P | 0.71747023 | 0.72272847 | +0.00525825 | +0.72755 |
++| 240 | 5 | odd_extension | T | 0.27687724 | 0.27868877 | +0.00181153 | +0.65002 |
++| 240 | 2.5 | wall_quadratic | P | 0.72689436 | 0.72666273 | -0.00023163 | -0.03188 |
++| 240 | 2.5 | wall_quadratic | T | 0.29413558 | 0.29257451 | -0.00156107 | -0.53356 |
++| 240 | 2.5 | odd_extension | P | 0.72493137 | 0.72666273 | +0.00173136 | +0.23826 |
++| 240 | 2.5 | odd_extension | T | 0.29110583 | 0.29257451 | +0.00146868 | +0.50198 |
++
++wall_quadratic is the primary stencil and odd_extension is the half-grid odd-extension stencil. The residual here is r_i−S_i, the negative of the existing S14 convention for the positive sum minus drive excess. Their absolute values agree. It is a decomposition residual, not the total input-power balance or a continuous-accuracy measure. The historical narrow-groove grid target remains FAIL; the wide groove has only two grids. These results do not establish grid independence. Full-precision components are in the [complete positive-excess diagnostic](../PAPER1_mechanism_offline_20261109/positive_excess_diagnostic.csv); paired scalar values and run provenance are in the [Table S10 data](Table_S10_paired_width_conductance.csv).
++

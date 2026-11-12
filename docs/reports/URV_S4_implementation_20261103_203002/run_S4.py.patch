@@ -1,0 +1,59 @@
+--- /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S3_reuse_v1_1/scripts/run_S3.py
++++ /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_S4_reuse_v1/scripts/run_S4.py
+@@ -1,4 +1,4 @@
+-"""Read-only by default. Four formal S3 runs require their own launch release."""
++"""Read-only by default. Four formal S4 runs require their own launch release."""
+ from pathlib import Path
+ import argparse
+ import json
+@@ -11,10 +11,10 @@
+ import time
+ 
+ CASE = Path(__file__).resolve().parents[1]
+-CHECKER = CASE.parent / 'unseen_v2_reference_checker_S3_reuse_v1_1'
++CHECKER = CASE.parent / 'unseen_v2_reference_checker_S4_reuse_v1'
+ sys.path.insert(0, str(CHECKER / 'analysis'))
+ from evidence import need, sha, save, kv
+-from stage_s3 import (verify_seal, require_pristine, validate_formal_authority,
++from stage_s4 import (verify_seal, require_pristine, validate_formal_authority,
+                       unchanged, RESOURCES, validate_zero_plan)
+ from check_results import binding
+ 
+@@ -47,7 +47,7 @@
+ 
+ def wall_cap(config):
+     dx = float(kv(config)['dx_nm'])
+-    need(dx == 2.5, 'S3 requires original 2.5 nm grid')
++    need(dx in (5, 2.5, 1.25), 'S4 requires original three grids')
+     return RESOURCES['solver_wall_cap_seconds_by_dx_nm'][str(int(dx)) if dx == 5 else str(dx)]
+ 
+ 
+@@ -136,17 +136,18 @@
+         need(checked.returncode == 0, 'independent checker failed; no next case')
+         accepted = json.loads((analysis / 'acceptance.json').read_text())
+         need(accepted.get('RESULT_PASS') is True and accepted.get('NUMERICAL_GATE') == 'PASS' and
+-             accepted.get('geometry_PASS') is True, 'S3 numerical/geometry acceptance failed')
++             accepted.get('geometry_PASS') is True, 'S4 numerical/geometry acceptance failed')
+         accepted_points[record['run_id']] = accepted
+-        from s3_baselines import control_for_direction
+-        direction = accepted['direction']
+-        same_direction = [r for r in bound['prepared_runs'] if kv(r['run_config_path'])['direction'] == direction]
+-        if all(r['run_id'] in accepted_points for r in same_direction):
+-            report = control_for_direction(bound, direction, accepted_points, expected_sha)
+-            save(attempt / ('linearity_'+direction+'.json'), report)
+-            need(report['CONTROL_PASS'] is True, 'S3 linearity failed; no retry or next case')
+-    save(attempt / 'S3_completed.json', dict(stage='S3_REG_LINEARITY', solver_runs=4, S3_CONTROL_PASS=True,
+-        next_stage_started=False, reference_qualified=False, MODEL_COMPARISON='NOT_EVALUATED'))
++    from s4_grid import grid_for_direction
++    reports = [grid_for_direction(bound, d, accepted_points, expected_sha) for d in ('P', 'T')]
++    save(attempt / 'S4_grid_report.json', dict(stage='S4_THIN_GRID', directions=reports,
++        GRID_CHECKS_PASS=all(r['GRID_CHECKS_PASS'] for r in reports), reference_qualified=False,
++        MODEL_COMPARISON='NOT_EVALUATED', next_stage_started=False))
++    need(all(r['GRID_CHECKS_PASS'] for r in reports), 'S4 grid evidence failed; no retry/extension/next stage')
++    save(attempt / 'S4_completed.json', dict(stage='S4_THIN_GRID', solver_runs=6,
++        GRID_CHECKS_PASS=True, next_stage_started=False, reference_qualified=False,
++        MODEL_COMPARISON='NOT_EVALUATED'))
++
+ 
+ 
+ def main():

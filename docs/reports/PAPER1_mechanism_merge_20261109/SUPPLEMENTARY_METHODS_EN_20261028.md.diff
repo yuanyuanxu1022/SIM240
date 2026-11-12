@@ -1,0 +1,79 @@
+--- SUPPLEMENTARY_METHODS_EN_20261028.md.before
++++ SUPPLEMENTARY_METHODS_EN_20261028.md
+@@ -2,7 +2,7 @@
+ 
+ Companion Chinese manuscript: `SIM240_中文稿_导师审阅版_20261022.md`. The synchronized English manuscript is `SIM240_First_Paper_English_20261028.md`; the English supplement in this directory is `SUPPLEMENTARY_METHODS_EN_20261028.md`.
+ 
+-Numbering version: 2026-10-24; synchronized on 2026-11-07. S1–S11 and Tables S1–S5 are retained, with S12 for controls, S13 for static averaged-model interfacing and Tables S6–S8 added. Sources are existing D2/D3 records, historical benchmarks and completed later controls. Separate D4 reserved results are excluded, and V2 is unchanged. The checked private code/small-data snapshot is e05b3f21171ce52a66af41dfe172e79c0a099c20 under `07_第一篇代码数据更新_20261107/`; the present manuscript and supplement revision have not been newly uploaded. Reviewer access and final venue formatting remain for the authors to determine.
++Numbering version: 2026-10-24; synchronized on 2026-11-09. S1–S13 and Tables S1–S8 are retained, with S14 for the supplementary two-width gradient-structure diagnostic and Table S9 added. Existing sources are D2/D3 records, historical benchmarks and completed later controls; S14 uses only known D4 development final states, excludes reserved prediction results and does not replace V2. The checked private code/small-data snapshot remains e05b3f21171ce52a66af41dfe172e79c0a099c20 under `07_第一篇代码数据更新_20261107/`; the present manuscript and supplement revision have not been newly uploaded. Reviewer access and final venue formatting remain for the authors to determine.
+ 
+ Recorded PASS, independent exit code, geometry checks, grid evidence and build provenance are reported separately. Supplementary numbering changes neither numerical nor physical acceptance status.
+ 
+@@ -23,6 +23,7 @@
+ | S11 | Method-citation scope | Method citations | — |
+ | S12 | Later controls and failure records | §3.3–3.4 | Table S8 |
+ | S13 | Static averaged-model interfacing | §5.3 | — |
++| S14 | Gradient-structure diagnostic for the two-width set | §§2.1, 2.4, 5.1, 5.4, 6 | Table S9 |
+ 
+ <a id="sm-s1"></a>
+ 
+@@ -234,3 +235,59 @@
+ At h75/d100, w120 and P240 nm, mean thickness 125 nm converts K (m³) to mean velocity and momentum resistance: J=−K∇p/μ, u_bar=J/H_bar and D=H_bar K⁻¹ (m⁻²). C01–C04 each compare a two-dimensional implementation with the OpenFOAM averaged-pressure implementation. GDI01 compares the V2 transverse momentum-source result with the C01 baseline. There are nine saved outlet endpoints, not two endpoints for each of five cases.
+ 
+ The synthetic static domain is 24×48 μm, with 16×32×1 cells, μ=0.001 Pa·s, driving-edge gauge pressures 24/0 Pa and no flux in the other direction. Replacing the local law with V2 reduces transverse/longitudinal outlet flow by 30.14%/56.77%. Summation of the nine original faces.csv records and acceptance/execution binding are indexed in the [claim audit](../PAPER1_claim_final_review_20261105/REPORT.md) and [recomputed outlets](../PAPER1_claim_final_review_20261105/recomputed_outlet9.csv). Equation (8) defines units and groove-attached directions. These checks support the tested static interface, not resolved-groove accuracy, experiments or dynamic-imprint fidelity.
++
++<a id="sm-s14"></a>
++
++## S14 Gradient-structure diagnostic for the two-width set
++
++This section supports Sections 2.1, 2.4 and 5.1 of the main text. The diagnostic set has h75/d120, equal groove and ridge widths, and w60/240 nm (P120/480 nm). Both directions at 5/2.5 nm and the narrow-groove 1.25 nm states give ten target fields; two h75 flat-channel states at 5 nm are postprocessing controls. The 18-geometry, 36-result main map, added gap and supplementary diagnostic set are reported separately.
++
++### S14.1 Definitions and continuous decomposition
++
++We retain the assumptions of Appendix E: a fixed, fully liquid-filled domain; incompressible Newtonian Stokes flow with constant viscosity; stationary no-slip walls; and matched periodic boundaries. The cross-section Ω lies in the xz plane, the groove extends along y, the period is P=2w, and H(x) is h or h+d. Let $\boldsymbol v=\boldsymbol u/J$, with units of m⁻¹, distinct from the closure speed V in the main text and $\boldsymbol U=\mu\boldsymbol u/G$ in Appendix E. Define
++
++\[
++R_{\rm grad}=\frac\mu P\int_\Omega |\nabla\boldsymbol v|^2\,dA,
++\quad R_i^{LC}=\mu/K_i^{LC},\quad R=G/J.
++\]
++
++The continuous Stokes energy balance gives $R_{\rm grad}=R$ under these assumptions. Physical dissipation is $2\mu D:D$, where $D=(\nabla\boldsymbol u+\nabla\boldsymbol u^T)/2$; its integral over the full domain equals the gradient energy, although the local densities generally differ.
++
++For along-groove flow, set $v=u_y/J$ and $b=z(H-z)/(2K_\parallel^{LC})$. Since $P^{-1}\int_\Omega v\,dA=1$, integration by parts in z gives $\int_\Omega \partial_z v\partial_z b\,dA=\int_\Omega (\partial_z b)^2\,dA=P/K_\parallel^{LC}$. Expanding the square gives
++
++\[
++R-R_\parallel^{LC}=\frac\mu P\int_\Omega
++\left[(\partial_xv)^2+(\partial_zv-\partial_zb)^2\right]dA.\tag{S14.1}
++\]
++
++Its second term measures departure of the thickness derivative of the velocity profile and includes changes in both profile shape and local flux allocation.
++
++For across-groove flow, set $v=u_x/J$, $s=u_z/J$, and $c=6z(H-z)/H^3$. Incompressibility and no slip imply $\int_0^{H(x)}v\,dz=1$ for almost every x. This follows from the weak divergence condition after extending the velocity by zero into the solid and therefore includes the steps. Columnwise, $\int \partial_z v\partial_z c\,dz=\int (\partial_z c)^2\,dz=12/H^3$, which gives
++
++\[
++R-R_\perp^{LC}=\frac\mu P\int_\Omega
++\left[(\partial_zv-\partial_zc)^2+(\partial_xv)^2+
++(\partial_xs)^2+(\partial_zs)^2\right]dA.\tag{S14.2}
++\]
++
++We report profile-derivative departure, the streamwise gradient of the main velocity, and vertical-velocity gradients as three groups, combining the last two terms into the third group. The incompressibility constraint $\partial_xv=-\partial_zs$ shows that these are neither independent mechanisms nor a unique grouping.
++
++The baselines b and c may be discontinuous in x at steps. The derivation uses only their columnwise z derivatives and does not treat them as admissible velocity fields for the full Stokes problem. The actual velocity retains zero trace on every vertical wall. A finite-energy weak solution suffices; classical second derivatives at the corners are not required. The flat-channel limit d=0 makes the right-hand sides vanish and recovers $K=h^3/12$.
++
++### S14.2 Discrete implementation and limitations
++
++Each final state is normalized using its saved J, with the two near-wall derivative treatments and nodal integration implemented in the diagnostic script. Let s_j be each nonnegative term divided by RLC, S=Σs_j, and E=R/RLC−1 be the driving excess. Shares are defined as 100s_j/S%, and the residual is 100(S−E)/E%. S is not adjusted to equal E. The main-text comparison uses 2.5 nm because it is available for both widths; the 5 nm and narrow-groove 1.25 nm results are retained. This choice does not qualify the comparison as a finest-grid or continuous reference.
++
++The residual of total strain power relative to input power uses a different denominator, Pin, and must not be confused with the excess-resistance residual. For the ten targets under the primary derivative treatment, the former ranges from −0.5803% to +0.00259%; the largest absolute value of the latter is 1.5555% at 5 nm and 0.5336% at 2.5 nm. Only two grids are available for the wide groove, and the historical grid target for the narrow groove was not met. The maximum difference in shares between the two derivative treatments is 0.4252 percentage points; this is not an error bound. Native stress-moment power, both gradient-based power estimates and discrete divergence residuals are retained, rather than selectively reporting the smaller residuals.
++
++Corner neighborhoods are reported for all three radii r/h=1/8, 1/4 and 1/2, together with their volume fractions. Regional power locates dissipation; it is neither the additional resistance omitted by the local model nor an independent causal contribution. No claim of corner dominance is based on a single radius.
++
++### S14.3 Per-run data and provenance
++
++<a id="table-s9"></a>
++
++**Table S9. Per-run gradient diagnostics for the two-width supplementary set (ten target final states, primary derivative treatment).**
++
++[Table_S9_mechanism_diagnostic.csv](Table_S9_mechanism_diagnostic.csv) retains run_id, geometry/period/grid, R/RLC, each positive term/RLC, their sum S, driving excess E, component shares and both residual types at full precision. P denotes along-groove and T across-groove flow. Inapplicable components are blank rather than zero. The alternative derivative treatment and two flat-channel controls remain in the complete diagnostic tables linked below and are excluded from these ten target rows.
++
++Per-run identities and field checks are in [field_checks.csv](../PAPER1_mechanism_offline_20261109/field_checks.csv); native and both reconstructed power estimates in [power_checks.csv](../PAPER1_mechanism_offline_20261109/power_checks.csv); all positive terms and residuals in [positive_excess_diagnostic.csv](../PAPER1_mechanism_offline_20261109/positive_excess_diagnostic.csv); six strain components in [strain_components.csv](../PAPER1_mechanism_offline_20261109/strain_components.csv); and all three spatial-partition radii in [spatial_regions.csv](../PAPER1_mechanism_offline_20261109/spatial_regions.csv). The reader and derivative implementation are in [diagnose_fields.py](../PAPER1_mechanism_offline_20261109/diagnose_fields.py), input hashes in [source_manifest.json](../PAPER1_mechanism_offline_20261109/source_manifest.json), and diagnostic scope in [REPORT.md](../PAPER1_mechanism_offline_20261109/REPORT.md). These are offline diagnostics of known development final states, not new runs or independent prediction tests.

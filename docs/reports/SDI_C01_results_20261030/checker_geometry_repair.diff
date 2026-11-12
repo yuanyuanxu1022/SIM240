@@ -1,0 +1,18 @@
+--- CASE/interface_static_darcy_v1/analysis/check_results.py
++++ docs/reports/SDI_C01_results_20261030/check_results_geometry_v1_1.py
+@@ -50,8 +50,13 @@
+         owner=int(r['owner']);neighbour=int(r['neighbour'])
+         if owner!=r['owner'] or neighbour!=r['neighbour'] or owner not in ids or (neighbour!=-1 and neighbour not in ids):raise ValueError('Invalid face addressing')
+         sx,sy,sz=r['Sx_m2'],r['Sy_m2'],r['Sz_m2']
+-        if sz!=0 or (sx!=0)==(sy!=0):raise ValueError('Non-axis-aligned active face')
+-        a=0 if sx else 1; s=sx if sx else sy
++        # Geometry recognition repair only: reuse the existing 1e-10
++        # normalized geometry tolerance, retaining every raw Sf/phi value.
++        # Original strict-zero classifier rejected roundoff (max 5.44e-14).
++        a=0 if abs(sx)>=abs(sy) else 1
++        s=sx if a==0 else sy
++        if s==0 or math.hypot(sy if a==0 else sx,sz)/abs(s)>1e-10:
++            raise ValueError('Non-axis-aligned active face')
+         i=round(r['x_m']/dx-(.5 if a==1 else 0));j=round(r['y_m']/dy-(.5 if a==0 else 0))
+         n=nx if a==0 else ny;coord=i if a==0 else j
+         if not (0<=i<=nx and 0<=j<=ny) or (a==0 and j>=ny) or (a==1 and i>=nx):raise ValueError('Face outside grid')

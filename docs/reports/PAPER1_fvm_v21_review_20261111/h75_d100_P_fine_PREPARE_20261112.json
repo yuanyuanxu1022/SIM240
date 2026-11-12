@@ -1,0 +1,52 @@
+{
+  "case_id": "h75_d100_P_fine",
+  "prepared_state_verified_at": "2026-11-12T00:05:00+08:00",
+  "started": false,
+  "map_fields_run": false,
+  "compiled": false,
+  "solver_executed": false,
+  "new_run_id_created": false,
+  "target_case": {
+    "path": "CASE/paper1_fvm_stokes_reference_v2/prepared/h75_d100_P_fine",
+    "dx_nm": 0.3125,
+    "expected_cells": 307200,
+    "direction": "P",
+    "level": "fine",
+    "equation": "scalar_Poisson",
+    "seed_from": "h75_d100_P_mid",
+    "start_time": 0.5,
+    "end_time_cap": 200000,
+    "wall_clock_seconds": 43200,
+    "exit_trigger": {"p": "1e-10", "U": "1e-10", "v": "1e-10"},
+    "flat_zero_component_exception": false,
+    "has_runtime_dir": false,
+    "has_referenceEvidence": false,
+    "overwrite_risk": "none"
+  },
+  "preconditions": {
+    "release_manifest_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+    "flat_cases": {"h75_d0_P_flat": "LOCAL_CHECKS_PASS", "h75_d0_T_flat": "LOCAL_CHECKS_PASS"},
+    "seed_source_h75_d100_P_mid": {
+      "status": "LOCAL_CHECKS_PASS",
+      "issues": [],
+      "run_id": "h75_d100_P_mid_20261111T234826_ef3cf27b",
+      "independent_exit_code": 0,
+      "native_convergence": true,
+      "final_time": 2.5,
+      "K_m3": 9.758353097414943e-23
+    },
+    "solver_process_present": false,
+    "seed_bound_native_times": 1
+  },
+  "why_this_case": "P 方向已过 coarse/mid，assess() 仍 NOT_ASSESSABLE；d32 必须由 P 自己的 fine 给出，不能由 T 的加密行为外推。",
+  "not_done": [
+    "未启动 fine",
+    "未跑 mapFields",
+    "未编译",
+    "未跑 tight",
+    "未改阈值或冻结代码",
+    "未重跑 T 或 P 的已完成层"
+  ],
+  "expected_runtime_basis": "P coarse 0.168 s / P mid 0.62 s（实测）；P 为标量 Poisson，fine 网格 4 倍单元，预计秒级到几十秒，非 T 的 12764 s 量级。此为经验估计，不作工期承诺。",
+  "start_command_file": "h75_d100_P_fine_START_COMMAND.txt"
+}

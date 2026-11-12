@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-11-11T16:45:36+08:00",
+  "case_id": "h75_d100_T_coarse",
+  "run_id": "h75_d100_T_coarse_20261111T162843_a1e0527f",
+  "result": {
+    "case_id": "h75_d100_T_coarse",
+    "status": "LOCAL_CHECKS_PASS",
+    "issues": [],
+    "metrics": {
+      "K_m3": 4.3520840229361454e-23,
+      "J_m2_s": 4.352084022936146e-12,
+      "kappa_m2": 3.4816672183489154e-16,
+      "Href_m": 1.2500000000000002e-07,
+      "fluid_volume_m3": 3.0000000000000006e-23,
+      "drive_power_W": 1.044500165504675e-19,
+      "viscous_dissipation_W": 1.0407948781589883e-19,
+      "power_balance_percent": 0.35474262887228436,
+      "section_flux_spread_percent": 5.351921560290107e-11,
+      "section_flux_mean_m3_s": 4.352028519579158e-21,
+      "section_vs_volume_percent": 0.0012753282495281404,
+      "section_evidence": "corrected finite-volume face flux"
+    }
+  },
+  "independent_integrals": {
+    "cell_count": 19200,
+    "volume_m3": 3.0000000000000006e-23,
+    "J_m2_s": 4.352084022936146e-12,
+    "K_m3": 4.3520840229361454e-23,
+    "drive_power_W": 1.044500165504675e-19,
+    "dissipation_W": 1.0407948781589883e-19,
+    "power_difference_percent": 0.35474262887228436
+  },
+  "stopping": {
+    "criterion": "full_fields_v2_1",
+    "actual_stop_reason": "native_convergence",
+    "post_hoc_acceptance": "accepted",
+    "reasons": [],
+    "components": {
+      "Ux": 9.996596146092063e-11,
+      "Uz": 7.672219900756323e-11,
+      "p": 1.5223554489503108e-12
+    },
+    "outer_iterations": 11403,
+    "final_time": 11403,
+    "threshold": 1e-10,
+    "log_reports_converged": true,
+    "ends_with_End": true,
+    "flat_exception_used": false
+  },
+  "receipt_sha256": "42914513ad29eed814c3f6b65c49f563674b3d2ab55c11ffc32bda0cf2166e3b",
+  "release_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+  "binding_drift": [],
+  "coarse_only_not_qualified_reference": true,
+  "next_layer_started": false,
+  "new_solver_runs": 0
+}

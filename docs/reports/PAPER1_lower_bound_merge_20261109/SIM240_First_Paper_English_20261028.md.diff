@@ -1,0 +1,43 @@
+--- SIM240_First_Paper_English_20261028.md.before
++++ docs/reports/SIM240_First_Paper_English_20261028.md
+@@ -423,6 +423,8 @@
+ 
+ Derivations, per-run diagnostics and provenance are given in [Supplementary S14 and Table S9](SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md#sm-s14).
+ 
++Under the same continuous model, the principal conductances lie within the bounds in Eq. (E8), as shown in [Appendix E.1](#appendix-e-lower); this interval supplies theoretical constraints and a comparison baseline, rather than mechanism fractions or general point-prediction accuracy.
++
+ ### 5.2 Implications for reduced squeeze-flow models
+ 
+ Fixed-gap coefficients are candidate local inputs to a reduced squeeze-flow model. For a square field at one instant, assume spatially uniform principal coefficients, constant viscosity, prescribed closure speed $V=-\dot h>0$, principal-axis coordinates and specified edge pressure. Depth-integrated mass conservation gives
+@@ -555,6 +557,31 @@
+ 
+ These are non-strict upper bounds: the ungrooved parallel-plate case $d=0$ attains equality. They establish the principal-value discrepancy direction within the stated ideal model, but provide neither discrepancy magnitudes nor the sign of the model discrepancy in $K_{yy}/K_{xx}$. Errors of the 5 nm values relative to the continuous solution still require independent numerical-reference evidence. The bounds do not certify local dissipation fractions, V2 prediction accuracy or real-imprint fidelity.
+ 
++<a id="appendix-e-lower"></a>
++### E.1 Elementary lower bound and its scope
++
++Under the same assumptions and normalization, choose the trial field $\boldsymbol\phi=f_h(z)\mathbf e_i$, where $f_h(z)=z(h-z)/2$ for $0\le z\le h$ and is zero for $z\ge h$. The field is continuous and zero at $z=h$, belongs to $H^1$, has zero trace on all solid walls, including the vertical steps, and is periodic. It is weakly divergence free for either horizontal principal direction. The derivative jump at the internal interface does not prevent admissibility; a trial field need not satisfy the momentum equation.
++
++Define $a(\boldsymbol v,\boldsymbol w)=\int_\Omega\nabla\boldsymbol v:\nabla\boldsymbol w\,\mathrm dA$ and $\ell_i(\boldsymbol v)=\int_\Omega v_i\,\mathrm dA$. The weak formulation of Eq. (E1), together with Eq. (E2), gives
++
++$$
++P K_i-\bigl[2\ell_i(\boldsymbol\phi)-a(\boldsymbol\phi,\boldsymbol\phi)\bigr]
++=a(\mathbf U-\boldsymbol\phi,\mathbf U-\boldsymbol\phi)\ge0.
++\tag{E7}
++$$
++
++For this trial field, $\ell_i(\boldsymbol\phi)=a(\boldsymbol\phi,\boldsymbol\phi)=Ph^3/12$. Combining this result with Eq. (E6), the continuous conductance in either principal direction satisfies
++
++$$
++L:=\frac{h^3}{12}\le K_i\le U_i:=K_i^{\rm mod},
++\qquad i\in\{x,y\}.
++\tag{E8}
++$$
++
++The lower bound equals the parallel-plate conductance obtained by retaining only the connected layer of thickness $h$ and imposing an additional zero-velocity constraint in the groove cavity; it does not describe the actual cavity velocity. It contains no groove-width dependence and cannot independently explain width effects. Among the 19 comparison geometries, the maximum upper-to-lower ratio $U_i/L$ is 63 along the grooves and approximately 1.984 across them. A narrower interval does not establish a specified point-prediction accuracy. Dimensional lower bounds differ with $h$; only normalization by each geometry's own $L$ gives a common left endpoint of 1.
++
++The 36 main 5 nm records, two added-gap records and eight refinement records give 46 distinct discrete records, all within their respective bounds. This is compatibility with the continuous bounds, rather than a substitute for the lower-bound proof or numerical-accuracy assessment. Separately, for only the 36 main 5 nm results from 18 geometries, with discrete conductance as denominator, the lower bound underestimates by an average of 58.2% along and 23.8% across the grooves; the local cubic law overestimates by 88.8% and 30.6%, respectively. In each direction the lower bound is closer for 11/18 geometries. This baseline comparison includes reference-grid effects and does not establish general predictive ability of the lower bound.
++
+ ## References
+ 
+ [1] Jain A., Spann A., Cochrane A., Schunk P.R., Bonnecaze R.T. Fluid flow in UV nanoimprint lithography with patterned templates. *Microelectron. Eng.*, 2017, **173**: 62–70. DOI: 10.1016/j.mee.2017.04.001

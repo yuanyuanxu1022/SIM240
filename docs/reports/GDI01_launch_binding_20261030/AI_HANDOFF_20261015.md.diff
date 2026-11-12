@@ -1,0 +1,27 @@
+--- AI_HANDOFF_20261015.md.before
++++ AI_HANDOFF_20261015.md
+@@ -1,15 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## GDI01宿主/检查器/全域包已实现，编译与不求解审计完成，未启动（2026-10-30）
+-
+-- 用户本轮授权按GDI-v1实现最小动量—压力宿主、独立结果检查器和全512单元GDI01包，完成编译与不求解审计，暂不启动流场。新包`CASE/groove_darcy_static_v1/`，主入口`docs/reports/GDI01_preparation_20261030/REPORT.md`。
+-- 宿主grooveDarcyStaticFoam通过标准porosityForce的source(rho,U)装配物理动量；不含K公式/输入D驱动，无惯性、黏性Laplacian或重复壁面阻力。采用迹分裂外迭代与完整动量/变化守卫；压力方程整体乘−1后以对应通量符号修正，物理方程/原门槛不变。初始p/U为零，GDI01保持75nm间隙、125nm平均厚度、24/0Pa、24×48μm、512全域单元。
+-- 宿主本轮实际编译成功（Foundation13、linux64GccDPInt32Opt）；原grooveDarcy库与源码逐字节复用/绑定，未重编译原子类。两次开发期编译错误及修正日志保留。checkMesh通过；实际auditOnly加载标准wrapper/子类、核全域系数/矩阵，solve_calls=0。14项检查器测试和8组旧CSV逐项回归通过；4类非法输入均只执行auditOnly并按预定原因拒绝。
+-- 独立检查器为GDI-1.0.0，真实GDI身份；沿用原SDI3个纯函数且AST不变，额外从压力重建梯度、复算模型力/矩阵/延期源/完整动量/外迭代变化/压力残差—面通量/能量，读取原生场并对照C01两端。人工内存测试不当作流场证据；新求解分支和整条真实新结果验收仍未运行验证。
+-- 发布common/release_manifest.json封存71份包文件、36个ldd运行库；默认run_gdi01.py只读预检通过，不创建runs或run_id。执行分支需显式execute及新GDI01_v1_编号，300秒超时、2GiB地址空间、失败停/不重试/不自动验收或下一例；峰值RSS未测。准备代码/编译/静态审计与运行授权分开，本轮未交付tmux命令。
+-- 474份旧包/子类/冻结协议/报告文件哈希保持。C01–C04既有局部接口验收和历史FAIL保持；新GDI无流场run_id，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=null、physical_validation=NOT_EVALUATED、independent_human_acceptance=false。冻结GDI-v1副本保留历史未实现字段，当前阶段以本准备报告和reports/preparation.json为准。
+-- 本轮仅新建上述包/准备报告并维护本状态和最新交接。无PDE求解、旧例重跑、拟合、挤压推进、下一Gate、提交推送或对外发送。旧D4_N8_diag_v3_1_20261026_v1仍NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD不变。
+-- 当前任务已完成，停在准备完成且未启动。下一具体动作：用户另定GDI01启动时机，届时交付已绑定的新编号命令、用户独立运行，完成后只读验收；不自动启动/重试或进入GDI02、C05、挤压和独立参考。无新增长算授权。常规核查/命令GPT-6.1 Sol｜Low，完整结果审核GPT-6.1 Sol｜High，疑难物理/最终冻结按Astra｜High。
++## GDI01绑定核查通过，待启动命令已交付，当前保持未启动（2026-10-30）
++
++- 本轮按用户“绑定核查与命令交付；当前保持未启动”处理，只读取核对并准备命令，没有执行。入口`docs/reports/GDI01_launch_binding_20261030/STATUS.md`和launch_binding.json；command.txt为待用户获准启动时执行的命令。
++- 拟用run_id=GDI01_v1_20261030_01、会话gdi01；actual_run_id=null，拟用运行目录不存在，没有GDI求解/运行器进程和同名tmux会话。本轮核对时间见launch_binding.json；不是未来持续状态保证。
++- 已用命令指定的/home/dell/miniconda3/bin/python3执行默认只读预检，退出0，71份包文件和36个运行库哈希一致；发布清单SHA已绑定。bash -n检查命令语法，不执行tmux new-session/execute/宿主solve；源、二进制、输入、门槛不改。
++- 实施入口仍CASE/groove_darcy_static_v1/，准备证据GDI01_preparation_20261030/REPORT.md：实际编译、全512单元、标准porosityForce/grooveDarcy、14项检查器测试、8组旧CSV回归、4个非法输入不求解拒绝均有记录。求解分支和新结果完整验收尚未真实运行验证，峰值RSS未测。
++- GDI01保持V2横槽、75nm槽顶间隙/125nm平均厚度、24/0Pa、24×48μm及GDI-v1原门槛；300秒/2GiB、失败停、不自动重试/分析/下一例。新NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=null、geometry_PASS=null、physical_validation=NOT_EVALUATED；命令交付不等于启动、完成或通过。
++- 本轮仅新建绑定/命令交付记录并维护本状态及最新交接；无编译、PDE求解、旧例重跑、拟合、挤压推进、提交推送或对外发送。旧C01–C04既有接口验收、旧D4_N8_diag_v3_1_20261026_v1及其Gate/历史FAIL保持；reference_qualified=false、strict_error_bound_established=false、submission_ready=false、预测HOLD不变。
++- 当前停点：命令已交付，保持未启动，无AI代启动或新增长算授权。下一具体动作是用户获准后在本机终端执行已交付的单条命令；实际启动后再核查状态，结束后按GDI-v1只读验收并对照C01，不自动进入GDI02/C05或挤压。启动核查GPT-6.1 Sol｜Low，完整结果审核GPT-6.1 Sol｜High。
+ 
+ ## 微信目录Ban博士论文与Jain JVST2017接收停点（2026-10-29）
+ 

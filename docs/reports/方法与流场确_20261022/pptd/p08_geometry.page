@@ -1,0 +1,103 @@
+pageType: content
+background: "#FFFFFF"
+elements:
+  - elementType: shape
+    elementId: p08-topbar
+    shapeName: rect
+    bounds: [0, 0, 960, 42]
+    fill: { type: solid, color: "#1E4FA8" }
+  - elementType: text
+    elementId: p08-topbar-title
+    bounds: [36, 8, 600, 26]
+    content:
+      fontSize: 16
+      bold: true
+      color: "#FFFFFF"
+      text: 研究对象：一个周期单胞，全充液，无自由液面
+  - elementType: text
+    elementId: p08-pageno
+    bounds: [856, 8, 68, 26]
+    content:
+      fontSize: 13
+      color: "#FFFFFF"
+      align: [right, top]
+      text: 8 / 18
+  - elementType: image
+    elementId: p08-fig
+    src: assets/fig_device_unitcell.png
+    bounds: [56, 62, 520, 406]
+  - elementType: text
+    elementId: p08-fig-caption
+    bounds: [56, 472, 520, 20]
+    content:
+      style: $tiny
+      text: 稿件图 1：压印工艺三阶段 + 单胞几何与坐标约定（已验收，可入稿）
+  - elementType: shape
+    elementId: p08-card1
+    shapeName: roundRect
+    bounds: [600, 62, 304, 122]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: text
+    elementId: p08-card1-title
+    bounds: [618, 74, 268, 24]
+    content:
+      fontSize: 14
+      bold: true
+      color: "#1E4FA8"
+      text: 坐标与方向约定
+  - elementType: text
+    elementId: p08-card1-body
+    bounds: [618, 100, 268, 76]
+    content:
+      fontSize: 11.5
+      color: "#1A2230"
+      lineHeight: 1.45
+      text: 图案沿 x 重复、槽沿 y 延伸；<br/>K_yy = 沿槽输运，K_xx = 跨槽输运；<br/>计算域 240×240 nm 恰好一个周期，x/y 双向周期。
+  - elementType: shape
+    elementId: p08-card2
+    shapeName: roundRect
+    bounds: [600, 196, 304, 122]
+    fill: { type: solid, color: "#F0F5FC" }
+  - elementType: text
+    elementId: p08-card2-title
+    bounds: [618, 208, 268, 24]
+    content:
+      fontSize: 14
+      bold: true
+      color: "#1E4FA8"
+      text: 采样矩阵与覆盖
+  - elementType: text
+    elementId: p08-card2-body
+    bounds: [618, 234, 268, 80]
+    content:
+      fontSize: 11.5
+      color: "#1A2230"
+      lineHeight: 1.45
+      text: 18 几何 × 2 主方向 = 36 主样点；<br/>h=25 nm 时 d 只有 25/50/100 三档——参数组合未完全覆盖，正文如实标注，未算格不填补。
+  - elementType: shape
+    elementId: p08-card3
+    shapeName: roundRect
+    bounds: [600, 330, 304, 138]
+    fill: { type: solid, color: "#E8EFF8" }
+  - elementType: text
+    elementId: p08-card3-title
+    bounds: [618, 342, 268, 24]
+    content:
+      fontSize: 14
+      bold: true
+      color: "#0E3F8C"
+      text: 单胞前提（重要限定）
+  - elementType: text
+    elementId: p08-card3-body
+    bounds: [618, 368, 268, 92]
+    content:
+      fontSize: 11.5
+      color: "#1A2230"
+      lineHeight: 1.45
+      text: 单胞缩减依赖"图案严格周期"；不涵盖模具边缘、图案接缝过渡区与实际供液条件；全充液、无自由液面——这三点正文均已声明，未做验证。
+  - elementType: text
+    elementId: p08-footer
+    bounds: [56, 500, 848, 14]
+    content:
+      style: $tiny
+      text: 稿件位置：§2.1 + 表 1 + 图 1 · 几何设计来源：版图解析报告（OAS 哈希已核）

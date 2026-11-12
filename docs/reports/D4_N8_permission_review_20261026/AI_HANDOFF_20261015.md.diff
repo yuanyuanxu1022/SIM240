@@ -1,0 +1,25 @@
+--- before/AI_HANDOFF_20261015.md
++++ after/AI_HANDOFF_20261015.md
+@@ -1,13 +1,14 @@
+ # SIM240 项目 — AI 交接摘要（任何 AI 工具进入项目先读）
+ 
+-## 第一篇：实际512MiB专用卷及限定无求解探针通过，求解仍关闭（2026-10-26，当前入口/停点）
+-
+-- 本轮用户授权核实挂载，符合后完成限定无求解探针。已读本机mountinfo确认用户挂载成功：`/run/user/1000/sim240_pilot_n8_work_20261026`为独立tmpfs、sim240-pilot-n8、容量536870912字节、1000:1000/0700；与ext4持久盘不同设备。入口`docs/reports/D4_volume_probe_20261026/MOUNTED_ACCEPTANCE.md`、`evidence/mounted_after_user.json`、`mounted_independent_verification.json`。结论PASS_BOUNDED_ENVIRONMENT_PROBES_ONLY；前次未挂载快照原样保留。
+-- 实测C—F完成：持久盘1MiB文件fsync/重读SHA通过；仅返回240的微型缓存库编译/另进程加载exit均0；专用卷写满536870912字节后ENOSPC/errno28、余量0而inode仍充足，普通盘成功记录固定探针独立exit28。不是OpenLB编译或PDE组装，未加载PETSc/DOLFINx/UFL。
+-- 真实卷上的人工success/failure夹具子exit分别0/7，22/3份文件完整归档；只移除已哈希核准的人工源文件，持久副本与日志保留。源移除后另进程成功读回及失败archive-only各exit0，失败原因不改。记录目录为仓库外`SIM240_runtime_records/reference_pilot_n8_20261026/`下VOLUME_PROBE_success_a741409d5373与VOLUME_PROBE_failure_e26dedcc7bd7；controller为volume_probe_mounted_99a7e052de40，不是实际流动run_id。
+-- 主探针独立exit0，独立verify_mounted.py也exit0；重核1MiB文件、已知V字节512MiB的fill哈希、编译/加载/ENOSPC退出、两份档案所有文件大小/SHA及合同/来源绑定。358条v3.1来源、4233历史保护、319份旧v3文件SHA无差异（不相加）。原12项和32项软件测试不重复运行，模型锁和旧FAIL不改。
+-- 最终路径检查全部true、LAYOUT_CHECK_PASS_ONLY，专用工作卷已恢复为空且可用536870912字节；`evidence/current_layout_verified.json`为独立复核后快照。当前“未挂载”卡点已消除，实际启动前仍须再核临时卷、空目录和资源。用户完成挂载，本轮代理未改服务/fstab或其他卷；没有Git提交/推送。
+-- 当前停点：仅环境和人工保存链通过，真实N8后端成功/失败端到端及4GiB/600秒预算、解析误差/通量能量/完整18项/沟槽参考/公式预测仍未验。原合同false/null，无批准包或实际流动run_id，NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null，预测HOLD。下一具体动作是只审首项B0MIN_MMS_mixed_N8的v3.1合同、实际配置/来源与运行许可，不自动启动求解或后项。
++## 第一篇：首项N8技术准备审查通过，等待单项运行明确授权（2026-10-26，当前入口/停点）
++
++- 本轮用户仅授权审合同/实际配置/来源与运行条件，明确不启动。入口`docs/reports/D4_N8_permission_review_20261026/REPORT.md`、`verdict.json`、`audit_evidence.json`、`review_binding.json`。结论READY_FOR_ONE_BOUNDED_N8_DIAGNOSTIC，技术阻碍清单为空；当前运行仍未授权、未启动。没有新增代码修补或重复环境探针要求。
++- 具体待批对象：`candidate_contract_NOT_AUTHORIZED.json`，planned_id=B0MIN_MMS_mixed_N8；拟用编号D4_N8_diag_v3_1_20261026_v1，实际run_id仍null。P_hat2/H_hat1、16×8三角网格、P2/P1、1275原始混合自由度、积分阶8，规定MMS源项；只是带已知答案的矩形求解/记录诊断，非沟槽公式验证。work/record/cgroup新子路径未使用且未创建。
++- 拟议单项预算保持：GMRES/无预条件器/零初值、restart50/max2000、rtol及真实残差1e−10、atol0；MPI1/数值库线程1；工作进程600秒检测+5秒宽限，4GiB cgroup、swap0、pids32、工作卷≤512MiB、普通盘可用≥2GiB、启动前MemAvailable≥6GiB。失败保留退出/文件、不自动增预算/改阈值/重试/运行第二项。归档耗时不冒称包含在精确600秒内。
++- 本轮只读核查：358来源、4233历史保护、319份旧v3及v3.1/实际卷包产物SHA保持；17模块语法与隔离环境dist-info版本符合。既有12项/32项测试证据不变、未重跑；实际卷512MiB/空/0700、普通ext4/独立设备/余量与memory/pids委派/内存下限当前通过。未建网/组装、未导入PETSc/DOLFINx/UFL、未创建cgroup/KSP或调用真实worker。
++- 预检A/b原SHA继续绑定：矩阵eac8083d785fcf2c0a432b6ca2824ab85bbb321f470184863054a9c45ce655dc、投影前b f59ae748bc15258510012708fa3c5e51328ab17b1ca5aeaaf24ba1b8b0f11bfc。本轮未重新装配；将来worker比较不符即停，不更新旧预检。原physical_plan中的false与静态字段是不可变准备快照，单项真实权限由新合同独立控制，不改原18行。
++- 许可边界：候选仍DRAFT_NOT_AUTHORIZED/false/approval=null，执行纯校验拒绝DIAGNOSTIC_RUN_NOT_AUTHORIZED；审查绑定不等于release。剩余条件是用户明确批准这一项及固定预算；获授权后另存APPROVED_DIAGNOSTIC_ONLY合同，记录授权原文/规格SHA，重核实时资源和未使用路径，准备唯一后台命令由用户启动。本轮未生成批准对象或交启动命令。
++- 诊断后独立验收完整来源/退出/持久副本、正KSP原因及残差、r=Tx、零空间/相容/迹/压力去均值和真实记录类型。真实收敛/4GiB与600秒可行性正是该诊断待回答，不循环作为诊断前置；解析L2、通量能量/完整18项/沟槽参考/公式预测仍NOT_EVALUATED。无物理新结果、拟合、原协议/阈值/G4锁/旧FAIL改动、OpenLB编译或Git提交/推送。NUMERICAL_GATE=NOT_EVALUATED、RESULT_PASS=false、geometry_PASS=null、预测HOLD。
+ 
+ ## 第一篇：真实网格到原始记录适配已静态核查，求解仍关闭（2026-10-26，历史准备入口；最新结论见上方）
+ 

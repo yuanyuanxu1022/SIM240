@@ -1,0 +1,14 @@
+--- /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S3_reuse_v1_1/analysis/contracts.py
++++ /home/dell/yuanyuanxu/SIM240/CASE/unseen_v2_reference_checker_S4_reuse_v1/analysis/contracts.py
+@@ -123,7 +123,10 @@
+     expected=anchor['native_source_sha256']
+     observed={Path(p).name:s for p,s in sources.items()}
+     if observed != expected:
+-        if bound.get('source_revision', {}).get('id') == 'URV-S3-S1-ELF-REUSE-v1.1':
++        if bound.get('source_revision', {}).get('id') == 'URV-S4-S1-ELF-REUSE-v1':
++            from revision_s4_reuse import verify_s4_reuse
++            verify_s4_reuse(bound, observed, checker_case)
++        elif bound.get('source_revision', {}).get('id') == 'URV-S3-S1-ELF-REUSE-v1.1':
+             from revision_s3_reuse import verify_s3_reuse
+             verify_s3_reuse(bound, observed, checker_case)
+         elif bound.get('source_revision', {}).get('id') == 'URV-S2-S1-ELF-REUSE-v1':

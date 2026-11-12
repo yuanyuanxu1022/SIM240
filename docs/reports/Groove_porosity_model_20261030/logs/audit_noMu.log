@@ -1,0 +1,164 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-ced05121dd03
+Exec   : /home/dell/yuanyuanxu/SIM240/CASE/groove_porosity_model_v1/build/bin/auditPorosity -case /home/dell/yuanyuanxu/SIM240/CASE/groove_porosity_model_v1/build/fixture -variant noMu
+Date   : Oct 30 2026
+Time   : 16:10:16
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 675020
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/groove_porosity_model_v1/build/fixture
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF original_local_cubic 0 0 0 7.4999999999999997e-08 1.2499999999999999e-07 2.4088541666666665e-22 6.5181587837837817e-23 518918918918919 1917719468739876.8
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF original_local_cubic 0 1 0 7.4999999999999997e-08 1.2499999999999999e-07 2.4088541666666665e-22 6.5181587837837817e-23 518918918918919 1917719468739876.8
+COEFF original_local_cubic 0 1 1 9.9999999999999995e-08 1.4999999999999999e-07 3.7499999999999999e-22 1.4814814814814814e-22 400000000000000.12 1012500000000000.4
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF original_local_cubic 90 0 0 7.4999999999999997e-08 1.2499999999999999e-07 2.4088541666666665e-22 6.5181587837837817e-23 1917719468739876.8 518918918918919
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF original_local_cubic 90 1 0 7.4999999999999997e-08 1.2499999999999999e-07 2.4088541666666665e-22 6.5181587837837817e-23 1917719468739876.8 518918918918919
+COEFF original_local_cubic 90 1 1 9.9999999999999995e-08 1.4999999999999999e-07 3.7499999999999999e-22 1.4814814814814814e-22 1012500000000000.4 400000000000000.12
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF original_local_cubic 45 0 0 7.4999999999999997e-08 1.2499999999999999e-07 2.4088541666666665e-22 6.5181587837837817e-23 1218319193829397.5 1218319193829397.5
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: original_local_cubic, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF original_local_cubic 45 1 0 7.4999999999999997e-08 1.2499999999999999e-07 2.4088541666666665e-22 6.5181587837837817e-23 1218319193829397.5 1218319193829397.5
+COEFF original_local_cubic 45 1 1 9.9999999999999995e-08 1.4999999999999999e-07 3.7499999999999999e-22 1.4814814814814814e-22 706250000000000.12 706250000000000.12
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF V2_published_rounded 0 0 0 7.4999999999999997e-08 1.2499999999999999e-07 1.0414014079511955e-22 4.5537951695675904e-23 1200305655874992.2 2744963164688618
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF V2_published_rounded 0 1 0 7.4999999999999997e-08 1.2499999999999999e-07 1.0414014079511955e-22 4.5537951695675904e-23 1200305655874992.2 2744963164688618
+COEFF V2_published_rounded 0 1 1 9.9999999999999995e-08 1.4999999999999999e-07 1.6212086783240232e-22 1.0350105663209931e-22 925235609736973.25 1449260566809322.8
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF V2_published_rounded 90 0 0 7.4999999999999997e-08 1.2499999999999999e-07 1.0414014079511955e-22 4.5537951695675904e-23 2744963164688618 1200305655874992.2
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF V2_published_rounded 90 1 0 7.4999999999999997e-08 1.2499999999999999e-07 1.0414014079511955e-22 4.5537951695675904e-23 2744963164688618 1200305655874992.2
+COEFF V2_published_rounded 90 1 1 9.9999999999999995e-08 1.4999999999999999e-07 1.6212086783240232e-22 1.0350105663209931e-22 1449260566809322.8 925235609736973.25
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=uniform, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF V2_published_rounded 45 0 0 7.4999999999999997e-08 1.2499999999999999e-07 1.0414014079511955e-22 4.5537951695675904e-23 1972634410281804.8 1972634410281804.8
+Porosity region auditModel:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+Selecting finite volume model type porosityForce
+    Name: auditWrapper
+Porosity region auditWrapper:
+    selecting model: grooveDarcy
+    creating porous zone: groove
+grooveDarcy: V2_published_rounded, gapMode=field, H=mesaGap+(grooveWidth/period)*grooveDepth, D=H/K; xy total drag only
+COEFF V2_published_rounded 45 1 0 7.4999999999999997e-08 1.2499999999999999e-07 1.0414014079511955e-22 4.5537951695675904e-23 1972634410281804.8 1972634410281804.8
+COEFF V2_published_rounded 45 1 1 9.9999999999999995e-08 1.4999999999999999e-07 1.6212086783240232e-22 1.0350105663209931e-22 1187248088273147.8 1187248088273147.8
+ASSEMBLY_PASS scalar_checks=202752; no flow solved
