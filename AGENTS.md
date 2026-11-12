@@ -171,6 +171,11 @@ Poiseuille / mobility 基准验证至少检查：
 - 主仓库：`yuanyuanxu1022/SIM240`
 - 参考仓库：`junjieli2/nanrPrint`（**不得误 push 到此仓库**）
 - push 目标：`sim240/main`
+- 现成工具（2026-11-12 起）：`tools/git_sync.sh -n` 列候选改动（按目录聚合）；
+  `tools/git_sync.sh -m "单一目的说明" <明确路径...>` 执行
+  体积检查(>5MB 拒绝) → 敏感内容检查 → `git diff --cached --check` → commit →
+  push → 远端 SHA 与本次 blob 核验。该脚本拒绝 `.`、`-A`、`--all`、`*` 与无路径调用，
+  用机制落实本节「禁止 `git add .`」的要求。`-r` 只提交不推送。
 
 提交前必须：
 
