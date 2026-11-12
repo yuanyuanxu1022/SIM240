@@ -270,3 +270,81 @@ SIM240/
 /docs/reports/GITHUB_PAPER1_ONLY_20261110/local_second_paper_before.json
 /docs/reports/GITHUB_PAPER1_ONLY_20261110/makefile_before.txt
 /docs/reports/GITHUB_PAPER1_ONLY_20261110/remote_tree_after.json
+
+# ---------------------------------------------------------------------------
+# Local-only artefacts (added 2026-11-12)
+# ---------------------------------------------------------------------------
+# Recycle bin / editor / tool-local dirs: never version-controlled.
+/.Trash-0/
+/.vscode/
+/.workbuddy/
+/WORKBUDDY/
+/tmp_render/
+/outputs/
+/calib_15.log
+
+# Scratch cases (throwaway calibration runs, recomputable from CASE configs).
+/CASE/_scratch_*/
+
+# Papers received from others — copyright: keep LOCAL ONLY, never publish.
+/docs/reports/*_received_*/sources/
+
+# Single oversized derived diagnostic table (>20MB, recomputable, local only).
+/CASE/unseen_v2_reference_S2_reuse_v1/runs/URV_S2_P_dx1p25_reuse_v1_20261102_01/steady/diagnostics.csv
+
+# ---------------------------------------------------------------------------
+# OpenFOAM heavy artefacts (2026-11-12)
+# 均可由 case 配置 + blockMesh/solver 重建；入库会让仓库膨胀到 GB 级。
+# 核验过：以下模式在库中已跟踪文件数为 0，加规则不会丢失任何已入库内容。
+# ---------------------------------------------------------------------------
+CASE/**/constant/polyMesh/
+CASE/**/_aborted/
+CASE/**/runtime/
+CASE/**/processor*/
+CASE/**/postProcessing/
+
+# OF 场文件（无扩展名）：网格规模决定体积，单文件常见 20-90MB
+CASE/**/U
+CASE/**/Uf
+CASE/**/p
+CASE/**/p_rgh
+CASE/**/phi
+CASE/**/k
+CASE/**/epsilon
+CASE/**/nut
+CASE/**/T
+CASE/**/log.*
+
+# referenceEvidence 下的大表（原始网格坐标导出，可复算）
+CASE/**/referenceEvidence/*.csv
+
+# 会议录音 / 录像：体积大且不适合放在公开仓库
+*.m4a
+*.mp4
+*.wav
+
+# 归档包（历史交付物的 tar.gz，解压即得，不入库）
+*.zip
+*.tar.gz
+*.tgz
+
+# 仿真体数据与二进制场（ParaView .vti / 裸密度场 .rho64）：几百 MB 级，绝不入库
+*.vti
+*.rho64
+*.vtk
+*.raw
+
+# 编辑器/工具自动备份
+*.before
+*.orig
+*.bak
+
+# 他人论文原文 PDF（版权原因仅本地）
+/docs/reports/**/raw/*.pdf
+/docs/reports/**/retrieved/**/*.pdf
+/docs/reports/**/sources/**/*.pdf
+
+# 一次性原始转储（反汇编清单、检索 API 全量返回），仅本地留档
+**/new_disassembly.txt
+/docs/reports/**/raw/*.json
+CASE/**/runs/**/steady/diagnostics.csv
