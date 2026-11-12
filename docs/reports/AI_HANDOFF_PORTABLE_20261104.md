@@ -1,5 +1,11 @@
 # SIM240 项目 — 便携交接单（跨电脑/跨 AI 使用）
 
+## 第一篇图件与汇报缺项已复核，预览同步待远端验收（2026-11-12）
+
+用户明确要求补齐既有清单并检查GitHub图文。起点21610d4的API/树核对已确认12项（4主图、S1中英PNG/PDF/SVG六件、PPT/HTML）均在远端且与本地相同；14张伴读PNG依赖也齐。无需重复上传12原件。发现第2/9/11页PNG仍含旧归属措辞，已从现有PPT按原工具重生成仅三张；PPT/HTML字节及另11张预览、18项科学输出不变。修正首页过期缺件说明，新增图件与14页汇报的Markdown阅读页。证据/范围见docs/reports/PAPER1_GITHUB_ASSETS_20261112/；此条为提交前准备，远端新图片验收待推送后完成。
+
+仅在隔离工作树codex/paper1-assets-20261112提交明确图文路径和简短交接，不夹带主目录其他修改、内部审查原件、第三方PDF/原始场；导师/私有分支不动。浏览器无连接，采用GitHub服务器Markdown与图片HTTP检查，不声称GitHub截图目视验收；三张本地PNG已目视。无新计算或数值验证/run_id、无编译/求解/拟合/Gate/投稿，科学状态与FAIL保持。
+
 ## 老师14项工单已完成只读证据对表，形成有限清单（2026-11-12T17:56:34+08:00）
 
 用户授权本轮只读审查，不改稿或开算。产物PAPER1_teacher_workorder_audit_20261112/REPORT.md、WORKORDER_EVIDENCE_MATRIX.csv/json（WO-1~7、A1~7各一行，含证据/剩余/完成判据）、teacher_geometry_coverage.csv及原始读回。五件母稿SHA与authority一致，本轮未改；235项FVM绑定零漂移。老师分支HEAD ee947b6未变。本地下载的工作建议副本有标题/分隔符轻微漂移，未覆盖他人文件；原GitHub blob另存本轮remote_snapshot/work_advice_original.md。

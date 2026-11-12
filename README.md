@@ -16,6 +16,6 @@
 
 ## 上传完整性与科学状态
 
-2026-11-10核查：当前两母稿、两补充、结论、两派生件及authority/MANIFEST均已上传且与本地一致，补充目录14个CSV已上传。正文4张主图、补充图S1的中英PNG/PDF/SVG共6个文件、第一篇汇报PPT/HTML尚未上传。因此当前仓库不是完整的论文图文包，也不是全部大型原始场数据的备份。第三方文献PDF与受忽略的运行目录未随本轮强制上传。
+2026-11-12复核：此前缺项清单中的正文4张主图、补充图S1中英PNG/PDF/SVG六份文件、第一篇汇报PPT/HTML，共12项已在远端且与本地一致。HTML引用的14张预览图也均已在库，本轮同步其中第2、9、11页的归属措辞。可从[图件与汇报入口](docs/reports/PAPER1_GITHUB_ASSETS_20261112/README.md)或[14页图文预览](docs/reports/PPT_论文汇报_20261109/README.md)直接阅读。该结论仅覆盖列明的图文成果，不是全部大型原始场数据或所有历史链接的完整备份；第三方文献PDF与受忽略运行目录未补传。
 
 本仓库保留真实验证边界和历史FAIL。文件上传、代码存在和编译通过分别不等于数值/物理验证完成或投稿就绪；`reference_qualified=false`、`strict_error_bound_established=false`、`submission_ready=false`保持。
