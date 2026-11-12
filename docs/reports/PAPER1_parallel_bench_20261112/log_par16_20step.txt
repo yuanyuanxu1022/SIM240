@@ -1,0 +1,120 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 13-441953dfbb42
+Exec   : /home/dell/OpenFOAM/dell-13/platforms/linux64GccDPInt32Opt/bin/paper1StokesReferencePar -parallel -case .
+Date   : Nov 12 2026
+Time   : 23:16:28
+Host   : "dell-OptiPlex-Tower-Plus-7010"
+PID    : 329
+I/O    : uncollated
+Case   : /home/dell/yuanyuanxu/SIM240/CASE/_b20p16
+nProcs : 16
+Slaves :
+15
+(
+"dell-OptiPlex-Tower-Plus-7010.330"
+"dell-OptiPlex-Tower-Plus-7010.331"
+"dell-OptiPlex-Tower-Plus-7010.332"
+"dell-OptiPlex-Tower-Plus-7010.333"
+"dell-OptiPlex-Tower-Plus-7010.334"
+"dell-OptiPlex-Tower-Plus-7010.335"
+"dell-OptiPlex-Tower-Plus-7010.336"
+"dell-OptiPlex-Tower-Plus-7010.337"
+"dell-OptiPlex-Tower-Plus-7010.338"
+"dell-OptiPlex-Tower-Plus-7010.339"
+"dell-OptiPlex-Tower-Plus-7010.340"
+"dell-OptiPlex-Tower-Plus-7010.341"
+"dell-OptiPlex-Tower-Plus-7010.342"
+"dell-OptiPlex-Tower-Plus-7010.343"
+"dell-OptiPlex-Tower-Plus-7010.345"
+)
+
+Pstream initialised with:
+    floatTransfer      : false
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0.5
+
+
+SIMPLE: Convergence criteria found
+        p: tolerance 1e-10
+        U: tolerance 1e-10
+
+smoothSolver:  Solving for Ux, Initial residual = 0.0055352710809578425, Final residual = 5.0294779767372268e-13, No Iterations 17
+smoothSolver:  Solving for Uz, Initial residual = 0.0090541479970447074, Final residual = 6.1072090374290883e-13, No Iterations 17
+GAMG:  Solving for p, Initial residual = 0.030508625653045615, Final residual = 6.1129848514783081e-13, No Iterations 37
+smoothSolver:  Solving for Ux, Initial residual = 0.0016628572317649046, Final residual = 4.0525313329266805e-13, No Iterations 16
+smoothSolver:  Solving for Uz, Initial residual = 0.0027187339510184416, Final residual = 4.0201863189216964e-13, No Iterations 17
+GAMG:  Solving for p, Initial residual = 0.022958273558297448, Final residual = 6.0264889057669125e-13, No Iterations 35
+smoothSolver:  Solving for Ux, Initial residual = 0.00049974295123142562, Final residual = 3.9913958168251087e-13, No Iterations 15
+smoothSolver:  Solving for Uz, Initial residual = 0.00081780813759936067, Final residual = 7.6741628379481555e-13, No Iterations 16
+GAMG:  Solving for p, Initial residual = 0.01678311750652085, Final residual = 5.8122770120305708e-13, No Iterations 38
+smoothSolver:  Solving for Ux, Initial residual = 0.00015025952781685958, Final residual = 4.6320699400026998e-13, No Iterations 14
+smoothSolver:  Solving for Uz, Initial residual = 0.00024694303055372178, Final residual = 3.8763690393548355e-13, No Iterations 16
+GAMG:  Solving for p, Initial residual = 0.012028427798145174, Final residual = 3.3331987358919325e-13, No Iterations 41
+smoothSolver:  Solving for Ux, Initial residual = 4.5371034196704079e-05, Final residual = 4.0884431936171977e-13, No Iterations 14
+smoothSolver:  Solving for Uz, Initial residual = 7.8325722635512078e-05, Final residual = 5.6707195441557669e-13, No Iterations 16
+GAMG:  Solving for p, Initial residual = 0.0084830065276182628, Final residual = 6.9507176350733715e-13, No Iterations 43
+smoothSolver:  Solving for Ux, Initial residual = 1.3853277570547673e-05, Final residual = 6.4570332639237162e-13, No Iterations 13
+smoothSolver:  Solving for Uz, Initial residual = 2.6465806403684596e-05, Final residual = 8.8392473522974631e-13, No Iterations 15
+GAMG:  Solving for p, Initial residual = 0.0059633617967010258, Final residual = 9.8438412079919502e-13, No Iterations 39
+smoothSolver:  Solving for Ux, Initial residual = 4.3593562774597735e-06, Final residual = 9.3278010131644325e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 1.09149896991024e-05, Final residual = 5.487541521681523e-13, No Iterations 15
+GAMG:  Solving for p, Initial residual = 0.0041817098263426311, Final residual = 5.0394231906219121e-13, No Iterations 41
+smoothSolver:  Solving for Ux, Initial residual = 2.0914990180549947e-06, Final residual = 6.3272619173870821e-13, No Iterations 13
+smoothSolver:  Solving for Uz, Initial residual = 1.3201566348305319e-05, Final residual = 8.780663151538326e-13, No Iterations 15
+GAMG:  Solving for p, Initial residual = 0.0029302732424786185, Final residual = 8.8508572232089738e-13, No Iterations 35
+smoothSolver:  Solving for Ux, Initial residual = 1.1611675764495989e-06, Final residual = 4.3392560719918712e-13, No Iterations 13
+smoothSolver:  Solving for Uz, Initial residual = 7.4424510296936061e-06, Final residual = 4.8877037673065375e-13, No Iterations 15
+GAMG:  Solving for p, Initial residual = 0.0020578775556859734, Final residual = 4.2958507666405578e-13, No Iterations 42
+smoothSolver:  Solving for Ux, Initial residual = 7.9962941925191261e-07, Final residual = 4.1002561648825679e-13, No Iterations 13
+smoothSolver:  Solving for Uz, Initial residual = 7.8223962558963518e-06, Final residual = 5.5925529789944501e-13, No Iterations 15
+GAMG:  Solving for p, Initial residual = 0.0014338290165710507, Final residual = 5.7743365958981825e-13, No Iterations 33
+smoothSolver:  Solving for Ux, Initial residual = 7.8527892190293395e-07, Final residual = 3.9751138786475523e-13, No Iterations 13
+smoothSolver:  Solving for Uz, Initial residual = 7.554832633711092e-06, Final residual = 5.6810037591431255e-13, No Iterations 15
+GAMG:  Solving for p, Initial residual = 0.0010089929442959489, Final residual = 7.8806639350320042e-13, No Iterations 34
+smoothSolver:  Solving for Ux, Initial residual = 3.4019971492381475e-07, Final residual = 4.2034978335574859e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 2.4355862816215707e-06, Final residual = 5.6944672491596765e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 0.00071472043480740738, Final residual = 6.1418404234881393e-13, No Iterations 35
+smoothSolver:  Solving for Ux, Initial residual = 5.3487949293544836e-07, Final residual = 6.619320793321584e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 4.9317866985530318e-06, Final residual = 9.5645865935346006e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 0.00049502161723419735, Final residual = 3.7668738598155256e-13, No Iterations 44
+smoothSolver:  Solving for Ux, Initial residual = 5.7450635025919539e-07, Final residual = 7.2456717428511582e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 4.6753384195769926e-06, Final residual = 9.0335961778943013e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 0.00035556568532499338, Final residual = 4.6739022737458797e-13, No Iterations 38
+smoothSolver:  Solving for Ux, Initial residual = 4.3212169331823232e-07, Final residual = 5.9519650531256145e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 3.7026224306208783e-06, Final residual = 7.3860772542639921e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 0.00025132087911527539, Final residual = 6.3838482395211242e-13, No Iterations 38
+smoothSolver:  Solving for Ux, Initial residual = 4.1722250628045273e-07, Final residual = 6.1847472924202269e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 4.0127595912749931e-06, Final residual = 8.3156872148449626e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 0.00017215166215956039, Final residual = 4.0039041729412003e-13, No Iterations 35
+smoothSolver:  Solving for Ux, Initial residual = 3.1790304972910516e-07, Final residual = 4.623967585274665e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 2.8363481065669645e-06, Final residual = 6.237227945602654e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 0.00013066929617517898, Final residual = 9.1554535474656512e-13, No Iterations 35
+smoothSolver:  Solving for Ux, Initial residual = 2.8491749511373043e-07, Final residual = 3.679435053539725e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 2.3100738795755402e-06, Final residual = 4.9797319211897984e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 8.9826726590617876e-05, Final residual = 9.774483606673758e-13, No Iterations 30
+smoothSolver:  Solving for Ux, Initial residual = 3.4535293533483203e-07, Final residual = 4.4761555563467933e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 2.8196455299598035e-06, Final residual = 5.7468257221007257e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 6.3522048531528723e-05, Final residual = 7.4263822379632815e-13, No Iterations 28
+smoothSolver:  Solving for Ux, Initial residual = 3.2181770890136651e-07, Final residual = 4.3583431036800618e-13, No Iterations 12
+smoothSolver:  Solving for Uz, Initial residual = 2.586253132518371e-06, Final residual = 5.4132145617060873e-13, No Iterations 14
+GAMG:  Solving for p, Initial residual = 5.1535947896751983e-05, Final residual = 8.6103383544020053e-13, No Iterations 27
+REFERENCE_EQUATION vector_Stokes_no_inertia
+Reference evidence exported; this is NOT acceptance.
+End
+Finalising parallel run
+WALL=11.15 s
