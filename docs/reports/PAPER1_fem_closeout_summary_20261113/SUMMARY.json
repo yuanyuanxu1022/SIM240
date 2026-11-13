@@ -1,0 +1,59 @@
+{
+  "scope": "saved summaries and protocol/source inspection; no raw-field re-verification this turn",
+  "new_solver_runs": 0,
+  "queue_cases": 18,
+  "queue_internal_pass": 17,
+  "queue_internal_fail": 1,
+  "reference_qualification_promoted": false,
+  "groups": {
+    "P": {
+      "count": 17,
+      "LB_abs_mean_percent": 0.9363764705882353,
+      "LB_max_abs_percent": 2.2327,
+      "LB_within_2_percent": 16,
+      "LC_signed_range_percent": [
+        10.8888,
+        197.8563
+      ],
+      "all_LC_positive": true,
+      "precision_note": "recalculated from rounded FEM_COVERAGE.csv; not new raw-field validation"
+    },
+    "T": {
+      "count": 3,
+      "LB_abs_mean_percent": 2.6766666666666667,
+      "LB_max_abs_percent": 3.6452,
+      "LB_within_2_percent": 1,
+      "LC_signed_range_percent": [
+        43.7435,
+        52.2191
+      ],
+      "all_LC_positive": true,
+      "precision_note": "recalculated from rounded FEM_COVERAGE.csv; not new raw-field validation"
+    }
+  },
+  "input_sha256": {
+    "docs/reports/PAPER1_fem_queue_20261113/REPORT.md": "5aa746ff150bc71c173d8321a8cf16a25a52798c1a761eafde6d31673a541e7d",
+    "docs/reports/PAPER1_fem_queue_20261113/FEM_COVERAGE.csv": "ce6706a714af44af4b2373c31dd3c62a6f56603526ad8c3ab811517a32724238",
+    "CASE/paper1_fem_stokes_pilot_v1/QUEUE_STATUS_server.json": "05d9693a7d249e9cc713c2a946823550dc5f62d5c011f5847faeb8cbca256c79",
+    "CASE/paper1_fem_stokes_pilot_v1/PROTOCOL.md": "a78d9d66e3989a50be0132987326936f5ea8fb6c60449b3599288be120f00e53",
+    "CASE/paper1_fem_stokes_pilot_v1/verify_results.py": "5d564b7439fd6075e7a67c2ba07b1e0ceb934150ef6dd2f8dd2186aa3cd6abe6",
+    "docs/reports/PAPER1_h125_FEM_reference_review_20261113/VERDICT.json": "0b0af2fcd56811e03d6e33a72079a94a31535efa1790a62598ff75a1f5229cd8"
+  },
+  "coverage": {
+    "P_targets_with_numeric_evidence": 19,
+    "P_FEM_internal_pass": 17,
+    "P_other_qualified_FVM": 2,
+    "P_prior_qualified_FVM_total_including_h75_overlap": 3,
+    "T_teacher_targets_FEM_internal_pass": 3,
+    "T_teacher_target_with_implementation_protocol_mismatch": "h25/d100",
+    "T_additional_outside_teacher_four": "h125/d120"
+  },
+  "observed_text_issues": [
+    "teacher confirmation h125 T exponent printed e-23; correct existing fine result e-22",
+    "independent numerical evidence does not imply formal reference qualification",
+    "all positive refers to 17 P and 3 T accepted pilot comparisons; not all 36 newly checked by FEM",
+    "reported section-flux sequence does not establish first-order convergence",
+    "two sampled cross-machine controls do not establish all environments equivalent",
+    "fixed-d h25-to-h50 P LC counterexample remains; no universal thinnest-gap-worst conclusion"
+  ]
+}

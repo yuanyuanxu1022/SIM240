@@ -1,5 +1,7 @@
 # FEM 批量队列运行报告（2026-11-13）
 
+> **2026-11-13 晚补注（不改正文）**：本文 §4 记录 h25/d100 横槽"未通过"，那是**当时有效的验收脚本（scope-v1）**把协议的"横槽 fine 截面通量 0.01%"门槛错误地施加到全部三档造成的，属实现与协议不一致，不是数值缺陷。协议自首次提交（`git show 25f1929`）起就只把该门槛限定在最细档。修复后从**同一批保存场**重新复核（未重跑流场），24 例全部通过，`h25_d100_T` 转为 `PILOT_NUMERICAL_CHECKS_PASS`，其粗档超线值以诊断形式保留。原脚本与原 FAIL 已归档于 `CASE/paper1_fem_stokes_pilot_v1/archive_acceptance_scope_v1/`；本目录 `FEM_COVERAGE.csv` 已按新版本刷新，旧表另存为 `FEM_COVERAGE_superseded_scope_v1.csv`。逐点裁定见 `docs/reports/PAPER1_fem_portfolio_review_20261113/REPORT.md`。**"24 例通过"仍不等于"取得论文正式参考资格"**，身份判断见该报告第五节。
+
 > 本文只记录本轮实际运行的算例、独立复核结果与由此产生的偏差数值。
 > **FEM 结果仍为试点候选，未取得论文正式参考资格。** `PILOT_NUMERICAL_CHECKS_PASS` 是内部数值检查，不是科学接收标准。本文不替换 36 条主统计、不改历史 FAIL、不进入下一 Gate。
 
