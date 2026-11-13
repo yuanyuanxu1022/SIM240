@@ -354,8 +354,9 @@ def verify_case(case: str):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("cases", nargs="+", choices=["flat_h75_P", "flat_h75_T",
-                        "h75_d100_P", "h75_d100_T", "h50_d120_T", "h125_d120_T"])
+    # Case names are validated by reintegrate(), which reads the geometry from
+    # the saved metadata instead of trusting the command line spelling.
+    parser.add_argument("cases", nargs="+")
     args = parser.parse_args()
     failed = False
     for case in args.cases:

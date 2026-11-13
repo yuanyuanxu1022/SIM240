@@ -383,19 +383,38 @@ def summarize(case: str):
     return rows
 
 
+def parse_case(case: str):
+    """Return (h_nm, d_nm, direction) for a case name.
+
+    Accepted forms are the flat reference cases ``flat_h75_P``/``flat_h75_T``
+    and any rectangular geometry ``h{H}_d{D}_{P|T}`` with H > 0 and D >= 0.
+    The geometry is taken from the name only; nothing is inferred or clamped.
+    """
+    parts = case.split("_")
+    if case.startswith("flat"):
+        if len(parts) != 3 or parts[2] not in ("P", "T"):
+            raise ValueError(f"bad flat case name: {case}")
+        return 75.0, 0.0, parts[2]
+    if len(parts) != 3:
+        raise ValueError(f"case name must be h{{H}}_d{{D}}_{{P|T}}: {case}")
+    if parts[0][:1] != "h" or parts[1][:1] != "d" or parts[2] not in ("P", "T"):
+        raise ValueError(f"case name must be h{{H}}_d{{D}}_{{P|T}}: {case}")
+    h = float(parts[0][1:])
+    d = float(parts[1][1:])
+    if not math.isfinite(h) or h <= 0:
+        raise ValueError(f"gap height must be positive: {case}")
+    if not math.isfinite(d) or d < 0:
+        raise ValueError(f"groove depth must be non-negative: {case}")
+    return h, d, parts[2]
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--case", required=True,
-                        choices=["flat_h75_P", "flat_h75_T", "h75_d100_P",
-                                 "h75_d100_T", "h50_d120_T", "h125_d120_T"])
+    parser.add_argument("--case", required=True)
     parser.add_argument("--levels", nargs="+", type=float, default=[5.0, 2.5, 1.25])
     parser.add_argument("--overwrite", action="store_true")
     args = parser.parse_args()
-    parts = args.case.split("_")
-    if args.case.startswith("flat"):
-        h, d, direction = 75.0, 0.0, parts[-1]
-    else:
-        h, d, direction = float(parts[0][1:]), float(parts[1][1:]), parts[-1]
+    h, d, direction = parse_case(args.case)
     for dx in args.levels:
         result = run_level(args.case, h, d, direction, dx, args.overwrite)
         print(json.dumps({k: result[k] for k in

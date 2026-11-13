@@ -1,0 +1,101 @@
+[2026-11-13 07:27:07] queue start pid=1737611 cases=1 levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:27:07] [1/1] h75_d100_P start  h=75 d=100 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:27:07]           h75_d100_P dx5 done  K=9.7441031332e-23  tri=2400  power=1.290e-11  res=1.08e-13
+[2026-11-13 07:27:07]           h75_d100_P dx2.5 done  K=9.7500854635e-23  tri=9600  power=5.052e-11  res=4.59e-13
+[2026-11-13 07:27:08]           h75_d100_P dx1.25 done  K=9.7524546693e-23  tri=38400  power=1.998e-10  res=1.84e-12
+[2026-11-13 07:27:14] [1/1] h75_d100_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=9.752454669277066e-23  6.6s  problems=[]
+[2026-11-13 07:27:14] queue done: 1 passed, 0 not passed, total 1
+[2026-11-13 07:27:14] status written to /home/jn/SIM240/CASE/paper1_fem_stokes_pilot_v1/QUEUE_STATUS.json and /home/jn/SIM240/CASE/paper1_fem_stokes_pilot_v1/QUEUE_STATUS.csv
+[2026-11-13 07:27:23] queue start pid=1737806 cases=18 levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:27:23] [1/18] h100_d100_T start  h=100 d=100 T  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:27:24]           h100_d100_T dx5 done  K=9.7489374961e-23  tri=2880  power=1.404e-11  res=5.17e-13
+[2026-11-13 07:27:28]           h100_d100_T dx2.5 done  K=9.7378355435e-23  tri=11520  power=5.445e-11  res=4.29e-12
+[2026-11-13 07:30:55]           h100_d100_T dx1.25 done  K=9.7325615325e-23  tri=46080  power=2.189e-10  res=2.08e-11
+[2026-11-13 07:31:05] [1/18] h100_d100_T PILOT_NUMERICAL_CHECKS_PASS  K_fine=9.73256153251344e-23  221.9s  problems=[]
+[2026-11-13 07:31:05] [2/18] h25_d100_T start  h=25 d=100 T  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:31:06]           h25_d100_T dx5 done  K=2.0770394941e-24  tri=1440  power=1.099e-12  res=4.67e-13
+[2026-11-13 07:31:07]           h25_d100_T dx2.5 done  K=2.0718834870e-24  tri=5760  power=3.719e-12  res=1.29e-12
+[2026-11-13 07:32:37]           h25_d100_T dx1.25 done  K=2.0694657663e-24  tri=23040  power=1.538e-11  res=7.94e-12
+[2026-11-13 07:32:42] [2/18] h25_d100_T PILOT_CHECKS_FAIL  K_fine=2.0694657662702176e-24  96.4s  problems=['h25_d100_T dx5.0: section flux']
+[2026-11-13 07:32:42] [3/18] h25_d25_P start  h=25 d=25 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:32:42]           h25_d25_P dx5 done  K=4.7738638920e-24  tri=720  power=2.565e-12  res=1.74e-14
+[2026-11-13 07:32:42]           h25_d25_P dx2.5 done  K=4.7776274464e-24  tri=2880  power=9.259e-12  res=7.71e-14
+[2026-11-13 07:32:42]           h25_d25_P dx1.25 done  K=4.7790889196e-24  tri=11520  power=3.626e-11  res=3.18e-13
+[2026-11-13 07:32:44] [3/18] h25_d25_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=4.77908891960637e-24  1.8s  problems=[]
+[2026-11-13 07:32:44] [4/18] h25_d50_P start  h=25 d=50 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:32:44]           h25_d50_P dx5 done  K=1.1795249622e-23  tri=960  power=4.874e-12  res=3.48e-14
+[2026-11-13 07:32:44]           h25_d50_P dx2.5 done  K=1.1801226906e-23  tri=3840  power=1.883e-11  res=1.47e-13
+[2026-11-13 07:32:44]           h25_d50_P dx1.25 done  K=1.1803551033e-23  tri=15360  power=7.262e-11  res=6.10e-13
+[2026-11-13 07:32:46] [4/18] h25_d50_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=1.1803551033122368e-23  2.5s  problems=[]
+[2026-11-13 07:32:46] [5/18] h25_d100_P start  h=25 d=100 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:32:46]           h25_d100_P dx5 done  K=3.4096359600e-23  tri=1440  power=9.159e-12  res=6.84e-14
+[2026-11-13 07:32:46]           h25_d100_P dx2.5 done  K=3.4104727635e-23  tri=5760  power=3.532e-11  res=2.88e-13
+[2026-11-13 07:32:47]           h25_d100_P dx1.25 done  K=3.4107980831e-23  tri=23040  power=1.402e-10  res=1.18e-12
+[2026-11-13 07:32:50] [5/18] h25_d100_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=3.4107980830592816e-23  3.8s  problems=[]
+[2026-11-13 07:32:50] [6/18] h50_d25_P start  h=50 d=25 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:32:50]           h50_d25_P dx5 done  K=1.9117812036e-23  tri=1200  power=5.118e-12  res=4.09e-14
+[2026-11-13 07:32:50]           h50_d25_P dx2.5 done  K=1.9131979643e-23  tri=4800  power=1.927e-11  res=1.76e-13
+[2026-11-13 07:32:50]           h50_d25_P dx1.25 done  K=1.9137569770e-23  tri=19200  power=7.609e-11  res=7.21e-13
+[2026-11-13 07:32:53] [6/18] h50_d25_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=1.9137569770444775e-23  3.1s  problems=[]
+[2026-11-13 07:32:53] [7/18] h50_d50_P start  h=50 d=50 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:32:53]           h50_d50_P dx5 done  K=3.0231767984e-23  tri=1440  power=7.305e-12  res=5.98e-14
+[2026-11-13 07:32:53]           h50_d50_P dx2.5 done  K=3.0253712716e-23  tri=5760  power=2.761e-11  res=2.49e-13
+[2026-11-13 07:32:54]           h50_d50_P dx1.25 done  K=3.0262379358e-23  tri=23040  power=1.086e-10  res=9.94e-13
+[2026-11-13 07:32:57] [7/18] h50_d50_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=3.026237935831653e-23  3.8s  problems=[]
+[2026-11-13 07:32:57] [8/18] h50_d75_P start  h=50 d=75 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:32:57]           h50_d75_P dx5 done  K=4.3043943608e-23  tri=1680  power=9.381e-12  res=7.35e-14
+[2026-11-13 07:32:57]           h50_d75_P dx2.5 done  K=4.3070719815e-23  tri=6720  power=3.535e-11  res=2.99e-13
+[2026-11-13 07:32:57]           h50_d75_P dx1.25 done  K=4.3081293695e-23  tri=26880  power=1.384e-10  res=1.22e-12
+[2026-11-13 07:33:01] [8/18] h50_d75_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=4.308129369490616e-23  4.4s  problems=[]
+[2026-11-13 07:33:01] [9/18] h50_d100_P start  h=50 d=100 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:01]           h50_d100_P dx5 done  K=5.6859326070e-23  tri=1920  power=1.092e-11  res=8.22e-14
+[2026-11-13 07:33:01]           h50_d100_P dx2.5 done  K=5.6888884436e-23  tri=7680  power=4.052e-11  res=3.37e-13
+[2026-11-13 07:33:02]           h50_d100_P dx1.25 done  K=5.6900555610e-23  tri=30720  power=1.617e-10  res=1.40e-12
+[2026-11-13 07:33:06] [9/18] h50_d100_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=5.690055561017374e-23  5.2s  problems=[]
+[2026-11-13 07:33:06] [10/18] h75_d25_P start  h=75 d=25 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:06]           h75_d25_P dx5 done  K=5.1249975752e-23  tri=1680  power=9.237e-12  res=8.05e-14
+[2026-11-13 07:33:07]           h75_d25_P dx2.5 done  K=5.1280750662e-23  tri=6720  power=3.535e-11  res=3.39e-13
+[2026-11-13 07:33:07]           h75_d25_P dx1.25 done  K=5.1292923689e-23  tri=26880  power=1.411e-10  res=1.37e-12
+[2026-11-13 07:33:11] [10/18] h75_d25_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=5.12929236890886e-23  4.4s  problems=[]
+[2026-11-13 07:33:11] [11/18] h75_d50_P start  h=75 d=50 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:11]           h75_d50_P dx5 done  K=6.6850999540e-23  tri=1920  power=1.115e-11  res=9.22e-14
+[2026-11-13 07:33:11]           h75_d50_P dx2.5 done  K=6.6897139973e-23  tri=7680  power=4.263e-11  res=3.85e-13
+[2026-11-13 07:33:12]           h75_d50_P dx1.25 done  K=6.6915412151e-23  tri=30720  power=1.664e-10  res=1.57e-12
+[2026-11-13 07:33:16] [11/18] h75_d50_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=6.691541215079818e-23  5.1s  problems=[]
+[2026-11-13 07:33:16] [12/18] h75_d75_P start  h=75 d=75 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:16]           h75_d75_P dx5 done  K=8.2226008046e-23  tri=2160  power=1.216e-11  res=9.92e-14
+[2026-11-13 07:33:16]           h75_d75_P dx2.5 done  K=8.2280988562e-23  tri=8640  power=4.737e-11  res=4.19e-13
+[2026-11-13 07:33:17]           h75_d75_P dx1.25 done  K=8.2302763287e-23  tri=34560  power=1.858e-10  res=1.71e-12
+[2026-11-13 07:33:22] [12/18] h75_d75_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=8.230276328671392e-23  5.8s  problems=[]
+[2026-11-13 07:33:22] [13/18] h75_d120_P start  h=75 d=120 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:22]           h75_d120_P dx5 done  K=1.0954054695e-22  tri=2592  power=1.360e-11  res=1.18e-13
+[2026-11-13 07:33:22]           h75_d120_P dx2.5 done  K=1.0960256112e-22  tri=10368  power=5.272e-11  res=4.82e-13
+[2026-11-13 07:33:23]           h75_d120_P dx1.25 done  K=1.0962712028e-22  tri=41472  power=2.094e-10  res=1.95e-12
+[2026-11-13 07:33:29] [13/18] h75_d120_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=1.0962712027761157e-22  7.0s  problems=[]
+[2026-11-13 07:33:29] [14/18] h100_d100_P start  h=100 d=100 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:29]           h100_d100_P dx5 done  K=1.6408746658e-22  tri=2880  power=1.755e-11  res=1.54e-13
+[2026-11-13 07:33:29]           h100_d100_P dx2.5 done  K=1.6418558983e-22  tri=11520  power=6.820e-11  res=6.28e-13
+[2026-11-13 07:33:30]           h100_d100_P dx1.25 done  K=1.6422448819e-22  tri=46080  power=2.713e-10  res=2.55e-12
+[2026-11-13 07:33:37] [14/18] h100_d100_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=1.6422448818792988e-22  8.0s  problems=[]
+[2026-11-13 07:33:37] [15/18] h125_d25_P start  h=125 d=25 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:37]           h125_d25_P dx5 done  K=2.0009098197e-22  tri=2640  power=2.330e-11  res=2.01e-13
+[2026-11-13 07:33:37]           h125_d25_P dx2.5 done  K=2.0017280823e-22  tri=10560  power=8.639e-11  res=8.33e-13
+[2026-11-13 07:33:38]           h125_d25_P dx1.25 done  K=2.0020520089e-22  tri=42240  power=3.472e-10  res=3.36e-12
+[2026-11-13 07:33:44] [15/18] h125_d25_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=2.0020520088599852e-22  7.4s  problems=[]
+[2026-11-13 07:33:44] [16/18] h125_d50_P start  h=125 d=50 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:44]           h125_d50_P dx5 done  K=2.2626283490e-22  tri=2880  power=2.439e-11  res=2.00e-13
+[2026-11-13 07:33:44]           h125_d50_P dx2.5 done  K=2.2638002119e-22  tri=11520  power=9.213e-11  res=8.77e-13
+[2026-11-13 07:33:46]           h125_d50_P dx1.25 done  K=2.2642648015e-22  tri=46080  power=3.659e-10  res=3.51e-12
+[2026-11-13 07:33:52] [16/18] h125_d50_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=2.264264801546696e-22  7.9s  problems=[]
+[2026-11-13 07:33:52] [17/18] h125_d75_P start  h=125 d=75 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:33:52]           h125_d75_P dx5 done  K=2.4694760305e-22  tri=3120  power=2.511e-11  res=2.05e-13
+[2026-11-13 07:33:52]           h125_d75_P dx2.5 done  K=2.4708287334e-22  tri=12480  power=9.438e-11  res=8.59e-13
+[2026-11-13 07:33:54]           h125_d75_P dx1.25 done  K=2.4713651530e-22  tri=49920  power=3.722e-10  res=3.55e-12
+[2026-11-13 07:34:01] [17/18] h125_d75_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=2.471365153014663e-22  8.6s  problems=[]
+[2026-11-13 07:34:01] [18/18] h125_d100_P start  h=125 d=100 P  levels=[5.0, 2.5, 1.25]
+[2026-11-13 07:34:01]           h125_d100_P dx5 done  K=2.6485187410e-22  tri=3360  power=2.486e-11  res=2.07e-13
+[2026-11-13 07:34:01]           h125_d100_P dx2.5 done  K=2.6499630565e-22  tri=13440  power=9.518e-11  res=8.73e-13
+[2026-11-13 07:34:03]           h125_d100_P dx1.25 done  K=2.6505358426e-22  tri=53760  power=3.755e-10  res=3.52e-12
+[2026-11-13 07:34:10] [18/18] h125_d100_P PILOT_NUMERICAL_CHECKS_PASS  K_fine=2.650535842574177e-22  9.4s  problems=[]
+[2026-11-13 07:34:10] queue done: 17 passed, 1 not passed, total 18
+[2026-11-13 07:34:10] status written to /home/jn/SIM240/CASE/paper1_fem_stokes_pilot_v1/QUEUE_STATUS.json and /home/jn/SIM240/CASE/paper1_fem_stokes_pilot_v1/QUEUE_STATUS.csv

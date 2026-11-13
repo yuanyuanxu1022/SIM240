@@ -10,3 +10,23 @@
 隔离运行环境：`/home/dell/.workbuddy/binaries/python/envs/default/bin/python`。依赖版本写入每份结果JSON。当前实现使用scikit-fem 12的 `ElementTriP2` / `ElementTriP1`，不是FreeFEM脚本；科学离散路线不变。
 
 完成状态必须以各算例 `VERIFICATION.json` 和最终报告为准。`PILOT_NUMERICAL_CHECKS_PASS` 不等于论文参考资格，不自动触发下一几何或19P+4T。
+
+## 批量队列（2026-11-13）
+
+`run_queue.py` 按老师工单把尚未覆盖的 18 个格子排队跑完（沿槽16 + 横槽2），每例三档网格并自动调用独立复核。
+
+```
+# 先看要跑什么，不计算
+python3 run_queue.py --dry-run
+
+# 全队列，中断后再执行同一条命令即从断点继续
+python3 run_queue.py
+
+# 只跑某几个
+python3 run_queue.py --cases h100_d100_T h25_d100_T
+
+# 重算某例（会先删该例旧输出）
+python3 run_queue.py --redo h25_d100_T
+```
+
+状态在每个算例结束时原子刷新到 `QUEUE_STATUS.json` / `QUEUE_STATUS.csv`，日志追加到 `queue_run.log`。单例失败只记录、不终止队列；失败不自动改门槛或加档。
