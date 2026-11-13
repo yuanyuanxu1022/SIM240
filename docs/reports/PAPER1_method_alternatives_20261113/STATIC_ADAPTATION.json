@@ -1,0 +1,21 @@
+{
+  "status": "STATIC_FEASIBILITY_ONLY_NOT_IMPLEMENTED",
+  "recommended_formal_candidate": "2D mixed FEM: scalar Poisson along grooves; Taylor-Hood Stokes across grooves",
+  "specialist_candidate": "Xue2025 periodic rational Stokes for transverse direction",
+  "code_commit": "7235ab345324a5928d9c04360567214be067b396",
+  "target_geometry": "one flat no-slip wall and one rectangular-groove wall; phi=0.5; periodic",
+  "code_specific_gaps": [
+    "Replace both patterned walls by flat lower wall plus rectangular upper groove boundary",
+    "Recheck horizontal-reflection shortcuts and fixed l1/l2 block sizes after resampling",
+    "Preserve periodic pressure-drop driving; do not add uniform body force a second time",
+    "Add cross-section flux integration and convert q to K=mu*P*q/DeltaP in m^3",
+    "Boundary residual must be evaluated at independent points, not only fitted collocation points",
+    "Check polynomial/rational basis, pole placement, boundary resolution and quadrature convergence",
+    "No independent along-groove Poisson reference supplied by this transverse Stokes script",
+    "Check MATLAB/Octave/Chebfun availability and compatibility",
+    "Check repository licensing before code redistribution"
+  ],
+  "execution_authorized": false,
+  "coverage_decided": false,
+  "method_selected_for_formal_run": false
+}

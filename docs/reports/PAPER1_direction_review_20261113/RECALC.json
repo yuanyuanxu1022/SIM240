@@ -1,0 +1,215 @@
+{
+  "role": "descriptive recomputation of saved data; no solver or reference requalification",
+  "DOE": {
+    "P": {
+      "response": "signed V2 relative discrepancy versus 5nm OpenLB, percent",
+      "h_nm": [
+        50,
+        75,
+        125
+      ],
+      "d_nm": [
+        25,
+        50,
+        75,
+        100,
+        120
+      ],
+      "matrix": [
+        [
+          3.3782505907145044,
+          7.585381939981617,
+          9.334483551774797,
+          9.913940662092703,
+          10.1136946356986
+        ],
+        [
+          0.7136641218855155,
+          2.9205345859841136,
+          4.619934830759509,
+          5.897230439414769,
+          6.7526728795734625
+        ],
+        [
+          -2.9416927790370972,
+          -6.054932468327534,
+          -8.449998491959699,
+          -9.914300353322346,
+          -10.504978243933639
+        ]
+      ],
+      "h_means": [
+        8.065150276052444,
+        4.180807371523474,
+        -7.573180467316062
+      ],
+      "d_means": [
+        0.3834073111876409,
+        1.4836613525460656,
+        1.8348066301915358,
+        1.965623582728375,
+        2.1204630904461412
+      ],
+      "equal_weight_sample_SS_shares_percent": {
+        "h": 87.65363355115048,
+        "d": 0.7711649738253331,
+        "interaction_remainder": 11.575201475024166
+      },
+      "residual_df_with_full_interaction": 0,
+      "p_values_certified": false
+    },
+    "T": {
+      "response": "signed V2 relative discrepancy versus 5nm OpenLB, percent",
+      "h_nm": [
+        50,
+        75,
+        125
+      ],
+      "d_nm": [
+        25,
+        50,
+        75,
+        100,
+        120
+      ],
+      "matrix": [
+        [
+          -2.5294874203264706,
+          0.09191549300591184,
+          -1.1883790177437348,
+          -4.18856850751681,
+          -6.920727179235653
+        ],
+        [
+          -2.45244872066952,
+          2.7631503109531996,
+          3.858045905702223,
+          2.354970328895467,
+          0.347237519271415
+        ],
+        [
+          -4.0311577103615885,
+          1.2237506048919267,
+          3.8386104793685982,
+          4.182118091352871,
+          3.480193649185326
+        ]
+      ],
+      "h_means": [
+        -2.9470493263633513,
+        1.374191068830557,
+        1.7387030228874267
+      ],
+      "d_means": [
+        -3.0043646171191933,
+        1.3596054696170128,
+        2.1694257891090287,
+        0.7828399709105094,
+        -1.0310986702596374
+      ],
+      "equal_weight_sample_SS_shares_percent": {
+        "h": 40.08117138514168,
+        "d": 30.516790752055876,
+        "interaction_remainder": 29.40203786280244
+      },
+      "residual_df_with_full_interaction": 0,
+      "p_values_certified": false
+    }
+  },
+  "saved_FVM_assessment": {
+    "comparisons": [
+      {
+        "point": "h75_d100_P",
+        "status": "PASS",
+        "grid_mid_coarse_percent": 0.0791537791228425,
+        "grid_fine_mid_percent": 0.02798041490544856,
+        "algebraic_change_percent": 1.1368683772161603e-11,
+        "reference_accepted": true,
+        "delta_K_percent": 0.8041853561713497,
+        "Kref_m3": 9.755622669730348e-23,
+        "LC_error_percent": 146.91957122745603,
+        "V2_error_percent": 6.74884045919959,
+        "V2_improved": true
+      },
+      {
+        "point": "h75_d100_T",
+        "status": "FAIL",
+        "grid_mid_coarse_percent": 0.194278708111717,
+        "grid_fine_mid_percent": 0.08258503193038225,
+        "algebraic_change_percent": 0.00015755683335783033,
+        "reference_accepted": true,
+        "delta_K_percent": 2.5110440511747933,
+        "Kref_m3": 4.340041663047474e-23,
+        "LC_error_percent": 50.186548651859944,
+        "V2_error_percent": 4.925148722420958,
+        "V2_improved": true
+      },
+      {
+        "point": "h25_d100_T",
+        "status": "NOT_ASSESSABLE"
+      },
+      {
+        "point": "h50_d120_P",
+        "status": "PASS",
+        "grid_mid_coarse_percent": 0.06942486932384195,
+        "grid_fine_mid_percent": 0.02336100073155878,
+        "algebraic_change_percent": 1.2908563107316695e-10,
+        "reference_accepted": true,
+        "delta_K_percent": 0.6914785654443145,
+        "Kref_m3": 6.838617932100589e-23,
+        "LC_error_percent": 206.9577343710259,
+        "V2_error_percent": 10.875107231723247,
+        "V2_improved": true
+      },
+      {
+        "point": "h125_d120_P",
+        "status": "PASS",
+        "grid_mid_coarse_percent": 0.061160968252915726,
+        "grid_fine_mid_percent": 0.022418651133337963,
+        "algebraic_change_percent": 1.4055423491754482e-11,
+        "reference_accepted": true,
+        "delta_K_percent": 0.6295060578172196,
+        "Kref_m3": 2.7840399124225664e-22,
+        "LC_error_percent": 149.32667580281085,
+        "V2_error_percent": -9.941601660534316,
+        "V2_improved": true
+      },
+      {
+        "point": "h125_d120_T",
+        "status": "NOT_ASSESSABLE"
+      }
+    ],
+    "baseline": {
+      "Aref": 2.2478177462656386,
+      "A5": 2.210390488544205,
+      "A_difference_percent": -1.6650485913999313,
+      "beta_ref_deg": 23.983129844108817,
+      "beta5_deg": 24.342412084305693,
+      "beta_difference_deg": 0.35928224019687605,
+      "A_pass": true,
+      "beta_pass": true,
+      "ALC": 3.6956052262174715,
+      "ALC_vs_reference_percent": 64.40857949258039,
+      "betaLC_deg": 15.141167350229109,
+      "betaLC_minus_reference_deg": -8.841962493879707,
+      "evidence_role": "derived from the same two main conductances"
+    },
+    "raw_fields_reintegrated_this_turn": false
+  },
+  "h125_reported_Ux_segment": {
+    "source": "synthesis report, not newly retrieved server log",
+    "values": [
+      2.7847e-09,
+      2.6893e-09,
+      2.5976e-09,
+      2.4243e-09,
+      2.287e-09
+    ],
+    "per_1000_ratios": [
+      0.9657413724997306,
+      0.965901907559588,
+      0.9660665455198476
+    ],
+    "interpretation": "positive decline is compatible with slow geometric convergence; no nonzero residual floor established; no runtime promise"
+  }
+}
