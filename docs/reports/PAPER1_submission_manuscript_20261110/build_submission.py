@@ -57,7 +57,7 @@ def build_cn() -> str:
     # 1) 删内部页首注：工作稿身份行 + 同步日期/合入快照行（含其后的空行）
     lines = t.splitlines(keepends=True)
     i_bold = next(i for i, l in enumerate(lines) if l.startswith("**中文稿·正式工作稿"))
-    i_note = next(i for i, l in enumerate(lines) if l.startswith("同步日期：2026-11-10"))
+    i_note = next(i for i, l in enumerate(lines) if l.startswith("同步日期："))
     if i_note != i_bold + 2:
         raise SystemExit("[失败] 页首注行距异常，母本结构已变，请人工确认")
     t = "".join(lines[:i_bold]) + "".join(lines[i_note + 2:])
@@ -94,6 +94,7 @@ def build_cn() -> str:
         "e05b3f21171ce52a66af41dfe172e79c0a099c20)，入口为 `07_第一篇代码数据更新_20261107/`。"
         "该快照仅对有权限人员开放，含保存数字的只读复核脚本；不等于历史构建环境完整复现，"
         "也不是公众可下载的数据发布。"
+        "稿件修订副本与上述代码数据快照分别保全于私有作者工作分支。"
     )
     t = rep(t, "\n## 参考文献",
             "\n## 数据与代码可用性\n\n" + new_avail + "\n\n---\n\n## 参考文献",
