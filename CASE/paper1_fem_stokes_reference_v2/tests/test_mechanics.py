@@ -89,7 +89,13 @@ class AuthorizationTests(unittest.TestCase):
             with self.assertRaises(PermissionError):
                 receipt.check_authorization("h50_d25_T")
 
-    def test_blocked_scope_point_is_refused(self):
+    def test_non_eligible_point_is_refused(self):
+        """Any status other than ELIGIBLE must be refused, whatever it is called.
+
+        The assertion deliberately does not name the status: the h25 points moved
+        from "pending scope" to "excluded by author decision" and the gate must
+        not depend on which of those words is current.
+        """
         with _pkgcopy.PackageCopy():
             receipt.atomic_write_json(receipt.AUTHORIZATION_PATH, {
                 "schema": "sim240_fem_authorization/1",
@@ -98,7 +104,11 @@ class AuthorizationTests(unittest.TestCase):
             })
             with self.assertRaises(PermissionError) as caught:
                 receipt.check_authorization("h25_d25_T")
-            self.assertIn("BLOCKED_PENDING_SCOPE", str(caught.exception))
+            message = str(caught.exception)
+            self.assertIn("h25_d25_T", message)
+            point = receipt.point_for_case("h25_d25_T")
+            self.assertNotEqual(point["status"], "ELIGIBLE")
+            self.assertIn(point["status"], message)
 
     def test_authorization_bound_to_other_release_is_refused(self):
         with _pkgcopy.PackageCopy():
@@ -155,7 +165,8 @@ class EndToEndRefusalTests(unittest.TestCase):
             })
             code, output = self._run("h25_d25_T")
             self.assertEqual(code, receipt.EXIT_UNAUTHORIZED)
-            self.assertIn("BLOCKED_PENDING_SCOPE", output)
+            self.assertIn("h25_d25_T", output)
+            self.assertIn(receipt.point_for_case("h25_d25_T")["status"], output)
             self.assertFalse((root / "results" / "h25_d25_T").exists())
 
     def test_existing_results_directory_is_refused(self):

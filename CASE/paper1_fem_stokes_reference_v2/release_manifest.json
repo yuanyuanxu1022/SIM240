@@ -1,18 +1,18 @@
 {
   "schema": "sim240_fem_release/1",
   "package": "paper1_fem_stokes_reference_v2",
-  "frozen_at": "2026-11-13T15:34:13Z",
-  "reason": "PROTOCOL 4.4 states the mechanism boundary explicitly: conclusions are recomputable and backfilling is ineffective, but receipts are unsigned and wholesale forgery together with fields is not detectable (no run has occurred)",
+  "frozen_at": "2026-11-13T15:40:03Z",
+  "reason": "scope decision enforced by tests and counted at 12 runs (22+12=34 records, 36 comparisons, 17 paired geometries); README usage no longer needs --hold (no run has occurred)",
   "files": [
     {
       "path": "PROTOCOL.md",
-      "bytes": 14371,
-      "sha256": "d86001a561105e31c56a9c9a4276fc6785e97ae984b51a5d23fb87b240d4e151"
+      "bytes": 15374,
+      "sha256": "004b204aa6e92ac68916f7514aeed5060f375120d301669197b52ba36b857001"
     },
     {
       "path": "README.md",
-      "bytes": 3445,
-      "sha256": "4a398db79ee284a550cb4d5b61f443d10c3a85af78a8c44d434b4506139e5612"
+      "bytes": 3832,
+      "sha256": "0e1509b40428f1bd1594e069ad42c08d5bda3ace0841a4dd30560107e77e9abf"
     },
     {
       "path": "acceptance_rule.json",
@@ -41,8 +41,8 @@
     },
     {
       "path": "points.json",
-      "bytes": 4804,
-      "sha256": "766efa4ea2bca4664b9b8d92294d1b766197ea1ae9a52362566a8622027b1500"
+      "bytes": 6260,
+      "sha256": "41b27999f5b7f6e90b29910ebf4f3c0de4415e20b161d938279200d2e8a5645f"
     },
     {
       "path": "receipt.py",
@@ -86,13 +86,18 @@
     },
     {
       "path": "tests/test_mechanics.py",
-      "bytes": 11302,
-      "sha256": "b3a41f1b72bae9e0d9da670518f746002eba53f135aa880465b3d5eb42081ffc"
+      "bytes": 11869,
+      "sha256": "3df97d91d234f2122b75f27b7a840d34bf65b01b68d4fac37cbeae919001fe04"
     },
     {
       "path": "tests/test_plumbing.py",
       "bytes": 6505,
       "sha256": "9bb7cf7e9fc66732b063a1c4a2eb6f930cdc8e4d23e31b344ac449584c358ad2"
+    },
+    {
+      "path": "tests/test_scope_decision.py",
+      "bytes": 2952,
+      "sha256": "792abb47bddfd3816725c9ddb66bd5a5b1d29920583de4cb7e72749cbd5f5f6b"
     },
     {
       "path": "tests/test_single_attempt.py",
@@ -125,7 +130,7 @@
     "machine": "x86_64",
     "hostname": "dell-OptiPlex-Tower-Plus-7010"
   },
-  "point_set_sha256": "766efa4ea2bca4664b9b8d92294d1b766197ea1ae9a52362566a8622027b1500",
+  "point_set_sha256": "41b27999f5b7f6e90b29910ebf4f3c0de4415e20b161d938279200d2e8a5645f",
   "acceptance_rule_sha256": "f9f1d2c810dac2063736a5d23d259293b4bda8cc57e5dd337e11a4912ca7d3a3",
   "solver_is_byte_identical_to": {
     "package": "paper1_fem_stokes_pilot_v1",
@@ -133,5 +138,5 @@
     "verify_results.py": true
   },
   "note": "Checking this manifest does not grant any numerical or reference status. It only proves the package did not change between freeze and run.",
-  "release_sha256": "5225909d924de013ae20f031b7e5cab766632f7f30843fccd9e11d98ca59c6d3"
+  "release_sha256": "95d6991d687f80a3b1871f07de1a8dbb9216b326f824bbb6b374993289042117"
 }

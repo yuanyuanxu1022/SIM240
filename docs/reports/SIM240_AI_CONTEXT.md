@@ -1,19 +1,21 @@
 # SIM240 AI CONTEXT
 
-## 14横槽补算包 v2 已建包并自审修补完毕，零运行，等 h25 范围澄清与作者授权（2026-11-13）
+## 14横槽补算包 v2 范围已定：作者裁定整档薄隙不追加，本包跑 12 条，零运行等启动授权（2026-11-13）
 
 **本轮只建记录机制、做对抗自审与修补；未跑任何物理、未造 authorization、未改母稿/门槛/资格、未动 v1 与 FVM 发布。** 包：`CASE/paper1_fem_stokes_reference_v2/`，`results/` 与 `runs/` 均为空。
 
-- 点集 14 条 T，与 `POINT_TABLE.csv` 的 14 个 `NO_FEM_RESULT` 逐条一致；`h25/d25_T`、`h25/d50_T` 标 `BLOCKED_PENDING_SCOPE`（脚本层拒授权、拒启动），可跑 12 条。②的 4 条新几何（h25/d120、h100/d120 各 P/T）登记在 `excluded_from_this_package`，不在点集内。
+- **范围裁定（2026-11-13，作者）**："不追加 h25" 指**整档薄隙（h=25 nm）**，不是仅 h25/d100 不再加密。故 `h25/d25_T`、`h25/d50_T` 改为 `EXCLUDED_BY_AUTHOR_DECISION`，**本包跑 12 条**。裁定原文与后果记入 `points.json` 的 `scope_decision`，并由 `tests/test_scope_decision.py` 5 项断言锁定。
+- **计数口径随之改为 12 条**：FEM 沟槽方向记录 22 → 34（17P+5T → 17P+17T），加 2 条 FVM-P 共 36 条比较；**成对覆盖是 17 种几何，不是 19**——h25/d25、h25/d50 两对永远不会有 T 对照，`PAIR_TABLE_v2.csv` 保持 19 行对位但只有 17 行会填 `A_ref`。**不得再说"19 对齐全"或"每个几何都有两方向"。**
+- 点集登记 14 条 T，与 `POINT_TABLE.csv` 的 14 个 `NO_FEM_RESULT` 逐条一致；运行 12 条为：h50/d25、h50/d50、h50/d75、h50/d100、h75/d25、h75/d50、h75/d75、h75/d120、h125/d25、h125/d50、h125/d75、h125/d100。**`h125/d25` 等是槽深 25 而间隙 125 nm，不属薄隙档，保留。**②的 4 条新几何（h25/d120、h100/d120 各 P/T）登记在 `excluded_from_this_package`，不在点集内。
 - `fem_pilot.py`、`verify_results.py` 与 v1 逐字节相同（`3090e17114ac…`、`76a935edca2c…`），清单内 `solver_is_byte_identical_to` 两项均为 true。
-- 冻结指纹：`release_sha256 = 5225909d924de013ae20f031b7e5cab766632f7f30843fccd9e11d98ca59c6d3`，22 文件，`--check` 通过；自检 40 项全绿。
+- 冻结指纹：`release_sha256 = 95d6991d687f80a3b1871f07de1a8dbb9216b326f824bbb6b374993289042117`，23 文件，`--check` 通过；自检 45 项全绿。
 - **自审发现并已修的根因**：汇总表原先把复核回执自报的 `reference_status` 照抄，而 `runs/` 不在清单保护内 ⇒ 手写一份回执即可产出 `REFERENCE_CANDIDATE`（副本已复现）。现改为 `assess.py` 从 `results/<case>/` 原始场文件**重算**全部门槛，无场文件一律 `NOT_RECONSTRUCTIBLE`；复核自报标签只作交叉核对。同一攻击重放结果为 `NOT_RECONSTRUCTIBLE`。
 - 同批修补：退出码写入回执并由复核器校验；逐档网格 JSON 哈希被读取核对；方向/几何必须与冻结点集一致（防改 `P` 跳过截面检查）；`case` 取自目录名而非回执内容；同点重复启动须 `--new-attempt "理由"`；复核回执只写一次（`--replace` 需理由并记 `replaces_sha256`）；多尝试不再被字典序遮蔽；单点场文件损坏记 `NOT_RECONSTRUCTIBLE` 而不毁整表（新增回归测试）。
 - 标签集改为 7 档，删除无代码路径的 `LOCAL_CHECKS_PASS`；有 SOLVED 回执但未复核者为 `SOLVED_NOT_VERIFIED`，不再误标 `NOT_RUN`。
 - **能力边界（对外必须照此表述）**：只能做到"结论可重算、代写无效"，**不是"不可伪造"**。有写权限者连同场文件整体伪造，本包挡不住。
 - 自检已全部隔离到临时副本，不再改写真实 `README.md`/`release_manifest.json`。
 
-下一动作：①等作者确认"不追加 h25"是整档还是仅 h25/d100；②作者明确授权后 `authorize.py --grant ...` → `run_queue.py --execute`（命令由我方准备、作者本人启动、不轮询）；③跑完 `assess.py --pairs` 出 19 行成对表，按约定点集逐项处置后转改稿。
+下一动作：①范围已定，无待澄清项；②作者明确授权后 `authorize.py --grant ...` → `run_queue.py --execute`（命令由我方准备、作者本人启动、不轮询）；③跑完 `assess.py --pairs` 出 19 行成对表，按约定点集逐项处置后转改稿。
 
 ## 新补算建议审查：14横槽有用途，4新方向暂缓，构建均值不可作因果证据（2026-11-13）
 

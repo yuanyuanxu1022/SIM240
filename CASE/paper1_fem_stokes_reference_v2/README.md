@@ -3,7 +3,7 @@
 为**已有 19 种几何**补横槽（T）方向对照的独立 FEM 包。不新增几何，不修改 v1 试点，不修改冻结的 FVM 发布，不授予参考资格。
 
 - 科学目的、门槛、停止规则：`PROTOCOL.md`（运行前写定）
-- 点集：`points.json`（14 条，其中 h25 两点待范围澄清，状态 `BLOCKED_PENDING_SCOPE`）
+- 点集：`points.json`（登记 14 条，**实际运行 12 条**；h25 两点按作者 2026-11-13 裁定「整档薄隙不追加」排除）
 - 接收依据的机器可读版本：`acceptance_rule.json`
 - 求解器与复核器：`fem_pilot.py`、`verify_results.py`，与 v1 **逐字节相同**
 
@@ -14,13 +14,17 @@ PY=/home/dell/.workbuddy/binaries/python/envs/default/bin/python
 
 $PY freeze_release.py --write --reason "initial freeze"   # 只在首次
 $PY freeze_release.py --check                             # 任何时候可复核
-$PY authorize.py --list
-$PY authorize.py --grant all --hold h25_d25_T h25_d50_T --note "..."
+$PY authorize.py --list                                   # 12 eligible / 2 excluded
+$PY authorize.py --grant all --note "..."                 # 只授 12 条；excluded 点仍被拒
 $PY run_queue.py --plan                                   # 只看计划，不计算
 $PY run_queue.py --execute                                # 真正开始
 $PY assess.py                                             # 汇总表
 $PY assess.py --pairs                                     # 19 几何成对表
 ```
+
+`h25_d25_T`、`h25_d50_T` 已按作者 2026-11-13 裁定排除，无需再 `--hold`：
+`authorize.py --grant all` 只覆盖 12 条 eligible，即使手工把这两个 case 写进授权清单，
+`check_authorization()` 仍会拒绝。
 
 单点手动：
 
@@ -37,7 +41,7 @@ $PY verify_one.py --case h50_d25_T
 - `results/<case>` 已存在（退出码 6）：不允许把两次尝试混进同一目录
 - 该 case 已有一次尝试记录（退出码 6）：每版发布每点只跑一次；确需重跑须 `--new-attempt "理由"` 并写入回执
 - 复核回执已存在（退出码 6）：复核结论只写一次；确需重做须 `verify_one.py --replace`，新回执记录 `replaces_sha256`
-- 点为 `BLOCKED_PENDING_SCOPE`（h25 两点，范围未澄清前）
+- 点为 `EXCLUDED_BY_AUTHOR_DECISION`（h25 两点：作者已裁定整档薄隙不追加）
 
 ## 信任结构（重要）
 
