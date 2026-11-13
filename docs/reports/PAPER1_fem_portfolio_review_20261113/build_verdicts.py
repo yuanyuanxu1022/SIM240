@@ -213,9 +213,11 @@ def main():
                 ]
             )
 
-    print(f"wrote {len(rows)} point rows")
+    print(f"wrote {len(rows)} FEM case rows")
     groove = [r for r in rows if r["geometry"].split("/")[1] != "0"]
-    print(f"groove points: {len(groove)}  flat self-tests: {len(rows) - len(groove)}")
+    geoms = {(r["geometry"]) for r in groove}
+    print(f"groove direction records: {len(groove)} over {len(geoms)} geometries;"
+          f" flat self-tests: {len(rows) - len(groove)}")
     print(f"max mid->fine: {max(float(r['mid_to_fine_percent']) for r in groove):.8f}%")
     print("gate failures:", problems if problems else "none")
     return 1 if problems else 0
