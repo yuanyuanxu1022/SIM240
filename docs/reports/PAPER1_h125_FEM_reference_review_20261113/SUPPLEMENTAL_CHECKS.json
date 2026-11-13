@@ -1,0 +1,64 @@
+{
+  "source_snapshot_checks": {
+    "PROTOCOL.md": {
+      "expected": "8975d72356f209a9db64649b7814262377a67f11076a3cb900ae66a9c5283c19",
+      "actual": "8975d72356f209a9db64649b7814262377a67f11076a3cb900ae66a9c5283c19",
+      "matches": true
+    },
+    "fem_pilot.py": {
+      "expected": "63407118d715a5b64e763b616ef51b6f549789b2542f5992558c7bf60585308d",
+      "actual": "63407118d715a5b64e763b616ef51b6f549789b2542f5992558c7bf60585308d",
+      "matches": true
+    },
+    "verify_results.py": {
+      "expected": "efadc98e0cd4f276ef0f749f45af8eec90b24d2baf45b54a20bda7b842fa37b7",
+      "actual": "efadc98e0cd4f276ef0f749f45af8eec90b24d2baf45b54a20bda7b842fa37b7",
+      "matches": true
+    },
+    "compare_pairs.py": {
+      "expected": "df37f178a5bb21e03528e9b3b008b7d95c54ae00da59cb99ae1feb114e6b23b1",
+      "actual": "df37f178a5bb21e03528e9b3b008b7d95c54ae00da59cb99ae1feb114e6b23b1",
+      "matches": true
+    }
+  },
+  "pressure_multiplier": [
+    {
+      "dx_nm": 5,
+      "recovered_not_recorded_pressure_multiplier": 5.09748676496257e-15,
+      "weak_continuity_vector_norm_before_recovery": 1.7064950695990677e-10,
+      "after_recovery": 1.7056667819557935e-10,
+      "sum_continuity_residual": -2.3836845951946684e-10
+    },
+    {
+      "dx_nm": 2.5,
+      "recovered_not_recorded_pressure_multiplier": 1.0959308666611673e-14,
+      "weak_continuity_vector_norm_before_recovery": 3.8750286637766936e-10,
+      "after_recovery": 3.8746029268579545e-10,
+      "sum_continuity_residual": -5.001522928476191e-10
+    },
+    {
+      "dx_nm": 1.25,
+      "recovered_not_recorded_pressure_multiplier": 1.6560049857857102e-14,
+      "weak_continuity_vector_norm_before_recovery": 1.6018983014519523e-09,
+      "after_recovery": 1.6018923931865537e-09,
+      "sum_continuity_residual": -9.961954424614081e-10
+    }
+  ],
+  "formula_checks": {
+    "P": {
+      "LC_direct": 6.941354166666665e-22,
+      "V2_direct": 2.5072617542592254e-22,
+      "V2_pair_relative_difference": 0.0
+    },
+    "T": {
+      "LC_direct": 2.8735687771683393e-22,
+      "V2_direct": 1.928569649106268e-22,
+      "V2_pair_relative_difference": -3.3306690738754696e-16
+    }
+  },
+  "FVM_P_grid": {
+    "coarse_mid_percent": 0.06116096825289352,
+    "mid_fine_percent": 0.02241865113331576,
+    "fine_tight_percent": 1.4033219031261979e-11
+  }
+}

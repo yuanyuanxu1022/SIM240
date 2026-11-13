@@ -13,6 +13,7 @@ MAP36 = ROOT.parent.parent / "docs/reports/SIM240_manuscript_revision_20261018/m
 FVM_P = {
     (75, 100): 9.755622669730348e-23,
     (50, 120): 6.838617932100589e-23,
+    (125, 120): 2.7840399124225664e-22,
 }
 FVM_T = {(75, 100): 4.340041663047474e-23}
 
@@ -66,6 +67,14 @@ def main():
             raise ValueError("h50T has not passed independent pilot checks")
         fine = min(verification["levels"], key=lambda r: r["dx_nm"])
         rows.append(one_pair(50, 120, FVM_P[(50, 120)], fine["K_recomputed_m3"],
+                             "FEM_T_pilot_plus_qualified_FVM_P_NOT_FORMALLY_QUALIFIED", map36))
+    verification_path = ROOT / "results/h125_d120_T/VERIFICATION.json"
+    if verification_path.exists():
+        verification = json.loads(verification_path.read_text())
+        if verification["status"] != "PILOT_NUMERICAL_CHECKS_PASS":
+            raise ValueError("h125T has not passed independent pilot checks")
+        fine = min(verification["levels"], key=lambda r: r["dx_nm"])
+        rows.append(one_pair(125, 120, FVM_P[(125, 120)], fine["K_recomputed_m3"],
                              "FEM_T_pilot_plus_qualified_FVM_P_NOT_FORMALLY_QUALIFIED", map36))
     REPORT.mkdir(parents=True, exist_ok=True)
     (REPORT / "PAIR_COMPARISON.json").write_text(
