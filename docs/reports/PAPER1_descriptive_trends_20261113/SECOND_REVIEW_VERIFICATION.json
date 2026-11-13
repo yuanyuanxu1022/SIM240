@@ -1,0 +1,58 @@
+{
+  "time": "2026-11-13T13:10:22+08:00",
+  "status": "SECOND_REVIEW_ASSERTIONS_OK",
+  "d100_P_sequence": [
+    {
+      "h_nm": 25,
+      "d_nm": 100,
+      "direction": "P",
+      "LC_signed_error_percent": 139.1426516292407,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h25_d100_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 50,
+      "d_nm": 100,
+      "direction": "P",
+      "LC_signed_error_percent": 154.2407297677121,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h50_d100_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 75,
+      "d_nm": 100,
+      "direction": "P",
+      "LC_signed_error_percent": 144.94972143767168,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h75_d100_dx5_P/steady/result.txt"
+    },
+    {
+      "h_nm": 125,
+      "d_nm": 100,
+      "direction": "P",
+      "LC_signed_error_percent": 108.37624310293906,
+      "raw_result_path": "CASE/D_series/D2_groove_error_map/results/h125_d100_dx5_P/steady/result.txt"
+    }
+  ],
+  "checks": {
+    "d100_h25_to_h50_counterexample": true,
+    "regular_matrix_h50_h75_h125_decreases": true,
+    "report_has_scope_and_counterexample": true,
+    "three_completion_levels_distinguished": true,
+    "teacher_confirmation_ready": true,
+    "new_simulations": 0,
+    "new_reference_qualification": false,
+    "execution_authorized": false
+  },
+  "files": {
+    "REPORT.md": {
+      "sha256": "712e37950fa45b22cb0aaaf5e15968868691e325c39e3161e26d37c53542f347",
+      "bytes": 13582
+    },
+    "TEACHER_COVERAGE_CONFIRMATION.md": {
+      "sha256": "3fdd07af4699611b4423fe5890b41b635065f78b04421b33e5a01157522703e1",
+      "bytes": 2994
+    },
+    "DOE_TRENDS_36.csv": {
+      "sha256": "d451659226390b9bad14b067b4a5414e230d849213e343a25064790a7ac49467",
+      "bytes": 7695
+    }
+  }
+}

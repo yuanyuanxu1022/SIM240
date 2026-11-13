@@ -1,0 +1,6 @@
+geometry,directions,current_status,scientific_job,if_selected_completion,stop_rule,execution_authorized
+h75/d100,P+T,paired qualified references; T consistency FAIL retained,基准成对对照：换方法后各向异性失真和V2改善是否仍存在,已完成现有对照；报告Aref、ALC、重建角差及原公式/V2偏差,不重跑追求2% PASS；T FAIL作为方法间差异结果保留,False
+h50/d120,T（P已有合格参考）,P qualified; T has no frozen case directory,若允许代表性缩减，优先补齐成对主值；检验原公式沿槽高偏差代表几何的各向异性,新T方向按另行审定协议完成参考资格；分别报告2%一致性PASS/FAIL与公式偏差,取得合格参考并出比较结果，或按预定失败/未解决记录停止；不为通过2%反复续算,False
+h100/d100,P+T（若需加强固定d的间隙响应对照）,only existing 5nm OpenLB comparison; no qualified FVM pair,与h75/d100成对参考比较，在d=100固定时观察h=75到100的变化；不能只补T就声称独立各向异性,P与T两方向都取得合格参考，再导出一对A和重建角；明确两个间隙不能定位精确过零点,两方向各自以合格/失败/未解决收口；若只完成一方向，不报告该几何独立各向异性,False
+h125/d120,T（P已有合格参考）,"P qualified; original T fine exit124, no complete evidence",是否补此深槽点取决于老师选定的点集；它不能替代h50T或h100T,先审现有运行和停止证据；如需续算/改配置须另定协议，不把慢收敛称为残差地板,无新协议不续算；未合格方向标NA，不以P单独组成各向异性,False
+h25/d100,T,original fine REFERENCE_CHECK_FAIL; refined local result not qualified,薄隙边界的诊断记录，不用计算困难证明h25物理不重要,仅当老师保留该点时，审完整release/来源/同网格tight/接收链；功率单项不构成资格,原FAIL保留；不为消除FAIL自动逐级加密或改写门槛,False
