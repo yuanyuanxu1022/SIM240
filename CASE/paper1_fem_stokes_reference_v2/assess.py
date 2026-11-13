@@ -34,6 +34,29 @@ FIELDS = ["case", "h_nm", "d_nm", "direction", "run_id", "solve_state",
           "actual_stop_reason"]
 
 
+def missing_field_record(case: str, solved_levels) -> str:
+    """Describe the first level whose saved field cannot be re-opened, or ''.
+
+    A receipt may claim three solved levels while the tree holds no fields at
+    all. That is not a failed gate, it is an unreconstructible case, and the two
+    are labelled differently on purpose.
+    """
+    for level in solved_levels:
+        name = level.get("json_file")
+        if not name:
+            return f"dx={level.get('dx_nm')}: mesh JSON is not recorded"
+        try:
+            meta = json.loads((receipt.RESULTS / case / name).read_text())
+        except Exception as error:  # noqa: BLE001 - unreadable is an outcome
+            return f"{name} is unreadable: {type(error).__name__}: {error}"
+        field = meta.get("field_file")
+        if not field:
+            return f"{name} records no field_file"
+        if not (receipt.RESULTS / case / field).is_file():
+            return f"{field} is absent"
+    return ""
+
+
 def classify(case: str, solve, verify, directory) -> tuple:
     """Recompute the label from the saved fields and the frozen rule.
 
@@ -53,6 +76,10 @@ def classify(case: str, solve, verify, directory) -> tuple:
     if not (receipt.RESULTS / case).is_dir():
         return "NOT_RECONSTRUCTIBLE", "NOT_EVALUATED", [
             "results directory is absent, so no gate can be recomputed from fields"]
+    absent = missing_field_record(case, solved)
+    if absent:
+        return "NOT_RECONSTRUCTIBLE", "NOT_EVALUATED", [
+            f"fields under results/{case} could not be re-integrated: {absent}"]
     import verify_results
     import verify_one
     try:

@@ -1,10 +1,14 @@
 # SIM240 项目 — 便携交接单（跨电脑/跨 AI 使用）
 
-## 14横槽补算包 v2 范围已定：作者裁定整档薄隙不追加，本包跑 12 条，零运行等启动授权（2026-11-13）
+## 14横槽补算包 v2 就绪：已重冻、已授权 12 条、服务器环境已建，等作者启动（2026-11-13）
 
 接手先读这一节，再读包内 `README.md` 与 `PROTOCOL.md`。
 
-**状态**：`CASE/paper1_fem_stokes_reference_v2/` 已建成并冻结，`release_sha256 = 95d6991d687f80a3b1871f07de1a8dbb9216b326f824bbb6b374993289042117`（23 文件，`--check` 通过，自检 45 项全绿）。**`results/` 与 `runs/` 均为空，未跑任何物理，无 `authorization.json`。**
+**状态**：`CASE/paper1_fem_stokes_reference_v2/` 已重新冻结，`release_sha256 = 5bfdd84b10dd0a63e24e82d83bb582fbe8f1c1ee04ef9bdba41a565e825fe24b`（23 文件，`--check` 本机与服务器均通过，自检 47 项全绿）。**本机与服务器的 `results/`、`runs/` 均为空，未跑任何物理**；`authorization.json` 已按新指纹签发，12 条、`held` 空。
+
+**★ 启动前修掉的隔离缺陷（必读）**：自检发现测试副本会把活动的 `authorization.json` 一起复制，令"未授权应拒绝"的测试实际持有授权，真的启动了一次 h50/d25 T 的 5 nm 求解；而 `fem_pilot`/`verify_results` 各自持有模块级 `ROOT`，未被测试替换，结果写进了真实 `results/`。`runs/` 无回执 ⇒ 不是运行证据。该目录已整体移入 `/home/dell/femenv_stage/quarantine_results_h50_d25_T/`，真目录 0 文件。修法：副本不再带授权、同时替换两处 `ROOT`、并对真实 `results/`+`runs/` 加进出快照守卫（故意写脏已实测会报错）。`assess.classify` 另增"回执称已解但场文件缺失 → `NOT_RECONSTRUCTIBLE`"。
+
+**执行环境（服务器）**：`yuanyuan@10.103.102.55`（`jj-Rack-Server`，96 核）。`~/fem313/python` 为本机搬去的 CPython 3.13.12（只依赖 glibc ≤2.17），`~/fem313/venv` 装 numpy 2.5.4 / scipy 1.18.1 / scikit-fem 12.0.2（阿里云镜像）。冻结闸只认这四项版本号，`interpreter`/`hostname` 仅记录 ⇒ 跨机执行合规，但回执里的主机与解释器路径会与冻结机不同，属预期而非漂移。
 
 **范围已定（2026-11-13，作者）**："不追加 h25" 指**整档薄隙（h=25 nm）**。`h25/d25_T`、`h25/d50_T` 改 `EXCLUDED_BY_AUTHOR_DECISION`，**本包跑 12 条**；脚本层仍拒绝这两点，不靠人工记忆。裁定记入 `points.json` 的 `scope_decision`，由 `tests/test_scope_decision.py` 锁定。
 

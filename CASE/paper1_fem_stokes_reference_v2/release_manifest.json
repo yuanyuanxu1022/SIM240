@@ -1,8 +1,8 @@
 {
   "schema": "sim240_fem_release/1",
   "package": "paper1_fem_stokes_reference_v2",
-  "frozen_at": "2026-11-13T15:40:03Z",
-  "reason": "scope decision enforced by tests and counted at 12 runs (22+12=34 records, 36 comparisons, 17 paired geometries); README usage no longer needs --hold (no run has occurred)",
+  "frozen_at": "2026-11-13T15:52:13Z",
+  "reason": "test isolation repaired before any authorised run: package copies no longer inherit the live authorization.json, the solver and verifier ROOT constants are redirected into the copy, and a per-copy guard fails any test that writes the real results/ or runs/; assess.classify reports NOT_RECONSTRUCTIBLE when a receipt claims solved levels but the saved fields are absent or unreadable, instead of LOCAL_CHECKS_FAIL",
   "files": [
     {
       "path": "PROTOCOL.md",
@@ -21,8 +21,8 @@
     },
     {
       "path": "assess.py",
-      "bytes": 13900,
-      "sha256": "efd91b1a07d9b5877d2978bafb03bc4a1e4b3beabe0ccce6e0ec9da69f6e6b09"
+      "bytes": 15080,
+      "sha256": "993f9b95ccf77a70437fa6908e8dff79b352b97784d5241ad82e2710e0c28877"
     },
     {
       "path": "authorize.py",
@@ -61,8 +61,8 @@
     },
     {
       "path": "tests/_pkgcopy.py",
-      "bytes": 2384,
-      "sha256": "40862358ad4a4a8980ed4298f9ab9ee29f6fdb32e10e2586f6de293d1e0932a9"
+      "bytes": 3830,
+      "sha256": "a3be8ed2970fd7e54d8dbba6433fcd37c7b05938920739fd474089c551b2e674"
     },
     {
       "path": "tests/test_additive_gates.py",
@@ -76,8 +76,8 @@
     },
     {
       "path": "tests/test_isolation.py",
-      "bytes": 1694,
-      "sha256": "57597229352114f41a99b02a135a9116e9bf1b4d5fcddd0c4cce8414e3a02d04"
+      "bytes": 2644,
+      "sha256": "025dab7f752734908034829c6837b3289fdb07c5238474a188bcea0152fe38db"
     },
     {
       "path": "tests/test_malformed_fields.py",
@@ -91,8 +91,8 @@
     },
     {
       "path": "tests/test_plumbing.py",
-      "bytes": 6505,
-      "sha256": "9bb7cf7e9fc66732b063a1c4a2eb6f930cdc8e4d23e31b344ac449584c358ad2"
+      "bytes": 6565,
+      "sha256": "38b82894b647c5e72aa15dcf118dc56aff5f29b3915d2e06ec24a136bf1666db"
     },
     {
       "path": "tests/test_scope_decision.py",
@@ -138,5 +138,5 @@
     "verify_results.py": true
   },
   "note": "Checking this manifest does not grant any numerical or reference status. It only proves the package did not change between freeze and run.",
-  "release_sha256": "95d6991d687f80a3b1871f07de1a8dbb9216b326f824bbb6b374993289042117"
+  "release_sha256": "5bfdd84b10dd0a63e24e82d83bb582fbe8f1c1ee04ef9bdba41a565e825fe24b"
 }

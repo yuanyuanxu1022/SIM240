@@ -54,6 +54,7 @@ class PlumbingTests(unittest.TestCase):
         self.patches = [
             mock.patch.object(receipt, "RESULTS", self.tmp / "results"),
             mock.patch.object(receipt, "RUNS", self.tmp / "runs"),
+            mock.patch.object(fem_pilot, "ROOT", self.tmp),
             mock.patch.object(receipt, "load_authorization",
                               return_value={"release_sha256": receipt.release_digest(),
                                             "granted_cases": [CASE]}),
