@@ -1,0 +1,48 @@
+{
+  "status": "NUMERICALLY_CONSISTENT_BUT_NOT_QUALIFIED",
+  "reference_qualification_granted": false,
+  "new_simulations": 0,
+  "historical_fail_overwritten": false,
+  "note": "Server continuation re-integrated offline; no receipt, no read_case acceptance chain; cross-machine splice must be declared.",
+  "h125_d120_T_coarse": {
+    "dx_nm": 1.25,
+    "K_m3": 1.840135375671879e-22,
+    "power_percent": 0.20171603270272565,
+    "cells": 28416
+  },
+  "h125_d120_T_mid": {
+    "dx_nm": 0.625,
+    "K_m3": 1.8380636898273257e-22,
+    "power_percent": 0.08774776451961896,
+    "cells": 113664
+  },
+  "h125_d120_T_fine_server": {
+    "dx_nm": 0.3125,
+    "K_m3": 1.8371675911826e-22,
+    "power_percent": 0.039040898,
+    "cells": 454656,
+    "exit_code": 0,
+    "iterations": 131278.5,
+    "solver_converged": true,
+    "run_window_server_EST": "2026-11-12 10:41:15 -> 20:18:48",
+    "wall_clock_seconds": 34653,
+    "start_time": 31900.5,
+    "residuals": {
+      "Ux": 9.9996e-11,
+      "Uz": 6.95e-11,
+      "p": 1.005e-12
+    },
+    "source": "server offline integration of referenceEvidence/cells.csv"
+  },
+  "grid_change": {
+    "coarse_to_mid_percent": 0.11258333880989069,
+    "mid_to_fine_percent": 0.0487523174351967
+  },
+  "h25_d100_T_tight": {
+    "K_m3": 2.0701173656066e-24,
+    "power_percent": 0.146371547,
+    "exit_code": 0,
+    "iterations": 11633.5,
+    "verdict": "FAILS 0.1% power gate; same as fine 0.1463711% => tolerance-insensitive, grid/discretisation related"
+  }
+}

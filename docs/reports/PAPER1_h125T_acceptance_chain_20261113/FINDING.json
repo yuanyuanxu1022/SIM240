@@ -1,0 +1,39 @@
+{
+  "time": "2026-11-13T14:25:00+08:00",
+  "verdict": "ACCEPTANCE_CHAIN_CANNOT_BE_CLOSED_BY_DOCUMENTATION",
+  "prior_claim_retracted": "先前\"补回执即可让横槽参考由1增至2\"不成立",
+  "reasons": [
+    "read_case requires receipt fields only the solver can write at run time; reconstructing them would forge provenance",
+    "server run left no runtime/ dir and no evidence/receipt.json; logs sit outside the case dir",
+    "tight level never ran, so alg=|K_tight/K_fine-1| cannot be computed and reference_ok can never hold",
+    "fine trajectory is a cross-machine splice starting at 31900.5, while case.json seed_time=0.5"
+  ],
+  "server_products": {
+    "native_fields": "131278.5/{U,p,phi,uniform} present",
+    "mesh": "constant/polyMesh five files present",
+    "evidence": [
+      "cells.csv (95134885 B)",
+      "x_faces.csv (30719142 B)"
+    ],
+    "missing": [
+      "referenceEvidence/receipt.json",
+      "runtime/ (6 files)",
+      "release_snapshot.json",
+      "exit_code.txt"
+    ],
+    "receipt_search_in_whole_transfer_tree": "zero hits"
+  },
+  "tight_state": {
+    "h125_d120_T_tight": "RUN_INCOMPLETE per frozen assessment; case dir has 0/ constant/ system/ only",
+    "h125_d120_T_fine_frozen_status": "EXECUTION_FAILED_OR_NO_EVIDENCE (refers to local exit124 run)"
+  },
+  "legitimate_path": [
+    "re-run fine with protocol wrapper (~10h est.)",
+    "then run tight (duration unknown; Uz must drop ~7x to 1e-11)",
+    "then alg<=0.05% and four-level completeness"
+  ],
+  "reference_qualification_granted": false,
+  "delta_or_anisotropy_computed": false,
+  "new_simulations": 0,
+  "files_modified_in_runtime": false
+}

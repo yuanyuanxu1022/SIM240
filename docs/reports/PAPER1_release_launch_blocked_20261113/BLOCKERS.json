@@ -1,0 +1,95 @@
+{
+  "time": "2026-11-13T23:40:00+08:00",
+  "verdict": "LAUNCH_BLOCKED_NO_COMPLIANT_RUN_POSSIBLE",
+  "user_intent": "直接跑 h125/d120 T fine→tight",
+  "launched": false,
+  "frozen_files_modified": false,
+  "receipts_created": false,
+  "delta_filled": false,
+  "blockers": {
+    "B1_local_release_drift": {
+      "hard": true,
+      "error": "OpenFOAM library drift: /usr/lib/x86_64-linux-gnu/libc.so.6",
+      "manifest_written": "2026-11-12T21:16:00+08:00",
+      "manifest_sha256": "97ae55ff9dbaad4c2aa58fbe3b3b5dac548f82400631ac5cd1e12c9ef96c13e5",
+      "glibc_ctime": "2026-11-13T12:21:59+08:00",
+      "glibc_version": "2.39-0ubuntu8.12",
+      "external_mismatch_count": 2,
+      "external_mismatch": [
+        "libc.so.6",
+        "libm.so.6"
+      ],
+      "external_total": 23,
+      "internal_mismatch_count": 0,
+      "internal_total": 212,
+      "scope": "blocks every future run_one launch on this machine, not only h125T",
+      "accepted_references_still_valid": true,
+      "accepted_receipts_bound_to_current_manifest": 23
+    },
+    "B2_server_release_drift": {
+      "hard": true,
+      "host": "10.103.103.63",
+      "external_total": 23,
+      "external_mismatch_count": 10,
+      "external_mismatch": [
+        "blockMesh",
+        "checkMesh",
+        "mapFields",
+        "libOpenFOAM.so",
+        "libfileFormats.so",
+        "libfiniteVolume.so",
+        "libmeshTools.so",
+        "libsurfMesh.so",
+        "libtriSurface.so",
+        "openmpi-system/libPstream.so"
+      ],
+      "internal_total": 212,
+      "internal_differing": 0,
+      "internal_missing": 196,
+      "internal_missing_scope": "prepared/** + .gitignore",
+      "server_glibc": "2.39-0ubuntu8.9",
+      "root_cause": "external table was frozen against the local machine build; server OpenFOAM is a separate compilation",
+      "design_conflict": "release binds to machine-specific binaries, but resource caps assume server-class speed"
+    },
+    "B3_wall_clock_cannot_accommodate_h125T": {
+      "hard": true,
+      "required_iterations": 131278.5,
+      "local_s_per_iter_min": 1.354,
+      "local_hours_needed_min": 49.4,
+      "server_s_per_iter": 0.3487,
+      "server_hours_needed": 12.7,
+      "protocol_cap_seconds": 43200,
+      "protocol_rule": "墙钟或异常退出拒收，不自动增配 (PROTOCOL.md 3.1)",
+      "tight_uz_start": 6.95e-11,
+      "tight_uz_target": 1e-11,
+      "tight_reduction_factor": 6.95,
+      "tight_state": {
+        "status": "RUN_INCOMPLETE",
+        "local_runtime_residue": "2026-11-12T16:24 local start: log.blockMesh + log.checkMesh(Mesh OK) + release_snapshot.json + started.json, commands empty, no log.solver, no receipt",
+        "server_dir": "only 0/ constant/ system/ case.json",
+        "note": "runtime/ already exists on local case, so run_one would refuse with \"previous evidence exists\" even after fingerprint is fixed; a clean case copy is required"
+      }
+    },
+    "B4_refreeze_orphans_all_receipts": {
+      "hard": true,
+      "code": "postprocess.py:231-232",
+      "effect": "new manifest digest invalidates all 23 receipts; run_one then refuses on flat controls / seed readback",
+      "consequence": "refreeze + rerun means whole chain (2 flats + per-direction levels), not one case",
+      "flat_T_infeasible_locally": {
+        "needed_steps": 40000,
+        "cap_seconds": 3600,
+        "reachable_steps": 6000,
+        "historical": {
+          "6000_steps": "-8.943434%",
+          "40000_steps": "+0.013878%"
+        }
+      }
+    }
+  },
+  "paths": [
+    "A_new_release_v2_3_requires_astra",
+    "B_structural_rejection_zero_cost",
+    "C_pinned_container_environment"
+  ],
+  "recommended_for_paper": "B (document no independent reference) unless a second paired geometry is mandatory"
+}
