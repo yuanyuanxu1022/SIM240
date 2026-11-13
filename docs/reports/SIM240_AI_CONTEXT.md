@@ -6,7 +6,7 @@
 
 - 点集 14 条 T，与 `POINT_TABLE.csv` 的 14 个 `NO_FEM_RESULT` 逐条一致；`h25/d25_T`、`h25/d50_T` 标 `BLOCKED_PENDING_SCOPE`（脚本层拒授权、拒启动），可跑 12 条。②的 4 条新几何（h25/d120、h100/d120 各 P/T）登记在 `excluded_from_this_package`，不在点集内。
 - `fem_pilot.py`、`verify_results.py` 与 v1 逐字节相同（`3090e17114ac…`、`76a935edca2c…`），清单内 `solver_is_byte_identical_to` 两项均为 true。
-- 冻结指纹：`release_sha256 = 26cfd75d5739b2afe9522036dcab1e30544b23aa35f7ef4a0d280c7689ca8cfe`，22 文件，`--check` 通过；自检 40 项全绿。
+- 冻结指纹：`release_sha256 = 5225909d924de013ae20f031b7e5cab766632f7f30843fccd9e11d98ca59c6d3`，22 文件，`--check` 通过；自检 40 项全绿。
 - **自审发现并已修的根因**：汇总表原先把复核回执自报的 `reference_status` 照抄，而 `runs/` 不在清单保护内 ⇒ 手写一份回执即可产出 `REFERENCE_CANDIDATE`（副本已复现）。现改为 `assess.py` 从 `results/<case>/` 原始场文件**重算**全部门槛，无场文件一律 `NOT_RECONSTRUCTIBLE`；复核自报标签只作交叉核对。同一攻击重放结果为 `NOT_RECONSTRUCTIBLE`。
 - 同批修补：退出码写入回执并由复核器校验；逐档网格 JSON 哈希被读取核对；方向/几何必须与冻结点集一致（防改 `P` 跳过截面检查）；`case` 取自目录名而非回执内容；同点重复启动须 `--new-attempt "理由"`；复核回执只写一次（`--replace` 需理由并记 `replaces_sha256`）；多尝试不再被字典序遮蔽；单点场文件损坏记 `NOT_RECONSTRUCTIBLE` 而不毁整表（新增回归测试）。
 - 标签集改为 7 档，删除无代码路径的 `LOCAL_CHECKS_PASS`；有 SOLVED 回执但未复核者为 `SOLVED_NOT_VERIFIED`，不再误标 `NOT_RUN`。

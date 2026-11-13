@@ -4,7 +4,7 @@
 
 接手先读这一节，再读包内 `README.md` 与 `PROTOCOL.md`。
 
-**状态**：`CASE/paper1_fem_stokes_reference_v2/` 已建成并冻结，`release_sha256 = 26cfd75d5739b2afe9522036dcab1e30544b23aa35f7ef4a0d280c7689ca8cfe`（22 文件，`--check` 通过，自检 40 项全绿）。**`results/` 与 `runs/` 均为空，未跑任何物理，无 `authorization.json`。**
+**状态**：`CASE/paper1_fem_stokes_reference_v2/` 已建成并冻结，`release_sha256 = 5225909d924de013ae20f031b7e5cab766632f7f30843fccd9e11d98ca59c6d3`（22 文件，`--check` 通过，自检 40 项全绿）。**`results/` 与 `runs/` 均为空，未跑任何物理，无 `authorization.json`。**
 
 **点集**：14 条 T，与 `docs/reports/PAPER1_reference_table_20261113/POINT_TABLE.csv` 的 14 个 `NO_FEM_RESULT` 逐条一致。`h25/d25_T`、`h25/d50_T` 为 `BLOCKED_PENDING_SCOPE`（脚本层拒绝授权与启动），当前可跑 12 条。原案②的 4 条新几何登记在 `excluded_from_this_package`，不在点集内。
 
