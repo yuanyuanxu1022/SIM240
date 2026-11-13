@@ -1,0 +1,101 @@
+{
+  "schema": "sim240_fem_acceptance_rule/1",
+  "package": "paper1_fem_stokes_reference_v2",
+  "written": "2026-11-13",
+  "status": "FROZEN_BEFORE_ANY_RUN",
+  "note": "This rule is fixed before the first run and is read by the solver wrapper, the independent verifier and the assessor. It is not the FVM protocol and does not import FVM PASS/FAIL states; cross-method consistency is informational only.",
+  "level_scope": {
+    "all_levels": [
+      "area_relative_error",
+      "independent_K_match",
+      "wall_no_slip",
+      "periodic_velocity",
+      "periodic_pressure",
+      "pressure_mean",
+      "direct_relative_residual"
+    ],
+    "finest_level_only": [
+      "power_balance",
+      "section_flux_spread",
+      "section_vs_volume"
+    ],
+    "refinement": [
+      "coarse_to_mid_K_change",
+      "mid_to_fine_K_change"
+    ],
+    "rationale": "The v1 protocol states the power and section-flux limits with the word 'fine' and states the refinement limits between named levels. Coarser excursions are recorded as diagnostics, never discarded."
+  },
+  "thresholds": {
+    "finite_outputs": true,
+    "area_relative_error_max": 1e-10,
+    "independent_K_vs_solver_relative_max": 1e-09,
+    "wall_no_slip_relative_max": 1e-10,
+    "periodic_velocity_relative_max": 1e-10,
+    "periodic_pressure_relative_max": 1e-10,
+    "pressure_mean_normalized_max": 1e-10,
+    "direct_relative_residual_max": 1e-10,
+    "power_balance_percent_max": 0.1,
+    "section_flux_spread_percent_max": 0.01,
+    "section_vs_volume_percent_max": 0.01,
+    "coarse_to_mid_K_change_percent_max": 1.0,
+    "mid_to_fine_K_change_percent_max": 0.5,
+    "minimum_nonwall_sections": 9
+  },
+  "divergence_policy": "Pointwise divergence is a diagnostic only. P2/P1 enforces incompressibility weakly; the algebraic continuity residual of the re-assembled system is the gate.",
+  "provenance_requirements": [
+    "release_unchanged_at_run_time",
+    "run_id_present_and_unique",
+    "command_line_recorded",
+    "process_exit_code_zero",
+    "per_level_mesh_hash_recorded",
+    "per_level_field_hash_recorded_and_matching_verifier_rehash",
+    "solve_receipt_digest_unchanged_after_verification",
+    "solve_exit_code_recorded_and_zero",
+    "per_level_mesh_json_hash_recorded_and_matching",
+    "direction_and_geometry_matching_the_frozen_point",
+    "verification_receipt_written_once_and_not_replaced"
+  ],
+  "classification": {
+    "labels": ["NOT_RUN", "SOLVE_INCOMPLETE", "SOLVED_NOT_VERIFIED",
+               "NOT_RECONSTRUCTIBLE", "LOCAL_CHECKS_FAIL",
+               "PROVENANCE_INCOMPLETE", "REFERENCE_CANDIDATE"],
+    "NOT_RUN": "no solve receipt",
+    "SOLVE_INCOMPLETE": "solve receipt present but state is not SOLVED or not all planned levels solved",
+    "SOLVED_NOT_VERIFIED": "solve receipt is SOLVED but no verification receipt exists",
+    "NOT_RECONSTRUCTIBLE": "verification receipt exists but the results directory is absent, so no gate can be recomputed",
+    "LOCAL_CHECKS_FAIL": "at least one numeric gate fails when recomputed from the saved fields",
+    "PROVENANCE_INCOMPLETE": "numeric gates pass when recomputed, but at least one provenance item fails",
+    "REFERENCE_CANDIDATE": "numeric gates pass when recomputed and every provenance item holds",
+    "decided_by": "assess.py recomputes the label from the saved fields; the label written by verify_one.py is cross-checked and never copied",
+    "removed": "LOCAL_CHECKS_PASS (no code path produced it; a numeric pass with incomplete provenance is PROVENANCE_INCOMPLETE)"
+  },
+  "reference_status_policy": {
+    "auto_grant": false,
+    "highest_automatic_label": "REFERENCE_CANDIDATE",
+    "final_grant": "requires a separate method, accuracy and provenance review signed by the author and reviewer; never set by these scripts",
+    "forbidden_phrasings": [
+      "formal reference granted",
+      "qualified reference",
+      "PASS equals paper reference"
+    ]
+  },
+  "cross_method_consistency": {
+    "applies_to": [],
+    "reason": "No T point in this package has a qualified FVM counterpart: the only qualified FVM T record is h75/d100_T, which is outside this point set. Where a same-geometry FVM or OpenLB value exists it is reported as a difference and never as a gate.",
+    "report_only_fields": ["openlb_difference_percent", "v1_fem_difference_percent"]
+  },
+  "stop_rule": {
+    "run_every_authorized_point_once": true,
+    "auto_expand_points": false,
+    "auto_refine_mesh": false,
+    "retry_after_failure": false,
+    "raise_time_budget_on_timeout": false,
+    "required_outcome": "every authorized point has a conclusion (pass, fail or incomplete) in the assessment table",
+    "explicitly_not_required": [
+      "any particular number of under-predicting points",
+      "all points passing",
+      "a monotone or continuous trend",
+      "any agreement with the prediction derived from the five existing pairs"
+    ]
+  }
+}
