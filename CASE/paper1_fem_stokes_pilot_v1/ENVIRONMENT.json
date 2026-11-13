@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-13",
+  "python": "/home/dell/.workbuddy/binaries/python/envs/default/bin/python",
+  "python_version": "3.13.12",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit-fem": "12.0.2",
+    "meshio": "5.3.5",
+    "matplotlib": "3.11.2"
+  },
+  "finite_element_symbols": {
+    "velocity_or_scalar": "ElementTriP2",
+    "pressure": "ElementTriP1"
+  },
+  "direct_solver": "scipy.sparse.linalg.spsolve SuperLU with MMD_AT_PLUS_A",
+  "freefem_available_on_path": false,
+  "system_packages_modified": false,
+  "openfoam_invoked": false,
+  "notes": "FreeFEM is not required by this equivalent FEM implementation. Raw matrices are not saved; compressed fields and small JSON/CSV evidence are local under results/."
+}
