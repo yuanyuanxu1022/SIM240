@@ -39,17 +39,19 @@
 
 | # | 文件 | SHA256 前16 | 字节 |
 |---|---|---|---|
-| 1 | `SIM240_中文稿_导师审阅版_20261022.md` | `9838a48ad0dab66c` | 90007 |
-| 2 | `SIM240_First_Paper_English_20261028.md` | `d279aeb13dc49a13` | 99989 |
-| 3 | `SUPPLEMENTARY_METHODS.md` | `93a52eba51487651` | 54160 |
-| 4 | `SUPPLEMENTARY_METHODS_EN_20261028.md` | `d14ee31d70300739` | 65276 |
-| 5 | `PAPER1_conclusions_current_20261109.md` | `a259683a2eb06cf1` | 18648 |
+| 1 | `SIM240_中文稿_导师审阅版_20261022.md` | `99631f185dd02e95` | 95304 |
+| 2 | `SIM240_First_Paper_English_20261028.md` | `3f4da52b70981113` | 106757 |
+| 3 | `SUPPLEMENTARY_METHODS.md` | `ff786f18b03604b3` | 60682 |
+| 4 | `SUPPLEMENTARY_METHODS_EN_20261028.md` | `932a750cccd267d2` | 73143 |
+| 5 | `PAPER1_conclusions_current_20261109.md` | `9f85a8c25e10e291` | 20601 |
 
-派生件：`SIM240_submission_CN.md` 714 行/80521 B/`84d6ba57488f5bb3`；`_EN.md` 706 行/97971 B/`12ff81145536cc42`；`build_submission.py --check` 一致、无禁词无断链。（11-14 晚清文本硬伤后重生成；此前值 81025 B/`2dbe27e2ee3dbced`、98647 B/`6b646768621cea4e`。）
+派生件：`SIM240_submission_CN.md` 745 行/85818 B/`ebb55b08ab32e1a4`；`_EN.md` 737 行/104739 B/`d1e55f7c62ca2824`；`build_submission.py --check` 一致、无禁词无断链。（11-14 晚二轮 DOE 入稿后重生成。）
 
-**正文改动位置**：新增 §4.5（表 9 = 17 点三方法偏差统计；表 10 = A 与 β 同时恶化的 3 个几何）；§3.4 把"本文没有显式沟槽几何的独立求解器对照"改为"对照仍限于数值方法"；§5.4 增五条限制；§6 第四条补"总体改善但非逐点"段；摘要补一句；附录 B 登记 S15、附录 D 增修订条。补充新增 S15（S15.1—S15.7，表 S14/S15/S16 + `Table_S14_fem_transverse_summary.csv`、`Table_S15_fem_paired_metrics.csv`、`Table_S16_fem_depth_sensitivity.csv`）。结论仍**六条**。
+**正文改动位置**：新增 §4.5（表 9 = 17 点三方法偏差统计；表 10 = A 与 β 同时恶化的 3 个几何）**与 §4.6（表 11 = 独立参考下 15 点四组描述性份额）**；§5.1 末段补独立参考下同一非单调（140.50%→156.30%）；§3.4 把"本文没有显式沟槽几何的独立求解器对照"改为"对照仍限于数值方法"；§5.4 增五条限制；§6 第四条补"总体改善但非逐点"段；摘要补一句；附录 B 登记 S15、附录 D 增修订条。补充新增 S15（S15.1—S15.7，表 S14/S15/S16 + `Table_S14_fem_transverse_summary.csv`、`Table_S15_fem_paired_metrics.csv`、`Table_S16_fem_depth_sensitivity.csv`）**与 S16（S16.1—S16.8，表 S17 份额、S18 边际均值、S19 逐点 15×4 + `Table_S17_doe_shares.csv`、`Table_S18_doe_marginals.csv`、`Table_S19_doe_grid.csv`）**；`SUPPLEMENT_NUMBER_MAP.csv` 补 S15、S16 两行。结论仍**六条**，第四条补趋势段与限定段。
 
 **采用审查**：`PAPER1_fem_v2_adoption_review_20261114/ADOPTION_REVIEW.md`，建议 `ADOPT_AS_NUMERICAL_COMPARISON_REFERENCE`，**待作者签署**；签署前 12 条身份仍是 `REFERENCE_CANDIDATE`。
+
+**DOE 入稿的四个硬约束（勿在后续改动中丢失）**：① 份额是**等权描述性份额**，不报 F/p（15 个确定性结果占满全部自由度）；② $h$ 与 $d$ 跨度不同（50—125 vs 25—120），93%/5% 不得读作物理控制率；③ 份额**参考特定**（V2 横槽 40.08/30.52/29.40 → 22.19/42.54/35.27，$h$ 由最大降为最小），故不入结论、不作模型选择依据；④ 不外推至 h25 与 h100 单列点，不因趋势称 V2 已验证。
 
 **必须记住的三条口径更正**：①V2 有符号均值 **+1.83%**（12 正 5 负），不是无偏；②原式方向比在 **h75/d25、h125/d25** 为低估，V2 在 **h50/d25、h75/d25、h125/d50** 三对 A 与 β 同时恶化 ⇒ 只能说"总体改善"；③门槛最紧 5.2×/5.5×/8.6×，不是"每项三个数量级"；④"只能压间隙"已撤回。
 

@@ -540,3 +540,102 @@ The three $d=75\to120$ values (0.006%, 0.028%, 0.066%) are **all below the adjac
 5. "The direction ratio is overestimated everywhere" — it is underestimated at two geometries.
 6. "Transverse leakage can only be suppressed by reducing the gap" — other adjustable variables were not compared.
 7. Merging with, or substituting for, the 36-result main statistics of the paper.
+
+---
+
+<a id="sm-s16-doe"></a>
+
+## S16 Descriptive trend decomposition on the independent reference
+
+This section supports Section 4.6, the closing paragraph of Section 5.1, and the fourth conclusion item. It repeats the trend judgements of Sections 4.2 to 4.4 on the independent reference of Section 4.5, in order to answer whether those trends are a product of the 5 nm lattice reference itself. Source records, recomputation script and checks are in `docs/reports/PAPER1_fem_v2_doe_20261114/`; this round is an offline recomputation, with **no simulation started, resumed or stopped**, no change to the V2 coefficients, frozen gates or historical FAIL decisions, and **no new reference qualification**.
+
+### S16.1 Reference composition and counts
+
+| Item | Content |
+|---|---|
+| Balanced matrix | $h=50$, 75, 125 nm × $d=25$, 50, 75, 100, 120 nm, **15 geometries** |
+| Directional records | **30** (15 along groove + 15 across, both directions complete) |
+| Along-groove reference | 13 finite-element values + 2 qualified finite-volume values ($h=50$, $d=120$ and $h=125$, $d=120$ nm) |
+| Across-groove reference | 15 finite-element values |
+| Test point for the mixed reference | $h=75$, $d=100$ nm (both methods present; 0.032% along, 0.005% across) |
+| Single entries excluded from the matrix | $h=25$ nm at $d=25$, 50, 100 nm (the first two have along-groove values only); $h=100$, $d=100$ nm |
+
+Mixing two references is acceptable because both methods exist under identical conditions at $h=75$, $d=100$ nm and differ by far less than the percentage differences discussed here; it must nevertheless be disclosed, and the set **must not be described as entirely finite element**. No unsampled combination is interpolated.
+
+### S16.2 Decomposition convention
+
+For four responses (the signed along- and across-groove discrepancies of the local-cubic law and of fixed V2) the decomposition is **equal-weight** over the 15 grid points:
+
+- Main-effect sums of squares: $SS_h=5\sum_{h}(\bar y_{h\cdot}-\bar y)^2$ and $SS_d=3\sum_{d}(\bar y_{\cdot d}-\bar y)^2$, where $\bar y_{h\cdot}$ and $\bar y_{\cdot d}$ are marginal means (arithmetic mean over the other variable at a fixed level);
+- Interaction residual: $SS_{\rm tot}-SS_h-SS_d$;
+- Shares: each sum of squares divided by $SS_{\rm tot}$.
+
+**No $F$-test and no $p$-value are reported.** Each combination has a single deterministic outcome, and intercept, two main effects and the full interaction already exhaust the 15 degrees of freedom, so **no independent residual degrees of freedom remain**. The shares are descriptive, not physical control fractions and not energy partitions.
+
+### S16.3 Table S17 Descriptive shares for the four responses
+
+[Table_S17_doe_shares.csv](Table_S17_doe_shares.csv)
+
+| Response | $h$ share | $d$ share | Interaction residual | Signed grand mean |
+|---|---:|---:|---:|---:|
+| Local-cubic law, along groove | 5.03% | 93.40% | 1.58% | +94.07% |
+| Fixed V2, along groove | 88.98% | 0.60% | 10.43% | +2.41% |
+| Local-cubic law, across groove | 2.53% | 93.77% | 3.70% | +37.52% |
+| Fixed V2, across groove | 22.19% | 42.54% | 35.27% | +2.50% |
+
+Unrounded values: 5.0252 / 93.3994 / 1.5754, 88.9794 / 0.5955 / 10.4251, 2.5283 / 93.7741 / 3.6976, 22.1897 / 42.5448 / 35.2655; every row sums to 100%. The CSV also lists $SS_{\rm tot}$ for recomputation.
+
+### S16.4 Table S18 Marginal means
+
+[Table_S18_doe_marginals.csv](Table_S18_doe_marginals.csv)
+
+| Response | $h=50$ | $h=75$ | $h=125$ | $d=25$ | $d=50$ | $d=75$ | $d=100$ | $d=120$ |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Local-cubic law, along groove | +107.64 | +100.09 | +74.47 | +15.15 | +45.78 | +87.01 | +137.69 | +184.71 |
+| Fixed V2, along groove | +9.13 | +5.09 | −7.00 | +1.32 | +2.42 | +2.70 | +2.76 | +2.84 |
+| Local-cubic law, across groove | +34.54 | +39.35 | +38.66 | +15.34 | +31.52 | +41.70 | +47.87 | +51.15 |
+| Fixed V2, across groove | +0.49 | +3.85 | +3.18 | −0.88 | +3.91 | +4.75 | +3.31 | +1.44 |
+
+Percent, signed. The grand mean is not the average of the marginal means in general: marginal means average equally over the other variable, whereas the grand mean averages the 15 grid points; on a fully balanced matrix the two coincide, and where rounding makes them differ the unrounded values govern.
+
+### S16.5 Table S19 Per-point values on the 15-point grid
+
+[Table_S19_doe_grid.csv](Table_S19_doe_grid.csv)
+
+The per-point values support three checks:
+
+1. **The local-cubic-law discrepancy increases strictly monotonically with $d$**: after fixing $h$, all six sequences (three $h$ levels × two directions) are monotonically increasing.
+2. **The along-groove V2 residual changes sign between $h=75$ and $h=125$ nm**: all five points at $h=75$ nm are positive (+1.6321 to +7.5876) and all five at $h=125$ nm are negative (−2.4278 to −9.9416). No precise zero crossing is given.
+3. **The transverse V2 residual is not monotonic in $d$**: the $d=25$ column is +0.5517, −0.3758, −2.8189; the peak occurs at $d=75$ (+2.4128, +6.4755, +5.3491); the $d=120$ column is −3.5278, +2.8714, +4.9783. The marginal mean at $d=25$ is −0.88%, the only negative level.
+
+### S16.6 Differences from the first round (5 nm reference)
+
+The first round decomposed the signed V2 residuals only, on 18 geometries and 36 records. The two rounds compare as follows:
+
+| Response | First round (5 nm OpenLB reference) | This round (independent reference) |
+|---|---|---|
+| Fixed V2, along groove | 87.65 / 0.77 / 11.58 | 88.98 / 0.60 / 10.43 |
+| Fixed V2, across groove | **40.08 / 30.52 / 29.40** | **22.19 / 42.54 / 35.27** |
+
+Format is $h$ share / $d$ share / interaction residual (%). **Algorithmic consistency is self-evidenced on the old data**: the same script recomputed 87.65 / 0.77 / 11.58 and 40.08 / 30.52 / 29.40 on the old 36 records, agreeing digit for digit with the published values. The differences above therefore come from the change of reference and geometry set, not from a change of algorithm or sampling convention.
+
+**The transverse ordering reverses completely**: $h$ moves from the largest term (40.08%) to the smallest (22.19%), $d$ from second to largest (42.54%), and the interaction rises from 29.40% to 35.27%. The qualitative statement that no single parameter controls the transverse response still holds, but **that particular first-round set of numbers is reference-specific and must not be quoted as fixed fact**, and in particular must not be written as three roughly equal factors or as a physical equipartition.
+
+### S16.7 Statements this section does not support
+
+1. No $F$-test or $p$-value, and no claim of statistical significance.
+2. Shares are not physical control fractions, energy partitions or variance contributions.
+3. Depth is not the sole or principal physical control parameter. The sampled spans differ (50 to 125 nm against 25 to 120 nm), so the 93% against 5% contrast describes only the direction of variation within this parameter box.
+4. No precise zero crossing; only the interval between $h=75$ and $h=125$ nm.
+5. No continuous saturation threshold at $d\approx75$ nm, no claim that depth has no effect, and no claim that transverse leakage can only be suppressed by reducing the gap.
+6. No extrapolation of the 15-point matrix to the single entries at $h=25$ nm or $h=100$ nm.
+7. No statement that all 36 records use a finite-element reference (the composition is 34 finite element plus 2 finite volume).
+8. No claim that V2 is independently validated on the strength of these trends; the reference remains a candidate pending a formal adoption review.
+
+### S16.8 Recomputation
+
+```bash
+cd docs/reports/PAPER1_fem_v2_doe_20261114 && python3 build_doe_v2.py
+```
+
+Expected: the old basis reproduces 87.65 / 0.77 / 11.58 and 40.08 / 30.52 / 29.40; the 15-point grid carries both directions; each of the four decompositions sums exactly to 100%.
