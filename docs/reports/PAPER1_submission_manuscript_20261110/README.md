@@ -104,8 +104,8 @@ diff SIM240_First_Paper_English_20261028.md PAPER1_submission_manuscript_2026111
 
 | 文件 | 行数 | 字节 | SHA256（前 16 位） | 来源母本（生成时指纹） |
 |---|---|---|---|---|
-| `SIM240_submission_CN.md` | 745 | 87258 | `a0c1f10059726f8c` | `SIM240_中文稿_导师审阅版_20261022.md`（`8d544a3eee0c9eaf`，96744 B） |
-| `SIM240_submission_EN.md` | 737 | 106778 | `d3f4dd82c477901f` | `SIM240_First_Paper_English_20261028.md`（`002af0998eb572d7`，108796 B） |
+| `SIM240_submission_CN.md` | 745 | 87418 | `de6e0ff191aa4572` | `SIM240_中文稿_导师审阅版_20261022.md`（`7f85e77c7155c143`，96904 B） |
+| `SIM240_submission_EN.md` | 737 | 107008 | `2eb04d4a3cfbc06c` | `SIM240_First_Paper_English_20261028.md`（`4badbe87609fa3cb`，109026 B） |
 
 **指纹会随母本一起变。** 母本一改（哪怕只改一句话），本表就过期；判断是否过期只用一条命令：`python3 build_submission.py --check`。当前状态：两行"一致"，0 禁词、0 断链。
 
@@ -135,5 +135,5 @@ diff SIM240_First_Paper_English_20261028.md PAPER1_submission_manuscript_2026111
 |---|---|---|
 | `README.md` | 本说明 | 可以（它本身不是派生件） |
 | `build_submission.py` | 生成脚本，唯一来源 | 可以，但改完要重跑并更新第 5 节指纹 |
-| `SIM240_submission_CN.md` | 745 | 87258 | `a0c1f10059726f8c` | `SIM240_中文稿_导师审阅版_20261022.md`（`8d544a3eee0c9eaf`，96744 B） |
-| `SIM240_submission_EN.md` | 737 | 106778 | `d3f4dd82c477901f` | `SIM240_First_Paper_English_20261028.md`（`002af0998eb572d7`，108796 B） |
+| `SIM240_submission_CN.md` | 745 | 87418 | `de6e0ff191aa4572` | `SIM240_中文稿_导师审阅版_20261022.md`（`7f85e77c7155c143`，96904 B） |
+| `SIM240_submission_EN.md` | 737 | 107008 | `2eb04d4a3cfbc06c` | `SIM240_First_Paper_English_20261028.md`（`4badbe87609fa3cb`，109026 B） |
