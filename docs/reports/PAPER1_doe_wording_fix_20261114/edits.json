@@ -1,0 +1,308 @@
+[
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "E4: correct FVM terminology",
+    "before": "**计数口径必须先说清。** 本补充对照共 36 条方向比较 ＝ 19 条沿槽 ＋ 17 条横槽；其中 34 条参考为有限元结果，2 条沿槽参考（$h=50$、$d=120$ 与 $h=125$、$d=120$）沿用既有的合格有限元体积法记录。17 种几何具备成对主值；$h=25$ nm 的 $d=25$、50 nm 两个槽深只有沿槽值，按作者决定不补算横槽。**本集合与 §4.2 的 36 条主统计不是同一集合**：后者为 18 种几何 × 2 方向、参考为 5 nm OpenLB。两者几何数、参考方法与配对方式均不同，不得合并统计或互相替换。",
+    "after": "**计数口径必须先说清。** 本补充对照共 36 条方向比较 ＝ 19 条沿槽 ＋ 17 条横槽；其中 34 条参考为有限元结果，2 条沿槽参考（$h=50$、$d=120$ 与 $h=125$、$d=120$）沿用既有的合格有限体积法记录。17 种几何具备成对主值；$h=25$ nm 的 $d=25$、50 nm 两个槽深只有沿槽值，按作者决定不补算横槽。**本集合与 §4.2 的 36 条主统计不是同一集合**：后者为 18 种几何 × 2 方向、参考为 5 nm OpenLB。两者几何数、参考方法与配对方式均不同，不得合并统计或互相替换。"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "E4: correct FVM terminology",
+    "before": "§4.2 至 §4.4 的偏差、漂移与变号判断，参考均为 5 nm OpenLB 离散本身。为判断这些趋势是否依赖该参考，在 §4.5 的独立参考上对同一批已采样几何重做一遍描述性分解。所用为 15 个确定性几何的平衡矩阵：$h\\in\\{50,75,125\\}$ nm × $d\\in\\{25,50,75,100,120\\}$ nm，两方向均有记录，共 30 条。参考构成为沿槽 13 条有限元值加 2 条已合格有限元体积法值（$h=50$、$d=120$ 与 $h=125$、$d=120$），横槽 15 条全部为有限元值。混用参考在 $h=75$、$d=100$ nm 上可直接检验：两种方法同条件并存的偏差为 0.032%（沿槽）与 0.005%（横槽），远小于本节讨论的百分比差异。$h=25$ nm 的三个槽深与 $h=100$、$d=100$ nm 仍按单列处理，不插补未采样组合。",
+    "after": "§4.2 至 §4.4 的偏差、漂移与变号判断，参考均为 5 nm OpenLB 离散本身。为判断这些趋势是否依赖该参考，在 §4.5 的独立参考上对同一批已采样几何重做一遍描述性分解。所用为 15 个确定性几何的平衡矩阵：$h\\in\\{50,75,125\\}$ nm × $d\\in\\{25,50,75,100,120\\}$ nm，两方向均有记录，共 30 条。参考构成为沿槽 13 条有限元值加 2 条已合格有限体积法值（$h=50$、$d=120$ 与 $h=125$、$d=120$），横槽 15 条全部为有限元值。混用参考在 $h=75$、$d=100$ nm 上可直接检验：两种方法同条件并存的偏差为 0.032%（沿槽）与 0.005%（横槽），远小于本节讨论的百分比差异。$h=25$ nm 的三个槽深与 $h=100$、$d=100$ nm 仍按单列处理，不插补未采样组合。"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "E4: correct FVM terminology",
+    "before": "**参考身份同 §4.5。** 本节所含 12 条横槽计算与 2 条合格有限元体积法记录，资格状态与 §4.5 所述一致，为**待正式采用的候选参考**。因此本节只说明所列趋势不依赖 5 nm 格子参考，不构成对 V2 的独立验证，也不构成连续适用域保证。",
+    "after": "**参考身份同 §4.5。** 本节所含 12 条横槽计算与 2 条合格有限体积法记录，资格状态与 §4.5 所述一致，为**待正式采用的候选参考**。因此本节只说明所列趋势不依赖 5 nm 格子参考，不构成对 V2 的独立验证，也不构成连续适用域保证。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "E4: correct FVM terminology",
+    "before": "| 其中沿槽参考为既有合格有限元体积法 | 2 条（$h=50$、$d=120$ 与 $h=125$、$d=120$ nm） |",
+    "after": "| 其中沿槽参考为既有合格有限体积法 | 2 条（$h=50$、$d=120$ 与 $h=125$、$d=120$ nm） |"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "E4: correct FVM terminology",
+    "before": "| 沿槽参考 | 13 条有限元 ＋ 2 条合格有限元体积法（$h=50$、$d=120$ 与 $h=125$、$d=120$ nm） |",
+    "after": "| 沿槽参考 | 13 条有限元 ＋ 2 条合格有限体积法（$h=50$、$d=120$ 与 $h=125$、$d=120$ nm） |"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "E4: correct FVM terminology",
+    "before": "7. 不写\"全部 36 条以有限元为参考\"（实为 34 有限元 + 2 有限元体积法）。",
+    "after": "7. 不写\"全部 36 条以有限元为参考\"（实为 34 有限元 + 2 有限体积法）。"
+  },
+  {
+    "path": "docs/reports/PAPER1_conclusions_current_20261109.md",
+    "reason": "E4: correct FVM terminology",
+    "before": "**独立参考下的趋势分解（2026-11-14 新增）。** 在 §4.5 同一独立参考上对 15 个几何的平衡矩阵（$h=50$、75、125 nm × $d=25$、50、75、100、120 nm，双向 30 条；参考为 13 有限元 ＋ 2 合格有限元体积法沿槽、15 有限元横槽）作等权描述性分解：**原公式的偏差在两方向都由槽深主导（$h$ 份额 5.03% 与 2.53%，$d$ 份额 93.40% 与 93.77%），扣除槽深依赖后 V2 的沿槽残余偏差反过来由间隙主导（88.98%）**。这与 V2 因子只含 $d/w$、完整式仍含 $h$ 是同一件事的两面：原式漏掉的主要是槽深，补入后剩下的主要是间隙。三条原有判断在换参考后成立：原公式偏差随 $d$ 严格单调上升（6/6 序列）；V2 沿槽在 $h=75$ 与 $h=125$ nm 之间变号（$h=75$ 五点全正、$h=125$ 五点全负，边际 +5.09% 与 −7.00%，不给过零点）；$h\\ge50$ nm 序列中原式沿槽随 $h$ 递减、$d=100$ nm 的 $h=25\\to50$ nm 反例仍在（+140.50%→+156.30%，非 5 nm 参考产物）。",
+    "after": "**独立参考下的趋势分解（2026-11-14 新增）。** 在 §4.5 同一独立参考上对 15 个几何的平衡矩阵（$h=50$、75、125 nm × $d=25$、50、75、100、120 nm，双向 30 条；参考为 13 有限元 ＋ 2 合格有限体积法沿槽、15 有限元横槽）作等权描述性分解：**原公式的偏差在两方向都由槽深主导（$h$ 份额 5.03% 与 2.53%，$d$ 份额 93.40% 与 93.77%），扣除槽深依赖后 V2 的沿槽残余偏差反过来由间隙主导（88.98%）**。这与 V2 因子只含 $d/w$、完整式仍含 $h$ 是同一件事的两面：原式漏掉的主要是槽深，补入后剩下的主要是间隙。三条原有判断在换参考后成立：原公式偏差随 $d$ 严格单调上升（6/6 序列）；V2 沿槽在 $h=75$ 与 $h=125$ nm 之间变号（$h=75$ 五点全正、$h=125$ 五点全负，边际 +5.09% 与 −7.00%，不给过零点）；$h\\ge50$ nm 序列中原式沿槽随 $h$ 递减、$d=100$ nm 的 $h=25\\to50$ nm 反例仍在（+140.50%→+156.30%，非 5 nm 参考产物）。"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W1: descriptive shares do not remove a physical dependency",
+    "before": "第一行与第三行的对照给出本节最直接的一条结果：**原公式的偏差在两个方向都由槽深主导**（93.40% 与 93.77%），而**扣除这部分槽深依赖之后，V2 的沿槽残余偏差反过来由间隙主导**（88.98%）。这与 V2 的乘性因子只含 $d/w$、完整式仍含 $h$ 是同一件事的两种写法：原式遗漏的主要变量是槽深，补入槽深之后剩下的主要变量是间隙。§4.4 只从\"残差仍随间隙变化\"定性提示变量选择不足，这里给出该提示在本采样矩阵上的相对量级。",
+    "after": "在所列等权矩阵中，**原公式有符号偏差的槽深主效应平方和份额在两个方向均最大**（93.40% 与 93.77%）；对于**固定 V2 的沿槽有符号偏差，间隙主效应份额最大**（88.98%）。原公式已经含有槽深和间隙，乘性修正不等于扣除了槽深依赖。该分解与仅依赖 $d/w$ 的乘性因子仍保留间隙相关残余的观察一致，但不能确定唯一的缺失变量、改进函数形式或物理原因。完整公式仍含 $h$；§4.4 对残差随间隙变化的观察，在这里得到本采样矩阵内的描述性量化。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W1: bilingual match",
+    "before": "The first and third rows carry the most direct result of this section: **the local-cubic-law discrepancy is dominated by groove depth in both directions** (93.40% and 93.77%), whereas **after removing that depth dependence, the remaining along-groove V2 residual is in turn dominated by the gap** (88.98%). This is the same fact stated twice, namely that the V2 multiplicative factor contains only $d/w$ while the complete formula still contains $h$: what the local-cubic law omits is mainly depth, and what remains after depth is supplied is mainly gap. Section 4.4 raised this only qualitatively, from the observation that residuals still vary with gap; the present matrix gives the relative magnitude of that observation.",
+    "after": "Within the specified equally weighted matrix, **the depth main-effect sum-of-squares share is the largest for the signed local-cubic-law discrepancy in both directions** (93.40% and 93.77%). For **the fixed-V2 along-groove signed discrepancy, the gap main-effect share is the largest** (88.98%). The local-cubic law already contains depth and gap; a multiplicative correction does not remove depth dependence. This decomposition is consistent with gap-dependent residuals remaining under a $d/w$-only factor, but does not identify a unique missing variable, correction form or physical cause. The complete formula still contains $h$; the present matrix gives a descriptive quantification of the residual gap dependence discussed in Section 4.4."
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "E3: saturated model parameters, not centered total degrees of freedom",
+    "before": "每个组合只有一个确定性结果，截距、两个主效应与完整交互已占满 15 个自由度，没有独立残差自由度。",
+    "after": "每个组合只有一个确定性结果，包含完整交互的两因素模型以 15 个单元均值参数表示，为饱和模型，没有独立残差自由度。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "E3: bilingual match",
+    "before": "each combination has a single deterministic outcome, and intercept, two main effects and the full interaction already exhaust the 15 degrees of freedom, leaving no independent residual degrees of freedom.",
+    "after": "each combination has a single deterministic outcome, and the complete two-factor interaction model has 15 cell-mean parameters. It is saturated, with no independent residual degrees of freedom."
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "E3: supplement",
+    "before": "每个组合只有一个确定性结果，截距、两个主效应与完整交互已占满 15 个自由度，**没有独立残差自由度**。",
+    "after": "每个组合只有一个确定性结果，包含完整交互的两因素模型以 15 个单元均值参数表示，为饱和模型，**没有独立残差自由度**。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "E3: English supplement",
+    "before": "Each combination has a single deterministic outcome, and intercept, two main effects and the full interaction already exhaust the 15 degrees of freedom, so **no independent residual degrees of freedom remain**.",
+    "after": "Each combination has a single deterministic outcome, and the complete two-factor interaction model has 15 cell-mean parameters. It is saturated, with **no independent residual degrees of freedom**."
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W2/W4: distinguish reference identities and bound robustness claim",
+    "before": "**参考身份同 §4.5。** 本节所含 12 条横槽计算与 2 条合格有限体积法记录，资格状态与 §4.5 所述一致，为**待正式采用的候选参考**。因此本节只说明所列趋势不依赖 5 nm 格子参考，不构成对 V2 的独立验证，也不构成连续适用域保证。",
+    "after": "**参考身份同 §4.5。** 本节所含 12 条新增横槽有限元计算仍为**待正式采用的候选参考**；其余既有有限元结果保留经保存场复核后的有限采用建议及历史运行溯源限制。2 条合格有限体积法记录保留既有参考资格，不能因共同用于本节而一并降级或将有限元结果一并提升。各来源的身份区别见 §4.5。本节仅说明所列趋势在更换数值对照后仍保留，不据此排除全部离散影响，不构成对 V2 的独立验证或连续适用域保证；5 nm 比较基线的限定保持不变。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W2/W4: bilingual match",
+    "before": "**Reference status as in Section 4.5.** The 12 transverse runs and 2 qualified finite-volume records used here carry the same status as stated in Section 4.5, namely **candidate reference pending formal adoption**. This section therefore shows only that the listed trends do not depend on the 5 nm lattice reference; it does not constitute independent validation of V2 and gives no continuous-domain accuracy guarantee.",
+    "after": "**Reference status as in Section 4.5.** The 12 new transverse finite-element runs remain **candidate references pending formal adoption**. The legacy finite-element results retain the recommendation for limited use after saved-field checks, together with their historical run-provenance limitations. The 2 qualified finite-volume records retain their existing reference qualification; their use in the same analysis neither downgrades them nor qualifies the finite-element results. These source-specific distinctions follow Section 4.5. The listed trends persist after changing the numerical comparison; this does not exclude all discretization effects, independently validate V2 or guarantee a continuous domain of accuracy. The limitations of the 5 nm comparison basis remain unchanged."
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W4: persistence is not elimination of all numerical effects",
+    "before": "该非单调并非 5 nm 参考的产物：在 §4.6 的独立参考上，同一序列由 140.50% 上升至 156.30%。",
+    "after": "在 §4.6 所列替代数值对照下，同一序列仍由 140.50% 上升至 156.30%，说明这一非单调观察并非仅见于以 5 nm OpenLB 为基线的比较；该结果不单独确定其机制或连续解精度。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W4: bilingual match",
+    "before": "This non-monotonicity is not an artefact of the 5 nm reference: on the independent reference of Section 4.6 the same sequence rises from 140.50% to 156.30%.",
+    "after": "Under the alternative numerical comparisons listed in Section 4.6, the same sequence still rises from 140.50% to 156.30%. This non-monotonicity is therefore not confined to comparisons using the 5 nm OpenLB basis, but does not by itself identify its mechanism or continuous-solution accuracy."
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "E1: balanced means agree exactly before rounding",
+    "before": "单位 %，有符号。注意\"总均值\"不等于边际均值的平均：边际均值是对另一变量取等权平均，总均值是 15 个格点的算术平均，两者在完全平衡矩阵上应相同，此处因显示取整略有出入时以未取整值为准。",
+    "after": "单位 %，有符号。本节为完全平衡的等权矩阵：15 个格点的总均值，既等于各间隙档边际均值的算术平均，也等于各槽深档边际均值的算术平均。未取整时这两种平均与总均值相等；显示取整引起的末位差以未取整值为准。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "E1: bilingual match",
+    "before": "Percent, signed. The grand mean is not the average of the marginal means in general: marginal means average equally over the other variable, whereas the grand mean averages the 15 grid points; on a fully balanced matrix the two coincide, and where rounding makes them differ the unrounded values govern.",
+    "after": "Percent, signed. On this fully balanced, equally weighted matrix, the grand mean of the 15 grid points equals both the arithmetic mean of the gap marginal means and the arithmetic mean of the depth marginal means before rounding. Where displayed rounding produces a last-digit difference, the unrounded values govern."
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "E2: same analysis subset, different reference",
+    "before": "因此上表的差异来自参考与几何集合的改变，不是算法或选点口径的改变。",
+    "after": "两轮总体记录集合不同，但本表份额比较使用相同的平衡矩阵、等权选点与算法。因此上表反映的是该固定子集更换数值对照后偏差响应的改变，不应归因于分析矩阵换点。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "E2: bilingual match",
+    "before": "The differences above therefore come from the change of reference and geometry set, not from a change of algorithm or sampling convention.",
+    "after": "The full record sets differ, but the share comparison uses the same balanced subset, equal weighting and algorithm in both rounds. The differences above therefore reflect the changed discrepancy response when the numerical comparison is replaced, rather than a change of points in the analyzed matrix."
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "E5: peak is marginal, not every individual curve",
+    "before": "$d=75$ 列达峰（+2.4128、+6.4755、+5.3491）；",
+    "after": "$d=75$ 列为 +2.4128、+6.4755、+5.3491；对间隙平均后的槽深边际均值在该采样档最大，不表示各固定间隙曲线均在此达峰；"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "E5: bilingual match",
+    "before": "the peak occurs at $d=75$ (+2.4128, +6.4755, +5.3491);",
+    "after": "the $d=75$ column is +2.4128, +6.4755, +5.3491; the depth marginal mean, averaged over gaps, is largest at this sampled level, which does not imply that every fixed-gap curve peaks there;"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "E5: specify marginal mean in main text",
+    "before": "在 $d=75$ nm 达到峰值（+4.75%），其后回落。",
+    "after": "对间隙平均后的槽深边际均值在所采样的 $d=75$ nm 档最大（+4.75%），随后回落。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "E5: bilingual match",
+    "before": "with a peak at $d=75$ nm (+4.75%) followed by a decline.",
+    "after": "with the depth marginal mean, averaged over gaps, largest at the sampled $d=75$ nm level (+4.75%) and lower thereafter."
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W1/E5: residual shape is not a physical-control diagnosis",
+    "before": "这与横槽无单一主控参数一致，但比\"非单调\"更具体：小槽深处出现反向，峰值位于采样中段。",
+    "after": "这些是所列偏差响应的描述性特征，不确定横槽输运的物理主控参数：小槽深处出现偏差反向，槽深边际均值的最大值位于采样中段。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W1/E5: bilingual match",
+    "before": "This is consistent with the absence of a single controlling parameter across the groove, but is more specific than non-monotonicity alone: reversal occurs at small depth and the peak lies in the middle of the sampled range.",
+    "after": "These are descriptive features of the listed discrepancy response and do not identify a physical controlling parameter for transverse transport: the discrepancy reverses sign at small depth, and the largest depth marginal mean lies in the middle of the sampled range."
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "W1: distinguish descriptive response from physical control",
+    "before": "定性判断\"横槽没有单一主控参数\"仍成立，但",
+    "after": "本矩阵的横槽有符号偏差包含两个主效应与交互余项，不能据此判定物理主控参数；"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "W1: bilingual match",
+    "before": "The qualitative statement that no single parameter controls the transverse response still holds, but",
+    "after": "The transverse signed discrepancy on this matrix contains both main-effect and interaction components, which do not identify a physical controlling parameter;"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W2: mixed reference set is not entirely FEM",
+    "before": "参考分别为有限元与 5 nm OpenLB",
+    "after": "参考分别为有限元/有限体积法组合与 5 nm OpenLB"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W2: main-text limitations distinguish statuses",
+    "before": "其五，该批计算为待正式采用的候选参考，不构成正式参考资格或物理验证。",
+    "after": "其五，新增有限元计算仍为待正式采用的候选参考，既有有限元结果保留有限采用建议和历史溯源限制，既有合格有限体积法记录保留原参考资格；本比较不构成物理验证。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W2: bilingual mixed-reference description",
+    "before": "referenced to finite-element and 5 nm OpenLB values respectively",
+    "after": "referenced to the finite-element/finite-volume combination and 5 nm OpenLB values respectively"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W2: bilingual status distinctions",
+    "before": "Fifth, that batch is a candidate reference pending formal adoption and confers neither formal reference status nor physical validation.",
+    "after": "Fifth, the new finite-element runs remain candidate references pending formal adoption, legacy finite-element results retain their limited-use recommendation and provenance limitations, and the qualified finite-volume records retain their existing reference status. This comparison is not physical validation."
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W2: main conclusion preserves all source identities",
+    "before": "其身份为待正式采用的候选数值参考，不构成物理验证。",
+    "after": "其中新增有限元计算待正式采用，既有有限元结果保留有限采用建议及溯源限制，既有合格有限体积法记录保留资格；本比较不构成物理验证。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W2: bilingual conclusion",
+    "before": "its status is candidate numerical reference pending formal adoption, and it constitutes neither physical validation nor a continuous-domain guarantee.",
+    "after": "the new finite-element runs await formal adoption, legacy finite-element results retain their limited-use recommendation and provenance limitations, and qualified finite-volume records retain their qualification. The comparison constitutes neither physical validation nor a continuous-domain guarantee."
+  },
+  {
+    "path": "docs/reports/PAPER1_conclusions_current_20261109.md",
+    "reason": "W2: conclusion authority mixed-reference description",
+    "before": "参考为二维有限元，17 种几何成对",
+    "after": "参考由二维有限元与既有合格有限体积法结果组成，17 种几何成对"
+  },
+  {
+    "path": "docs/reports/PAPER1_conclusions_current_20261109.md",
+    "reason": "W2: conclusion authority status distinctions",
+    "before": "其身份为**待正式采用的候选参考**，不构成物理验证。",
+    "after": "其中新增有限元计算仍为**待正式采用的候选参考**，既有有限元结果保留有限采用建议及历史溯源限制，既有合格有限体积法记录保留原资格；本比较不构成物理验证。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "W2: avoid blanket classification in S15",
+    "before": "2. \"正式参考资格\"——当前为候选参考，须另签审查。",
+    "after": "2. 将本节全部结果统称为\"已取得正式参考资格\"——新增有限元仍为候选，既有有限元保留有限采用建议及历史溯源限制；既有合格有限体积法记录的资格不变。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "W2: bilingual S15",
+    "before": "2. \"Formal reference status\" — the status is candidate, pending separate sign-off.",
+    "after": "2. Describing all results here as formally qualified references: the new finite-element runs remain candidates, legacy finite-element results retain their limited-use recommendation and provenance limitations, and qualified finite-volume records retain their qualification."
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "W2: source-specific S16 qualification",
+    "before": "8. 不因本节趋势成立就称 V2\"已被独立验证\"；参考身份仍是候选，须另签采用审查。",
+    "after": "8. 不因本节趋势成立就称 V2\"已被独立验证\"；新增有限元参考仍为候选，须另签采用审查；既有有限元的有限采用建议及溯源限制、既有合格有限体积法的资格分别保留。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "W2: bilingual S16",
+    "before": "8. No claim that V2 is independently validated on the strength of these trends; the reference remains a candidate pending a formal adoption review.",
+    "after": "8. No claim that V2 is independently validated on the strength of these trends. The new finite-element references remain candidates pending formal adoption; legacy finite-element limited-use recommendations and provenance limitations, and existing qualified finite-volume status, are retained separately."
+  },
+  {
+    "path": "docs/reports/PAPER1_conclusions_current_20261109.md",
+    "reason": "W3: detailed numeric evidence moved outside six conclusion statements",
+    "before": "**独立参考下的趋势分解（2026-11-14 新增）。** 在 §4.5 同一独立参考上对 15 个几何的平衡矩阵（$h=50$、75、125 nm × $d=25$、50、75、100、120 nm，双向 30 条；参考为 13 有限元 ＋ 2 合格有限体积法沿槽、15 有限元横槽）作等权描述性分解：**原公式的偏差在两方向都由槽深主导（$h$ 份额 5.03% 与 2.53%，$d$ 份额 93.40% 与 93.77%），扣除槽深依赖后 V2 的沿槽残余偏差反过来由间隙主导（88.98%）**。这与 V2 因子只含 $d/w$、完整式仍含 $h$ 是同一件事的两面：原式漏掉的主要是槽深，补入后剩下的主要是间隙。三条原有判断在换参考后成立：原公式偏差随 $d$ 严格单调上升（6/6 序列）；V2 沿槽在 $h=75$ 与 $h=125$ nm 之间变号（$h=75$ 五点全正、$h=125$ 五点全负，边际 +5.09% 与 −7.00%，不给过零点）；$h\\ge50$ nm 序列中原式沿槽随 $h$ 递减、$d=100$ nm 的 $h=25\\to50$ nm 反例仍在（+140.50%→+156.30%，非 5 nm 参考产物）。\n\n**限定**：份额为**等权描述性份额**，不报 $F$ 检验或 $p$ 值（15 个确定性结果占满全部自由度，无独立残差自由度）；$h$ 与 $d$ 采样跨度不同（50—125 nm 与 25—120 nm），93% 与 5% 的对比**不得读作槽深比间隙更重要的物理控制率**；份额对参考敏感——同一算法在 5 nm 参考上给出 V2 横槽 40.08/30.52/29.40，本轮为 22.19/42.54/35.27，$h$ 由最大项降为最小项——故份额只作描述性趋势，**不进入结论、不作模型形式选择依据**，也不外推至 $h=25$ nm 与 $h=100$ nm 单列点。",
+    "after": "在所列等权采样矩阵中，固定 V2 的沿槽有符号残余仍呈间隙相关差异；所列参数趋势在更换数值对照后保留。这支持按采样条件评价单变量因子的局限，不单独确定唯一的缺失变量、物理原因或连续参数域精度。"
+  },
+  {
+    "path": "docs/reports/PAPER1_conclusions_current_20261109.md",
+    "reason": "W3: retain every original DOE numeric value in a separate evidence note",
+    "before": "\n---\n\n## 2 统一偏差定义",
+    "after": "\n---\n\n## DOE证据说明（对应第四条，不属于六条结论正文）\n\n**独立参考下的趋势分解（2026-11-14 新增）。** 在 §4.5 同一独立参考上对 15 个几何的平衡矩阵（$h=50$、75、125 nm × $d=25$、50、75、100、120 nm，双向 30 条；参考为 13 有限元 ＋ 2 合格有限体积法沿槽、15 有限元横槽）作等权描述性分解：**原公式有符号偏差的槽深主效应平方和份额在两方向均最大（$h$ 份额 5.03% 与 2.53%，$d$ 份额 93.40% 与 93.77%），固定 V2 沿槽有符号偏差的间隙主效应份额最大（88.98%）**。原公式已经含有槽深与间隙。该结果与仅依赖 $d/w$ 的因子仍保留间隙相关残余的观察一致，但不确定唯一的缺失变量、改进形式或物理原因；完整公式仍含 $h$。三条原有判断在换参考后成立：原公式偏差随 $d$ 严格单调上升（6/6 序列）；V2 沿槽在 $h=75$ 与 $h=125$ nm 之间变号（$h=75$ 五点全正、$h=125$ 五点全负，边际 +5.09% 与 −7.00%，不给过零点）；$h\\ge50$ nm 序列中原式沿槽随 $h$ 递减、$d=100$ nm 的 $h=25\\to50$ nm 反例仍在（+140.50%→+156.30%，该观察并非仅见于以 5 nm OpenLB 为基线的比较，不单独确定机制或连续解精度）。\n\n**限定**：份额为**等权描述性份额**，不报 $F$ 检验或 $p$ 值（15 个确定性格点上的完整交互模型为饱和模型，无独立残差自由度）；$h$ 与 $d$ 采样跨度不同（50—125 nm 与 25—120 nm），93% 与 5% 的对比**不得读作槽深比间隙更重要的物理控制率**；份额对参考敏感——同一算法在 5 nm 参考上给出 V2 横槽 40.08/30.52/29.40，本轮为 22.19/42.54/35.27，$h$ 由最大项降为最小项——故份额只作描述性趋势，**不进入结论、不作模型形式选择依据**，也不外推至 $h=25$ nm 与 $h=100$ nm 单列点。\n\n---\n\n## 2 统一偏差定义"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W3: synchronize qualitative DOE conclusion without shares",
+    "before": "**四、** 使用固定V2系数回顾性比较同一主集合，沿槽平均绝对偏差由88.85%降至6.40%，横槽由30.63%降至4.42%，合计35/36条绝对偏差减小；该 $d/w$ 单变量经验修正的残余最大绝对值分别为10.50%与18.71%。h=25 nm、d=100 nm横槽条件的改善判断随5/2.5 nm参考改变，h≥50 nm子集的6.92%不是连续适用范围承诺。V2残差的间隙依赖仍需与模型选择、参数估计和参考误差分别评价。 固定d100的沿槽残余在h75与h100间变号，漂移7.93个百分点>5个百分点；缺少h/w的因子表达能力有限，离散参考贡献仍待排除。在与本文主集合并列的有限元独立离散对照中（§4.5，17个横槽成对几何），固定V2的横槽平均绝对偏差为4.21%、有符号均值+1.83%，方向比与45°重建角的平均绝对偏差亦由42.72%与5.02°降至7.63%与1.51°；但3个几何的这两项指标同时恶化，局部立方律的方向比在2个几何上本就低估，故改善是总体性的而非逐点的。该集合与本文36条5 nm主统计分属不同参考与不同几何集合，不作合并；其中新增有限元计算待正式采用，既有有限元结果保留有限采用建议及溯源限制，既有合格有限体积法记录保留资格；本比较不构成物理验证。",
+    "after": "**四、** 使用固定V2系数回顾性比较同一主集合，沿槽平均绝对偏差由88.85%降至6.40%，横槽由30.63%降至4.42%，合计35/36条绝对偏差减小；该 $d/w$ 单变量经验修正的残余最大绝对值分别为10.50%与18.71%。h=25 nm、d=100 nm横槽条件的改善判断随5/2.5 nm参考改变，h≥50 nm子集的6.92%不是连续适用范围承诺。V2残差的间隙依赖仍需与模型选择、参数估计和参考误差分别评价。 固定d100的沿槽残余在h75与h100间变号，漂移7.93个百分点>5个百分点；缺少h/w的因子表达能力有限，离散参考贡献仍待排除。在与本文主集合并列的有限元独立离散对照中（§4.5，17个横槽成对几何），固定V2的横槽平均绝对偏差为4.21%、有符号均值+1.83%，方向比与45°重建角的平均绝对偏差亦由42.72%与5.02°降至7.63%与1.51°；但3个几何的这两项指标同时恶化，局部立方律的方向比在2个几何上本就低估，故改善是总体性的而非逐点的。该集合与本文36条5 nm主统计分属不同参考与不同几何集合，不作合并；其中新增有限元计算待正式采用，既有有限元结果保留有限采用建议及溯源限制，既有合格有限体积法记录保留资格；本比较不构成物理验证。 在所列等权采样矩阵中，固定 V2 的沿槽有符号残余仍呈间隙相关差异；所列参数趋势在更换数值对照后保留。这支持按采样条件评价单变量因子的局限，不单独确定唯一的缺失变量、物理原因或连续参数域精度。"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W3: synchronize qualitative DOE conclusion without shares",
+    "before": "**4.** Retrospective comparison using the fixed V2 coefficients reduces the along-groove mean absolute discrepancy from 88.85% to 6.40% and the transverse value from 30.63% to 4.42%, improving 35/36 main records. Maximum absolute residuals of this $d/w$-only empirical correction are 10.50% and 18.71%, respectively. At h=25 nm, d=100 nm, the local transverse improvement assessment changes between 5 and 2.5 nm references. The 6.92% maximum in the h≥50 nm subset is not a continuous applicability guarantee. Residual gap dependence must be assessed separately from model selection, parameter estimation and reference error. At fixed d100, the along-groove residual changes sign between h75 and h100 and drifts by 7.93 percentage points > 5 percentage points; the factor omits h/w, while the discrete-reference contribution remains unresolved. In the independent finite-element discretization comparison listed alongside the present main set (§4.5, 17 paired transverse geometries), fixed V2 gives a transverse mean absolute discrepancy of 4.21% with a signed mean of +1.83%, while the mean absolute deviations of the direction ratio and the 45° reconstructed angle fall from 42.72% and 5.02° to 7.63% and 1.51°; at three geometries both metrics worsen, and the local-law direction ratio is already underestimated at two geometries, so the improvement is overall rather than pointwise. That set and the present 36-result 5 nm main statistics use different references and different geometry sets and are not merged; the new finite-element runs await formal adoption, legacy finite-element results retain their limited-use recommendation and provenance limitations, and qualified finite-volume records retain their qualification. The comparison constitutes neither physical validation nor a continuous-domain guarantee.",
+    "after": "**4.** Retrospective comparison using the fixed V2 coefficients reduces the along-groove mean absolute discrepancy from 88.85% to 6.40% and the transverse value from 30.63% to 4.42%, improving 35/36 main records. Maximum absolute residuals of this $d/w$-only empirical correction are 10.50% and 18.71%, respectively. At h=25 nm, d=100 nm, the local transverse improvement assessment changes between 5 and 2.5 nm references. The 6.92% maximum in the h≥50 nm subset is not a continuous applicability guarantee. Residual gap dependence must be assessed separately from model selection, parameter estimation and reference error. At fixed d100, the along-groove residual changes sign between h75 and h100 and drifts by 7.93 percentage points > 5 percentage points; the factor omits h/w, while the discrete-reference contribution remains unresolved. In the independent finite-element discretization comparison listed alongside the present main set (§4.5, 17 paired transverse geometries), fixed V2 gives a transverse mean absolute discrepancy of 4.21% with a signed mean of +1.83%, while the mean absolute deviations of the direction ratio and the 45° reconstructed angle fall from 42.72% and 5.02° to 7.63% and 1.51°; at three geometries both metrics worsen, and the local-law direction ratio is already underestimated at two geometries, so the improvement is overall rather than pointwise. That set and the present 36-result 5 nm main statistics use different references and different geometry sets and are not merged; the new finite-element runs await formal adoption, legacy finite-element results retain their limited-use recommendation and provenance limitations, and qualified finite-volume records retain their qualification. The comparison constitutes neither physical validation nor a continuous-domain guarantee. Within the specified equally weighted matrix, the fixed-V2 along-groove signed residual retains gap-related variation, and the listed parameter trends persist after changing the numerical comparison. This supports evaluating the limitations of the single-variable factor under the sampled conditions, but does not identify a unique missing variable or physical cause, or establish continuous-domain accuracy."
+  },
+  {
+    "path": "docs/reports/PAPER1_conclusions_current_20261109.md",
+    "reason": "W3: do not claim current PPT verification not performed",
+    "before": "**现有不一致：无。** 三方（本文件六条 / 稿件 §6 六条 / PPT 第 11 页六条）已完全对齐。",
+    "after": "**本轮同步范围**：本文件六条与中英稿件 §6 六条的核心科学口径已同步；PPT 第 11 页本轮未复核，不由历史检查推断其当前已完全对齐。"
+  },
+  {
+    "path": "docs/reports/SIM240_中文稿_导师审阅版_20261022.md",
+    "reason": "W2: one-geometry agreement is local evidence",
+    "before": "远小于本节讨论的百分比差异。$h=25$",
+    "after": "远小于本节讨论的百分比差异；这一局部一致性不证明两法在全部几何上可互换。$h=25$"
+  },
+  {
+    "path": "docs/reports/SIM240_First_Paper_English_20261028.md",
+    "reason": "W2: bilingual local agreement",
+    "before": "far below the percentage differences discussed here. The three $h=25$",
+    "after": "far below the percentage differences discussed here; this local agreement does not establish interchangeability over all geometries. The three $h=25$"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "W2: report local agreement rather than blanket acceptability",
+    "before": "混用两种参考是可接受的，因为",
+    "after": "两种参考的同条件差异在所列局部检验中较小："
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS.md",
+    "reason": "W2: source disclosure and limited inference",
+    "before": "但必须披露，**不能写成\"全部为有限元\"**。",
+    "after": "这一局部一致性不证明所有几何上两法可互换，来源仍须分别披露，**不能写成\"全部为有限元\"**。"
+  },
+  {
+    "path": "docs/reports/SIM240_Supplementary_Methods_20261024/SUPPLEMENTARY_METHODS_EN_20261028.md",
+    "reason": "W2: bilingual local agreement in supplement",
+    "before": "Mixing two references is acceptable because both methods exist under identical conditions at $h=75$, $d=100$ nm and differ by far less than the percentage differences discussed here; it must nevertheless be disclosed, and the set **must not be described as entirely finite element**.",
+    "after": "Both methods exist under identical conditions at $h=75$, $d=100$ nm and differ by far less than the percentage differences discussed here. This local agreement does not establish interchangeability across all geometries; the source composition must be disclosed, and the set **must not be described as entirely finite element**."
+  }
+]

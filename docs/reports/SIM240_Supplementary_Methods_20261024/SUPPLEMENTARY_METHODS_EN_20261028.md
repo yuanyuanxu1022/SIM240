@@ -534,7 +534,7 @@ The three $d=75\to120$ values (0.006%, 0.028%, 0.066%) are **all below the adjac
 ### S15.7 Statements this section cannot support
 
 1. "V2 validated" or "V2 established" — this section supplies comparison values only; the V2 coefficients come from prior calibration.
-2. "Formal reference status" — the status is candidate, pending separate sign-off.
+2. Describing all results here as formally qualified references: the new finite-element runs remain candidates, legacy finite-element results retain their limited-use recommendation and provenance limitations, and qualified finite-volume records retain their qualification.
 3. "The true error of the OpenLB solver" — the finite-element values are approximations too, and no strict error bound exists.
 4. "V2 is unbiased" — the signed mean is +1.83% and the remaining discrepancy is of mixed sign.
 5. "The direction ratio is overestimated everywhere" — it is underestimated at two geometries.
@@ -560,7 +560,7 @@ This section supports Section 4.6, the closing paragraph of Section 5.1, and the
 | Test point for the mixed reference | $h=75$, $d=100$ nm (both methods present; 0.032% along, 0.005% across) |
 | Single entries excluded from the matrix | $h=25$ nm at $d=25$, 50, 100 nm (the first two have along-groove values only); $h=100$, $d=100$ nm |
 
-Mixing two references is acceptable because both methods exist under identical conditions at $h=75$, $d=100$ nm and differ by far less than the percentage differences discussed here; it must nevertheless be disclosed, and the set **must not be described as entirely finite element**. No unsampled combination is interpolated.
+Both methods exist under identical conditions at $h=75$, $d=100$ nm and differ by far less than the percentage differences discussed here. This local agreement does not establish interchangeability across all geometries; the source composition must be disclosed, and the set **must not be described as entirely finite element**. No unsampled combination is interpolated.
 
 ### S16.2 Decomposition convention
 
@@ -570,7 +570,7 @@ For four responses (the signed along- and across-groove discrepancies of the loc
 - Interaction residual: $SS_{\rm tot}-SS_h-SS_d$;
 - Shares: each sum of squares divided by $SS_{\rm tot}$.
 
-**No $F$-test and no $p$-value are reported.** Each combination has a single deterministic outcome, and intercept, two main effects and the full interaction already exhaust the 15 degrees of freedom, so **no independent residual degrees of freedom remain**. The shares are descriptive, not physical control fractions and not energy partitions.
+**No $F$-test and no $p$-value are reported.** Each combination has a single deterministic outcome, and the complete two-factor interaction model has 15 cell-mean parameters. It is saturated, with **no independent residual degrees of freedom**. The shares are descriptive, not physical control fractions and not energy partitions.
 
 ### S16.3 Table S17 Descriptive shares for the four responses
 
@@ -596,7 +596,7 @@ Unrounded values: 5.0252 / 93.3994 / 1.5754, 88.9794 / 0.5955 / 10.4251, 2.5283 
 | Local-cubic law, across groove | +34.54 | +39.35 | +38.66 | +15.34 | +31.52 | +41.70 | +47.87 | +51.15 |
 | Fixed V2, across groove | +0.49 | +3.85 | +3.18 | −0.88 | +3.91 | +4.75 | +3.31 | +1.44 |
 
-Percent, signed. The grand mean is not the average of the marginal means in general: marginal means average equally over the other variable, whereas the grand mean averages the 15 grid points; on a fully balanced matrix the two coincide, and where rounding makes them differ the unrounded values govern.
+Percent, signed. On this fully balanced, equally weighted matrix, the grand mean of the 15 grid points equals both the arithmetic mean of the gap marginal means and the arithmetic mean of the depth marginal means before rounding. Where displayed rounding produces a last-digit difference, the unrounded values govern.
 
 ### S16.5 Table S19 Per-point values on the 15-point grid
 
@@ -606,7 +606,7 @@ The per-point values support three checks:
 
 1. **The local-cubic-law discrepancy increases strictly monotonically with $d$**: after fixing $h$, all six sequences (three $h$ levels × two directions) are monotonically increasing.
 2. **The along-groove V2 residual changes sign between $h=75$ and $h=125$ nm**: all five points at $h=75$ nm are positive (+1.6321 to +7.5876) and all five at $h=125$ nm are negative (−2.4278 to −9.9416). No precise zero crossing is given.
-3. **The transverse V2 residual is not monotonic in $d$**: the $d=25$ column is +0.5517, −0.3758, −2.8189; the peak occurs at $d=75$ (+2.4128, +6.4755, +5.3491); the $d=120$ column is −3.5278, +2.8714, +4.9783. The marginal mean at $d=25$ is −0.88%, the only negative level.
+3. **The transverse V2 residual is not monotonic in $d$**: the $d=25$ column is +0.5517, −0.3758, −2.8189; the $d=75$ column is +2.4128, +6.4755, +5.3491; the depth marginal mean, averaged over gaps, is largest at this sampled level, which does not imply that every fixed-gap curve peaks there; the $d=120$ column is −3.5278, +2.8714, +4.9783. The marginal mean at $d=25$ is −0.88%, the only negative level.
 
 ### S16.6 Differences from the first round (5 nm reference)
 
@@ -617,9 +617,9 @@ The first round decomposed the signed V2 residuals only, on 18 geometries and 36
 | Fixed V2, along groove | 87.65 / 0.77 / 11.58 | 88.98 / 0.60 / 10.43 |
 | Fixed V2, across groove | **40.08 / 30.52 / 29.40** | **22.19 / 42.54 / 35.27** |
 
-Format is $h$ share / $d$ share / interaction residual (%). **Algorithmic consistency is self-evidenced on the old data**: the same script recomputed 87.65 / 0.77 / 11.58 and 40.08 / 30.52 / 29.40 on the old 36 records, agreeing digit for digit with the published values. The differences above therefore come from the change of reference and geometry set, not from a change of algorithm or sampling convention.
+Format is $h$ share / $d$ share / interaction residual (%). **Algorithmic consistency is self-evidenced on the old data**: the same script recomputed 87.65 / 0.77 / 11.58 and 40.08 / 30.52 / 29.40 on the old 36 records, agreeing digit for digit with the published values. The full record sets differ, but the share comparison uses the same balanced subset, equal weighting and algorithm in both rounds. The differences above therefore reflect the changed discrepancy response when the numerical comparison is replaced, rather than a change of points in the analyzed matrix.
 
-**The transverse ordering reverses completely**: $h$ moves from the largest term (40.08%) to the smallest (22.19%), $d$ from second to largest (42.54%), and the interaction rises from 29.40% to 35.27%. The qualitative statement that no single parameter controls the transverse response still holds, but **that particular first-round set of numbers is reference-specific and must not be quoted as fixed fact**, and in particular must not be written as three roughly equal factors or as a physical equipartition.
+**The transverse ordering reverses completely**: $h$ moves from the largest term (40.08%) to the smallest (22.19%), $d$ from second to largest (42.54%), and the interaction rises from 29.40% to 35.27%. The transverse signed discrepancy on this matrix contains both main-effect and interaction components, which do not identify a physical controlling parameter; **that particular first-round set of numbers is reference-specific and must not be quoted as fixed fact**, and in particular must not be written as three roughly equal factors or as a physical equipartition.
 
 ### S16.7 Statements this section does not support
 
@@ -630,7 +630,7 @@ Format is $h$ share / $d$ share / interaction residual (%). **Algorithmic consis
 5. No continuous saturation threshold at $d\approx75$ nm, no claim that depth has no effect, and no claim that transverse leakage can only be suppressed by reducing the gap.
 6. No extrapolation of the 15-point matrix to the single entries at $h=25$ nm or $h=100$ nm.
 7. No statement that all 36 records use a finite-element reference (the composition is 34 finite element plus 2 finite volume).
-8. No claim that V2 is independently validated on the strength of these trends; the reference remains a candidate pending a formal adoption review.
+8. No claim that V2 is independently validated on the strength of these trends. The new finite-element references remain candidates pending formal adoption; legacy finite-element limited-use recommendations and provenance limitations, and existing qualified finite-volume status, are retained separately.
 
 ### S16.8 Recomputation
 
