@@ -39,13 +39,13 @@
 
 | # | 文件 | SHA256 前16 | 字节 |
 |---|---|---|---|
-| 1 | `SIM240_中文稿_导师审阅版_20261022.md` | `3c1e7266951db78e` | 90511 |
-| 2 | `SIM240_First_Paper_English_20261028.md` | `33bc8d4e81144e00` | 100665 |
+| 1 | `SIM240_中文稿_导师审阅版_20261022.md` | `9838a48ad0dab66c` | 90007 |
+| 2 | `SIM240_First_Paper_English_20261028.md` | `d279aeb13dc49a13` | 99989 |
 | 3 | `SUPPLEMENTARY_METHODS.md` | `93a52eba51487651` | 54160 |
 | 4 | `SUPPLEMENTARY_METHODS_EN_20261028.md` | `d14ee31d70300739` | 65276 |
 | 5 | `PAPER1_conclusions_current_20261109.md` | `a259683a2eb06cf1` | 18648 |
 
-派生件：`SIM240_submission_CN.md` 714 行/81025 B/`2dbe27e2ee3dbced`；`_EN.md` 706 行/98647 B/`6b646768621cea4e`；`build_submission.py --check` 一致、无禁词无断链。
+派生件：`SIM240_submission_CN.md` 714 行/80521 B/`84d6ba57488f5bb3`；`_EN.md` 706 行/97971 B/`12ff81145536cc42`；`build_submission.py --check` 一致、无禁词无断链。（11-14 晚清文本硬伤后重生成；此前值 81025 B/`2dbe27e2ee3dbced`、98647 B/`6b646768621cea4e`。）
 
 **正文改动位置**：新增 §4.5（表 9 = 17 点三方法偏差统计；表 10 = A 与 β 同时恶化的 3 个几何）；§3.4 把"本文没有显式沟槽几何的独立求解器对照"改为"对照仍限于数值方法"；§5.4 增五条限制；§6 第四条补"总体改善但非逐点"段；摘要补一句；附录 B 登记 S15、附录 D 增修订条。补充新增 S15（S15.1—S15.7，表 S14/S15/S16 + `Table_S14_fem_transverse_summary.csv`、`Table_S15_fem_paired_metrics.csv`、`Table_S16_fem_depth_sensitivity.csv`）。结论仍**六条**。
 
