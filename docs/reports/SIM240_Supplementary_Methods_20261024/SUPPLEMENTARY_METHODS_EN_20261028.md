@@ -422,3 +422,121 @@ Each contribution is divided by its own directional R_i^LC and is dimensionless;
 | 240 | 2.5 | odd_extension | T | 0.29110583 | 0.29257451 | +0.00146868 | +0.50198 |
 
 wall_quadratic is the primary stencil and odd_extension is the half-grid odd-extension stencil. The residual here is r_i−S_i, the negative of the existing S14 convention for the positive sum minus drive excess. Their absolute values agree. It is a decomposition residual, not the total input-power balance or a continuous-accuracy measure. The historical narrow-groove grid target remains FAIL; the wide groove has only two grids. These results do not establish grid independence. Full-precision components are in the [complete positive-excess diagnostic](../PAPER1_mechanism_offline_20261109/positive_excess_diagnostic.csv); paired scalar values and run provenance are in the [Table S10 data](Table_S10_paired_width_conductance.csv).
+
+---
+
+<a id="sm-s15-fem"></a>
+
+## S15 Independent finite-element comparison: method, gates and per-point data
+
+This section supports §3.4, §4.5, §5.4 and the fourth conclusion item. It reports a transverse-conductance comparison **listed alongside**, not inside, the main statistics: its references are a separate two-dimensional finite-element discretization, and it is **not** part of the 5 nm OpenLB main set. The result package, the counting-basis review and the adoption review are in `docs/reports/PAPER1_fem_v2_results_20261114/`, `PAPER1_fem_v2_results_review_20261114/` and `PAPER1_fem_v2_adoption_review_20261114/`.
+
+### S15.1 Method
+
+Two two-dimensional problems are solved on the same fixed geometries ($P=240$ nm, $w=120$ nm, equal groove and rib widths, $h$ and $d$ at the sampled values) under the same depth-integrated conductance definition (unit m³):
+
+- along the grooves, the scalar Poisson problem $-\Delta U=1$;
+- across the grooves, the incompressible Stokes problem $-\Delta U+\nabla\pi=\mathbf{e}_x$, $\nabla\cdot U=0$.
+
+Quadratic velocity and linear pressure elements (Taylor–Hood triangles) are used; periodic boundaries are imposed by merging degrees of freedom; the pressure null space is removed by a Lagrange multiplier enforcing $\int\pi\,\mathrm{d}A=0$. Three grids of 5.0, 2.5 and 1.25 nm are solved in sequence, with **no retry and no automatic refinement**. Conductances are re-integrated from the saved fields as $K=(10^{-27}/P_{\mathrm{nm}})\int U_{\mathrm{main}}\,\mathrm{d}A$, without reusing the solver's internal integration.
+
+The methodological limits must be read together with the numbers: the finite-element values are themselves discrete approximations; no error bound against the continuous solution is established at any point; and the discretization independence relative to OpenLB is not quantified. Differences between the two are therefore **numerical comparisons only**, not an error adjudication.
+
+### S15.2 Counting basis
+
+| Set | Count |
+|---|---|
+| Direction comparisons in this section | **36 = 19 along + 17 transverse** |
+| With finite-element references | 34 |
+| Along-groove references from previously qualified finite volume | 2 ($h=50$, $d=120$ and $h=125$, $d=120$ nm) |
+| Paired geometries | 17 |
+| Along-groove only | 2 ($h=25$ nm at $d=25$ and 50 nm; no transverse runs, by author decision) |
+| Planned slots | 19×2 = 38 (**not** 38 completed comparisons) |
+
+**Relation to the main statistics.** The 36 results of §4.2 are 18 geometries × 2 directions against 5 nm OpenLB references; the 36 here are 19 geometries against finite-element references. Geometry count, reference method and pairing all differ, so the two sets **must not be merged, substituted or averaged together**.
+
+### S15.3 Gates and provenance
+
+Gates were fixed before the runs and recomputed level by level from the saved fields:
+
+| Check | Worst measured | Threshold | Threshold ÷ worst | Worst at |
+|---|---:|---:|---:|---|
+| coarse→mid conductance change | 0.1925% | 1% | 5.2× | $h=50$, $d=100$ |
+| mid→fine conductance change | 0.0910% | 0.5% | 5.5× | $h=50$, $d=100$ |
+| Re-assembled direct residual | $1.15773\times10^{-11}$ | $10^{-10}$ | 8.6× | $h=125$, $d=25$ |
+| Finest-level power balance | $3.28\times10^{-10}$% | 0.1% | $3.0\times10^{8}$× | — |
+| Finest-level section-flux spread | $1.49\times10^{-5}$% | 0.01% | $6.7\times10^{2}$× | — |
+| Section vs volume | $1.56\times10^{-6}$% | 0.01% | $6.4\times10^{3}$× | — |
+| Non-wall sections | 10 | ≥9 | +1 | all |
+
+**The tightest items are the adjacent-grid changes (5.2×, 5.5×) and the direct residual (8.6×), not "three orders of magnitude on every item".** Adjacent-grid changes are not error bounds on the continuous solution.
+
+All provenance items hold for the 12 runs: release fingerprint unchanged, unique `run_id`, command line and exit code recorded, per-level mesh and field hashes matching the receipts, and verification receipts written once. Runs were made on a server; after transfer, re-checking with another interpreter gave the same fingerprint. That re-check strengthens portability but does not constitute a third discretization. Current status is **candidate reference pending formal adoption**; formal status requires separate sign-off.
+
+### S15.4 Table S14. Discrepancy statistics over the 17 transverse samples
+
+Discrepancies are (method conductance / finite-element comparison − 1) × 100%.
+
+[Table_S14_fem_transverse_summary.csv](Table_S14_fem_transverse_summary.csv)
+
+| Method | Signed mean | Mean absolute | Range | Positive/negative |
+|---|---:|---:|---|---:|
+| 5 nm OpenLB | +2.7115% | 2.7115% | +1.2632% to +7.2841% | 17/0 |
+| Local cubic law | +37.6350% | 37.6350% | +13.0882% to +56.4177% | 17/0 |
+| Fixed V2 | +1.8309% | 4.2075% | −12.7835% to +6.4755% | 12/5 |
+
+Reading: OpenLB is higher than the finite-element comparison at all 17 points. V2 reduces the mean absolute discrepancy substantially, but **its signed mean remains +1.83%**, so the remaining discrepancy is of mixed sign and **must not be described as unbiased**. "12 positive, 5 negative" shows only that not all points deviate in the same direction and does not establish the absence of systematic bias. The local-cubic-law mean absolute discrepancy is about 13.9 times the OpenLB/finite-element difference; this is a magnitude comparison on the present sample, not a completed total-error decomposition.
+
+### S15.5 Table S15. Conductances, direction ratios and reconstructed angles over the 17 pairs
+
+$A=K_{\parallel}/K_{\perp}$; $\beta$ is reconstructed through Eq. (5) from the same pair of principal values under 45° forcing and is **not** an independent oblique simulation. The last four columns are (model value / reference value − 1); angles in degrees.
+
+[Table_S15_fem_paired_metrics.csv](Table_S15_fem_paired_metrics.csv)
+
+| Geometry $(h,d)$ (nm) | $K_\perp$ (1e-23 m³) | OpenLB | Local law | V2 | $A_{\rm ref}$ | Local-law $A$ | V2 $A$ | Local-law $\beta$ | V2 $\beta$ |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| h25/d100 | 0.2069 | +7.28 | +24.84 | −12.78 | 16.4815 | +92.65 | +19.22 | −1.67 | −0.56 |
+| h50/d25 | 1.3735 | +3.16 | +17.01 | +0.55 | 1.3933 | +1.76 | +4.19 | −0.47 | −1.11 |
+| h50/d50 | 1.4110 | +3.59 | +31.24 | +3.69 | 2.1447 | +18.02 | +4.95 | −3.44 | −1.04 |
+| h50/d75 | 1.4133 | +3.64 | +38.54 | +2.41 | 3.0483 | +45.07 | +7.78 | −5.42 | −1.23 |
+| h50/d100 | 1.4133 | +3.65 | +42.14 | −0.70 | 4.0260 | +80.31 | +11.58 | −6.11 | −1.40 |
+| h50/d120 | 1.4134 | +3.65 | +43.74 | −3.53 | 4.8385 | +113.55 | +14.93 | −6.15 | −1.48 |
+| h75/d25 | 4.2655 | +2.13 | +15.93 | −0.38 | 1.2025 | −0.37 | +2.02 | +0.10 | −0.56 |
+| h75/d50 | 4.3373 | +2.50 | +33.32 | +5.33 | 1.5428 | +10.93 | −1.35 | −2.65 | +0.36 |
+| h75/d75 | 4.3391 | +2.52 | +44.04 | +6.48 | 1.8968 | +33.45 | −0.85 | −6.24 | +0.20 |
+| h75/d100 | 4.3398 | +2.52 | +50.19 | +4.93 | 2.2472 | +64.45 | +1.77 | −8.85 | −0.37 |
+| h75/d120 | 4.3403 | +2.52 | +53.28 | +2.87 | 2.5258 | +94.32 | +4.58 | −10.08 | −0.86 |
+| h100/d100 | 9.7326 | +1.87 | +52.22 | +6.35 | 1.6874 | +50.01 | −7.17 | −9.10 | +1.90 |
+| h125/d25 | 18.2331 | +1.26 | +13.09 | −2.82 | 1.0980 | −1.94 | +0.40 | +0.56 | −0.11 |
+| h125/d50 | 18.3527 | +1.46 | +30.00 | +2.70 | 1.2338 | +3.51 | −7.95 | −0.96 | +2.34 |
+| h125/d75 | 18.3590 | +1.45 | +42.52 | +5.35 | 1.3461 | +17.75 | −12.52 | −4.36 | +3.73 |
+| h125/d100 | 18.3679 | +1.45 | +51.28 | +5.69 | 1.4430 | +38.66 | −14.20 | −8.17 | +4.20 |
+| h125/d120 | 18.3711 | +1.45 | +56.42 | +4.98 | 1.5154 | +59.40 | −14.21 | −10.93 | +4.15 |
+
+Mean absolute deviations over the 17 pairs: $A$ falls from **42.7153%** to **7.6281%**; $\beta$ from **5.0155°** to **1.5071°**.
+
+**Local counterexamples that must be retained.** The local-law $A$ is **underestimated** at $h=75$, $d=25$ nm (−0.37%) and $h=125$, $d=25$ nm (−1.94%) and positive at the other 15 pairs; both principal conductances being high does not guarantee that their ratio is high. V2 increases the absolute deviations of both $A$ and $\beta$ at $(50,25)$, $(75,25)$ and $(125,50)$, and decreases them at the other 14. "Overall improvement in $A$ and $\beta$" therefore holds, whereas "pointwise improvement" does not.
+
+### S15.6 Table S16. Depth sensitivity within this sample
+
+Fixed $w=120$ nm and area fraction 0.5.
+
+[Table_S16_fem_depth_sensitivity.csv](Table_S16_fem_depth_sensitivity.csv)
+
+| $h$ (nm) | $K_\perp$ change, $d=25\to120$ | $K_\perp$ change, $d=75\to120$ |
+|---|---:|---:|
+| 50 | +2.9033% | +0.0061% |
+| 75 | +1.7534% | +0.0275% |
+| 125 | +0.7570% | +0.0663% |
+
+The three $d=75\to120$ values (0.006%, 0.028%, 0.066%) are **all below the adjacent-grid changes at these points** (0.077%–0.192%), so no precise continuous saturation threshold can be declared. The numbers support "under the sampled conditions the transverse conductance responds weakly to the listed depth changes and the response weakens with depth"; they do **not** support "depth has no effect" or "transverse leakage can only be suppressed by reducing the gap", because groove width, area fraction, groove shape and other adjustable variables were not compared. $K$ has units of m³ and is a depth-integrated conductance; it **should not be relabelled as a permeability in m²**.
+
+### S15.7 Statements this section cannot support
+
+1. "V2 validated" or "V2 established" — this section supplies comparison values only; the V2 coefficients come from prior calibration.
+2. "Formal reference status" — the status is candidate, pending separate sign-off.
+3. "The true error of the OpenLB solver" — the finite-element values are approximations too, and no strict error bound exists.
+4. "V2 is unbiased" — the signed mean is +1.83% and the remaining discrepancy is of mixed sign.
+5. "The direction ratio is overestimated everywhere" — it is underestimated at two geometries.
+6. "Transverse leakage can only be suppressed by reducing the gap" — other adjustable variables were not compared.
+7. Merging with, or substituting for, the 36-result main statistics of the paper.
