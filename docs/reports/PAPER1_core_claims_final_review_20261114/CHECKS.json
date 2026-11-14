@@ -1,0 +1,181 @@
+{
+  "status": "PASS_BOUNDED_TABLE_ARITHMETIC",
+  "source_files_checked": 68,
+  "original_result_file_hashes_checked": 36,
+  "main_statistics": {
+    "P": {
+      "LC": {
+        "n": 18,
+        "signed_mean": 88.84761958251681,
+        "mean_absolute": 88.84761958251681,
+        "minimum": 10.304855051592732,
+        "maximum": 204.84976359893162,
+        "positive": 18,
+        "negative": 0
+      },
+      "V2": {
+        "n": 18,
+        "signed_mean": 2.1937830378878767,
+        "mean_absolute": 6.401105519730134,
+        "minimum": -10.504978243933639,
+        "maximum": 10.1136946356986,
+        "positive": 13,
+        "negative": 5
+      },
+      "improved": 18
+    },
+    "T": {
+      "LC": {
+        "n": 18,
+        "signed_mean": 30.627049580699012,
+        "mean_absolute": 30.627049580699012,
+        "minimum": 8.107753791190241,
+        "maximum": 54.18548853728613,
+        "positive": 18,
+        "negative": 0
+      },
+      "V2": {
+        "n": 18,
+        "signed_mean": -1.9605818707993445,
+        "mean_absolute": 4.4205810244245525,
+        "minimum": -18.705147167276593,
+        "maximum": 4.182118091352871,
+        "positive": 9,
+        "negative": 9
+      },
+      "improved": 17
+    }
+  },
+  "comparison_counts": {
+    "P": 19,
+    "FEM": 34,
+    "T": 17,
+    "FVM": 2
+  },
+  "paired_geometries": 17,
+  "alternative_statistics": {
+    "T_OpenLB_vs_ref_percent": {
+      "n": 17,
+      "signed_mean": 2.7115363042107723,
+      "mean_absolute": 2.7115363042107723,
+      "minimum": 1.2632275534038229,
+      "maximum": 7.284135027441496,
+      "positive": 17,
+      "negative": 0
+    },
+    "T_LC_vs_ref_percent": {
+      "n": 17,
+      "signed_mean": 37.635018345892114,
+      "mean_absolute": 37.635018345892114,
+      "minimum": 13.088227555936193,
+      "maximum": 56.41765978514466,
+      "positive": 17,
+      "negative": 0
+    },
+    "T_V2_vs_ref_percent": {
+      "n": 17,
+      "signed_mean": 1.8308837645978309,
+      "mean_absolute": 4.207548749680207,
+      "minimum": -12.783520316581177,
+      "maximum": 6.475476809525005,
+      "positive": 12,
+      "negative": 5
+    },
+    "LC_A_vs_ref_percent": {
+      "n": 17,
+      "signed_mean": 42.44305677968781,
+      "mean_absolute": 42.71533167880119,
+      "minimum": -1.9448494944160677,
+      "maximum": 113.54543119010417,
+      "positive": 15,
+      "negative": 2
+    },
+    "V2_A_vs_ref_percent": {
+      "n": 17,
+      "signed_mean": 0.7743880982231672,
+      "mean_absolute": 7.628053319638254,
+      "minimum": -14.212363418476459,
+      "maximum": 19.215415852336193,
+      "positive": 10,
+      "negative": 7
+    },
+    "LC_beta_vs_ref_deg": {
+      "n": 17,
+      "signed_mean": -4.937221562851423,
+      "mean_absolute": 5.015454152079489,
+      "minimum": -10.931257075342849,
+      "maximum": 0.5606736268636752,
+      "positive": 2,
+      "negative": 15
+    },
+    "V2_beta_vs_ref_deg": {
+      "n": 17,
+      "signed_mean": 0.4792395938024265,
+      "mean_absolute": 1.5070700055149686,
+      "minimum": -1.4828087091619686,
+      "maximum": 4.204555890677419,
+      "positive": 7,
+      "negative": 10
+    }
+  },
+  "V2_A_and_angle_worse": [
+    "h50/d25",
+    "h75/d25",
+    "h125/d50"
+  ],
+  "LC_A_negative": [
+    "h75/d25",
+    "h125/d25"
+  ],
+  "descriptive_shares_from_6dp_csv": {
+    "LC_P": {
+      "grand_mean": 94.06803333333333,
+      "share_h_percent": 5.02522433275956,
+      "share_d_percent": 93.39937259674734,
+      "share_interaction_percent": 1.5754030704930924
+    },
+    "V2_P": {
+      "grand_mean": 2.4095,
+      "share_h_percent": 88.97938904917967,
+      "share_d_percent": 0.5954992033427305,
+      "share_interaction_percent": 10.425111747477604
+    },
+    "LC_T": {
+      "grand_mean": 37.51582153333333,
+      "share_h_percent": 2.5282973273647693,
+      "share_d_percent": 93.774080596697,
+      "share_interaction_percent": 3.6976220759382135
+    },
+    "V2_T": {
+      "grand_mean": 2.5042272666666667,
+      "share_h_percent": 22.18968798681498,
+      "share_d_percent": 42.544803692783326,
+      "share_interaction_percent": 35.26550832040169
+    }
+  },
+  "grid_change_denominator_audit": {
+    "receipts_read": 12,
+    "adjacent_pairs": 24,
+    "maxima": [
+      {
+        "run_id": "h50_d100_T_20261113T155828Z_8c34b050",
+        "dx_nm": 2.5,
+        "coarse_denominator_percent": 0.19213312240098368,
+        "fine_denominator_percent": 0.19250298439561497
+      },
+      {
+        "run_id": "h50_d100_T_20261113T155828Z_8c34b050",
+        "dx_nm": 1.25,
+        "coarse_denominator_percent": 0.09089610070797116,
+        "fine_denominator_percent": 0.09097879688682031
+      }
+    ],
+    "finding": "Published 0.1925/0.0910 values match finer-denominator rounding; frozen verifier and receipts use coarser denominator. No change to thresholds or historical verdicts."
+  },
+  "changed_inputs": [],
+  "new_simulations": 0,
+  "full_PDE_reassembly": false,
+  "full_field_reintegration": false,
+  "reference_status_changed": false,
+  "limitation": "Table arithmetic and stored original-result hashes; not a fresh numerical acceptance or physical validation."
+}

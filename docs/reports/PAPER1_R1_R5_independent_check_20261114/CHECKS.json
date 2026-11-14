@@ -1,0 +1,120 @@
+{
+  "checked_at": "2026-11-14",
+  "scope": "independent verification of PAPER1_R1_R5_manuscript_sync_20261114 (25 edits, 5 master files)",
+  "method": "recomputed from git diffs, manuscript text and saved VERIFY_RECEIPT.json; did not use the packaged verify.py",
+  "baseline_commit": "8ed7ce6 (DOE wording round), previous HEAD 28baca0",
+  "no_new_computation": {
+    "solver_runs": 0,
+    "refreeze": 0,
+    "field_reintegration": 0,
+    "coefficient_changes": 0,
+    "reference_status_changes": 0
+  },
+  "edit_accounting": {
+    "edits_json_entries": 25,
+    "git_hunks_single_round": 25,
+    "per_file_hunks": {
+      "SIM240_中文稿_导师审阅版_20261022.md": 5,
+      "SIM240_First_Paper_English_20261028.md": 5,
+      "SUPPLEMENTARY_METHODS.md": 7,
+      "SUPPLEMENTARY_METHODS_EN_20261028.md": 7,
+      "PAPER1_conclusions_current_20261109.md": 1
+    },
+    "matches_edits_json": true,
+    "note": "earlier count of 64 hunks was the union of this round and the uncommitted DOE wording round (51 edits)"
+  },
+  "number_invariance": {
+    "files_checked": 7,
+    "token_pattern": "\\d+(?:\\.\\d+)? and \\d+\\.\\d{2}%",
+    "removed": "none",
+    "added": "none",
+    "all_files_pass": true
+  },
+  "items": [
+    {
+      "id": "R1",
+      "landed": true,
+      "locations": ["CN 1.3 L53,L55", "EN 1.3 L49,L51"],
+      "evidence": "main claim first; FEM/FVM described as verification duty with candidate/limited-use/qualified statuses retained; upper bound and parameter trends given separate evidential scope",
+      "residual_check": {
+        "cn_patterns": ["新方法", "新算法", "算法贡献", "方法学贡献", "本文提出的方法", "提出的新"],
+        "en_patterns": ["new method", "novel method", "new algorithm", "algorithmic contribution", "methodological contribution"],
+        "hits": 0
+      }
+    },
+    {
+      "id": "R2",
+      "landed": true,
+      "locations": ["CN S15.2", "CN 4.5 count paragraph", "CN 5.4 item 1", "EN S15.2 table"],
+      "evidence": "34 FE + 2 previously qualified FVM stated explicitly; 有限元体积法 corrected to 有限体积法; new-batch gate scope limited to this batch; each set keeps its own status"
+    },
+    {
+      "id": "R3",
+      "landed": true,
+      "locations": ["CN L434", "EN L426", "conclusions L66"],
+      "evidence": "h100 refinement gap limited to OpenLB; FE grid comparison explicitly cannot replace that OpenLB refinement check; existing FE data neither removed nor passed off as OpenLB"
+    },
+    {
+      "id": "R4",
+      "landed": true,
+      "locations": ["CN L471", "EN L463"],
+      "evidence": "resolution-based claim replaced by 'smaller than reported adjacent-grid change' plus absence of an uncertainty assessment; allowed weaker statement retained",
+      "residual_grep": "remaining 分辨力/resolution hits are an unrelated 3.3 heading and pre-existing sentences"
+    },
+    {
+      "id": "R5",
+      "landed": true,
+      "locations": ["CN S15.3 denominator note L472", "EN S15.3 L472", "CN 4.5 L438"],
+      "recomputed_from": "12 x CASE/paper1_fem_stokes_reference_v2/runs/*/VERIFY_RECEIPT.json",
+      "pairs": 24,
+      "coarse_to_mid": {
+        "coarse_denominator_worst_percent": 0.192133,
+        "fine_denominator_worst_percent": 0.192503,
+        "worst_geometry": "h50_d100_T",
+        "runner_up": "h50_d75_T at 0.192096 (difference 0.000037 pp)"
+      },
+      "mid_to_fine": {
+        "coarse_denominator_worst_percent": 0.090896,
+        "fine_denominator_worst_percent": 0.090979,
+        "worst_geometry": "h50_d100_T"
+      },
+      "receipt_field_matches_coarse_denominator": "24/24, |diff|<1e-9",
+      "displayed_table_uses_fine_denominator": true,
+      "main_text_uses_coarse_denominator_at_3dp": true,
+      "both_correct": true
+    }
+  ],
+  "retraction": {
+    "previous_claim": "CN 4.5 attributes the 0.192%/0.091% figures to the wrong denominator",
+    "status": "withdrawn",
+    "reason": "at the manuscript's 3 decimal places, coarse-denominator worst is 0.192% (0.192133) while fine-denominator worst rounds to 0.193% (0.192503); the text is consistent with the 0.077%-0.192% range it also states"
+  },
+  "registry_consistency": {
+    "hashes_recomputed_and_matched": {
+      "SIM240_中文稿_导师审阅版_20261022.md": {"sha256_prefix": "8d544a3eee0c9eaf", "bytes": 96744},
+      "SIM240_First_Paper_English_20261028.md": {"sha256_prefix": "002af0998eb572d7", "bytes": 108796},
+      "SUPPLEMENTARY_METHODS.md": {"sha256_prefix": "4c762d99fad49a7f", "bytes": 62320},
+      "SUPPLEMENTARY_METHODS_EN_20261028.md": {"sha256_prefix": "8170687009e06394", "bytes": 75252},
+      "PAPER1_conclusions_current_20261109.md": {"sha256_prefix": "98080077d3ea3a47", "bytes": 21474},
+      "SIM240_submission_CN.md": {"sha256_prefix": "a0c1f10059726f8c", "bytes": 87258, "lines": 745},
+      "SIM240_submission_EN.md": {"sha256_prefix": "d3f4dd82c477901f", "bytes": 106778, "lines": 737},
+      "PAPER1_submission_package_20261109/MANIFEST.md": {"sha256_prefix": "b95c9c5261500ce0", "bytes": 39207}
+    },
+    "authority_table_self_hash_present": false,
+    "authority_table_own_hash": "f3b90f2effccb04f",
+    "derived_check_exit_code": 0
+  },
+  "two_round_overlay": {
+    "detected": true,
+    "extra_round": "PAPER1_doe_wording_fix_20261114 (51 edits)",
+    "chain_proof": "PAPER1_R1_R5_manuscript_sync_20261114/before_manifest.json hashes equal PAPER1_doe_wording_fix_20261114/output_hashes.json declared outputs (10/10)",
+    "split_commits": ["8ed7ce6 DOE wording 51", "032034b R1-R5 25"],
+    "backup": "tmp/r15_final_backup (not committed)"
+  },
+  "not_done": [
+    "no FEM/FVM solve was re-run",
+    "no release was re-frozen",
+    "new 12 transverse FEM records remain candidate references pending adoption signature",
+    "no change to the 36-record 5 nm denominator, section 4.2 set, S4/h75T FAIL or h25 exclusion"
+  ]
+}

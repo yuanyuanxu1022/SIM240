@@ -1,0 +1,18 @@
+claim_id,location,claim_type,claim_summary,evidence_ids,support_level,alignment_issue,limitation,requested_action
+C1-A,§4.2/表6,primary_outcome,原36条相对同几何5 nm参考的LC主导度偏差均正，幅度限于所列样点,E01;E02,supported,none,不是连续域幅度或物理误差,保留主结果及分母
+C1-B,§4.3/表7,primary_outcome,h75/d100的A约67%偏差与9.20度重建差仅属该基准及5 nm参考,E01;E02,supported,none,角度由同一对主值重建，不是独立斜向验证,保留主结果；不泛化全部A都高估
+C1-C,§4.5/表10/S15,secondary_outcome,替代对照中LC的A在2个几何低估，主值上界不决定比值排序,E03;E04;E07,supported,none,记录内符号不是连续解已认证符号,作为必须保留的主结论边界
+C2-A,§4.5/S15,methods,另一数值对照集为19P+17T，由34FEM与2合格FVM-P组成,E03;E09;E10,supported,none,新12候选、旧22有限采用建议、2FVM保留资格,保留主要验证结果；修S15.2遗漏
+C2-B,§4.5/表9,secondary_outcome,17T中OpenLB较FEM高1.26至7.28百分比，LC MAE37.64百分比,E03;E04,supported,none,数值差不是OpenLB真误差或严格分解,与主36统计分列
+C2-C,三项贡献定位,methods,采用另一离散方法构成本文新数值方法的创新贡献,E02;E09,unsupported,scope,已有方法的应用与比较没有展示新求解算法,改为主要验证证据，不单列方法创新
+C3-A,§4.4/表8,primary_outcome,固定舍入系数V2在原36条回顾性比较中35条改善并降低两方向MAE,E01;E02,supported,none,开发数据参与，改善范围和参考固定,保留主结论与最大绝对偏差/薄隙例外
+C3-B,§4.5/表9/10,primary_outcome,替代对照下V2总体改善但3个几何A与重建角同时恶化,E03;E04,supported,none,A和角为同一对K的派生指标，非独立重复检验,保留总体与局部并列的主结论
+C3-C,§4.6/S16,secondary_outcome,15点矩阵V2沿槽h75五点全正而h125五点全负,E05;E06,supported,none,不定位精确过零点、不证明连续域或唯一成因,作为C3的补充结构解释，结论仅定性
+T1,附录E/结论六,other,既有证明在指定连续Stokes问题约束两主导度的LC上界,E07;E08,supported,none,本轮未重做独立定理终审，亦未认证定理首创,保留关键理论结果，不认证V2或数值精度
+S1,§4.3/§5.1/S14,secondary_outcome,两宽度开发组的不同离散K/A与指定梯度分解支持结构解释,E02;E09,supported,none,开发记录、有限网格、非因果消融；h/w和d/w共同变化,保留讨论/补充，不推广唯一机制
+S2,§4.4/S6,secondary_outcome,h100固定系数比较为新增间隙补充证据,E02;E11,supported,none,不认证严格盲测；缺的是对应OpenLB加密,保留补充；修无加密泛称
+S3,§5.3/S13,methods,OpenFOAM静态平均接入支持已测单位方向与通量一致性,E11,supported,none,输入K来自既有模型，不检验显式K准确度,保留应用检查，不单列核心科学贡献
+N1,贡献终审边界,generalization,新对照证明全图OpenLB准确且误差统一不超过2百分比,E03;E04;E11,unsupported,uncertainty,存在较大方法差异且无全图连续误差界,撤回此扩张，不以追加样点规避已知差异
+N2,贡献终审边界,prediction,V2为经独立预测验证且连续域精度有保证的新公式,E01;E02;E10,unsupported,scope,回顾性开发、形式原创未查实、候选参考未授资格,保留已标定修正及有限比较，不认领普遍预测
+N3,§4.6解释边界,causal,DOE百分比证明槽深/间隙的物理控制率及唯一缺失变量,E05;E06,unsupported,causal_language,确定性等权矩阵与参考特定，非因果或概率敏感性,仅留描述性趋势，具体份额不升主结论
+N4,§4.5深槽段,generalization,小于相邻网格变化可直接证明几何差异低于数值分辨力,E04;E09,unsupported,uncertainty,网格变化不是该几何增量的误差界或分辨率证书,改成小于所列网格变化且无增量不确定性评估
