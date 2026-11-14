@@ -100,12 +100,12 @@ diff SIM240_First_Paper_English_20261028.md PAPER1_submission_manuscript_2026111
 
 ---
 
-## 5 文件指纹（最近一次生成：2026-11-14，DOE措辞与参考身份同步）
+## 5 文件指纹（最近一次生成：2026-11-14，R1—R5主张层级与表注同步）
 
 | 文件 | 行数 | 字节 | SHA256（前 16 位） | 来源母本（生成时指纹） |
 |---|---|---|---|---|
-| `SIM240_submission_CN.md` | 745 | 86955 | `7417f5faa911ea20` | `SIM240_中文稿_导师审阅版_20261022.md`（`5a6b083f47903214`，96441 B） |
-| `SIM240_submission_EN.md` | 737 | 106205 | `300a0998ad5880df` | `SIM240_First_Paper_English_20261028.md`（`664f43d72abec358`，108223 B） |
+| `SIM240_submission_CN.md` | 745 | 87258 | `a0c1f10059726f8c` | `SIM240_中文稿_导师审阅版_20261022.md`（`8d544a3eee0c9eaf`，96744 B） |
+| `SIM240_submission_EN.md` | 737 | 106778 | `d3f4dd82c477901f` | `SIM240_First_Paper_English_20261028.md`（`002af0998eb572d7`，108796 B） |
 
 **指纹会随母本一起变。** 母本一改（哪怕只改一句话），本表就过期；判断是否过期只用一条命令：`python3 build_submission.py --check`。当前状态：两行"一致"，0 禁词、0 断链。
 
@@ -135,5 +135,5 @@ diff SIM240_First_Paper_English_20261028.md PAPER1_submission_manuscript_2026111
 |---|---|---|
 | `README.md` | 本说明 | 可以（它本身不是派生件） |
 | `build_submission.py` | 生成脚本，唯一来源 | 可以，但改完要重跑并更新第 5 节指纹 |
-| `SIM240_submission_CN.md` | 745 | 86955 | `7417f5faa911ea20` | `SIM240_中文稿_导师审阅版_20261022.md`（`5a6b083f47903214`，96441 B） |
-| `SIM240_submission_EN.md` | 737 | 106205 | `300a0998ad5880df` | `SIM240_First_Paper_English_20261028.md`（`664f43d72abec358`，108223 B） |
+| `SIM240_submission_CN.md` | 745 | 87258 | `a0c1f10059726f8c` | `SIM240_中文稿_导师审阅版_20261022.md`（`8d544a3eee0c9eaf`，96744 B） |
+| `SIM240_submission_EN.md` | 737 | 106778 | `d3f4dd82c477901f` | `SIM240_First_Paper_English_20261028.md`（`002af0998eb572d7`，108796 B） |

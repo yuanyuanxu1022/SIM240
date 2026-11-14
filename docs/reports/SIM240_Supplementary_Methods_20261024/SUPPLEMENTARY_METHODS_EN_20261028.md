@@ -60,7 +60,7 @@ Full binary hashes and fitting-role sources are in the [claim audit](../PAPER1_c
 
 V2 was calibrated only on the discrete set $h\in\{50,75,125\}$ nm × $d\in\{25,50,100\}$ nm (nine geometries, $w=120$ nm, 5 nm grid, binary identity 285f67a0…), separately minimizing the maximum absolute relative residual in each direction. This set establishes neither a continuous accuracy domain nor quantitative extrapolation across $h$. The $h=100$, $d=100$ nm point is outside the nine-point set but lies between the 75 and 125 nm gap levels, at the already calibrated depth of 100 nm on the upper depth boundary of the calibration rectangle; this parameter-space interpolation does not guarantee accuracy.
 
-In the sampled series at fixed $d=100$ nm and $w=120$ nm, the along-groove residual drifts systematically with $h$: +5.90% at 75 nm and −2.03% at 100 nm, changing sign between these points. The 7.93-percentage-point change exceeds the batch’s recorded five-percentage-point structural screen, whose FAIL is retained. The discrete points do not locate an exact zero crossing. The required factor $F_i^\Delta=K_i^\Delta/K_i^{LC}$ varies with gap, whereas the V2 multiplicative factor retains only $d/w$; at fixed area fraction, the omitted independent geometric variable in the Stokes scaling is $h/w$. This is a limitation of the single-variable factor’s expressive capacity and cannot be attributed solely to coefficient estimation; the complete $K_i^{V2}=F_i^{V2}K_i^{LC}$ still contains $h$. Both gap results can be taken from binary 57611b21…, excluding a binary switch as the source of this paired drift. However, no same-geometry refinement is available at h100, so a contribution from the discrete reference remains unresolved; variable omission is not established as the sole cause of the residual in the continuous problem.
+In the sampled series at fixed $d=100$ nm and $w=120$ nm, the along-groove residual drifts systematically with $h$: +5.90% at 75 nm and −2.03% at 100 nm, changing sign between these points. The 7.93-percentage-point change exceeds the batch’s recorded five-percentage-point structural screen, whose FAIL is retained. The discrete points do not locate an exact zero crossing. The required factor $F_i^\Delta=K_i^\Delta/K_i^{LC}$ varies with gap, whereas the V2 multiplicative factor retains only $d/w$; at fixed area fraction, the omitted independent geometric variable in the Stokes scaling is $h/w$. This is a limitation of the single-variable factor’s expressive capacity and cannot be attributed solely to coefficient estimation; the complete $K_i^{V2}=F_i^{V2}K_i^{LC}$ still contains $h$. Both gap results can be taken from binary 57611b21…, excluding a binary switch as the source of this paired drift. However, no same-geometry OpenLB refinement is available at h100; the separately reported finite-element grid comparison cannot replace that OpenLB refinement check, so a contribution from the discrete reference remains unresolved; variable omission is not established as the sole cause of the residual in the continuous problem.
 
 <a id="sm-s2"></a>
 
@@ -125,7 +125,7 @@ The [complete table](Table_S7_thin_gap_correction.csv) uses the corresponding gr
 | 5 nm | +16.36% | −18.71% | Increase |
 | 2.5 nm | +21.76% | −14.94% | Decrease |
 
-The local improvement assessment depends on reference resolution; deterioration against the 5 nm reference is not established for the continuous solution. Paired refinements at h125/d25 and d120 support the reported paired trend, so this thin-gap example does not invalidate all parameter trends. A matched refinement at h100 is unavailable; no calculation was added in this revision.
+The local improvement assessment depends on reference resolution; deterioration against the 5 nm reference is not established for the continuous solution. Paired refinements at h125/d25 and d120 support the reported paired trend, so this thin-gap example does not invalidate all parameter trends. A matched OpenLB refinement at h100 is unavailable; the existing finite-element comparison does not replace this check. No calculation was added in this revision.
 
 <a id="sm-s8"></a>
 
@@ -438,7 +438,7 @@ Two two-dimensional problems are solved on the same fixed geometries ($P=240$ nm
 - along the grooves, the scalar Poisson problem $-\Delta U=1$;
 - across the grooves, the incompressible Stokes problem $-\Delta U+\nabla\pi=\mathbf{e}_x$, $\nabla\cdot U=0$.
 
-Quadratic velocity and linear pressure elements (Taylor–Hood triangles) are used; periodic boundaries are imposed by merging degrees of freedom; the pressure null space is removed by a Lagrange multiplier enforcing $\int\pi\,\mathrm{d}A=0$. Three grids of 5.0, 2.5 and 1.25 nm are solved in sequence, with **no retry and no automatic refinement**. Conductances are re-integrated from the saved fields as $K=(10^{-27}/P_{\mathrm{nm}})\int U_{\mathrm{main}}\,\mathrm{d}A$, without reusing the solver's internal integration.
+Quadratic velocity and linear pressure elements (Taylor–Hood triangles) are used; periodic boundaries are imposed by merging degrees of freedom; the pressure null space is removed by a Lagrange multiplier enforcing $\int\pi\,\mathrm{d}A=0$. For the newly added transverse records, three grids of 5.0, 2.5 and 1.25 nm are solved in sequence, with **no retry and no automatic refinement**. Conductances are re-integrated from the saved fields as $K=(10^{-27}/P_{\mathrm{nm}})\int U_{\mathrm{main}}\,\mathrm{d}A$, without reusing the solver's internal integration.
 
 The methodological limits must be read together with the numbers: the finite-element values are themselves discrete approximations; no error bound against the continuous solution is established at any point; and the discretization independence relative to OpenLB is not quantified. Differences between the two are therefore **numerical comparisons only**, not an error adjudication.
 
@@ -453,13 +453,13 @@ The methodological limits must be read together with the numbers: the finite-ele
 | Along-groove only | 2 ($h=25$ nm at $d=25$ and 50 nm; no transverse runs, by author decision) |
 | Planned slots | 19×2 = 38 (**not** 38 completed comparisons) |
 
-**Relation to the main statistics.** The 36 results of §4.2 are 18 geometries × 2 directions against 5 nm OpenLB references; the 36 here are 19 geometries against finite-element references. Geometry count, reference method and pairing all differ, so the two sets **must not be merged, substituted or averaged together**.
+**Relation to the main statistics.** The 36 results of §4.2 are 18 geometries × 2 directions against 5 nm OpenLB references; the 36 here are 19 geometries against a combination of finite-element and finite-volume comparison references. Geometry count, reference method and pairing all differ, so the two sets **must not be merged, substituted or averaged together**.
 
 ### S15.3 Gates and provenance
 
-Gates were fixed before the runs and recomputed level by level from the saved fields:
+The following frozen gates and worst measured values apply only to the newly added transverse finite-element records; gates were fixed before the runs and checked level by level from saved fields. The limited-use recommendation and provenance limitations of the earlier finite-element records, and the existing qualification of the finite-volume references, remain separate and are not conferred by this table:
 
-| Check | Worst measured | Threshold | Threshold ÷ worst | Worst at |
+| Check | Worst measured (display convention for grid rows) | Frozen threshold (protocol convention for acceptance) | Threshold ÷ displayed value | Worst at |
 |---|---:|---:|---:|---|
 | coarse→mid conductance change | 0.1925% | 1% | 5.2× | $h=50$, $d=100$ |
 | mid→fine conductance change | 0.0910% | 0.5% | 5.5× | $h=50$, $d=100$ |
@@ -469,7 +469,9 @@ Gates were fixed before the runs and recomputed level by level from the saved fi
 | Section vs volume | $1.56\times10^{-6}$% | 0.01% | $6.4\times10^{3}$× | — |
 | Non-wall sections | 10 | ≥9 | +1 | all |
 
-**The tightest items are the adjacent-grid changes (5.2×, 5.5×) and the direct residual (8.6×), not "three orders of magnitude on every item".** Adjacent-grid changes are not error bounds on the continuous solution.
+**Denominator convention.** Displayed adjacent-grid changes use the finer-level conductance as denominator: the absolute difference between adjacent conductances is divided by the finer value and expressed as a percentage. The frozen protocol and verification receipts instead use the coarser-level conductance for gate acceptance. Both quantities come from the same saved conductances but are not the same acceptance reading. The threshold-to-displayed-value column gives approximate scale comparisons and does not replace receipt-based decisions under the frozen protocol; definitions of the other checks are unchanged.
+
+**Under the displayed convention, the smaller margins are for adjacent-grid changes (5.2×, 5.5×) and the direct residual (8.6×); they cannot be summarized as "three orders of magnitude on every item".** Adjacent-grid changes are not error bounds on the continuous solution.
 
 All provenance items hold for the 12 runs: release fingerprint unchanged, unique `run_id`, command line and exit code recorded, per-level mesh and field hashes matching the receipts, and verification receipts written once. Runs were made on a server; after transfer, re-checking with another interpreter gave the same fingerprint. That re-check strengthens portability but does not constitute a third discretization. Current status is **candidate reference pending formal adoption**; formal status requires separate sign-off.
 
